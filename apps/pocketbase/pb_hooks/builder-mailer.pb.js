@@ -1,11 +1,25 @@
 
 /// <reference path="../pb_data/types.d.ts" />
+// Only Hostinger Horizons deployments have BUILDER_MAILER_API_URL/KEY set.
+// Outside that platform (this project's own SMTP, see smtp-from-env.pb.js)
+// those env vars are empty, which used to build a relay request to
+// "/api/v2/email" (no host) and throw "unsupported protocol scheme". That
+// exception aborted every OTP email send - silently breaking citizen OTP
+// login and the President's MFA step, since the OTP record request still
+// reported success to the client. Fall through to PocketBase's own mailer
+// instead of hard-failing when the Hostinger relay isn't configured.
 onMailerSend((e) => {
     if (e.app.settings().smtp.enabled) {
         return e.next()
     }
 
+    const apiUrl = $os.getenv("BUILDER_MAILER_API_URL");
+    const apiKey = $os.getenv("BUILDER_MAILER_API_KEY");
     const senderAddress = $os.getenv("BUILDER_MAILER_SENDER_ADDRESS");
+
+    if (!apiUrl || !apiKey || !senderAddress) {
+        return e.next()
+    }
 
     const payload = {
         "subject": e.message.subject,
@@ -24,10 +38,10 @@ onMailerSend((e) => {
     }
 
     const response = $http.send({
-        url: `${$os.getenv("BUILDER_MAILER_API_URL")}/api/v2/email`,
+        url: `${apiUrl}/api/v2/email`,
         method: "POST",
         headers: {
-            "Authorization": `Bearer ${$os.getenv("BUILDER_MAILER_API_KEY")}`,
+            "Authorization": `Bearer ${apiKey}`,
             "Content-Type": "application/json"
         },
         body: JSON.stringify(payload)
