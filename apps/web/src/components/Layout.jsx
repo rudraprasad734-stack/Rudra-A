@@ -49,7 +49,7 @@ function NotificationMarquee({ notifications }) {
     if (!items.length) return null;
     const loop = [...items, ...items];
     return (
-        <div className="border-b border-white/10 bg-[#0B1B33] text-white">
+        <div className="border-b border-white/10 bg-[#0B1B33]/85 text-white backdrop-blur-xl">
             <div className="edge flex h-9 items-center gap-3 overflow-hidden">
                 <span className="flex shrink-0 items-center gap-1.5 rounded-full bg-iayo-orange px-2.5 py-1 text-[10px] font-bold uppercase tracking-[0.12em] text-white">
                     <Megaphone className="h-3 w-3" /> Live
@@ -73,7 +73,7 @@ function LatestArticlesStrip({ articles }) {
     const items = (articles || []).slice(0, 8);
     if (!items.length) return null;
     return (
-        <div className="border-b border-[#e8ecf1] bg-white">
+        <div className="border-b border-[#e8ecf1] bg-white/70 backdrop-blur-xl">
             <div className="edge flex h-11 items-center gap-4 overflow-hidden">
                 <span className="hidden shrink-0 items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.16em] text-iayo-blue md:inline-flex">
                     Latest Articles
@@ -124,9 +124,9 @@ function Header() {
     };
 
     return (
-        <header className="sticky top-0 z-50 bg-white shadow-[0_1px_0_0_#e8ecf1]">
+        <header className="sticky top-0 z-50 bg-white/70 shadow-[0_8px_30px_-16px_rgba(15,23,42,0.25)] backdrop-blur-2xl">
             {/* Utility strip — matches reference portal bar */}
-            <div className="hidden border-b border-[#e8ecf1] bg-white lg:block">
+            <div className="hidden border-b border-[#e8ecf1] bg-white/60 backdrop-blur-xl lg:block">
                 <div className="edge flex h-10 items-center justify-between gap-3 text-[12.5px]">
                     <div className="flex min-w-0 items-center gap-3">
                         <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#b8c9f0] bg-[#eef3fc] px-3 py-[3px] text-[10px] font-bold uppercase tracking-[0.12em] text-[#2f6fed]">
@@ -188,12 +188,14 @@ function Header() {
             </div>
 
             {/* Main brand bar — soothing dark navy, bigger */}
-            <div className="border-b border-white/10 bg-[#0B1B33] text-white">
+            <div className="border-b border-white/10 bg-[#0B1B33]/85 text-white backdrop-blur-2xl">
                 <div className="edge flex h-[76px] items-center justify-between gap-3 md:h-[88px]">
                     <Link to="/" className="flex min-w-0 items-center gap-3" onClick={() => setOpen(false)}>
-                        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[12px] bg-[#1a4fd6] font-display text-[22px] font-extrabold leading-none text-white md:h-14 md:w-14 md:text-[26px]">
-                            I
-                        </span>
+                        <img
+                            src="/logo.jpg"
+                            alt="IAYO"
+                            className="h-12 w-12 shrink-0 rounded-[12px] object-contain md:h-14 md:w-14"
+                        />
                         <span className="flex min-w-0 flex-col leading-none">
                             <span className="font-display text-[24px] font-extrabold leading-none tracking-tight text-white md:text-[28px]">
                                 IAYO
@@ -292,7 +294,7 @@ function Header() {
 
             {/* Slide-down menu */}
             {open && (
-                <div className="border-b border-border bg-white shadow-[0_20px_40px_-24px_rgba(11,27,51,0.35)]">
+                <div className="border-b border-border bg-white/75 shadow-[0_20px_40px_-24px_rgba(11,27,51,0.35)] backdrop-blur-2xl">
                     <div className="edge py-5">
                         <div className="mb-4 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:hidden">
                             <Link
@@ -393,15 +395,61 @@ function Header() {
     );
 }
 
+const FOOTER_GLOW_PALETTES = [
+    { test: (p) => p.startsWith('/admin'), colors: ['#1d4ed8', '#2563eb', '#0ea5e9', '#6366f1', '#0891b2'] },
+    { test: (p) => p.startsWith('/president') || p.startsWith('/dashboard'), colors: ['#f59e0b', '#d97706', '#eab308', '#b45309', '#fbbf24'] },
+    { test: (p) => p.startsWith('/join'), colors: ['#10b981', '#059669', '#34d399', '#0d9488', '#22c55e'] },
+    { test: (p) => p.startsWith('/citizen-login') || p.startsWith('/profile'), colors: ['#0ea5e9', '#38bdf8', '#14b8a6', '#0284c7', '#2dd4bf'] },
+    { test: (p) => p.startsWith('/research'), colors: ['#7c3aed', '#8b5cf6', '#a78bfa', '#6d28d9', '#c4b5fd'] },
+    { test: (p) => p.startsWith('/findings'), colors: ['#f43f5e', '#fb7185', '#e11d48', '#be123c', '#fda4af'] },
+    { test: (p) => p.startsWith('/rti'), colors: ['#f59e0b', '#fbbf24', '#d97706', '#fcd34d', '#b45309'] },
+    { test: (p) => p.startsWith('/investigations'), colors: ['#64748b', '#475569', '#94a3b8', '#334155', '#cbd5e1'] },
+    { test: (p) => p.startsWith('/voices'), colors: ['#10b981', '#34d399', '#059669', '#6ee7b7', '#047857'] },
+    { test: (p) => p.startsWith('/donate'), colors: ['#e2552a', '#f97316', '#ea580c', '#fb923c', '#c2410c'] },
+    { test: (p) => p.startsWith('/transparency') || p.startsWith('/accountability'), colors: ['#14b8a6', '#2dd4bf', '#0d9488', '#5eead4', '#0f766e'] },
+];
+const FOOTER_GLOW_DEFAULT = ['#1d4ed8', '#7c3aed', '#e2552a', '#f43f5e', '#14b8a6'];
+
+function getFooterGlowColors(pathname) {
+    const match = FOOTER_GLOW_PALETTES.find((p) => p.test(pathname));
+    return match ? match.colors : FOOTER_GLOW_DEFAULT;
+}
+
+export function FooterGlowStrip() {
+    const location = useLocation();
+    const [c1, c2, c3, c4, c5] = getFooterGlowColors(location.pathname);
+    const glowStyle = { '--siri-c1': c1, '--siri-c2': c2, '--siri-c3': c3, '--siri-c4': c4, '--siri-c5': c5 };
+    return (
+        <div>
+            <div className="relative overflow-hidden border-t border-border" style={glowStyle}>
+                <div className="siri-glow absolute inset-0" aria-hidden="true">
+                    <div className="siri-gradient absolute inset-0 opacity-90" />
+                </div>
+                <div className="edge relative z-10 py-5 text-center text-[11px] font-semibold uppercase tracking-[0.16em] text-white [text-shadow:0_1px_6px_rgba(11,27,51,0.35)]">
+                    “Transparency begins when citizens start asking questions.” — Founder Rudra Prasad Sharma
+                </div>
+            </div>
+            <div className="border-t border-border bg-white">
+                <div className="edge flex flex-col items-start justify-between gap-2 py-5 text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground sm:flex-row sm:items-center">
+                    <p>© {new Date().getFullYear()} Indian Allied Youths Party. All rights reserved.</p>
+                    <p>Transparency · Accountability · Participation</p>
+                </div>
+            </div>
+        </div>
+    );
+}
+
 function Footer() {
     return (
         <footer className="border-t border-border bg-white">
             <div className="edge grid grid-cols-1 gap-10 py-14 md:grid-cols-12">
                 <div className="md:col-span-5">
                     <Link to="/" className="flex items-center gap-2.5">
-                        <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-iayo-blue font-display text-sm font-extrabold text-white">
-                            I
-                        </span>
+                        <img
+                            src="/logo.jpg"
+                            alt="IAYO"
+                            className="h-9 w-9 shrink-0 rounded-lg object-contain"
+                        />
                         <span className="flex flex-col leading-none">
                             <span className="font-display text-[15px] font-extrabold tracking-tight text-navy">
                                 Indian Allied Youths Party
@@ -456,17 +504,7 @@ function Footer() {
                     </div>
                 </div>
             </div>
-            <div className="border-t border-border bg-iayo-bg/60">
-                <div className="edge py-4 text-center text-[11px] font-semibold uppercase tracking-[0.16em] text-iayo-blue">
-                    “Transparency begins when citizens start asking questions.” — Founder Rudra Prasad Sharma
-                </div>
-            </div>
-            <div className="border-t border-border">
-                <div className="edge flex flex-col items-start justify-between gap-2 py-5 text-[11px] font-medium uppercase tracking-[0.14em] text-muted-foreground sm:flex-row sm:items-center">
-                    <p>© {new Date().getFullYear()} Indian Allied Youths Party. All rights reserved.</p>
-                    <p>Transparency · Accountability · Participation</p>
-                </div>
-            </div>
+            <FooterGlowStrip />
         </footer>
     );
 }
