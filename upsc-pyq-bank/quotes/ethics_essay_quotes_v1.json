@@ -1138,6 +1138,16 @@
       "intro",
       "body"
      ]
+    },
+    {
+     "quote": "Global warming, along with the cutting and burning of forests and other critical habitats, is causing the loss of living species at a level comparable to the extinction event that wiped out the dinosaurs 65 million years ago... This time it is not an asteroid colliding with the Earth and wreaking havoc: it is us.",
+     "author": "Al Gore",
+     "source": "An Inconvenient Truth: The Planetary Emergency of Global Warming and What We Can Do About It (2006)",
+     "meaning": "Human-caused climate change and habitat destruction now drive mass extinction at a scale comparable to a planetary catastrophe.",
+     "usage": "Powerful line for essays on climate change, biodiversity loss, and human responsibility for environmental crisis.",
+     "position": [
+      "body"
+     ]
     }
    ]
   },
@@ -1697,6 +1707,16 @@
      "usage": "Classic opening/closing aphorism for essays on perseverance, incremental progress, or beginning difficult reforms.",
      "position": [
       "intro",
+      "conclusion"
+     ]
+    },
+    {
+     "quote": "Stay hungry, stay foolish.",
+     "author": "Steve Jobs",
+     "source": "Stanford University Commencement Address, 12 June 2005",
+     "meaning": "Retain curiosity and willingness to take risks rather than settling into complacent certainty.",
+     "usage": "Punchy closing line for essays on innovation, lifelong learning, or embracing risk and curiosity.",
+     "position": [
       "conclusion"
      ]
     }
