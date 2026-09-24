@@ -1,0 +1,1615 @@
+<title>Civil Service Dossier</title>
+<meta name="description" content="A daily-use companion to the 18-month UPSC prep plan">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#ECEEF3; --surface:#FFFFFF; --surface-2:#F4F5FA; --raised:#FFFFFF;
+    --ink:#161B2E; --ink-soft:#565C7A; --ink-faint:#8A8FAE;
+    --line:#D6D9E5; --line-soft:#E6E8F0;
+    --navy:#1F2A52; --navy-ink:#FFFFFF; --navy-soft:#E7E9F5;
+    --gold:#9C7A22; --gold-ink:#FFFFFF; --gold-soft:#F3E9D0;
+    --sage:#2C7350; --sage-ink:#FFFFFF; --sage-soft:#DFEEE5;
+    --brick:#9C3B33; --brick-ink:#FFFFFF; --brick-soft:#F5E1DE;
+    --tier4:#7C819F; --tier4-soft:#E9EAF2; --link:#1F2A52;
+    --freq1:#E0392B; --freq1-soft:#FBE2DF;
+    --freq2:#E8811A; --freq2-soft:#FBEBD9;
+    --freq3:#C99A1E; --freq3-soft:#F5EDD4;
+    --freq4:#AEB2C4; --freq4-soft:#ECEDF3;
+    --shadow: 0 1px 2px rgba(22,27,46,.06), 0 6px 20px -8px rgba(22,27,46,.18);
+    --radius: 14px;
+    --font-display:'Fraunces', Georgia, serif;
+    --font-body:'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-mono:'IBM Plex Mono', 'SFMono-Regular', Menlo, Consolas, monospace;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0F111B; --surface:#1A1D2E; --surface-2:#20233A; --raised:#232744;
+      --ink:#E8EAF6; --ink-soft:#A7ACC9; --ink-faint:#6E7392;
+      --line:#333A59; --line-soft:#282D48;
+      --navy:#8DA0E8; --navy-ink:#141833; --navy-soft:#232B4D;
+      --gold:#D9B25E; --gold-ink:#241D0B; --gold-soft:#332A16;
+      --sage:#5FC79A; --sage-ink:#0E2A1F; --sage-soft:#1B3A2C;
+      --brick:#E4897E; --brick-ink:#331512; --brick-soft:#3A211E;
+      --tier4:#8189B0; --tier4-soft:#242945; --link:#D9B25E;
+      --freq1:#FF6B5B; --freq1-soft:#3D211E;
+      --freq2:#FFA94D; --freq2-soft:#3B2A17;
+      --freq3:#E8C547; --freq3-soft:#382E15;
+      --freq4:#7B8099; --freq4-soft:#242844;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px -10px rgba(0,0,0,.55);
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0F111B; --surface:#1A1D2E; --surface-2:#20233A; --raised:#232744;
+    --ink:#E8EAF6; --ink-soft:#A7ACC9; --ink-faint:#6E7392;
+    --line:#333A59; --line-soft:#282D48;
+    --navy:#8DA0E8; --navy-ink:#141833; --navy-soft:#232B4D;
+    --gold:#D9B25E; --gold-ink:#241D0B; --gold-soft:#332A16;
+    --sage:#5FC79A; --sage-ink:#0E2A1F; --sage-soft:#1B3A2C;
+    --brick:#E4897E; --brick-ink:#331512; --brick-soft:#3A211E;
+    --tier4:#8189B0; --tier4-soft:#242945; --link:#D9B25E;
+    --freq1:#FF6B5B; --freq1-soft:#3D211E;
+    --freq2:#FFA94D; --freq2-soft:#3B2A17;
+    --freq3:#E8C547; --freq3-soft:#382E15;
+    --freq4:#7B8099; --freq4-soft:#242844;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px -10px rgba(0,0,0,.55);
+    color-scheme: dark;
+  }
+
+  *{box-sizing:border-box;}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:var(--font-body); font-size:15px; line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-family:var(--font-display); font-weight:600; margin:0; text-wrap:balance;}
+  button{font:inherit; color:inherit;}
+  :focus-visible{outline:2px solid var(--gold); outline-offset:2px;}
+  @media (prefers-reduced-motion: reduce){ *{transition:none!important; scroll-behavior:auto!important;} }
+  input,textarea,select{font:inherit; color:inherit;}
+  .num{font-family:var(--font-mono); font-variant-numeric:tabular-nums;}
+
+  #app{max-width:760px; margin:0 auto; min-height:100%;}
+
+  /* ---- Top bar ---- */
+  #chrome{position:sticky; top:env(safe-area-inset-top,0px); z-index:20;}
+  #topbar{
+    background:var(--navy); color:var(--navy-ink);
+    padding:14px 18px;
+  }
+  #topbar .row{display:flex; align-items:baseline; justify-content:space-between; gap:12px;}
+  #topbar .brand{font-family:var(--font-display); font-size:20px; font-weight:600; letter-spacing:.2px;}
+  #topbar .brand small{display:block; font-family:var(--font-body); font-weight:500; font-size:11px; letter-spacing:.08em; text-transform:uppercase; opacity:.72; margin-top:2px;}
+  #topbar .today{font-family:var(--font-mono); font-size:12px; opacity:.85; text-align:right;}
+
+  /* ---- Tab strip ---- */
+  #tabs{
+    display:flex; gap:6px; overflow-x:auto; -webkit-overflow-scrolling:touch;
+    background:var(--bg); padding:10px 14px; border-bottom:1px solid var(--line);
+    scrollbar-width:none;
+  }
+  #tabs::-webkit-scrollbar{display:none;}
+  .tab{
+    flex:0 0 auto; padding:8px 14px; border-radius:999px; border:1px solid var(--line);
+    background:var(--surface); color:var(--ink-soft); font-size:13px; font-weight:600;
+    cursor:pointer; white-space:nowrap; display:flex; align-items:center; gap:7px;
+    transition:background .15s, color .15s, border-color .15s;
+  }
+  .tab .dot{width:6px; height:6px; border-radius:50%; background:var(--ink-faint);}
+  .tab.active{background:var(--navy); color:var(--navy-ink); border-color:var(--navy);}
+  .tab.active .dot{background:var(--gold);}
+
+  main{padding:18px 16px 64px;}
+  .view{display:none;}
+  .view.active{display:block;}
+
+  /* ---- Cards / shared ---- */
+  .card{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow);}
+  .section-title{font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:var(--ink-faint); margin:26px 2px 10px;}
+  .section-title:first-child{margin-top:0;}
+  .muted{color:var(--ink-soft);}
+  .chip{display:inline-flex; align-items:center; gap:5px; padding:3px 9px; border-radius:999px; font-size:11px; font-weight:700; letter-spacing:.02em;}
+  .chip.tier1{background:var(--navy-soft); color:var(--navy);}
+  .chip.tier2{background:var(--gold-soft); color:var(--gold);}
+  .chip.tier3{background:var(--sage-soft); color:var(--sage);}
+  .chip.tier4{background:var(--tier4-soft); color:var(--tier4);}
+  .chip.tag-exam{background:var(--brick-soft); color:var(--brick);}
+  .chip.tag-off{background:var(--tier4-soft); color:var(--tier4);}
+
+  /* ---- Dashboard ---- */
+  .hero{padding:22px 20px; display:flex; flex-direction:column; gap:16px; margin-bottom:4px;}
+  .hero-phase{font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--gold);}
+  .countdowns{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
+  .countdown{background:var(--surface-2); border-radius:12px; padding:14px 16px;}
+  .countdown .label{font-size:11.5px; font-weight:600; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint);}
+  .countdown .value{font-family:var(--font-display); font-size:34px; font-weight:600; line-height:1.1; margin-top:4px;}
+  .countdown .value span{font-size:15px; font-family:var(--font-body); font-weight:600; color:var(--ink-soft); margin-left:4px;}
+  .countdown .sub{font-size:12px; color:var(--ink-soft); margin-top:3px; font-family:var(--font-mono);}
+
+  .progress-grid{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:4px;}
+  .progress-card{padding:16px; display:flex; align-items:center; gap:14px;}
+  .ring{flex:0 0 auto;}
+  .progress-card .meta{min-width:0;}
+  .progress-card .meta .n{font-family:var(--font-mono); font-weight:600; font-size:18px;}
+  .progress-card .meta .l{font-size:12px; color:var(--ink-soft); margin-top:1px;}
+
+  .today-strip{padding:16px 18px; display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:4px; cursor:pointer;}
+  .today-strip .l{font-size:13px; color:var(--ink-soft);}
+  .today-strip .l b{color:var(--ink); font-family:var(--font-mono); display:block; font-size:14px; margin-top:2px;}
+  .today-strip .go{font-size:13px; font-weight:700; color:var(--link); white-space:nowrap; display:flex; align-items:center; gap:4px;}
+
+  /* ---- Daily Log ---- */
+  .day-nav{display:flex; align-items:center; gap:8px; margin-bottom:14px;}
+  .day-nav button{flex:0 0 auto; width:38px; height:38px; border-radius:10px; border:1px solid var(--line); background:var(--surface); font-size:16px; cursor:pointer;}
+  .day-nav .day-picker{flex:1; text-align:center;}
+  .day-nav .day-picker .d{font-family:var(--font-display); font-size:19px; font-weight:600;}
+  .day-nav .day-picker .w{font-size:12px; color:var(--ink-soft); font-family:var(--font-mono);}
+  .day-nav .today-btn{flex:0 0 auto; font-size:12px; font-weight:700; color:var(--link); background:var(--navy-soft); border:none; border-radius:10px; padding:0 12px; height:38px; cursor:pointer;}
+
+  .day-badges{display:flex; gap:8px; margin-bottom:16px; flex-wrap:wrap;}
+
+  .block-card{padding:16px 18px; margin-bottom:12px;}
+  .block-card h3{font-size:14px; display:flex; align-items:center; gap:8px; margin-bottom:12px;}
+  .block-card h3 .ico{width:8px; height:8px; border-radius:2px; background:var(--gold);}
+  .block-card.evening h3 .ico{background:var(--navy);}
+  .task-row{display:flex; align-items:flex-start; gap:11px; padding:9px 0; border-top:1px solid var(--line-soft);}
+  .task-row:first-of-type{border-top:none; padding-top:0;}
+  .task-row input[type=checkbox]{margin-top:3px; width:18px; height:18px; accent-color:var(--sage); flex:0 0 auto; cursor:pointer;}
+  .task-row .txt{flex:1; min-width:0;}
+  .task-row .time{font-family:var(--font-mono); font-size:11.5px; color:var(--ink-faint); display:block; margin-bottom:2px;}
+  .task-row .desc{font-size:13.5px; line-height:1.45;}
+  .task-row.done .desc{color:var(--ink-faint); text-decoration:line-through; text-decoration-color:var(--line);}
+
+  .notes-card{padding:16px 18px;}
+  .notes-card h3{font-size:14px; margin-bottom:10px;}
+  .notes-card textarea{
+    width:100%; min-height:80px; resize:vertical; border:1px solid var(--line); border-radius:10px;
+    background:var(--surface-2); padding:10px 12px; font-size:13.5px; color:var(--ink); font-family:var(--font-body);
+  }
+  .notes-card textarea:focus{outline:2px solid var(--gold); outline-offset:1px;}
+  .save-hint{font-size:11px; color:var(--ink-faint); margin-top:6px; font-family:var(--font-mono);}
+
+  /* ---- Weekly ---- */
+  .week-card{margin-bottom:10px; overflow:hidden;}
+  .week-head{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:14px 16px; cursor:pointer;}
+  .week-head .l .w{font-weight:700; font-size:13.5px;}
+  .week-head .l .r{font-size:12px; color:var(--ink-soft); font-family:var(--font-mono); margin-top:2px;}
+  .week-head .r{display:flex; align-items:center; gap:10px;}
+  .week-progress{width:44px; height:5px; border-radius:3px; background:var(--line-soft); overflow:hidden;}
+  .week-progress i{display:block; height:100%; background:var(--sage);}
+  .week-head .chevron{transition:transform .15s; color:var(--ink-faint); font-size:12px;}
+  .week-card.open .chevron{transform:rotate(90deg);}
+  .week-body{display:none; padding:0 16px 14px; border-top:1px solid var(--line-soft);}
+  .week-card.open .week-body{display:block;}
+  .week-day{display:flex; gap:10px; padding:10px 0; border-top:1px solid var(--line-soft); cursor:pointer;}
+  .week-day:first-child{border-top:none;}
+  .week-day .dd{flex:0 0 46px; font-family:var(--font-mono); font-size:11.5px; color:var(--ink-faint); padding-top:1px;}
+  .week-day .dd b{display:block; font-size:13px; color:var(--ink); font-family:var(--font-body); font-weight:700;}
+  .week-day .cc{flex:1; min-width:0; font-size:12.5px; line-height:1.5;}
+  .week-day .cc .am{color:var(--ink);}
+  .week-day .cc .pm{color:var(--ink-soft); margin-top:1px;}
+  .week-day .cc b{font-weight:600; color:var(--gold);}
+  .week-day .status{flex:0 0 16px; padding-top:3px;}
+  .status-dot{width:9px; height:9px; border-radius:50%; background:var(--line);}
+  .status-dot.done{background:var(--sage);}
+  .status-dot.partial{background:var(--gold);}
+
+  /* ---- Months ---- */
+  .month-card{cursor:pointer; padding:15px 17px; margin-bottom:10px; display:flex; gap:13px; align-items:flex-start;}
+  .month-card input[type=checkbox]{width:20px; height:20px; margin-top:2px; accent-color:var(--sage); flex:0 0 auto; cursor:pointer;}
+  .month-card .b{flex:1; min-width:0;}
+  .month-card .b .lab{font-weight:700; font-size:14px; display:flex; align-items:center; gap:8px; flex-wrap:wrap;}
+  .month-card .b .milestone{font-size:11.5px; font-weight:700; color:var(--brick); margin-top:3px;}
+  .month-card .b .focus{font-size:13px; color:var(--ink-soft); margin-top:4px; line-height:1.45;}
+  .month-card.done{border-color:var(--sage);}
+  .month-card.done .lab{color:var(--sage);}
+
+  /* ---- Checklists ---- */
+  .subject-card{margin-bottom:10px; overflow:hidden;}
+  .subject-head{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:14px 16px; cursor:pointer;}
+  .subject-head .l{font-weight:700; font-size:13.5px;}
+  .subject-head .r{display:flex; align-items:center; gap:10px; font-family:var(--font-mono); font-size:12px; color:var(--ink-soft);}
+  .subject-body{display:none; padding:2px 16px 8px; border-top:1px solid var(--line-soft);}
+  .subject-card.open .subject-body{display:block;}
+  .subject-card.open .chevron{transform:rotate(90deg);}
+  .topic-row{cursor:pointer; display:flex; align-items:flex-start; gap:11px; padding:10px 0; border-top:1px solid var(--line-soft);}
+  .topic-row:first-child{border-top:none;}
+  .topic-row input[type=checkbox]{margin-top:3px; width:18px; height:18px; accent-color:var(--sage); flex:0 0 auto; cursor:pointer;}
+  .topic-row .t{flex:1; min-width:0; font-size:13.5px; line-height:1.4;}
+  .topic-row.done .t{color:var(--ink-faint); text-decoration:line-through; text-decoration-color:var(--line);}
+  .topic-row .chip{margin-bottom:4px;}
+
+  /* ---- Mocks ---- */
+  .target-card{padding:14px 16px; margin-bottom:10px;}
+  .target-card .top{display:flex; justify-content:space-between; align-items:baseline; gap:10px;}
+  .target-card .name{font-weight:700; font-size:13.5px;}
+  .target-card .count{font-family:var(--font-mono); font-size:13px; color:var(--ink-soft);}
+  .target-card .window{font-size:11.5px; color:var(--ink-faint); margin-top:2px;}
+  .bar{height:7px; border-radius:4px; background:var(--line-soft); overflow:hidden; margin-top:9px;}
+  .bar i{display:block; height:100%; background:var(--sage);}
+
+  .add-mock{padding:16px; margin:18px 0;}
+  .add-mock h3{font-size:14px; margin-bottom:12px;}
+  .add-mock .grid{display:grid; grid-template-columns:1fr; gap:10px;}
+  .add-mock label{font-size:11.5px; font-weight:600; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.04em; display:block; margin-bottom:5px;}
+  .add-mock select, .add-mock input{width:100%; border:1px solid var(--line); border-radius:9px; background:var(--surface-2); padding:9px 11px; font-size:13.5px;}
+  .add-mock .row2{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
+  .add-mock button{margin-top:2px; width:100%; padding:11px; border:none; border-radius:10px; background:var(--navy); color:var(--navy-ink); font-weight:700; font-size:13.5px; cursor:pointer;}
+
+  .log-entry{display:flex; justify-content:space-between; align-items:flex-start; gap:10px; padding:12px 16px; border-top:1px solid var(--line-soft);}
+  .log-entry:first-child{border-top:none;}
+  .log-entry .l .ty{font-weight:700; font-size:13px;}
+  .log-entry .l .meta{font-size:11.5px; color:var(--ink-soft); font-family:var(--font-mono); margin-top:2px;}
+  .log-entry .l .notes{font-size:12.5px; color:var(--ink-soft); margin-top:4px;}
+  .log-entry .sc{font-family:var(--font-mono); font-weight:700; font-size:15px; color:var(--link); white-space:nowrap;}
+  .log-entry .del{background:none; border:none; color:var(--ink-faint); font-size:16px; cursor:pointer; padding:2px 4px; line-height:1;}
+
+  /* ---- Syllabus ---- */
+  .syl-note{font-size:12px; font-weight:500; color:var(--ink-soft); margin-top:3px; text-transform:none; letter-spacing:0;}
+  .syl-section{padding:12px 0; border-top:1px solid var(--line-soft);}
+  .syl-section:first-child{border-top:none; padding-top:6px;}
+  .syl-heading{font-weight:700; font-size:12.5px; color:var(--gold); text-transform:uppercase; letter-spacing:.04em; margin-bottom:6px;}
+  ul.syl-list{margin:0; padding:0 0 6px 18px; list-style:none;}
+  ul.syl-list li{font-size:13.5px; line-height:1.55; margin-bottom:7px; color:var(--ink); position:relative; padding-left:16px;}
+  ul.syl-list li::before{content:"";position:absolute; left:1px; top:7px; width:5px; height:5px; border-radius:50%; background:var(--line);}
+  ul.syl-list li.freq1{font-weight:600;}
+  ul.syl-list li.freq1::before{background:var(--freq1); width:7px; height:7px; left:0; top:6px; box-shadow:0 0 0 3px var(--freq1-soft);}
+  ul.syl-list li.freq2::before{background:var(--freq2);}
+  ul.syl-list li.freq3::before{background:var(--freq3);}
+  ul.syl-list li.freq4::before{background:var(--freq4);}
+  ul.syl-list li .freq-badge{display:inline-block; margin-left:7px; font-family:var(--font-mono); font-size:10.5px; font-weight:700; color:var(--ink-faint); vertical-align:1px;}
+  ul.syl-list li.freq1 .freq-badge{color:var(--freq1);}
+  ul.syl-list li.freq2 .freq-badge{color:var(--freq2);}
+  ul.syl-list li.freq3 .freq-badge{color:var(--freq3);}
+  ul.syl-list li.freq4 .freq-badge{color:var(--freq4);}
+  .freq-legend{display:flex; flex-wrap:wrap; gap:10px 16px; padding:12px 16px; margin-bottom:12px; background:var(--surface-2); border-radius:var(--radius); font-size:11.5px; color:var(--ink-soft);}
+  .freq-legend b{display:block; width:100%; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); margin-bottom:2px;}
+  .freq-legend .it{display:flex; align-items:center; gap:6px; font-weight:600;}
+  .freq-legend .it i{width:9px; height:9px; border-radius:50%; display:inline-block; flex:none;}
+  .freq-legend .it.freq1 i{background:var(--freq1); box-shadow:0 0 0 3px var(--freq1-soft);} .freq-legend .it.freq1{color:var(--freq1);}
+  .freq-legend .it.freq2 i{background:var(--freq2);} .freq-legend .it.freq2{color:var(--freq2);}
+  .freq-legend .it.freq3 i{background:var(--freq3);} .freq-legend .it.freq3{color:var(--freq3);}
+  .freq-legend .it.freq4 i{background:var(--freq4);} .freq-legend .it.freq4{color:var(--ink-faint); font-weight:500;}
+  .freq-legend .src{width:100%; font-size:11px; color:var(--ink-faint); margin-top:2px; font-weight:400;}
+
+  /* ---- PYQ ---- */
+  .pyq-note{padding:13px 16px; font-size:12.5px; line-height:1.55; color:var(--ink-soft); margin-bottom:14px;}
+  .pyq-note b{color:var(--ink); font-weight:700;}
+  .pill-row{display:flex; align-items:center; gap:8px; margin-bottom:10px; flex-wrap:wrap;}
+  .pill-label{font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint); margin-right:2px;}
+  .pill{padding:6px 13px; border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--ink-soft); font-size:12.5px; font-weight:600; cursor:pointer;}
+  .log-entry .l.q{width:100%;}
+  .log-entry .qtext{margin-top:4px; color:var(--ink); font-size:13.5px; line-height:1.55; max-width:68ch;}
+  .pill.active{background:var(--gold); border-color:var(--gold); color:var(--gold-ink);}
+
+  .empty{padding:24px 18px; text-align:center; color:var(--ink-faint); font-size:13px;}
+  .sync-note{display:flex; align-items:center; gap:7px; font-size:11.5px; color:var(--ink-faint); padding:0 2px; margin-top:16px;}
+  .sync-dot{width:6px; height:6px; border-radius:50%; background:var(--tier4);}
+  .sync-dot.on{background:var(--sage);}
+  .sync-dot.err{background:var(--brick);}
+
+  /* ---- Polish additions ---- */
+  .chip.tag-study{background:var(--navy-soft); color:var(--link);}
+  .chip.tag-test{background:var(--gold-soft); color:var(--gold);}
+  .chip.tag-review{background:var(--sage-soft); color:var(--sage);}
+  .chip.tier1{color:var(--link);}
+  .plan-card{padding:16px 18px;}
+  .plan-card .plan-head{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px;}
+  .plan-card .plan-head .date{font-family:var(--font-display); font-size:17px; font-weight:600;}
+  .plan-list{list-style:none; margin:0; padding:0; display:flex; flex-direction:column;}
+  .plan-list li{display:grid; grid-template-columns:92px 1fr; gap:10px; padding:7px 0; border-top:1px solid var(--line-soft); font-size:13px; line-height:1.45;}
+  .plan-list li:first-child{border-top:none;}
+  .plan-list li .t{font-family:var(--font-mono); font-size:11.5px; color:var(--ink-faint); padding-top:1px;}
+  .plan-list li.done .x{color:var(--ink-faint); text-decoration:line-through; text-decoration-color:var(--line);}
+  .plan-list li.split{grid-template-columns:1fr; padding:10px 0 2px; border-top:none; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint);}
+  .plan-foot{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:12px; padding-top:12px; border-top:1px solid var(--line-soft); font-size:12.5px; color:var(--ink-soft);}
+  .plan-foot b{font-family:var(--font-mono); color:var(--ink);}
+  .link-btn{background:none; border:none; padding:6px 0; font-size:13px; font-weight:700; color:var(--link); cursor:pointer; white-space:nowrap;}
+  .week-day .dd .tg{display:block; margin-top:3px; font-size:9.5px; letter-spacing:.04em; font-weight:600;}
+  .week-day.today{background:var(--surface-2); margin:0 -16px; padding-left:16px; padding-right:16px;}
+  .task-row label{display:flex; align-items:flex-start; gap:11px; flex:1; min-width:0; cursor:pointer;}
+  .syl-search{width:100%; border:1px solid var(--line); border-radius:10px; background:var(--surface); padding:10px 12px; font-size:13.5px; margin-bottom:12px;}
+  ul.syl-list li[data-years]{cursor:pointer;}
+  ul.syl-list li .yrs{display:block; font-family:var(--font-mono); font-size:11px; font-weight:400; color:var(--ink-soft); margin-top:3px;}
+  ul.syl-list li mark{background:var(--gold-soft); color:inherit; border-radius:3px; padding:0 1px;}
+  .log-entry .del.confirm{color:var(--brick); font-size:12px; font-weight:700; font-family:var(--font-body);}
+  .add-mock button:disabled{opacity:.55; cursor:not-allowed;}
+  .toast{position:fixed; left:50%; bottom:calc(20px + env(safe-area-inset-bottom,0px)); transform:translateX(-50%); z-index:40; background:var(--ink); color:var(--bg); padding:10px 16px; border-radius:10px; font-size:13px; box-shadow:var(--shadow); max-width:calc(100% - 32px);}
+  /* ---- PYQ bank ---- */
+  .coverage{padding:6px 16px 12px;}
+  .cov-row{padding:10px 0; border-top:1px solid var(--line-soft);}
+  .cov-row:first-child{border-top:none;}
+  .cov-head{display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin-bottom:7px;}
+  .cov-head .num{font-size:11.5px; color:var(--ink-faint);}
+  .cov-paper{background:none; border:none; padding:0; font-weight:700; font-size:13.5px; cursor:pointer; text-align:left;}
+  .cov-paper.on{color:var(--link); text-decoration:underline; text-underline-offset:3px;}
+  .cov-years{display:flex; flex-wrap:wrap; gap:5px;}
+  .yr{font-family:var(--font-mono); font-size:11.5px; font-variant-numeric:tabular-nums; padding:3px 7px; border-radius:6px; cursor:pointer; border:1px solid var(--line); background:var(--surface); color:var(--ink-soft);}
+  .yr.full{background:var(--sage-soft); border-color:transparent; color:var(--sage); font-weight:600;}
+  .yr.part{background:var(--surface-2);}
+  .yr.on{background:var(--navy); color:var(--navy-ink); border-color:var(--navy);}
+  .cov-legend{display:flex; gap:16px; flex-wrap:wrap; font-size:11px; color:var(--ink-faint); padding-top:10px; border-top:1px solid var(--line-soft);}
+  .cov-legend span{display:flex; align-items:center; gap:6px;}
+  .cov-legend i.yr{display:inline-block; width:14px; height:10px; padding:0; cursor:default;}
+  .pyq-filters{margin-top:18px;}
+  .pyq-filters .syl-search{margin-bottom:8px;}
+  .row2{display:grid; grid-template-columns:1fr 1fr; gap:8px;}
+  .pyq-filters select{width:100%; border:1px solid var(--line); border-radius:10px; background:var(--surface); padding:9px 11px; font-size:13.5px;}
+  .pyq-count{display:flex; justify-content:space-between; align-items:center; gap:10px; flex-wrap:wrap; margin:14px 2px 0; font-size:13px; color:var(--ink-soft);}
+  .pyq-count b{font-family:var(--font-mono); color:var(--ink);}
+  .ans-toggle{display:flex; align-items:center; gap:6px; cursor:pointer;}
+  .ans-toggle input{accent-color:var(--sage); width:16px; height:16px;}
+  .partial{font-size:10.5px; letter-spacing:.04em; padding:2px 7px; border-radius:999px; background:var(--gold-soft); color:var(--gold); vertical-align:1px; margin-left:4px;}
+  .src-note{font-size:11.5px; color:var(--ink-faint); margin:-4px 2px 10px; line-height:1.45; max-width:72ch;}
+  .qitem{padding:14px 16px; border-top:1px solid var(--line-soft);}
+  .qitem:first-child{border-top:none;}
+  .qitem .meta{font-family:var(--font-mono); font-size:11px; color:var(--ink-faint); margin-bottom:5px;}
+  .qitem .qtext{font-size:14px; line-height:1.6; white-space:pre-line; max-width:72ch;}
+  .qitem mark{background:var(--gold-soft); color:inherit; border-radius:3px; padding:0 1px;}
+  .psg{margin:2px 0 8px; border-left:3px solid var(--gold-soft); padding:2px 0 2px 10px;}
+  .psg summary{cursor:pointer; font-size:12px; font-weight:700; color:var(--link);}
+  .psg div{margin-top:6px; font-size:13px; line-height:1.6; color:var(--ink-soft); max-width:72ch;}
+  ol.opts{margin:8px 0 0; padding-left:26px; font-size:13.5px; line-height:1.5; display:grid; gap:3px;}
+  ol.opts li::marker{font-family:var(--font-mono); color:var(--ink-faint);}
+  ol.opts li.right{color:var(--sage); font-weight:700;}
+  .qitem .ans{margin-top:8px; font-size:13px; color:var(--sage);}
+  .qitem .reveal{margin-top:4px; font-size:12.5px;}
+  .more-btn{display:block; width:100%; margin-top:12px; padding:11px; border:1px solid var(--line); border-radius:10px; background:var(--surface); font-weight:700; font-size:13px; color:var(--link); cursor:pointer;}
+
+  /* ---- Papers ---- */
+  details.add-mock > summary{list-style:none; cursor:pointer; display:flex; align-items:center; justify-content:space-between;}
+  details.add-mock > summary::-webkit-details-marker{display:none;}
+  details.add-mock > summary::after{content:"+"; font-size:20px; color:var(--link); line-height:1;}
+  details.add-mock[open] > summary::after{content:"–";}
+  details.add-mock > summary h3{margin:0;}
+  details.add-mock[open] > summary{margin-bottom:12px;}
+  .papers-bar{display:flex; justify-content:space-between; align-items:center; margin:18px 2px 0; font-size:13px; color:var(--ink-soft);}
+  .papers-bar b{color:var(--ink);}
+  .pcat{padding:14px 16px; margin-bottom:10px;}
+  .pcat-head{display:flex; justify-content:space-between; align-items:baseline; gap:10px; margin-bottom:10px;}
+  .pcat-head h3{font-size:15px;}
+  .pcat-head .num{font-size:11.5px; color:var(--ink-faint);}
+  .ygrid{display:grid; grid-template-columns:repeat(auto-fill, minmax(76px, 1fr)); gap:8px;}
+  .ytile{position:relative;}
+  .ytile a{display:flex; flex-direction:column; gap:4px; min-height:54px; padding:9px 10px; border:1px solid var(--line); border-radius:10px; background:var(--surface-2); text-decoration:none; color:var(--ink); transition:border-color .15s, background .15s;}
+  .ytile a:hover{border-color:var(--link); background:var(--surface);}
+  .ytile b{font-size:16px; font-weight:600;}
+  .ytile .tags{display:flex; gap:3px; flex-wrap:wrap;}
+  .ytile .t{font-size:9.5px; font-weight:700; letter-spacing:.03em; padding:1px 5px; border-radius:4px;}
+  .t.drive{background:var(--navy-soft); color:var(--link);}
+  .t.qs{background:var(--sage-soft); color:var(--sage);}
+  .t.new{background:var(--gold-soft); color:var(--gold);}
+  .ytile .del{position:absolute; top:-7px; right:-7px; width:22px; height:22px; padding:0; border-radius:50%; background:var(--surface); border:1px solid var(--line); font-size:13px;}
+  .ytile .del.confirm{width:auto; padding:0 7px; border-radius:11px; font-size:10.5px; right:-4px;}
+  .plist{display:grid; gap:0; margin-top:4px;}
+  .prow{display:flex; align-items:center; gap:10px; padding:9px 0; border-top:1px solid var(--line-soft); font-size:13.5px;}
+  .pcat .ygrid + .plist{margin-top:10px;}
+  .prow:first-child{border-top:none;}
+  .prow a{flex:1; min-width:0; color:var(--link); font-weight:600; text-decoration:none; overflow-wrap:anywhere;}
+  .prow a:hover{text-decoration:underline;}
+  .prow .meta{font-size:11px; color:var(--ink-faint); font-family:var(--font-mono); white-space:nowrap;}
+  .small{font-size:12.5px; line-height:1.5; margin:0 0 12px;}
+  .small b{color:var(--ink);}
+  .add-mock label.file-drop{text-transform:none; letter-spacing:0; margin:0; font-size:inherit; color:inherit; font-weight:400;}
+  .file-drop{position:relative; display:flex; flex-direction:column; align-items:center; gap:3px; padding:18px; border:1.5px dashed var(--line); border-radius:12px; cursor:pointer; text-align:center; background:var(--surface-2);}
+  .file-drop.over{border-color:var(--gold); background:var(--gold-soft);}
+  .file-drop input{position:absolute; width:1px; height:1px; opacity:0;}
+  .file-drop span{font-weight:700; color:var(--link); font-size:13.5px;}
+  .file-drop small{font-size:11.5px; color:var(--ink-faint);}
+  .file-drop:focus-within{outline:2px solid var(--gold); outline-offset:2px;}
+  .pending{display:grid; gap:10px; margin-top:12px;}
+  .pend-row{padding:10px 0; border-top:1px solid var(--line-soft);}
+  .pend-name{font-size:12.5px; font-weight:600; margin-bottom:6px; overflow-wrap:anywhere;}
+  .pend-fields{display:grid; grid-template-columns:1fr 1.4fr 0.8fr auto; gap:6px; align-items:center;}
+  .add-mock .pend-fields input, .add-mock .pend-fields select{padding:8px 9px; font-size:13px; min-width:0;}
+  .paper-actions{display:flex; align-items:center; gap:12px; margin-top:7px; flex-wrap:wrap;}
+  .paper-actions .link-btn{padding:0; font-size:12.5px; text-decoration:none;}
+  .paper-row .meta{overflow-wrap:anywhere;}
+  @media (max-width:420px){
+    .pend-fields{grid-template-columns:1fr 1fr; }
+    .countdown .value{font-size:28px;}
+    .progress-card{padding:14px 12px; gap:10px;}
+    .plan-list li{grid-template-columns:1fr; gap:1px;}
+  }
+</style>
+
+<div id="toast" class="toast" role="status" hidden></div>
+<div id="app">
+  <div id="chrome">
+  <header id="topbar">
+    <div class="row">
+      <div class="brand">Civil Service Dossier<small>18-month UPSC companion</small></div>
+      <div class="today" id="topbarDate">—</div>
+    </div>
+  </header>
+
+  <nav id="tabs" aria-label="Sections"></nav>
+  </div>
+
+  <main>
+    <section class="view" id="view-dashboard"></section>
+    <section class="view" id="view-daily"></section>
+    <section class="view" id="view-weekly"></section>
+    <section class="view" id="view-months"></section>
+    <section class="view" id="view-prelims"></section>
+    <section class="view" id="view-mains"></section>
+    <section class="view" id="view-mocks"></section>
+    <section class="view" id="view-syllabus"></section>
+    <section class="view" id="view-pyq"></section>
+    <section class="view" id="view-papers"></section>
+  </main>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+// ============================================================================
+// UTILITIES
+// ============================================================================
+function pad2(n){ return String(n).padStart(2,"0"); }
+function toKey(d){ return d.getFullYear()+"-"+pad2(d.getMonth()+1)+"-"+pad2(d.getDate()); }
+function parseKey(s){ var p=s.split("-").map(Number); return new Date(p[0], p[1]-1, p[2]); }
+function addDays(d,n){ var r=new Date(d); r.setDate(r.getDate()+n); return r; }
+function diffDays(aKey,bKey){ var a=parseKey(aKey), b=parseKey(bKey); return Math.round((a-b)/86400000); }
+function monthKeyOf(dateKey){ return dateKey.slice(0,7); }
+function fmtLong(d){ return d.toLocaleDateString(undefined,{weekday:"long", day:"numeric", month:"long", year:"numeric"}); }
+function fmtShort(d){ return d.toLocaleDateString(undefined,{day:"numeric", month:"short", year:"numeric"}); }
+function fmtDM(d){ return d.toLocaleDateString(undefined,{day:"numeric", month:"short"}); }
+function weekdayAbbr(d){ return ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"][(d.getDay()+6)%7]; }
+function debounce(fn, ms){ var t; return function(){ var a=arguments, c=this; clearTimeout(t); t=setTimeout(function(){ fn.apply(c,a); }, ms); }; }
+function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
+function el(html){ var t=document.createElement("template"); t.innerHTML=html.trim(); return t.content.firstElementChild; }
+function tierClass(tier){
+  if(!tier) return "tier4";
+  if(tier.indexOf("Tier 1")===0) return "tier1";
+  if(tier.indexOf("Tier 2")===0) return "tier2";
+  if(tier.indexOf("Tier 3")===0) return "tier3";
+  return "tier4";
+}
+function tierShort(tier){
+  if(!tier) return "";
+  var m = tier.match(/Tier \d/);
+  if(m) return m[0];
+  if(/case/i.test(tier)) return "Case study";
+  return tier.split(" ")[0];
+}
+function tagClass(tag){
+  if(tag==="EXAM") return "tag-exam";
+  if(tag==="OFF"||tag==="BUFFER") return "tag-off";
+  if(tag==="MOCK"||tag==="TEST") return "tag-test";
+  if(tag==="REVIEW"||tag==="RECAP"||tag==="REVISE") return "tag-review";
+  return "tag-study";
+}
+var toastTimer;
+function toast(msg){
+  var t = document.getElementById("toast");
+  t.textContent = msg; t.hidden = false;
+  clearTimeout(toastTimer); toastTimer = setTimeout(function(){ t.hidden = true; }, 3200);
+}
+var saveFailed = false;
+function onSaveError(){ saveFailed = true; toast("Couldn't save that change. Check your connection and try again."); }
+function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+function lsSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+
+// ============================================================================
+// STATE
+// ============================================================================
+var DATA = null;                 // parsed data.json
+var SYLLABUS = null;             // parsed syllabus.json
+var PYQ = null;                  // parsed pyq.json
+var FREQ = null;                 // parsed pyq_frequency.json (Mains-only PYQ frequency tiers)
+var pyqExam = "prelims";         // "prelims" | "mains"
+var pyqMode = "verified";        // "verified" | "frequency"
+var DAYS_BY_DATE = new Map();    // dateKey -> day obj
+var WEEKS = [];                  // [{weekNum,start,end,dateKeys:[]}]
+var PRELIMS_GROUPS = [];         // [{subject, items:[]}]
+var MAINS_GROUPS = [];           // [{paper, items:[]}]
+
+var db = null;
+var prelimsState = {};           // {topicId: bool}
+var mainsState = {};             // {topicId: bool}
+var monthsState = {};            // {monthKey: {done, note}}
+var dailyState = {};             // {dateKey: {m:[bool], e:[bool], notes:""}}
+var dailyMonthCache = {};        // {monthKey: full doc body already loaded}
+var mockTests = [];              // [{id,type,date,score,maxScore,notes,createdAt}]
+var dbReady = false;
+var dbChecked = false;
+
+var todayKey = toKey(new Date());
+var currentDailyKey = todayKey;
+
+// ============================================================================
+// LOAD SCHEDULE DATA
+// ============================================================================
+function buildIndices(){
+  DATA.days.forEach(function(d){ DAYS_BY_DATE.set(d.date, d); });
+
+  // Mon-Sun aligned weeks, week 1 a partial stub ending at the first Sunday
+  var start = parseKey(DATA.startDate);
+  var mondayIdx = (start.getDay()+6)%7; // Mon=0..Sun=6
+  var firstSunday = addDays(start, 6-mondayIdx);
+  var keys = DATA.days.map(function(d){ return d.date; });
+  var idx = 0, wk = 1;
+  var cursor = new Date(start);
+  var endDate = parseKey(DATA.endDate);
+  while(cursor <= endDate){
+    var wkEnd = (wk===1) ? new Date(firstSunday) : addDays(cursor,6);
+    if(wkEnd > endDate) wkEnd = new Date(endDate);
+    var dateKeys=[];
+    var c=new Date(cursor);
+    while(c<=wkEnd){ dateKeys.push(toKey(c)); c=addDays(c,1); }
+    WEEKS.push({weekNum:wk, start:toKey(cursor), end:toKey(wkEnd), dateKeys:dateKeys});
+    cursor = addDays(wkEnd,1);
+    wk++;
+  }
+
+  var pmap = new Map();
+  DATA.prelimsTopics.forEach(function(t){
+    if(!pmap.has(t.subject)) pmap.set(t.subject, []);
+    pmap.get(t.subject).push(t);
+  });
+  pmap.forEach(function(items,subject){ PRELIMS_GROUPS.push({subject:subject, items:items}); });
+
+  var mmap = new Map();
+  DATA.mainsTopics.forEach(function(t){
+    if(!mmap.has(t.paper)) mmap.set(t.paper, []);
+    mmap.get(t.paper).push(t);
+  });
+  mmap.forEach(function(items,paper){ MAINS_GROUPS.push({paper:paper, items:items}); });
+}
+
+// ============================================================================
+// DB LOAD / SAVE
+// ============================================================================
+function loadState(){
+  return Promise.resolve().then(function(){
+    if(!db) return;
+    var p1 = db.doc("state/prelims").get().then(function(s){ if(s.exists) prelimsState = s.data()||{}; }).catch(function(){});
+    var p2 = db.doc("state/mains").get().then(function(s){ if(s.exists) mainsState = s.data()||{}; }).catch(function(){});
+    var p3 = db.doc("state/months").get().then(function(s){ if(s.exists) monthsState = s.data()||{}; }).catch(function(){});
+    var p4 = db.collection("dailyLog").get().then(function(qs){
+      qs.docs.forEach(function(doc){
+        var body = doc.data()||{};
+        dailyMonthCache[doc.id] = true;
+        var days = body.days||{};
+        Object.keys(days).forEach(function(k){ dailyState[k] = days[k]; });
+      });
+    }).catch(function(){});
+    var p5 = db.collection("mockTests").orderBy("date","desc").limit(500).get().then(function(qs){
+      mockTests = qs.docs.map(function(doc){ var b=doc.data()||{}; b.id=doc.id; return b; });
+    }).catch(function(){});
+    return Promise.all([p1,p2,p3,p4,p5]).then(function(){ dbReady = true; });
+  });
+}
+
+function saveTopicState(kind){
+  if(!db) return;
+  var path = kind==="prelims" ? "state/prelims" : "state/mains";
+  var body = kind==="prelims" ? prelimsState : mainsState;
+  db.doc(path).set(body).catch(onSaveError);
+}
+function saveMonthsState(){
+  if(!db) return;
+  db.doc("state/months").set(monthsState).catch(onSaveError);
+}
+function saveDailyMonth(monthKey){
+  if(!db) return;
+  var body = {};
+  Object.keys(dailyState).forEach(function(k){
+    if(monthKeyOf(k)===monthKey) body[k] = dailyState[k];
+  });
+  return db.collection("dailyLog").doc(monthKey).set({days: body}).catch(function(e){ onSaveError(); throw e; });
+}
+var saveDailyMonthDebounced = debounce(saveDailyMonth, 600);
+
+function getDayState(dateKey){
+  if(!dailyState[dateKey]) dailyState[dateKey] = {m:[], e:[], notes:""};
+  return dailyState[dateKey];
+}
+
+// ============================================================================
+// NAV / TABS
+// ============================================================================
+var TABS = [
+  {id:"dashboard", label:"Dashboard"},
+  {id:"daily", label:"Daily Log"},
+  {id:"weekly", label:"Weekly"},
+  {id:"months", label:"Months"},
+  {id:"prelims", label:"Prelims"},
+  {id:"mains", label:"Mains"},
+  {id:"mocks", label:"Mocks"},
+  {id:"syllabus", label:"Syllabus"},
+  {id:"pyq", label:"PYQ Bank"},
+  {id:"papers", label:"Papers"},
+];
+var activeTab = (function(){
+  var h = (location.hash||"").slice(1), saved = lsGet("dossier.tab");
+  var ok = function(id){ return TABS.some(function(t){ return t.id===id; }); };
+  return ok(h) ? h : (ok(saved) ? saved : "dashboard");
+})();
+
+function renderTabs(){
+  var nav = document.getElementById("tabs");
+  nav.innerHTML = "";
+  TABS.forEach(function(t){
+    var b = el('<button class="tab" data-tab="'+t.id+'"><span class="dot"></span>'+esc(t.label)+"</button>");
+    if(t.id===activeTab){ b.classList.add("active"); b.setAttribute("aria-current","page"); }
+    b.addEventListener("click", function(){ setTab(t.id); });
+    nav.appendChild(b);
+  });
+}
+function setTab(id){
+  activeTab = id;
+  Array.prototype.forEach.call(document.querySelectorAll(".tab"), function(b){
+    var on = b.getAttribute("data-tab")===id;
+    b.classList.toggle("active", on);
+    if(on){ b.setAttribute("aria-current","page"); b.scrollIntoView({block:"nearest", inline:"nearest"}); } else b.removeAttribute("aria-current");
+  });
+  lsSet("dossier.tab", id);
+  Array.prototype.forEach.call(document.querySelectorAll(".view"), function(v){
+    v.classList.toggle("active", v.id==="view-"+id);
+  });
+  renderView(id);
+  window.scrollTo({top:0, behavior:"instant" in window ? "instant" : "auto"});
+}
+function renderView(id){
+  if(id==="dashboard") renderDashboard();
+  else if(id==="daily") renderDaily();
+  else if(id==="weekly") renderWeekly();
+  else if(id==="months") renderMonths();
+  else if(id==="prelims") renderChecklist("prelims");
+  else if(id==="mains") renderChecklist("mains");
+  else if(id==="mocks") renderMocks();
+  else if(id==="syllabus") renderSyllabus();
+  else if(id==="pyq") renderPyq();
+  else if(id==="papers") renderPapers();
+}
+
+// ============================================================================
+// SVG RING
+// ============================================================================
+function ringSvg(pct, color){
+  pct = Math.max(0, Math.min(100, pct));
+  var r=20, c=2*Math.PI*r;
+  var off = c*(1-pct/100);
+  return '<svg width="52" height="52" viewBox="0 0 52 52" class="ring">'+
+    '<circle cx="26" cy="26" r="'+r+'" fill="none" stroke="var(--line-soft)" stroke-width="5"/>'+
+    '<circle cx="26" cy="26" r="'+r+'" fill="none" stroke="'+color+'" stroke-width="5" stroke-linecap="round" '+
+      'stroke-dasharray="'+c.toFixed(1)+'" stroke-dashoffset="'+off.toFixed(1)+'" transform="rotate(-90 26 26)"/>'+
+    '</svg>';
+}
+
+// ============================================================================
+// DASHBOARD
+// ============================================================================
+function renderDashboard(){
+  var host = document.getElementById("view-dashboard");
+  var today = new Date();
+  var tKey = todayKey;
+  var dayObj = DAYS_BY_DATE.get(tKey);
+  var phase = dayObj ? dayObj.phase : (tKey < DATA.startDate ? "Plan starts "+fmtDM(parseKey(DATA.startDate)) : "See plan — outside 18-month window");
+
+  var dp = diffDays(DATA.examDates.prelims, tKey);
+  var dm = diffDays(DATA.examDates.mains, tKey);
+
+  var prelimsTotal = DATA.prelimsTopics.length, prelimsDone = Object.keys(prelimsState).filter(function(k){return prelimsState[k];}).length;
+  var mainsTotal = DATA.mainsTopics.length, mainsDone = Object.keys(mainsState).filter(function(k){return mainsState[k];}).length;
+  var monthsTotal = DATA.months.length, monthsDone = Object.keys(monthsState).filter(function(k){return monthsState[k] && monthsState[k].done;}).length;
+
+  var loggedDays = Object.keys(dailyState).filter(function(k){
+    var s = dailyState[k];
+    if(k > tKey || k < DATA.startDate) return false;
+    return s && ((s.m&&s.m.some(Boolean)) || (s.e&&s.e.some(Boolean)) || (s.notes&&s.notes.trim()));
+  }).length;
+  var elapsed = Math.max(1, Math.min(DATA.days.length, diffDays(tKey, DATA.startDate)+1));
+  var adherencePct = Math.round(100*loggedDays/elapsed);
+
+  var mocksLogged = mockTests.length;
+  var mocksTarget = DATA.mockTargets.reduce(function(s,t){return s+t.target;},0);
+
+  host.innerHTML =
+    '<div class="hero card">'+
+      '<div class="hero-phase">'+esc(phase)+'</div>'+
+      '<div class="countdowns">'+
+        countdownBlock("Prelims", dp, DATA.examDates.prelims)+
+        countdownBlock("Mains", dm, DATA.examDates.mains)+
+      '</div>'+
+    '</div>'+
+
+    '<div class="section-title">Today\'s plan</div>'+
+    todayPlanCard(dayObj, tKey, adherencePct, loggedDays, elapsed)+
+
+    '<div class="section-title">Progress</div>'+
+    '<div class="progress-grid">'+
+      progressCard(ringSvg(100*prelimsDone/prelimsTotal, "var(--navy)"), prelimsDone+"/"+prelimsTotal, "Prelims topics")+
+      progressCard(ringSvg(100*mainsDone/mainsTotal, "var(--gold)"), mainsDone+"/"+mainsTotal, "Mains topics")+
+      progressCard(ringSvg(100*monthsDone/monthsTotal, "var(--sage)"), monthsDone+"/"+monthsTotal, "Months milestoned")+
+      progressCard(ringSvg(Math.min(100,100*mocksLogged/Math.max(1,mocksTarget)), "var(--brick)"), mocksLogged+"/"+mocksTarget, "Mock tests logged")+
+    '</div>'+
+
+    '<div class="sync-note"><span class="sync-dot '+(saveFailed?"err":(dbReady?"on":""))+'"></span>'+(saveFailed ? "A recent change didn't save. Reload the page to check your progress." : db ? "Progress saves to your account and syncs across devices" : "Not connected. Open this page while signed in to claude.ai to save progress.")+'</div>';
+
+  var go = document.getElementById("dashToday");
+  if(go) go.addEventListener("click", function(){ currentDailyKey = clampKey(tKey); setTab("daily"); });
+}
+function todayPlanCard(dayObj, tKey, adherencePct, loggedDays, elapsed){
+  if(!dayObj){
+    return '<div class="card plan-card"><div class="muted">'+(tKey < DATA.startDate ? "The plan starts on "+esc(fmtShort(parseKey(DATA.startDate)))+"." : "Today is outside the plan window.")+'</div></div>';
+  }
+  var st = dailyState[tKey] || {};
+  function rows(blocks, done, label){
+    return '<li class="split">'+label+'</li>' + (blocks||[]).map(function(b,i){
+      var d = done && done[i];
+      return '<li class="'+(d?"done":"")+'"><span class="t">'+esc(b.time)+'</span><span class="x">'+esc(b.text)+'</span></li>';
+    }).join("");
+  }
+  var total = (dayObj.morning||[]).length + (dayObj.evening||[]).length;
+  var done = (st.m||[]).filter(Boolean).length + (st.e||[]).filter(Boolean).length;
+  return '<div class="card plan-card">'+
+    '<div class="plan-head"><div class="date">'+esc(fmtLong(parseKey(tKey)))+'</div><span class="chip '+tagClass(dayObj.tag)+'">'+esc(dayObj.tag)+'</span></div>'+
+    '<ul class="plan-list">'+rows(dayObj.morning, st.m, "Morning")+rows(dayObj.evening, st.e, "Evening")+'</ul>'+
+    '<div class="plan-foot"><span><b>'+done+'/'+total+'</b> blocks done today &middot; <b>'+loggedDays+'/'+elapsed+'</b> days logged ('+adherencePct+'%)</span>'+
+    '<button class="link-btn" id="dashToday">Check off &rsaquo;</button></div>'+
+  '</div>';
+}
+function countdownBlock(label, days, dateKey){
+  var text = days===0 ? "Today" : (days>0 ? days : Math.abs(days));
+  var suffix = days>0 ? "days to go" : (days===0 ? "" : "days since");
+  return '<div class="countdown"><div class="label">'+label+'</div>'+
+    '<div class="value num">'+text+(days!==0?'<span>'+esc(suffix)+'</span>':'')+'</div>'+
+    '<div class="sub">'+fmtShort(parseKey(dateKey))+'</div></div>';
+}
+function progressCard(ring, n, label){
+  return '<div class="progress-card card">'+ring+'<div class="meta"><div class="n">'+esc(n)+'</div><div class="l">'+esc(label)+'</div></div></div>';
+}
+
+// ============================================================================
+// DAILY LOG
+// ============================================================================
+function clampKey(k){
+  if(k < DATA.startDate) return DATA.startDate;
+  if(k > DATA.endDate) return DATA.endDate;
+  return k;
+}
+function renderDaily(){
+  currentDailyKey = clampKey(currentDailyKey);
+  var host = document.getElementById("view-daily");
+  var d = parseKey(currentDailyKey);
+  var dayObj = DAYS_BY_DATE.get(currentDailyKey);
+  var st = getDayState(currentDailyKey);
+
+  var badges = "";
+  if(dayObj){
+    badges += '<span class="chip '+tagClass(dayObj.tag)+'">'+esc(dayObj.tag)+'</span>';
+    badges += '<span class="chip tier4">'+esc(dayObj.phase)+'</span>';
+  }
+
+  host.innerHTML =
+    '<div class="day-nav">'+
+      '<button id="dayPrev" aria-label="Previous day">&lsaquo;</button>'+
+      '<div class="day-picker"><div class="d">'+esc(fmtDM(d))+' '+d.getFullYear()+'</div><div class="w">'+esc(weekdayAbbr(d))+'</div></div>'+
+      '<button id="dayNext" aria-label="Next day">&rsaquo;</button>'+
+      '<button class="today-btn" id="dayToday">Today</button>'+
+    '</div>'+
+    '<div class="day-badges">'+badges+'</div>'+
+    (dayObj ? blockCard("Morning", dayObj.morning, st.m, "m") + blockCard("Evening", dayObj.evening, st.e, "e") :
+      '<div class="card empty">This date is outside the plan window ('+esc(fmtShort(parseKey(DATA.startDate)))+' – '+esc(fmtShort(parseKey(DATA.endDate)))+').</div>')+
+    '<div class="notes-card card"><h3>Notes</h3><textarea id="dayNotes" placeholder="How did today go? Anything to revise, retry, or flag for tomorrow...">'+esc(st.notes||"")+'</textarea>'+
+    '<div class="save-hint" id="dayNotesHint">'+ (db ? "Saves automatically as you type" : "Not connected. Notes won't be saved.") +'</div></div>';
+
+  document.getElementById("dayPrev").addEventListener("click", function(){ currentDailyKey = clampKey(toKey(addDays(d,-1))); renderDaily(); });
+  document.getElementById("dayNext").addEventListener("click", function(){ currentDailyKey = clampKey(toKey(addDays(d,1))); renderDaily(); });
+  document.getElementById("dayToday").addEventListener("click", function(){ currentDailyKey = clampKey(todayKey); renderDaily(); });
+
+  Array.prototype.forEach.call(host.querySelectorAll("input[type=checkbox][data-blk]"), function(cb){
+    cb.addEventListener("change", function(){
+      var blk = cb.getAttribute("data-blk"), i = +cb.getAttribute("data-i");
+      var s = getDayState(currentDailyKey);
+      if(!s[blk]) s[blk] = [];
+      s[blk][i] = cb.checked;
+      cb.closest(".task-row").classList.toggle("done", cb.checked);
+      saveDailyMonthDebounced(monthKeyOf(currentDailyKey));
+    });
+  });
+  var notesEl = document.getElementById("dayNotes");
+  notesEl.addEventListener("input", function(){
+    var s = getDayState(currentDailyKey);
+    s.notes = notesEl.value;
+    if(db) document.getElementById("dayNotesHint").textContent = "Saving…";
+    saveDailyNotesDebounced(currentDailyKey);
+  });
+}
+var saveDailyNotesDebounced = debounce(function(dateKey){
+  var p = saveDailyMonth(monthKeyOf(dateKey));
+  if(!p) return;
+  p.then(function(){
+    var hint = document.getElementById("dayNotesHint");
+    if(hint) hint.textContent = "Saved";
+  }, function(){
+    var hint = document.getElementById("dayNotesHint");
+    if(hint) hint.textContent = "Not saved. Keep this tab open and try again.";
+  });
+}, 700);
+
+function blockCard(title, blocks, doneArr, key){
+  var rows = (blocks||[]).map(function(b,i){
+    var checked = doneArr && doneArr[i];
+    var id = "task-"+key+"-"+i;
+    return '<div class="task-row'+(checked?" done":"")+'"><label for="'+id+'">'+
+      '<input type="checkbox" id="'+id+'" data-blk="'+key+'" data-i="'+i+'" '+(checked?"checked":"")+'>'+
+      '<div class="txt"><span class="time">'+esc(b.time)+'</span><span class="desc">'+esc(b.text)+'</span></div>'+
+      '</label></div>';
+  }).join("");
+  return '<div class="block-card '+(key==="e"?"evening":"morning")+' card"><h3><span class="ico"></span>'+title+'</h3>'+rows+'</div>';
+}
+
+// ============================================================================
+// WEEKLY OVERVIEW
+// ============================================================================
+function dayComplete(dateKey){
+  var s = dailyState[dateKey];
+  var d = DAYS_BY_DATE.get(dateKey);
+  if(!s || !d) return "none";
+  var total = (d.morning||[]).length + (d.evening||[]).length;
+  var done = (s.m||[]).filter(Boolean).length + (s.e||[]).filter(Boolean).length;
+  if(total===0) return "none";
+  if(done>=total) return "done";
+  if(done>0) return "partial";
+  return "none";
+}
+function renderWeekly(){
+  var host = document.getElementById("view-weekly");
+  var currentWeekNum = null;
+  WEEKS.forEach(function(w){ if(todayKey>=w.start && todayKey<=w.end) currentWeekNum = w.weekNum; });
+
+  var html = WEEKS.map(function(w){
+    var startD = parseKey(w.start), endD = parseKey(w.end);
+    var phase = (DAYS_BY_DATE.get(w.dateKeys[Math.floor(w.dateKeys.length/2)])||{}).phase || "";
+    var doneCount = w.dateKeys.filter(function(k){ return dayComplete(k)==="done"; }).length;
+    var pct = Math.round(100*doneCount/w.dateKeys.length);
+    var isCurrent = w.weekNum===currentWeekNum;
+    return '<div class="week-card card'+(isCurrent?" open":"")+'" data-week="'+w.weekNum+'">'+
+      '<div class="week-head" data-toggle>'+
+        '<div class="l"><div class="w">Week '+w.weekNum+' &middot; '+fmtDM(startD)+' &ndash; '+fmtDM(endD)+'</div><div class="r">'+esc(phase)+'</div></div>'+
+        '<div class="r"><div class="week-progress"><i style="width:'+pct+'%"></i></div><span class="chevron">&rsaquo;</span></div>'+
+      '</div>'+
+      '<div class="week-body">'+ w.dateKeys.map(weekDayRow).join("") +'</div>'+
+    '</div>';
+  }).join("");
+
+  host.innerHTML = html;
+
+  bindToggles(host);
+  Array.prototype.forEach.call(host.querySelectorAll(".week-day"), function(row){
+    var open = function(){ currentDailyKey = row.getAttribute("data-date"); setTab("daily"); };
+    row.addEventListener("click", open);
+    row.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); open(); } });
+  });
+
+  if(currentWeekNum!==null){
+    var target = host.querySelector('.week-card[data-week="'+currentWeekNum+'"]');
+    if(target) setTimeout(function(){ target.scrollIntoView({block:"center"}); }, 30);
+  }
+}
+function weekDayRow(dateKey){
+  var d = DAYS_BY_DATE.get(dateKey);
+  var status = dayComplete(dateKey);
+  var am = d ? summarize(d.morning) : "&mdash;";
+  var pm = d ? summarize(d.evening) : "&mdash;";
+  var dt = parseKey(dateKey);
+  return '<div class="week-day'+(dateKey===todayKey?" today":"")+'" data-date="'+dateKey+'" role="button" tabindex="0">'+
+    '<div class="dd">'+weekdayAbbr(dt)+'<b>'+dt.getDate()+'</b>'+(d?'<span class="tg">'+esc(d.tag)+'</span>':'')+'</div>'+
+    '<div class="cc"><div class="am"><b>AM</b> '+am+'</div><div class="pm"><b>PM</b> '+pm+'</div></div>'+
+    '<div class="status"><span class="status-dot '+status+'"></span></div>'+
+  '</div>';
+}
+function summarize(blocks){
+  if(!blocks || !blocks.length) return "&mdash;";
+  var text = blocks.map(function(b){ return b.text; }).join(" / ");
+  text = esc(text.length>70 ? text.slice(0,68)+"…" : text);
+  return text;
+}
+
+// ============================================================================
+// MONTHS
+// ============================================================================
+function renderMonths(){
+  var host = document.getElementById("view-months");
+  host.innerHTML = DATA.months.map(function(m){
+    var st = monthsState[m.key] || {};
+    return '<label class="month-card card'+(st.done?" done":"")+'" data-key="'+m.key+'">'+
+      '<input type="checkbox" id="month-'+m.key+'" '+(st.done?"checked":"")+'>'+
+      '<div class="b"><div class="lab">'+esc(m.label)+'</div>'+
+      (m.milestone ? '<div class="milestone">'+esc(m.milestone)+'</div>' : '')+
+      '<div class="focus">'+esc(m.focus)+'</div></div>'+
+    '</label>';
+  }).join("");
+
+  Array.prototype.forEach.call(host.querySelectorAll(".month-card"), function(card){
+    var key = card.getAttribute("data-key");
+    card.querySelector("input").addEventListener("change", function(e){
+      if(!monthsState[key]) monthsState[key] = {};
+      monthsState[key].done = e.target.checked;
+      card.classList.toggle("done", e.target.checked);
+      saveMonthsState();
+    });
+  });
+}
+
+// ============================================================================
+// CHECKLISTS (Prelims / Mains)
+// ============================================================================
+function renderChecklist(kind){
+  var host = document.getElementById("view-"+kind);
+  var groups = kind==="prelims" ? PRELIMS_GROUPS : MAINS_GROUPS;
+  var state = kind==="prelims" ? prelimsState : mainsState;
+  var labelKey = kind==="prelims" ? "subject" : "paper";
+
+  var totalDone = Object.keys(state).filter(function(k){return state[k];}).length;
+  var total = (kind==="prelims"?DATA.prelimsTopics:DATA.mainsTopics).length;
+
+  var html = '<div class="section-title">'+esc(totalDone)+' of '+esc(total)+' topics covered</div>';
+  html += groups.map(function(g){
+    var items = g.items;
+    var done = items.filter(function(it){ return state[it.id]; }).length;
+    var isOpen = done < items.length && done>0; // auto-open in-progress groups
+    return '<div class="subject-card card'+(isOpen?" open":"")+'" data-group="'+esc(g[labelKey])+'">'+
+      '<div class="subject-head" data-toggle><div class="l">'+esc(g[labelKey])+'</div>'+
+      '<div class="r">'+done+'/'+items.length+' <span class="chevron">&rsaquo;</span></div></div>'+
+      '<div class="subject-body">'+ items.map(function(it){
+        var checked = !!state[it.id];
+        return '<label class="topic-row'+(checked?" done":"")+'">'+
+          '<input type="checkbox" id="topic-'+it.id+'" data-id="'+it.id+'" '+(checked?"checked":"")+'>'+
+          '<div class="t"><span class="chip '+tierClass(it.tier)+'" title="'+esc(it.tier)+'">'+esc(tierShort(it.tier))+'</span><br>'+esc(it.topic)+'</div>'+
+        '</label>';
+      }).join("") +'</div>'+
+    '</div>';
+  }).join("");
+
+  host.innerHTML = html;
+
+  bindToggles(host);
+  Array.prototype.forEach.call(host.querySelectorAll("input[type=checkbox][data-id]"), function(cb){
+    cb.addEventListener("change", function(){
+      state[cb.getAttribute("data-id")] = cb.checked;
+      cb.closest(".topic-row").classList.toggle("done", cb.checked);
+      saveTopicState(kind);
+      renderChecklistHeader(kind);
+    });
+  });
+}
+function renderChecklistHeader(kind){
+  var host = document.getElementById("view-"+kind);
+  var state = kind==="prelims" ? prelimsState : mainsState;
+  var total = (kind==="prelims"?DATA.prelimsTopics:DATA.mainsTopics).length;
+  var done = Object.keys(state).filter(function(k){return state[k];}).length;
+  var titleEl = host.querySelector(".section-title");
+  if(titleEl) titleEl.textContent = done+" of "+total+" topics covered";
+  Array.prototype.forEach.call(host.querySelectorAll(".subject-card"), function(card){
+    var group = card.getAttribute("data-group");
+    var groups = kind==="prelims" ? PRELIMS_GROUPS : MAINS_GROUPS;
+    var labelKey = kind==="prelims" ? "subject" : "paper";
+    var g = groups.filter(function(gg){return gg[labelKey]===group;})[0];
+    if(!g) return;
+    var done2 = g.items.filter(function(it){return state[it.id];}).length;
+    var r = card.querySelector(".subject-head .r");
+    if(r) r.childNodes[0].nodeValue = done2+"/"+g.items.length+" ";
+  });
+}
+
+// ============================================================================
+// MOCK TESTS
+// ============================================================================
+function renderMocks(){
+  var host = document.getElementById("view-mocks");
+
+  var targetsHtml = '<div class="section-title">Targets</div>' + DATA.mockTargets.map(function(t){
+    var logged = mockTests.filter(function(m){ return m.type===t.type; }).length;
+    var pct = Math.min(100, Math.round(100*logged/t.target));
+    return '<div class="target-card card">'+
+      '<div class="top"><div class="name">'+esc(t.type)+'</div><div class="count">'+logged+' / '+t.target+'</div></div>'+
+      '<div class="window">'+esc(t.window)+'</div>'+
+      '<div class="bar"><i style="width:'+pct+'%"></i></div>'+
+    '</div>';
+  }).join("");
+
+  var typeOptions = DATA.mockTargets.map(function(t){ return '<option value="'+esc(t.type)+'">'+esc(t.type)+'</option>'; }).join("");
+
+  var formHtml = '<div class="add-mock card">'+
+    '<h3>Log a mock test</h3>'+
+    '<div class="grid">'+
+      '<div><label for="mockType">Type</label><select id="mockType">'+typeOptions+'</select></div>'+
+      '<div class="row2">'+
+        '<div><label for="mockDate">Date</label><input type="date" id="mockDate" value="'+todayKey+'"></div>'+
+        '<div><label for="mockScore">Score</label><input type="text" id="mockScore" placeholder="e.g. 112/200"></div>'+
+      '</div>'+
+      '<div><label for="mockNotes">Notes</label><input type="text" id="mockNotes" placeholder="Weak areas, timing issues…"></div>'+
+      '<button id="mockAdd"'+(db?'':' disabled')+'>'+(db?"Add to log":"Sign in to claude.ai to log tests")+'</button>'+
+    '</div>'+
+  '</div>';
+
+  var logHtml = '<div class="section-title">Recent tests</div><div class="card">'+
+    (mockTests.length ? mockTests.map(function(m){
+      return '<div class="log-entry" data-id="'+m.id+'">'+
+        '<div class="l"><div class="ty">'+esc(m.type)+'</div>'+
+        '<div class="meta">'+esc(fmtDM(parseKey(m.date||todayKey)))+'</div>'+
+        (m.notes?'<div class="notes">'+esc(m.notes)+'</div>':'')+'</div>'+
+        '<div class="sc">'+esc(m.score||"")+'</div>'+
+        (db?'<button class="del" data-del="'+esc(m.id)+'" aria-label="Delete this test">&times;</button>':'')+
+      '</div>';
+    }).join("") : '<div class="empty">No mock tests logged yet. Your first Prelims GS1 mock is due in October.</div>')+
+  '</div>';
+
+  host.innerHTML = targetsHtml + formHtml + logHtml;
+
+  var addBtn = document.getElementById("mockAdd");
+  addBtn.addEventListener("click", function(){
+    if(!db){ return; }
+    var type = document.getElementById("mockType").value;
+    var date = document.getElementById("mockDate").value || todayKey;
+    var score = document.getElementById("mockScore").value.trim();
+    var notes = document.getElementById("mockNotes").value.trim();
+    addBtn.disabled = true; addBtn.textContent = "Adding...";
+    db.collection("mockTests").add({type:type, date:date, score:score, notes:notes, createdAt:new Date().toISOString()})
+      .then(function(ref){
+        mockTests.unshift({id:ref.id, type:type, date:date, score:score, notes:notes});
+        mockTests.sort(function(a,b){ return (b.date||"").localeCompare(a.date||""); });
+        renderMocks();
+      })
+      .catch(function(){ addBtn.disabled=false; addBtn.textContent="Add to log"; toast("Couldn't add that test. Try again."); });
+  });
+
+  Array.prototype.forEach.call(host.querySelectorAll("[data-del]"), function(b){
+    b.addEventListener("click", function(){
+      var id = b.getAttribute("data-del");
+      if(!db) return;
+      if(!b.classList.contains("confirm")){
+        b.classList.add("confirm"); b.textContent = "Delete?";
+        setTimeout(function(){ if(b.isConnected){ b.classList.remove("confirm"); b.innerHTML = "&times;"; } }, 3000);
+        return;
+      }
+      db.collection("mockTests").doc(id).delete().then(function(){
+        mockTests = mockTests.filter(function(m){ return m.id!==id; });
+        renderMocks();
+      }).catch(function(){ toast("Couldn't delete that test. Try again."); });
+    });
+  });
+}
+
+// ============================================================================
+// SYLLABUS
+// ============================================================================
+var sylQuery = "";
+function hl(t){
+  if(!sylQuery) return esc(t);
+  var i = t.toLowerCase().indexOf(sylQuery);
+  if(i<0) return esc(t);
+  return esc(t.slice(0,i))+'<mark>'+esc(t.slice(i,i+sylQuery.length))+'</mark>'+esc(t.slice(i+sylQuery.length));
+}
+function syllabusTopicLi(t, freqMap){
+  var stat = freqMap ? freqMap[t] : null;
+  if(!stat){ return '<li>'+hl(t)+'</li>'; }
+  var cls = "freq"+stat.tier;
+  var detail = stat.count>0
+    ? "Asked "+stat.count+"× · "+stat.years.join(", ")
+    : "Not asked in the papers analysed";
+  var badge = stat.count>0 ? '<span class="freq-badge">'+stat.count+'×</span>' : '';
+  return '<li class="'+cls+'" data-years tabindex="0" aria-expanded="false">'+hl(t)+badge+'<span class="yrs" hidden>'+esc(detail)+'</span></li>';
+}
+function syllabusFreqLegend(title){
+  return '<div class="freq-legend">'+
+    '<b>'+esc(title)+'</b>'+
+    '<span class="it freq1"><i></i>Very high</span>'+
+    '<span class="it freq2"><i></i>High</span>'+
+    '<span class="it freq3"><i></i>Moderate</span>'+
+    '<span class="it freq4"><i></i>Low / not yet asked</span>'+
+    '<span class="src">Ranked against other topics in the same paper. Tap a topic to see the years it was asked.</span>'+
+  '</div>';
+}
+function syllabusPaperCard(id, title, note, sections, topics, freqMap){
+  var body = "";
+  if(topics){
+    body = '<ul class="syl-list">'+ topics.map(function(t){ return syllabusTopicLi(t, freqMap); }).join("") +'</ul>';
+  } else if(sections){
+    body = sections.map(function(s){
+      return '<div class="syl-section"><div class="syl-heading">'+esc(s.heading)+'</div><ul class="syl-list">'+
+        s.topics.map(function(t){ return syllabusTopicLi(t, freqMap); }).join("") +'</ul></div>';
+    }).join("");
+  }
+  return '<div class="subject-card card" data-syl="'+id+'">'+
+    '<div class="subject-head" data-toggle><div class="l">'+esc(title)+(note?'<div class="syl-note">'+esc(note)+'</div>':'')+'</div><span class="chevron">&rsaquo;</span></div>'+
+    '<div class="subject-body">'+body+'</div>'+
+  '</div>';
+}
+function renderSyllabus(){
+  var host = document.getElementById("view-syllabus");
+  if(!SYLLABUS){ host.innerHTML = '<div class="card empty">Syllabus reference is loading...</div>'; return; }
+
+  var html = '<input type="search" id="sylSearch" class="syl-search" placeholder="Search the syllabus, e.g. federalism, kinship, monsoon" value="'+esc(sylQuery)+'" aria-label="Search the syllabus">'+
+    '<div class="section-title">Prelims</div>' +
+    SYLLABUS.prelims.map(function(p){
+      return syllabusPaperCard(p.paper, p.paper, p.note, p.sections, null, null);
+    }).join("");
+
+  var mainsFreq = [
+    FREQ && FREQ.essay,
+    FREQ && FREQ.gs && FREQ.gs.GS1,
+    FREQ && FREQ.gs && FREQ.gs.GS2,
+    FREQ && FREQ.gs && FREQ.gs.GS3,
+    FREQ && FREQ.gs && FREQ.gs.GS4
+  ];
+  html += '<div class="section-title">Mains</div>' +
+    (FREQ ? syllabusFreqLegend("Mains PYQ frequency, 2014–2026 papers") : "") +
+    SYLLABUS.mains.map(function(p, i){
+      return syllabusPaperCard(p.paper, p.paper+' — '+p.marks+' marks', p.note, null, p.topics, mainsFreq[i]);
+    }).join("");
+
+  html += '<div class="section-title">Anthropology Optional</div>' +
+    (FREQ ? syllabusFreqLegend("Optional PYQ frequency, 2023–2026 papers") : "") +
+    syllabusPaperCard("anthro1", SYLLABUS.anthropology.paper1.title, null, SYLLABUS.anthropology.paper1.sections, null, FREQ && FREQ.anthropology && FREQ.anthropology.paper1) +
+    syllabusPaperCard("anthro2", SYLLABUS.anthropology.paper2.title, null, SYLLABUS.anthropology.paper2.sections, null, FREQ && FREQ.anthropology && FREQ.anthropology.paper2);
+
+  host.innerHTML = html;
+  bindToggles(host);
+  if(sylQuery) filterSyllabus(host);
+  var input = document.getElementById("sylSearch");
+  input.addEventListener("input", debounce(function(){
+    sylQuery = input.value.trim().toLowerCase();
+    renderSyllabus();
+    var again = document.getElementById("sylSearch");
+    again.focus(); again.setSelectionRange(again.value.length, again.value.length);
+  }, 250));
+  Array.prototype.forEach.call(host.querySelectorAll("li[data-years]"), function(li){
+    var flip = function(){
+      var y = li.querySelector(".yrs"); y.hidden = !y.hidden;
+      li.setAttribute("aria-expanded", String(!y.hidden));
+    };
+    li.addEventListener("click", flip);
+    li.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); flip(); } });
+  });
+}
+function filterSyllabus(host){
+  var any = false;
+  Array.prototype.forEach.call(host.querySelectorAll(".subject-card"), function(card){
+    var hits = 0;
+    Array.prototype.forEach.call(card.querySelectorAll("ul.syl-list li"), function(li){
+      var m = li.textContent.toLowerCase().indexOf(sylQuery) >= 0;
+      li.hidden = !m; if(m) hits++;
+    });
+    Array.prototype.forEach.call(card.querySelectorAll(".syl-section"), function(s){
+      s.hidden = !s.querySelector("li:not([hidden])");
+    });
+    card.hidden = hits===0;
+    card.classList.toggle("open", hits>0);
+    if(hits) any = true;
+  });
+  // Hide group headings and legends whose cards all filtered out
+  Array.prototype.forEach.call(host.querySelectorAll(".section-title, .freq-legend"), function(x){
+    var n = x.nextElementSibling, visible = false;
+    while(n && !n.classList.contains("section-title")){
+      if(n.classList.contains("subject-card") && !n.hidden) visible = true;
+      n = n.nextElementSibling;
+    }
+    x.hidden = !visible;
+  });
+  if(!any) host.insertAdjacentHTML("beforeend", '<div class="card empty">No syllabus topic matches “'+esc(sylQuery)+'”.</div>');
+}
+function bindToggles(host){
+  Array.prototype.forEach.call(host.querySelectorAll("[data-toggle]"), function(h){
+    h.setAttribute("role","button"); h.setAttribute("tabindex","0");
+    var card = h.parentElement;
+    h.setAttribute("aria-expanded", String(card.classList.contains("open")));
+    var flip = function(){ card.classList.toggle("open"); h.setAttribute("aria-expanded", String(card.classList.contains("open"))); };
+    h.addEventListener("click", flip);
+    h.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); flip(); } });
+  });
+}
+
+// ============================================================================
+// PYQ BANK
+// ============================================================================
+var pyqDocs = null;          // [{id, exam, paper, year, complete, source, answerNote, questions:[...]}]
+var pyqLoading = false;
+var pyqFilter = {exam:"prelims", paper:"all", year:"all", q:"", limit:40, reveal:false};
+var pyqRevealed = {};
+var PYQ_EXAMS = [{id:"prelims", label:"Prelims"},{id:"mains", label:"Mains GS"},{id:"optional", label:"Anthropology"}];
+
+function fallbackPyqDocs(){
+  // Used only when the question bank can't be reached: the older built-in list
+  if(!PYQ) return [];
+  return [
+    {id:"prelims-2023-gs1", exam:"prelims", paper:"GS Paper I", year:2023, complete:false, source:"Built-in list (39 of 100 questions).",
+      questions:PYQ.verified.prelims.map(function(q){ return {text:q.question, subject:q.subject}; })}
+  ];
+}
+function loadPyq(){
+  if(pyqDocs || pyqLoading) return;
+  if(!db){ if(dbReady || db===null && dbChecked){ pyqDocs = fallbackPyqDocs(); } return; }
+  pyqLoading = true;
+  db.collection("pyq").get().then(function(qs){
+    pyqDocs = qs.docs.map(function(d){ var b = d.data()||{}; return Object.assign({id:d.id}, b); });
+    if(!pyqDocs.length) pyqDocs = fallbackPyqDocs();
+  }).catch(function(){ pyqDocs = fallbackPyqDocs(); toast("Couldn't load the question bank. Showing the built-in list."); })
+    .then(function(){ pyqLoading = false; if(activeTab==="pyq") renderPyq(); });
+}
+function pyqPapersFor(exam){
+  var map = {};
+  (pyqDocs||[]).forEach(function(d){ if(d.exam===exam){ (map[d.paper] = map[d.paper]||[]).push(d); } });
+  return Object.keys(map).sort().map(function(p){
+    return {paper:p, docs:map[p].sort(function(a,b){ return b.year-a.year; })};
+  });
+}
+function hlText(s, q){
+  var e = esc(s);
+  if(!q) return e;
+  var eq = esc(q).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return e.replace(new RegExp("("+eq+")","gi"), "<mark>$1</mark>");
+}
+function renderPyq(){
+  var host = document.getElementById("view-pyq");
+  if(!pyqDocs){
+    loadPyq();
+    host.innerHTML = '<div class="card empty">Loading the question bank…</div>';
+    return;
+  }
+  var f = pyqFilter;
+  var mode = pyqMode==="frequency" ? "trends" : "questions";
+
+  var examPills = PYQ_EXAMS.map(function(e){
+    return '<button class="pill'+(f.exam===e.id?" active":"")+'" aria-pressed="'+(f.exam===e.id)+'" data-exam="'+e.id+'">'+e.label+'</button>';
+  }).join("");
+  var modePills = [["questions","Questions"],["trends","Topic trends"]].map(function(m){
+    return '<button class="pill'+(mode===m[0]?" active":"")+'" aria-pressed="'+(mode===m[0])+'" data-mode="'+m[0]+'">'+m[1]+'</button>';
+  }).join("");
+
+  var html = '<div class="card pyq-note">Most Mains GS and Essay papers are kept as PDFs, filed by year. <button class="link-btn" id="toPapers">Open Papers &rsaquo;</button></div>'+
+             '<div class="pill-row"><span class="pill-label">Exam</span>'+examPills+'</div>'+
+             '<div class="pill-row"><span class="pill-label">View</span>'+modePills+'</div>';
+
+  if(mode==="trends"){
+    var key = f.exam==="prelims" ? "prelims" : "none";
+    var flist = (PYQ && PYQ.frequency[key]) || [];
+    html += '<div class="card pyq-note">These are trend notes from published PYQ analysis, not questions. Switch to <b>Questions</b> for the real papers.</div>';
+    html += flist.length ? '<div class="card">' + flist.map(function(x){
+      return '<div class="log-entry"><div class="l q"><div class="ty">'+esc(x.topic)+'</div><div class="meta">'+esc(key==="prelims"?x.subject:x.paper)+'</div><div class="notes">'+esc(x.note)+'</div></div></div>';
+    }).join("") + '</div>' : '<div class="card empty">No trend notes for this exam.</div>';
+    host.innerHTML = html; bindPyq(host); return;
+  }
+
+  var papers = pyqPapersFor(f.exam);
+  // Coverage: which papers and years are in the bank
+  html += '<div class="section-title">In the bank</div><div class="card coverage">'+
+    (papers.length ? papers.map(function(p){
+      var n = p.docs.reduce(function(s,d){ return s+(d.questions||[]).length; },0);
+      return '<div class="cov-row"><div class="cov-head"><button class="cov-paper'+(f.paper===p.paper?" on":"")+'" data-paper="'+esc(p.paper)+'">'+esc(p.paper)+'</button><span class="num">'+n+' Qs</span></div>'+
+        '<div class="cov-years">'+p.docs.map(function(d){
+          var on = f.paper===p.paper && String(f.year)===String(d.year);
+          return '<button class="yr'+(d.complete?" full":" part")+(on?" on":"")+'" data-paper="'+esc(p.paper)+'" data-year="'+d.year+'" title="'+(d.complete?"Full paper":"Partial")+' · '+(d.questions||[]).length+' questions">'+d.year+'</button>';
+        }).join("")+'</div></div>';
+    }).join("") : '<div class="empty">No papers for this exam yet. Upload PDFs in the Papers tab.</div>')+
+    '<div class="cov-legend"><span><i class="yr full"></i>Full paper</span><span><i class="yr part"></i>Partial or topic-wise</span></div>'+
+  '</div>';
+
+  // Filters
+  var paperOpts = '<option value="all">All papers</option>'+papers.map(function(p){ return '<option'+(f.paper===p.paper?" selected":"")+'>'+esc(p.paper)+'</option>'; }).join("");
+  var years = {};
+  papers.forEach(function(p){ if(f.paper==="all"||f.paper===p.paper) p.docs.forEach(function(d){ years[d.year]=1; }); });
+  var yearOpts = '<option value="all">All years</option>'+Object.keys(years).sort(function(a,b){return b-a;}).map(function(y){ return '<option'+(String(f.year)===y?" selected":"")+'>'+y+'</option>'; }).join("");
+  html += '<div class="pyq-filters">'+
+    '<input type="search" id="pyqSearch" class="syl-search" placeholder="Search questions, e.g. Money Bill, Sanskritisation, cyber" value="'+esc(f.q)+'" aria-label="Search questions">'+
+    '<div class="row2"><select id="pyqPaper" aria-label="Paper">'+paperOpts+'</select><select id="pyqYear" aria-label="Year">'+yearOpts+'</select></div>'+
+  '</div>';
+
+  // Results
+  var ql = f.q.toLowerCase();
+  var rows = [];
+  (pyqDocs||[]).forEach(function(d){
+    if(d.exam!==f.exam) return;
+    if(f.paper!=="all" && d.paper!==f.paper) return;
+    if(f.year!=="all" && String(d.year)!==String(f.year)) return;
+    (d.questions||[]).forEach(function(q, i){
+      if(ql){
+        var hay = (q.text+" "+(q.options||[]).join(" ")+" "+(q.subject||"")+" "+(q.topic||"")+" "+(q.passage||"")).toLowerCase();
+        if(hay.indexOf(ql)<0) return;
+      }
+      rows.push({d:d, q:q, i:i, key:d.id+"#"+i});
+    });
+  });
+  rows.sort(function(a,b){ return b.d.year-a.d.year || a.d.paper.localeCompare(b.d.paper) || (a.i-b.i); });
+  var hasAnswers = rows.some(function(r){ return r.q.answer; });
+  html += '<div class="pyq-count"><span><b>'+rows.length+'</b> question'+(rows.length===1?"":"s")+'</span>'+
+    (hasAnswers ? '<label class="ans-toggle"><input type="checkbox" id="pyqReveal" '+(f.reveal?"checked":"")+'> Show all answers</label>' : '')+'</div>';
+
+  var notes = {};
+  var shown = rows.slice(0, f.limit);
+  var lastGroup = null;
+  var body = shown.map(function(r){
+    var g = r.d.year+" · "+r.d.paper;
+    var head = "";
+    if(g!==lastGroup){
+      head = (lastGroup?'</div>':'')+'<div class="section-title">'+esc(g)+(r.d.complete?'':' <span class="partial">partial</span>')+'</div>'+
+        '<div class="src-note">'+esc(r.d.source||"")+(r.d.answerNote?' '+esc(r.d.answerNote):'')+'</div><div class="card">';
+      lastGroup = g;
+    }
+    var q = r.q, meta = [];
+    if(q.qno) meta.push("Q"+q.qno);
+    if(q.subject) meta.push(q.subject);
+    if(q.topic) meta.push(q.topic);
+    if(q.marks) meta.push(q.marks+" marks");
+    var open = f.reveal || pyqRevealed[r.key];
+    var opts = q.options && q.options.length ? '<ol class="opts" type="a">'+q.options.map(function(o,i){
+      var letter = "ABCD"[i];
+      return '<li class="'+(open && q.answer===letter?"right":"")+'">'+hlText(o, f.q)+'</li>';
+    }).join("")+'</ol>' : '';
+    var ans = q.answer ? (open ? '<div class="ans">Answer: <b>('+q.answer.toLowerCase()+')</b></div>' : '<button class="link-btn reveal" data-key="'+esc(r.key)+'">Show answer</button>') : '';
+    var psg = q.passage ? '<details class="psg"'+(f.q && q.passage.toLowerCase().indexOf(ql)>=0 ? ' open' : '')+'><summary>Read the passage</summary><div>'+hlText(q.passage, f.q)+'</div></details>' : '';
+    return head + '<div class="qitem"><div class="meta">'+esc(meta.join(" · "))+'</div>'+psg+'<div class="qtext">'+hlText(q.text, f.q)+'</div>'+opts+ans+'</div>';
+  }).join("") + (lastGroup?'</div>':'');
+  if(!rows.length) body = '<div class="card empty">'+(ql ? 'No questions match “'+esc(f.q)+'”.' : 'No questions for this selection yet.')+'</div>';
+  if(rows.length > f.limit) body += '<button class="more-btn" id="pyqMore">Show '+Math.min(40, rows.length-f.limit)+' more</button>';
+
+  host.innerHTML = html + body;
+  bindPyq(host);
+}
+function bindPyq(host){
+  var f = pyqFilter;
+  var tp = document.getElementById("toPapers");
+  if(tp) tp.addEventListener("click", function(){ setTab("papers"); });
+  Array.prototype.forEach.call(host.querySelectorAll("[data-exam]"), function(b){
+    b.addEventListener("click", function(){ f.exam = b.getAttribute("data-exam"); f.paper="all"; f.year="all"; f.limit=40; renderPyq(); });
+  });
+  Array.prototype.forEach.call(host.querySelectorAll("[data-mode]"), function(b){
+    b.addEventListener("click", function(){ pyqMode = b.getAttribute("data-mode")==="trends" ? "frequency" : "verified"; renderPyq(); });
+  });
+  Array.prototype.forEach.call(host.querySelectorAll(".cov-paper, .yr[data-year]"), function(b){
+    b.addEventListener("click", function(){
+      var p = b.getAttribute("data-paper"), y = b.getAttribute("data-year");
+      if(y){ var same = f.paper===p && String(f.year)===y; f.paper = same?"all":p; f.year = same?"all":y; }
+      else { f.paper = f.paper===p ? "all" : p; f.year = "all"; }
+      f.limit = 40; renderPyq();
+    });
+  });
+  var s = document.getElementById("pyqSearch");
+  if(s) s.addEventListener("input", debounce(function(){
+    f.q = s.value.trim(); f.limit = 40; renderPyq();
+    var again = document.getElementById("pyqSearch"); again.focus(); again.setSelectionRange(again.value.length, again.value.length);
+  }, 300));
+  var sp = document.getElementById("pyqPaper");
+  if(sp) sp.addEventListener("change", function(){ f.paper = sp.value; f.year = "all"; f.limit = 40; renderPyq(); });
+  var sy = document.getElementById("pyqYear");
+  if(sy) sy.addEventListener("change", function(){ f.year = sy.value; f.limit = 40; renderPyq(); });
+  var rv = document.getElementById("pyqReveal");
+  if(rv) rv.addEventListener("change", function(){ f.reveal = rv.checked; renderPyq(); });
+  Array.prototype.forEach.call(host.querySelectorAll(".reveal"), function(b){
+    b.addEventListener("click", function(){ pyqRevealed[b.getAttribute("data-key")] = true; renderPyq(); });
+  });
+  var more = document.getElementById("pyqMore");
+  if(more) more.addEventListener("click", function(){ var y = window.scrollY; f.limit += 40; renderPyq(); window.scrollTo(0, y); });
+}
+
+// ============================================================================
+// PAPERS (uploaded PDFs)
+// ============================================================================
+var papers = null;            // [{id, name, exam, paper, year, assetId, size, status, uploadedAt, note}]
+var assetsNs;                 // undefined = not asked yet, null = unavailable
+var pending = [];             // files picked, awaiting upload [{file, exam, paper, year}]
+var uploading = false;
+var papersManage = false;
+
+function loadPapers(){
+  if(papers || !db) return Promise.resolve();
+  return db.collection("papers").get().then(function(qs){
+    papers = qs.docs.map(function(d){ return Object.assign({id:d.id}, d.data()||{}); });
+  }).catch(function(){ papers = []; toast("Couldn't load your papers."); });
+}
+function guessMeta(name){
+  var n = name.toLowerCase(), y = (name.match(/(19[89]\d|20[0-3]\d)/)||[])[1] || "";
+  var exam = /anthro/.test(n) ? "optional" : /prelim|csat|pre[\s_-]|gs\s*1\b|paper\s*-?\s*i\b/.test(n) && !/mains/.test(n) ? "prelims" : "mains";
+  var paper = "";
+  if(exam==="optional") paper = /paper\s*-?\s*(ii|2)\b/.test(n) ? "Anthropology Paper II" : "Anthropology Paper I";
+  else if(exam==="prelims") paper = /csat|paper\s*-?\s*(ii|2)\b/.test(n) ? "CSAT (GS Paper II)" : "GS Paper I";
+  else if(/essay/.test(n)) paper = "Essay";
+  else { var m = n.match(/gs\s*-?\s*(iv|iii|ii|i|[1-4])\b|paper\s*-?\s*(iv|iii|ii|i|[1-4])\b/); var v = m && (m[1]||m[2]);
+    var map = {"1":"I","2":"II","3":"III","4":"IV","i":"I","ii":"II","iii":"III","iv":"IV"}; paper = v ? "GS Paper "+map[v] : ""; }
+  return {exam:exam, paper:paper, year:y};
+}
+function fmtSize(b){ return b>1048576 ? (b/1048576).toFixed(1)+" MB" : Math.max(1,Math.round(b/1024))+" KB"; }
+var PAPER_NAMES = ["GS Paper I","CSAT (GS Paper II)","Essay","GS Paper II","GS Paper III","GS Paper IV","Anthropology Paper I","Anthropology Paper II"];
+
+function renderPapers(){
+  var host = document.getElementById("view-papers");
+  if(!db){ host.innerHTML = '<div class="card empty">Open this page while signed in to claude.ai to see and upload your question papers.</div>'; return; }
+  if(!papers){ host.innerHTML = '<div class="card empty">Loading your papers…</div>'; loadPapers().then(function(){ if(activeTab==="papers") renderPapers(); }); return; }
+  if(assetsNs===undefined){
+    assetsNs = null;
+    Promise.resolve(window.claude && window.claude.use ? window.claude.use("assets") : null).then(function(a){ assetsNs = a; if(activeTab==="papers") renderPapers(); }).catch(function(){});
+  }
+  var canUpload = !!assetsNs;
+  var up = '<details class="card add-mock"'+(pending.length?' open':'')+'><summary><h3>Add question papers</h3></summary>'+
+    (canUpload ?
+      '<p class="muted small">PDFs up to 20 MB each. They are filed by paper and year below. For Prelims or Anthropology papers you can also tell Claude: <b>“Add my new papers to the question bank.”</b></p>'+
+      '<label class="file-drop" for="paperFiles"><input type="file" id="paperFiles" accept="application/pdf,.pdf" multiple><span>Choose PDFs</span><small>or drop them here</small></label>'+
+      (pending.length ? '<div class="pending">'+pending.map(function(p,i){
+        return '<div class="pend-row"><div class="pend-name">'+esc(p.file.name)+' <span class="num muted">'+fmtSize(p.file.size)+'</span></div>'+
+          '<div class="pend-fields">'+
+            '<select id="pe-'+i+'" data-i="'+i+'" data-f="exam" aria-label="Exam">'+[["prelims","Prelims"],["mains","Mains"],["optional","Optional"],["reference","Reference"]].map(function(o){ return '<option value="'+o[0]+'"'+(p.exam===o[0]?" selected":"")+'>'+o[1]+'</option>'; }).join("")+'</select>'+
+            '<input id="pp-'+i+'" data-i="'+i+'" data-f="paper" list="paperNames" placeholder="Paper, e.g. GS Paper II" value="'+esc(p.paper)+'" aria-label="Paper">'+
+            '<input id="py-'+i+'" data-i="'+i+'" data-f="year" type="number" min="1979" max="2030" placeholder="Year" value="'+esc(p.year)+'" aria-label="Year">'+
+            '<button class="del" data-unpick="'+i+'" aria-label="Remove '+esc(p.file.name)+'">&times;</button>'+
+          '</div></div>';
+      }).join("")+'<datalist id="paperNames">'+PAPER_NAMES.map(function(n){ return '<option value="'+n+'">'; }).join("")+'</datalist>'+
+      '<button id="paperUpload"'+(uploading?" disabled":"")+'>'+(uploading?"Uploading…":"Upload "+pending.length+" paper"+(pending.length===1?"":"s"))+'</button></div>' : '')
+    : '<p class="muted small">Only people who can edit this page can upload or delete papers.</p>')+
+  '</details>';
+
+  var CATS = [{exam:"prelims", label:"Prelims"},{exam:"mains", label:"Mains"},{exam:"optional", label:"Optional"},{exam:"reference", label:"Syllabus & reference"}];
+  var ORDER = ["GS Paper I","CSAT (GS Paper II)","Essay","GS Paper II","GS Paper III","GS Paper IV","Anthropology Paper I","Anthropology Paper II"];
+  function href(p){ return p.assetId ? "/_blob/"+p.assetId : (p.driveUrl||""); }
+  var body = CATS.map(function(c){
+    var list = papers.filter(function(p){ return (p.exam||"reference")===c.exam; });
+    if(!list.length) return "";
+    var byPaper = {};
+    list.forEach(function(p){ var k = c.exam==="reference" ? "Files" : (p.year ? (p.paper||"Other") : "Compilations"); (byPaper[k]=byPaper[k]||[]).push(p); });
+    var keys = Object.keys(byPaper).sort(function(a,b){
+      var ia = ORDER.indexOf(a), ib = ORDER.indexOf(b); if(ia<0) ia = 90; if(ib<0) ib = 90;
+      if(a==="Compilations") ia = 99; if(b==="Compilations") ib = 99;
+      return ia-ib || a.localeCompare(b);
+    });
+    return '<div class="section-title">'+esc(c.label)+'</div>'+keys.map(function(k){
+      var items = byPaper[k];
+      var dated = items.filter(function(p){ return p.year; }).sort(function(a,b){ return b.year-a.year; });
+      var undated = items.filter(function(p){ return !p.year; });
+      var yrs = dated.map(function(p){ return p.year; });
+      var range = yrs.length ? (Math.min.apply(null,yrs)===Math.max.apply(null,yrs) ? String(yrs[0]) : Math.min.apply(null,yrs)+"–"+Math.max.apply(null,yrs)) : "";
+      return '<div class="card pcat"><div class="pcat-head"><h3>'+esc(k)+'</h3><span class="num">'+items.length+' file'+(items.length===1?"":"s")+(range?' · '+range:'')+'</span></div>'+
+        (dated.length ? '<div class="ygrid">'+dated.map(function(p){
+          var tags = (p.driveUrl && !p.assetId ? '<span class="t drive">Drive</span>' : '') + (p.status==="added" ? '<span class="t qs">In bank</span>' : p.status==="waiting" ? '<span class="t new">New</span>' : '');
+          return '<div class="ytile"><a href="'+esc(href(p))+'" target="_blank" rel="noopener" title="Open '+esc(p.name||"")+'"><b class="num">'+p.year+'</b>'+(tags?'<span class="tags">'+tags+'</span>':'')+'</a>'+
+            (papersManage && canUpload ? '<button class="del" data-delpaper="'+esc(p.id)+'" aria-label="Delete '+esc(p.year+' '+k)+'">&times;</button>' : '')+'</div>';
+        }).join("")+'</div>' : '')+
+        (undated.length ? '<div class="plist">'+undated.map(function(p){
+          return '<div class="prow"><a href="'+esc(href(p))+'" target="_blank" rel="noopener">'+esc(c.exam==="reference" ? (p.paper||p.name) : (p.paper||p.name))+'</a>'+
+            '<span class="meta">'+(p.driveUrl && !p.assetId ? 'Opens in Drive' : fmtSize(p.size||0))+'</span>'+
+            (papersManage && canUpload ? '<button class="del" data-delpaper="'+esc(p.id)+'" aria-label="Delete '+esc(p.name||"file")+'">&times;</button>' : '')+'</div>';
+        }).join("")+'</div>' : '')+
+      '</div>';
+    }).join("");
+  }).join("");
+
+  host.innerHTML = up +
+    '<div class="papers-bar"><span><b class="num">'+papers.length+'</b> files</span>'+(canUpload && papers.length ? '<button class="link-btn" id="papersManage">'+(papersManage?"Done":"Manage")+'</button>':'')+'</div>'+
+    (papers.length ? body : '<div class="card empty">No papers uploaded yet.</div>');
+
+  var mg = document.getElementById("papersManage");
+  if(mg) mg.addEventListener("click", function(){ papersManage = !papersManage; renderPapers(); });
+  var input = document.getElementById("paperFiles");
+  if(input){
+    input.addEventListener("change", function(){ addPending(input.files); });
+    var drop = host.querySelector(".file-drop");
+    drop.addEventListener("dragover", function(e){ e.preventDefault(); drop.classList.add("over"); });
+    drop.addEventListener("dragleave", function(){ drop.classList.remove("over"); });
+    drop.addEventListener("drop", function(e){ e.preventDefault(); drop.classList.remove("over"); addPending(e.dataTransfer.files); });
+  }
+  Array.prototype.forEach.call(host.querySelectorAll("[data-f]"), function(elx){
+    elx.addEventListener("input", function(){ pending[+elx.getAttribute("data-i")][elx.getAttribute("data-f")] = elx.value; });
+  });
+  Array.prototype.forEach.call(host.querySelectorAll("[data-unpick]"), function(b){
+    b.addEventListener("click", function(){ pending.splice(+b.getAttribute("data-unpick"),1); renderPapers(); });
+  });
+  var go = document.getElementById("paperUpload");
+  if(go) go.addEventListener("click", uploadPending);
+  Array.prototype.forEach.call(host.querySelectorAll("[data-delpaper]"), function(b){
+    b.addEventListener("click", function(){
+      if(!b.classList.contains("confirm")){
+        b.classList.add("confirm"); b.textContent = "Delete?";
+        setTimeout(function(){ if(b.isConnected){ b.classList.remove("confirm"); b.innerHTML = "&times;"; } }, 3000);
+        return;
+      }
+      deletePaper(b.getAttribute("data-delpaper"));
+    });
+  });
+}
+function addPending(files){
+  var skipped = 0;
+  Array.prototype.forEach.call(files||[], function(file){
+    var isPdf = file.type==="application/pdf" || /\.pdf$/i.test(file.name);
+    if(!isPdf || file.size > 20*1048576){ skipped++; return; }
+    var g = guessMeta(file.name);
+    pending.push({file:file, exam:g.exam, paper:g.paper, year:g.year});
+  });
+  if(skipped) toast(skipped+" file"+(skipped>1?"s were":" was")+" skipped. Only PDFs up to 20 MB can be uploaded.");
+  renderPapers();
+}
+function uploadPending(){
+  if(uploading || !assetsNs || !pending.length) return;
+  var missing = pending.filter(function(p){ return !p.paper || !p.year; }).length;
+  if(missing){ toast("Add the paper name and year for every file before uploading."); return; }
+  uploading = true; renderPapers();
+  var list = pending.slice(), done = 0, failed = 0;
+  var next = function(){
+    if(!list.length){
+      uploading = false; pending = pending.filter(function(p){ return p._failed; }).map(function(p){ delete p._failed; return p; });
+      toast(done+" paper"+(done===1?"":"s")+" uploaded"+(failed?", "+failed+" failed":"")+". Ask Claude to add them to the question bank.");
+      renderPapers(); return;
+    }
+    var p = list.shift();
+    assetsNs.upload(p.file, {type:"application/pdf"}).then(function(res){
+      var doc = {name:p.file.name, exam:p.exam, paper:p.paper.trim(), year:+p.year, assetId:res.id, size:res.sizeBytes, status:"waiting", uploadedAt:new Date().toISOString()};
+      return db.collection("papers").add(doc).then(function(ref){ papers.push(Object.assign({id:ref.id}, doc)); done++; });
+    }).catch(function(e){
+      failed++; p._failed = true;
+      var c = e && e.code;
+      if(c==="too_large") toast(p.file.name+" is over 20 MB.");
+      else if(c==="quota_or_state") toast("Storage for this page is full. Delete some papers first.");
+    }).then(next);
+  };
+  next();
+}
+function deletePaper(id){
+  var p = (papers||[]).filter(function(x){ return x.id===id; })[0];
+  if(!p) return;
+  var rm = p.assetId && assetsNs ? assetsNs.delete(p.assetId) : Promise.resolve();
+  rm.then(function(){ return db.collection("papers").doc(id).delete(); }).then(function(){
+    papers = papers.filter(function(x){ return x.id!==id; });
+    toast("Deleted "+(p.name||"the paper")+". Questions already in the PYQ Bank stay there.");
+    renderPapers();
+  }).catch(function(){ toast("Couldn't delete that paper. Try again."); });
+}
+
+// ============================================================================
+// INIT
+// ============================================================================
+function updateTopbarDate(){
+  document.getElementById("topbarDate").textContent = new Date().toLocaleDateString(undefined,{weekday:"short", day:"numeric", month:"short"});
+}
+
+function boot(){
+  updateTopbarDate();
+  renderTabs();
+  Array.prototype.forEach.call(document.querySelectorAll(".view"), function(v){
+    v.classList.toggle("active", v.id==="view-"+activeTab);
+  });
+  document.getElementById("view-"+activeTab).innerHTML = '<div class="empty">Loading your plan…</div>';
+
+  Promise.all([
+    fetch("data.json").then(function(r){ return r.json(); }),
+    fetch("syllabus.json").then(function(r){ return r.json(); }).catch(function(){ return null; }),
+    fetch("pyq.json").then(function(r){ return r.json(); }).catch(function(){ return null; }),
+    fetch("pyq_frequency.json").then(function(r){ return r.json(); }).catch(function(){ return null; })
+  ]).then(function(results){
+    DATA = results[0];
+    SYLLABUS = results[1];
+    PYQ = results[2];
+    FREQ = results[3];
+    buildIndices();
+    currentDailyKey = clampKey(todayKey);
+
+    // render once immediately with schedule data, before db resolves
+    renderView(activeTab);
+
+    var capPromise = (window.claude && window.claude.use) ? window.claude.use("db") : Promise.resolve(null);
+    capPromise.then(function(d){
+      db = d; dbChecked = true;
+      return loadState();
+    }).catch(function(){}).then(function(){
+      dbChecked = true;
+      renderView(activeTab);
+    });
+  }).catch(function(err){
+    document.getElementById("view-"+activeTab).innerHTML = '<div class="card empty">The study plan didn\'t load. Reload the page to try again.</div>';
+  });
+}
+
+if(document.readyState==="loading"){
+  document.addEventListener("DOMContentLoaded", boot);
+} else {
+  boot();
+}
+})();
+</script>
+
