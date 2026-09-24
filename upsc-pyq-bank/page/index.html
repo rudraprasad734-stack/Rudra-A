@@ -369,6 +369,29 @@
   .log-entry .sc{font-family:var(--font-mono); font-weight:700; font-size:15px; color:var(--link); white-space:nowrap;}
   .log-entry .del{background:none; border:none; color:var(--ink-faint); font-size:16px; cursor:pointer; padding:2px 4px; line-height:1;}
 
+  /* ---- Plan setup / exam results (Dashboard) ---- */
+  .plan-setup, .result-card{padding:16px; margin:0 0 14px;}
+  .plan-setup h3, .result-card h3{font-size:14px; margin-bottom:4px;}
+  .plan-setup .sub, .result-card .sub{font-size:12px; color:var(--ink-soft); margin:0 0 12px; line-height:1.5;}
+  .plan-setup .grid{display:grid; grid-template-columns:1fr; gap:10px;}
+  .plan-setup .row3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px;}
+  .plan-setup label{font-size:10.5px; font-weight:600; color:var(--ink-faint); text-transform:uppercase; letter-spacing:.04em; display:block; margin-bottom:5px;}
+  .plan-setup input{width:100%; border:1px solid var(--line); border-radius:9px; background:var(--surface-2); padding:8px 6px; font-size:12px;}
+  .plan-setup button{margin-top:2px; width:100%; padding:11px; border:none; border-radius:10px; background:var(--tab-accent); color:var(--tab-accent-ink); font-weight:700; font-size:13.5px; cursor:pointer;}
+  .plan-setup .summary{font-size:12px; color:var(--ink-soft); margin-top:10px; line-height:1.5;}
+  .result-card .sub{margin:10px 0 0;}
+  .result-row{display:flex; align-items:center; justify-content:space-between; gap:8px; padding:10px 0; border-top:1px solid var(--line-soft); flex-wrap:wrap;}
+  .result-row:first-of-type{border-top:none; padding-top:0;}
+  .result-row .name{font-weight:700; font-size:13.5px; display:flex; align-items:center; gap:8px;}
+  .result-row .status{font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.03em; padding:3px 9px; border-radius:999px;}
+  .result-row .status.pending{background:var(--surface-2); color:var(--ink-faint);}
+  .result-row .status.passed{background:var(--sage-soft); color:var(--sage);}
+  .result-row .status.failed{background:var(--brick-soft); color:var(--brick);}
+  .result-row .btns{display:flex; gap:6px;}
+  .result-row .btns button{padding:6px 12px; border-radius:8px; border:1px solid var(--line); background:var(--surface-2); font-size:12px; font-weight:700; cursor:pointer;}
+  .result-row .btns button.pass{color:var(--sage); border-color:var(--sage);}
+  .result-row .btns button.fail{color:var(--brick); border-color:var(--brick);}
+
   /* ---- Syllabus ---- */
   .syl-note{font-size:12px; font-weight:500; color:var(--ink-soft); margin-top:3px; text-transform:none; letter-spacing:0;}
   .syl-section{padding:12px 0; border-top:1px solid var(--line-soft);}
@@ -2852,6 +2875,8 @@ var dailyMonthCache = {};        // {monthKey: full doc body already loaded}
 var mockTests = [];              // [{id,type,date,score,maxScore,notes,createdAt}]
 var dbReady = false;
 var dbChecked = false;
+var planFromDb = null;           // {startDate,prelimsDate,mainsDate} if a newer plan exists in the synced account
+var resultsFromDb = null;        // {prelims,mains,interview} if newer results exist in the synced account
 
 var todayKey = toKey(new Date());
 var timerInterval = null;
@@ -2862,6 +2887,11 @@ var currentDailyKey = todayKey;
 // LOAD SCHEDULE DATA
 // ============================================================================
 function buildIndices(){
+  DAYS_BY_DATE.clear();
+  WEEKS.length = 0;
+  PRELIMS_GROUPS.length = 0;
+  MAINS_GROUPS.length = 0;
+
   DATA.days.forEach(function(d){ DAYS_BY_DATE.set(d.date, d); });
 
   // Mon-Sun aligned weeks, week 1 a partial stub ending at the first Sunday
@@ -2918,7 +2948,9 @@ function loadState(){
     var p5 = db.collection("mockTests").orderBy("date","desc").limit(500).get().then(function(qs){
       mockTests = qs.docs.map(function(doc){ var b=doc.data()||{}; b.id=doc.id; return b; });
     }).catch(function(){});
-    return Promise.all([p1,p2,p3,p4,p5]).then(function(){ dbReady = true; });
+    var p6 = db.doc("state/plan").get().then(function(s){ if(s.exists){ var v=s.data(); if(v && v.startDate && v.prelimsDate && v.mainsDate) planFromDb = v; } }).catch(function(){});
+    var p7 = db.doc("state/results").get().then(function(s){ if(s.exists) resultsFromDb = s.data()||null; }).catch(function(){});
+    return Promise.all([p1,p2,p3,p4,p5,p6,p7]).then(function(){ dbReady = true; });
   });
 }
 
@@ -2945,6 +2977,219 @@ var saveDailyMonthDebounced = debounce(saveDailyMonth, 600);
 function getDayState(dateKey){
   if(!dailyState[dateKey]) dailyState[dateKey] = {m:[], e:[], notes:""};
   return dailyState[dateKey];
+}
+
+// ============================================================================
+// DYNAMIC PLAN (custom start date + exam dates, and pass/fail restart)
+// ============================================================================
+// The shipped data.json is one fully hand-curated 556-day plan (Sep 2026 -> Mar
+// 2028). Rather than re-deriving its content from scratch for an arbitrary start
+// date, we capture it once as a set of phase "templates" and resample each phase
+// to whatever length the user's actual dates require, preserving the same
+// curated subject order / tier sequencing / mock rotation either compressed or
+// stretched to fit.
+var ORIGINAL_TEMPLATE = null; // {foundation:[], prelimsSprint:[], postPrelims:[], mainsSprint:[], mainsRevision:[], postMains:[]}
+var DEFAULT_RESULTS = {prelims:"pending", mains:"pending", interview:"pending"};
+var examResults = Object.assign({}, DEFAULT_RESULTS);
+var WEEKDAY_ABBR = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+
+function captureTemplate(){
+  var segs = {foundation:[], prelimsSprint:[], postPrelims:[], mainsSprint:[], mainsRevision:[], postMains:[]};
+  DATA.days.forEach(function(d){
+    var blk = {phase:d.phase, tag:d.tag, morning:d.morning, evening:d.evening};
+    if(d.phase==="Phase 1: Foundation consolidation") segs.foundation.push(blk);
+    else if(d.phase==="Phase 2: Prelims mock-heavy sprint") segs.prelimsSprint.push(blk);
+    else if(d.phase==="Phase 2: Post-Prelims decompression") segs.postPrelims.push(blk);
+    else if(d.phase==="Phase 3: Mains-focused sprint") segs.mainsSprint.push(blk);
+    else if(d.phase==="Phase 3: Mains final revision") segs.mainsRevision.push(blk);
+    else segs.postMains.push(blk);
+  });
+  return segs;
+}
+// Maps a segment of `newLen` days onto the template proportionally. When
+// pinLast is set, the template's very last entry (an EXAM day) always lands
+// on the new segment's last day too, however short the segment is squeezed to.
+function resampleSegment(template, newLen, pinLast){
+  if(newLen<=0 || !template.length) return [];
+  var out = [];
+  for(var i=0;i<newLen;i++){
+    var origIdx;
+    if(pinLast && i===newLen-1) origIdx = template.length-1;
+    else if(pinLast && newLen>1) origIdx = Math.min(template.length-2, Math.floor(i*(template.length-1)/(newLen-1)));
+    else origIdx = Math.min(template.length-1, Math.floor(i*template.length/newLen));
+    out.push(template[origIdx]);
+  }
+  return out;
+}
+function computeSegmentLengths(startKey, prelimsKey, mainsKey){
+  var prePrelims = diffDays(prelimsKey, startKey) + 1; // inclusive of exam day
+  var origF = 131, origP = 112;
+  var foundationLen = Math.round(prePrelims * origF/(origF+origP));
+  foundationLen = Math.max(1, Math.min(prePrelims-1, foundationLen));
+  var prelimsSprintLen = prePrelims - foundationLen;
+
+  var midGap = diffDays(mainsKey, prelimsKey); // days after prelims exam, inclusive of mains exam day
+  var origD = 9, origM = 70, origR = 10, origTot = 89;
+  var decompLen = Math.max(1, Math.round(midGap * origD/origTot));
+  var revisionLen = Math.max(1, Math.round(midGap * origR/origTot));
+  var mainsSprintLen = midGap - decompLen - revisionLen;
+  if(mainsSprintLen < 1){
+    var deficit = 1 - mainsSprintLen;
+    mainsSprintLen = 1;
+    var takeFromDecomp = Math.min(decompLen-1, deficit);
+    decompLen -= takeFromDecomp; deficit -= takeFromDecomp;
+    revisionLen = Math.max(1, midGap - decompLen - mainsSprintLen);
+  }
+  return {foundationLen:foundationLen, prelimsSprintLen:prelimsSprintLen, decompLen:decompLen, mainsSprintLen:mainsSprintLen, revisionLen:revisionLen};
+}
+function buildDynamicDays(startKey, prelimsKey, mainsKey){
+  if(!ORIGINAL_TEMPLATE) ORIGINAL_TEMPLATE = captureTemplate();
+  var L = computeSegmentLengths(startKey, prelimsKey, mainsKey);
+  var seq = [];
+  seq = seq.concat(resampleSegment(ORIGINAL_TEMPLATE.foundation, L.foundationLen, false));
+  seq = seq.concat(resampleSegment(ORIGINAL_TEMPLATE.prelimsSprint, L.prelimsSprintLen, true));
+  seq = seq.concat(resampleSegment(ORIGINAL_TEMPLATE.postPrelims, L.decompLen, false));
+  seq = seq.concat(resampleSegment(ORIGINAL_TEMPLATE.mainsSprint, L.mainsSprintLen, false));
+  seq = seq.concat(resampleSegment(ORIGINAL_TEMPLATE.mainsRevision, L.revisionLen, true));
+  seq = seq.concat(ORIGINAL_TEMPLATE.postMains); // kept verbatim, just re-dated below
+
+  var cursor = parseKey(startKey);
+  return seq.map(function(tpl){
+    var dk = toKey(cursor);
+    var dayObj = {date:dk, day:WEEKDAY_ABBR[cursor.getDay()], phase:tpl.phase, tag:tpl.tag, morning:tpl.morning, evening:tpl.evening};
+    cursor = addDays(cursor, 1);
+    return dayObj;
+  });
+}
+function buildDynamicMonths(days, startKey, prelimsKey, mainsKey){
+  var order = [], byMonth = {};
+  days.forEach(function(d){
+    var mk = d.date.slice(0,7);
+    if(!byMonth[mk]){ byMonth[mk] = []; order.push(mk); }
+    byMonth[mk].push(d);
+  });
+  return order.map(function(mk){
+    var ds = byMonth[mk];
+    var first = ds[0], last = ds[ds.length-1];
+    var label = parseKey(first.date).toLocaleDateString(undefined,{month:"short", year:"numeric"});
+    if(first.date.slice(8)!=="01") label += " (from "+parseKey(first.date).getDate()+(parseKey(first.date).getDate()===1?"st":"th")+")";
+    var midPhase = ds[Math.floor(ds.length/2)].phase;
+    var milestone = "";
+    if(ds.some(function(d){return d.date===startKey;})) milestone = "PLAN STARTS — "+fmtShort(parseKey(startKey));
+    else if(ds.some(function(d){return d.date===prelimsKey;})) milestone = "PRELIMS EXAM — "+fmtShort(parseKey(prelimsKey));
+    else if(ds.some(function(d){return d.date===mainsKey;})) milestone = "MAINS EXAM — "+fmtShort(parseKey(mainsKey));
+    return {key:mk, label:label, start:first.date, end:last.date, focus:midPhase, milestone:milestone};
+  });
+}
+function loadPlanConfig(){
+  try { var v = JSON.parse(lsGet("dossier.planConfig")||"null"); if(v && v.startDate && v.prelimsDate && v.mainsDate) return v; } catch(e){}
+  return null;
+}
+function savePlanConfig(cfg){
+  lsSet("dossier.planConfig", JSON.stringify(cfg));
+  if(db) db.doc("state/plan").set(cfg).catch(function(){});
+}
+function loadResults(){
+  try { return Object.assign({}, DEFAULT_RESULTS, JSON.parse(lsGet("dossier.results")||"{}")); } catch(e){ return Object.assign({}, DEFAULT_RESULTS); }
+}
+function saveResults(){
+  lsSet("dossier.results", JSON.stringify(examResults));
+  if(db) db.doc("state/results").set(examResults).catch(function(){});
+}
+function applyDynamicPlan(startKey, prelimsKey, mainsKey, persist){
+  var newDays = buildDynamicDays(startKey, prelimsKey, mainsKey);
+  DATA.days = newDays;
+  DATA.startDate = startKey;
+  DATA.endDate = newDays[newDays.length-1].date;
+  DATA.examDates = {prelims:prelimsKey, mains:mainsKey};
+  DATA.months = buildDynamicMonths(newDays, startKey, prelimsKey, mainsKey);
+  buildIndices();
+  currentDailyKey = clampKey(todayKey);
+  if(persist!==false) savePlanConfig({startDate:startKey, prelimsDate:prelimsKey, mainsDate:mainsKey});
+}
+function planSetupCard(){
+  var cfg = {startDate:DATA.startDate, prelimsDate:DATA.examDates.prelims, mainsDate:DATA.examDates.mains};
+  var totalDays = DATA.days.length;
+  return '<div class="plan-setup card">'+
+    '<h3>Plan setup</h3>'+
+    '<div class="sub">Set your own start date and exam dates — the schedule below is regenerated to fit exactly, using the same subject order and mock rotation, compressed or stretched as needed.</div>'+
+    '<div class="grid">'+
+      '<div class="row3">'+
+        '<div><label for="planStart">Start date</label><input type="date" id="planStart" value="'+esc(cfg.startDate)+'"></div>'+
+        '<div><label for="planPrelims">Prelims exam</label><input type="date" id="planPrelims" value="'+esc(cfg.prelimsDate)+'"></div>'+
+        '<div><label for="planMains">Mains exam</label><input type="date" id="planMains" value="'+esc(cfg.mainsDate)+'"></div>'+
+      '</div>'+
+      '<button id="planGenerate">Generate schedule</button>'+
+    '</div>'+
+    '<div class="summary">Currently: '+totalDays+'-day plan, '+esc(fmtShort(parseKey(cfg.startDate)))+' → '+esc(fmtShort(parseKey(DATA.endDate)))+'.</div>'+
+  '</div>';
+}
+function bindPlanSetupCard(host){
+  var btn = host.querySelector("#planGenerate");
+  if(!btn) return;
+  btn.addEventListener("click", function(){
+    var s = host.querySelector("#planStart").value;
+    var p = host.querySelector("#planPrelims").value;
+    var m = host.querySelector("#planMains").value;
+    if(!s || !p || !m){ toast("Fill in all three dates first."); return; }
+    if(!(s < p && p < m)){ toast("Dates must run start → Prelims → Mains, in order."); return; }
+    applyDynamicPlan(s, p, m);
+    toast("Schedule regenerated: "+DATA.days.length+" days, "+esc(fmtShort(parseKey(m)))+" is Mains D-Day.");
+    renderDashboard();
+  });
+}
+function resultCard(){
+  var stages = [{id:"prelims", label:"Prelims"}, {id:"mains", label:"Mains"}, {id:"interview", label:"Interview"}];
+  return '<div class="result-card card">'+
+    '<h3>Exam result</h3>'+
+    stages.map(function(s){
+      var v = examResults[s.id];
+      return '<div class="result-row" data-stage="'+s.id+'">'+
+        '<div class="name">'+s.label+' <span class="status '+v+'">'+v+'</span></div>'+
+        '<div class="btns">'+
+          '<button class="pass" data-outcome="passed">Passed</button>'+
+          '<button class="fail" data-outcome="failed">Failed</button>'+
+        '</div>'+
+      '</div>';
+    }).join("")+
+    '<div class="sub">Marking any stage “Failed” resets all progress and restarts the whole plan from Day 1 for a fresh attempt.</div>'+
+  '</div>';
+}
+function bindResultCard(host){
+  Array.prototype.forEach.call(host.querySelectorAll(".result-row"), function(row){
+    var stage = row.getAttribute("data-stage");
+    Array.prototype.forEach.call(row.querySelectorAll("button"), function(b){
+      b.addEventListener("click", function(){ markResult(stage, b.getAttribute("data-outcome")); });
+    });
+  });
+}
+function markResult(stage, outcome){
+  if(outcome==="failed"){
+    var ok = confirm("Mark "+stage+" as not cleared? This resets ALL progress (every checked box across Daily, Weekly, Monthly, Prelims and Mains) and restarts the plan from Day 1 for your next attempt. This can't be undone.");
+    if(!ok) return;
+    resetForNewAttempt(stage);
+    return;
+  }
+  examResults[stage] = outcome;
+  saveResults();
+  toast(stage.charAt(0).toUpperCase()+stage.slice(1)+" marked as passed.");
+  renderDashboard();
+}
+function resetForNewAttempt(failedStage){
+  var staleMonths = Object.keys(dailyMonthCache);
+  prelimsState = {}; mainsState = {}; monthsState = {};
+  dailyState = {}; dailyMonthCache = {};
+  examResults = Object.assign({}, DEFAULT_RESULTS);
+  saveResults();
+  if(db){
+    db.doc("state/prelims").set({}).catch(function(){});
+    db.doc("state/mains").set({}).catch(function(){});
+    db.doc("state/months").set({}).catch(function(){});
+    staleMonths.forEach(function(mk){ db.collection("dailyLog").doc(mk).delete().catch(function(){}); });
+  }
+  toast("Plan reset for a new attempt. Enter your next start date and exam dates below.");
+  setTab("dashboard");
+  renderDashboard();
 }
 
 // ============================================================================
@@ -3175,6 +3420,9 @@ function renderDashboard(){
   host.innerHTML =
     timerCard()+
 
+    planSetupCard()+
+    resultCard()+
+
     '<div class="hero card">'+
       '<div class="hero-phase">'+esc(phase)+'</div>'+
       '<div class="countdowns">'+
@@ -3199,6 +3447,8 @@ function renderDashboard(){
   var go = document.getElementById("dashToday");
   if(go) go.addEventListener("click", function(){ currentDailyKey = clampKey(tKey); setTab("daily"); });
   bindTimerCard(host);
+  bindPlanSetupCard(host);
+  bindResultCard(host);
 }
 function todayPlanCard(dayObj, tKey, adherencePct, loggedDays, elapsed){
   if(!dayObj){
@@ -4191,7 +4441,11 @@ function boot(){
     FREQ = results[3];
     QUOTES = results[4];
     CASES = results[5];
-    buildIndices();
+    ORIGINAL_TEMPLATE = captureTemplate(); // capture the pristine shipped plan before any regeneration
+    examResults = loadResults();
+    var savedCfg = loadPlanConfig();
+    if(savedCfg) applyDynamicPlan(savedCfg.startDate, savedCfg.prelimsDate, savedCfg.mainsDate, false);
+    else buildIndices();
     currentDailyKey = clampKey(todayKey);
 
     // render once immediately with schedule data, before db resolves
@@ -4201,6 +4455,10 @@ function boot(){
     capPromise.then(function(d){
       db = d; dbChecked = true;
       return loadState();
+    }).then(function(){
+      // db may hold a newer plan/result than this browser's localStorage (another device)
+      if(planFromDb){ applyDynamicPlan(planFromDb.startDate, planFromDb.prelimsDate, planFromDb.mainsDate); }
+      if(resultsFromDb) examResults = Object.assign({}, DEFAULT_RESULTS, resultsFromDb);
     }).catch(function(){}).then(function(){
       dbChecked = true;
       renderView(activeTab);
