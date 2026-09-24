@@ -171,6 +171,37 @@
      ]
     }
    ]
+  },
+  {
+   "concept": "Emotional Intelligence",
+   "quotes": [
+    {
+     "quote": "In a very real sense we have two minds, one that thinks and one that feels.",
+     "author": "Daniel Goleman",
+     "source": "Emotional Intelligence: Why It Can Matter More Than IQ (1995)",
+     "meaning": "Rational and emotional processing are distinct systems that both shape a person's judgement and decisions.",
+     "usage": "Use to open a GS4 answer on why emotional intelligence matters alongside technical competence in administration.",
+     "position": [
+      "intro",
+      "body"
+     ]
+    }
+   ]
+  },
+  {
+   "concept": "Responsibility & Duty",
+   "quotes": [
+    {
+     "quote": "Act only according to that maxim whereby you can at the same time will that it should become a universal law.",
+     "author": "Immanuel Kant",
+     "source": "Groundwork of the Metaphysics of Morals (1785) — the first formulation of the Categorical Imperative",
+     "meaning": "An action is only truly moral if you could consistently wish everyone, in the same situation, to act that way.",
+     "usage": "Use for GS4 questions on duty-based (deontological) ethics, e.g. why a rule shouldn't be broken 'just this once' even for a good reason.",
+     "position": [
+      "body"
+     ]
+    }
+   ]
   }
  ],
  "essay": [
@@ -307,6 +338,48 @@
      "usage": "Strong for essays on surveillance, data privacy, or digital-age civil liberties.",
      "position": [
       "body"
+     ]
+    }
+   ]
+  },
+  {
+   "cluster": "Economy & inclusive growth",
+   "quotes": [
+    {
+     "quote": "People are the real wealth of a nation. The basic objective of development is to create an enabling environment for people to enjoy long, healthy and creative lives.",
+     "author": "Mahbub ul Haq",
+     "source": "Opening of the first Human Development Report, UNDP, 1990 (which Haq conceived and authored)",
+     "meaning": "Reframes development as being about human capability and well-being, not just GDP growth.",
+     "usage": "Strong opening line for essays on inclusive growth, human development, or critiques of GDP-only measures of progress.",
+     "position": [
+      "intro"
+     ]
+    }
+   ]
+  },
+  {
+   "cluster": "Philosophical / abstract aphorisms",
+   "quotes": [
+    {
+     "quote": "Where the mind is without fear and the head is held high; Where knowledge is free... Where the clear stream of reason has not lost its way into the dreary desert sand of dead habit... Into that heaven of freedom, my Father, let my country awake.",
+     "author": "Rabindranath Tagore",
+     "source": "Gitanjali (1912), poem 35",
+     "meaning": "A vision of a free society built on fearless reason and knowledge, not blind habit or narrow-mindedness.",
+     "usage": "Excellent for essays on freedom, reason, national awakening, or education — famous enough to use in the intro or conclusion.",
+     "position": [
+      "intro",
+      "conclusion"
+     ]
+    },
+    {
+     "quote": "Two roads diverged in a wood, and I — I took the one less traveled by, and that has made all the difference.",
+     "author": "Robert Frost",
+     "source": "'The Road Not Taken', Mountain Interval (1916)",
+     "meaning": "On choices and individuality — though Frost himself said the poem is more ambiguous/ironic about that reading than it's popularly taken to be.",
+     "usage": "Use for essays on choices, individuality, or non-conformity — but note in your answer that the poem is more self-aware/ironic than the popular 'follow your own path' reading suggests, to avoid a clichéd treatment.",
+     "position": [
+      "intro",
+      "conclusion"
      ]
     }
    ]
