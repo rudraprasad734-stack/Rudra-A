@@ -1,0 +1,93 @@
+{
+  "note": "Phase 1 starter set: 2 real UPSC PYQ case studies (with my own structured analysis added) and 2 constructed practice cases clearly labelled as such. Real cases are copied verbatim from the papers in your bank -- nothing invented about the facts, only the analysis frame around them.",
+  "cases": [
+    {
+      "id": "c1",
+      "tier": "Advanced",
+      "themeTag": "Disaster/pandemic response dilemmas",
+      "sourceType": "real",
+      "source": "GS Paper IV, 2025, Q7 (verbatim from your PYQ bank)",
+      "situation": "Vijay, Deputy Commissioner of a remote Himalayan district, is leading rescue and relief operations after catastrophic flooding and a cloudburst kill 200+ people and injure 5,000. Mid-operation, he learns his mother back home has died, with only an elder sister (a US citizen) left as family. As he weighs leaving to perform last rites, the district is hit by fresh heavy rains, worsening the crisis he is responsible for.",
+      "stakeholders": ["The flood-affected district's population (immediate safety and relief)", "Vijay's own family duty and grief", "The state administration relying on his leadership", "Rescue and relief personnel under his command"],
+      "ethicalIssues": ["Duty to the public office vs. filial/personal duty", "Continuity of leadership during an active crisis", "Personal grief and its effect on decision-making capacity"],
+      "valuesInvolved": ["Public service / duty to office", "Compassion and human relationships", "Responsibility and accountability", "Self-care and honesty about one's own limits"],
+      "conflictingValues": "Duty to remain and lead relief operations directly conflicts with the filial duty to be present for his mother's last rites -- both are legitimate, non-trivial obligations.",
+      "options": [
+        {"option": "Stay and continue leading relief operations, delegate rites to his sister/community", "consequences": "Relief work continues without disruption; Vijay carries lasting personal regret at missing his mother's last rites."},
+        {"option": "Leave immediately for the rites, hand over charge to a deputy", "consequences": "Personal duty fulfilled; risk of a leadership gap at the worst possible moment if the handover isn't seamless."},
+        {"option": "Delegate operational command temporarily, attend rites briefly, return as fast as possible", "consequences": "Attempts to balance both duties; depends heavily on having a genuinely capable deputy and short, reliable travel."}
+      ],
+      "constitutionalLegal": "No specific constitutional provision governs this personal dilemma, but the broader principle of Article 51A(who holds public office) and the Conduct Rules for civil servants presume continuous availability during a declared disaster; the Disaster Management Act, 2005 vests the District Magistrate/DC with primary command responsibility during the response phase.",
+      "principles": ["Utilitarian reasoning: which choice serves the greater number of people at this moment?", "Duty ethics (Kant): a public officer's role-based duty during an active emergency is a strong categorical obligation", "Virtue ethics: what would a person of good character, balancing compassion and duty, do?"],
+      "thinkersQuotes": ["Aristotle on courage as the mean between excess and deficiency (see Quotes tab, Ethics → Courage) is relevant to acting rightly under pressure, for the right reasons."],
+      "decisionFramework": "1) Assess whether a genuinely capable second-in-command exists to take over. 2) If yes, a short, well-handed-over absence to attend the rites is defensible -- duty to family is not infinitely subordinate to office. 3) If no reliable handover is possible, the scale of the ongoing emergency (lives still at risk from renewed rains) means staying is the more defensible choice, provided Vijay is transparent with his superiors and seeks emotional support rather than suppressing his grief.",
+      "practiceQuestions": ["What are the options available with Vijay?", "What is the ethical dilemma he is facing?", "Which option would you choose, and why, in about 250 words?"]
+    },
+    {
+      "id": "c2",
+      "tier": "UPSC-style",
+      "themeTag": "Conflict of interest",
+      "sourceType": "real",
+      "source": "GS Paper IV, 2025, Q9 (verbatim from your PYQ bank)",
+      "situation": "Subash, Secretary PWD, is trusted by his Minister and is finalising a major road-construction project before its public announcement. His own son, in the real-estate business, is pressuring him to reveal the project's exact location to buy land cheaply in advance. Separately, the Minister has introduced his own nephew, who runs an infrastructure company, and has all but instructed Subash to 'take care of' the nephew's business interests in the same project.",
+      "stakeholders": ["The public (fair, uncorrupted infrastructure planning)", "Subash's son (family pressure, personal gain)", "The Minister and his nephew (political and business interest)", "Subash's own career and integrity", "Rival, honest bidders/contractors who would be disadvantaged"],
+      "ethicalIssues": ["Conflict of interest (both familial and political)", "Insider information and its misuse", "Political pressure on a civil servant's neutrality", "Nepotism and favouritism in public contracting"],
+      "valuesInvolved": ["Integrity and probity", "Impartiality / objectivity", "Accountability to the public interest over personal or political ties", "Courage to resist undue pressure"],
+      "conflictingValues": "Loyalty to family (son) and deference to a powerful political superior (Minister) both pull against Subash's duty of impartial, corruption-free public administration.",
+      "options": [
+        {"option": "Share the information with his son and quietly enable the Minister's nephew, to protect his career and family relationships", "consequences": "Serious corruption and conflict of interest; if discovered, criminal and disciplinary liability, and public-interest harm from a compromised project."},
+        {"option": "Firmly refuse both his son and the Minister, and put his concerns about the nephew's interest in writing to a higher/independent authority", "consequences": "Protects integrity and the public interest; risks personal and professional friction with the Minister, possible retaliation."},
+        {"option": "Recuse himself from the specific decision-making role in this project, citing conflict of interest, while flagging the Minister's conduct through proper channels", "consequences": "A defensible middle path: removes him from direct temptation/pressure while still surfacing the issue, though it may not fully stop the underlying problem."}
+      ],
+      "constitutionalLegal": "All India Services (Conduct) Rules, 1968 prohibit misuse of official position for personal or relatives' gain; the Prevention of Corruption Act, 1988 (as amended 2018) covers undue influence and bribery by public servants; Central Vigilance Commission guidelines require disclosure of conflicts of interest.",
+      "principles": ["Deontological duty: a civil servant's role-based duty not to misuse office overrides personal/family loyalty", "Rawlsian fairness: awarding advantage based on insider access to a family member violates fair equality of opportunity for other bidders"],
+      "thinkersQuotes": ["Gandhi's 'means and end are convertible terms' (see Quotes tab, Ethics → Probity) applies directly: a 'good' infrastructure project pursued through corrupt means is not actually a good outcome."],
+      "decisionFramework": "1) Recognise both pressures (son, Minister) as conflicts of interest requiring formal recusal or disclosure, not private accommodation. 2) Refuse to share confidential project information with his son under any framing. 3) Document and escalate the Minister's push to favour his nephew through appropriate vigilance/oversight channels, protecting himself with a paper trail. 4) Seek recusal from the specific procurement decision if a truly independent evaluation cannot otherwise be assured.",
+      "practiceQuestions": ["What ethical issues are involved in this case?", "What options are available to Subash?", "Which option is most appropriate, and why, in about 250 words?"]
+    },
+    {
+      "id": "c3",
+      "tier": "Basic",
+      "themeTag": "Workplace sexual harassment",
+      "sourceType": "constructed",
+      "source": "Practice case constructed for this bank, not a real UPSC question -- modelled on the recurring GS4 case-study theme of the same name (asked in multiple past years per your PYQ bank).",
+      "situation": "You are a junior officer newly posted to a district office. A colleague confides that a senior officer has been making her uncomfortable with repeated personal comments and late-evening 'work calls' with no real work content. She asks you not to tell anyone, fearing it will hurt her career, but also seems distressed and unsure what to do.",
+      "stakeholders": ["The colleague experiencing harassment", "You, as a confidant with new obligations", "The senior officer involved", "The office's Internal Committee (IC) under the POSH Act", "The wider workplace culture"],
+      "ethicalIssues": ["Confidentiality vs. duty to act on harassment", "Power imbalance between a senior and junior officer", "Institutional obligation to provide a safe workplace"],
+      "valuesInvolved": ["Compassion", "Courage", "Justice", "Institutional integrity"],
+      "conflictingValues": "Respecting your colleague's stated wish for confidentiality conflicts with the legal and ethical duty to ensure harassment is reported and addressed through proper channels.",
+      "options": [
+        {"option": "Say nothing, respecting her explicit request", "consequences": "Protects the immediate relationship of trust, but leaves the harassment unaddressed and potentially ongoing/escalating."},
+        {"option": "Report it yourself immediately to the Internal Committee without her consent", "consequences": "Ensures institutional action, but overrides her agency and may damage trust and her willingness to come forward again."},
+        {"option": "Support her in understanding the POSH Act and IC process, and encourage (without forcing) her to file a complaint herself, offering to accompany or corroborate if she chooses", "consequences": "Respects her agency while working toward a proper resolution; may take longer and depends on her ultimately deciding to act."}
+      ],
+      "constitutionalLegal": "The Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013 (POSH Act) mandates an Internal Committee in every workplace above a threshold size and obliges the organisation to act on harassment; Vishaka Guidelines (1997, Supreme Court) are the constitutional-law foundation preceding the Act.",
+      "principles": ["Care ethics: responding to her emotional state and agency matters, not just the abstract 'correct' rule", "Institutional duty under POSH: harassment is not merely an interpersonal matter but an organisational/legal obligation to address"],
+      "thinkersQuotes": ["The Atticus Finch empathy quote (see Quotes tab, Ethics → Empathy) is relevant to understanding her hesitation before deciding how to act."],
+      "decisionFramework": "1) Do not dismiss her concern or promise absolute silence you cannot ethically keep. 2) Gently inform her of the POSH Act/IC mechanism and her rights, without pressuring her. 3) Offer concrete support (accompanying her, corroborating events you witnessed) if she chooses to proceed. 4) If the behaviour appears to be escalating or you believe others may be at risk, you may have a duty to flag a pattern (without naming her) to the IC even without her explicit consent, but this is the last resort, not the first.",
+      "practiceQuestions": ["What are the ethical issues involved?", "What options do you have?", "What would you do, and why?"]
+    },
+    {
+      "id": "c4",
+      "tier": "UPSC-style",
+      "themeTag": "Whistleblowing",
+      "sourceType": "constructed",
+      "source": "Practice case constructed for this bank, not a real UPSC question -- modelled on the recurring GS4 case-study theme of the same name (asked in multiple past years per your PYQ bank).",
+      "situation": "You are an audit officer reviewing a welfare scheme's expenditure. You discover clear evidence that a portion of funds meant for beneficiaries has been diverted through inflated vendor bills, and the trail points toward a senior colleague who mentored you early in your career and has otherwise been an exemplary officer. Reporting this will likely end his career; not reporting it lets diverted public funds meant for the poor go unaddressed.",
+      "stakeholders": ["The intended welfare-scheme beneficiaries", "The senior colleague/mentor", "The audit function's institutional credibility", "You, professionally and personally"],
+      "ethicalIssues": ["Whistleblowing vs. personal loyalty", "Conflict of interest arising from a prior mentoring relationship", "Proportionality — how findings are reported and to whom"],
+      "valuesInvolved": ["Integrity", "Accountability", "Courage", "Loyalty (to institution and public, not just to individuals)"],
+      "conflictingValues": "Personal gratitude and loyalty to a mentor conflicts with professional duty to report corruption that harms intended welfare beneficiaries.",
+      "options": [
+        {"option": "Quietly warn the colleague to correct the irregularity himself before it is formally reported", "consequences": "Might prompt informal correction, but lets a violation of public trust go unrecorded and could implicate you if it later surfaces that you knew."},
+        {"option": "Report the findings exactly as required through the normal audit/vigilance process, regardless of the relationship", "consequences": "Upholds institutional integrity and public interest; damages a personal relationship and may be professionally uncomfortable, but is legally and ethically sound."},
+        {"option": "Suppress or soften the finding in your report to protect him", "consequences": "Serious professional and possibly criminal misconduct on your own part if discovered; fails the beneficiaries and the institution."}
+      ],
+      "constitutionalLegal": "The Whistle Blowers Protection Act, 2014 provides a framework (though weakly implemented) for reporting corruption while seeking protection from victimisation; CVC guidelines require officers to report corruption they discover in the course of duty; suppressing an audit finding could itself amount to misconduct under service conduct rules.",
+      "principles": ["Deontological duty: an auditor's role-based duty to report facts accurately is not conditional on personal relationships", "Utilitarian reasoning: the harm to many beneficiaries from continued diversion outweighs the harm to one individual's career from accurate reporting"],
+      "thinkersQuotes": ["Rawls: 'laws and institutions no matter how efficient and well-arranged must be reformed or abolished if they are unjust' (see Quotes tab, Ethics → Justice) supports prioritising the integrity of the welfare scheme over protecting an individual."],
+      "decisionFramework": "1) Separate the personal relationship from the professional finding — the facts of the audit do not change because of who is involved. 2) Report through the normal, documented process rather than either suppressing the finding or handling it informally/off the record. 3) Where possible, ensure due process for the colleague (right to respond) rather than assuming guilt, while not delaying or diluting the report itself.",
+      "practiceQuestions": ["What is the central ethical dilemma here?", "What options are available to you as the audit officer?", "What would you recommend, and why?"]
+    }
+  ]
+}
