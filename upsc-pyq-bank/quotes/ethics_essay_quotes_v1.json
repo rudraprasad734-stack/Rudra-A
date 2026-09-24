@@ -108,6 +108,17 @@
       "body",
       "conclusion"
      ]
+    },
+    {
+     "quote": "The fruit of love is service, which is compassion in action.",
+     "author": "Mother Teresa",
+     "source": "Nobel Peace Prize Lecture, 11 December 1979",
+     "meaning": "Compassion is not merely a feeling but is completed only when translated into concrete service.",
+     "usage": "Short, powerful line for GS4 answers distinguishing compassion as sentiment from compassion as action.",
+     "position": [
+      "intro",
+      "conclusion"
+     ]
     }
    ]
   },
@@ -307,6 +318,16 @@
      "position": [
       "intro"
      ]
+    },
+    {
+     "quote": "Justice is when everyone minds his own business, and refrains from meddling in others' affairs.",
+     "author": "Plato",
+     "source": "Republic, Book IV, 433a (a provisional definition within the dialogue, not Plato's final word on justice)",
+     "meaning": "An early definition in the Republic: justice as each person/class performing its proper role without overreach.",
+     "usage": "Use to introduce classical definitions of justice before contrasting with modern theories like Rawls's.",
+     "position": [
+      "intro"
+     ]
     }
    ]
   },
@@ -404,6 +425,16 @@
      "usage": "Use to ground a technology/rationality essay in the actual constitutional text, pairing well with Nehru's 'scientific temper' passage.",
      "position": [
       "body"
+     ]
+    },
+    {
+     "quote": "I've always thought of AI as the most profound technology humanity is working on — more profound than fire or electricity or anything that we've done in the past.",
+     "author": "Sundar Pichai",
+     "source": "Interview with CBS's 60 Minutes; similar remarks at the World Economic Forum, Davos",
+     "meaning": "Places AI among the most transformative technologies in human history, underscoring the scale of its likely impact.",
+     "usage": "Use to establish the stakes of an AI essay before discussing its risks or governance.",
+     "position": [
+      "intro"
      ]
     }
    ]
@@ -592,6 +623,16 @@
       "intro",
       "conclusion"
      ]
+    },
+    {
+     "quote": "Some kind of a dream of unity has occupied the mind of India since the dawn of civilization. That unity was not conceived as something imposed from outside, standardization of externs or even of beliefs.",
+     "author": "Jawaharlal Nehru",
+     "source": "The Discovery of India (1946)",
+     "meaning": "India's unity has historically been organic and internally generated, not an externally imposed uniformity — the basis of 'unity in diversity'.",
+     "usage": "Use for essays on Indian civilisation, unity in diversity, or pluralism as an indigenous rather than imported value.",
+     "position": [
+      "body"
+     ]
     }
    ]
   },
@@ -689,6 +730,28 @@
      "position": [
       "intro",
       "body"
+     ]
+    },
+    {
+     "quote": "Massive poverty and obscene inequality are such terrible scourges of our times — times in which the world boasts breathtaking advances in science, technology, industry and wealth accumulation — that they have to rank alongside slavery and apartheid as social evils.",
+     "author": "Nelson Mandela",
+     "source": "'Make Poverty History' campaign speech, Trafalgar Square, London, 3 February 2005",
+     "meaning": "Frames extreme poverty amid modern abundance as a moral evil comparable to slavery and apartheid, not merely an economic inefficiency.",
+     "usage": "Powerful line for essays on inequality or inclusive growth, especially contrasting technological progress with persistent poverty.",
+     "position": [
+      "intro",
+      "body"
+     ]
+    },
+    {
+     "quote": "Overcoming poverty is not a gesture of charity. It is the protection of a fundamental human right, the right to dignity and a decent life.",
+     "author": "Nelson Mandela",
+     "source": "'Make Poverty History' campaign speech, Trafalgar Square, London, 3 February 2005",
+     "meaning": "Reframes poverty alleviation as a rights-based obligation, not optional generosity.",
+     "usage": "Use to argue that welfare/anti-poverty measures are a matter of rights, not charity.",
+     "position": [
+      "body",
+      "conclusion"
      ]
     }
    ]
