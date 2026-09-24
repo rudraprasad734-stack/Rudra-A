@@ -121,6 +121,14 @@
   .chip.tag-off{background:var(--tier4-soft); color:var(--tier4);}
 
   /* ---- Dashboard ---- */
+  .timer-card{padding:16px 18px; margin-bottom:14px; text-align:center;}
+  .timer-head{display:flex; justify-content:space-between; align-items:baseline; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint);}
+  .timer-today{font-family:var(--font-mono); font-weight:600; text-transform:none; letter-spacing:0; color:var(--ink-soft); font-size:11.5px;}
+  .timer-display{font-family:var(--font-mono); font-size:44px; font-weight:600; letter-spacing:.02em; color:var(--ink); margin:8px 0; font-variant-numeric:tabular-nums;}
+  .timer-btns{display:flex; gap:10px; justify-content:center;}
+  .timer-btn{flex:1; max-width:140px; padding:11px; border-radius:10px; border:1px solid var(--line); background:var(--surface-2); font-weight:700; font-size:13.5px; cursor:pointer; color:var(--ink);}
+  .timer-btn.primary{background:var(--navy); color:var(--navy-ink); border-color:var(--navy);}
+  .timer-btn:disabled{opacity:.45; cursor:not-allowed;}
   .hero{padding:22px 20px; display:flex; flex-direction:column; gap:16px; margin-bottom:4px;}
   .hero-phase{font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--gold);}
   .countdowns{display:grid; grid-template-columns:1fr 1fr; gap:12px;}
@@ -564,6 +572,8 @@ var dbReady = false;
 var dbChecked = false;
 
 var todayKey = toKey(new Date());
+var timerInterval = null;
+var timerState = {running:false, startedAt:0, elapsedMs:0}; // in-memory; today's totals persisted to localStorage below
 var currentDailyKey = todayKey;
 
 // ============================================================================
@@ -687,6 +697,7 @@ function renderTabs(){
   });
 }
 function setTab(id){
+  if(id!=="dashboard" && timerInterval){ clearInterval(timerInterval); timerInterval = null; }
   activeTab = id;
   Array.prototype.forEach.call(document.querySelectorAll(".tab"), function(b){
     var on = b.getAttribute("data-tab")===id;
@@ -731,6 +742,77 @@ function ringSvg(pct, color){
 // ============================================================================
 // DASHBOARD
 // ============================================================================
+// ============================================================================
+// STUDY TIMER (home-screen widget; per-viewer convenience, stored in localStorage)
+// ============================================================================
+function fmtTimer(ms){
+  var s = Math.floor(ms/1000);
+  var h = Math.floor(s/3600), m = Math.floor((s%3600)/60), ss = s%60;
+  return (h>0 ? String(h).padStart(2,"0")+":" : "") + String(m).padStart(2,"0")+":"+String(ss).padStart(2,"0");
+}
+function timerTodayTotalMs(){
+  var v = 0;
+  try { v = +(JSON.parse(lsGet("dossier.timerLog")||"{}")[todayKey]) || 0; } catch(e){}
+  return v;
+}
+function timerAddToToday(ms){
+  var log = {};
+  try { log = JSON.parse(lsGet("dossier.timerLog")||"{}"); } catch(e){}
+  log[todayKey] = (log[todayKey]||0) + ms;
+  // keep the log small: drop entries older than ~40 days
+  var cutoff = toKey(addDays(new Date(), -40));
+  Object.keys(log).forEach(function(k){ if(k < cutoff) delete log[k]; });
+  try { lsSet("dossier.timerLog", JSON.stringify(log)); } catch(e){}
+}
+function timerElapsedNow(){
+  return timerState.elapsedMs + (timerState.running ? (Date.now()-timerState.startedAt) : 0);
+}
+function timerTick(){
+  var el = document.getElementById("timerDisplay");
+  if(!el){ clearInterval(timerInterval); timerInterval = null; return; }
+  el.textContent = fmtTimer(timerElapsedNow());
+}
+function timerToggle(){
+  if(timerState.running){
+    timerState.elapsedMs = timerElapsedNow();
+    timerState.running = false;
+    timerAddToToday(Date.now()-timerState.startedAt);
+    clearInterval(timerInterval); timerInterval = null;
+  } else {
+    timerState.running = true;
+    timerState.startedAt = Date.now();
+    clearInterval(timerInterval);
+    timerInterval = setInterval(timerTick, 1000);
+  }
+  renderDashboard();
+}
+function timerReset(){
+  if(timerState.running) clearInterval(timerInterval);
+  timerInterval = null;
+  timerState = {running:false, startedAt:0, elapsedMs:0};
+  renderDashboard();
+}
+function timerCard(){
+  var totalDisplay = timerTodayTotalMs();
+  return '<div class="card timer-card">'+
+    '<div class="timer-head"><span>Study timer</span><span class="timer-today">'+fmtTimer(totalDisplay)+' logged today</span></div>'+
+    '<div class="timer-display" id="timerDisplay">'+fmtTimer(timerElapsedNow())+'</div>'+
+    '<div class="timer-btns">'+
+      '<button class="timer-btn primary" id="timerToggleBtn">'+(timerState.running?"Pause":(timerState.elapsedMs>0?"Resume":"Start"))+'</button>'+
+      '<button class="timer-btn" id="timerResetBtn"'+(timerState.elapsedMs===0 && !timerState.running?" disabled":"")+'>Reset</button>'+
+    '</div>'+
+  '</div>';
+}
+function bindTimerCard(host){
+  var tb = host.querySelector("#timerToggleBtn");
+  if(tb) tb.addEventListener("click", timerToggle);
+  var rb = host.querySelector("#timerResetBtn");
+  if(rb) rb.addEventListener("click", timerReset);
+  if(timerState.running){
+    clearInterval(timerInterval);
+    timerInterval = setInterval(timerTick, 1000);
+  }
+}
 function renderDashboard(){
   var host = document.getElementById("view-dashboard");
   var today = new Date();
@@ -757,6 +839,8 @@ function renderDashboard(){
   var mocksTarget = DATA.mockTargets.reduce(function(s,t){return s+t.target;},0);
 
   host.innerHTML =
+    timerCard()+
+
     '<div class="hero card">'+
       '<div class="hero-phase">'+esc(phase)+'</div>'+
       '<div class="countdowns">'+
@@ -780,6 +864,7 @@ function renderDashboard(){
 
   var go = document.getElementById("dashToday");
   if(go) go.addEventListener("click", function(){ currentDailyKey = clampKey(tKey); setTab("daily"); });
+  bindTimerCard(host);
 }
 function todayPlanCard(dayObj, tKey, adherencePct, loggedDays, elapsed){
   if(!dayObj){
@@ -1227,7 +1312,7 @@ function renderSyllabus(){
   var host = document.getElementById("view-syllabus");
   if(!SYLLABUS){ host.innerHTML = '<div class="card empty">Syllabus reference is loading...</div>'; return; }
 
-  var html = '<input type="search" id="sylSearch" class="syl-search" placeholder="Search the syllabus, e.g. federalism, kinship, monsoon" value="'+esc(sylQuery)+'" aria-label="Search the syllabus">'+
+  var html = '<input type="search" id="sylSearch" class="syl-search" placeholder="Search the syllabus, e.g. judiciary, kinship, biodiversity" value="'+esc(sylQuery)+'" aria-label="Search the syllabus">'+
     '<div class="section-title">Prelims</div>' +
     SYLLABUS.prelims.map(function(p){
       return syllabusPaperCard(p.paper, p.paper, p.note, p.sections, null, null);
@@ -1477,7 +1562,7 @@ function renderPyq(){
   papers.forEach(function(p){ if(f.paper==="all"||f.paper===p.paper) p.docs.forEach(function(d){ years[d.year]=1; }); });
   var yearOpts = '<option value="all">All years</option>'+Object.keys(years).sort(function(a,b){return b-a;}).map(function(y){ return '<option'+(String(f.year)===y?" selected":"")+'>'+y+'</option>'; }).join("");
   html += '<div class="pyq-filters">'+
-    '<input type="search" id="pyqSearch" class="syl-search" placeholder="Search questions, e.g. Money Bill, Sanskritisation, cyber" value="'+esc(f.q)+'" aria-label="Search questions">'+
+    '<input type="search" id="pyqSearch" class="syl-search" placeholder="Search questions, e.g. Money Bill, cyber, biodiversity" value="'+esc(f.q)+'" aria-label="Search questions">'+
     '<div class="row2"><select id="pyqPaper" aria-label="Paper">'+paperOpts+'</select><select id="pyqYear" aria-label="Year">'+yearOpts+'</select></div>'+
   '</div>';
 
