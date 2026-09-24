@@ -532,6 +532,17 @@
       "intro",
       "conclusion"
      ]
+    },
+    {
+     "quote": "Honesty is the 1st chapter in the book of wisdom.",
+     "author": "Thomas Jefferson",
+     "source": "Letter to Nathaniel Macon, 12 January 1819",
+     "meaning": "Honesty is the foundational virtue from which all other wisdom and sound judgment follow.",
+     "usage": "Concise opening/closing line for GS4 answers on probity and honesty as the foundation of ethical conduct.",
+     "position": [
+      "intro",
+      "conclusion"
+     ]
     }
    ]
   },
@@ -665,6 +676,16 @@
      "source": "Working with Emotional Intelligence (Bantam Books, 1998)",
      "meaning": "A working definition of EI as self-awareness, self-motivation, and relationship management combined.",
      "usage": "Use as a crisp definitional line for GS4 answers introducing or defining emotional intelligence.",
+     "position": [
+      "intro"
+     ]
+    },
+    {
+     "quote": "A type of social intelligence that involves the ability to monitor one's own and others' emotions, to discriminate among them, and to use the information to guide one's thinking and actions.",
+     "author": "Peter Salovey and John D. Mayer",
+     "source": "'Emotional Intelligence', Imagination, Cognition and Personality, Vol. 9, No. 3 (1990)",
+     "meaning": "The original academic definition of emotional intelligence, predating and underlying Goleman's later popularization of the term.",
+     "usage": "Use for GS4 answers that want to cite the original scholarly source/definition of emotional intelligence rather than its popular treatment.",
      "position": [
       "intro"
      ]
