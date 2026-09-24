@@ -1,185 +1,315 @@
 {
-  "note": "Phase 1 starter set. Every quote below was checked against a primary or clearly documented secondary source before inclusion — nothing here was generated because it 'sounded right'. Coverage is intentionally partial: only concepts/themes with quotes I could verify are included. More will be added in later passes rather than padded out now.",
-  "ethics": [
+ "note": "Phase 1 starter set. Every quote below was checked against a primary or clearly documented secondary source before inclusion — nothing here was generated because it 'sounded right'. Coverage is intentionally partial: only concepts/themes with quotes I could verify are included. More will be added in later passes rather than padded out now.",
+ "ethics": [
+  {
+   "concept": "Constitutional Morality",
+   "quotes": [
     {
-      "concept": "Constitutional Morality",
-      "quotes": [
-        {
-          "quote": "Constitutional morality is not a natural sentiment. It has to be cultivated. We must realize that our people have yet to learn it.",
-          "author": "B. R. Ambedkar",
-          "source": "Speech to the Constituent Assembly, 4 November 1948",
-          "meaning": "Ambedkar warned that following a democratic constitution's forms and spirit does not come naturally to a society — it has to be consciously learned and practised.",
-          "usage": "Use when a question asks about constitutional values, the gap between law and practice, or why constitutionalism needs civic education.",
-          "position": ["intro", "body"]
-        },
-        {
-          "quote": "A paramount reverence for the forms of the constitution, enforcing obedience to authority and acting under and within these forms, yet combined with the habit of open speech, of action subject only to definite legal control, and unrestrained censure of those very authorities as to all their public acts.",
-          "author": "B. R. Ambedkar",
-          "source": "Speech to the Constituent Assembly, 4 November 1948 (quoting George Grote's definition, which Ambedkar endorsed)",
-          "meaning": "Defines constitutional morality as obeying constitutional forms while still retaining the right to freely criticise those in authority.",
-          "usage": "Good for a body paragraph on dissent, free speech and constitutionalism coexisting.",
-          "position": ["body"]
-        }
-      ]
+     "quote": "Constitutional morality is not a natural sentiment. It has to be cultivated. We must realize that our people have yet to learn it.",
+     "author": "B. R. Ambedkar",
+     "source": "Speech to the Constituent Assembly, 4 November 1948",
+     "meaning": "Ambedkar warned that following a democratic constitution's forms and spirit does not come naturally to a society — it has to be consciously learned and practised.",
+     "usage": "Use when a question asks about constitutional values, the gap between law and practice, or why constitutionalism needs civic education.",
+     "position": [
+      "intro",
+      "body"
+     ]
     },
     {
-      "concept": "Public Service & Integrity",
-      "quotes": [
-        {
-          "quote": "An honest public servant can't become rich in politics. He can only attain greatness and satisfaction by service.",
-          "author": "Harry S. Truman",
-          "source": "Widely documented in Truman's public remarks; commonly cited in public-service literature",
-          "meaning": "Public office should be measured by service rendered, not personal enrichment.",
-          "usage": "Use for questions on integrity, probity, or why public servants shouldn't use office for personal gain.",
-          "position": ["body", "conclusion"]
-        },
-        {
-          "quote": "Public service must be more than doing a job efficiently and honestly. It must be a complete dedication to the people and to the nation.",
-          "author": "Margaret Chase Smith",
-          "source": "U.S. Senator; widely documented public remarks",
-          "meaning": "Competence and honesty are necessary but not sufficient — service requires genuine commitment.",
-          "usage": "Useful to distinguish 'efficiency' from 'dedication' in a governance or civil-service answer.",
-          "position": ["body"]
-        },
-        {
-          "quote": "A public office is not a job, it is an opportunity to do something for the public.",
-          "author": "Franklin Knight Lane",
-          "source": "U.S. Secretary of the Interior; widely documented public remarks",
-          "meaning": "Reframes public office as an opportunity for service rather than a career transaction.",
-          "usage": "Short, quotable line — works well as an opening or closing line on the civil-services/GS4 theme.",
-          "position": ["intro", "conclusion"]
-        }
-      ]
-    },
-    {
-      "concept": "Compassion & Trusteeship",
-      "quotes": [
-        {
-          "quote": "Supposing I have come by a fair amount of wealth — either by way of legacy, or by means of trade and industry — I must know that all that wealth does not belong to me; what belongs to me is the right to an honourable livelihood, no better than that enjoyed by millions of others. The rest of my wealth belongs to the community and must be used for the welfare of the community.",
-          "author": "Mahatma Gandhi",
-          "source": "Collected Works of Mahatma Gandhi, on the doctrine of Trusteeship",
-          "meaning": "Gandhi's Trusteeship doctrine: wealth and power are held in trust for society, not owned absolutely.",
-          "usage": "Strong for essays/GS4 answers on inequality, CSR, or the ethics of wealth and power.",
-          "position": ["body"]
-        }
-      ]
-    },
-    {
-      "concept": "Courage",
-      "quotes": [
-        {
-          "quote": "The man, then, who faces and who fears the right things and from the right motive, in the right way and at the right time, and who feels confidence under the corresponding conditions, is brave; for the brave man feels and acts according to the merits of the case and in whatever way the rule directs.",
-          "author": "Aristotle",
-          "source": "Nicomachean Ethics, Book III (W. D. Ross translation)",
-          "meaning": "Courage is a mean between rashness and cowardice — feeling the right fear, for the right reason, at the right time.",
-          "usage": "Use for GS4 questions distinguishing courage from recklessness, e.g. in whistleblowing or crisis-decision case studies.",
-          "position": ["body"]
-        }
-      ]
-    },
-    {
-      "concept": "Accountability & Transparency",
-      "quotes": [
-        {
-          "quote": "Good governance is ensuring respect for human rights and the rule of law; strengthening democracy; promoting transparency and capacity in public administration.",
-          "author": "Kofi Annan",
-          "source": "UN Secretary-General; documented public remarks (Kofi Annan Foundation)",
-          "meaning": "Ties transparency and accountability directly to the definition of good governance.",
-          "usage": "Use for GS2/GS4 questions on accountability mechanisms, RTI, or e-governance.",
-          "position": ["intro", "body"]
-        }
-      ]
+     "quote": "A paramount reverence for the forms of the constitution, enforcing obedience to authority and acting under and within these forms, yet combined with the habit of open speech, of action subject only to definite legal control, and unrestrained censure of those very authorities as to all their public acts.",
+     "author": "B. R. Ambedkar",
+     "source": "Speech to the Constituent Assembly, 4 November 1948 (quoting George Grote's definition, which Ambedkar endorsed)",
+     "meaning": "Defines constitutional morality as obeying constitutional forms while still retaining the right to freely criticise those in authority.",
+     "usage": "Good for a body paragraph on dissent, free speech and constitutionalism coexisting.",
+     "position": [
+      "body"
+     ]
     }
-  ],
-  "essay": [
+   ]
+  },
+  {
+   "concept": "Public Service & Integrity",
+   "quotes": [
     {
-      "cluster": "Technology / AI / digital ethics",
-      "quotes": [
-        {
-          "quote": "Artificial intelligence is likely to be either the best or worst thing to happen to humanity.",
-          "author": "Stephen Hawking",
-          "source": "Public remarks, widely reported (BBC, NBC News, c. 2014-2016)",
-          "meaning": "Frames AI as a genuine double-edged development, not simply progress or simply danger.",
-          "usage": "Strong opening line for a technology/AI essay — sets up a balanced two-sided argument.",
-          "position": ["intro"]
-        },
-        {
-          "quote": "We need to be super careful with AI. Potentially more dangerous than nukes.",
-          "author": "Elon Musk",
-          "source": "Public statement, widely reported, 2014",
-          "meaning": "A blunt warning about the scale of risk unregulated AI development could pose.",
-          "usage": "Use to introduce the 'risk/regulation' dimension of a technology essay.",
-          "position": ["body"]
-        }
-      ]
+     "quote": "An honest public servant can't become rich in politics. He can only attain greatness and satisfaction by service.",
+     "author": "Harry S. Truman",
+     "source": "Widely documented in Truman's public remarks; commonly cited in public-service literature",
+     "meaning": "Public office should be measured by service rendered, not personal enrichment.",
+     "usage": "Use for questions on integrity, probity, or why public servants shouldn't use office for personal gain.",
+     "position": [
+      "body",
+      "conclusion"
+     ]
     },
     {
-      "cluster": "Environment & sustainability",
-      "quotes": [
-        {
-          "quote": "The 'control of nature' is a phrase conceived in arrogance, born of the Neanderthal age of biology and philosophy, when it was supposed that nature exists for the convenience of man.",
-          "author": "Rachel Carson",
-          "source": "Silent Spring (1962)",
-          "meaning": "Critiques the assumption that nature exists to be dominated and used by humans without consequence.",
-          "usage": "Powerful for essays on development-vs-environment trade-offs or the ethics of exploiting nature.",
-          "position": ["body"]
-        },
-        {
-          "quote": "In this now universal contamination of the environment, chemicals are the sinister and little-recognized partners of radiation in changing the very nature of the world — the very nature of its life.",
-          "author": "Rachel Carson",
-          "source": "Silent Spring (1962)",
-          "meaning": "Highlights how slow, invisible environmental damage can be as consequential as dramatic disasters.",
-          "usage": "Good for essays on pollution, climate change, or the invisibility of ecological harm.",
-          "position": ["body"]
-        }
-      ]
+     "quote": "Public service must be more than doing a job efficiently and honestly. It must be a complete dedication to the people and to the nation.",
+     "author": "Margaret Chase Smith",
+     "source": "U.S. Senator; widely documented public remarks",
+     "meaning": "Competence and honesty are necessary but not sufficient — service requires genuine commitment.",
+     "usage": "Useful to distinguish 'efficiency' from 'dedication' in a governance or civil-service answer.",
+     "position": [
+      "body"
+     ]
     },
     {
-      "cluster": "Education",
-      "quotes": [
-        {
-          "quote": "Education is the most powerful weapon which you can use to change the world.",
-          "author": "Nelson Mandela",
-          "source": "Speech at Madison Park High School, Boston, 23 June 1990 (exact phrasing varies slightly across press reports of the period)",
-          "meaning": "Positions education as the primary lever for social transformation.",
-          "usage": "Classic, well-known opening or closing line for essays on education, empowerment or social change — because it's so widely used, pair it with a less obvious point to avoid a generic-sounding essay.",
-          "position": ["intro", "conclusion"]
-        }
-      ]
-    },
-    {
-      "cluster": "Governance & public policy",
-      "quotes": [
-        {
-          "quote": "Good governance is ensuring respect for human rights and the rule of law; strengthening democracy; promoting transparency and capacity in public administration.",
-          "author": "Kofi Annan",
-          "source": "UN Secretary-General; documented public remarks",
-          "meaning": "A working definition of good governance tying together rights, democracy and transparency.",
-          "usage": "Useful anchor definition for a governance essay's introduction.",
-          "position": ["intro"]
-        }
-      ]
-    },
-    {
-      "cluster": "Nationalism & culture",
-      "quotes": [
-        {
-          "quote": "Long years ago, we made a tryst with destiny, and now the time comes when we shall redeem our pledge, not wholly or in full measure, but very substantially. At the stroke of the midnight hour, when the world sleeps, India will awake to life and freedom.",
-          "author": "Jawaharlal Nehru",
-          "source": "'Tryst with Destiny' speech to the Constituent Assembly, midnight of 14-15 August 1947",
-          "meaning": "Marks India's independence as the fulfilment of a long, collective national pledge.",
-          "usage": "Use for essays on nationhood, independence, or India's civilisational journey — best in the introduction, given how well-known it is.",
-          "position": ["intro"]
-        },
-        {
-          "quote": "A moment comes, which comes but rarely in history, when we step out from the old to the new, when an age ends, and when the soul of a nation, long suppressed, finds utterance.",
-          "author": "Jawaharlal Nehru",
-          "source": "'Tryst with Destiny' speech, 14-15 August 1947",
-          "meaning": "Frames independence as a civilisational turning point, not just a political event.",
-          "usage": "Works well for essays on transformation, historical turning points, or national identity.",
-          "position": ["intro", "body"]
-        }
-      ]
+     "quote": "A public office is not a job, it is an opportunity to do something for the public.",
+     "author": "Franklin Knight Lane",
+     "source": "U.S. Secretary of the Interior; widely documented public remarks",
+     "meaning": "Reframes public office as an opportunity for service rather than a career transaction.",
+     "usage": "Short, quotable line — works well as an opening or closing line on the civil-services/GS4 theme.",
+     "position": [
+      "intro",
+      "conclusion"
+     ]
     }
-  ]
+   ]
+  },
+  {
+   "concept": "Compassion & Trusteeship",
+   "quotes": [
+    {
+     "quote": "Supposing I have come by a fair amount of wealth — either by way of legacy, or by means of trade and industry — I must know that all that wealth does not belong to me; what belongs to me is the right to an honourable livelihood, no better than that enjoyed by millions of others. The rest of my wealth belongs to the community and must be used for the welfare of the community.",
+     "author": "Mahatma Gandhi",
+     "source": "Collected Works of Mahatma Gandhi, on the doctrine of Trusteeship",
+     "meaning": "Gandhi's Trusteeship doctrine: wealth and power are held in trust for society, not owned absolutely.",
+     "usage": "Strong for essays/GS4 answers on inequality, CSR, or the ethics of wealth and power.",
+     "position": [
+      "body"
+     ]
+    }
+   ]
+  },
+  {
+   "concept": "Courage",
+   "quotes": [
+    {
+     "quote": "The man, then, who faces and who fears the right things and from the right motive, in the right way and at the right time, and who feels confidence under the corresponding conditions, is brave; for the brave man feels and acts according to the merits of the case and in whatever way the rule directs.",
+     "author": "Aristotle",
+     "source": "Nicomachean Ethics, Book III (W. D. Ross translation)",
+     "meaning": "Courage is a mean between rashness and cowardice — feeling the right fear, for the right reason, at the right time.",
+     "usage": "Use for GS4 questions distinguishing courage from recklessness, e.g. in whistleblowing or crisis-decision case studies.",
+     "position": [
+      "body"
+     ]
+    }
+   ]
+  },
+  {
+   "concept": "Accountability & Transparency",
+   "quotes": [
+    {
+     "quote": "Good governance is ensuring respect for human rights and the rule of law; strengthening democracy; promoting transparency and capacity in public administration.",
+     "author": "Kofi Annan",
+     "source": "UN Secretary-General; documented public remarks (Kofi Annan Foundation)",
+     "meaning": "Ties transparency and accountability directly to the definition of good governance.",
+     "usage": "Use for GS2/GS4 questions on accountability mechanisms, RTI, or e-governance.",
+     "position": [
+      "intro",
+      "body"
+     ]
+    }
+   ]
+  },
+  {
+   "concept": "Objectivity",
+   "quotes": [
+    {
+     "quote": "If anyone can refute me — show me I'm making a mistake or looking at things from the wrong perspective — I'll gladly change. It's the truth I'm after, and the truth never harmed anyone.",
+     "author": "Marcus Aurelius",
+     "source": "Meditations (widely circulated in the Gregory Hays translation)",
+     "meaning": "Genuine objectivity means being willing to revise your view when shown you're wrong, rather than defending a position out of ego.",
+     "usage": "Use for GS4 questions on objectivity, open-mindedness, or a civil servant's willingness to reconsider a decision.",
+     "position": [
+      "body"
+     ]
+    }
+   ]
+  },
+  {
+   "concept": "Empathy",
+   "quotes": [
+    {
+     "quote": "You never really understand a person until you consider things from his point of view — until you climb into his skin and walk around in it.",
+     "author": "Atticus Finch (fictional character), Harper Lee",
+     "source": "To Kill a Mockingbird (1960), Chapter 3, p. 30",
+     "meaning": "Empathy requires imaginatively taking another person's perspective, not just feeling sorry for them.",
+     "usage": "A literary quote, not a real-world figure — flag it as such if the examiner context calls for 'thinkers', but it's excellent for illustrating empathy in a case-study answer.",
+     "position": [
+      "body"
+     ]
+    }
+   ]
+  },
+  {
+   "concept": "Probity",
+   "quotes": [
+    {
+     "quote": "Means and end are convertible terms in my philosophy of life.",
+     "author": "Mahatma Gandhi",
+     "source": "Young India, 26 December 1924, p. 424",
+     "meaning": "Gandhi rejected the idea that a good end can justify improper means — the method used is itself part of the outcome's morality.",
+     "usage": "Central quote for GS4 questions on probity, means vs. ends, or corruption 'for a good cause' dilemmas.",
+     "position": [
+      "body",
+      "conclusion"
+     ]
+    }
+   ]
+  },
+  {
+   "concept": "Justice",
+   "quotes": [
+    {
+     "quote": "Injustice anywhere is a threat to justice everywhere. We are caught in an inescapable network of mutuality, tied in a single garment of destiny.",
+     "author": "Martin Luther King Jr.",
+     "source": "Letter from Birmingham Jail, 16 April 1963",
+     "meaning": "Justice is interconnected — tolerating injustice against one group ultimately endangers justice for everyone.",
+     "usage": "Strong for GS4/essay answers on social justice, discrimination, or why administrators can't treat injustice elsewhere as 'not their problem'.",
+     "position": [
+      "intro",
+      "body"
+     ]
+    }
+   ]
+  }
+ ],
+ "essay": [
+  {
+   "cluster": "Technology / AI / digital ethics",
+   "quotes": [
+    {
+     "quote": "Artificial intelligence is likely to be either the best or worst thing to happen to humanity.",
+     "author": "Stephen Hawking",
+     "source": "Public remarks, widely reported (BBC, NBC News, c. 2014-2016)",
+     "meaning": "Frames AI as a genuine double-edged development, not simply progress or simply danger.",
+     "usage": "Strong opening line for a technology/AI essay — sets up a balanced two-sided argument.",
+     "position": [
+      "intro"
+     ]
+    },
+    {
+     "quote": "We need to be super careful with AI. Potentially more dangerous than nukes.",
+     "author": "Elon Musk",
+     "source": "Public statement, widely reported, 2014",
+     "meaning": "A blunt warning about the scale of risk unregulated AI development could pose.",
+     "usage": "Use to introduce the 'risk/regulation' dimension of a technology essay.",
+     "position": [
+      "body"
+     ]
+    }
+   ]
+  },
+  {
+   "cluster": "Environment & sustainability",
+   "quotes": [
+    {
+     "quote": "The 'control of nature' is a phrase conceived in arrogance, born of the Neanderthal age of biology and philosophy, when it was supposed that nature exists for the convenience of man.",
+     "author": "Rachel Carson",
+     "source": "Silent Spring (1962)",
+     "meaning": "Critiques the assumption that nature exists to be dominated and used by humans without consequence.",
+     "usage": "Powerful for essays on development-vs-environment trade-offs or the ethics of exploiting nature.",
+     "position": [
+      "body"
+     ]
+    },
+    {
+     "quote": "In this now universal contamination of the environment, chemicals are the sinister and little-recognized partners of radiation in changing the very nature of the world — the very nature of its life.",
+     "author": "Rachel Carson",
+     "source": "Silent Spring (1962)",
+     "meaning": "Highlights how slow, invisible environmental damage can be as consequential as dramatic disasters.",
+     "usage": "Good for essays on pollution, climate change, or the invisibility of ecological harm.",
+     "position": [
+      "body"
+     ]
+    }
+   ]
+  },
+  {
+   "cluster": "Education",
+   "quotes": [
+    {
+     "quote": "Education is the most powerful weapon which you can use to change the world.",
+     "author": "Nelson Mandela",
+     "source": "Speech at Madison Park High School, Boston, 23 June 1990 (exact phrasing varies slightly across press reports of the period)",
+     "meaning": "Positions education as the primary lever for social transformation.",
+     "usage": "Classic, well-known opening or closing line for essays on education, empowerment or social change — because it's so widely used, pair it with a less obvious point to avoid a generic-sounding essay.",
+     "position": [
+      "intro",
+      "conclusion"
+     ]
+    }
+   ]
+  },
+  {
+   "cluster": "Governance & public policy",
+   "quotes": [
+    {
+     "quote": "Good governance is ensuring respect for human rights and the rule of law; strengthening democracy; promoting transparency and capacity in public administration.",
+     "author": "Kofi Annan",
+     "source": "UN Secretary-General; documented public remarks",
+     "meaning": "A working definition of good governance tying together rights, democracy and transparency.",
+     "usage": "Useful anchor definition for a governance essay's introduction.",
+     "position": [
+      "intro"
+     ]
+    }
+   ]
+  },
+  {
+   "cluster": "Nationalism & culture",
+   "quotes": [
+    {
+     "quote": "Long years ago, we made a tryst with destiny, and now the time comes when we shall redeem our pledge, not wholly or in full measure, but very substantially. At the stroke of the midnight hour, when the world sleeps, India will awake to life and freedom.",
+     "author": "Jawaharlal Nehru",
+     "source": "'Tryst with Destiny' speech to the Constituent Assembly, midnight of 14-15 August 1947",
+     "meaning": "Marks India's independence as the fulfilment of a long, collective national pledge.",
+     "usage": "Use for essays on nationhood, independence, or India's civilisational journey — best in the introduction, given how well-known it is.",
+     "position": [
+      "intro"
+     ]
+    },
+    {
+     "quote": "A moment comes, which comes but rarely in history, when we step out from the old to the new, when an age ends, and when the soul of a nation, long suppressed, finds utterance.",
+     "author": "Jawaharlal Nehru",
+     "source": "'Tryst with Destiny' speech, 14-15 August 1947",
+     "meaning": "Frames independence as a civilisational turning point, not just a political event.",
+     "usage": "Works well for essays on transformation, historical turning points, or national identity.",
+     "position": [
+      "intro",
+      "body"
+     ]
+    }
+   ]
+  },
+  {
+   "cluster": "Gender & women's issues",
+   "quotes": [
+    {
+     "quote": "I think gender inequality is not the natural human condition. But the idea that somehow women have to be in an inferior position — or not quite such a dominant position — is really wholly artificial.",
+     "author": "Amartya Sen",
+     "source": "Interview, UNU-WIDER ('Feminism is an issue of humanity')",
+     "meaning": "Sen argues gender hierarchy is a social construction, not a natural or inevitable state.",
+     "usage": "Use to open a body paragraph arguing that gender inequality is a policy and social failure, not a biological given.",
+     "position": [
+      "body"
+     ]
+    }
+   ]
+  },
+  {
+   "cluster": "Media & privacy",
+   "quotes": [
+    {
+     "quote": "Arguing that you don't care about the right to privacy because you have nothing to hide is no different than saying you don't care about free speech because you have nothing to say.",
+     "author": "Edward Snowden",
+     "source": "Widely documented public remarks/interview",
+     "meaning": "Rebuts the 'nothing to hide' argument by comparing privacy to free speech — both are rights worth defending regardless of whether you currently need to exercise them.",
+     "usage": "Strong for essays on surveillance, data privacy, or digital-age civil liberties.",
+     "position": [
+      "body"
+     ]
+    }
+   ]
+  }
+ ]
 }
