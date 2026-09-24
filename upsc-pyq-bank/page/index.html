@@ -625,7 +625,6 @@ var TABS = [
   {id:"mocks", label:"Mocks"},
   {id:"syllabus", label:"Syllabus"},
   {id:"pyq", label:"PYQ Bank"},
-  {id:"papers", label:"Papers"},
 ];
 var activeTab = (function(){
   var h = (location.hash||"").slice(1), saved = lsGet("dossier.tab");
@@ -1217,15 +1216,11 @@ var pyqDocs = null;          // [{id, exam, paper, year, complete, source, answe
 var pyqLoading = false;
 var pyqFilter = {exam:"prelims", paper:"all", year:"all", q:"", limit:40, reveal:false};
 var pyqRevealed = {};
-var PYQ_EXAMS = [{id:"prelims", label:"Prelims"},{id:"mains", label:"Mains GS"},{id:"optional", label:"Anthropology"}];
+var PYQ_EXAMS = [{id:"prelims", label:"Prelims"},{id:"mains", label:"Mains (GS + Essay)"},{id:"optional", label:"Anthropology"}];
 
 function fallbackPyqDocs(){
   // Used only when the question bank can't be reached: the older built-in list
-  if(!PYQ) return [];
-  return [
-    {id:"prelims-2023-gs1", exam:"prelims", paper:"GS Paper I", year:2023, complete:false, source:"Built-in list (39 of 100 questions).",
-      questions:PYQ.verified.prelims.map(function(q){ return {text:q.question, subject:q.subject}; })}
-  ];
+  return [];
 }
 function loadPyq(){
   if(pyqDocs || pyqLoading) return;
@@ -1234,7 +1229,7 @@ function loadPyq(){
   db.collection("pyq").get().then(function(qs){
     pyqDocs = qs.docs.map(function(d){ var b = d.data()||{}; return Object.assign({id:d.id}, b); });
     if(!pyqDocs.length) pyqDocs = fallbackPyqDocs();
-  }).catch(function(){ pyqDocs = fallbackPyqDocs(); toast("Couldn't load the question bank. Showing the built-in list."); })
+  }).catch(function(){ pyqDocs = fallbackPyqDocs(); toast("Couldn't load the question bank. Check your connection and reload."); })
     .then(function(){ pyqLoading = false; if(activeTab==="pyq") renderPyq(); });
 }
 function pyqPapersFor(exam){
@@ -1267,7 +1262,7 @@ function renderPyq(){
     return '<button class="pill'+(mode===m[0]?" active":"")+'" aria-pressed="'+(mode===m[0])+'" data-mode="'+m[0]+'">'+m[1]+'</button>';
   }).join("");
 
-  var html = '<div class="card pyq-note">Most Mains GS and Essay papers are kept as PDFs, filed by year. <button class="link-btn" id="toPapers">Open Papers &rsaquo;</button></div>'+
+  var html = '<div class="card pyq-note">Exact questions from the papers in your Drive folder, filed by year. Mains: GS I–IV and Essay (2014–2023), GS I–IV (2024–2026). Anthropology: Papers I and II (2023–2026). Prelims: 2014, 2015, 2020, 2021, 2024 and 2025 GS I, plus 2020 and 2021 CSAT. The remaining Prelims scans are still being checked.</div>'+
              '<div class="pill-row"><span class="pill-label">Exam</span>'+examPills+'</div>'+
              '<div class="pill-row"><span class="pill-label">View</span>'+modePills+'</div>';
 
@@ -1291,7 +1286,7 @@ function renderPyq(){
           var on = f.paper===p.paper && String(f.year)===String(d.year);
           return '<button class="yr'+(d.complete?" full":" part")+(on?" on":"")+'" data-paper="'+esc(p.paper)+'" data-year="'+d.year+'" title="'+(d.complete?"Full paper":"Partial")+' · '+(d.questions||[]).length+' questions">'+d.year+'</button>';
         }).join("")+'</div></div>';
-    }).join("") : '<div class="empty">No papers for this exam yet. Upload PDFs in the Papers tab.</div>')+
+    }).join("") : '<div class="empty">No papers for this exam yet.</div>')+
     '<div class="cov-legend"><span><i class="yr full"></i>Full paper</span><span><i class="yr part"></i>Partial or topic-wise</span></div>'+
   '</div>';
 
