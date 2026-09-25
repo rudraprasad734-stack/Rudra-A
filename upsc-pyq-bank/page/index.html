@@ -401,15 +401,15 @@
   .plan-setup button{margin-top:2px; width:100%; padding:11px; border:none; border-radius:10px; background:var(--tab-accent); color:var(--tab-accent-ink); font-weight:700; font-size:13.5px; cursor:pointer;}
   .plan-setup .summary{font-size:12px; color:var(--ink-soft); margin-top:10px; line-height:1.5;}
   .result-card .sub{margin:10px 0 0;}
-  .result-row{display:flex; align-items:center; justify-content:space-between; gap:8px; padding:10px 0; border-top:1px solid var(--line-soft); flex-wrap:wrap;}
+  .result-row{display:flex; flex-direction:column; gap:9px; padding:12px 0; border-top:1px solid var(--line-soft);}
   .result-row:first-of-type{border-top:none; padding-top:0;}
   .result-row .name{font-weight:700; font-size:13.5px; display:flex; align-items:center; gap:8px;}
-  .result-row .status{font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.03em; padding:3px 9px; border-radius:999px;}
+  .result-row .status{font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.03em; padding:3px 9px; border-radius:999px; white-space:nowrap;}
   .result-row .status.pending{background:var(--surface-2); color:var(--ink-faint);}
   .result-row .status.passed{background:var(--sage-soft); color:var(--sage);}
   .result-row .status.failed{background:var(--brick-soft); color:var(--brick);}
   .result-row .btns{display:flex; gap:6px;}
-  .result-row .btns button{padding:6px 12px; border-radius:8px; border:1px solid var(--line); background:var(--surface-2); font-size:12px; font-weight:700; cursor:pointer;}
+  .result-row .btns button{flex:1; min-width:0; padding:8px 4px; border-radius:8px; border:1px solid var(--line); background:var(--surface-2); font-size:12px; font-weight:700; cursor:pointer; text-align:center;}
   .result-row .btns button.pass{color:var(--sage); border-color:var(--sage);}
   .result-row .btns button.fail{color:var(--brick); border-color:var(--brick);}
   .result-row .btns button.clear{color:var(--ink-faint);}
@@ -2907,6 +2907,25 @@ var todayKey = toKey(new Date());
 var timerInterval = null;
 var timerState = {running:false, startedAt:0, elapsedMs:0}; // in-memory; today's totals persisted to localStorage below
 var currentDailyKey = todayKey;
+
+// Left open across midnight (a real scenario over a year of daily use), todayKey
+// would otherwise stay frozen on whatever day the tab was opened, silently
+// pointing the dashboard, week highlight and timer log at the wrong date. Re-check
+// once a minute and immediately whenever the tab regains focus (mobile browsers
+// throttle background timers, so the minute tick alone isn't reliable there).
+function checkDateRollover(){
+  if(!DATA) return;
+  var nowKey = toKey(new Date());
+  if(nowKey === todayKey) return;
+  var wasOnToday = (currentDailyKey === todayKey);
+  todayKey = nowKey;
+  if(wasOnToday) currentDailyKey = clampKey(todayKey);
+  updateTopbarDate();
+  renderTabs();
+  renderView(activeTab);
+}
+setInterval(checkDateRollover, 60000);
+document.addEventListener("visibilitychange", function(){ if(document.visibilityState==="visible") checkDateRollover(); });
 
 // ============================================================================
 // LOAD SCHEDULE DATA
