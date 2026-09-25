@@ -1,5 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>UPSC Companion</title>
 <meta name="description" content="A daily-use companion to the 18-month UPSC prep plan">
+<meta name="theme-color" content="#1F2A52">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./icon-192.png">
+<link rel="apple-touch-icon" href="./apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="UPSC Companion">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -596,6 +608,8 @@
     .plan-list li{grid-template-columns:1fr; gap:1px;}
   }
 </style>
+</head>
+<body>
 
 <div id="toast" class="toast" role="status" hidden></div>
 <div id="app">
@@ -4824,4 +4838,19 @@ if(document.readyState==="loading"){
 }
 })();
 </script>
+<script>
+// Registers the offline app-shell cache when hosted for real (http/https).
+// Service workers require a real origin, so this is a silent no-op both
+// inside the Claude Artifact viewer and when this file is opened directly
+// from disk (file://) -- the app itself doesn't depend on it either way,
+// since all its data is already inlined above and all progress is saved
+// to localStorage regardless.
+if("serviceWorker" in navigator && (location.protocol==="https:" || location.hostname==="localhost")){
+  window.addEventListener("load", function(){
+    navigator.serviceWorker.register("./sw.js").catch(function(){});
+  });
+}
+</script>
+</body>
+</html>
 
