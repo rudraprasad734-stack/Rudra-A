@@ -18,25 +18,25 @@
 
 <style>
   :root{
-    --bg:#ECEEF3; --surface:#FFFFFF; --surface-2:#F4F5FA; --raised:#FFFFFF;
-    --ink:#161B2E; --ink-soft:#565C7A; --ink-faint:#8A8FAE;
-    --line:#D6D9E5; --line-soft:#E6E8F0;
+    --bg:#F9FAFB; --surface:#FFFFFF; --surface-2:#F4F5FA; --raised:#FFFFFF;
+    --ink:#000000; --ink-soft:#333333; --ink-faint:#666666;
+    --line:#CCCCCC; --line-soft:#E6E6E6;
     --navy:#1F2A52; --navy-ink:#FFFFFF; --navy-soft:#E7E9F5;
-    --gold:#9C7A22; --gold-ink:#FFFFFF; --gold-soft:#F3E9D0;
-    --sage:#2C7350; --sage-ink:#FFFFFF; --sage-soft:#DFEEE5;
-    --brick:#9C3B33; --brick-ink:#FFFFFF; --brick-soft:#F5E1DE;
-    --tier4:#7C819F; --tier4-soft:#E9EAF2; --link:#1F2A52;
-    --freq1:#E0392B; --freq1-soft:#FBE2DF;
-    --freq2:#E8811A; --freq2-soft:#FBEBD9;
-    --freq3:#C99A1E; --freq3-soft:#F5EDD4;
-    --freq4:#AEB2C4; --freq4-soft:#ECEDF3;
-    --tab-dashboard:#3D6EBF; --tab-dashboard-ink:#FFFFFF; --tab-dashboard-soft:#E3EAF8;
-    --tab-syllabus:#2C8C82; --tab-syllabus-ink:#FFFFFF; --tab-syllabus-soft:#DFF0EE;
-    --tab-logs:#B8722F; --tab-logs-ink:#FFFFFF; --tab-logs-soft:#F5E9DA;
-    --tab-tiers:#7457B0; --tab-tiers-ink:#FFFFFF; --tab-tiers-soft:#EAE3F6;
-    --tab-mocks:#B14F63; --tab-mocks-ink:#FFFFFF; --tab-mocks-soft:#F5E2E6;
-    --tab-pyq:#5C7A3D; --tab-pyq-ink:#FFFFFF; --tab-pyq-soft:#E8EFDD;
-    --tab-quotes:#55658A; --tab-quotes-ink:#FFFFFF; --tab-quotes-soft:#E4E7EF;
+    --gold:#FF9500; --gold-ink:#FFFFFF; --gold-soft:#FFE4CC;
+    --sage:#00C853; --sage-ink:#FFFFFF; --sage-soft:#C8E6C9;
+    --brick:#FF3B30; --brick-ink:#FFFFFF; --brick-soft:#FFCCCB;
+    --tier4:#7C3AED; --tier4-soft:#EDE9FE; --link:#0066FF;
+    --freq1:#FF3B30; --freq1-soft:#FFE5E5;
+    --freq2:#FF9500; --freq2-soft:#FFE4CC;
+    --freq3:#FFCC00; --freq3-soft:#FFEDD4;
+    --freq4:#34C759; --freq4-soft:#D1F4D7;
+    --tab-dashboard:#0066FF; --tab-dashboard-ink:#FFFFFF; --tab-dashboard-soft:#E3EFFF;
+    --tab-syllabus:#00C853; --tab-syllabus-ink:#FFFFFF; --tab-syllabus-soft:#D1F4D7;
+    --tab-logs:#FF9500; --tab-logs-ink:#FFFFFF; --tab-logs-soft:#FFE4CC;
+    --tab-tiers:#7C3AED; --tab-tiers-ink:#FFFFFF; --tab-tiers-soft:#EDE9FE;
+    --tab-mocks:#FF3B30; --tab-mocks-ink:#FFFFFF; --tab-mocks-soft:#FFCCCB;
+    --tab-pyq:#34C759; --tab-pyq-ink:#FFFFFF; --tab-pyq-soft:#D1F4D7;
+    --tab-quotes:#5856D6; --tab-quotes-ink:#FFFFFF; --tab-quotes-soft:#E8E5FF;
     --tab-accent: var(--tab-dashboard); --tab-accent-ink: var(--tab-dashboard-ink); --tab-accent-soft: var(--tab-dashboard-soft);
     --shadow: 0 1px 2px rgba(22,27,46,.06), 0 6px 20px -8px rgba(22,27,46,.18);
     --radius: 14px;
@@ -220,17 +220,24 @@
   .timer-dial-wrap:focus-visible{outline:2px solid var(--gold); outline-offset:6px; border-radius:50%;}
   .timer-dial-glow{
     position:absolute; inset:-18px; border-radius:50%;
-    background:conic-gradient(from 0deg, var(--navy), var(--sage) 33%, var(--gold) 66%, var(--navy) 100%);
-    filter:blur(20px); opacity:.28; transform:scale(.92);
+    background:conic-gradient(from 0deg, #4F6DF5, #A855F7 25%, #EC4899 50%, #F97316 75%, #4F6DF5 100%);
+    filter:blur(24px); opacity:.42; transform:scale(.92);
     transition:opacity .8s ease, transform .8s ease, filter .8s ease;
+    background-size:200% 200%;
+    animation:colorShift 6s ease-in-out infinite;
+  }
+  @keyframes colorShift{
+    0%{opacity:.35;}
+    50%{opacity:.55;}
+    100%{opacity:.35;}
   }
   .timer-dial-wrap.running .timer-dial-glow{
-    animation:timerInhaleExhale 12s cubic-bezier(.45,0,.55,1) infinite, timerSpin 16s linear infinite;
+    animation:timerInhaleExhale 12s cubic-bezier(.45,0,.55,1) infinite, timerSpin 16s linear infinite, colorShift 6s ease-in-out infinite;
   }
   .timer-dial-ring{
     position:absolute; inset:0; border-radius:50%;
-    background:conic-gradient(from 0deg, var(--navy), var(--sage) 33%, var(--gold) 66%, var(--navy) 100%);
-    opacity:.5; transition:opacity .4s ease;
+    background:conic-gradient(from 0deg, #4F6DF5, #A855F7 25%, #EC4899 50%, #F97316 75%, #4F6DF5 100%);
+    opacity:.68; transition:opacity .4s ease;
   }
   .timer-dial-wrap.running .timer-dial-ring{opacity:1; animation:timerSpin 16s linear infinite;}
   .timer-dial-ring::after{
@@ -249,11 +256,11 @@
   .timer-dial-state{font-size:10.5px; font-weight:700; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-faint); margin-top:5px;}
   .timer-dial-wrap.running .timer-dial-state{color:var(--sage);}
   @keyframes timerSpin{from{transform:rotate(0deg);} to{transform:rotate(360deg);}}
-  /* 0%->42% (~5s) inhale: glow bulges out to fill the card. 42%->100% (~7s) exhale: shrinks back. */
+  /* 0%->42% (~5s) inhale: glow bulges out to fill the card like a light bulb. 42%->100% (~7s) exhale: shrinks back. */
   @keyframes timerInhaleExhale{
-    0%{transform:scale(.95); opacity:.5; filter:blur(20px);}
-    42%{transform:scale(2.6); opacity:.85; filter:blur(46px);}
-    100%{transform:scale(.95); opacity:.5; filter:blur(20px);}
+    0%{transform:scale(.92); opacity:.3; filter:blur(18px);}
+    42%{transform:scale(3.2); opacity:.72; filter:blur(56px);}
+    100%{transform:scale(.92); opacity:.3; filter:blur(18px);}
   }
   @keyframes timerFaceBreathe{
     0%{transform:scale(1);}
