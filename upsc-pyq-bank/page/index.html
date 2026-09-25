@@ -259,6 +259,21 @@
   .timer-dial-wrap.running .timer-dial-ring{
     animation:timerBreathe 12s cubic-bezier(.45,0,.55,1) infinite, gentleWobble 25s ease-in-out infinite;
   }
+  /* Orbiting light: a bright arc of the event horizon continuously sweeps around,
+     like light bending around a black hole (Interstellar-style lensing). Spins
+     always, independent of breathe/wobble, so the hole never looks fully static. */
+  .timer-dial-orbit{
+    position:absolute; inset:-6px; border-radius:50%;
+    background:conic-gradient(from 0deg,
+      transparent 0deg, transparent 315deg,
+      rgba(255,255,255,0) 328deg, rgba(255,255,255,.95) 340deg, rgba(255,240,220,1) 345deg, rgba(255,255,255,.95) 350deg,
+      transparent 358deg, transparent 360deg);
+    filter:blur(2px) drop-shadow(0 0 6px rgba(255,255,255,.8));
+    animation:orbitSpin 5s linear infinite;
+    mix-blend-mode:screen;
+    pointer-events:none;
+  }
+  @keyframes orbitSpin{ from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
   .timer-dial-ring::after{
     content:""; position:absolute; top:1px; left:50%; width:6px; height:6px; margin-left:-3px;
     border-radius:50%; background:#FFD700; opacity:0; box-shadow:0 0 10px 2px rgba(255,215,0,.8);
@@ -301,7 +316,8 @@
   @media (prefers-reduced-motion: reduce){
     .timer-dial-wrap.running .timer-dial-glow,
     .timer-dial-wrap.running .timer-dial-ring,
-    .timer-dial-wrap.running .timer-dial-face{animation:none;}
+    .timer-dial-wrap.running .timer-dial-face,
+    .timer-dial-orbit{animation:none;}
   }
   .hero{padding:22px 20px; display:flex; flex-direction:column; gap:16px; margin-bottom:4px;}
   .hero-phase{font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--gold);}
@@ -3774,6 +3790,7 @@ function timerCard(){
     '<div class="timer-dial-wrap'+(running?" running":"")+'" id="timerDialWrap" role="button" tabindex="0" aria-pressed="'+(running?"true":"false")+'" aria-label="'+(running?"Pause":"Start")+' study timer">'+
       '<div class="timer-dial-glow"></div>'+
       '<div class="timer-dial-ring"></div>'+
+      '<div class="timer-dial-orbit"></div>'+
       '<div class="timer-dial-face">'+
         '<div class="timer-display" id="timerDisplay">'+fmtTimer(timerElapsedNow())+'</div>'+
         '<div class="timer-dial-state">'+dialState+'</div>'+
