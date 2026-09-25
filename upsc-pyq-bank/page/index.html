@@ -168,7 +168,7 @@
   #view-dashboard .timer-card{ background:color-mix(in srgb, var(--surface) 66%, var(--navy) 14%); border-color:color-mix(in srgb, var(--navy) 32%, var(--line)); overflow:hidden; }
   #view-dashboard .hero{ background:color-mix(in srgb, var(--surface) 66%, var(--gold) 16%); border-color:color-mix(in srgb, var(--gold) 32%, var(--line)); }
   #view-dashboard .plan-card{ background:color-mix(in srgb, var(--surface) 68%, var(--sage) 14%); border-color:color-mix(in srgb, var(--sage) 30%, var(--line)); }
-  #view-dashboard .plan-setup, #view-dashboard .result-card{ background:color-mix(in srgb, var(--surface) 68%, var(--tab-accent) 16%); border-color:color-mix(in srgb, var(--tab-accent) 30%, var(--line)); }
+  #view-dashboard .plan-setup, #view-dashboard .result-card, #view-dashboard .backup-card{ background:color-mix(in srgb, var(--surface) 68%, var(--tab-accent) 16%); border-color:color-mix(in srgb, var(--tab-accent) 30%, var(--line)); }
   #view-dashboard .progress-card{ background:color-mix(in srgb, var(--surface) 72%, var(--card-tint, var(--navy)) 18%); border-color:color-mix(in srgb, var(--card-tint, var(--navy)) 26%, var(--line)); }
 
   /* ---- Dashboard ---- */
@@ -416,6 +416,17 @@
   .smart-toggle{display:flex; align-items:flex-start; gap:9px; margin-top:14px; padding-top:12px; border-top:1px solid var(--line-soft); cursor:pointer;}
   .smart-toggle input{margin-top:2px; width:16px; height:16px; accent-color:var(--tab-accent); flex:0 0 auto; cursor:pointer;}
   .smart-toggle span{font-size:12px; color:var(--ink-soft); line-height:1.5;}
+  .backup-card{padding:16px; margin:0 0 14px;}
+  .backup-card h3{font-size:14px; margin-bottom:4px;}
+  .backup-card .sub{font-size:12px; color:var(--ink-soft); margin:0 0 12px; line-height:1.5;}
+  .backup-btns{display:flex; gap:8px; flex-wrap:wrap;}
+  .backup-btns button, .backup-restore{
+    flex:1; min-width:140px; padding:10px 12px; border-radius:10px; border:1px solid var(--tab-accent);
+    background:var(--tab-accent); color:var(--tab-accent-ink); font-weight:700; font-size:13px; cursor:pointer;
+    text-align:center; display:flex; align-items:center; justify-content:center;
+  }
+  .backup-restore{background:var(--surface-2); color:var(--tab-accent); position:relative; overflow:hidden;}
+  .backup-restore input[type=file]{position:absolute; inset:0; opacity:0; cursor:pointer; width:100%;}
 
   /* ---- Syllabus ---- */
   .syl-note{font-size:12px; font-weight:500; color:var(--ink-soft); margin-top:3px; text-transform:none; letter-spacing:0;}
@@ -2872,6 +2883,8 @@ var saveFailed = false;
 function onSaveError(){ saveFailed = true; toast("Couldn't save that change. Check your connection and try again."); }
 function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
 function lsSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+function lsGetJSON(k, fallback){ try{ var v = JSON.parse(lsGet(k)); return v==null ? fallback : v; }catch(e){ return fallback; } }
+function lsSetJSON(k, v){ lsSet(k, JSON.stringify(v)); }
 
 // ============================================================================
 // STATE
@@ -2975,12 +2988,27 @@ function buildIndices(){
 // ============================================================================
 // DB LOAD / SAVE
 // ============================================================================
+// Every piece of progress (ticks, daily logs, mock scores) is mirrored to this
+// browser's localStorage on every save, in addition to the account-synced db
+// when that's available. That way nothing depends solely on a capability that
+// can come and go with plan changes -- worst case, this device keeps working
+// from its own local copy. loadLocalState() seeds everything from that local
+// copy immediately at boot; loadState() then merges in the cloud copy (which
+// wins on conflicts, since it may reflect a newer edit from another device)
+// once/if the db capability resolves.
+function loadLocalState(){
+  prelimsState = lsGetJSON("dossier.state.prelims", {});
+  mainsState = lsGetJSON("dossier.state.mains", {});
+  monthsState = lsGetJSON("dossier.state.months", {});
+  dailyState = lsGetJSON("dossier.state.daily", {});
+  mockTests = lsGetJSON("dossier.state.mockTests", []);
+}
 function loadState(){
   return Promise.resolve().then(function(){
     if(!db) return;
-    var p1 = db.doc("state/prelims").get().then(function(s){ if(s.exists) prelimsState = s.data()||{}; }).catch(function(){});
-    var p2 = db.doc("state/mains").get().then(function(s){ if(s.exists) mainsState = s.data()||{}; }).catch(function(){});
-    var p3 = db.doc("state/months").get().then(function(s){ if(s.exists) monthsState = s.data()||{}; }).catch(function(){});
+    var p1 = db.doc("state/prelims").get().then(function(s){ if(s.exists){ prelimsState = Object.assign({}, prelimsState, s.data()||{}); lsSetJSON("dossier.state.prelims", prelimsState); } }).catch(function(){});
+    var p2 = db.doc("state/mains").get().then(function(s){ if(s.exists){ mainsState = Object.assign({}, mainsState, s.data()||{}); lsSetJSON("dossier.state.mains", mainsState); } }).catch(function(){});
+    var p3 = db.doc("state/months").get().then(function(s){ if(s.exists){ monthsState = Object.assign({}, monthsState, s.data()||{}); lsSetJSON("dossier.state.months", monthsState); } }).catch(function(){});
     var p4 = db.collection("dailyLog").get().then(function(qs){
       qs.docs.forEach(function(doc){
         var body = doc.data()||{};
@@ -2988,9 +3016,14 @@ function loadState(){
         var days = body.days||{};
         Object.keys(days).forEach(function(k){ dailyState[k] = days[k]; });
       });
+      lsSetJSON("dossier.state.daily", dailyState);
     }).catch(function(){});
     var p5 = db.collection("mockTests").orderBy("date","desc").limit(500).get().then(function(qs){
-      mockTests = qs.docs.map(function(doc){ var b=doc.data()||{}; b.id=doc.id; return b; });
+      var cloud = qs.docs.map(function(doc){ var b=doc.data()||{}; b.id=doc.id; return b; });
+      var cloudIds = {}; cloud.forEach(function(m){ cloudIds[m.id]=true; });
+      var localOnly = mockTests.filter(function(m){ return !cloudIds[m.id]; }); // e.g. logged while db wasn't available
+      mockTests = cloud.concat(localOnly).sort(function(a,b){ return (b.date||"").localeCompare(a.date||""); });
+      lsSetJSON("dossier.state.mockTests", mockTests);
     }).catch(function(){});
     var p6 = db.doc("state/plan").get().then(function(s){ if(s.exists){ var v=s.data(); if(v && v.startDate && v.prelimsDate && v.mainsDate) planFromDb = v; } }).catch(function(){});
     var p7 = db.doc("state/results").get().then(function(s){ if(s.exists) resultsFromDb = s.data()||null; }).catch(function(){});
@@ -2999,17 +3032,18 @@ function loadState(){
 }
 
 function saveTopicState(kind){
-  if(!db) return;
   var path = kind==="prelims" ? "state/prelims" : "state/mains";
   var body = kind==="prelims" ? prelimsState : mainsState;
-  db.doc(path).set(body).catch(onSaveError);
+  lsSetJSON("dossier.state."+kind, body);
+  if(db) db.doc(path).set(body).catch(onSaveError);
 }
 function saveMonthsState(){
-  if(!db) return;
-  db.doc("state/months").set(monthsState).catch(onSaveError);
+  lsSetJSON("dossier.state.months", monthsState);
+  if(db) db.doc("state/months").set(monthsState).catch(onSaveError);
 }
 function saveDailyMonth(monthKey){
-  if(!db) return;
+  lsSetJSON("dossier.state.daily", dailyState);
+  if(!db) return Promise.resolve();
   var body = {};
   Object.keys(dailyState).forEach(function(k){
     if(monthKeyOf(k)===monthKey) body[k] = dailyState[k];
@@ -3342,6 +3376,108 @@ function bindResultCard(host){
     toast(smartResumeEnabled ? "Smart resume turned on for your next restart." : "Smart resume turned off.");
   });
 }
+
+// ---- Backup / restore: a plain .json file on the user's own device, independent
+// of account plan or the db capability. Download saves everything; restore reads
+// a previously-downloaded file back in (and best-effort re-syncs it to the
+// account db too, if that's available at the time).
+function collectBackupData(){
+  return {
+    app: "UPSC Companion backup",
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    planConfig: {startDate:DATA.startDate, prelimsDate:DATA.examDates.prelims, mainsDate:DATA.examDates.mains},
+    prelimsState: prelimsState,
+    mainsState: mainsState,
+    monthsState: monthsState,
+    dailyState: dailyState,
+    mockTests: mockTests,
+    examResults: examResults,
+    smartResumeEnabled: smartResumeEnabled,
+    timerLog: lsGetJSON("dossier.timerLog", {})
+  };
+}
+var downloadsNs = null, downloadsChecked = false;
+function getDownloadsNs(){
+  if(downloadsChecked) return Promise.resolve(downloadsNs);
+  if(!(window.claude && window.claude.use)) { downloadsChecked = true; return Promise.resolve(null); }
+  return window.claude.use("downloads").then(function(d){ downloadsNs = d; downloadsChecked = true; return d; }).catch(function(){ downloadsChecked = true; return null; });
+}
+function downloadBackup(){
+  var json = JSON.stringify(collectBackupData(), null, 2);
+  var filename = "upsc-companion-backup-"+todayKey+".json";
+  getDownloadsNs().then(function(downloads){
+    if(!downloads){ toast("Downloads aren't available in this view — try opening the app in its own browser tab."); return; }
+    return downloads.save({filename:filename, data:json}).then(function(res){
+      toast(res.status==="saved" ? "Backup downloaded — keep the file somewhere safe." : "Backup sent.");
+    });
+  }).catch(function(err){
+    if(err && err.code==="declined") return;
+    toast("Couldn't save the backup file. Try again.");
+  });
+}
+function applyBackupData(data){
+  if(!data || typeof data!=="object" || !data.app || data.app.indexOf("UPSC Companion")!==0) throw new Error("not a recognized backup file");
+  prelimsState = data.prelimsState || {};
+  mainsState = data.mainsState || {};
+  monthsState = data.monthsState || {};
+  dailyState = data.dailyState || {};
+  mockTests = data.mockTests || [];
+  examResults = Object.assign({}, DEFAULT_RESULTS, data.examResults||{});
+  lsSetJSON("dossier.state.prelims", prelimsState);
+  lsSetJSON("dossier.state.mains", mainsState);
+  lsSetJSON("dossier.state.months", monthsState);
+  lsSetJSON("dossier.state.daily", dailyState);
+  lsSetJSON("dossier.state.mockTests", mockTests);
+  saveResults();
+  if(data.timerLog) lsSetJSON("dossier.timerLog", data.timerLog);
+  if(typeof data.smartResumeEnabled === "boolean"){
+    smartResumeEnabled = data.smartResumeEnabled;
+    lsSet("dossier.smartResume", smartResumeEnabled ? "1" : "0");
+  }
+  var p = data.planConfig;
+  if(p && p.startDate && p.prelimsDate && p.mainsDate) applyDynamicPlan(p.startDate, p.prelimsDate, p.mainsDate);
+  if(db){
+    db.doc("state/prelims").set(prelimsState).catch(function(){});
+    db.doc("state/mains").set(mainsState).catch(function(){});
+    db.doc("state/months").set(monthsState).catch(function(){});
+    db.doc("state/results").set(examResults).catch(function(){});
+  }
+}
+function handleBackupFile(file){
+  var reader = new FileReader();
+  reader.onload = function(){
+    try {
+      applyBackupData(JSON.parse(reader.result));
+      toast("Backup restored from file.");
+      renderDashboard();
+    } catch(e){
+      toast("That doesn't look like a UPSC Companion backup file.");
+    }
+  };
+  reader.onerror = function(){ toast("Couldn't read that file."); };
+  reader.readAsText(file);
+}
+function backupCard(){
+  return '<div class="backup-card card">'+
+    '<h3>Backup</h3>'+
+    '<div class="sub">Save everything — ticks, daily logs, mock scores, dates — as one file on this device. Works regardless of plan or sign-in status, and you can restore it here anytime, on any device.</div>'+
+    '<div class="backup-btns">'+
+      '<button id="backupDownload">Download backup</button>'+
+      '<label class="backup-restore" for="backupRestoreInput">Restore from file<input type="file" id="backupRestoreInput" accept="application/json"></label>'+
+    '</div>'+
+  '</div>';
+}
+function bindBackupCard(host){
+  var dl = host.querySelector("#backupDownload");
+  if(dl) dl.addEventListener("click", downloadBackup);
+  var rf = host.querySelector("#backupRestoreInput");
+  if(rf) rf.addEventListener("change", function(e){
+    var file = e.target.files && e.target.files[0];
+    if(file) handleBackupFile(file);
+    e.target.value = "";
+  });
+}
 function markResult(stage, outcome){
   if(outcome==="failed"){
     var tickedNow = Object.keys(prelimsState).filter(function(k){return prelimsState[k];}).length + Object.keys(mainsState).filter(function(k){return mainsState[k];}).length;
@@ -3371,6 +3507,10 @@ function resetForNewAttempt(failedStage, applySmart){
   var staleMonths = Object.keys(dailyMonthCache);
   prelimsState = {}; mainsState = {}; monthsState = {};
   dailyState = {}; dailyMonthCache = {};
+  lsSetJSON("dossier.state.prelims", prelimsState);
+  lsSetJSON("dossier.state.mains", mainsState);
+  lsSetJSON("dossier.state.months", monthsState);
+  lsSetJSON("dossier.state.daily", dailyState);
   examResults = Object.assign({}, DEFAULT_RESULTS);
   saveResults();
   if(db){
@@ -3616,6 +3756,7 @@ function renderDashboard(){
 
     planSetupCard()+
     resultCard()+
+    backupCard()+
 
     '<div class="hero card">'+
       '<div class="hero-phase">'+esc(phase)+'</div>'+
@@ -3643,6 +3784,7 @@ function renderDashboard(){
   bindTimerCard(host);
   bindPlanSetupCard(host);
   bindResultCard(host);
+  bindBackupCard(host);
 }
 function todayPlanCard(dayObj, tKey, adherencePct, loggedDays, elapsed){
   if(!dayObj){
@@ -3989,7 +4131,7 @@ function renderMocks(){
         '<div><label for="mockScore">Score</label><input type="text" id="mockScore" placeholder="e.g. 112/200"></div>'+
       '</div>'+
       '<div><label for="mockNotes">Notes</label><input type="text" id="mockNotes" placeholder="Weak areas, timing issues…"></div>'+
-      '<button id="mockAdd"'+(db?'':' disabled')+'>'+(db?"Add to log":"Sign in to claude.ai to log tests")+'</button>'+
+      '<button id="mockAdd">Add to log</button>'+
     '</div>'+
   '</div>';
 
@@ -4000,43 +4142,55 @@ function renderMocks(){
         '<div class="meta">'+esc(fmtDM(parseKey(m.date||todayKey)))+'</div>'+
         (m.notes?'<div class="notes">'+esc(m.notes)+'</div>':'')+'</div>'+
         '<div class="sc">'+esc(m.score||"")+'</div>'+
-        (db?'<button class="del" data-del="'+esc(m.id)+'" aria-label="Delete this test">&times;</button>':'')+
+        '<button class="del" data-del="'+esc(m.id)+'" aria-label="Delete this test">&times;</button>'+
       '</div>';
     }).join("") : '<div class="empty">No mock tests logged yet. Your first Prelims GS1 mock is due in October.</div>')+
   '</div>';
 
   host.innerHTML = targetsHtml + formHtml + logHtml;
 
+  function saveMockTests(){ lsSetJSON("dossier.state.mockTests", mockTests); }
+
   var addBtn = document.getElementById("mockAdd");
   addBtn.addEventListener("click", function(){
-    if(!db){ return; }
     var type = document.getElementById("mockType").value;
     var date = document.getElementById("mockDate").value || todayKey;
     var score = document.getElementById("mockScore").value.trim();
     var notes = document.getElementById("mockNotes").value.trim();
     addBtn.disabled = true; addBtn.textContent = "Adding...";
-    db.collection("mockTests").add({type:type, date:date, score:score, notes:notes, createdAt:new Date().toISOString()})
-      .then(function(ref){
-        mockTests.unshift({id:ref.id, type:type, date:date, score:score, notes:notes});
-        mockTests.sort(function(a,b){ return (b.date||"").localeCompare(a.date||""); });
-        renderMocks();
-      })
-      .catch(function(){ addBtn.disabled=false; addBtn.textContent="Add to log"; toast("Couldn't add that test. Try again."); });
+    function commit(id){
+      mockTests.unshift({id:id, type:type, date:date, score:score, notes:notes});
+      mockTests.sort(function(a,b){ return (b.date||"").localeCompare(a.date||""); });
+      saveMockTests();
+      renderMocks();
+    }
+    if(db){
+      db.collection("mockTests").add({type:type, date:date, score:score, notes:notes, createdAt:new Date().toISOString()})
+        .then(function(ref){ commit(ref.id); })
+        .catch(function(){ addBtn.disabled=false; addBtn.textContent="Add to log"; toast("Couldn't add that test. Try again."); });
+    } else {
+      commit("local-"+Date.now()+"-"+Math.random().toString(36).slice(2));
+    }
   });
 
   Array.prototype.forEach.call(host.querySelectorAll("[data-del]"), function(b){
     b.addEventListener("click", function(){
       var id = b.getAttribute("data-del");
-      if(!db) return;
       if(!b.classList.contains("confirm")){
         b.classList.add("confirm"); b.textContent = "Delete?";
         setTimeout(function(){ if(b.isConnected){ b.classList.remove("confirm"); b.innerHTML = "&times;"; } }, 3000);
         return;
       }
-      db.collection("mockTests").doc(id).delete().then(function(){
+      function commitDelete(){
         mockTests = mockTests.filter(function(m){ return m.id!==id; });
+        saveMockTests();
         renderMocks();
-      }).catch(function(){ toast("Couldn't delete that test. Try again."); });
+      }
+      if(db && id.indexOf("local-")!==0){
+        db.collection("mockTests").doc(id).delete().then(commitDelete).catch(function(){ toast("Couldn't delete that test. Try again."); });
+      } else {
+        commitDelete();
+      }
     });
   });
 }
@@ -4636,6 +4790,7 @@ function boot(){
     QUOTES = results[4];
     CASES = results[5];
     ORIGINAL_TEMPLATE = captureTemplate(); // capture the pristine shipped plan before any regeneration
+    loadLocalState(); // ticks/logs/mock scores from this browser, available even if the db capability never resolves
     examResults = loadResults();
     var savedCfg = loadPlanConfig();
     if(savedCfg) applyDynamicPlan(savedCfg.startDate, savedCfg.prelimsDate, savedCfg.mainsDate, false);
