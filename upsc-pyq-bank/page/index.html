@@ -198,16 +198,16 @@
     position:relative;
     backdrop-filter:blur(16px) saturate(160%); -webkit-backdrop-filter:blur(16px) saturate(160%);
   }
-  #view-dashboard .timer-card{ background:color-mix(in srgb, var(--surface) 66%, var(--navy) 14%); border-color:color-mix(in srgb, var(--navy) 32%, var(--line)); overflow:hidden; }
+  #view-dashboard .timer-card{ background-image:url('galaxy-bg.png'); background-size:cover; background-position:center; border-color:rgba(0,0,0,.3); overflow:hidden; }
   #view-dashboard .hero{ background:color-mix(in srgb, var(--surface) 66%, var(--gold) 16%); border-color:color-mix(in srgb, var(--gold) 32%, var(--line)); }
   #view-dashboard .plan-card{ background:color-mix(in srgb, var(--surface) 68%, var(--sage) 14%); border-color:color-mix(in srgb, var(--sage) 30%, var(--line)); }
   #view-dashboard .plan-setup, #view-dashboard .result-card, #view-dashboard .backup-card{ background:color-mix(in srgb, var(--surface) 68%, var(--tab-accent) 16%); border-color:color-mix(in srgb, var(--tab-accent) 30%, var(--line)); }
   #view-dashboard .progress-card{ background:color-mix(in srgb, var(--surface) 72%, var(--card-tint, var(--navy)) 18%); border-color:color-mix(in srgb, var(--card-tint, var(--navy)) 26%, var(--line)); }
 
   /* ---- Dashboard ---- */
-  .timer-card{padding:18px 18px 16px; margin-bottom:14px; text-align:center;}
-  .timer-head{display:flex; justify-content:space-between; align-items:baseline; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-faint);}
-  .timer-today{font-family:var(--font-mono); font-weight:600; text-transform:none; letter-spacing:0; color:var(--ink-soft); font-size:11.5px;}
+  .timer-card{padding:0; margin-bottom:14px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:320px;}
+  .timer-head{display:flex; justify-content:space-between; align-items:baseline; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:#FFFFFF; padding:14px 18px 0; position:relative; z-index:10; text-shadow:0 1px 3px rgba(0,0,0,.5);}
+  .timer-today{font-family:var(--font-mono); font-weight:600; text-transform:none; letter-spacing:0; color:#FFFFFF; font-size:11.5px; text-shadow:0 1px 2px rgba(0,0,0,.4);}
   .timer-btns{display:flex; gap:10px; justify-content:center; margin-top:14px;}
   .timer-btn{flex:1; max-width:140px; padding:11px; border-radius:10px; border:1px solid var(--line); background:var(--surface-2); font-weight:700; font-size:13.5px; cursor:pointer; color:var(--ink);}
   .timer-btn.primary{background:var(--navy); color:var(--navy-ink); border-color:var(--navy);}
