@@ -412,6 +412,10 @@
   .result-row .btns button{padding:6px 12px; border-radius:8px; border:1px solid var(--line); background:var(--surface-2); font-size:12px; font-weight:700; cursor:pointer;}
   .result-row .btns button.pass{color:var(--sage); border-color:var(--sage);}
   .result-row .btns button.fail{color:var(--brick); border-color:var(--brick);}
+  .result-row .btns button.clear{color:var(--ink-faint);}
+  .smart-toggle{display:flex; align-items:flex-start; gap:9px; margin-top:14px; padding-top:12px; border-top:1px solid var(--line-soft); cursor:pointer;}
+  .smart-toggle input{margin-top:2px; width:16px; height:16px; accent-color:var(--tab-accent); flex:0 0 auto; cursor:pointer;}
+  .smart-toggle span{font-size:12px; color:var(--ink-soft); line-height:1.5;}
 
   /* ---- Syllabus ---- */
   .syl-note{font-size:12px; font-weight:500; color:var(--ink-soft); margin-top:3px; text-transform:none; letter-spacing:0;}
@@ -3155,8 +3159,89 @@ function saveResults(){
   lsSet("dossier.results", JSON.stringify(examResults));
   if(db) db.doc("state/results").set(examResults).catch(function(){});
 }
+// ---- Smart resume: on a Failed-triggered restart, topics already ticked off
+// become a short recap instead of a full lesson, and the freed time is handed
+// to extra revision on whichever other subjects still have the most left to do.
+// Off by default; the user opts in from the Exam result card. Never applies to
+// a manual "Generate schedule" click -- only to the schedule built right after
+// a Failed-triggered reset.
+var smartResumeEnabled = lsGet("dossier.smartResume") === "1";
+var smartResumePending = null; // {prelims:[ids], mains:[ids]} captured at the moment of a Failed mark, set below once loadSmartResumePending is defined
+function loadSmartResumePending(){
+  try { var v = JSON.parse(lsGet("dossier.smartResumePending")||"null"); if(v && ((v.prelims&&v.prelims.length)||(v.mains&&v.mains.length))) return v; } catch(e){}
+  return null;
+}
+function saveSmartResumePending(v){
+  lsSet("dossier.smartResumePending", v ? JSON.stringify(v) : "");
+}
+smartResumePending = loadSmartResumePending();
+function blockTopicMatches(text){
+  var mm = text.match(/^([A-Za-z][A-Za-z &()]+?):\s/);
+  if(!mm) return [];
+  var subject = mm[1].trim();
+  var groups = PRELIMS_GROUPS.concat(MAINS_GROUPS);
+  var out = [];
+  for(var i=0;i<groups.length;i++){
+    var g = groups[i];
+    var label = g.subject || g.paper;
+    if(label !== subject) continue;
+    for(var j=0;j<g.items.length;j++){
+      if(text.indexOf(g.items[j].topic) !== -1) out.push({group:g, item:g.items[j]});
+    }
+  }
+  return out;
+}
+function applySmartResume(days, tickedPrelimsIds, tickedMainsIds){
+  var tickedSet = {};
+  (tickedPrelimsIds||[]).forEach(function(id){ tickedSet[id]=true; });
+  (tickedMainsIds||[]).forEach(function(id){ tickedSet[id]=true; });
+  if(!Object.keys(tickedSet).length) return {days:days, recapCount:0, bonusCount:0};
+
+  // Rank subjects/papers by how much is still NOT ticked off -- the neediest first.
+  var groups = PRELIMS_GROUPS.concat(MAINS_GROUPS);
+  var need = groups.map(function(g){
+    var label = g.subject || g.paper;
+    var remaining = g.items.filter(function(it){ return !tickedSet[it.id]; });
+    return {label:label, remaining:remaining, ratio: g.items.length ? remaining.length/g.items.length : 0, cursor:0};
+  }).filter(function(n){ return n.remaining.length>0; });
+  need.sort(function(a,b){ return b.ratio - a.ratio; });
+
+  var recapCount = 0, bonusCount = 0, needIdx = 0;
+  var newDays = days.map(function(d){
+    var nd = {date:d.date, day:d.day, phase:d.phase, tag:d.tag, morning:(d.morning||[]).slice(), evening:(d.evening||[]).slice()};
+    var hadSingleTopicBlock = false, allTickedSoFar = true;
+    ["morning","evening"].forEach(function(slot){
+      nd[slot] = nd[slot].map(function(b){
+        var matches = blockTopicMatches(b.text);
+        if(matches.length !== 1){ if(matches.length>1) allTickedSoFar = false; return b; }
+        hadSingleTopicBlock = true;
+        var item = matches[0].item;
+        if(!tickedSet[item.id]){ allTickedSoFar = false; return b; }
+        recapCount++;
+        var label = matches[0].group.subject || matches[0].group.paper;
+        return {time:b.time, text: label+": Quick recap — "+item.topic+" (already ticked done — short skim only, no new reading)"};
+      });
+    });
+    if(hadSingleTopicBlock && allTickedSoFar && need.length){
+      var n = need[needIdx % need.length];
+      var topic = n.remaining[n.cursor % n.remaining.length];
+      n.cursor++; needIdx++; bonusCount++;
+      nd.evening = nd.evening.concat([{time:"Bonus", text: n.label+": Bonus revision — "+topic.topic+" (extra pass, using time freed up from topics you'd already ticked)"}]);
+    }
+    return nd;
+  });
+  return {days:newDays, recapCount:recapCount, bonusCount:bonusCount};
+}
 function applyDynamicPlan(startKey, prelimsKey, mainsKey, persist){
   var newDays = buildDynamicDays(startKey, prelimsKey, mainsKey);
+  var smartInfo = null;
+  if(!smartResumePending) smartResumePending = loadSmartResumePending();
+  if(smartResumePending){
+    smartInfo = applySmartResume(newDays, smartResumePending.prelims, smartResumePending.mains);
+    newDays = smartInfo.days;
+    smartResumePending = null;
+    saveSmartResumePending(null);
+  }
   DATA.days = newDays;
   DATA.startDate = startKey;
   DATA.endDate = newDays[newDays.length-1].date;
@@ -3165,10 +3250,12 @@ function applyDynamicPlan(startKey, prelimsKey, mainsKey, persist){
   buildIndices();
   currentDailyKey = clampKey(todayKey);
   if(persist!==false) savePlanConfig({startDate:startKey, prelimsDate:prelimsKey, mainsDate:mainsKey});
+  return smartInfo;
 }
 function planSetupCard(){
   var cfg = {startDate:DATA.startDate, prelimsDate:DATA.examDates.prelims, mainsDate:DATA.examDates.mains};
   var totalDays = DATA.days.length;
+  var pendingNote = smartResumePending ? '<div class="summary" style="color:var(--sage)">Smart resume is queued — topics you had ticked will be recapped, not re-taught, the next time you hit Generate.</div>' : "";
   return '<div class="plan-setup card">'+
     '<h3>Plan setup</h3>'+
     '<div class="sub">Set your own start date and exam dates — the schedule below is regenerated to fit exactly, using the same subject order and mock rotation, compressed or stretched as needed.</div>'+
@@ -3181,6 +3268,7 @@ function planSetupCard(){
       '<button id="planGenerate">Generate schedule</button>'+
     '</div>'+
     '<div class="summary">Currently: '+totalDays+'-day plan, '+esc(fmtShort(parseKey(cfg.startDate)))+' → '+esc(fmtShort(parseKey(DATA.endDate)))+'.</div>'+
+    pendingNote+
   '</div>';
 }
 function bindPlanSetupCard(host){
@@ -3192,13 +3280,16 @@ function bindPlanSetupCard(host){
     var m = host.querySelector("#planMains").value;
     if(!s || !p || !m){ toast("Fill in all three dates first."); return; }
     if(!(s < p && p < m)){ toast("Dates must run start → Prelims → Mains, in order."); return; }
-    applyDynamicPlan(s, p, m);
-    toast("Schedule regenerated: "+DATA.days.length+" days, "+esc(fmtShort(parseKey(m)))+" is Mains D-Day.");
+    var smartInfo = applyDynamicPlan(s, p, m);
+    var msg = "Schedule regenerated: "+DATA.days.length+" days, "+esc(fmtShort(parseKey(m)))+" is Mains D-Day.";
+    if(smartInfo) msg += " Smart resume applied: "+smartInfo.recapCount+" topic(s) recapped, "+smartInfo.bonusCount+" bonus revision block(s) added.";
+    toast(msg);
     renderDashboard();
   });
 }
 function resultCard(){
   var stages = [{id:"prelims", label:"Prelims"}, {id:"mains", label:"Mains"}, {id:"interview", label:"Interview"}];
+  var tickedCount = Object.keys(prelimsState).filter(function(k){return prelimsState[k];}).length + Object.keys(mainsState).filter(function(k){return mainsState[k];}).length;
   return '<div class="result-card card">'+
     '<h3>Exam result</h3>'+
     stages.map(function(s){
@@ -3208,10 +3299,14 @@ function resultCard(){
         '<div class="btns">'+
           '<button class="pass" data-outcome="passed">Passed</button>'+
           '<button class="fail" data-outcome="failed">Failed</button>'+
+          '<button class="clear" data-outcome="pending">Clear</button>'+
         '</div>'+
       '</div>';
     }).join("")+
-    '<div class="sub">Marking any stage “Failed” resets all progress and restarts the whole plan from Day 1 for a fresh attempt.</div>'+
+    '<div class="sub">Marking a stage “Failed” resets all progress and restarts the whole plan from Day 1. “Clear” just undoes a Passed/Failed mark back to Pending, no reset.</div>'+
+    '<label class="smart-toggle"><input type="checkbox" id="smartResumeToggle"'+(smartResumeEnabled?" checked":"")+'> '+
+      '<span>Smart resume on restart: when I fail a stage, treat any topic I\'ve already ticked ('+tickedCount+' right now) as a quick recap instead of re-teaching it, and give that freed time to extra revision on my weaker subjects. Off by default; applies only right after a Failed-triggered restart, never to a plain "Generate schedule" click.</span>'+
+    '</label>'+
   '</div>';
 }
 function bindResultCard(host){
@@ -3221,20 +3316,39 @@ function bindResultCard(host){
       b.addEventListener("click", function(){ markResult(stage, b.getAttribute("data-outcome")); });
     });
   });
+  var toggle = host.querySelector("#smartResumeToggle");
+  if(toggle) toggle.addEventListener("change", function(){
+    smartResumeEnabled = toggle.checked;
+    lsSet("dossier.smartResume", smartResumeEnabled ? "1" : "0");
+    toast(smartResumeEnabled ? "Smart resume turned on for your next restart." : "Smart resume turned off.");
+  });
 }
 function markResult(stage, outcome){
   if(outcome==="failed"){
-    var ok = confirm("Mark "+stage+" as not cleared? This resets ALL progress (every checked box across Daily, Weekly, Monthly, Prelims and Mains) and restarts the plan from Day 1 for your next attempt. This can't be undone.");
+    var tickedNow = Object.keys(prelimsState).filter(function(k){return prelimsState[k];}).length + Object.keys(mainsState).filter(function(k){return mainsState[k];}).length;
+    var willSmart = smartResumeEnabled && tickedNow>0;
+    var msg = "Mark "+stage+" as not cleared? This resets ALL progress (every checked box across Daily, Weekly, Monthly, Prelims and Mains) and restarts the plan from Day 1 for your next attempt. This can't be undone.";
+    if(willSmart) msg += " Smart resume is on: your "+tickedNow+" already-ticked topic(s) will appear as a quick recap instead of a full lesson in the new schedule, and that freed time goes to extra revision on your weaker subjects.";
+    var ok = confirm(msg);
     if(!ok) return;
-    resetForNewAttempt(stage);
+    resetForNewAttempt(stage, willSmart);
     return;
   }
-  examResults[stage] = outcome;
+  examResults[stage] = outcome; // "passed" or "pending" (Clear)
   saveResults();
-  toast(stage.charAt(0).toUpperCase()+stage.slice(1)+" marked as passed.");
+  toast(outcome==="pending" ? (stage.charAt(0).toUpperCase()+stage.slice(1)+" cleared back to pending.") : (stage.charAt(0).toUpperCase()+stage.slice(1)+" marked as passed."));
   renderDashboard();
 }
-function resetForNewAttempt(failedStage){
+function resetForNewAttempt(failedStage, applySmart){
+  if(applySmart){
+    smartResumePending = {
+      prelims: Object.keys(prelimsState).filter(function(k){return prelimsState[k];}),
+      mains: Object.keys(mainsState).filter(function(k){return mainsState[k];})
+    };
+  } else {
+    smartResumePending = null;
+  }
+  saveSmartResumePending(smartResumePending);
   var staleMonths = Object.keys(dailyMonthCache);
   prelimsState = {}; mainsState = {}; monthsState = {};
   dailyState = {}; dailyMonthCache = {};
@@ -3246,7 +3360,9 @@ function resetForNewAttempt(failedStage){
     db.doc("state/months").set({}).catch(function(){});
     staleMonths.forEach(function(mk){ db.collection("dailyLog").doc(mk).delete().catch(function(){}); });
   }
-  toast("Plan reset for a new attempt. Enter your next start date and exam dates below.");
+  toast(applySmart
+    ? "Plan reset for a new attempt. Smart resume is queued for your next Generate. Enter your next start date and exam dates below."
+    : "Plan reset for a new attempt. Enter your next start date and exam dates below.");
   setTab("dashboard");
   renderDashboard();
 }
