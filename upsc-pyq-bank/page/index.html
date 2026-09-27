@@ -3783,9 +3783,9 @@ function timerCard(){
   var totalDisplay = timerTodayTotalMs();
   var running = timerState.running;
   return '<div class="card timer-card">'+
+    '<canvas class="black-hole-scene" id="blackHoleScene" aria-hidden="true"></canvas>'+
     '<div class="timer-head"><span class="timer-today" id="timerTodayTotal">'+fmtTimer(totalDisplay)+'</span></div>'+
-    '<div class="timer-dial-wrap'+(running?" running":"")+'" id="timerDialWrap" role="button" tabindex="0" aria-pressed="'+(running?"true":"false")+'" aria-label="'+(running?"Pause":"Start")+' study timer">'+
-      '<canvas class="black-hole-scene" id="blackHoleScene" aria-hidden="true"></canvas>'+
+    '<div class="timer-dial-wrap'+(running?" running":"")+'" id="timerDialWrap" role="button" tabindex="0" aria-pressed="'+(running?"true":"false")+'" aria-label="'+(running?"Pause":"Start")+' timer">'+
       '<div class="timer-dial-face">'+
         '<div class="timer-display" id="timerDisplay">'+fmtTimer(timerElapsedNow())+'</div>'+
       '</div>'+
