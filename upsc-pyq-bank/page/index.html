@@ -198,7 +198,29 @@
     position:relative;
     backdrop-filter:blur(16px) saturate(160%); -webkit-backdrop-filter:blur(16px) saturate(160%);
   }
-  #view-dashboard .timer-card{ background-image:url('galaxy-bg.png'); background-size:cover; background-position:center; border-color:rgba(0,0,0,.3); overflow:hidden; }
+  #view-dashboard .timer-card{ position:relative; background:#02030a; border-color:rgba(0,0,0,.3); overflow:hidden; isolation:isolate;
+}
+#view-dashboard .timer-card::before{content:"";position:absolute;inset:-24%;z-index:0;pointer-events:none;background:
+radial-gradient(ellipse at 50% 50%,rgba(0,0,0,.99) 0 11%,rgba(18,5,0,.92) 14%,rgba(255,86,8,.25) 20%,transparent 35%),
+radial-gradient(ellipse at 39% 49%,rgba(255,143,38,.22) 0 8%,transparent 29%),
+radial-gradient(ellipse at 63% 53%,rgba(255,68,10,.18) 0 8%,transparent 31%),
+conic-gradient(from 15deg at 50% 50%,transparent 0deg,rgba(255,112,25,.14) 32deg,transparent 73deg,rgba(128,75,255,.10) 132deg,transparent 190deg,rgba(255,168,58,.11) 244deg,transparent 304deg,rgba(62,108,255,.08) 338deg,transparent 360deg);filter:blur(3px) saturate(1.3);animation:galaxyNebula 96s linear infinite;}
+#view-dashboard .timer-card::after{content:"";position:absolute;inset:-14%;z-index:1;pointer-events:none;background:
+radial-gradient(circle at 8% 22%,rgba(255,255,255,.95) 0 1px,transparent 1.8px),
+radial-gradient(circle at 16% 76%,rgba(220,235,255,.85) 0 .8px,transparent 1.6px),
+radial-gradient(circle at 25% 38%,rgba(255,240,215,.9) 0 1.1px,transparent 1.9px),
+radial-gradient(circle at 34% 82%,rgba(255,255,255,.8) 0 .8px,transparent 1.5px),
+radial-gradient(circle at 44% 18%,rgba(220,235,255,.9) 0 1px,transparent 1.7px),
+radial-gradient(circle at 55% 88%,rgba(255,255,255,.9) 0 1.2px,transparent 2px),
+radial-gradient(circle at 64% 31%,rgba(255,245,220,.95) 0 1px,transparent 1.8px),
+radial-gradient(circle at 73% 68%,rgba(220,235,255,.8) 0 .9px,transparent 1.6px),
+radial-gradient(circle at 82% 16%,rgba(255,255,255,.95) 0 1.2px,transparent 2px),
+radial-gradient(circle at 91% 53%,rgba(255,245,220,.85) 0 .8px,transparent 1.6px),
+radial-gradient(circle at 14% 53%,rgba(255,255,255,.75) 0 .7px,transparent 1.4px),
+radial-gradient(circle at 88% 86%,rgba(220,235,255,.8) 0 1px,transparent 1.7px);animation:galaxyStars 72s linear infinite;opacity:.82;}
+#view-dashboard .timer-card > *{position:relative;z-index:2;}
+@keyframes galaxyNebula{from{transform:rotate(0deg) scale(1.02);}to{transform:rotate(360deg) scale(1.02);}}
+@keyframes galaxyStars{from{transform:rotate(0deg) scale(1);}to{transform:rotate(-360deg) scale(1);}} }
   #view-dashboard .hero{ background:color-mix(in srgb, var(--surface) 66%, var(--gold) 16%); border-color:color-mix(in srgb, var(--gold) 32%, var(--line)); }
   #view-dashboard .plan-card{ background:color-mix(in srgb, var(--surface) 68%, var(--sage) 14%); border-color:color-mix(in srgb, var(--sage) 30%, var(--line)); }
   #view-dashboard .plan-setup, #view-dashboard .result-card, #view-dashboard .backup-card{ background:color-mix(in srgb, var(--surface) 68%, var(--tab-accent) 16%); border-color:color-mix(in srgb, var(--tab-accent) 30%, var(--line)); }
@@ -207,7 +229,7 @@
   /* ---- Dashboard ---- */
   .timer-card{
     padding:0; margin-bottom:14px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:320px;
-    animation:galaxyBreathe 8s ease-in-out infinite;
+    animation:none;
   }
   @keyframes galaxyBreathe{
     0%{background-size:cover; filter:brightness(1);}
