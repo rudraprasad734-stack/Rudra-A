@@ -213,7 +213,7 @@
   #view-dashboard .progress-card{ background:color-mix(in srgb, var(--surface) 72%, var(--card-tint, var(--navy)) 18%); border-color:color-mix(in srgb, var(--card-tint, var(--navy)) 26%, var(--line)); }
 
   /* ---- Dashboard ---- */
-  .timer-card{margin-bottom:14px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;}
+  .timer-card{margin-bottom:14px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:320px; padding:0;}
   .timer-total{position:absolute;top:11px;right:14px;z-index:8;font-family:var(--font-mono);font-size:11px;font-weight:600;color:rgba(255,255,255,.82);text-shadow:0 1px 6px rgba(0,0,0,.9);pointer-events:none;}
   .timer-btns{position:absolute;left:12px;right:12px;bottom:10px;z-index:8;display:flex;gap:10px;justify-content:center;margin:0;padding:0;}
   .timer-btn{flex:1;max-width:140px;padding:11px;border-radius:10px;border:1px solid rgba(255,255,255,.22);background:rgba(0,0,0,.38);backdrop-filter:blur(7px);font-weight:700;font-size:13.5px;cursor:pointer;color:#fff;}
@@ -3692,7 +3692,7 @@ function timerTick(){
   if(!el){ clearInterval(timerInterval); timerInterval = null; return; }
   el.textContent = fmtTimer(timerElapsedNow());
   var today = document.getElementById("timerTodayTotal");
-  if(today) today.textContent = fmtTimer(timerTodayTotalMs() + (timerState.running ? (Date.now()-timerState.startedAt) : 0)) + ' logged today';
+  if(today) today.textContent = fmtTimer(timerTodayTotalMs() + (timerState.running ? (Date.now()-timerState.startedAt) : 0));
 }
 function timerToggle(){
   if(timerState.running){
@@ -3749,7 +3749,7 @@ function initBlackHoleScene(host){
   resize();if(window.ResizeObserver){var ro=new ResizeObserver(resize);ro.observe(canvas);}draw(performance.now());
 }
 function bindTimerCard(host){
-  initBlackHoleScene(host);
+  try{ initBlackHoleScene(host); }catch(e){}
   var tb = host.querySelector("#timerToggleBtn");
   if(tb) tb.addEventListener("click", timerToggle);
   var rb = host.querySelector("#timerResetBtn");
