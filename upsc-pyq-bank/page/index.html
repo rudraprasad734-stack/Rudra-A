@@ -259,6 +259,49 @@
   .timer-dial-wrap.running .timer-dial-ring{
     animation:timerBreathe 12s cubic-bezier(.45,0,.55,1) infinite, gentleWobble 25s ease-in-out infinite;
   }
+  /* Continuous star field around the black hole. Two independent orbital layers
+     create depth and parallax while each completes a mathematically seamless 360deg
+     linear cycle, so there is no visible jump when the animation repeats. */
+  .timer-dial-stars{
+    position:absolute; inset:-42px; border-radius:50%;
+    pointer-events:none; z-index:0;
+    animation:starSwirl 48s linear infinite;
+  }
+  .timer-dial-stars::before,
+  .timer-dial-stars::after{
+    content:""; position:absolute; inset:0; border-radius:50%;
+    background-repeat:no-repeat;
+    pointer-events:none;
+  }
+  .timer-dial-stars::before{
+    background-image:
+      radial-gradient(circle at 12% 23%, rgba(255,255,255,.95) 0 1px, transparent 1.7px),
+      radial-gradient(circle at 24% 72%, rgba(255,255,255,.75) 0 .8px, transparent 1.5px),
+      radial-gradient(circle at 38% 14%, rgba(255,240,220,.9) 0 1.2px, transparent 1.9px),
+      radial-gradient(circle at 53% 86%, rgba(255,255,255,.85) 0 1px, transparent 1.7px),
+      radial-gradient(circle at 67% 25%, rgba(255,255,255,.95) 0 1.1px, transparent 1.8px),
+      radial-gradient(circle at 81% 61%, rgba(220,235,255,.85) 0 .9px, transparent 1.6px),
+      radial-gradient(circle at 91% 31%, rgba(255,255,255,.9) 0 1px, transparent 1.7px),
+      radial-gradient(circle at 74% 91%, rgba(255,245,220,.8) 0 .8px, transparent 1.5px);
+    opacity:.9;
+    animation:starLayerFar 64s linear infinite reverse;
+  }
+  .timer-dial-stars::after{
+    background-image:
+      radial-gradient(circle at 18% 48%, rgba(255,255,255,.95) 0 1.4px, transparent 2.1px),
+      radial-gradient(circle at 31% 91%, rgba(220,235,255,.8) 0 1px, transparent 1.8px),
+      radial-gradient(circle at 47% 42%, rgba(255,255,255,.9) 0 1.2px, transparent 2px),
+      radial-gradient(circle at 61% 7%, rgba(255,240,210,.85) 0 1px, transparent 1.8px),
+      radial-gradient(circle at 78% 46%, rgba(255,255,255,.95) 0 1.3px, transparent 2px),
+      radial-gradient(circle at 88% 82%, rgba(220,235,255,.8) 0 1px, transparent 1.7px);
+    opacity:.65;
+    filter:blur(.15px);
+    animation:starLayerNear 34s linear infinite;
+  }
+  @keyframes starSwirl{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+  @keyframes starLayerFar{from{transform:rotate(0deg) scale(1.01)}to{transform:rotate(360deg) scale(1.01)}}
+  @keyframes starLayerNear{from{transform:rotate(0deg) scale(1)}to{transform:rotate(-360deg) scale(1)}}
+
   /* Orbiting light: a bright arc of the event horizon continuously sweeps around,
      like light bending around a black hole (Interstellar-style lensing). Spins
      always, independent of breathe/wobble, so the hole never looks fully static. */
@@ -317,7 +360,10 @@
     .timer-dial-wrap.running .timer-dial-glow,
     .timer-dial-wrap.running .timer-dial-ring,
     .timer-dial-wrap.running .timer-dial-face,
-    .timer-dial-orbit{animation:none;}
+    .timer-dial-orbit,
+    .timer-dial-stars,
+    .timer-dial-stars::before,
+    .timer-dial-stars::after{animation:none;}
   }
   .hero{padding:22px 20px; display:flex; flex-direction:column; gap:16px; margin-bottom:4px;}
   .hero-phase{font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--gold);}
@@ -3789,6 +3835,7 @@ function timerCard(){
     '<div class="timer-head"><span>Study timer</span><span class="timer-today" id="timerTodayTotal">'+fmtTimer(totalDisplay)+' logged today</span></div>'+
     '<div class="timer-dial-wrap'+(running?" running":"")+'" id="timerDialWrap" role="button" tabindex="0" aria-pressed="'+(running?"true":"false")+'" aria-label="'+(running?"Pause":"Start")+' study timer">'+
       '<div class="timer-dial-glow"></div>'+
+      '<div class="timer-dial-stars" aria-hidden="true"></div>'+
       '<div class="timer-dial-ring"></div>'+
       '<div class="timer-dial-orbit"></div>'+
       '<div class="timer-dial-face">'+
