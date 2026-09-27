@@ -3784,7 +3784,6 @@ function timerReset(){
 function timerCard(){
   var totalDisplay = timerTodayTotalMs();
   var running = timerState.running;
-  var dialState = running ? "Tap to pause" : (timerState.elapsedMs>0 ? "Paused — tap to resume" : "Tap to start");
   return '<div class="card timer-card">'+
     '<div class="timer-head"><span class="timer-today" id="timerTodayTotal">'+fmtTimer(totalDisplay)+'</span></div>'+
     '<div class="timer-dial-wrap'+(running?" running":"")+'" id="timerDialWrap" role="button" tabindex="0" aria-pressed="'+(running?"true":"false")+'" aria-label="'+(running?"Pause":"Start")+' study timer">'+
