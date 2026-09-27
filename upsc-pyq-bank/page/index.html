@@ -3786,7 +3786,7 @@ function timerCard(){
   var running = timerState.running;
   var dialState = running ? "Tap to pause" : (timerState.elapsedMs>0 ? "Paused — tap to resume" : "Tap to start");
   return '<div class="card timer-card">'+
-    '<div class="timer-head"><span>Study timer</span><span class="timer-today" id="timerTodayTotal">'+fmtTimer(totalDisplay)+' logged today</span></div>'+
+    '<div class="timer-head"><span class="timer-today" id="timerTodayTotal">'+fmtTimer(totalDisplay)+'</span></div>'+
     '<div class="timer-dial-wrap'+(running?" running":"")+'" id="timerDialWrap" role="button" tabindex="0" aria-pressed="'+(running?"true":"false")+'" aria-label="'+(running?"Pause":"Start")+' study timer">'+
       '<div class="timer-dial-glow"></div>'+
       '<canvas class="black-hole-scene" id="blackHoleScene" aria-hidden="true"></canvas>'+
