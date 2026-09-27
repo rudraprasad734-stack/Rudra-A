@@ -198,44 +198,22 @@
     position:relative;
     backdrop-filter:blur(16px) saturate(160%); -webkit-backdrop-filter:blur(16px) saturate(160%);
   }
-  #view-dashboard .timer-card{ position:relative; background:#02030a; border-color:rgba(0,0,0,.3); overflow:hidden; isolation:isolate;
-}
-#view-dashboard .timer-card::before{content:"";position:absolute;inset:-24%;z-index:0;pointer-events:none;background:
-radial-gradient(ellipse at 50% 50%,rgba(0,0,0,.99) 0 11%,rgba(18,5,0,.92) 14%,rgba(255,86,8,.25) 20%,transparent 35%),
-radial-gradient(ellipse at 39% 49%,rgba(255,143,38,.22) 0 8%,transparent 29%),
-radial-gradient(ellipse at 63% 53%,rgba(255,68,10,.18) 0 8%,transparent 31%),
-conic-gradient(from 15deg at 50% 50%,transparent 0deg,rgba(255,112,25,.14) 32deg,transparent 73deg,rgba(128,75,255,.10) 132deg,transparent 190deg,rgba(255,168,58,.11) 244deg,transparent 304deg,rgba(62,108,255,.08) 338deg,transparent 360deg);filter:blur(3px) saturate(1.3);animation:galaxyNebula 96s linear infinite;}
-#view-dashboard .timer-card::after{content:"";position:absolute;inset:-14%;z-index:1;pointer-events:none;background:
-radial-gradient(circle at 8% 22%,rgba(255,255,255,.95) 0 1px,transparent 1.8px),
-radial-gradient(circle at 16% 76%,rgba(220,235,255,.85) 0 .8px,transparent 1.6px),
-radial-gradient(circle at 25% 38%,rgba(255,240,215,.9) 0 1.1px,transparent 1.9px),
-radial-gradient(circle at 34% 82%,rgba(255,255,255,.8) 0 .8px,transparent 1.5px),
-radial-gradient(circle at 44% 18%,rgba(220,235,255,.9) 0 1px,transparent 1.7px),
-radial-gradient(circle at 55% 88%,rgba(255,255,255,.9) 0 1.2px,transparent 2px),
-radial-gradient(circle at 64% 31%,rgba(255,245,220,.95) 0 1px,transparent 1.8px),
-radial-gradient(circle at 73% 68%,rgba(220,235,255,.8) 0 .9px,transparent 1.6px),
-radial-gradient(circle at 82% 16%,rgba(255,255,255,.95) 0 1.2px,transparent 2px),
-radial-gradient(circle at 91% 53%,rgba(255,245,220,.85) 0 .8px,transparent 1.6px),
-radial-gradient(circle at 14% 53%,rgba(255,255,255,.75) 0 .7px,transparent 1.4px),
-radial-gradient(circle at 88% 86%,rgba(220,235,255,.8) 0 1px,transparent 1.7px);animation:galaxyStars 72s linear infinite;opacity:.82;}
-#view-dashboard .timer-card > *{position:relative;z-index:2;}
-@keyframes galaxyNebula{from{transform:rotate(0deg) scale(1.02);}to{transform:rotate(360deg) scale(1.02);}}
-@keyframes galaxyStars{from{transform:rotate(0deg) scale(1);}to{transform:rotate(-360deg) scale(1);}} }
+  #view-dashboard .timer-card{
+    position:relative; background:#010207; border-color:rgba(0,0,0,.5);
+    overflow:hidden; isolation:isolate;
+  }
+  #view-dashboard .black-hole-scene{
+    position:absolute; inset:0; width:100%; height:100%; z-index:0;
+    display:block; pointer-events:none; background:#010207;
+  }
+  #view-dashboard .timer-card > *{position:relative; z-index:2;}
   #view-dashboard .hero{ background:color-mix(in srgb, var(--surface) 66%, var(--gold) 16%); border-color:color-mix(in srgb, var(--gold) 32%, var(--line)); }
   #view-dashboard .plan-card{ background:color-mix(in srgb, var(--surface) 68%, var(--sage) 14%); border-color:color-mix(in srgb, var(--sage) 30%, var(--line)); }
   #view-dashboard .plan-setup, #view-dashboard .result-card, #view-dashboard .backup-card{ background:color-mix(in srgb, var(--surface) 68%, var(--tab-accent) 16%); border-color:color-mix(in srgb, var(--tab-accent) 30%, var(--line)); }
   #view-dashboard .progress-card{ background:color-mix(in srgb, var(--surface) 72%, var(--card-tint, var(--navy)) 18%); border-color:color-mix(in srgb, var(--card-tint, var(--navy)) 26%, var(--line)); }
 
   /* ---- Dashboard ---- */
-  .timer-card{
-    padding:0; margin-bottom:14px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:320px;
-    animation:none;
-  }
-  @keyframes galaxyBreathe{
-    0%{background-size:cover; filter:brightness(1);}
-    50%{background-size:110% 110%; filter:brightness(1.08);}
-    100%{background-size:cover; filter:brightness(1);}
-  }
+  .timer-card{margin-bottom:14px; text-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center;}
   .timer-head{
     display:flex; justify-content:space-between; align-items:baseline; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:#FFFFFF; padding:12px 16px; margin-top:8px; background:rgba(0,0,0,.35); border-radius:8px; backdrop-filter:blur(8px); position:relative; z-index:10; text-shadow:0 1px 2px rgba(0,0,0,.6);
     animation:floatBreathe 9s ease-in-out infinite;
@@ -281,49 +259,6 @@ radial-gradient(circle at 88% 86%,rgba(220,235,255,.8) 0 1px,transparent 1.7px);
   .timer-dial-wrap.running .timer-dial-ring{
     animation:timerBreathe 12s cubic-bezier(.45,0,.55,1) infinite, gentleWobble 25s ease-in-out infinite;
   }
-  /* Continuous star field around the black hole. Two independent orbital layers
-     create depth and parallax while each completes a mathematically seamless 360deg
-     linear cycle, so there is no visible jump when the animation repeats. */
-  .timer-dial-stars{
-    position:absolute; inset:-42px; border-radius:50%;
-    pointer-events:none; z-index:0;
-    animation:starSwirl 48s linear infinite;
-  }
-  .timer-dial-stars::before,
-  .timer-dial-stars::after{
-    content:""; position:absolute; inset:0; border-radius:50%;
-    background-repeat:no-repeat;
-    pointer-events:none;
-  }
-  .timer-dial-stars::before{
-    background-image:
-      radial-gradient(circle at 12% 23%, rgba(255,255,255,.95) 0 1px, transparent 1.7px),
-      radial-gradient(circle at 24% 72%, rgba(255,255,255,.75) 0 .8px, transparent 1.5px),
-      radial-gradient(circle at 38% 14%, rgba(255,240,220,.9) 0 1.2px, transparent 1.9px),
-      radial-gradient(circle at 53% 86%, rgba(255,255,255,.85) 0 1px, transparent 1.7px),
-      radial-gradient(circle at 67% 25%, rgba(255,255,255,.95) 0 1.1px, transparent 1.8px),
-      radial-gradient(circle at 81% 61%, rgba(220,235,255,.85) 0 .9px, transparent 1.6px),
-      radial-gradient(circle at 91% 31%, rgba(255,255,255,.9) 0 1px, transparent 1.7px),
-      radial-gradient(circle at 74% 91%, rgba(255,245,220,.8) 0 .8px, transparent 1.5px);
-    opacity:.9;
-    animation:starLayerFar 64s linear infinite reverse;
-  }
-  .timer-dial-stars::after{
-    background-image:
-      radial-gradient(circle at 18% 48%, rgba(255,255,255,.95) 0 1.4px, transparent 2.1px),
-      radial-gradient(circle at 31% 91%, rgba(220,235,255,.8) 0 1px, transparent 1.8px),
-      radial-gradient(circle at 47% 42%, rgba(255,255,255,.9) 0 1.2px, transparent 2px),
-      radial-gradient(circle at 61% 7%, rgba(255,240,210,.85) 0 1px, transparent 1.8px),
-      radial-gradient(circle at 78% 46%, rgba(255,255,255,.95) 0 1.3px, transparent 2px),
-      radial-gradient(circle at 88% 82%, rgba(220,235,255,.8) 0 1px, transparent 1.7px);
-    opacity:.65;
-    filter:blur(.15px);
-    animation:starLayerNear 34s linear infinite;
-  }
-  @keyframes starSwirl{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
-  @keyframes starLayerFar{from{transform:rotate(0deg) scale(1.01)}to{transform:rotate(360deg) scale(1.01)}}
-  @keyframes starLayerNear{from{transform:rotate(0deg) scale(1)}to{transform:rotate(-360deg) scale(1)}}
-
   /* Orbiting light: a bright arc of the event horizon continuously sweeps around,
      like light bending around a black hole (Interstellar-style lensing). Spins
      always, independent of breathe/wobble, so the hole never looks fully static. */
@@ -383,9 +318,9 @@ radial-gradient(circle at 88% 86%,rgba(220,235,255,.8) 0 1px,transparent 1.7px);
     .timer-dial-wrap.running .timer-dial-ring,
     .timer-dial-wrap.running .timer-dial-face,
     .timer-dial-orbit,
-    .timer-dial-stars,
-    .timer-dial-stars::before,
-    .timer-dial-stars::after{animation:none;}
+    ,
+    ::before,
+    ::after{animation:none;}
   }
   .hero{padding:22px 20px; display:flex; flex-direction:column; gap:16px; margin-bottom:4px;}
   .hero-phase{font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.06em; color:var(--gold);}
@@ -3076,6 +3011,7 @@ var resultsFromDb = null;        // {prelims,mains,interview} if newer results e
 
 var todayKey = toKey(new Date());
 var timerInterval = null;
+var blackHoleAnimFrame = null;
 var timerState = {running:false, startedAt:0, elapsedMs:0}; // in-memory; today's totals persisted to localStorage below
 var currentDailyKey = todayKey;
 
@@ -3857,7 +3793,7 @@ function timerCard(){
     '<div class="timer-head"><span>Study timer</span><span class="timer-today" id="timerTodayTotal">'+fmtTimer(totalDisplay)+' logged today</span></div>'+
     '<div class="timer-dial-wrap'+(running?" running":"")+'" id="timerDialWrap" role="button" tabindex="0" aria-pressed="'+(running?"true":"false")+'" aria-label="'+(running?"Pause":"Start")+' study timer">'+
       '<div class="timer-dial-glow"></div>'+
-      '<div class="timer-dial-stars" aria-hidden="true"></div>'+
+      '<canvas class="black-hole-scene" id="blackHoleScene" aria-hidden="true"></canvas>'+
       '<div class="timer-dial-ring"></div>'+
       '<div class="timer-dial-orbit"></div>'+
       '<div class="timer-dial-face">'+
@@ -3871,7 +3807,27 @@ function timerCard(){
     '</div>'+
   '</div>';
 }
+function initBlackHoleScene(host){
+  if(blackHoleAnimFrame){cancelAnimationFrame(blackHoleAnimFrame);blackHoleAnimFrame=null;}
+  var canvas=host.querySelector("#blackHoleScene"),ctx=canvas&&canvas.getContext("2d");if(!ctx)return;
+  var reduced=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var dpr=Math.min(window.devicePixelRatio||1,2),w=1,h=1,cx=0,cy=0,scale=1,particles=[],count=150;
+  function resize(){var r=canvas.getBoundingClientRect();w=Math.max(1,r.width);h=Math.max(1,r.height);canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);cx=w*.5;cy=h*.49;scale=Math.min(w,h)/2;}
+  function spawn(p){p.r=.34+Math.random()*.88;p.a=Math.random()*Math.PI*2;p.prevR=p.r;p.prevA=p.a;p.pull=.00045+Math.random()*.0018;p.spin=(Math.random()<.75?1:-1)*(.002+Math.random()*.007);p.size=.4+Math.random()*1.25;p.alpha=.3+Math.random()*.7;p.warm=Math.random()<.2;p.life=0;p.max=500+Math.random()*1000;}
+  for(var i=0;i<count;i++){var p={};spawn(p);particles.push(p);}
+  function draw(t){
+    ctx.clearRect(0,0,w,h);ctx.fillStyle="#010207";ctx.fillRect(0,0,w,h);
+    var bg=ctx.createRadialGradient(cx,cy,0,cx,cy,scale*1.15);bg.addColorStop(0,"rgba(28,8,2,.55)");bg.addColorStop(.45,"rgba(6,8,18,.35)");bg.addColorStop(1,"rgba(0,0,0,0)");ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);
+    for(var i=0;i<particles.length;i++){var p=particles[i];p.prevR=p.r;p.prevA=p.a;if(!reduced){p.r-=p.pull/(Math.max(.11,p.r)*Math.max(.11,p.r));p.a+=p.spin*(1+.7/Math.max(.18,p.r));p.life++;}if(!reduced&&(p.r<.12||p.life>p.max))spawn(p);var rr=p.r*scale,x=cx+Math.cos(p.a)*rr,y=cy+Math.sin(p.a)*rr*.55,px=cx+Math.cos(p.prevA)*p.prevR*scale,py=cy+Math.sin(p.prevA)*p.prevR*scale*.55;if(!reduced){ctx.strokeStyle=p.warm?"rgba(255,160,80,.28)":"rgba(205,225,255,.28)";ctx.lineWidth=Math.max(.3,p.size*.5);ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(x,y);ctx.stroke();}ctx.fillStyle=p.warm?"rgba(255,215,165,"+p.alpha+")":"rgba(225,238,255,"+p.alpha+")";ctx.beginPath();ctx.arc(x,y,p.size,0,Math.PI*2);ctx.fill();}
+    ctx.save();ctx.translate(cx,cy);ctx.rotate(t*.00032);for(var b=0;b<10;b++){var base=scale*(.145+b*.021);ctx.beginPath();for(var q=0;q<=240;q++){var a=q/240*Math.PI*2,rr=base*(1+.014*Math.sin(a*6+b)),x=Math.cos(a)*rr,y=Math.sin(a)*rr*.29,bend=1+.25*Math.pow(Math.max(0,1-rr/(scale*.42)),2);x*=bend;y*=bend;if(q)ctx.lineTo(x,y);else ctx.moveTo(x,y);}ctx.strokeStyle="rgba(255,"+(195-b*10)+","+(95-b*6)+","+(0.10+b*.018)+")";ctx.lineWidth=1+b*.42;ctx.shadowBlur=9;ctx.shadowColor="rgba(255,100,20,.38)";ctx.stroke();}ctx.restore();
+    ctx.save();ctx.translate(cx,cy);ctx.scale(1,.34);ctx.rotate(-t*.00055);var ag=ctx.createLinearGradient(-scale*.5,0,scale*.5,0);ag.addColorStop(0,"rgba(255,60,5,0)");ag.addColorStop(.3,"rgba(255,125,25,.38)");ag.addColorStop(.5,"rgba(255,245,190,1)");ag.addColorStop(.7,"rgba(255,110,20,.35)");ag.addColorStop(1,"rgba(255,40,0,0)");ctx.strokeStyle=ag;ctx.lineWidth=Math.max(2,scale*.02);ctx.shadowBlur=16;ctx.shadowColor="rgba(255,100,15,.85)";ctx.beginPath();ctx.arc(0,0,scale*.255,Math.PI*1.02,Math.PI*1.98);ctx.stroke();ctx.restore();
+    var rg=ctx.createRadialGradient(cx,cy,scale*.105,cx,cy,scale*.20);rg.addColorStop(0,"#000");rg.addColorStop(.68,"#000");rg.addColorStop(.82,"rgba(255,205,120,.95)");rg.addColorStop(.89,"rgba(255,70,8,.52)");rg.addColorStop(1,"rgba(0,0,0,0)");ctx.fillStyle=rg;ctx.beginPath();ctx.arc(cx,cy,scale*.20,0,Math.PI*2);ctx.fill();ctx.fillStyle="#000";ctx.beginPath();ctx.arc(cx,cy,scale*.115,0,Math.PI*2);ctx.fill();
+    if(!reduced)blackHoleAnimFrame=requestAnimationFrame(draw);
+  }
+  resize();if(window.ResizeObserver){var ro=new ResizeObserver(resize);ro.observe(canvas);}draw(performance.now());
+}
 function bindTimerCard(host){
+  initBlackHoleScene(host);
   var tb = host.querySelector("#timerToggleBtn");
   if(tb) tb.addEventListener("click", timerToggle);
   var rb = host.querySelector("#timerResetBtn");
