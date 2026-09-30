@@ -256,6 +256,8 @@
   .timer-btn:disabled{opacity:.45;cursor:not-allowed;}
   .timer-dial-wrap{position:absolute;left:50%;top:49%;transform:translate(-50%,-50%);width:170px;height:92px;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;z-index:6;display:flex;align-items:center;justify-content:center;background:transparent;border:0;box-shadow:none;}
   .timer-dial-wrap:focus-visible{outline:none;}
+  #view-dashboard .timer-card > .timer-dial-wrap{top:calc(49% - 36px);}
+  #view-dashboard .timer-card.pomo > .timer-dial-wrap{top:calc(49% - 42px);}
   .timer-dial-glow,.timer-dial-ring,.timer-dial-orbit{display:none!important;}
   .timer-dial-face{position:relative;inset:auto;border:0;background:transparent;display:flex;align-items:center;justify-content:center;width:100%;height:100%;}
   .timer-display{font-family:var(--font-mono);font-size:31px;font-weight:800;letter-spacing:.035em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.98),0 0 20px rgba(255,175,75,.42);}
