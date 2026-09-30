@@ -816,6 +816,12 @@
   .prio-r .pu{flex:1; min-width:0;} .prio-r .pu small{display:block; color:var(--ink-faint); font-size:11.5px;}
   .prio-r .py{font-size:11.5px; color:var(--ink-faint); white-space:nowrap;}
   .rs-blk{padding:10px 0; border-top:1px solid var(--line-soft);} .rs-blk .tpair{margin:8px 0;}
+  .pyq-btn{border:1px solid var(--tab-planner); background:var(--tab-planner-soft); color:var(--ink); border-radius:999px; padding:6px 12px; font:inherit; font-size:12px; font-weight:700; min-height:32px; cursor:pointer; white-space:nowrap;}
+  .pyq-btn.zero{border-color:var(--line); background:var(--surface); color:var(--ink-faint); font-weight:500;}
+  .pyq-sheet{max-height:86vh; overflow:auto;}
+  .pyq-q{border-top:1px solid var(--line-soft); padding:9px 0; font-size:13.5px; line-height:1.5;}
+  .pyq-q mark{background:var(--tab-planner-soft); color:inherit; border-radius:3px; padding:0 2px;}
+  .pyq-h{font-family:var(--font-mono); font-size:11.5px; color:var(--ink-faint); margin-bottom:3px;}
   .weekmap{margin-top:14px; padding:12px; border:1px solid var(--line); border-radius:14px; background:var(--tab-planner-soft);}
   .weekmap h4{margin:0 0 6px;}
   .wm-row{display:grid; grid-template-columns:38px 1fr; gap:8px; padding:6px 0; border-top:1px solid var(--line-soft);}
@@ -5268,6 +5274,95 @@ function dailyHtml(plan){
     (list.length ? list.map(planRow).join("") : '<div class="card empty">Nothing planned on this day.</div>')+
     '<div class="hint">Generated from your weekly plan. Mark sessions done, and log actual time, in the Logs tab.</div>';
 }
+
+// ---------- PYQ matcher: ONE function drives every count and every list ----------
+var STOPW = {}; "the and for with from that this are was were what which who whom whose how why when where its their his her has have had not can could would should may might will shall into onto upon over under between among about also such other than then them they there these those been being does did done any all each per via vis our your you india indian discuss explain examine analyse analyze critically comment evaluate elucidate highlight state role issue issues aspect aspects context major various different types type recent new words word marks answer".split(" ").forEach(function(w){ STOPW[w] = 1; });
+var Q_SUFFIX = ["ations","ation","ments","ment","ances","ance","ences","ence","ities","ity","ings","ing","ised","ized","ise","ize","ists","ist","isms","ism","ical","al","ic","ed"];
+function qStem(w){
+  if(w.length>5 && /ies$/.test(w)) w = w.slice(0,-3)+"y";
+  else if(w.length>3 && /s$/.test(w) && !/(ss|us|is)$/.test(w)) w = w.slice(0,-1);
+  for(var i=0;i<Q_SUFFIX.length;i++){ var sf = Q_SUFFIX[i]; if(w.length-sf.length>=4 && w.slice(-sf.length)===sf){ w = w.slice(0,-sf.length); break; } }
+  if(w.length>=6 && /an$/.test(w)) w = w.slice(0,-2);
+  if(w.length>=6 && /a$/.test(w)) w = w.slice(0,-1);
+  return w;
+}
+function qToks(t){ return String(t||"").toLowerCase().replace(/[^a-z0-9 ]+/g," ").split(/\s+/).filter(function(w){ return w.length>2 && !STOPW[w]; }).map(qStem); }
+function qSplit(t){ return String(t||"").split(/\s+and\s+|\s*[&,;\/()]\s*/i); }
+function qAlts(text, group){
+  var out = [];
+  qSplit(text).forEach(function(p){ var t = qToks(p); if(!t.length) return; if(t.length < 2 && group) t = t.concat(qToks(group)); out.push(t.filter(function(x, i){ return t.indexOf(x)===i; })); });
+  return out;
+}
+var pyqIdx = null, pyqMemo = {};
+function pyqIndex(){
+  if(pyqIdx) return pyqIdx;
+  loadPyq();
+  var Q = [], seen = {};
+  (pyqDocs || []).forEach(function(d){ (d.questions || []).forEach(function(q){ var tx = q.text || q.question || ""; seen[tx.slice(0,60)] = 1; Q.push({exam:d.exam, paper:d.paper, year:d.year, qno:q.qno||"", marks:q.marks||0, text:tx}); }); });
+  if(PYQ && PYQ.verified){
+    (PYQ.verified.prelims || []).forEach(function(q){ if(!seen[(q.question||"").slice(0,60)]) Q.push({exam:"prelims", paper:"GS Paper I", year:q.year, qno:"", marks:2, text:q.question||""}); });
+    (PYQ.verified.mains || []).forEach(function(q){ if(!seen[(q.question||"").slice(0,60)]) Q.push({exam:"mains", paper:/IV/.test(q.paper||"") ? "GS Paper IV" : "GS Paper I", year:q.year, qno:q.qno||"", marks:q.marks||0, text:q.question||""}); });
+  }
+  var df = {};
+  Q.forEach(function(q){ q.set = {}; qToks(q.text).forEach(function(t){ q.set[t] = 1; }); Object.keys(q.set).forEach(function(t){ df[t] = (df[t]||0)+1; }); });
+  return (pyqIdx = {Q:Q, df:df, N:Math.max(1, Q.length)});
+}
+var SUBJ_PAPER = {"History":"GS Paper I","Geography":"GS Paper I","Indian Society":"GS Paper I","Art & Culture":"GS Paper I","Polity":"GS Paper II","Governance":"GS Paper II","Social Justice":"GS Paper II","International Relations":"GS Paper II","Economy":"GS Paper III","Agriculture":"GS Paper III","Environment":"GS Paper III","Science & Technology":"GS Paper III","Internal Security":"GS Paper III","Disaster Management":"GS Paper III","Ethics, Integrity & Aptitude":"GS Paper IV"};
+function pyqEligible(q, subject, optional){
+  if(optional) return q.exam==="optional" && new RegExp("^"+optional, "i").test(q.paper);
+  if(q.exam==="optional") return false;
+  var mp = SUBJ_PAPER[subject]; if(!mp) return false;
+  if(q.exam==="prelims") return q.paper==="GS Paper I" && mp!=="GS Paper IV";
+  return q.paper===mp;
+}
+function pyqSearch(alts, subject, optional){
+  var ix = pyqIndex(), out = [];
+  var w = function(t){ return Math.max(0.5, Math.log(ix.N/(1+(ix.df[t]||0)))); };
+  ix.Q.forEach(function(q){
+    if(!pyqEligible(q, subject, optional)) return;
+    for(var i=0;i<alts.length;i++){
+      var A = alts[i], tot = 0, m = 0, dis = 0;
+      for(var j=0;j<A.length;j++){ var wt = w(A[j]); tot += wt; if(q.set[A[j]]){ m += wt; if((ix.df[A[j]]||0) <= 120) dis++; } }
+      if(tot && m/tot >= 0.8 && dis >= 1){ var c = {}; for(var k in q) c[k] = q[k]; c.hits = A.filter(function(t){ return q.set[t]; }); out.push(c); return; }
+    }
+  });
+  out.sort(function(a, b){ return (b.year||0)-(a.year||0) || (a.exam<b.exam ? -1 : 1); });
+  return out;
+}
+function pyqForLeaf(l){
+  if(l.id in pyqMemo) return pyqMemo[l.id];
+  var meta = studyPlan ? planCatalog(studyPlan).map[l.subject] : null, optional = meta && meta.purpose==="Optional" ? meta.name : "";
+  var alts = qAlts(l.unit, l.group);
+  return (pyqMemo[l.id] = pyqSearch(alts, l.subject, optional));
+}
+function pyqStatsFor(list){
+  var p = 0, m = 0, yrs = {};
+  list.forEach(function(q){ if(q.exam==="prelims") p++; else m++; yrs[q.year] = 1; });
+  return {prelims:p, mains:m, years:Object.keys(yrs).map(Number).sort()};
+}
+function openPyqSheet(leafId, subjName){
+  var st = subjectStates(studyPlan).filter(function(x){ return x.name===subjName; })[0];
+  var l = st ? st.leaves.filter(function(x){ return x.id===leafId; })[0] : null; if(!l) return;
+  var list = pyqForLeaf(l), ti = tierInfo(l), ix = pyqIndex();
+  var yrs = {}; ix.Q.forEach(function(q){ if(q.exam!=="optional") yrs[q.exam+q.year] = 1; });
+  var body = list.length ? list.map(function(q){
+    var head = (q.exam==="prelims" ? "Prelims" : (q.exam==="optional" ? "Optional" : "Mains"))+" "+q.year+" &middot; "+esc(q.paper)+(q.qno ? " &middot; Q"+esc(q.qno) : "")+(q.marks ? " &middot; "+q.marks+" marks" : "");
+    var tx = String(q.text).replace(/\\n/g, " ").replace(/\s+/g, " ").trim();
+    var cut = tx.length > 420 ? tx.slice(0, 420)+"…" : tx, hs = {}; (q.hits||[]).forEach(function(t){ hs[t] = 1; });
+    var hl = esc(cut).replace(/[A-Za-z0-9']+/g, function(w){ return hs[qStem(w.toLowerCase().replace(/'s$/, ""))] ? "<mark>"+w+"</mark>" : w; });
+    return '<div class="pyq-q"><div class="pyq-h">'+head+'</div><div>'+hl+'</div></div>';
+  }).join("") : '<div class="card empty">No question in your bank matched this topic&rsquo;s keywords. It may be rarely asked, worded differently, or from a year that is not in your bank yet. Try the PYQ Bank search.</div>';
+  showModal('<div class="modal card pyq-sheet" role="dialog" aria-modal="true" aria-labelledby="pqTitle">'+
+    '<h2 id="pqTitle">'+esc(l.unit)+'</h2>'+
+    '<p class="muted">'+esc(l.subject)+' &rsaquo; '+esc(l.group)+(ti ? ' &middot; <span class="chip '+ti.cls+'">'+esc(ti.short)+'</span>' : "")+'</p>'+
+    '<p><b>'+list.length+'</b> question'+(list.length===1 ? "" : "s")+' in your bank ('+pyqStatsFor(list).prelims+' Prelims, '+pyqStatsFor(list).mains+' Mains). This is the same list the count on the Priority tab comes from.</p>'+
+    body+
+    '<div class="modal-actions"><button class="btn ghost" data-go="subjday" data-subj="'+esc(l.subject)+'" data-leaf="'+esc(l.id)+'" id="pqDay">Open planned day</button><span class="grow"></span><button class="btn primary" id="pqClose">Close</button></div>'+
+    '<p class="muted small">Searched: verified questions in the app only (Prelims GS I 2014, 2015, 2020, 2021, 2024, 2025 and a 2023 sample; Mains GS I&ndash;IV 2014&ndash;2026). Questions are matched by topic keywords (highlighted), so treat this as a study guide, not an official count.</p>'+
+  '</div>', true);
+  var c = document.getElementById("pqClose"); if(c) c.addEventListener("click", closeModal);
+  var d = document.getElementById("pqDay"); if(d) d.addEventListener("click", closeModal);
+}
 var tierCache = {};
 function tierWords(t){ return (t||"").toLowerCase().replace(/[^a-z0-9 ]+/g," ").split(/\s+/).filter(function(w){ return w.length>3; }); }
 function tierInfo(l){
@@ -5320,7 +5415,11 @@ function goAction(el){
   else if(a==="tiers") setTab("prelims");
   else if(a==="reschedule") openReschedule();
 }
-document.addEventListener("click", function(e){ var t = e.target.closest ? e.target.closest("[data-go]") : null; if(t){ e.preventDefault(); goAction(t); } });
+document.addEventListener("click", function(e){
+  var pb = e.target.closest ? e.target.closest("[data-pyq]") : null;
+  if(pb){ e.preventDefault(); e.stopPropagation(); openPyqSheet(pb.getAttribute("data-pyq"), pb.getAttribute("data-subj")); return; }
+  var t = e.target.closest ? e.target.closest("[data-go]") : null; if(t){ e.preventDefault(); goAction(t); }
+}, true);
 document.addEventListener("keydown", function(e){ if((e.key==="Enter" || e.key===" ") && e.target.getAttribute && e.target.getAttribute("role")==="button" && e.target.hasAttribute("data-go")){ e.preventDefault(); goAction(e.target); } });
 
 // ---------- reschedule ----------
@@ -5363,15 +5462,15 @@ function priorityHtml(plan, states){
   if(!st) return '<div class="card empty">No subjects in your plan yet.</div>';
   var rows = st.leaves.map(function(l){ return {l:l, t:tierInfo(l)}; });
   var groups = [[1,"Tier 1 · Highest load"],[2,"Tier 2 · High"],[3,"Tier 3 · Medium"],[4,"Tier 4 · Low yield"],[5,"Themes and clusters"],[9,"Not rated in your Tiers list"]];
-  var html = '<div class="hint">Tiers show how much weight a topic carries in UPSC: Tier 1 is the heaviest. Tap a chapter to see the day it is planned.</div>'+
+  var html = '<div class="hint">Tiers show how much weight a topic carries in UPSC: Tier 1 is the heaviest. Tap a chapter to see the day it is planned, or tap its PYQ button to read the questions.</div>'+
     '<div class="cf"><label>Subject</label><select data-pa="prisubj">'+states.map(function(x){ return '<option value="'+esc(x.name)+'"'+(x.name===name?" selected":"")+'>'+esc(x.name)+'</option>'; }).join("")+'</select></div>';
   groups.forEach(function(g){
     var list = rows.filter(function(r){ var k = tierRank(r.t); return g[0]===9 ? k===9 : (g[0]===5 ? k===5 : k===g[0]); });
     if(!list.length) return;
-    list.sort(function(a,b){ return pyqTotal(b.t)-pyqTotal(a.t); });
+    list.sort(function(a,b){ return pyqForLeaf(b.l).length-pyqForLeaf(a.l).length; });
     html += '<div class="prio-g"><div class="prio-h">'+esc(g[1])+' <span class="cnt">'+list.length+'</span></div>'+list.map(function(r){
-      var stt = leafStatus(r.l.id), n = pyqTotal(r.t);
-      return '<div class="prio-r st-'+stt+'" role="button" tabindex="0" data-go="subjday" data-subj="'+esc(name)+'" data-leaf="'+esc(r.l.id)+'"><span class="dot"></span><span class="pu">'+esc(r.l.unit)+'<small>'+esc(r.l.group)+'</small></span>'+(r.t ? '<span class="chip '+r.t.cls+'">'+esc(r.t.short)+'</span>' : "")+'<span class="py">'+(n ? '≈'+n+' PYQ' : "")+'</span></div>';
+      var stt = leafStatus(r.l.id), n = pyqForLeaf(r.l).length;
+      return '<div class="prio-r st-'+stt+'" role="button" tabindex="0" data-go="subjday" data-subj="'+esc(name)+'" data-leaf="'+esc(r.l.id)+'"><span class="dot"></span><span class="pu">'+esc(r.l.unit)+'<small>'+esc(r.l.group)+'</small></span>'+(r.t ? '<span class="chip '+r.t.cls+'">'+esc(r.t.short)+'</span>' : "")+'<button type="button" class="pyq-btn'+(n ? "" : " zero")+'" data-pyq="'+esc(r.l.id)+'" data-subj="'+esc(name)+'" aria-label="Show '+n+' previous year questions">'+n+' PYQ</button></div>';
     }).join("")+'</div>';
   });
   return html+'<button type="button" class="btn ghost sm" data-go="tiers">Open the full Tiers list</button>';
@@ -5942,6 +6041,29 @@ function findTopicForText(text){
   }
   return null;
 }
+function tierPyq(it, kind, label){
+  var m = (label||"").match(/^GS(\d)/), scope = m ? "GS Paper "+["","I","II","III","IV"][+m[1]] : (/^Geography/.test(label||"") ? "GS Paper I" : (/^Essay/.test(label||"") ? "Essay" : (/^Anthropology/.test(label||"") ? "optional" : "")));
+  return pyqSearchPool(qAlts(it.topic, ""), kind, scope);
+}
+function pyqSearchPool(alts, kind, scope){
+  var ix = pyqIndex(), out = [];
+  var w = function(t){ return Math.max(0.5, Math.log(ix.N/(1+(ix.df[t]||0)))); };
+  ix.Q.forEach(function(q){
+    if(scope==="optional"){ if(q.exam!=="optional") return; }
+    else {
+      if(q.exam==="optional") return;
+      if(kind==="prelims" && q.exam!=="prelims") return;
+      if(kind==="mains" && (q.exam!=="mains" || (scope && q.paper!==scope))) return;
+      if(kind==="mains" && !scope && q.paper==="Essay") return;
+    }
+    for(var i=0;i<alts.length;i++){
+      var A = alts[i], tot = 0, mm = 0, dis = 0;
+      for(var j=0;j<A.length;j++){ var wt = w(A[j]); tot += wt; if(q.set[A[j]]){ mm += wt; if((ix.df[A[j]]||0) <= 120) dis++; } }
+      if(tot && mm/tot >= 0.8 && dis >= 1){ out.push(q); return; }
+    }
+  });
+  return pyqStatsFor(out);
+}
 function pyqStatLine(pyq){
   if(!pyq || (!pyq.prelims && !pyq.mains)) return "Not yet matched to a specific PYQ in your bank — still a syllabus-mandated area.";
   var parts = [];
@@ -5949,7 +6071,7 @@ function pyqStatLine(pyq){
   if(pyq.mains) parts.push(pyq.mains+" Mains");
   var total = (pyq.prelims||0)+(pyq.mains||0);
   var yrs = pyq.years && pyq.years.length ? " · asked "+pyq.years[0]+"–"+pyq.years[pyq.years.length-1] : "";
-  return parts.join(" + ")+" ≈ "+total+" PYQ hits"+yrs+" (keyword-matched against your PYQ bank — approximate, not an official count).";
+  return parts.join(" + ")+" ≈ "+total+" PYQ hits"+yrs+" (keyword-matched against the verified questions in your bank — approximate, not an official count).";
 }
 
 // ============================================================================
@@ -6057,7 +6179,7 @@ function renderChecklist(kind){
         return '<label class="topic-row'+(checked?" done":"")+'">'+
           '<input type="checkbox" id="topic-'+it.id+'" data-id="'+it.id+'" '+(checked?"checked":"")+'>'+
           '<div class="t"><span class="chip '+tierClass(it.tier)+'" title="'+esc(it.tier)+'">'+esc(tierShort(it.tier))+'</span><br>'+esc(it.topic)+
-          '<div class="pyq-line">'+esc(pyqStatLine(it.pyq))+'</div></div>'+
+          '<div class="pyq-line">'+esc(pyqStatLine(tierPyq(it, kind, g[labelKey])))+'</div></div>'+
         '</label>';
       }).join("") +'</div>'+
     '</div>';
