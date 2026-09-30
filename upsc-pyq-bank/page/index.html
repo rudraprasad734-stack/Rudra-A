@@ -806,6 +806,16 @@
   .slot{border:1px solid var(--line); border-left:5px solid var(--tab-planner); border-radius:14px; padding:10px 12px; background:var(--surface);}
   .slot-h{display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;}
   .slot select{width:100%; min-height:44px; padding:8px; border:1px solid var(--line); border-radius:10px; background:var(--surface); color:var(--ink); font:inherit;}
+  .ac-next[data-go], .brick[data-go], .tagc[data-go], .upc-i[data-go], .prio-r{cursor:pointer;}
+  .ac-next .go{display:block; margin-top:4px; font-size:12px; font-weight:700; color:var(--tab-planner);}
+  .ac-links, .log-links{display:flex; flex-wrap:wrap; gap:6px 14px; margin:8px 0;}
+  .prio-g{margin:12px 0;} .prio-h{font-weight:700; margin-bottom:4px;} .prio-h .cnt{font-weight:500; color:var(--ink-faint); margin-left:6px;}
+  .prio-r{display:flex; align-items:center; gap:8px; padding:9px 10px; border:1px solid var(--line); border-radius:12px; margin-bottom:6px; background:var(--surface);}
+  .prio-r .dot{width:10px; height:10px; border-radius:50%; background:var(--line); flex:0 0 auto;}
+  .prio-r.st-completed .dot{background:var(--sage);} .prio-r.st-in_progress .dot{background:var(--gold);}
+  .prio-r .pu{flex:1; min-width:0;} .prio-r .pu small{display:block; color:var(--ink-faint); font-size:11.5px;}
+  .prio-r .py{font-size:11.5px; color:var(--ink-faint); white-space:nowrap;}
+  .rs-blk{padding:10px 0; border-top:1px solid var(--line-soft);} .rs-blk .tpair{margin:8px 0;}
   .weekmap{margin-top:14px; padding:12px; border:1px solid var(--line); border-radius:14px; background:var(--tab-planner-soft);}
   .weekmap h4{margin:0 0 6px;}
   .wm-row{display:grid; grid-template-columns:38px 1fr; gap:8px; padding:6px 0; border-top:1px solid var(--line-soft);}
@@ -4525,6 +4535,7 @@ function mkStudy(item, date, slot){
 }
 
 // ---------- the projection engine ----------
+function onLeave(plan, d){ return (plan.leave||[]).some(function(r){ return d>=r.from && d<=r.to; }); }
 function isTouched(s){ return s.origin!=="auto" || s.status!=="not_started" || !!s.actualStart || !!s.actualEnd || s.actualDuration>0; }
 function horizonEnd(){ return studyPlan ? minKey(studyPlan.window.end, toKey(addDays(parseKey(todayKey), HORIZON_DAYS))) : todayKey; }
 function simulate(plan, from, frozen, strict){
@@ -4552,6 +4563,7 @@ function simulate(plan, from, frozen, strict){
   var out = [], spans = {}, frozenBy = {}, acts = activityCalendar(plan, from, plan.window.end), lastCtx = null;
   (frozen||[]).forEach(function(s){ (frozenBy[s.date] = frozenBy[s.date] || []).push(s); });
   eachDay(from, plan.window.end, function(d){
+    if(onLeave(plan, d) && !(frozenBy[d] || []).length) return;
     var dow = dowOf(d), fz = frozenBy[d] || [];
     var blockers = fz.map(function(s){ return {start:s.startTime, end:s.endTime}; });
     var todays = [];
@@ -5087,7 +5099,9 @@ function wizGenerate(){
   for(var s=0; s<7; s++) errs = errs.concat(wizValidate(wiz, s));
   if(errs.length){ wiz.err = errs; wizRender(); return; }
   var wasEditing = !!studyPlan;
+  var keepLeave = studyPlan && studyPlan.leave;
   studyPlan = compilePlan(wiz);
+  if(keepLeave) studyPlan.leave = keepLeave;
   Object.keys(studyProgress.topics).forEach(function(id){ if(!studyPlan.sel[id]) delete studyProgress.topics[id]; });
   saveProgress(); savePlan();
   replan();
@@ -5103,7 +5117,7 @@ function wizGenerate(){
 // PLANNER HOME: LEGO chain + Yearly / Monthly / Weekly / Daily + Progress
 // ============================================================================
 var progOpen = {}, plannerView = "overview", plannerLanding = null, plannerMonth = null, plannerWeek = null, plannerDay = null;
-var PLANNER_TABS = [["overview","Overview"],["yearly","Yearly"],["monthly","Monthly"],["weekly","Weekly"],["daily","Daily"],["progress","Progress"]];
+var PLANNER_TABS = [["overview","Overview"],["yearly","Yearly"],["monthly","Monthly"],["weekly","Weekly"],["daily","Daily"],["progress","Progress"],["priority","Priority"]];
 function kindMeta(s){ return KIND_META[s.kind] || {label:s.purpose, color:"--tab-scheduler"}; }
 function fmtMonthKey(mk){ return new Date(+mk.slice(0,4), +mk.slice(5,7)-1, 1).toLocaleDateString(undefined, {month:"long", year:"numeric"}); }
 function fmtMonthShort(mk){ return new Date(+mk.slice(0,4), +mk.slice(5,7)-1, 1).toLocaleDateString(undefined, {month:"short", year:"numeric"}); }
@@ -5116,7 +5130,7 @@ function monthDates(mk){ var y = +mk.slice(0,4), m = +mk.slice(5,7)-1, dim = new
 function stateColor(states, name){ for(var i=0;i<states.length;i++) if(states[i].name===name) return states[i].color; return "--tab-quotes"; }
 function planRow(s){
   var meta = kindMeta(s), label;
-  if(s.kind==="study") label = esc(s.subject)+' › '+esc(s.topic)+' › <b>'+esc(s.syllabusUnit)+'</b>'+(s.blkOf>1 ? ' <small>session '+s.blk+'/'+s.blkOf+'</small>' : "");
+  if(s.kind==="study") label = esc(s.subject)+' › '+esc(s.topic)+' › <b>'+esc(s.syllabusUnit)+'</b>'+tierBadge({subject:s.subject, group:s.topic, unit:s.syllabusUnit})+(s.blkOf>1 ? ' <small>session '+s.blk+'/'+s.blkOf+'</small>' : "");
   else if(s.kind) label = '<b>'+esc(meta.label)+'</b>'+(s.kind==="essay"||s.kind==="ca" ? "" : ' · '+esc(s.subject)+(s.kind==="revision"||s.kind==="pyq" ? ' › '+esc(s.kind==="revision" ? s.syllabusUnit : s.topic) : ""));
   else label = '<b>Manual</b> · '+esc(s.subject)+' › '+esc(s.syllabusUnit);
   var actS = activeSubject(studyPlan);
@@ -5137,7 +5151,7 @@ var LOCK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="tru
 var CHECK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></svg>';
 function brickHtml(st){
   var tag = st.state==="completed" ? CHECK_SVG+" COMPLETED" : (st.state==="active" ? "ACTIVE" : (st.pinned ? "PARALLEL" : LOCK_SVG+" LOCKED"));
-  return '<div class="brick st-'+st.state+'" style="--bc:var('+st.color+')" data-brick="'+esc(st.name)+'"><div class="studs"><i></i><i></i><i></i><i></i></div>'+
+  return '<div class="brick st-'+st.state+'" style="--bc:var('+st.color+')" data-brick="'+esc(st.name)+'" role="button" tabindex="0" data-go="subject" data-subj="'+esc(st.name)+'"><div class="studs"><i></i><i></i><i></i><i></i></div>'+
     '<div class="b-main"><span class="b-name">'+esc(st.name)+'</span><span class="b-tag">'+tag+'</span></div>'+
     '<div class="b-bar"><i style="width:'+st.pct+'%"></i></div><div class="b-sub">'+st.done+' / '+st.total+' chapters &middot; '+st.pct+'%</div></div>';
 }
@@ -5154,13 +5168,14 @@ function activeCardHtml(states, forDash){
   var nl = nextLeaf(act);
   return banner+'<div class="card active-card" style="--bc:var('+act.color+')"><div class="ac-k">CURRENTLY ACTIVE</div><div class="ac-name">'+esc(act.name.toUpperCase())+'</div><div class="ac-pct">'+act.pct+'% Complete</div>'+
     '<div class="pbar"><i style="width:'+act.pct+'%"></i></div><div class="ac-sub">'+act.done+' / '+act.total+' chapters completed</div>'+
-    (nl ? '<div class="ac-next">Next: <b>'+esc(nl.unit)+'</b> <small>'+esc(nl.group)+'</small></div>' : "")+
+    (nl ? '<div class="ac-next" role="button" tabindex="0" data-go="subjday" data-subj="'+esc(act.name)+'" data-leaf="'+esc(nl.id)+'" title="Open this chapter in the planner">Next: <b>'+esc(nl.unit)+'</b> <small>'+esc(nl.group)+'</small>'+tierBadge(nl)+' <span class="go">Open in planner &rsaquo;</span></div>' : "")+
+    '<div class="ac-links"><button type="button" class="link-btn" data-go="subjday" data-subj="'+esc(act.name)+'">Open '+esc(act.name)+' in planner &rsaquo;</button><button type="button" class="link-btn" data-go="priority" data-subj="'+esc(act.name)+'">Topic priority (Tiers) &rsaquo;</button></div>'+
     (forDash ? "" : '<div class="ac-actions"><button type="button" class="btn primary sm" data-pa="doneNext">Mark next chapter complete</button><button type="button" class="btn ghost sm" data-pa="undoLast">Undo last completion</button></div>')+'</div>';
 }
 function upcomingHtml(){
   return '<div class="upc">'+["essay","pyq","test","revision","ca"].map(function(k){
     var s = studyPlan.activities[k] && studyPlan.activities[k].on ? nextOf(k) : null, info = ACT_INFO[k];
-    return '<div class="upc-i" style="--bc:var('+info.color+')"><span>'+esc(info.title)+'</span><b>'+(s ? esc(fmtWhen(s)) : (studyPlan.activities[k].on ? "None soon" : "Not planned"))+'</b></div>';
+    return '<div class="upc-i" role="button" tabindex="0" data-go="day"'+(s ? ' data-date="'+s.date+'"' : "")+' style="--bc:var('+info.color+')"><span>'+esc(info.title)+'</span><b>'+(s ? esc(fmtWhen(s)) : (studyPlan.activities[k].on ? "None soon" : "Not planned"))+'</b></div>';
   }).join("")+'</div>';
 }
 
@@ -5255,7 +5270,7 @@ function dailyHtml(plan){
 }
 var tierCache = {};
 function tierWords(t){ return (t||"").toLowerCase().replace(/[^a-z0-9 ]+/g," ").split(/\s+/).filter(function(w){ return w.length>3; }); }
-function tierForLeaf(l){
+function tierInfo(l){
   var key = l.subject+"|"+l.group+"|"+l.unit;
   if(key in tierCache) return tierCache[key];
   var a = tierWords(l.unit+" "+l.group), best = null, bestScore = 0;
@@ -5267,12 +5282,101 @@ function tierForLeaf(l){
       if(shared>=2 && score>bestScore){ bestScore = score; best = t; }
     });
   }
-  return (tierCache[key] = bestScore>=0.5 ? tierShort(best.tier) + "|" + tierClass(best.tier) : "");
+  var res = (best && bestScore>=0.5) ? {short:tierShort(best.tier), cls:tierClass(best.tier), tier:best.tier, pyq:best.pyq, topic:best.topic} : null;
+  return (tierCache[key] = res);
 }
 function tierBadge(l){
-  var t = tierForLeaf(l).split("|");
-  return t[0] ? ' <span class="chip '+t[1]+'" title="From your Tiers list">'+esc(t[0])+'</span>' : "";
+  var t = tierInfo(l);
+  return t ? ' <span class="chip '+t.cls+'" title="'+esc(t.tier+" — from your Tiers list")+'">'+esc(t.short)+'</span>' : "";
 }
+function tierRank(t){ var m = t && t.tier && t.tier.match(/Tier (\d)/); return m ? +m[1] : (t ? 5 : 9); }
+function pyqTotal(t){ return t && t.pyq ? (t.pyq.prelims||0)+(t.pyq.mains||0) : 0; }
+
+// ---------- deep links: dashboard / logs -> planner ----------
+var priSubject = "";
+function subjectNextDate(name, leafId){
+  if(!studyPlan) return null;
+  var idx = viewIndex(), end = studyPlan.window.end;
+  for(var k = maxKey(todayKey, studyPlan.window.start), n = 0; k <= end && n < 800; k = toKey(addDays(parseKey(k), 1)), n++){
+    var hit = (idx.byDate[k] || []).some(function(x){ return x.kind==="study" && x.subject===name && (!leafId || x.topicId===leafId) && x.status!=="completed" && x.status!=="skipped" && x.status!=="missed"; });
+    if(hit) return k;
+  }
+  return null;
+}
+function goPlanner(view, o){
+  o = o || {};
+  if(!studyPlan){ setTab("planner"); return; }
+  plannerView = view;
+  if(o.day) plannerDay = o.day;
+  if(o.subject){ progOpen[o.subject] = true; priSubject = o.subject; }
+  setTab("planner");
+}
+function goAction(el){
+  var a = el.getAttribute("data-go"), subj = el.getAttribute("data-subj") || "", leaf = el.getAttribute("data-leaf") || "", date = el.getAttribute("data-date") || "";
+  if(a==="day") goPlanner("daily", {day: date || todayKey});
+  else if(a==="subjday"){ var d = subjectNextDate(subj, leaf); if(!d) toast("No upcoming session for "+(subj||"this subject")+" yet. Showing today."); goPlanner("daily", {day: d || todayKey, subject: subj}); }
+  else if(a==="subject") goPlanner("progress", {subject: subj});
+  else if(a==="priority") goPlanner("priority", {subject: subj});
+  else if(a==="tiers") setTab("prelims");
+  else if(a==="reschedule") openReschedule();
+}
+document.addEventListener("click", function(e){ var t = e.target.closest ? e.target.closest("[data-go]") : null; if(t){ e.preventDefault(); goAction(t); } });
+document.addEventListener("keydown", function(e){ if((e.key==="Enter" || e.key===" ") && e.target.getAttribute && e.target.getAttribute("role")==="button" && e.target.hasAttribute("data-go")){ e.preventDefault(); goAction(e.target); } });
+
+// ---------- reschedule ----------
+function openReschedule(){
+  if(!studyPlan){ setTab("planner"); return; }
+  var leave = studyPlan.leave || [];
+  var m = showModal(
+    '<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="rsTitle">'+
+      '<h2 id="rsTitle">Reschedule my plan</h2>'+
+      '<p class="muted">Past sessions you logged never change. Everything from today onward is rebuilt from your progress.</p>'+
+      '<div class="rs-blk"><b>Take days off</b><div class="muted">Study and activities pause on these days and the plan shifts forward.</div>'+
+        '<div class="tpair"><input type="date" id="rsFrom" value="'+esc(todayKey)+'"><span>to</span><input type="date" id="rsTo" value="'+esc(todayKey)+'"></div>'+
+        '<button type="button" class="btn ghost sm" id="rsAdd">Add days off</button>'+
+        '<div class="pill-row">'+leave.map(function(r, i){ return '<button type="button" class="pill on" data-rm="'+i+'">'+esc(fmtShort(parseKey(r.from)))+(r.to!==r.from ? " – "+esc(fmtShort(parseKey(r.to))) : "")+' ✕</button>'; }).join("")+'</div></div>'+
+      '<div class="rs-blk"><b>Recalculate from today</b><div class="muted">Marks untouched past sessions as missed and spreads the remaining chapters across your coming days.</div><button type="button" class="btn ghost sm" id="rsRe">Recalculate now</button></div>'+
+      '<div class="rs-blk"><b>Change session times or subjects</b><div class="muted">Edit the from&ndash;to time and subject of each session.</div><button type="button" class="btn ghost sm" id="rsCap">Edit sessions</button></div>'+
+      '<div class="rs-blk"><b>Change Essay / PYQ / Test / Revision days</b><button type="button" class="btn ghost sm" id="rsAct">Edit activities</button></div>'+
+      '<div class="form-err" id="rsErr" role="alert" hidden></div>'+
+      '<div class="modal-actions"><span class="grow"></span><button class="btn primary" id="rsClose">Done</button></div>'+
+    '</div>', true);
+  function after(msg){ savePlan(); replan(); closeModal(); if(msg) toast(msg); renderView(activeTab); }
+  m.querySelector("#rsClose").addEventListener("click", closeModal);
+  m.querySelector("#rsAdd").addEventListener("click", function(){
+    var f = m.querySelector("#rsFrom").value, t = m.querySelector("#rsTo").value, box = m.querySelector("#rsErr");
+    if(!f || !t || t < f){ box.hidden = false; box.textContent = "Pick a start date and an end date that is on or after it."; return; }
+    studyPlan.leave = (studyPlan.leave || []).concat([{from:f, to:t}]);
+    after("Days off added. The plan has shifted forward.");
+  });
+  Array.prototype.forEach.call(m.querySelectorAll("[data-rm]"), function(b){ b.addEventListener("click", function(){ studyPlan.leave.splice(+b.getAttribute("data-rm"), 1); after("Day off removed. Plan recalculated."); }); });
+  m.querySelector("#rsRe").addEventListener("click", function(){ after("Plan recalculated from today."); });
+  function edit(step){ closeModal(); plannerEditing = true; wiz = wizFromPlan(studyPlan); wiz.step = step; setTab("planner"); }
+  m.querySelector("#rsCap").addEventListener("click", function(){ edit(5); });
+  m.querySelector("#rsAct").addEventListener("click", function(){ edit(6); });
+}
+
+// ---------- Priority (Tiers) inside the planner ----------
+function priorityHtml(plan, states){
+  var name = priSubject && states.some(function(x){ return x.name===priSubject; }) ? priSubject : (states.filter(function(x){ return x.state==="active"; })[0] || states[0] || {}).name;
+  var st = states.filter(function(x){ return x.name===name; })[0];
+  if(!st) return '<div class="card empty">No subjects in your plan yet.</div>';
+  var rows = st.leaves.map(function(l){ return {l:l, t:tierInfo(l)}; });
+  var groups = [[1,"Tier 1 · Highest load"],[2,"Tier 2 · High"],[3,"Tier 3 · Medium"],[4,"Tier 4 · Low yield"],[5,"Themes and clusters"],[9,"Not rated in your Tiers list"]];
+  var html = '<div class="hint">Tiers show how much weight a topic carries in UPSC: Tier 1 is the heaviest. Tap a chapter to see the day it is planned.</div>'+
+    '<div class="cf"><label>Subject</label><select data-pa="prisubj">'+states.map(function(x){ return '<option value="'+esc(x.name)+'"'+(x.name===name?" selected":"")+'>'+esc(x.name)+'</option>'; }).join("")+'</select></div>';
+  groups.forEach(function(g){
+    var list = rows.filter(function(r){ var k = tierRank(r.t); return g[0]===9 ? k===9 : (g[0]===5 ? k===5 : k===g[0]); });
+    if(!list.length) return;
+    list.sort(function(a,b){ return pyqTotal(b.t)-pyqTotal(a.t); });
+    html += '<div class="prio-g"><div class="prio-h">'+esc(g[1])+' <span class="cnt">'+list.length+'</span></div>'+list.map(function(r){
+      var stt = leafStatus(r.l.id), n = pyqTotal(r.t);
+      return '<div class="prio-r st-'+stt+'" role="button" tabindex="0" data-go="subjday" data-subj="'+esc(name)+'" data-leaf="'+esc(r.l.id)+'"><span class="dot"></span><span class="pu">'+esc(r.l.unit)+'<small>'+esc(r.l.group)+'</small></span>'+(r.t ? '<span class="chip '+r.t.cls+'">'+esc(r.t.short)+'</span>' : "")+'<span class="py">'+(n ? '≈'+n+' PYQ' : "")+'</span></div>';
+    }).join("")+'</div>';
+  });
+  return html+'<button type="button" class="btn ghost sm" data-go="tiers">Open the full Tiers list</button>';
+}
+
 function progressHtml(plan, states){
   return '<div class="hint">Mark chapters complete as you finish them. When every selected chapter of a subject is complete, the next subject unlocks and the plan recalculates.</div>'+
     states.map(function(s){
@@ -5297,9 +5401,10 @@ function renderPlannerHome(host){
   else if(plannerView==="weekly") body = weeklyHtml(plan, states);
   else if(plannerView==="daily") body = dailyHtml(plan);
   else if(plannerView==="progress") body = progressHtml(plan, states);
+  else if(plannerView==="priority") body = priorityHtml(plan, states);
   else body = overviewHtml(plan, states);
   host.innerHTML =
-    '<div class="card pl-title"><div><h2>Preparation Planner</h2><div class="muted">Complete a subject to unlock the next. The calendar follows your progress.</div></div></div>'+
+    '<div class="card pl-title"><div><h2>Preparation Planner</h2><div class="muted">Complete a subject to unlock the next. The calendar follows your progress.</div></div><button type="button" class="btn ghost sm" data-go="reschedule">Reschedule</button></div>'+
     '<div class="pl-tabs">'+PLANNER_TABS.map(function(t){ return '<button type="button" class="'+(t[0]===plannerView?"on":"")+'" data-pa="view" data-v="'+t[0]+'">'+t[1]+'</button>'; }).join("")+'</div>'+body;
 }
 function renderPlanner(){
@@ -5320,6 +5425,7 @@ function plannerAction(a, el){
   var v = el.getAttribute("data-v");
   switch(a){
     case "view": plannerView = v; break;
+    case "prisubj": priSubject = el.value; break;
     case "openMonth": plannerMonth = v; plannerView = "monthly"; break;
     case "openDay": plannerDay = v; plannerView = "daily"; break;
     case "mPrev": plannerMonth = shiftMonth(plannerMonth, -1); break;
@@ -5380,7 +5486,7 @@ function wirePlanner(host){
       cat.map[sn].topics[g].forEach(function(u){ var lid = sn+"|"+g+"|"+u; if(t.checked) wiz.sel[lid] = 1; else delete wiz.sel[lid]; });
       wiz.open[sn] = true; wizRender(); return;
     }
-    if(t.getAttribute("data-pa")==="leafsel" || t.getAttribute("data-pa")==="pace") plannerAction(t.getAttribute("data-pa"), t);
+    if(t.getAttribute("data-pa")==="leafsel" || t.getAttribute("data-pa")==="pace" || t.getAttribute("data-pa")==="prisubj") plannerAction(t.getAttribute("data-pa"), t);
   });
   host.addEventListener("toggle", function(e){
     var d = e.target;
@@ -5412,8 +5518,8 @@ function plannerDashCard(){
   return '<div class="card pl-dash">'+
     '<div class="ov-h"><b>Overall preparation</b><span>'+op.pct+'%</span></div><div class="pbar big"><i style="width:'+op.pct+'%"></i></div>'+
     activeCardHtml(states, true)+
-    '<div class="pl-cols"><div><div class="mini-t">Completed</div>'+(completed.length ? completed.map(function(s){ return '<span class="tagc" style="--bc:var('+s.color+')">'+CHECK_SVG+esc(s.name)+'</span>'; }).join("") : '<span class="muted">None yet</span>')+'</div>'+
-    '<div><div class="mini-t">Up next</div>'+(rest.length ? rest.map(function(s){ return '<span class="tagc lock" style="--bc:var('+s.color+')">'+LOCK_SVG+esc(s.name)+'</span>'; }).join("") : '<span class="muted">Nothing left</span>')+'</div></div>'+
+    '<div class="pl-cols"><div><div class="mini-t">Completed</div>'+(completed.length ? completed.map(function(s){ return '<span class="tagc" role="button" tabindex="0" data-go="subject" data-subj="'+esc(s.name)+'" style="--bc:var('+s.color+')">'+CHECK_SVG+esc(s.name)+'</span>'; }).join("") : '<span class="muted">None yet</span>')+'</div>'+
+    '<div><div class="mini-t">Up next</div>'+(rest.length ? rest.map(function(s){ return '<span class="tagc lock" role="button" tabindex="0" data-go="subject" data-subj="'+esc(s.name)+'" style="--bc:var('+s.color+')">'+LOCK_SVG+esc(s.name)+'</span>'; }).join("") : '<span class="muted">Nothing left</span>')+'</div></div>'+
     chainHtml(states)+
     '<div class="mini-t">Today</div><div class="muted">Planned '+esc(fmtDurMin(tp))+' &middot; Actual '+esc(fmtDurMin(ta))+' &middot; '+today.length+' sessions</div>'+
     '<div class="mini-t">Upcoming</div>'+upcomingHtml()+
@@ -5788,6 +5894,7 @@ function renderDaily(){
       '<button class="today-btn" id="dayToday">Today</button>'+
     '</div>'+
     '<div class="day-badges">'+badges+'</div>'+
+    (studyPlan ? '<div class="log-links"><button type="button" class="link-btn" data-go="day" data-date="'+currentDailyKey+'">Open this day in Planner &rsaquo;</button><button type="button" class="link-btn" data-go="priority" data-subj="'+esc(((planSessionsOn(currentDailyKey).filter(function(x){ return x.kind==="study"; })[0]||{}).subject)||"")+'">Topic priority (Tiers) &rsaquo;</button><button type="button" class="link-btn" data-go="reschedule">Reschedule &rsaquo;</button></div>' : "")+
     sessionsDayCard(currentDailyKey)+
     '<div class="notes-card card"><h3>Notes</h3><textarea id="dayNotes" placeholder="How did today go? Anything to revise, retry, or flag for tomorrow...">'+esc(st.notes||"")+'</textarea>'+
     '<div class="save-hint" id="dayNotesHint">'+ (db ? "Saves automatically as you type" : "Not connected. Notes won't be saved.") +'</div></div>';
