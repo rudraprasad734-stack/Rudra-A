@@ -6128,7 +6128,9 @@ function initBlackHoleScene(host){
     var g = mwTex.getContext("2d"), i, gl;
     function blob(x, y, r, stops){ gl = g.createRadialGradient(x, y, 0, x, y, r); for(var k=0;k<stops.length;k++) gl.addColorStop(stops[k][0], stops[k][1]); g.fillStyle = gl; g.fillRect(x-r, y-r, r*2, r*2); }
     // warm emission nebula pouring in from the top-right corner
-    blob(W*1.02, -H*.02, H*.62, [[0,"rgba(255,248,236,.9)"],[.14,"rgba(255,226,182,.6)"],[.4,"rgba(232,130,60,.3)"],[.75,"rgba(120,50,26,.1)"],[1,"rgba(60,20,10,0)"]]);
+    blob(W*1.08, H*.04, H*.6, [[0,"rgba(255,250,242,.95)"],[.22,"rgba(255,232,196,.6)"],[.5,"rgba(232,130,60,.24)"],[.8,"rgba(120,50,26,.07)"],[1,"rgba(60,20,10,0)"]]);
+    blob(W*1.0, H*.6, H*.36, [[0,"rgba(210,100,44,.16)"],[1,"rgba(60,20,10,0)"]]);
+    g.lineCap = "round"; for(i=0;i<26;i++){ var fx = W*(.66 + .36*Math.random()), fy = H*Math.random()*.75; g.strokeStyle = "rgba("+(Math.random()<.5 ? "150,70,34" : "236,150,80")+","+rnd(.04,.09)+")"; g.lineWidth = rnd(2,6); g.beginPath(); g.moveTo(fx, fy); g.quadraticCurveTo(fx + rnd(-50,50), fy + rnd(-30,30), fx + rnd(-90,90), fy + rnd(-60,60)); g.stroke(); }
     blob(W*1.0, H*.3, H*.4, [[0,"rgba(236,120,52,.3)"],[.6,"rgba(120,50,26,.1)"],[1,"rgba(60,20,10,0)"]]);
     blob(W*.78, H*.02, H*.3, [[0,"rgba(200,100,50,.2)"],[1,"rgba(60,20,10,0)"]]);
     // dark dust lanes cutting across it
@@ -6139,26 +6141,27 @@ function initBlackHoleScene(host){
   var _rs = resize; resize = function(){ _rs(); buildMW(); };
   function bez(p0, p1, p2, e){ var q = 1-e; return q*q*p0 + 2*q*e*p1 + e*e*p2; }
   var lensS = [], gals = [], eR = 100;
-  for(var li=0; li<1000; li++) lensS.push({x:Math.random(), y:Math.random(), s:rnd(.4,1.25), a:rnd(.5,1), tw:rnd(0,6.283), c:Math.random()});
-  function mkGal(start){ var pts = [], k, ang = rnd(-.6, .6), ca = Math.cos(ang), sa = Math.sin(ang);
-    for(k=0;k<140;k++){ var gx = (Math.random()+Math.random()+Math.random()-1.5)*34, gy = (Math.random()+Math.random()+Math.random()-1.5)*15; pts.push({x:gx*ca - gy*sa, y:gx*sa + gy*ca, s:rnd(1.6,3.8), a:rnd(.16,.42), c:Math.random()}); }
-    return {ox:rnd(-30,30), oy:start, pts:pts}; }
-  gals = [mkGal(140), mkGal(520)];
+  for(var li=0; li<1900; li++) lensS.push({x:Math.random(), y:Math.random(), s:Math.random()<.04 ? rnd(1,1.5) : rnd(.3,.85), a:rnd(.45,1), tw:rnd(0,6.283), c:Math.random()});
+  function mkGal(start){ var pts = [], k, ang = rnd(-.5, .5), ca = Math.cos(ang), sa = Math.sin(ang), sx = eR*.4, sy = eR*.3;
+    for(k=0;k<700;k++){ var rr = Math.pow(Math.random(), .8), th = Math.random()*6.283, gx = Math.cos(th)*rr*sx*1.25, gy = Math.sin(th)*rr*sy*1.25, core = 1 - rr;
+      pts.push({x:gx*ca - gy*sa, y:gx*sa + gy*ca, s:rnd(1.3,2.5), a:.11 + .26*core*core + Math.random()*.08, c:Math.random() < .12 ? 1 : (core > .55 ? 0 : (Math.random() < .5 ? 0 : 2))}); }
+    return {ox:rnd(-12,12), oy:start, pts:pts}; }
+  gals = [mkGal(150), mkGal(150 + 430)];
   function lensImg(dx, dy, size, alpha, col, hr){
     var d = Math.sqrt(dx*dx + dy*dy) || 1, u = d/eR, sq = Math.sqrt(u*u + 4), a = Math.atan2(dy, dx), sgn, r, tg, rd, len, wd, mg = (u*u + 2)/(2*u*sq);
     for(sgn=0; sgn<2; sgn++){
       r = eR*(sgn ? (sq - u) : (u + sq))/2; if(r < hr*1.02 || r > 900) continue;
       tg = r/d; rd = Math.max(.12, (mg + (sgn ? -.5 : .5))/tg);
       if(sgn && r < hr*1.1) continue;
-      len = size*2*Math.min(tg, 30); wd = Math.max(.3, size*Math.min(rd, 1.2));
-      ctx.strokeStyle = col; ctx.globalAlpha = alpha*(sgn ? .55 : 1);
+      len = size*2*Math.min(tg, 30); wd = Math.max(.3, size*1.5*Math.min(rd, 1.2));
+      ctx.strokeStyle = col; ctx.globalAlpha = alpha*(sgn ? .32 : 1);
       if(len > 2.6){ ctx.lineWidth = wd; var half = Math.min(len/(2*r), 1.45); ctx.beginPath(); ctx.arc(cx, cy, r, a + (sgn ? Math.PI : 0) - half, a + (sgn ? Math.PI : 0) + half); ctx.stroke(); }
       else { var aa = a + (sgn ? Math.PI : 0); ctx.fillStyle = col; ctx.beginPath(); ctx.arc(cx + Math.cos(aa)*r, cy + Math.sin(aa)*r, Math.max(.35, size*.75), 0, 6.283); ctx.fill(); }
     }
   }
   function drawLensed(t, dt){
-    var holeR = lensHoleR, i, o, k, sp = (dt || 0)*.0085;
-    eR = holeR*2.5; ctx.lineCap = "round";
+    var holeR = lensHoleR, i, o, k, sp = (dt || 0)*.0034, gsp = (dt || 0)*.0135;
+    eR = holeR*2.0; ctx.lineCap = "round";
     for(i=0;i<lensS.length;i++){ o = lensS[i];
       if(dt){ o.y -= sp/h; o.x += dt*.0000016; if(o.y < -.05){ o.y += 1.1; o.x = Math.random(); } if(o.x > 1.05) o.x -= 1.1; }
       var dx = o.x*w - cx, dy = o.y*h - cy, col = o.c < .12 ? "#ffd9b0" : (o.c < .3 ? "#cfe0ff" : "#ffffff");
@@ -6166,8 +6169,8 @@ function initBlackHoleScene(host){
     }
     ctx.globalCompositeOperation = "lighter";
     for(i=0;i<gals.length;i++){ o = gals[i];
-      if(dt){ o.oy -= sp; if(o.oy < -(h*.62 + 70)){ var ng = mkGal(h*.62 + 70 + rnd(0, 160)); o.ox = ng.ox; o.oy = ng.oy; o.pts = ng.pts; } }
-      for(k=0;k<o.pts.length;k++){ var q = o.pts[k]; lensImg(o.ox + q.x, o.oy + q.y, q.s, q.a, q.c < .7 ? "rgb(190,215,255)" : "rgb(255,240,225)", holeR); }
+      if(dt){ o.oy -= gsp; if(o.oy < -(h*.62 + 90)){ var ng = mkGal(h*.62 + 90 + rnd(120, 260)); o.ox = ng.ox; o.oy = ng.oy; o.pts = ng.pts; } }
+      for(k=0;k<o.pts.length;k++){ var q = o.pts[k]; lensImg(o.ox + q.x, o.oy + q.y, q.s, q.a, q.c === 0 ? "rgb(214,229,255)" : (q.c === 1 ? "rgb(255,236,214)" : "rgb(150,185,245)"), holeR); }
     }
     ctx.globalCompositeOperation = "source-over"; ctx.globalAlpha = 1;
   }
