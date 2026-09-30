@@ -3280,7 +3280,7 @@ var resultsFromDb = null;        // {prelims,mains,interview} if newer results e
 
 var todayKey = toKey(new Date());
 var timerInterval = null;
-var blackHoleAnimFrame = null;
+var blackHoleAnimFrame = null, bhWait = null;
 var TIMER_KEY = "dossier.timer.v2";
 function timerDefault(){ return {mode:"free", running:false, startedAt:0, accMs:0, studyMs:0, phase:"focus", cycle:0, preset:0, pending:0}; }
 var timerState = Object.assign(timerDefault(), (function(){ try{ var v = JSON.parse(localStorage.getItem(TIMER_KEY)||"null"); return v && typeof v==="object" ? v : {}; }catch(e){ return {}; } })());
@@ -5927,7 +5927,7 @@ function timerVisual(){
 function timerSave(){ try{ localStorage.setItem(TIMER_KEY, JSON.stringify(timerState)); }catch(e){} }
 var POMO_PRESETS = [["25 / 5",25,5],["30 / 5",30,5],["45 / 10",45,10],["50 / 10",50,10]];
 function pomoLen(phase){ var p = POMO_PRESETS[timerState.preset] || POMO_PRESETS[0]; return (phase==="focus" ? p[1] : (phase==="short" ? p[2] : 15))*60000; }
-function timerSeg(){ return timerState.accMs + (timerState.running ? Date.now()-timerState.startedAt : 0); }
+function timerSeg(){ return timerState.accMs + (timerState.running ? Math.max(0, Date.now()-timerState.startedAt) : 0); }
 function timerStudyMs(){
   var st = timerState;
   if(st.mode==="free") return timerSeg();
@@ -6071,6 +6071,7 @@ function timerCard(){
   '</div>';
 }
 function initBlackHoleScene(host){
+  if(bhWait){clearTimeout(bhWait);bhWait=null;}
   if(blackHoleAnimFrame){cancelAnimationFrame(blackHoleAnimFrame);clearInterval(blackHoleAnimFrame);blackHoleAnimFrame=null;}
   var canvas=host.querySelector("#blackHoleScene"),ctx=canvas&&canvas.getContext("2d");if(!ctx)return;
   var reduced=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -6169,9 +6170,9 @@ function initBlackHoleScene(host){
       lensImg(dx, dy, o.s, o.a*(.75 + .25*Math.sin(t*.0005 + o.tw)), col, holeR);
     }
     ctx.globalCompositeOperation = "lighter";
-    for(i=0;i<gals.length;i++){ o = gals[i];
+    for(i=0;i<gals.length;i++){ o = gals[i]; var skipG = Math.abs(o.oy) > h*.62 + 40;
       if(dt){ o.oy -= gsp; if(o.oy < -(h*.62 + 90)){ var ng = mkGal(h*.62 + 90 + rnd(120, 260)); o.ox = ng.ox; o.oy = ng.oy; o.pts = ng.pts; } }
-      for(k=0;k<o.pts.length;k++){ var q = o.pts[k]; lensImg(o.ox + q.x, o.oy + q.y, q.s, q.a, q.c === 0 ? "rgb(214,229,255)" : (q.c === 1 ? "rgb(255,236,214)" : "rgb(150,185,245)"), holeR); }
+      if(!skipG) for(k=0;k<o.pts.length;k++){ var q = o.pts[k]; lensImg(o.ox + q.x, o.oy + q.y, q.s, q.a, q.c === 0 ? "rgb(214,229,255)" : (q.c === 1 ? "rgb(255,236,214)" : "rgb(150,185,245)"), holeR); }
     }
     ctx.globalCompositeOperation = "source-over"; ctx.globalAlpha = 1;
   }
@@ -6256,7 +6257,10 @@ function initBlackHoleScene(host){
   }
   function draw(t){
     try{
-    var dt = (!reduced && lastT) ? Math.min(60, t-lastT) : 0; lastT = t;
+    if(!canvas.isConnected){ blackHoleAnimFrame = null; return; }
+    if(!reduced && canvas.offsetParent === null){ lastT = 0; bhWait = setTimeout(function(){ blackHoleAnimFrame = requestAnimationFrame(draw); }, 600); return; }
+    if(!reduced && lastT && t - lastT < 30){ blackHoleAnimFrame = requestAnimationFrame(draw); return; }
+    var dt = (!reduced && lastT) ? Math.min(90, t-lastT) : 0; lastT = t;
     var pv = timerVisual(), sp = pv.pomo ? .09 : .11;
     ctx.clearRect(0,0,w,h);ctx.fillStyle="#010207";ctx.fillRect(0,0,w,h);
     var bg=ctx.createRadialGradient(cx,cy,0,cx,cy,scale*1.15);bg.addColorStop(0,"rgba(28,8,2,.55)");bg.addColorStop(.45,"rgba(6,8,18,.35)");bg.addColorStop(1,"rgba(0,0,0,0)");ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);drawBackdrop(t, dt);
