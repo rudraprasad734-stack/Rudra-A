@@ -37,6 +37,7 @@
     --tab-mocks:#FF3B30; --tab-mocks-ink:#FFFFFF; --tab-mocks-soft:#FFCCCB;
     --tab-pyq:#34C759; --tab-pyq-ink:#FFFFFF; --tab-pyq-soft:#D1F4D7;
     --tab-quotes:#5856D6; --tab-quotes-ink:#FFFFFF; --tab-quotes-soft:#E8E5FF;
+    --tab-scheduler:#0A84A6; --tab-scheduler-ink:#FFFFFF; --tab-scheduler-soft:#DDF3F8;
     --tab-accent: var(--tab-dashboard); --tab-accent-ink: var(--tab-dashboard-ink); --tab-accent-soft: var(--tab-dashboard-soft);
     --shadow: 0 1px 2px rgba(22,27,46,.06), 0 6px 20px -8px rgba(22,27,46,.18);
     --radius: 14px;
@@ -66,6 +67,7 @@
       --tab-mocks:#E38C9B; --tab-mocks-ink:#331A1F; --tab-mocks-soft:#3A2429;
       --tab-pyq:#9CC46E; --tab-pyq-ink:#1B2A12; --tab-pyq-soft:#26361B;
       --tab-quotes:#9CAAD9; --tab-quotes-ink:#181E33; --tab-quotes-soft:#242B45;
+      --tab-scheduler:#5CC8E0; --tab-scheduler-ink:#0B2530; --tab-scheduler-soft:#1B3540;
       --tab-accent: var(--tab-dashboard); --tab-accent-ink: var(--tab-dashboard-ink); --tab-accent-soft: var(--tab-dashboard-soft);
       --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px -10px rgba(0,0,0,.55);
       color-scheme: dark;
@@ -73,7 +75,7 @@
   }
   :root[data-theme="dark"]{
     --bg:#0F111B; --surface:#1A1D2E; --surface-2:#20233A; --raised:#232744;
-    --ink:#E8EAF6; --ink-soft:#A7ACC9; --ink-faint:#6E7392;
+    --ink:#F5F5F7; --ink-soft:#C5C9D9; --ink-faint:#8A8FAE;
     --line:#333A59; --line-soft:#282D48;
     --navy:#8DA0E8; --navy-ink:#141833; --navy-soft:#232B4D;
     --gold:#D9B25E; --gold-ink:#241D0B; --gold-soft:#332A16;
@@ -91,6 +93,7 @@
     --tab-mocks:#E38C9B; --tab-mocks-ink:#331A1F; --tab-mocks-soft:#3A2429;
     --tab-pyq:#9CC46E; --tab-pyq-ink:#1B2A12; --tab-pyq-soft:#26361B;
     --tab-quotes:#9CAAD9; --tab-quotes-ink:#181E33; --tab-quotes-soft:#242B45;
+      --tab-scheduler:#5CC8E0; --tab-scheduler-ink:#0B2530; --tab-scheduler-soft:#1B3540;
     --tab-accent: var(--tab-dashboard); --tab-accent-ink: var(--tab-dashboard-ink); --tab-accent-soft: var(--tab-dashboard-soft);
     --shadow: 0 1px 2px rgba(0,0,0,.3), 0 10px 30px -10px rgba(0,0,0,.55);
     color-scheme: dark;
@@ -616,6 +619,125 @@
     .progress-card{padding:14px 12px; gap:10px;}
     .plan-list li{grid-template-columns:1fr; gap:1px;}
   }
+
+  /* ---- Profile greeting in header ---- */
+  #topbar .brand small.greet{text-transform:none; letter-spacing:.01em; font-size:13px; font-weight:600; opacity:1; margin-top:4px;}
+  .profile-btn{all:unset; cursor:pointer; color:inherit; font:inherit; text-align:center; max-width:88vw; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:inline-block; padding:2px 8px; border-radius:999px; background:rgba(255,255,255,.18);}
+  .profile-btn:hover, .profile-btn:focus-visible{background:rgba(255,255,255,.3); outline:2px solid rgba(255,255,255,.7);}
+
+  /* ---- Modal ---- */
+  .modal-back{position:fixed; inset:0; z-index:200; background:rgba(5,8,20,.62); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); display:flex; align-items:flex-start; justify-content:center; padding:max(16px, env(safe-area-inset-top)) 14px 24px; overflow-y:auto;}
+  .modal{width:100%; max-width:560px; margin:auto 0; padding:20px 18px; background:var(--surface); color:var(--ink);}
+  .modal h2{margin:0 0 4px; font-family:var(--font-display); font-size:22px;}
+  .modal-actions{display:flex; gap:10px; align-items:center; margin-top:16px; flex-wrap:wrap;}
+  .modal-actions .grow{flex:1;}
+  .sf, .cf{display:flex; flex-direction:column; gap:5px; margin-top:12px;}
+  .sf label, .cf label, .date-row label{font-size:11.5px; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:var(--ink-soft);}
+  .sf input, .sf select, .cf select, .cf input, .trow input, .date-row input, #schCustomN, .sess-ctl select, .sess-ctl input{width:100%; min-height:44px; padding:9px 11px; border:1px solid var(--line); border-radius:10px; background:var(--surface); color:var(--ink); font:inherit; font-size:15px;}
+  .cf select:disabled{opacity:.5;}
+  .sf[hidden], .form-err[hidden], .warn-list[hidden], .sess-err[hidden]{display:none;}
+  .form-err, .warn-list, .sess-err{margin-top:12px; padding:10px 12px; border-radius:10px; font-size:13px; line-height:1.5; background:color-mix(in srgb, #ff3b30 14%, var(--surface)); color:var(--ink); border:1px solid color-mix(in srgb, #ff3b30 45%, var(--line));}
+  .warn-list{background:color-mix(in srgb, #ff9500 16%, var(--surface)); border-color:color-mix(in srgb, #ff9500 50%, var(--line));}
+  .btn{min-height:44px; padding:10px 18px; border-radius:12px; border:1px solid var(--line); background:var(--surface-2); color:var(--ink); font:inherit; font-weight:700; cursor:pointer;}
+  .btn.primary{background:linear-gradient(135deg,#6d4aff,#3d6eff); color:#fff; border-color:transparent;}
+  .btn.ghost{background:transparent;}
+  .btn.danger{color:#ff3b30; border-color:color-mix(in srgb,#ff3b30 50%, var(--line)); background:transparent;}
+  .btn.gen{width:100%; margin-top:14px; min-height:52px; font-size:16px; color:#fff; border:0; background:linear-gradient(135deg,#ff3d8b,#ff7a3d);}
+  .btn:focus-visible, .pill:focus-visible{outline:3px solid var(--tab-accent); outline-offset:2px;}
+
+  /* ---- Scheduler ---- */
+  .sched-title{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:12px; padding:16px 18px; background:linear-gradient(135deg,#0b2a6b,#1a4fb5); color:#fff;}
+  .sched-title h2{margin:0; font-family:var(--font-display); font-size:24px;}
+  .sched-title .muted{color:rgba(255,255,255,.85);}
+  .sched-title .link-btn{color:#fff; text-decoration:underline;}
+  .sched-step, .sched-sess{margin-bottom:12px; padding:14px 16px;}
+  .step-h{display:flex; align-items:center; gap:10px; margin-bottom:8px; font-size:15px;}
+  .step-n{flex:0 0 auto; width:28px; height:28px; border-radius:50%; display:grid; place-items:center; color:#fff; font-weight:800; font-size:14px; background:#1f6feb;}
+  .step-n.n2{background:#12a150;} .step-n.n3{background:#8b5cf6;} .step-n.n4{background:#e0364a;} .step-n.n5{background:#f08a00;} .step-n.n6{background:#7c3aed;}
+  .count-row, .pill-row{display:flex; flex-wrap:wrap; gap:8px; align-items:center;}
+  .pill{min-height:40px; padding:8px 14px; border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; font-size:14px; font-weight:600; cursor:pointer;}
+  .pill.on{background:#1f6feb; border-color:#1f6feb; color:#fff;}
+  #schCustomN{width:84px;}
+  .date-row{display:flex; align-items:center; gap:10px; margin-top:12px; flex-wrap:wrap;}
+  .date-row input{width:auto;}
+  .trow{display:grid; grid-template-columns:82px 1fr auto 1fr auto; gap:8px; align-items:center; margin-top:8px;}
+  .trow .dur{font-size:12px; color:var(--ink-soft); min-width:56px;}
+  .cas{display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:2px 12px;}
+  .pt-val{min-height:44px; display:flex; align-items:center; padding:0 11px; border:1px dashed var(--line); border-radius:10px; color:var(--ink-soft); font-size:14px;}
+  .tpair{display:flex; align-items:center; gap:8px;}
+  .sched-sess.bad{border-color:#ff3b30; box-shadow:0 0 0 2px color-mix(in srgb,#ff3b30 30%, transparent);}
+  .sched-out{margin-top:16px; padding:14px 16px; border-color:color-mix(in srgb,#12a150 45%, var(--line));}
+  .sched-out-head{display:flex; justify-content:space-between; gap:8px; flex-wrap:wrap; align-items:baseline;}
+  .sched-out-head h3{margin:0;}
+  .tbl-wrap{overflow-x:auto; margin-top:8px;}
+  .sched-table{width:100%; border-collapse:collapse; font-size:13px; min-width:640px;}
+  .sched-table th{text-align:left; padding:7px 8px; font-size:11.5px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-soft); border-bottom:2px solid var(--line);}
+  .sched-table td{padding:8px; border-bottom:1px solid var(--line-soft); vertical-align:top;}
+  .sched-table tr{background:color-mix(in srgb, var(--pc,transparent) 12%, transparent);}
+
+  .sched-table td:nth-child(2){white-space:nowrap;}
+  @media (max-width:640px){
+    .sched-table{min-width:0;}
+    .sched-table thead{display:none;}
+    .sched-table, .sched-table tbody, .sched-table tr, .sched-table td{display:block; width:100%;}
+    .sched-table tr{border:1px solid var(--line); border-left:5px solid var(--pc,var(--line)); border-radius:12px; padding:6px 10px; margin-bottom:10px;}
+    .sched-table td{display:flex; justify-content:space-between; gap:12px; border:0; padding:4px 0; text-align:right;}
+    .sched-table td::before{content:attr(data-l); font-size:11px; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-soft); text-align:left; flex:0 0 auto;}
+    .sched-table td[data-l=""]::before{content:none;}
+    .sched-table td:nth-child(2){white-space:normal;}
+  }
+  .sync-strip{display:flex; gap:8px; align-items:center; margin-top:10px; font-size:12.5px; color:var(--ink-soft);}
+  .sched-out-actions{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;}
+
+  /* purpose colours shared by tables, cards and chips */
+  .pur-Prelims{--pc:#2f7bff;} .pur-Mains{--pc:#ff4d6d;} .pur-Optional{--pc:#22c55e;} .pur-Essay{--pc:#f5b301;}
+  .pur-PYQPractice{--pc:#8b5cf6;} .pur-CurrentAffairs{--pc:#06b6d4;} .pur-Revision{--pc:#94a3b8;} .pur-Test{--pc:#f97316;}
+
+  /* ---- Session cards in logs ---- */
+  .sess-day{padding:14px 16px; margin-bottom:12px;}
+  .sess-day-head{display:flex; justify-content:space-between; align-items:baseline; gap:8px; margin-bottom:8px;}
+  .sess-day-head h3{margin:0;}
+  .sess-card{border:1px solid var(--line); border-left:5px solid var(--pc,var(--line)); border-radius:12px; padding:10px 12px; margin-top:10px; background:color-mix(in srgb, var(--pc,var(--surface)) 9%, var(--surface));}
+  .sess-card.st-completed{background:color-mix(in srgb,#22c55e 13%, var(--surface));}
+  .sess-card.st-skipped{opacity:.75;}
+  .sess-top{display:flex; align-items:center; gap:8px; flex-wrap:wrap;}
+  .sess-n{font-weight:800; color:var(--pc,var(--ink));}
+  .sess-time{font-weight:600; font-size:13.5px;}
+  .chip.pur{background:color-mix(in srgb,var(--pc,var(--line)) 22%, var(--surface)); color:var(--ink);}
+  .sess-sub{margin-top:6px; font-size:13.5px; line-height:1.45;}
+  .sess-ctl{display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:8px 10px; margin-top:10px; align-items:end;}
+  .sess-ctl label{display:flex; flex-direction:column; gap:4px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-soft);}
+  .sess-act{font-size:13px; color:var(--ink-soft);}
+  .sess-links{display:flex; gap:14px; margin-top:8px;}
+  .sess-empty{margin:6px 0 10px;}
+  .sess-mini{display:block; font-size:11.5px; color:var(--ink-soft); margin-top:3px;}
+
+  /* ---- Dashboard sessions card ---- */
+  .sess-dash{padding:14px 16px; margin-bottom:12px;}
+  .stat-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:12px;}
+  .stat{border:1px solid var(--line); border-radius:12px; padding:9px 10px; background:var(--surface);}
+  .stat span{display:block; font-size:11px; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft);}
+  .stat b{font-size:18px;}
+  .prog{height:8px; border-radius:99px; background:var(--line-soft); margin-top:12px; overflow:hidden;}
+  .prog i{display:block; height:100%; background:linear-gradient(90deg,#3d6eff,#22c55e);}
+  .mini-sess{display:grid; grid-template-columns:auto 1fr auto; gap:8px; margin-top:8px; padding:6px 10px; border-left:4px solid var(--pc,var(--line)); border-radius:8px; background:color-mix(in srgb,var(--pc,var(--surface)) 9%, var(--surface)); font-size:12.5px;}
+  .mini-sess em{font-style:normal; color:var(--ink-soft);}
+  .bl{margin-top:14px;}
+  .bl-t{font-size:11.5px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--ink-soft); margin-bottom:6px;}
+  .bl-r{display:grid; grid-template-columns:minmax(80px,1.2fr) 2fr auto; gap:8px; align-items:center; margin-top:5px; font-size:12.5px;}
+  .bl-n{overflow:hidden; text-overflow:ellipsis; white-space:nowrap;}
+  .bl-bar{position:relative; height:10px; border-radius:99px; background:var(--line-soft); overflow:hidden;}
+  .bl-bar i{position:absolute; left:0; top:0; bottom:0; border-radius:99px;}
+  .bl-bar .pl{background:color-mix(in srgb,#3d6eff 35%, var(--line-soft));}
+  .bl-bar .ac{background:#22c55e; height:50%; top:25%;}
+  .bl-v{color:var(--ink-soft); white-space:nowrap;}
+  @media (max-width:520px){
+    .trow{grid-template-columns:1fr 1fr; }
+    .trow b{grid-column:1 / -1;}
+    .trow span:not(.dur){display:none;}
+    .trow .dur{grid-column:1 / -1;}
+    .stat-grid{grid-template-columns:repeat(2,1fr);}
+  }
 </style>
 </head>
 <body>
@@ -626,7 +748,7 @@
   <header id="topbar">
     <button id="themeToggle" aria-label="Toggle dark/light mode" title="Dark/Light mode"></button>
     <div class="row">
-      <div class="brand">UPSC Companion<small>18-month prep plan</small></div>
+      <div class="brand">UPSC Companion<small class="greet"><button type="button" class="profile-btn" id="profileBtn"></button></small></div>
       <div class="today" id="topbarDate">—</div>
     </div>
   </header>
@@ -637,6 +759,7 @@
 
   <main>
     <section class="view" id="view-dashboard"></section>
+    <section class="view" id="view-scheduler"></section>
     <section class="view" id="view-daily"></section>
     <section class="view" id="view-weekly"></section>
     <section class="view" id="view-months"></section>
@@ -3419,7 +3542,9 @@ function collectBackupData(){
     mockTests: mockTests,
     examResults: examResults,
     smartResumeEnabled: smartResumeEnabled,
-    timerLog: lsGetJSON("dossier.timerLog", {})
+    timerLog: lsGetJSON("dossier.timerLog", {}),
+    profile: profile,
+    studySessions: studySessions
   };
 }
 var downloadsNs = null, downloadsChecked = false;
@@ -3456,6 +3581,8 @@ function applyBackupData(data){
   lsSetJSON("dossier.state.mockTests", mockTests);
   saveResults();
   if(data.timerLog) lsSetJSON("dossier.timerLog", data.timerLog);
+  if(Array.isArray(data.studySessions)){ studySessions = data.studySessions; saveSessions(); }
+  if(data.profile && data.profile.name){ profile = data.profile; lsSetJSON(PROFILE_KEY, profile); renderGreeting(); }
   if(typeof data.smartResumeEnabled === "boolean"){
     smartResumeEnabled = data.smartResumeEnabled;
     lsSet("dossier.smartResume", smartResumeEnabled ? "1" : "0");
@@ -3552,10 +3679,558 @@ function resetForNewAttempt(failedStage, applySmart){
 }
 
 // ============================================================================
+// PROFILE + DAILY STUDY SCHEDULER
+// One shared session store (studySessions) feeds Scheduler, Logs and Dashboard.
+// ============================================================================
+var PROFILE_KEY = "dossier.profile.v1", SESSIONS_KEY = "dossier.sessions.v1";
+var INDIAN_STATES = ["Andhra Pradesh","Arunachal Pradesh","Assam","Bihar","Chhattisgarh","Goa","Gujarat","Haryana","Himachal Pradesh","Jharkhand","Karnataka","Kerala","Madhya Pradesh","Maharashtra","Manipur","Meghalaya","Mizoram","Nagaland","Odisha","Punjab","Rajasthan","Sikkim","Tamil Nadu","Telangana","Tripura","Uttar Pradesh","Uttarakhand","West Bengal","Andaman and Nicobar Islands","Chandigarh","Dadra and Nagar Haveli and Daman and Diu","Delhi","Jammu and Kashmir","Ladakh","Lakshadweep","Puducherry"];
+var PREFIXES = ["IAS","IPS","IFS","IRS","Other Civil Services","UPSC Aspirant","Custom"];
+var PURPOSES = ["Prelims","Mains","Optional","Essay","PYQ Practice","Current Affairs","Revision","Test"];
+var STATUSES = [["not_started","Not started"],["in_progress","In progress"],["completed","Completed"],["skipped","Skipped"]];
+var DEFAULT_TIMES = [["06:00","08:00"],["10:00","12:00"],["16:00","17:00"],["19:00","20:00"],["08:15","09:15"],["12:30","13:30"],["14:00","15:00"],["20:15","21:15"]];
+
+var profile = lsGetJSON(PROFILE_KEY, null);
+var studySessions = lsGetJSON(SESSIONS_KEY, []);
+if(!Array.isArray(studySessions)) studySessions = [];
+function saveSessions(){ lsSetJSON(SESSIONS_KEY, studySessions); }
+function uid(){ return "s-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,8); }
+
+// ---------- time helpers ----------
+function toMin(t){ var p=String(t||"").split(":"); return (+p[0])*60+(+p[1]||0); }
+function fmt12(t){ if(!t) return "—"; var m=toMin(t), h=Math.floor(m/60), mm=m%60, ap=h>=12?"PM":"AM"; h=h%12||12; return h+":"+pad2(mm)+" "+ap; }
+function fmtDurMin(m){ m=Math.round(m||0); if(m<=0) return "0m"; var h=Math.floor(m/60), r=m%60; if(!r) return h+(h===1?" hour":" hours"); if(!h) return r+"m"; return h+"h "+r+"m"; }
+function nowHM(){ var n=new Date(); return pad2(n.getHours())+":"+pad2(n.getMinutes()); }
+function purClass(p){ return String(p||"").replace(/[^A-Za-z]/g,""); }
+
+// ---------- modal ----------
+var modalDismissible = false;
+function closeModal(){ var m=document.getElementById("modalHost"); if(m) m.remove(); document.body.style.overflow=""; modalDismissible=false; }
+function showModal(inner, dismissible){
+  closeModal();
+  var m = el('<div class="modal-back" id="modalHost">'+inner+'</div>');
+  document.body.appendChild(m);
+  document.body.style.overflow = "hidden";
+  modalDismissible = !!dismissible;
+  if(dismissible) m.addEventListener("mousedown", function(e){ if(e.target===m) closeModal(); });
+  return m;
+}
+document.addEventListener("keydown", function(e){ if(e.key==="Escape" && modalDismissible) closeModal(); });
+
+// ---------- profile ----------
+function greetingText(){ return profile ? "Welcome "+profile.prefix+" "+profile.name+(profile.district ? " • "+profile.district : "") : ""; }
+function renderGreeting(){
+  var b = document.getElementById("profileBtn");
+  if(!b) return;
+  b.textContent = profile ? greetingText() : "Set up your profile";
+  b.title = "Edit profile";
+}
+function openProfileModal(isEdit){
+  var p = profile || {name:"", district:"", state:"", prefix:"IAS"};
+  var custom = PREFIXES.indexOf(p.prefix) < 0;
+  var html =
+    '<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="pfTitle">'+
+      '<h2 id="pfTitle">User Setup</h2>'+
+      '<p class="muted">Set your details to personalise your study planner.</p>'+
+      '<div class="sf"><label for="pfName">1. Name</label><input id="pfName" type="text" autocomplete="name" placeholder="Enter your full name" value="'+esc(p.name)+'"></div>'+
+      '<div class="sf"><label for="pfDistrict">2. District</label><input id="pfDistrict" type="text" placeholder="Enter your district" value="'+esc(p.district)+'"></div>'+
+      '<div class="sf"><label for="pfState">3. State</label><select id="pfState"><option value="">Select state</option>'+
+        INDIAN_STATES.map(function(s){ return '<option'+(s===p.state?" selected":"")+'>'+esc(s)+'</option>'; }).join("")+'</select></div>'+
+      '<div class="sf"><label for="pfPrefix">4. Choose prefix / post</label><select id="pfPrefix">'+
+        PREFIXES.map(function(s){ return '<option'+((custom ? s==="Custom" : s===p.prefix)?" selected":"")+'>'+esc(s)+'</option>'; }).join("")+'</select></div>'+
+      '<div class="sf" id="pfCustomWrap"'+(custom?"":" hidden")+'><label for="pfCustom">Custom prefix / post</label><input id="pfCustom" type="text" placeholder="e.g. IFoS" value="'+esc(custom?p.prefix:"")+'"></div>'+
+      '<div class="form-err" id="pfErr" role="alert" hidden></div>'+
+      '<div class="modal-actions">'+(isEdit?'<button class="btn ghost" id="pfCancel">Cancel</button>':'')+'<button class="btn primary" id="pfSave">'+(isEdit?"Save":"Continue")+' &rarr;</button></div>'+
+    '</div>';
+  var m = showModal(html, isEdit);
+  var prefixSel = m.querySelector("#pfPrefix"), wrap = m.querySelector("#pfCustomWrap");
+  prefixSel.addEventListener("change", function(){ wrap.hidden = prefixSel.value!=="Custom"; if(!wrap.hidden) m.querySelector("#pfCustom").focus(); });
+  var cancel = m.querySelector("#pfCancel");
+  if(cancel) cancel.addEventListener("click", closeModal);
+  m.querySelector("#pfSave").addEventListener("click", function(){
+    var name = m.querySelector("#pfName").value.trim().replace(/\s+/g," ");
+    var district = m.querySelector("#pfDistrict").value.trim();
+    var state = m.querySelector("#pfState").value;
+    var prefix = prefixSel.value === "Custom" ? m.querySelector("#pfCustom").value.trim() : prefixSel.value;
+    var errs = [];
+    if(!name) errs.push("Enter your full name.");
+    if(!district) errs.push("Enter your district.");
+    if(!state) errs.push("Select your state.");
+    if(!prefix) errs.push("Enter your custom prefix / post.");
+    var box = m.querySelector("#pfErr");
+    if(errs.length){ box.hidden = false; box.innerHTML = errs.map(esc).join("<br>"); return; }
+    var now = new Date().toISOString();
+    var firstTime = !profile;
+    profile = {name:name, district:district, state:state, prefix:prefix, createdAt:(profile&&profile.createdAt)||now, updatedAt:now};
+    lsSetJSON(PROFILE_KEY, profile);
+    closeModal();
+    renderGreeting();
+    toast(firstTime ? "Profile saved. Now plan your day." : "Profile updated.");
+    if(firstTime) setTab("scheduler"); else renderView(activeTab);
+  });
+  setTimeout(function(){ var f = m.querySelector("#pfName"); if(f) f.focus(); }, 30);
+}
+
+// ---------- curriculum: Purpose > Paper > Subject > Topic > Syllabus unit ----------
+// Spec strings: "Topic: unit; unit | Topic: unit; unit" per subject.
+function CT(spec){
+  var out = {};
+  Object.keys(spec).forEach(function(subj){
+    out[subj] = {};
+    spec[subj].split("|").forEach(function(t){
+      var i = t.indexOf(":");
+      out[subj][t.slice(0,i).trim()] = t.slice(i+1).split(";").map(function(x){ return x.trim(); }).filter(Boolean);
+    });
+  });
+  return out;
+}
+var CURR_GS = {
+  "GS 1": CT({
+    "History": "Ancient History: Indus Valley Civilisation; Vedic Age; Mahajanapadas and Mauryan Empire; Post-Mauryan Period; Gupta Age; Sangam Age and South India | Medieval History: Early Medieval Kingdoms; Delhi Sultanate; Mughal Empire; Vijayanagara and Bahmani Kingdoms; Bhakti and Sufi Movements; Maratha Polity | Modern History: Advent of Europeans; Revolt of 1857; Socio-Religious Reform Movements; Moderate Phase; Extremist Phase; Gandhian Era; Revolutionary Movements; Peasant Movements; Tribal Movements; Constitutional Development | Post-Independence India: Integration of Princely States; Linguistic Reorganisation of States; Planning and Economic Policy; Land Reforms and Green Revolution; Regionalism and Political Consolidation | World History: Industrial Revolution; American and French Revolutions; World Wars; Cold War; Decolonisation; Political Philosophies",
+    "Geography": "Physical Geography: Geomorphology; Climatology; Oceanography; Biogeography | Indian Geography: Physiography of India; Drainage Systems; Monsoon and Climate; Soils and Natural Vegetation | Human and Economic Geography: Population and Settlements; Agriculture and Industries; Mineral and Energy Resources; Transport and Trade | World Geography: Continents and Regions; Major Landforms; Resource Distribution | Geophysical Phenomena: Earthquakes and Volcanoes; Cyclones; Floods and Droughts",
+    "Indian Society": "Diversity of India: Unity in Diversity; Regionalism; Communalism; Secularism | Social Institutions: Family and Marriage; Caste System; Tribes | Social Empowerment: Role of Women; Population and Associated Issues; Poverty and Development; Urbanisation | Globalisation and Society: Effects on Indian Society; Social Movements; Cultural Change",
+    "Art & Culture": "Architecture: Temple Architecture; Indo-Islamic Architecture; Rock-cut and Cave Architecture; Buddhist Architecture | Sculpture and Painting: Sculpture Traditions; Mural and Miniature Painting; Modern Indian Art | Performing Arts: Classical Dance Forms; Music Traditions; Theatre and Folk Arts | Literature and Religion: Ancient Literature; Medieval and Regional Literature; Religious Philosophies | Heritage and Institutions: UNESCO Sites in India; Museums and Archaeological Bodies; Cultural Policy"
+  }),
+  "GS 2": CT({
+    "Polity": "Constitution: Historical Underpinnings; Preamble; Basic Features; Basic Structure Doctrine; Fundamental Rights; Directive Principles and Duties; Constitutional Amendments | Union Government: President; Prime Minister and Council of Ministers; Parliament; Parliamentary Committees and Privileges | Judiciary: Supreme Court; High Courts and Subordinate Courts; Judicial Review and Activism; Tribunals and Alternate Dispute Redressal | Federalism: Centre-State Relations; Inter-State Relations; Emergency Provisions; Devolution of Powers and Finances | State and Local Government: Governor and State Legislature; Panchayati Raj; Urban Local Bodies | Constitutional Bodies: Election Commission; UPSC and State PSCs; Finance Commission; CAG; Statutory and Quasi-Judicial Bodies",
+    "Governance": "Government Policies: Policy Design and Implementation; Welfare Schemes; Development Processes | Transparency and Accountability: RTI; Citizen Charters; Social Audit; Ombudsman Institutions | E-Governance: Applications and Models; Digital India; Limitations | Civil Services: Role in a Democracy; Civil Service Reforms; Performance and Accountability | Stakeholders: NGOs, SHGs and Pressure Groups; Regulatory Bodies",
+    "Social Justice": "Vulnerable Sections: Schemes for SC/ST/OBC; Women and Child Welfare; Persons with Disabilities; Elderly and Minorities | Health: Health Policy and Programmes; Public Health Infrastructure; Nutrition | Education: Education Policy; Higher Education Reforms; Skill Development | Poverty and Hunger: Poverty Estimation; Food Security; Livelihood Programmes",
+    "International Relations": "India and Neighbourhood: Pakistan and Afghanistan; China; Nepal, Bhutan and Bangladesh; Sri Lanka, Myanmar and Maldives; Indian Ocean Region | Groupings and Agreements: SAARC and BIMSTEC; BRICS, SCO and Quad; G20 and G7; Bilateral and Regional Agreements | International Institutions: United Nations; WTO, IMF and World Bank; Other Multilateral Bodies | India and the World: Major Powers; Indian Diaspora; Foreign Policy Issues"
+  }),
+  "GS 3": CT({
+    "Economy": "Growth and Development: Growth, Development and Employment; Inclusive Growth; Planning and Resource Mobilisation | Money and Banking: Monetary Policy; Banking and NBFCs; Financial Markets and Inflation | Public Finance: Budgeting and Fiscal Policy; Taxation; External Sector and Trade | Sectors: Industry and Infrastructure; Investment Models; Services Sector | Economic Reforms: LPG Reforms; Subsidies; Public Distribution and Buffer Stocks",
+    "Agriculture": "Cropping and Farming: Cropping Patterns; Irrigation; Agricultural Technology and Extension | Agri Economy: MSP and Procurement; Agricultural Marketing; Food Processing; Land Reforms | Support Systems: Subsidies; Farm Credit and Insurance; Animal Husbandry and Fisheries",
+    "Environment": "Ecology and Biodiversity: Ecosystems; Biodiversity Hotspots; Protected Areas and Conservation | Climate Change: Climate Science; International Conventions; India's Climate Policy | Pollution and Degradation: Air Pollution; Water and Soil Pollution; Waste Management; EIA | Laws and Institutions: Environmental Laws; Institutions and Treaties",
+    "Science & Technology": "Space and Defence: Space Programme; Missiles and Defence Technology; Nuclear Technology | Biotech and Health: Biotechnology; Genetics and Health; IPR | IT and Emerging Tech: IT and Computers; AI and Robotics; Nanotechnology | Indigenisation: Achievements of Indians; Indigenous Technology; Science in Everyday Life",
+    "Internal Security": "Threats: Left-Wing Extremism; Terrorism; Border Areas Management | Cyber and Media: Cyber Security; Social Media and Security; Money Laundering | Forces and Framework: Security Forces and Agencies; Organised Crime and Terrorism; Coastal Security",
+    "Disaster Management": "Hazards: Natural Disasters; Man-made Disasters | Framework: DM Act and NDMA; Mitigation and Preparedness; Response and Recovery"
+  }),
+  "GS 4": CT({
+    "Ethics, Integrity & Aptitude": "Ethics and Human Interface: Essence of Ethics; Determinants and Consequences; Dimensions of Ethics; Human Values | Attitude: Content and Structure; Moral and Political Attitudes; Social Influence and Persuasion | Aptitude and Foundational Values: Integrity and Impartiality; Objectivity and Empathy; Tolerance and Compassion | Emotional Intelligence: Concepts; Utility in Administration; Governance Applications | Thinkers: Indian Moral Thinkers; Western Moral Thinkers; Lessons from Leaders and Reformers | Public Administration Ethics: Ethical Issues in Government; Laws, Rules and Conscience; Accountability and Ethical Governance | Probity in Governance: Concept of Public Service; Information Sharing and Transparency; Corruption | Case Studies: Administrative Dilemmas; Conflict of Interest; Citizen Interface Cases"
+  })
+};
+var CURR_CSAT = CT({
+  "Comprehension": "Reading Comprehension: Passage Analysis; Inference and Assumptions; Vocabulary in Context | Communication Skills: Interpersonal Skills; Communication Skills",
+  "Reasoning": "Logical Reasoning: Syllogisms; Statements and Conclusions; Puzzles and Arrangements | Analytical Ability: Series and Patterns; Coding-Decoding; Direction and Blood Relations",
+  "Decision Making": "Problem Solving: Decision-Making Cases; Situation Analysis | General Mental Ability: Mental Ability; Data Sufficiency",
+  "Numeracy": "Basic Numeracy: Number System; Percentages, Ratio and Averages; Time, Speed and Work | Data Interpretation: Tables and Graphs; Charts and Caselets"
+});
+var CURR_ESSAY = (function(){
+  var themes = ["Society","Governance and Public Policy","Economy and Development","Environment and Technology","Ethics and Philosophy","International Affairs"], o = {};
+  themes.forEach(function(t){
+    o[t] = {"Ideas and Examples":["Quotes and Anecdotes","Data and Case Studies","Committees and Reports"], "Structure and Writing":["Introduction and Conclusion","Multi-dimensional Body","Timed Writing Practice"]};
+  });
+  return o;
+})();
+var CURR_OPT = {
+  "Anthropology": CT({
+    "Physical Anthropology": "Human Evolution: Evolutionary Theories; Primate Evolution; Hominid Fossils; Human Variation | Human Genetics: Mendelian Principles; Chromosomal Aberrations; Population Genetics | Growth and Health: Growth and Development; Ecological Adaptation; Applied Physical Anthropology",
+    "Archaeological Anthropology": "Prehistoric Archaeology: Dating Methods; Palaeolithic Cultures; Mesolithic and Neolithic Cultures; Chalcolithic and Metal Ages",
+    "Socio-Cultural Anthropology": "Scope and Development: Scope and Branches; Relationship with Other Disciplines; Development of Anthropological Thought | Culture and Society: Culture and Civilisation; Kinship, Marriage and Family; Social Stratification | Economic and Political Organisation: Modes of Exchange; Tribal Political Systems; Law and Social Control | Religion, Theories and Language: Anthropological Theories; Religion, Magic and Witchcraft; Language and Culture | Research Methods: Fieldwork Traditions; Techniques of Data Collection; Applied Anthropology",
+    "Indian Anthropology": "Indian Culture and Civilisation: Palaeolithic to Harappan; Vedic and Post-Harappan Cultures; Contributions to Indian Civilisation | Demographic Profile: Ethnic and Linguistic Elements; Population Dynamics | Caste and Religion: Varnashram and Purushartha; Caste Structure and Theories; Sacred Complex; Impact of Religions | Village Studies: Indian Village Studies; Tribal-Caste Continuum; Indian Anthropologists | Tribal Situation: Tribal Distribution and Problems; Tribal Development Policies; PVTGs and Land Alienation; Tribal Movements | Development and Social Change: Displacement and Rehabilitation; Forest Policies; Constitutional Safeguards"
+  }),
+  "Geography": CT({
+    "Physical Geography": "Geomorphology: Plate Tectonics; Denudation Processes; Landforms | Climatology: Atmosphere and Circulation; Cyclones and Monsoon; Climate Classification | Oceanography: Ocean Floor; Currents and Tides; Marine Resources",
+    "Human Geography": "Population and Settlement: Population Distribution; Rural and Urban Settlements; Migration | Economic Geography: Agriculture Systems; Industrial Location; Trade and Transport",
+    "Geography of India": "Resources: Agricultural Resources; Mineral and Energy Resources; Industrial Regions | Regional Development: Regional Planning; Urban Systems; Contemporary Issues"
+  }),
+  "Sociology": CT({
+    "Fundamentals": "Sociology as a Discipline: Emergence and Scope; Research Methods; Sociology and Other Sciences | Social Structure: Stratification; Social Change; Social Movements",
+    "Sociological Thinkers": "Classical Thinkers: Karl Marx; Emile Durkheim; Max Weber | Modern Thinkers: Parsons and Merton; Mead and Symbolic Interactionism",
+    "Indian Society": "Caste and Class: Caste System; Class Structure; Tribes | Social Change in India: Modernisation and Westernisation; Village and Urban Society; Contemporary Issues"
+  }),
+  "Political Science & IR": CT({
+    "Political Theory": "Concepts: Liberty, Equality and Justice; Rights and Democracy; Ideologies | Political Thought: Western Thinkers; Indian Thinkers",
+    "Indian Government and Politics": "Political Institutions: Constitution and Federalism; Parliament and Judiciary; Party System | Political Processes: Caste, Religion and Region; Social Movements; Planning and Development",
+    "International Relations": "Theory: Realism and Liberalism; Cold War and Post Cold War; Global Institutions | India and the World: India's Foreign Policy; Regional Cooperation; Contemporary Issues"
+  }),
+  "Public Administration": CT({
+    "Administrative Theory": "Foundations: Evolution and Scope; Classical Theories; Behavioural Approach | Organisation: Structure and Principles; Motivation and Leadership; Decision Making",
+    "Indian Administration": "Structure: Union and State Administration; District Administration; Local Governance | Public Policy and Reform: Policy Formulation; Administrative Reforms; Accountability and Control"
+  }),
+  "History": CT({
+    "Ancient India": "Sources and Prehistory: Sources; Prehistoric Cultures; Indus Civilisation | Early Historic India: Vedic Period; Mauryas; Guptas",
+    "Medieval India": "Early Medieval: Regional Kingdoms; Delhi Sultanate | Late Medieval: Mughals; Regional Powers",
+    "Modern India": "Colonial Rule: Expansion of British Power; Economic Impact; Revolt of 1857 | Nationalism: Freedom Struggle Phases; Constitutional Developments",
+    "World History": "Modern World: Revolutions; World Wars; Decolonisation"
+  })
+};
+function optionalNames(){ return Object.keys(CURR_OPT); }
+function curriculumCA(){
+  var months = [], d = new Date(); d.setDate(1);
+  for(var i=-6;i<=1;i++){ var x = new Date(d.getFullYear(), d.getMonth()+i, 1); months.push(x.toLocaleDateString("en-GB",{month:"long", year:"numeric"})); }
+  months.reverse();
+  return {
+    "Monthly Magazines": {"Yojana":months, "Kurukshetra":months, "Monthly Compilation":months},
+    "Newspaper": {"The Hindu":["Editorials","News Analysis","Explained"], "Indian Express":["Editorials","Explained","Ideas"]},
+    "PIB and Government": {"PIB Releases":["Weekly Summary","Cabinet Decisions","Major Reports"], "Schemes and Policies":["New Schemes","Revised Schemes"]},
+    "Reports and Indices": {"Global Indices":["Economic Indices","Social Indices","Environmental Indices"], "National Reports":["Economic Survey","Union Budget","Annual Reports"]}
+  };
+}
+function paperOptions(purpose){
+  if(!purpose) return [];
+  if(purpose==="Prelims") return ["GS 1","GS 2","GS 3","GS 4","CSAT"];
+  if(purpose==="Mains") return ["GS 1","GS 2","GS 3","GS 4","Essay"];
+  if(purpose==="Optional") return optionalNames();
+  if(purpose==="Essay") return ["Essay"];
+  if(purpose==="Current Affairs") return ["General"];
+  return ["GS 1","GS 2","GS 3","GS 4","CSAT","Essay"].concat(optionalNames());
+}
+function treeFor(purpose, paper){
+  if(purpose==="Current Affairs") return curriculumCA();
+  if(CURR_OPT[paper]) return CURR_OPT[paper];
+  if(paper==="CSAT") return CURR_CSAT;
+  if(paper==="Essay") return CURR_ESSAY;
+  return CURR_GS[paper] || null;
+}
+function subjectOptions(d){ var t = d.paper ? treeFor(d.purpose, d.paper) : null; return t ? Object.keys(t) : []; }
+function topicOptions(d){ var t = treeFor(d.purpose, d.paper); return (t && t[d.subject]) ? Object.keys(t[d.subject]) : []; }
+function unitOptions(d){ var t = treeFor(d.purpose, d.paper); return (t && t[d.subject] && t[d.subject][d.topic]) ? t[d.subject][d.topic] : []; }
+var CHAIN = ["purpose","paper","subject","topic","unit"];
+function setField(d, f, v){
+  d[f] = v;
+  for(var i=CHAIN.indexOf(f)+1;i<CHAIN.length;i++) d[CHAIN[i]] = "";
+  if(f==="purpose"){ var p = paperOptions(v); if(p.length===1) d.paper = p[0]; }
+}
+var CHAIN_LABEL = {purpose:"purpose", paper:"paper / optional", subject:"subject", topic:"topic", unit:"syllabus unit"};
+function validateDraft(d){
+  var errs = [];
+  CHAIN.forEach(function(f){ if(!d[f]) errs.push("select the "+CHAIN_LABEL[f]+"."); });
+  if(!errs.length){
+    if(PURPOSES.indexOf(d.purpose)<0) errs.push("purpose is not valid.");
+    else if(paperOptions(d.purpose).indexOf(d.paper)<0) errs.push("paper does not belong to "+d.purpose+".");
+    else if(subjectOptions(d).indexOf(d.subject)<0) errs.push("subject does not belong to "+d.paper+".");
+    else if(topicOptions(d).indexOf(d.topic)<0) errs.push("topic does not belong to "+d.subject+".");
+    else if(unitOptions(d).indexOf(d.unit)<0) errs.push("syllabus unit does not belong to "+d.topic+".");
+  }
+  if(!d.start || !d.end) errs.push("set a start and end time.");
+  else if(toMin(d.end) <= toMin(d.start)) errs.push("end time must be after the start time.");
+  return errs;
+}
+function findOverlaps(items){
+  var msgs = [], sorted = items.filter(function(x){ return x.start && x.end && toMin(x.end)>toMin(x.start); }).sort(function(a,b){ return toMin(a.start)-toMin(b.start); });
+  for(var i=1;i<sorted.length;i++){
+    if(toMin(sorted[i].start) < toMin(sorted[i-1].end)) msgs.push(sorted[i-1].label+" ("+fmt12(sorted[i-1].start)+"–"+fmt12(sorted[i-1].end)+") overlaps "+sorted[i].label+" ("+fmt12(sorted[i].start)+"–"+fmt12(sorted[i].end)+").");
+  }
+  return msgs;
+}
+
+// ---------- session records ----------
+function makeRecord(d, date, n){
+  var now = new Date().toISOString(), opt = !!CURR_OPT[d.paper];
+  return {id:uid(), date:date, sessionNumber:n, startTime:d.start, endTime:d.end, duration:toMin(d.end)-toMin(d.start),
+    purpose:d.purpose, paper:opt?"Optional":d.paper, optionalSubject:opt?d.paper:"", subject:d.subject, topic:d.topic, syllabusUnit:d.unit,
+    status:"not_started", actualStart:"", actualEnd:"", actualDuration:0, createdAt:now, updatedAt:now};
+}
+function recToDraft(s){ return {purpose:s.purpose, paper:s.optionalSubject||s.paper, subject:s.subject, topic:s.topic, unit:s.syllabusUnit, start:s.startTime, end:s.endTime}; }
+function applyDraft(s, d){
+  var opt = !!CURR_OPT[d.paper];
+  s.purpose=d.purpose; s.paper=opt?"Optional":d.paper; s.optionalSubject=opt?d.paper:""; s.subject=d.subject; s.topic=d.topic; s.syllabusUnit=d.unit;
+  s.startTime=d.start; s.endTime=d.end; s.duration=toMin(d.end)-toMin(d.start); s.updatedAt=new Date().toISOString();
+}
+function sessionById(id){ for(var i=0;i<studySessions.length;i++) if(studySessions[i].id===id) return studySessions[i]; return null; }
+function sessionsOn(dateKey){ return studySessions.filter(function(s){ return s.date===dateKey; }).sort(function(a,b){ return a.sessionNumber-b.sessionNumber; }); }
+function sessionPaperLabel(s){ return s.optionalSubject ? s.optionalSubject+" (Optional)" : s.paper; }
+function updateSession(id, patch){
+  var s = sessionById(id); if(!s) return null;
+  Object.keys(patch).forEach(function(k){ s[k] = patch[k]; });
+  s.actualDuration = (s.actualStart && s.actualEnd && toMin(s.actualEnd)>toMin(s.actualStart)) ? toMin(s.actualEnd)-toMin(s.actualStart) : 0;
+  s.updatedAt = new Date().toISOString();
+  saveSessions();
+  return s;
+}
+function refreshView(){ var y = window.scrollY; renderView(activeTab); window.scrollTo(0, y); }
+
+// ---------- cascade form (used by builder and editor) ----------
+function selHtml(f, label, list, val, hint){
+  var dis = !list.length;
+  return '<div class="cf"><label>'+label+'</label><select data-f="'+f+'"'+(dis?" disabled":"")+'><option value="">'+esc(dis?hint:"Select…")+'</option>'+
+    list.map(function(o){ return '<option'+(o===val?" selected":"")+'>'+esc(o)+'</option>'; }).join("")+'</select></div>';
+}
+function cascadeHtml(d, editableTime){
+  var paperLabel = d.purpose==="Optional" ? "Optional subject" : (d.purpose==="Current Affairs" ? "Category" : "GS / Optional");
+  return selHtml("purpose","Purpose",PURPOSES,d.purpose,"")+
+    selHtml("paper",paperLabel,paperOptions(d.purpose),d.paper,"Select purpose first")+
+    selHtml("subject","Subject",subjectOptions(d),d.subject,"Select "+(d.purpose?"paper":"purpose")+" first")+
+    selHtml("topic","Topic",d.subject?topicOptions(d):[],d.topic,"Select subject first")+
+    selHtml("unit","Syllabus unit",d.topic?unitOptions(d):[],d.unit,"Select topic first")+
+    (editableTime
+      ? '<div class="cf"><label>Preferred time</label><div class="tpair"><input type="time" data-f="start" value="'+esc(d.start)+'"><span>to</span><input type="time" data-f="end" value="'+esc(d.end)+'"></div></div>'
+      : '<div class="cf"><label>Preferred time</label><div class="pt-val" data-pt>'+esc(fmt12(d.start))+' &ndash; '+esc(fmt12(d.end))+'</div></div>');
+}
+function mountCascade(host, d, editableTime, onChange){
+  host.innerHTML = cascadeHtml(d, editableTime);
+  host.addEventListener("change", function(e){
+    var f = e.target.getAttribute && e.target.getAttribute("data-f");
+    if(!f) return;
+    if(f==="start" || f==="end"){ d[f] = e.target.value; if(onChange) onChange(f); return; }
+    setField(d, f, e.target.value);
+    host.innerHTML = cascadeHtml(d, editableTime);
+    if(onChange) onChange(f);
+  });
+}
+
+// ---------- scheduler ----------
+var schedDraft = null;
+function newDraft(i){ var t = DEFAULT_TIMES[i] || ["22:00","23:00"]; return {purpose:"",paper:"",subject:"",topic:"",unit:"",start:t[0],end:t[1]}; }
+function initSchedDraft(){
+  if(schedDraft) return;
+  schedDraft = {date:todayKey, custom:false, list:[newDraft(0),newDraft(1),newDraft(2)]};
+}
+function setSessionCount(n){
+  n = Math.max(1, Math.min(8, n|0));
+  while(schedDraft.list.length<n) schedDraft.list.push(newDraft(schedDraft.list.length));
+  schedDraft.list.length = n;
+}
+function draftItems(){ return schedDraft.list.map(function(x,i){ return {start:x.start, end:x.end, label:"Session "+(i+1)}; }); }
+function timeRowsHtml(){
+  return schedDraft.list.map(function(x,i){
+    return '<div class="trow" data-idx="'+i+'"><b>Session '+(i+1)+'</b>'+
+      '<input type="time" data-tf="start" aria-label="Session '+(i+1)+' start" value="'+esc(x.start)+'"><span>to</span>'+
+      '<input type="time" data-tf="end" aria-label="Session '+(i+1)+' end" value="'+esc(x.end)+'">'+
+      '<span class="dur" data-dur>'+esc(durText(x))+'</span></div>';
+  }).join("");
+}
+function durText(x){ var m = toMin(x.end)-toMin(x.start); return m>0 ? fmtDurMin(m) : "invalid"; }
+function sessionHeadText(x, i){ var m = toMin(x.end)-toMin(x.start); return "Session "+(i+1)+(m>0 ? " ("+fmtDurMin(m)+")" : ""); }
+function generatedHtml(dateKey){
+  var list = sessionsOn(dateKey);
+  if(!list.length) return "";
+  return '<div class="card sched-out" id="schGenerated"><div class="sched-out-head"><h3>Generated Daily Study Schedule</h3><span class="muted">'+esc(fmtLong(parseKey(dateKey)))+'</span></div>'+
+    '<div class="tbl-wrap"><table class="sched-table"><thead><tr><th>Session</th><th>Time</th><th>Purpose</th><th>Paper</th><th>Subject</th><th>Topic</th><th>Syllabus unit</th><th>Status</th><th></th></tr></thead><tbody>'+
+    list.map(function(s){
+      return '<tr class="pur-'+purClass(s.purpose)+'"><td data-l="Session">'+s.sessionNumber+'</td><td data-l="Time">'+esc(fmt12(s.startTime))+' &ndash; '+esc(fmt12(s.endTime))+'</td><td data-l="Purpose">'+esc(s.purpose)+'</td><td data-l="Paper">'+esc(sessionPaperLabel(s))+'</td><td data-l="Subject">'+esc(s.subject)+'</td><td data-l="Topic">'+esc(s.topic)+'</td><td data-l="Syllabus unit">'+esc(s.syllabusUnit)+'</td><td data-l="Status">'+esc(statusLabel(s.status))+'</td><td data-l=""><button class="link-btn" data-edit="'+esc(s.id)+'">Edit</button></td></tr>';
+    }).join("")+'</tbody></table></div>'+
+    '<div class="sync-strip"><span class="sync-dot on"></span>Saved to your study data and synced to Daily / Weekly / Monthly Logs and the Dashboard.</div>'+
+    '<div class="sched-out-actions"><button class="btn ghost" id="schToLogs">Open Daily Logs</button><button class="btn ghost" id="schToDash">Open Dashboard</button></div></div>';
+}
+function statusLabel(v){ for(var i=0;i<STATUSES.length;i++) if(STATUSES[i][0]===v) return STATUSES[i][1]; return v; }
+function renderScheduler(){
+  initSchedDraft();
+  var host = document.getElementById("view-scheduler"), n = schedDraft.list.length;
+  host.innerHTML =
+    '<div class="card sched-title"><div><h2>Daily Study Scheduler</h2><div class="muted">Create your personalised daily study plan</div></div><button class="link-btn" id="schProfile">Edit profile</button></div>'+
+    '<div class="card sched-step"><div class="step-h"><span class="step-n n1">1</span><b>Set number of sessions</b></div>'+
+      '<div class="count-row" id="schCount">'+[1,2,3,4].map(function(k){ return '<button type="button" class="pill'+(!schedDraft.custom && n===k?" on":"")+'" data-n="'+k+'">'+k+' Session'+(k>1?"s":"")+'</button>'; }).join("")+
+        '<button type="button" class="pill'+(schedDraft.custom||n>4?" on":"")+'" data-n="custom">Custom</button>'+
+        ((schedDraft.custom||n>4)?'<input type="number" id="schCustomN" min="1" max="8" value="'+n+'" aria-label="Number of sessions">':"")+'</div>'+
+      '<div class="date-row"><label for="schDate">Schedule for</label><input type="date" id="schDate" value="'+esc(schedDraft.date)+'"></div></div>'+
+    '<div class="card sched-step"><div class="step-h"><span class="step-n n2">2</span><b>Set time for each session</b></div><div id="schTimes">'+timeRowsHtml()+'</div><div class="warn-list" id="schWarn" hidden></div></div>'+
+    '<div class="sched-sessions">'+schedDraft.list.map(function(x,i){
+      return '<div class="card sched-sess" data-idx="'+i+'"><div class="step-h"><span class="step-n n'+(3+(i%4))+'">'+(i+1)+'</span><b data-head>'+esc(sessionHeadText(x,i))+'</b></div><div class="cas" data-cas="'+i+'"></div><div class="sess-err" hidden></div></div>';
+    }).join("")+'</div>'+
+    '<div class="form-err" id="schErr" role="alert" hidden></div>'+
+    '<button class="btn gen" id="schGen">Generate Daily Schedule</button>'+
+    '<div id="schOut">'+generatedHtml(schedDraft.date)+'</div>';
+
+  host.querySelector("#schProfile").addEventListener("click", function(){ openProfileModal(true); });
+  host.querySelector("#schCount").addEventListener("click", function(e){
+    var b = e.target.closest("[data-n]"); if(!b) return;
+    var v = b.getAttribute("data-n");
+    if(v==="custom"){ schedDraft.custom = true; setSessionCount(Math.max(n,5)); } else { schedDraft.custom = false; setSessionCount(+v); }
+    renderScheduler();
+  });
+  var cn = host.querySelector("#schCustomN");
+  if(cn) cn.addEventListener("change", function(){ setSessionCount(+cn.value||1); renderScheduler(); });
+  host.querySelector("#schDate").addEventListener("change", function(e){
+    if(e.target.value){ schedDraft.date = e.target.value; host.querySelector("#schOut").innerHTML = generatedHtml(schedDraft.date); bindGenerated(host); }
+  });
+  function refreshTimes(){
+    Array.prototype.forEach.call(host.querySelectorAll(".trow"), function(r){
+      var i = +r.getAttribute("data-idx"), x = schedDraft.list[i];
+      r.querySelector("[data-dur]").textContent = durText(x);
+      var card = host.querySelector('.sched-sess[data-idx="'+i+'"]');
+      card.querySelector("[data-head]").textContent = sessionHeadText(x,i);
+      var pt = card.querySelector("[data-pt]"); if(pt) pt.innerHTML = esc(fmt12(x.start))+" &ndash; "+esc(fmt12(x.end));
+    });
+    var warn = host.querySelector("#schWarn"), msgs = findOverlaps(draftItems());
+    warn.hidden = !msgs.length; warn.innerHTML = msgs.map(esc).join("<br>");
+  }
+  host.querySelector("#schTimes").addEventListener("change", function(e){
+    var f = e.target.getAttribute("data-tf"); if(!f) return;
+    schedDraft.list[+e.target.closest(".trow").getAttribute("data-idx")][f] = e.target.value;
+    refreshTimes();
+  });
+  Array.prototype.forEach.call(host.querySelectorAll("[data-cas]"), function(c){
+    mountCascade(c, schedDraft.list[+c.getAttribute("data-cas")], false);
+  });
+  refreshTimes();
+  host.querySelector("#schGen").addEventListener("click", generateSchedule);
+  bindGenerated(host);
+}
+function bindGenerated(host){
+  Array.prototype.forEach.call(host.querySelectorAll("[data-edit]"), function(b){ b.addEventListener("click", function(){ openSessionEditor(b.getAttribute("data-edit")); }); });
+  var l = host.querySelector("#schToLogs"), d = host.querySelector("#schToDash");
+  if(l) l.addEventListener("click", function(){ currentDailyKey = clampKey(schedDraft.date); setTab("daily"); });
+  if(d) d.addEventListener("click", function(){ setTab("dashboard"); });
+}
+function generateSchedule(){
+  var host = document.getElementById("view-scheduler"), box = host.querySelector("#schErr");
+  if(!profile){ openProfileModal(false); return; }
+  var errs = [], bad = {};
+  schedDraft.list.forEach(function(x,i){ validateDraft(x).forEach(function(m){ errs.push("Session "+(i+1)+": "+m); bad[i]=true; }); });
+  findOverlaps(draftItems()).forEach(function(m){ errs.push(m); });
+  if(!/^\d{4}-\d{2}-\d{2}$/.test(schedDraft.date)) errs.push("Choose a valid date.");
+  Array.prototype.forEach.call(host.querySelectorAll(".sched-sess"), function(c){ c.classList.toggle("bad", !!bad[+c.getAttribute("data-idx")]); });
+  if(errs.length){
+    box.hidden = false; box.innerHTML = "<b>Fix these before generating:</b><br>"+errs.map(esc).join("<br>");
+    box.scrollIntoView({block:"center", behavior:"smooth"});
+    return;
+  }
+  box.hidden = true;
+  var existing = sessionsOn(schedDraft.date);
+  if(existing.length && !confirm("This will replace the "+existing.length+" session(s) already scheduled for "+fmtShort(parseKey(schedDraft.date))+", including any progress logged on them. Continue?")) return;
+  var date = schedDraft.date;
+  studySessions = studySessions.filter(function(s){ return s.date!==date; }).concat(schedDraft.list.map(function(x,i){ return makeRecord(x, date, i+1); }));
+  saveSessions();
+  toast(schedDraft.list.length+" session(s) saved to Logs and Dashboard.");
+  renderScheduler();
+  var out = document.getElementById("schGenerated"); if(out) out.scrollIntoView({block:"start", behavior:"smooth"});
+}
+
+// ---------- edit an existing session ----------
+function openSessionEditor(id){
+  var s = sessionById(id); if(!s) return;
+  var d = recToDraft(s);
+  var m = showModal(
+    '<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="seTitle">'+
+      '<h2 id="seTitle">Edit Session '+s.sessionNumber+'</h2>'+
+      '<p class="muted">'+esc(fmtLong(parseKey(s.date)))+'. Changing a selection clears the choices below it.</p>'+
+      '<div class="cas" id="seCas"></div>'+
+      '<div class="form-err" id="seErr" role="alert" hidden></div>'+
+      '<div class="modal-actions"><button class="btn danger" id="seDel">Delete</button><span class="grow"></span><button class="btn ghost" id="seCancel">Cancel</button><button class="btn primary" id="seSave">Save</button></div>'+
+    '</div>', true);
+  mountCascade(m.querySelector("#seCas"), d, true);
+  m.querySelector("#seCancel").addEventListener("click", closeModal);
+  m.querySelector("#seDel").addEventListener("click", function(){
+    if(!confirm("Delete this session and its logged progress?")) return;
+    studySessions = studySessions.filter(function(x){ return x.id!==id; });
+    saveSessions(); closeModal(); toast("Session deleted."); refreshView();
+  });
+  m.querySelector("#seSave").addEventListener("click", function(){
+    var errs = validateDraft(d).map(function(x){ return x.charAt(0).toUpperCase()+x.slice(1); });
+    var others = sessionsOn(s.date).filter(function(x){ return x.id!==id; }).map(function(x){ return {start:x.startTime, end:x.endTime, label:"Session "+x.sessionNumber}; });
+    findOverlaps(others.concat([{start:d.start, end:d.end, label:"This session"}])).forEach(function(x){ errs.push(x); });
+    var box = m.querySelector("#seErr");
+    if(errs.length){ box.hidden = false; box.innerHTML = errs.map(esc).join("<br>"); return; }
+    applyDraft(s, d);
+    saveSessions(); closeModal(); toast("Session updated everywhere."); refreshView();
+  });
+}
+
+// ---------- logs: per-day session cards ----------
+function sessLogCard(s){
+  return '<div class="sess-card pur-'+purClass(s.purpose)+' st-'+esc(s.status)+'" data-sid="'+esc(s.id)+'">'+
+    '<div class="sess-top"><span class="sess-n">S'+s.sessionNumber+'</span><span class="sess-time">'+esc(fmt12(s.startTime))+' &ndash; '+esc(fmt12(s.endTime))+' &middot; '+esc(fmtDurMin(s.duration))+'</span><span class="chip pur">'+esc(s.purpose)+'</span></div>'+
+    '<div class="sess-sub"><b>'+esc(sessionPaperLabel(s))+'</b> &middot; '+esc(s.subject)+' &rsaquo; '+esc(s.topic)+' &rsaquo; '+esc(s.syllabusUnit)+'</div>'+
+    '<div class="sess-ctl">'+
+      '<label>Status<select data-sf="status">'+STATUSES.map(function(o){ return '<option value="'+o[0]+'"'+(o[0]===s.status?" selected":"")+'>'+o[1]+'</option>'; }).join("")+'</select></label>'+
+      '<label>Actual start<input type="time" data-sf="actualStart" value="'+esc(s.actualStart)+'"></label>'+
+      '<label>Actual end<input type="time" data-sf="actualEnd" value="'+esc(s.actualEnd)+'"></label>'+
+      '<span class="sess-act">Actual study time <b>'+(s.actualDuration ? esc(fmtDurMin(s.actualDuration)) : "&mdash;")+'</b></span>'+
+    '</div>'+
+    '<div class="sess-links"><button class="link-btn" data-sact="same">Same as scheduled</button><button class="link-btn" data-sact="edit">Edit session</button></div>'+
+  '</div>';
+}
+function sessionsDayCard(dateKey){
+  var list = sessionsOn(dateKey), done = list.filter(function(s){ return s.status==="completed"; }).length;
+  return '<div class="card sess-day"><div class="sess-day-head"><h3>Study sessions</h3><span class="muted">'+(list.length ? done+"/"+list.length+" completed" : "none scheduled")+'</span></div>'+
+    (list.length ? list.map(sessLogCard).join("") : '<div class="muted sess-empty">No sessions planned for this day.</div><button class="btn ghost" data-sact="plan">Plan sessions</button>')+'</div>';
+}
+function bindSessionCards(host){
+  Array.prototype.forEach.call(host.querySelectorAll(".sess-card"), function(card){
+    var id = card.getAttribute("data-sid");
+    Array.prototype.forEach.call(card.querySelectorAll("[data-sf]"), function(inp){
+      inp.addEventListener("change", function(){
+        var s = sessionById(id), f = inp.getAttribute("data-sf"), patch = {};
+        patch[f] = inp.value;
+        if(f==="status" && inp.value==="in_progress" && !s.actualStart && s.date===todayKey) patch.actualStart = nowHM();
+        var aS = patch.actualStart!==undefined ? patch.actualStart : s.actualStart, aE = patch.actualEnd!==undefined ? patch.actualEnd : s.actualEnd;
+        if(aS && aE && toMin(aE)<=toMin(aS)){ toast("Actual end must be after the actual start."); refreshView(); return; }
+        updateSession(id, patch); refreshView();
+      });
+    });
+    Array.prototype.forEach.call(card.querySelectorAll("[data-sact]"), function(b){
+      b.addEventListener("click", function(){
+        var a = b.getAttribute("data-sact"), s = sessionById(id);
+        if(a==="edit") openSessionEditor(id);
+        if(a==="same"){ updateSession(id, {actualStart:s.startTime, actualEnd:s.endTime, status:"completed"}); refreshView(); }
+      });
+    });
+  });
+  var plan = host.querySelector('[data-sact="plan"]');
+  if(plan && !plan.closest(".sess-card")) plan.addEventListener("click", function(){ schedDraft && (schedDraft.date = currentDailyKey); setTab("scheduler"); });
+}
+
+// ---------- stats: dashboard / weekly / monthly (all read studySessions) ----------
+function sessionStats(list){
+  var st = {total:list.length, planned:0, actual:0, done:0, pending:0, skipped:0, bySubject:{}, byPaper:{}, byPurpose:{}};
+  list.forEach(function(s){
+    st.planned += s.duration; st.actual += s.actualDuration||0;
+    if(s.status==="completed") st.done++; else if(s.status==="skipped") st.skipped++; else st.pending++;
+    var paper = s.optionalSubject ? "Optional: "+s.optionalSubject : s.paper;
+    [["bySubject",s.subject],["byPaper",paper],["byPurpose",s.purpose]].forEach(function(p){
+      var m = st[p[0]]; if(!m[p[1]]) m[p[1]] = {planned:0, actual:0};
+      m[p[1]].planned += s.duration; m[p[1]].actual += s.actualDuration||0;
+    });
+  });
+  return st;
+}
+function periodRange(p){
+  var t = parseKey(todayKey);
+  if(p==="today") return [todayKey, todayKey];
+  if(p==="week"){ var s = addDays(t, -((t.getDay()+6)%7)); return [toKey(s), toKey(addDays(s,6))]; }
+  if(p==="month") return [toKey(new Date(t.getFullYear(), t.getMonth(), 1)), toKey(new Date(t.getFullYear(), t.getMonth()+1, 0))];
+  return ["0000-00-00","9999-99-99"];
+}
+function sessionsBetween(a, b){ return studySessions.filter(function(s){ return s.date>=a && s.date<=b; }); }
+var dashPeriod = "today";
+var PERIODS = [["today","Today"],["week","This week"],["month","This month"],["all","All time"]];
+function barList(title, map){
+  var keys = Object.keys(map).sort(function(a,b){ return map[b].planned-map[a].planned; });
+  if(!keys.length) return "";
+  var max = Math.max.apply(null, keys.map(function(k){ return Math.max(map[k].planned, map[k].actual); })) || 1;
+  return '<div class="bl"><div class="bl-t">'+esc(title)+'</div>'+keys.map(function(k){
+    return '<div class="bl-r"><span class="bl-n">'+esc(k)+'</span><span class="bl-bar"><i class="pl" style="width:'+Math.round(100*map[k].planned/max)+'%"></i><i class="ac" style="width:'+Math.round(100*map[k].actual/max)+'%"></i></span><span class="bl-v">'+esc(fmtDurMin(map[k].actual))+' / '+esc(fmtDurMin(map[k].planned))+'</span></div>';
+  }).join("")+'</div>';
+}
+function sessionsDashboardCard(){
+  var r = periodRange(dashPeriod), list = sessionsBetween(r[0], r[1]), st = sessionStats(list);
+  var pct = st.total ? Math.round(100*st.done/st.total) : 0;
+  return '<div class="card sess-dash">'+
+    '<div class="pill-row" id="dashPeriods">'+PERIODS.map(function(p){ return '<button type="button" class="pill'+(p[0]===dashPeriod?" on":"")+'" data-p="'+p[0]+'">'+p[1]+'</button>'; }).join("")+'</div>'+
+    (st.total ? (
+      '<div class="stat-grid">'+
+        '<div class="stat"><span>Planned</span><b>'+esc(fmtDurMin(st.planned))+'</b></div>'+
+        '<div class="stat"><span>Actual</span><b>'+esc(fmtDurMin(st.actual))+'</b></div>'+
+        '<div class="stat"><span>Completed</span><b>'+st.done+'</b></div>'+
+        '<div class="stat"><span>Pending</span><b>'+st.pending+'</b></div>'+
+        '<div class="stat"><span>Skipped</span><b>'+st.skipped+'</b></div>'+
+        '<div class="stat"><span>Progress</span><b>'+pct+'%</b></div>'+
+      '</div>'+
+      '<div class="prog"><i style="width:'+pct+'%"></i></div>'+
+      (dashPeriod==="today" ? list.map(function(s){ return '<div class="mini-sess pur-'+purClass(s.purpose)+'"><span>S'+s.sessionNumber+' &middot; '+esc(fmt12(s.startTime))+'</span><span>'+esc(s.subject)+' &rsaquo; '+esc(s.syllabusUnit)+'</span><em>'+esc(statusLabel(s.status))+'</em></div>'; }).join("") : "")+
+      barList("Subject-wise study time (actual / planned)", st.bySubject)+barList("GS / paper-wise", st.byPaper)+barList("Prelims / Mains / Optional distribution", st.byPurpose)
+    ) : '<div class="muted sess-empty">No sessions in this period yet.</div><button class="btn ghost" id="dashPlan">Plan your sessions</button>')+
+  '</div>';
+}
+function bindSessionsDashboard(host){
+  var pr = host.querySelector("#dashPeriods");
+  if(pr) pr.addEventListener("click", function(e){ var b = e.target.closest("[data-p]"); if(!b) return; dashPeriod = b.getAttribute("data-p"); refreshView(); });
+  var pl = host.querySelector("#dashPlan");
+  if(pl) pl.addEventListener("click", function(){ setTab("scheduler"); });
+}
+function sessMini(list){
+  if(!list.length) return "";
+  var st = sessionStats(list);
+  return '<span class="sess-mini">'+st.total+' session'+(st.total>1?"s":"")+' &middot; '+st.done+' done &middot; '+esc(fmtDurMin(st.actual))+' of '+esc(fmtDurMin(st.planned))+'</span>';
+}
+
+// ============================================================================
 // NAV / TABS
 // ============================================================================
 var TAB_GROUPS = [
   {id:"dashboard", label:"Dashboard", accent:"dashboard"},
+  {id:"scheduler", label:"Scheduler", accent:"scheduler"},
   {id:"syllabus", label:"Syllabus", accent:"syllabus"},
   {id:"logs", label:"Logs", accent:"logs", children:[
     {id:"daily", label:"Daily"},
@@ -3635,6 +4310,7 @@ function setTab(id){
 }
 function renderView(id){
   if(id==="dashboard") renderDashboard();
+  else if(id==="scheduler") renderScheduler();
   else if(id==="daily") renderDaily();
   else if(id==="weekly") renderWeekly();
   else if(id==="months") renderMonths();
@@ -3833,6 +4509,9 @@ function renderDashboard(){
     '<div class="section-title">Today\'s plan</div>'+
     todayPlanCard(dayObj, tKey, adherencePct, loggedDays, elapsed)+
 
+    '<div class="section-title">Study sessions</div>'+
+    sessionsDashboardCard()+
+
     '<div class="section-title">Progress</div>'+
     '<div class="progress-grid">'+
       progressCard(ringSvg(100*prelimsDone/prelimsTotal, "var(--navy)"), prelimsDone+"/"+prelimsTotal, "Prelims topics", "--navy")+
@@ -3849,6 +4528,7 @@ function renderDashboard(){
   bindPlanSetupCard(host);
   bindResultCard(host);
   bindBackupCard(host);
+  bindSessionsDashboard(host);
 }
 function todayPlanCard(dayObj, tKey, adherencePct, loggedDays, elapsed){
   if(!dayObj){
@@ -3911,11 +4591,13 @@ function renderDaily(){
     '</div>'+
     '<div class="day-badges">'+badges+'</div>'+
     whyNextStrip(dayObj)+
+    sessionsDayCard(currentDailyKey)+
     (dayObj ? blockCard("Morning", dayObj.morning, st.m, "m") + blockCard("Evening", dayObj.evening, st.e, "e") :
       '<div class="card empty">This date is outside the plan window ('+esc(fmtShort(parseKey(DATA.startDate)))+' – '+esc(fmtShort(parseKey(DATA.endDate)))+').</div>')+
     '<div class="notes-card card"><h3>Notes</h3><textarea id="dayNotes" placeholder="How did today go? Anything to revise, retry, or flag for tomorrow...">'+esc(st.notes||"")+'</textarea>'+
     '<div class="save-hint" id="dayNotesHint">'+ (db ? "Saves automatically as you type" : "Not connected. Notes won't be saved.") +'</div></div>';
 
+  bindSessionCards(host);
   document.getElementById("dayPrev").addEventListener("click", function(){ currentDailyKey = clampKey(toKey(addDays(d,-1))); renderDaily(); });
   document.getElementById("dayNext").addEventListener("click", function(){ currentDailyKey = clampKey(toKey(addDays(d,1))); renderDaily(); });
   document.getElementById("dayToday").addEventListener("click", function(){ currentDailyKey = clampKey(todayKey); renderDaily(); });
@@ -4040,7 +4722,7 @@ function renderWeekly(){
     var isCurrent = w.weekNum===currentWeekNum;
     return '<div class="week-card card'+(isCurrent?" open":"")+'" data-week="'+w.weekNum+'">'+
       '<div class="week-head" data-toggle>'+
-        '<div class="l"><div class="w">Week '+w.weekNum+' &middot; '+fmtDM(startD)+' &ndash; '+fmtDM(endD)+'</div><div class="r">'+esc(phase)+'</div></div>'+
+        '<div class="l"><div class="w">Week '+w.weekNum+' &middot; '+fmtDM(startD)+' &ndash; '+fmtDM(endD)+'</div><div class="r">'+esc(phase)+sessMini(sessionsBetween(w.start, w.end))+'</div></div>'+
         '<div class="r"><div class="week-progress"><i style="width:'+pct+'%"></i></div><span class="chevron">&rsaquo;</span></div>'+
       '</div>'+
       '<div class="week-body">'+ w.dateKeys.map(weekDayRow).join("") +'</div>'+
@@ -4069,7 +4751,7 @@ function weekDayRow(dateKey){
   var dt = parseKey(dateKey);
   return '<div class="week-day'+(dateKey===todayKey?" today":"")+'" data-date="'+dateKey+'" role="button" tabindex="0">'+
     '<div class="dd">'+weekdayAbbr(dt)+'<b>'+dt.getDate()+'</b>'+(d?'<span class="tg">'+esc(d.tag)+'</span>':'')+'</div>'+
-    '<div class="cc"><div class="am"><b>AM</b> '+am+'</div><div class="pm"><b>PM</b> '+pm+'</div></div>'+
+    '<div class="cc"><div class="am"><b>AM</b> '+am+'</div><div class="pm"><b>PM</b> '+pm+'</div>'+sessMini(sessionsOn(dateKey))+'</div>'+
     '<div class="status"><span class="status-dot '+status+'"></span></div>'+
   '</div>';
 }
@@ -4091,7 +4773,7 @@ function renderMonths(){
       '<input type="checkbox" id="month-'+m.key+'" '+(st.done?"checked":"")+'>'+
       '<div class="b"><div class="lab">'+esc(m.label)+'</div>'+
       (m.milestone ? '<div class="milestone">'+esc(m.milestone)+'</div>' : '')+
-      '<div class="focus">'+esc(m.focus)+'</div></div>'+
+      '<div class="focus">'+esc(m.focus)+'</div>'+sessMini(sessionsBetween(m.start, m.end))+'</div>'+
     '</label>';
   }).join("");
 
@@ -4838,6 +5520,8 @@ function boot(){
     localStorage.setItem("dossier.theme", next);
   });
 
+  renderGreeting();
+  document.getElementById("profileBtn").addEventListener("click", function(){ openProfileModal(!!profile); });
   updateTopbarDate();
   renderTabs();
   Array.prototype.forEach.call(document.querySelectorAll(".view"), function(v){
@@ -4875,6 +5559,7 @@ function boot(){
 
     // render once immediately with schedule data, before db resolves
     renderView(activeTab);
+    if(!profile) openProfileModal(false);
 
     var capPromise = (window.claude && window.claude.use) ? window.claude.use("db") : Promise.resolve(null);
     capPromise.then(function(d){
