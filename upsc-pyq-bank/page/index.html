@@ -6079,6 +6079,53 @@ function initBlackHoleScene(host){
   for(var i=0;i<count;i++){var p={};spawn(p);particles.push(p);}
   var fillCur = null, dust = [];
   for(var di=0; di<48; di++) dust.push({a:Math.random()*6.283, r:Math.sqrt(Math.random()), s:.25+Math.random()*.6, size:.5+Math.random()*1.1, tw:Math.random()*6.283});
+  var DT = 400, dskCv = null, layerTex = [];
+  function diskColor(f){
+    var st = [[0,255,250,232],[.25,255,214,150],[.55,240,140,70],[1,150,55,35]], k = 0;
+    f = Math.max(0, Math.min(1, f)); while(k < st.length-2 && f > st[k+1][0]) k++;
+    var a = st[k], b = st[k+1], u = (f - a[0])/(b[0]-a[0]);
+    return Math.round(a[1]+(b[1]-a[1])*u)+","+Math.round(a[2]+(b[2]-a[2])*u)+","+Math.round(a[3]+(b[3]-a[3])*u);
+  }
+  function diskLayer(rIn, rOut, n, wLo, wHi, arcLo, arcHi, rim){
+    return mkTex(DT, function(g, S){
+      var m = S/2, r, f, i;
+      g.globalCompositeOperation = "lighter"; g.lineCap = "round";
+      for(r=rIn; r<=rOut; r+=2.5){ f = (r-80)/120; g.strokeStyle = "rgba("+diskColor(f)+","+(.05 + .1*(1-f))+")"; g.lineWidth = 3.2; g.beginPath(); g.arc(m, m, r, 0, 6.283); g.stroke(); }
+      for(i=0;i<n;i++){
+        r = rIn + (rOut-rIn)*Math.random(); f = (r-80)/120; var a = Math.random()*6.283;
+        g.strokeStyle = "rgba("+diskColor(f)+","+((.12 + Math.random()*.5)*(1-f*.5))+")"; g.lineWidth = wLo + Math.random()*(wHi-wLo);
+        g.beginPath(); g.arc(m, m, r, a, a + arcLo + Math.random()*(arcHi-arcLo)); g.stroke();
+      }
+      if(rim){ g.strokeStyle = "rgba(255,248,230,.75)"; g.lineWidth = 2.4; g.beginPath(); g.arc(m, m, rIn+1, 0, 6.283); g.stroke(); }
+    });
+  }
+  layerTex = [diskLayer(80, 124, 700, .6, 1.7, .03, .17, true), diskLayer(124, 162, 500, .6, 1.6, .05, .2, false), diskLayer(162, 200, 380, .6, 1.5, .07, .26, false)];
+  function buildDisk(t){
+    if(!dskCv){ dskCv = document.createElement("canvas"); dskCv.width = dskCv.height = DT; }
+    var g = dskCv.getContext("2d"), L, spd = [.00042, .00026, .00016];
+    g.globalCompositeOperation = "source-over"; g.clearRect(0, 0, DT, DT); g.globalCompositeOperation = "lighter";
+    for(L=0;L<3;L++){ g.save(); g.translate(DT/2, DT/2); g.rotate(t*spd[L]); g.drawImage(layerTex[L], -DT/2, -DT/2); g.restore(); }
+    g.globalCompositeOperation = "destination-in";
+    var lg = g.createLinearGradient(0, 0, DT, 0); lg.addColorStop(0, "rgba(0,0,0,1)"); lg.addColorStop(.5, "rgba(0,0,0,.62)"); lg.addColorStop(1, "rgba(0,0,0,.17)");
+    g.fillStyle = lg; g.fillRect(0, 0, DT, DT); g.globalCompositeOperation = "source-over";
+  }
+  var DISK_TILT = -.12, DISK_Q = .15;
+  function drawDisk(half, holeR){
+    var rIn = holeR*1.2, Rout = rIn/.4;
+    ctx.save(); ctx.translate(cx, cy); ctx.rotate(DISK_TILT);
+    ctx.beginPath(); ctx.rect(-Rout*1.3, half < 0 ? -Rout*1.3 : 0, Rout*2.6, Rout*1.3); ctx.clip();
+    ctx.scale(1, DISK_Q); ctx.globalAlpha = half < 0 ? .8 : 1; ctx.drawImage(dskCv, -Rout, -Rout, Rout*2, Rout*2); ctx.restore(); ctx.globalAlpha = 1;
+  }
+  function drawHalo(holeR){
+    var hs = holeR*1.1/80;
+    ctx.save(); ctx.translate(cx, cy); ctx.beginPath(); ctx.arc(0, 0, holeR*1.7, 0, 6.283); ctx.arc(0, 0, holeR*.98, 0, 6.283, true); ctx.clip();
+    ctx.globalAlpha = .42; ctx.drawImage(dskCv, -DT/2*hs, -DT/2*hs, DT*hs, DT*hs); ctx.restore(); ctx.globalAlpha = 1;
+  }
+  function drawPhotonRing(holeR){
+    var g = ctx.createRadialGradient(cx, cy, holeR*.97, cx, cy, holeR*1.13);
+    g.addColorStop(0, "rgba(255,244,222,0)"); g.addColorStop(.4, "rgba(255,246,228,.95)"); g.addColorStop(.62, "rgba(255,200,130,.45)"); g.addColorStop(1, "rgba(255,160,90,0)");
+    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx, cy, holeR*1.13, 0, 6.283); ctx.fill();
+  }
   function drawFill(t, pv, holeR){
     var target = pv.focus ? pv.p : 1 - pv.p;
     if(fillCur===null) fillCur = target;
@@ -6121,70 +6168,34 @@ function initBlackHoleScene(host){
   for(var mi=0; mi<130; mi++){ var mm = {}; spawnMid(mm, false); midS.push(mm); }
   for(var ai=0; ai<2; ai++) for(var pi=0; pi<170; pi++){ var u = Math.pow(Math.random(), .85); arms.push({arm:ai, u:u, j:(Math.random()+Math.random()+Math.random()-1.5), s:rnd(.45,1.1), tw:rnd(0,6.283)}); }
   function mkTex(S, fn){ var c = document.createElement("canvas"); c.width = c.height = S; fn(c.getContext("2d"), S); return c; }
-  function galaxyTex(S, turns, warm, hue){
-    return mkTex(S, function(g, S){
-      var m = S/2, h = g.createRadialGradient(m, m, 0, m, m, m*.95); h.addColorStop(0, "rgba("+hue+",.34)"); h.addColorStop(.5, "rgba("+hue+",.1)"); h.addColorStop(1, "rgba("+hue+",0)"); g.fillStyle = h; g.fillRect(0, 0, S, S);
-      for(var arm=0; arm<2; arm++) for(var i=0; i<150; i++){
-        var u = i/150, a = arm*Math.PI + u*turns, r = (.05 + u*.42)*S, j = (Math.random()+Math.random()-1)*(2 + 5*u);
-        var x = m + Math.cos(a)*r + Math.cos(a+1.57)*j, y = m + Math.sin(a)*r + Math.sin(a+1.57)*j;
-        g.globalAlpha = (1-u)*.85 + .1; g.fillStyle = u < .35 ? "rgb(255,232,200)" : (Math.random() < .12 ? "rgb(255,160,200)" : "rgb(160,190,255)");
-        g.beginPath(); g.arc(x, y, .5 + Math.random()*(1.1 - u*.4), 0, 6.283); g.fill();
-      }
-      g.globalAlpha = 1; var c = g.createRadialGradient(m, m, 0, m, m, S*.14); c.addColorStop(0, warm ? "rgba(255,240,215,1)" : "rgba(225,235,255,1)"); c.addColorStop(.4, warm ? "rgba(255,205,150,.55)" : "rgba(170,195,255,.5)"); c.addColorStop(1, "rgba(255,190,120,0)"); g.fillStyle = c; g.fillRect(0, 0, S, S);
-    });
+  var mwTex = null, sn = null, nextSN = 0;
+  function buildMW(){
+    var W = Math.max(2, Math.floor(w)), H = Math.max(2, Math.floor(h));
+    mwTex = document.createElement("canvas"); mwTex.width = W; mwTex.height = H;
+    var g = mwTex.getContext("2d"), i, sig = H*.14;
+    g.translate(W/2, H/2); g.rotate(-.44);
+    // diffuse glow of the galactic plane, with a warmer bulge
+    for(i=0;i<34;i++){ var sx = rnd(-.8, .8)*W, sy = (Math.random()+Math.random()-1)*sig*.6, rr = rnd(.2, .36)*H, gl = g.createRadialGradient(sx, sy, 0, sx, sy, rr);
+      var warm = Math.abs(sx + W*.12) < W*.16; gl.addColorStop(0, warm ? "rgba(255,226,186,"+rnd(.05,.085)+")" : "rgba(196,192,226,"+rnd(.03,.055)+")"); gl.addColorStop(1, "rgba(120,120,160,0)"); g.fillStyle = gl; g.fillRect(sx-rr, sy-rr, rr*2, rr*2); }
+    // dark dust lanes running along the plane
+    for(i=0;i<16;i++){ var dx = rnd(-.8, .8)*W, dy = rnd(-.5, .5)*sig*.5, dr = rnd(.09, .17)*H; g.save(); g.translate(dx, dy); g.scale(2.6, 1); var dg = g.createRadialGradient(0, 0, 0, 0, 0, dr); dg.addColorStop(0, "rgba(2,3,8,"+rnd(.22,.4)+")"); dg.addColorStop(1, "rgba(2,3,8,0)"); g.fillStyle = dg; g.fillRect(-dr, -dr, dr*2, dr*2); g.restore(); }
+    // fine grain of unresolved stars, densest along the plane
+    for(i=0;i<3000;i++){
+      var x = rnd(-.85, .85)*W, y = (Math.random()+Math.random()+Math.random()-1.5)*sig*1.25*(.75+.5*Math.random()), bright = Math.pow(Math.random(), 3.4);
+      g.globalAlpha = .1 + .75*bright; g.fillStyle = Math.random() < .2 ? "#ffe9cc" : (Math.random() < .3 ? "#cfdcff" : "#f2f4ff");
+      g.beginPath(); g.arc(x, y, .28 + .55*bright + (bright > .8 ? .35 : 0), 0, 6.283); g.fill();
+    }
   }
-  function clusterTex(S, warm){
-    return mkTex(S, function(g, S){
-      var m = S/2, c = g.createRadialGradient(m, m, 0, m, m, m*.8); c.addColorStop(0, warm ? "rgba(255,225,180,.55)" : "rgba(200,220,255,.5)"); c.addColorStop(.4, warm ? "rgba(255,190,130,.18)" : "rgba(150,180,255,.16)"); c.addColorStop(1, "rgba(0,0,0,0)"); g.fillStyle = c; g.fillRect(0, 0, S, S);
-      for(var i=0; i<170; i++){
-        var r = Math.abs((Math.random()+Math.random()+Math.random()-1.5))*S*.2, a = Math.random()*6.283;
-        g.globalAlpha = .35 + Math.random()*.65; g.fillStyle = Math.random() < .3 ? "#ffd9a8" : "#e6eeff";
-        g.beginPath(); g.arc(m + Math.cos(a)*r, m + Math.sin(a)*r, .4 + Math.random()*1.1, 0, 6.283); g.fill();
-      }
-    });
-  }
-  var galaxies = [], clusters = [], streams = [], sn = null, nextSN = 0;
-  function initScenery(){
-    galaxies = [
-      {x:.15, y:.2, S:84, tilt:-.5, sq:.42, tex:galaxyTex(96, 4.6, true, "255,215,170"), spin:.000028},
-      {x:.83, y:.7, S:70, tilt:.7, sq:.5, tex:galaxyTex(96, 5.4, false, "170,195,255"), spin:-.000022},
-      {x:.72, y:.1, S:44, tilt:.15, sq:.62, tex:galaxyTex(96, 4.0, true, "255,225,190"), spin:.000018},
-      {x:.09, y:.78, S:40, tilt:-.9, sq:.35, tex:galaxyTex(96, 5.0, false, "190,205,255"), spin:.000024}
-    ];
-    clusters = [
-      {x:.045, y:.46, S:64, tex:clusterTex(96, true), next:0},
-      {x:.955, y:.24, S:58, tex:clusterTex(96, false), next:900},
-      {x:.9, y:.9, S:50, tex:clusterTex(96, true), next:1800}
-    ];
-  }
-  initScenery();
+  var _rs = resize; resize = function(){ _rs(); buildMW(); };
   function bez(p0, p1, p2, e){ var q = 1-e; return q*q*p0 + 2*q*e*p1 + e*e*p2; }
   function drawScenery(t, dt){
     var i, o, g;
     // soft nebula clouds
-    var neb = [[.28,.78,.55,"120,60,170",.10],[.78,.32,.5,"40,110,150",.08],[.5,.06,.45,"170,80,60",.06]];
+    var neb = [[.28,.78,.55,"110,70,160",.06],[.78,.32,.5,"50,100,140",.05]];
     for(i=0;i<neb.length;i++){ o = neb[i]; var nx = o[0]*w + Math.sin(t*.00005+i)*6, ny = o[1]*h + Math.cos(t*.00004+i)*5, nr = o[2]*w;
       g = ctx.createRadialGradient(nx, ny, 0, nx, ny, nr); g.addColorStop(0, "rgba("+o[3]+","+o[4]+")"); g.addColorStop(1, "rgba("+o[3]+",0)"); ctx.fillStyle = g; ctx.fillRect(0, 0, w, h); }
-    // distant spiral galaxies
-    for(i=0;i<galaxies.length;i++){ o = galaxies[i]; ctx.save(); ctx.translate(o.x*w, o.y*h); ctx.rotate(o.tilt); ctx.scale(1, o.sq); ctx.rotate(t*o.spin);
-      ctx.globalAlpha = .72 + .1*Math.sin(t*.0003+i); ctx.drawImage(o.tex, -o.S/2, -o.S/2, o.S, o.S); ctx.restore(); }
-    ctx.globalAlpha = 1;
-    // star clusters on the sides
-    for(i=0;i<clusters.length;i++){ o = clusters[i]; ctx.globalAlpha = .85 + .12*Math.sin(t*.0007+i*2); ctx.drawImage(o.tex, o.x*w - o.S/2, o.y*h - o.S/2, o.S, o.S); }
-    ctx.globalAlpha = 1;
-    if(dt){
-      for(i=0;i<clusters.length;i++){ o = clusters[i];
-        if(t >= o.next && streams.length < 30){ streams.push({ci:i, s:0, dur:rnd(10000, 17000), off:rnd(-1, 1), size:rnd(.9, 1.7), jx:rnd(-8, 8), jy:rnd(-8, 8), warm:Math.random() < .4}); o.next = t + rnd(600, 1700); }
-      }
-      for(i=streams.length-1;i>=0;i--){ if((streams[i].s += dt/streams[i].dur) >= 1) streams.splice(i, 1); }
-      for(i=0;i<streams.length;i++){ o = streams[i]; var c = clusters[o.ci], x0 = c.x*w + o.jx, y0 = c.y*h + o.jy, dx = cx - x0, dy = cy - y0, len = Math.sqrt(dx*dx + dy*dy) || 1;
-        var x1 = x0 + dx*.5 - dy/len*o.off*len*.38, y1 = y0 + dy*.5 + dx/len*o.off*len*.38;
-        var a = Math.min(1, o.s/.08) * Math.min(1, (1-o.s)/.2);
-        for(var k=3;k>=0;k--){ var e = Math.pow(Math.max(0, o.s - k*.012), 1.55), sx = bez(x0, x1, cx, e), sy = bez(y0, y1, cy, e);
-          ctx.globalAlpha = a*(k===0 ? .95 : .3/k); ctx.fillStyle = o.warm ? "#ffe2b8" : "#eaf1ff"; ctx.beginPath(); ctx.arc(sx, sy, o.size*(k===0 ? 1 : .75), 0, 6.283); ctx.fill(); }
-      }
-      ctx.globalAlpha = 1;
-    }
+    // the Milky Way band behind everything
+    if(mwTex){ ctx.globalAlpha = .95; ctx.drawImage(mwTex, Math.sin(t*.00002)*4, Math.cos(t*.000017)*3); ctx.globalAlpha = 1; }
     // a distant supernova
     if(dt){
       if(!nextSN) nextSN = t + 3500;
@@ -6251,25 +6262,14 @@ function initBlackHoleScene(host){
     ctx.clearRect(0,0,w,h);ctx.fillStyle="#010207";ctx.fillRect(0,0,w,h);
     var bg=ctx.createRadialGradient(cx,cy,0,cx,cy,scale*1.15);bg.addColorStop(0,"rgba(28,8,2,.55)");bg.addColorStop(.45,"rgba(6,8,18,.35)");bg.addColorStop(1,"rgba(0,0,0,0)");ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);drawBackdrop(t, dt);
     for(var i=0;i<particles.length;i++){var p=particles[i];p.prevR=p.r;p.prevA=p.a;if(!reduced){p.r-=sp*p.pull/(Math.max(.11,p.r)*Math.max(.11,p.r));p.a+=sp*p.spin*(1+.7/Math.max(.18,p.r));p.life++;}if(!reduced&&(p.r<.12||p.life>p.max))spawn(p);var rr=p.r*scale,x=cx+Math.cos(p.a)*rr,y=cy+Math.sin(p.a)*rr*.55,px=cx+Math.cos(p.prevA)*p.prevR*scale,py=cy+Math.sin(p.prevA)*p.prevR*scale*.55;if(!reduced){ctx.strokeStyle=p.warm?"rgba(255,160,80,.28)":"rgba(205,225,255,.28)";ctx.lineWidth=Math.max(.3,p.size*.5);ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(x,y);ctx.stroke();}ctx.fillStyle=p.warm?"rgba(255,215,165,"+p.alpha+")":"rgba(225,238,255,"+p.alpha+")";ctx.beginPath();ctx.arc(x,y,p.size,0,Math.PI*2);ctx.fill();}
-    ctx.save();ctx.translate(cx,cy);ctx.rotate(t*.00032);for(var b=0;b<10;b++){var base=scale*(.145+b*.021);ctx.beginPath();for(var q=0;q<=240;q++){var a=q/240*Math.PI*2,rr=base*(1+.014*Math.sin(a*6+b)),x=Math.cos(a)*rr,y=Math.sin(a)*rr*.29,bend=1+.25*Math.pow(Math.max(0,1-rr/(scale*.42)),2);x*=bend;y*=bend;if(q)ctx.lineTo(x,y);else ctx.moveTo(x,y);}ctx.strokeStyle="rgba(255,"+(195-b*10)+","+(95-b*6)+","+(0.10+b*.018)+")";ctx.lineWidth=1+b*.42;ctx.shadowBlur=9;ctx.shadowColor="rgba(255,100,20,.38)";ctx.stroke();}ctx.restore();
-    ctx.save();ctx.translate(cx,cy);ctx.scale(1,.34);ctx.rotate(-t*.00055);var ag=ctx.createLinearGradient(-scale*.5,0,scale*.5,0);ag.addColorStop(0,"rgba(255,60,5,0)");ag.addColorStop(.3,"rgba(255,125,25,.38)");ag.addColorStop(.5,"rgba(255,245,190,1)");ag.addColorStop(.7,"rgba(255,110,20,.35)");ag.addColorStop(1,"rgba(255,40,0,0)");ctx.strokeStyle=ag;ctx.lineWidth=Math.max(2,scale*.02);ctx.shadowBlur=16;ctx.shadowColor="rgba(255,100,15,.85)";ctx.beginPath();ctx.arc(0,0,scale*.31,Math.PI*1.02,Math.PI*1.98);ctx.stroke();ctx.restore();
     var holeR = pv.pomo ? Math.min(70, scale * 0.39) : Math.min(62, scale * 0.28);
-    var ringR = holeR * 1.22;
-    var rg = ctx.createRadialGradient(cx, cy, holeR * 0.72, cx, cy, ringR * 1.08);
-    rg.addColorStop(0, "#000");
-    rg.addColorStop(0.70, "#000");
-    rg.addColorStop(0.82, "rgba(255,225,155,.98)");
-    rg.addColorStop(0.90, "rgba(255,92,12,.62)");
-    rg.addColorStop(1, "rgba(0,0,0,0)");
-    ctx.fillStyle = rg;
-    ctx.beginPath();
-    ctx.arc(cx, cy, ringR, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.fillStyle = "#000";
-    ctx.beginPath();
-    ctx.arc(cx, cy, holeR, 0, Math.PI * 2);
-    ctx.fill();
+    buildDisk(t);
+    drawHalo(holeR);
+    drawDisk(-1, holeR);
+    ctx.fillStyle = "#000"; ctx.beginPath(); ctx.arc(cx, cy, holeR, 0, Math.PI * 2); ctx.fill();
     if(pv.pomo) drawFill(t, pv, holeR);
+    drawPhotonRing(holeR);
+    drawDisk(1, holeR);
     if(!reduced && typeof requestAnimationFrame==="function") blackHoleAnimFrame=requestAnimationFrame(draw);
     }catch(e){
       console.error("Timer scene animation failed:",e);
