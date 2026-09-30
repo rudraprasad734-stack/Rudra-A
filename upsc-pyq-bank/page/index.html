@@ -802,7 +802,19 @@
   .leafs{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:4px 12px; margin:6px 0 2px 22px;}
   .lf{display:flex; gap:8px; align-items:flex-start; font-size:13.5px; line-height:1.35; padding:3px 0;}
   #view-planner input[type=checkbox], .modal input[type=checkbox]{width:18px; height:18px; accent-color:#6d4aff; flex:0 0 auto;}
-  .cap-sess{display:grid; gap:8px; margin:10px 0;}
+  .cap-sess{display:grid; gap:10px; margin:10px 0;}
+  .slot{border:1px solid var(--line); border-left:5px solid var(--tab-planner); border-radius:14px; padding:10px 12px; background:var(--surface);}
+  .slot-h{display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;}
+  .slot select{width:100%; min-height:44px; padding:8px; border:1px solid var(--line); border-radius:10px; background:var(--surface); color:var(--ink); font:inherit;}
+  .weekmap{margin-top:14px; padding:12px; border:1px solid var(--line); border-radius:14px; background:var(--tab-planner-soft);}
+  .weekmap h4{margin:0 0 6px;}
+  .wm-row{display:grid; grid-template-columns:38px 1fr; gap:8px; padding:6px 0; border-top:1px solid var(--line-soft);}
+  .wm-items{display:flex; flex-wrap:wrap; gap:5px; align-items:center;}
+  .wm-chip{font-size:12px; padding:4px 8px; border-radius:9px; border:1px solid var(--bc); border-left-width:4px; background:var(--surface); color:var(--ink);}
+  .wm-chip em{font-style:normal; font-weight:700; font-size:10.5px; text-transform:uppercase; margin-left:3px; color:var(--brick);}
+  .wm-chip.clash{border-color:var(--brick); background:rgba(200,60,60,.12);}
+  .wm-chip.yield{opacity:.6; background-image:repeating-linear-gradient(135deg,transparent 0 6px,rgba(128,128,128,.18) 6px 8px);}
+  .wm-free{flex-basis:100%; font-size:11.5px; color:var(--ink-faint);}
   .trow2{display:grid; grid-template-columns:78px 1fr auto; gap:8px; align-items:center;}
   .trow2 .tpair input{min-height:44px; padding:8px; border:1px solid var(--line); border-radius:10px; background:var(--surface); color:var(--ink); font:inherit; width:100%;}
   .perday{display:flex; flex-wrap:wrap; gap:8px;} .perday label{display:flex; flex-direction:column; gap:3px; font-size:11.5px; font-weight:700; color:var(--ink-soft);} .perday select{min-height:40px; padding:6px 8px; border:1px solid var(--line); border-radius:10px; background:var(--surface); color:var(--ink); font:inherit;}
@@ -905,7 +917,6 @@
   <main>
     <section class="view" id="view-dashboard"></section>
     <section class="view" id="view-planner"></section>
-    <section class="view" id="view-scheduler"></section>
     <section class="view" id="view-daily"></section>
     <section class="view" id="view-weekly"></section>
     <section class="view" id="view-months"></section>
@@ -3931,7 +3942,7 @@ function openProfileModal(isEdit){
     closeModal();
     renderGreeting();
     toast(firstTime ? "Profile saved. Now plan your day." : "Profile updated.");
-    if(firstTime) setTab("scheduler"); else renderView(activeTab);
+    if(firstTime) setTab("planner"); else renderView(activeTab);
   });
   setTimeout(function(){ var f = m.querySelector("#pfName"); if(f) f.focus(); }, 30);
 }
@@ -4100,12 +4111,6 @@ function findOverlaps(items){
 }
 
 // ---------- session records ----------
-function makeRecord(d, date, n){
-  var now = new Date().toISOString(), opt = !!CURR_OPT[d.paper];
-  return {id:uid(), date:date, sessionNumber:n, startTime:d.start, endTime:d.end, duration:toMin(d.end)-toMin(d.start),
-    purpose:d.purpose, paper:opt?"Optional":d.paper, optionalSubject:opt?d.paper:"", subject:d.subject, topic:d.topic, syllabusUnit:d.unit,
-    status:"not_started", actualStart:"", actualEnd:"", actualDuration:0, createdAt:now, updatedAt:now};
-}
 function recToDraft(s){ return {purpose:s.purpose, paper:s.optionalSubject||s.paper, subject:s.subject, topic:s.topic, unit:s.syllabusUnit, start:s.startTime, end:s.endTime}; }
 function applyDraft(s, d){
   var opt = !!CURR_OPT[d.paper];
@@ -4154,125 +4159,7 @@ function mountCascade(host, d, editableTime, onChange){
   });
 }
 
-// ---------- scheduler ----------
-var schedDraft = null;
-function newDraft(i){ var t = DEFAULT_TIMES[i] || ["22:00","23:00"]; return {purpose:"",paper:"",subject:"",topic:"",unit:"",start:t[0],end:t[1]}; }
-function initSchedDraft(){
-  if(schedDraft) return;
-  schedDraft = {date:todayKey, custom:false, list:[newDraft(0),newDraft(1),newDraft(2)]};
-}
-function setSessionCount(n){
-  n = Math.max(1, Math.min(8, n|0));
-  while(schedDraft.list.length<n) schedDraft.list.push(newDraft(schedDraft.list.length));
-  schedDraft.list.length = n;
-}
-function draftItems(){ return schedDraft.list.map(function(x,i){ return {start:x.start, end:x.end, label:"Session "+(i+1)}; }); }
-function timeRowsHtml(){
-  return schedDraft.list.map(function(x,i){
-    return '<div class="trow" data-idx="'+i+'"><b>Session '+(i+1)+'</b>'+
-      '<input type="time" data-tf="start" aria-label="Session '+(i+1)+' start" value="'+esc(x.start)+'"><span>to</span>'+
-      '<input type="time" data-tf="end" aria-label="Session '+(i+1)+' end" value="'+esc(x.end)+'">'+
-      '<span class="dur" data-dur>'+esc(durText(x))+'</span></div>';
-  }).join("");
-}
-function durText(x){ var m = toMin(x.end)-toMin(x.start); return m>0 ? fmtDurMin(m) : "invalid"; }
-function sessionHeadText(x, i){ var m = toMin(x.end)-toMin(x.start); return "Session "+(i+1)+(m>0 ? " ("+fmtDurMin(m)+")" : ""); }
-function generatedHtml(dateKey){
-  var list = sessionsOn(dateKey);
-  if(!list.length) return "";
-  return '<div class="card sched-out" id="schGenerated"><div class="sched-out-head"><h3>Generated Daily Study Schedule</h3><span class="muted">'+esc(fmtLong(parseKey(dateKey)))+'</span></div>'+
-    '<div class="tbl-wrap"><table class="sched-table"><thead><tr><th>Session</th><th>Time</th><th>Purpose</th><th>Paper</th><th>Subject</th><th>Topic</th><th>Syllabus unit</th><th>Status</th><th></th></tr></thead><tbody>'+
-    list.map(function(s){
-      return '<tr class="pur-'+purClass(s.purpose)+'"><td data-l="Session">'+s.sessionNumber+'</td><td data-l="Time">'+esc(fmt12(s.startTime))+' &ndash; '+esc(fmt12(s.endTime))+'</td><td data-l="Purpose">'+esc(s.purpose)+'</td><td data-l="Paper">'+esc(sessionPaperLabel(s))+'</td><td data-l="Subject">'+esc(s.subject)+'</td><td data-l="Topic">'+esc(s.topic)+'</td><td data-l="Syllabus unit">'+esc(s.syllabusUnit)+'</td><td data-l="Status">'+esc(statusLabel(s.status))+'</td><td data-l=""><button class="link-btn" data-edit="'+esc(s.id)+'">Edit</button></td></tr>';
-    }).join("")+'</tbody></table></div>'+
-    '<div class="sync-strip"><span class="sync-dot on"></span>Saved to your study data and synced to Daily / Weekly / Monthly Logs and the Dashboard.</div>'+
-    '<div class="sched-out-actions"><button class="btn ghost" id="schToLogs">Open Daily Logs</button><button class="btn ghost" id="schToDash">Open Dashboard</button></div></div>';
-}
 function statusLabel(v){ for(var i=0;i<STATUSES.length;i++) if(STATUSES[i][0]===v) return STATUSES[i][1]; return v; }
-function renderScheduler(){
-  initSchedDraft();
-  var host = document.getElementById("view-scheduler"), n = schedDraft.list.length;
-  host.innerHTML =
-    '<div class="card sched-title"><div><h2>Daily Study Scheduler</h2><div class="muted">Create your personalised daily study plan</div></div><button class="link-btn" id="schProfile">Edit profile</button></div>'+
-    '<div class="card sched-step"><div class="step-h"><span class="step-n n1">1</span><b>Set number of sessions</b></div>'+
-      '<div class="count-row" id="schCount">'+[1,2,3,4].map(function(k){ return '<button type="button" class="pill'+(!schedDraft.custom && n===k?" on":"")+'" data-n="'+k+'">'+k+' Session'+(k>1?"s":"")+'</button>'; }).join("")+
-        '<button type="button" class="pill'+(schedDraft.custom||n>4?" on":"")+'" data-n="custom">Custom</button>'+
-        ((schedDraft.custom||n>4)?'<input type="number" id="schCustomN" min="1" max="8" value="'+n+'" aria-label="Number of sessions">':"")+'</div>'+
-      '<div class="date-row"><label for="schDate">Schedule for</label><input type="date" id="schDate" value="'+esc(schedDraft.date)+'"></div></div>'+
-    '<div class="card sched-step"><div class="step-h"><span class="step-n n2">2</span><b>Set time for each session</b></div><div id="schTimes">'+timeRowsHtml()+'</div><div class="warn-list" id="schWarn" hidden></div></div>'+
-    '<div class="sched-sessions">'+schedDraft.list.map(function(x,i){
-      return '<div class="card sched-sess" data-idx="'+i+'"><div class="step-h"><span class="step-n n'+(3+(i%4))+'">'+(i+1)+'</span><b data-head>'+esc(sessionHeadText(x,i))+'</b></div><div class="cas" data-cas="'+i+'"></div><div class="sess-err" hidden></div></div>';
-    }).join("")+'</div>'+
-    '<div class="form-err" id="schErr" role="alert" hidden></div>'+
-    '<button class="btn gen" id="schGen">Generate Daily Schedule</button>'+
-    '<div id="schOut">'+generatedHtml(schedDraft.date)+'</div>';
-
-  host.querySelector("#schProfile").addEventListener("click", function(){ openProfileModal(true); });
-  host.querySelector("#schCount").addEventListener("click", function(e){
-    var b = e.target.closest("[data-n]"); if(!b) return;
-    var v = b.getAttribute("data-n");
-    if(v==="custom"){ schedDraft.custom = true; setSessionCount(Math.max(n,5)); } else { schedDraft.custom = false; setSessionCount(+v); }
-    renderScheduler();
-  });
-  var cn = host.querySelector("#schCustomN");
-  if(cn) cn.addEventListener("change", function(){ setSessionCount(+cn.value||1); renderScheduler(); });
-  host.querySelector("#schDate").addEventListener("change", function(e){
-    if(e.target.value){ schedDraft.date = e.target.value; host.querySelector("#schOut").innerHTML = generatedHtml(schedDraft.date); bindGenerated(host); }
-  });
-  function refreshTimes(){
-    Array.prototype.forEach.call(host.querySelectorAll(".trow"), function(r){
-      var i = +r.getAttribute("data-idx"), x = schedDraft.list[i];
-      r.querySelector("[data-dur]").textContent = durText(x);
-      var card = host.querySelector('.sched-sess[data-idx="'+i+'"]');
-      card.querySelector("[data-head]").textContent = sessionHeadText(x,i);
-      var pt = card.querySelector("[data-pt]"); if(pt) pt.innerHTML = esc(fmt12(x.start))+" &ndash; "+esc(fmt12(x.end));
-    });
-    var warn = host.querySelector("#schWarn"), msgs = findOverlaps(draftItems());
-    warn.hidden = !msgs.length; warn.innerHTML = msgs.map(esc).join("<br>");
-  }
-  host.querySelector("#schTimes").addEventListener("change", function(e){
-    var f = e.target.getAttribute("data-tf"); if(!f) return;
-    schedDraft.list[+e.target.closest(".trow").getAttribute("data-idx")][f] = e.target.value;
-    refreshTimes();
-  });
-  Array.prototype.forEach.call(host.querySelectorAll("[data-cas]"), function(c){
-    mountCascade(c, schedDraft.list[+c.getAttribute("data-cas")], false);
-  });
-  refreshTimes();
-  host.querySelector("#schGen").addEventListener("click", generateSchedule);
-  bindGenerated(host);
-}
-function bindGenerated(host){
-  Array.prototype.forEach.call(host.querySelectorAll("[data-edit]"), function(b){ b.addEventListener("click", function(){ openSessionEditor(b.getAttribute("data-edit")); }); });
-  var l = host.querySelector("#schToLogs"), d = host.querySelector("#schToDash");
-  if(l) l.addEventListener("click", function(){ currentDailyKey = clampKey(schedDraft.date); setTab("daily"); });
-  if(d) d.addEventListener("click", function(){ setTab("dashboard"); });
-}
-function generateSchedule(){
-  var host = document.getElementById("view-scheduler"), box = host.querySelector("#schErr");
-  if(!profile){ openProfileModal(false); return; }
-  var errs = [], bad = {};
-  schedDraft.list.forEach(function(x,i){ validateDraft(x).forEach(function(m){ errs.push("Session "+(i+1)+": "+m); bad[i]=true; }); });
-  var fixedAuto = sessionsOn(schedDraft.date).filter(function(x){ return x.origin==="auto" && isTouched(x); }).map(function(x){ return {start:x.startTime, end:x.endTime, label:"Logged session "+x.sessionNumber}; });
-  findOverlaps(draftItems().concat(fixedAuto)).forEach(function(m){ errs.push(m); });
-  if(!/^\d{4}-\d{2}-\d{2}$/.test(schedDraft.date)) errs.push("Choose a valid date.");
-  Array.prototype.forEach.call(host.querySelectorAll(".sched-sess"), function(c){ c.classList.toggle("bad", !!bad[+c.getAttribute("data-idx")]); });
-  if(errs.length){
-    box.hidden = false; box.innerHTML = "<b>Fix these before generating:</b><br>"+errs.map(esc).join("<br>");
-    box.scrollIntoView({block:"center", behavior:"smooth"});
-    return;
-  }
-  box.hidden = true;
-  var existing = sessionsOn(schedDraft.date).filter(function(s){ return s.origin!=="auto"; });
-  if(existing.length && !confirm("This will replace the "+existing.length+" session(s) already scheduled for "+fmtShort(parseKey(schedDraft.date))+", including any progress logged on them. Continue?")) return;
-  var date = schedDraft.date;
-  studySessions = studySessions.filter(function(s){ return !(s.date===date && s.origin!=="auto"); }).concat(schedDraft.list.map(function(x,i){ return makeRecord(x, date, i+1); }));
-  saveSessions();
-  replan();
-  toast(schedDraft.list.length+" session(s) saved to Logs and Dashboard.");
-  renderScheduler();
-  var out = document.getElementById("schGenerated"); if(out) out.scrollIntoView({block:"start", behavior:"smooth"});
-}
 
 // ---------- edit an existing session ----------
 function openSessionEditor(id){
@@ -4321,7 +4208,7 @@ function sessLogCard(s){
 function sessionsDayCard(dateKey){
   var list = sessionsOn(dateKey), done = list.filter(function(s){ return s.status==="completed"; }).length;
   return '<div class="card sess-day"><div class="sess-day-head"><h3>Study sessions</h3><span class="muted">'+(list.length ? done+"/"+list.length+" completed" : "none scheduled")+'</span></div>'+
-    (list.length ? list.map(sessLogCard).join("") : '<div class="muted sess-empty">No sessions planned for this day.</div><button class="btn ghost" data-sact="plan">Plan sessions</button>')+'</div>';
+    (list.length ? list.map(sessLogCard).join("") : '<div class="muted sess-empty">No sessions planned for this day.</div><button class="btn ghost" data-sact="plan">Open Planner</button>')+'</div>';
 }
 function bindSessionCards(host){
   Array.prototype.forEach.call(host.querySelectorAll(".sess-card"), function(card){
@@ -4350,7 +4237,7 @@ function bindSessionCards(host){
     });
   });
   var plan = host.querySelector('[data-sact="plan"]');
-  if(plan && !plan.closest(".sess-card")) plan.addEventListener("click", function(){ schedDraft && (schedDraft.date = currentDailyKey); setTab("scheduler"); });
+  if(plan && !plan.closest(".sess-card")) plan.addEventListener("click", function(){ setTab("planner"); });
 }
 
 // ---------- stats: dashboard / weekly / monthly (all read studySessions) ----------
@@ -4410,7 +4297,7 @@ function bindSessionsDashboard(host){
   var pr = host.querySelector("#dashPeriods");
   if(pr) pr.addEventListener("click", function(e){ var b = e.target.closest("[data-p]"); if(!b) return; dashPeriod = b.getAttribute("data-p"); refreshView(); });
   var pl = host.querySelector("#dashPlan");
-  if(pl) pl.addEventListener("click", function(){ setTab("scheduler"); });
+  if(pl) pl.addEventListener("click", function(){ setTab("planner"); });
 }
 function sessMini(list){
   if(!list.length) return "";
@@ -4552,7 +4439,10 @@ function subjectStates(plan){
     var done = leaves.filter(function(l){ return isDone(l.id); }).length;
     states.push({name:name, entry:e, leaves:leaves, total:leaves.length, done:done, pct:Math.round(100*done/leaves.length), state:"locked", color:BRICK_COLORS[i % BRICK_COLORS.length]});
   });
+  var pins = {};
+  (plan.capacity && plan.capacity.sessions || []).forEach(function(sl){ if(sl.subject) pins[sl.subject] = 1; });
   states.forEach(function(s){
+    s.pinned = !!pins[s.name];
     if(s.done >= s.total) s.state = "completed";
     else if(!activeFound){ s.state = "active"; activeFound = true; }
   });
@@ -4618,7 +4508,7 @@ function mkAuto(o){
   return {id:uid(), date:o.date, sessionNumber:0, startTime:o.start, endTime:o.end, duration:toMin(o.end)-toMin(o.start),
     purpose:o.purpose, paper:o.paper, optionalSubject:o.optional||"", subject:o.subject, topic:o.topic, syllabusUnit:o.unit,
     status:"not_started", actualStart:"", actualEnd:"", actualDuration:0, createdAt:now, updatedAt:now,
-    kind:o.kind, topicId:o.topicId||"", origin:"auto", revGap:o.revGap||0, blk:o.blk||0, blkOf:o.blkOf||0};
+    kind:o.kind, topicId:o.topicId||"", origin:"auto", revGap:o.revGap||0, blk:o.blk||0, blkOf:o.blkOf||0, pinned:!!o.pinned};
 }
 function mkActivity(kind, date, start, end, ctx){
   var subject = ctx ? ctx.subject : "Mixed", paper = ctx ? ctx.paper : "General", topic, unit;
@@ -4631,7 +4521,7 @@ function mkActivity(kind, date, start, end, ctx){
 }
 function mkStudy(item, date, slot){
   var e = item.st.entry;
-  return mkAuto({kind:"study", date:date, start:slot.start, end:slot.end, purpose:e.purpose, paper:e.paper, optional:e.optional, subject:e.name, topic:item.leaf.group, unit:item.leaf.unit, topicId:item.leaf.id, blk:item.blk, blkOf:item.of});
+  return mkAuto({kind:"study", pinned:!!slot.subject, date:date, start:slot.start, end:slot.end, purpose:e.purpose, paper:e.paper, optional:e.optional, subject:e.name, topic:item.leaf.group, unit:item.leaf.unit, topicId:item.leaf.id, blk:item.blk, blkOf:item.of});
 }
 
 // ---------- the projection engine ----------
@@ -4646,7 +4536,7 @@ function simulate(plan, from, frozen, strict){
   });
   var queue = [];
   var actSt = states.filter(function(x){ return x.state==="active"; })[0];
-  states.forEach(function(st){ if(strict && st!==actSt) return; st.leaves.forEach(function(l){ if(!isDone(l.id)) queue.push({leaf:l, st:st, rem:Math.max(1, need-(blocksDone[l.id]||0))}); }); });
+  states.forEach(function(st){ if(strict && st!==actSt && !st.pinned) return; st.leaves.forEach(function(l){ if(!isDone(l.id)) queue.push({leaf:l, st:st, rem:Math.max(1, need-(blocksDone[l.id]||0))}); }); });
   var rv = plan.activities.revision, autoRev = rv && rv.on && (rv.method==="auto" || rv.method==="both");
   var gaps = (rv && rv.gaps && rv.gaps.length) ? rv.gaps : [3,10,30];
   var due = [];
@@ -4664,7 +4554,8 @@ function simulate(plan, from, frozen, strict){
   eachDay(from, plan.window.end, function(d){
     var dow = dowOf(d), fz = frozenBy[d] || [];
     var blockers = fz.map(function(s){ return {start:s.startTime, end:s.endTime}; });
-    var todays = (acts[d]||[]).slice();
+    var todays = [];
+    (acts[d]||[]).forEach(function(a){ if(!todays.some(function(x){ return overlapR(x, a); })) todays.push(a); });
     todays.forEach(function(a){ blockers.push(a); });
     var head = queue[0];
     var ctx = head ? {subject:head.st.name, group:head.leaf.group, paper:head.st.entry.paper, entry:head.st.entry} : lastCtx;
@@ -4678,7 +4569,7 @@ function simulate(plan, from, frozen, strict){
       var revToday = 0;
       plan.capacity.sessions.slice(0, cnt).forEach(function(sl){
         if(blockers.some(function(b){ return overlapR(b, sl); })) return;
-        if(autoRev && !revToday){
+        if(autoRev && !revToday && !sl.subject){
           var di = -1; for(var q=0;q<due.length;q++){ if(due[q].date<=d && (di<0 || due[q].date<due[di].date)) di = q; }
           if(di >= 0){
             var dv = due.splice(di,1)[0];
@@ -4686,15 +4577,18 @@ function simulate(plan, from, frozen, strict){
             revToday = 1; return;
           }
         }
-        if(!queue.length) return;
-        var it = queue[0];
+        var qi = -1, q;
+        if(sl.subject){ for(q=0;q<queue.length;q++) if(queue[q].st.name===sl.subject){ qi = q; break; } }
+        if(qi < 0){ for(q=0;q<queue.length;q++) if(!strict || queue[q].st===actSt){ qi = q; break; } }
+        if(qi < 0) return;
+        var it = queue[qi];
         it.blk = need - it.rem + 1; it.of = need;
         dayNew.push(mkStudy(it, d, sl));
         var sp = spans[it.st.name] || (spans[it.st.name] = {start:d, end:d}); sp.end = d;
         lastCtx = {subject:it.st.name, group:it.leaf.group, paper:it.st.entry.paper, entry:it.st.entry};
         it.rem--;
         if(it.rem <= 0){
-          queue.shift();
+          queue.splice(qi, 1);
           if(autoRev) gaps.forEach(function(g){ due.push({date:toKey(addDays(parseKey(d), g)), leaf:it.leaf, st:it.st, gap:g}); });
         }
       });
@@ -4733,7 +4627,7 @@ function viewIndex(){
     idx.sim = simulate(studyPlan, from, frozen);
     var hEnd = horizonEnd(), act = activeSubject(studyPlan), an = act ? act.name : "";
     idx.sim.sessions.forEach(function(s){
-      var prov = s.kind==="study" && s.subject!==an;
+      var prov = s.kind==="study" && s.subject!==an && !s.pinned;
       if(s.date > hEnd || prov){ s.projected = true; s.provisional = prov; add(s); }
     });
   }
@@ -4792,7 +4686,7 @@ function wizDefaults(){
   return {step:0, err:[], open:{}, init:{}, durMode:"months", months:12, target:"", start:todayKey, startView:"auto",
     mode:"mains", gs1:true, csat:true, gs:[1,2,3,4], essay:true, optionalOn:true, optional:"", customText:"",
     order:[], sel:{},
-    cap:{days:[1,2,3,4,5,6], sessions:[{start:"06:00",end:"08:00"},{start:"10:00",end:"12:00"},{start:"16:00",end:"17:00"}], perDay:{}, breakMin:15, blocks:"auto"},
+    cap:{days:[1,2,3,4,5,6], sessions:[{start:"06:00",end:"08:00",subject:""},{start:"10:00",end:"12:00",subject:""},{start:"16:00",end:"17:00",subject:""}], perDay:{}, breakMin:15, blocks:"auto"},
     acts:{
       essay:{on:false, mode:"weekly", days:[5], interval:1, count:2, dates:[], start:"19:00", end:"21:00"},
       pyq:{on:false, mode:"weekly", days:[2], interval:1, count:3, dates:[], start:"16:00", end:"17:00"},
@@ -4814,6 +4708,7 @@ function wizSync(w){
   });
   Object.keys(w.sel).forEach(function(id){ if(!valid[id]) delete w.sel[id]; });
   w.init = init;
+  w.cap.sessions.forEach(function(sl){ if(sl.subject && w.order.indexOf(sl.subject) < 0) sl.subject = ""; });
 }
 function windowStats(w){
   var end = w.durMode==="date" ? w.target : (/^\d{4}-\d{2}-\d{2}$/.test(w.start) && +w.months>0 ? addMonthsKey(w.start, +w.months) : "");
@@ -4856,6 +4751,80 @@ function compilePlan(w){
     startView:(w.startView==="auto" ? recommendedView(w) : w.startView)};
   if(auto) plan.capacity.blocks = estimateBlocks(plan);
   return plan;
+}
+
+
+// ---------- time map: who owns which slot, and what is free ----------
+function actTimeOk(a){ return a.on && a.start && a.end && toMin(a.end) > toMin(a.start); }
+function activityConflicts(w){
+  var st = windowStats(w); if(!st.ok) return [];
+  var pl = {window:{start:w.start, end:st.end}}, on = ACT_KINDS.filter(function(k){ return actTimeOk(w.acts[k]); }), dts = {}, res = [];
+  on.forEach(function(k){ dts[k] = activityDates(pl, w.acts[k], w.start, st.end); });
+  for(var i=0;i<on.length;i++) for(var j=i+1;j<on.length;j++){
+    var A = w.acts[on[i]], B = w.acts[on[j]];
+    if(!overlapR(A, B)) continue;
+    var common = dts[on[i]].filter(function(d){ return dts[on[j]].indexOf(d) >= 0; });
+    if(common.length) res.push({a:on[i], b:on[j], dates:common});
+  }
+  return res;
+}
+function conflictMessages(w){
+  return activityConflicts(w).map(function(c){
+    var A = w.acts[c.a], B = w.acts[c.b], n = c.dates.length;
+    return ACT_INFO[c.a].title+" ("+fmt12(A.start)+"–"+fmt12(A.end)+") and "+ACT_INFO[c.b].title+" ("+fmt12(B.start)+"–"+fmt12(B.end)+") both fall on "+fmtShort(parseKey(c.dates[0]))+(n>1 ? " and "+(n-1)+" more day"+(n>2?"s":"") : "")+". One time slot can hold only one thing, so change a time or a day.";
+  });
+}
+function freeGaps(items){
+  var busy = items.map(function(x){ return [toMin(x.start), toMin(x.end)]; }).sort(function(a,b){ return a[0]-b[0]; });
+  var out = [], cur = 5*60, endDay = 23*60;
+  busy.forEach(function(b){ if(b[0]-cur >= 30) out.push([cur, Math.min(b[0], endDay)]); if(b[1] > cur) cur = b[1]; });
+  if(endDay-cur >= 30) out.push([cur, endDay]);
+  function t(m){ return fmt12(pad2(Math.floor(m/60))+":"+pad2(m%60)); }
+  return out.map(function(g){ return t(g[0])+"–"+t(g[1]); });
+}
+function weekMapHtml(w){
+  var conf = activityConflicts(w), clashKeys = {};
+  conf.forEach(function(c){ c.dates.forEach(function(d){ var dw = dowOf(d); clashKeys[dw+"|"+c.a] = 1; clashKeys[dw+"|"+c.b] = 1; }); });
+  var rows = DOW_ORDER.map(function(d){
+    var items = [];
+    if(w.cap.days.indexOf(d) >= 0){
+      var pd = w.cap.perDay[d], cnt = (pd!=null && pd!=="") ? +pd : w.cap.sessions.length;
+      w.cap.sessions.slice(0, cnt).forEach(function(sl, i){ if(sl.start && sl.end && toMin(sl.end) > toMin(sl.start)) items.push({t:"study", start:sl.start, end:sl.end, label:"S"+(i+1)+" "+(sl.subject || "Active subject"), color:"--tab-planner"}); });
+    }
+    ACT_KINDS.forEach(function(k){
+      var a = w.acts[k]; if(!actTimeOk(a)) return;
+      var hits = a.mode==="dates" ? a.dates.some(function(x){ return dowOf(x)===d; }) : (a.days||[]).indexOf(d) >= 0;
+      if(hits) items.push({t:"act", key:k, start:a.start, end:a.end, label:ACT_INFO[k].title+(a.mode==="weekly" && +a.interval>1 ? " (every "+a.interval+" wks)" : (a.mode==="monthly" ? " (some weeks)" : (a.mode==="dates" ? " (chosen dates)" : ""))), color:ACT_INFO[k].color});
+    });
+    items.forEach(function(x){
+      if(x.t==="act" && clashKeys[d+"|"+x.key]) x.cls = " clash";
+      if(x.t==="study" && items.some(function(y){ return y.t==="act" && overlapR(x, y); })) x.cls = " yield";
+    });
+    items.sort(function(a,b){ return toMin(a.start)-toMin(b.start); });
+    var chips = items.length ? items.map(function(x){ return '<span class="wm-chip'+(x.cls||"")+'" style="--bc:var('+x.color+')"><b>'+esc(fmt12(x.start))+' – '+esc(fmt12(x.end))+'</b> '+esc(x.label)+(x.cls===" yield" ? ' <em>replaced</em>' : "")+(x.cls===" clash" ? ' <em>clash</em>' : "")+'</span>'; }).join("") : '<span class="muted">Rest day</span>';
+    var free = freeGaps(items);
+    return '<div class="wm-row"><b>'+DOW_SHORT[d]+'</b><div class="wm-items">'+chips+(items.length ? '<div class="wm-free">Free: '+(free.length ? esc(free.join(", ")) : "none")+'</div>' : "")+'</div></div>';
+  }).join("");
+  var msgs = conflictMessages(w);
+  return '<div class="weekmap"><h4>Your week at a glance</h4>'+
+    (msgs.length ? '<div class="form-err" role="alert">'+msgs.map(esc).join("<br>")+'</div>' : '<div class="hint">Each time slot holds one thing. Anything marked <em>replaced</em> is a study session that gives way to an activity on that day; the time it frees is not double-booked.</div>')+
+    rows+'</div>';
+}
+function freeHint(w, k){
+  var a = w.acts[k]; if(!a.on) return "";
+  var days = a.mode==="dates" ? a.dates.map(dowOf) : (a.days||[]);
+  if(!days.length) return "";
+  var lines = [];
+  days.filter(function(d,i){ return days.indexOf(d)===i; }).forEach(function(d){
+    var items = [];
+    if(w.cap.days.indexOf(d) >= 0){
+      var pd = w.cap.perDay[d], cnt = (pd!=null && pd!=="") ? +pd : w.cap.sessions.length;
+      w.cap.sessions.slice(0, cnt).forEach(function(sl){ if(sl.start && sl.end && toMin(sl.end) > toMin(sl.start)) items.push(sl); });
+    }
+    ACT_KINDS.forEach(function(o){ if(o!==k && actTimeOk(w.acts[o]) && (w.acts[o].mode==="dates" ? w.acts[o].dates.some(function(x){ return dowOf(x)===d; }) : (w.acts[o].days||[]).indexOf(d)>=0)) items.push(w.acts[o]); });
+    lines.push(DOW_SHORT[d]+": "+(freeGaps(items).join(", ") || "no free time"));
+  });
+  return '<div class="hint">Free time on '+(lines.length>1 ? "these days (before this activity)" : "this day (before this activity)")+' &mdash; '+esc(lines.join(" | "))+'</div>';
 }
 
 // ---------- validation ----------
@@ -4911,6 +4880,7 @@ function wizValidate(w, step){
       if(a.mode==="weekly" && !a.days.length) e.push(nm+": choose at least one day.");
       if(a.mode==="dates" && !a.dates.length) e.push(nm+": add at least one date.");
     });
+    e = e.concat(conflictMessages(w));
   }
   return e;
 }
@@ -5003,14 +4973,17 @@ function wzCapacity(w){
   return '<h3>How much can you study?</h3>'+
     '<div class="cf"><label>Study days</label>'+dayChips("cap.days", c.days)+'</div>'+
     '<div class="cf"><label>Sessions per day</label><select data-w="cap.count" data-after="sessCount">'+optsNum(1,6,n)+'</select></div>'+
-    '<div class="cap-sess">'+c.sessions.map(function(s, i){ return '<div class="trow2"><b>Session '+(i+1)+'</b>'+timePair("cap.sessions."+i+".start","cap.sessions."+i+".end",s.start,s.end)+'<span class="dur">'+esc(toMin(s.end)>toMin(s.start)?fmtDurMin(toMin(s.end)-toMin(s.start)):"invalid")+'</span></div>'; }).join("")+'</div>'+
+    '<div class="hint">For each session choose <b>which subject</b> and <b>from when to when</b>. &ldquo;Auto&rdquo; follows your current active subject. Pick a subject to study it in that session every day, alongside the main chain.</div>'+
+    '<div class="cap-sess">'+c.sessions.map(function(s, i){ return '<div class="slot"><div class="slot-h"><b>Session '+(i+1)+'</b><span class="dur">'+esc(toMin(s.end)>toMin(s.start)?fmtDurMin(toMin(s.end)-toMin(s.start)):"invalid")+'</span></div>'+
+      '<div class="cf"><label>Subject</label><select data-w="cap.sessions.'+i+'.subject"><option value="">Auto &mdash; current active subject</option>'+w.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(s.subject===nm?" selected":"")+'>'+esc(nm)+'</option>'; }).join("")+'</select></div>'+
+      '<div class="cf"><label>Time (from &ndash; to)</label>'+timePair("cap.sessions."+i+".start","cap.sessions."+i+".end",s.start,s.end)+'</div></div>'; }).join("")+'</div>'+
     '<div class="cf"><label>Sessions on each study day</label><div class="perday">'+c.days.slice().sort(function(a,b){ return DOW_ORDER.indexOf(a)-DOW_ORDER.indexOf(b); }).map(function(d){
       var pd = c.perDay[d], cur = (pd!=null && pd!=="") ? +pd : n;
       return '<label>'+DOW_SHORT[d]+'<select data-w="cap.perDay.'+d+'" data-t="n">'+optsNum(0,n,cur)+'</select></label>';
     }).join("")+'</div><div class="hint">Use the first N sessions on that day. For example Monday 2 sessions, Tuesday 1.</div></div>'+
     '<div class="two"><div class="cf"><label>Minimum break between sessions</label><select data-w="cap.breakMin" data-t="n">'+[0,10,15,20,30,45,60].map(function(m){ return '<option value="'+m+'"'+(+c.breakMin===m?" selected":"")+'>'+m+' min</option>'; }).join("")+'</select></div>'+
     '<div class="cf"><label>Pace: sessions per chapter</label><select data-w="cap.blocks">'+paceOptions(c.blocks)+'</select></div></div>'+
-    '<div class="hint">Every session is independent, so mornings can be longer than evenings. Essay, PYQ, Test and Revision take over any study session they overlap on their day.</div>';
+    '<div class="hint">Every session is independent, so mornings can be longer than evenings. Essay, PYQ, Test and Revision take over any study session they overlap on their day.</div>'+weekMapHtml(w);
 }
 function actCard(w, k){
   var a = w.acts[k], info = ACT_INFO[k];
@@ -5024,13 +4997,13 @@ function actCard(w, k){
       (k==="ca" ? '<div class="cf"><label>Shortcut</label><button type="button" class="btn ghost sm" data-wa="everyDay" data-v="'+k+'">Every day</button></div>' : '')+'</div>';
     if(a.mode==="monthly") body += '<div class="cf"><label>Times per month</label><select data-w="acts.'+k+'.count" data-t="n">'+optsNum(1,12,a.count)+'</select></div><div class="cf"><label>On these weekdays (optional)</label>'+dayChips("acts."+k+".days", a.days)+'</div>';
     if(a.mode==="dates") body += '<div class="cf"><label>Add a date</label><div class="tpair"><input type="date" id="actDate_'+k+'"><button type="button" class="btn ghost sm" data-wa="addDate" data-v="'+k+'">Add</button></div></div><div class="pill-row">'+a.dates.slice().sort().map(function(d){ return '<button type="button" class="pill on" data-wa="rmDate" data-v="'+k+'|'+d+'">'+esc(fmtShort(parseKey(d)))+' ✕</button>'; }).join("")+'</div>';
-    body += '<div class="cf"><label>Time</label>'+timePair("acts."+k+".start","acts."+k+".end",a.start,a.end)+'</div>';
+    body += '<div class="cf"><label>Time (from &ndash; to)</label>'+timePair("acts."+k+".start","acts."+k+".end",a.start,a.end)+'</div>'+freeHint(w, k);
     if(k==="revision") body += '<div class="cf"><label>Revision method</label><select data-w="acts.revision.method"><option value="fixed"'+(a.method==="fixed"?" selected":"")+'>Fixed days (chosen above)</option><option value="auto"'+(a.method==="auto"?" selected":"")+'>After each chapter (spaced: +3, +10, +30 days)</option><option value="both"'+(a.method==="both"?" selected":"")+'>Both</option></select></div>';
   }
   return '<div class="act-card'+(a.on?" on":"")+'" style="--bc:var('+info.color+')"><label class="tog"><input type="checkbox" data-w="acts.'+k+'.on"> <b>'+esc(info.title)+'</b><small>'+esc(info.hint)+'</small></label>'+body+'</div>';
 }
 function wzActivities(w){
-  return '<h3>Plan Additional UPSC Activities</h3><p class="hint">These run in parallel to your subject order. They appear automatically in the Yearly, Monthly, Weekly and Daily plans and in your Logs, and they never block the next subject from unlocking.</p>'+ACT_KINDS.map(function(k){ return actCard(w, k); }).join("");
+  return '<h3>Plan Additional UPSC Activities</h3><p class="hint">These run in parallel to your subject order. They appear automatically in the Yearly, Monthly, Weekly and Daily plans and in your Logs, and they never block the next subject from unlocking.</p>'+ACT_KINDS.map(function(k){ return actCard(w, k); }).join("")+weekMapHtml(w);
 }
 function fmtRange(a, b){ return fmtDM(parseKey(a))+" → "+fmtDM(parseKey(b)); }
 function wzReview(w){
@@ -5104,7 +5077,7 @@ function wizAfter(kind){
   if(kind==="custom"){ delete w.init[w.optional]; wizSync(w); }
   if(kind==="sessCount"){
     var n = +w.cap.count, cur = w.cap.sessions;
-    while(cur.length < n){ var d = DEFAULT_TIMES[cur.length] || ["21:00","22:00"]; cur.push({start:d[0], end:d[1]}); }
+    while(cur.length < n){ var d = DEFAULT_TIMES[cur.length] || ["21:00","22:00"]; cur.push({start:d[0], end:d[1], subject:""}); }
     cur.length = n;
     Object.keys(w.cap.perDay).forEach(function(k){ if(+w.cap.perDay[k] > n) w.cap.perDay[k] = n; });
   }
@@ -5163,7 +5136,7 @@ function fmtWhen(s){ var d = parseKey(s.date); return DOW_SHORT[d.getDay()]+" "+
 var LOCK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17 9h-1V7a4 4 0 0 0-8 0v2H7a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-8a2 2 0 0 0-2-2Zm-7-2a2 2 0 0 1 4 0v2h-4Z"/></svg>';
 var CHECK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></svg>';
 function brickHtml(st){
-  var tag = st.state==="completed" ? CHECK_SVG+" COMPLETED" : (st.state==="active" ? "ACTIVE" : LOCK_SVG+" LOCKED");
+  var tag = st.state==="completed" ? CHECK_SVG+" COMPLETED" : (st.state==="active" ? "ACTIVE" : (st.pinned ? "PARALLEL" : LOCK_SVG+" LOCKED"));
   return '<div class="brick st-'+st.state+'" style="--bc:var('+st.color+')" data-brick="'+esc(st.name)+'"><div class="studs"><i></i><i></i><i></i><i></i></div>'+
     '<div class="b-main"><span class="b-name">'+esc(st.name)+'</span><span class="b-tag">'+tag+'</span></div>'+
     '<div class="b-bar"><i style="width:'+st.pct+'%"></i></div><div class="b-sub">'+st.done+' / '+st.total+' chapters &middot; '+st.pct+'%</div></div>';
@@ -5303,7 +5276,7 @@ function tierBadge(l){
 function progressHtml(plan, states){
   return '<div class="hint">Mark chapters complete as you finish them. When every selected chapter of a subject is complete, the next subject unlocks and the plan recalculates.</div>'+
     states.map(function(s){
-      var e = s.entry, tag = s.state==="completed" ? "COMPLETED" : (s.state==="active" ? "ACTIVE" : "LOCKED");
+      var e = s.entry, tag = s.state==="completed" ? "COMPLETED" : (s.state==="active" ? "ACTIVE" : (s.pinned ? "PARALLEL" : "LOCKED"));
       var groups = Object.keys(e.topics).map(function(g){
         var ls = s.leaves.filter(function(l){ return l.group===g; });
         if(!ls.length) return "";
@@ -5458,7 +5431,6 @@ function bindPlannerDash(host){
 var TAB_GROUPS = [
   {id:"dashboard", label:"Dashboard", accent:"dashboard"},
   {id:"planner", label:"Planner", accent:"planner"},
-  {id:"scheduler", label:"Scheduler", accent:"scheduler"},
   {id:"syllabus", label:"Syllabus", accent:"syllabus"},
   {id:"logs", label:"Logs", accent:"logs", children:[
     {id:"daily", label:"Daily"},
@@ -5539,7 +5511,6 @@ function setTab(id){
 function renderView(id){
   if(id==="dashboard") renderDashboard();
   else if(id==="planner") renderPlanner();
-  else if(id==="scheduler") renderScheduler();
   else if(id==="daily") renderDaily();
   else if(id==="weekly") renderWeekly();
   else if(id==="months") renderMonths();
