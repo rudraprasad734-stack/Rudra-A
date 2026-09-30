@@ -6160,12 +6160,12 @@ function initBlackHoleScene(host){
     }
   }
   function drawLensed(t, dt){
-    var holeR = lensHoleR, i, o, k, sp = (dt || 0)*.0034, gsp = (dt || 0)*.0135;
+    var holeR = lensHoleR, i, o, k, sp = (dt || 0)*.0017, gsp = (dt || 0)*.0068;
     eR = holeR*2.0; ctx.lineCap = "round";
     for(i=0;i<lensS.length;i++){ o = lensS[i];
       if(dt){ o.y -= sp/h; o.x += dt*.0000016; if(o.y < -.05){ o.y += 1.1; o.x = Math.random(); } if(o.x > 1.05) o.x -= 1.1; }
       var dx = o.x*w - cx, dy = o.y*h - cy, col = o.c < .12 ? "#ffd9b0" : (o.c < .3 ? "#cfe0ff" : "#ffffff");
-      lensImg(dx, dy, o.s, o.a*(.75 + .25*Math.sin(t*.0009 + o.tw)), col, holeR);
+      lensImg(dx, dy, o.s, o.a*(.75 + .25*Math.sin(t*.0005 + o.tw)), col, holeR);
     }
     ctx.globalCompositeOperation = "lighter";
     for(i=0;i<gals.length;i++){ o = gals[i];
@@ -6182,7 +6182,7 @@ function initBlackHoleScene(host){
     for(pass=0; pass<3; pass++){
       ctx.lineWidth = holeR*[.17, .07, .024][pass];
       for(k=0;k<n;k++){
-        var u = (k + .5)/n, a = a0 + (a1 - a0)*u, env = Math.pow(Math.sin(Math.PI*u), .9), br = Math.exp(-Math.pow((u - .42)/.3, 2)), fl = .7 + .3*Math.sin(a*9 - t*.0011 + Math.sin(a*3)*2), al = env*(.3 + .7*br)*fl;
+        var u = (k + .5)/n, a = a0 + (a1 - a0)*u, env = Math.pow(Math.sin(Math.PI*u), .9), br = Math.exp(-Math.pow((u - .42)/.3, 2)), fl = .7 + .3*Math.sin(a*9 - t*.0006 + Math.sin(a*3)*2), al = env*(.3 + .7*br)*fl;
         ctx.strokeStyle = pass===2 ? "rgba(255,"+Math.round(200 + 50*br)+","+Math.round(140 + 100*br)+","+Math.min(1, al*1.05)+")" : (pass===1 ? "rgba(255,"+Math.round(120 + 40*br)+",50,"+Math.min(1, al*.7)+")" : "rgba(235,90,30,"+(al*.22)+")");
         ctx.beginPath(); ctx.arc(cx, cy, R + (pass===0 ? holeR*.03 : 0), a - .03, a + (a1 - a0)/n + .03); ctx.stroke();
       }
@@ -6231,11 +6231,11 @@ function initBlackHoleScene(host){
       if(!nextShoot) nextShoot = t + rnd(3500, 8000);
       if(!shoot && t >= nextShoot){
         var left = Math.random() < .5, ang = rnd(.42, .8);
-        shoot = {x0: left ? rnd(w*.1, w*.6) : rnd(w*.4, w*.95), y0: rnd(-10, h*.25), dx: (left ? 1 : -1)*Math.cos(ang), dy: Math.sin(ang), v: rnd(.34, .5), len: rnd(70, 120), t0: t, life: rnd(1100, 1700)};
+        shoot = {x0: left ? rnd(w*.1, w*.6) : rnd(w*.4, w*.95), y0: rnd(-10, h*.25), dx: (left ? 1 : -1)*Math.cos(ang), dy: Math.sin(ang), v: rnd(.2, .3), len: rnd(70, 120), t0: t, life: rnd(2000, 3000)};
       }
       if(shoot){
         var age = t - shoot.t0, p = age/shoot.life;
-        if(p >= 1){ shoot = null; nextShoot = t + rnd(6000, 15000); }
+        if(p >= 1){ shoot = null; nextShoot = t + rnd(10000, 24000); }
         else {
           var hx = shoot.x0 + shoot.dx*shoot.v*age, hy = shoot.y0 + shoot.dy*shoot.v*age, tx = hx - shoot.dx*shoot.len, ty = hy - shoot.dy*shoot.len;
           var g = ctx.createLinearGradient(hx, hy, tx, ty); g.addColorStop(0, "rgba(255,255,255,.95)"); g.addColorStop(.3, "rgba(190,210,255,.45)"); g.addColorStop(1, "rgba(150,180,255,0)");
@@ -6247,7 +6247,7 @@ function initBlackHoleScene(host){
   function draw(t){
     try{
     var dt = (!reduced && lastT) ? Math.min(60, t-lastT) : 0; lastT = t;
-    var pv = timerVisual(), sp = pv.pomo ? .5 : .7;
+    var pv = timerVisual(), sp = pv.pomo ? .28 : .36;
     ctx.clearRect(0,0,w,h);ctx.fillStyle="#010207";ctx.fillRect(0,0,w,h);
     var bg=ctx.createRadialGradient(cx,cy,0,cx,cy,scale*1.15);bg.addColorStop(0,"rgba(28,8,2,.55)");bg.addColorStop(.45,"rgba(6,8,18,.35)");bg.addColorStop(1,"rgba(0,0,0,0)");ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);drawBackdrop(t, dt);
     for(var i=0;i<particles.length;i++){var p=particles[i];p.prevR=p.r;p.prevA=p.a;if(!reduced){p.r-=sp*p.pull/(Math.max(.11,p.r)*Math.max(.11,p.r));p.a+=sp*p.spin*(1+.7/Math.max(.18,p.r));p.life++;}if(!reduced&&(p.r<.12||p.life>p.max))spawn(p);var rr=p.r*scale,x=cx+Math.cos(p.a)*rr,y=cy+Math.sin(p.a)*rr*.55,px=cx+Math.cos(p.prevA)*p.prevR*scale,py=cy+Math.sin(p.prevA)*p.prevR*scale*.55;if(!reduced){ctx.strokeStyle=p.warm?"rgba(255,160,80,.28)":"rgba(205,225,255,.28)";ctx.lineWidth=Math.max(.3,p.size*.5);ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(x,y);ctx.stroke();}ctx.fillStyle=p.warm?"rgba(255,215,165,"+p.alpha+")":"rgba(225,238,255,"+p.alpha+")";ctx.beginPath();ctx.arc(x,y,p.size,0,Math.PI*2);ctx.fill();}
