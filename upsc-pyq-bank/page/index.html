@@ -256,8 +256,6 @@
   .timer-btn:disabled{opacity:.45;cursor:not-allowed;}
   .timer-dial-wrap{position:absolute;left:50%;top:49%;transform:translate(-50%,-50%);width:170px;height:92px;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;z-index:6;display:flex;align-items:center;justify-content:center;background:transparent;border:0;box-shadow:none;}
   .timer-dial-wrap:focus-visible{outline:none;}
-  #view-dashboard .timer-card > .timer-dial-wrap{top:calc(49% - 36px);}
-  #view-dashboard .timer-card.pomo > .timer-dial-wrap{top:calc(49% - 42px);}
   .timer-dial-glow,.timer-dial-ring,.timer-dial-orbit{display:none!important;}
   .timer-dial-face{position:relative;inset:auto;border:0;background:transparent;display:flex;align-items:center;justify-content:center;width:100%;height:100%;}
   .timer-display{font-family:var(--font-mono);font-size:31px;font-weight:800;letter-spacing:.035em;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.98),0 0 20px rgba(255,175,75,.42);}
@@ -6081,37 +6079,6 @@ function initBlackHoleScene(host){
   for(var i=0;i<count;i++){var p={};spawn(p);particles.push(p);}
   var fillCur = null, dust = [];
   for(var di=0; di<48; di++) dust.push({a:Math.random()*6.283, r:Math.sqrt(Math.random()), s:.25+Math.random()*.6, size:.5+Math.random()*1.1, tw:Math.random()*6.283});
-  var DISK_TILT = -.06;
-  function discHalf(front, holeR, t){
-    // flat, thin accretion disc seen almost edge-on; front half crosses the hole, back half is hidden by it
-    var rIn = holeR*1.04, rOut = holeR*3.4, q = .075;
-    ctx.save(); ctx.translate(cx, cy); ctx.rotate(DISK_TILT);
-    ctx.beginPath(); ctx.rect(-rOut*1.1, front ? 0 : -rOut*.6, rOut*2.2, rOut*.6); ctx.clip();
-    ctx.scale(1, q);
-    var g = ctx.createRadialGradient(0, 0, rIn, 0, 0, rOut);
-    g.addColorStop(0, "rgba(255,250,236,.95)"); g.addColorStop(.06, "rgba(255,226,170,.8)"); g.addColorStop(.25, "rgba(238,150,78,.42)"); g.addColorStop(.6, "rgba(160,74,38,.16)"); g.addColorStop(1, "rgba(90,34,20,0)");
-    ctx.fillStyle = g; ctx.beginPath(); ctx.arc(0, 0, rOut, 0, 6.283); ctx.arc(0, 0, rIn, 0, 6.283, true); ctx.fill("evenodd");
-    ctx.restore();
-    // approaching side (left) is brighter; slow shimmer along the plane
-    ctx.save(); ctx.translate(cx, cy); ctx.rotate(DISK_TILT); ctx.globalCompositeOperation = "lighter";
-    var sg = ctx.createLinearGradient(-rOut, 0, rOut, 0); sg.addColorStop(0, "rgba(255,190,120,"+(.1 + .03*Math.sin(t*.0004))+")"); sg.addColorStop(.5, "rgba(255,190,120,0)"); sg.addColorStop(1, "rgba(0,0,0,0)");
-    ctx.beginPath(); ctx.rect(-rOut, front ? -1.4 : -2.6, rOut*2, front ? 2.8 : 2.6); ctx.fillStyle = sg; ctx.fill(); ctx.restore();
-  }
-  function lensArc(up, holeR, alpha){
-    // the far side of the disc bent over (and faintly under) the hole by gravity
-    var R = holeR*(up ? 1.13 : 1.09), k, n = 46;
-    ctx.save(); ctx.translate(cx, cy); ctx.rotate(DISK_TILT); ctx.lineCap = "butt";
-    for(var pass=0; pass<3; pass++){
-      ctx.lineWidth = [5.2, 2.6, 1.1][pass]*(up ? 1 : .7);
-      for(k=0;k<n;k++){
-        var u0 = k/n, u1 = (k+1)/n, e = Math.sin(Math.PI*(u0+u1)/2);
-        var a0 = (up ? Math.PI : 0) + u0*Math.PI, a1 = (up ? Math.PI : 0) + u1*Math.PI;
-        ctx.strokeStyle = pass===2 ? "rgba(255,248,232,"+(alpha*Math.pow(e,2.2))+")" : (pass===1 ? "rgba(255,214,150,"+(alpha*.5*Math.pow(e,2.2))+")" : "rgba(235,140,70,"+(alpha*.22*Math.pow(e,1.8))+")");
-        ctx.beginPath(); ctx.arc(0, 0, R, a0, a1 + .01); ctx.stroke();
-      }
-    }
-    ctx.restore();
-  }
   function drawFill(t, pv, holeR){
     var target = pv.focus ? pv.p : 1 - pv.p;
     if(fillCur===null) fillCur = target;
@@ -6158,22 +6125,67 @@ function initBlackHoleScene(host){
   function buildMW(){
     var W = Math.max(2, Math.floor(w)), H = Math.max(2, Math.floor(h));
     mwTex = document.createElement("canvas"); mwTex.width = W; mwTex.height = H;
-    var g = mwTex.getContext("2d"), i, sig = H*.14;
-    g.translate(W/2, H/2); g.rotate(-.44);
-    // diffuse glow of the galactic plane, with a warmer bulge
-    for(i=0;i<34;i++){ var sx = rnd(-.8, .8)*W, sy = (Math.random()+Math.random()-1)*sig*.6, rr = rnd(.2, .36)*H, gl = g.createRadialGradient(sx, sy, 0, sx, sy, rr);
-      var warm = Math.abs(sx + W*.12) < W*.16; gl.addColorStop(0, warm ? "rgba(255,226,186,"+rnd(.05,.085)+")" : "rgba(196,192,226,"+rnd(.03,.055)+")"); gl.addColorStop(1, "rgba(120,120,160,0)"); g.fillStyle = gl; g.fillRect(sx-rr, sy-rr, rr*2, rr*2); }
-    // dark dust lanes running along the plane
-    for(i=0;i<16;i++){ var dx = rnd(-.8, .8)*W, dy = rnd(-.5, .5)*sig*.5, dr = rnd(.09, .17)*H; g.save(); g.translate(dx, dy); g.scale(2.6, 1); var dg = g.createRadialGradient(0, 0, 0, 0, 0, dr); dg.addColorStop(0, "rgba(2,3,8,"+rnd(.22,.4)+")"); dg.addColorStop(1, "rgba(2,3,8,0)"); g.fillStyle = dg; g.fillRect(-dr, -dr, dr*2, dr*2); g.restore(); }
-    // fine grain of unresolved stars, densest along the plane
-    for(i=0;i<3000;i++){
-      var x = rnd(-.85, .85)*W, y = (Math.random()+Math.random()+Math.random()-1.5)*sig*1.25*(.75+.5*Math.random()), bright = Math.pow(Math.random(), 3.4);
-      g.globalAlpha = .1 + .75*bright; g.fillStyle = Math.random() < .2 ? "#ffe9cc" : (Math.random() < .3 ? "#cfdcff" : "#f2f4ff");
-      g.beginPath(); g.arc(x, y, .28 + .55*bright + (bright > .8 ? .35 : 0), 0, 6.283); g.fill();
-    }
+    var g = mwTex.getContext("2d"), i, gl;
+    function blob(x, y, r, stops){ gl = g.createRadialGradient(x, y, 0, x, y, r); for(var k=0;k<stops.length;k++) gl.addColorStop(stops[k][0], stops[k][1]); g.fillStyle = gl; g.fillRect(x-r, y-r, r*2, r*2); }
+    // warm emission nebula pouring in from the top-right corner
+    blob(W*1.02, -H*.02, H*.62, [[0,"rgba(255,248,236,.9)"],[.14,"rgba(255,226,182,.6)"],[.4,"rgba(232,130,60,.3)"],[.75,"rgba(120,50,26,.1)"],[1,"rgba(60,20,10,0)"]]);
+    blob(W*1.0, H*.3, H*.4, [[0,"rgba(236,120,52,.3)"],[.6,"rgba(120,50,26,.1)"],[1,"rgba(60,20,10,0)"]]);
+    blob(W*.78, H*.02, H*.3, [[0,"rgba(200,100,50,.2)"],[1,"rgba(60,20,10,0)"]]);
+    // dark dust lanes cutting across it
+    for(i=0;i<11;i++){ var dx = W*(.62 + .45*Math.random()), dy = H*(.5*Math.random()), dr = H*rnd(.06, .14); g.save(); g.translate(dx, dy); g.rotate(rnd(-.9, .9)); g.scale(2.2, 1); blob(0, 0, dr, [[0,"rgba(8,4,4,"+rnd(.25,.45)+")"],[1,"rgba(8,4,4,0)"]]); g.restore(); }
+    // glowing specks inside the cloud
+    for(i=0;i<700;i++){ var px = W*(1 - Math.pow(Math.random(), 1.6)*.5), py = H*Math.pow(Math.random(), 1.5)*.65, q = Math.random(); g.globalAlpha = .15 + .7*q*q; g.fillStyle = q > .8 ? "#fff3e0" : "#f0a060"; g.beginPath(); g.arc(px, py, .3 + .7*q, 0, 6.283); g.fill(); }
   }
   var _rs = resize; resize = function(){ _rs(); buildMW(); };
   function bez(p0, p1, p2, e){ var q = 1-e; return q*q*p0 + 2*q*e*p1 + e*e*p2; }
+  var lensS = [], gals = [], eR = 100;
+  for(var li=0; li<1000; li++) lensS.push({x:Math.random(), y:Math.random(), s:rnd(.4,1.25), a:rnd(.5,1), tw:rnd(0,6.283), c:Math.random()});
+  function mkGal(start){ var pts = [], k, ang = rnd(-.6, .6), ca = Math.cos(ang), sa = Math.sin(ang);
+    for(k=0;k<140;k++){ var gx = (Math.random()+Math.random()+Math.random()-1.5)*34, gy = (Math.random()+Math.random()+Math.random()-1.5)*15; pts.push({x:gx*ca - gy*sa, y:gx*sa + gy*ca, s:rnd(1.6,3.8), a:rnd(.16,.42), c:Math.random()}); }
+    return {ox:rnd(-30,30), oy:start, pts:pts}; }
+  gals = [mkGal(140), mkGal(520)];
+  function lensImg(dx, dy, size, alpha, col, hr){
+    var d = Math.sqrt(dx*dx + dy*dy) || 1, u = d/eR, sq = Math.sqrt(u*u + 4), a = Math.atan2(dy, dx), sgn, r, tg, rd, len, wd, mg = (u*u + 2)/(2*u*sq);
+    for(sgn=0; sgn<2; sgn++){
+      r = eR*(sgn ? (sq - u) : (u + sq))/2; if(r < hr*1.02 || r > 900) continue;
+      tg = r/d; rd = Math.max(.12, (mg + (sgn ? -.5 : .5))/tg);
+      if(sgn && r < hr*1.1) continue;
+      len = size*2*Math.min(tg, 30); wd = Math.max(.3, size*Math.min(rd, 1.2));
+      ctx.strokeStyle = col; ctx.globalAlpha = alpha*(sgn ? .55 : 1);
+      if(len > 2.6){ ctx.lineWidth = wd; var half = Math.min(len/(2*r), 1.45); ctx.beginPath(); ctx.arc(cx, cy, r, a + (sgn ? Math.PI : 0) - half, a + (sgn ? Math.PI : 0) + half); ctx.stroke(); }
+      else { var aa = a + (sgn ? Math.PI : 0); ctx.fillStyle = col; ctx.beginPath(); ctx.arc(cx + Math.cos(aa)*r, cy + Math.sin(aa)*r, Math.max(.35, size*.75), 0, 6.283); ctx.fill(); }
+    }
+  }
+  function drawLensed(t, dt){
+    var holeR = lensHoleR, i, o, k, sp = (dt || 0)*.0085;
+    eR = holeR*2.5; ctx.lineCap = "round";
+    for(i=0;i<lensS.length;i++){ o = lensS[i];
+      if(dt){ o.y -= sp/h; o.x += dt*.0000016; if(o.y < -.05){ o.y += 1.1; o.x = Math.random(); } if(o.x > 1.05) o.x -= 1.1; }
+      var dx = o.x*w - cx, dy = o.y*h - cy, col = o.c < .12 ? "#ffd9b0" : (o.c < .3 ? "#cfe0ff" : "#ffffff");
+      lensImg(dx, dy, o.s, o.a*(.75 + .25*Math.sin(t*.0009 + o.tw)), col, holeR);
+    }
+    ctx.globalCompositeOperation = "lighter";
+    for(i=0;i<gals.length;i++){ o = gals[i];
+      if(dt){ o.oy -= sp; if(o.oy < -(h*.62 + 70)){ var ng = mkGal(h*.62 + 70 + rnd(0, 160)); o.ox = ng.ox; o.oy = ng.oy; o.pts = ng.pts; } }
+      for(k=0;k<o.pts.length;k++){ var q = o.pts[k]; lensImg(o.ox + q.x, o.oy + q.y, q.s, q.a, q.c < .7 ? "rgb(190,215,255)" : "rgb(255,240,225)", holeR); }
+    }
+    ctx.globalCompositeOperation = "source-over"; ctx.globalAlpha = 1;
+  }
+  var lensHoleR = 50;
+  function crescent(holeR, t){
+    var R = holeR*1.015, a0 = Math.PI*(.4 + .03*Math.sin(t*.0002)), a1 = Math.PI*(1.27 + .03*Math.sin(t*.00017)), n = 70, k, pass;
+    ctx.save(); ctx.globalCompositeOperation = "lighter"; ctx.lineCap = "butt";
+    ctx.strokeStyle = "rgba(255,220,170,.10)"; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(cx, cy, R, 0, 6.283); ctx.stroke();
+    for(pass=0; pass<3; pass++){
+      ctx.lineWidth = holeR*[.17, .07, .024][pass];
+      for(k=0;k<n;k++){
+        var u = (k + .5)/n, a = a0 + (a1 - a0)*u, env = Math.pow(Math.sin(Math.PI*u), .9), br = Math.exp(-Math.pow((u - .42)/.3, 2)), fl = .7 + .3*Math.sin(a*9 - t*.0011 + Math.sin(a*3)*2), al = env*(.3 + .7*br)*fl;
+        ctx.strokeStyle = pass===2 ? "rgba(255,"+Math.round(200 + 50*br)+","+Math.round(140 + 100*br)+","+Math.min(1, al*1.05)+")" : (pass===1 ? "rgba(255,"+Math.round(120 + 40*br)+",50,"+Math.min(1, al*.7)+")" : "rgba(235,90,30,"+(al*.22)+")");
+        ctx.beginPath(); ctx.arc(cx, cy, R + (pass===0 ? holeR*.03 : 0), a - .03, a + (a1 - a0)/n + .03); ctx.stroke();
+      }
+    }
+    ctx.restore();
+  }
   function drawScenery(t, dt){
     var i, o, g;
     // soft nebula clouds
@@ -6181,7 +6193,7 @@ function initBlackHoleScene(host){
     for(i=0;i<neb.length;i++){ o = neb[i]; var nx = o[0]*w + Math.sin(t*.00005+i)*6, ny = o[1]*h + Math.cos(t*.00004+i)*5, nr = o[2]*w;
       g = ctx.createRadialGradient(nx, ny, 0, nx, ny, nr); g.addColorStop(0, "rgba("+o[3]+","+o[4]+")"); g.addColorStop(1, "rgba("+o[3]+",0)"); ctx.fillStyle = g; ctx.fillRect(0, 0, w, h); }
     // the Milky Way band behind everything
-    if(mwTex){ ctx.globalAlpha = .95; ctx.drawImage(mwTex, Math.sin(t*.00002)*4, Math.cos(t*.000017)*3); ctx.globalAlpha = 1; }
+    if(mwTex){ ctx.globalAlpha = .9; ctx.drawImage(mwTex, 0, 0); ctx.globalAlpha = 1; }
     // a distant supernova
     if(dt){
       if(!nextSN) nextSN = t + 3500;
@@ -6206,19 +6218,7 @@ function initBlackHoleScene(host){
   function drawBackdrop(t, dt){
     var R = Math.sqrt(cx*cx + cy*cy), i, o, x, y;
     drawScenery(t, dt);
-    for(i=0;i<farS.length;i++){ o = farS[i]; if(dt){ o.x += dt*o.sp*.0006; if(o.x>1.02) o.x = -.02; }
-      ctx.globalAlpha = o.a*(.7+.3*Math.sin(t*.0008+o.tw)); ctx.fillStyle = "#cfd9ff"; ctx.beginPath(); ctx.arc(o.x*w, o.y*h, o.s, 0, 6.283); ctx.fill(); }
-    var rot = t*.000022;
-    for(i=0;i<arms.length;i++){ o = arms[i];
-      var r = 26 + o.u*R*1.02, a = o.arm*Math.PI + o.u*3.7 + rot*(1.2-o.u*.6), jit = o.j*(9 + 34*o.u);
-      x = cx + Math.cos(a)*r + Math.cos(a+1.5708)*jit; y = cy + Math.sin(a)*r*.82 + Math.sin(a+1.5708)*jit*.82;
-      var k = 1 - o.u; ctx.globalAlpha = Math.max(.06, (.14 + .6*k*k)*(.75+.25*Math.sin(t*.001+o.tw)));
-      ctx.fillStyle = o.u < .28 ? "#ffd9a8" : (o.u < .6 ? "#c7c9ff" : "#9fb4ff"); ctx.beginPath(); ctx.arc(x, y, o.s*(1+.6*k), 0, 6.283); ctx.fill(); }
-    for(i=0;i<midS.length;i++){ o = midS[i];
-      if(dt){ o.ang += dt*.000028/Math.sqrt(o.rho+.2); o.rho -= dt*.0000019/(o.rho+.35)*o.s; if(o.rho < .13) spawnMid(o, true); }
-      var rr = o.rho*R; x = cx + Math.cos(o.ang)*rr; y = cy + Math.sin(o.ang)*rr*.9;
-      if(x<-4||x>w+4||y<-4||y>h+4) continue;
-      ctx.globalAlpha = Math.min(1, o.rho/.34) * o.a * (.75+.25*Math.sin(t*.0011+o.tw)); ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(x, y, o.s*.9, 0, 6.283); ctx.fill(); }
+    drawLensed(t, dt);
     for(i=0;i<nearS.length;i++){ o = nearS[i]; if(dt){ o.x += dt*.0000045; o.y += dt*.0000028; if(o.x>1.02) o.x = -.02; if(o.y>1.02) o.y = -.02; }
       x = o.x*w; y = o.y*h; ctx.globalAlpha = o.a*(.65+.35*Math.sin(t*.0013+o.tw)); ctx.fillStyle = o.warm ? "#ffe3b8" : "#e8efff";
       ctx.beginPath(); ctx.arc(x, y, o.s, 0, 6.283); ctx.fill();
@@ -6249,11 +6249,10 @@ function initBlackHoleScene(host){
     var bg=ctx.createRadialGradient(cx,cy,0,cx,cy,scale*1.15);bg.addColorStop(0,"rgba(28,8,2,.55)");bg.addColorStop(.45,"rgba(6,8,18,.35)");bg.addColorStop(1,"rgba(0,0,0,0)");ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);drawBackdrop(t, dt);
     for(var i=0;i<particles.length;i++){var p=particles[i];p.prevR=p.r;p.prevA=p.a;if(!reduced){p.r-=sp*p.pull/(Math.max(.11,p.r)*Math.max(.11,p.r));p.a+=sp*p.spin*(1+.7/Math.max(.18,p.r));p.life++;}if(!reduced&&(p.r<.12||p.life>p.max))spawn(p);var rr=p.r*scale,x=cx+Math.cos(p.a)*rr,y=cy+Math.sin(p.a)*rr*.55,px=cx+Math.cos(p.prevA)*p.prevR*scale,py=cy+Math.sin(p.prevA)*p.prevR*scale*.55;if(!reduced){ctx.strokeStyle=p.warm?"rgba(255,160,80,.28)":"rgba(205,225,255,.28)";ctx.lineWidth=Math.max(.3,p.size*.5);ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(x,y);ctx.stroke();}ctx.fillStyle=p.warm?"rgba(255,215,165,"+p.alpha+")":"rgba(225,238,255,"+p.alpha+")";ctx.beginPath();ctx.arc(x,y,p.size,0,Math.PI*2);ctx.fill();}
     var holeR = pv.pomo ? Math.min(70, scale * 0.39) : Math.min(62, scale * 0.28);
-    discHalf(false, holeR, t);
+    lensHoleR = holeR;
     ctx.fillStyle = "#000"; ctx.beginPath(); ctx.arc(cx, cy, holeR, 0, Math.PI * 2); ctx.fill();
-    lensArc(true, holeR, .62); lensArc(false, holeR, .3);
     if(pv.pomo) drawFill(t, pv, holeR);
-    discHalf(true, holeR, t);
+    crescent(holeR, t);
     if(!reduced && typeof requestAnimationFrame==="function") blackHoleAnimFrame=requestAnimationFrame(draw);
     }catch(e){
       console.error("Timer scene animation failed:",e);
