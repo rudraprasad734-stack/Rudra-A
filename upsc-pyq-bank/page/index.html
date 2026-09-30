@@ -225,6 +225,13 @@
   .timer-total{position:absolute;top:12px;right:16px;z-index:8;font-family:var(--font-mono);font-size:12px;font-weight:600;line-height:1;color:rgba(255,255,255,.9);text-shadow:0 1px 8px rgba(0,0,0,.95);pointer-events:none;}
   .timer-btns{position:absolute;left:14px;right:14px;bottom:12px;z-index:8;display:flex;gap:9px;justify-content:center;margin:0;padding:0;}
   .timer-btn{flex:0 1 132px;padding:10px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.2);background:rgba(3,5,12,.48);backdrop-filter:blur(6px);font-weight:700;font-size:13px;cursor:pointer;color:#fff;box-shadow:0 2px 12px rgba(0,0,0,.25);}
+  .timer-mode{position:absolute;top:10px;left:12px;z-index:8;display:flex;gap:6px;align-items:center;flex-wrap:nowrap;max-width:calc(100% - 24px);}
+  .timer-mode .tm{border:1px solid rgba(255,255,255,.22);background:rgba(3,5,12,.5);color:rgba(255,255,255,.78);border-radius:999px;padding:5px 10px;font:inherit;font-size:11.5px;cursor:pointer;min-height:30px;}
+  .timer-mode .tm.on{background:rgba(24,34,70,.85);color:#fff;border-color:rgba(255,255,255,.4);font-weight:700;}
+  .timer-mode .tm:disabled:not(.on){opacity:.45;cursor:not-allowed;}
+  .timer-mode select{border:1px solid rgba(255,255,255,.22);background:rgba(3,5,12,.6);color:#fff;border-radius:999px;padding:4px 8px;font:inherit;font-size:11.5px;min-height:30px;}
+  .timer-card .timer-total{position:absolute;left:0;right:0;top:calc(49% + 84px);z-index:8;text-align:center;font-size:12px;line-height:1.2;color:rgba(255,255,255,.9);}
+  .timer-phase{position:absolute;left:0;right:0;top:calc(49% + 54px);line-height:1.2;z-index:8;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.78);}
   .timer-btn.primary{background:rgba(24,34,70,.72);color:#fff;border-color:rgba(255,255,255,.28);}
   .timer-btn:disabled{opacity:.45;cursor:not-allowed;}
   .timer-dial-wrap{position:absolute;left:50%;top:49%;transform:translate(-50%,-50%);width:170px;height:92px;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;z-index:6;display:flex;align-items:center;justify-content:center;background:transparent;border:0;box-shadow:none;}
@@ -3253,7 +3260,9 @@ var resultsFromDb = null;        // {prelims,mains,interview} if newer results e
 var todayKey = toKey(new Date());
 var timerInterval = null;
 var blackHoleAnimFrame = null;
-var timerState = {running:false, startedAt:0, elapsedMs:0}; // in-memory; today's totals persisted to localStorage below
+var TIMER_KEY = "dossier.timer.v2";
+function timerDefault(){ return {mode:"free", running:false, startedAt:0, accMs:0, studyMs:0, phase:"focus", cycle:0, preset:0, pending:0}; }
+var timerState = Object.assign(timerDefault(), (function(){ try{ var v = JSON.parse(localStorage.getItem(TIMER_KEY)||"null"); return v && typeof v==="object" ? v : {}; }catch(e){ return {}; } })());
 var currentDailyKey = todayKey;
 
 // Left open across midnight (a real scenario over a year of daily use), todayKey
@@ -3274,7 +3283,7 @@ function checkDateRollover(){
   renderView(activeTab);
 }
 setInterval(checkDateRollover, 60000);
-document.addEventListener("visibilitychange", function(){ if(document.visibilityState==="visible") checkDateRollover(); });
+document.addEventListener("visibilitychange", function(){ if(document.visibilityState==="visible"){ checkDateRollover(); timerAdvance(); timerUi(); } });
 
 // ============================================================================
 // LOAD SCHEDULE DATA
@@ -4700,6 +4709,7 @@ function wizSnapshot(w){ var c = JSON.parse(JSON.stringify(w)); delete c.step; d
 function wizCatCfg(w){ return {prelims:w.mode!=="mains", mains:w.mode!=="prelims", gs1:!!w.gs1, csat:!!w.csat, gs:w.gs.slice(), optionalOn:!!w.optionalOn, optional:w.optional, customText:w.customText}; }
 function wizCatalog(w){ return buildCatalog(wizCatCfg(w)); }
 function wizSync(w){
+  if(!(+w.cap.breakMin >= 5)) w.cap.breakMin = 5;
   var cat = wizCatalog(w), valid = {}, init = {};
   w.order = w.order.filter(function(n){ return !!cat.map[n]; });
   w.order.forEach(function(n){
@@ -4981,7 +4991,7 @@ function wzCapacity(w){
       var pd = c.perDay[d], cur = (pd!=null && pd!=="") ? +pd : n;
       return '<label>'+DOW_SHORT[d]+'<select data-w="cap.perDay.'+d+'" data-t="n">'+optsNum(0,n,cur)+'</select></label>';
     }).join("")+'</div><div class="hint">Use the first N sessions on that day. For example Monday 2 sessions, Tuesday 1.</div></div>'+
-    '<div class="two"><div class="cf"><label>Minimum break between sessions</label><select data-w="cap.breakMin" data-t="n">'+[0,10,15,20,30,45,60].map(function(m){ return '<option value="'+m+'"'+(+c.breakMin===m?" selected":"")+'>'+m+' min</option>'; }).join("")+'</select></div>'+
+    '<div class="two"><div class="cf"><label>Minimum break between sessions</label><select data-w="cap.breakMin" data-t="n">'+[5,10,15,20,30,45,60].map(function(m){ return '<option value="'+m+'"'+(+c.breakMin===m?" selected":"")+'>'+m+' min</option>'; }).join("")+'</select></div>'+
     '<div class="cf"><label>Pace: sessions per chapter</label><select data-w="cap.blocks">'+paceOptions(c.blocks)+'</select></div></div>'+
     '<div class="hint">Every session is independent, so mornings can be longer than evenings. Essay, PYQ, Test and Revision take over any study session they overlap on their day.</div>'+weekMapHtml(w);
 }
@@ -5841,7 +5851,6 @@ function renderSubTabs(){
 }
 function setTab(id){
   if(!VIEW_TO_GROUP[id]) id = "dashboard";
-  if(id!=="dashboard" && timerInterval){ clearInterval(timerInterval); timerInterval = null; }
   activeTab = id;
   renderTabs();
   lsSet("dossier.tab", id);
@@ -5875,7 +5884,7 @@ function fmtTimer(ms){
   var h = Math.floor(s/3600), m = Math.floor((s%3600)/60), ss = s%60;
   return (h>0 ? String(h).padStart(2,"0")+":" : "") + String(m).padStart(2,"0")+":"+String(ss).padStart(2,"0");
 }
-function timerTodayTotalMs(){
+function timerBanked(){
   var v = 0;
   try { v = +(JSON.parse(lsGet("dossier.timerLog")||"{}")[todayKey]) || 0; } catch(e){}
   return v;
@@ -5884,56 +5893,143 @@ function timerAddToToday(ms){
   var log = {};
   try { log = JSON.parse(lsGet("dossier.timerLog")||"{}"); } catch(e){}
   log[todayKey] = (log[todayKey]||0) + ms;
-  // keep the log small: drop entries older than ~40 days
   var cutoff = toKey(addDays(new Date(), -40));
   Object.keys(log).forEach(function(k){ if(k < cutoff) delete log[k]; });
   try { lsSet("dossier.timerLog", JSON.stringify(log)); } catch(e){}
 }
-function timerElapsedNow(){
-  return timerState.elapsedMs + (timerState.running ? (Date.now()-timerState.startedAt) : 0);
+function timerSave(){ try{ localStorage.setItem(TIMER_KEY, JSON.stringify(timerState)); }catch(e){} }
+var POMO_PRESETS = [["25 / 5",25,5],["30 / 5",30,5],["45 / 10",45,10],["50 / 10",50,10]];
+function pomoLen(phase){ var p = POMO_PRESETS[timerState.preset] || POMO_PRESETS[0]; return (phase==="focus" ? p[1] : (phase==="short" ? p[2] : 15))*60000; }
+function timerSeg(){ return timerState.accMs + (timerState.running ? Date.now()-timerState.startedAt : 0); }
+function timerStudyMs(){
+  var st = timerState;
+  if(st.mode==="free") return timerSeg();
+  return st.studyMs + (st.phase==="focus" ? Math.min(timerSeg(), pomoLen("focus")) : 0);
+}
+function timerDisplayMs(){ return timerState.mode==="free" ? timerSeg() : Math.max(0, pomoLen(timerState.phase) - timerSeg()); }
+function timerBeep(){
+  try{ if(navigator.vibrate) navigator.vibrate([200,100,200]); }catch(e){}
+  try{
+    var AC = window.AudioContext || window.webkitAudioContext; if(!AC) return;
+    var c = new AC(), o = c.createOscillator(), g = c.createGain();
+    o.connect(g); g.connect(c.destination); o.frequency.value = 660; g.gain.value = 0.08;
+    o.start(); o.stop(c.currentTime + 0.35); setTimeout(function(){ try{ c.close(); }catch(e){} }, 600);
+  }catch(e){}
+}
+function timerAdvance(){
+  var st = timerState;
+  if(st.mode!=="pomo" || !st.running) return false;
+  var el = timerSeg(), changed = false, guard = 0;
+  while(guard++ < 60){
+    var len = pomoLen(st.phase);
+    if(el < len) break;
+    if(st.phase==="focus"){ st.studyMs += len; st.cycle++; st.phase = (st.cycle % 4===0) ? "long" : "short"; }
+    else st.phase = "focus";
+    el -= len; changed = true;
+  }
+  if(changed){
+    st.accMs = 0; st.startedAt = Date.now() - el; timerSave();
+    toast(st.phase==="focus" ? "Break over. Time to focus." : (st.phase==="long" ? "Focus round done. Take a longer break." : "Focus round done. Take a short break."));
+    timerBeep();
+  }
+  return changed;
+}
+function ensureTimerInterval(){
+  if(timerState.running && !timerInterval) timerInterval = setInterval(timerTick, 1000);
+  if(!timerState.running && timerInterval){ clearInterval(timerInterval); timerInterval = null; }
+}
+function timerLabel(){
+  var st = timerState;
+  if(st.mode==="free") return st.running ? "Studying" : (st.accMs>0 ? "Paused" : "Stopwatch");
+  var nm = st.phase==="focus" ? "Focus "+((st.cycle % 4)+1)+" of 4" : (st.phase==="long" ? "Long break" : "Short break");
+  return nm+(st.running || st.accMs>0 ? "" : " · ready")+(!st.running && st.accMs>0 ? " · paused" : "");
+}
+function timerUi(){
+  var d = document.getElementById("timerDisplay"); if(!d) return;
+  var st = timerState, started = st.running || st.accMs>0 || st.studyMs>0;
+  d.textContent = fmtTimer(timerDisplayMs());
+  var t = document.getElementById("timerTodayTotal"); if(t) t.textContent = "Today "+fmtTimer(timerBanked()+timerStudyMs());
+  var ph = document.getElementById("timerPhase"); if(ph) ph.textContent = timerLabel();
+  var tb = document.getElementById("timerToggleBtn"); if(tb) tb.textContent = st.running ? "Pause" : (started ? "Continue" : "Start");
+  var sb = document.getElementById("timerStopBtn"); if(sb) sb.disabled = !started;
+  var dw = document.getElementById("timerDialWrap"); if(dw){ dw.classList.toggle("running", st.running); dw.setAttribute("aria-pressed", st.running ? "true" : "false"); }
+  Array.prototype.forEach.call(document.querySelectorAll("[data-tmode]"), function(b){ b.classList.toggle("on", b.getAttribute("data-tmode")===st.mode); b.disabled = started; });
+  var ps = document.getElementById("pomoPreset"); if(ps) ps.disabled = started;
 }
 function timerTick(){
-  var el = document.getElementById("timerDisplay");
-  if(!el){ clearInterval(timerInterval); timerInterval = null; return; }
-  el.textContent = fmtTimer(timerElapsedNow());
-  var today = document.getElementById("timerTodayTotal");
-  if(today) today.textContent = fmtTimer(timerTodayTotalMs() + (timerState.running ? (Date.now()-timerState.startedAt) : 0));
+  if(!document.getElementById("timerDisplay") && !timerState.running){ ensureTimerInterval(); return; }
+  timerAdvance(); timerUi();
 }
 function timerToggle(){
-  if(timerState.running){
-    var sessionMs = timerElapsedNow();
-    timerState.running = false;
-    timerState.startedAt = 0;
-    timerState.elapsedMs = 0;
-    timerAddToToday(sessionMs);
-    clearInterval(timerInterval); timerInterval = null;
-  } else {
-    timerState.running = true;
-    timerState.startedAt = Date.now();
-    timerState.elapsedMs = 0;
-    clearInterval(timerInterval);
-    timerInterval = setInterval(timerTick, 1000);
-  }
-  renderDashboard();
+  if(timerState.pending>0) return;
+  timerAdvance();
+  if(timerState.running){ timerState.accMs = timerSeg(); timerState.running = false; timerState.startedAt = 0; }
+  else { timerState.running = true; timerState.startedAt = Date.now(); }
+  timerSave(); ensureTimerInterval(); timerUi();
 }
-function timerReset(){
-  if(timerState.running) clearInterval(timerInterval);
-  timerInterval = null;
-  timerState = {running:false, startedAt:0, elapsedMs:0};
-  renderDashboard();
+function timerStop(){
+  timerAdvance();
+  var ms = Math.round(timerStudyMs()), keep = {mode:timerState.mode, preset:timerState.preset};
+  timerState = Object.assign(timerDefault(), keep, {pending: ms >= 1000 ? ms : 0});
+  timerSave(); ensureTimerInterval(); timerUi();
+  if(timerState.pending > 0) openTimerSave();
+}
+function timerTargets(){ return planSessionsOn(todayKey).filter(function(x){ return !x.projected; }); }
+function openTimerSave(){
+  var ms = timerState.pending, list = timerTargets(), pick = "";
+  var pool = list.filter(function(x){ return x.status==="in_progress"; })[0] || list.filter(function(x){ return x.status==="not_started" && x.kind==="study"; })[0];
+  if(pool) pick = pool.id;
+  var opts = list.map(function(x){
+    var label = "S"+x.sessionNumber+" · "+fmt12(x.startTime)+"–"+fmt12(x.endTime)+" · "+(x.kind==="study" ? x.syllabusUnit : (KIND_META[x.kind] ? KIND_META[x.kind].label : x.subject))+" (planned "+fmtDurMin(x.duration)+", logged "+fmtDurMin(x.actualDuration||0)+")";
+    return '<option value="'+esc(x.id)+'"'+(x.id===pick ? " selected" : "")+'>'+esc(label)+'</option>';
+  }).join("");
+  showModal('<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="tsTitle">'+
+    '<h2 id="tsTitle">Save your study time</h2>'+
+    '<p>You studied for <b>'+esc(fmtDurMin(Math.max(1, Math.round(ms/60000))))+'</b> ('+esc(fmtTimer(ms))+').</p>'+
+    '<div class="cf"><label for="tsTarget">Record it against</label><select id="tsTarget">'+opts+'<option value=""'+(pick ? "" : " selected")+'>Only add to today&rsquo;s study time</option></select></div>'+
+    '<p class="muted small">Today&rsquo;s study time always includes it. If you pick a session, the time is added as that session&rsquo;s actual time. The planned length does not change, so a 2 hour session with 1 hour studied shows 1 hour done.</p>'+
+    '<div class="modal-actions"><button class="btn ghost" id="tsDiscard">Discard</button><span class="grow"></span><button class="btn primary" id="tsSave">Save</button></div>'+
+  '</div>', false);
+  document.getElementById("tsDiscard").addEventListener("click", function(){ timerState.pending = 0; timerSave(); closeModal(); timerUi(); toast("Timer discarded."); });
+  document.getElementById("tsSave").addEventListener("click", function(){
+    var sid = document.getElementById("tsTarget").value, add = timerState.pending;
+    timerAddToToday(add);
+    if(sid) timerApplyToSession(sid, add);
+    timerState.pending = 0; timerSave(); closeModal();
+    toast(sid ? "Time saved to your session and today's study time." : "Added to today's study time.");
+    renderView(activeTab);
+  });
+}
+function timerApplyToSession(sid, ms){
+  var s = sessionById(sid); if(!s) return;
+  var add = Math.max(1, Math.round(ms/60000)), total = (s.actualDuration||0) + add;
+  var aS = s.actualStart || s.startTime, endMin = Math.min(24*60-1, toMin(aS) + total);
+  total = endMin - toMin(aS);
+  var status = s.status==="completed" || total >= s.duration ? "completed" : "in_progress";
+  updateSession(sid, {actualStart:aS, actualEnd:pad2(Math.floor(endMin/60))+":"+pad2(endMin%60), status:status});
+  afterSessionChange(sid);
+}
+function timerSetMode(m){
+  if(timerState.running || timerState.accMs>0 || timerState.studyMs>0 || timerState.pending>0) return;
+  timerState.mode = m; timerState.phase = "focus"; timerState.cycle = 0; timerSave(); renderDashboard();
 }
 function timerCard(){
-  var totalDisplay=timerTodayTotalMs();
-  var running=timerState.running;
+  var st = timerState, started = st.running || st.accMs>0 || st.studyMs>0;
   return '<div class="card timer-card">'+
     '<canvas class="black-hole-scene" id="blackHoleScene" aria-hidden="true"></canvas>'+
-    '<div class="timer-total" id="timerTodayTotal">'+fmtTimer(totalDisplay)+'</div>'+
-    '<div class="timer-dial-wrap'+(running?" running":"")+'" id="timerDialWrap" role="button" tabindex="0" aria-pressed="'+(running?"true":"false")+'" aria-label="'+(running?"Pause":"Start")+' study timer">'+
-      '<div class="timer-dial-face"><div class="timer-display" id="timerDisplay">'+fmtTimer(timerElapsedNow())+'</div></div>'+
+    '<div class="timer-mode" role="group" aria-label="Timer mode">'+
+      '<button type="button" class="tm'+(st.mode==="free" ? " on" : "")+'" data-tmode="free"'+(started ? " disabled" : "")+'>Stopwatch</button>'+
+      '<button type="button" class="tm'+(st.mode==="pomo" ? " on" : "")+'" data-tmode="pomo"'+(started ? " disabled" : "")+'>Pomodoro</button>'+
+      (st.mode==="pomo" ? '<select id="pomoPreset" aria-label="Focus and break minutes"'+(started ? " disabled" : "")+'>'+POMO_PRESETS.map(function(p, i){ return '<option value="'+i+'"'+(st.preset===i ? " selected" : "")+'>'+p[0].replace(/ /g,"")+'</option>'; }).join("")+'</select>' : "")+
     '</div>'+
+    '<div class="timer-total" id="timerTodayTotal">Today '+fmtTimer(timerBanked()+timerStudyMs())+'</div>'+
+    '<div class="timer-dial-wrap'+(st.running ? " running" : "")+'" id="timerDialWrap" role="button" tabindex="0" aria-pressed="'+(st.running ? "true" : "false")+'" aria-label="Start or pause study timer">'+
+      '<div class="timer-dial-face"><div class="timer-display" id="timerDisplay">'+fmtTimer(timerDisplayMs())+'</div></div>'+
+    '</div>'+
+    '<div class="timer-phase" id="timerPhase">'+esc(timerLabel())+'</div>'+
     '<div class="timer-btns">'+
-      '<button class="timer-btn primary" id="timerToggleBtn">'+(running?"Pause":"Start")+'</button>'+
-      '<button class="timer-btn" id="timerResetBtn"'+(timerState.elapsedMs===0&&!running?" disabled":"")+'>Reset</button>'+
+      '<button class="timer-btn primary" id="timerToggleBtn">'+(st.running ? "Pause" : (started ? "Continue" : "Start"))+'</button>'+
+      '<button class="timer-btn" id="timerStopBtn"'+(started ? "" : " disabled")+'>Stop</button>'+
     '</div>'+
   '</div>';
 }
@@ -5979,19 +6075,17 @@ function initBlackHoleScene(host){
 }
 function bindTimerCard(host){
   try{ initBlackHoleScene(host); }catch(e){}
-  var tb = host.querySelector("#timerToggleBtn");
-  if(tb) tb.addEventListener("click", timerToggle);
-  var rb = host.querySelector("#timerResetBtn");
-  if(rb) rb.addEventListener("click", timerReset);
+  var tb = host.querySelector("#timerToggleBtn"); if(tb) tb.addEventListener("click", timerToggle);
+  var sb = host.querySelector("#timerStopBtn"); if(sb) sb.addEventListener("click", timerStop);
   var dial = host.querySelector("#timerDialWrap");
   if(dial){
     dial.addEventListener("click", timerToggle);
     dial.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); timerToggle(); } });
   }
-  if(timerState.running){
-    clearInterval(timerInterval);
-    timerInterval = setInterval(timerTick, 1000);
-  }
+  Array.prototype.forEach.call(host.querySelectorAll("[data-tmode]"), function(b){ b.addEventListener("click", function(){ timerSetMode(b.getAttribute("data-tmode")); }); });
+  var ps = host.querySelector("#pomoPreset"); if(ps) ps.addEventListener("change", function(){ timerState.preset = +ps.value; timerSave(); timerUi(); });
+  ensureTimerInterval(); timerAdvance(); timerUi();
+  if(timerState.pending > 0 && !document.getElementById("modalHost")) openTimerSave();
 }
 function renderDashboard(){
   var host = document.getElementById("view-dashboard");
@@ -6867,6 +6961,7 @@ function boot(){
     currentDailyKey = clampKey(todayKey);
 
     migrateExtras();
+    ensureTimerInterval();
     replan();
     // render once immediately with schedule data, before db resolves
     renderView(activeTab);
