@@ -365,6 +365,8 @@
   .week-day .status{flex:0 0 16px; padding-top:3px;}
   .status-dot{width:9px; height:9px; border-radius:50%; background:var(--line);}
   .status-dot.done{background:var(--sage);}
+  .wk-sess{font-size:12.5px; margin-bottom:2px;}
+  .wk-sess b{font-family:var(--font-mono); font-weight:600; color:var(--ink-faint); margin-right:4px;}
   .status-dot.partial{background:var(--gold);}
 
   /* ---- Months ---- */
@@ -3296,6 +3298,20 @@ function loadLocalState(){
   dailyState = lsGetJSON("dossier.state.daily", {});
   mockTests = lsGetJSON("dossier.state.mockTests", []);
 }
+var LEGACY_CLEAN_KEY = "dossier.cleanup.v1";
+function wipeLegacyPlanState(final){
+  if(lsGet(LEGACY_CLEAN_KEY)) return;
+  var months = Object.keys(dailyMonthCache);
+  dailyState = {}; monthsState = {}; dailyMonthCache = {};
+  lsSetJSON("dossier.state.daily", dailyState);
+  lsSetJSON("dossier.state.months", monthsState);
+  if(!final) return;
+  if(db){
+    db.doc("state/months").set({}).catch(function(){});
+    months.forEach(function(id){ db.collection("dailyLog").doc(id).set({days:{}}).catch(function(){}); });
+  }
+  lsSet(LEGACY_CLEAN_KEY, "1");
+}
 function loadState(){
   return Promise.resolve().then(function(){
     if(!db) return;
@@ -5264,6 +5280,26 @@ function dailyHtml(plan){
     (list.length ? list.map(planRow).join("") : '<div class="card empty">Nothing planned on this day.</div>')+
     '<div class="hint">Generated from your weekly plan. Mark sessions done, and log actual time, in the Logs tab.</div>';
 }
+var tierCache = {};
+function tierWords(t){ return (t||"").toLowerCase().replace(/[^a-z0-9 ]+/g," ").split(/\s+/).filter(function(w){ return w.length>3; }); }
+function tierForLeaf(l){
+  var key = l.subject+"|"+l.group+"|"+l.unit;
+  if(key in tierCache) return tierCache[key];
+  var a = tierWords(l.unit+" "+l.group), best = null, bestScore = 0;
+  if(a.length && DATA){
+    DATA.prelimsTopics.concat(DATA.mainsTopics).forEach(function(t){
+      var b = tierWords(t.topic), shared = 0;
+      a.forEach(function(w){ if(b.indexOf(w)>=0) shared++; });
+      var score = shared / Math.min(a.length, b.length || 1);
+      if(shared>=2 && score>bestScore){ bestScore = score; best = t; }
+    });
+  }
+  return (tierCache[key] = bestScore>=0.5 ? tierShort(best.tier) + "|" + tierClass(best.tier) : "");
+}
+function tierBadge(l){
+  var t = tierForLeaf(l).split("|");
+  return t[0] ? ' <span class="chip '+t[1]+'" title="From your Tiers list">'+esc(t[0])+'</span>' : "";
+}
 function progressHtml(plan, states){
   return '<div class="hint">Mark chapters complete as you finish them. When every selected chapter of a subject is complete, the next subject unlocks and the plan recalculates.</div>'+
     states.map(function(s){
@@ -5275,7 +5311,7 @@ function progressHtml(plan, states){
         return '<div class="grp"><div class="gh2"><b>'+esc(g)+'</b><span class="cnt">'+gd+'/'+ls.length+'</span><button type="button" class="btn ghost sm" data-pa="groupDone" data-v="'+esc(ids)+'">'+(gd===ls.length ? "Undo group" : "Mark group complete")+'</button></div>'+
           ls.map(function(l){
             var stt = leafStatus(l.id);
-            return '<div class="leaf st-'+stt+'"><span>'+esc(l.unit)+'</span><select data-pa="leafsel" data-id="'+esc(l.id)+'" aria-label="Status of '+esc(l.unit)+'"><option value="not_started"'+(stt==="not_started"?" selected":"")+'>Not started</option><option value="in_progress"'+(stt==="in_progress"?" selected":"")+'>In progress</option><option value="completed"'+(stt==="completed"?" selected":"")+'>Completed</option></select></div>';
+            return '<div class="leaf st-'+stt+'"><span>'+esc(l.unit)+tierBadge(l)+'</span><select data-pa="leafsel" data-id="'+esc(l.id)+'" aria-label="Status of '+esc(l.unit)+'"><option value="not_started"'+(stt==="not_started"?" selected":"")+'>Not started</option><option value="in_progress"'+(stt==="in_progress"?" selected":"")+'>In progress</option><option value="completed"'+(stt==="completed"?" selected":"")+'>Completed</option></select></div>';
           }).join("")+'</div>';
       }).join("");
       return '<details class="scope progsub" data-prog="'+esc(s.name)+'" style="--bc:var('+s.color+')"'+((progOpen[s.name]!=null ? progOpen[s.name] : s.state==="active")?" open":"")+'><summary><b>'+esc(s.name)+'</b><span class="cnt">'+s.done+'/'+s.total+' &middot; '+s.pct+'%</span><span class="b-tag">'+tag+'</span></summary>'+groups+'</details>';
@@ -5689,7 +5725,6 @@ function renderDashboard(){
 
     plannerDashCard()+
 
-    planSetupCard()+
     resultCard()+
     backupCard()+
 
@@ -5701,9 +5736,6 @@ function renderDashboard(){
       '</div>'+
     '</div>'+
 
-    '<div class="section-title">Today\'s plan</div>'+
-    todayPlanCard(dayObj, tKey, adherencePct, loggedDays, elapsed)+
-
     '<div class="section-title">Study sessions</div>'+
     sessionsDashboardCard()+
 
@@ -5711,7 +5743,6 @@ function renderDashboard(){
     '<div class="progress-grid">'+
       progressCard(ringSvg(100*prelimsDone/prelimsTotal, "var(--navy)"), prelimsDone+"/"+prelimsTotal, "Prelims topics", "--navy")+
       progressCard(ringSvg(100*mainsDone/mainsTotal, "var(--gold)"), mainsDone+"/"+mainsTotal, "Mains topics", "--gold")+
-      progressCard(ringSvg(100*monthsDone/monthsTotal, "var(--sage)"), monthsDone+"/"+monthsTotal, "Months milestoned", "--sage")+
       progressCard(ringSvg(Math.min(100,100*mocksLogged/Math.max(1,mocksTarget)), "var(--brick)"), mocksLogged+"/"+mocksTarget, "Mock tests logged", "--brick")+
     '</div>'+
 
@@ -5786,10 +5817,7 @@ function renderDaily(){
       '<button class="today-btn" id="dayToday">Today</button>'+
     '</div>'+
     '<div class="day-badges">'+badges+'</div>'+
-    whyNextStrip(dayObj)+
     sessionsDayCard(currentDailyKey)+
-    (dayObj ? blockCard("Morning", dayObj.morning, st.m, "m") + blockCard("Evening", dayObj.evening, st.e, "e") :
-      '<div class="card empty">This date is outside the plan window ('+esc(fmtShort(parseKey(DATA.startDate)))+' – '+esc(fmtShort(parseKey(DATA.endDate)))+').</div>')+
     '<div class="notes-card card"><h3>Notes</h3><textarea id="dayNotes" placeholder="How did today go? Anything to revise, retry, or flag for tomorrow...">'+esc(st.notes||"")+'</textarea>'+
     '<div class="save-hint" id="dayNotesHint">'+ (db ? "Saves automatically as you type" : "Not connected. Notes won't be saved.") +'</div></div>';
 
@@ -5798,16 +5826,6 @@ function renderDaily(){
   document.getElementById("dayNext").addEventListener("click", function(){ currentDailyKey = clampKey(toKey(addDays(d,1))); renderDaily(); });
   document.getElementById("dayToday").addEventListener("click", function(){ currentDailyKey = clampKey(todayKey); renderDaily(); });
 
-  Array.prototype.forEach.call(host.querySelectorAll("input[type=checkbox][data-blk]"), function(cb){
-    cb.addEventListener("change", function(){
-      var blk = cb.getAttribute("data-blk"), i = +cb.getAttribute("data-i");
-      var s = getDayState(currentDailyKey);
-      if(!s[blk]) s[blk] = [];
-      s[blk][i] = cb.checked;
-      cb.closest(".task-row").classList.toggle("done", cb.checked);
-      saveDailyMonthDebounced(monthKeyOf(currentDailyKey));
-    });
-  });
   var notesEl = document.getElementById("dayNotes");
   notesEl.addEventListener("input", function(){
     var s = getDayState(currentDailyKey);
@@ -5855,41 +5873,6 @@ function pyqStatLine(pyq){
   var yrs = pyq.years && pyq.years.length ? " · asked "+pyq.years[0]+"–"+pyq.years[pyq.years.length-1] : "";
   return parts.join(" + ")+" ≈ "+total+" PYQ hits"+yrs+" (keyword-matched against your PYQ bank — approximate, not an official count).";
 }
-function whyNextStrip(dayObj){
-  if(!dayObj || dayObj.tag !== "STUDY" || !dayObj.morning || !dayObj.morning[0]) return "";
-  var found = findTopicForText(dayObj.morning[0].text);
-  if(!found) return "";
-  var g = found.group, item = found.item;
-  var state = found.kind === "prelims" ? prelimsState : mainsState;
-  var idx = g.items.indexOf(item);
-  var before = g.items.slice(0, idx);
-  var after = g.items.slice(idx+1, idx+4);
-  var doneBefore = before.filter(function(it){ return state[it.id]; }).length;
-  var label = g.subject || g.paper;
-  var why = 'You’re on <b>'+esc(item.topic)+'</b> because it’s next in the '+esc(label)+' sequence'+
-    (before.length ? ' ('+doneBefore+'/'+before.length+' of the topics before it are checked off)' : ' — it opens this subject’s block')+
-    '. '+pyqStatLine(item.pyq);
-  var pathHtml = before.slice(-2).map(function(it){ return '<li class="'+(state[it.id]?"done":"")+'"><span class="x">'+(state[it.id]?"✓":"○")+'</span> '+esc(it.topic)+'</li>'; }).join("") +
-    '<li class="current"><span class="x">→</span> <b>'+esc(item.topic)+'</b> <span class="chip '+tierClass(item.tier)+'">'+esc(tierShort(item.tier))+'</span></li>' +
-    after.map(function(it){ return '<li><span class="x">○</span> '+esc(it.topic)+'</li>'; }).join("");
-  return '<div class="card why-strip">'+
-    '<div class="why-head">Why this, now</div>'+
-    '<div class="why-text">'+why+'</div>'+
-    '<div class="why-head" style="margin-top:10px;">What’s next in '+esc(label)+'</div>'+
-    '<ul class="why-path">'+pathHtml+'</ul>'+
-  '</div>';
-}
-function blockCard(title, blocks, doneArr, key){
-  var rows = (blocks||[]).map(function(b,i){
-    var checked = doneArr && doneArr[i];
-    var id = "task-"+key+"-"+i;
-    return '<div class="task-row'+(checked?" done":"")+'"><label for="'+id+'">'+
-      '<input type="checkbox" id="'+id+'" data-blk="'+key+'" data-i="'+i+'" '+(checked?"checked":"")+'>'+
-      '<div class="txt"><span class="time">'+esc(b.time)+'</span><span class="desc">'+esc(b.text)+'</span></div>'+
-      '</label></div>';
-  }).join("");
-  return '<div class="block-card '+(key==="e"?"evening":"morning")+' card"><h3><span class="ico"></span>'+title+'</h3>'+rows+'</div>';
-}
 
 // ============================================================================
 // WEEKLY OVERVIEW
@@ -5913,12 +5896,12 @@ function renderWeekly(){
   var html = WEEKS.map(function(w){
     var startD = parseKey(w.start), endD = parseKey(w.end);
     var phase = (DAYS_BY_DATE.get(w.dateKeys[Math.floor(w.dateKeys.length/2)])||{}).phase || "";
-    var doneCount = w.dateKeys.filter(function(k){ return dayComplete(k)==="done"; }).length;
-    var pct = Math.round(100*doneCount/w.dateKeys.length);
+    var wst = sessionStats(sessionsBetween(w.start, w.end));
+    var pct = wst.total ? Math.round(100*wst.done/wst.total) : 0;
     var isCurrent = w.weekNum===currentWeekNum;
     return '<div class="week-card card'+(isCurrent?" open":"")+'" data-week="'+w.weekNum+'">'+
       '<div class="week-head" data-toggle>'+
-        '<div class="l"><div class="w">Week '+w.weekNum+' &middot; '+fmtDM(startD)+' &ndash; '+fmtDM(endD)+'</div><div class="r">'+esc(phase)+sessMini(sessionsBetween(w.start, w.end))+'</div></div>'+
+        '<div class="l"><div class="w">Week '+w.weekNum+' &middot; '+fmtDM(startD)+' &ndash; '+fmtDM(endD)+'</div><div class="r">'+(sessionsBetween(w.start, w.end).length ? sessMini(sessionsBetween(w.start, w.end)) : 'No sessions planned')+'</div></div>'+
         '<div class="r"><div class="week-progress"><i style="width:'+pct+'%"></i></div><span class="chevron">&rsaquo;</span></div>'+
       '</div>'+
       '<div class="week-body">'+ w.dateKeys.map(weekDayRow).join("") +'</div>'+
@@ -5940,14 +5923,12 @@ function renderWeekly(){
   }
 }
 function weekDayRow(dateKey){
-  var d = DAYS_BY_DATE.get(dateKey);
-  var status = dayComplete(dateKey);
-  var am = d ? summarize(d.morning) : "&mdash;";
-  var pm = d ? summarize(d.evening) : "&mdash;";
+  var list = sessionsOn(dateKey), st = sessionStats(list);
+  var status = !list.length ? "none" : (st.done===st.total ? "done" : (st.done ? "partial" : "none"));
   var dt = parseKey(dateKey);
   return '<div class="week-day'+(dateKey===todayKey?" today":"")+'" data-date="'+dateKey+'" role="button" tabindex="0">'+
-    '<div class="dd">'+weekdayAbbr(dt)+'<b>'+dt.getDate()+'</b>'+(d?'<span class="tg">'+esc(d.tag)+'</span>':'')+'</div>'+
-    '<div class="cc"><div class="am"><b>AM</b> '+am+'</div><div class="pm"><b>PM</b> '+pm+'</div>'+sessMini(sessionsOn(dateKey))+'</div>'+
+    '<div class="dd">'+weekdayAbbr(dt)+'<b>'+dt.getDate()+'</b></div>'+
+    '<div class="cc">'+(list.length ? list.map(function(x){ return '<div class="wk-sess"><b>'+esc(x.startTime)+'</b> '+esc(x.kind && x.kind!=="study" && KIND_META[x.kind] ? KIND_META[x.kind].label : (x.subject||x.purpose||"Study"))+(x.syllabusUnit ? ' &middot; '+esc(x.syllabusUnit) : '')+'</div>'; }).join("") : '<span class="muted">No sessions planned</span>')+'</div>'+
     '<div class="status"><span class="status-dot '+status+'"></span></div>'+
   '</div>';
 }
@@ -5964,24 +5945,13 @@ function summarize(blocks){
 function renderMonths(){
   var host = document.getElementById("view-months");
   host.innerHTML = DATA.months.map(function(m){
-    var st = monthsState[m.key] || {};
-    return '<label class="month-card card'+(st.done?" done":"")+'" data-key="'+m.key+'">'+
-      '<input type="checkbox" id="month-'+m.key+'" '+(st.done?"checked":"")+'>'+
+    var list = sessionsBetween(m.start, m.end), st = sessionStats(list);
+    var pct = st.total ? Math.round(100*st.done/st.total) : 0;
+    return '<div class="month-card card'+(st.total && st.done===st.total ? " done" : "")+'" data-key="'+m.key+'">'+
       '<div class="b"><div class="lab">'+esc(m.label)+'</div>'+
-      (m.milestone ? '<div class="milestone">'+esc(m.milestone)+'</div>' : '')+
-      '<div class="focus">'+esc(m.focus)+'</div>'+sessMini(sessionsBetween(m.start, m.end))+'</div>'+
-    '</label>';
+      (list.length ? sessMini(list)+'<div class="week-progress" style="margin-top:8px"><i style="width:'+pct+'%"></i></div>' : '<div class="muted">No sessions planned</div>')+'</div>'+
+    '</div>';
   }).join("");
-
-  Array.prototype.forEach.call(host.querySelectorAll(".month-card"), function(card){
-    var key = card.getAttribute("data-key");
-    card.querySelector("input").addEventListener("change", function(e){
-      if(!monthsState[key]) monthsState[key] = {};
-      monthsState[key].done = e.target.checked;
-      card.classList.toggle("done", e.target.checked);
-      saveMonthsState();
-    });
-  });
 }
 
 // ============================================================================
@@ -6746,7 +6716,7 @@ function boot(){
     QUOTES = results[4];
     CASES = results[5];
     ORIGINAL_TEMPLATE = captureTemplate(); // capture the pristine shipped plan before any regeneration
-    loadLocalState(); // ticks/logs/mock scores from this browser, available even if the db capability never resolves
+    loadLocalState(); wipeLegacyPlanState(false); // ticks/logs/mock scores from this browser, available even if the db capability never resolves
     examResults = loadResults();
     var savedCfg = loadPlanConfig();
     if(savedCfg) applyDynamicPlan(savedCfg.startDate, savedCfg.prelimsDate, savedCfg.mainsDate, false);
@@ -6768,6 +6738,7 @@ function boot(){
       if(resultsFromDb) examResults = Object.assign({}, DEFAULT_RESULTS, resultsFromDb);
     }).catch(function(){}).then(function(){
       dbChecked = true;
+      wipeLegacyPlanState(true);
       renderView(activeTab);
     });
   }).catch(function(err){
