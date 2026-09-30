@@ -948,9 +948,6 @@
   <main>
     <section class="view" id="view-dashboard"></section>
     <section class="view" id="view-planner"></section>
-    <section class="view" id="view-daily"></section>
-    <section class="view" id="view-weekly"></section>
-    <section class="view" id="view-months"></section>
     <section class="view" id="view-prelims"></section>
     <section class="view" id="view-mains"></section>
     <section class="view" id="view-mocks"></section>
@@ -3342,7 +3339,7 @@ function loadLocalState(){
   dailyState = lsGetJSON("dossier.state.daily", {});
   mockTests = lsGetJSON("dossier.state.mockTests", []);
 }
-var LEGACY_CLEAN_KEY = "dossier.cleanup.v1";
+var LEGACY_CLEAN_KEY = "dossier.cleanup.v2";
 function wipeLegacyPlanState(final){
   if(lsGet(LEGACY_CLEAN_KEY)) return;
   var months = Object.keys(dailyMonthCache);
@@ -4238,11 +4235,6 @@ function sessLogCard(s){
     '<div class="sess-links"><button class="link-btn" data-sact="same">Same as scheduled</button>'+(s.kind==="study" && s.topicId ? '<button class="link-btn" data-sact="chapter">'+(leafStatus(s.topicId)==="completed" ? "Chapter completed \u2713" : "Mark chapter complete")+'</button>' : "")+(s.origin==="auto" ? "" : '<button class="link-btn" data-sact="edit">Edit session</button>')+'</div>'+
   '</div>';
 }
-function sessionsDayCard(dateKey){
-  var list = sessionsOn(dateKey), done = list.filter(function(s){ return s.status==="completed"; }).length;
-  return '<div class="card sess-day"><div class="sess-day-head"><h3>Study sessions</h3><span class="muted">'+(list.length ? done+"/"+list.length+" completed" : "none scheduled")+'</span></div>'+
-    (list.length ? list.map(sessLogCard).join("") : '<div class="muted sess-empty">No sessions planned for this day.</div><button class="btn ghost" data-sact="plan">Open Planner</button>')+'</div>';
-}
 function bindSessionCards(host){
   Array.prototype.forEach.call(host.querySelectorAll(".sess-card"), function(card){
     var id = card.getAttribute("data-sid");
@@ -5011,7 +5003,7 @@ function actCard(w, k){
   return '<div class="act-card'+(a.on?" on":"")+'" style="--bc:var('+info.color+')"><label class="tog"><input type="checkbox" data-w="acts.'+k+'.on"> <b>'+esc(info.title)+'</b><small>'+esc(info.hint)+'</small></label>'+body+'</div>';
 }
 function wzActivities(w){
-  return '<h3>Plan Additional UPSC Activities</h3><p class="hint">These run in parallel to your subject order. They appear automatically in the Yearly, Monthly, Weekly and Daily plans and in your Logs, and they never block the next subject from unlocking.</p>'+ACT_KINDS.map(function(k){ return actCard(w, k); }).join("")+weekMapHtml(w);
+  return '<h3>Plan Additional UPSC Activities</h3><p class="hint">These run in parallel to your subject order. They appear automatically in the Yearly, Monthly, Weekly and Daily plans, and they never block the next subject from unlocking.</p>'+ACT_KINDS.map(function(k){ return actCard(w, k); }).join("")+weekMapHtml(w);
 }
 function fmtRange(a, b){ return fmtDM(parseKey(a))+" → "+fmtDM(parseKey(b)); }
 function wzReview(w){
@@ -5259,10 +5251,23 @@ function dailyHtml(plan){
   var d = plannerDay || todayKey;
   plannerDay = d;
   var list = (d>=plan.window.start && d<=plan.window.end) ? planSessionsOn(d) : [];
+  var real = list.filter(function(s){ return !s.projected; }), done = real.filter(function(s){ return s.status==="completed"; }).length;
+  var st = getDayState(d);
   return '<div class="navrow"><button type="button" class="btn ghost sm" data-pa="dPrev">&lsaquo;</button><b>'+esc(fmtLong(parseKey(d)))+'</b><button type="button" class="btn ghost sm" data-pa="dNext">&rsaquo;</button></div>'+
-    '<div class="pill-row"><button type="button" class="btn ghost sm" data-pa="dToday">Today</button><button type="button" class="btn ghost sm" data-pa="openLog" data-v="'+d+'">Open this day in Logs</button></div>'+
-    (list.length ? list.map(planRow).join("") : '<div class="card empty">Nothing planned on this day.</div>')+
-    '<div class="hint">Generated from your weekly plan. Mark sessions done, and log actual time, in the Logs tab.</div>';
+    '<div class="pill-row"><button type="button" class="btn ghost sm" data-pa="dToday">Today</button></div>'+
+    '<div class="card sess-day"><div class="sess-day-head"><h3>Sessions</h3><span class="muted">'+(real.length ? done+"/"+real.length+" completed" : "none scheduled")+'</span></div>'+
+      (list.length ? list.map(function(s){ return s.projected ? planRow(s) : sessLogCard(s); }).join("") : '<div class="muted sess-empty">Nothing planned on this day.</div>')+'</div>'+
+    '<div class="notes-card card"><h3>Notes</h3><textarea id="dayNotes" placeholder="How did today go? Anything to revise or flag for tomorrow...">'+esc(st.notes||"")+'</textarea><div class="save-hint" id="dayNotesHint">'+(db ? "Saves automatically as you type" : "Saved on this device")+'</div></div>'+
+    '<div class="hint">Set a session&rsquo;s status or actual time here. Your plan, progress and dashboard update automatically.</div>';
+}
+function bindPlannerDaily(host){
+  bindSessionCards(host);
+  var ne = host.querySelector("#dayNotes"); if(!ne) return;
+  ne.addEventListener("input", function(){
+    var st = getDayState(plannerDay); st.notes = ne.value;
+    var h = document.getElementById("dayNotesHint"); if(db && h) h.textContent = "Saving…";
+    saveDailyNotesDebounced(plannerDay);
+  });
 }
 
 
@@ -5642,6 +5647,7 @@ function renderPlannerHome(host){
   host.innerHTML =
     '<div class="card pl-title"><div><h2>Preparation Planner</h2><div class="muted">Complete a subject to unlock the next. The calendar follows your progress.</div></div><button type="button" class="btn ghost sm" data-go="reschedule">Reschedule</button></div>'+
     '<div class="pl-tabs">'+PLANNER_TABS.map(function(t){ return '<button type="button" class="'+(t[0]===plannerView?"on":"")+'" data-pa="view" data-v="'+t[0]+'">'+t[1]+'</button>'; }).join("")+'</div>'+body;
+  if(plannerView==="daily") bindPlannerDaily(host);
 }
 function renderPlanner(){
   var host = document.getElementById("view-planner");
@@ -5672,7 +5678,6 @@ function plannerAction(a, el){
     case "dPrev": plannerDay = toKey(addDays(parseKey(plannerDay), -1)); break;
     case "dNext": plannerDay = toKey(addDays(parseKey(plannerDay), 1)); break;
     case "dToday": plannerDay = todayKey; break;
-    case "openLog": currentDailyKey = clampKey(v); setTab("daily"); return;
     case "doneNext": var act = activeSubject(studyPlan), nl = act ? nextLeaf(act) : null; if(nl) setLeaves([nl.id], "completed", "manual"); break;
     case "undoLast":
       var best = null; Object.keys(studyProgress.topics).forEach(function(id){ var t = studyProgress.topics[id]; if(t.status==="completed" && (!best || t.at > studyProgress.topics[best].at)) best = id; });
@@ -5688,7 +5693,7 @@ function plannerAction(a, el){
       savePlan(); replan(); break;
     case "edit": plannerEditing = true; wiz = wizFromPlan(studyPlan); break;
     case "reset":
-      if(!confirm("Reset the plan and chapter progress? Sessions you already logged stay in your Logs.")) return;
+      if(!confirm("Reset the plan and chapter progress? Sessions you already logged stay on this device.")) return;
       studyPlan = null; studyProgress = {topics:{}, lastUnlock:null}; wiz = null;
       try{ localStorage.removeItem(PLAN_KEY); }catch(x){}
       saveProgress();
@@ -5775,11 +5780,6 @@ var TAB_GROUPS = [
   {id:"dashboard", label:"Dashboard", accent:"dashboard"},
   {id:"planner", label:"Planner", accent:"planner"},
   {id:"syllabus", label:"Syllabus", accent:"syllabus"},
-  {id:"logs", label:"Logs", accent:"logs", children:[
-    {id:"daily", label:"Daily"},
-    {id:"weekly", label:"Weekly"},
-    {id:"months", label:"Monthly"},
-  ]},
   {id:"tiers", label:"Tiers", accent:"tiers", children:[
     {id:"prelims", label:"Prelims"},
     {id:"mains", label:"Mains"},
@@ -5854,9 +5854,6 @@ function setTab(id){
 function renderView(id){
   if(id==="dashboard") renderDashboard();
   else if(id==="planner") renderPlanner();
-  else if(id==="daily") renderDaily();
-  else if(id==="weekly") renderWeekly();
-  else if(id==="months") renderMonths();
   else if(id==="prelims") renderChecklist("prelims");
   else if(id==="mains") renderChecklist("mains");
   else if(id==="mocks") renderMocks();
@@ -6024,8 +6021,6 @@ function renderDashboard(){
 
     '<div class="sync-note"><span class="sync-dot '+(saveFailed?"err":(dbReady?"on":""))+'"></span>'+(saveFailed ? "A recent change didn't save. Reload the page to check your progress." : db ? "Progress saves to your account and syncs across devices" : "Not connected. Open this page while signed in to claude.ai to save progress.")+'</div>';
 
-  var go = document.getElementById("dashToday");
-  if(go) go.addEventListener("click", function(){ currentDailyKey = clampKey(tKey); setTab("daily"); });
   bindTimerCard(host);
   bindPlanSetupCard(host);
   bindResultCard(host);
@@ -6040,51 +6035,12 @@ function countdownBlock(label, days, dateKey){
     '<div class="sub">'+fmtShort(parseKey(dateKey))+'</div></div>';
 }
 // ============================================================================
-// DAILY LOG
+// DAY HELPERS
 // ============================================================================
 function clampKey(k){
   if(k < DATA.startDate) return DATA.startDate;
   if(k > DATA.endDate) return DATA.endDate;
   return k;
-}
-function renderDaily(){
-  currentDailyKey = clampKey(currentDailyKey);
-  var host = document.getElementById("view-daily");
-  var d = parseKey(currentDailyKey);
-  var dayObj = DAYS_BY_DATE.get(currentDailyKey);
-  var st = getDayState(currentDailyKey);
-
-  var badges = "";
-  if(dayObj){
-    badges += '<span class="chip '+tagClass(dayObj.tag)+'">'+esc(dayObj.tag)+'</span>';
-    badges += '<span class="chip tier4">'+esc(dayObj.phase)+'</span>';
-  }
-
-  host.innerHTML =
-    '<div class="day-nav">'+
-      '<button id="dayPrev" aria-label="Previous day">&lsaquo;</button>'+
-      '<div class="day-picker"><div class="d">'+esc(fmtDM(d))+' '+d.getFullYear()+'</div><div class="w">'+esc(weekdayAbbr(d))+'</div></div>'+
-      '<button id="dayNext" aria-label="Next day">&rsaquo;</button>'+
-      '<button class="today-btn" id="dayToday">Today</button>'+
-    '</div>'+
-    '<div class="day-badges">'+badges+'</div>'+
-    (studyPlan ? '<div class="log-links"><button type="button" class="link-btn" data-go="day" data-date="'+currentDailyKey+'">Open this day in Planner &rsaquo;</button><button type="button" class="link-btn" data-go="priority" data-subj="'+esc(((planSessionsOn(currentDailyKey).filter(function(x){ return x.kind==="study"; })[0]||{}).subject)||"")+'">Topic priority (Tiers) &rsaquo;</button><button type="button" class="link-btn" data-go="reschedule">Reschedule &rsaquo;</button></div>' : "")+
-    sessionsDayCard(currentDailyKey)+
-    '<div class="notes-card card"><h3>Notes</h3><textarea id="dayNotes" placeholder="How did today go? Anything to revise, retry, or flag for tomorrow...">'+esc(st.notes||"")+'</textarea>'+
-    '<div class="save-hint" id="dayNotesHint">'+ (db ? "Saves automatically as you type" : "Not connected. Notes won't be saved.") +'</div></div>';
-
-  bindSessionCards(host);
-  document.getElementById("dayPrev").addEventListener("click", function(){ currentDailyKey = clampKey(toKey(addDays(d,-1))); renderDaily(); });
-  document.getElementById("dayNext").addEventListener("click", function(){ currentDailyKey = clampKey(toKey(addDays(d,1))); renderDaily(); });
-  document.getElementById("dayToday").addEventListener("click", function(){ currentDailyKey = clampKey(todayKey); renderDaily(); });
-
-  var notesEl = document.getElementById("dayNotes");
-  notesEl.addEventListener("input", function(){
-    var s = getDayState(currentDailyKey);
-    s.notes = notesEl.value;
-    if(db) document.getElementById("dayNotesHint").textContent = "Saving…";
-    saveDailyNotesDebounced(currentDailyKey);
-  });
 }
 var saveDailyNotesDebounced = debounce(function(dateKey){
   var p = saveDailyMonth(monthKeyOf(dateKey));
@@ -6137,86 +6093,6 @@ function pyqStatLine(pyq){
   var total = (pyq.prelims||0)+(pyq.mains||0);
   var yrs = pyq.years && pyq.years.length ? " · asked "+pyq.years[0]+"–"+pyq.years[pyq.years.length-1] : "";
   return parts.join(" + ")+" ≈ "+total+" PYQ hits"+yrs+" (keyword-matched against the verified questions in the bank — approximate, not an official count).";
-}
-
-// ============================================================================
-// WEEKLY OVERVIEW
-// ============================================================================
-function dayComplete(dateKey){
-  var s = dailyState[dateKey];
-  var d = DAYS_BY_DATE.get(dateKey);
-  if(!s || !d) return "none";
-  var total = (d.morning||[]).length + (d.evening||[]).length;
-  var done = (s.m||[]).filter(Boolean).length + (s.e||[]).filter(Boolean).length;
-  if(total===0) return "none";
-  if(done>=total) return "done";
-  if(done>0) return "partial";
-  return "none";
-}
-function renderWeekly(){
-  var host = document.getElementById("view-weekly");
-  var currentWeekNum = null;
-  WEEKS.forEach(function(w){ if(todayKey>=w.start && todayKey<=w.end) currentWeekNum = w.weekNum; });
-
-  var html = WEEKS.map(function(w){
-    var startD = parseKey(w.start), endD = parseKey(w.end);
-    var phase = (DAYS_BY_DATE.get(w.dateKeys[Math.floor(w.dateKeys.length/2)])||{}).phase || "";
-    var wst = sessionStats(sessionsBetween(w.start, w.end));
-    var pct = wst.total ? Math.round(100*wst.done/wst.total) : 0;
-    var isCurrent = w.weekNum===currentWeekNum;
-    return '<div class="week-card card'+(isCurrent?" open":"")+'" data-week="'+w.weekNum+'">'+
-      '<div class="week-head" data-toggle>'+
-        '<div class="l"><div class="w">Week '+w.weekNum+' &middot; '+fmtDM(startD)+' &ndash; '+fmtDM(endD)+'</div><div class="r">'+(sessionsBetween(w.start, w.end).length ? sessMini(sessionsBetween(w.start, w.end)) : 'No sessions planned')+'</div></div>'+
-        '<div class="r"><div class="week-progress"><i style="width:'+pct+'%"></i></div><span class="chevron">&rsaquo;</span></div>'+
-      '</div>'+
-      '<div class="week-body">'+ w.dateKeys.map(weekDayRow).join("") +'</div>'+
-    '</div>';
-  }).join("");
-
-  host.innerHTML = html;
-
-  bindToggles(host);
-  Array.prototype.forEach.call(host.querySelectorAll(".week-day"), function(row){
-    var open = function(){ currentDailyKey = row.getAttribute("data-date"); setTab("daily"); };
-    row.addEventListener("click", open);
-    row.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); open(); } });
-  });
-
-  if(currentWeekNum!==null){
-    var target = host.querySelector('.week-card[data-week="'+currentWeekNum+'"]');
-    if(target) setTimeout(function(){ target.scrollIntoView({block:"center"}); }, 30);
-  }
-}
-function weekDayRow(dateKey){
-  var list = sessionsOn(dateKey), st = sessionStats(list);
-  var status = !list.length ? "none" : (st.done===st.total ? "done" : (st.done ? "partial" : "none"));
-  var dt = parseKey(dateKey);
-  return '<div class="week-day'+(dateKey===todayKey?" today":"")+'" data-date="'+dateKey+'" role="button" tabindex="0">'+
-    '<div class="dd">'+weekdayAbbr(dt)+'<b>'+dt.getDate()+'</b></div>'+
-    '<div class="cc">'+(list.length ? list.map(function(x){ return '<div class="wk-sess"><b>'+esc(x.startTime)+'</b> '+esc(x.kind && x.kind!=="study" && KIND_META[x.kind] ? KIND_META[x.kind].label : (x.subject||x.purpose||"Study"))+(x.syllabusUnit ? ' &middot; '+esc(x.syllabusUnit) : '')+'</div>'; }).join("") : '<span class="muted">No sessions planned</span>')+'</div>'+
-    '<div class="status"><span class="status-dot '+status+'"></span></div>'+
-  '</div>';
-}
-function summarize(blocks){
-  if(!blocks || !blocks.length) return "&mdash;";
-  var text = blocks.map(function(b){ return b.text; }).join(" / ");
-  text = esc(text.length>70 ? text.slice(0,68)+"…" : text);
-  return text;
-}
-
-// ============================================================================
-// MONTHS
-// ============================================================================
-function renderMonths(){
-  var host = document.getElementById("view-months");
-  host.innerHTML = DATA.months.map(function(m){
-    var list = sessionsBetween(m.start, m.end), st = sessionStats(list);
-    var pct = st.total ? Math.round(100*st.done/st.total) : 0;
-    return '<div class="month-card card'+(st.total && st.done===st.total ? " done" : "")+'" data-key="'+m.key+'">'+
-      '<div class="b"><div class="lab">'+esc(m.label)+'</div>'+
-      (list.length ? sessMini(list)+'<div class="week-progress" style="margin-top:8px"><i style="width:'+pct+'%"></i></div>' : '<div class="muted">No sessions planned</div>')+'</div>'+
-    '</div>';
-  }).join("");
 }
 
 // ============================================================================
