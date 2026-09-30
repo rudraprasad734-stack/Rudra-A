@@ -232,6 +232,19 @@
   .timer-mode select{border:1px solid rgba(255,255,255,.22);background:rgba(3,5,12,.6);color:#fff;border-radius:999px;padding:4px 8px;font:inherit;font-size:11.5px;min-height:30px;}
   .timer-card .timer-total{position:absolute;left:0;right:0;top:calc(49% + 84px);z-index:8;text-align:center;font-size:12px;line-height:1.2;color:rgba(255,255,255,.9);}
   .timer-phase{position:absolute;left:0;right:0;top:calc(49% + 54px);line-height:1.2;z-index:8;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.78);}
+  .timer-phase{display:flex;align-items:center;justify-content:center;gap:9px;}
+  .timer-phase .dots{display:inline-flex;gap:5px;}
+  .timer-phase .dots i{width:8px;height:8px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:transparent;transition:background .6s,box-shadow .6s;}
+  .timer-phase .dots i.done{background:#ffd9a0;border-color:#ffd9a0;box-shadow:0 0 8px rgba(255,190,110,.7);}
+  .timer-phase .dots i.now{border-color:#ffd9a0;animation:pomoPulse 2.4s ease-in-out infinite;}
+  @keyframes pomoPulse{0%,100%{box-shadow:0 0 0 rgba(255,190,110,0);}50%{box-shadow:0 0 9px rgba(255,190,110,.8);}}
+  .timer-card.pomo .timer-display{font-size:36px;letter-spacing:.05em;color:#fff4dc;text-shadow:0 0 14px rgba(255,170,80,.55);transition:color .8s,text-shadow .8s;}
+  .timer-card.pomo.brk .timer-display{color:#e2f4ff;text-shadow:0 0 14px rgba(110,180,255,.6);}
+  .timer-card.pomo .timer-btn.primary{background:rgba(120,58,12,.62);border-color:rgba(255,196,120,.5);}
+  .timer-card.pomo.brk .timer-btn.primary{background:rgba(20,60,130,.62);border-color:rgba(150,210,255,.5);}
+  .timer-card.pomo .timer-phase{color:rgba(255,232,196,.9);}
+  .timer-card.pomo.brk .timer-phase{color:rgba(206,236,255,.92);}
+  @media (prefers-reduced-motion:reduce){.timer-phase .dots i.now{animation:none;}}
   .timer-btn.primary{background:rgba(24,34,70,.72);color:#fff;border-color:rgba(255,255,255,.28);}
   .timer-btn:disabled{opacity:.45;cursor:not-allowed;}
   .timer-dial-wrap{position:absolute;left:50%;top:49%;transform:translate(-50%,-50%);width:170px;height:92px;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;z-index:6;display:flex;align-items:center;justify-content:center;background:transparent;border:0;box-shadow:none;}
@@ -5897,6 +5910,12 @@ function timerAddToToday(ms){
   Object.keys(log).forEach(function(k){ if(k < cutoff) delete log[k]; });
   try { lsSet("dossier.timerLog", JSON.stringify(log)); } catch(e){}
 }
+function timerVisual(){
+  var st = timerState;
+  if(st.mode!=="pomo") return {pomo:false};
+  var p = Math.max(0, Math.min(1, timerSeg()/pomoLen(st.phase)));
+  return {pomo:true, focus:st.phase==="focus", p:p, running:st.running};
+}
 function timerSave(){ try{ localStorage.setItem(TIMER_KEY, JSON.stringify(timerState)); }catch(e){} }
 var POMO_PRESETS = [["25 / 5",25,5],["30 / 5",30,5],["45 / 10",45,10],["50 / 10",50,10]];
 function pomoLen(phase){ var p = POMO_PRESETS[timerState.preset] || POMO_PRESETS[0]; return (phase==="focus" ? p[1] : (phase==="short" ? p[2] : 15))*60000; }
@@ -5942,14 +5961,23 @@ function timerLabel(){
   var st = timerState;
   if(st.mode==="free") return st.running ? "Studying" : (st.accMs>0 ? "Paused" : "Stopwatch");
   var nm = st.phase==="focus" ? "Focus "+((st.cycle % 4)+1)+" of 4" : (st.phase==="long" ? "Long break" : "Short break");
-  return nm+(st.running || st.accMs>0 ? "" : " · ready")+(!st.running && st.accMs>0 ? " · paused" : "");
+  var left = Math.ceil(Math.max(0, pomoLen(st.phase)-timerSeg())/60000);
+  var tail = st.running ? " · "+left+" min left" : (st.accMs>0 ? " · paused" : " · ready");
+  return nm+tail;
+}
+function timerDotsHtml(){
+  var st = timerState, done = st.phase==="long" ? 4 : st.cycle % 4, out = "";
+  for(var i=0;i<4;i++) out += '<i class="'+(i<done ? "done" : (i===done && st.phase==="focus" ? "now" : ""))+'"></i>';
+  return out;
 }
 function timerUi(){
   var d = document.getElementById("timerDisplay"); if(!d) return;
   var st = timerState, started = st.running || st.accMs>0 || st.studyMs>0;
   d.textContent = fmtTimer(timerDisplayMs());
   var t = document.getElementById("timerTodayTotal"); if(t) t.textContent = "Today "+fmtTimer(timerBanked()+timerStudyMs());
-  var ph = document.getElementById("timerPhase"); if(ph) ph.textContent = timerLabel();
+  var ph = document.getElementById("timerPhaseText"); if(ph) ph.textContent = timerLabel();
+  var dt = document.getElementById("timerDots"); if(dt) dt.innerHTML = timerDotsHtml();
+  var card = document.querySelector(".timer-card"); if(card){ card.classList.toggle("pomo", st.mode==="pomo"); card.classList.toggle("brk", st.mode==="pomo" && st.phase!=="focus"); }
   var tb = document.getElementById("timerToggleBtn"); if(tb) tb.textContent = st.running ? "Pause" : (started ? "Continue" : "Start");
   var sb = document.getElementById("timerStopBtn"); if(sb) sb.disabled = !started;
   var dw = document.getElementById("timerDialWrap"); if(dw){ dw.classList.toggle("running", st.running); dw.setAttribute("aria-pressed", st.running ? "true" : "false"); }
@@ -6015,7 +6043,7 @@ function timerSetMode(m){
 }
 function timerCard(){
   var st = timerState, started = st.running || st.accMs>0 || st.studyMs>0;
-  return '<div class="card timer-card">'+
+  return '<div class="card timer-card '+(st.mode==="pomo" ? "pomo"+(st.phase!=="focus" ? " brk" : "") : "free")+'">'+
     '<canvas class="black-hole-scene" id="blackHoleScene" aria-hidden="true"></canvas>'+
     '<div class="timer-mode" role="group" aria-label="Timer mode">'+
       '<button type="button" class="tm'+(st.mode==="free" ? " on" : "")+'" data-tmode="free"'+(started ? " disabled" : "")+'>Stopwatch</button>'+
@@ -6026,7 +6054,7 @@ function timerCard(){
     '<div class="timer-dial-wrap'+(st.running ? " running" : "")+'" id="timerDialWrap" role="button" tabindex="0" aria-pressed="'+(st.running ? "true" : "false")+'" aria-label="Start or pause study timer">'+
       '<div class="timer-dial-face"><div class="timer-display" id="timerDisplay">'+fmtTimer(timerDisplayMs())+'</div></div>'+
     '</div>'+
-    '<div class="timer-phase" id="timerPhase">'+esc(timerLabel())+'</div>'+
+    '<div class="timer-phase" id="timerPhase">'+(st.mode==="pomo" ? '<span class="dots" id="timerDots">'+timerDotsHtml()+'</span>' : "")+'<span id="timerPhaseText">'+esc(timerLabel())+'</span></div>'+
     '<div class="timer-btns">'+
       '<button class="timer-btn primary" id="timerToggleBtn">'+(st.running ? "Pause" : (started ? "Continue" : "Start"))+'</button>'+
       '<button class="timer-btn" id="timerStopBtn"'+(started ? "" : " disabled")+'>Stop</button>'+
@@ -6034,21 +6062,58 @@ function timerCard(){
   '</div>';
 }
 function initBlackHoleScene(host){
-  if(blackHoleAnimFrame){cancelAnimationFrame(blackHoleAnimFrame);blackHoleAnimFrame=null;}
+  if(blackHoleAnimFrame){cancelAnimationFrame(blackHoleAnimFrame);clearInterval(blackHoleAnimFrame);blackHoleAnimFrame=null;}
   var canvas=host.querySelector("#blackHoleScene"),ctx=canvas&&canvas.getContext("2d");if(!ctx)return;
   var reduced=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var dpr=Math.min(window.devicePixelRatio||1,2),w=1,h=1,cx=0,cy=0,scale=1,particles=[],count=150;
   function resize(){var r=canvas.getBoundingClientRect();w=Math.max(1,r.width);h=Math.max(1,r.height);canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);cx=w*.5;cy=h*.49;scale=Math.min(w,h)/2;}
   function spawn(p){p.r=.34+Math.random()*.88;p.a=Math.random()*Math.PI*2;p.prevR=p.r;p.prevA=p.a;p.pull=.00045+Math.random()*.0018;p.spin=(Math.random()<.75?1:-1)*(.002+Math.random()*.007);p.size=.4+Math.random()*1.25;p.alpha=.3+Math.random()*.7;p.warm=Math.random()<.2;p.life=0;p.max=500+Math.random()*1000;}
   for(var i=0;i<count;i++){var p={};spawn(p);particles.push(p);}
+  var fillCur = null, dust = [];
+  for(var di=0; di<48; di++) dust.push({a:Math.random()*6.283, r:Math.sqrt(Math.random()), s:.25+Math.random()*.6, size:.5+Math.random()*1.1, tw:Math.random()*6.283});
+  function drawFill(t, pv, holeR){
+    var target = pv.focus ? pv.p : 1 - pv.p;
+    if(fillCur===null) fillCur = target;
+    fillCur += (target - fillCur) * 0.05;
+    var f = Math.max(0, Math.min(1, fillCur)), warm = pv.focus;
+    var c1 = warm ? "255,236,190" : "205,240,255", c2 = warm ? "255,150,50" : "90,170,255", c3 = warm ? "140,36,8" : "18,46,140";
+    if(f > 0.002){
+      var top = cy + holeR - 2*holeR*f, amp = 2.6*Math.min(1, Math.sin(Math.PI*f)*3);
+      ctx.save(); ctx.beginPath(); ctx.arc(cx, cy, holeR-0.5, 0, Math.PI*2); ctx.clip();
+      ctx.beginPath(); ctx.moveTo(cx-holeR-3, cy+holeR+3);
+      for(var x=cx-holeR-3; x<=cx+holeR+3; x+=3){ ctx.lineTo(x, top + Math.sin(x*.045 + t*.0013)*amp + Math.sin(x*.02 - t*.0009)*amp*.6); }
+      ctx.lineTo(cx+holeR+3, cy+holeR+3); ctx.closePath();
+      var g = ctx.createLinearGradient(0, top-4, 0, cy+holeR);
+      g.addColorStop(0, "rgba("+c1+",.96)"); g.addColorStop(.16, "rgba("+c2+",.92)"); g.addColorStop(1, "rgba("+c3+",.94)");
+      ctx.fillStyle = g; ctx.fill();
+      ctx.beginPath();
+      for(var x2=cx-holeR-3, first=true; x2<=cx+holeR+3; x2+=3){ var y2 = top + Math.sin(x2*.045 + t*.0013)*amp + Math.sin(x2*.02 - t*.0009)*amp*.6; if(first){ ctx.moveTo(x2, y2); first=false; } else ctx.lineTo(x2, y2); }
+      ctx.strokeStyle = "rgba("+c1+",.9)"; ctx.lineWidth = 1.2; ctx.stroke();
+      for(var k=0; k<dust.length; k++){
+        var d = dust[k], ang = d.a + t*d.s*.00018, rr = d.r*holeR*.92, px = cx + Math.cos(ang)*rr, py = cy + Math.sin(ang)*rr;
+        if(py < top + 3) continue;
+        ctx.globalAlpha = .28 + .3*Math.sin(t*.0016 + d.tw);
+        ctx.fillStyle = "#fff"; ctx.beginPath(); ctx.arc(px, py, d.size, 0, Math.PI*2); ctx.fill();
+      }
+      ctx.globalAlpha = 1; ctx.restore();
+    }
+    ctx.beginPath(); ctx.arc(cx, cy, holeR, 0, Math.PI*2);
+    ctx.strokeStyle = "rgba("+c1+","+(0.22 + 0.6*f)+")"; ctx.lineWidth = 1.6; ctx.stroke();
+    if(f > 0.92){
+      var hg = ctx.createRadialGradient(cx, cy, holeR, cx, cy, holeR*1.9);
+      hg.addColorStop(0, "rgba("+c1+","+((f-.92)*3.2)+")"); hg.addColorStop(1, "rgba("+c2+",0)");
+      ctx.fillStyle = hg; ctx.beginPath(); ctx.arc(cx, cy, holeR*1.9, 0, Math.PI*2); ctx.fill();
+    }
+  }
   function draw(t){
     try{
+    var pv = timerVisual(), sp = pv.pomo ? .6 : 1;
     ctx.clearRect(0,0,w,h);ctx.fillStyle="#010207";ctx.fillRect(0,0,w,h);
     var bg=ctx.createRadialGradient(cx,cy,0,cx,cy,scale*1.15);bg.addColorStop(0,"rgba(28,8,2,.55)");bg.addColorStop(.45,"rgba(6,8,18,.35)");bg.addColorStop(1,"rgba(0,0,0,0)");ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);
-    for(var i=0;i<particles.length;i++){var p=particles[i];p.prevR=p.r;p.prevA=p.a;if(!reduced){p.r-=p.pull/(Math.max(.11,p.r)*Math.max(.11,p.r));p.a+=p.spin*(1+.7/Math.max(.18,p.r));p.life++;}if(!reduced&&(p.r<.12||p.life>p.max))spawn(p);var rr=p.r*scale,x=cx+Math.cos(p.a)*rr,y=cy+Math.sin(p.a)*rr*.55,px=cx+Math.cos(p.prevA)*p.prevR*scale,py=cy+Math.sin(p.prevA)*p.prevR*scale*.55;if(!reduced){ctx.strokeStyle=p.warm?"rgba(255,160,80,.28)":"rgba(205,225,255,.28)";ctx.lineWidth=Math.max(.3,p.size*.5);ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(x,y);ctx.stroke();}ctx.fillStyle=p.warm?"rgba(255,215,165,"+p.alpha+")":"rgba(225,238,255,"+p.alpha+")";ctx.beginPath();ctx.arc(x,y,p.size,0,Math.PI*2);ctx.fill();}
+    for(var i=0;i<particles.length;i++){var p=particles[i];p.prevR=p.r;p.prevA=p.a;if(!reduced){p.r-=sp*p.pull/(Math.max(.11,p.r)*Math.max(.11,p.r));p.a+=sp*p.spin*(1+.7/Math.max(.18,p.r));p.life++;}if(!reduced&&(p.r<.12||p.life>p.max))spawn(p);var rr=p.r*scale,x=cx+Math.cos(p.a)*rr,y=cy+Math.sin(p.a)*rr*.55,px=cx+Math.cos(p.prevA)*p.prevR*scale,py=cy+Math.sin(p.prevA)*p.prevR*scale*.55;if(!reduced){ctx.strokeStyle=p.warm?"rgba(255,160,80,.28)":"rgba(205,225,255,.28)";ctx.lineWidth=Math.max(.3,p.size*.5);ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(x,y);ctx.stroke();}ctx.fillStyle=p.warm?"rgba(255,215,165,"+p.alpha+")":"rgba(225,238,255,"+p.alpha+")";ctx.beginPath();ctx.arc(x,y,p.size,0,Math.PI*2);ctx.fill();}
     ctx.save();ctx.translate(cx,cy);ctx.rotate(t*.00032);for(var b=0;b<10;b++){var base=scale*(.145+b*.021);ctx.beginPath();for(var q=0;q<=240;q++){var a=q/240*Math.PI*2,rr=base*(1+.014*Math.sin(a*6+b)),x=Math.cos(a)*rr,y=Math.sin(a)*rr*.29,bend=1+.25*Math.pow(Math.max(0,1-rr/(scale*.42)),2);x*=bend;y*=bend;if(q)ctx.lineTo(x,y);else ctx.moveTo(x,y);}ctx.strokeStyle="rgba(255,"+(195-b*10)+","+(95-b*6)+","+(0.10+b*.018)+")";ctx.lineWidth=1+b*.42;ctx.shadowBlur=9;ctx.shadowColor="rgba(255,100,20,.38)";ctx.stroke();}ctx.restore();
     ctx.save();ctx.translate(cx,cy);ctx.scale(1,.34);ctx.rotate(-t*.00055);var ag=ctx.createLinearGradient(-scale*.5,0,scale*.5,0);ag.addColorStop(0,"rgba(255,60,5,0)");ag.addColorStop(.3,"rgba(255,125,25,.38)");ag.addColorStop(.5,"rgba(255,245,190,1)");ag.addColorStop(.7,"rgba(255,110,20,.35)");ag.addColorStop(1,"rgba(255,40,0,0)");ctx.strokeStyle=ag;ctx.lineWidth=Math.max(2,scale*.02);ctx.shadowBlur=16;ctx.shadowColor="rgba(255,100,15,.85)";ctx.beginPath();ctx.arc(0,0,scale*.31,Math.PI*1.02,Math.PI*1.98);ctx.stroke();ctx.restore();
-    var holeR = Math.min(62, scale * 0.28);
+    var holeR = pv.pomo ? Math.min(78, scale * 0.42) : Math.min(62, scale * 0.28);
     var ringR = holeR * 1.22;
     var rg = ctx.createRadialGradient(cx, cy, holeR * 0.72, cx, cy, ringR * 1.08);
     rg.addColorStop(0, "#000");
@@ -6064,6 +6129,7 @@ function initBlackHoleScene(host){
     ctx.beginPath();
     ctx.arc(cx, cy, holeR, 0, Math.PI * 2);
     ctx.fill();
+    if(pv.pomo) drawFill(t, pv, holeR);
     if(!reduced && typeof requestAnimationFrame==="function") blackHoleAnimFrame=requestAnimationFrame(draw);
     }catch(e){
       console.error("Timer scene animation failed:",e);
@@ -6072,6 +6138,7 @@ function initBlackHoleScene(host){
     }
   }
   resize();if(window.ResizeObserver){var ro=new ResizeObserver(resize);ro.observe(canvas);}draw(performance.now());
+  if(reduced) blackHoleAnimFrame = setInterval(function(){ if(!canvas.isConnected){ clearInterval(blackHoleAnimFrame); return; } draw(performance.now()); }, 1000);
 }
 function bindTimerCard(host){
   try{ initBlackHoleScene(host); }catch(e){}
