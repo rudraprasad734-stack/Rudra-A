@@ -3692,6 +3692,7 @@ var DEFAULT_TIMES = [["06:00","08:00"],["10:00","12:00"],["16:00","17:00"],["19:
 var profile = lsGetJSON(PROFILE_KEY, null);
 var studySessions = lsGetJSON(SESSIONS_KEY, []);
 if(!Array.isArray(studySessions)) studySessions = [];
+(function(){ var ch = false; studySessions.forEach(function(x){ if(x.paper==="CSAT"){ x.paper = "GS 2 (CSAT)"; ch = true; } }); if(ch) lsSetJSON(SESSIONS_KEY, studySessions); })();
 function saveSessions(){ lsSetJSON(SESSIONS_KEY, studySessions); }
 function uid(){ return "s-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,8); }
 
@@ -3814,6 +3815,15 @@ var CURR_CSAT = CT({
   "Decision Making": "Problem Solving: Decision-Making Cases; Situation Analysis | General Mental Ability: Mental Ability; Data Sufficiency",
   "Numeracy": "Basic Numeracy: Number System; Percentages, Ratio and Averages; Time, Speed and Work | Data Interpretation: Tables and Graphs; Charts and Caselets"
 });
+var CURR_PRELIMS_GS1 = (function(){
+  var g1 = CURR_GS["GS 1"], g2 = CURR_GS["GS 2"], g3 = CURR_GS["GS 3"];
+  return {
+    "History": g1["History"], "Art & Culture": g1["Art & Culture"], "Geography": g1["Geography"],
+    "Polity": g2["Polity"], "Governance": g2["Governance"], "Social Justice": g2["Social Justice"],
+    "Economy": g3["Economy"], "Agriculture": g3["Agriculture"], "Environment": g3["Environment"], "Science & Technology": g3["Science & Technology"],
+    "Current Events": {"National Events":["Government Decisions","Schemes and Policies","Judgments and Legislation"], "International Events":["Summits and Agreements","Global Organisations","Conflicts and Diplomacy"], "Reports and Indices":["Economic Indices","Social Indices","Environmental Indices"]}
+  };
+})();
 var CURR_ESSAY = (function(){
   var themes = ["Society","Governance and Public Policy","Economy and Development","Environment and Technology","Ethics and Philosophy","International Affairs"], o = {};
   themes.forEach(function(t){
@@ -3868,17 +3878,18 @@ function curriculumCA(){
 }
 function paperOptions(purpose){
   if(!purpose) return [];
-  if(purpose==="Prelims") return ["GS 1","GS 2","GS 3","GS 4","CSAT"];
+  if(purpose==="Prelims") return ["GS 1","GS 2 (CSAT)"];
   if(purpose==="Mains") return ["GS 1","GS 2","GS 3","GS 4","Essay"];
   if(purpose==="Optional") return optionalNames();
   if(purpose==="Essay") return ["Essay"];
   if(purpose==="Current Affairs") return ["General"];
-  return ["GS 1","GS 2","GS 3","GS 4","CSAT","Essay"].concat(optionalNames());
+  return ["GS 1","GS 2","GS 3","GS 4","GS 2 (CSAT)","Essay"].concat(optionalNames());
 }
 function treeFor(purpose, paper){
   if(purpose==="Current Affairs") return curriculumCA();
   if(CURR_OPT[paper]) return CURR_OPT[paper];
-  if(paper==="CSAT") return CURR_CSAT;
+  if(paper==="GS 2 (CSAT)" || paper==="CSAT") return CURR_CSAT;
+  if(purpose==="Prelims" && paper==="GS 1") return CURR_PRELIMS_GS1;
   if(paper==="Essay") return CURR_ESSAY;
   return CURR_GS[paper] || null;
 }
@@ -3905,6 +3916,15 @@ function validateDraft(d){
   if(!d.start || !d.end) errs.push("set a start and end time.");
   else if(toMin(d.end) <= toMin(d.start)) errs.push("end time must be after the start time.");
   return errs;
+}
+function sanitizeDraft(d){
+  var bad = false;
+  CHAIN.forEach(function(f, i){
+    if(bad){ d[f] = ""; return; }
+    var list = f==="purpose" ? PURPOSES : (f==="paper" ? paperOptions(d.purpose) : (f==="subject" ? subjectOptions(d) : (f==="topic" ? topicOptions(d) : unitOptions(d))));
+    if(d[f] && list.indexOf(d[f])<0){ d[f] = ""; bad = true; }
+  });
+  return d;
 }
 function findOverlaps(items){
   var msgs = [], sorted = items.filter(function(x){ return x.start && x.end && toMin(x.end)>toMin(x.start); }).sort(function(a,b){ return toMin(a.start)-toMin(b.start); });
@@ -4090,7 +4110,7 @@ function generateSchedule(){
 // ---------- edit an existing session ----------
 function openSessionEditor(id){
   var s = sessionById(id); if(!s) return;
-  var d = recToDraft(s);
+  var d = sanitizeDraft(recToDraft(s));
   var m = showModal(
     '<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="seTitle">'+
       '<h2 id="seTitle">Edit Session '+s.sessionNumber+'</h2>'+
