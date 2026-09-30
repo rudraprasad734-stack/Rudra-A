@@ -1,32 +1,23 @@
 # Sync audit: syllabus > Tiers > topics > subtopics > previous-year questions
 
-Generated from the app itself (`Planner > Priority > Run sync check`). Re-run it any time; the numbers below are from the build that added the Drive subtopics.
+Generated from the app itself (`Planner > Priority > Run sync check`). Re-run it any time.
 
-## What was read from the Google Drive folder "Upsc syllabus original and subtopics"
-| File | Used for |
-|---|---|
-| Sub topic listings. .pdf (IAS Score, GS Paper I to IV) | Subtopics under each GS chapter (main source) |
-| httpsblog.iasscore.in...Syllabus_Update_C.pdf | Subtopic detail for History, Culture, Geography, Polity, Governance, Society |
-| Shankar IAS .pdf (Prelims decoded syllabus) | Prelims-level subtopics: Geography, Polity, Economics, Environment, S&T |
-| Prelims detailed syllabus.pdf (Drishti test-series outline) | Cross-check of Prelims topic coverage; gaps were added as subtopics |
-| Mains-Topicwise-PYQs-Booklet_Unacademy.pdf | The Mains trend tables (marks per topic cluster, 2013-2022) shown as "Mains load" on the Priority tab |
-| Upsc syllabus.pdf | Official wording, used for the syllabus-line check |
-
-The PDFs are two-column scans and the text extraction is jumbled in places. Only lines that could be read cleanly were kept. 41 chapters the PDFs do not break down carry subtopics written from the official UPSC syllabus wording (marked `@o` in the source data). The last section of the sub-topic listing (a 2016-17 current-affairs list) was left out on purpose because it is dated. The Essay half of the Unacademy booklet was not used because the Essay tree already covers it.
+## Reference material used
+Syllabus sub-topic listings for GS Paper I to IV, a Prelims topic outline, decoded Prelims syllabus notes and topic-wise Mains trend tables. Extraction from the scanned PDFs is imperfect, so only lines that could be read cleanly were kept. 41 chapters the references do not break down carry subtopics written from the official UPSC syllabus wording. A dated current-affairs list and the Essay trend pages were left out.
 
 ## Result
 - Official syllabus lines (Prelims GS I + Mains GS I-IV): 82 of 83 covered by a planner topic.
-- Prelims topic outline (Drishti): 301 of 314 lines covered (book lists, magazines and OCR noise were filtered out).
-- Tier entries: 144 of 145 have a planner chapter. Existing Tier entries were not changed or removed; 11 new Tier 4 / Low-yield entries were added for Drive topics that had none.
+- Prelims topic outline: 301 of 314 lines covered (book lists, magazines and OCR noise filtered out).
+- Tier entries: 144 of 145 have a planner chapter. Existing Tier entries were not changed or removed; 11 Tier 4 / Low-yield entries were added for topics that had none.
 - Planner chapters: 271 in total, 32 of them new, all 271 with subtopics (1451 subtopics).
-- Mains load: 208 chapters sit in one of 47 topic clusters that have a 2013-2022 marks trend.
+- Past Mains marks: 208 chapters sit in one of 47 topic clusters that have a 2013-2022 marks table.
 - Previous-year questions: 1431 of 1678 GS questions in the bank map to at least one chapter; 248 chapters and 670 subtopics have at least one.
 
 ## Still not covered
 - Prelims GS I: General issues on Environmental Ecology, Biodiversity and Climate Change — that do not require subject specialisation [not found: that do not require subject specialisation]
 - Prelims · Current Affairs & Society: Rolling last 12-15 months of current affairs (govt schemes, reports/indices, appointments, agreements)
 
-## Prelims outline lines not matched (mostly OCR noise or the same line twice)
+## Outline lines not matched (mostly OCR noise or duplicates)
 - Important concepts: The Union Executive, Parliament, The State Executive, Judiciary, Local Government, Elections and Electoral reforms, Special Provisions for S
 - Judiciary: ofkational Income
 - Taxes, Subsidies etc
@@ -39,7 +30,6 @@ The PDFs are two-column scans and the text extraction is jumbled in places. Only
 - Superconductivity,Artificial Intelligence, Genetic Engineering
 - Wildlife Trade (TRAFFIC), Trafficking (CAWT), Timber Org (ITT0), Global Tiger Forum (GTF)
 - Superconductivity, Artificial Intelligence, Genetic Engineering
-- Drishti General Science VII, VIII, IX, X
 
 ## Questions that match no chapter (first 40)
 Mostly Prelims stems that lose their options in the bank ("Consider the following..."), Ethics case studies and quotations, and one-off current-affairs items.
@@ -87,6 +77,7 @@ Mostly Prelims stems that lose their options in the bank ("Consider the followin
 
 ## Method notes
 - One matcher drives every count and list: topic keywords (light stemming, British/American spelling folded) must cover 80% of the keyword weight in a question, and at least two keywords when the phrase has two or more. Precision is favoured over recall, so a count is a floor, not the true number.
-- The bank holds Prelims GS I 2014, 2015, 2020, 2021, 2024, 2025 and a 2023 sample, and Mains GS I-IV 2014-2026. Other Prelims years are not included until they are verified.
-- New chapters get Tier 2 / 3 / 4 from how many bank questions match them (8+ / 3+ / fewer), so they move as the bank grows.
-- The marks in the trend tables are read as marks per year out of the 250-mark paper (the values are multiples of 2.5, in step with 10 and 12.5 mark questions); the booklet does not print the unit.
+- The bank holds Prelims GS I 2014, 2015, 2020, 2021, 2024, 2025 and a 2023 sample, and Mains GS I-IV 2014-2026.
+- New chapters get Tier 2 / 3 / 4 from how many bank questions match them (8+ / 3+ / fewer).
+- Marks in the trend tables are read as marks per year out of the 250-mark paper.
+- **Disclaimer:** every tier, count and trend is based on previous years' questions. Past patterns do not guarantee what UPSC will ask next and can change any year; use them as a study guide, not a forecast.
