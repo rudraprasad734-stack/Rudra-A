@@ -4927,9 +4927,10 @@ function wizGenerate(){
   for(var s=0; s<7; s++) errs = errs.concat(wizValidate(wiz, s));
   if(errs.length){ wiz.err = errs; wizRender(); return; }
   var wasEditing = !!studyPlan;
-  var keepLeave = studyPlan && studyPlan.leave;
+  var keepLeave = studyPlan && studyPlan.leave, keepCatch = studyPlan && studyPlan.catchup;
   studyPlan = compilePlan(wiz);
   if(keepLeave) studyPlan.leave = keepLeave;
+  if(keepCatch) studyPlan.catchup = keepCatch.filter(function(d){ return d >= todayKey; });
   Object.keys(studyProgress.topics).forEach(function(id){ if(!studyPlan.sel[id]) delete studyProgress.topics[id]; });
   saveProgress(); savePlan();
   replan();
@@ -5644,7 +5645,7 @@ function remTick(){
   var now = new Date(), mins = now.getHours()*60 + now.getMinutes(), t = toKey(now), changed = false;
   planSessionsOn(t).forEach(function(x){
     if(x.projected || x.status==="completed" || x.status==="skipped") return;
-    var start = toMin(x.startTime), key = t+"|"+x.id+"|s";
+    var start = toMin(x.startTime), key = t+"|"+x.startTime+"|s"; // one reminder per time slot: replans change session ids and topics
     if(mins >= start - remState.lead && mins < toMin(x.endTime) && !remState.sent[key]){
       remState.sent[key] = 1; changed = true;
       var lead = start - mins;
