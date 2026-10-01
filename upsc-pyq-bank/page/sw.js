@@ -1,7 +1,7 @@
 // UPSC Companion service worker: caches the app shell so the page loads and
 // runs with zero network connectivity after the first successful visit.
 // Bump CACHE_NAME on any deploy that changes cached files so clients refresh.
-const CACHE_NAME = "upsc-companion-v28";
+const CACHE_NAME = "upsc-companion-v29";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -51,6 +51,16 @@ self.addEventListener("fetch", (event) => {
           // the app shell itself rather than a browser error page.
           if (req.mode === "navigate") return caches.match("./index.html");
         });
+    })
+  );
+});
+
+self.addEventListener("notificationclick", (event) => {
+  event.notification.close();
+  event.waitUntil(
+    self.clients.matchAll({type: "window", includeUncontrolled: true}).then((list) => {
+      for (const c of list) { if ("focus" in c) return c.focus(); }
+      if (self.clients.openWindow) return self.clients.openWindow("./");
     })
   );
 });

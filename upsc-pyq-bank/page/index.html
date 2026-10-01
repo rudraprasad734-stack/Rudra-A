@@ -766,6 +766,20 @@
   .pl-title h2, .wz-head h2{margin:0; font-family:var(--font-display); font-size:22px;}
   .pl-title .muted, .wz-head .muted{color:rgba(255,255,255,.88);}
   .wz-head .link-btn{color:#fff; text-decoration:underline;}
+  .catch-banner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 14px; margin:0 0 10px; border-left:4px solid var(--brick);}
+  .catch-banner .muted{font-size:12px;}
+  .catch-opts{display:grid; gap:8px; margin:8px 0;}
+  .catch-o{border:1px solid var(--line); border-radius:10px; padding:10px 12px; display:grid; gap:6px;}
+  .catch-o .muted{font-size:12px; line-height:1.45;}
+  .catch-list{margin:6px 0 10px; padding-left:18px; font-size:13px; display:grid; gap:3px;}
+  .ins-card{padding:14px 16px; margin:0 0 12px;}
+  .ins-card h3{font-size:14px; margin:0 0 6px;}
+  .ins-verdict{font-weight:700; font-size:14px; margin:0 0 10px;}
+  .ins-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:0 0 10px;}
+  .ins-stat{background:var(--surface-2); border-radius:10px; padding:8px 4px; text-align:center;}
+  .ins-stat b{display:block; font-size:18px;} .ins-stat span{font-size:10.5px; color:var(--ink-soft);}
+  .ins-row, .rem-row{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:7px 0; border-top:1px solid var(--line-soft); font-size:13px;}
+  .rem-row select{max-width:55%;}
   .pl-tabs{display:flex; gap:6px; overflow-x:auto; padding-bottom:6px; margin-bottom:10px; scrollbar-width:none;}
   .pl-tabs::-webkit-scrollbar{display:none;}
   .pl-tabs button{flex:0 0 auto; min-height:38px; padding:7px 14px; border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; font-size:14px; font-weight:600; cursor:pointer;}
@@ -4389,7 +4403,7 @@ function simulate(plan, from, frozen, strict){
       if(fz.some(function(f){ return overlapR({start:f.startTime, end:f.endTime}, a); })) return;
       dayNew.push(mkActivity(a.kind, d, a.start, a.end, ctx));
     });
-    if(plan.capacity.days.indexOf(dow) >= 0){
+    if(plan.capacity.days.indexOf(dow) >= 0 || (plan.catchup && plan.catchup.indexOf(d) >= 0)){
       var cnt = (plan.capacity.perDay && plan.capacity.perDay[dow] != null) ? +plan.capacity.perDay[dow] : plan.capacity.sessions.length;
       var revToday = 0;
       plan.capacity.sessions.slice(0, cnt).forEach(function(sl){
@@ -4931,7 +4945,7 @@ function wizGenerate(){
 // PLANNER HOME: LEGO chain + Yearly / Monthly / Weekly / Daily + Progress
 // ============================================================================
 var progOpen = {}, plannerView = "overview", plannerLanding = null, plannerMonth = null, plannerWeek = null, plannerDay = null;
-var PLANNER_TABS = [["overview","Overview"],["yearly","Yearly"],["monthly","Monthly"],["weekly","Weekly"],["daily","Daily"],["progress","Progress"],["priority","Priority"]];
+var PLANNER_TABS = [["overview","Overview"],["yearly","Yearly"],["monthly","Monthly"],["weekly","Weekly"],["daily","Daily"],["progress","Progress"],["priority","Priority"],["insights","Insights"]];
 function kindMeta(s){ return KIND_META[s.kind] || {label:s.purpose, color:"--tab-scheduler"}; }
 function fmtMonthKey(mk){ return new Date(+mk.slice(0,4), +mk.slice(5,7)-1, 1).toLocaleDateString(undefined, {month:"long", year:"numeric"}); }
 function fmtMonthShort(mk){ return new Date(+mk.slice(0,4), +mk.slice(5,7)-1, 1).toLocaleDateString(undefined, {month:"short", year:"numeric"}); }
@@ -5461,6 +5475,196 @@ function progressHtml(plan, states){
       return '<details class="scope progsub" data-prog="'+esc(s.name)+'" style="--bc:var('+s.color+')"'+((progOpen[s.name]!=null ? progOpen[s.name] : s.state==="active")?" open":"")+'><summary><b>'+esc(s.name)+'</b><span class="cnt">'+s.done+'/'+s.total+' &middot; '+s.pct+'%</span><span class="b-tag">'+tag+'</span></summary>'+groups+'</details>';
     }).join("");
 }
+
+// ---------- Insights: weekly review, catch-up when behind, reminders ----------
+var REM_KEY = "dossier.reminders.v1", CATCH_KEY = "dossier.catchup.v1", insWeek = null;
+var remState = Object.assign({on:false, lead:10, eod:true, eodTime:"21:00", sent:{}}, lsGetJSON(REM_KEY, {}) || {});
+var catchState = Object.assign({promptedOn:""}, lsGetJSON(CATCH_KEY, {}) || {});
+function remSave(){ lsSetJSON(REM_KEY, remState); }
+function saveCatch(){ lsSetJSON(CATCH_KEY, catchState); }
+
+function missedSessions(){
+  if(!studyPlan) return [];
+  var from = toKey(addDays(parseKey(todayKey), -14));
+  return studySessions.filter(function(x){ return x.kind==="study" && x.status==="missed" && !x.ack && x.date>=from && x.date<todayKey && x.topicId && !isDone(x.topicId) && studyPlan.sel[x.topicId]; });
+}
+function missedLeaves(){
+  var by = {}, out = [];
+  missedSessions().forEach(function(x){
+    var m = by[x.topicId];
+    if(!m){ m = by[x.topicId] = {id:x.topicId, unit:x.syllabusUnit, subject:x.subject, topic:x.topic, count:0, last:x.date}; out.push(m); }
+    m.count++; if(x.date > m.last) m.last = x.date;
+  });
+  out.sort(function(a,b){ return a.last < b.last ? 1 : -1; });
+  return out;
+}
+function ackMissed(){
+  var now = new Date().toISOString();
+  missedSessions().forEach(function(x){ x.ack = true; x.updatedAt = now; });
+  saveSessions();
+}
+function catchFreeDays(n){
+  var out = [];
+  for(var i=1;i<=28 && out.length<n;i++){
+    var d = toKey(addDays(parseKey(todayKey), i));
+    if(d > studyPlan.window.end) break;
+    if(onLeave(studyPlan, d) || studyPlan.capacity.days.indexOf(dowOf(d)) >= 0) continue;
+    out.push(d);
+  }
+  return out;
+}
+// returns false when nothing was changed (so the caller keeps its dialog open)
+function catchApply(kind){
+  var ml = missedLeaves(), n = missedSessions().length;
+  if(!ml.length) return false;
+  var msg;
+  if(kind==="squeeze"){
+    var per = Math.max(1, studyPlan.capacity.sessions.length), days = catchFreeDays(Math.ceil(n/per));
+    if(!days.length){ toast("You have no free days in the next 4 weeks to squeeze these into. Choose Shift everything or Skip instead."); return false; }
+    studyPlan.catchup = (studyPlan.catchup || []).filter(function(d){ return d >= todayKey; }).concat(days);
+    msg = "Catch-up added on "+days.map(function(d){ return fmtDM(parseKey(d)); }).join(", ")+". The rest of the plan keeps its dates.";
+  } else if(kind==="skip"){
+    ml.forEach(function(m){ delete studyPlan.sel[m.id]; if(studyPlan.cfg && studyPlan.cfg.sel) delete studyPlan.cfg.sel[m.id]; });
+    msg = ml.length+(ml.length===1 ? " chapter was" : " chapters were")+" removed from your plan. You can add them back from Edit plan.";
+  } else {
+    msg = "Everything has shifted later. Missed chapters are back at the front of your queue.";
+  }
+  ackMissed(); savePlan(); replan(); viewCache = null;
+  toast(msg);
+  return true;
+}
+function catchBannerHtml(){
+  var ml = missedLeaves(); if(!ml.length) return "";
+  var n = missedSessions().length;
+  return '<div class="card catch-banner" role="status"><div><b>You are '+n+' session'+(n===1 ? "" : "s")+' behind.</b><div class="muted">'+ml.length+' chapter'+(ml.length===1 ? "" : "s")+' to make up. You choose how.</div></div><button type="button" class="btn primary sm" data-pa="catchopen">Catch up</button></div>';
+}
+function catchOptionsHtml(){
+  var per = Math.max(1, studyPlan.capacity.sessions.length), free = catchFreeDays(Math.ceil(missedSessions().length/per)).length;
+  return '<div class="catch-opts">'+
+    '<div class="catch-o"><b>Shift everything</b><div class="muted">Missed chapters go back to the front of the queue and the whole plan moves later.</div><button type="button" class="btn ghost sm" data-pa="catch" data-v="shift">Shift everything</button></div>'+
+    '<div class="catch-o"><b>Squeeze into free time</b><div class="muted">'+(free ? "Adds study sessions on your days off. The rest of the plan keeps its dates." : "You have no days off in the next 4 weeks, so this is not available.")+'</div><button type="button" class="btn ghost sm" data-pa="catch" data-v="squeeze"'+(free ? "" : " disabled")+'>Squeeze into days off</button></div>'+
+    '<div class="catch-o"><b>Skip these topics</b><div class="muted">Remove them from your plan for now. Add them back any time from Edit plan.</div><button type="button" class="btn ghost sm" data-pa="catch" data-v="skip">Skip these topics</button></div>'+
+  '</div>';
+}
+function openCatchup(){
+  var ml = missedLeaves(); if(!ml.length) return;
+  var n = missedSessions().length;
+  var m = showModal('<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="cuTitle">'+
+    '<h2 id="cuTitle">You have fallen behind</h2>'+
+    '<p>You missed <b>'+n+' session'+(n===1 ? "" : "s")+'</b> covering:</p>'+
+    '<ul class="catch-list">'+ml.slice(0,8).map(function(x){ return '<li><b>'+esc(x.unit)+'</b> <span class="muted">'+esc(x.subject)+(x.count>1 ? " · "+x.count+" sessions" : "")+'</span></li>'; }).join("")+(ml.length>8 ? '<li class="muted">and '+(ml.length-8)+' more</li>' : "")+'</ul>'+
+    '<p class="muted">What would you like to do?</p>'+catchOptionsHtml()+
+    '<div class="modal-actions"><button class="btn ghost" id="cuLater">Decide later</button></div></div>', false);
+  m.querySelector("#cuLater").addEventListener("click", function(){ catchState.promptedOn = todayKey; saveCatch(); closeModal(); renderView(activeTab); });
+  Array.prototype.forEach.call(m.querySelectorAll("[data-pa=catch]"), function(b){
+    b.addEventListener("click", function(){ if(catchApply(b.getAttribute("data-v"))===false) return; closeModal(); renderView(activeTab); });
+  });
+}
+
+function weekReview(mon){
+  var days = [], i; for(i=0;i<7;i++) days.push(toKey(addDays(mon, i)));
+  var first = days[0], last = days[6], r = {first:first, last:last, planned:0, done:0, missed:0, skipped:0, left:0, plannedMin:0, actualMin:0, subj:{}, chapters:[], timerMs:0};
+  studySessions.forEach(function(x){
+    if(x.date < first || x.date > last) return;
+    r.planned++; r.plannedMin += x.duration||0; r.actualMin += x.actualDuration||0;
+    if(x.status==="completed") r.done++; else if(x.status==="missed") r.missed++; else if(x.status==="skipped") r.skipped++; else if(x.date >= todayKey) r.left++;
+    if(x.kind==="study"){ var a = r.subj[x.subject] || (r.subj[x.subject] = {planned:0, done:0}); a.planned++; if(x.status==="completed") a.done++; }
+  });
+  Object.keys(studyProgress.topics).forEach(function(id){
+    var t = studyProgress.topics[id];
+    if(t.status==="completed" && t.completedAt >= first && t.completedAt <= last) r.chapters.push(id.split("|").slice(-1)[0]);
+  });
+  var log = {}; try{ log = JSON.parse(lsGet("dossier.timerLog")||"{}"); }catch(e){}
+  days.forEach(function(d){ r.timerMs += +log[d] || 0; });
+  return r;
+}
+function insightsHtml(plan, states){
+  var mon = insWeek ? parseKey(insWeek) : mondayOf(parseKey(todayKey));
+  insWeek = toKey(mon);
+  var r = weekReview(mon), isNow = insWeek === toKey(mondayOf(parseKey(todayKey)));
+  var counted = r.done + r.missed + r.skipped, rate = counted ? Math.round(100*r.done/counted) : 0;
+  var verdict = !r.planned ? "Nothing was scheduled this week." : (r.missed ? "You missed "+r.missed+" session"+(r.missed===1 ? "" : "s")+" this week." : (r.done ? "Nice work. You are on track." : "Nothing is finished yet this week."));
+  var rows = Object.keys(r.subj).map(function(k){ var a = r.subj[k]; return '<div class="ins-row"><span>'+esc(k)+'</span><b>'+a.done+'/'+a.planned+'</b></div>'; }).join("");
+  var hrs = function(m){ return fmtDurMin(m); };
+  var perm = ("Notification" in window) ? Notification.permission : "unsupported";
+  var rem = '<div class="card ins-card"><h3>Reminders</h3>'+
+    '<div class="muted">A notification before each session and a nudge to log your day. They appear while the app is open or running in the background. Browsers cannot wake a fully closed app without a server.</div>'+
+    '<div class="rem-row"><span>Study reminders</span><button type="button" class="pill'+(remState.on ? " on" : "")+'" data-pa="remon" aria-pressed="'+(remState.on ? "true" : "false")+'">'+(remState.on ? "On" : "Off")+'</button></div>'+
+    '<div class="rem-row"><span>Remind me before a session</span><select data-pa="remlead" aria-label="Minutes before">'+[0,5,10,15,30].map(function(v){ return '<option value="'+v+'"'+(remState.lead===v ? " selected" : "")+'>'+(v ? v+" min before" : "At start time")+'</option>'; }).join("")+'</select></div>'+
+    '<div class="rem-row"><span>Evening nudge to log progress</span><select data-pa="remeod" aria-label="Evening nudge">'+['off','19:00','20:00','21:00','22:00'].map(function(v){ return '<option value="'+v+'"'+((v==="off" ? !remState.eod : remState.eod && remState.eodTime===v) ? " selected" : "")+'>'+(v==="off" ? "Off" : fmt12(v))+'</option>'; }).join("")+'</select></div>'+
+    (remState.on && perm==="denied" ? '<div class="form-err">Notifications are blocked for this site in your browser settings. Allow them there to get reminders.</div>' : "")+
+    (perm==="unsupported" ? '<div class="muted">This browser does not support notifications.</div>' : '<button type="button" class="btn ghost sm" data-pa="remtest">Send a test reminder</button>')+
+  '</div>';
+  var catchCard = missedLeaves().length ? '<div class="card ins-card"><h3>Catch up</h3><div class="muted">You have missed sessions. Choose how to make them up.</div>'+catchOptionsHtml()+'</div>' : "";
+  return '<div class="navrow"><button type="button" class="btn ghost sm" data-pa="iPrev" aria-label="Previous week">&lsaquo;</button><b>'+esc(fmtDM(mon))+' – '+esc(fmtDM(addDays(mon,6)))+(isNow ? " · this week" : "")+'</b><button type="button" class="btn ghost sm" data-pa="iNext" aria-label="Next week">&rsaquo;</button></div>'+
+    (isNow ? "" : '<div class="pill-row"><button type="button" class="btn ghost sm" data-pa="iNow">This week</button></div>')+
+    '<div class="card ins-card"><h3>Weekly review</h3><div class="ins-verdict">'+esc(verdict)+'</div>'+
+      '<div class="ins-grid">'+
+        '<div class="ins-stat"><b>'+r.done+'</b><span>done</span></div>'+
+        '<div class="ins-stat"><b>'+r.missed+'</b><span>missed</span></div>'+
+        '<div class="ins-stat"><b>'+r.left+'</b><span>still to come</span></div>'+
+        '<div class="ins-stat"><b>'+rate+'%</b><span>completed</span></div>'+
+      '</div>'+
+      '<div class="ins-row"><span>Planned time</span><b>'+esc(hrs(r.plannedMin))+'</b></div>'+
+      '<div class="ins-row"><span>Logged in sessions</span><b>'+esc(hrs(r.actualMin))+'</b></div>'+
+      '<div class="ins-row"><span>Timer study time</span><b>'+esc(hrs(Math.round(r.timerMs/60000)))+'</b></div>'+
+      '<div class="ins-row"><span>Chapters finished</span><b>'+r.chapters.length+'</b></div>'+
+      (r.chapters.length ? '<div class="muted small">'+r.chapters.map(esc).join(" · ")+'</div>' : "")+
+      (rows ? '<div class="section-title">By subject</div>'+rows : "")+
+    '</div>'+catchCard+rem;
+}
+
+// ---- reminders ----
+function remNotify(title, body, tag){
+  var o = {body:body, tag:tag};
+  try{
+    if("Notification" in window && Notification.permission==="granted"){
+      if(navigator.serviceWorker && navigator.serviceWorker.getRegistration){
+        navigator.serviceWorker.getRegistration().then(function(reg){ if(reg && reg.showNotification) reg.showNotification(title, o); else new Notification(title, o); }).catch(function(){ try{ new Notification(title, o); }catch(e){} });
+      } else new Notification(title, o);
+    }
+  }catch(e){}
+  if(document.visibilityState==="visible") toast(title+" — "+body);
+}
+function remToggle(){
+  if(remState.on){ remState.on = false; remSave(); renderPlanner(); return; }
+  if(!("Notification" in window)){ toast("This browser does not support notifications."); return; }
+  function done(p){
+    if(p==="granted"){ remState.on = true; remSave(); toast("Reminders are on."); }
+    else toast("Notifications are not allowed. Turn them on in your browser settings to get reminders.");
+    renderPlanner();
+  }
+  try{
+    var res = Notification.requestPermission(done);
+    if(res && typeof res.then==="function") res.then(done);
+  }catch(e){ done("denied"); }
+}
+function remTick(){
+  if(!remState.on || !studyPlan || !("Notification" in window) || Notification.permission!=="granted") return;
+  var now = new Date(), mins = now.getHours()*60 + now.getMinutes(), t = toKey(now), changed = false;
+  planSessionsOn(t).forEach(function(x){
+    if(x.projected || x.status==="completed" || x.status==="skipped") return;
+    var start = toMin(x.startTime), key = t+"|"+x.id+"|s";
+    if(mins >= start - remState.lead && mins < toMin(x.endTime) && !remState.sent[key]){
+      remState.sent[key] = 1; changed = true;
+      var lead = start - mins;
+      remNotify(lead > 0 ? "Study session in "+lead+" min" : "Time to study", fmt12(x.startTime)+" · "+x.subject+" › "+(x.syllabusUnit||x.topic), key);
+    }
+  });
+  if(remState.eod && mins >= toMin(remState.eodTime) && !remState.sent[t+"|eod"]){
+    var open = planSessionsOn(t).filter(function(x){ return !x.projected && (x.status==="not_started" || x.status==="in_progress"); }).length;
+    remState.sent[t+"|eod"] = 1; changed = true;
+    if(open) remNotify("Log today's progress", open+" session"+(open===1 ? " is" : "s are")+" not marked yet. It takes a minute.", t+"|eod");
+  }
+  if(changed){
+    var cut = toKey(addDays(now, -3));
+    Object.keys(remState.sent).forEach(function(k){ if(k.slice(0,10) < cut) delete remState.sent[k]; });
+    remSave();
+  }
+}
+setInterval(remTick, 30000);
+document.addEventListener("visibilitychange", function(){ if(document.visibilityState==="visible") remTick(); });
+
 function renderPlannerHome(host){
   var plan = studyPlan, states = subjectStates(plan), body;
   if(plannerView==="yearly") body = yearlyHtml(plan, states);
@@ -5469,10 +5673,11 @@ function renderPlannerHome(host){
   else if(plannerView==="daily") body = dailyHtml(plan);
   else if(plannerView==="progress") body = progressHtml(plan, states);
   else if(plannerView==="priority") body = priorityHtml(plan, states);
+  else if(plannerView==="insights") body = insightsHtml(plan, states);
   else body = overviewHtml(plan, states);
   host.innerHTML =
     '<div class="card pl-title"><div><h2>Preparation Planner</h2><div class="muted">Complete a subject to unlock the next. The calendar follows your progress.</div></div><button type="button" class="btn ghost sm" data-go="reschedule">Reschedule</button></div>'+
-    '<div class="pl-tabs">'+PLANNER_TABS.map(function(t){ return '<button type="button" class="'+(t[0]===plannerView?"on":"")+'" data-pa="view" data-v="'+t[0]+'">'+t[1]+'</button>'; }).join("")+'</div>'+body;
+    '<div class="pl-tabs">'+PLANNER_TABS.map(function(t){ return '<button type="button" class="'+(t[0]===plannerView?"on":"")+'" data-pa="view" data-v="'+t[0]+'">'+t[1]+'</button>'; }).join("")+'</div>'+(plannerView==="insights" ? "" : catchBannerHtml())+body;
   if(plannerView==="daily") bindPlannerDaily(host);
 }
 function renderPlanner(){
@@ -5485,6 +5690,7 @@ function renderPlanner(){
   }
   if(plannerLanding){ plannerView = plannerLanding==="yearly" ? "yearly" : "monthly"; plannerLanding = null; }
   renderPlannerHome(host);
+  if(missedLeaves().length && catchState.promptedOn !== todayKey && !document.getElementById("modalHost")) openCatchup();
 }
 
 // ---------- actions ----------
@@ -5494,6 +5700,15 @@ function plannerAction(a, el){
   switch(a){
     case "view": plannerView = v; break;
     case "prisubj": priSubject = el.value; break;
+    case "catchopen": openCatchup(); return;
+    case "catch": if(catchApply(v)===false) return; break;
+    case "iPrev": insWeek = toKey(addDays(parseKey(insWeek || toKey(mondayOf(parseKey(todayKey)))), -7)); break;
+    case "iNext": insWeek = toKey(addDays(parseKey(insWeek || toKey(mondayOf(parseKey(todayKey)))), 7)); break;
+    case "iNow": insWeek = null; break;
+    case "remon": remToggle(); return;
+    case "remlead": remState.lead = +el.value; remSave(); break;
+    case "remeod": remState.eod = el.value!=="off"; if(el.value!=="off") remState.eodTime = el.value; remSave(); break;
+    case "remtest": remNotify("Study reminder test", "This is how your reminders will look.", "rem-test"); toast("Test reminder sent."); return;
     case "audit": auditCache = syncAudit(); break;
     case "openMonth": plannerMonth = v; plannerView = "monthly"; break;
     case "openDay": plannerDay = v; plannerView = "daily"; break;
@@ -5554,7 +5769,7 @@ function wirePlanner(host){
       cat.map[sn].topics[g].forEach(function(u){ var lid = sn+"|"+g+"|"+u; if(t.checked) wiz.sel[lid] = 1; else delete wiz.sel[lid]; });
       wiz.open[sn] = true; wizRender(); return;
     }
-    if(t.getAttribute("data-pa")==="leafsel" || t.getAttribute("data-pa")==="pace" || t.getAttribute("data-pa")==="prisubj") plannerAction(t.getAttribute("data-pa"), t);
+    if(["leafsel","pace","prisubj","remlead","remeod"].indexOf(t.getAttribute("data-pa"))>=0) plannerAction(t.getAttribute("data-pa"), t);
   });
   host.addEventListener("toggle", function(e){
     var d = e.target;
