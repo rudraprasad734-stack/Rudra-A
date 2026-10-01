@@ -6074,7 +6074,7 @@ function dxPlanHtml(){
       '<button type="button" class="dx-btn" data-go="subjday" data-subj="'+esc(act.name)+'">Go to Planner</button>'+
       '<button type="button" class="dx-btn2" data-go="priority" data-subj="'+esc(act.name)+'">Topic Priority (Tiers) &rsaquo;</button></div>'
     : '<div class="dx-card dx-mod"><div class="dx-k">ALL SUBJECTS COMPLETED</div><div class="dx-subj">Well done</div><button type="button" class="dx-btn" data-go="day">Open planner</button></div>';
-  var pace = '<div class="dx-card dx-pace"><div class="dx-k">TODAY</div><div class="dx-seg">'+(segs || '<i></i><i></i><i></i><i></i>')+'</div><small>Planned '+esc(fmtDurMin(tp))+' &middot; done '+esc(fmtDurMin(ta))+'</small></div>';
+  var pace = '<div class="dx-card dx-pace"><div class="dx-k">TODAY</div><div class="dx-seg">'+(segs || '<i></i><i></i><i></i><i></i>')+'</div><small>Planned '+esc(fmtDurMin(tp))+' &middot; Actual '+esc(fmtDurMin(ta))+'</small></div>';
   var pyq = '<div class="dx-card dx-pyq"><div class="dx-k">RECENT PYQ QUESTION</div>'+
     (q && q.q ? '<p>'+esc(String(q.q.text).replace(/\s+/g," ").trim().slice(0, 150))+(String(q.q.text).length > 150 ? "…" : "")+'</p><small>'+(q.q.exam==="prelims" ? "Prelims" : (q.q.exam==="optional" ? "Optional" : "Mains"))+" "+q.q.year+'</small><button type="button" class="dx-btn" data-pyq="'+esc(nl.id)+'" data-subj="'+esc(act.name)+'">Solve Now ('+q.n+')</button>'
       : '<p>No question in the bank matched this chapter yet.</p><button type="button" class="dx-btn" data-dx="pyq">Open PYQ Bank</button>')+'</div>';
