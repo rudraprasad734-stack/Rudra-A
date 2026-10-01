@@ -4894,15 +4894,15 @@ function pinCheck(idx, subject, prev, path){
   var start = pinEstimate(subject, idx); if(start === undefined) return;
   var from = maxKey(todayKey, wiz.start);
   if(start && start <= toKey(addDays(parseKey(from), 30))) return;   // starts within 30 days: nothing to warn about
-  var K = wiz.order.indexOf(subject) + 1, N = wiz.order.length;
-  if(K < 2) return;
+  var K = wiz.order.indexOf(subject) + 1, N = wiz.order.length, S = wiz.cap.sessions.length;
+  if(K <= S) return;   // the sessions per day already cover this place in Priority: the pin matches the list
   var when = start ? "would not start until <b>"+esc(fmtDM(parseKey(start)))+" "+parseKey(start).getFullYear()+"</b> (about "+Math.max(1, Math.round(diffDays(start, from)/7))+" weeks away)" : "would not be reached inside your plan window";
   var defPos = Math.min(2, K-1);
   var opts = wiz.order.slice(0, K-1).map(function(nm, i){ return '<option value="'+(i+1)+'"'+(i+1===defPos ? " selected" : "")+'>'+(i+1)+(i===0 ? " (top)" : "")+' &mdash; before '+esc(nm)+'</option>'; }).join("");
   var m = showModal('<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="pinTitle">'+
     '<h2 id="pinTitle">This subject is far down your Priority</h2>'+
     '<p><b>'+esc(subject)+'</b> is number <b>'+K+'</b> of '+N+' in Priority and '+when+'.</p>'+
-    '<p>Pinning it to <b>Session '+(idx+1)+'</b> makes you study it alongside the main subject from the start, so its place in Priority no longer decides when it begins. Do you also want to move it up so the order matches what you will actually study?</p>'+
+    '<p>You study <b>'+S+' session'+(S===1 ? "" : "s")+' a day</b>, so only the first '+S+' subject'+(S===1 ? "" : "s")+' in Priority run side by side. Pinning it to <b>Session '+(idx+1)+'</b> makes you study it alongside the main subject from the start, so its place in Priority no longer decides when it begins. Do you also want to move it up so the order matches what you will actually study?</p>'+
     '<div class="cf"><label for="pinPos">Move it to position</label><select id="pinPos">'+opts+'</select></div>'+
     '<div class="modal-actions"><button class="btn ghost" id="pinCancel">Do not pin it</button><button class="btn ghost" id="pinKeep">Keep Priority as it is</button><button class="btn primary" id="pinMove">Move it up</button></div></div>', false);
   m.querySelector("#pinMove").addEventListener("click", function(){ var pos = +m.querySelector("#pinPos").value; moveOrder(K-1, pos-1); closeModal(); wizRender(); toast(subject+" moved to position "+pos+" in Priority."); });
