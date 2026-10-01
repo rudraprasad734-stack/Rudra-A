@@ -167,6 +167,14 @@
   body.is-dash:not(.dash-timer) main{padding-top:64px; padding-bottom:110px;}
   body.is-dash .toast{bottom:calc(100px + env(safe-area-inset-bottom,0px));}
   body.dash-timer main{padding:0;}
+  /* the pomodoro length picker sits under the mode buttons and must not cover them */
+  body.dash-timer .timer-card > .timer-set{top:calc(106px + env(safe-area-inset-top,0px)); pointer-events:none;}
+  body.dash-timer .timer-card > .timer-set select{pointer-events:auto;}
+  /* calm mode: controls fade away after a moment; a tap on the screen brings them back */
+  body.dash-timer #menuBtn, body.dash-timer #dashFab, body.dash-timer .timer-card > .timer-mode, body.dash-timer .timer-card > .timer-total,
+  body.dash-timer .timer-card > .timer-phase, body.dash-timer .timer-card > .timer-set, body.dash-timer .timer-card > .timer-btns, body.dash-timer .timer-card .timer-display{transition:opacity .7s ease;}
+  body.dash-timer.ui-sleep #menuBtn, body.dash-timer.ui-sleep #dashFab, body.dash-timer.ui-sleep .timer-card > .timer-mode, body.dash-timer.ui-sleep .timer-card > .timer-total,
+  body.dash-timer.ui-sleep .timer-card > .timer-phase, body.dash-timer.ui-sleep .timer-card > .timer-set, body.dash-timer.ui-sleep .timer-card > .timer-btns, body.dash-timer.ui-sleep .timer-card .timer-display{opacity:0 !important; pointer-events:none !important;}
   body.dash-timer #view-dashboard > *:not(.timer-card){display:none;}
   body.dash-timer #view-dashboard .timer-card{position:fixed; inset:0; z-index:5; height:auto; min-height:0; margin:0; border-radius:0; border:0;}
   body.dash-timer .timer-card > .timer-mode, body.dash-timer .timer-card > .timer-total{top:calc(64px + env(safe-area-inset-top,0px));}
@@ -6050,10 +6058,32 @@ function setMenu(open){
   var m = document.getElementById("menuBtn"); if(m) m.setAttribute("aria-expanded", open ? "true" : "false");
 }
 var dashMore = false;
+var uiSleepTimer = null;
+function wakeUi(ms){
+  document.body.classList.remove("ui-sleep");
+  clearTimeout(uiSleepTimer);
+  if(!document.body.classList.contains("dash-timer")) return;
+  uiSleepTimer = setTimeout(function(){
+    var a = document.activeElement;
+    if(document.body.classList.contains("menu-open") || document.getElementById("modalHost") || (a && a.tagName==="SELECT")){ wakeUi(2000); return; }
+    document.body.classList.add("ui-sleep");
+  }, ms || 4500);
+}
+document.addEventListener("click", function(e){
+  var b = document.body;
+  if(!b.classList.contains("dash-timer") || !b.classList.contains("ui-sleep") || b.classList.contains("menu-open")) return;
+  if(e.target.closest && e.target.closest("#modalHost, #drawer, #drawerDim")) return;
+  e.preventDefault(); e.stopPropagation(); wakeUi(4500);
+}, true);
+document.addEventListener("click", function(e){
+  if(document.body.classList.contains("dash-timer") && !document.body.classList.contains("ui-sleep") && e.target.closest && e.target.closest("#view-dashboard, #dashFab, #menuBtn")) wakeUi(4500);
+});
 function applyDashMode(){
   var dash = groupOf(activeTab)==="dashboard";
   document.body.classList.toggle("is-dash", dash);
-  document.body.classList.toggle("dash-timer", dash && !dashMore);
+  var wasTimer = document.body.classList.contains("dash-timer"), isTimer = dash && !dashMore;
+  document.body.classList.toggle("dash-timer", isTimer);
+  if(isTimer && !wasTimer) wakeUi(1600); else if(!isTimer){ clearTimeout(uiSleepTimer); document.body.classList.remove("ui-sleep"); }
   var f = document.getElementById("dashFab");
   if(f) f.setAttribute("aria-label", dashMore ? "Back to the timer" : "Open Dashboard");
 }
