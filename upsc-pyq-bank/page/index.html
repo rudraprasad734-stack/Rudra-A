@@ -152,10 +152,27 @@
   #themeToggle:active{transform:scale(1.1);}
 
   /* ---- Side menu (Forest-style): tabs live in a drawer, pages open full-screen ---- */
-  #menuBtn{position:absolute; top:50%; left:10px; transform:translateY(-50%); width:44px; height:44px; padding:0; border:none; background:none; cursor:pointer; color:#fff;}
+  #menuBtn{position:absolute; top:calc(10px + env(safe-area-inset-top,0px)); left:10px; z-index:25; width:44px; height:44px; padding:0; border:none; border-radius:50%; background:rgba(0,0,0,.38); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); cursor:pointer; color:#fff;}
+  body.in-page #menuBtn{display:none;}
+  .dr-brand{font-family:var(--font-display); font-size:22px; font-weight:600; letter-spacing:.2px; margin-bottom:2px;}
+  .dr-date{font-family:var(--font-mono); font-size:11px; opacity:.7; margin-bottom:14px;}
+  /* round Dashboard button, bottom centre; the home screen is the timer alone until it is pressed */
+  #dashFab{position:fixed; left:50%; bottom:calc(20px + env(safe-area-inset-bottom,0px)); transform:translateX(-50%); z-index:60; width:62px; height:62px; border-radius:50%; border:3px solid rgba(255,255,255,.85); cursor:pointer; padding:0; display:grid; place-items:center; color:#fff;
+    background:radial-gradient(circle at 32% 28%, #ff9ad5, #a855f7 60%, #4f6df5); box-shadow:0 6px 22px rgba(120,60,220,.5), 0 0 0 6px rgba(255,255,255,.12); animation:fabBreathe 3.6s ease-in-out infinite;}
+  #dashFab svg{width:26px; height:26px; fill:rgba(255,255,255,.95); stroke:none;}
+  #dashFab:active{transform:translateX(-50%) scale(.92);}
+  body:not(.is-dash) #dashFab, body.menu-open #dashFab{display:none;}
+  @keyframes fabBreathe{0%,100%{box-shadow:0 6px 22px rgba(120,60,220,.5),0 0 0 6px rgba(255,255,255,.12);}50%{box-shadow:0 6px 26px rgba(120,60,220,.6),0 0 0 11px rgba(255,255,255,.06);}}
+  @media (prefers-reduced-motion: reduce){ #dashFab{animation:none;} }
+  body.is-dash:not(.dash-timer) main{padding-top:64px; padding-bottom:110px;}
+  body.is-dash .toast{bottom:calc(100px + env(safe-area-inset-bottom,0px));}
+  body.dash-timer main{padding:0;}
+  body.dash-timer #view-dashboard > *:not(.timer-card){display:none;}
+  body.dash-timer #view-dashboard .timer-card{position:fixed; inset:0; z-index:5; height:auto; min-height:0; margin:0; border-radius:0; border:0;}
+  body.dash-timer .timer-card > .timer-mode, body.dash-timer .timer-card > .timer-total{top:calc(64px + env(safe-area-inset-top,0px));}
+  body.dash-timer #view-dashboard .timer-card > .timer-btns{bottom:calc(112px + env(safe-area-inset-bottom,0px));}
   #menuBtn i{display:block; height:2.5px; background:#fff; border-radius:2px; margin:5px 10px;}
   #menuBtn i:nth-child(2){width:14px;}
-  #topbar{padding-left:52px; padding-right:52px;}
   #pageBar{display:none; align-items:center; justify-content:space-between; padding:calc(10px + env(safe-area-inset-top,0px)) 8px 10px; background:var(--tab-accent); color:var(--tab-accent-ink); font-size:19px; font-weight:600;}
   #pageBar button{border:none; background:none; color:inherit; font-size:26px; line-height:1; width:44px; height:40px; cursor:pointer;}
   #pageBar .pb-gap{width:44px;}
@@ -981,19 +998,15 @@
 <div id="toast" class="toast" role="status" hidden></div>
 <div id="app">
   <div id="chrome">
-  <header id="topbar">
-    <button type="button" id="menuBtn" aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><i></i><i></i><i></i></button>
-    <div class="row">
-      <div class="brand">UPSC Companion</div>
-      <div class="today" id="topbarDate">—</div>
-    </div>
-  </header>
+
+  <button type="button" id="menuBtn" aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><i></i><i></i><i></i></button>
   <div id="pageBar"><button type="button" id="pageClose" aria-label="Close and go to Dashboard">&#10005;</button><span id="pageTitle"></span><span class="pb-gap"></span></div>
   <nav id="subtabs" aria-label="Subsections"></nav>
   </div>
+  <button type="button" id="dashFab" aria-label="Open Dashboard"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="2.2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2.2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2.2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2.2"/></svg></button>
   <div id="drawerDim"></div>
   <aside id="drawer" aria-label="Menu" aria-hidden="true">
-    <div class="dr-who"><div class="dr-av" aria-hidden="true">&#9733;</div><small class="greet"><button type="button" class="profile-btn" id="profileBtn"></button></small></div>
+    <div class="dr-who"><div class="dr-brand">UPSC Companion</div><div class="dr-date" id="topbarDate">&mdash;</div><div class="dr-av" aria-hidden="true">&#9733;</div><small class="greet"><button type="button" class="profile-btn" id="profileBtn"></button></small></div>
     <nav id="tabs" aria-label="Sections"></nav>
     <div class="dr-foot"><span>Dark / Light mode</span><button id="themeToggle" aria-label="Toggle dark/light mode" title="Dark/Light mode"></button></div>
   </aside>
@@ -6036,6 +6049,14 @@ function setMenu(open){
   var d = document.getElementById("drawer"); if(d) d.setAttribute("aria-hidden", open ? "false" : "true");
   var m = document.getElementById("menuBtn"); if(m) m.setAttribute("aria-expanded", open ? "true" : "false");
 }
+var dashMore = false;
+function applyDashMode(){
+  var dash = groupOf(activeTab)==="dashboard";
+  document.body.classList.toggle("is-dash", dash);
+  document.body.classList.toggle("dash-timer", dash && !dashMore);
+  var f = document.getElementById("dashFab");
+  if(f) f.setAttribute("aria-label", dashMore ? "Back to the timer" : "Open Dashboard");
+}
 function renderTabs(){
   var activeGroup = groupOf(activeTab);
   applyAccent(activeGroup);
@@ -6059,6 +6080,7 @@ function renderTabs(){
   });
   var inPage = activeGroup !== "dashboard";
   document.body.classList.toggle("in-page", inPage);
+  applyDashMode();
   var g0 = groupById(activeGroup);
   document.getElementById("pageTitle").textContent = g0 ? g0.label : "";
   renderSubTabs();
@@ -6078,6 +6100,7 @@ function renderSubTabs(){
 }
 function setTab(id){
   if(!VIEW_TO_GROUP[id]) id = "dashboard";
+  if(id==="dashboard" && activeTab!=="dashboard") dashMore = false;
   activeTab = id;
   renderTabs();
   lsSet("dossier.tab", id);
@@ -7342,6 +7365,7 @@ function boot(){
   renderGreeting();
   document.getElementById("profileBtn").addEventListener("click", function(){ setMenu(false); openProfileModal(!!profile); });
   document.getElementById("menuBtn").addEventListener("click", function(){ setMenu(true); });
+  document.getElementById("dashFab").addEventListener("click", function(){ dashMore = !dashMore; applyDashMode(); window.scrollTo(0,0); });
   document.getElementById("drawerDim").addEventListener("click", function(){ setMenu(false); });
   document.getElementById("pageClose").addEventListener("click", function(){ setTab("dashboard"); });
   document.addEventListener("keydown", function(e){ if(e.key==="Escape" && document.body.classList.contains("menu-open")) setMenu(false); });
