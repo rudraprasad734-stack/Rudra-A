@@ -4810,7 +4810,7 @@ function wzPrep(w){
         '<button type="button" class="pill'+(w.essay?" on":"")+'" data-wa="toggleBool" data-path="essay">Essay</button>'+
         '<button type="button" class="pill'+(w.optionalOn?" on":"")+'" data-wa="toggleBool" data-path="optionalOn">Optional</button></div>'+
         (w.optionalOn ? optionalSelectHtml(w) : "")+
-        (w.essay ? '<div class="hint">Essay is a practice activity: plan how often you write in step 7.</div>' : "")+'</div>' : "");
+        (w.essay ? '<div class="hint">Essay is a practice activity. You can set when you write it later, under Activities in the app.</div>' : "")+'</div>' : "");
 }
 function wzPriority(w){
   var cat = wizCatalog(w), avail = cat.order;
