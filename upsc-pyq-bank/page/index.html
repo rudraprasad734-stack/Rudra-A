@@ -206,6 +206,25 @@
   .dx .backup-card{background:#1c2a45 !important; border-color:rgba(255,255,255,.13) !important;} .dx .backup-card h3{color:#f3ecdb;} .dx .backup-card .sub{color:#b8c0d2;}
   .dx .hero{background:#1c2a45 !important; border-color:rgba(255,255,255,.13) !important;}
   @media (max-width:380px){ .dx-grid{grid-template-columns:1fr;} }
+  /* ---- Learning-path themes ---- */
+  .set-card{padding:14px 16px; margin:0 0 12px;} .set-card h3{font-size:15px; margin:0 0 6px;} .set-card .muted{font-size:13px;}
+  .pth-scene{border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,.12); background:#0d1a30; margin:2px 0 10px;}
+  .pth-svg{display:block; width:100%; height:auto;}
+  .pth-garden{display:grid; gap:8px; padding:12px; background:linear-gradient(#10243f,#0e1d33);}
+  .pth-bed{border-radius:16px; background:linear-gradient(#2e6b4a55,#1c2a45); border:1px solid var(--lc); text-align:center; padding:12px 4px 9px; min-width:0;}
+  .pth-plant{font-size:36px; height:44px; line-height:44px;} .pth-soil{height:8px; border-radius:5px; background:#5b4630; margin:3px 12px 7px; overflow:hidden;} .pth-soil i{display:block; height:100%; background:var(--lc);}
+  .pth-bed b{display:block; font-size:12px; color:var(--lc); line-height:1.15; overflow-wrap:anywhere;} .pth-bed small{font-size:10.5px; color:#b8c0d2;}
+  .pth-dday{padding:8px 12px 12px; background:#0e1d33; font-size:12px; font-weight:700; color:#f3ecdb; text-align:center;}
+  .pth-par{margin-top:4px;} .pth-n{display:inline-block; min-width:20px; text-align:center; margin-left:6px; padding:1px 7px; border-radius:999px; background:#33405c; color:#e0d2ad; font-size:12px;}
+  .pth-r{display:flex; align-items:center; gap:9px; padding:7px 2px; font-size:14px; border-bottom:1px solid rgba(255,255,255,.08); cursor:pointer;} .pth-r i{width:11px; height:11px; border-radius:50%; flex:0 0 auto;} .pth-r span:last-child{margin-left:auto; color:#b8c0d2; font-size:12.5px; white-space:nowrap;}
+  .pth-lock{margin-top:10px; background:#16233b; border:1px dashed rgba(255,255,255,.25); border-radius:12px; padding:9px 12px; font-size:13px; color:#b8c0d2;}
+  .pth-lock summary{display:flex; justify-content:space-between; align-items:center; cursor:pointer; list-style:none;} .pth-lock summary::-webkit-details-marker{display:none;} .pth-view{color:#e6c98c;}
+  .pth-lock[open] .lego{margin-top:10px;}
+  .th-row{display:flex; gap:10px; overflow-x:auto; padding:12px 2px 6px; scrollbar-width:none;} .th-row::-webkit-scrollbar{display:none;}
+  .th-opt{flex:0 0 78px; border:none; background:none; color:var(--ink-soft); font:inherit; font-size:12px; text-align:center; cursor:pointer; padding:0;}
+  .th-opt i{display:block; width:78px; height:78px; border-radius:20px; margin-bottom:6px; font-style:normal; font-size:32px; line-height:78px; border:2px solid transparent;}
+  .th-opt.sel{color:var(--ink); font-weight:700;} .th-opt.sel i{border-color:var(--tab-accent); box-shadow:0 0 0 3px color-mix(in srgb, var(--tab-accent) 30%, transparent);}
+  .th-prev{margin-top:10px;} .pth-prevbox{display:block; --surface:#1c2a45;}
   body.dash-timer main{padding:0;}
   /* the pomodoro length picker sits under the mode buttons and must not cover them */
   body.dash-timer .timer-card > .timer-set{top:calc(106px + env(safe-area-inset-top,0px)); pointer-events:none;}
@@ -1069,6 +1088,7 @@
     <section class="view" id="view-pyq"></section>
     <section class="view" id="view-quotes"></section>
     <section class="view" id="view-papers"></section>
+    <section class="view" id="view-settings"></section>
   </main>
 </div>
 
@@ -3727,6 +3747,7 @@ function collectBackupData(){
     mockTests: mockTests,
     timerLog: lsGetJSON("dossier.timerLog", {}),
     profile: profile,
+    pathTheme: pathTheme,
     studySessions: studySessions,
     studyPlan: studyPlan,
     studyProgress: studyProgress,
@@ -3774,6 +3795,7 @@ function applyBackupData(data){
   lsSetJSON("dossier.state.daily", dailyState);
   lsSetJSON("dossier.state.mockTests", mockTests);
   if(data.timerLog) lsSetJSON("dossier.timerLog", data.timerLog);
+  if(data.pathTheme) setPathTheme(data.pathTheme);
   if(Array.isArray(data.studySessions)){ studySessions = data.studySessions; saveSessions(); }
   if(data.studyPlan){ studyPlan = data.studyPlan; savePlan(); }
   if(data.catchState && typeof data.catchState==='object'){ catchState = Object.assign({promptedOn:"", doneOn:""}, data.catchState); saveCatch(); }
@@ -6045,6 +6067,160 @@ function plannerDashCard(){
     '<button type="button" class="btn ghost sm" id="dashOpenPlanner">Open planner</button></div>';
 }
 
+
+// ============================================================================
+// LEARNING-PATH THEMES
+// ----------------------------------------------------------------------------
+// The Dashboard shows one "lane" for every subject that is running in parallel
+// (the active subject plus every subject pinned to a session slot), so the picture
+// grows with the plan: 3 sessions means 3 lanes, 5 sessions means 5 lanes.
+// How far a lane's marker has travelled depends ONLY on that subject's completed
+// chapters, never on the calendar. The end of the path is "D-Day", the end date
+// the user chose for their own preparation.
+//
+// TO ADD A THEME: call registerPathTheme({id, name, icon, bg, draw}) once.
+//   id    short unique key (saved in localStorage as dossier.pathTheme)
+//   name  label shown in Settings
+//   icon  emoji for the Settings thumbnail,  bg  CSS background for the thumbnail
+//   draw  function(ctx) returning an HTML/SVG string. ctx = {n, lanes, dday}
+//         lanes[i] = {name, color, pct (0-100), done, total, i}
+//         dday     = {label:"D-Day", days, sub}
+// No other code needs to change.
+// ============================================================================
+var PATH_THEMES = [];
+function registerPathTheme(t){ PATH_THEMES.push(t); }
+var PATH_COLORS = ["#e6c98c","#f08fb0","#7fd6d0","#9db7ff","#c3a2f0","#f2a65a","#8fe0a6","#ff9a9a","#c9dd72","#6fc3ff"];
+var pathTheme = (function(){ try{ return localStorage.getItem("dossier.pathTheme") || "metro"; }catch(e){ return "metro"; } })();
+function pathThemeById(id){ for(var i=0;i<PATH_THEMES.length;i++) if(PATH_THEMES[i].id===id) return PATH_THEMES[i]; return PATH_THEMES[0]; }
+function setPathTheme(id){ pathTheme = pathThemeById(id).id; try{ localStorage.setItem("dossier.pathTheme", pathTheme); }catch(e){} }
+
+function pathCtx(states){
+  var lanes = [];
+  states.forEach(function(s){
+    if(s.state==="completed") return;
+    if(s.state==="active" || s.pinned) lanes.push({name:s.name, color:PATH_COLORS[lanes.length % PATH_COLORS.length], pct:s.pct, done:s.done, total:s.total, i:lanes.length, subj:s});
+  });
+  var days = studyPlan && studyPlan.window ? diffDays(studyPlan.window.end, todayKey) : 0;
+  return {n:lanes.length, lanes:lanes, dday:{label:"D-Day", days:days, sub:(days>=0 ? days+" day"+(days===1?"":"s") : "passed")},
+    locked:states.filter(function(s){ return s.state!=="completed" && !(s.state==="active" || s.pinned); }),
+    completed:states.filter(function(s){ return s.state==="completed"; })};
+}
+function sx(t, x, y, fill, size, anchor, weight){ return '<text x="'+x.toFixed(1)+'" y="'+y.toFixed(1)+'" fill="'+fill+'" font-size="'+size+'" text-anchor="'+(anchor||"start")+'" font-weight="'+(weight||600)+'">'+esc(t)+'</text>'; }
+function laneLabel(l, x, y, anchor){ return sx(l.name+"  "+l.done+"/"+l.total, x, y, l.color, 11, anchor, 700); }
+function bez2(p0,p1,p2,t){ var u=1-t; return [u*u*p0[0]+2*u*t*p1[0]+t*t*p2[0], u*u*p0[1]+2*u*t*p1[1]+t*t*p2[1]]; }
+function bez3(p0,p1,p2,p3,t){ var u=1-t; return [u*u*u*p0[0]+3*u*u*t*p1[0]+3*u*t*t*p2[0]+t*t*t*p3[0], u*u*u*p0[1]+3*u*u*t*p1[1]+3*u*t*t*p2[1]+t*t*t*p3[1]]; }
+function spread(i, n, a, b){ return n<2 ? (a+b)/2 : a + i*(b-a)/(n-1); }
+function svgOpen(H, bg){ return '<svg class="pth-svg" viewBox="0 0 300 '+H+'" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Learning path">'+(bg ? '<rect width="300" height="'+H+'" fill="'+bg+'"/>' : ""); }
+function starsSvg(H, k){ var o="", r=7; for(var i=0;i<k;i++){ r=(r*9301+49297)%233280; var x=r/233280*300; r=(r*9301+49297)%233280; var y=r/233280*H*0.7; o+='<circle cx="'+x.toFixed(0)+'" cy="'+y.toFixed(0)+'" r="'+(i%3?0.9:1.3)+'" fill="#fff" opacity=".7"/>'; } return o; }
+function ddayTag(ctx, x, y, anchor, color){ return sx(ctx.dday.label, x, y, color||"#f3ecdb", 11, anchor, 800)+sx(ctx.dday.sub, x, y+12, "#b8c0d2", 9.5, anchor, 500); }
+
+// ---- 1. Metro (default) ----
+registerPathTheme({id:"metro", name:"Metro", icon:"🚇", bg:"linear-gradient(#25355a,#0d1a30)", draw:function(c){
+  var H = 40+c.n*62, mid = H/2, o = svgOpen(H, "#0d1a30");
+  c.lanes.forEach(function(l, i){
+    var y = 46+i*62, t = l.pct/100, xp = 16+t*190;
+    o += '<path d="M16 '+y+' H206 C240 '+y+' 240 '+mid+' 266 '+mid+'" fill="none" stroke="'+l.color+'" stroke-width="7" stroke-linecap="round" opacity=".35"/>';
+    o += '<path d="M16 '+y+' H'+xp.toFixed(1)+'" fill="none" stroke="'+l.color+'" stroke-width="7" stroke-linecap="round"/>';
+    [0,.25,.5,.75,1].forEach(function(p){ var x = 16+p*190; o += '<circle cx="'+x+'" cy="'+y+'" r="7" fill="'+(t>=p && p>0 ? l.color : "#0d1a30")+'" stroke="'+l.color+'" stroke-width="3.5"/>'; });
+    o += '<circle cx="'+xp.toFixed(1)+'" cy="'+y+'" r="10" fill="#f3ecdb" stroke="'+l.color+'" stroke-width="4"/>';
+    o += laneLabel(l, 16, y-16);
+  });
+  o += '<circle cx="268" cy="'+mid+'" r="14" fill="#f3ecdb"/>'+sx("★",268,mid+4,"#0e1a30",12,"middle",800)+ddayTag(c, 268, mid+30, "middle");
+  return o+'</svg>'; }});
+
+// ---- 2. Railway ----
+registerPathTheme({id:"railway", name:"Railway", icon:"🚆", bg:"linear-gradient(#27406f,#e3a35f)", draw:function(c){
+  var H = Math.max(190, 40+c.n*76), o = svgOpen(H, "#16284c")+starsSvg(40, 8);
+  c.lanes.forEach(function(l, i){
+    var y = 70+i*76, xs = 8+l.pct/100*158;
+    o += '<rect x="0" y="'+y+'" width="300" height="4" fill="#5b6a8c"/><rect x="0" y="'+(y+9)+'" width="300" height="3" fill="#33405c"/>';
+    for(var x=4;x<300;x+=24) o += '<rect x="'+x+'" y="'+(y+2)+'" width="9" height="12" fill="#2b3856"/>';
+    o += '<rect x="'+xs+'" y="'+(y-22)+'" width="28" height="20" rx="5" fill="'+l.color+'" opacity=".55"/><rect x="'+(xs+31)+'" y="'+(y-22)+'" width="28" height="20" rx="5" fill="'+l.color+'" opacity=".8"/><rect x="'+(xs+62)+'" y="'+(y-26)+'" width="32" height="24" rx="6" fill="'+l.color+'"/><rect x="'+(xs+82)+'" y="'+(y-21)+'" width="8" height="8" rx="2" fill="#16284c"/>';
+    o += laneLabel(l, 8, y-36);
+  });
+  o += '<rect x="262" y="30" width="32" height="'+(H-50)+'" rx="8" fill="#e3a35f"/><text transform="translate(283 '+(H/2+14)+') rotate(-90)" fill="#2a1706" font-size="10" font-weight="800" text-anchor="middle">'+esc(c.dday.label+" · "+c.dday.sub)+'</text>';
+  return o+'</svg>'; }});
+
+// ---- 3. Ocean ----
+registerPathTheme({id:"ocean", name:"Ocean", icon:"⛵", bg:"linear-gradient(#1c4a6e,#0c2340)", draw:function(c){
+  var H = Math.max(150, 40+c.n*84), o = svgOpen(H, "#0e2c4e");
+  c.lanes.forEach(function(l, i){
+    var b = 62+i*84, t = l.pct/100, pts = [], ship = null;
+    for(var x=40;x<=232;x+=6){ var y = b+9*Math.sin(x/20+i); pts.push([x,y]); }
+    var full = pts.map(function(p,k){ return (k?"L":"M")+p[0]+" "+p[1].toFixed(1); }).join(" ");
+    var upto = pts.filter(function(p){ return p[0] <= 40+t*192; });
+    ship = upto.length ? upto[upto.length-1] : pts[0];
+    o += '<path d="'+full+'" fill="none" stroke="'+l.color+'" stroke-width="2.5" stroke-dasharray="2 7" stroke-linecap="round" opacity=".5"/>';
+    if(upto.length>1) o += '<path d="'+upto.map(function(p,k){ return (k?"L":"M")+p[0]+" "+p[1].toFixed(1); }).join(" ")+'" fill="none" stroke="'+l.color+'" stroke-width="3" stroke-linecap="round"/>';
+    o += '<ellipse cx="28" cy="'+(b+4)+'" rx="22" ry="12" fill="#e3b86f"/><ellipse cx="28" cy="'+b+'" rx="16" ry="8" fill="#7bd6a1"/>';
+    o += '<path d="M'+(ship[0]-9)+' '+(ship[1]-3)+' L'+(ship[0]+9)+' '+(ship[1]-3)+' L'+(ship[0]+5)+' '+(ship[1]+4)+' L'+(ship[0]-5)+' '+(ship[1]+4)+'Z" fill="#f3ecdb"/><path d="M'+ship[0]+' '+(ship[1]-26)+' L'+(ship[0]+11)+' '+(ship[1]-6)+' L'+ship[0]+' '+(ship[1]-6)+'Z" fill="'+l.color+'"/>';
+    o += laneLabel(l, 52, b+34);
+  });
+  o += '<ellipse cx="268" cy="'+(H/2)+'" rx="22" ry="'+Math.max(40,H/2-22)+'" fill="#2b3a5a"/>'+sx("⚓",268,H/2+5,"#f3ecdb",16,"middle")+ddayTag(c, 268, H/2+28, "middle");
+  return o+'</svg>'; }});
+
+// ---- 4. Space ----
+registerPathTheme({id:"space", name:"Space", icon:"🚀", bg:"linear-gradient(#2b1b5e,#070d24)", draw:function(c){
+  var H = 340, o = svgOpen(H, "#0a0d2a")+starsSvg(H, 26);
+  c.lanes.forEach(function(l, i){
+    var x = spread(i, c.n, 40, 260), P0=[x,296], P1=[x,170], P2=[150,66], t = l.pct/100;
+    var q = bez2(P0,P1,P2,t), q2 = bez2(P0,P1,P2,Math.min(1,t+.02)), ang = Math.atan2(q2[0]-q[0], -(q2[1]-q[1]))*180/Math.PI;
+    o += '<path d="M'+P0+' Q'+P1+' '+P2+'" fill="none" stroke="'+l.color+'" stroke-width="2" stroke-dasharray="3 7" stroke-linecap="round" opacity=".6"/>';
+    o += '<circle cx="'+x+'" cy="306" r="'+Math.min(15, 110/c.n)+'" fill="'+l.color+'" opacity=".9"/>';
+    o += '<g transform="translate('+q[0].toFixed(1)+' '+(q[1]-(t<.03?16:0)).toFixed(1)+') rotate('+ang.toFixed(0)+')"><path d="M0 -12 C7 -6 7 6 4 12 H-4 C-7 6 -7 -6 0 -12Z" fill="#f3ecdb"/><circle cx="0" cy="-2" r="3" fill="#27406f"/><path d="M-4 8 L-9 14 L-4 12Z M4 8 L9 14 L4 12Z" fill="#ff6b6b"/></g>';
+    o += sx(l.name.length>11 && c.n>3 ? l.name.slice(0,10)+"…" : l.name, x, 332, l.color, c.n>4?8.5:10, "middle", 700);
+  });
+  o += '<circle cx="150" cy="56" r="20" fill="none" stroke="#f3ecdb" stroke-width="2"/><circle cx="150" cy="56" r="8" fill="#f3ecdb"/>'+ddayTag(c, 182, 52, "start");
+  return o+'</svg>'; }});
+
+// ---- 5. Highway ----
+registerPathTheme({id:"highway", name:"Highway", icon:"🛣️", bg:"linear-gradient(#2a2a66,#ff9b6a)", draw:function(c){
+  var H = 340, hy = 176, o = '<svg class="pth-svg" viewBox="0 0 300 '+H+'" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Learning path"><defs><linearGradient id="hwg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1030"/><stop offset=".5" stop-color="#2a2a66"/><stop offset=".52" stop-color="#ff9b6a"/><stop offset=".53" stop-color="#10193a"/></linearGradient></defs><rect width="300" height="'+H+'" fill="url(#hwg)"/>'+starsSvg(100,10);
+  o += '<circle cx="150" cy="'+(hy+12)+'" r="34" fill="#ffd9a0" opacity=".9"/><path d="M0 '+(hy+16)+' L60 '+(hy-10)+' L110 '+(hy+10)+' L150 '+(hy-18)+' L200 '+(hy+10)+' L250 '+(hy-8)+' L300 '+(hy+12)+' V'+(hy+18)+'Z" fill="#17204a"/>';
+  o += '<path d="M135 '+(hy+18)+' L-20 '+H+' H320 L165 '+(hy+18)+'Z" fill="#1e2a4e"/>';
+  c.lanes.forEach(function(l, i){
+    var bx = spread(i, c.n, 10, 290), v = [150, hy+18], u = .08+l.pct/100*.72, cx = bx+(v[0]-bx)*u, cy = (H-14)+(v[1]-(H-14))*u, s = 1-.7*u;
+    o += '<path d="M'+v[0]+' '+v[1]+' L'+bx+' '+H+'" stroke="'+l.color+'" stroke-width="2.2" stroke-dasharray="9 11" opacity=".75"/>';
+    o += '<rect x="'+(cx-15*s).toFixed(1)+'" y="'+(cy-8*s).toFixed(1)+'" width="'+(30*s).toFixed(1)+'" height="'+(16*s).toFixed(1)+'" rx="'+(4*s).toFixed(1)+'" fill="'+l.color+'" stroke="#0b1030" stroke-width="1"/>';
+    var gx = spread(i, c.n, 28, 272), gw = Math.min(70, 250/c.n);
+    o += '<rect x="'+(gx-gw/2).toFixed(1)+'" y="40" width="'+gw.toFixed(1)+'" height="30" rx="5" fill="#26335a" stroke="'+l.color+'" stroke-width="1.5"/>'+sx(l.name.length>10 && c.n>3 ? l.name.slice(0,9)+"…" : l.name, gx, 52, l.color, c.n>4?7.5:9, "middle", 700)+sx(l.done+"/"+l.total, gx, 64, "#d6deee", 8.5, "middle", 500);
+  });
+  o += sx("🏁 "+c.dday.label+" · "+c.dday.sub, 150, 22, "#f3ecdb", 12, "middle", 800);
+  return o+'</svg>'; }});
+
+// ---- 6. Garden (HTML) ----
+registerPathTheme({id:"garden", name:"Garden", icon:"🌱", bg:"linear-gradient(#2e6b4a,#1c2a45)", draw:function(c){
+  function stage(p){ return p>=100 ? "🌸" : (p>=67 ? "🌳" : (p>=34 ? "🌿" : (p>=1 ? "🌱" : "🌰"))); }
+  var cols = Math.min(c.n, 3) || 1, o = '<div class="pth-garden" style="grid-template-columns:repeat('+cols+',1fr)">';
+  c.lanes.forEach(function(l){ o += '<div class="pth-bed" style="--lc:'+l.color+'"><div class="pth-plant">'+stage(l.pct)+'</div><div class="pth-soil"><i style="width:'+l.pct+'%"></i></div><b>'+esc(l.name)+'</b><small>'+l.done+' / '+l.total+'</small></div>'; });
+  return o+'</div><div class="pth-dday">🏁 '+esc(c.dday.label)+' &middot; '+esc(c.dday.sub)+'</div>'; }});
+
+// ---- 7. Mountain ----
+registerPathTheme({id:"mountain", name:"Mountain", icon:"⛰️", bg:"linear-gradient(#26325e,#3b3a6e)", draw:function(c){
+  var H = 340, o = svgOpen(H, "#1c2750")+starsSvg(H, 16);
+  o += '<circle cx="258" cy="36" r="13" fill="#ffe7a8"/><path d="M-10 '+H+' L70 190 L112 226 L150 70 L200 162 L240 132 L310 214 L310 '+H+'Z" fill="#26325e"/><path d="M-10 '+H+' L50 262 L110 282 L160 204 L215 262 L310 238 L310 '+H+'Z" fill="#1a2447"/>';
+  o += '<path d="M150 70 L133 108 L146 102 L152 118 L162 100 L174 108Z" fill="#f3ecdb"/>';
+  c.lanes.forEach(function(l, i){
+    var bx = spread(i, c.n, 36, 264), P0=[bx,308], P1=[bx,236], P2=[150+(bx-150)*.45,150], P3=[150,84], t = l.pct/100, seg = "";
+    for(var k=0;k<=24;k++){ var q = bez3(P0,P1,P2,P3,t*k/24); seg += (k?"L":"M")+q[0].toFixed(1)+" "+q[1].toFixed(1)+" "; }
+    var m = bez3(P0,P1,P2,P3,t);
+    o += '<path d="M'+P0+' C'+P1+' '+P2+' '+P3+'" fill="none" stroke="'+l.color+'" stroke-width="3" stroke-dasharray="1 7" stroke-linecap="round" opacity=".7"/>';
+    if(t>0) o += '<path d="'+seg+'" fill="none" stroke="'+l.color+'" stroke-width="3.5" stroke-linecap="round"/>';
+    o += '<circle cx="'+bx+'" cy="312" r="5" fill="'+l.color+'"/><circle cx="'+m[0].toFixed(1)+'" cy="'+m[1].toFixed(1)+'" r="8" fill="'+l.color+'" stroke="#f3ecdb" stroke-width="2.5"/>';
+    o += sx(l.name.length>11 && c.n>3 ? l.name.slice(0,10)+"…" : l.name, bx, 330, l.color, c.n>4?8.5:10, "middle", 700);
+  });
+  o += '<rect x="149" y="42" width="2" height="34" fill="#f3ecdb"/><path d="M151 42 L172 50 L151 58Z" fill="#ff6b6b"/>'+ddayTag(c, 180, 34, "start");
+  return o+'</svg>'; }});
+
+function pathHtml(states){
+  var c = pathCtx(states), th = pathThemeById(pathTheme);
+  var rows = c.lanes.map(function(l){ return '<div class="pth-r" role="button" tabindex="0" data-go="subject" data-subj="'+esc(l.name)+'"><i style="background:'+l.color+'"></i><span>'+esc(l.name)+'</span><span>'+l.done+' / '+l.total+' &middot; '+l.pct+'%</span></div>'; }).join("");
+  return '<div class="dx-card dx-path"><div class="dx-k">MY LEARNING PATH</div>'+
+    '<div class="pth-scene pth-'+th.id+'">'+th.draw(c)+'</div>'+
+    '<div class="pth-par"><div class="dx-h">Running in parallel <span class="pth-n">'+c.n+'</span></div>'+rows+'</div>'+
+    '<details class="pth-lock"><summary><span>🔒 '+c.locked.length+' subject'+(c.locked.length===1?"":"s")+' unlock later'+(c.completed.length ? ' &middot; ✔ '+c.completed.length+' done' : "")+'</span><span class="pth-view">View &rsaquo;</span></summary>'+chainHtml(states)+'</details></div>';
+}
+
 // ---------- Dashboard (dark navy card layout) ----------
 function dxProfileHtml(){
   if(!profile) return '<button type="button" class="dx-card dx-prof" data-dx="profile"><span class="dx-av">?</span><span><b>Set up your profile</b><small>Tap to add your name and place</small></span></button>';
@@ -6078,8 +6254,7 @@ function dxPlanHtml(){
   var pyq = '<div class="dx-card dx-pyq"><div class="dx-k">RECENT PYQ QUESTION</div>'+
     (q && q.q ? '<p>'+esc(String(q.q.text).replace(/\s+/g," ").trim().slice(0, 150))+(String(q.q.text).length > 150 ? "…" : "")+'</p><small>'+(q.q.exam==="prelims" ? "Prelims" : (q.q.exam==="optional" ? "Optional" : "Mains"))+" "+q.q.year+'</small><button type="button" class="dx-btn" data-pyq="'+esc(nl.id)+'" data-subj="'+esc(act.name)+'">Solve Now ('+q.n+')</button>'
       : '<p>No question in the bank matched this chapter yet.</p><button type="button" class="dx-btn" data-dx="pyq">Open PYQ Bank</button>')+'</div>';
-  var path = '<div class="dx-card dx-path"><div class="dx-k">MY LEARNING PATH</div><div class="pl-cols"><div><div class="dx-h">Completed</div>'+(completed.length ? completed.map(function(x){ return '<span class="tagc" role="button" tabindex="0" data-go="subject" data-subj="'+esc(x.name)+'" style="--bc:var('+x.color+')">'+CHECK_SVG+esc(x.name)+'</span>'; }).join("") : '<div class="dx-none">None yet</div>')+'</div>'+
-    '<div><div class="dx-h">Up next</div>'+(rest.length ? rest.map(function(x){ return '<span class="tagc lock" role="button" tabindex="0" data-go="subject" data-subj="'+esc(x.name)+'" style="--bc:var('+x.color+')">'+LOCK_SVG+esc(x.name)+'</span>'; }).join("") : '<div class="dx-none">None</div>')+'</div></div>'+chainHtml(states)+'</div>';
+  var path = pathHtml(states);
   var upc = '<div class="dx-card dx-up"><div class="dx-k">UPCOMING</div>'+upcomingHtml()+'<button type="button" class="dx-btn2" id="dashOpenPlanner">Open planner</button></div>';
   return ring + '<div class="dx-grid">'+module+'<div class="dx-col">'+pace+pyq+'</div></div>'+path+upc;
 }
@@ -6112,6 +6287,7 @@ var TAB_GROUPS = [
   {id:"mocks", label:"Mocks", accent:"mocks"},
   {id:"pyq", label:"PYQ Bank", accent:"pyq"},
   {id:"quotes", label:"Quotes", accent:"quotes"},
+  {id:"settings", label:"Settings", accent:"scheduler"},
 ];
 var VIEW_TO_GROUP = {};
 TAB_GROUPS.forEach(function(g){
@@ -6139,7 +6315,7 @@ function applyAccent(groupId){
   root.setProperty("--tab-accent-soft", "var(--tab-"+g.accent+"-soft)");
 }
 
-var TAB_DOT = {dashboard:"--tab-dashboard", planner:"--tab-planner", syllabus:"--tab-syllabus", tiers:"--tab-tiers", mocks:"--tab-mocks", pyq:"--tab-pyq", quotes:"--tab-quotes"};
+var TAB_DOT = {settings:"--tab-scheduler", dashboard:"--tab-dashboard", planner:"--tab-planner", syllabus:"--tab-syllabus", tiers:"--tab-tiers", mocks:"--tab-mocks", pyq:"--tab-pyq", quotes:"--tab-quotes"};
 function setMenu(open){
   document.body.classList.toggle("menu-open", !!open);
   var d = document.getElementById("drawer"); if(d) d.setAttribute("aria-hidden", open ? "false" : "true");
@@ -6238,6 +6414,7 @@ function renderView(id){
   else if(id==="pyq") renderPyq();
   else if(id==="quotes") renderQuotes();
   else if(id==="papers") renderPapers();
+  else if(id==="settings") renderSettings();
 }
 
 
@@ -6671,6 +6848,34 @@ function renderDashboard(){
   bindPlanSetupCard(host);
   bindBackupCard(host);
   bindPlannerDash(host);
+}
+
+// ============================================================================
+// SETTINGS
+// ============================================================================
+function sampleLanes(){
+  var names = ["History","Art & Culture","Anthropology"], tot = [35,16,48], dn = [0,0,0];
+  return {n:3, lanes:names.map(function(n,i){ return {name:n, color:PATH_COLORS[i], pct:0, done:dn[i], total:tot[i], i:i}; }), dday:{label:"D-Day", days:0, sub:"your end date"}, locked:[], completed:[]};
+}
+function renderSettings(){
+  var host = document.getElementById("view-settings"); if(!host) return;
+  var th = pathThemeById(pathTheme), real = studyPlan ? pathCtx(subjectStates(studyPlan)) : null;
+  var ctx = real && real.n ? real : sampleLanes();
+  host.innerHTML =
+    '<div class="card set-card"><h3>Learning path theme</h3>'+
+      '<div class="muted">How your journey looks on the Dashboard. Every subject running in parallel gets its own lane, and each marker moves as you finish chapters.</div>'+
+      '<div class="th-row" role="radiogroup" aria-label="Learning path theme">'+PATH_THEMES.map(function(t){
+        return '<button type="button" class="th-opt'+(t.id===th.id ? " sel" : "")+'" role="radio" aria-checked="'+(t.id===th.id ? "true" : "false")+'" data-theme="'+t.id+'"><i style="background:'+t.bg+'">'+t.icon+'</i><span>'+esc(t.name)+(t.id===th.id ? " ✓" : "")+'</span></button>';
+      }).join("")+'</div>'+
+      '<div class="th-prev"><div class="dx pth-prevbox"><div class="pth-scene pth-'+th.id+'">'+th.draw(ctx)+'</div></div>'+(real && real.n ? '' : '<div class="muted small">Preview with sample subjects. Build a plan to see your own.</div>')+'</div>'+
+    '</div>';
+  if(!host._wired){
+    host._wired = true;
+    host.addEventListener("click", function(e){
+      var b = e.target.closest ? e.target.closest("[data-theme]") : null; if(!b) return;
+      setPathTheme(b.getAttribute("data-theme")); renderSettings();
+    });
+  }
 }
 function countdownBlock(label, days, dateKey){
   var text = days===0 ? "Today" : (days>0 ? days : Math.abs(days));
