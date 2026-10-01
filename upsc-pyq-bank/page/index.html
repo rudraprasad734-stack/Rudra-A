@@ -4813,7 +4813,7 @@ function wzCapacity(w){
   return '<h3>How much can you study?</h3>'+
     '<div class="cf"><label>Study days</label>'+dayChips("cap.days", c.days)+'</div>'+
     '<div class="cf"><label>Sessions per day</label><select data-w="cap.count" data-after="sessCount">'+optsNum(1,6,n)+'</select></div>'+
-    '<div class="hint">For each session choose <b>which subject</b> and <b>from when to when</b>. &ldquo;Auto&rdquo; follows your current active subject. Pick a subject to study it in that session every day, alongside the main chain.</div>'+
+    '<div class="hint">For each session choose <b>which subject</b> and <b>from when to when</b>. &ldquo;Auto&rdquo; follows your current active subject. Pick a subject to study it in that session every day, alongside the main chain. A pinned subject starts right away, whatever its place in Priority.</div>'+
     '<div class="cap-sess">'+c.sessions.map(function(s, i){ return '<div class="slot"><div class="slot-h"><b>Session '+(i+1)+'</b><span class="dur">'+esc(toMin(s.end)>toMin(s.start)?fmtDurMin(toMin(s.end)-toMin(s.start)):"invalid")+'</span></div>'+
       '<div class="cf"><label>Subject</label><select data-w="cap.sessions.'+i+'.subject"><option value="">Auto &mdash; current active subject</option>'+w.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(s.subject===nm?" selected":"")+'>'+esc(nm)+'</option>'; }).join("")+'</select></div>'+
       '<div class="cf"><label>Time (from &ndash; to)</label>'+timePair("cap.sessions."+i+".start","cap.sessions."+i+".end",s.start,s.end)+'</div></div>'; }).join("")+'</div>'+
@@ -4879,6 +4879,35 @@ function renderWizard(host){
     '<div class="card wz-card">'+WZ_STEPS[w.step](w)+'</div>'+
     (w.err.length ? '<div class="form-err" role="alert"><b>Please fix:</b><br>'+w.err.map(esc).join("<br>")+'</div>' : "")+
     (w.step < 7 ? '<div class="wz-nav">'+(w.step>0 ? '<button type="button" class="btn ghost" data-wa="back">Back</button>' : '<span></span>')+'<button type="button" class="btn primary" data-wa="next">Next &rarr;</button></div>' : '<div class="wz-nav"><button type="button" class="btn ghost" data-wa="back">Back</button><span></span></div>');
+}
+// ---- pinning a subject that Priority would not reach for a long time ----
+// When is this subject expected to start if it were NOT pinned? (null = not within the plan window)
+function pinEstimate(subject, idx){
+  var w2 = JSON.parse(JSON.stringify(wiz));
+  w2.cap.sessions[idx].subject = "";
+  if(!windowStats(w2).ok) return undefined;
+  var plan = compilePlan(w2), from = maxKey(todayKey, plan.window.start);
+  var sp = simulate(plan, from, [], false).spans[subject];
+  return sp ? sp.start : null;
+}
+function pinCheck(idx, subject, prev, path){
+  var start = pinEstimate(subject, idx); if(start === undefined) return;
+  var from = maxKey(todayKey, wiz.start);
+  if(start && start <= toKey(addDays(parseKey(from), 30))) return;   // starts within 30 days: nothing to warn about
+  var K = wiz.order.indexOf(subject) + 1, N = wiz.order.length;
+  if(K < 2) return;
+  var when = start ? "would not start until <b>"+esc(fmtDM(parseKey(start)))+" "+parseKey(start).getFullYear()+"</b> (about "+Math.max(1, Math.round(diffDays(start, from)/7))+" weeks away)" : "would not be reached inside your plan window";
+  var defPos = Math.min(2, K-1);
+  var opts = wiz.order.slice(0, K-1).map(function(nm, i){ return '<option value="'+(i+1)+'"'+(i+1===defPos ? " selected" : "")+'>'+(i+1)+(i===0 ? " (top)" : "")+' &mdash; before '+esc(nm)+'</option>'; }).join("");
+  var m = showModal('<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="pinTitle">'+
+    '<h2 id="pinTitle">This subject is far down your Priority</h2>'+
+    '<p><b>'+esc(subject)+'</b> is number <b>'+K+'</b> of '+N+' in Priority and '+when+'.</p>'+
+    '<p>Pinning it to <b>Session '+(idx+1)+'</b> makes you study it alongside the main subject from the start, so its place in Priority no longer decides when it begins. Do you also want to move it up so the order matches what you will actually study?</p>'+
+    '<div class="cf"><label for="pinPos">Move it to position</label><select id="pinPos">'+opts+'</select></div>'+
+    '<div class="modal-actions"><button class="btn ghost" id="pinCancel">Do not pin it</button><button class="btn ghost" id="pinKeep">Keep Priority as it is</button><button class="btn primary" id="pinMove">Move it up</button></div></div>', false);
+  m.querySelector("#pinMove").addEventListener("click", function(){ var pos = +m.querySelector("#pinPos").value; moveOrder(K-1, pos-1); closeModal(); wizRender(); toast(subject+" moved to position "+pos+" in Priority."); });
+  m.querySelector("#pinKeep").addEventListener("click", function(){ closeModal(); toast("Priority unchanged. "+subject+" runs in parallel in Session "+(idx+1)+"."); });
+  m.querySelector("#pinCancel").addEventListener("click", function(){ wset(path, prev || ""); closeModal(); wizRender(); });
 }
 function wizRender(){ var y = window.scrollY; renderWizard(document.getElementById("view-planner")); window.scrollTo(0, y); }
 function wget(path){ var p = path.split("."), o = wiz; for(var i=0;i<p.length;i++) o = o[p[i]]; return o; }
@@ -5757,9 +5786,12 @@ function wirePlanner(host){
     var t = e.target;
     if(t.hasAttribute("data-w") && wiz){
       var path = t.getAttribute("data-w"), val = t.type==="checkbox" ? t.checked : (t.getAttribute("data-t")==="n" ? (t.value==="" ? "" : +t.value) : t.value);
+      var pinM = /^cap\.sessions\.(\d+)\.subject$/.exec(path), prevPin = pinM ? wget(path) : null;
       wset(path, val);
       var af = t.getAttribute("data-after"); if(af) wizAfter(af);
-      wizRender(); return;
+      wizRender();
+      if(pinM && val && val !== prevPin) pinCheck(+pinM[1], val, prevPin, path);
+      return;
     }
     if(t.hasAttribute("data-selleaf") && wiz){
       var id = t.getAttribute("data-selleaf"); if(t.checked) wiz.sel[id] = 1; else delete wiz.sel[id];
