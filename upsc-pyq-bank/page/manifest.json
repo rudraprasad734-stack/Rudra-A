@@ -1,0 +1,16 @@
+{
+  "name": "UPSC Companion",
+  "short_name": "UPSC Companion",
+  "description": "18-month UPSC prep plan, PYQ bank, and daily study tracker — works fully offline.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#ECEEF3",
+  "theme_color": "#1F2A52",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

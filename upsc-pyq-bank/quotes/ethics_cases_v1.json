@@ -1,0 +1,555 @@
+{
+ "note": "Phase 1 starter set: 2 real UPSC PYQ case studies (with my own structured analysis added) and 2 constructed practice cases clearly labelled as such. Real cases are copied verbatim from the papers in your bank -- nothing invented about the facts, only the analysis frame around them.",
+ "cases": [
+  {
+   "id": "c1",
+   "tier": "Advanced",
+   "themeTag": "Disaster/pandemic response dilemmas",
+   "sourceType": "real",
+   "source": "GS Paper IV, 2025, Q7 (verbatim from your PYQ bank)",
+   "situation": "Vijay, Deputy Commissioner of a remote Himalayan district, is leading rescue and relief operations after catastrophic flooding and a cloudburst kill 200+ people and injure 5,000. Mid-operation, he learns his mother back home has died, with only an elder sister (a US citizen) left as family. As he weighs leaving to perform last rites, the district is hit by fresh heavy rains, worsening the crisis he is responsible for.",
+   "stakeholders": [
+    "The flood-affected district's population (immediate safety and relief)",
+    "Vijay's own family duty and grief",
+    "The state administration relying on his leadership",
+    "Rescue and relief personnel under his command"
+   ],
+   "ethicalIssues": [
+    "Duty to the public office vs. filial/personal duty",
+    "Continuity of leadership during an active crisis",
+    "Personal grief and its effect on decision-making capacity"
+   ],
+   "valuesInvolved": [
+    "Public service / duty to office",
+    "Compassion and human relationships",
+    "Responsibility and accountability",
+    "Self-care and honesty about one's own limits"
+   ],
+   "conflictingValues": "Duty to remain and lead relief operations directly conflicts with the filial duty to be present for his mother's last rites -- both are legitimate, non-trivial obligations.",
+   "options": [
+    {
+     "option": "Stay and continue leading relief operations, delegate rites to his sister/community",
+     "consequences": "Relief work continues without disruption; Vijay carries lasting personal regret at missing his mother's last rites."
+    },
+    {
+     "option": "Leave immediately for the rites, hand over charge to a deputy",
+     "consequences": "Personal duty fulfilled; risk of a leadership gap at the worst possible moment if the handover isn't seamless."
+    },
+    {
+     "option": "Delegate operational command temporarily, attend rites briefly, return as fast as possible",
+     "consequences": "Attempts to balance both duties; depends heavily on having a genuinely capable deputy and short, reliable travel."
+    }
+   ],
+   "constitutionalLegal": "No specific constitutional provision governs this personal dilemma, but the broader principle of Article 51A(who holds public office) and the Conduct Rules for civil servants presume continuous availability during a declared disaster; the Disaster Management Act, 2005 vests the District Magistrate/DC with primary command responsibility during the response phase.",
+   "principles": [
+    "Utilitarian reasoning: which choice serves the greater number of people at this moment?",
+    "Duty ethics (Kant): a public officer's role-based duty during an active emergency is a strong categorical obligation",
+    "Virtue ethics: what would a person of good character, balancing compassion and duty, do?"
+   ],
+   "thinkersQuotes": [
+    "Aristotle on courage as the mean between excess and deficiency (see Quotes tab, Ethics → Courage) is relevant to acting rightly under pressure, for the right reasons."
+   ],
+   "decisionFramework": "1) Assess whether a genuinely capable second-in-command exists to take over. 2) If yes, a short, well-handed-over absence to attend the rites is defensible -- duty to family is not infinitely subordinate to office. 3) If no reliable handover is possible, the scale of the ongoing emergency (lives still at risk from renewed rains) means staying is the more defensible choice, provided Vijay is transparent with his superiors and seeks emotional support rather than suppressing his grief.",
+   "practiceQuestions": [
+    "What are the options available with Vijay?",
+    "What is the ethical dilemma he is facing?",
+    "Which option would you choose, and why, in about 250 words?"
+   ]
+  },
+  {
+   "id": "c2",
+   "tier": "UPSC-style",
+   "themeTag": "Conflict of interest",
+   "sourceType": "real",
+   "source": "GS Paper IV, 2025, Q9 (verbatim from your PYQ bank)",
+   "situation": "Subash, Secretary PWD, is trusted by his Minister and is finalising a major road-construction project before its public announcement. His own son, in the real-estate business, is pressuring him to reveal the project's exact location to buy land cheaply in advance. Separately, the Minister has introduced his own nephew, who runs an infrastructure company, and has all but instructed Subash to 'take care of' the nephew's business interests in the same project.",
+   "stakeholders": [
+    "The public (fair, uncorrupted infrastructure planning)",
+    "Subash's son (family pressure, personal gain)",
+    "The Minister and his nephew (political and business interest)",
+    "Subash's own career and integrity",
+    "Rival, honest bidders/contractors who would be disadvantaged"
+   ],
+   "ethicalIssues": [
+    "Conflict of interest (both familial and political)",
+    "Insider information and its misuse",
+    "Political pressure on a civil servant's neutrality",
+    "Nepotism and favouritism in public contracting"
+   ],
+   "valuesInvolved": [
+    "Integrity and probity",
+    "Impartiality / objectivity",
+    "Accountability to the public interest over personal or political ties",
+    "Courage to resist undue pressure"
+   ],
+   "conflictingValues": "Loyalty to family (son) and deference to a powerful political superior (Minister) both pull against Subash's duty of impartial, corruption-free public administration.",
+   "options": [
+    {
+     "option": "Share the information with his son and quietly enable the Minister's nephew, to protect his career and family relationships",
+     "consequences": "Serious corruption and conflict of interest; if discovered, criminal and disciplinary liability, and public-interest harm from a compromised project."
+    },
+    {
+     "option": "Firmly refuse both his son and the Minister, and put his concerns about the nephew's interest in writing to a higher/independent authority",
+     "consequences": "Protects integrity and the public interest; risks personal and professional friction with the Minister, possible retaliation."
+    },
+    {
+     "option": "Recuse himself from the specific decision-making role in this project, citing conflict of interest, while flagging the Minister's conduct through proper channels",
+     "consequences": "A defensible middle path: removes him from direct temptation/pressure while still surfacing the issue, though it may not fully stop the underlying problem."
+    }
+   ],
+   "constitutionalLegal": "All India Services (Conduct) Rules, 1968 prohibit misuse of official position for personal or relatives' gain; the Prevention of Corruption Act, 1988 (as amended 2018) covers undue influence and bribery by public servants; Central Vigilance Commission guidelines require disclosure of conflicts of interest.",
+   "principles": [
+    "Deontological duty: a civil servant's role-based duty not to misuse office overrides personal/family loyalty",
+    "Rawlsian fairness: awarding advantage based on insider access to a family member violates fair equality of opportunity for other bidders"
+   ],
+   "thinkersQuotes": [
+    "Gandhi's 'means and end are convertible terms' (see Quotes tab, Ethics → Probity) applies directly: a 'good' infrastructure project pursued through corrupt means is not actually a good outcome."
+   ],
+   "decisionFramework": "1) Recognise both pressures (son, Minister) as conflicts of interest requiring formal recusal or disclosure, not private accommodation. 2) Refuse to share confidential project information with his son under any framing. 3) Document and escalate the Minister's push to favour his nephew through appropriate vigilance/oversight channels, protecting himself with a paper trail. 4) Seek recusal from the specific procurement decision if a truly independent evaluation cannot otherwise be assured.",
+   "practiceQuestions": [
+    "What ethical issues are involved in this case?",
+    "What options are available to Subash?",
+    "Which option is most appropriate, and why, in about 250 words?"
+   ]
+  },
+  {
+   "id": "c3",
+   "tier": "Basic",
+   "themeTag": "Workplace sexual harassment",
+   "sourceType": "constructed",
+   "source": "Practice case constructed for this bank, not a real UPSC question -- modelled on the recurring GS4 case-study theme of the same name (asked in multiple past years per your PYQ bank).",
+   "situation": "You are a junior officer newly posted to a district office. A colleague confides that a senior officer has been making her uncomfortable with repeated personal comments and late-evening 'work calls' with no real work content. She asks you not to tell anyone, fearing it will hurt her career, but also seems distressed and unsure what to do.",
+   "stakeholders": [
+    "The colleague experiencing harassment",
+    "You, as a confidant with new obligations",
+    "The senior officer involved",
+    "The office's Internal Committee (IC) under the POSH Act",
+    "The wider workplace culture"
+   ],
+   "ethicalIssues": [
+    "Confidentiality vs. duty to act on harassment",
+    "Power imbalance between a senior and junior officer",
+    "Institutional obligation to provide a safe workplace"
+   ],
+   "valuesInvolved": [
+    "Compassion",
+    "Courage",
+    "Justice",
+    "Institutional integrity"
+   ],
+   "conflictingValues": "Respecting your colleague's stated wish for confidentiality conflicts with the legal and ethical duty to ensure harassment is reported and addressed through proper channels.",
+   "options": [
+    {
+     "option": "Say nothing, respecting her explicit request",
+     "consequences": "Protects the immediate relationship of trust, but leaves the harassment unaddressed and potentially ongoing/escalating."
+    },
+    {
+     "option": "Report it yourself immediately to the Internal Committee without her consent",
+     "consequences": "Ensures institutional action, but overrides her agency and may damage trust and her willingness to come forward again."
+    },
+    {
+     "option": "Support her in understanding the POSH Act and IC process, and encourage (without forcing) her to file a complaint herself, offering to accompany or corroborate if she chooses",
+     "consequences": "Respects her agency while working toward a proper resolution; may take longer and depends on her ultimately deciding to act."
+    }
+   ],
+   "constitutionalLegal": "The Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013 (POSH Act) mandates an Internal Committee in every workplace above a threshold size and obliges the organisation to act on harassment; Vishaka Guidelines (1997, Supreme Court) are the constitutional-law foundation preceding the Act.",
+   "principles": [
+    "Care ethics: responding to her emotional state and agency matters, not just the abstract 'correct' rule",
+    "Institutional duty under POSH: harassment is not merely an interpersonal matter but an organisational/legal obligation to address"
+   ],
+   "thinkersQuotes": [
+    "The Atticus Finch empathy quote (see Quotes tab, Ethics → Empathy) is relevant to understanding her hesitation before deciding how to act."
+   ],
+   "decisionFramework": "1) Do not dismiss her concern or promise absolute silence you cannot ethically keep. 2) Gently inform her of the POSH Act/IC mechanism and her rights, without pressuring her. 3) Offer concrete support (accompanying her, corroborating events you witnessed) if she chooses to proceed. 4) If the behaviour appears to be escalating or you believe others may be at risk, you may have a duty to flag a pattern (without naming her) to the IC even without her explicit consent, but this is the last resort, not the first.",
+   "practiceQuestions": [
+    "What are the ethical issues involved?",
+    "What options do you have?",
+    "What would you do, and why?"
+   ]
+  },
+  {
+   "id": "c4",
+   "tier": "UPSC-style",
+   "themeTag": "Whistleblowing",
+   "sourceType": "constructed",
+   "source": "Practice case constructed for this bank, not a real UPSC question -- modelled on the recurring GS4 case-study theme of the same name (asked in multiple past years per your PYQ bank).",
+   "situation": "You are an audit officer reviewing a welfare scheme's expenditure. You discover clear evidence that a portion of funds meant for beneficiaries has been diverted through inflated vendor bills, and the trail points toward a senior colleague who mentored you early in your career and has otherwise been an exemplary officer. Reporting this will likely end his career; not reporting it lets diverted public funds meant for the poor go unaddressed.",
+   "stakeholders": [
+    "The intended welfare-scheme beneficiaries",
+    "The senior colleague/mentor",
+    "The audit function's institutional credibility",
+    "You, professionally and personally"
+   ],
+   "ethicalIssues": [
+    "Whistleblowing vs. personal loyalty",
+    "Conflict of interest arising from a prior mentoring relationship",
+    "Proportionality — how findings are reported and to whom"
+   ],
+   "valuesInvolved": [
+    "Integrity",
+    "Accountability",
+    "Courage",
+    "Loyalty (to institution and public, not just to individuals)"
+   ],
+   "conflictingValues": "Personal gratitude and loyalty to a mentor conflicts with professional duty to report corruption that harms intended welfare beneficiaries.",
+   "options": [
+    {
+     "option": "Quietly warn the colleague to correct the irregularity himself before it is formally reported",
+     "consequences": "Might prompt informal correction, but lets a violation of public trust go unrecorded and could implicate you if it later surfaces that you knew."
+    },
+    {
+     "option": "Report the findings exactly as required through the normal audit/vigilance process, regardless of the relationship",
+     "consequences": "Upholds institutional integrity and public interest; damages a personal relationship and may be professionally uncomfortable, but is legally and ethically sound."
+    },
+    {
+     "option": "Suppress or soften the finding in your report to protect him",
+     "consequences": "Serious professional and possibly criminal misconduct on your own part if discovered; fails the beneficiaries and the institution."
+    }
+   ],
+   "constitutionalLegal": "The Whistle Blowers Protection Act, 2014 provides a framework (though weakly implemented) for reporting corruption while seeking protection from victimisation; CVC guidelines require officers to report corruption they discover in the course of duty; suppressing an audit finding could itself amount to misconduct under service conduct rules.",
+   "principles": [
+    "Deontological duty: an auditor's role-based duty to report facts accurately is not conditional on personal relationships",
+    "Utilitarian reasoning: the harm to many beneficiaries from continued diversion outweighs the harm to one individual's career from accurate reporting"
+   ],
+   "thinkersQuotes": [
+    "Rawls: 'laws and institutions no matter how efficient and well-arranged must be reformed or abolished if they are unjust' (see Quotes tab, Ethics → Justice) supports prioritising the integrity of the welfare scheme over protecting an individual."
+   ],
+   "decisionFramework": "1) Separate the personal relationship from the professional finding — the facts of the audit do not change because of who is involved. 2) Report through the normal, documented process rather than either suppressing the finding or handling it informally/off the record. 3) Where possible, ensure due process for the colleague (right to respond) rather than assuming guilt, while not delaying or diluting the report itself.",
+   "practiceQuestions": [
+    "What is the central ethical dilemma here?",
+    "What options are available to you as the audit officer?",
+    "What would you recommend, and why?"
+   ]
+  },
+  {
+   "id": "c5",
+   "tier": "Advanced",
+   "themeTag": "Environment vs. development trade-off",
+   "sourceType": "real",
+   "source": "GS Paper IV, 2025, Q8 (verbatim from your PYQ bank)",
+   "situation": "A district administration proposes clearing ecologically sensitive forest land — home to old-growth trees, medicinal plants, wildlife and tribal/nomadic livelihoods — to build housing for the homeless and economically weaker sections, citing the constitutional DPSP duty to provide food, clothing and shelter. It also argues the forest area harbours wildlife conflict and criminal hideouts.",
+   "stakeholders": [
+    "Homeless and economically weaker families needing housing",
+    "Tribal and nomadic communities dependent on the forest",
+    "Wildlife and the broader ecosystem",
+    "The district administration balancing competing duties",
+    "Future generations affected by biodiversity loss"
+   ],
+   "ethicalIssues": [
+    "Environment vs. development trade-off",
+    "Whose welfare counts, and how it is weighed against ecological cost",
+    "Using security/law-and-order arguments to justify an environmentally costly decision"
+   ],
+   "valuesInvolved": [
+    "Compassion for the homeless",
+    "Environmental stewardship",
+    "Justice for tribal/nomadic communities not otherwise consulted",
+    "Intergenerational responsibility"
+   ],
+   "conflictingValues": "The constitutional duty to secure basic needs for the poor (DPSP) conflicts with environmental conservation duties and the livelihood rights of forest-dependent communities, all of which are also constitutionally and ethically grounded.",
+   "options": [
+    {
+     "option": "Proceed with clearing the proposed forest land as planned",
+     "consequences": "Meets housing need directly and quickly; causes irreversible ecological damage and displaces tribal/nomadic livelihoods, likely triggering long-term social and environmental costs."
+    },
+    {
+     "option": "Reject the proposal outright and seek alternative land only",
+     "consequences": "Protects the ecosystem, but risks leaving the housing need unmet if no timely alternative exists, and does not address the administration's underlying obligation."
+    },
+    {
+     "option": "Conduct a proper Environmental Impact Assessment and social impact study, explore non-forest government land, vertical/high-density housing, and phased development with afforestation offsets and consultation with tribal communities",
+     "consequences": "Likely slower and more resource-intensive, but the most defensible path — it treats both duties as real rather than choosing one and discarding the other."
+    }
+   ],
+   "constitutionalLegal": "Directive Principles (Articles 39(b)/47) support welfare housing; simultaneously, Article 48A (protection of environment) and Article 51A(g) (citizens' duty to protect the environment) apply; the Forest (Conservation) Act, 1980 and Forest Rights Act, 2006 (rights of forest-dwelling communities) directly govern any diversion of forest land.",
+   "principles": [
+    "Utilitarian reasoning must account for long-term, diffuse costs (ecological loss) not just immediate visible benefits (housing)",
+    "Precautionary principle: irreversible environmental harm should not be risked without exhausting alternatives"
+   ],
+   "thinkersQuotes": [
+    "Rachel Carson's critique of the 'control of nature' (see Quotes tab, Essay → Environment) is directly relevant to the administration's framing of the forest as an obstacle to be cleared."
+   ],
+   "decisionFramework": "1) Treat this as a false binary — both housing and ecological protection are real, non-negotiable duties, not a simple trade-off. 2) Commission an EIA and social impact assessment before any decision. 3) Actively search for non-forest alternatives (including vertical housing to reduce land footprint) before considering forest diversion. 4) If forest land diversion is truly unavoidable after due diligence, ensure minimal, compensated diversion with afforestation elsewhere and free, prior, informed consultation with affected tribal communities.",
+   "practiceQuestions": [
+    "Can deforestation be ethically justified in pursuit of a welfare objective like housing?",
+    "What administrative and ethical challenges arise in balancing conservation with development?",
+    "What alternatives would you propose, in about 250 words?"
+   ]
+  },
+  {
+   "id": "c6",
+   "tier": "UPSC-style",
+   "themeTag": "Welfare-scheme corruption / leakage",
+   "sourceType": "real",
+   "source": "GS Paper IV, 2025, Q11 (verbatim from your PYQ bank)",
+   "situation": "As the newly appointed District Administrator overseeing MGNREGA, you discover your predecessor left behind systemic mismanagement: money not reaching actual job-seekers, poorly maintained muster rolls, mismatched work and payments, payments to fictitious persons, job cards issued without need assessment, siphoned funds, and approved works that never existed.",
+   "stakeholders": [
+    "Genuine rural job-seekers denied wages",
+    "Gram Panchayat officials, some possibly complicit",
+    "The predecessor administrator (accountability question)",
+    "The wider public exchequer/taxpayers",
+    "Your own credibility as the new administrator"
+   ],
+   "ethicalIssues": [
+    "Institutional corruption inherited from a predecessor",
+    "Balancing swift corrective action with due process for those implicated",
+    "Restoring a scheme's integrity without disrupting genuine ongoing work"
+   ],
+   "valuesInvolved": [
+    "Accountability",
+    "Transparency",
+    "Integrity",
+    "Diligence in oversight"
+   ],
+   "conflictingValues": "The need for swift, visible corrective action conflicts with the need for careful, evidence-based investigation before taking punitive action against individuals.",
+   "options": [
+    {
+     "option": "Immediately halt all MGNREGA disbursements in the affected Panchayat pending a full audit",
+     "consequences": "Stops further leakage quickly, but also halts wages to genuine job-seekers who depend on the scheme, causing real hardship."
+    },
+    {
+     "option": "Continue business as usual while quietly investigating",
+     "consequences": "Avoids disrupting genuine beneficiaries in the short term, but allows ongoing siphoning to continue and delays accountability."
+    },
+    {
+     "option": "Order an immediate social audit and muster-roll verification with Gram Sabha involvement, freeze only the specific irregular payments/works identified, and refer clear cases of fraud to vigilance while continuing verified genuine work",
+     "consequences": "More administratively demanding, but protects genuine beneficiaries, stops the specific leakage, and builds an evidence trail for accountability."
+    }
+   ],
+   "constitutionalLegal": "MGNREGA, 2005 mandates social audits by Gram Sabhas as a statutory requirement; the Right to Information Act, 2005 supports transparency in muster rolls and payments; the Prevention of Corruption Act, 1988 covers misappropriation of public funds by officials.",
+   "principles": [
+    "Accountability requires proportionate, evidence-based action rather than either blanket punishment or inaction",
+    "Institutional design (social audits, Gram Sabha oversight) should be activated, not bypassed, to restore legitimacy"
+   ],
+   "thinkersQuotes": [
+    "Brandeis's 'sunlight is the best disinfectant' (see Quotes tab, Ethics → Accountability & Transparency) directly supports using public social audits rather than a closed-door internal review."
+   ],
+   "decisionFramework": "1) Do not let genuine job-seekers suffer for a predecessor's misconduct — isolate and continue verified genuine work. 2) Trigger a formal social audit involving the Gram Sabha as MGNREGA rules require, rather than a purely internal review. 3) Refer clear evidence of fraud (fictitious payments, non-existent works) to vigilance/anti-corruption authorities. 4) Strengthen future controls (biometric attendance, geo-tagged worksite photos, real-time fund tracking) to prevent recurrence.",
+   "practiceQuestions": [
+    "What is your reaction to the situation, and how would you restore proper functioning?",
+    "What actions would you initiate to address each issue listed?",
+    "How would you deal with the situation overall, in about 250 words?"
+   ]
+  },
+  {
+   "id": "c7",
+   "tier": "Advanced",
+   "themeTag": "Insurgency / communal policing ethics",
+   "sourceType": "real",
+   "source": "GS Paper IV, 2025, Q12 (verbatim from your PYQ bank)",
+   "situation": "Ashok, Divisional Commissioner of a North-East border district, is informed at night that 200-250 civilians (mostly women and children, some injured) are trying to cross the border fleeing a civil war in the neighbouring country — and about 10 armed soldiers in uniform are attempting to cross with them. He cannot reach the Home Secretary due to poor connectivity in bad weather.",
+   "stakeholders": [
+    "The civilian refugees, including injured and vulnerable people",
+    "Armed foreign soldiers seeking to cross with the group",
+    "Border Guarding Police under Ashok's command",
+    "National security and diplomatic considerations",
+    "The neighbouring country's contested government/rebel dynamics"
+   ],
+   "ethicalIssues": [
+    "Humanitarian obligation to civilians vs. national security risk from armed foreign combatants",
+    "Acting without the ability to get explicit higher authorization in a time-critical situation",
+    "Distinguishing genuine refugees from potential security threats under uncertainty"
+   ],
+   "valuesInvolved": [
+    "Compassion",
+    "Courage in decision-making under uncertainty",
+    "Responsibility and accountability",
+    "National security awareness"
+   ],
+   "conflictingValues": "The urgent humanitarian duty to help injured, desperate civilians conflicts with the security risk and legal complexity of allowing armed foreign soldiers to cross an international border.",
+   "options": [
+    {
+     "option": "Allow the entire group, including armed soldiers, to cross immediately without conditions",
+     "consequences": "Fast humanitarian relief, but creates a serious, unmanaged security risk from armed foreign combatants entering the country."
+    },
+    {
+     "option": "Refuse entry to the entire group until explicit orders are received",
+     "consequences": "Protects procedural correctness, but risks civilian deaths/further injury from delay in a genuine emergency, and is likely to be seen as a serious ethical failure."
+    },
+    {
+     "option": "Admit civilians (especially the injured, women and children) immediately for humanitarian relief and medical care, while segregating and disarming the armed soldiers, holding them under guard pending verification and higher-authority instructions",
+     "consequences": "Balances the humanitarian imperative with security management; requires disciplined execution by the Border Guarding Police and swift follow-up communication with higher authorities."
+    }
+   ],
+   "constitutionalLegal": "India is not a signatory to the 1951 Refugee Convention but follows customary international law obligations of non-refoulement in practice; the Foreigners Act, 1946 governs entry of foreign nationals; armed foreign military personnel crossing a border raise issues under the Passport (Entry into India) Act and international law on combatants versus civilians, requiring careful handling distinct from civilian refugees.",
+   "principles": [
+    "Emergency ethics: urgent humanitarian action is justified even without complete authorization when delay costs lives, provided it is reported immediately once possible",
+    "Discrimination principle from just-war/security ethics: civilians and combatants must be treated differently even in the same crossing event"
+   ],
+   "thinkersQuotes": [
+    "Aristotle's account of courage as fearing/acting rightly 'at the right time' (see Quotes tab, Ethics → Courage) is directly relevant to Ashok needing to act decisively without waiting indefinitely for authorization."
+   ],
+   "decisionFramework": "1) Prioritise immediate humanitarian relief for civilians, especially the injured, women and children — medical care first. 2) Separate and disarm the uniformed soldiers, holding them under guard rather than allowing free entry or turning them away into a warzone. 3) Make every effort to reach higher authorities and document the decision and reasoning in real time for accountability. 4) Follow up promptly with formal reporting once connectivity is restored.",
+   "practiceQuestions": [
+    "What options are available to Ashok?",
+    "What ethical and legal dilemmas does he face?",
+    "Which option is most appropriate, and why?",
+    "What extra precautions should the Border Guarding Police take with armed personnel in uniform?"
+   ]
+  },
+  {
+   "id": "c8",
+   "tier": "Basic",
+   "themeTag": "Corporate / business ethics",
+   "sourceType": "constructed",
+   "source": "Practice case constructed for this bank, not a real UPSC question -- modelled on the recurring GS4 case-study theme of the same name.",
+   "situation": "You work in the licensing department that approves food business operators. A small vendor applies for a license; during inspection you notice minor hygiene lapses that are common and usually resolved with a warning, but your supervisor hints that approving it 'quickly' would please a local politician who has taken interest in the vendor's business.",
+   "stakeholders": [
+    "The vendor seeking a livelihood",
+    "Consumers relying on food safety standards",
+    "Your supervisor and the political pressure involved",
+    "The regulatory institution's credibility"
+   ],
+   "ethicalIssues": [
+    "Political interference in a technical/regulatory decision",
+    "Proportionality: is a warning enough, or does political pressure change the standard applied?",
+    "Personal career risk in resisting a supervisor's hint"
+   ],
+   "valuesInvolved": [
+    "Integrity",
+    "Objectivity",
+    "Courage",
+    "Fairness"
+   ],
+   "conflictingValues": "Deference to a supervisor's implicit direction conflicts with the duty to apply food safety standards impartially, regardless of who is asking.",
+   "options": [
+    {
+     "option": "Approve the license quickly as hinted, treating it as a minor favour",
+     "consequences": "Avoids friction with your supervisor, but sets a precedent for political interference and could compromise food safety if lapses are more than cosmetic."
+    },
+    {
+     "option": "Apply the same standard you would to any applicant — issue a warning with a reinspection timeline, documented normally",
+     "consequences": "Treats the case fairly and consistently; may create friction with your supervisor, but is procedurally and ethically sound."
+    },
+    {
+     "option": "Escalate the supervisor's hint as inappropriate pressure through appropriate channels",
+     "consequences": "Addresses the deeper problem of political interference, but is a bigger, riskier step than the situation may warrant if the hint was minor and ambiguous."
+    }
+   ],
+   "constitutionalLegal": "The Food Safety and Standards Act, 2006 sets uniform licensing and hygiene standards that officials are bound to apply without discrimination; Conduct Rules for public servants prohibit acting under political influence in routine regulatory functions.",
+   "principles": [
+    "Equal treatment under the law: administrative decisions should not vary based on political connections",
+    "Proportionality: response should match the actual severity of the lapse, not the identity of the person pressuring you"
+   ],
+   "thinkersQuotes": [
+    "Kant's Categorical Imperative (see Quotes tab, Ethics → Responsibility & Duty) is relevant: would you want every licensing officer to bend standards whenever someone with influence asks?"
+   ],
+   "decisionFramework": "1) Apply the same hygiene standard you would apply to any similar case — a warning with a reinspection timeline if that is genuinely proportionate to the lapse. 2) Document the inspection and decision normally and transparently. 3) If the political pressure becomes more explicit or coercive, treat that as a separate, more serious issue to be reported through proper channels, rather than silently complying.",
+   "practiceQuestions": [
+    "What is the ethical issue here?",
+    "What would you do, and why?",
+    "How would you handle continued pressure from your supervisor?"
+   ]
+  },
+  {
+   "id": "c9",
+   "tier": "UPSC-style",
+   "themeTag": "Medical ethics",
+   "sourceType": "constructed",
+   "source": "Practice case constructed for this bank, not a real UPSC question -- modelled on the recurring GS4 case-study theme of the same name.",
+   "situation": "You are the administrator of a government hospital during a disease outbreak with limited ICU beds. Two critical patients need the last available bed at the same time: an elderly retired freedom fighter with a lower survival probability, and a young migrant labourer with a higher survival probability but no local family to advocate for him. Hospital protocol says survival probability should decide, but a local politician is pressuring you to prioritise the freedom fighter for symbolic reasons.",
+   "stakeholders": [
+    "Both critically ill patients and their survival chances",
+    "The hospital's clinical protocol and medical staff",
+    "The pressuring politician",
+    "The wider public's trust in fair triage during a crisis"
+   ],
+   "ethicalIssues": [
+    "Medical triage under scarcity vs. external political pressure",
+    "Symbolic/social value of a patient vs. clinical criteria",
+    "Equity for patients without social or political advocates"
+   ],
+   "valuesInvolved": [
+    "Justice",
+    "Objectivity",
+    "Compassion",
+    "Courage to resist undue pressure"
+   ],
+   "conflictingValues": "Honouring a freedom fighter's service and the political pressure to prioritise him conflicts with the clinical protocol's survival-probability criterion, which favours the younger patient with no advocate.",
+   "options": [
+    {
+     "option": "Follow the clinical protocol strictly and allocate the bed to the patient with higher survival probability",
+     "consequences": "Upholds a fair, defensible standard applied to everyone; may draw political backlash and public criticism for 'disrespecting' the freedom fighter."
+    },
+    {
+     "option": "Give in to political pressure and allocate the bed to the freedom fighter",
+     "consequences": "Avoids immediate political friction, but undermines clinical objectivity, sets a precedent for influence-based triage, and disadvantages a patient with no advocate purely because he lacks one."
+    },
+    {
+     "option": "Apply the clinical protocol, but simultaneously mobilise all possible resources (transfer requests to other facilities, emergency equipment) to try to save both patients",
+     "consequences": "Doesn't abandon the disadvantaged patient's chances even while following a fair primary rule; requires additional effort but is the most ethically complete response."
+    }
+   ],
+   "constitutionalLegal": "Article 14 (equality before law) supports non-arbitrary, criteria-based allocation of scarce public resources; established medical ethics guidelines (e.g. ICMR guidance on triage during public health emergencies) support survival-probability-based clinical protocols over non-clinical criteria.",
+   "principles": [
+    "Justice as fairness (Rawls, see Quotes tab, Ethics → Justice): resource allocation should not depend on who has an advocate",
+    "Utilitarian reasoning: maximising survival outcomes under scarcity is a defensible primary criterion, but should be paired with effort to help all"
+   ],
+   "thinkersQuotes": [
+    "Rawls's line that 'laws and institutions... must be reformed or abolished if they are unjust' (Quotes tab, Ethics → Justice) supports resisting a departure from fair protocol even under political pressure."
+   ],
+   "decisionFramework": "1) Apply the existing clinical triage protocol consistently — do not let political pressure override a fair, pre-established rule. 2) Simultaneously try to expand capacity or arrange transfer for the patient who doesn't get the bed, rather than treating the decision as final and closed. 3) Communicate the decision and its clinical basis transparently, including to the pressuring politician, rather than avoiding the confrontation.",
+   "practiceQuestions": [
+    "What is the central ethical conflict?",
+    "What would you do, and why?",
+    "How should hospitals design triage protocols to resist this kind of pressure in advance?"
+   ]
+  },
+  {
+   "id": "c10",
+   "tier": "Advanced",
+   "themeTag": "AI / technology ethics (recent addition)",
+   "sourceType": "real",
+   "source": "GS Paper IV, 2024, Q7 (verbatim from your PYQ bank)",
+   "situation": "As CEO and majority shareholder of ABC Incorporated, a major tech company, you face a 48% rise in greenhouse gas emissions since 2019, driven largely by AI's exploding energy demands. The company has a public net-zero-by-2030 commitment, but competitive pressure to keep innovating in AI makes cutting emissions increasingly difficult, and the company is facing possible penalties from industry regulators/peers.",
+   "stakeholders": [
+    "The environment and communities affected by emissions",
+    "Company shareholders expecting continued growth",
+    "Employees and the AI research/business teams",
+    "Regulators and industry bodies",
+    "Society at large, benefiting from AI services but bearing environmental cost"
+   ],
+   "ethicalIssues": [
+    "Corporate responsibility for environmental externalities of technological innovation",
+    "Tension between shareholder value maximisation and public/environmental duty",
+    "Honesty about a net-zero commitment that may not be achievable on current trajectory"
+   ],
+   "valuesInvolved": [
+    "Environmental responsibility",
+    "Corporate integrity (not overstating commitments)",
+    "Accountability to stakeholders beyond shareholders",
+    "Long-term thinking over short-term competitive pressure"
+   ],
+   "conflictingValues": "The duty to maximise shareholder value and stay competitive in AI conflicts with the environmental commitment and broader social responsibility not to externalise environmental costs onto the public.",
+   "options": [
+    {
+     "option": "Continue current AI expansion prioritising competitiveness, treat the net-zero goal as aspirational rather than binding",
+     "consequences": "Preserves market position, but breaches the spirit of a public commitment and worsens environmental impact, risking reputational and regulatory consequences."
+    },
+    {
+     "option": "Drastically scale back AI investment to cut emissions immediately",
+     "consequences": "Improves the environmental metric quickly, but could cripple competitiveness, harm shareholders and employees, and may not be proportionate if better options exist."
+    },
+    {
+     "option": "Invest substantially in renewable energy for data centres, publish transparent interim emissions targets and progress reports, and accept short-term margin impact as the cost of the earlier public commitment",
+     "consequences": "More expensive and slower than either extreme, but treats the net-zero pledge as a genuine obligation rather than a marketing statement, and is defensible to regulators, shareholders and the public alike."
+    }
+   ],
+   "constitutionalLegal": "While not bound by Indian constitutional provisions as a hypothetical global company, the case maps onto corporate social responsibility norms (e.g. Companies Act, 2013 CSR provisions in the Indian context) and international climate commitments (Paris Agreement-aligned net-zero pledges) that create quasi-legal reputational and regulatory exposure for unmet public commitments.",
+   "principles": [
+    "Stakeholder theory: obligations extend beyond shareholders to the environment and the public",
+    "Honesty/integrity: a public net-zero commitment carries a duty to pursue it in good faith, not merely as PR"
+   ],
+   "thinkersQuotes": [
+    "Hawking's view that AI 'could be either the best or worst thing to happen to humanity' (Quotes tab, Essay → Technology) frames exactly this tension between AI's benefits and its unmanaged costs."
+   ],
+   "decisionFramework": "1) Do not treat the net-zero commitment as merely aspirational once made publicly — that is a matter of corporate integrity, not just strategy. 2) Invest in renewable energy and efficiency for AI infrastructure as the primary lever, even at short-term cost to margins. 3) Be transparent with shareholders and regulators about the trade-offs and interim targets, rather than overstating progress. 4) Use competitive/industry forums to push for sector-wide standards, since unilateral action alone may be commercially difficult to sustain.",
+   "practiceQuestions": [
+    "What is your immediate response to this challenge?",
+    "What ethical issues are involved?",
+    "What arguments would you use to justify accepting a penalty/regulation as necessary?",
+    "What measures would you adopt to balance AI innovation with environmental footprint, in about 250 words?"
+   ]
+  }
+ ]
+}
