@@ -6859,6 +6859,7 @@ function sampleLanes(){
 }
 function renderSettings(){
   var host = document.getElementById("view-settings"); if(!host) return;
+  var oldRow = host.querySelector(".th-row"), prevLeft = oldRow ? oldRow.scrollLeft : -1;
   var th = pathThemeById(pathTheme), real = studyPlan ? pathCtx(subjectStates(studyPlan)) : null;
   var ctx = real && real.n ? real : sampleLanes();
   host.innerHTML =
@@ -6869,6 +6870,15 @@ function renderSettings(){
       }).join("")+'</div>'+
       '<div class="th-prev"><div class="dx pth-prevbox"><div class="pth-scene pth-'+th.id+'">'+th.draw(ctx)+'</div></div>'+(real && real.n ? '' : '<div class="muted small">Preview with sample subjects. Build a plan to see your own.</div>')+'</div>'+
     '</div>';
+  // keep the row where it was, then glide the chosen theme into the middle so you always know where you are
+  var row = host.querySelector(".th-row"), cur = row && row.querySelector(".th-opt.sel");
+  if(row && cur){
+    row.classList.add("pad-ctr");
+    if(prevLeft >= 0) row.scrollLeft = prevLeft;
+    var rr = row.getBoundingClientRect(), cc = cur.getBoundingClientRect();
+    var target = row.scrollLeft + (cc.left + cc.width/2) - (rr.left + rr.width/2);
+    if(prevLeft >= 0 && row.scrollTo) row.scrollTo({left:target, behavior:"smooth"}); else row.scrollLeft = target;
+  }
   if(!host._wired){
     host._wired = true;
     host.addEventListener("click", function(e){
