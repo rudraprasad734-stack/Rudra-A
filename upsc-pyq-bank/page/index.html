@@ -767,6 +767,10 @@
   .pl-title .muted, .wz-head .muted{color:rgba(255,255,255,.88);}
   .wz-head .link-btn{color:#fff; text-decoration:underline;}
   .chip.pinc{background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); padding:1px 7px; font-size:10px;}
+  .chip.plst{background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); padding:1px 8px; font-size:10px;}
+  .chip.plst.st-done{background:var(--sage-soft); color:var(--sage); border-color:var(--sage);}
+  .chip.plst.st-doing{color:var(--tab-accent); border-color:var(--tab-accent);}
+  .pace{flex-wrap:wrap;} .pace > div{min-width:0; flex:1 1 200px;} .pace select{max-width:100%; min-width:0; flex:1 1 200px;}
   .catch-banner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 14px; margin:0 0 10px; border-left:4px solid var(--brick);}
   .catch-banner .muted{font-size:12px;}
   .catch-opts{display:grid; gap:8px; margin:8px 0;}
@@ -3642,7 +3646,9 @@ function collectBackupData(){
     profile: profile,
     studySessions: studySessions,
     studyPlan: studyPlan,
-    studyProgress: studyProgress
+    studyProgress: studyProgress,
+    catchState: catchState,
+    reminders: remState
   };
 }
 var downloadsNs = null, downloadsChecked = false;
@@ -3655,7 +3661,15 @@ function downloadBackup(){
   var json = JSON.stringify(collectBackupData(), null, 2);
   var filename = "upsc-companion-backup-"+todayKey+".json";
   getDownloadsNs().then(function(downloads){
-    if(!downloads){ toast("Downloads aren't available in this view — try opening the app in its own browser tab."); return; }
+    if(!downloads){
+      try{
+        var blob = new Blob([json], {type:"application/json"}), url = URL.createObjectURL(blob), a = document.createElement("a");
+        a.href = url; a.download = filename; document.body.appendChild(a); a.click();
+        setTimeout(function(){ try{ document.body.removeChild(a); URL.revokeObjectURL(url); }catch(e){} }, 1500);
+        toast("Backup downloaded — keep the file somewhere safe.");
+      }catch(e){ toast("Couldn't save the backup file. Try again."); }
+      return;
+    }
     return downloads.save({filename:filename, data:json}).then(function(res){
       toast(res.status==="saved" ? "Backup downloaded — keep the file somewhere safe." : "Backup sent.");
     });
@@ -3679,6 +3693,8 @@ function applyBackupData(data){
   if(data.timerLog) lsSetJSON("dossier.timerLog", data.timerLog);
   if(Array.isArray(data.studySessions)){ studySessions = data.studySessions; saveSessions(); }
   if(data.studyPlan){ studyPlan = data.studyPlan; savePlan(); }
+  if(data.catchState && typeof data.catchState==='object'){ catchState = Object.assign({promptedOn:"", doneOn:""}, data.catchState); saveCatch(); }
+  if(data.reminders && typeof data.reminders==='object'){ remState = Object.assign({}, remState, data.reminders, {on:false, sent:{}}); remSave(); }
   if(data.studyProgress && data.studyProgress.topics){ studyProgress = data.studyProgress; saveProgress(); }
   if(data.profile && data.profile.name){ profile = data.profile; lsSetJSON(PROFILE_KEY, profile); renderGreeting(); }
   var p = data.planConfig;
@@ -4542,7 +4558,7 @@ function wizDefaults(){
       pyq:{on:false, mode:"weekly", days:[2], interval:1, count:3, dates:[], start:"16:00", end:"17:00"},
       test:{on:false, mode:"weekly", days:[0], interval:1, count:2, dates:[], start:"09:00", end:"11:00"},
       revision:{on:false, mode:"weekly", days:[6], interval:1, count:2, dates:[], start:"18:00", end:"19:00", method:"fixed", gaps:[3,10,30]},
-      ca:{on:false, mode:"weekly", days:[0,1,2,3,4,5,6], interval:1, count:8, dates:[], start:"20:00", end:"20:30"}
+      ca:{on:false, mode:"weekly", days:[0,1,2,3,4,5,6], interval:1, count:8, dates:[], start:"21:00", end:"21:30"}
     }};
 }
 function wizFromPlan(p){ var w = JSON.parse(JSON.stringify(p.cfg)); w.step = 0; w.err = []; w.open = {}; return w; }
@@ -4762,7 +4778,7 @@ function wzDuration(w){
       : '<div class="cf"><label>My target date</label><input type="date" data-w="target" value="'+esc(w.target)+'"></div>')+
     '<div class="cf"><label>Start date</label><input type="date" data-w="start" value="'+esc(w.start)+'"></div>'+
     (st.ok
-      ? '<div class="win-sum"><div><b>'+st.months+'</b><span>months</span></div><div><b>'+st.weeks+'</b><span>weeks</span></div><div><b>'+st.days+'</b><span>days</span></div><div><b>'+st.studyDays+'</b><span>study days</span></div><div><b>'+st.hours+'</b><span>study hours</span></div></div><div class="muted">Ends '+esc(fmtLong(parseKey(st.end)))+'. Study days and hours follow your capacity settings (step 6).</div>'
+      ? '<div class="win-sum"><div><b>'+(w.durMode==="months" && +w.months>0 ? +w.months : st.months)+'</b><span>months</span></div><div><b>'+st.weeks+'</b><span>weeks</span></div><div><b>'+st.days+'</b><span>days</span></div><div><b>'+st.studyDays+'</b><span>study days</span></div><div><b>'+st.hours+'</b><span>study hours</span></div></div><div class="muted">Ends '+esc(fmtLong(parseKey(st.end)))+'. Study days and hours follow your capacity settings (step 6).</div>'
       : '<div class="muted mt">Enter a duration or target date to see your available time.</div>');
 }
 function wzStartView(w){
@@ -4872,10 +4888,10 @@ function wzReview(w){
   var unfinished = sim.remaining;
   return '<h3>Review and generate</h3>'+
     '<div class="rev-grid">'+
-      '<div><span>Window</span><b>'+esc(fmtShort(parseKey(w.start)))+' &rarr; '+esc(fmtShort(parseKey(st.end)))+'</b><small>'+st.months+' months &middot; '+st.days+' days</small></div>'+
+      '<div><span>Window</span><b>'+esc(fmtShort(parseKey(w.start)))+' &rarr; '+esc(fmtShort(parseKey(st.end)))+'</b><small>'+(w.durMode==="months" && +w.months>0 ? +w.months : st.months)+' months &middot; '+st.days+' days</small></div>'+
       '<div><span>Preparing</span><b>'+({prelims:"Prelims",mains:"Mains",both:"Prelims + Mains"})[w.mode]+'</b><small>'+esc(w.optionalOn && w.mode!=="prelims" && w.optional ? "Optional: "+w.optional : "")+'</small></div>'+
       '<div><span>Chapters in scope</span><b>'+totalLeaves+'</b><small>'+states.length+' subjects</small></div>'+
-      '<div><span>Capacity</span><b>'+w.cap.sessions.length+' sessions/day</b><small>'+w.cap.days.length+' days/week &middot; '+st.hours+' h total</small></div>'+
+      '<div><span>Capacity</span><b>'+w.cap.sessions.length+' session'+(w.cap.sessions.length===1 ? "" : "s")+'/day</b><small>'+w.cap.days.length+' days/week &middot; '+st.hours+' h total</small></div>'+
     '</div>'+
     '<h4>Subject chain (projected finish)</h4><div class="chain-mini">'+states.map(function(s, i){
       var sp = sim.spans[s.name];
@@ -4927,7 +4943,11 @@ function pinCheck(idx, subject, prev, path){
   m.querySelector("#pinKeep").addEventListener("click", function(){ closeModal(); toast("Priority unchanged. "+subject+" runs in parallel in Session "+(idx+1)+"."); });
   m.querySelector("#pinCancel").addEventListener("click", function(){ wset(path, prev || ""); closeModal(); wizRender(); });
 }
-function wizRender(){ var y = window.scrollY; renderWizard(document.getElementById("view-planner")); window.scrollTo(0, y); }
+var WIZ_DRAFT_KEY = "dossier.wizdraft.v1";
+function saveWizDraft(){ if(wiz && !studyPlan) lsSetJSON(WIZ_DRAFT_KEY, wiz); }
+function loadWizDraft(){ var d = lsGetJSON(WIZ_DRAFT_KEY, null); return (d && typeof d==="object" && d.cap && d.acts && d.order) ? d : null; }
+function clearWizDraft(){ try{ localStorage.removeItem(WIZ_DRAFT_KEY); }catch(e){} }
+function wizRender(){ saveWizDraft(); var y = window.scrollY; renderWizard(document.getElementById("view-planner")); window.scrollTo(0, y); }
 function wget(path){ var p = path.split("."), o = wiz; for(var i=0;i<p.length;i++) o = o[p[i]]; return o; }
 function wset(path, v){ var p = path.split("."), o = wiz; for(var i=0;i<p.length-1;i++){ if(o[p[i]]==null) o[p[i]] = {}; o = o[p[i]]; } o[p[p.length-1]] = v; }
 function moveOrder(from, to){
@@ -4982,7 +5002,7 @@ function wizGenerate(){
   saveProgress(); savePlan();
   replan();
   var v = studyPlan.startView;
-  plannerEditing = false; wiz = null;
+  plannerEditing = false; wiz = null; clearWizDraft();
   plannerView = wasEditing ? plannerView : "overview";
   plannerLanding = wasEditing ? null : v;
   toast("Plan generated. Yearly, monthly, weekly and daily plans are ready.");
@@ -5470,7 +5490,7 @@ function openReschedule(){
       '<div class="form-err" id="rsErr" role="alert" hidden></div>'+
       '<div class="modal-actions"><span class="grow"></span><button class="btn primary" id="rsClose">Done</button></div>'+
     '</div>', true);
-  function after(msg){ savePlan(); replan(); closeModal(); if(msg) toast(msg); renderView(activeTab); }
+  function after(msg){ if(studyPlan.capacity.auto) studyPlan.capacity.blocks = estimateBlocks(studyPlan); savePlan(); replan(); closeModal(); if(msg) toast(msg); renderView(activeTab); }
   m.querySelector("#rsClose").addEventListener("click", closeModal);
   m.querySelector("#rsAdd").addEventListener("click", function(){
     var f = m.querySelector("#rsFrom").value, t = m.querySelector("#rsTo").value, box = m.querySelector("#rsErr");
@@ -5688,7 +5708,7 @@ function insightsHtml(plan, states){
   insWeek = toKey(mon);
   var r = weekReview(mon), isNow = insWeek === toKey(mondayOf(parseKey(todayKey)));
   var counted = r.done + r.missed + r.skipped, rate = counted ? Math.round(100*r.done/counted) : 0;
-  var verdict = !r.planned ? "Nothing was scheduled this week." : (r.missed ? "You missed "+r.missed+" session"+(r.missed===1 ? "" : "s")+" this week." : (r.done ? "Nice work. You are on track." : "Nothing is finished yet this week."));
+  var verdict = !r.planned ? "Nothing was scheduled this week." : (r.missed ? "You missed "+r.missed+" session"+(r.missed===1 ? "" : "s")+" this week." : (r.done ? "Nice work. You are on track." : (r.chapters.length ? "You finished "+r.chapters.length+" chapter"+(r.chapters.length===1 ? "" : "s")+" this week." : "Nothing is finished yet this week.")));
   var rows = Object.keys(r.subj).map(function(k){ var a = r.subj[k]; return '<div class="ins-row"><span>'+esc(k)+'</span><b>'+a.done+'/'+a.planned+'</b></div>'; }).join("");
   var hrs = function(m){ return fmtDurMin(m); };
   var perm = ("Notification" in window) ? Notification.permission : "unsupported";
@@ -5791,7 +5811,7 @@ function renderPlanner(){
   wirePlanner(host);
   if(!profile){ host.innerHTML = '<div class="card empty">Set up your profile first.</div>'; openProfileModal(false); return; }
   if(!studyPlan || plannerEditing){
-    if(!wiz) wiz = studyPlan ? wizFromPlan(studyPlan) : wizDefaults();
+    if(!wiz) wiz = studyPlan ? wizFromPlan(studyPlan) : (loadWizDraft() || wizDefaults());
     renderWizard(host); return;
   }
   if(plannerLanding){ plannerView = plannerLanding==="yearly" ? "yearly" : "monthly"; plannerLanding = null; }
@@ -6520,82 +6540,84 @@ function pyqStatLine(pyq){
 // ============================================================================
 // CHECKLISTS (Prelims / Mains)
 // ============================================================================
+function tierPlanStatus(it){
+  var link = TIER_LINKS[it.id];
+  if(!link) return {st:"ref"};
+  if(!studyPlan || !studyPlan.sel[link]) return {st:"out", link:link};
+  var v = leafStatus(link);
+  return {st: v==="completed" ? "done" : (v==="in_progress" ? "doing" : "todo"), link:link};
+}
 function renderChecklist(kind){
   var host = document.getElementById("view-"+kind);
   var groups = kind==="prelims" ? PRELIMS_GROUPS : MAINS_GROUPS;
-  var state = kind==="prelims" ? prelimsState : mainsState;
   var labelKey = kind==="prelims" ? "subject" : "paper";
+  var all = (kind==="prelims" ? DATA.prelimsTopics : DATA.mainsTopics);
+  var planned = all.filter(function(it){ var t = tierPlanStatus(it); return t.st==="done" || t.st==="doing" || t.st==="todo"; });
+  var totalDone = planned.filter(function(it){ return tierPlanStatus(it).st==="done"; }).length;
+  var CHIP = {done:"Done", doing:"In progress", todo:"To do", out:"Not in your plan"};
 
-  var totalDone = Object.keys(state).filter(function(k){return state[k];}).length;
-  var total = (kind==="prelims"?DATA.prelimsTopics:DATA.mainsTopics).length;
-
-  var html = '<div class="section-title">'+esc(totalDone)+' of '+esc(total)+' topics covered</div><div class="card note-card">Tiers come from analysis of previous years&rsquo; questions. UPSC does not follow a fixed pattern, so a lower tier does not mean a topic will never be asked, and a higher tier does not mean it will be asked again.</div>';
+  var html = '<div class="section-title">'+(studyPlan ? esc(totalDone)+' of '+esc(planned.length)+' planned topics covered' : 'No plan yet')+'</div>'+
+    '<div class="card note-card">Progress here follows your Planner. Finish a chapter in the Planner and it shows as done on this page; there is nothing to tick here. '+(studyPlan ? '' : 'Build a plan to start tracking. ')+'Tiers come from analysis of previous years&rsquo; questions. UPSC does not follow a fixed pattern, so a lower tier does not mean a topic will never be asked, and a higher tier does not mean it will be asked again.</div>';
   html += groups.map(function(g){
     var items = g.items;
-    var done = items.filter(function(it){ return state[it.id]; }).length;
-    var isOpen = done < items.length && done>0; // auto-open in-progress groups
+    var inPlan = items.filter(function(it){ var t = tierPlanStatus(it).st; return t==="done" || t==="doing" || t==="todo"; });
+    var done = inPlan.filter(function(it){ return tierPlanStatus(it).st==="done"; }).length;
+    var isOpen = done < inPlan.length && done>0;
     return '<div class="subject-card card'+(isOpen?" open":"")+'" data-group="'+esc(g[labelKey])+'">'+
       '<div class="subject-head" data-toggle><div class="l">'+esc(g[labelKey])+'</div>'+
-      '<div class="r">'+done+'/'+items.length+' <span class="chevron">&rsaquo;</span></div></div>'+
+      '<div class="r">'+(inPlan.length ? done+'/'+inPlan.length : '&ndash;')+' <span class="chevron">&rsaquo;</span></div></div>'+
       '<div class="subject-body">'+ items.map(function(it){
-        var checked = !!state[it.id];
-        return '<label class="topic-row'+(checked?" done":"")+'">'+
-          '<input type="checkbox" id="topic-'+it.id+'" data-id="'+it.id+'" '+(checked?"checked":"")+'>'+
-          '<div class="t"><span class="chip '+tierClass(it.tier)+'" title="'+esc(it.tier)+'">'+esc(tierShort(it.tier))+'</span><br>'+esc(it.topic)+
-          '<div class="pyq-line">'+esc(pyqStatLine(tierPyq(it, kind, g[labelKey])))+'</div>'+(TIER_LINKS[it.id] ? '<button type="button" class="link-btn" data-go="subjday" data-subj="'+esc(TIER_LINKS[it.id].split("|")[0])+'" data-leaf="'+esc(TIER_LINKS[it.id])+'">Open in planner &rsaquo;</button>' : "")+'</div>'+
-        '</label>';
+        var ps = tierPlanStatus(it);
+        return '<div class="topic-row'+(ps.st==="done"?" done":"")+'">'+
+          '<div class="t"><span class="chip '+tierClass(it.tier)+'" title="'+esc(it.tier)+'">'+esc(tierShort(it.tier))+'</span>'+(CHIP[ps.st] ? ' <span class="chip plst st-'+ps.st+'">'+CHIP[ps.st]+'</span>' : "")+'<br>'+esc(it.topic)+
+          '<div class="pyq-line">'+esc(pyqStatLine(tierPyq(it, kind, g[labelKey])))+'</div>'+(ps.link ? '<button type="button" class="link-btn" data-go="subjday" data-subj="'+esc(ps.link.split("|")[0])+'" data-leaf="'+esc(ps.link)+'">Open in planner &rsaquo;</button>' : "")+'</div>'+
+        '</div>';
       }).join("") +'</div>'+
     '</div>';
   }).join("");
 
   host.innerHTML = html;
-
   bindToggles(host);
-  Array.prototype.forEach.call(host.querySelectorAll("input[type=checkbox][data-id]"), function(cb){
-    cb.addEventListener("change", function(){
-      state[cb.getAttribute("data-id")] = cb.checked;
-      cb.closest(".topic-row").classList.toggle("done", cb.checked);
-      saveTopicState(kind);
-      renderChecklistHeader(kind);
-    });
-  });
-}
-function renderChecklistHeader(kind){
-  var host = document.getElementById("view-"+kind);
-  var state = kind==="prelims" ? prelimsState : mainsState;
-  var total = (kind==="prelims"?DATA.prelimsTopics:DATA.mainsTopics).length;
-  var done = Object.keys(state).filter(function(k){return state[k];}).length;
-  var titleEl = host.querySelector(".section-title");
-  if(titleEl) titleEl.textContent = done+" of "+total+" topics covered";
-  Array.prototype.forEach.call(host.querySelectorAll(".subject-card"), function(card){
-    var group = card.getAttribute("data-group");
-    var groups = kind==="prelims" ? PRELIMS_GROUPS : MAINS_GROUPS;
-    var labelKey = kind==="prelims" ? "subject" : "paper";
-    var g = groups.filter(function(gg){return gg[labelKey]===group;})[0];
-    if(!g) return;
-    var done2 = g.items.filter(function(it){return state[it.id];}).length;
-    var r = card.querySelector(".subject-head .r");
-    if(r) r.childNodes[0].nodeValue = done2+"/"+g.items.length+" ";
-  });
 }
 
 // ============================================================================
 // MOCK TESTS
 // ============================================================================
+function plannedTests(){
+  var out = []; if(!studyPlan) return out;
+  var idx = viewIndex();
+  eachDay(studyPlan.window.start, studyPlan.window.end, function(d){ (idx.byDate[d]||[]).forEach(function(x){ if(x.kind==="test") out.push(x); }); });
+  return out;
+}
+function mockTargetsFromPlan(){
+  var by = {}, order = [];
+  plannedTests().forEach(function(x){
+    var ty = x.topic || "Test";
+    if(!by[ty]){ by[ty] = {type:ty, target:0, first:x.date, last:x.date, next:""}; order.push(ty); }
+    var t = by[ty]; t.target++; if(x.date > t.last) t.last = x.date;
+    if(!t.next && x.date >= todayKey && x.status!=="completed") t.next = x.date;
+  });
+  return order.map(function(k){ return by[k]; });
+}
 function renderMocks(){
   var host = document.getElementById("view-mocks");
+  var targets = mockTargetsFromPlan();
 
-  var targetsHtml = '<div class="section-title">Targets</div>' + DATA.mockTargets.map(function(t){
+  var targetsHtml = '<div class="section-title">Planned by your Planner</div>' + (targets.length ? targets.map(function(t){
     var logged = mockTests.filter(function(m){ return m.type===t.type; }).length;
     var pct = Math.min(100, Math.round(100*logged/t.target));
     return '<div class="target-card card">'+
       '<div class="top"><div class="name">'+esc(t.type)+'</div><div class="count">'+logged+' / '+t.target+'</div></div>'+
-      '<div class="window">'+esc(t.window)+'</div>'+
+      '<div class="window">'+esc(fmtDM(parseKey(t.first)))+' &rarr; '+esc(fmtDM(parseKey(t.last)))+(t.next ? ' &middot; next '+esc(fmtDM(parseKey(t.next))) : "")+'</div>'+
       '<div class="bar"><i style="width:'+pct+'%"></i></div>'+
     '</div>';
-  }).join("");
+  }).join("") : '<div class="card empty">'+(studyPlan ? 'Your plan has no tests scheduled. Switch on Tests under Activities and the Planner will place your mock tests on the calendar.' : 'Build a plan and the Planner will decide when your mock tests happen.')+
+    ' <button type="button" class="btn ghost sm" id="mockPlanBtn">'+(studyPlan ? 'Edit activities' : 'Open the Planner')+'</button></div>');
 
-  var typeOptions = DATA.mockTargets.map(function(t){ return '<option value="'+esc(t.type)+'">'+esc(t.type)+'</option>'; }).join("");
+  var typeList = targets.map(function(t){ return t.type; });
+  ["Prelims GS1","CSAT","Mains full paper","Essay","Optional paper"].forEach(function(x){ if(typeList.indexOf(x)<0) typeList.push(x); });
+  mockTests.forEach(function(m){ if(m.type && typeList.indexOf(m.type)<0) typeList.push(m.type); });
+  var typeOptions = typeList.map(function(t){ return '<option value="'+esc(t)+'">'+esc(t)+'</option>'; }).join("");
 
   var formHtml = '<div class="add-mock card">'+
     '<h3>Log a mock test</h3>'+
@@ -6619,13 +6641,15 @@ function renderMocks(){
         '<div class="sc">'+esc(m.score||"")+'</div>'+
         '<button class="del" data-del="'+esc(m.id)+'" aria-label="Delete this test">&times;</button>'+
       '</div>';
-    }).join("") : '<div class="empty">No mock tests logged yet. Your first Prelims GS1 mock is due in October.</div>')+
+    }).join("") : '<div class="empty">No mock tests logged yet.'+(targets.length && targets[0].next ? ' Your next planned test is on '+esc(fmtDM(parseKey(targets.slice().sort(function(a,b){ return (a.next||"9999")<(b.next||"9999") ? -1 : 1; })[0].next)))+'.' : '')+'</div>')+
   '</div>';
 
   host.innerHTML = targetsHtml + formHtml + logHtml;
 
   function saveMockTests(){ lsSetJSON("dossier.state.mockTests", mockTests); }
 
+  var planBtn = document.getElementById("mockPlanBtn");
+  if(planBtn) planBtn.addEventListener("click", function(){ if(studyPlan){ plannerEditing = true; wiz = wizFromPlan(studyPlan); wiz.step = 6; } setTab("planner"); });
   var addBtn = document.getElementById("mockAdd");
   addBtn.addEventListener("click", function(){
     var type = document.getElementById("mockType").value;
@@ -6637,6 +6661,9 @@ function renderMocks(){
       mockTests.unshift({id:id, type:type, date:date, score:score, notes:notes});
       mockTests.sort(function(a,b){ return (b.date||"").localeCompare(a.date||""); });
       saveMockTests();
+      // logging the test also ticks off the planned test on that day
+      var hit = studyPlan ? planSessionsOn(date).filter(function(x){ return x.kind==="test" && !x.projected && x.status!=="completed"; })[0] : null;
+      if(hit){ updateSession(hit.id, {status:"completed", actualStart:hit.startTime, actualEnd:hit.endTime, actualDuration:hit.duration}); afterSessionChange(hit.id); }
       renderMocks();
     }
     if(db){
