@@ -5533,8 +5533,8 @@ function saveCatch(){ lsSetJSON(CATCH_KEY, catchState); }
 
 function missedSessions(){
   if(!studyPlan) return [];
-  var from = toKey(addDays(parseKey(todayKey), -14));
-  return studySessions.filter(function(x){ return x.kind==="study" && x.status==="missed" && !x.ack && x.date>=from && x.date<todayKey && x.topicId && !isDone(x.topicId) && studyPlan.sel[x.topicId]; });
+  // no look-back limit: after a long break every missed chapter still needs a decision
+  return studySessions.filter(function(x){ return x.kind==="study" && x.status==="missed" && !x.ack && x.date>=studyPlan.window.start && x.date<todayKey && x.topicId && !isDone(x.topicId) && studyPlan.sel[x.topicId]; });
 }
 function missedLeaves(){
   var by = {}, out = [];
@@ -5578,6 +5578,8 @@ function catchApply(kind){
     msg = "Everything has shifted later. Missed chapters are back at the front of your queue.";
   }
   ackMissed(); savePlan(); replan(); viewCache = null;
+  var spill = (kind==="shift" && viewIndex().sim) ? viewIndex().sim.remaining : 0;
+  if(spill > 0) msg += " "+spill+" chapter"+(spill===1 ? "" : "s")+" now finish after your window ends. On the Overview, set Pace to Auto to fit them in.";
   toast(msg);
   return true;
 }
