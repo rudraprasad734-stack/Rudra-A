@@ -3280,7 +3280,7 @@ var resultsFromDb = null;        // {prelims,mains,interview} if newer results e
 
 var todayKey = toKey(new Date());
 var timerInterval = null;
-var blackHoleAnimFrame = null, bhWait = null;
+var blackHoleAnimFrame = null, bhWait = null, bhSky = window.__bhSky = {next:0, glow:null}; // sky timing outlives the card, so tab switches don't reset it
 var TIMER_KEY = "dossier.timer.v2";
 function timerDefault(){ return {mode:"free", running:false, startedAt:0, accMs:0, studyMs:0, phase:"focus", cycle:0, preset:0, pending:0}; }
 var timerState = Object.assign(timerDefault(), (function(){ try{ var v = JSON.parse(localStorage.getItem(TIMER_KEY)||"null"); return v && typeof v==="object" ? v : {}; }catch(e){ return {}; } })());
@@ -6115,7 +6115,7 @@ function initBlackHoleScene(host){
       ctx.fillStyle = hg; ctx.beginPath(); ctx.arc(cx, cy, holeR*1.9, 0, Math.PI*2); ctx.fill();
     }
   }
-  var lastT = 0, shoot = null, nextShoot = 0, farS = [], nearS = [], midS = [], arms = [];
+  var lastT = 0, shoot = null, farS = [], nearS = [], midS = [], arms = [];
   function rnd(a, b){ return a + Math.random()*(b-a); }
   for(var fi=0; fi<150; fi++) farS.push({x:Math.random(), y:Math.random(), s:rnd(.4,1), a:rnd(.22,.56), tw:rnd(0,6.283), sp:rnd(.0006,.0016)});
   for(var ni=0; ni<34; ni++) nearS.push({x:Math.random(), y:Math.random(), s:rnd(1,2), a:rnd(.6,1), tw:rnd(0,6.283), warm:Math.random()<.35});
@@ -6177,12 +6177,12 @@ function initBlackHoleScene(host){
     ctx.globalCompositeOperation = "source-over"; ctx.globalAlpha = 1;
   }
   var lensHoleR = 50;
-  var glowCyc = null;
   function glowEnv(t){
     // one swell-and-fade of the crescent lasts 5 to 8 minutes, re-drawn at random each time
-    if(!glowCyc) glowCyc = {t0:t - rnd(.25, .4)*360000, dur:rnd(300000, 480000)};
-    while(t - glowCyc.t0 >= glowCyc.dur) glowCyc = {t0:glowCyc.t0 + glowCyc.dur, dur:rnd(300000, 480000)};
-    var p = (t - glowCyc.t0)/glowCyc.dur, sn = Math.sin(Math.PI*p);
+    var gc = bhSky.glow;
+    if(!gc) gc = bhSky.glow = {t0:t - rnd(.25, .4)*360000, dur:rnd(300000, 480000)};
+    while(t - gc.t0 >= gc.dur) gc = bhSky.glow = {t0:gc.t0 + gc.dur, dur:rnd(300000, 480000)};
+    var p = (t - gc.t0)/gc.dur, sn = Math.sin(Math.PI*p);
     return .05 + .95*sn*sn;
   }
   function crescent(holeR, t){
@@ -6239,14 +6239,14 @@ function initBlackHoleScene(host){
       ctx.globalAlpha *= .22; ctx.beginPath(); ctx.arc(x, y, o.s*2.6, 0, 6.283); ctx.fill(); }
     ctx.globalAlpha = 1;
     if(dt){
-      if(!nextShoot) nextShoot = t + rnd(480000, 600000);
-      if(!shoot && t >= nextShoot){
+      if(!bhSky.next) bhSky.next = t + rnd(480000, 600000);
+      if(!shoot && t >= bhSky.next){
         var left = Math.random() < .5, ang = rnd(.42, .8);
         shoot = {x0: left ? rnd(w*.1, w*.6) : rnd(w*.4, w*.95), y0: rnd(-10, h*.25), dx: (left ? 1 : -1)*Math.cos(ang), dy: Math.sin(ang), v: rnd(.12, .18), len: rnd(70, 120), t0: t, life: rnd(3200, 4500)};
       }
       if(shoot){
         var age = t - shoot.t0, p = age/shoot.life;
-        if(p >= 1){ shoot = null; nextShoot = t + rnd(480000, 600000); }
+        if(p >= 1){ shoot = null; bhSky.next = t + rnd(480000, 600000); }
         else {
           var hx = shoot.x0 + shoot.dx*shoot.v*age, hy = shoot.y0 + shoot.dy*shoot.v*age, tx = hx - shoot.dx*shoot.len, ty = hy - shoot.dy*shoot.len;
           var g = ctx.createLinearGradient(hx, hy, tx, ty); g.addColorStop(0, "rgba(255,255,255,.95)"); g.addColorStop(.3, "rgba(190,210,255,.45)"); g.addColorStop(1, "rgba(150,180,255,0)");
