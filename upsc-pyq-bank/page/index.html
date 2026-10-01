@@ -4955,8 +4955,14 @@ function moveOrder(from, to){
   if(from===to || from<0 || to<0 || from>=wiz.order.length || to>=wiz.order.length) return;
   var it = wiz.order.splice(from, 1)[0]; wiz.order.splice(to, 0, it);
 }
+// bring the top of the planner (just under the sticky header) into view, e.g. when a new step opens
+function scrollPlannerTop(){
+  var host = document.getElementById("view-planner"), ch = document.getElementById("chrome");
+  if(!host) return;
+  window.scrollTo(0, Math.max(0, host.getBoundingClientRect().top + window.scrollY - (ch ? ch.offsetHeight : 0) - 6));
+}
 function wizAction(a, b){
-  var w = wiz, v = b.getAttribute("data-v"), path = b.getAttribute("data-path");
+  var w = wiz, v = b.getAttribute("data-v"), path = b.getAttribute("data-path"), step0 = w.step;
   switch(a){
     case "next": var e = wizValidate(w, w.step); w.err = e; if(!e.length){ w.step = Math.min(7, w.step+1); } break;
     case "back": w.err = []; w.step = Math.max(0, w.step-1); break;
@@ -4978,6 +4984,7 @@ function wizAction(a, b){
     case "gen": wizGenerate(); return;
   }
   wizRender();
+  if(w.step !== step0) scrollPlannerTop();   // a new step starts at the top, not where the Next button was
 }
 function wizAfter(kind){
   var w = wiz;
@@ -5008,6 +5015,7 @@ function wizGenerate(){
   plannerLanding = wasEditing ? null : v;
   toast("Plan generated. Yearly, monthly, weekly and daily plans are ready.");
   setTab("planner");
+  scrollPlannerTop();
 }
 
 // ============================================================================
