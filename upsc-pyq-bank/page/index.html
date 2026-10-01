@@ -166,6 +166,46 @@
   @media (prefers-reduced-motion: reduce){ #dashFab{animation:none;} }
   body.is-dash:not(.dash-timer) main{padding-top:64px; padding-bottom:110px;}
   body.is-dash .toast{bottom:calc(100px + env(safe-area-inset-bottom,0px));}
+  /* ---- Dashboard: dark navy cards with cream accents (dashboard only) ---- */
+  body.is-dash:not(.dash-timer), body.is-dash:not(.dash-timer) main{background:#0a1628;}
+  body.is-dash:not(.dash-timer) #view-dashboard .timer-card{display:none;}
+  body.is-dash:not(.dash-timer) main{padding-top:68px;}
+  .dx{--surface:#1c2a45; --surface-2:#243452; --line:rgba(255,255,255,.12); --ink:#f3ecdb; --ink-soft:#b8c0d2; --ink-faint:#8995ad; --bg:#0a1628; color:#f3ecdb; display:flex; flex-direction:column; gap:12px;}
+  .dx .card, .dx .dx-card{background:#1c2a45; border:1px solid rgba(255,255,255,.13); border-radius:18px; color:#f3ecdb; box-shadow:none; margin:0;}
+  .dx .muted, .dx .sync-note{color:#b8c0d2;}
+  .dx .dx-card{padding:14px 16px;}
+  .dx .dx-k{font-size:12px; font-weight:700; letter-spacing:.08em; color:#cdbf9d; margin-bottom:8px;}
+  .dx h3{margin:0 0 6px; font-size:17px; color:#f3ecdb;}
+  .dx-prof{display:flex; align-items:center; gap:14px; width:100%; text-align:left; font:inherit; cursor:pointer; background:#25355a !important;}
+  .dx-prof b{display:block; font-size:18px; font-family:var(--font-display);} .dx-prof small{display:block; color:#b8c0d2; font-size:13px; margin-top:2px;}
+  .dx-av{width:48px; height:48px; border-radius:50%; flex:0 0 auto; display:grid; place-items:center; font-weight:700; font-size:20px; background:#f3ecdb; color:#0e1a30; border:3px solid #8f6fb0;}
+  .dx-journey{display:flex; align-items:center; gap:18px;}
+  .dx-ring{--p:0; width:96px; height:96px; border-radius:50%; flex:0 0 auto; position:relative; display:grid; place-content:center; text-align:center;
+    background:conic-gradient(#f3ecdb calc(var(--p)*1%), #3a4866 0);}
+  .dx-ring::before{content:""; position:absolute; inset:9px; border-radius:50%; background:#1c2a45;}
+  .dx-ring b, .dx-ring span{position:relative; z-index:1;} .dx-ring b{font-size:24px; font-family:var(--font-display);} .dx-ring span{font-size:9.5px; letter-spacing:.1em; color:#b8c0d2;}
+  .dx-jt{font-size:14px; line-height:1.45; color:#e4dcc8;}
+  .dx-grid{display:grid; grid-template-columns:1.05fr 1fr; gap:12px; align-items:start;}
+  .dx-col{display:flex; flex-direction:column; gap:12px; min-width:0;}
+  .dx-mod{display:flex; flex-direction:column; min-width:0;}
+  .dx-book{width:64px; height:64px; fill:none; stroke:#f3ecdb; stroke-width:2.4; stroke-linejoin:round; margin:2px 0 6px;}
+  .dx-subj{font-family:var(--font-display); font-size:26px; font-weight:700; letter-spacing:.02em; text-transform:uppercase; line-height:1.1; overflow-wrap:anywhere;}
+  .dx-bar{height:7px; border-radius:4px; background:#3a4866; margin:10px 0 8px; overflow:hidden;} .dx-bar i{display:block; height:100%; background:linear-gradient(90deg,#b07f5c,#f3ecdb); border-radius:4px;}
+  .dx-pc b{display:block; font-size:14px;} .dx-pc small{color:#b8c0d2; font-size:12.5px;}
+  .dx-next{margin:10px 0; font-size:13px; color:#cdbf9d; cursor:pointer;} .dx-next b{color:#e6c98c;}
+  .dx-btn{display:block; width:100%; border:none; border-radius:12px; background:#f3ecdb; color:#0e1a30; font:inherit; font-weight:700; font-size:15px; padding:11px 12px; cursor:pointer; margin-top:6px; text-align:center;}
+  .dx-btn2{display:block; width:100%; border:none; border-radius:12px; background:#33405c; color:#e0d2ad; font:inherit; font-size:13.5px; padding:10px 12px; cursor:pointer; margin-top:8px; text-align:center;}
+  .dx-seg{display:flex; gap:4px; margin:4px 0 8px;} .dx-seg i{flex:1; height:12px; border-radius:6px; background:#3a4866;} .dx-seg i.part{background:#b07f5c;} .dx-seg i.done{background:#f3ecdb;}
+  .dx-pace small, .dx-pyq small{color:#b8c0d2; font-size:12.5px;}
+  .dx-pyq p{margin:2px 0 8px; font-size:14px; line-height:1.4; color:#e4dcc8;}
+  .dx-h{font-size:15px; font-weight:700; margin-bottom:6px;} .dx-none{color:#b8c0d2; font-size:14px;}
+  .dx .tagc{color:#f3ecdb;} .dx .tagc.lock{background:#33405c; color:#e0d2ad; border-color:transparent;}
+  .dx .pl-cols{gap:12px;} .dx .mini-t{color:#cdbf9d;}
+  .dx .pl-cta{padding:16px; background:#25355a;} .dx .pl-cta b{color:#f3ecdb;}
+  .dx .pl-cta .btn.primary{background:#f3ecdb; color:#0e1a30; border:none;}
+  .dx .backup-card{background:#1c2a45 !important; border-color:rgba(255,255,255,.13) !important;} .dx .backup-card h3{color:#f3ecdb;} .dx .backup-card .sub{color:#b8c0d2;}
+  .dx .hero{background:#1c2a45 !important; border-color:rgba(255,255,255,.13) !important;}
+  @media (max-width:380px){ .dx-grid{grid-template-columns:1fr;} }
   body.dash-timer main{padding:0;}
   /* the pomodoro length picker sits under the mode buttons and must not cover them */
   body.dash-timer .timer-card > .timer-set{top:calc(106px + env(safe-area-inset-top,0px)); pointer-events:none;}
@@ -6004,10 +6044,58 @@ function plannerDashCard(){
     '<div class="mini-t">Upcoming</div>'+upcomingHtml()+
     '<button type="button" class="btn ghost sm" id="dashOpenPlanner">Open planner</button></div>';
 }
+
+// ---------- Dashboard (dark navy card layout) ----------
+function dxProfileHtml(){
+  if(!profile) return '<button type="button" class="dx-card dx-prof" data-dx="profile"><span class="dx-av">?</span><span><b>Set up your profile</b><small>Tap to add your name and place</small></span></button>';
+  return '<button type="button" class="dx-card dx-prof" data-dx="profile" aria-label="Edit profile"><span class="dx-av">'+esc((profile.name||"?").trim().charAt(0).toUpperCase())+'</span><span><b>'+esc(profile.prefix)+" "+esc(profile.name)+'</b><small>'+esc(profile.district)+", "+esc(profile.state)+'</small></span></button>';
+}
+function daysLogged(){
+  var d = {}; studySessions.forEach(function(x){ if((x.actualDuration||0) > 0) d[x.date] = 1; });
+  return Object.keys(d).length;
+}
+function dxPlanHtml(){
+  var states = subjectStates(studyPlan), op = overallProgress(studyPlan);
+  var act = states.filter(function(x){ return x.state==="active"; })[0];
+  var completed = states.filter(function(x){ return x.state==="completed"; }), rest = states.filter(function(x){ return x.state==="locked"; });
+  var today = planSessionsOn(todayKey), tp = 0, ta = 0, segs = "";
+  today.forEach(function(x){ tp += x.duration; ta += x.actualDuration||0; });
+  today.slice(0, 8).forEach(function(x){ segs += '<i class="'+(x.status==="completed" ? "done" : ((x.actualDuration||0) > 0 || x.status==="in_progress" ? "part" : ""))+'"></i>'; });
+  var firstName = act ? act.name : "";
+  var nl = act ? nextLeaf(act) : null;
+  var q = null;
+  if(nl){ var list = pyqForLeaf(nl).slice().sort(function(a,b){ return b.year-a.year; }); q = list[0] ? {q:list[0], n:list.length} : {q:null, n:0}; }
+  var ring = '<div class="dx-card dx-journey"><div class="dx-ring" style="--p:'+op.pct+'"><b>'+op.pct+'%</b><span>COMPLETE</span></div>'+
+    '<div class="dx-jt"><h3>UPSC Journey Progress</h3><div>Current status:</div><div>'+op.done+' / '+op.total+' chapters completed</div><div>'+daysLogged()+' day'+(daysLogged()===1 ? "" : "s")+' logged</div></div></div>';
+  var module = act
+    ? '<div class="dx-card dx-mod" style="--bc:var('+act.color+')"><div class="dx-k">ACTIVE MODULE</div><svg class="dx-book" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 14h20a6 6 0 016 6v32a5 5 0 00-5-5H8z"/><path d="M56 14H36a6 6 0 00-6 6v32a5 5 0 015-5h21z"/></svg>'+
+      '<div class="dx-subj">'+esc(act.name)+'</div><div class="dx-bar"><i style="width:'+act.pct+'%"></i></div><div class="dx-pc"><b>'+act.pct+'% COMPLETE</b><small>('+act.done+' of '+act.total+' chapters)</small></div>'+
+      (nl ? '<div class="dx-next" role="button" tabindex="0" data-go="subjday" data-subj="'+esc(act.name)+'" data-leaf="'+esc(nl.id)+'">Next: <b>'+esc(nl.unit)+'</b></div>' : '')+
+      '<button type="button" class="dx-btn" data-go="subjday" data-subj="'+esc(act.name)+'">Go to Planner</button>'+
+      '<button type="button" class="dx-btn2" data-go="priority" data-subj="'+esc(act.name)+'">Topic Priority (Tiers) &rsaquo;</button></div>'
+    : '<div class="dx-card dx-mod"><div class="dx-k">ALL SUBJECTS COMPLETED</div><div class="dx-subj">Well done</div><button type="button" class="dx-btn" data-go="day">Open planner</button></div>';
+  var pace = '<div class="dx-card dx-pace"><div class="dx-k">TODAY</div><div class="dx-seg">'+(segs || '<i></i><i></i><i></i><i></i>')+'</div><small>Planned '+esc(fmtDurMin(tp))+' &middot; done '+esc(fmtDurMin(ta))+'</small></div>';
+  var pyq = '<div class="dx-card dx-pyq"><div class="dx-k">RECENT PYQ QUESTION</div>'+
+    (q && q.q ? '<p>'+esc(String(q.q.text).replace(/\s+/g," ").trim().slice(0, 150))+(String(q.q.text).length > 150 ? "…" : "")+'</p><small>'+(q.q.exam==="prelims" ? "Prelims" : (q.q.exam==="optional" ? "Optional" : "Mains"))+" "+q.q.year+'</small><button type="button" class="dx-btn" data-pyq="'+esc(nl.id)+'" data-subj="'+esc(act.name)+'">Solve Now ('+q.n+')</button>'
+      : '<p>No question in the bank matched this chapter yet.</p><button type="button" class="dx-btn" data-dx="pyq">Open PYQ Bank</button>')+'</div>';
+  var path = '<div class="dx-card dx-path"><div class="dx-k">MY LEARNING PATH</div><div class="pl-cols"><div><div class="dx-h">Completed</div>'+(completed.length ? completed.map(function(x){ return '<span class="tagc" role="button" tabindex="0" data-go="subject" data-subj="'+esc(x.name)+'" style="--bc:var('+x.color+')">'+CHECK_SVG+esc(x.name)+'</span>'; }).join("") : '<div class="dx-none">None yet</div>')+'</div>'+
+    '<div><div class="dx-h">Up next</div>'+(rest.length ? rest.map(function(x){ return '<span class="tagc lock" role="button" tabindex="0" data-go="subject" data-subj="'+esc(x.name)+'" style="--bc:var('+x.color+')">'+LOCK_SVG+esc(x.name)+'</span>'; }).join("") : '<div class="dx-none">None</div>')+'</div></div>'+chainHtml(states)+'</div>';
+  var upc = '<div class="dx-card dx-up"><div class="dx-k">UPCOMING</div>'+upcomingHtml()+'<button type="button" class="dx-btn2" id="dashOpenPlanner">Open planner</button></div>';
+  return ring + '<div class="dx-grid">'+module+'<div class="dx-col">'+pace+pyq+'</div></div>'+path+upc;
+}
 function bindPlannerDash(host){
   var a = host.querySelector("#dashSetupPlan"), b = host.querySelector("#dashOpenPlanner");
   if(a) a.addEventListener("click", function(){ setTab("planner"); });
   if(b) b.addEventListener("click", function(){ setTab("planner"); });
+  if(!host._dx){
+    host._dx = true;
+    host.addEventListener("click", function(e){
+      var t = e.target.closest ? e.target.closest("[data-dx]") : null; if(!t) return;
+      var a = t.getAttribute("data-dx");
+      if(a==="profile") openProfileModal(!!profile);
+      else if(a==="pyq") setTab("pyq");
+    });
+  }
 }
 
 // ============================================================================
@@ -6565,20 +6653,19 @@ function renderDashboard(){
 
   host.innerHTML =
     timerCard()+
-
-    plannerDashCard()+
-
-    backupCard()+
-
-    '<div class="hero card">'+
-      '<div class="hero-phase">'+esc(phase)+'</div>'+
-      '<div class="countdowns">'+
-        countdownBlock("Prelims", dp, DATA.examDates.prelims)+
-        countdownBlock("Mains", dm, DATA.examDates.mains)+
+    '<div class="dx">'+
+      dxProfileHtml()+
+      (studyPlan ? dxPlanHtml() : plannerDashCard())+
+      '<div class="hero card">'+
+        '<div class="hero-phase">'+esc(phase)+'</div>'+
+        '<div class="countdowns">'+
+          countdownBlock("Prelims", dp, DATA.examDates.prelims)+
+          countdownBlock("Mains", dm, DATA.examDates.mains)+
+        '</div>'+
       '</div>'+
-    '</div>'+
-
-    '<div class="sync-note"><span class="sync-dot '+(saveFailed?"err":(dbReady?"on":""))+'"></span>'+(saveFailed ? "A recent change didn't save. Reload the page to check your progress." : db ? "Progress saves to your account and syncs across devices" : "Not connected. Open this page while signed in to claude.ai to save progress.")+'</div>';
+      backupCard()+
+      '<div class="sync-note"><span class="sync-dot '+(saveFailed?"err":(dbReady?"on":""))+'"></span>'+(saveFailed ? "A recent change didn't save. Reload the page to check your progress." : db ? "Progress saves to your account and syncs across devices" : "Not connected to the cloud. Progress is kept on this device only.")+'</div>'+
+    '</div>';
 
   bindTimerCard(host);
   bindPlanSetupCard(host);
