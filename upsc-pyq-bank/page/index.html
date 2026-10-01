@@ -143,34 +143,49 @@
   #topbar .brand{font-family:var(--font-display); font-size:21px; font-weight:600; letter-spacing:.2px; text-shadow:0 1px 4px rgba(0,0,0,.18);}
   #topbar .brand small{display:block; font-family:var(--font-body); font-weight:600; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; opacity:.85; margin-top:3px;}
   #topbar .today{font-family:var(--font-mono); font-size:11px; opacity:.85; position:absolute; top:0; right:0;}
-  #themeToggle{position:absolute; top:50%; left:18px; transform:translateY(-50%); appearance:none; background:none; border:none; cursor:pointer; padding:0; margin:0; width:50px; height:28px; border-radius:999px; background:rgba(255,255,255,.25); position:relative; transition:background .3s; display:flex; align-items:center; padding:2px;}
+  #themeToggle{position:relative; flex:0 0 auto; appearance:none; background:none; border:none; cursor:pointer; padding:0; margin:0; width:50px; height:28px; border-radius:999px; background:rgba(255,255,255,.25); position:relative; transition:background .3s; display:flex; align-items:center; padding:2px;}
   #themeToggle::before{content:''; position:absolute; width:24px; height:24px; background:rgba(255,255,255,.95); border-radius:50%; transition:left .3s cubic-bezier(.4,.0,.2,1); left:2px; box-shadow:0 2px 6px rgba(0,0,0,.25);}
   html[data-theme="light"] #themeToggle{background:rgba(255,255,255,.3);}
   html[data-theme="light"] #themeToggle::before{left:2px;}
   :root:not([data-theme="light"]) #themeToggle{background:rgba(255,255,255,.2);}
   :root:not([data-theme="light"]) #themeToggle::before{left:24px;}
-  #themeToggle:active{transform:translateY(-50%) scale(1.1);}
+  #themeToggle:active{transform:scale(1.1);}
 
-  /* ---- Tab strip ---- */
-  #tabs{
-    display:flex; gap:6px; overflow-x:auto; -webkit-overflow-scrolling:touch;
-    background:var(--bg); padding:10px 14px; border-bottom:1px solid var(--line);
-    scrollbar-width:none;
-  }
-  #tabs::-webkit-scrollbar{display:none;}
-  .tab{
-    flex:0 0 auto; padding:8px 14px; border-radius:999px; border:1px solid var(--line);
-    background:var(--surface); color:var(--ink-soft); font-size:13px; font-weight:600;
-    cursor:pointer; white-space:nowrap; display:flex; align-items:center; gap:7px;
-    transition:background .15s, color .15s, border-color .15s;
-  }
-  .tab .dot{width:6px; height:6px; border-radius:50%; background:var(--ink-faint);}
-  .tab.active{background:var(--tab-accent); color:var(--tab-accent-ink); border-color:var(--tab-accent); transition:background .2s, border-color .2s;}
-  .tab.active .dot{background:var(--tab-accent-ink); opacity:.55;}
+  /* ---- Side menu (Forest-style): tabs live in a drawer, pages open full-screen ---- */
+  #menuBtn{position:absolute; top:50%; left:10px; transform:translateY(-50%); width:44px; height:44px; padding:0; border:none; background:none; cursor:pointer; color:#fff;}
+  #menuBtn i{display:block; height:2.5px; background:#fff; border-radius:2px; margin:5px 10px;}
+  #menuBtn i:nth-child(2){width:14px;}
+  #topbar{padding-left:52px; padding-right:52px;}
+  #pageBar{display:none; align-items:center; justify-content:space-between; padding:calc(10px + env(safe-area-inset-top,0px)) 8px 10px; background:var(--tab-accent); color:var(--tab-accent-ink); font-size:19px; font-weight:600;}
+  #pageBar button{border:none; background:none; color:inherit; font-size:26px; line-height:1; width:44px; height:40px; cursor:pointer;}
+  #pageBar .pb-gap{width:44px;}
+  body.in-page #topbar{display:none;}
+  body.in-page #pageBar{display:flex;}
+  #drawerDim{position:fixed; inset:0; z-index:70; background:rgba(0,0,0,.5); opacity:0; visibility:hidden; transition:opacity .25s, visibility 0s .25s;}
+  #drawer{position:fixed; top:0; bottom:0; left:0; width:78%; max-width:310px; z-index:80; overflow-y:auto; -webkit-overflow-scrolling:touch;
+    background:linear-gradient(#10211b,#0a1812); color:#fff; padding:calc(26px + env(safe-area-inset-top,0px)) 18px calc(20px + env(safe-area-inset-bottom,0px));
+    transform:translateX(-102%); visibility:hidden; transition:transform .25s ease, visibility 0s .25s; display:flex; flex-direction:column;}
+  body.menu-open #drawer{transform:none; visibility:visible; transition:transform .25s ease;}
+  body.menu-open #drawerDim{opacity:1; visibility:visible; transition:opacity .25s;}
+  @media (prefers-reduced-motion: reduce){ #drawer,#drawerDim{transition:none;} }
+  .dr-who{text-align:center; margin-bottom:14px;}
+  .dr-av{width:54px; height:54px; border-radius:50%; margin:0 auto 6px; display:grid; place-items:center; font-size:24px; background:var(--tab-accent); color:var(--tab-accent-ink);}
+  .dr-who .greet{display:block; font-size:13px;}
+  .dr-who .profile-btn{color:#fff; max-width:100%;}
+  .dr-who .profile-btn:hover,.dr-who .profile-btn:focus-visible{background:rgba(255,255,255,.14); outline:2px solid rgba(255,255,255,.5);}
+  #tabs{display:flex; flex-direction:column; flex:1;}
+  .tab{display:flex; align-items:center; gap:14px; width:100%; padding:13px 6px; border:none; border-radius:10px; background:none; color:#fff; font:inherit; font-size:17px; font-weight:500; text-align:left; cursor:pointer;}
+  .tab .dot{width:11px; height:11px; border-radius:50%; background:var(--dc, var(--ink-faint)); flex:0 0 auto;}
+  .tab.active{background:rgba(255,255,255,.12); font-weight:700;}
+  .tab-sub{display:flex; gap:8px; padding:0 6px 8px 31px;}
+  .tab-sub button{border:1px solid rgba(255,255,255,.28); background:none; color:#cfe8dc; border-radius:999px; padding:5px 14px; font:inherit; font-size:13px; cursor:pointer;}
+  .tab-sub button.active{background:rgba(255,255,255,.18); color:#fff; border-color:#fff;}
+  .dr-foot{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:16px; padding-top:14px; border-top:1px solid rgba(255,255,255,.18); font-size:15px;}
+  html[data-theme="light"] #drawer #themeToggle,:root:not([data-theme="light"]) #drawer #themeToggle{background:rgba(255,255,255,.25);}
 
   #subtabs{
     display:flex; gap:6px; overflow-x:auto; -webkit-overflow-scrolling:touch;
-    background:var(--bg); padding:0 14px 10px; border-bottom:1px solid var(--line);
+    background:var(--bg); padding:10px 14px 10px; border-bottom:1px solid var(--line);
     scrollbar-width:none;
   }
   #subtabs::-webkit-scrollbar{display:none;}
@@ -183,6 +198,7 @@
   .subtab.active{background:var(--tab-accent-soft); color:var(--tab-accent); border-color:var(--tab-accent);}
 
   main{padding:18px 16px 64px;}
+  body.in-page main{padding-top:14px;}
   .view{display:none;}
   .view.active{display:block;}
 
@@ -966,16 +982,21 @@
 <div id="app">
   <div id="chrome">
   <header id="topbar">
-    <button id="themeToggle" aria-label="Toggle dark/light mode" title="Dark/Light mode"></button>
+    <button type="button" id="menuBtn" aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><i></i><i></i><i></i></button>
     <div class="row">
-      <div class="brand">UPSC Companion<small class="greet"><button type="button" class="profile-btn" id="profileBtn"></button></small></div>
+      <div class="brand">UPSC Companion</div>
       <div class="today" id="topbarDate">—</div>
     </div>
   </header>
-
-  <nav id="tabs" aria-label="Sections"></nav>
+  <div id="pageBar"><button type="button" id="pageClose" aria-label="Close and go to Dashboard">&#10005;</button><span id="pageTitle"></span><span class="pb-gap"></span></div>
   <nav id="subtabs" aria-label="Subsections"></nav>
   </div>
+  <div id="drawerDim"></div>
+  <aside id="drawer" aria-label="Menu" aria-hidden="true">
+    <div class="dr-who"><div class="dr-av" aria-hidden="true">&#9733;</div><small class="greet"><button type="button" class="profile-btn" id="profileBtn"></button></small></div>
+    <nav id="tabs" aria-label="Sections"></nav>
+    <div class="dr-foot"><span>Dark / Light mode</span><button id="themeToggle" aria-label="Toggle dark/light mode" title="Dark/Light mode"></button></div>
+  </aside>
 
   <main>
     <section class="view" id="view-dashboard"></section>
@@ -6009,18 +6030,37 @@ function applyAccent(groupId){
   root.setProperty("--tab-accent-soft", "var(--tab-"+g.accent+"-soft)");
 }
 
+var TAB_DOT = {dashboard:"--tab-dashboard", planner:"--tab-planner", syllabus:"--tab-syllabus", tiers:"--tab-tiers", mocks:"--tab-mocks", pyq:"--tab-pyq", quotes:"--tab-quotes"};
+function setMenu(open){
+  document.body.classList.toggle("menu-open", !!open);
+  var d = document.getElementById("drawer"); if(d) d.setAttribute("aria-hidden", open ? "false" : "true");
+  var m = document.getElementById("menuBtn"); if(m) m.setAttribute("aria-expanded", open ? "true" : "false");
+}
 function renderTabs(){
   var activeGroup = groupOf(activeTab);
   applyAccent(activeGroup);
   var nav = document.getElementById("tabs");
   nav.innerHTML = "";
   TAB_GROUPS.forEach(function(g){
-    var b = el('<button class="tab" data-tab="'+g.id+'"><span class="dot"></span>'+esc(g.label)+"</button>");
+    var b = el('<button type="button" class="tab" data-tab="'+g.id+'"><span class="dot" style="--dc:var('+(TAB_DOT[g.id]||"--ink-faint")+')"></span>'+esc(g.label)+"</button>");
     if(g.id===activeGroup){ b.classList.add("active"); b.setAttribute("aria-current","page"); }
-    b.addEventListener("click", function(){ setTab(defaultViewFor(g.id)); });
+    b.addEventListener("click", function(){ setMenu(false); setTab(defaultViewFor(g.id)); });
     nav.appendChild(b);
+    if(g.children){
+      var row = el('<div class="tab-sub"></div>');
+      g.children.forEach(function(c){
+        var cb = el('<button type="button" data-tab="'+c.id+'">'+esc(c.label)+"</button>");
+        if(c.id===activeTab) cb.classList.add("active");
+        cb.addEventListener("click", function(){ setMenu(false); setTab(c.id); });
+        row.appendChild(cb);
+      });
+      nav.appendChild(row);
+    }
   });
-  centerActive(nav, ".tab.active");
+  var inPage = activeGroup !== "dashboard";
+  document.body.classList.toggle("in-page", inPage);
+  var g0 = groupById(activeGroup);
+  document.getElementById("pageTitle").textContent = g0 ? g0.label : "";
   renderSubTabs();
 }
 function renderSubTabs(){
@@ -7300,7 +7340,11 @@ function boot(){
   });
 
   renderGreeting();
-  document.getElementById("profileBtn").addEventListener("click", function(){ openProfileModal(!!profile); });
+  document.getElementById("profileBtn").addEventListener("click", function(){ setMenu(false); openProfileModal(!!profile); });
+  document.getElementById("menuBtn").addEventListener("click", function(){ setMenu(true); });
+  document.getElementById("drawerDim").addEventListener("click", function(){ setMenu(false); });
+  document.getElementById("pageClose").addEventListener("click", function(){ setTab("dashboard"); });
+  document.addEventListener("keydown", function(e){ if(e.key==="Escape" && document.body.classList.contains("menu-open")) setMenu(false); });
   updateTopbarDate();
   renderTabs();
   Array.prototype.forEach.call(document.querySelectorAll(".view"), function(v){
