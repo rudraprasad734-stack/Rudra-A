@@ -771,6 +771,7 @@
   .chip.plst.st-done{background:var(--sage-soft); color:var(--sage); border-color:var(--sage);}
   .chip.plst.st-doing{color:var(--tab-accent); border-color:var(--tab-accent);}
   .pace{flex-wrap:wrap;} .pace > div{min-width:0; flex:1 1 200px;} .pace select{max-width:100%; min-width:0; flex:1 1 200px;}
+  .pad-ctr::before, .pad-ctr::after{content:""; flex:0 0 36%;}
   .catch-banner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 14px; margin:0 0 10px; border-left:4px solid var(--brick);}
   .catch-banner .muted{font-size:12px;}
   .catch-opts{display:grid; gap:8px; margin:8px 0;}
@@ -4914,6 +4915,7 @@ function renderWizard(host){
     '<div class="card wz-card">'+WZ_STEPS[w.step](w)+'</div>'+
     (w.err.length ? '<div class="form-err" role="alert"><b>Please fix:</b><br>'+w.err.map(esc).join("<br>")+'</div>' : "")+
     (w.step < 7 ? '<div class="wz-nav">'+(w.step>0 ? '<button type="button" class="btn ghost" data-wa="back">Back</button>' : '<span></span>')+'<button type="button" class="btn primary" data-wa="next">Next &rarr;</button></div>' : '<div class="wz-nav"><button type="button" class="btn ghost" data-wa="back">Back</button><span></span></div>');
+  centerActive(host.querySelector(".stepper"), ".st.cur", true);
 }
 // ---- pinning a subject that Priority would not reach for a long time ----
 // When is this subject expected to start if it were NOT pinned? (null = not within the plan window)
@@ -4954,6 +4956,15 @@ function wset(path, v){ var p = path.split("."), o = wiz; for(var i=0;i<p.length
 function moveOrder(from, to){
   if(from===to || from<0 || to<0 || from>=wiz.order.length || to>=wiz.order.length) return;
   var it = wiz.order.splice(from, 1)[0]; wiz.order.splice(to, 0, it);
+}
+// keep the active pill in the middle of a sideways-scrolling row, so you always see where you are
+function centerActive(row, sel, pad){
+  if(!row) return;
+  var cur = row.querySelector(sel); if(!cur) return;
+  // room at both ends so even the first and last pills can sit in the middle
+  if(pad && !row.classList.contains("pad-ctr") && row.scrollWidth > row.clientWidth + 2) row.classList.add("pad-ctr");
+  var r = row.getBoundingClientRect(), c = cur.getBoundingClientRect();
+  row.scrollLeft += (c.left + c.width/2) - (r.left + r.width/2);
 }
 // bring the top of the planner (just under the sticky header) into view, e.g. when a new step opens
 function scrollPlannerTop(){
@@ -5813,6 +5824,7 @@ function renderPlannerHome(host){
   host.innerHTML =
     '<div class="card pl-title"><div><h2>Preparation Planner</h2><div class="muted">Complete a subject to unlock the next. The calendar follows your progress.</div></div><button type="button" class="btn ghost sm" data-go="reschedule">Reschedule</button></div>'+
     '<div class="pl-tabs">'+PLANNER_TABS.map(function(t){ return '<button type="button" class="'+(t[0]===plannerView?"on":"")+'" data-pa="view" data-v="'+t[0]+'">'+t[1]+'</button>'; }).join("")+'</div>'+(plannerView==="insights" ? "" : catchBannerHtml())+body;
+  centerActive(host.querySelector(".pl-tabs"), "button.on", true);
   if(plannerView==="daily") bindPlannerDaily(host);
 }
 function renderPlanner(){
@@ -6008,6 +6020,7 @@ function renderTabs(){
     b.addEventListener("click", function(){ setTab(defaultViewFor(g.id)); });
     nav.appendChild(b);
   });
+  centerActive(nav, ".tab.active");
   renderSubTabs();
 }
 function renderSubTabs(){
@@ -6021,6 +6034,7 @@ function renderSubTabs(){
     b.addEventListener("click", function(){ setTab(c.id); });
     host.appendChild(b);
   });
+  centerActive(host, ".subtab.active");
 }
 function setTab(id){
   if(!VIEW_TO_GROUP[id]) id = "dashboard";
