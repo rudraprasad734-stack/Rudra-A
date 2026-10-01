@@ -766,6 +766,7 @@
   .pl-title h2, .wz-head h2{margin:0; font-family:var(--font-display); font-size:22px;}
   .pl-title .muted, .wz-head .muted{color:rgba(255,255,255,.88);}
   .wz-head .link-btn{color:#fff; text-decoration:underline;}
+  .chip.pinc{background:var(--surface-2); color:var(--ink-soft); border:1px solid var(--line); padding:1px 7px; font-size:10px;}
   .catch-banner{display:flex; align-items:center; justify-content:space-between; gap:12px; padding:12px 14px; margin:0 0 10px; border-left:4px solid var(--brick);}
   .catch-banner .muted{font-size:12px;}
   .catch-opts{display:grid; gap:8px; margin:8px 0;}
@@ -4064,7 +4065,7 @@ function openSessionEditor(id){
 function sessLogCard(s){
   return '<div class="sess-card pur-'+purClass(s.purpose)+' st-'+esc(s.status)+'" data-sid="'+esc(s.id)+'">'+
     '<div class="sess-top"><span class="sess-n">S'+s.sessionNumber+'</span><span class="sess-time">'+esc(fmt12(s.startTime))+' &ndash; '+esc(fmt12(s.endTime))+' &middot; '+esc(fmtDurMin(s.duration))+'</span><span class="chip pur">'+esc(s.kind && s.kind!=="study" && KIND_META[s.kind] ? KIND_META[s.kind].label : s.purpose)+'</span></div>'+
-    '<div class="sess-sub"><b>'+esc(sessionPaperLabel(s))+'</b> &middot; '+esc(s.subject)+' &rsaquo; '+esc(s.topic)+' &rsaquo; '+esc(s.syllabusUnit)+(s.blkOf>1 ? ' <small>(session '+s.blk+' of '+s.blkOf+')</small>' : "")+'</div>'+
+    '<div class="sess-sub"><b>'+esc(sessionPaperLabel(s))+'</b> &middot; '+esc(s.subject)+' &rsaquo; '+esc(s.topic)+' &rsaquo; '+esc(s.syllabusUnit)+(s.blkOf>1 ? ' <small>(session '+s.blk+' of '+s.blkOf+')</small>' : "")+(s.pinned ? ' <span class="chip pinc" title="Pinned to this session, studied alongside the main subject">Pinned</span>' : "")+'</div>'+
     '<div class="sess-ctl">'+
       '<label>Status<select data-sf="status">'+STATUSES.map(function(o){ return '<option value="'+o[0]+'"'+(o[0]===s.status?" selected":"")+'>'+o[1]+'</option>'; }).join("")+'</select></label>'+
       '<label>Actual start<input type="time" data-sf="actualStart" value="'+esc(s.actualStart)+'"></label>'+
@@ -4365,8 +4366,18 @@ function mkStudy(item, date, slot){
 function onLeave(plan, d){ return (plan.leave||[]).some(function(r){ return d>=r.from && d<=r.to; }); }
 function isTouched(s){ return s.origin!=="auto" || s.status!=="not_started" || !!s.actualStart || !!s.actualEnd || s.actualDuration>0; }
 function horizonEnd(){ return studyPlan ? minKey(studyPlan.window.end, toKey(addDays(parseKey(todayKey), HORIZON_DAYS))) : todayKey; }
+// Sessions each chapter needs. A whole pace (2) gives every chapter 2; a fractional auto pace
+// (2.5) gives some chapters 2 and some 3, spread evenly so the plan fills the window instead of stopping early.
+function blockNeeds(plan, states){
+  var base = Math.max(1, plan.capacity.blocks||1), lo = Math.floor(base + 1e-9), fr = base - lo, acc = 0, map = {};
+  states.forEach(function(st){ st.leaves.forEach(function(l){
+    if(fr < 0.005){ map[l.id] = lo; return; }
+    acc += fr; if(acc >= 1 - 1e-9){ map[l.id] = lo + 1; acc -= 1; } else map[l.id] = lo;
+  }); });
+  return map;
+}
 function simulate(plan, from, frozen, strict){
-  var states = subjectStates(plan), need = Math.max(1, plan.capacity.blocks||1);
+  var states = subjectStates(plan), needMap = blockNeeds(plan, states), need = Math.max(1, Math.round(plan.capacity.blocks||1));
   var blocksDone = {}, revSeen = {};
   studySessions.forEach(function(s){
     if(s.kind==="study" && s.topicId && s.status==="completed") blocksDone[s.topicId] = (blocksDone[s.topicId]||0)+1;
@@ -4374,7 +4385,7 @@ function simulate(plan, from, frozen, strict){
   });
   var queue = [];
   var actSt = states.filter(function(x){ return x.state==="active"; })[0];
-  states.forEach(function(st){ if(strict && st!==actSt && !st.pinned) return; st.leaves.forEach(function(l){ if(!isDone(l.id)) queue.push({leaf:l, st:st, rem:Math.max(1, need-(blocksDone[l.id]||0))}); }); });
+  states.forEach(function(st){ if(strict && st!==actSt && !st.pinned) return; st.leaves.forEach(function(l){ if(!isDone(l.id)) queue.push({leaf:l, st:st, need:needMap[l.id]||need, rem:Math.max(1, (needMap[l.id]||need)-(blocksDone[l.id]||0))}); }); });
   var rv = plan.activities.revision, autoRev = rv && rv.on && (rv.method==="auto" || rv.method==="both");
   var gaps = (rv && rv.gaps && rv.gaps.length) ? rv.gaps : [3,10,30];
   var due = [];
@@ -4421,7 +4432,7 @@ function simulate(plan, from, frozen, strict){
         if(qi < 0){ for(q=0;q<queue.length;q++) if(!strict || queue[q].st===actSt){ qi = q; break; } }
         if(qi < 0) return;
         var it = queue[qi];
-        it.blk = need - it.rem + 1; it.of = need;
+        it.blk = it.need - it.rem + 1; it.of = it.need;
         dayNew.push(mkStudy(it, d, sl));
         var sp = spans[it.st.name] || (spans[it.st.name] = {start:d, end:d}); sp.end = d;
         lastCtx = {subject:it.st.name, group:it.leaf.group, paper:it.st.entry.paper, entry:it.st.entry};
@@ -4499,7 +4510,7 @@ function setLeafStatus(id, status, by){ setLeaves([id], status, by); refreshView
 function afterSessionChange(id){
   var s = sessionById(id);
   if(s && s.kind==="study" && s.topicId && studyPlan){
-    var need = Math.max(1, studyPlan.capacity.blocks||1);
+    var need = blockNeeds(studyPlan, subjectStates(studyPlan))[s.topicId] || Math.max(1, Math.round(studyPlan.capacity.blocks||1));
     var n = studySessions.filter(function(x){ return x.topicId===s.topicId && x.kind==="study" && x.status==="completed"; }).length;
     var cur = studyProgress.topics[s.topicId];
     if(n >= need && leafStatus(s.topicId)!=="completed") setLeaves([s.topicId], "completed", id);
@@ -4578,7 +4589,14 @@ function estimateBlocks(plan){
     var pd = plan.capacity.perDay && plan.capacity.perDay[dow], cnt = (pd!=null) ? +pd : plan.capacity.sessions.length;
     plan.capacity.sessions.slice(0, cnt).forEach(function(sl){ if(!(acts[d]||[]).some(function(a){ return overlapR(a, sl); })) slots++; });
   });
-  return Math.max(1, Math.min(8, Math.floor(0.9*slots/leaves)));
+  var raw = slots/leaves, tries = [0.97, 0.93, 0.9, 0.85, 0.8, 0.75, 0.7, 0.6, 0.5], last = 1;
+  for(var i=0;i<tries.length;i++){
+    var c = Math.max(1, Math.min(8, Math.round(raw*tries[i]*100)/100));
+    if(c === last && i) continue;
+    last = c; plan.capacity.blocks = c;
+    if(c <= 1 || !simulate(plan, from, [], false).remaining) return c;   // revision and activities also take slots, so confirm it really fits
+  }
+  return 1;
 }
 function recommendedView(w){ var s = windowStats(w); return (s.ok && s.days > 200) ? "yearly" : "monthly"; }
 function compilePlan(w){
@@ -4988,7 +5006,7 @@ function monthDates(mk){ var y = +mk.slice(0,4), m = +mk.slice(5,7)-1, dim = new
 function stateColor(states, name){ for(var i=0;i<states.length;i++) if(states[i].name===name) return states[i].color; return "--tab-quotes"; }
 function planRow(s){
   var meta = kindMeta(s), label;
-  if(s.kind==="study") label = esc(s.subject)+' › '+esc(s.topic)+' › <b>'+esc(s.syllabusUnit)+'</b>'+tierBadge({subject:s.subject, group:s.topic, unit:s.syllabusUnit})+(s.blkOf>1 ? ' <small>session '+s.blk+'/'+s.blkOf+'</small>' : "");
+  if(s.kind==="study") label = esc(s.subject)+' › '+esc(s.topic)+' › <b>'+esc(s.syllabusUnit)+'</b>'+tierBadge({subject:s.subject, group:s.topic, unit:s.syllabusUnit})+(s.blkOf>1 ? ' <small>session '+s.blk+'/'+s.blkOf+'</small>' : "")+(s.pinned ? ' <span class="chip pinc" title="Pinned to this session, studied alongside the main subject">Pinned</span>' : "");
   else if(s.kind) label = '<b>'+esc(meta.label)+'</b>'+(s.kind==="essay"||s.kind==="ca" ? "" : ' · '+esc(s.subject)+(s.kind==="revision"||s.kind==="pyq" ? ' › '+esc(s.kind==="revision" ? s.syllabusUnit : s.topic) : ""));
   else label = '<b>Manual</b> · '+esc(s.subject)+' › '+esc(s.syllabusUnit);
   var actS = activeSubject(studyPlan);
@@ -5044,7 +5062,7 @@ function overviewHtml(plan, states){
     '<div class="card pad"><div class="ov-h"><b>Overall progress</b><span>'+op.pct+'%</span></div><div class="pbar big"><i style="width:'+op.pct+'%"></i></div><div class="muted">'+op.done+' of '+op.total+' selected chapters completed</div></div>'+
     '<div class="section-title">Subject chain</div>'+chainHtml(states)+
     '<div class="section-title">Upcoming activities</div>'+upcomingHtml()+
-    '<div class="card pace"><div><b>Pace</b><div class="muted">Sessions per chapter. Slower pace makes each subject take longer; the next one still waits for completion, never the calendar. Now: <b>'+plan.capacity.blocks+' per chapter</b>'+(plan.capacity.auto ? " (auto)" : "")+'.</div></div><select data-pa="pace" aria-label="Sessions per chapter">'+paceOptions(plan.capacity.auto ? "auto" : plan.capacity.blocks)+'</select></div>'+
+    '<div class="card pace"><div><b>Pace</b><div class="muted">Sessions per chapter. Slower pace makes each subject take longer; the next one still waits for completion, never the calendar. Now: <b>'+(Math.round(plan.capacity.blocks*10)/10)+' per chapter</b>'+(plan.capacity.auto ? " (auto)" : "")+'.</div></div><select data-pa="pace" aria-label="Sessions per chapter">'+paceOptions(plan.capacity.auto ? "auto" : plan.capacity.blocks)+'</select></div>'+
     (left ? '<div class="warn-list">At the current pace, <b>'+left+' chapter(s)</b> are projected to finish after your window ends ('+esc(fmtShort(parseKey(plan.window.end)))+'). Add study days, add a session, or speed up the pace.</div>' : "")+
     '<div class="card ov-win"><div class="muted">Window '+esc(fmtShort(parseKey(plan.window.start)))+' &rarr; '+esc(fmtShort(parseKey(plan.window.end)))+' &middot; '+(st.ok ? st.days+" days &middot; "+st.hours+" study hours" : "")+'</div><div class="ov-btns"><button type="button" class="btn ghost sm" data-pa="edit">Edit plan</button><button type="button" class="btn danger sm" data-pa="reset">Reset plan</button></div></div>';
 }
