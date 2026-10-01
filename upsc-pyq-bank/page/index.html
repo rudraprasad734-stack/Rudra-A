@@ -4143,7 +4143,7 @@ function saveProgress(){ lsSetJSON(PROG_KEY, studyProgress); viewCache = null; }
 var DOW_SHORT = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 var DOW_LONG = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 var DOW_ORDER = [1,2,3,4,5,6,0];
-var HORIZON_DAYS = 35;
+var HORIZON_DAYS = 365;
 var BRICK_COLORS = ["--tab-dashboard","--tab-logs","--tab-syllabus","--tab-tiers","--tab-mocks","--tab-pyq","--tab-scheduler","--tab-quotes"];
 var ACT_KINDS = ["essay","pyq","test","revision","ca"];
 var KIND_META = {
@@ -5527,7 +5527,7 @@ function progressHtml(plan, states){
 // ---------- Insights: weekly review, catch-up when behind, reminders ----------
 var REM_KEY = "dossier.reminders.v1", CATCH_KEY = "dossier.catchup.v1", insWeek = null;
 var remState = Object.assign({on:false, lead:10, eod:true, eodTime:"21:00", sent:{}}, lsGetJSON(REM_KEY, {}) || {});
-var catchState = Object.assign({promptedOn:""}, lsGetJSON(CATCH_KEY, {}) || {});
+var catchState = Object.assign({promptedOn:"", doneOn:""}, lsGetJSON(CATCH_KEY, {}) || {});
 function remSave(){ lsSetJSON(REM_KEY, remState); }
 function saveCatch(){ lsSetJSON(CATCH_KEY, catchState); }
 
@@ -5583,7 +5583,62 @@ function catchApply(kind){
   toast(msg);
   return true;
 }
+
+// ---- a long break: more than a month without studying ----
+var GAP_DAYS = 30;
+function lastActivityKey(){
+  var best = "";
+  studySessions.forEach(function(x){ if((x.status==="completed" || x.status==="in_progress" || x.actualDuration>0) && x.date<=todayKey && x.date>best) best = x.date; });
+  Object.keys(studyProgress.topics).forEach(function(id){ var c = studyProgress.topics[id].completedAt; if(c && c<=todayKey && c>best) best = c; });
+  var log = {}; try{ log = JSON.parse(lsGet("dossier.timerLog")||"{}"); }catch(e){}
+  Object.keys(log).forEach(function(k){ if(+log[k]>0 && k<=todayKey && k>best) best = k; });
+  return maxKey(maxKey(best, studyPlan.window.start), catchState.doneOn || "");
+}
+function planGapDays(){
+  if(!studyPlan || todayKey < studyPlan.window.start || todayKey > studyPlan.window.end) return 0;
+  return diffDays(todayKey, lastActivityKey());
+}
+function gapBannerHtml(){
+  var g = planGapDays(); if(g <= GAP_DAYS) return "";
+  return '<div class="card catch-banner" role="status"><div><b>It has been '+g+' days since you last studied.</b><div class="muted">Choose how to continue your plan.</div></div><button type="button" class="btn primary sm" data-pa="gapopen">Choose</button></div>';
+}
+function gapDecided(kind){
+  catchState.doneOn = todayKey; catchState.promptedOn = todayKey; catchState.gapPromptedOn = todayKey; saveCatch();
+  ackMissed(); savePlan(); replan(); viewCache = null;
+}
+function gapContinue(){
+  studyPlan.capacity.auto = true; studyPlan.capacity.blocks = estimateBlocks(studyPlan); studyPlan.cfg.cap.blocks = "auto";
+  gapDecided(); var left = viewIndex().sim ? viewIndex().sim.remaining : 0;
+  toast("Plan recalculated from today. Your end date is unchanged."+(left>0 ? " "+left+" chapter"+(left===1 ? "" : "s")+" still do not fit, so consider extending the plan." : ""));
+}
+function gapExtend(g){
+  var newEnd = toKey(addDays(parseKey(studyPlan.window.end), g));
+  studyPlan.window.end = newEnd; studyPlan.cfg.durMode = "date"; studyPlan.cfg.target = newEnd;
+  if(studyPlan.capacity.auto) studyPlan.capacity.blocks = estimateBlocks(studyPlan);
+  gapDecided(); toast("Plan extended by "+g+" days. It now ends on "+fmtShort(parseKey(newEnd))+".");
+}
+function openGapPrompt(){
+  var g = planGapDays(); if(g <= GAP_DAYS) return;
+  var newEnd = toKey(addDays(parseKey(studyPlan.window.end), g)), behind = missedLeaves().length;
+  var m = showModal('<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="gpTitle">'+
+    '<h2 id="gpTitle">Welcome back</h2>'+
+    '<p>It has been <b>'+g+' days</b> since you last studied. Your plan ends on <b>'+esc(fmtShort(parseKey(studyPlan.window.end)))+'</b>'+(behind ? ' and <b>'+behind+' chapter'+(behind===1 ? "" : "s")+'</b> were missed' : "")+'. How would you like to continue?</p>'+
+    '<div class="catch-opts">'+
+      '<div class="catch-o"><b>Continue and adjust</b><div class="muted">Keep your end date. The plan is recalculated from today and the pace is set to Auto so the remaining chapters fit.</div><button type="button" class="btn ghost sm" id="gpCont">Continue and adjust</button></div>'+
+      '<div class="catch-o"><b>Extend the plan</b><div class="muted">Move your end date '+g+' days later, to '+esc(fmtShort(parseKey(newEnd)))+', so nothing has to be squeezed.</div><button type="button" class="btn ghost sm" id="gpExt">Extend the plan</button></div>'+
+      '<div class="catch-o"><b>Start fresh</b><div class="muted">Reset the plan and your chapter progress and set it up again. Sessions you already logged stay on this device.</div><button type="button" class="btn ghost sm" id="gpNew" data-v="">Start fresh</button></div>'+
+    '</div>'+
+    '<div class="modal-actions"><button class="btn ghost" id="gpLater">Decide later</button></div></div>', false);
+  m.querySelector("#gpCont").addEventListener("click", function(){ closeModal(); gapContinue(); renderView(activeTab); });
+  m.querySelector("#gpExt").addEventListener("click", function(){ closeModal(); gapExtend(g); renderView(activeTab); });
+  m.querySelector("#gpNew").addEventListener("click", function(){
+    if(!confirm("Reset the plan and chapter progress? Sessions you already logged stay on this device.")) return;
+    closeModal(); catchState.doneOn = ""; saveCatch(); plannerAction("reset", m.querySelector("#gpNew") || document.body, true);
+  });
+  m.querySelector("#gpLater").addEventListener("click", function(){ catchState.gapPromptedOn = todayKey; catchState.promptedOn = todayKey; saveCatch(); closeModal(); renderView(activeTab); });
+}
 function catchBannerHtml(){
+  var gb = gapBannerHtml(); if(gb) return gb;
   var ml = missedLeaves(); if(!ml.length) return "";
   var n = missedSessions().length;
   return '<div class="card catch-banner" role="status"><div><b>You are '+n+' session'+(n===1 ? "" : "s")+' behind.</b><div class="muted">'+ml.length+' chapter'+(ml.length===1 ? "" : "s")+' to make up. You choose how.</div></div><button type="button" class="btn primary sm" data-pa="catchopen">Catch up</button></div>';
@@ -5645,7 +5700,8 @@ function insightsHtml(plan, states){
     (remState.on && perm==="denied" ? '<div class="form-err">Notifications are blocked for this site in your browser settings. Allow them there to get reminders.</div>' : "")+
     (perm==="unsupported" ? '<div class="muted">This browser does not support notifications.</div>' : '<button type="button" class="btn ghost sm" data-pa="remtest">Send a test reminder</button>')+
   '</div>';
-  var catchCard = missedLeaves().length ? '<div class="card ins-card"><h3>Catch up</h3><div class="muted">You have missed sessions. Choose how to make them up.</div>'+catchOptionsHtml()+'</div>' : "";
+  var gapCard = planGapDays() > GAP_DAYS ? '<div class="card ins-card"><h3>Long break</h3><div class="muted">It has been '+planGapDays()+' days since you last studied.</div><button type="button" class="btn primary sm" data-pa="gapopen">Choose how to continue</button></div>' : "";
+  var catchCard = gapCard || (missedLeaves().length ? '<div class="card ins-card"><h3>Catch up</h3><div class="muted">You have missed sessions. Choose how to make them up.</div>'+catchOptionsHtml()+'</div>' : "");
   return '<div class="navrow"><button type="button" class="btn ghost sm" data-pa="iPrev" aria-label="Previous week">&lsaquo;</button><b>'+esc(fmtDM(mon))+' – '+esc(fmtDM(addDays(mon,6)))+(isNow ? " · this week" : "")+'</b><button type="button" class="btn ghost sm" data-pa="iNext" aria-label="Next week">&rsaquo;</button></div>'+
     (isNow ? "" : '<div class="pill-row"><button type="button" class="btn ghost sm" data-pa="iNow">This week</button></div>')+
     '<div class="card ins-card"><h3>Weekly review</h3><div class="ins-verdict">'+esc(verdict)+'</div>'+
@@ -5740,17 +5796,21 @@ function renderPlanner(){
   }
   if(plannerLanding){ plannerView = plannerLanding==="yearly" ? "yearly" : "monthly"; plannerLanding = null; }
   renderPlannerHome(host);
-  if(missedLeaves().length && catchState.promptedOn !== todayKey && !document.getElementById("modalHost")) openCatchup();
+  if(!document.getElementById("modalHost")){
+    if(planGapDays() > GAP_DAYS && catchState.gapPromptedOn !== todayKey) openGapPrompt();
+    else if(missedLeaves().length && catchState.promptedOn !== todayKey) openCatchup();
+  }
 }
 
 // ---------- actions ----------
 function shiftMonth(mk, n){ var d = new Date(+mk.slice(0,4), +mk.slice(5,7)-1+n, 1); return d.getFullYear()+"-"+pad2(d.getMonth()+1); }
-function plannerAction(a, el){
+function plannerAction(a, el, sure){
   var v = el.getAttribute("data-v");
   switch(a){
     case "view": plannerView = v; break;
     case "prisubj": priSubject = el.value; break;
     case "catchopen": openCatchup(); return;
+    case "gapopen": openGapPrompt(); return;
     case "catch": if(catchApply(v)===false) return; break;
     case "iPrev": insWeek = toKey(addDays(parseKey(insWeek || toKey(mondayOf(parseKey(todayKey)))), -7)); break;
     case "iNext": insWeek = toKey(addDays(parseKey(insWeek || toKey(mondayOf(parseKey(todayKey)))), 7)); break;
@@ -5784,7 +5844,7 @@ function plannerAction(a, el){
       savePlan(); replan(); break;
     case "edit": plannerEditing = true; wiz = wizFromPlan(studyPlan); break;
     case "reset":
-      if(!confirm("Reset the plan and chapter progress? Sessions you already logged stay on this device.")) return;
+      if(!sure && !confirm("Reset the plan and chapter progress? Sessions you already logged stay on this device.")) return;
       studyPlan = null; studyProgress = {topics:{}, lastUnlock:null}; wiz = null;
       try{ localStorage.removeItem(PLAN_KEY); }catch(x){}
       saveProgress();
