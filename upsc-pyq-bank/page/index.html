@@ -1067,6 +1067,51 @@
   .timer-btn.primary{background:var(--tm-bg, rgba(24,34,70,.85)); border-color:var(--tm-line, rgba(255,255,255,.3));}
   .timer-card.pomo .timer-btn.primary{background:var(--tm-bg, rgba(120,58,12,.62)); border-color:var(--tm-line, rgba(255,196,120,.5));}
   .timer-card.pomo.brk .timer-btn.primary{background:var(--tm-brk, rgba(20,60,130,.62)); border-color:var(--tm-line-brk, rgba(150,210,255,.5));}
+
+  /* ---- Fit any screen ---- */
+  html{-webkit-text-size-adjust:100%; text-size-adjust:100%;}
+  /* timer screen: sizes follow the screen (see fitScreen) */
+  body.dash-timer .timer-display{font-size:calc(31px * var(--tu,1));}
+  body.dash-timer .timer-card.pomo .timer-display{font-size:calc(36px * var(--tu,1));}
+  body.dash-timer .timer-dial-wrap{width:calc(170px * var(--tu,1)); height:calc(92px * var(--tu,1));}
+  body.dash-timer #view-dashboard .timer-card > .timer-phase{top:calc(49% + 68px * var(--tu,1)); font-size:calc(11px * var(--tb,1));}
+  body.dash-timer #view-dashboard .timer-card.pomo > .timer-phase{top:calc(49% + 92px * var(--tu,1));}
+  body.dash-timer .timer-phase .dots i{width:calc(8px * var(--tb,1)); height:calc(8px * var(--tb,1));}
+  body.dash-timer .timer-card .timer-mode .tm{font-size:calc(11.5px * var(--tb,1)); min-height:calc(30px * var(--tb,1)); padding:calc(5px * var(--tb,1)) calc(10px * var(--tb,1));}
+  body.dash-timer .timer-card .timer-total{font-size:calc(11px * var(--tb,1)); padding:calc(5px * var(--tb,1)) calc(10px * var(--tb,1));}
+  body.dash-timer .timer-card .timer-btn{flex:0 1 calc(132px * var(--tb,1)); padding:calc(10px * var(--tb,1)) calc(14px * var(--tb,1)); font-size:calc(13px * var(--tb,1));}
+  body.dash-timer .timer-card .timer-set select, body.dash-timer .timer-card .timer-brk select{font-size:calc(12px * var(--tb,1)); min-height:calc(30px * var(--tb,1));}
+  body.dash-timer .timer-card .timer-set small{font-size:calc(10.5px * var(--tb,1));}
+  body.dash-timer #view-dashboard .timer-card > .timer-btns{bottom:calc(112px * var(--tb,1) + env(safe-area-inset-bottom,0px));}
+  body.dash-timer .timer-card > .timer-mode, body.dash-timer .timer-card > .timer-total{top:calc(64px * var(--tb,1) + env(safe-area-inset-top,0px));}
+  #menuBtn{width:calc(44px * var(--tb,1)); height:calc(44px * var(--tb,1));}
+  body.dash-timer #menuBtn{position:fixed; left:10px; top:calc(10px + env(safe-area-inset-top,0px));}
+  body.dash-timer .timer-card > .timer-set, body.dash-timer .timer-card > .timer-brk{top:calc(112px * var(--tb,1) + env(safe-area-inset-top,0px));}
+  #dashFab{width:calc(62px * var(--tb,1)); height:calc(62px * var(--tb,1));}
+  #dashFab svg{width:calc(28px * var(--tb,1)); height:calc(28px * var(--tb,1));}
+  /* wide screens: the page content grows with the screen instead of staying a small phone column */
+  body:not(.dash-timer) main, body:not(.dash-timer) #chrome{zoom:var(--pz,1);}
+  /* landscape (wide and short): the controls move to the sides so nothing sits on the black hole */
+  @media (min-aspect-ratio: 6/5){
+    body.dash-timer #view-dashboard .timer-card > .timer-btns{left:auto; right:max(24px, 4vw); bottom:auto; top:50%; transform:translateY(-50%); flex-direction:column; width:calc(150px * var(--tb,1)); gap:calc(10px * var(--tb,1));}
+    body.dash-timer .timer-card > .timer-btns .timer-btn{flex:0 0 auto; width:100%;}
+    body.dash-timer .timer-card > .timer-set, body.dash-timer .timer-card > .timer-brk{left:max(24px, 4vw); right:auto; top:50%; transform:translateY(-50%); width:calc(190px * var(--tb,1)); align-items:flex-start; justify-content:flex-start;}
+    body.dash-timer .timer-card > .timer-brk{flex-direction:column; align-items:flex-start; gap:6px;}
+    body.dash-timer .timer-card > .timer-mode{top:calc(12px + env(safe-area-inset-top,0px)); left:calc(64px * var(--tb,1));}
+    body.dash-timer .timer-card > .timer-total{top:calc(14px + env(safe-area-inset-top,0px));}
+  }
+  /* very narrow screens (small phones, folded foldables) */
+  @media (max-width: 340px){
+    .sess-links{flex-wrap:wrap; gap:4px 12px;}
+    .link-btn{white-space:normal; text-align:left;}
+    main{padding-left:10px; padding-right:10px;}
+  }
+  /* comfortable tap targets for touch screens */
+  @media (pointer: coarse){
+    .yr{min-height:32px; padding:6px 9px;}
+    input[type="checkbox"], input[type="radio"]{width:20px; height:20px;}
+    .cov-paper{min-height:32px; padding:6px 0;}
+  }
 </style>
 <script>
 /* ===========================================================================
@@ -6398,6 +6443,17 @@ function setMenu(open){
 var dashMore = false;
 // Timer-only screen. Stage 0 = calm (only the animation), 1 = the time is shown, 2 = time and every control are shown.
 // A tap never pauses the timer; only the Pause button does.
+// Every size is worked out from the real screen: --tu scales the timer scene, --tb its buttons and text, --pz the page content on big screens.
+function fitScreen(){
+  var w = window.innerWidth || 390, h = window.innerHeight || 844, root = document.documentElement.style;
+  var u = Math.max(.8, Math.min(2.4, Math.min(w/390, h/700)));
+  root.setProperty("--tu", u.toFixed(3));
+  root.setProperty("--tb", (1 + (u - 1)*.55).toFixed(3));
+  root.setProperty("--pz", Math.max(1, Math.min(1.7, Math.min(w/820, h/560))).toFixed(3));
+}
+fitScreen();
+window.addEventListener("resize", fitScreen);
+window.addEventListener("orientationchange", function(){ setTimeout(fitScreen, 120); });
 var uiStage = 2, uiStageTimer = null;
 function digitsHiddenWhenCalm(){
   var st = timerState;
@@ -6707,8 +6763,8 @@ function initBlackHoleScene(host){
   if(blackHoleAnimFrame){cancelAnimationFrame(blackHoleAnimFrame);clearInterval(blackHoleAnimFrame);blackHoleAnimFrame=null;}
   var canvas=host.querySelector("#blackHoleScene"),ctx=canvas&&canvas.getContext("2d");if(!ctx)return;
   var reduced=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var dpr=Math.min(window.devicePixelRatio||1,2),w=1,h=1,cx=0,cy=0,scale=1,particles=[],count=150;
-  function resize(){var r=canvas.getBoundingClientRect();w=Math.max(1,r.width);h=Math.max(1,r.height);canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);cx=w*.5;cy=h*.49;scale=Math.min(w,h)/2;}
+  var dpr=Math.min(window.devicePixelRatio||1,2),w=1,h=1,cx=0,cy=0,scale=1,sceneU=1,particles=[],count=150;
+  function resize(){var r=canvas.getBoundingClientRect();w=Math.max(1,r.width);h=Math.max(1,r.height);canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);cx=w*.5;cy=h*.49;scale=Math.min(w,h)/2;sceneU=Math.max(.8,Math.min(2.4,Math.min(w/390,h/700)));}
   function spawn(p){p.r=.34+Math.random()*.88;p.a=Math.random()*Math.PI*2;p.prevR=p.r;p.prevA=p.a;p.pull=.00045+Math.random()*.0018;p.spin=(Math.random()<.75?1:-1)*(.002+Math.random()*.007);p.size=.55+Math.random()*1.35;p.alpha=.5+Math.random()*.5;p.warm=Math.random()<.2;p.life=0;p.max=500+Math.random()*1000;}
   for(var i=0;i<count;i++){var p={};spawn(p);particles.push(p);}
   var fillCur = null, dust = [];
@@ -6916,7 +6972,7 @@ function initBlackHoleScene(host){
     ctx.clearRect(0,0,w,h);ctx.fillStyle="#010207";ctx.fillRect(0,0,w,h);
     var bg=ctx.createRadialGradient(cx,cy,0,cx,cy,scale*1.15);bg.addColorStop(0,"rgba(28,8,2,.55)");bg.addColorStop(.45,"rgba(6,8,18,.35)");bg.addColorStop(1,"rgba(0,0,0,0)");ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);drawBackdrop(t, dt);
     for(var i=0;i<particles.length;i++){var p=particles[i];p.prevR=p.r;p.prevA=p.a;if(!reduced){p.r-=sp*p.pull/(Math.max(.11,p.r)*Math.max(.11,p.r));p.a+=sp*p.spin*(1+.7/Math.max(.18,p.r));p.life++;}if(!reduced&&(p.r<.12||p.life>p.max))spawn(p);var rr=p.r*scale,x=cx+Math.cos(p.a)*rr,y=cy+Math.sin(p.a)*rr*.55,px=cx+Math.cos(p.prevA)*p.prevR*scale,py=cy+Math.sin(p.prevA)*p.prevR*scale*.55;if(!reduced){ctx.strokeStyle=p.warm?"rgba(255,160,80,.28)":"rgba(205,225,255,.28)";ctx.lineWidth=Math.max(.3,p.size*.5);ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(x,y);ctx.stroke();}ctx.fillStyle=p.warm?"rgba(255,215,165,"+p.alpha+")":"rgba(225,238,255,"+p.alpha+")";ctx.beginPath();ctx.arc(x,y,p.size,0,Math.PI*2);ctx.fill();}
-    var holeR = pv.pomo ? Math.min(70, scale * 0.39) : Math.min(62, scale * 0.28);
+    var holeR = pv.pomo ? Math.min(70*sceneU, scale * 0.39) : Math.min(62*sceneU, scale * 0.28);
     lensHoleR = holeR;
     ctx.fillStyle = "#000"; ctx.beginPath(); ctx.arc(cx, cy, holeR, 0, Math.PI * 2); ctx.fill();
     if(pv.pomo) drawFill(t, pv, holeR);
