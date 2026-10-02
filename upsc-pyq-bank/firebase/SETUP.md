@@ -32,6 +32,7 @@ The app already contains the sign-in and sync code. It stays hidden until you pa
 - Free-tier limits are generous (about 1 GB of data and 50,000 reads / 20,000 writes a day). Watch **Usage** in the Firebase console.
 
 ## Analytics settings (must match the privacy policy)
+The privacy policy says these Analytics data-sharing settings are **ON**: Benchmarking, Technical support, Account specialists. It says "share with Google to improve Google products and services" is **OFF**. If you change any of them later, update `privacy.html` section 4 too (Admin → Data collection and modification → Data sharing settings).
 Do this once, in the Firebase console, so what you collect matches what the policy promises.
 1. **Project settings → Integrations → Google Analytics → Manage** (or open analytics.google.com for the project).
 2. **Admin → Data collection and modification → Data retention**: set **Event data retention = 2 months**.
