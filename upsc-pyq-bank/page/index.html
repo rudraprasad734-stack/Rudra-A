@@ -6978,9 +6978,10 @@ function renderSettings(){
   if(!host._wired){
     host._wired = true;
     host.addEventListener("click", function(e){
-      var u = e.target.closest ? e.target.closest("[data-ui]") : null;
+      // match the picker buttons only: <html> itself carries data-ui / data-theme, so a bare [data-...] lookup would match every click
+      var u = e.target.closest ? e.target.closest(".ui-opt[data-ui]") : null;
       if(u){ window.applyUiTheme(u.getAttribute("data-ui"), true); renderSettings(); return; }
-      var b = e.target.closest ? e.target.closest("[data-theme]") : null; if(!b) return;
+      var b = e.target.closest ? e.target.closest(".th-opt[data-theme]") : null; if(!b) return;
       setPathTheme(b.getAttribute("data-theme")); renderSettings();
     });
   }
