@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -143,13 +143,6 @@
   #topbar .brand{font-family:var(--font-display); font-size:21px; font-weight:600; letter-spacing:.2px; text-shadow:0 1px 4px rgba(0,0,0,.18);}
   #topbar .brand small{display:block; font-family:var(--font-body); font-weight:600; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; opacity:.85; margin-top:3px;}
   #topbar .today{font-family:var(--font-mono); font-size:11px; opacity:.85; position:absolute; top:0; right:0;}
-  #themeToggle{position:relative; flex:0 0 auto; appearance:none; background:none; border:none; cursor:pointer; padding:0; margin:0; width:50px; height:28px; border-radius:999px; background:rgba(255,255,255,.25); position:relative; transition:background .3s; display:flex; align-items:center; padding:2px;}
-  #themeToggle::before{content:''; position:absolute; width:24px; height:24px; background:rgba(255,255,255,.95); border-radius:50%; transition:left .3s cubic-bezier(.4,.0,.2,1); left:2px; box-shadow:0 2px 6px rgba(0,0,0,.25);}
-  html[data-theme="light"] #themeToggle{background:rgba(255,255,255,.3);}
-  html[data-theme="light"] #themeToggle::before{left:2px;}
-  :root:not([data-theme="light"]) #themeToggle{background:rgba(255,255,255,.2);}
-  :root:not([data-theme="light"]) #themeToggle::before{left:24px;}
-  #themeToggle:active{transform:scale(1.1);}
 
   /* ---- Side menu (Forest-style): tabs live in a drawer, pages open full-screen ---- */
   #menuBtn{position:absolute; top:calc(10px + env(safe-area-inset-top,0px)); left:10px; z-index:25; width:44px; height:44px; padding:0; border:none; border-radius:50%; background:rgba(0,0,0,.38); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); cursor:pointer; color:#fff;}
@@ -267,8 +260,6 @@
   .tab-sub{display:flex; gap:8px; padding:0 6px 8px 31px;}
   .tab-sub button{border:1px solid rgba(255,255,255,.28); background:none; color:#cfe8dc; border-radius:999px; padding:5px 14px; font:inherit; font-size:13px; cursor:pointer;}
   .tab-sub button.active{background:rgba(255,255,255,.18); color:#fff; border-color:#fff;}
-  .dr-foot{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:16px; padding-top:14px; border-top:1px solid rgba(255,255,255,.18); font-size:15px;}
-  html[data-theme="light"] #drawer #themeToggle,:root:not([data-theme="light"]) #drawer #themeToggle{background:rgba(255,255,255,.25);}
 
   #subtabs{
     display:flex; gap:6px; overflow-x:auto; -webkit-overflow-scrolling:touch;
@@ -1081,7 +1072,6 @@
   <aside id="drawer" aria-label="Menu" aria-hidden="true">
     <div class="dr-who"><div class="dr-brand">UPSC Companion</div><div class="dr-date" id="topbarDate">&mdash;</div><div class="dr-av" aria-hidden="true">&#9733;</div><small class="greet"><button type="button" class="profile-btn" id="profileBtn"></button></small></div>
     <nav id="tabs" aria-label="Sections"></nav>
-    <div class="dr-foot"><span>Dark / Light mode</span><button id="themeToggle" aria-label="Toggle dark/light mode" title="Dark/Light mode"></button></div>
   </aside>
 
   <main>
@@ -7707,17 +7697,9 @@ function updateTopbarDate(){
 }
 
 function boot(){
-  // Theme toggle: persist to localStorage, apply to html element
-  var savedTheme = localStorage.getItem("dossier.theme") || "auto";
-  var isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-  var theme = savedTheme === "auto" ? (isDark ? "dark" : "light") : savedTheme;
-  if(theme === "light") document.documentElement.setAttribute("data-theme", "light");
-  document.getElementById("themeToggle").addEventListener("click", function(){
-    var current = document.documentElement.getAttribute("data-theme");
-    var next = current === "light" ? "dark" : "light";
-    document.documentElement.setAttribute("data-theme", next);
-    localStorage.setItem("dossier.theme", next);
-  });
+  // The app is dark only: there is no light mode or toggle. Forget any older saved choice.
+  document.documentElement.setAttribute("data-theme", "dark");
+  try{ localStorage.removeItem("dossier.theme"); }catch(e){}
 
   renderGreeting();
   document.getElementById("profileBtn").addEventListener("click", function(){ setMenu(false); openProfileModal(!!profile); });
