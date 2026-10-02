@@ -233,7 +233,7 @@
   body.dash-timer #menuBtn, body.dash-timer #dashFab, body.dash-timer .timer-card > .timer-mode, body.dash-timer .timer-card > .timer-total,
   body.dash-timer .timer-card > .timer-phase, body.dash-timer .timer-card > .timer-set, body.dash-timer .timer-card > .timer-btns, body.dash-timer .timer-card .timer-display{transition:opacity .7s ease;}
   body.dash-timer.ui-sleep #menuBtn, body.dash-timer.ui-sleep #dashFab, body.dash-timer.ui-sleep .timer-card > .timer-mode, body.dash-timer.ui-sleep .timer-card > .timer-total,
-  body.dash-timer.ui-sleep .timer-card > .timer-phase, body.dash-timer.ui-sleep .timer-card > .timer-set, body.dash-timer.ui-sleep .timer-card > .timer-btns, body.dash-timer.ui-sleep .timer-card .timer-display{opacity:0 !important; pointer-events:none !important;}
+  body.dash-timer.ui-sleep .timer-card > .timer-phase, body.dash-timer.ui-sleep .timer-card > .timer-set, body.dash-timer.ui-sleep .timer-card > .timer-brk, body.dash-timer.ui-sleep .timer-card > .timer-btns, body.dash-timer.ui-sleep .timer-card .timer-display{opacity:0 !important; pointer-events:none !important;}
   body.dash-timer #view-dashboard > *:not(.timer-card){display:none;}
   body.dash-timer #view-dashboard .timer-card{position:fixed; inset:0; z-index:5; height:auto; min-height:0; margin:0; border-radius:0; border:0;}
   body.dash-timer .timer-card > .timer-mode, body.dash-timer .timer-card > .timer-total{top:calc(64px + env(safe-area-inset-top,0px));}
@@ -338,6 +338,9 @@
   .timer-set{position:absolute;left:0;right:0;top:44px;z-index:8;display:flex;flex-direction:column;align-items:center;gap:5px;}
   .timer-set select{border:1px solid rgba(255,255,255,.22);background:rgba(3,5,12,.6);color:#fff;border-radius:999px;padding:4px 10px;font:inherit;font-size:12px;min-height:30px;}
   .timer-set small{font-size:10.5px;color:rgba(255,255,255,.62);}
+  .timer-brk{display:none;position:absolute;left:0;right:0;top:44px;z-index:8;align-items:center;justify-content:center;gap:8px;font-size:12px;color:rgba(255,255,255,.8);}
+  .timer-brk.on{display:flex;} .timer-brk select{border:1px solid rgba(255,255,255,.22);background:rgba(3,5,12,.6);color:#fff;border-radius:999px;padding:4px 10px;font:inherit;font-size:12px;min-height:30px;}
+  body.dash-timer .timer-card > .timer-brk{top:calc(106px + env(safe-area-inset-top,0px));}
   .timer-phase{display:flex;align-items:center;justify-content:center;gap:9px;}
   .timer-phase .dots{display:inline-flex;gap:5px;}
   .timer-phase .dots i{width:8px;height:8px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:transparent;transition:background .6s,box-shadow .6s;}
@@ -3387,7 +3390,7 @@ var todayKey = toKey(new Date());
 var timerInterval = null;
 var blackHoleAnimFrame = null, bhWait = null, bhSky = window.__bhSky = {next:0, glow:null}; // sky timing outlives the card, so tab switches don't reset it
 var TIMER_KEY = "dossier.timer.v2";
-function timerDefault(){ return {mode:"free", running:false, startedAt:0, accMs:0, studyMs:0, phase:"focus", cycle:0, preset:0, pending:0}; }
+function timerDefault(){ return {mode:"free", running:false, startedAt:0, accMs:0, studyMs:0, phase:"focus", cycle:0, preset:0, pending:0, brkMin:0, waiting:false}; }
 var timerState = Object.assign(timerDefault(), (function(){ try{ var v = JSON.parse(localStorage.getItem(TIMER_KEY)||"null"); return v && typeof v==="object" ? v : {}; }catch(e){ return {}; } })());
 var currentDailyKey = todayKey;
 
@@ -6450,7 +6453,15 @@ function timerVisual(){
 }
 function timerSave(){ try{ localStorage.setItem(TIMER_KEY, JSON.stringify(timerState)); }catch(e){} }
 var POMO_PRESETS = [["25 / 5",25,5],["30 / 5",30,5],["45 / 10",45,10],["50 / 10",50,10]];
-function pomoLen(phase){ var p = POMO_PRESETS[timerState.preset] || POMO_PRESETS[0]; return (phase==="focus" ? p[1] : (phase==="short" ? p[2] : 15))*60000; }
+// Break length: the user's own pick for this sitting, else the break chosen when planning, else the preset's.
+function planBreakMin(){ var c = studyPlan && studyPlan.cfg && studyPlan.cfg.cap, b = c ? +c.breakMin : 0; return b >= 5 ? b : 0; }
+function breakMinutes(phase){
+  var st = timerState, pr = POMO_PRESETS[st.preset] || POMO_PRESETS[0];
+  if(st.brkMin) return st.brkMin;
+  var base = planBreakMin() || pr[2];
+  return phase==="long" ? Math.max(base, 15) : base;
+}
+function pomoLen(phase){ var p = POMO_PRESETS[timerState.preset] || POMO_PRESETS[0]; return (phase==="focus" ? p[1] : breakMinutes(phase))*60000; }
 function timerSeg(){ return timerState.accMs + (timerState.running ? Math.max(0, Date.now()-timerState.startedAt) : 0); }
 function timerStudyMs(){
   var st = timerState;
@@ -6470,17 +6481,23 @@ function timerBeep(){
 function timerAdvance(){
   var st = timerState;
   if(st.mode!=="pomo" || !st.running) return false;
-  var el = timerSeg(), changed = false, guard = 0;
-  while(guard++ < 60){
+  var el = timerSeg(), changed = false, ended = false, startedBreak = false;
+  while(true){
     var len = pomoLen(st.phase);
     if(el < len) break;
-    if(st.phase==="focus"){ st.studyMs += len; st.cycle++; st.phase = (st.cycle % 4===0) ? "long" : "short"; }
-    else st.phase = "focus";
-    el -= len; changed = true;
+    if(st.phase==="focus"){
+      // a focus round is over: bank exactly one round, then the break begins on its own
+      st.studyMs += len; st.cycle++; st.phase = (st.cycle % 4===0) ? "long" : "short"; el -= len; changed = true; startedBreak = true;
+    } else {
+      // the break is over: stop here and wait for the user, however long they were away
+      st.phase = "focus"; st.running = false; st.accMs = 0; st.startedAt = 0; st.waiting = true; ended = true; changed = true; break;
+    }
   }
   if(changed){
-    st.accMs = 0; st.startedAt = Date.now() - el; timerSave();
-    toast(st.phase==="focus" ? "Break over. Time to focus." : (st.phase==="long" ? "Focus round done. Take a longer break." : "Focus round done. Take a short break."));
+    if(!ended){ st.accMs = 0; st.startedAt = Date.now() - el; }
+    timerSave();
+    if(ended){ ensureTimerInterval(); toast("Break over. Tap Start when you are ready for the next round."); }
+    else if(startedBreak) toast((st.phase==="long" ? "Round "+(st.cycle)+" done. Long break: " : "Round done. Break: ")+Math.round(pomoLen(st.phase)/60000)+" min. You can change it.");
     timerBeep();
   }
   return changed;
@@ -6494,6 +6511,7 @@ function timerLabel(){
   if(st.mode==="free") return st.running ? "Studying" : (st.accMs>0 ? "Paused" : "Stopwatch");
   var nm = st.phase==="focus" ? "Round "+((st.cycle % 4)+1)+" of 4" : (st.phase==="long" ? "Long break" : "Short break");
   var left = Math.ceil(Math.max(0, pomoLen(st.phase)-timerSeg())/60000);
+  if(st.waiting && !st.running && st.accMs<=0) return "Ready for round "+((st.cycle % 4)+1)+" of 4";
   if(st.running || st.accMs<=0) return "";
   return nm+" · paused · "+left+" min left";
 }
@@ -6510,7 +6528,9 @@ function timerUi(){
   var ph = document.getElementById("timerPhaseText"); if(ph) ph.textContent = timerLabel();
   var dt = document.getElementById("timerDots"); if(dt) dt.innerHTML = timerDotsHtml();
   var card = document.querySelector(".timer-card"); if(card){ card.classList.toggle("pomo", st.mode==="pomo"); card.classList.toggle("brk", st.mode==="pomo" && st.phase!=="focus"); card.classList.toggle("hidetime", st.mode==="pomo" && st.running); }
-  var tb = document.getElementById("timerToggleBtn"); if(tb) tb.textContent = st.running ? "Pause" : (started ? "Continue" : "Start");
+  var tb = document.getElementById("timerToggleBtn"); if(tb) tb.textContent = st.running ? "Pause" : (st.waiting ? "Next round" : (started ? "Continue" : "Start"));
+  var bk = document.getElementById("timerBrk"), bl = document.getElementById("breakLen");
+  if(bk && bl){ var inBreak = st.mode==="pomo" && st.phase!=="focus"; bk.classList.toggle("on", inBreak); if(inBreak && document.activeElement!==bl) bl.value = String(breakMinutes(st.phase)); }
   var sb = document.getElementById("timerStopBtn"); if(sb) sb.disabled = !started;
   var dw = document.getElementById("timerDialWrap"); if(dw){ dw.classList.toggle("running", st.running); dw.setAttribute("aria-pressed", st.running ? "true" : "false"); }
   Array.prototype.forEach.call(document.querySelectorAll("[data-tmode]"), function(b){ b.classList.toggle("on", b.getAttribute("data-tmode")===st.mode); b.disabled = started; });
@@ -6525,7 +6545,7 @@ function timerToggle(){
   if(timerState.pending>0) return;
   timerAdvance();
   if(timerState.running){ timerState.accMs = timerSeg(); timerState.running = false; timerState.startedAt = 0; }
-  else { timerState.running = true; timerState.startedAt = Date.now(); }
+  else { timerState.running = true; timerState.waiting = false; timerState.startedAt = Date.now(); }
   timerSave(); ensureTimerInterval(); timerUi();
 }
 function timerStop(){
@@ -6587,7 +6607,8 @@ function timerCard(){
       '<div class="timer-dial-face"><div class="timer-display" id="timerDisplay">'+fmtTimer(timerDisplayMs())+'</div></div>'+
     '</div>'+
     '<div class="timer-phase" id="timerPhase">'+(st.mode==="pomo" ? '<span class="dots" id="timerDots">'+timerDotsHtml()+'</span>' : "")+'<span id="timerPhaseText">'+esc(timerLabel())+'</span></div>'+
-    (st.mode==="pomo" ? '<div class="timer-set'+(started ? " hide" : "")+'"><select id="pomoPreset" aria-label="Focus and break length"'+(started ? " disabled" : "")+'>'+POMO_PRESETS.map(function(p, i){ return '<option value="'+i+'"'+(st.preset===i ? " selected" : "")+'>'+p[1]+' min focus · '+p[2]+' min break</option>'; }).join("")+'</select><small>A longer 15 min break comes after round 4.</small></div>' : "")+
+    (st.mode==="pomo" ? '<div class="timer-set'+(started ? " hide" : "")+'"><select id="pomoPreset" aria-label="Focus and break length"'+(started ? " disabled" : "")+'>'+POMO_PRESETS.map(function(p, i){ return '<option value="'+i+'"'+(st.preset===i ? " selected" : "")+'>'+p[1]+' min focus · '+(planBreakMin() || p[2])+' min break</option>'; }).join("")+'</select><small>'+(planBreakMin() ? 'Break length comes from your plan ('+planBreakMin()+' min). Change it when a round ends.' : 'A longer 15 min break comes after round 4.')+'</small></div>' : "")+
+    (st.mode==="pomo" ? '<div class="timer-brk'+(st.phase!=="focus" ? " on" : "")+'" id="timerBrk"><label for="breakLen">Break</label><select id="breakLen" aria-label="Break length">'+[5,10,15,20,30,45,60].map(function(m){ return '<option value="'+m+'"'+(m===breakMinutes(st.phase==="focus" ? "short" : st.phase) ? " selected" : "")+'>'+m+' min</option>'; }).join("")+'</select></div>' : "")+
     '<div class="timer-btns">'+
       '<button class="timer-btn primary" id="timerToggleBtn">'+(st.running ? "Pause" : (started ? "Continue" : "Start"))+'</button>'+
       '<button class="timer-btn" id="timerStopBtn"'+(started ? "" : " disabled")+'>Stop</button>'+
@@ -6814,6 +6835,7 @@ function bindTimerCard(host){
     dial.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); timerToggle(); } });
   }
   Array.prototype.forEach.call(host.querySelectorAll("[data-tmode]"), function(b){ b.addEventListener("click", function(){ timerSetMode(b.getAttribute("data-tmode")); }); });
+  var bl = host.querySelector("#breakLen"); if(bl) bl.addEventListener("change", function(){ timerState.brkMin = +bl.value; timerSave(); timerAdvance(); timerUi(); });
   var ps = host.querySelector("#pomoPreset"); if(ps) ps.addEventListener("change", function(){ timerState.preset = +ps.value; timerSave(); timerUi(); });
   ensureTimerInterval(); timerAdvance(); timerUi();
   if(timerState.pending > 0 && !document.getElementById("modalHost")) openTimerSave();
