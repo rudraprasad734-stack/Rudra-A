@@ -31,6 +31,7 @@
       <li><b>Without signing in</b>, everything you enter stays on your own phone. We never receive it.</li>
       <li><b>If you choose to sign in</b> with Google, a private copy of your study data is stored in your own account so you can use it on other phones and restore it if you lose your phone.</li>
       <li>We do <b>not</b> sell your data, show ads, or share it with anyone to market to you.</li>
+      <li>Anonymous usage statistics are <b>optional and off unless you say yes</b>. They never include your name, email or study content.</li>
       <li>You can delete your online copy and your account at any time, from inside the app.</li>
     </ul>
   </div>
@@ -63,48 +64,64 @@
     <p>We do not read your study data for any other purpose and do not use it to build advertising profiles.</p>
   </div>
 
-  <div class="card">
-    <h2>4. Services that handle data for us</h2>
-    <ul class="svc">
-      <li><b>Google Firebase</b> (Authentication and Cloud Firestore)<br><span class="soft">Used for: sign-in and storing your synced copy.</span><br><span class="soft">It sees: your Google account details and the synced study data, stored in Mumbai, India.</span></li>
-      <li><b>Google Fonts</b><br><span class="soft">Used for: loading the app&rsquo;s fonts.</span><br><span class="soft">It sees: your IP address and device type when fonts load.</span></li>
-      <li><b>Google Play</b> (if you install from Play)<br><span class="soft">Used for: installing the app and, if offered, paying for a plan.</span><br><span class="soft">It sees: your payment details. We receive only whether a plan is active.</span></li>
+  <div class="card" id="analytics">
+    <h2>4. Anonymous usage statistics (optional)</h2>
+    <p>The first time you use the app, we ask whether you want to share anonymous usage statistics. <b>It is off unless you say yes</b>, and you can turn it on or off at any time in <b>Settings &rarr; Anonymous usage statistics</b>. If you say no, no statistics are sent.</p>
+    <p>If you say yes, the app sends short event records using Google Analytics for Firebase. They tell us things like:</p>
+    <ul>
+      <li>which screens are opened and which features are used (for example, a timer was started, a plan was created, a chapter was marked complete, a theme was changed);</li>
+      <li>the type and size of your phone, its operating system and language, and the app version;</li>
+      <li>your approximate location (country, state or city), worked out by Google from your internet address, which is not kept in full; and</li>
+      <li>a random installation ID, stored on your phone, so repeat visits can be counted. It is not linked to your name or email.</li>
     </ul>
-    <p class="soft">These providers have their own privacy policies. We do not use advertising or analytics trackers in the app.</p>
+    <p><b>We never send</b> your name, email, profile details, notes, subjects, chapter names, plan, scores or anything you type. We have switched off Google&rsquo;s advertising features and ad personalisation for this data, and we do not use it for advertising.</p>
+    <p>We use these figures only to understand how the app is used and to improve it. Google keeps this data for up to 2 months. We can see only totals and trends, not who you are.</p>
   </div>
 
   <div class="card">
-    <h2>5. How long we keep your data</h2>
+    <h2>5. Services that handle data for us</h2>
+    <ul class="svc">
+      <li><b>Google Firebase</b> (Authentication and Cloud Firestore)<br><span class="soft">Used for: sign-in and storing your synced copy.</span><br><span class="soft">It sees: your Google account details and the synced study data, stored in Mumbai, India.</span></li>
+      <li><b>Google Analytics for Firebase</b> (only if you agree to usage statistics)<br><span class="soft">Used for: counting screens and features used.</span><br><span class="soft">It sees: the anonymous events and device details listed in section 4.</span></li>
+      <li><b>Google Fonts</b><br><span class="soft">Used for: loading the app&rsquo;s fonts.</span><br><span class="soft">It sees: your IP address and device type when fonts load.</span></li>
+      <li><b>Google Play</b> (if you install from Play)<br><span class="soft">Used for: installing the app and, if offered, paying for a plan.</span><br><span class="soft">It sees: your payment details. We receive only whether a plan is active.</span></li>
+    </ul>
+    <p class="soft">These providers have their own privacy policies. We do not use advertising trackers in the app.</p>
+  </div>
+
+  <div class="card">
+    <h2>6. How long we keep your data</h2>
     <ul>
       <li><b>On your phone:</b> until you clear the app&rsquo;s data or uninstall it.</li>
       <li><b>Online copy:</b> until you delete it. If you stop using the app, it stays until you delete it or ask us to.</li>
+      <li><b>Usage statistics</b> (only if you agreed): up to 2 months at Google, after which they are removed automatically.</li>
     </ul>
   </div>
 
   <div class="card" id="delete">
-    <h2>6. Deleting your data and account</h2>
+    <h2>7. Deleting your data and account</h2>
     <p><b>In the app:</b> open <b>Settings &rarr; Cloud sync &rarr; Delete my cloud copy and account</b>. This removes everything we hold online for your account and deletes the account itself. Data on your phone is not touched; clear it from your phone&rsquo;s settings or by uninstalling the app.</p>
     <p><b>By email:</b> if you cannot reach the app, write to <a href="mailto:rudraprasad734@gmail.com">rudraprasad734@gmail.com</a> from the email address you signed in with, with the subject &ldquo;Delete my account&rdquo;. We will delete your online data within 30 days.</p>
   </div>
 
   <div class="card">
-    <h2>7. Your rights</h2>
+    <h2>8. Your rights</h2>
     <p>Under the Digital Personal Data Protection Act, 2023 and other applicable law, you can ask us to give you a copy of your data, correct it, or erase it, and you can withdraw your consent at any time by signing out and deleting your online copy. The in-app <b>Download backup</b> button gives you a copy of your data at any time.</p>
     <p>For complaints, write to our grievance contact: Rudra Prasad Sharma (grievance contact), <a href="mailto:rudraprasad734@gmail.com">rudraprasad734@gmail.com</a>. We aim to reply within 7 days. You may also approach the Data Protection Board of India once it is operational.</p>
   </div>
 
   <div class="card">
-    <h2>8. Security</h2>
+    <h2>9. Security</h2>
     <p>Data is sent over encrypted connections, and the database is set up so each signed-in user can reach only their own data. No system is perfectly secure, so we also recommend keeping an occasional backup file using the in-app button.</p>
   </div>
 
   <div class="card">
-    <h2>9. Who the app is for</h2>
+    <h2>10. Who the app is for</h2>
     <p>The app is meant for adults preparing for competitive exams. It is not directed at children, and we do not knowingly collect data from anyone under 18.</p>
   </div>
 
   <div class="card">
-    <h2>10. Changes to this policy</h2>
+    <h2>11. Changes to this policy</h2>
     <p>If we change what we collect or how we use it, we will update this page and its date, and ask for your consent again where the law requires.</p>
   </div>
 

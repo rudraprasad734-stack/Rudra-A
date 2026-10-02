@@ -3912,7 +3912,7 @@ function getDownloadsNs(){
 }
 var BKP_KEY = "dossier.lastBackup.v1", PREBKP_KEY = "dossier.prerestore.v1";
 function lastBackupAt(){ return lsGetJSON(BKP_KEY, "") || ""; }
-function markBackedUp(){ lsSetJSON(BKP_KEY, new Date().toISOString()); refreshBackupCards(); }
+function markBackedUp(){ lsSetJSON(BKP_KEY, new Date().toISOString()); refreshBackupCards(); trackEvent("backup_downloaded", {}); }
 function hasBackupWorthyData(){ return !!(studyPlan || (studySessions && studySessions.length) || Object.keys(studyProgress.topics||{}).length); }
 function backupAgeDays(){ var t = lastBackupAt(); if(!t) return null; return Math.max(0, Math.floor((Date.now() - new Date(t).getTime())/86400000)); }
 function backupStatusHtml(){
@@ -4806,6 +4806,7 @@ function setLeaves(ids, status, by){
   ids.forEach(function(id){
     if(status==="not_started") delete studyProgress.topics[id];
     else studyProgress.topics[id] = {status:status, completedAt:(status==="completed" ? todayKey : ""), at:new Date().toISOString(), by:by||"manual"};
+    if(status==="completed") trackEvent("chapter_completed", {});
   });
   var after = activeSubject(studyPlan), afterName = after ? after.name : "";
   if(beforeName !== afterName){
@@ -5311,6 +5312,7 @@ function wizGenerate(){
   var wasEditing = !!studyPlan;
   var keepLeave = studyPlan && studyPlan.leave, keepCatch = studyPlan && studyPlan.catchup;
   studyPlan = compilePlan(wiz);
+  trackEvent("plan_created", {edited:wasEditing ? "yes" : "no"});
   if(keepLeave) studyPlan.leave = keepLeave;
   if(keepCatch) studyPlan.catchup = keepCatch.filter(function(d){ return d >= todayKey; });
   Object.keys(studyProgress.topics).forEach(function(id){ if(!studyPlan.sel[id]) delete studyProgress.topics[id]; });
@@ -6619,6 +6621,7 @@ function setTab(id){
   activeTab = id;
   renderTabs();
   lsSet("dossier.tab", id);
+  trackEvent("screen_view", {screen:id});
   Array.prototype.forEach.call(document.querySelectorAll(".view"), function(v){
     v.classList.toggle("active", v.id==="view-"+id);
   });
@@ -6715,7 +6718,8 @@ function timerAdvance(){
     if(!ended){ st.accMs = 0; st.startedAt = Date.now() - el; }
     timerSave();
     if(ended){ ensureTimerInterval(); toast("Break over. Tap Start when you are ready for the next round."); }
-    else if(startedBreak) toast((st.phase==="long" ? "Round "+(st.cycle)+" done. Long break: " : "Round done. Break: ")+Math.round(pomoLen(st.phase)/60000)+" min. You can change it.");
+    else if(startedBreak) trackEvent("pomodoro_round_done", {});
+    if(!ended && startedBreak) toast((st.phase==="long" ? "Round "+(st.cycle)+" done. Long break: " : "Round done. Break: ")+Math.round(pomoLen(st.phase)/60000)+" min. You can change it.");
     timerBeep();
   }
   return changed;
@@ -6764,7 +6768,7 @@ function timerToggle(){
   if(timerState.pending>0) return;
   timerAdvance();
   if(timerState.running){ timerState.accMs = timerSeg(); timerState.running = false; timerState.startedAt = 0; }
-  else { timerState.running = true; timerState.waiting = false; timerState.startedAt = Date.now(); }
+  else { timerState.running = true; timerState.waiting = false; timerState.startedAt = Date.now(); trackEvent("timer_start", {mode:timerState.mode}); }
   timerSave(); ensureTimerInterval(); timerUi();
   setUiStage(2);
 }
@@ -6774,7 +6778,7 @@ function timerStop(){
   var ms = Math.round(timerStudyMs()), keep = {mode:timerState.mode, preset:timerState.preset};
   timerState = Object.assign(timerDefault(), keep, {pending: ms >= 1000 ? ms : 0});
   timerSave(); ensureTimerInterval(); timerUi();
-  if(timerState.pending > 0) openTimerSave();
+  if(timerState.pending > 0){ var mn = ms/60000; trackEvent("timer_saved", {minutes:(mn<15 ? "<15" : mn<30 ? "15-30" : mn<60 ? "30-60" : "60+")}); openTimerSave(); }
 }
 function timerTargets(){ return planSessionsOn(todayKey).filter(function(x){ return !x.projected; }); }
 function openTimerSave(){
@@ -7164,7 +7168,7 @@ function bindRevision(host){
     var a = b.getAttribute("data-rev");
     if(a==="more"){ revShowAll = !revShowAll; renderDashboard(); return; }
     revDone[b.getAttribute("data-id")+"#"+b.getAttribute("data-gap")] = (a==="skip" ? "skip:" : "")+todayKey; revSave();
-    if(a==="done") toast("Revision noted. See you again later.");
+    if(a==="done"){ toast("Revision noted. See you again later."); trackEvent("revision_done", {}); }
     renderDashboard();
   });
 }
@@ -7176,7 +7180,7 @@ function bindRevision(host){
 // To switch it on, fill in FIREBASE_CONFIG (see upsc-pyq-bank/firebase/SETUP.md). Empty = hidden.
 // ============================================================================
 var FIREBASE_CONFIG = window.__FIREBASE_CONFIG__ || {
-  apiKey: "", authDomain: "", projectId: "", appId: ""
+  apiKey: "", authDomain: "", projectId: "", appId: "", measurementId: ""
 };
 var FB_VER = "10.12.2", SYNC_META_KEY = "dossier.sync.v1", SYNC_MAX_DOC = 900000;
 var cloud = {adapter:null, user:null, state:"off", msg:"", at:0, busy:false, queued:false, timer:0, applying:false, last:0};
@@ -7384,6 +7388,7 @@ function cloudOnUser(u){
   }
   syncMeta.uid = u.uid; syncMeta.email = u.email || ""; saveSyncMeta();
   cloud.user = u; setCloud("sync", "Syncing…");
+  if(!cloud.tracked){ cloud.tracked = true; trackEvent("cloud_sign_in", {}); }
   var m = document.getElementById("modalHost");
   cloudSync().then(function(){
     if(m && profile && document.getElementById("modalHost") === m && m.querySelector("#pfSave")) closeModal();
@@ -7464,6 +7469,97 @@ window.addEventListener("online", function(){ if(cloud.user) cloudSoon(500); });
 setInterval(function(){ if(cloud.user && document.visibilityState==="visible") cloudSync(); }, 300000);
 // signed in before? reconnect quietly after the app has settled
 setTimeout(function(){ if(cloudConfigured() && syncMeta.uid && navigator.onLine!==false) cloudPrepare(); }, 2500);
+
+// ============================================================================
+// ANONYMOUS USAGE STATISTICS  (Google Analytics for Firebase)
+// Off until the person says yes (asked once, changeable in Settings). Sends only a short fixed list of
+// event names with fixed, non-personal values: never names, emails, notes, subjects or study content.
+// Hidden unless FIREBASE_CONFIG.measurementId is filled in.
+// ============================================================================
+var ANALYTICS_KEY = "dossier.analytics.v1";
+var AN_EVENTS = {app_open:1, screen_view:1, timer_start:1, timer_saved:1, pomodoro_round_done:1, plan_created:1, chapter_completed:1, revision_done:1, backup_downloaded:1, cloud_sign_in:1, theme_changed:1, consent_given:1};
+var an = {adapter:null, loading:false, opened:false};
+function analyticsConfigured(){ return !!(window.__analyticsTestAdapter || (FIREBASE_CONFIG.measurementId && FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.projectId)); }
+function analyticsChoice(){ return lsGet(ANALYTICS_KEY) || ""; }
+function analyticsOn(){ return analyticsConfigured() && analyticsChoice()==="on"; }
+function makeAnalyticsAdapter(){
+  var m = null, a = null, dimport = new Function("u", "return import(u)");
+  return {
+    load: function(){
+      if(a) return Promise.resolve();
+      var b = "https://www.gstatic.com/firebasejs/"+FB_VER+"/";
+      return Promise.all([dimport(b+"firebase-app.js"), dimport(b+"firebase-analytics.js")]).then(function(x){
+        m = x;
+        var app = x[0].getApps().length ? x[0].getApp() : x[0].initializeApp(FIREBASE_CONFIG);
+        return x[1].isSupported().then(function(ok){
+          if(!ok) throw new Error("analytics unsupported");
+          a = x[1].initializeAnalytics(app, {config:{send_page_view:false, allow_google_signals:false, allow_ad_personalization_signals:false}});
+        });
+      });
+    },
+    log: function(name, params){ if(a) m[1].logEvent(a, name, params); },
+    enable: function(on){
+      window["ga-disable-"+FIREBASE_CONFIG.measurementId] = !on;
+      if(a) m[1].setAnalyticsCollectionEnabled(a, !!on);
+    }
+  };
+}
+function anClean(p){
+  var out = {};
+  Object.keys(p || {}).slice(0, 4).forEach(function(k){
+    var v = p[k];
+    if(typeof v==="number" && isFinite(v)) out[k] = v;
+    else if(typeof v==="string" && /^[A-Za-z0-9_ .:<>+-]{1,40}$/.test(v)) out[k] = v;
+  });
+  return out;
+}
+function analyticsReady(){
+  if(an.adapter) return Promise.resolve(an.adapter);
+  if(an.loading) return an.loading;
+  var ad = window.__analyticsTestAdapter || makeAnalyticsAdapter();
+  an.loading = Promise.resolve(ad.load ? ad.load() : null).then(function(){ an.adapter = ad; an.loading = false; ad.enable(true); return ad; }).catch(function(){ an.loading = false; return null; });
+  return an.loading;
+}
+function trackEvent(name, params){
+  try{
+    if(!analyticsOn() || !AN_EVENTS[name]) return;
+    var clean = anClean(params);
+    analyticsReady().then(function(ad){ if(ad && analyticsOn()) ad.log(name, clean); });
+  }catch(e){}
+}
+function setAnalytics(on){
+  lsSet(ANALYTICS_KEY, on ? "on" : "off");
+  if(on){ analyticsReady().then(function(ad){ if(ad){ ad.enable(true); if(!an.opened){ an.opened = true; } ad.log("consent_given", {}); } }); }
+  else if(an.adapter){ an.adapter.enable(false); }
+  else if(analyticsConfigured() && FIREBASE_CONFIG.measurementId) window["ga-disable-"+FIREBASE_CONFIG.measurementId] = true;
+  var c = document.querySelector(".stats-card"); if(c) c.replaceWith(el(statsCardHtml()));
+}
+function statsCardHtml(){
+  if(!analyticsConfigured()) return "";
+  var on = analyticsChoice()==="on";
+  return '<div class="card set-card stats-card"><h3>Anonymous usage statistics</h3>'+
+    '<div class="muted">Helps us see which screens and features are used and which phones the app runs on, so we can improve it. We never send your name, email, notes or what you study. <a href="privacy.html#analytics" target="_blank" rel="noopener">Details</a></div>'+
+    '<div class="cl-st '+(on ? "" : "wait")+'" role="status">'+(on ? "Sharing is on" : "Sharing is off")+'</div>'+
+    '<div class="backup-btns"><button type="button" class="'+(on ? "alt" : "")+'" data-stats="'+(on ? "off" : "on")+'">'+(on ? "Turn off" : "Turn on")+'</button></div></div>';
+}
+function bindStats(host){
+  if(host._stats) return; host._stats = true;
+  host.addEventListener("click", function(e){ var b = e.target.closest ? e.target.closest("[data-stats]") : null; if(b) setAnalytics(b.getAttribute("data-stats")==="on"); });
+}
+// asked once, after the person has set up their profile
+function analyticsAsk(){
+  if(!analyticsConfigured() || analyticsChoice() || !profile || document.getElementById("modalHost")) return;
+  var m = showModal('<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="anTitle">'+
+    '<h2 id="anTitle">Help improve UPSC Companion?</h2>'+
+    '<p>Share <b>anonymous usage statistics</b>: which screens are used, which features help, and what phone model and app version you have.</p>'+
+    '<p class="muted">We never send your name, email, notes, subjects or anything you study. It is off unless you say yes, and you can change it any time in Settings. <a href="privacy.html#analytics" target="_blank" rel="noopener">Read more</a></p>'+
+    '<div class="modal-actions"><button class="btn ghost" id="anNo">No thanks</button><button class="btn primary" id="anYes">Yes, share</button></div></div>', false);
+  m.querySelector("#anNo").addEventListener("click", function(){ setAnalytics(false); closeModal(); });
+  m.querySelector("#anYes").addEventListener("click", function(){ setAnalytics(true); closeModal(); toast("Thank you. You can turn this off in Settings."); });
+}
+setTimeout(analyticsAsk, 5000);
+setInterval(function(){ if(document.visibilityState==="visible") analyticsAsk(); }, 20000);
+setTimeout(function(){ if(analyticsOn()){ analyticsReady().then(function(){ trackEvent("app_open", {}); }); } }, 3000);
 function renderDashboard(){
   var host = document.getElementById("view-dashboard");
   var today = new Date();
@@ -7522,6 +7618,7 @@ function renderSettings(){
   var prevLefts = [].map.call(host.querySelectorAll(".th-row"), function(r){ return r.scrollLeft; });
   host.innerHTML =
     cloudCardHtml()+
+    statsCardHtml()+
     backupCard()+
     uiThemeCardHtml()+
     '<div class="card set-card"><h3>Learning path theme</h3>'+
@@ -7544,15 +7641,16 @@ function renderSettings(){
   });
   bindBackupCard(host);
   bindCloud(host);
+  bindStats(host);
   if(cloudConfigured() && !cloud.user) cloudPrepare();
   if(!host._wired){
     host._wired = true;
     host.addEventListener("click", function(e){
       // match the picker buttons only: <html> itself carries data-ui / data-theme, so a bare [data-...] lookup would match every click
       var u = e.target.closest ? e.target.closest(".ui-opt[data-ui]") : null;
-      if(u){ window.applyUiTheme(u.getAttribute("data-ui"), true); cloudTouched("dossier.uiTheme"); renderSettings(); return; }
+      if(u){ window.applyUiTheme(u.getAttribute("data-ui"), true); cloudTouched("dossier.uiTheme"); trackEvent("theme_changed", {kind:"app", theme:u.getAttribute("data-ui")}); renderSettings(); return; }
       var b = e.target.closest ? e.target.closest(".th-opt[data-theme]") : null; if(!b) return;
-      setPathTheme(b.getAttribute("data-theme")); cloudTouched("dossier.pathTheme"); renderSettings();
+      setPathTheme(b.getAttribute("data-theme")); cloudTouched("dossier.pathTheme"); trackEvent("theme_changed", {kind:"path", theme:b.getAttribute("data-theme")}); renderSettings();
     });
   }
 }
