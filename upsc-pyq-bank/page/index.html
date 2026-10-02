@@ -6819,15 +6819,15 @@ function initBlackHoleScene(host){
   }
   function crescent(holeR, t){
     var env0 = glowEnv(t);
-    var R = holeR*1.015, a0 = Math.PI*(.4 + .03*Math.sin(t*.00005)), a1 = Math.PI*(1.27 + .03*Math.sin(t*.00004)), span = a1 - a0, k, pass;
+    var R = holeR*1.015, a0 = Math.PI*(.37 + .03*Math.sin(t*.00005)), a1 = Math.PI*(1.3 + .03*Math.sin(t*.00004)), span = a1 - a0, k, pass;
     ctx.save(); ctx.globalCompositeOperation = "lighter"; ctx.lineCap = "butt";
     ctx.strokeStyle = "rgba(255,220,170,"+(.03 + .07*env0)+")"; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(cx, cy, R, 0, 6.283); ctx.stroke();
     // colour of one layer at position u (0..1) along the crescent
     function tone(pass, u, a){
       var env = Math.pow(Math.sin(Math.PI*u), .9), br = Math.exp(-Math.pow((u - .42)/.3, 2)), fl = .7 + .3*Math.sin(a*9 - t*.00015 + Math.sin(a*3)*2), al = env*(.3 + .7*br)*fl*env0;
-      return pass===2 ? "rgba(255,"+Math.round(200 + 50*br)+","+Math.round(140 + 100*br)+","+Math.min(1, al*1.05)+")" : (pass===1 ? "rgba(255,"+Math.round(120 + 40*br)+",50,"+Math.min(1, al*.7)+")" : "rgba(235,90,30,"+(al*.22)+")");
+      return pass===2 ? "rgba(255,"+Math.round(200 + 50*br)+","+Math.round(140 + 100*br)+","+Math.min(1, al*1.05)+")" : (pass===1 ? "rgba(255,"+Math.round(120 + 40*br)+",50,"+Math.min(1, al*.9)+")" : "rgba(235,90,30,"+(al*.32)+")");
     }
-    var widths = [.17, .07, .024];
+    var widths = [.24, .105, .034];
     if(ctx.createConicGradient){
       // one smooth stroke per layer, coloured by a gradient, so there are no visible steps even when the hole is large
       var M = 140, f1 = span/6.283185;
@@ -6836,7 +6836,7 @@ function initBlackHoleScene(host){
         for(k=0;k<=M;k++){ var u = k/M; g.addColorStop(Math.min(1, f1*u), tone(pass, u, a0 + span*u)); }
         g.addColorStop(Math.min(1, f1 + .0005), "rgba(0,0,0,0)"); g.addColorStop(1, "rgba(0,0,0,0)");
         ctx.strokeStyle = g; ctx.lineWidth = holeR*widths[pass];
-        ctx.beginPath(); ctx.arc(cx, cy, R + (pass===0 ? holeR*.03 : 0), a0, a1); ctx.stroke();
+        ctx.beginPath(); ctx.arc(cx, cy, R + (pass===0 ? holeR*.05 : (pass===1 ? holeR*.012 : 0)), a0, a1); ctx.stroke();
       }
     } else {
       var n = 220;     // older browsers: many thin overlapping pieces
@@ -6845,7 +6845,7 @@ function initBlackHoleScene(host){
         for(k=0;k<n;k++){
           var u2 = (k + .5)/n, a = a0 + span*u2;
           ctx.strokeStyle = tone(pass, u2, a);
-          ctx.beginPath(); ctx.arc(cx, cy, R + (pass===0 ? holeR*.03 : 0), a - .02, a + span/n + .02); ctx.stroke();
+          ctx.beginPath(); ctx.arc(cx, cy, R + (pass===0 ? holeR*.05 : (pass===1 ? holeR*.012 : 0)), a - .02, a + span/n + .02); ctx.stroke();
         }
       }
     }
