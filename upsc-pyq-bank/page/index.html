@@ -992,7 +992,7 @@
   .cm{display:grid; grid-template-columns:1fr auto; gap:2px 10px; padding:9px 12px; border-radius:12px; border-left:6px solid var(--bc); background:color-mix(in srgb,var(--bc) 11%,var(--surface));}
   .cm em{grid-column:1 / -1; font-style:normal; font-size:12px; color:var(--ink-soft);} .cm span{font-size:12px; color:var(--ink-soft);}
   .cm-arrow{text-align:center; color:var(--ink-soft); line-height:1.4;}
-  .act-sum{display:flex; flex-wrap:wrap; gap:6px; margin:12px 0;} .act-sum .pill{background:var(--bc); border-color:var(--bc); color:#fff;}
+  .act-sum{display:flex; flex-wrap:wrap; gap:6px; margin:12px 0;} .act-sum .pill{background:var(--bc); border-color:var(--bc); color:var(--on-accent,#fff);}
 
   /* LEGO */
   .lego{display:flex; flex-direction:column; gap:0; margin-bottom:12px;}
@@ -1010,7 +1010,7 @@
   .brick.st-completed{border-color:#22c55e; box-shadow:0 4px 0 #22c55e66; background:linear-gradient(180deg,color-mix(in srgb,#22c55e 22%,var(--surface)),color-mix(in srgb,#22c55e 9%,var(--surface)));}
   .brick.st-completed .b-tag{background:#22c55e; color:#fff;}
   .brick.st-active{box-shadow:0 0 0 3px color-mix(in srgb,var(--bc) 45%,transparent),0 8px 22px -8px var(--bc); animation:brickPulse 3s ease-in-out infinite;}
-  .brick.st-active .b-tag{background:var(--bc); color:#fff;}
+  .brick.st-active .b-tag{background:var(--bc); color:var(--on-accent,#fff);}
   .brick.st-locked{filter:grayscale(.85); opacity:.72;}
   @keyframes brickPulse{50%{transform:translateY(-2px);}}
   @media (prefers-reduced-motion: reduce){ .brick.st-active{animation:none;} }
@@ -1086,9 +1086,9 @@
     {id:"cyber",   name:"Cyber Teal",     mode:"dark",  bg:"#04141c", page:"radial-gradient(circle at 50% -10%,rgba(46,230,214,.2),transparent 55%),#04141c", surface:"rgba(8,48,58,.62)", solid:"#0a3441", s2:"rgba(12,70,82,.7)", raised:"#0f4a58", ink:"#c4f3f5", soft:"#8fcfd4", faint:"#5f9aa1", line:"rgba(46,230,214,.4)", acc:"#2ee6d6", accInk:"#03161b", a2:"#5fd0ff", a3:"#b48cff", a4:"#7bf0a0", shadow:"0 0 14px rgba(46,230,214,.22), inset 0 0 12px rgba(46,230,214,.07)", radius:"16px", drawer:"linear-gradient(#04222c,#02101a)", hue:146, hueBrk:-20, sat:1, meta:"#04141c"},
     {id:"navy",    name:"Midnight Navy",  mode:"dark", tm:"rgba(24,34,70,.85)", tmBrk:"rgba(20,60,130,.62)",  bg:"#0a1628", surface:"#1c2a45", solid:"#1c2a45", s2:"#25355a", raised:"#2a3b60", ink:"#f3ecdb", soft:"#b8c0d2", faint:"#8995ad", line:"rgba(255,255,255,.13)", acc:"#f3ecdb", accInk:"#0e1a30", a2:"#e6c98c", a3:"#9db7ff", a4:"#8fe0a6", shadow:"none", radius:"18px", drawer:"linear-gradient(#0e1c34,#07101f)", hue:0, hueBrk:0, sat:1, meta:"#0a1628"},
     {id:"daylight",name:"Daylight Cream", mode:"light", link:"#3d6fb5", bg:"#f6f1e6", surface:"#e3edf7", solid:"#e3edf7", s2:"#d2e1f1", raised:"#eaf2fa", ink:"#1b2a45", soft:"#47587a", faint:"#7083a3", line:"rgba(27,42,69,.16)", acc:"#1b2a45", accInk:"#ffffff", a2:"#3d6fb5", a3:"#6b5bb5", a4:"#2f8f83", shadow:"0 4px 14px -6px rgba(27,42,69,.25)", radius:"16px", drawer:"linear-gradient(#16264a,#0d1830)", hue:190, hueBrk:0, sat:.9, meta:"#f6f1e6"},
-    {id:"aurora",  name:"Aurora Glass",   mode:"dark",  bg:"#5a2a86", page:"linear-gradient(160deg,#3b1f78 0%,#a3478f 52%,#f08c4a 100%)", surface:"rgba(255,255,255,.15)", solid:"#6c3590", s2:"rgba(255,255,255,.22)", raised:"rgba(255,255,255,.28)", ink:"#ffffff", soft:"rgba(255,255,255,.84)", faint:"rgba(255,255,255,.62)", line:"rgba(255,255,255,.3)", acc:"#ffffff", accInk:"#4a1d6e", a2:"#ffd2a8", a3:"#ffb3e1", a4:"#b8d4ff", shadow:"0 8px 28px -10px rgba(40,10,80,.5)", radius:"20px", drawer:"linear-gradient(#35185f,#1d0c3a)", hue:290, hueBrk:90, sat:1.05, meta:"#3b1f78", extra:".card,.dx-card,.modal.card{-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}"},
+    {id:"aurora",  name:"Aurora Glass",   mode:"dark",  bg:"#5a2a86", page:"linear-gradient(160deg,#35196e 0%,#7d3a8c 55%,#b8573f 100%)", surface:"rgba(34,10,64,.42)", solid:"#4a2278", s2:"rgba(24,8,48,.4)", raised:"rgba(70,30,110,.55)", ink:"#ffffff", soft:"rgba(255,255,255,.9)", faint:"rgba(255,255,255,.76)", line:"rgba(255,255,255,.3)", acc:"#ffffff", accInk:"#4a1d6e", a2:"#ffd2a8", a3:"#ffb3e1", a4:"#b8d4ff", shadow:"0 8px 28px -10px rgba(40,10,80,.5)", radius:"20px", drawer:"linear-gradient(#35185f,#1d0c3a)", hue:290, hueBrk:90, sat:1.05, meta:"#3b1f78", extra:".card,.dx-card,.modal.card{-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}"},
     {id:"onyx",    name:"Onyx Gold",      mode:"dark",  bg:"#1c1c1e", surface:"#2a2a2d", solid:"#2a2a2d", s2:"#323235", raised:"#38383c", ink:"#ddd2bd", soft:"#b4a98f", faint:"#867d69", line:"rgba(214,190,140,.18)", acc:"#c9ab72", accInk:"#1c1508", a2:"#8fb8a6", a3:"#c98f7a", a4:"#9aa5c9", shadow:"6px 6px 14px #131314, -4px -4px 12px #2c2c2f", radius:"18px", drawer:"linear-gradient(#222224,#121213)", hue:14, hueBrk:-165, sat:.9, meta:"#1c1c1e"},
-    {id:"sand",    name:"Sand Soft",      mode:"light", bg:"#e9e2d0", surface:"#efe9d9", solid:"#efe9d9", s2:"#e3dbc6", raised:"#f3eedf", ink:"#3a352a", soft:"#6b6452", faint:"#8d8670", line:"rgba(80,66,40,.14)", acc:"#8a6f4d", accInk:"#ffffff", a2:"#5f8a72", a3:"#a0674f", a4:"#6d7fa0", shadow:"7px 7px 15px #cfc7b2, -6px -6px 14px #fbf6ea", radius:"20px", drawer:"linear-gradient(#3a3222,#221c11)", hue:-4, hueBrk:-170, sat:.7, meta:"#e9e2d0"},
+    {id:"sand",    name:"Sand Soft",      mode:"light", bg:"#e9e2d0", surface:"#efe9d9", solid:"#efe9d9", s2:"#e3dbc6", raised:"#f3eedf", ink:"#2f2a20", soft:"#5a5443", faint:"#6f6955", line:"rgba(80,66,40,.18)", acc:"#7a5f3e", accInk:"#ffffff", a2:"#5f8a72", a3:"#a0674f", a4:"#6d7fa0", shadow:"7px 7px 15px #cfc7b2, -6px -6px 14px #fbf6ea", radius:"20px", drawer:"linear-gradient(#3a3222,#221c11)", hue:-4, hueBrk:-170, sat:.7, meta:"#e9e2d0"},
     {id:"clean",   name:"Clean White",    mode:"light", link:"#2f6df0", bg:"#f3f5fa", surface:"#ffffff", solid:"#ffffff", s2:"#eef1f8", raised:"#ffffff", ink:"#141a33", soft:"#4b5470", faint:"#7d86a3", line:"rgba(20,26,51,.12)", acc:"#141a33", accInk:"#ffffff", a2:"#2f6df0", a3:"#7a4fe0", a4:"#12936f", shadow:"0 2px 10px -4px rgba(20,26,51,.2)", radius:"14px", drawer:"linear-gradient(#141a33,#0a0e1f)", hue:190, hueBrk:0, sat:.9, meta:"#f3f5fa"}
   ];
   var DEFAULT_UI = "cyber";
@@ -1096,7 +1096,8 @@
   function themeCss(t){
     var A = [t.acc, t.a2, t.a3, t.a4], map = {dashboard:0, planner:0, syllabus:1, tiers:2, mocks:3, pyq:1, quotes:2, scheduler:3, logs:1}, v = "";
     v += "--tm-bg:"+(t.tm || "color-mix(in srgb,"+t.acc+" 26%,#050810)")+";--tm-brk:"+(t.tmBrk || "color-mix(in srgb,"+t.a2+" 26%,#050810)")+";--tm-line:color-mix(in srgb,"+t.acc+" 58%,transparent);--tm-line-brk:color-mix(in srgb,"+t.a2+" 58%,transparent);";
-    v += "--link:"+(t.link || t.acc)+";";
+    v += "--link:"+(t.link || t.acc)+";--on-accent:"+t.accInk+";";
+    if(t.mode==="light") v += "--gold:#9a4f08;--gold-soft:#f8e3c8;--gold-ink:#fff;--sage:#1d7448;--sage-soft:#d3ecdc;--sage-ink:#fff;--brick:#b42d26;--brick-soft:#f6d6d3;--brick-ink:#fff;--freq1:#b42d26;--freq1-soft:#f6d6d3;--freq2:#9a4f08;--freq2-soft:#f8e3c8;--freq3:#7a5f00;--freq3-soft:#f4e8b8;--freq4:#1d7448;--freq4-soft:#d3ecdc;--tier4:#5b2fc4;--tier4-soft:#e6defa;";
     v += "--bg:"+t.bg+";--page-bg:"+(t.page||t.bg)+";--surface:"+t.surface+";--surface-solid:"+t.solid+";--surface-2:"+t.s2+";--raised:"+t.raised+";--ink:"+t.ink+";--ink-soft:"+t.soft+";--ink-faint:"+t.faint+";--line:"+t.line+";--line-soft:"+t.line+";--shadow:"+t.shadow+";--radius:"+t.radius+";--drawer-bg:"+t.drawer+";";
     Object.keys(map).forEach(function(k){ var c = A[map[k]]; v += "--tab-"+k+":"+c+";--tab-"+k+"-ink:"+t.accInk+";--tab-"+k+"-soft:color-mix(in srgb,"+c+" 22%,transparent);"; });
     var sel = 'html[data-ui="'+t.id+'"]';
@@ -1104,6 +1105,7 @@
       sel+' main{background:transparent}'+
       sel+' .pl-title,'+sel+' .wz-head,'+sel+' .sched-title{background:linear-gradient(135deg,'+t.acc+','+t.a2+');color:'+t.accInk+'}'+
       sel+' .pl-title .muted,'+sel+' .wz-head .muted{color:'+t.accInk+';opacity:.85}'+
+      sel+' .pl-title .btn,'+sel+' .wz-head .btn,'+sel+' .sched-title .btn{color:'+t.accInk+';border-color:color-mix(in srgb,'+t.accInk+' 55%,transparent)}'+
       sel+' .btn.primary,'+sel+' .btn.gen{background:linear-gradient(135deg,'+t.acc+','+t.a2+');color:'+t.accInk+';border-color:transparent}'+
       sel+' .black-hole-scene{filter:hue-rotate('+t.hue+'deg) saturate('+t.sat+')}'+
       sel+' .timer-card.brk .black-hole-scene{filter:hue-rotate('+t.hueBrk+'deg) saturate('+t.sat+')}'+
