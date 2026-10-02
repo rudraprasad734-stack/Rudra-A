@@ -157,12 +157,15 @@
   .dr-brand{font-family:var(--font-display); font-size:22px; font-weight:600; letter-spacing:.2px; margin-bottom:2px;}
   .dr-date{font-family:var(--font-mono); font-size:11px; opacity:.7; margin-bottom:14px;}
   /* round Dashboard button, bottom centre; the home screen is the timer alone until it is pressed */
-  #dashFab{position:fixed; left:50%; bottom:calc(20px + env(safe-area-inset-bottom,0px)); transform:translateX(-50%); z-index:60; width:62px; height:62px; border-radius:50%; border:3px solid rgba(255,255,255,.85); cursor:pointer; padding:0; display:grid; place-items:center; color:#fff;
-    background:radial-gradient(circle at 32% 28%, #ff9ad5, #a855f7 60%, #4f6df5); box-shadow:0 6px 22px rgba(120,60,220,.5), 0 0 0 6px rgba(255,255,255,.12); animation:fabBreathe 3.6s ease-in-out infinite;}
-  #dashFab svg{width:26px; height:26px; fill:rgba(255,255,255,.95); stroke:none;}
+  #dashFab{position:fixed; left:50%; bottom:calc(20px + env(safe-area-inset-bottom,0px)); transform:translateX(-50%); z-index:60; width:62px; height:62px; border-radius:50%; cursor:pointer; padding:0; display:grid; place-items:center; color:#f3ecdb;
+    background:radial-gradient(circle at 50% 30%, #2a3b60 0%, #17243f 62%, #0d182c 100%); border:1.5px solid rgba(243,236,219,.55);
+    box-shadow:0 6px 20px rgba(2,8,20,.65), inset 0 1px 0 rgba(243,236,219,.18), 0 0 0 6px rgba(243,236,219,.07); animation:fabBreathe 4s ease-in-out infinite;}
+  #dashFab svg{width:28px; height:28px; fill:none; stroke:currentColor; stroke-width:1.9; stroke-linecap:round; stroke-linejoin:round; grid-area:1/1;}
+  #dashFab circle:last-child{fill:currentColor;} #dashFab .fab-timer circle{fill:none;}
+  #dashFab .fab-timer{display:none;} body.is-dash:not(.dash-timer) #dashFab .fab-dash{display:none;} body.is-dash:not(.dash-timer) #dashFab .fab-timer{display:block;}
   #dashFab:active{transform:translateX(-50%) scale(.92);}
   body:not(.is-dash) #dashFab, body.menu-open #dashFab{display:none;}
-  @keyframes fabBreathe{0%,100%{box-shadow:0 6px 22px rgba(120,60,220,.5),0 0 0 6px rgba(255,255,255,.12);}50%{box-shadow:0 6px 26px rgba(120,60,220,.6),0 0 0 11px rgba(255,255,255,.06);}}
+  @keyframes fabBreathe{0%,100%{box-shadow:0 6px 20px rgba(2,8,20,.65), inset 0 1px 0 rgba(243,236,219,.18), 0 0 0 6px rgba(243,236,219,.07);}50%{box-shadow:0 6px 22px rgba(2,8,20,.7), inset 0 1px 0 rgba(243,236,219,.22), 0 0 0 10px rgba(243,236,219,.03);}}
   @media (prefers-reduced-motion: reduce){ #dashFab{animation:none;} }
   body.is-dash:not(.dash-timer) main{padding-top:64px; padding-bottom:110px;}
   body.is-dash .toast{bottom:calc(100px + env(safe-area-inset-bottom,0px));}
@@ -1073,7 +1076,7 @@
   <div id="pageBar"><button type="button" id="pageClose" aria-label="Close and go to Dashboard">&#10005;</button><span id="pageTitle"></span><span class="pb-gap"></span></div>
   <nav id="subtabs" aria-label="Subsections"></nav>
   </div>
-  <button type="button" id="dashFab" aria-label="Open Dashboard"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="7" height="7" rx="2.2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2.2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2.2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2.2"/></svg></button>
+  <button type="button" id="dashFab" aria-label="Open Dashboard"><svg class="fab-dash" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 16.5a8 8 0 1115 0"/><path d="M12 16.5l3.6-5"/><circle cx="12" cy="16.5" r="1.4"/><path d="M6.5 19.5h11"/></svg><svg class="fab-timer" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13.5" r="7"/><path d="M12 9.8v4l2.6 1.6M9.5 3.5h5"/></svg></button>
   <div id="drawerDim"></div>
   <aside id="drawer" aria-label="Menu" aria-hidden="true">
     <div class="dr-who"><div class="dr-brand">UPSC Companion</div><div class="dr-date" id="topbarDate">&mdash;</div><div class="dr-av" aria-hidden="true">&#9733;</div><small class="greet"><button type="button" class="profile-btn" id="profileBtn"></button></small></div>
