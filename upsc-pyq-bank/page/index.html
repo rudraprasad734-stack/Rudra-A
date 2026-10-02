@@ -7436,7 +7436,7 @@ function cloudCardHtml(){
     inner = '<div class="sub">Sign in to keep your plan, progress and study history safe online and open them on any phone. The app still works offline.</div>'+
       (cloud.msg ? '<div class="cl-st err">'+esc(cloud.msg)+'</div>' : '')+
       '<div class="backup-btns"><button type="button" data-cloud="in">Continue with Google</button></div>'+
-      '<div class="cl-fine">Your study data is stored in your own account and is not shown to anyone else. You can delete it any time.</div>';
+      '<div class="cl-fine">Your study data is stored in your own account and is not shown to anyone else. You can delete it any time. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a></div>';
   }
   return '<div class="card set-card cloud-card"><h3>Cloud sync</h3>'+inner+'</div>';
 }
@@ -7530,7 +7530,8 @@ function renderSettings(){
         return '<button type="button" class="th-opt'+(t.id===th.id ? " sel" : "")+'" role="radio" aria-checked="'+(t.id===th.id ? "true" : "false")+'" data-theme="'+t.id+'"><i style="background:'+t.bg+'">'+t.icon+'</i><span>'+esc(t.name)+(t.id===th.id ? " ✓" : "")+'</span></button>';
       }).join("")+'</div>'+
       '<div class="th-prev"><div class="dx pth-prevbox"><div class="pth-scene pth-'+th.id+'">'+th.draw(ctx)+'</div></div>'+(real && real.n ? '' : '<div class="muted small">Preview with sample subjects. Build a plan to see your own.</div>')+'</div>'+
-    '</div>';
+    '</div>'+
+    '<div class="card set-card about-card"><h3>About</h3><div class="muted">UPSC Companion works offline and keeps your data on this phone unless you sign in. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a> &middot; <a href="privacy.html#delete" target="_blank" rel="noopener">How to delete your data</a></div></div>';
   // keep each row where it was, then glide the chosen theme into the middle so you always know where you are
   [].forEach.call(host.querySelectorAll(".th-row"), function(row, ix){
     var cur = row.querySelector(".sel"), prevLeft = prevLefts[ix] == null ? -1 : prevLefts[ix];
