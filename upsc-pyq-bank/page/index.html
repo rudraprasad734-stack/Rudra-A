@@ -103,6 +103,7 @@
   }
 
   *{box-sizing:border-box;}
+  html,body{overflow-x:clip; max-width:100%;}
   body{
     margin:0; background:var(--page-bg, var(--bg)); background-attachment:fixed; color:var(--ink);
     font-family:var(--font-body); font-size:15px; line-height:1.5;
@@ -5199,7 +5200,7 @@ function renderWizard(host){
     '<div class="card wz-card">'+WZ_STEPS[w.step](w)+'</div>'+
     (w.err.length ? '<div class="form-err" role="alert"><b>Please fix:</b><br>'+w.err.map(esc).join("<br>")+'</div>' : "")+
     (w.step < 7 ? '<div class="wz-nav">'+(w.step>0 ? '<button type="button" class="btn ghost" data-wa="back">Back</button>' : '<span></span>')+'<button type="button" class="btn primary" data-wa="next">Next &rarr;</button></div>' : '<div class="wz-nav"><button type="button" class="btn ghost" data-wa="back">Back</button><span></span></div>');
-  centerActive(host.querySelector(".stepper"), ".st.cur", true);
+  centerActive(host.querySelector(".stepper"), ".st.cur", false);
 }
 // ---- pinning a subject that Priority would not reach for a long time ----
 // When is this subject expected to start if it were NOT pinned? (null = not within the plan window)
@@ -5245,7 +5246,7 @@ function moveOrder(from, to){
 function centerActive(row, sel, pad){
   if(!row) return;
   var cur = row.querySelector(sel); if(!cur) return;
-  // room at both ends so even the first and last pills can sit in the middle
+  // pad=true gives room at both ends so even the first and last pills can sit in the middle; without it the first pill stays at the left edge and the last at the right
   if(pad && !row.classList.contains("pad-ctr") && row.scrollWidth > row.clientWidth + 2) row.classList.add("pad-ctr");
   var r = row.getBoundingClientRect(), c = cur.getBoundingClientRect();
   row.scrollLeft += (c.left + c.width/2) - (r.left + r.width/2);
@@ -6113,7 +6114,7 @@ function renderPlannerHome(host){
   host.innerHTML =
     '<div class="card pl-title"><div><h2>Preparation Planner</h2><div class="muted">Complete a subject to unlock the next. The calendar follows your progress.</div></div><button type="button" class="btn ghost sm" data-go="reschedule">Reschedule</button></div>'+
     '<div class="pl-tabs">'+PLANNER_TABS.map(function(t){ return '<button type="button" class="'+(t[0]===plannerView?"on":"")+'" data-pa="view" data-v="'+t[0]+'">'+t[1]+'</button>'; }).join("")+'</div>'+(plannerView==="insights" ? "" : catchBannerHtml())+body;
-  centerActive(host.querySelector(".pl-tabs"), "button.on", true);
+  centerActive(host.querySelector(".pl-tabs"), "button.on", false);
   if(plannerView==="daily") bindPlannerDaily(host);
 }
 function renderPlanner(){
