@@ -588,6 +588,12 @@
   .rv-b{flex:0 0 auto; width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:var(--surface-2); color:var(--ink-soft); font-size:16px; cursor:pointer; display:grid; place-items:center; padding:0;} .rv-b.ok{background:var(--tab-accent); color:var(--tab-accent-ink); border-color:transparent;}
   .rv-note{display:block; margin-top:8px; color:var(--ink-faint); font-size:11.5px;}
   .bkp-status{font-size:12.5px; margin:0 0 12px; padding:8px 10px; border-radius:9px; background:var(--surface-2); color:var(--ink-soft); line-height:1.45;} .bkp-status.warn{background:color-mix(in srgb, #f5a524 18%, var(--surface-2)); color:var(--ink); border:1px solid color-mix(in srgb, #f5a524 55%, transparent);}
+  .cloud-card{padding:16px;} .cloud-card h3{margin-bottom:6px;} .cloud-card .sub{font-size:12.5px; color:var(--ink-soft); margin:0 0 10px; line-height:1.5;}
+  .cl-who{display:flex; align-items:center; gap:10px; margin:2px 0 10px;} .cl-who b{display:block; font-size:14px; color:var(--ink); overflow-wrap:anywhere;} .cl-who small{display:block; color:var(--ink-soft); font-size:12px; overflow-wrap:anywhere;}
+  .cl-av{width:36px; height:36px; border-radius:50%; flex:0 0 auto; display:grid; place-items:center; font-weight:700; background:var(--tab-accent); color:var(--tab-accent-ink);}
+  .cl-st{font-size:12.5px; margin:0 0 10px; padding:7px 10px; border-radius:9px; background:var(--surface-2); color:var(--ink-soft);} .cl-st.err{background:color-mix(in srgb, #e5484d 16%, var(--surface-2)); color:var(--ink);} .cl-st.wait{background:color-mix(in srgb, #f5a524 18%, var(--surface-2)); color:var(--ink);}
+  .cl-fine{font-size:11.5px; color:var(--ink-faint); margin-top:8px; line-height:1.45;} .backup-btns button.alt{background:var(--surface-2); color:var(--ink); border-color:var(--line);}
+  .pf-signin{margin-top:14px; font-size:12.5px; color:var(--ink-soft); text-align:center;} .linkbtn{background:none; border:none; color:var(--link,var(--tab-accent)); font:inherit; font-weight:700; cursor:pointer; padding:4px; text-decoration:underline;}
   .bkp-undo{margin-top:8px; width:100%; padding:9px; border-radius:10px; border:1px dashed var(--line); background:transparent; color:var(--ink-soft); font-size:12.5px; cursor:pointer;}
 
   /* ---- Syllabus ---- */
@@ -3483,7 +3489,8 @@ function toast(msg){
 var saveFailed = false;
 function onSaveError(){ saveFailed = true; toast("Couldn't save that change. Check your connection and try again."); }
 function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
-function lsSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} }
+var cloudHook = null;
+function lsSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} if(cloudHook) cloudHook(k); }
 function lsGetJSON(k, fallback){ try{ var v = JSON.parse(lsGet(k)); return v==null ? fallback : v; }catch(e){ return fallback; } }
 function lsSetJSON(k, v){ lsSet(k, JSON.stringify(v)); }
 
@@ -4010,7 +4017,7 @@ function backupCard(){
       '<button id="backupDownload">Download backup</button>'+
       '<label class="backup-restore" for="backupRestoreInput">Restore from file<input type="file" id="backupRestoreInput" accept="application/json,.json"></label>'+
     '</div>'+
-    (lsGetJSON(PREBKP_KEY, null) ? '<button type="button" class="bkp-undo" id="backupUndo">Undo last restore</button>' : '')+
+    (lsGetJSON(PREBKP_KEY, null) ? '<button type="button" class="bkp-undo" id="backupUndo">Undo last restore or sync change</button>' : '')+
   '</div>';
 }
 function bindBackupCard(host){
@@ -4089,12 +4096,15 @@ function openProfileModal(isEdit){
       '<div class="sf" id="pfCustomWrap"'+(custom?"":" hidden")+'><label for="pfCustom">Custom prefix / post</label><input id="pfCustom" type="text" placeholder="e.g. IFoS" value="'+esc(custom?p.prefix:"")+'"></div>'+
       '<div class="form-err" id="pfErr" role="alert" hidden></div>'+
       '<div class="modal-actions">'+(isEdit?'<button class="btn ghost" id="pfCancel">Cancel</button>':'')+'<button class="btn primary" id="pfSave">'+(isEdit?"Save":"Continue")+' &rarr;</button></div>'+
+      (!isEdit && !profile && cloudConfigured() ? '<div class="pf-signin"><span>Already use the app on another phone?</span> <button type="button" class="linkbtn" id="pfCloud">Sign in to restore your data</button></div>' : '')+
     '</div>';
   var m = showModal(html, isEdit);
   var prefixSel = m.querySelector("#pfPrefix"), wrap = m.querySelector("#pfCustomWrap");
   prefixSel.addEventListener("change", function(){ wrap.hidden = prefixSel.value!=="Custom"; if(!wrap.hidden) m.querySelector("#pfCustom").focus(); });
   var cancel = m.querySelector("#pfCancel");
   if(cancel) cancel.addEventListener("click", closeModal);
+  var pfc = m.querySelector("#pfCloud");
+  if(pfc){ cloudPrepare(); pfc.addEventListener("click", cloudSignIn); }
   m.querySelector("#pfSave").addEventListener("click", function(){
     var name = m.querySelector("#pfName").value.trim().replace(/\s+/g," ");
     var district = m.querySelector("#pfDistrict").value.trim();
@@ -4645,7 +4655,8 @@ function activityCalendar(plan, from, to){
 // ---------- session builders ----------
 function mkAuto(o){
   var now = new Date().toISOString();
-  return {id:uid(), date:o.date, sessionNumber:0, startTime:o.start, endTime:o.end, duration:toMin(o.end)-toMin(o.start),
+  // same plan -> same id on every phone, so cloud sync never doubles up planner sessions
+  return {id:"a-"+o.date+"-"+o.start+"-"+o.kind+"-"+(o.topicId||"")+"-"+(o.blk||0), date:o.date, sessionNumber:0, startTime:o.start, endTime:o.end, duration:toMin(o.end)-toMin(o.start),
     purpose:o.purpose, paper:o.paper, optionalSubject:o.optional||"", subject:o.subject, topic:o.topic, syllabusUnit:o.unit,
     status:"not_started", actualStart:"", actualEnd:"", actualDuration:0, createdAt:now, updatedAt:now,
     kind:o.kind, topicId:o.topicId||"", origin:"auto", revGap:o.revGap||0, blk:o.blk||0, blkOf:o.blkOf||0, pinned:!!o.pinned};
@@ -7157,6 +7168,302 @@ function bindRevision(host){
     renderDashboard();
   });
 }
+
+// ============================================================================
+// CLOUD SYNC  (Firebase sign-in + Firestore)
+// This device always keeps working from its own storage. The cloud is a synced copy,
+// split into small documents (users/{uid}/data/{docId}) so no single one gets too big.
+// To switch it on, fill in FIREBASE_CONFIG (see upsc-pyq-bank/firebase/SETUP.md). Empty = hidden.
+// ============================================================================
+var FIREBASE_CONFIG = window.__FIREBASE_CONFIG__ || {
+  apiKey: "", authDomain: "", projectId: "", appId: ""
+};
+var FB_VER = "10.12.2", SYNC_META_KEY = "dossier.sync.v1", SYNC_MAX_DOC = 900000;
+var cloud = {adapter:null, user:null, state:"off", msg:"", at:0, busy:false, queued:false, timer:0, applying:false, last:0};
+var syncMeta = lsGetJSON(SYNC_META_KEY, null) || {};
+if(!syncMeta.hash) syncMeta.hash = {};
+if(!syncMeta.base) syncMeta.base = {};
+if(!syncMeta.device) syncMeta.device = "d-"+Math.random().toString(36).slice(2,10);
+function saveSyncMeta(){ lsSetJSON(SYNC_META_KEY, syncMeta); }
+function cloudConfigured(){ return !!(window.__cloudTestAdapter || (FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.projectId)); }
+var CLOUD_KEY_RE = /^dossier\.(plan\.v1|progress\.v1|sessions\.v1|profile\.v1|state\.(prelims|mains|months|daily|mockTests)|timerLog|revdone\.v1|catchup\.v1|planConfig|pathTheme|uiTheme)$/;
+
+// ---- the real Firebase adapter (loaded only when needed, never at start-up when signed out) ----
+function makeFirebaseAdapter(){
+  var m = null, auth = null, fs = null, dimport = new Function("u", "return import(u)");
+  function load(){
+    if(m) return Promise.resolve(m);
+    var b = "https://www.gstatic.com/firebasejs/"+FB_VER+"/";
+    return Promise.all([dimport(b+"firebase-app.js"), dimport(b+"firebase-auth.js"), dimport(b+"firebase-firestore.js")]).then(function(x){
+      m = {app:x[0], auth:x[1], fs:x[2]};
+      var app = m.app.initializeApp(FIREBASE_CONFIG);
+      auth = m.auth.getAuth(app); fs = m.fs.getFirestore(app);
+      return m;
+    });
+  }
+  function col(uid){ return m.fs.collection(fs, "users", uid, "data"); }
+  return {
+    ready: function(){ return !!m; },
+    start: function(onUser){
+      return load().then(function(){
+        m.auth.onAuthStateChanged(auth, function(u){ onUser(u ? {uid:u.uid, email:u.email||"", name:u.displayName||"", photo:u.photoURL||""} : null); });
+      });
+    },
+    signIn: function(){ return m.auth.signInWithPopup(auth, new m.auth.GoogleAuthProvider()); },
+    signOut: function(){ return m.auth.signOut(auth); },
+    list: function(uid){ return m.fs.getDocs(col(uid)).then(function(s){ var out = []; s.forEach(function(d){ var v = d.data(); out.push({id:d.id, json:v.json, updatedAt:+v.updatedAt||0}); }); return out; }); },
+    put: function(uid, id, obj){ return m.fs.setDoc(m.fs.doc(fs, "users", uid, "data", id), obj); },
+    remove: function(uid, ids){ return Promise.all(ids.map(function(id){ return m.fs.deleteDoc(m.fs.doc(fs, "users", uid, "data", id)); })); },
+    deleteAccount: function(){
+      var u = auth.currentUser;
+      return m.auth.deleteUser(u).catch(function(e){
+        if(e && e.code==="auth/requires-recent-login") return m.auth.reauthenticateWithPopup(u, new m.auth.GoogleAuthProvider()).then(function(){ return m.auth.deleteUser(u); });
+        throw e;
+      });
+    }
+  };
+}
+
+// ---- what this device holds, as a set of named documents ----
+// planner sessions that nobody has touched and that lie ahead are rebuilt from the plan on every phone, so they are not synced
+function derivedSession(x){ return !!(studyPlan && x.origin==="auto" && x.date >= maxKey(todayKey, studyPlan.window.start) && !isTouched(x)); }
+function monthOfKey(k){ return String(k||"").slice(0,7) || "0000-00"; }
+function hashStr(s){ var h = 5381, i = s.length; while(i) h = (h*33) ^ s.charCodeAt(--i); return (h>>>0).toString(36)+":"+s.length; }
+function isEmptyObj(o){ return !o || !Object.keys(o).length; }
+function localDocs(){
+  var out = {};
+  if(studyPlan) out.plan = JSON.stringify(studyPlan);
+  if(studyProgress && !isEmptyObj(studyProgress.topics)) out.progress = JSON.stringify(studyProgress);
+  if(profile && profile.name) out.profile = JSON.stringify(profile);
+  var byM = {}; studySessions.forEach(function(x){ if(derivedSession(x)) return; var k = monthOfKey(x.date); (byM[k] = byM[k] || []).push(x); });
+  Object.keys(byM).forEach(function(k){ out["sessions-"+k] = JSON.stringify(byM[k]); });
+  var dM = {}; Object.keys(dailyState).forEach(function(k){ var mk = monthOfKey(k); (dM[mk] = dM[mk] || {})[k] = dailyState[k]; });
+  Object.keys(dM).forEach(function(k){ out["daily-"+k] = JSON.stringify(dM[k]); });
+  if(!isEmptyObj(prelimsState)) out.prelims = JSON.stringify(prelimsState);
+  if(!isEmptyObj(mainsState)) out.mains = JSON.stringify(mainsState);
+  if(!isEmptyObj(monthsState)) out.months = JSON.stringify(monthsState);
+  if(mockTests && mockTests.length) out.mocks = JSON.stringify(mockTests);
+  var tl = lsGetJSON("dossier.timerLog", {}); if(!isEmptyObj(tl)) out.timerlog = JSON.stringify(tl);
+  if(!isEmptyObj(revDone)) out.revdone = JSON.stringify(revDone);
+  if(catchState && (catchState.doneOn || catchState.promptedOn)) out.catch = JSON.stringify(catchState);
+  var pc = lsGetJSON("dossier.planConfig", null); if(pc && pc.startDate) out.planconfig = JSON.stringify(pc);
+  out.prefs = JSON.stringify({pathTheme:pathTheme, uiTheme:window.currentUiTheme()});
+  return out;
+}
+// what an emptied document looks like (so a deletion on one phone reaches the others)
+function emptyDoc(id){
+  if(/^sessions-/.test(id) || id==="mocks") return "[]";
+  if(/^daily-/.test(id) || id==="prelims" || id==="mains" || id==="months" || id==="timerlog" || id==="revdone") return "{}";
+  if(id==="progress") return JSON.stringify({topics:{}, lastUnlock:null});
+  return null;   // plan, profile, prefs, ...: never "deleted" by syncing
+}
+// documents that can be combined when two phones both changed them; the others are last-writer-wins
+function mergeDoc(id, L, R){
+  var k, out;
+  if(id==="progress"){
+    var a = L.topics || {}, b = R.topics || {}; out = {topics:{}, lastUnlock:(L.lastUnlock||"") > (R.lastUnlock||"") ? L.lastUnlock : R.lastUnlock};
+    Object.keys(a).concat(Object.keys(b)).forEach(function(t){ var x = a[t], y = b[t]; out.topics[t] = !x ? y : (!y ? x : ((x.at||"") > (y.at||"") ? x : y)); });
+    return out;
+  }
+  if(/^sessions-/.test(id) || id==="mocks"){
+    var by = {}, order = [];
+    R.concat(L).forEach(function(x){ var key = x.id; if(!key){ order.push(x); return; } var o = by[key]; if(!o){ by[key] = x; order.push(key); } else if((x.updatedAt||x.createdAt||"") > (o.updatedAt||o.createdAt||"")) by[key] = x; });
+    return order.map(function(o){ return typeof o==="string" ? by[o] : o; });
+  }
+  if(id==="timerlog"){ out = Object.assign({}, R); Object.keys(L).forEach(function(d){ out[d] = Math.max(+L[d]||0, +out[d]||0); }); return out; }
+  if(id==="prelims" || id==="mains"){ out = Object.assign({}, R); Object.keys(L).forEach(function(d){ if(L[d]) out[d] = true; }); return out; }
+  if(/^daily-/.test(id) || id==="months" || id==="revdone") return Object.assign({}, L, R);
+  return null;
+}
+function cloudMergeable(id){ return /^(progress|sessions-.*|daily-.*|mocks|timerlog|prelims|mains|months|revdone)$/.test(id); }
+
+// ---- apply downloaded documents to this device (reuses the backup restore code) ----
+function applyRemoteDocs(take){
+  var data = collectBackupData(), ids = Object.keys(take);
+  delete data.reminders;
+  var curCfg = lsGetJSON("dossier.planConfig", null);
+  data.planConfig = null;
+  var sessM = null, dailyM = null;
+  ids.forEach(function(id){
+    var v = JSON.parse(take[id]);
+    if(id==="plan") data.studyPlan = v;
+    else if(id==="progress") data.studyProgress = v;
+    else if(id==="profile") data.profile = v;
+    else if(id==="prefs"){ if(v.pathTheme) data.pathTheme = v.pathTheme; if(v.uiTheme) data.uiTheme = v.uiTheme; }
+    else if(/^sessions-/.test(id)){ if(!sessM){ sessM = {}; studySessions.forEach(function(x){ if(derivedSession(x)) return; var k = monthOfKey(x.date); (sessM[k] = sessM[k] || []).push(x); }); } sessM[id.slice(9)] = v; }
+    else if(/^daily-/.test(id)){ if(!dailyM){ dailyM = {}; Object.keys(dailyState).forEach(function(d){ dailyM[d] = dailyState[d]; }); } var mk = id.slice(6); Object.keys(dailyM).forEach(function(d){ if(monthOfKey(d)===mk) delete dailyM[d]; }); Object.keys(v).forEach(function(d){ dailyM[d] = v[d]; }); }
+    else if(id==="prelims") data.prelimsState = v;
+    else if(id==="mains") data.mainsState = v;
+    else if(id==="months") data.monthsState = v;
+    else if(id==="mocks") data.mockTests = v;
+    else if(id==="timerlog") data.timerLog = v;
+    else if(id==="revdone") data.revDone = v;
+    else if(id==="catch") data.catchState = v;
+    else if(id==="planconfig" && JSON.stringify(v) !== JSON.stringify(curCfg)) data.planConfig = v;
+  });
+  if(sessM){ var all = []; Object.keys(sessM).sort().forEach(function(k){ all = all.concat(sessM[k]); }); data.studySessions = all; }
+  if(dailyM) data.dailyState = dailyM;
+  applyBackupData(data);
+  if(sessM || take.plan || take.progress){ try{ if(studyPlan) replan(); }catch(e){} }
+  viewCache = null;
+}
+
+// ---- the sync itself ----
+function setCloud(state, msg){ cloud.state = state; cloud.msg = msg || ""; if(state==="ok") cloud.at = Date.now(); refreshCloudUi(); }
+function cloudSync(){
+  if(!cloud.user || !cloud.adapter) return Promise.resolve();
+  if(cloud.busy){ cloud.queued = true; return Promise.resolve(); }
+  if(navigator.onLine===false){ setCloud("wait", "Waiting for internet. Your changes are safe on this phone and will sync later."); return Promise.resolve(); }
+  cloud.busy = true; cloud.queued = false; setCloud("sync", "Syncing…");
+  var uid = cloud.user.uid, A = cloud.adapter;
+  return Promise.resolve(A.list(uid)).then(function(remote){
+    var rmap = {}; remote.forEach(function(r){ rmap[r.id] = r; });
+    var local = localDocs(), take = {}, pushIds = {}, overwrite = false, ids = {};
+    [local, rmap, syncMeta.hash].forEach(function(o){ Object.keys(o).forEach(function(k){ ids[k] = 1; }); });
+    Object.keys(ids).forEach(function(id){
+      var L = local[id], R = rmap[id], seen = syncMeta.hash[id], base = syncMeta.base[id] || 0;
+      var changed = seen==null ? L!=null : (L==null ? "-" : hashStr(L)) !== seen;
+      if(R && R.updatedAt > base){
+        if(!changed){ take[id] = R.json; return; }
+        if(L!=null && cloudMergeable(id)){
+          try{ var mg = mergeDoc(id, JSON.parse(L), JSON.parse(R.json)); if(mg!=null){ take[id] = JSON.stringify(mg); pushIds[id] = 1; return; } }catch(e){}
+        }
+        if(seen==null || (syncMeta.touch||0) <= R.updatedAt){ take[id] = R.json; if(L!=null && hashStr(L)!==hashStr(R.json)) overwrite = true; }
+        else pushIds[id] = 1;
+      } else if(changed){
+        if(L!=null || emptyDoc(id)!=null) pushIds[id] = 1;
+      } else if(!R && L!=null){ pushIds[id] = 1; }   // cloud lost it (e.g. account data was cleared): restore from this phone
+    });
+    if(Object.keys(take).length){
+      if(overwrite){ try{ lsSetJSON(PREBKP_KEY, collectBackupData()); }catch(e){} }
+      cloud.applying = true;
+      try{ applyRemoteDocs(take); } finally { cloud.applying = false; }
+      var after = localDocs();
+      Object.keys(take).forEach(function(id){ if(pushIds[id]) return; syncMeta.hash[id] = after[id]!=null ? hashStr(after[id]) : "-"; syncMeta.base[id] = rmap[id].updatedAt; });
+      renderCurrentView();
+    }
+    var now = localDocs(), ops = [], tooBig = 0;
+    Object.keys(pushIds).forEach(function(id){
+      var json = now[id]!=null ? now[id] : emptyDoc(id);
+      if(json==null) return;
+      if(json.length > SYNC_MAX_DOC){ tooBig++; return; }
+      var stamp = Math.max(Date.now(), (syncMeta.base[id]||0) + 1, rmap[id] ? rmap[id].updatedAt + 1 : 0);
+      ops.push({id:id, json:json, stamp:stamp});
+    });
+    var chain = Promise.resolve();
+    ops.forEach(function(o){ chain = chain.then(function(){ return A.put(uid, o.id, {json:o.json, updatedAt:o.stamp, device:syncMeta.device}).then(function(){ syncMeta.hash[o.id] = now[o.id]!=null ? hashStr(now[o.id]) : "-"; syncMeta.base[o.id] = o.stamp; }); }); });
+    return chain.then(function(){ saveSyncMeta(); return {pushed:ops.length, pulled:Object.keys(take).length, tooBig:tooBig}; });
+  }).then(function(r){
+    cloud.busy = false;
+    setCloud(r.tooBig ? "err" : "ok", r.tooBig ? "Some of your data is too large to sync. Use Download backup to keep a copy." : "");
+    if(cloud.queued) cloudSoon(800);
+  }).catch(function(e){
+    cloud.busy = false;
+    var denied = e && /permission|PERMISSION/.test(String(e.code||e.message||""));
+    setCloud("err", denied ? "The cloud refused the request. Check the database rules in Firebase." : "Couldn't sync just now. Will try again.");
+    if(!denied) setTimeout(cloudSoon, 60000);
+  });
+}
+function cloudSoon(ms){ if(!cloud.user) return; clearTimeout(cloud.timer); cloud.timer = setTimeout(cloudSync, ms==null ? 4000 : ms); }
+function cloudTouched(key){
+  if(cloud.applying || !CLOUD_KEY_RE.test(key)) return;
+  syncMeta.touch = Date.now();
+  if(cloud.user) cloudSoon();
+}
+cloudHook = cloudTouched;
+
+// ---- sign-in / sign-out ----
+function cloudOnUser(u){
+  if(!u){ cloud.user = null; setCloud("off", ""); return; }
+  if(syncMeta.uid && syncMeta.uid !== u.uid){
+    if(hasBackupWorthyData() && !window.confirm("This phone still holds study data from a different account.\n\nOK = add it to "+(u.email||"this account")+"\nCancel = sign out again")){
+      if(cloud.adapter) cloud.adapter.signOut();
+      return;
+    }
+    syncMeta.hash = {}; syncMeta.base = {};
+  }
+  syncMeta.uid = u.uid; syncMeta.email = u.email || ""; saveSyncMeta();
+  cloud.user = u; setCloud("sync", "Syncing…");
+  var m = document.getElementById("modalHost");
+  cloudSync().then(function(){
+    if(m && profile && document.getElementById("modalHost") === m && m.querySelector("#pfSave")) closeModal();
+    renderGreeting();
+    if(!profile && !document.getElementById("modalHost")) openProfileModal(false);
+  });
+}
+function cloudPrepare(){
+  if(!cloudConfigured() || cloud.adapter) return Promise.resolve();
+  cloud.adapter = window.__cloudTestAdapter || makeFirebaseAdapter();
+  return Promise.resolve(cloud.adapter.start(cloudOnUser)).catch(function(){ cloud.adapter = null; setCloud("off", "Couldn't reach the sign-in service. Check your internet."); });
+}
+function cloudSignIn(){
+  if(!cloudConfigured()) return;
+  if(navigator.onLine===false){ toast("You need internet to sign in."); return; }
+  if(!cloud.adapter || (cloud.adapter.ready && !cloud.adapter.ready())){ toast("Getting ready… tap Continue with Google again in a moment."); cloudPrepare(); return; }
+  Promise.resolve(cloud.adapter.signIn()).catch(function(e){
+    var c = String(e && (e.code || e.message) || "");
+    if(/popup-closed|cancelled|user-cancel/.test(c)) return;
+    toast(/unauthorized-domain/.test(c) ? "Add this website to Authorized domains in Firebase." : "Sign-in didn't work. Please try again.");
+  });
+}
+function cloudSignOut(){
+  if(!cloud.adapter) return;
+  Promise.resolve(cloud.adapter.signOut()).then(function(){ toast("Signed out. Your data stays on this phone."); });
+}
+function cloudDeleteAll(){
+  if(!cloud.user || !cloud.adapter) return;
+  if(!window.confirm("Delete your cloud copy and your account?\n\nThis removes everything stored online for "+(cloud.user.email||"this account")+". The data on this phone is NOT deleted. This cannot be undone.")) return;
+  var uid = cloud.user.uid, A = cloud.adapter;
+  setCloud("sync", "Deleting…");
+  Promise.resolve(A.list(uid)).then(function(rs){ return A.remove(uid, rs.map(function(r){ return r.id; })); })
+    .then(function(){ return A.deleteAccount(); })
+    .then(function(){ syncMeta = {hash:{}, base:{}, device:syncMeta.device}; saveSyncMeta(); cloud.user = null; setCloud("off", ""); toast("Your cloud copy and account were deleted."); })
+    .catch(function(){ setCloud("err", "Couldn't delete everything. Please try again."); });
+}
+
+// ---- the Settings card ----
+function agoText(t){ var s = Math.max(0, Math.round((Date.now()-t)/1000)); return s<10 ? "just now" : s<60 ? s+" seconds ago" : s<3600 ? Math.round(s/60)+" min ago" : s<86400 ? Math.round(s/3600)+" h ago" : Math.round(s/86400)+" days ago"; }
+function cloudCardHtml(){
+  if(!cloudConfigured()) return "";
+  var inner;
+  if(cloud.user){
+    var st = cloud.state==="sync" ? "Syncing…" : cloud.state==="ok" ? "Synced "+agoText(cloud.at) : cloud.msg || "Signed in";
+    inner = '<div class="cl-who"><span class="cl-av">'+esc((cloud.user.email||cloud.user.name||"?").charAt(0).toUpperCase())+'</span><div><b>'+esc(cloud.user.name || cloud.user.email)+'</b><small>'+esc(cloud.user.name ? cloud.user.email : "")+'</small></div></div>'+
+      '<div class="cl-st '+esc(cloud.state)+'" role="status">'+esc(st)+'</div>'+
+      '<div class="backup-btns"><button type="button" data-cloud="sync">Sync now</button><button type="button" class="alt" data-cloud="out">Sign out</button></div>'+
+      '<button type="button" class="bkp-undo" data-cloud="delete">Delete my cloud copy and account</button>';
+  } else {
+    inner = '<div class="sub">Sign in to keep your plan, progress and study history safe online and open them on any phone. The app still works offline.</div>'+
+      (cloud.msg ? '<div class="cl-st err">'+esc(cloud.msg)+'</div>' : '')+
+      '<div class="backup-btns"><button type="button" data-cloud="in">Continue with Google</button></div>'+
+      '<div class="cl-fine">Your study data is stored in your own account and is not shown to anyone else. You can delete it any time.</div>';
+  }
+  return '<div class="card set-card cloud-card"><h3>Cloud sync</h3>'+inner+'</div>';
+}
+function refreshCloudUi(){
+  [].forEach.call(document.querySelectorAll(".cloud-card"), function(c){ var n = el(cloudCardHtml()); if(n) c.replaceWith(n); });
+  [].forEach.call(document.querySelectorAll("#view-dashboard .sync-note"), function(c){ c.replaceWith(el(cloud.user ? syncNoteHtml() : defaultSyncNoteHtml())); });
+}
+function defaultSyncNoteHtml(){
+  return '<div class="sync-note"><span class="sync-dot '+(saveFailed?"err":(dbReady?"on":""))+'"></span>'+(saveFailed ? "A recent change didn't save. Reload the page to check your progress." : db ? "Progress saves to your account and syncs across devices" : "Not connected to the cloud. Progress is kept on this device only.")+'</div>';
+}
+function syncNoteHtml(){
+  if(cloud.user) return '<div class="sync-note cloud"><span class="sync-dot '+(cloud.state==="err"?"err":cloud.state==="ok"?"on":"")+'"></span>'+esc(cloud.state==="sync" ? "Syncing…" : cloud.state==="ok" ? "Synced to "+(cloud.user.email||"your account")+" · "+agoText(cloud.at) : (cloud.msg || "Signed in")) +'</div>';
+  return "";
+}
+function bindCloud(host){
+  if(host._cloud) return; host._cloud = true;
+  host.addEventListener("click", function(e){
+    var b = e.target.closest ? e.target.closest("[data-cloud]") : null; if(!b) return;
+    var a = b.getAttribute("data-cloud");
+    if(a==="in") cloudSignIn(); else if(a==="out") cloudSignOut(); else if(a==="sync") cloudSync(); else if(a==="delete") cloudDeleteAll();
+  });
+}
+document.addEventListener("visibilitychange", function(){ if(!cloud.user) return; if(document.visibilityState==="hidden") cloudSync(); else if(Date.now() - (cloud.at||0) > 20000) cloudSync(); });
+window.addEventListener("online", function(){ if(cloud.user) cloudSoon(500); });
+setInterval(function(){ if(cloud.user && document.visibilityState==="visible") cloudSync(); }, 300000);
+// signed in before? reconnect quietly after the app has settled
+setTimeout(function(){ if(cloudConfigured() && syncMeta.uid && navigator.onLine!==false) cloudPrepare(); }, 2500);
 function renderDashboard(){
   var host = document.getElementById("view-dashboard");
   var today = new Date();
@@ -7182,7 +7489,7 @@ function renderDashboard(){
         '</div>'+
       '</div>'+
       backupCard()+
-      '<div class="sync-note"><span class="sync-dot '+(saveFailed?"err":(dbReady?"on":""))+'"></span>'+(saveFailed ? "A recent change didn't save. Reload the page to check your progress." : db ? "Progress saves to your account and syncs across devices" : "Not connected to the cloud. Progress is kept on this device only.")+'</div>'+
+      (cloud.user ? syncNoteHtml() : defaultSyncNoteHtml())+
     '</div>';
 
   bindTimerCard(host);
@@ -7214,6 +7521,7 @@ function renderSettings(){
   var ctx = real && real.n ? real : sampleLanes();
   var prevLefts = [].map.call(host.querySelectorAll(".th-row"), function(r){ return r.scrollLeft; });
   host.innerHTML =
+    cloudCardHtml()+
     backupCard()+
     uiThemeCardHtml()+
     '<div class="card set-card"><h3>Learning path theme</h3>'+
@@ -7234,14 +7542,16 @@ function renderSettings(){
     if(prevLeft >= 0 && row.scrollTo) row.scrollTo({left:target, behavior:"smooth"}); else row.scrollLeft = target;
   });
   bindBackupCard(host);
+  bindCloud(host);
+  if(cloudConfigured() && !cloud.user) cloudPrepare();
   if(!host._wired){
     host._wired = true;
     host.addEventListener("click", function(e){
       // match the picker buttons only: <html> itself carries data-ui / data-theme, so a bare [data-...] lookup would match every click
       var u = e.target.closest ? e.target.closest(".ui-opt[data-ui]") : null;
-      if(u){ window.applyUiTheme(u.getAttribute("data-ui"), true); renderSettings(); return; }
+      if(u){ window.applyUiTheme(u.getAttribute("data-ui"), true); cloudTouched("dossier.uiTheme"); renderSettings(); return; }
       var b = e.target.closest ? e.target.closest(".th-opt[data-theme]") : null; if(!b) return;
-      setPathTheme(b.getAttribute("data-theme")); renderSettings();
+      setPathTheme(b.getAttribute("data-theme")); cloudTouched("dossier.pathTheme"); renderSettings();
     });
   }
 }
