@@ -6594,10 +6594,10 @@ function timerLabel(){
   var st = timerState;
   if(st.mode==="free") return st.running ? "Studying" : (st.accMs>0 ? "Paused" : "Stopwatch");
   var nm = st.phase==="focus" ? "Round "+((st.cycle % 4)+1)+" of 4" : (st.phase==="long" ? "Long break" : "Short break");
-  var left = Math.ceil(Math.max(0, pomoLen(st.phase)-timerSeg())/60000);
+  var leftMs = Math.max(0, pomoLen(st.phase)-timerSeg()), leftMin = Math.floor(leftMs/60000);
   if(st.waiting && !st.running && st.accMs<=0) return "Ready for round "+((st.cycle % 4)+1)+" of 4";
   if(st.running || st.accMs<=0) return "";
-  return nm+" · paused · "+left+" min left";
+  return nm+" · paused · "+(leftMin < 1 ? "under 1 min" : leftMin+" min")+" left";
 }
 function timerDotsHtml(){
   var st = timerState, done = st.phase==="long" ? 4 : st.cycle % 4, out = "";
@@ -6819,15 +6819,34 @@ function initBlackHoleScene(host){
   }
   function crescent(holeR, t){
     var env0 = glowEnv(t);
-    var R = holeR*1.015, a0 = Math.PI*(.4 + .03*Math.sin(t*.00005)), a1 = Math.PI*(1.27 + .03*Math.sin(t*.00004)), n = 70, k, pass;
+    var R = holeR*1.015, a0 = Math.PI*(.4 + .03*Math.sin(t*.00005)), a1 = Math.PI*(1.27 + .03*Math.sin(t*.00004)), span = a1 - a0, k, pass;
     ctx.save(); ctx.globalCompositeOperation = "lighter"; ctx.lineCap = "butt";
     ctx.strokeStyle = "rgba(255,220,170,"+(.03 + .07*env0)+")"; ctx.lineWidth = 1; ctx.beginPath(); ctx.arc(cx, cy, R, 0, 6.283); ctx.stroke();
-    for(pass=0; pass<3; pass++){
-      ctx.lineWidth = holeR*[.17, .07, .024][pass];
-      for(k=0;k<n;k++){
-        var u = (k + .5)/n, a = a0 + (a1 - a0)*u, env = Math.pow(Math.sin(Math.PI*u), .9), br = Math.exp(-Math.pow((u - .42)/.3, 2)), fl = .7 + .3*Math.sin(a*9 - t*.00015 + Math.sin(a*3)*2), al = env*(.3 + .7*br)*fl*env0;
-        ctx.strokeStyle = pass===2 ? "rgba(255,"+Math.round(200 + 50*br)+","+Math.round(140 + 100*br)+","+Math.min(1, al*1.05)+")" : (pass===1 ? "rgba(255,"+Math.round(120 + 40*br)+",50,"+Math.min(1, al*.7)+")" : "rgba(235,90,30,"+(al*.22)+")");
-        ctx.beginPath(); ctx.arc(cx, cy, R + (pass===0 ? holeR*.03 : 0), a - .03, a + (a1 - a0)/n + .03); ctx.stroke();
+    // colour of one layer at position u (0..1) along the crescent
+    function tone(pass, u, a){
+      var env = Math.pow(Math.sin(Math.PI*u), .9), br = Math.exp(-Math.pow((u - .42)/.3, 2)), fl = .7 + .3*Math.sin(a*9 - t*.00015 + Math.sin(a*3)*2), al = env*(.3 + .7*br)*fl*env0;
+      return pass===2 ? "rgba(255,"+Math.round(200 + 50*br)+","+Math.round(140 + 100*br)+","+Math.min(1, al*1.05)+")" : (pass===1 ? "rgba(255,"+Math.round(120 + 40*br)+",50,"+Math.min(1, al*.7)+")" : "rgba(235,90,30,"+(al*.22)+")");
+    }
+    var widths = [.17, .07, .024];
+    if(ctx.createConicGradient){
+      // one smooth stroke per layer, coloured by a gradient, so there are no visible steps even when the hole is large
+      var M = 140, f1 = span/6.283185;
+      for(pass=0; pass<3; pass++){
+        var g = ctx.createConicGradient(a0, cx, cy);
+        for(k=0;k<=M;k++){ var u = k/M; g.addColorStop(Math.min(1, f1*u), tone(pass, u, a0 + span*u)); }
+        g.addColorStop(Math.min(1, f1 + .0005), "rgba(0,0,0,0)"); g.addColorStop(1, "rgba(0,0,0,0)");
+        ctx.strokeStyle = g; ctx.lineWidth = holeR*widths[pass];
+        ctx.beginPath(); ctx.arc(cx, cy, R + (pass===0 ? holeR*.03 : 0), a0, a1); ctx.stroke();
+      }
+    } else {
+      var n = 220;     // older browsers: many thin overlapping pieces
+      for(pass=0; pass<3; pass++){
+        ctx.lineWidth = holeR*widths[pass];
+        for(k=0;k<n;k++){
+          var u2 = (k + .5)/n, a = a0 + span*u2;
+          ctx.strokeStyle = tone(pass, u2, a);
+          ctx.beginPath(); ctx.arc(cx, cy, R + (pass===0 ? holeR*.03 : 0), a - .02, a + span/n + .02); ctx.stroke();
+        }
       }
     }
     ctx.restore();
