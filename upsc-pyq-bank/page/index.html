@@ -224,6 +224,8 @@
   .ui-sw u{position:absolute; top:46px; width:14px; height:14px; border-radius:50%;} .ui-sw u:nth-of-type(1){left:40px;} .ui-sw u:nth-of-type(2){left:57px;}
   .th-opt.sel .ui-sw{border-color:var(--tab-accent) !important;}
   .th-prev{margin-top:10px;} .pth-prevbox{display:block;}
+  body.dash-timer .timer-card.hidetime .timer-display{opacity:1;}
+  body.dash-timer.time-hide .timer-card .timer-display{opacity:0 !important;}
   body.dash-timer main{padding:0;}
   /* the pomodoro length picker sits under the mode buttons and must not cover them */
   body.dash-timer .timer-card > .timer-set{top:calc(106px + env(safe-area-inset-top,0px)); pointer-events:none;}
@@ -232,7 +234,7 @@
   body.dash-timer #menuBtn, body.dash-timer #dashFab, body.dash-timer .timer-card > .timer-mode, body.dash-timer .timer-card > .timer-total,
   body.dash-timer .timer-card > .timer-phase, body.dash-timer .timer-card > .timer-set, body.dash-timer .timer-card > .timer-btns, body.dash-timer .timer-card .timer-display{transition:opacity .7s ease;}
   body.dash-timer.ui-sleep #menuBtn, body.dash-timer.ui-sleep #dashFab, body.dash-timer.ui-sleep .timer-card > .timer-mode, body.dash-timer.ui-sleep .timer-card > .timer-total,
-  body.dash-timer.ui-sleep .timer-card > .timer-phase, body.dash-timer.ui-sleep .timer-card > .timer-set, body.dash-timer.ui-sleep .timer-card > .timer-brk, body.dash-timer.ui-sleep .timer-card > .timer-btns, body.dash-timer.ui-sleep .timer-card .timer-display{opacity:0 !important; pointer-events:none !important;}
+  body.dash-timer.ui-sleep .timer-card > .timer-phase, body.dash-timer.ui-sleep .timer-card > .timer-set, body.dash-timer.ui-sleep .timer-card > .timer-brk, body.dash-timer.ui-sleep .timer-card > .timer-btns{opacity:0 !important; pointer-events:none !important;}
   body.dash-timer #view-dashboard > *:not(.timer-card){display:none;}
   body.dash-timer #view-dashboard .timer-card{position:fixed; inset:0; z-index:5; height:auto; min-height:0; margin:0; border-radius:0; border:0;}
   body.dash-timer .timer-card > .timer-mode, body.dash-timer .timer-card > .timer-total{top:calc(64px + env(safe-area-inset-top,0px));}
@@ -354,7 +356,7 @@
   @media (prefers-reduced-motion:reduce){.timer-phase .dots i.now{animation:none;}}
   .timer-btn.primary{background:rgba(24,34,70,.72);color:#fff;border-color:rgba(255,255,255,.28);}
   .timer-btn:disabled{opacity:.45;cursor:not-allowed;}
-  .timer-dial-wrap{position:absolute;left:50%;top:49%;transform:translate(-50%,-50%);width:170px;height:92px;cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;z-index:6;display:flex;align-items:center;justify-content:center;background:transparent;border:0;box-shadow:none;}
+  .timer-dial-wrap{position:absolute;left:50%;top:49%;transform:translate(-50%,-50%);width:170px;height:92px;cursor:default;-webkit-tap-highlight-color:transparent;user-select:none;z-index:6;display:flex;align-items:center;justify-content:center;background:transparent;border:0;box-shadow:none;}
   .timer-dial-wrap:focus-visible{outline:none;}
   .timer-dial-glow,.timer-dial-ring,.timer-dial-orbit{display:none!important;}
   .timer-dial-face{position:relative;inset:auto;border:0;background:transparent;display:flex;align-items:center;justify-content:center;width:100%;height:100%;}
@@ -6394,32 +6396,45 @@ function setMenu(open){
   var m = document.getElementById("menuBtn"); if(m) m.setAttribute("aria-expanded", open ? "true" : "false");
 }
 var dashMore = false;
-var uiSleepTimer = null;
-function wakeUi(ms){
-  document.body.classList.remove("ui-sleep");
-  clearTimeout(uiSleepTimer);
-  if(!document.body.classList.contains("dash-timer")) return;
-  uiSleepTimer = setTimeout(function(){
-    var a = document.activeElement;
-    if(document.body.classList.contains("menu-open") || document.getElementById("modalHost") || (a && a.tagName==="SELECT")){ wakeUi(2000); return; }
-    document.body.classList.add("ui-sleep");
-  }, ms || 4500);
+// Timer-only screen. Stage 0 = calm (only the animation), 1 = the time is shown, 2 = time and every control are shown.
+// A tap never pauses the timer; only the Pause button does.
+var uiStage = 2, uiStageTimer = null;
+function digitsHiddenWhenCalm(){
+  var st = timerState;
+  if(!st.running) return false;
+  if(st.mode==="pomo") return true;                 // Pomodoro: guess the time from the animation
+  return timerSeg() >= 10*60000;                    // Stopwatch: the time stays until it has run 10 minutes
 }
+function applyUiStage(){
+  var b = document.body, onTimer = b.classList.contains("dash-timer");
+  b.classList.toggle("ui-sleep", onTimer && uiStage < 2);
+  b.classList.toggle("time-hide", onTimer && uiStage === 0 && digitsHiddenWhenCalm());
+}
+function setUiStage(n, ms){
+  uiStage = n; applyUiStage(); clearTimeout(uiStageTimer);
+  if(!document.body.classList.contains("dash-timer") || n === 0) return;
+  uiStageTimer = setTimeout(function(){
+    var a = document.activeElement;
+    if(document.body.classList.contains("menu-open") || document.getElementById("modalHost") || (a && a.tagName==="SELECT")){ setUiStage(n, 2000); return; }
+    setUiStage(0);
+  }, ms || (n === 1 ? 4000 : 4500));
+}
+function wakeUi(ms){ setUiStage(2, ms); }
 document.addEventListener("click", function(e){
   var b = document.body;
-  if(!b.classList.contains("dash-timer") || !b.classList.contains("ui-sleep") || b.classList.contains("menu-open")) return;
+  if(!b.classList.contains("dash-timer") || b.classList.contains("menu-open")) return;
   if(e.target.closest && e.target.closest("#modalHost, #drawer, #drawerDim")) return;
-  e.preventDefault(); e.stopPropagation(); wakeUi(4500);
+  if(!b.classList.contains("ui-sleep")){ setUiStage(2); return; }   // controls are showing: the tap goes through and keeps them up
+  e.preventDefault(); e.stopPropagation();            // controls are hidden: this tap only reveals things
+  if(uiStage === 0 && digitsHiddenWhenCalm()) setUiStage(1);   // first tap: show the running time
+  else setUiStage(2);                                          // next tap (or time already visible): show everything
 }, true);
-document.addEventListener("click", function(e){
-  if(document.body.classList.contains("dash-timer") && !document.body.classList.contains("ui-sleep") && e.target.closest && e.target.closest("#view-dashboard, #dashFab, #menuBtn")) wakeUi(4500);
-});
 function applyDashMode(){
   var dash = groupOf(activeTab)==="dashboard";
   document.body.classList.toggle("is-dash", dash);
   var wasTimer = document.body.classList.contains("dash-timer"), isTimer = dash && !dashMore;
   document.body.classList.toggle("dash-timer", isTimer);
-  if(isTimer && !wasTimer) wakeUi(1600); else if(!isTimer){ clearTimeout(uiSleepTimer); document.body.classList.remove("ui-sleep"); }
+  if(isTimer && !wasTimer) setUiStage(2, 1600); else if(!isTimer){ clearTimeout(uiStageTimer); document.body.classList.remove("ui-sleep", "time-hide"); }
   var f = document.getElementById("dashFab");
   if(f) f.setAttribute("aria-label", dashMore ? "Back to the timer" : "Open Dashboard");
 }
@@ -6601,10 +6616,11 @@ function timerUi(){
   var bk = document.getElementById("timerBrk"), bl = document.getElementById("breakLen");
   if(bk && bl){ var inBreak = st.mode==="pomo" && st.phase!=="focus"; bk.classList.toggle("on", inBreak); if(inBreak && document.activeElement!==bl) bl.value = String(breakMinutes(st.phase)); }
   var sb = document.getElementById("timerStopBtn"); if(sb) sb.disabled = !started;
-  var dw = document.getElementById("timerDialWrap"); if(dw){ dw.classList.toggle("running", st.running); dw.setAttribute("aria-pressed", st.running ? "true" : "false"); }
+  var dw = document.getElementById("timerDialWrap"); if(dw){ dw.classList.toggle("running", st.running); }
   Array.prototype.forEach.call(document.querySelectorAll("[data-tmode]"), function(b){ b.classList.toggle("on", b.getAttribute("data-tmode")===st.mode); b.disabled = started; });
   var ps = document.getElementById("pomoPreset"); if(ps) ps.disabled = started;
   Array.prototype.forEach.call(document.querySelectorAll(".timer-mode, .timer-set"), function(e){ e.classList.toggle("hide", started); });
+  applyUiStage();
 }
 function timerTick(){
   if(!document.getElementById("timerDisplay") && !timerState.running){ ensureTimerInterval(); return; }
@@ -6616,8 +6632,10 @@ function timerToggle(){
   if(timerState.running){ timerState.accMs = timerSeg(); timerState.running = false; timerState.startedAt = 0; }
   else { timerState.running = true; timerState.waiting = false; timerState.startedAt = Date.now(); }
   timerSave(); ensureTimerInterval(); timerUi();
+  setUiStage(2);
 }
 function timerStop(){
+  setUiStage(2);
   timerAdvance();
   var ms = Math.round(timerStudyMs()), keep = {mode:timerState.mode, preset:timerState.preset};
   timerState = Object.assign(timerDefault(), keep, {pending: ms >= 1000 ? ms : 0});
@@ -6672,7 +6690,7 @@ function timerCard(){
       '<button type="button" class="tm'+(st.mode==="pomo" ? " on" : "")+'" data-tmode="pomo"'+(started ? " disabled" : "")+'>Pomodoro</button>'+
     '</div>'+
     '<div class="timer-total" id="timerTodayTotal" title="Study time recorded today">Today '+fmtTimer(timerBanked()+timerStudyMs())+'</div>'+
-    '<div class="timer-dial-wrap'+(st.running ? " running" : "")+'" id="timerDialWrap" role="button" tabindex="0" aria-pressed="'+(st.running ? "true" : "false")+'" aria-label="Start or pause study timer">'+
+    '<div class="timer-dial-wrap'+(st.running ? " running" : "")+'" id="timerDialWrap">'+
       '<div class="timer-dial-face"><div class="timer-display" id="timerDisplay">'+fmtTimer(timerDisplayMs())+'</div></div>'+
     '</div>'+
     '<div class="timer-phase" id="timerPhase">'+(st.mode==="pomo" ? '<span class="dots" id="timerDots">'+timerDotsHtml()+'</span>' : "")+'<span id="timerPhaseText">'+esc(timerLabel())+'</span></div>'+
@@ -6898,11 +6916,6 @@ function bindTimerCard(host){
   try{ initBlackHoleScene(host); }catch(e){}
   var tb = host.querySelector("#timerToggleBtn"); if(tb) tb.addEventListener("click", timerToggle);
   var sb = host.querySelector("#timerStopBtn"); if(sb) sb.addEventListener("click", timerStop);
-  var dial = host.querySelector("#timerDialWrap");
-  if(dial){
-    dial.addEventListener("click", timerToggle);
-    dial.addEventListener("keydown", function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); timerToggle(); } });
-  }
   Array.prototype.forEach.call(host.querySelectorAll("[data-tmode]"), function(b){ b.addEventListener("click", function(){ timerSetMode(b.getAttribute("data-tmode")); }); });
   var bl = host.querySelector("#breakLen"); if(bl) bl.addEventListener("change", function(){ timerState.brkMin = +bl.value; timerSave(); timerAdvance(); timerUi(); });
   var ps = host.querySelector("#pomoPreset"); if(ps) ps.addEventListener("change", function(){ timerState.preset = +ps.value; timerSave(); timerUi(); });
