@@ -570,8 +570,24 @@
     background:var(--tab-accent); color:var(--tab-accent-ink); font-weight:700; font-size:13px; cursor:pointer;
     text-align:center; display:flex; align-items:center; justify-content:center;
   }
-  .backup-restore{background:var(--surface-2); color:var(--tab-accent); position:relative; overflow:hidden;}
+  .backup-restore{background:var(--surface-2); color:var(--ink); position:relative; overflow:hidden;}
   .backup-restore input[type=file]{position:absolute; inset:0; opacity:0; cursor:pointer; width:100%;}
+
+  /* streak + heatmap, revision reminders, backup status */
+  .dx-streak .st-top{display:flex; align-items:center; gap:12px; margin-bottom:10px;} .st-flame{font-size:34px; line-height:1;}
+  .st-num{font-family:var(--font-display); font-size:15px; color:var(--ink-soft);} .st-num b{font-size:30px; color:var(--ink); margin-right:3px;} .dx-streak small{color:var(--ink-soft); font-size:12.5px;}
+  .st-facts{display:flex; gap:8px; margin-bottom:12px;} .st-facts span{flex:1; background:var(--surface-2); border-radius:10px; padding:7px 4px; text-align:center; font-size:10.5px; color:var(--ink-soft); line-height:1.25;} .st-facts b{display:block; font-size:17px; color:var(--ink);}
+  .hm{display:flex; gap:3px; justify-content:center;} .hm-col{display:flex; flex-direction:column; gap:3px; flex:1 1 0; max-width:20px;}
+  .hm i, .hm-key i{display:block; aspect-ratio:1; border-radius:3px; background:var(--tab-accent-soft);}
+  .hm i.fut{background:transparent;} .hm i.l1, .hm-key i.l1{background:color-mix(in srgb, var(--tab-accent) 32%, var(--tab-accent-soft));} .hm i.l2, .hm-key i.l2{background:color-mix(in srgb, var(--tab-accent) 58%, var(--tab-accent-soft));} .hm i.l3, .hm-key i.l3{background:color-mix(in srgb, var(--tab-accent) 82%, transparent);} .hm i.l4, .hm-key i.l4{background:var(--tab-accent);}
+  .hm i.now{outline:2px solid var(--ink-soft); outline-offset:1px;}
+  .hm-key{display:flex; align-items:center; justify-content:flex-end; gap:3px; margin-top:8px; font-size:10.5px; color:var(--ink-soft);} .hm-key i{width:11px; height:11px; aspect-ratio:auto;} .hm-key span{margin:0 3px;}
+  .dx-rev .rv-row{display:flex; align-items:center; gap:8px; padding:8px 0; border-top:1px solid var(--line);} .dx-rev .rv-row:first-of-type{border-top:none;}
+  .rv-t{flex:1; min-width:0;} .rv-t b{display:block; font-size:14px; color:var(--ink); overflow-wrap:anywhere;} .rv-t small{display:block; color:var(--ink-soft); font-size:12px; margin-top:1px;}
+  .rv-b{flex:0 0 auto; width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:var(--surface-2); color:var(--ink-soft); font-size:16px; cursor:pointer; display:grid; place-items:center; padding:0;} .rv-b.ok{background:var(--tab-accent); color:var(--tab-accent-ink); border-color:transparent;}
+  .rv-note{display:block; margin-top:8px; color:var(--ink-faint); font-size:11.5px;}
+  .bkp-status{font-size:12.5px; margin:0 0 12px; padding:8px 10px; border-radius:9px; background:var(--surface-2); color:var(--ink-soft); line-height:1.45;} .bkp-status.warn{background:color-mix(in srgb, #f5a524 18%, var(--surface-2)); color:var(--ink); border:1px solid color-mix(in srgb, #f5a524 55%, transparent);}
+  .bkp-undo{margin-top:8px; width:100%; padding:9px; border-radius:10px; border:1px dashed var(--line); background:transparent; color:var(--ink-soft); font-size:12.5px; cursor:pointer;}
 
   /* ---- Syllabus ---- */
   .syl-note{font-size:12px; font-weight:500; color:var(--ink-soft); margin-top:3px; text-transform:none; letter-spacing:0;}
@@ -3870,15 +3886,36 @@ function collectBackupData(){
     studyPlan: studyPlan,
     studyProgress: studyProgress,
     catchState: catchState,
-    reminders: remState
+    reminders: remState,
+    revDone: revDone
   };
 }
+setTimeout(function(){
+  try{
+    var age = backupAgeDays(), seen = lsGetJSON("dossier.bkpNudge.v1", "");
+    if(hasBackupWorthyData() && (age===null || age>=7) && seen!==todayKey){ lsSetJSON("dossier.bkpNudge.v1", todayKey); toast(age===null ? "Tip: download a backup (Settings) so your progress can't be lost." : "Your last backup is "+age+" days old. Download a fresh one in Settings."); }
+  }catch(e){}
+}, 6000);
 var downloadsNs = null, downloadsChecked = false;
 function getDownloadsNs(){
   if(downloadsChecked) return Promise.resolve(downloadsNs);
   if(!(window.claude && window.claude.use)) { downloadsChecked = true; return Promise.resolve(null); }
   return window.claude.use("downloads").then(function(d){ downloadsNs = d; downloadsChecked = true; return d; }).catch(function(){ downloadsChecked = true; return null; });
 }
+var BKP_KEY = "dossier.lastBackup.v1", PREBKP_KEY = "dossier.prerestore.v1";
+function lastBackupAt(){ return lsGetJSON(BKP_KEY, "") || ""; }
+function markBackedUp(){ lsSetJSON(BKP_KEY, new Date().toISOString()); refreshBackupCards(); }
+function hasBackupWorthyData(){ return !!(studyPlan || (studySessions && studySessions.length) || Object.keys(studyProgress.topics||{}).length); }
+function backupAgeDays(){ var t = lastBackupAt(); if(!t) return null; return Math.max(0, Math.floor((Date.now() - new Date(t).getTime())/86400000)); }
+function backupStatusHtml(){
+  var age = backupAgeDays(), warn = hasBackupWorthyData() && (age===null || age>=7), txt;
+  if(age===null) txt = hasBackupWorthyData() ? "You have never backed up. If this phone's browser data is cleared, your plan and progress are lost." : "No backup yet.";
+  else txt = "Last backup: "+(age===0 ? "today" : age===1 ? "yesterday" : age+" days ago")+(warn ? ". Time for a fresh one." : ".");
+  var persist = (window.__persisted===true) ? " Storage on this device is protected from automatic clean-up." : (window.__persisted===false ? " This browser may clear stored data when space runs low, so keep a backup file." : "");
+  return '<div class="bkp-status'+(warn ? " warn" : "")+'">'+esc(txt)+esc(persist)+'</div>';
+}
+function refreshBackupCards(){ [].forEach.call(document.querySelectorAll(".backup-card"), function(c){ var st = c.querySelector(".bkp-status"), n = el(backupStatusHtml()); if(st) st.replaceWith(n); }); }
+try{ if(navigator.storage && navigator.storage.persist){ navigator.storage.persisted().then(function(p){ if(p){ window.__persisted = true; refreshBackupCards(); } else navigator.storage.persist().then(function(g){ window.__persisted = !!g; refreshBackupCards(); }); }).catch(function(){}); } }catch(e){}
 function downloadBackup(){
   var json = JSON.stringify(collectBackupData(), null, 2);
   var filename = "upsc-companion-backup-"+todayKey+".json";
@@ -3888,11 +3925,13 @@ function downloadBackup(){
         var blob = new Blob([json], {type:"application/json"}), url = URL.createObjectURL(blob), a = document.createElement("a");
         a.href = url; a.download = filename; document.body.appendChild(a); a.click();
         setTimeout(function(){ try{ document.body.removeChild(a); URL.revokeObjectURL(url); }catch(e){} }, 1500);
+        markBackedUp();
         toast("Backup downloaded — keep the file somewhere safe.");
       }catch(e){ toast("Couldn't save the backup file. Try again."); }
       return;
     }
     return downloads.save({filename:filename, data:json}).then(function(res){
+      if(res.status==="saved") markBackedUp();
       toast(res.status==="saved" ? "Backup downloaded — keep the file somewhere safe." : "Backup sent.");
     });
   }).catch(function(err){
@@ -3918,6 +3957,7 @@ function applyBackupData(data){
   if(Array.isArray(data.studySessions)){ studySessions = data.studySessions; saveSessions(); }
   if(data.studyPlan){ studyPlan = data.studyPlan; savePlan(); }
   if(data.catchState && typeof data.catchState==='object'){ catchState = Object.assign({promptedOn:"", doneOn:""}, data.catchState); saveCatch(); }
+  if(data.revDone && typeof data.revDone==="object"){ revDone = data.revDone; revSave(); }
   if(data.reminders && typeof data.reminders==='object'){ remState = Object.assign({}, remState, data.reminders, {on:false, sent:{}}); remSave(); }
   if(data.studyProgress && data.studyProgress.topics){ studyProgress = data.studyProgress; saveProgress(); }
   if(data.profile && data.profile.name){ profile = data.profile; lsSetJSON(PROFILE_KEY, profile); renderGreeting(); }
@@ -3929,15 +3969,32 @@ function applyBackupData(data){
     db.doc("state/months").set(monthsState).catch(function(){});
   }
 }
+function backupSummary(d){
+  var done = d.studyProgress && d.studyProgress.topics ? Object.keys(d.studyProgress.topics).filter(function(k){ return d.studyProgress.topics[k].status==="completed"; }).length : 0;
+  var ses = Array.isArray(d.studySessions) ? d.studySessions.length : 0;
+  var when = d.exportedAt ? new Date(d.exportedAt).toLocaleString(undefined, {day:"numeric", month:"short", year:"numeric", hour:"numeric", minute:"2-digit"}) : "unknown date";
+  return "Saved on "+when+" · "+done+" chapters done · "+ses+" sessions"+(d.profile && d.profile.name ? " · "+d.profile.name : "");
+}
+function undoRestore(){
+  var snap = lsGetJSON(PREBKP_KEY, null);
+  if(!snap){ toast("Nothing to undo."); return; }
+  try{ applyBackupData(snap); lsSetJSON(PREBKP_KEY, null); toast("Your data from before the restore is back."); renderCurrentView(); }catch(e){ toast("Couldn't undo the restore."); }
+}
+function renderCurrentView(){ var tab = lsGet("dossier.tab") || "dashboard"; try{ renderView(tab); }catch(e){} }
 function handleBackupFile(file){
   var reader = new FileReader();
   reader.onload = function(){
+    var data;
+    try { data = JSON.parse(reader.result); if(!data || typeof data!=="object" || !data.app || String(data.app).indexOf("UPSC Companion")!==0) throw new Error("bad"); }
+    catch(e){ toast("That doesn't look like a UPSC Companion backup file."); return; }
+    if(!window.confirm("Replace everything on this device with this backup?\n\n"+backupSummary(data)+"\n\nYour current data is kept so you can undo this right after.")) return;
     try {
-      applyBackupData(JSON.parse(reader.result));
-      toast("Backup restored from file.");
-      renderDashboard();
+      var cur = collectBackupData(); lsSetJSON(PREBKP_KEY, cur);
+      applyBackupData(data);
+      renderCurrentView();
+      toast("Backup restored. Open Settings to undo if that was a mistake.");
     } catch(e){
-      toast("That doesn't look like a UPSC Companion backup file.");
+      toast("That backup couldn't be restored. Nothing was changed.");
     }
   };
   reader.onerror = function(){ toast("Couldn't read that file."); };
@@ -3947,15 +4004,19 @@ function backupCard(){
   return '<div class="backup-card card">'+
     '<h3>Backup</h3>'+
     '<div class="sub">Save everything — ticks, daily logs, mock scores, dates — as one file on this device. Works regardless of plan or sign-in status, and you can restore it here anytime, on any device.</div>'+
+    backupStatusHtml()+
     '<div class="backup-btns">'+
       '<button id="backupDownload">Download backup</button>'+
-      '<label class="backup-restore" for="backupRestoreInput">Restore from file<input type="file" id="backupRestoreInput" accept="application/json"></label>'+
+      '<label class="backup-restore" for="backupRestoreInput">Restore from file<input type="file" id="backupRestoreInput" accept="application/json,.json"></label>'+
     '</div>'+
+    (lsGetJSON(PREBKP_KEY, null) ? '<button type="button" class="bkp-undo" id="backupUndo">Undo last restore</button>' : '')+
   '</div>';
 }
 function bindBackupCard(host){
   var dl = host.querySelector("#backupDownload");
   if(dl) dl.addEventListener("click", downloadBackup);
+  var ud = host.querySelector("#backupUndo");
+  if(ud) ud.addEventListener("click", undoRestore);
   var rf = host.querySelector("#backupRestoreInput");
   if(rf) rf.addEventListener("change", function(e){
     var file = e.target.files && e.target.files[0];
@@ -6020,6 +6081,11 @@ function remTick(){
       remNotify(lead > 0 ? "Study session in "+lead+" min" : "Time to study", fmt12(x.startTime)+" · "+x.subject+" › "+(x.syllabusUnit||x.topic), key);
     }
   });
+  if(mins >= 450 && !remState.sent[t+"|rev"]){
+    remState.sent[t+"|rev"] = 1; changed = true;
+    var rn = revisionsDue().length;
+    if(rn) remNotify("Revision due today", rn+" chapter"+(rn===1 ? " is" : "s are")+" ready to revise. A quick recall now makes it stick.", t+"|rev");
+  }
   if(remState.eod && mins >= toMin(remState.eodTime) && !remState.sent[t+"|eod"]){
     var open = planSessionsOn(t).filter(function(x){ return !x.projected && (x.status==="not_started" || x.status==="in_progress"); }).length;
     remState.sent[t+"|eod"] = 1; changed = true;
@@ -6581,7 +6647,7 @@ function timerAddToToday(ms){
   var log = {};
   try { log = JSON.parse(lsGet("dossier.timerLog")||"{}"); } catch(e){}
   log[todayKey] = (log[todayKey]||0) + ms;
-  var cutoff = toKey(addDays(new Date(), -40));
+  var cutoff = toKey(addDays(new Date(), -800));
   Object.keys(log).forEach(function(k){ if(k < cutoff) delete log[k]; });
   try { lsSet("dossier.timerLog", JSON.stringify(log)); } catch(e){}
 }
@@ -6997,6 +7063,99 @@ function bindTimerCard(host){
   ensureTimerInterval(); timerAdvance(); timerUi();
   if(timerState.pending > 0 && !document.getElementById("modalHost")) openTimerSave();
 }
+
+// ============================================================================
+// STUDY STREAK + REVISION REMINDERS
+// ============================================================================
+function studyMinutesByDay(){
+  var m = {}, log = lsGetJSON("dossier.timerLog", {}) || {};
+  Object.keys(log).forEach(function(k){ var v = Math.round((+log[k]||0)/60000); if(v>0) m[k] = v; });
+  var ss = {};
+  studySessions.forEach(function(x){ if((x.actualDuration||0)>0) ss[x.date] = (ss[x.date]||0) + x.actualDuration; });
+  Object.keys(ss).forEach(function(k){ m[k] = Math.max(m[k]||0, Math.round(ss[k])); });
+  Object.keys(studyProgress.topics||{}).forEach(function(id){ var t = studyProgress.topics[id]; if(t && t.status==="completed" && t.completedAt && !m[t.completedAt]) m[t.completedAt] = 1; });
+  return m;
+}
+function streakStats(m){
+  var cur = 0, d = todayKey;
+  if(!m[d]) d = toKey(addDays(parseKey(d), -1));
+  while(m[d]){ cur++; d = toKey(addDays(parseKey(d), -1)); }
+  var keys = Object.keys(m).filter(function(k){ return m[k]>0; }).sort(), best = 0, run = 0, prev = "";
+  keys.forEach(function(k){ run = (prev && diffDays(k, prev)===1) ? run+1 : 1; if(run>best) best = run; prev = k; });
+  var mo = todayKey.slice(0,7), inMonth = keys.filter(function(k){ return k.slice(0,7)===mo; }).length;
+  return {cur:cur, best:best, total:keys.length, month:inMonth, today:!!m[todayKey]};
+}
+function dxStreakHtml(){
+  var m = studyMinutesByDay(), st = streakStats(m), WEEKS = 18;
+  var mon = mondayOf(parseKey(todayKey)), start = addDays(mon, -7*(WEEKS-1)), cols = "";
+  for(var w=0; w<WEEKS; w++){
+    var col = "";
+    for(var d=0; d<7; d++){
+      var day = addDays(start, w*7+d), k = toKey(day);
+      if(k > todayKey){ col += '<i class="fut"></i>'; continue; }
+      var v = m[k]||0, lv = v<=0 ? 0 : v<30 ? 1 : v<90 ? 2 : v<180 ? 3 : 4;
+      col += '<i class="l'+lv+(k===todayKey ? " now" : "")+'" title="'+esc(fmtDM(day)+(v>0 ? " · "+fmtDurMin(v) : " · no study"))+'"></i>';
+    }
+    cols += '<div class="hm-col">'+col+'</div>';
+  }
+  var msg = st.cur>0 ? (st.today ? "Keep it going tomorrow." : "Study today to keep your streak alive.") : "Study today to start a new streak.";
+  return '<div class="dx-card dx-streak"><div class="dx-k">STUDY STREAK</div>'+
+    '<div class="st-top"><div class="st-flame" aria-hidden="true">'+(st.cur>0 ? "🔥" : "🌱")+'</div><div><div class="st-num"><b>'+st.cur+'</b> day'+(st.cur===1 ? "" : "s")+'</div><small>'+esc(msg)+'</small></div></div>'+
+    '<div class="st-facts"><span><b>'+st.best+'</b>best streak</span><span><b>'+st.month+'</b>days this month</span><span><b>'+st.total+'</b>days in all</span></div>'+
+    '<div class="hm" aria-label="Study days, last '+WEEKS+' weeks">'+cols+'</div>'+
+    '<div class="hm-key"><span>Less</span><i class="l0"></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i><span>More</span></div></div>';
+}
+
+var REV_KEY = "dossier.revdone.v1", REV_GAPS = [1,7,30], REV_MAX_LATE = 60;
+var revDone = lsGetJSON(REV_KEY, {}); if(!revDone || typeof revDone!=="object") revDone = {};
+function revSave(){ lsSetJSON(REV_KEY, revDone); }
+function revisionsDue(){
+  if(!studyPlan) return [];
+  var names = {}, subj = {};
+  subjectStates(studyPlan).forEach(function(st){ st.leaves.forEach(function(l){ names[l.id] = l.unit || l.topic || l.id.split("|").pop(); subj[l.id] = st.name; }); });
+  var viaSession = {};
+  studySessions.forEach(function(x){ if(x.kind==="revision" && x.topicId && x.status==="completed") (viaSession[x.topicId] = viaSession[x.topicId] || []).push(x.date); });
+  var out = [];
+  Object.keys(studyProgress.topics||{}).forEach(function(id){
+    var t = studyProgress.topics[id]; if(!t || t.status!=="completed" || !t.completedAt || !names[id]) return;
+    // only the latest stage that has come due matters: a chapter finished 3 weeks ago needs its Week 1 recall, not a Day 1 one
+    var gi = -1;
+    for(var i=0;i<REV_GAPS.length;i++){ if(diffDays(todayKey, toKey(addDays(parseKey(t.completedAt), REV_GAPS[i]))) >= 0) gi = i; }
+    if(gi < 0) return;
+    var g = REV_GAPS[gi], due = toKey(addDays(parseKey(t.completedAt), g)), late = diffDays(todayKey, due);
+    if(revDone[id+"#"+g] || late > REV_MAX_LATE) return;
+    if((viaSession[id]||[]).some(function(dt){ return dt >= due; })) return;
+    out.push({id:id, gap:g, due:due, late:late, name:names[id], subject:subj[id]});
+  });
+  out.sort(function(a,b){ return b.late - a.late || (a.name < b.name ? -1 : 1); });
+  return out;
+}
+var revShowAll = false;
+function dxRevisionHtml(){
+  var list = revisionsDue(); if(!list.length) return "";
+  var shown = revShowAll ? list : list.slice(0,4);
+  return '<div class="dx-card dx-rev"><div class="dx-k">REVISE TODAY &middot; '+list.length+' DUE</div>'+
+    shown.map(function(r){
+      var tag = r.gap===1 ? "Day 1" : r.gap===7 ? "Week 1" : "Month 1";
+      var late = r.late>0 ? r.late+" day"+(r.late===1 ? "" : "s")+" late" : "due today";
+      return '<div class="rv-row"><div class="rv-t"><b>'+esc(r.name)+'</b><small>'+esc(r.subject)+' &middot; '+tag+' revision &middot; '+late+'</small></div>'+
+        '<button type="button" class="rv-b ok" data-rev="done" data-id="'+esc(r.id)+'" data-gap="'+r.gap+'" aria-label="Mark revised">&#10003;</button>'+
+        '<button type="button" class="rv-b" data-rev="skip" data-id="'+esc(r.id)+'" data-gap="'+r.gap+'" aria-label="Skip this revision">&#10005;</button></div>';
+    }).join("")+
+    (list.length>4 ? '<button type="button" class="dx-btn2" data-rev="more">'+(revShowAll ? "Show fewer" : "Show all "+list.length)+'</button>' : '')+
+    '<small class="rv-note">Tick when you have revised it. The chapter returns after 1 day, 1 week and 1 month.</small></div>';
+}
+function bindRevision(host){
+  if(host._rev) return; host._rev = true;
+  host.addEventListener("click", function(e){
+    var b = e.target.closest ? e.target.closest("[data-rev]") : null; if(!b) return;
+    var a = b.getAttribute("data-rev");
+    if(a==="more"){ revShowAll = !revShowAll; renderDashboard(); return; }
+    revDone[b.getAttribute("data-id")+"#"+b.getAttribute("data-gap")] = (a==="skip" ? "skip:" : "")+todayKey; revSave();
+    if(a==="done") toast("Revision noted. See you again later.");
+    renderDashboard();
+  });
+}
 function renderDashboard(){
   var host = document.getElementById("view-dashboard");
   var today = new Date();
@@ -7011,7 +7170,9 @@ function renderDashboard(){
     timerCard()+
     '<div class="dx">'+
       dxProfileHtml()+
+      dxRevisionHtml()+
       (studyPlan ? dxPlanHtml() : plannerDashCard())+
+      dxStreakHtml()+
       '<div class="hero card">'+
         '<div class="hero-phase">'+esc(phase)+'</div>'+
         '<div class="countdowns">'+
@@ -7027,6 +7188,7 @@ function renderDashboard(){
   bindPlanSetupCard(host);
   bindBackupCard(host);
   bindPlannerDash(host);
+  bindRevision(host);
 }
 
 // ============================================================================
@@ -7051,6 +7213,7 @@ function renderSettings(){
   var ctx = real && real.n ? real : sampleLanes();
   var prevLefts = [].map.call(host.querySelectorAll(".th-row"), function(r){ return r.scrollLeft; });
   host.innerHTML =
+    backupCard()+
     uiThemeCardHtml()+
     '<div class="card set-card"><h3>Learning path theme</h3>'+
       '<div class="muted">How your journey looks on the Dashboard. Every subject running in parallel gets its own lane, and each marker moves as you finish chapters.</div>'+
@@ -7069,6 +7232,7 @@ function renderSettings(){
     var target = row.scrollLeft + (cc.left + cc.width/2) - (rr.left + rr.width/2);
     if(prevLeft >= 0 && row.scrollTo) row.scrollTo({left:target, behavior:"smooth"}); else row.scrollLeft = target;
   });
+  bindBackupCard(host);
   if(!host._wired){
     host._wired = true;
     host.addEventListener("click", function(e){
