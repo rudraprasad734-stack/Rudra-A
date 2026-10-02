@@ -6446,7 +6446,7 @@ var dashMore = false;
 // Every size is worked out from the real screen: --tu scales the timer scene, --tb its buttons and text, --pz the page content on big screens.
 function fitScreen(){
   var w = window.innerWidth || 390, h = window.innerHeight || 844, root = document.documentElement.style;
-  var u = Math.max(.8, Math.min(2.4, Math.min(w/390, h/700)));
+  var u = Math.max(.8, Math.min(2.4, Math.min(w/390, h/620)));
   root.setProperty("--tu", u.toFixed(3));
   root.setProperty("--tb", (1 + (u - 1)*.55).toFixed(3));
   root.setProperty("--pz", Math.max(1, Math.min(1.7, Math.min(w/820, h/560))).toFixed(3));
@@ -6764,7 +6764,7 @@ function initBlackHoleScene(host){
   var canvas=host.querySelector("#blackHoleScene"),ctx=canvas&&canvas.getContext("2d");if(!ctx)return;
   var reduced=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var dpr=Math.min(window.devicePixelRatio||1,2),w=1,h=1,cx=0,cy=0,scale=1,sceneU=1,particles=[],count=150;
-  function resize(){var r=canvas.getBoundingClientRect();w=Math.max(1,r.width);h=Math.max(1,r.height);canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);cx=w*.5;cy=h*.49;scale=Math.min(w,h)/2;sceneU=Math.max(.8,Math.min(2.4,Math.min(w/390,h/700)));}
+  function resize(){var r=canvas.getBoundingClientRect();w=Math.max(1,r.width);h=Math.max(1,r.height);canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);cx=w*.5;cy=h*.49;scale=Math.min(w,h)/2;sceneU=Math.max(.8,Math.min(2.4,Math.min(w/390,h/620)));}
   function spawn(p){p.r=.34+Math.random()*.88;p.a=Math.random()*Math.PI*2;p.prevR=p.r;p.prevA=p.a;p.pull=.00045+Math.random()*.0018;p.spin=(Math.random()<.75?1:-1)*(.002+Math.random()*.007);p.size=.55+Math.random()*1.35;p.alpha=.5+Math.random()*.5;p.warm=Math.random()<.2;p.life=0;p.max=500+Math.random()*1000;}
   for(var i=0;i<count;i++){var p={};spawn(p);particles.push(p);}
   var fillCur = null, dust = [];
