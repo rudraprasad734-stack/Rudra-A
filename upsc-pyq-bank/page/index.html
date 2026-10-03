@@ -862,6 +862,9 @@
   .sess-ctl label{display:flex; flex-direction:column; gap:4px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-soft);}
   .sess-act{font-size:13px; color:var(--ink-soft); grid-column:1/-1; padding-top:2px;}
   .sess-ctl{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));} .sess-ctl > *{min-width:0;} .sess-ctl input[type=time]{min-width:0; max-width:100%; box-sizing:border-box; display:block;}
+  .guide-card{max-width:440px;} .gd-h{display:flex; align-items:center; gap:10px; margin-bottom:6px;} .gd-h h2{margin:0; font-size:20px;} .gd-i{font-size:26px; line-height:1;}
+  .gd-s{margin:8px 0 4px; padding-left:20px; font-size:14.5px; line-height:1.55; color:var(--ink); max-height:min(56vh,420px); overflow-y:auto;} .gd-s li{margin:7px 0;} .gd-s b{color:var(--ink);}
+  .gd-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:8px; margin:10px 0;} .gd-btn{padding:10px; border-radius:10px; border:1px solid var(--line); background:var(--surface-2); color:var(--ink); font:inherit; font-size:13.5px; cursor:pointer; text-align:left;}
   .help-card{margin:10px 0 4px; border:1px solid var(--line); border-radius:12px; background:var(--surface-2); padding:0;} .help-card summary{cursor:pointer; list-style:none; padding:11px 14px; font-weight:700; font-size:14px; color:var(--ink); display:flex; align-items:center; gap:8px;} .help-card summary::-webkit-details-marker{display:none;} .help-card summary::after{content:"\25BE"; margin-left:auto; color:var(--ink-soft); transition:transform .2s;} .help-card:not([open]) summary::after{transform:rotate(-90deg);}
   .hc-i{width:20px; height:20px; border-radius:50%; flex:0 0 auto; display:grid; place-items:center; font:700 12px/1 Georgia,serif; font-style:italic; background:var(--tab-accent); color:var(--tab-accent-ink);}
   .hc-b{padding:0 14px 12px; font-size:13.5px; line-height:1.55; color:var(--ink);} .hc-b p{margin:8px 0; color:var(--ink);} .hc-b ol{margin:8px 0; padding-left:20px;} .hc-b li{margin:6px 0;} .hc-b i{font-style:normal; font-weight:700; color:var(--tab-accent);}
@@ -4139,6 +4142,7 @@ function openProfileModal(isEdit){
     closeModal();
     renderGreeting();
     toast(firstTime ? "Profile saved. Now plan your day." : "Profile updated.");
+    if(firstTime) scheduleGuide(1800);
     if(firstTime) setTab("planner"); else renderView(activeTab);
   });
   setTimeout(function(){ var f = m.querySelector("#pfName"); if(f) f.focus(); }, 30);
@@ -6711,6 +6715,7 @@ function applyDashMode(){
   if(isTimer && !wasTimer) setUiStage(2, 1600); else if(!isTimer){ clearTimeout(uiStageTimer); document.body.classList.remove("ui-sleep", "time-hide"); }
   var f = document.getElementById("dashFab");
   if(f) f.setAttribute("aria-label", dashMore ? "Back to the timer" : "Open Dashboard");
+  scheduleGuide(1200);
 }
 function renderTabs(){
   var activeGroup = groupOf(activeTab);
@@ -6765,6 +6770,7 @@ function setTab(id){
   });
   renderView(id);
   window.scrollTo({top:0, behavior:"instant" in window ? "instant" : "auto"});
+  scheduleGuide();
 }
 function renderView(id){
   if(id==="dashboard") renderDashboard();
@@ -7704,6 +7710,115 @@ function analyticsAsk(){
 setTimeout(analyticsAsk, 5000);
 setInterval(function(){ if(document.visibilityState==="visible") analyticsAsk(); }, 20000);
 setTimeout(function(){ if(analyticsOn()){ analyticsReady().then(function(){ trackEvent("app_open", {}); }); } }, 3000);
+
+// ============================================================================
+// FIRST-TIME GUIDES
+// Each screen explains itself once, the first time it is opened. They never repeat on their own,
+// and every one can be read again from Settings > App guides.
+// ============================================================================
+var GUIDE_KEY = "dossier.guides.v1", GUIDE_OFF_KEY = "dossier.guides.off";
+var guidesSeen = lsGetJSON(GUIDE_KEY, {}) || {};
+var GUIDES = {
+  home:{icon:"⏱", name:"Study timer", title:"Your study timer", steps:[
+    "Choose <b>Stopwatch</b> (counts up while you study) or <b>Pomodoro</b> (focus rounds with breaks that start by themselves).",
+    "Tap <b>Start</b> and study. The screen goes calm so nothing distracts you.",
+    "<b>Tap the screen once</b> to see the time, <b>tap again</b> to bring back the buttons. Tapping never pauses it: only the <b>Pause</b> button does.",
+    "When you finish, tap <b>Stop</b> and choose the session. Your time is saved and your progress updates.",
+    "The round button at the bottom opens your <b>Dashboard</b>. The <b>☰</b> button at the top left opens the menu."]},
+  dash:{icon:"📊", name:"Dashboard", title:"Your Dashboard", steps:[
+    "<b>Journey progress</b> at the top shows how many chapters you have finished overall.",
+    "<b>Active module</b> cards show each subject you are studying now and which session it belongs to. Swipe sideways when there is more than one.",
+    "<b>Today</b> compares the time you planned with the time you studied, counting every session of the day.",
+    "<b>Recent PYQ</b> gives one real exam question for each subject you are on. Scroll it like a wheel and tap <b>Solve Now</b>.",
+    "<b>Study streak</b> counts the days in a row you studied. <b>Revise today</b> lists chapters due for a quick recall: tap ✓ when done.",
+    "No plan yet? Build one in the Planner and these cards fill up. <b>Backup</b> is at the bottom."]},
+  plansetup:{icon:"🗓", name:"Planner setup", title:"Build your plan", steps:[
+    "Answer a few short steps: how long you have, Prelims, Mains or both, the order of your subjects, which chapters to include, your daily sessions, extras like essay and tests, then review.",
+    "<b>Priority</b> is the order you study subjects. When one reaches 100%, the next one unlocks.",
+    "<b>Capacity</b> is your daily study sessions. Pin a subject to a session to study it in parallel.",
+    "Nothing is final. Change it later with <b>Reschedule</b> or <b>Edit plan</b>, and your progress is kept."]},
+  planner:{icon:"🧭", name:"Planner", title:"Your Planner", steps:[
+    "<b>Overview</b> shows the subjects running now. Tap <b>Mark next chapter complete</b> when you finish a chapter.",
+    "<b>Yearly, Monthly, Weekly</b> and <b>Daily</b> are the same plan at different zoom levels. <b>Daily</b> is where you log what you studied.",
+    "<b>Progress</b> lists every chapter. <b>Priority</b> shows which topics matter most and how many past questions each has. <b>Insights</b> shows hours, reminders and catch-up.",
+    "Fell behind? Tap <b>Reschedule</b> and the plan moves forward. Finish a subject and the next one unlocks."]},
+  syllabus:{icon:"📚", name:"Syllabus", title:"Syllabus reference", steps:[
+    "Read the official syllabus for Prelims and Mains, paper by paper. Tap a paper to open it.",
+    "Use the <b>search box</b> to find a word anywhere in the syllabus, such as judiciary or biodiversity.",
+    "This page is for reading. Your tracking happens in the Planner."]},
+  tiers:{icon:"🎯", name:"Tiers", title:"Topic tiers", steps:[
+    "Topics are grouped by how often UPSC has asked them in past years (their <b>tier</b>), so you know what to study first.",
+    "There is nothing to tick here. Your progress follows the Planner: finish a chapter there and it shows as done here.",
+    "Tap a subject to open it. UPSC has no fixed pattern, so use tiers as a guide, not a guarantee."]},
+  mocks:{icon:"📝", name:"Mock tests", title:"Mock tests", steps:[
+    "The Planner decides when your mock tests happen. The cards at the top show how many you have done against the plan.",
+    "After each test, log it here with its type, date and score.",
+    "Your scores are kept together so you can see how you are improving."]},
+  pyq:{icon:"❓", name:"PYQ Bank", title:"Previous year questions", steps:[
+    "Pick an exam at the top, then browse the real questions year by year.",
+    "Switch to <b>Topic trends</b> to see which topics come up most often.",
+    "From the Dashboard or Planner, <b>Solve Now</b> jumps straight to the questions for a chapter."]},
+  quotes:{icon:"💬", name:"Quotes & cases", title:"Quotes and case studies", steps:[
+    "Three tabs: <b>Ethics (GS4)</b> and <b>Essay</b> quotes you can use in answers, and <b>Ethics Cases</b> with real, checked case studies.",
+    "Pick a tab and read. Use a quote only where it fits your argument."]},
+  settings:{icon:"⚙️", name:"Settings", title:"Settings", steps:[
+    "<b>App theme</b> changes the colours of the whole app. <b>Learning path</b> changes how your journey looks on the Dashboard.",
+    "<b>Cloud sync</b> (if shown) keeps your data safe online so it follows you to a new phone.",
+    "<b>Backup</b> saves everything to a file you keep, and restores it. Download one now and then.",
+    "<b>App guides</b> at the bottom lets you read any of these tips again."]}
+};
+var GUIDE_ORDER = ["home","dash","plansetup","planner","syllabus","tiers","mocks","pyq","quotes","settings"];
+function guideOff(){ return lsGet(GUIDE_OFF_KEY)==="1"; }
+function currentGuideId(){
+  var t = activeTab;
+  if(t==="dashboard") return dashMore ? "dash" : "home";
+  if(t==="planner") return (studyPlan && !plannerEditing) ? "planner" : "plansetup";
+  if(t==="prelims" || t==="mains") return "tiers";
+  return GUIDES[t] ? t : "";
+}
+function guideHtml(id, manual){
+  var g = GUIDES[id];
+  return '<div class="modal card guide-card" role="dialog" aria-modal="true" aria-labelledby="gdTitle">'+
+    '<div class="gd-h"><span class="gd-i" aria-hidden="true">'+g.icon+'</span><h2 id="gdTitle">'+esc(g.title)+'</h2></div>'+
+    '<ol class="gd-s">'+g.steps.map(function(x){ return '<li>'+x+'</li>'; }).join("")+'</ol>'+
+    '<div class="modal-actions">'+(manual ? "" : '<button type="button" class="btn ghost" id="gdSkip">Skip all tips</button>')+'<button type="button" class="btn primary" id="gdOk">'+(manual ? "Close" : "Got it")+'</button></div></div>';
+}
+function showGuide(id, manual){
+  var g = GUIDES[id]; if(!g) return;
+  var m = showModal(guideHtml(id, manual), true);
+  guidesSeen[id] = 1; lsSetJSON(GUIDE_KEY, guidesSeen);
+  m.querySelector("#gdOk").addEventListener("click", closeModal);
+  var sk = m.querySelector("#gdSkip");
+  if(sk) sk.addEventListener("click", function(){ lsSet(GUIDE_OFF_KEY, "1"); closeModal(); toast("Tips turned off. You can read them again in Settings."); });
+  trackEvent("screen_view", {screen:"guide_"+id});
+}
+var guideTimer = 0;
+function scheduleGuide(ms){
+  clearTimeout(guideTimer);
+  guideTimer = setTimeout(function(){
+    var id = currentGuideId();
+    if(!id || guideOff() || guidesSeen[id] || !profile) return;
+    if(document.getElementById("modalHost") || document.body.classList.contains("menu-open")) { guideTimer = setTimeout(function(){ scheduleGuide(0); }, 4000); return; }
+    showGuide(id, false);
+  }, ms==null ? 900 : ms);
+}
+function guidesCardHtml(){
+  var off = guideOff();
+  return '<div class="card set-card guides-card"><h3>App guides</h3>'+
+    '<div class="muted">Every screen explains itself the first time you open it. Read any guide again here.</div>'+
+    '<div class="gd-grid">'+GUIDE_ORDER.map(function(id){ return '<button type="button" class="gd-btn" data-guide="'+id+'"><span aria-hidden="true">'+GUIDES[id].icon+'</span> '+esc(GUIDES[id].name)+'</button>'; }).join("")+'</div>'+
+    '<div class="backup-btns"><button type="button" class="alt" data-guide-toggle="'+(off ? "on" : "off")+'">'+(off ? "Turn tips back on" : "Turn tips off")+'</button><button type="button" class="alt" data-guide-reset="1">Show every tip again</button></div></div>';
+}
+function bindGuides(host){
+  if(host._guides) return; host._guides = true;
+  host.addEventListener("click", function(e){
+    var t = e.target.closest ? e.target.closest("[data-guide],[data-guide-toggle],[data-guide-reset]") : null; if(!t) return;
+    if(t.hasAttribute("data-guide")){ showGuide(t.getAttribute("data-guide"), true); return; }
+    if(t.hasAttribute("data-guide-toggle")){ lsSet(GUIDE_OFF_KEY, t.getAttribute("data-guide-toggle")==="off" ? "1" : "0"); renderSettings(); return; }
+    guidesSeen = {}; lsSetJSON(GUIDE_KEY, guidesSeen); lsSet(GUIDE_OFF_KEY, "0"); toast("Tips will show again the first time you open each screen."); renderSettings();
+  });
+}
+setTimeout(function(){ scheduleGuide(0); }, 1500);
 function renderDashboard(){
   var host = document.getElementById("view-dashboard");
   var today = new Date();
@@ -7772,6 +7887,7 @@ function renderSettings(){
       }).join("")+'</div>'+
       '<div class="th-prev"><div class="dx pth-prevbox"><div class="pth-scene pth-'+th.id+'">'+th.draw(ctx)+'</div></div>'+(real && real.n ? '' : '<div class="muted small">Preview with sample subjects. Build a plan to see your own.</div>')+'</div>'+
     '</div>'+
+    guidesCardHtml()+
     '<div class="card set-card about-card"><h3>About</h3><div class="muted">UPSC Companion works offline and keeps your data on this phone unless you sign in. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a> &middot; <a href="privacy.html#delete" target="_blank" rel="noopener">How to delete your data</a></div></div>';
   // keep each row where it was, then glide the chosen theme into the middle so you always know where you are
   [].forEach.call(host.querySelectorAll(".th-row"), function(row, ix){
@@ -7786,6 +7902,7 @@ function renderSettings(){
   bindBackupCard(host);
   bindCloud(host);
   bindStats(host);
+  bindGuides(host);
   if(cloudConfigured() && !cloud.user) cloudPrepare();
   if(!host._wired){
     host._wired = true;
