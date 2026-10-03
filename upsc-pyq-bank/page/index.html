@@ -860,7 +860,9 @@
   .sess-sub{margin-top:6px; font-size:13.5px; line-height:1.45;}
   .sess-ctl{display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:8px 10px; margin-top:10px; align-items:end;}
   .sess-ctl label{display:flex; flex-direction:column; gap:4px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-soft);}
-  .sess-act{font-size:13px; color:var(--ink-soft);}
+  .sess-act{font-size:13px; color:var(--ink-soft); grid-column:1/-1; padding-top:2px;}
+  .sess-ctl{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));} .sess-ctl > *{min-width:0;} .sess-ctl input[type=time]{min-width:0; max-width:100%; box-sizing:border-box; display:block;}
+  .sess-warn{margin-top:6px; padding:6px 10px; border-radius:8px; font-size:12.5px; background:color-mix(in srgb, #e5484d 16%, var(--surface)); color:var(--ink);}
   .sess-links{display:flex; gap:14px; margin-top:8px;}
   .sess-empty{margin:6px 0 10px;}
   .sess-mini{display:block; font-size:11.5px; color:var(--ink-soft); margin-top:3px;}
@@ -4393,20 +4395,51 @@ function sessLogCard(s){
       '<label>Actual start<input type="time" data-sf="actualStart" value="'+esc(s.actualStart)+'"></label>'+
       '<label>Actual end<input type="time" data-sf="actualEnd" value="'+esc(s.actualEnd)+'"></label>'+
       '<span class="sess-act">Actual study time <b>'+(s.actualDuration ? esc(fmtDurMin(s.actualDuration)) : "&mdash;")+'</b></span>'+
-    '</div>'+
+    '</div><div class="sess-warn" role="alert" hidden></div>'+
     '<div class="sess-links"><button class="link-btn" data-sact="same">Same as scheduled</button>'+(s.kind==="study" && s.topicId ? '<button class="link-btn" data-sact="chapter">'+(leafStatus(s.topicId)==="completed" ? "Chapter completed \u2713" : "Mark chapter complete")+'</button>' : "")+(s.origin==="auto" ? "" : '<button class="link-btn" data-sact="edit">Edit session</button>')+'</div>'+
   '</div>';
 }
 function bindSessionCards(host){
   Array.prototype.forEach.call(host.querySelectorAll(".sess-card"), function(card){
     var id = card.getAttribute("data-sid");
+    var warn = card.querySelector(".sess-warn");
+    // Time pickers: save quietly while the picker is open and redraw only after it closes, otherwise the
+    // phone's wheel disappears the moment it picks its first value (it fills in the current time by itself).
+    function commitTime(inp, f){
+      var s = sessionById(id), v = inp.value, patch = {};
+      var aS = f==="actualStart" ? v : s.actualStart, aE = f==="actualEnd" ? v : s.actualEnd;
+      if(aS && aE && toMin(aE)<=toMin(aS)){ warn.textContent = "The end time must be after the start time."; warn.hidden = false; return false; }
+      warn.hidden = true;
+      if(v===(f==="actualStart" ? s.actualStart : s.actualEnd)) return true;
+      patch[f] = v;
+      updateSession(id, patch); afterSessionChange(id);
+      var ab = card.querySelector(".sess-act b"), n = sessionById(id);
+      if(ab) ab.textContent = n && n.actualDuration ? fmtDurMin(n.actualDuration) : "\u2014";
+      card._redraw = true;
+      return true;
+    }
     Array.prototype.forEach.call(card.querySelectorAll("[data-sf]"), function(inp){
+      var f = inp.getAttribute("data-sf");
+      if(inp.type==="time"){
+        var pre = false;
+        inp.addEventListener("focus", function(){
+          // an empty field opens on the planned time instead of "now"
+          if(!inp.value){ var s0 = sessionById(id); inp.value = (f==="actualStart" ? s0.startTime : s0.endTime) || ""; pre = !!inp.value; }
+        });
+        inp.addEventListener("input", function(){ pre = false; });
+        inp.addEventListener("change", function(){ pre = false; commitTime(inp, f); });
+        inp.addEventListener("blur", function(){
+          var s1 = sessionById(id), cur = (f==="actualStart" ? s1.actualStart : s1.actualEnd) || "";
+          if(pre){ inp.value = ""; pre = false; }                 // opened and closed without choosing: nothing is saved
+          else if(inp.value !== cur && !commitTime(inp, f)) inp.value = cur;  // invalid: put the old value back
+          if(card._redraw){ card._redraw = false; setTimeout(refreshView, 0); }
+        });
+        return;
+      }
       inp.addEventListener("change", function(){
-        var s = sessionById(id), f = inp.getAttribute("data-sf"), patch = {};
+        var s = sessionById(id), patch = {};
         patch[f] = inp.value;
         if(f==="status" && inp.value==="in_progress" && !s.actualStart && s.date===todayKey) patch.actualStart = nowHM();
-        var aS = patch.actualStart!==undefined ? patch.actualStart : s.actualStart, aE = patch.actualEnd!==undefined ? patch.actualEnd : s.actualEnd;
-        if(aS && aE && toMin(aE)<=toMin(aS)){ toast("Actual end must be after the actual start."); refreshView(); return; }
         updateSession(id, patch); afterSessionChange(id); refreshView();
       });
     });
