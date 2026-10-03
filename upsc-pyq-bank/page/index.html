@@ -1050,6 +1050,7 @@
   .ac-name{font-family:var(--font-display); font-size:30px; font-weight:800; line-height:1.1; margin:4px 0;}
   .ac-pct{font-size:15px; font-weight:700;} .ac-sub{font-size:13px; color:var(--ink-soft); margin-top:6px;} .ac-next{margin-top:8px; font-size:14px;} .ac-next small{color:var(--ink-soft);}
   .ac-actions{display:flex; flex-wrap:wrap; gap:8px; margin-top:12px;}
+  .ac-multi{margin-bottom:12px;} .ac-multi .active-card{margin-bottom:10px;} .ac-mk{font-size:11.5px; font-weight:800; letter-spacing:.12em; color:var(--ink-soft); margin:0 2px 8px;} .ac-shared{margin-top:0;}
   .active-card.done{--bc:#22c55e;}
   .unlock-banner{display:flex; flex-direction:column; gap:2px; padding:12px 16px; margin-bottom:10px; border-radius:14px; color:#fff; background:linear-gradient(135deg,#12a150,#0ea5a0); animation:unlockPop .6s ease;}
   .unlock-banner b{display:flex; align-items:center; gap:6px;} .unlock-banner span{font-size:12px; letter-spacing:.08em; opacity:.95;} .unlock-banner strong{font-size:18px;}
@@ -5383,12 +5384,21 @@ function activeCardHtml(states, forDash){
     banner = '<div class="unlock-banner"><b>'+CHECK_SVG+' '+esc(u.done.toUpperCase())+' COMPLETED</b>'+(u.next ? '<span>NEXT SUBJECT UNLOCKED</span><strong>'+esc(u.next.toUpperCase())+' &middot; '+(function(){ var x = states.filter(function(s){ return s.name===u.next; })[0]; return x ? x.pct : 0; })()+'%</strong>' : '<span>Every selected subject is complete</span>')+'</div>';
   }
   if(!act) return banner+'<div class="card active-card done"><div class="ac-k">ALL SUBJECTS COMPLETED</div><div class="ac-name">Well done</div><div class="ac-sub">Every chapter in your selected scope is finished. Keep up your revision, tests and current affairs.</div></div>';
-  var nl = nextLeaf(act);
-  return banner+'<div class="card active-card" style="--bc:var('+act.color+')"><div class="ac-k">CURRENTLY ACTIVE</div><div class="ac-name">'+esc(act.name.toUpperCase())+'</div><div class="ac-pct">'+act.pct+'% Complete</div>'+
-    '<div class="pbar"><i style="width:'+act.pct+'%"></i></div><div class="ac-sub">'+act.done+' / '+act.total+' chapters completed</div>'+
-    (nl ? '<div class="ac-next" role="button" tabindex="0" data-go="subjday" data-subj="'+esc(act.name)+'" data-leaf="'+esc(nl.id)+'" title="Open this chapter in the planner">Next: <b>'+esc(nl.unit)+'</b> <small>'+esc(nl.group)+'</small>'+tierBadge(nl)+' <span class="go">Open in planner &rsaquo;</span></div>' : "")+
-    '<div class="ac-links"><button type="button" class="link-btn" data-go="subjday" data-subj="'+esc(act.name)+'">Open '+esc(act.name)+' in planner &rsaquo;</button><button type="button" class="link-btn" data-go="priority" data-subj="'+esc(act.name)+'">Topic priority (Tiers) &rsaquo;</button></div>'+
-    (forDash ? "" : '<div class="ac-actions"><button type="button" class="btn primary sm" data-pa="doneNext">Mark next chapter complete</button><button type="button" class="btn ghost sm" data-pa="undoLast">Undo last completion</button></div>')+'</div>';
+  // every subject running right now: the active one plus any pinned to a session slot
+  var running = pathCtx(states).lanes.map(function(l){ return l.subj; });
+  if(!running.length) running = [act];
+  var multi = running.length > 1;
+  function one(m){
+    var nl = nextLeaf(m);
+    return '<div class="card active-card" style="--bc:var('+m.color+')"><div class="ac-k">'+(multi ? "RUNNING NOW" : "CURRENTLY ACTIVE")+'</div><div class="ac-name">'+esc(m.name.toUpperCase())+'</div><div class="ac-pct">'+m.pct+'% Complete</div>'+
+      '<div class="pbar"><i style="width:'+m.pct+'%"></i></div><div class="ac-sub">'+m.done+' / '+m.total+' chapters completed</div>'+
+      (nl ? '<div class="ac-next" role="button" tabindex="0" data-go="subjday" data-subj="'+esc(m.name)+'" data-leaf="'+esc(nl.id)+'" title="Open this chapter in the planner">Next: <b>'+esc(nl.unit)+'</b> <small>'+esc(nl.group)+'</small>'+tierBadge(nl)+' <span class="go">Open in planner &rsaquo;</span></div>' : "")+
+      '<div class="ac-links"><button type="button" class="link-btn" data-go="subjday" data-subj="'+esc(m.name)+'">Open '+esc(m.name)+' in planner &rsaquo;</button><button type="button" class="link-btn" data-go="priority" data-subj="'+esc(m.name)+'">Topic priority (Tiers) &rsaquo;</button></div>'+
+      (forDash ? "" : '<div class="ac-actions"><button type="button" class="btn primary sm" data-pa="doneNext" data-subj="'+esc(m.name)+'">Mark next chapter complete</button>'+(multi ? "" : '<button type="button" class="btn ghost sm" data-pa="undoLast">Undo last completion</button>')+'</div>')+'</div>';
+  }
+  if(!multi) return banner+one(running[0]);
+  return banner+'<div class="ac-multi"><div class="ac-mk">RUNNING IN PARALLEL &middot; '+running.length+' SUBJECTS</div>'+running.map(one).join("")+
+    (forDash ? "" : '<div class="ac-actions ac-shared"><button type="button" class="btn ghost sm" data-pa="undoLast">Undo last completion</button></div>')+'</div>';
 }
 function upcomingHtml(){
   return '<div class="upc">'+["essay","pyq","test","revision","ca"].map(function(k){
@@ -6177,7 +6187,9 @@ function plannerAction(a, el, sure){
     case "dPrev": plannerDay = toKey(addDays(parseKey(plannerDay), -1)); break;
     case "dNext": plannerDay = toKey(addDays(parseKey(plannerDay), 1)); break;
     case "dToday": plannerDay = todayKey; break;
-    case "doneNext": var act = activeSubject(studyPlan), nl = act ? nextLeaf(act) : null; if(nl) setLeaves([nl.id], "completed", "manual"); break;
+    case "doneNext":
+      var sn = el.getAttribute && el.getAttribute("data-subj"), act = sn ? subjectStates(studyPlan).filter(function(x){ return x.name===sn; })[0] : activeSubject(studyPlan), nl = act ? nextLeaf(act) : null;
+      if(nl) setLeaves([nl.id], "completed", "manual"); break;
     case "undoLast":
       var best = null; Object.keys(studyProgress.topics).forEach(function(id){ var t = studyProgress.topics[id]; if(t.status==="completed" && (!best || t.at > studyProgress.topics[best].at)) best = id; });
       if(best) setLeaves([best], "not_started"); else toast("Nothing to undo.");
