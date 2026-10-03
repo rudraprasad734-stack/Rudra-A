@@ -862,6 +862,9 @@
   .sess-ctl label{display:flex; flex-direction:column; gap:4px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-soft);}
   .sess-act{font-size:13px; color:var(--ink-soft); grid-column:1/-1; padding-top:2px;}
   .sess-ctl{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));} .sess-ctl > *{min-width:0;} .sess-ctl input[type=time]{min-width:0; max-width:100%; box-sizing:border-box; display:block;}
+  .help-card{margin:10px 0 4px; border:1px solid var(--line); border-radius:12px; background:var(--surface-2); padding:0;} .help-card summary{cursor:pointer; list-style:none; padding:11px 14px; font-weight:700; font-size:14px; color:var(--ink); display:flex; align-items:center; gap:8px;} .help-card summary::-webkit-details-marker{display:none;} .help-card summary::after{content:"\25BE"; margin-left:auto; color:var(--ink-soft); transition:transform .2s;} .help-card:not([open]) summary::after{transform:rotate(-90deg);}
+  .hc-i{width:20px; height:20px; border-radius:50%; flex:0 0 auto; display:grid; place-items:center; font:700 12px/1 Georgia,serif; font-style:italic; background:var(--tab-accent); color:var(--tab-accent-ink);}
+  .hc-b{padding:0 14px 12px; font-size:13.5px; line-height:1.55; color:var(--ink);} .hc-b p{margin:8px 0; color:var(--ink);} .hc-b ol{margin:8px 0; padding-left:20px;} .hc-b li{margin:6px 0;} .hc-b i{font-style:normal; font-weight:700; color:var(--tab-accent);}
   .sess-warn{margin-top:6px; padding:6px 10px; border-radius:8px; font-size:12.5px; background:color-mix(in srgb, #e5484d 16%, var(--surface)); color:var(--ink);}
   .sess-links{display:flex; gap:14px; margin-top:8px;}
   .sess-empty{margin:6px 0 10px;}
@@ -5545,6 +5548,22 @@ function weeklyHtml(plan, states){
   return '<div class="navrow"><button type="button" class="btn ghost sm" data-pa="wPrev">&lsaquo;</button><b>'+esc(fmtDM(mon))+' – '+esc(fmtDM(addDays(mon,6)))+'</b><button type="button" class="btn ghost sm" data-pa="wNext">&rsaquo;</button></div>'+
     '<div class="section-title">Focus this week</div>'+focus+'<div class="section-title">Days</div>'+body;
 }
+// a short guide for aspirants, shown open the first time and remembered once they close it
+function logHelpHtml(){
+  return '<details class="help-card" id="logHelp"'+(lsGet("dossier.help.log")==="closed" ? "" : " open")+'><summary><span class="hc-i" aria-hidden="true">i</span> How to log your study time</summary>'+
+    '<div class="hc-b">'+
+      '<p><b>In one line:</b> each card below is one study slot planned for the day. Tell the app when you really studied, and your progress, streak and hours update by themselves.</p>'+
+      '<ol>'+
+        '<li><b>Easiest way: use the timer.</b> Start it on the Dashboard when you begin. When you stop, tap <i>Save your study time</i> and pick the session. The start, end and total time are filled in for you.</li>'+
+        '<li><b>Studied exactly as planned?</b> Tap <i>Same as scheduled</i>. It fills in the planned times and marks the session Completed.</li>'+
+        '<li><b>Studied at a different time, or without your phone?</b> Type the real <i>Actual start</i> and <i>Actual end</i>. Tap an empty time and the clock opens on the planned time: choose yours. The end must be after the start. It does not have to match the planned slot, and it can be longer.</li>'+
+        '<li><b>Missed a session?</b> You can come back any time. Use the <b>&lsaquo; &rsaquo;</b> arrows above to open that day and enter what you studied.</li>'+
+        '<li><b>Finished the chapter?</b> Tap <i>Mark chapter complete</i>. The planner then moves to the next chapter.</li>'+
+      '</ol>'+
+      '<p><b>The Status updates itself.</b> Studied the full planned time: <i>Completed</i>. Studied part of it: <i>In progress</i>. A Missed or Skipped session comes back as soon as you enter time. You can still change the Status yourself.</p>'+
+      '<p><b>Why it matters.</b> Completed sessions finish chapters and unlock the next subject. Your actual time feeds the Today bar, your study streak and the weekly hours in Insights.</p>'+
+    '</div></details>';
+}
 function dailyHtml(plan){
   var d = plannerDay || todayKey;
   plannerDay = d;
@@ -5554,12 +5573,15 @@ function dailyHtml(plan){
   return '<div class="navrow"><button type="button" class="btn ghost sm" data-pa="dPrev">&lsaquo;</button><b>'+esc(fmtLong(parseKey(d)))+'</b><button type="button" class="btn ghost sm" data-pa="dNext">&rsaquo;</button></div>'+
     '<div class="pill-row"><button type="button" class="btn ghost sm" data-pa="dToday">Today</button></div>'+
     '<div class="card sess-day"><div class="sess-day-head"><h3>Sessions</h3><span class="muted">'+(real.length ? done+"/"+real.length+" completed" : "none scheduled")+'</span></div>'+
+      logHelpHtml()+
       (list.length ? list.map(function(s){ return s.projected ? planRow(s) : sessLogCard(s); }).join("") : '<div class="muted sess-empty">Nothing planned on this day.</div>')+'</div>'+
     '<div class="notes-card card"><h3>Notes</h3><textarea id="dayNotes" placeholder="How did today go? Anything to revise or flag for tomorrow...">'+esc(st.notes||"")+'</textarea><div class="save-hint" id="dayNotesHint">'+(db ? "Saves automatically as you type" : "Saved on this device")+'</div></div>'+
     '<div class="hint">Set a session&rsquo;s status or actual time here. Your plan, progress and dashboard update automatically.</div>';
 }
 function bindPlannerDaily(host){
   bindSessionCards(host);
+  var hp = host.querySelector("#logHelp");
+  if(hp) hp.addEventListener("toggle", function(){ lsSet("dossier.help.log", hp.open ? "open" : "closed"); });
   var ne = host.querySelector("#dayNotes"); if(!ne) return;
   ne.addEventListener("input", function(){
     var st = getDayState(plannerDay); st.notes = ne.value;
