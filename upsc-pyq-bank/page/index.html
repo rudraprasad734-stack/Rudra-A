@@ -4412,7 +4412,17 @@ function bindSessionCards(host){
       warn.hidden = true;
       if(v===(f==="actualStart" ? s.actualStart : s.actualEnd)) return true;
       patch[f] = v;
+      // studied time entered on a session that was not marked yet: mark it for the person
+      var dur = (aS && aE) ? toMin(aE)-toMin(aS) : 0, was = s.status, auto = "";
+      if(dur > 0 && (was==="not_started" || was==="missed" || was==="skipped" || was==="in_progress")){
+        auto = dur >= s.duration ? "completed" : "in_progress";
+        if(auto !== was){ patch.status = auto; } else auto = "";
+      }
       updateSession(id, patch); afterSessionChange(id);
+      if(auto){
+        var sel = card.querySelector('[data-sf="status"]'); if(sel) sel.value = auto;
+        toast(auto==="completed" ? "Marked Completed: you studied the full session." : "Marked In progress: you studied part of it.");
+      }
       var ab = card.querySelector(".sess-act b"), n = sessionById(id);
       if(ab) ab.textContent = n && n.actualDuration ? fmtDurMin(n.actualDuration) : "\u2014";
       card._redraw = true;

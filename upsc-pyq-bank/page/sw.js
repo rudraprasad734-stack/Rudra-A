@@ -1,7 +1,7 @@
 // UPSC Companion service worker: caches the app shell so the page loads and
 // runs with zero network connectivity after the first successful visit.
 // Bump CACHE_NAME on any deploy that changes cached files so clients refresh.
-const CACHE_NAME = "upsc-companion-v69";
+const CACHE_NAME = "upsc-companion-v70";
 const APP_SHELL = [
   "./",
   "./index.html",
