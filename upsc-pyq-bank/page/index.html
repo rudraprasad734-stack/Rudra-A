@@ -868,6 +868,7 @@
   .help-card{margin:10px 0 4px; border:1px solid var(--line); border-radius:12px; background:var(--surface-2); padding:0;} .help-card summary{cursor:pointer; list-style:none; padding:11px 14px; font-weight:700; font-size:14px; color:var(--ink); display:flex; align-items:center; gap:8px;} .help-card summary::-webkit-details-marker{display:none;} .help-card summary::after{content:"\25BE"; margin-left:auto; color:var(--ink-soft); transition:transform .2s;} .help-card:not([open]) summary::after{transform:rotate(-90deg);}
   .hc-i{width:20px; height:20px; border-radius:50%; flex:0 0 auto; display:grid; place-items:center; font:700 12px/1 Georgia,serif; font-style:italic; background:var(--tab-accent); color:var(--tab-accent-ink);}
   .hc-b{padding:0 14px 12px; font-size:13.5px; line-height:1.55; color:var(--ink);} .hc-b p{margin:8px 0; color:var(--ink);} .hc-b ol{margin:8px 0; padding-left:20px;} .hc-b li{margin:6px 0;} .hc-b i{font-style:normal; font-weight:700; color:var(--tab-accent);}
+  .ts-carry{padding:10px; border:1px solid var(--line); border-radius:10px; background:var(--surface-2);} .ts-rad{display:flex; gap:8px; align-items:flex-start; font-size:13.5px; margin:4px 0; text-transform:none; letter-spacing:0; font-weight:500; color:var(--ink);} .ts-rad input{width:auto; min-height:0; margin-top:3px;}
   .sess-warn{margin-top:6px; padding:6px 10px; border-radius:8px; font-size:12.5px; background:color-mix(in srgb, #e5484d 16%, var(--surface)); color:var(--ink);}
   .sess-links{display:flex; gap:14px; margin-top:8px;}
   .sess-empty{margin:6px 0 10px;}
@@ -3546,7 +3547,7 @@ var todayKey = toKey(new Date());
 var timerInterval = null;
 var blackHoleAnimFrame = null, bhWait = null, bhSky = window.__bhSky = {next:0, glow:null}; // sky timing outlives the card, so tab switches don't reset it
 var TIMER_KEY = "dossier.timer.v2";
-function timerDefault(){ return {mode:"free", running:false, startedAt:0, accMs:0, studyMs:0, phase:"focus", cycle:0, preset:0, pending:0, brkMin:0, waiting:false}; }
+function timerDefault(){ return {mode:"free", running:false, startedAt:0, accMs:0, studyMs:0, phase:"focus", cycle:0, preset:0, pending:0, brkMin:0, waiting:false, runStart:0, lastAt:0, brkIn:0, brkPend:0, pendInfo:null}; }
 var timerState = Object.assign(timerDefault(), (function(){ try{ var v = JSON.parse(localStorage.getItem(TIMER_KEY)||"null"); return v && typeof v==="object" ? v : {}; }catch(e){ return {}; } })());
 var currentDailyKey = todayKey;
 
@@ -4324,7 +4325,7 @@ function sessionPaperLabel(s){ return s.optionalSubject ? s.optionalSubject+" (O
 function updateSession(id, patch){
   var s = sessionById(id); if(!s) return null;
   Object.keys(patch).forEach(function(k){ s[k] = patch[k]; });
-  s.actualDuration = (s.actualStart && s.actualEnd && toMin(s.actualEnd)>toMin(s.actualStart)) ? toMin(s.actualEnd)-toMin(s.actualStart) : 0;
+  s.actualDuration = (s.actualStart && s.actualEnd && toMin(s.actualEnd)>toMin(s.actualStart)) ? Math.max(0, toMin(s.actualEnd)-toMin(s.actualStart)-(s.breakMin||0)) : 0;
   s.updatedAt = new Date().toISOString();
   saveSessions();
   return s;
@@ -4401,7 +4402,7 @@ function sessLogCard(s){
       '<label>Status<select data-sf="status">'+STATUSES.map(function(o){ return '<option value="'+o[0]+'"'+(o[0]===s.status?" selected":"")+'>'+o[1]+'</option>'; }).join("")+'</select></label>'+
       '<label>Actual start<input type="time" data-sf="actualStart" value="'+esc(s.actualStart)+'"></label>'+
       '<label>Actual end<input type="time" data-sf="actualEnd" value="'+esc(s.actualEnd)+'"></label>'+
-      '<span class="sess-act">Actual study time <b>'+(s.actualDuration ? esc(fmtDurMin(s.actualDuration)) : "&mdash;")+'</b></span>'+
+      '<span class="sess-act">Actual study time <b>'+(s.actualDuration ? esc(fmtDurMin(s.actualDuration)) : "&mdash;")+'</b>'+(s.breakMin>0 ? ' <small>+ '+esc(fmtDurMin(s.breakMin))+' of breaks, not counted</small>' : "")+'</span>'+
     '</div><div class="sess-warn" role="alert" hidden></div>'+
     '<div class="sess-links"><button class="link-btn" data-sact="same">Same as scheduled</button>'+(s.kind==="study" && s.topicId ? '<button class="link-btn" data-sact="chapter">'+(leafStatus(s.topicId)==="completed" ? "Chapter completed \u2713" : "Mark chapter complete")+'</button>' : "")+(s.origin==="auto" ? "" : '<button class="link-btn" data-sact="edit">Edit session</button>')+'</div>'+
   '</div>';
@@ -4418,7 +4419,7 @@ function bindSessionCards(host){
       if(aS && aE && toMin(aE)<=toMin(aS)){ warn.textContent = "The end time must be after the start time."; warn.hidden = false; return false; }
       warn.hidden = true;
       if(v===(f==="actualStart" ? s.actualStart : s.actualEnd)) return true;
-      patch[f] = v;
+      patch[f] = v; patch.breakMin = 0; patch.pomoBreakMin = 0;   // times typed by hand are all study time
       // studied time entered on a session that was not marked yet: mark it for the person
       var dur = (aS && aE) ? toMin(aE)-toMin(aS) : 0, was = s.status, auto = "";
       if(dur > 0 && (was==="not_started" || was==="missed" || was==="skipped" || was==="in_progress")){
@@ -4464,7 +4465,7 @@ function bindSessionCards(host){
       b.addEventListener("click", function(){
         var a = b.getAttribute("data-sact"), s = sessionById(id);
         if(a==="edit") openSessionEditor(id);
-        if(a==="same"){ updateSession(id, {actualStart:s.startTime, actualEnd:s.endTime, status:"completed"}); afterSessionChange(id); refreshView(); }
+        if(a==="same"){ updateSession(id, {actualStart:s.startTime, actualEnd:s.endTime, breakMin:0, pomoBreakMin:0, status:"completed"}); afterSessionChange(id); refreshView(); }
         if(a==="chapter"){
           if(leafStatus(s.topicId)==="completed") setLeaves([s.topicId], "not_started");
           else { setLeaves([s.topicId], "completed", "manual"); if(s.status==="not_started" || s.status==="in_progress") updateSession(id, {status:"completed"}); }
@@ -6853,8 +6854,10 @@ function timerAdvance(){
     if(st.phase==="focus"){
       // a focus round is over: bank exactly one round, then the break begins on its own
       st.studyMs += len; st.cycle++; st.phase = (st.cycle % 4===0) ? "long" : "short"; el -= len; changed = true; startedBreak = true;
+      st.lastAt = Date.now() - el;      // the moment this round really ended
     } else {
       // the break is over: stop here and wait for the user, however long they were away
+      st.brkPend = (st.brkPend||0) + len;   // counts toward the slot only if study follows it
       st.phase = "focus"; st.running = false; st.accMs = 0; st.startedAt = 0; st.waiting = true; ended = true; changed = true; break;
     }
   }
@@ -6911,22 +6914,61 @@ function timerTick(){
 function timerToggle(){
   if(timerState.pending>0) return;
   timerAdvance();
-  if(timerState.running){ timerState.accMs = timerSeg(); timerState.running = false; timerState.startedAt = 0; }
-  else { timerState.running = true; timerState.waiting = false; timerState.startedAt = Date.now(); trackEvent("timer_start", {mode:timerState.mode}); }
+  if(timerState.running){ if(timerState.mode=="free" || timerState.phase==="focus") timerState.lastAt = Date.now(); timerState.accMs = timerSeg(); timerState.running = false; timerState.startedAt = 0; }
+  else {
+    timerState.running = true; timerState.waiting = false; timerState.startedAt = Date.now(); trackEvent("timer_start", {mode:timerState.mode});
+    if(!timerState.runStart) timerState.runStart = Date.now();
+    if(timerState.mode==="pomo" && timerState.phase==="focus" && timerState.brkPend){ timerState.brkIn = (timerState.brkIn||0) + timerState.brkPend; timerState.brkPend = 0; }
+  }
   timerSave(); ensureTimerInterval(); timerUi();
   setUiStage(2);
 }
 function timerStop(){
   setUiStage(2);
   timerAdvance();
-  var ms = Math.round(timerStudyMs()), keep = {mode:timerState.mode, preset:timerState.preset};
-  timerState = Object.assign(timerDefault(), keep, {pending: ms >= 1000 ? ms : 0});
+  var ms = Math.round(timerStudyMs()), keep = {mode:timerState.mode, preset:timerState.preset}, st0 = timerState, nowT = Date.now();
+  var live = st0.running && (st0.mode==="free" || st0.phase==="focus");
+  var info = st0.runStart ? {startAt:st0.runStart, endAt:(live ? nowT : (st0.lastAt || nowT)), brkMs:(st0.mode==="pomo" ? (st0.brkIn||0) : 0), mode:st0.mode} : null;
+  timerState = Object.assign(timerDefault(), keep, {pending: ms >= 1000 ? ms : 0, pendInfo: info});
   timerSave(); ensureTimerInterval(); timerUi();
   if(timerState.pending > 0){ var mn = ms/60000; trackEvent("timer_saved", {minutes:(mn<15 ? "<15" : mn<30 ? "15-30" : mn<60 ? "30-60" : "60+")}); openTimerSave(); }
 }
 function timerTargets(){ return planSessionsOn(todayKey).filter(function(x){ return !x.projected; }); }
+function hmStr(m){ m = Math.max(0, Math.min(1439, Math.round(m))); return pad2(Math.floor(m/60))+":"+pad2(m%60); }
+function timerRealWindow(info){
+  if(!info || !info.startAt || !info.endAt) return null;
+  var a = new Date(info.startAt), b = new Date(info.endAt);
+  if(toKey(a)!==toKey(b)) return null;                    // a run that crossed midnight: fall back to simple times
+  var s0 = a.getHours()*60+a.getMinutes(), e0 = b.getHours()*60+b.getMinutes();
+  return e0 > s0 ? {s:s0, e:e0} : null;
+}
+// split the minutes studied over sessions: the chosen one first, then (optionally) your next unfinished sessions of the same subject today
+function timerAlloc(sid, studyMin, brkMin, carry){
+  var first = sessionById(sid); if(!first) return [];
+  var ratio = studyMin>0 ? brkMin/studyMin : 0, list = [first];
+  if(carry && first.kind==="study"){
+    var rest = timerTargets().filter(function(x){ return x.id!==sid && x.kind==="study" && x.subject===first.subject && x.status!=="completed" && x.status!=="skipped"; }).sort(function(a,b){ return toMin(a.startTime)-toMin(b.startTime); });
+    var f = toMin(first.startTime);
+    list = list.concat(rest.filter(function(x){ return toMin(x.startTime) > f; }), rest.filter(function(x){ return toMin(x.startTime) <= f; }));
+  }
+  var left = studyMin, brkLeft = brkMin, out = [];
+  list.forEach(function(x, i){
+    if(left <= 0) return;
+    var last = i===list.length-1, budget = Math.max(0, x.duration - ((x.actualDuration||0) + (x.pomoBreakMin||0)));
+    var c = last ? left : Math.min(left, Math.floor(budget/(1+ratio)));
+    if(c <= 0) return;
+    var b = last ? brkLeft : Math.min(brkLeft, Math.max(Math.round(c*ratio), ratio>0 ? budget - c : 0));
+    out.push({id:x.id, study:c, brk:b}); left -= c; brkLeft -= b;
+  });
+  return out;
+}
+function timerOverflow(sid, studyMin, brkMin){
+  var x = sessionById(sid); if(!x) return false;
+  return studyMin + brkMin > Math.max(0, x.duration - ((x.actualDuration||0) + (x.pomoBreakMin||0)));
+}
 function openTimerSave(){
-  var ms = timerState.pending, list = timerTargets(), pick = "";
+  var ms = timerState.pending, list = timerTargets(), pick = "", info = timerState.pendInfo;
+  var studyMin = Math.max(1, Math.round(ms/60000)), brkMin = info ? Math.round((info.brkMs||0)/60000) : 0, win = timerRealWindow(info);
   var pool = list.filter(function(x){ return x.status==="in_progress"; })[0] || list.filter(function(x){ return x.status==="not_started" && x.kind==="study"; })[0];
   if(pool) pick = pool.id;
   var opts = list.map(function(x){
@@ -6935,29 +6977,62 @@ function openTimerSave(){
   }).join("");
   showModal('<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="tsTitle">'+
     '<h2 id="tsTitle">Save your study time</h2>'+
-    '<p>You studied for <b>'+esc(fmtDurMin(Math.max(1, Math.round(ms/60000))))+'</b> ('+esc(fmtTimer(ms))+').</p>'+
+    '<p>You studied for <b>'+esc(fmtDurMin(studyMin))+'</b> ('+esc(fmtTimer(ms))+').'+(win ? ' From <b>'+esc(fmt12(hmStr(win.s)))+'</b> to <b>'+esc(fmt12(hmStr(win.e)))+'</b>'+(brkMin ? ', with <b>'+esc(fmtDurMin(brkMin))+'</b> of breaks between rounds' : "")+'.' : '')+'</p>'+
     '<div class="cf"><label for="tsTarget">Record it against</label><select id="tsTarget">'+opts+'<option value=""'+(pick ? "" : " selected")+'>Only add to today&rsquo;s study time</option></select></div>'+
-    '<p class="muted small">Today&rsquo;s study time always includes it. If you pick a session, the time is added as that session&rsquo;s actual time. The planned length does not change, so a 2 hour session with 1 hour studied shows 1 hour done.</p>'+
+    '<div class="cf ts-carry" id="tsCarryBox" hidden><label class="ts-rad"><input type="radio" name="tsMode" value="carry" checked> <span>Fill this session, then carry the rest to my next session of the same subject today</span></label>'+
+      '<label class="ts-rad"><input type="radio" name="tsMode" value="all"> <span>Put all of it in this session</span></label><p class="muted small" id="tsPreview"></p></div>'+
+    '<p class="muted small">Today&rsquo;s study time always includes it. Only focus time counts as study. Breaks between Pomodoro rounds are not study time, but they do count toward finishing a session&rsquo;s planned length.</p>'+
     '<div class="modal-actions"><button class="btn ghost" id="tsDiscard">Discard</button><span class="grow"></span><button class="btn primary" id="tsSave">Save</button></div>'+
   '</div>', false);
-  document.getElementById("tsDiscard").addEventListener("click", function(){ timerState.pending = 0; timerSave(); closeModal(); timerUi(); toast("Timer discarded."); });
+  function carryOn(){ var r = document.querySelector('input[name="tsMode"]:checked'); return !r || r.value==="carry"; }
+  function refresh(){
+    var sid = document.getElementById("tsTarget").value, box = document.getElementById("tsCarryBox"), pv = document.getElementById("tsPreview");
+    if(!sid || !timerOverflow(sid, studyMin, brkMin)){ box.hidden = true; return; }
+    var first = sessionById(sid), others = timerAlloc(sid, studyMin, brkMin, true);
+    box.hidden = false;
+    var canCarry = first.kind==="study" && others.length > 1;
+    [].forEach.call(box.querySelectorAll("input"), function(i){ i.disabled = !canCarry; });
+    if(!canCarry){ box.querySelector('input[value="all"]').checked = true; pv.textContent = "This session is "+fmtDurMin(first.duration)+", and there is no other unfinished "+first.subject+" session today, so all of it stays here."; return; }
+    box.querySelector('input[value="carry"]').checked = box.querySelector('input[value="carry"]').checked || !box.querySelector('input[value="all"]').checked;
+    pv.textContent = carryOn() ? "It will be shared like this: "+others.map(function(p){ var x = sessionById(p.id); return "S"+x.sessionNumber+" "+fmtDurMin(p.study); }).join(", ")+"." : "All "+fmtDurMin(studyMin)+" goes into the session you chose, even though it is only planned for "+fmtDurMin(first.duration)+".";
+  }
+  document.getElementById("tsTarget").addEventListener("change", refresh);
+  [].forEach.call(document.querySelectorAll('input[name="tsMode"]'), function(i){ i.addEventListener("change", refresh); });
+  refresh();
+  document.getElementById("tsDiscard").addEventListener("click", function(){ timerState.pending = 0; timerState.pendInfo = null; timerSave(); closeModal(); timerUi(); toast("Timer discarded."); });
   document.getElementById("tsSave").addEventListener("click", function(){
     var sid = document.getElementById("tsTarget").value, add = timerState.pending;
     timerAddToToday(add);
-    if(sid) timerApplyToSession(sid, add);
-    timerState.pending = 0; timerSave(); closeModal();
+    if(sid) timerCommit(sid, add, info, carryOn());
+    timerState.pending = 0; timerState.pendInfo = null; timerSave(); closeModal();
     toast(sid ? "Time saved to your session and today's study time." : "Added to today's study time.");
     renderView(activeTab);
   });
 }
-function timerApplyToSession(sid, ms){
+function timerCommit(sid, ms, info, carry){
+  var first = sessionById(sid); if(!first) return;
+  var studyMin = Math.max(1, Math.round(ms/60000)), brkMin = info ? Math.round((info.brkMs||0)/60000) : 0, win = timerRealWindow(info);
+  var parts = timerAlloc(sid, studyMin, brkMin, carry && timerOverflow(sid, studyMin, brkMin));
+  var cursor = win ? win.s : toMin(first.actualStart || first.startTime);
+  // write every piece first, then let the planner react: its rebuild must not see a half-updated day
+  parts.forEach(function(p, i){
+    var last = i===parts.length-1, end = cursor + p.study + p.brk;
+    if(win) end = last ? win.e : Math.min(end, win.e);
+    timerApplyChunk(p.id, cursor, end, p.study, p.brk);
+    cursor = Math.min(1439, end);
+  });
+  parts.forEach(function(p){ if(sessionById(p.id)) afterSessionChange(p.id); });
+}
+// add one stretch of study to a session: study minutes count, the gaps and breaks inside the window are kept apart
+function timerApplyChunk(sid, sMin, eMin, study, brk){
   var s = sessionById(sid); if(!s) return;
-  var add = Math.max(1, Math.round(ms/60000)), total = (s.actualDuration||0) + add;
-  var aS = s.actualStart || s.startTime, endMin = Math.min(24*60-1, toMin(aS) + total);
-  total = endMin - toMin(aS);
-  var status = s.status==="completed" || total >= s.duration ? "completed" : "in_progress";
-  updateSession(sid, {actualStart:aS, actualEnd:pad2(Math.floor(endMin/60))+":"+pad2(endMin%60), status:status});
-  afterSessionChange(sid);
+  sMin = Math.max(0, Math.min(1438, sMin)); eMin = Math.min(1439, Math.max(eMin, sMin+1));
+  var has = !!(s.actualStart && s.actualEnd && (s.actualDuration||0) > 0);
+  var aS = has ? Math.min(toMin(s.actualStart), sMin) : sMin, aE = has ? Math.max(toMin(s.actualEnd), eMin) : eMin;
+  var studyTotal = (has ? (s.actualDuration||0) : 0) + study, pb = (has ? (s.pomoBreakMin||0) : 0) + brk;
+  var gap = Math.max(0, (aE - aS) - studyTotal);
+  var status = (s.status==="completed" || studyTotal + pb >= s.duration) ? "completed" : "in_progress";
+  updateSession(sid, {actualStart:hmStr(aS), actualEnd:hmStr(aE), breakMin:gap, pomoBreakMin:pb, status:status});
 }
 function timerSetMode(m){
   if(timerState.running || timerState.accMs>0 || timerState.studyMs>0 || timerState.pending>0) return;
@@ -8109,7 +8184,7 @@ function renderMocks(){
       saveMockTests();
       // logging the test also ticks off the planned test on that day
       var hit = studyPlan ? planSessionsOn(date).filter(function(x){ return x.kind==="test" && !x.projected && x.status!=="completed"; })[0] : null;
-      if(hit){ updateSession(hit.id, {status:"completed", actualStart:hit.startTime, actualEnd:hit.endTime, actualDuration:hit.duration}); afterSessionChange(hit.id); }
+      if(hit){ updateSession(hit.id, {status:"completed", actualStart:hit.startTime, actualEnd:hit.endTime, breakMin:0, pomoBreakMin:0, actualDuration:hit.duration}); afterSessionChange(hit.id); }
       renderMocks();
     }
     if(db){
