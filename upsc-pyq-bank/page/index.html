@@ -202,6 +202,10 @@
   .dx .backup-card{background:var(--surface) !important; border-color:var(--line) !important;} .dx .backup-card h3{color:var(--ink);} .dx .backup-card .sub{color:var(--ink-soft);}
   .dx .hero{background:var(--surface) !important; border-color:var(--line) !important;}
   @media (max-width:380px){ .dx-grid{grid-template-columns:1fr;} }
+  .dx-modsec{margin:0 0 12px;} .dx-modsec > .dx-k{margin:0 2px 8px;}
+  .dx-mods{display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; padding:2px 2px 6px; scrollbar-width:none; -webkit-overflow-scrolling:touch;} .dx-mods::-webkit-scrollbar{display:none;}
+  .dx-mods .dx-mod{flex:0 0 min(78%, 320px); scroll-snap-align:start; margin:0;}
+  .dx-grid-eq{grid-template-columns:1fr 1fr;} @media (max-width:380px){ .dx-grid-eq{grid-template-columns:1fr;} }
   /* ---- Learning-path themes ---- */
   .set-card{padding:14px 16px; margin:0 0 12px;} .set-card h3{font-size:15px; margin:0 0 6px;} .set-card .muted{font-size:13px;}
   .pth-scene{border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,.12); background:#0d1a30; margin:2px 0 10px;}
@@ -6442,20 +6446,30 @@ function dxPlanHtml(){
   if(nl){ var list = pyqForLeaf(nl).slice().sort(function(a,b){ return b.year-a.year; }); q = list[0] ? {q:list[0], n:list.length} : {q:null, n:0}; }
   var ring = '<div class="dx-card dx-journey"><div class="dx-ring" style="--p:'+op.pct+'"><b>'+op.pct+'%</b><span>COMPLETE</span></div>'+
     '<div class="dx-jt"><h3>UPSC Journey Progress</h3><div>Current status:</div><div>'+op.done+' / '+op.total+' chapters completed</div><div>'+daysLogged()+' day'+(daysLogged()===1 ? "" : "s")+' logged</div></div></div>';
-  var module = act
-    ? '<div class="dx-card dx-mod" style="--bc:var('+act.color+')"><div class="dx-k">ACTIVE MODULE</div><svg class="dx-book" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 14h20a6 6 0 016 6v32a5 5 0 00-5-5H8z"/><path d="M56 14H36a6 6 0 00-6 6v32a5 5 0 015-5h21z"/></svg>'+
-      '<div class="dx-subj">'+esc(act.name)+'</div><div class="dx-bar"><i style="width:'+act.pct+'%"></i></div><div class="dx-pc"><b>'+act.pct+'% COMPLETE</b><small>('+act.done+' of '+act.total+' chapters)</small></div>'+
-      (nl ? '<div class="dx-next" role="button" tabindex="0" data-go="subjday" data-subj="'+esc(act.name)+'" data-leaf="'+esc(nl.id)+'">Next: <b>'+esc(nl.unit)+'</b></div>' : '')+
-      '<button type="button" class="dx-btn" data-go="subjday" data-subj="'+esc(act.name)+'">Go to Planner</button>'+
-      '<button type="button" class="dx-btn2" data-go="priority" data-subj="'+esc(act.name)+'">Topic Priority (Tiers) &rsaquo;</button></div>'
+  function modCard(m){
+    var n = nextLeaf(m);
+    return '<div class="dx-card dx-mod" style="--bc:var('+m.color+')"><div class="dx-k">ACTIVE MODULE</div><svg class="dx-book" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 14h20a6 6 0 016 6v32a5 5 0 00-5-5H8z"/><path d="M56 14H36a6 6 0 00-6 6v32a5 5 0 015-5h21z"/></svg>'+
+      '<div class="dx-subj">'+esc(m.name)+'</div><div class="dx-bar"><i style="width:'+m.pct+'%"></i></div><div class="dx-pc"><b>'+m.pct+'% COMPLETE</b><small>('+m.done+' of '+m.total+' chapters)</small></div>'+
+      (n ? '<div class="dx-next" role="button" tabindex="0" data-go="subjday" data-subj="'+esc(m.name)+'" data-leaf="'+esc(n.id)+'">Next: <b>'+esc(n.unit)+'</b></div>' : '')+
+      '<button type="button" class="dx-btn" data-go="subjday" data-subj="'+esc(m.name)+'">Go to Planner</button>'+
+      '<button type="button" class="dx-btn2" data-go="priority" data-subj="'+esc(m.name)+'">Topic Priority (Tiers) &rsaquo;</button></div>';
+  }
+  // every subject running right now: the active one plus any pinned to a session slot
+  var running = pathCtx(states).lanes.map(function(l){ return l.subj; });
+  var module = running.length
+    ? (running.length > 1 ? '' : modCard(running[0]))
     : '<div class="dx-card dx-mod"><div class="dx-k">ALL SUBJECTS COMPLETED</div><div class="dx-subj">Well done</div><button type="button" class="dx-btn" data-go="day">Open planner</button></div>';
+  var mods = running.length > 1
+    ? '<div class="dx-modsec"><div class="dx-k">RUNNING IN PARALLEL &middot; '+running.length+' SUBJECTS</div><div class="dx-mods">'+running.map(modCard).join("")+'</div></div>'
+    : "";
   var pace = '<div class="dx-card dx-pace"><div class="dx-k">TODAY</div><div class="dx-seg">'+(segs || '<i></i><i></i><i></i><i></i>')+'</div><small>Planned '+esc(fmtDurMin(tp))+' &middot; Actual '+esc(fmtDurMin(ta))+'</small></div>';
   var pyq = '<div class="dx-card dx-pyq"><div class="dx-k">RECENT PYQ QUESTION</div>'+
     (q && q.q ? '<p>'+esc(String(q.q.text).replace(/\s+/g," ").trim().slice(0, 150))+(String(q.q.text).length > 150 ? "…" : "")+'</p><small>'+(q.q.exam==="prelims" ? "Prelims" : (q.q.exam==="optional" ? "Optional" : "Mains"))+" "+q.q.year+'</small><button type="button" class="dx-btn" data-pyq="'+esc(nl.id)+'" data-subj="'+esc(act.name)+'">Solve Now ('+q.n+')</button>'
       : '<p>No question in the bank matched this chapter yet.</p><button type="button" class="dx-btn" data-dx="pyq">Open PYQ Bank</button>')+'</div>';
   var path = pathHtml(states);
   var upc = '<div class="dx-card dx-up"><div class="dx-k">UPCOMING</div>'+upcomingHtml()+'<button type="button" class="dx-btn2" id="dashOpenPlanner">Open planner</button></div>';
-  return ring + '<div class="dx-grid">'+module+'<div class="dx-col">'+pace+pyq+'</div></div>'+path+upc;
+  var main = running.length > 1 ? mods+'<div class="dx-grid dx-grid-eq">'+pace+pyq+'</div>' : '<div class="dx-grid">'+module+'<div class="dx-col">'+pace+pyq+'</div></div>';
+  return ring + main + path + upc;
 }
 function bindPlannerDash(host){
   var a = host.querySelector("#dashSetupPlan"), b = host.querySelector("#dashOpenPlanner");
