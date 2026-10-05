@@ -4241,12 +4241,109 @@ var CURR_ESSAY = (function(){
   return o;
 })();
 var CURR_OPT = {
-  "Anthropology": CT({
-    "Physical Anthropology": "Human Evolution: Evolutionary Theories; Primate Evolution; Hominid Fossils; Human Variation | Human Genetics: Mendelian Principles; Chromosomal Aberrations; Population Genetics | Growth and Health: Growth and Development; Ecological Adaptation; Applied Physical Anthropology",
-    "Archaeological Anthropology": "Prehistoric Archaeology: Dating Methods; Palaeolithic Cultures; Mesolithic and Neolithic Cultures; Chalcolithic and Metal Ages",
-    "Socio-Cultural Anthropology": "Scope and Development: Scope and Branches; Relationship with Other Disciplines; Development of Anthropological Thought | Culture and Society: Culture and Civilisation; Kinship, Marriage and Family; Social Stratification | Economic and Political Organisation: Modes of Exchange; Tribal Political Systems; Law and Social Control | Religion, Theories and Language: Anthropological Theories; Religion, Magic and Witchcraft; Language and Culture | Research Methods: Fieldwork Traditions; Techniques of Data Collection; Applied Anthropology",
-    "Indian Anthropology": "Indian Culture and Civilisation: Palaeolithic to Harappan; Vedic and Post-Harappan Cultures; Contributions to Indian Civilisation | Demographic Profile: Ethnic and Linguistic Elements; Population Dynamics | Caste and Religion: Varnashram and Purushartha; Caste Structure and Theories; Sacred Complex; Impact of Religions | Village Studies: Indian Village Studies; Tribal-Caste Continuum; Indian Anthropologists | Tribal Situation: Tribal Distribution and Problems; Tribal Development Policies; PVTGs and Land Alienation; Tribal Movements | Development and Social Change: Displacement and Rehabilitation; Forest Policies; Constitutional Safeguards"
-  }),
+  "Anthropology": {
+    "Paper I": {
+      "Anthropology, human evolution and prehistory": [
+        "1.1  Meaning, scope and development of anthropology",
+        "1.2  Relationships with other disciplines",
+        "1.3  Main branches of anthropology",
+        "1.4  Human evolution and emergence of man",
+        "1.5  Primates",
+        "1.6  Phylogenetic status of fossil hominids",
+        "1.7  The biological basis of life",
+        "1.8  Prehistoric archaeology"
+      ],
+      "Culture, society, marriage, family and kinship": [
+        "2.1  The nature of culture",
+        "2.2  The nature of society",
+        "2.3  Marriage",
+        "2.4  Family",
+        "2.5  Kinship"
+      ],
+      "Economic organisation": [
+        "3  Economic organisation"
+      ],
+      "Political organisation and social control": [
+        "4  Political organisation and social control"
+      ],
+      "Religion": [
+        "5  Religion"
+      ],
+      "Anthropological theories": [
+        "6  Anthropological theories (a to j)"
+      ],
+      "Culture, language and communication": [
+        "7  Culture, language and communication"
+      ],
+      "Research methods in anthropology": [
+        "8  Research methods in anthropology"
+      ],
+      "Human genetics, race, ecology and epidemiology": [
+        "9.1  Human genetics",
+        "9.2  Mendelian genetics in man",
+        "9.3  Genetic polymorphism and selection; Hardy-Weinberg law; inbreeding; genetic load",
+        "9.4  Chromosomes and chromosomal aberrations; genetic imprints, screening, counselling, DNA profiling, genome",
+        "9.5  Race and racism",
+        "9.6  Age, sex and population variation as genetic markers; blood groups; physiological characteristics",
+        "9.7  Ecological anthropology",
+        "9.8  Epidemiological anthropology"
+      ],
+      "Human growth and development": [
+        "10  Human growth and development; ageing; physique and somatotypes"
+      ],
+      "Demography and fertility": [
+        "11.1  Menarche, menopause and other bio-events; fertility patterns",
+        "11.2  Demographic theories",
+        "11.3  Factors influencing fecundity, fertility, natality and mortality"
+      ],
+      "Applications of anthropology": [
+        "12  Applications of anthropology"
+      ]
+    },
+    "Paper II": {
+      "Indian culture and civilisation": [
+        "1.1  Evolution of Indian culture and civilisation",
+        "1.2  Palaeo-anthropological evidence from India",
+        "1.3  Ethno-archaeology in India"
+      ],
+      "Demographic profile of India": [
+        "2  Demographic profile of India"
+      ],
+      "Traditional Indian social system, caste and religion": [
+        "3.1  Traditional Indian social system",
+        "3.2  Caste system",
+        "3.3  Sacred complex and Nature-Man-Spirit complex",
+        "3.4  Impact of Buddhism, Jainism, Islam and Christianity on Indian society"
+      ],
+      "Anthropology in India": [
+        "4  Emergence, growth and development of anthropology in India"
+      ],
+      "Village, minorities and social change": [
+        "5.1  Indian village",
+        "5.2  Linguistic and religious minorities",
+        "5.3  Socio-cultural change"
+      ],
+      "Tribal situation and problems": [
+        "6.1  Tribal situation in India",
+        "6.2  Problems of tribal communities",
+        "6.3  Development projects and displacement; forest policy; urbanisation and industrialisation"
+      ],
+      "Weaker sections, tribal change and ethnicity": [
+        "7.1  Exploitation and deprivation of SC, ST and OBC; constitutional safeguards",
+        "7.2  Social change and contemporary tribal societies",
+        "7.3  Ethnicity, ethnic conflict, tribal unrest, regionalism, pseudo-tribalism; social change in colonial and post-Independent India"
+      ],
+      "Religion and the nation state": [
+        "8.1  Impact of Hinduism, Buddhism, Christianity, Islam and other religions on tribal societies",
+        "8.2  Tribe and nation state"
+      ],
+      "Tribal policy and applied anthropology": [
+        "9.1  History of tribal administration, policies, plans and programmes; PTGs; role of NGOs",
+        "9.2  Role of anthropology in tribal and rural development",
+        "9.3  Contributions of anthropology to understanding regionalism, communalism and ethnic and political movements"
+      ]
+    }
+  },
   "Geography": CT({
     "Physical Geography": "Geomorphology: Plate Tectonics; Denudation Processes; Landforms | Climatology: Atmosphere and Circulation; Cyclones and Monsoon; Climate Classification | Oceanography: Ocean Floor; Currents and Tides; Marine Resources",
     "Human Geography": "Population and Settlement: Population Distribution; Rural and Urban Settlements; Migration | Economic Geography: Agriculture Systems; Industrial Location; Trade and Transport",
@@ -4662,6 +4759,22 @@ function catalogLeaves(entry){
   return out;
 }
 function planCatalog(plan){ return buildCatalog(plan.catCfg); }
+// The Anthropology chapters now follow the 55 official UPSC items. A plan made on the earlier 48-chapter list is moved over once:
+// the old chapters (and their ticks) are dropped and the new ones are added if Anthropology was in the plan.
+var ANTHRO_PLAN_V = 2;
+function migrateAnthroOfficial(){
+  if(!studyPlan || studyPlan.anthV===ANTHRO_PLAN_V) return;
+  var oldIds = Object.keys(studyPlan.sel).filter(function(id){ return id.indexOf("Anthropology|")===0 && !ANTHRO_LEAF[(id.split("|")[1] || "").split(/\s*[\u203a>]\s*/).pop()+"|"+id.split("|")[2]]; });
+  var had = Object.keys(studyPlan.sel).some(function(id){ return id.indexOf("Anthropology|")===0; }), added = 0;
+  if(had){
+    oldIds.forEach(function(id){ delete studyPlan.sel[id]; if(studyPlan.cfg && studyPlan.cfg.sel) delete studyPlan.cfg.sel[id]; delete studyProgress.topics[id]; });
+    var e = planCatalog(studyPlan).map["Anthropology"];
+    if(e) catalogLeaves(e).forEach(function(l){ if(!studyPlan.sel[l.id]){ studyPlan.sel[l.id] = 1; if(studyPlan.cfg && studyPlan.cfg.sel) studyPlan.cfg.sel[l.id] = 1; added++; } });
+    saveProgress();
+  }
+  studyPlan.anthV = ANTHRO_PLAN_V; savePlan();
+  if(had) setTimeout(function(){ toast("Anthropology now follows the 55 items of the official UPSC syllabus. Your Anthropology chapters were reset."); }, 900);
+}
 function migrateExtras(){
   if(!studyPlan || !EXTRA || studyPlan.extraV===EXTRA.v) return;
   var cat = planCatalog(studyPlan), added = 0;
@@ -5908,54 +6021,171 @@ function tierWords(t){ return (t||"").toLowerCase().replace(/[^a-z0-9 ]+/g," ").
 // A spec that looks like "2.5" or "II-3.2" means every sub-topic under that official item; any other text is matched against sub-topic titles.
 // Between them the chapters reach every official item, so every past question can be read from some chapter.
 var ANTHRO_LEAF = {
- "Human Evolution|Evolutionary Theories":["1.4"],
- "Human Evolution|Primate Evolution":["1.5"],
- "Human Evolution|Hominid Fossils":["1.6"],
- "Human Evolution|Human Variation":["9.5"],
- "Human Genetics|Mendelian Principles":["9.1","9.2"],
- "Human Genetics|Chromosomal Aberrations":["9.4","1.7"],
- "Human Genetics|Population Genetics":["9.3","9.6"],
- "Growth and Health|Growth and Development":["10","11.1","11.2","11.3"],
- "Growth and Health|Ecological Adaptation":["9.7","9.8"],
- "Growth and Health|Applied Physical Anthropology":["12"],
- "Prehistoric Archaeology|Dating Methods":["dating methods","principles and field methods"],
- "Prehistoric Archaeology|Palaeolithic Cultures":["palaeolithic cultures of the world","cultural evolution"],
- "Prehistoric Archaeology|Mesolithic and Neolithic Cultures":["mesolithic cultures of the world","neolithic and the origin"],
- "Prehistoric Archaeology|Chalcolithic and Metal Ages":["chalcolithic, bronze"],
- "Scope and Development|Scope and Branches":["1.1","1.3"],
- "Scope and Development|Relationship with Other Disciplines":["1.2"],
- "Scope and Development|Development of Anthropological Thought":["6"],
- "Culture and Society|Culture and Civilisation":["2.1"],
- "Culture and Society|Kinship, Marriage and Family":["2.3","2.4","2.5"],
- "Culture and Society|Social Stratification":["2.2"],
- "Economic and Political Organisation|Modes of Exchange":["3"],
- "Economic and Political Organisation|Tribal Political Systems":["political organisation"],
- "Economic and Political Organisation|Law and Social Control":["social control"],
- "Religion, Theories and Language|Anthropological Theories":["6"],
- "Religion, Theories and Language|Religion, Magic and Witchcraft":["5"],
- "Religion, Theories and Language|Language and Culture":["7"],
- "Research Methods|Fieldwork Traditions":["fieldwork tradition"],
- "Research Methods|Techniques of Data Collection":["tools of data","sampling","participatory"],
- "Research Methods|Applied Anthropology":["12"],
- "Indian Culture and Civilisation|Palaeolithic to Harappan":["II-1.1","II-1.2","II-1.3"],
- "Indian Culture and Civilisation|Vedic and Post-Harappan Cultures":["II-3.1"],
- "Indian Culture and Civilisation|Contributions to Indian Civilisation":["II-3.3","II-3.4","tribal contribution"],
- "Demographic Profile|Ethnic and Linguistic Elements":["II-2"],
- "Demographic Profile|Population Dynamics":["population growth"],
- "Caste and Religion|Varnashram and Purushartha":["II-3.1"],
- "Caste and Religion|Caste Structure and Theories":["II-3.2"],
- "Caste and Religion|Sacred Complex":["II-3.3","great and little"],
- "Caste and Religion|Impact of Religions":["II-3.4","II-5.2","II-8.1"],
- "Village Studies|Indian Village Studies":["II-5.1","II-5.3"],
- "Village Studies|Tribal-Caste Continuum":["tribe-caste"],
- "Village Studies|Indian Anthropologists":["II-4"],
- "Tribal Situation|Tribal Distribution and Problems":["II-6.1","II-6.2"],
- "Tribal Situation|Tribal Development Policies":["II-9.1","II-9.2","II-7.2"],
- "Tribal Situation|PVTGs and Land Alienation":["pvtg","land alienation"],
- "Tribal Situation|Tribal Movements":["II-7.3","II-8.2","II-9.3"],
- "Development and Social Change|Displacement and Rehabilitation":["II-6.3"],
- "Development and Social Change|Forest Policies":["forest policy"],
- "Development and Social Change|Constitutional Safeguards":["II-7.1"]
+ "Anthropology, human evolution and prehistory|1.1  Meaning, scope and development of anthropology": [
+  "1.1"
+ ],
+ "Anthropology, human evolution and prehistory|1.2  Relationships with other disciplines": [
+  "1.2"
+ ],
+ "Anthropology, human evolution and prehistory|1.3  Main branches of anthropology": [
+  "1.3"
+ ],
+ "Anthropology, human evolution and prehistory|1.4  Human evolution and emergence of man": [
+  "1.4"
+ ],
+ "Anthropology, human evolution and prehistory|1.5  Primates": [
+  "1.5"
+ ],
+ "Anthropology, human evolution and prehistory|1.6  Phylogenetic status of fossil hominids": [
+  "1.6"
+ ],
+ "Anthropology, human evolution and prehistory|1.7  The biological basis of life": [
+  "1.7"
+ ],
+ "Anthropology, human evolution and prehistory|1.8  Prehistoric archaeology": [
+  "1.8"
+ ],
+ "Culture, society, marriage, family and kinship|2.1  The nature of culture": [
+  "2.1"
+ ],
+ "Culture, society, marriage, family and kinship|2.2  The nature of society": [
+  "2.2"
+ ],
+ "Culture, society, marriage, family and kinship|2.3  Marriage": [
+  "2.3"
+ ],
+ "Culture, society, marriage, family and kinship|2.4  Family": [
+  "2.4"
+ ],
+ "Culture, society, marriage, family and kinship|2.5  Kinship": [
+  "2.5"
+ ],
+ "Economic organisation|3  Economic organisation": [
+  "3"
+ ],
+ "Political organisation and social control|4  Political organisation and social control": [
+  "4"
+ ],
+ "Religion|5  Religion": [
+  "5"
+ ],
+ "Anthropological theories|6  Anthropological theories (a to j)": [
+  "6"
+ ],
+ "Culture, language and communication|7  Culture, language and communication": [
+  "7"
+ ],
+ "Research methods in anthropology|8  Research methods in anthropology": [
+  "8"
+ ],
+ "Human genetics, race, ecology and epidemiology|9.1  Human genetics": [
+  "9.1"
+ ],
+ "Human genetics, race, ecology and epidemiology|9.2  Mendelian genetics in man": [
+  "9.2"
+ ],
+ "Human genetics, race, ecology and epidemiology|9.3  Genetic polymorphism and selection; Hardy-Weinberg law; inbreeding; genetic load": [
+  "9.3"
+ ],
+ "Human genetics, race, ecology and epidemiology|9.4  Chromosomes and chromosomal aberrations; genetic imprints, screening, counselling, DNA profiling, genome": [
+  "9.4"
+ ],
+ "Human genetics, race, ecology and epidemiology|9.5  Race and racism": [
+  "9.5"
+ ],
+ "Human genetics, race, ecology and epidemiology|9.6  Age, sex and population variation as genetic markers; blood groups; physiological characteristics": [
+  "9.6"
+ ],
+ "Human genetics, race, ecology and epidemiology|9.7  Ecological anthropology": [
+  "9.7"
+ ],
+ "Human genetics, race, ecology and epidemiology|9.8  Epidemiological anthropology": [
+  "9.8"
+ ],
+ "Human growth and development|10  Human growth and development; ageing; physique and somatotypes": [
+  "10"
+ ],
+ "Demography and fertility|11.1  Menarche, menopause and other bio-events; fertility patterns": [
+  "11.1"
+ ],
+ "Demography and fertility|11.2  Demographic theories": [
+  "11.2"
+ ],
+ "Demography and fertility|11.3  Factors influencing fecundity, fertility, natality and mortality": [
+  "11.3"
+ ],
+ "Applications of anthropology|12  Applications of anthropology": [
+  "12"
+ ],
+ "Indian culture and civilisation|1.1  Evolution of Indian culture and civilisation": [
+  "II-1.1"
+ ],
+ "Indian culture and civilisation|1.2  Palaeo-anthropological evidence from India": [
+  "II-1.2"
+ ],
+ "Indian culture and civilisation|1.3  Ethno-archaeology in India": [
+  "II-1.3"
+ ],
+ "Demographic profile of India|2  Demographic profile of India": [
+  "II-2"
+ ],
+ "Traditional Indian social system, caste and religion|3.1  Traditional Indian social system": [
+  "II-3.1"
+ ],
+ "Traditional Indian social system, caste and religion|3.2  Caste system": [
+  "II-3.2"
+ ],
+ "Traditional Indian social system, caste and religion|3.3  Sacred complex and Nature-Man-Spirit complex": [
+  "II-3.3"
+ ],
+ "Traditional Indian social system, caste and religion|3.4  Impact of Buddhism, Jainism, Islam and Christianity on Indian society": [
+  "II-3.4"
+ ],
+ "Anthropology in India|4  Emergence, growth and development of anthropology in India": [
+  "II-4"
+ ],
+ "Village, minorities and social change|5.1  Indian village": [
+  "II-5.1"
+ ],
+ "Village, minorities and social change|5.2  Linguistic and religious minorities": [
+  "II-5.2"
+ ],
+ "Village, minorities and social change|5.3  Socio-cultural change": [
+  "II-5.3"
+ ],
+ "Tribal situation and problems|6.1  Tribal situation in India": [
+  "II-6.1"
+ ],
+ "Tribal situation and problems|6.2  Problems of tribal communities": [
+  "II-6.2"
+ ],
+ "Tribal situation and problems|6.3  Development projects and displacement; forest policy; urbanisation and industrialisation": [
+  "II-6.3"
+ ],
+ "Weaker sections, tribal change and ethnicity|7.1  Exploitation and deprivation of SC, ST and OBC; constitutional safeguards": [
+  "II-7.1"
+ ],
+ "Weaker sections, tribal change and ethnicity|7.2  Social change and contemporary tribal societies": [
+  "II-7.2"
+ ],
+ "Weaker sections, tribal change and ethnicity|7.3  Ethnicity, ethnic conflict, tribal unrest, regionalism, pseudo-tribalism; social change in colonial and post-Independent India": [
+  "II-7.3"
+ ],
+ "Religion and the nation state|8.1  Impact of Hinduism, Buddhism, Christianity, Islam and other religions on tribal societies": [
+  "II-8.1"
+ ],
+ "Religion and the nation state|8.2  Tribe and nation state": [
+  "II-8.2"
+ ],
+ "Tribal policy and applied anthropology|9.1  History of tribal administration, policies, plans and programmes; PTGs; role of NGOs": [
+  "II-9.1"
+ ],
+ "Tribal policy and applied anthropology|9.2  Role of anthropology in tribal and rural development": [
+  "II-9.2"
+ ],
+ "Tribal policy and applied anthropology|9.3  Contributions of anthropology to understanding regionalism, communalism and ethnic and political movements": [
+  "II-9.3"
+ ]
 };
 var anthroLeafMemo = {};
 function anthroLeafKey(l){ return String(l.group).split(/\s*[›>]\s*/).pop()+"|"+l.unit; }   // group is "Physical Anthropology › Human Genetics"; the chapter is keyed by its last part
@@ -8152,7 +8382,7 @@ function uiThemeCardHtml(){
     }).join("")+'</div></div>';
 }
 function sampleLanes(){
-  var names = ["History","Art & Culture","Anthropology"], tot = [35,16,48], dn = [0,0,0];
+  var names = ["History","Art & Culture","Anthropology"], tot = [35,16,55], dn = [0,0,0];
   return {n:3, lanes:names.map(function(n,i){ return {name:n, color:PATH_COLORS[i], pct:0, done:dn[i], total:tot[i], i:i}; }), dday:{label:"D-Day", days:0, sub:"your end date"}, locked:[], completed:[]};
 }
 function renderSettings(){
@@ -9257,6 +9487,7 @@ function boot(){
     else buildIndices();
     currentDailyKey = clampKey(todayKey);
 
+    migrateAnthroOfficial();
     migrateExtras();
     ensureTimerInterval();
     replan();
