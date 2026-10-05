@@ -7114,10 +7114,10 @@ function timerCard(){
     '</div>'+
   '</div>';
 }
-// Animation quality. 0 = full detail, 1 = balanced, 2 = battery saver. "Auto" picks from the phone and steps down by itself if frames are slow.
+// Animation quality. 0 = full detail (draws at the screen's own refresh rate: 60/90/120 Hz), 1 = balanced (~30 fps), 2 = battery saver (~20 fps). "Auto" picks from the phone and steps down by itself if frames are slow. Motion is timed in real milliseconds, so speed looks the same at any frame rate.
 var BH_TIERS = [
-  {dpr:2,   ivl:30, stars:1900, gal:700, particles:150, dust:48, M:140, lens2:true},
-  {dpr:1.5, ivl:34, stars:900,  gal:340, particles:100, dust:28, M:90,  lens2:true},
+  {dpr:2,   ivl:0,  slow:24, stars:1900, gal:700, particles:150, dust:48, M:140, lens2:true},
+  {dpr:1.5, ivl:28, stars:900,  gal:340, particles:100, dust:28, M:90,  lens2:true},
   {dpr:1,   ivl:45, stars:380,  gal:150, particles:60,  dust:14, M:56,  lens2:false}
 ];
 var PERF_KEY = "dossier.perf", PERF_AUTO_KEY = "dossier.perfAuto";
@@ -7142,12 +7142,12 @@ function initBlackHoleScene(host){
   function resize(){var r=canvas.getBoundingClientRect();w=Math.max(1,r.width);h=Math.max(1,r.height);canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);cx=w*.5;cy=h*.49;scale=Math.min(w,h)/2;sceneU=Math.max(.8,Math.min(2.4,Math.min(w/390,h/620)));}
   function spawn(p){p.r=.34+Math.random()*.88;p.a=Math.random()*Math.PI*2;p.prevR=p.r;p.prevA=p.a;p.pull=.00045+Math.random()*.0018;p.spin=(Math.random()<.75?1:-1)*(.002+Math.random()*.007);p.size=.55+Math.random()*1.35;p.alpha=.5+Math.random()*.5;p.warm=Math.random()<.2;p.life=0;p.max=500+Math.random()*1000;}
   for(var i=0;i<count;i++){var p={};spawn(p);particles.push(p);}
-  var fillCur = null, dust = [];
+  var fillCur = null, fillK = 1, dust = [];
   for(var di=0; di<BH_TIERS[0].dust; di++) dust.push({a:Math.random()*6.283, r:Math.sqrt(Math.random()), s:.25+Math.random()*.6, size:.5+Math.random()*1.1, tw:Math.random()*6.283});
   function drawFill(t, pv, holeR){
     var target = pv.focus ? pv.p : 1 - pv.p;
     if(fillCur===null) fillCur = target;
-    fillCur += (target - fillCur) * 0.05;
+    fillCur += (target - fillCur) * (1 - Math.pow(.95, fillK));
     var f = Math.max(0, Math.min(1, fillCur)), warm = pv.focus;
     var c1 = warm ? "255,236,190" : "205,240,255", c2 = warm ? "255,150,50" : "90,170,255", c3 = warm ? "140,36,8" : "18,46,140";
     if(f > 0.002){
@@ -7178,7 +7178,7 @@ function initBlackHoleScene(host){
       ctx.fillStyle = hg; ctx.beginPath(); ctx.arc(cx, cy, holeR*1.9, 0, Math.PI*2); ctx.fill();
     }
   }
-  var perfN = 0, perfSum = 0, lastT = 0, shoot = null, farS = [], nearS = [], midS = [], arms = [];
+  var perfN = 0, perfSum = 0, perfBad = 0, lastT = 0, shoot = null, farS = [], nearS = [], midS = [], arms = [];
   function rnd(a, b){ return a + Math.random()*(b-a); }
   for(var fi=0; fi<150; fi++) farS.push({x:Math.random(), y:Math.random(), s:rnd(.4,1), a:rnd(.22,.56), tw:rnd(0,6.283), sp:rnd(.0006,.0016)});
   for(var ni=0; ni<34; ni++) nearS.push({x:Math.random(), y:Math.random(), s:rnd(1,2), a:rnd(.6,1), tw:rnd(0,6.283), warm:Math.random()<.35});
@@ -7341,23 +7341,26 @@ function initBlackHoleScene(host){
     try{
     if(!canvas.isConnected){ blackHoleAnimFrame = null; return; }
     if(!reduced && canvas.offsetParent === null){ lastT = 0; bhWait = setTimeout(function(){ blackHoleAnimFrame = requestAnimationFrame(draw); }, 600); return; }
-    if(!reduced && lastT && t - lastT < T.ivl){ blackHoleAnimFrame = requestAnimationFrame(draw); return; }
+    if(!reduced && lastT && T.ivl && t - lastT < T.ivl){ blackHoleAnimFrame = requestAnimationFrame(draw); return; }
     var dt = (!reduced && lastT) ? Math.min(90, t-lastT) : 0; lastT = t;
+    var fk = dt ? dt/33.3 : 1; fillK = fk; // motion was tuned at ~30 fps; scale by real elapsed time
     // if frames keep arriving much later than planned, drop one quality level (Auto only; never goes back up by itself)
     if(dt && perfMode()==="auto" && document.visibilityState==="visible"){
       perfN++; if(perfN > 12) perfSum += dt;
       if(perfN >= 52){
         var avg = perfSum/40; perfN = 0; perfSum = 0;
-        if(avg > T.ivl*1.6 && bhTier < 2){
-          bhTier++; lsSet(PERF_AUTO_KEY, String(bhTier)); T = BH_TIERS[bhTier];
+        var lim = T.slow || T.ivl*1.6;
+        if(avg > lim && bhTier < 2){ perfBad += (avg > lim*1.8 ? 2 : 1); } else perfBad = 0; // one clearly slow window is enough; a mildly slow one must repeat
+        if(perfBad >= 2){
+          perfBad = 0; bhTier++; lsSet(PERF_AUTO_KEY, String(bhTier)); T = BH_TIERS[bhTier];
           dpr = Math.min(window.devicePixelRatio||1, T.dpr); particles.length = Math.min(particles.length, T.particles); resize();
         }
       }
     }
-    var pv = timerVisual(), sp = pv.pomo ? .09 : .11;
+    var pv = timerVisual(), sp = (pv.pomo ? .09 : .11) * fk;
     ctx.clearRect(0,0,w,h);ctx.fillStyle="#010207";ctx.fillRect(0,0,w,h);
     var bg=ctx.createRadialGradient(cx,cy,0,cx,cy,scale*1.15);bg.addColorStop(0,"rgba(28,8,2,.55)");bg.addColorStop(.45,"rgba(6,8,18,.35)");bg.addColorStop(1,"rgba(0,0,0,0)");ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);drawBackdrop(t, dt);
-    for(var i=0;i<particles.length;i++){var p=particles[i];p.prevR=p.r;p.prevA=p.a;if(!reduced){p.r-=sp*p.pull/(Math.max(.11,p.r)*Math.max(.11,p.r));p.a+=sp*p.spin*(1+.7/Math.max(.18,p.r));p.life++;}if(!reduced&&(p.r<.12||p.life>p.max))spawn(p);var rr=p.r*scale,x=cx+Math.cos(p.a)*rr,y=cy+Math.sin(p.a)*rr*.55,px=cx+Math.cos(p.prevA)*p.prevR*scale,py=cy+Math.sin(p.prevA)*p.prevR*scale*.55;if(!reduced){ctx.strokeStyle=p.warm?"rgba(255,160,80,.28)":"rgba(205,225,255,.28)";ctx.lineWidth=Math.max(.3,p.size*.5);ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(x,y);ctx.stroke();}ctx.fillStyle=p.warm?"rgba(255,215,165,"+p.alpha+")":"rgba(225,238,255,"+p.alpha+")";ctx.beginPath();ctx.arc(x,y,p.size,0,Math.PI*2);ctx.fill();}
+    for(var i=0;i<particles.length;i++){var p=particles[i];p.prevR=p.r;p.prevA=p.a;if(!reduced){p.r-=sp*p.pull/(Math.max(.11,p.r)*Math.max(.11,p.r));p.a+=sp*p.spin*(1+.7/Math.max(.18,p.r));p.life += fk;}if(!reduced&&(p.r<.12||p.life>p.max))spawn(p);var rr=p.r*scale,x=cx+Math.cos(p.a)*rr,y=cy+Math.sin(p.a)*rr*.55,px=cx+Math.cos(p.prevA)*p.prevR*scale,py=cy+Math.sin(p.prevA)*p.prevR*scale*.55;if(!reduced){ctx.strokeStyle=p.warm?"rgba(255,160,80,.28)":"rgba(205,225,255,.28)";ctx.lineWidth=Math.max(.3,p.size*.5);ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(x,y);ctx.stroke();}ctx.fillStyle=p.warm?"rgba(255,215,165,"+p.alpha+")":"rgba(225,238,255,"+p.alpha+")";ctx.beginPath();ctx.arc(x,y,p.size,0,Math.PI*2);ctx.fill();}
     var holeR = pv.pomo ? Math.min(70*sceneU, scale * 0.39) : Math.min(62*sceneU, scale * 0.28);
     lensHoleR = holeR;
     ctx.fillStyle = "#000"; ctx.beginPath(); ctx.arc(cx, cy, holeR, 0, Math.PI * 2); ctx.fill();
