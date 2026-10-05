@@ -1,7 +1,7 @@
 // UPSC Companion service worker: caches the app shell so the page loads and
 // runs with zero network connectivity after the first successful visit.
 // Bump CACHE_NAME on any deploy that changes cached files so clients refresh.
-const CACHE_NAME = "upsc-companion-v73";
+const CACHE_NAME = "upsc-companion-v78";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -11,6 +11,13 @@ const APP_SHELL = [
   "./icon-512.png",
   "./icon-512-maskable.png"
 ];
+
+// keep good responses, plus the font files (they come back "opaque" from another site) so the fonts also work offline
+function cacheable(req, res) {
+  if (!res) return false;
+  if (res.ok) return true;
+  try { return res.type === "opaque" && /(^|\.)fonts\.(googleapis|gstatic)\.com$/.test(new URL(req.url).hostname); } catch (e) { return false; }
+}
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -38,13 +45,13 @@ self.addEventListener("fetch", (event) => {
         // Serve the cached copy immediately, but refresh it in the background
         // so the next offline visit has whatever changed, without blocking this one.
         fetch(req).then((res) => {
-          if (res && res.ok) caches.open(CACHE_NAME).then((c) => c.put(req, res.clone()));
+          if (cacheable(req, res)) caches.open(CACHE_NAME).then((c) => c.put(req, res.clone()));
         }).catch(() => {});
         return cached;
       }
       return fetch(req)
         .then((res) => {
-          if (res && res.ok) caches.open(CACHE_NAME).then((c) => c.put(req, res.clone()));
+          if (cacheable(req, res)) caches.open(CACHE_NAME).then((c) => c.put(req, res.clone()));
           return res;
         })
         .catch(() => {

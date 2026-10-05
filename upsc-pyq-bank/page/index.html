@@ -14,7 +14,9 @@
 <meta name="apple-mobile-web-app-title" content="UPSC Companion">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- fonts load in the background so they never hold up the first screen -->
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet"></noscript>
 
 <style>
   :root{
@@ -440,6 +442,7 @@
   .topic-row .pyq-line{font-size:11.5px; color:var(--ink-faint); margin-top:3px;}
   .topic-row .pyq-badge{font-family:var(--font-mono); font-size:10.5px; font-weight:700; color:var(--link); margin-left:6px;}
   /* ---- Quote bank ---- */
+  .quote-card, .topic-row{content-visibility:auto; contain-intrinsic-size:auto 96px;}   /* long lists: only lay out what is near the screen */
   .quote-card{padding:14px 16px; border-top:1px solid var(--line-soft);}
   .quote-card:first-child{border-top:none;}
   .quote-card blockquote{margin:0; font-family:var(--font-display); font-size:15.5px; line-height:1.5; color:var(--ink); font-style:italic;}
@@ -862,6 +865,7 @@
   .sess-ctl label{display:flex; flex-direction:column; gap:4px; font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.04em; color:var(--ink-soft);}
   .sess-act{font-size:13px; color:var(--ink-soft); grid-column:1/-1; padding-top:2px;}
   .sess-ctl{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));} .sess-ctl > *{min-width:0;} .sess-ctl input[type=time]{min-width:0; max-width:100%; box-sizing:border-box; display:block;}
+  .perf-opts{display:grid; gap:8px; margin:10px 0 6px;} .perf-opt{display:flex; flex-direction:column; gap:2px; text-align:left; padding:10px 12px; border-radius:10px; border:1px solid var(--line); background:var(--surface-2); color:var(--ink); font:inherit; cursor:pointer;} .perf-opt b{font-size:14px;} .perf-opt small{color:var(--ink-soft); font-size:12.5px; line-height:1.4;} .perf-opt.sel{border-color:var(--tab-accent); box-shadow:0 0 0 1px var(--tab-accent) inset;}
   .guide-card{max-width:440px;} .gd-h{display:flex; align-items:center; gap:10px; margin-bottom:6px;} .gd-h h2{margin:0; font-size:20px;} .gd-i{font-size:26px; line-height:1;}
   .gd-s{margin:8px 0 4px; padding-left:20px; font-size:14.5px; line-height:1.55; color:var(--ink); max-height:min(56vh,420px); overflow-y:auto;} .gd-s li{margin:7px 0;} .gd-s b{color:var(--ink);}
   .gd-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); gap:8px; margin:10px 0;} .gd-btn{padding:10px; border-radius:10px; border:1px solid var(--line); background:var(--surface-2); color:var(--ink); font:inherit; font-size:13.5px; cursor:pointer; text-align:left;}
@@ -3471,9 +3475,10 @@ function parseKey(s){ var p=s.split("-").map(Number); return new Date(p[0], p[1]
 function addDays(d,n){ var r=new Date(d); r.setDate(r.getDate()+n); return r; }
 function diffDays(aKey,bKey){ var a=parseKey(aKey), b=parseKey(bKey); return Math.round((a-b)/86400000); }
 function monthKeyOf(dateKey){ return dateKey.slice(0,7); }
-function fmtLong(d){ return d.toLocaleDateString(undefined,{weekday:"long", day:"numeric", month:"long", year:"numeric"}); }
-function fmtShort(d){ return d.toLocaleDateString(undefined,{day:"numeric", month:"short", year:"numeric"}); }
-function fmtDM(d){ return d.toLocaleDateString(undefined,{day:"numeric", month:"short"}); }
+var DF_LONG = null, DF_SHORT = null, DF_DM = null, DF_MK = null, DF_MS = null;
+function fmtLong(d){ return (DF_LONG = DF_LONG || new Intl.DateTimeFormat(undefined,{weekday:"long", day:"numeric", month:"long", year:"numeric"})).format(d); }
+function fmtShort(d){ return (DF_SHORT = DF_SHORT || new Intl.DateTimeFormat(undefined,{day:"numeric", month:"short", year:"numeric"})).format(d); }
+function fmtDM(d){ return (DF_DM = DF_DM || new Intl.DateTimeFormat(undefined,{day:"numeric", month:"short"})).format(d); }
 function weekdayAbbr(d){ return ["Mon","Tue","Wed","Thu","Fri","Sat","Sun"][(d.getDay()+6)%7]; }
 function debounce(fn, ms){ var t; return function(){ var a=arguments, c=this; clearTimeout(t); t=setTimeout(function(){ fn.apply(c,a); }, ms); }; }
 function esc(s){ return String(s==null?"":s).replace(/[&<>"]/g, function(c){ return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]; }); }
@@ -5394,8 +5399,8 @@ function wizGenerate(){
 var progOpen = {}, plannerView = "overview", plannerLanding = null, plannerMonth = null, plannerWeek = null, plannerDay = null;
 var PLANNER_TABS = [["overview","Overview"],["yearly","Yearly"],["monthly","Monthly"],["weekly","Weekly"],["daily","Daily"],["progress","Progress"],["priority","Priority"],["insights","Insights"]];
 function kindMeta(s){ return KIND_META[s.kind] || {label:s.purpose, color:"--tab-scheduler"}; }
-function fmtMonthKey(mk){ return new Date(+mk.slice(0,4), +mk.slice(5,7)-1, 1).toLocaleDateString(undefined, {month:"long", year:"numeric"}); }
-function fmtMonthShort(mk){ return new Date(+mk.slice(0,4), +mk.slice(5,7)-1, 1).toLocaleDateString(undefined, {month:"short", year:"numeric"}); }
+function fmtMonthKey(mk){ return (DF_MK = DF_MK || new Intl.DateTimeFormat(undefined, {month:"long", year:"numeric"})).format(new Date(+mk.slice(0,4), +mk.slice(5,7)-1, 1)); }
+function fmtMonthShort(mk){ return (DF_MS = DF_MS || new Intl.DateTimeFormat(undefined, {month:"short", year:"numeric"})).format(new Date(+mk.slice(0,4), +mk.slice(5,7)-1, 1)); }
 function monthList(plan){
   var s = parseKey(plan.window.start), out = [], cur = new Date(s.getFullYear(), s.getMonth(), 1), end = parseKey(plan.window.end);
   while(cur <= end && out.length < 72){ out.push(cur.getFullYear()+"-"+pad2(cur.getMonth()+1)); cur = new Date(cur.getFullYear(), cur.getMonth()+1, 1); }
@@ -5618,24 +5623,35 @@ function applyExtraTiers(){
     if(best){ linkedKeys[key] = 1; TIER_BY_KEY[key] = {tier:best.t.tier, short:tierShort(best.t.tier), cls:tierClass(best.t.tier), topic:best.t.topic, pyq:null, linked:true}; }
   });
   // 2) new chapters that had no Tier entry: add one, "least asked" unless the bank shows otherwise
+  // Counting matching questions for every new chapter is slow, and the answer only changes when the data does, so it is kept.
+  var bankEl = document.getElementById("d-bank"), fp = TIER_CACHE_VER+"|"+(EXTRA.v||0)+"|"+(DATA.generatedAt||"")+"|"+(bankEl ? bankEl.textContent.length : 0)+"|"+(PYQ && PYQ.verified ? ((PYQ.verified.prelims||[]).length+"/"+(PYQ.verified.mains||[]).length) : "");
+  var tc = lsGetJSON("dossier.tierCache.v1", null), cache = (tc && tc.fp===fp && tc.c) ? tc.c : {}, cacheNew = {}, cacheDirty = !(tc && tc.fp===fp);
   EXTRA.items.forEach(function(it, i){
     if(!it.n) return;
     var key = it.s+"|"+it.g+"|"+it.u;
     if(linkedKeys[key]) return;
-    var alts = qAlts(it.u, "").map(function(a){ return {a:a, s:-1}; });
-    it.sub.forEach(function(sb){ qAltsSub(sb).forEach(function(a){ alts.push({a:a, s:-1}); }); });
-    var cnt = pyqScan(alts, function(q){ return q.exam!=="optional" && q.paper!=="Essay"; }).length;
+    var cnt = cache[key];
+    if(cnt===undefined){
+      var alts = qAlts(it.u, "").map(function(a){ return {a:a, s:-1}; });
+      it.sub.forEach(function(sb){ qAltsSub(sb).forEach(function(a){ alts.push({a:a, s:-1}); }); });
+      cnt = pyqScan(alts, function(q){ return q.exam!=="optional" && q.paper!=="Essay"; }).length; cacheDirty = true;
+    }
+    cacheNew[key] = cnt;
     var tier = cnt >= 8 ? "Tier 2" : (cnt >= 3 ? "Tier 3" : "Tier 4 / Low-yield");
     TIER_BY_KEY[key] = {tier:tier, short:tierShort(tier), cls:tierClass(tier), topic:it.u, pyq:null, added:true};
     if(it.x.indexOf("p")>=0){ DATA.prelimsTopics.push({id:"xp"+i, subject:pmap[it.s] || "Current Affairs & Society", tier:tier, topic:it.u+" — "+it.sub.slice(0,3).join("; "), pyq:null, added:true}); TIER_LINKS["xp"+i] = key; }
     if(it.x.indexOf("m")>=0){ DATA.mainsTopics.push({id:"xm"+i, paper:paperFor(it.s), tier:tier, topic:it.u+" — "+it.sub.slice(0,3).join("; "), pyq:null, added:true}); TIER_LINKS["xm"+i] = key; }
   });
+  if(cacheDirty) lsSetJSON("dossier.tierCache.v1", {fp:fp, c:cacheNew});
 }
+var TIER_CACHE_VER = 1;
 
 // ---------- PYQ matcher: ONE function drives every count and every list ----------
 var STOPW = {}; "the and for with from that this are was were what which who whom whose how why when where its their his her has have had not can could would should may might will shall into onto upon over under between among about also such other than then them they there these those been being does did done any all each per via vis our your you india indian discuss explain examine analyse analyze critically comment evaluate elucidate highlight state role issue issues aspect aspects context major various different types type recent new words word marks answer".split(" ").forEach(function(w){ STOPW[w] = 1; });
 var Q_SUFFIX = ["ations","ation","ments","ment","ances","ance","ences","ence","ities","ity","ings","ing","ised","ized","ise","ize","ists","ist","isms","ism","ical","al","ic","ed"];
-function qStem(w){
+var STEM_MEMO = Object.create(null);
+function qStem(w){ var m = STEM_MEMO[w]; return m!==undefined ? m : (STEM_MEMO[w] = qStemRaw(w)); }
+function qStemRaw(w){
   if(w.length>5 && /ies$/.test(w)) w = w.slice(0,-3)+"y";
   else if(w.length>3 && /s$/.test(w) && !/(ss|us|is)$/.test(w)) w = w.slice(0,-1);
   for(var i=0;i<Q_SUFFIX.length;i++){ var sf = Q_SUFFIX[i]; if(w.length-sf.length>=4 && w.slice(-sf.length)===sf){ w = w.slice(0,-sf.length); break; } }
@@ -5656,9 +5672,11 @@ function qAltsSub(text){
   parts.forEach(function(p){ var k = qToks(p); if(k.length) out.push(k.filter(function(x, i){ return k.indexOf(x)===i; })); });
   return out;
 }
-var pyqIdx = null, pyqMemo = {};
-function pyqIndex(){
-  if(pyqIdx) return pyqIdx;
+var pyqIdx = null, pyqMemo = {}, pyqBuild = null, pyqReadyCbs = [];
+// The question index (every question split into word stems) takes a while to build, so it is built in small slices
+// after the first screen is drawn. Anything that needs it earlier simply finishes the job on the spot.
+function pyqPrep(){
+  if(pyqBuild) return pyqBuild;
   loadPyq();
   var Q = [], seen = {};
   (pyqDocs || []).forEach(function(d){ (d.questions || []).forEach(function(q){ var tx = q.text || q.question || ""; seen[tx.slice(0,60)] = 1; Q.push({exam:d.exam, paper:d.paper, year:d.year, qno:q.qno||"", marks:q.marks||0, text:tx}); }); });
@@ -5666,9 +5684,27 @@ function pyqIndex(){
     (PYQ.verified.prelims || []).forEach(function(q){ if(!seen[(q.question||"").slice(0,60)]) Q.push({exam:"prelims", paper:"GS Paper I", year:q.year, qno:"", marks:2, text:q.question||""}); });
     (PYQ.verified.mains || []).forEach(function(q){ if(!seen[(q.question||"").slice(0,60)]) Q.push({exam:"mains", paper:/IV/.test(q.paper||"") ? "GS Paper IV" : "GS Paper I", year:q.year, qno:q.qno||"", marks:q.marks||0, text:q.question||""}); });
   }
-  var df = {};
-  Q.forEach(function(q){ q.set = {}; qToks(q.text).forEach(function(t){ q.set[t] = 1; }); Object.keys(q.set).forEach(function(t){ df[t] = (df[t]||0)+1; }); });
-  return (pyqIdx = {Q:Q, df:df, N:Math.max(1, Q.length)});
+  return (pyqBuild = {Q:Q, i:0, df:{}, inv:Object.create(null)});
+}
+function pyqStep(ms){
+  var b = pyqPrep(), end = ms===Infinity ? Infinity : performance.now() + ms;
+  while(b.i < b.Q.length && performance.now() < end){
+    var q = b.Q[b.i++]; q.set = {};
+    qToks(q.text).forEach(function(t){ q.set[t] = 1; });
+    Object.keys(q.set).forEach(function(t){ b.df[t] = (b.df[t]||0)+1; (b.inv[t] || (b.inv[t] = [])).push(b.i-1); });
+  }
+  if(b.i >= b.Q.length && !pyqIdx){
+    pyqIdx = {Q:b.Q, df:b.df, inv:b.inv, N:Math.max(1, b.Q.length)};
+    var cbs = pyqReadyCbs; pyqReadyCbs = []; cbs.forEach(function(f){ try{ f(); }catch(e){} });
+  }
+  return !!pyqIdx;
+}
+function pyqIndex(){ if(!pyqIdx) pyqStep(Infinity); return pyqIdx; }
+function pyqWarm(onReady){
+  if(pyqIdx){ if(onReady) onReady(); return; }
+  if(onReady) pyqReadyCbs.push(onReady);
+  if(pyqWarm.on) return; pyqWarm.on = true;
+  (function tick(){ if(pyqIdx) return; if(!pyqStep(7)) setTimeout(tick, 12); })();
 }
 var SUBJ_PAPER = {"History":"GS Paper I","Geography":"GS Paper I","Indian Society":"GS Paper I","Art & Culture":"GS Paper I","Polity":"GS Paper II","Governance":"GS Paper II","Social Justice":"GS Paper II","International Relations":"GS Paper II","Economy":"GS Paper III","Agriculture":"GS Paper III","Environment":"GS Paper III","Science & Technology":"GS Paper III","Internal Security":"GS Paper III","Disaster Management":"GS Paper III","Ethics, Integrity & Aptitude":"GS Paper IV"};
 function pyqEligible(q, subject, optional){
@@ -5680,8 +5716,15 @@ function pyqEligible(q, subject, optional){
 }
 function pyqScan(alts, accept){
   var ix = pyqIndex(), out = [];
-  var w = function(t){ return Math.max(0.5, Math.log(ix.N/(1+(ix.df[t]||0)))); };
-  ix.Q.forEach(function(q){
+  var Wm = ix.W || (ix.W = Object.create(null));
+  var w = function(t){ var v = Wm[t]; return v!==undefined ? v : (Wm[t] = Math.max(0.5, Math.log(ix.N/(1+(ix.df[t]||0))))); };
+  // a question can only match if it holds at least one distinctive word (used in 120 questions or fewer) of the topic,
+  // so only those questions are looked at, in their original order
+  var cand = [], seenC = {};
+  for(var ai=0; ai<alts.length; ai++){ var AT = alts[ai].a; for(var aj=0; aj<AT.length; aj++){ var tk = AT[aj], dfv = ix.df[tk]||0; if(dfv>0 && dfv<=120){ var pl = ix.inv[tk]; for(var pi=0; pi<pl.length; pi++){ if(!seenC[pl[pi]]){ seenC[pl[pi]] = 1; cand.push(pl[pi]); } } } } }
+  cand.sort(function(x, y){ return x-y; });
+  cand.forEach(function(qi){
+    var q = ix.Q[qi];
     if(!accept(q)) return;
     var hit = false, subs = [], toks = [];
     for(var i=0;i<alts.length;i++){
@@ -6530,6 +6573,28 @@ function daysLogged(){
   var d = {}; studySessions.forEach(function(x){ if((x.actualDuration||0) > 0) d[x.date] = 1; });
   return Object.keys(d).length;
 }
+function pyqCardHtml(running){
+  // one recent question for the chapter each running subject is on now, in a drum you scroll
+  var drum = [];
+  running.forEach(function(m){
+    var l = nextLeaf(m); if(!l) return;
+    var ready = !!(pyqIdx || (l.id in pyqMemo)), ql = ready ? pyqForLeaf(l).slice().sort(function(x,y){ return y.year-x.year; }) : [], qq = ql[0], tag = sessionTagFor(m.name);
+    drum.push('<div class="dr-i" style="--bc:var('+m.color+')"><div class="dr-s">'+esc(m.name)+(tag ? ' <em>'+esc(tag.replace("SESSIONS","S").replace("SESSION","S"))+'</em>' : '')+'</div><div class="dr-c">'+esc(l.unit)+'</div>'+
+      (!ready ? '<p class="muted">Getting your question ready\u2026</p>' : qq ? '<p>'+esc(String(qq.text).replace(/\s+/g," ").trim())+'</p><small>'+(qq.exam==="prelims" ? "Prelims" : (qq.exam==="optional" ? "Optional" : "Mains"))+" "+qq.year+'</small><button type="button" class="dx-btn" data-pyq="'+esc(l.id)+'" data-subj="'+esc(m.name)+'">Solve Now ('+ql.length+')</button>'
+          : '<p>No question in the bank matched this chapter yet.</p><button type="button" class="dx-btn2" data-dx="pyq">Open PYQ Bank</button>')+'</div>');
+  });
+  var pyq = '<div class="dx-card dx-pyq"><div class="dx-k">RECENT PYQ <span class="dr-n" id="drN">'+(drum.length > 1 ? '1 / '+drum.length : '')+'</span></div>'+
+    (drum.length ? '<div class="dx-drum" id="dxDrum">'+drum.join("")+'</div>' : '<p>No chapter is running yet.</p><button type="button" class="dx-btn" data-dx="pyq">Open PYQ Bank</button>')+'</div>';
+  return pyq;
+}
+function refreshPyqCard(){
+  var host = document.getElementById("view-dashboard"), card = host && host.querySelector(".dx-pyq");
+  if(!card || !studyPlan) return;
+  var tmp = document.createElement("div");
+  tmp.innerHTML = pyqCardHtml(pathCtx(subjectStates(studyPlan)).lanes.map(function(l){ return l.subj; }));
+  card.replaceWith(tmp.firstChild);
+  bindDrum(host);
+}
 function dxPlanHtml(){
   var states = subjectStates(studyPlan), op = overallProgress(studyPlan);
   var act = states.filter(function(x){ return x.state==="active"; })[0];
@@ -6566,17 +6631,7 @@ function dxPlanHtml(){
     : "";
   var pace = '<div class="dx-card dx-pace"><div class="dx-k">TODAY'+(tp ? ' &middot; '+tpct+'%' : '')+'</div><div class="dx-seg">'+(segs || '<i style="flex:1"></i>')+'</div>'+
     '<small>'+(tp ? 'Planned '+esc(fmtDurMin(tp))+' &middot; Actual '+esc(fmtDurMin(ta))+(ta>tp ? ' (over plan)' : '') : 'Nothing planned today')+'</small>'+(kinds ? '<small class="dx-kinds">'+kinds+'</small>' : '')+'</div>';
-  // one recent question for the chapter each running subject is on now, in a drum you scroll
-  var drum = [];
-  running.forEach(function(m){
-    var l = nextLeaf(m); if(!l) return;
-    var ql = pyqForLeaf(l).slice().sort(function(x,y){ return y.year-x.year; }), qq = ql[0], tag = sessionTagFor(m.name);
-    drum.push('<div class="dr-i" style="--bc:var('+m.color+')"><div class="dr-s">'+esc(m.name)+(tag ? ' <em>'+esc(tag.replace("SESSIONS","S").replace("SESSION","S"))+'</em>' : '')+'</div><div class="dr-c">'+esc(l.unit)+'</div>'+
-      (qq ? '<p>'+esc(String(qq.text).replace(/\s+/g," ").trim())+'</p><small>'+(qq.exam==="prelims" ? "Prelims" : (qq.exam==="optional" ? "Optional" : "Mains"))+" "+qq.year+'</small><button type="button" class="dx-btn" data-pyq="'+esc(l.id)+'" data-subj="'+esc(m.name)+'">Solve Now ('+ql.length+')</button>'
-          : '<p>No question in the bank matched this chapter yet.</p><button type="button" class="dx-btn2" data-dx="pyq">Open PYQ Bank</button>')+'</div>');
-  });
-  var pyq = '<div class="dx-card dx-pyq"><div class="dx-k">RECENT PYQ <span class="dr-n" id="drN">'+(drum.length > 1 ? '1 / '+drum.length : '')+'</span></div>'+
-    (drum.length ? '<div class="dx-drum" id="dxDrum">'+drum.join("")+'</div>' : '<p>No chapter is running yet.</p><button type="button" class="dx-btn" data-dx="pyq">Open PYQ Bank</button>')+'</div>';
+  var pyq = pyqCardHtml(running);
   var path = pathHtml(states);
   var upc = '<div class="dx-card dx-up"><div class="dx-k">UPCOMING</div>'+upcomingHtml()+'<button type="button" class="dx-btn2" id="dashOpenPlanner">Open planner</button></div>';
   var main = running.length > 1 ? mods+'<div class="dx-grid dx-grid-eq">'+pace+pyq+'</div>' : '<div class="dx-grid">'+module+'<div class="dx-col">'+pace+pyq+'</div></div>';
@@ -7059,17 +7114,36 @@ function timerCard(){
     '</div>'+
   '</div>';
 }
+// Animation quality. 0 = full detail, 1 = balanced, 2 = battery saver. "Auto" picks from the phone and steps down by itself if frames are slow.
+var BH_TIERS = [
+  {dpr:2,   ivl:30, stars:1900, gal:700, particles:150, dust:48, M:140, lens2:true},
+  {dpr:1.5, ivl:34, stars:900,  gal:340, particles:100, dust:28, M:90,  lens2:true},
+  {dpr:1,   ivl:45, stars:380,  gal:150, particles:60,  dust:14, M:56,  lens2:false}
+];
+var PERF_KEY = "dossier.perf", PERF_AUTO_KEY = "dossier.perfAuto";
+function perfMode(){ var m = lsGet(PERF_KEY); return (m==="high" || m==="saver") ? m : "auto"; }
+function perfStartTier(){
+  var m = perfMode(); if(m==="high") return 0; if(m==="saver") return 2;
+  var saved = parseInt(lsGet(PERF_AUTO_KEY), 10); if(saved>=0 && saved<=2) return saved;
+  var mem = navigator.deviceMemory || 0, cores = navigator.hardwareConcurrency || 0;
+  if(mem && mem <= 2) return 2;
+  if((mem && mem <= 4) || (cores && cores <= 4)) return 1;
+  return 0;
+}
+var bhTier = null;
+function bhCurrentTier(){ if(bhTier===null) bhTier = perfStartTier(); return bhTier; }
+function perfSet(mode){ lsSet(PERF_KEY, mode); try{ localStorage.removeItem(PERF_AUTO_KEY); }catch(e){} bhTier = null; }
 function initBlackHoleScene(host){
   if(bhWait){clearTimeout(bhWait);bhWait=null;}
   if(blackHoleAnimFrame){cancelAnimationFrame(blackHoleAnimFrame);clearInterval(blackHoleAnimFrame);blackHoleAnimFrame=null;}
   var canvas=host.querySelector("#blackHoleScene"),ctx=canvas&&canvas.getContext("2d");if(!ctx)return;
   var reduced=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var dpr=Math.min(window.devicePixelRatio||1,2),w=1,h=1,cx=0,cy=0,scale=1,sceneU=1,particles=[],count=150;
+  var T = BH_TIERS[bhCurrentTier()], dpr=Math.min(window.devicePixelRatio||1,T.dpr),w=1,h=1,cx=0,cy=0,scale=1,sceneU=1,particles=[],count=T.particles;
   function resize(){var r=canvas.getBoundingClientRect();w=Math.max(1,r.width);h=Math.max(1,r.height);canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);cx=w*.5;cy=h*.49;scale=Math.min(w,h)/2;sceneU=Math.max(.8,Math.min(2.4,Math.min(w/390,h/620)));}
   function spawn(p){p.r=.34+Math.random()*.88;p.a=Math.random()*Math.PI*2;p.prevR=p.r;p.prevA=p.a;p.pull=.00045+Math.random()*.0018;p.spin=(Math.random()<.75?1:-1)*(.002+Math.random()*.007);p.size=.55+Math.random()*1.35;p.alpha=.5+Math.random()*.5;p.warm=Math.random()<.2;p.life=0;p.max=500+Math.random()*1000;}
   for(var i=0;i<count;i++){var p={};spawn(p);particles.push(p);}
   var fillCur = null, dust = [];
-  for(var di=0; di<48; di++) dust.push({a:Math.random()*6.283, r:Math.sqrt(Math.random()), s:.25+Math.random()*.6, size:.5+Math.random()*1.1, tw:Math.random()*6.283});
+  for(var di=0; di<BH_TIERS[0].dust; di++) dust.push({a:Math.random()*6.283, r:Math.sqrt(Math.random()), s:.25+Math.random()*.6, size:.5+Math.random()*1.1, tw:Math.random()*6.283});
   function drawFill(t, pv, holeR){
     var target = pv.focus ? pv.p : 1 - pv.p;
     if(fillCur===null) fillCur = target;
@@ -7088,7 +7162,7 @@ function initBlackHoleScene(host){
       ctx.beginPath();
       for(var x2=cx-holeR-3, first=true; x2<=cx+holeR+3; x2+=3){ var y2 = top + Math.sin(x2*.045 + t*.0013)*amp + Math.sin(x2*.02 - t*.0009)*amp*.6; if(first){ ctx.moveTo(x2, y2); first=false; } else ctx.lineTo(x2, y2); }
       ctx.strokeStyle = "rgba("+c1+",.9)"; ctx.lineWidth = 1.2; ctx.stroke();
-      for(var k=0; k<dust.length; k++){
+      for(var k=0; k<Math.min(dust.length, T.dust); k++){
         var d = dust[k], ang = d.a + t*d.s*.00018, rr = d.r*holeR*.92, px = cx + Math.cos(ang)*rr, py = cy + Math.sin(ang)*rr;
         if(py < top + 3) continue;
         ctx.globalAlpha = .28 + .3*Math.sin(t*.0016 + d.tw);
@@ -7104,7 +7178,7 @@ function initBlackHoleScene(host){
       ctx.fillStyle = hg; ctx.beginPath(); ctx.arc(cx, cy, holeR*1.9, 0, Math.PI*2); ctx.fill();
     }
   }
-  var lastT = 0, shoot = null, farS = [], nearS = [], midS = [], arms = [];
+  var perfN = 0, perfSum = 0, lastT = 0, shoot = null, farS = [], nearS = [], midS = [], arms = [];
   function rnd(a, b){ return a + Math.random()*(b-a); }
   for(var fi=0; fi<150; fi++) farS.push({x:Math.random(), y:Math.random(), s:rnd(.4,1), a:rnd(.22,.56), tw:rnd(0,6.283), sp:rnd(.0006,.0016)});
   for(var ni=0; ni<34; ni++) nearS.push({x:Math.random(), y:Math.random(), s:rnd(1,2), a:rnd(.6,1), tw:rnd(0,6.283), warm:Math.random()<.35});
@@ -7129,7 +7203,7 @@ function initBlackHoleScene(host){
     // glowing specks inside the cloud
     for(i=0;i<700;i++){ var px = W*(1 - Math.pow(Math.random(), 1.6)*.5), py = H*Math.pow(Math.random(), 1.5)*.65, q = Math.random(); g.globalAlpha = .15 + .7*q*q; g.fillStyle = q > .8 ? "#fff3e0" : "#f0a060"; g.beginPath(); g.arc(px, py, .3 + .7*q, 0, 6.283); g.fill(); }
   }
-  var _rs = resize; resize = function(){ _rs(); buildMW(); };
+  var _rs = resize, lastRW = 0, lastRH = 0, lastRD = 0; resize = function(){ var r0 = canvas.getBoundingClientRect(); if(Math.abs(r0.width-lastRW) < .5 && Math.abs(r0.height-lastRH) < .5 && dpr===lastRD && mwTex) return; lastRW = r0.width; lastRH = r0.height; lastRD = dpr; _rs(); buildMW(); };
   function bez(p0, p1, p2, e){ var q = 1-e; return q*q*p0 + 2*q*e*p1 + e*e*p2; }
   var lensS = [], gals = [], eR = 100;
   for(var li=0; li<1900; li++) lensS.push({x:Math.random(), y:Math.random(), s:Math.random()<.04 ? rnd(1,1.5) : rnd(.3,.85), a:rnd(.45,1), tw:rnd(0,6.283), c:Math.random()});
@@ -7140,7 +7214,7 @@ function initBlackHoleScene(host){
   gals = [mkGal(150), mkGal(150 + 430)];
   function lensImg(dx, dy, size, alpha, col, hr){
     var d = Math.sqrt(dx*dx + dy*dy) || 1, u = d/eR, sq = Math.sqrt(u*u + 4), a = Math.atan2(dy, dx), sgn, r, tg, rd, len, wd, mg = (u*u + 2)/(2*u*sq);
-    for(sgn=0; sgn<2; sgn++){
+    for(sgn=0; sgn<(T.lens2 ? 2 : 1); sgn++){
       r = eR*(sgn ? (sq - u) : (u + sq))/2; if(r < hr*1.02 || r > 900) continue;
       tg = r/d; rd = Math.max(.12, (mg + (sgn ? -.5 : .5))/tg);
       if(sgn && r < hr*1.1) continue;
@@ -7153,7 +7227,7 @@ function initBlackHoleScene(host){
   function drawLensed(t, dt){
     var holeR = lensHoleR, i, o, k, sp = (dt || 0)*.0005, gsp = (dt || 0)*.002;
     eR = holeR*2.0; ctx.lineCap = "round";
-    for(i=0;i<lensS.length;i++){ o = lensS[i];
+    for(i=0;i<Math.min(lensS.length, T.stars);i++){ o = lensS[i];
       if(dt){ o.y -= sp/h; o.x += dt*.0000016; if(o.y < -.05){ o.y += 1.1; o.x = Math.random(); } if(o.x > 1.05) o.x -= 1.1; }
       var dx = o.x*w - cx, dy = o.y*h - cy, col = o.c < .12 ? "#ffd9b0" : (o.c < .3 ? "#cfe0ff" : "#ffffff");
       lensImg(dx, dy, o.s, o.a*(.75 + .25*Math.sin(t*.0005 + o.tw)), col, holeR);
@@ -7161,7 +7235,7 @@ function initBlackHoleScene(host){
     ctx.globalCompositeOperation = "lighter";
     for(i=0;i<gals.length;i++){ o = gals[i]; var skipG = Math.abs(o.oy) > h*.62 + 40;
       if(dt){ o.oy -= gsp; if(o.oy < -(h*.62 + 90)){ var ng = mkGal(h*.62 + 90 + rnd(120, 260)); o.ox = ng.ox; o.oy = ng.oy; o.pts = ng.pts; } }
-      if(!skipG) for(k=0;k<o.pts.length;k++){ var q = o.pts[k]; lensImg(o.ox + q.x, o.oy + q.y, q.s, q.a, q.c === 0 ? "rgb(214,229,255)" : (q.c === 1 ? "rgb(255,236,214)" : "rgb(150,185,245)"), holeR); }
+      if(!skipG) for(k=0;k<Math.min(o.pts.length, T.gal);k++){ var q = o.pts[k]; lensImg(o.ox + q.x, o.oy + q.y, q.s, q.a, q.c === 0 ? "rgb(214,229,255)" : (q.c === 1 ? "rgb(255,236,214)" : "rgb(150,185,245)"), holeR); }
     }
     ctx.globalCompositeOperation = "source-over"; ctx.globalAlpha = 1;
   }
@@ -7187,7 +7261,7 @@ function initBlackHoleScene(host){
     var widths = [.29, .125, .04];
     if(ctx.createConicGradient){
       // one smooth stroke per layer, coloured by a gradient, so there are no visible steps even when the hole is large
-      var M = 140, f1 = span/6.283185;
+      var M = T.M, f1 = span/6.283185;
       for(pass=0; pass<3; pass++){
         var g = ctx.createConicGradient(a0, cx, cy);
         for(k=0;k<=M;k++){ var u = k/M; g.addColorStop(Math.min(1, f1*u), tone(pass, u, a0 + span*u)); }
@@ -7267,8 +7341,19 @@ function initBlackHoleScene(host){
     try{
     if(!canvas.isConnected){ blackHoleAnimFrame = null; return; }
     if(!reduced && canvas.offsetParent === null){ lastT = 0; bhWait = setTimeout(function(){ blackHoleAnimFrame = requestAnimationFrame(draw); }, 600); return; }
-    if(!reduced && lastT && t - lastT < 30){ blackHoleAnimFrame = requestAnimationFrame(draw); return; }
+    if(!reduced && lastT && t - lastT < T.ivl){ blackHoleAnimFrame = requestAnimationFrame(draw); return; }
     var dt = (!reduced && lastT) ? Math.min(90, t-lastT) : 0; lastT = t;
+    // if frames keep arriving much later than planned, drop one quality level (Auto only; never goes back up by itself)
+    if(dt && perfMode()==="auto" && document.visibilityState==="visible"){
+      perfN++; if(perfN > 12) perfSum += dt;
+      if(perfN >= 52){
+        var avg = perfSum/40; perfN = 0; perfSum = 0;
+        if(avg > T.ivl*1.6 && bhTier < 2){
+          bhTier++; lsSet(PERF_AUTO_KEY, String(bhTier)); T = BH_TIERS[bhTier];
+          dpr = Math.min(window.devicePixelRatio||1, T.dpr); particles.length = Math.min(particles.length, T.particles); resize();
+        }
+      }
+    }
     var pv = timerVisual(), sp = pv.pomo ? .09 : .11;
     ctx.clearRect(0,0,w,h);ctx.fillStyle="#010207";ctx.fillRect(0,0,w,h);
     var bg=ctx.createRadialGradient(cx,cy,0,cx,cy,scale*1.15);bg.addColorStop(0,"rgba(28,8,2,.55)");bg.addColorStop(.45,"rgba(6,8,18,.35)");bg.addColorStop(1,"rgba(0,0,0,0)");ctx.fillStyle=bg;ctx.fillRect(0,0,w,h);drawBackdrop(t, dt);
@@ -7839,6 +7924,7 @@ var GUIDES = {
   settings:{icon:"⚙️", name:"Settings", title:"Settings", steps:[
     "<b>App theme</b> changes the colours of the whole app. <b>Learning path</b> changes how your journey looks on the Dashboard.",
     "<b>Cloud sync</b> (if shown) keeps your data safe online so it follows you to a new phone.",
+    "<b>Timer animation</b> controls how detailed the timer scene is. If it feels choppy or your phone warms up, choose Battery saver.",
     "<b>Backup</b> saves everything to a file you keep, and restores it. Download one now and then.",
     "<b>App guides</b> at the bottom lets you read any of these tips again."]}
 };
@@ -7876,6 +7962,14 @@ function scheduleGuide(ms){
     if(document.getElementById("modalHost") || document.body.classList.contains("menu-open")) { guideTimer = setTimeout(function(){ scheduleGuide(0); }, 4000); return; }
     showGuide(id, false);
   }, ms==null ? 900 : ms);
+}
+function perfCardHtml(){
+  var m = perfMode(), tier = bhCurrentTier();
+  var opts = [["auto","Auto","Recommended. Starts from your phone and lowers the detail by itself if it slows down."],["high","Smooth","Full detail. Best on newer phones."],["saver","Battery saver","Less detail in the timer scene. Smoother and gentler on the battery on older phones."]];
+  return '<div class="card set-card perf-card"><h3>Timer animation</h3><div class="muted">If the timer screen feels choppy or your phone gets warm, choose Battery saver.</div>'+
+    '<div class="perf-opts" role="radiogroup" aria-label="Timer animation quality">'+opts.map(function(o){
+      return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
+    }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
 function guidesCardHtml(){
   var off = guideOff();
@@ -7962,6 +8056,7 @@ function renderSettings(){
       }).join("")+'</div>'+
       '<div class="th-prev"><div class="dx pth-prevbox"><div class="pth-scene pth-'+th.id+'">'+th.draw(ctx)+'</div></div>'+(real && real.n ? '' : '<div class="muted small">Preview with sample subjects. Build a plan to see your own.</div>')+'</div>'+
     '</div>'+
+    perfCardHtml()+
     guidesCardHtml()+
     '<div class="card set-card about-card"><h3>About</h3><div class="muted">UPSC Companion works offline and keeps your data on this phone unless you sign in. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a> &middot; <a href="privacy.html#delete" target="_blank" rel="noopener">How to delete your data</a></div></div>';
   // keep each row where it was, then glide the chosen theme into the middle so you always know where you are
@@ -7983,6 +8078,8 @@ function renderSettings(){
     host._wired = true;
     host.addEventListener("click", function(e){
       // match the picker buttons only: <html> itself carries data-ui / data-theme, so a bare [data-...] lookup would match every click
+      var pf = e.target.closest ? e.target.closest("[data-perf]") : null;
+      if(pf){ perfSet(pf.getAttribute("data-perf")); renderSettings(); toast("Timer animation: "+pf.querySelector("b").textContent.replace(/ \u2713/, "")+"."); return; }
       var u = e.target.closest ? e.target.closest(".ui-opt[data-ui]") : null;
       if(u){ window.applyUiTheme(u.getAttribute("data-ui"), true); cloudTouched("dossier.uiTheme"); trackEvent("theme_changed", {kind:"app", theme:u.getAttribute("data-ui")}); renderSettings(); return; }
       var b = e.target.closest ? e.target.closest(".th-opt[data-theme]") : null; if(!b) return;
@@ -8035,7 +8132,12 @@ function findTopicForText(text){
   }
   return null;
 }
+var tierMemo = {};
 function tierPyq(it, kind, label){
+  var mk = kind+"|"+(label||"")+"|"+it.topic; if(mk in tierMemo) return tierMemo[mk];
+  return (tierMemo[mk] = tierPyqRaw(it, kind, label));
+}
+function tierPyqRaw(it, kind, label){
   var m = (label||"").match(/^GS(\d)/), scope = m ? "GS Paper "+["","I","II","III","IV"][+m[1]] : (/^Geography/.test(label||"") ? "GS Paper I" : (/^Essay/.test(label||"") ? "Essay" : (/^Anthropology/.test(label||"") ? "optional" : "")));
   return pyqSearchPool(qAlts(it.topic, ""), kind, scope);
 }
@@ -8836,6 +8938,7 @@ function boot(){
     replan();
     // render once immediately with schedule data, before db resolves
     renderView(activeTab);
+    setTimeout(function(){ pyqWarm(refreshPyqCard); }, 60);
     if(!profile) openProfileModal(false);
 
     var capPromise = (window.claude && window.claude.use) ? window.claude.use("db") : Promise.resolve(null);
