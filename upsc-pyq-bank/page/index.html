@@ -4247,7 +4247,11 @@ var CURR_OPT = {
     "World History": "Modern World: Revolutions; World Wars; Decolonisation"
   })
 };
-function optionalNames(){ return Object.keys(CURR_OPT); }
+// Official UPSC list, in the official order (ALL_OPTIONALS). Syllabus trees are keyed by the short name where one exists.
+function optionalNames(){ return ALL_OPTIONALS.slice(); }
+function optKey(n){ return OPT_ALIAS[n] || n; }
+function isOptionalName(n){ return ALL_OPTIONALS.indexOf(n)>=0; }
+function optFullName(n){ for(var k in OPT_ALIAS) if(OPT_ALIAS[k]===n) return k; return n; }
 function curriculumCA(){
   var months = [], d = new Date(); d.setDate(1);
   for(var i=-6;i<=1;i++){ var x = new Date(d.getFullYear(), d.getMonth()+i, 1); months.push(x.toLocaleDateString("en-GB",{month:"long", year:"numeric"})); }
@@ -4270,7 +4274,8 @@ function paperOptions(purpose){
 }
 function treeFor(purpose, paper){
   if(purpose==="Current Affairs") return curriculumCA();
-  if(CURR_OPT[paper]) return CURR_OPT[paper];
+  if(CURR_OPT[optKey(paper)]) return CURR_OPT[optKey(paper)];
+  if(purpose==="Optional" && isOptionalName(paper)) return {"Syllabus":{"General study":["Optional study"]}};
   if(paper==="GS 2 (CSAT)" || paper==="CSAT") return CURR_CSAT;
   if(purpose==="Prelims" && paper==="GS 1") return CURR_PRELIMS_GS1;
   if(paper==="Essay") return CURR_ESSAY;
@@ -4318,9 +4323,9 @@ function findOverlaps(items){
 }
 
 // ---------- session records ----------
-function recToDraft(s){ return {purpose:s.purpose, paper:s.optionalSubject||s.paper, subject:s.subject, topic:s.topic, unit:s.syllabusUnit, start:s.startTime, end:s.endTime}; }
+function recToDraft(s){ return {purpose:s.purpose, paper:s.optionalSubject ? optFullName(s.optionalSubject) : s.paper, subject:s.subject, topic:s.topic, unit:s.syllabusUnit, start:s.startTime, end:s.endTime}; }
 function applyDraft(s, d){
-  var opt = !!CURR_OPT[d.paper];
+  var opt = isOptionalName(d.paper);
   s.purpose=d.purpose; s.paper=opt?"Optional":d.paper; s.optionalSubject=opt?d.paper:""; s.subject=d.subject; s.topic=d.topic; s.syllabusUnit=d.unit;
   s.startTime=d.start; s.endTime=d.end; s.duration=toMin(d.end)-toMin(d.start); s.updatedAt=new Date().toISOString();
 }
