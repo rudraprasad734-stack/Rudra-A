@@ -5,12 +5,16 @@
 const fs = require("fs"), path = require("path");
 const PAGE = path.join(__dirname, "../../page/index.html");
 const topics = require("./anthropology.topics.js");
+const SY = require("./anthropology.items.js");
 const check = process.argv.indexOf("--check") >= 0;
 let html = fs.readFileSync(PAGE, "utf8");
 const bm = html.match(/<script type="application\/json" id="d-bank">(.*?)<\/script>/s);
 const bank = JSON.parse(bm[1]).filter(function(p){ return p.exam === "optional" && /^Anthropology/.test(p.paper); });
-const P2_START = topics.findIndex(function(t){ return t.g === "Evolution of Indian culture and civilisation"; });
-const comp = topics.map(function(t, i){ return {i:i, id:"an"+(i<9?"0":"")+(i+1), pp:i>=P2_START?2:1, p:t.p||0, g:t.g, t:t.t, re:new RegExp(t.re, "i"), re2:t.re2?new RegExp(t.re2, "i"):null, ex:t.ex?new RegExp(t.ex, "i"):null, q:[]}; });
+const comp = topics.map(function(t, i){ return {i:i, id:"an"+(i<9?"0":"")+(i+1), p:t.p||0, g:t.g, t:t.t, re:new RegExp(t.re, "i"), re2:t.re2?new RegExp(t.re2, "i"):null, ex:t.ex?new RegExp(t.ex, "i"):null, q:[]}; });
+const itemIds = {}; SY.items.forEach(function(it){ itemIds[it.id] = it; });
+const badParent = [];
+comp.forEach(function(c){ let hit = null; SY.parent.forEach(function(r){ if(!hit && r[0].test(c.t)) hit = r[1]; }); if(!hit || !itemIds[hit]) badParent.push(c.t); else { c.s = hit; c.pp = itemIds[hit].pp; } });
+if(badParent.length){ console.log("TOPICS WITHOUT AN OFFICIAL ITEM:"); badParent.forEach(function(t){ console.log("  ", t); }); process.exit(1); }
 const unmatched = [], perQ = [];
 let total = 0;
 bank.forEach(function(p){
@@ -43,7 +47,9 @@ multi.slice(0, 40).forEach(function(x){ console.log("  MULTI", x.n, x.ref, x.txt
 if(process.argv.indexOf("--topics") >= 0) comp.forEach(function(c){ const ys = new Set(c.q.map(function(r){ return r.split("|")[0]; })); console.log(c.id, "P"+c.pp, String(c.q.length).padStart(3), String(ys.size).padStart(2), c.t); });
 if(process.argv.indexOf("--q") >= 0){ const id = process.argv[process.argv.indexOf("--q")+1]; const c = comp.filter(function(x){ return x.id === id; })[0]; const set = {}; c.q.forEach(function(r){ set[r] = 1; }); perQ.filter(function(x){ return set[x.ref]; }).forEach(function(x){ console.log("  ", x.ref, x.txt.slice(0, 130)); }); }
 if(check) process.exit(0);
-const out = {v:1, subject:"Anthropology", years:years, topics:comp.map(function(c){ return {id:c.id, pp:c.pp, g:c.g, t:c.t, q:c.q}; })};
+const emptyItems = SY.items.filter(function(it){ return !comp.some(function(c){ return c.s === it.id; }); });
+console.log("official items:", SY.items.length, "| items with no sub-topic:", emptyItems.length); emptyItems.forEach(function(it){ console.log("  NO SUBTOPIC", it.id, it.t); });
+const out = {v:2, subject:"Anthropology", source:"UPSC Examination Notice 05/2026-CSE, Appendix I, Section III, Part B", years:years, items:SY.items.map(function(it){ return {id:it.id, pp:it.pp, t:it.t}; }), topics:comp.map(function(c){ return {id:c.id, s:c.s, pp:c.pp, t:c.t, q:c.q}; })};
 const json = JSON.stringify(out).replace(/</g, "\\u003c");
 const tag = '<script type="application/json" id="d-anthro">' + json + '</script>';
 if(/id="d-anthro"/.test(html)) html = html.replace(/<script type="application\/json" id="d-anthro">.*?<\/script>/s, function(){ return tag; });
