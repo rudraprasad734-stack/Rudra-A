@@ -43,7 +43,7 @@ const XM_OVR = {
   "Science & Technology|Space and Defence|Space Programme":12, "Science & Technology|Space and Defence|Missiles and Defence Technology":11, "Science & Technology|Space and Defence|Nuclear Technology":10,
   "Science & Technology|IT and Emerging Tech|IT and Computers":12, "Science & Technology|Indigenisation|Energy Technologies":10, "Science & Technology|Indigenisation|Science in Everyday Life":10,
   "Internal Security|Cyber and Media|Cyber Security":17, "Internal Security|Threats|Terrorism":18, "Internal Security|Forces and Framework|Coastal Security":18,
-  "Geography|Geophysical Phenomena|Cyclones":11,
+  "Geography|Geophysical Phenomena|Cyclones":11, "Polity|Constitution|Comparison of Constitutional Schemes":3, "Internal Security|Threats|External State and Non-State Actors":16,
   "Ethics, Integrity & Aptitude|Emotional Intelligence|Utility in Administration":3, "Ethics, Integrity & Aptitude|Emotional Intelligence|Governance Applications":3,
   "Ethics, Integrity & Aptitude|Case Studies":7
 };
