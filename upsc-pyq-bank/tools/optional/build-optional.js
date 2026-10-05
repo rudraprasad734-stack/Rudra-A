@@ -21,7 +21,8 @@ bank.forEach(function(p){
   const paper = /II$/.test(p.paper) ? 2 : 1;
   p.questions.forEach(function(q){
     total++;
-    const txt = q.text.replace(/\s+/g, " ");
+    // the exam instruction ("Write short notes on the following in about 150 words each:") is part of the question but says nothing about the topic
+    const txt = q.text.replace(/\s+/g, " ").replace(/^(Write|Answer)( short)?( notes)?( on)? the following in (about )?\d+ words each\s*:\s*/i, "");
     const ref = p.year + "|" + paper + "|" + q.qno;
     let hit = 0;
     comp.forEach(function(c){
