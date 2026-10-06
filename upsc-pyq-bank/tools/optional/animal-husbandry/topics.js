@@ -110,7 +110,7 @@ module.exports = [
  {s:"II-1.1", p:2, t:"Cell structure, cell division and tissues", re:"pituitary gland|cell division|body tissues|basic tissues|tissue structure|cytology|connective tissue cells"},
  {s:"II-1.1", p:2, t:"Histology of organs and glands, neurons and integument", re:"neurons|testis in bull|histology of (adrenal|ovary|testis)|ovary with|sweat glands|pancreas|histological structure of ovary|classify the glands in mammals|glands associated with male|regulation of hormone secretion|blood.?testis"},
  // II-1.2 embryology
- {s:"II-1.2", p:2, t:"Gametogenesis and germ layer derivatives", re:"spermatogenesis and oogenesis|gametogenesis|germ layer|ectodermal|endodermal|organogenesis"},
+ {s:"II-1.2", p:2, t:"Gametogenesis and germ layer derivatives", re:"development of bone|spermatogenesis and oogenesis|gametogenesis|germ layer|ectodermal|endodermal|organogenesis"},
  {s:"II-1.2", p:2, t:"Foetal membranes, placenta and twinning", re:"foetal membranes|placenta|twinning"},
  // II-1.3 bovine anatomy
  {s:"II-1.3", p:2, t:"Regional anatomy: sinuses, nerve blocks and lymph nodes", re:"paranasal|sinuses|lymph nodes|nerve blocks?|cornual|epidural"},
@@ -161,7 +161,7 @@ module.exports = [
  {s:"II-3.2", p:2, t:"Air-, water- and food-borne infections; OIE, WTO and SPS measures", re:"air- and water|food.?borne|oie|\\bwto\\b|sanitary and phytosanitary|ecological interfaces|disease transmission"},
  // II-3.3 jurisprudence
  {s:"II-3.3", p:2, t:"Rules and regulations: SPCA, cruelty prevention, animal rights and legislation", re:"spca|cruelty|animal rights|legislations?|rules and regulations|regulations for improvement|animal welfare"},
- {s:"II-3.3", p:2, t:"Vetero-legal cases, wounds, blood stains, post-mortem and sample collection", re:"vetero.?legal|veterolegal|blood stains|legal aspects of wounds|sudden death|post.?mortem examination of a cow"},
+ {s:"II-3.3", p:2, t:"Vetero-legal cases, wounds, blood stains, post-mortem and sample collection", re:"vetero.?legal|veterolegal|blood stains|time of death|legal aspects of wounds|sudden death|post.?mortem examination of a cow"},
  // II-4.1 market milk
  {s:"II-4.1", p:2, t:"Quality, testing and grading of raw milk; collection and transport", re:"raw milk|platform tests?|quality of milk|milk quality|collection and transportation of raw milk|grading of raw"},
  {s:"II-4.1", p:2, t:"Pasteurisation, sterilisation and UHT processing of milk", re:"pasteuri[sz]ation|sterili[sz]ed|\\buht\\b|aseptic|sterility"},
@@ -180,14 +180,14 @@ module.exports = [
  {s:"II-5.1.1", p:2, t:"Meat inspection, post-mortem inspection and carcass grading", re:"meat inspection|post.?mortem inspection|grading and fabrication|carcass grading|inspection procedure|categorization of animals"},
  // II-5.1.2
  {s:"II-5.1.2", p:2, t:"Spoilage of meat, contamination and control measures", re:"fresh meat|spoilage of meat|spoilage.*meat|microbial growth on meat|contamination of meat|contamination"},
- {s:"II-5.1.2", p:2, t:"Post-slaughter physico-chemical changes, rigor mortis, PSE and DFD meat", re:"physico.?chemical changes|rigor mortis|porcine stress|\\bpse\\b|\\bdfd\\b|conversion of muscle into meat|meat quality|physical changes that occur in preserved meat"},
+ {s:"II-5.1.2", p:2, t:"Post-slaughter physico-chemical changes, rigor mortis, PSE and DFD meat", re:"physico.?chemical changes|rigor mortis|porcine stress|\\bpse\\b|\\bdfd\\b|conversion of muscle into meat|meat quality|physical changes that occur in preserved meat|eating quality"},
  {s:"II-5.1.2", p:2, t:"Adulteration and fraudulent substitution of meat; hygienic meat from farm to fork", re:"adulteration|fraudulent|farm to fork|hygienic meat|wholesome meat|quality of meat for domestic|meat trade|regulatory provisions|convenience meat"},
  // II-5.2.1
  {s:"II-5.2.1", p:2, t:"Meat emulsions, sausages and meat products", re:"meat emulsion|sausage|meat products|value addition in meat|convenience meat"},
  {s:"II-5.2.1", p:2, t:"Preservation of meat: curing, canning, irradiation, low temperature", re:"curing|canning|irradiation|preservation of meat|low temperature preservation|meat preservation|preservation.*poultry meat"},
  {s:"II-5.2.1", p:2, t:"Packaging and processing of meat", re:"packaging (is a very important|of meat)|modern processing technologies|processing of meat|packaging techniques"},
  // II-5.3
- {s:"II-5.3", p:2, t:"Slaughter house by-products and their utilisation", re:"by.?products|byproducts|rendering|meat.?cum.?bone|condemned|casings|effluent|horn and hoof|glandular|organ products|organs and glandular|fallen animal carcasses|proper utili"},
+ {s:"II-5.3", p:2, t:"Slaughter house by-products and their utilisation", re:"by.?products|byproducts|rendering|meat.?cum.?bone|condemned|casings|effluent|horn and hoof|glandular|organ products|organs and glandular|fallen animal carcasses|hides and skin|proper utili"},
  // II-5.4
  {s:"II-5.4", p:2, t:"Poultry meat: composition, slaughter, inspection and ready-to-cook chicken", re:"poultry meat|chicken meat|ready to cook|dressed chicken|bis grading|nutritional content of poultry|slaughter.*poultry"},
  {s:"II-5.4", p:2, t:"Eggs: structure, composition, preservation, standards and marketing", re:"\\beggs?\\b|egg price|shell eggs?|egg powder|nutritive value of egg"},
