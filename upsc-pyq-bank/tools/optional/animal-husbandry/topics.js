@@ -31,7 +31,7 @@ module.exports = [
  {s:"I-1.6", p:1, t:"Feeding of calves, pregnant and work animals", re:"calves|calf\\b|bullocks?|pregnant cows|young stock|neonatal|flushing|steaming.?up"},
  {s:"I-1.6", p:1, t:"Feeding of breeding bulls", re:"breeding bulls?\\b.*(feed|diet|schedule)|feeding (schedule )?(of|for) breeding bulls|feeding of breeding bulls"},
  {s:"I-1.6", p:1, t:"Feeding of milch animals through the lactation cycle; effect on milk composition", re:"lactation|milk composition|composition of milk|high.?yield|milch|dairy cows?.*(feed|nutri)|feeding of high|guidelines to feed|high yielder"},
- {s:"I-1.6", p:1, t:"Feeding of goats for meat and milk production", re:"goats?\\b.*(feed|food|stall|chevon|habit)|feeding (habits )?of goats|stall.?feeding of goats|chevon"},
+ {s:"I-1.6", p:1, t:"Feeding of goats for meat and milk production", re:"goat kids|goats?\\b.*(feed|food|stall|chevon|habit)|feeding (habits )?of goats|stall.?feeding of goats|chevon"},
  {s:"I-1.6", p:1, t:"Feeding of sheep for meat and wool production", re:"feeding of (sheep|lambs)|lambs? (raising|for)|lamb.raising|sheep for (good quality )?wool|mutton production|feeding of lambs"},
  {s:"I-1.6", p:1, t:"Rumen digestion and advances in ruminant nutrition", re:"rumen|ruminants?\\b.*(digest|diet|nutri)|microbial digestion|copper.?molybdenum|nutrient.?parasite|water requirements"},
  // I-1.7 Swine
@@ -103,7 +103,7 @@ module.exports = [
  {s:"I-5.3", p:1, t:"Breeds of livestock and poultry; crossbreeding programmes in India", re:"breeds? (characteristics|of)|gir and sahiwal|indigenous cattle breeds|crossbred cattle breeds|experiences of crossbreeding|madras red"},
  // I-6 extension
  {s:"I-6", p:1, t:"Principles, objectives and methods of extension", re:"extension|training needs|method demonstration|extension education"},
- {s:"I-6", p:1, t:"Transfer of technology, constraints and animal husbandry programmes for rural development", re:"transfer of technology|transfer technology|technology transfer|rural (development|women|farmers|planning)|participatory rural|role of nddb|socio-economic|animal husbandry programmes|livestock health and disease control|information and communication|gender|backbone of poor rural farmers|dairy development programmes|national livestock mission"},
+ {s:"I-6", p:1, t:"Transfer of technology, constraints and animal husbandry programmes for rural development", re:"transfer of technology|transfer technology|technology transfer|rural (development|women|farmers|planning)|participatory rural|role of nddb|socio-economic|animal husbandry programmes|livestock health and disease control|welfare of animal husbandry|gokul mission|cyber extension|information and communication|gender|backbone of poor rural farmers|dairy development programmes|national livestock mission"},
  // ================= PAPER II =================
  // II-1.1 histology
  {s:"II-1.1", p:2, t:"Histological techniques and microscopy", re:"histolog|microscop|in vitro staining|staining"},

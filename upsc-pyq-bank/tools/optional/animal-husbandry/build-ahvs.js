@@ -8,7 +8,7 @@ const topics = require("./topics.js"), SY = require("./items.js");
 const check = process.argv.indexOf("--check") >= 0;
 const DEFAULT_PREFIX = "Answer the following in about 150 words each:";
 // Two scanned papers are missing pages in the files that were supplied; they are stored as incomplete (see README).
-const PARTIAL = {"2020|1":"Questions 5 to 8 are not in the file supplied.", "2021|2":"Questions 3(c), 4 and 5 are not in the file supplied."};
+const PARTIAL = {"2021|2":"Questions 3(c), 4 and 5 are not in the file supplied."};
 const PARTIAL_Q = {"2021|2|3":1};
 let html = fs.readFileSync(PAGE, "utf8");
 
