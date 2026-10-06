@@ -4024,6 +4024,7 @@ function applyBackupData(data){
   if(data.revDone && typeof data.revDone==="object"){ revDone = data.revDone; revSave(); }
   if(data.reminders && typeof data.reminders==='object'){ remState = Object.assign({}, remState, data.reminders, {on:false, sent:{}}); remSave(); }
   if(data.studyProgress && data.studyProgress.topics){ studyProgress = data.studyProgress; saveProgress(); }
+  try{ migrateOptionalSeparation(); migrateAnthroOfficial(); }catch(e){}
   if(data.profile && data.profile.name){ profile = data.profile; lsSetJSON(PROFILE_KEY, profile); renderGreeting(); }
   var p = data.planConfig;
   if(p && p.startDate && p.prelimsDate && p.mainsDate) applyDynamicPlan(p.startDate, p.prelimsDate, p.mainsDate);
@@ -4523,6 +4524,10 @@ var CURR_OPT = {
 };
 // Official UPSC list, in the official order (ALL_OPTIONALS). Syllabus trees are keyed by the short name where one exists.
 function optionalNames(){ return ALL_OPTIONALS.slice(); }
+// THUMB RULE: an optional subject and a General Studies subject of the same name (History, Geography, Agriculture) are never mixed.
+// The optional is always its own subject, named "<Subject> (Optional)", in the Planner, the plan, the Dashboard and the logs.
+function optLabel(n){ return n+" (Optional)"; }
+function optBase(subject){ var m = /^(.*) \(Optional\)$/.exec(subject || ""); return m ? m[1] : ""; }   // "Agriculture (Optional)" -> "Agriculture"; "" for a General Studies subject
 function optKey(n){ return OPT_ALIAS[n] || n; }
 function isOptionalName(n){ return ALL_OPTIONALS.indexOf(n)>=0; }
 function optFullName(n){ for(var k in OPT_ALIAS) if(OPT_ALIAS[k]===n) return k; return n; }
@@ -4885,11 +4890,11 @@ function buildCatalog(c){
     (c.gs||[]).slice().sort().forEach(function(n){ if(CURR_GS["GS "+n]) addTree(CURR_GS["GS "+n], "Mains", "GS "+n); });
     if(c.optionalOn && c.optional){
       var t = optionalTreeFor(c);
-      if(t) addFlat(c.optional, t, "Optional", "Optional", c.optional);
+      if(t) addFlat(optLabel(c.optional), t, "Optional", "Optional", c.optional);
       else {
         var g = parseCustomSyllabus(c.customText);
         if(Object.keys(g).length){
-          var e = ensure(c.optional, {purpose:"Optional", paper:"Optional", optional:c.optional});
+          var e = ensure(optLabel(c.optional), {purpose:"Optional", paper:"Optional", optional:c.optional});
           Object.keys(g).forEach(function(k){ e.topics[k] = g[k].slice(); });
         }
       }
@@ -4910,6 +4915,31 @@ function catalogLeaves(entry){
   return out;
 }
 function planCatalog(plan){ return buildCatalog(plan.catCfg); }
+// Plans made before the optional became its own subject hold its chapters under the plain subject name ("Agriculture|Paper I \u203a ...").
+// They are renamed to "<Subject> (Optional)|..." everywhere they are stored: plan, progress, sessions and revision marks. Safe to run again.
+function migrateOptionalSeparation(){
+  if(!studyPlan || !studyPlan.catCfg || !studyPlan.catCfg.optionalOn || !studyPlan.catCfg.optional) return;
+  var N = studyPlan.catCfg.optional, L = optLabel(N), custom = parseCustomSyllabus(studyPlan.catCfg.customText), bundled = hasBundledSyllabus(N), changed = 0;
+  var gsHas = !!buildCatalog(Object.assign({}, studyPlan.catCfg, {optionalOn:false})).map[N];   // a General Studies subject of the same name stays as it is
+  function isOptGroup(g){ return String(g).indexOf("\u203a")>=0 || (!bundled && !!custom[g] && !gsHas); }
+  function renId(id){ var q = String(id).split("|"); if(q.length===3 && q[0]===N && isOptGroup(q[1])){ q[0] = L; changed++; return q.join("|"); } return id; }
+  function renKeys(o){ if(!o || typeof o!=="object") return; Object.keys(o).forEach(function(k){ var n = renId(k); if(n!==k){ o[n] = o[k]; delete o[k]; } }); }
+  function fixList(arr){
+    if(!Array.isArray(arr) || arr.indexOf(N)<0 || arr.indexOf(L)>=0) return;
+    if(gsHas) arr.splice(arr.indexOf(N)+1, 0, L); else arr[arr.indexOf(N)] = L;
+    changed++;
+  }
+  renKeys(studyPlan.sel); renKeys(studyProgress.topics);
+  if(studyPlan.cfg){ renKeys(studyPlan.cfg.sel); fixList(studyPlan.cfg.order); if(studyPlan.cfg.init && studyPlan.cfg.init[N] && !studyPlan.cfg.init[L]){ studyPlan.cfg.init[L] = 1; if(!gsHas) delete studyPlan.cfg.init[N]; changed++; } }
+  fixList(studyPlan.priority);
+  if(!gsHas){ [studyPlan.capacity, studyPlan.cfg && studyPlan.cfg.cap].forEach(function(c){ if(c && Array.isArray(c.sessions)) c.sessions.forEach(function(sl){ if(sl.subject===N){ sl.subject = L; changed++; } }); }); }
+  Object.keys(revDone).forEach(function(k){ var h = k.lastIndexOf("#"); if(h<0) return; var id = k.slice(0, h), n = renId(id); if(n!==id){ revDone[n+k.slice(h)] = revDone[k]; delete revDone[k]; } });
+  studySessions.forEach(function(x){
+    if(x.optionalSubject===N && x.subject===N){ x.subject = L; changed++; }
+    if(x.topicId){ var n = renId(x.topicId); if(n!==x.topicId) x.topicId = n; }
+  });
+  if(changed){ savePlan(); saveProgress(); saveSessions(); revSave(); }
+}
 // The chapters of Anthropology (55 official items) and Agriculture (105 syllabus sub-topics) follow the official UPSC syllabus. A plan made on an earlier
 // chapter list is moved over once: the old chapters (and their ticks) are dropped and the new ones are added if the subject was in the plan.
 var OPT_PLAN_V = {"Anthropology":{key:"anthV", v:2, note:"Anthropology now follows the 55 items of the official UPSC syllabus. Your Anthropology chapters were reset."}, "Agriculture":{key:"agriV", v:1, note:"Agriculture now follows the official UPSC syllabus, sub-topic by sub-topic. Your Agriculture chapters were reset."}};
@@ -4919,12 +4949,11 @@ function migrateAnthroOfficial(){
   Object.keys(OPT_PLAN_V).forEach(function(name){
     var M = OPT_PLAN_V[name];
     if(studyPlan[M.key]===M.v) return;
-    // optional chapters have "subject \u203a topic" as their group; a General Studies subject of the same name (Agriculture) is left alone
-    var pre = name+"|", ids = Object.keys(studyPlan.sel).filter(function(id){ return id.indexOf(pre)===0 && (id.split("|")[1] || "").indexOf("\u203a")>=0; });
+    var pre = optLabel(name)+"|", ids = Object.keys(studyPlan.sel).filter(function(id){ return id.indexOf(pre)===0; });
     var oldIds = ids.filter(function(id){ var q = id.split("|"); return !OPT_SUBJECTS[name].leaf[(q[1] || "").split(/\s*[\u203a>]\s*/).pop()+"|"+q[2]]; });
     if(ids.length){
       oldIds.forEach(function(id){ delete studyPlan.sel[id]; if(studyPlan.cfg && studyPlan.cfg.sel) delete studyPlan.cfg.sel[id]; delete studyProgress.topics[id]; });
-      var e = planCatalog(studyPlan).map[name];
+      var e = planCatalog(studyPlan).map[optLabel(name)];
       if(e) catalogLeaves(e).forEach(function(l){ if(!studyPlan.sel[l.id]){ studyPlan.sel[l.id] = 1; if(studyPlan.cfg && studyPlan.cfg.sel) studyPlan.cfg.sel[l.id] = 1; } });
       saveProgress();
       if(oldIds.length) notes.push(M.note);
@@ -5665,8 +5694,8 @@ function wizAction(a, b){
 }
 function wizAfter(kind){
   var w = wiz;
-  if(kind==="optional"){ w.customText = ""; delete w.init[w.optional]; delete w.init[""]; wizSync(w); }
-  if(kind==="custom"){ delete w.init[w.optional]; wizSync(w); }
+  if(kind==="optional"){ w.customText = ""; delete w.init[optLabel(w.optional)]; delete w.init[""]; wizSync(w); }
+  if(kind==="custom"){ delete w.init[optLabel(w.optional)]; wizSync(w); }
   if(kind==="sessCount"){
     var n = +w.cap.count, cur = w.cap.sessions;
     while(cur.length < n){ var d = DEFAULT_TIMES[cur.length] || ["21:00","22:00"]; cur.push({start:d[0], end:d[1], subject:""}); }
@@ -6046,8 +6075,8 @@ function pyqScan(alts, accept){
 function pyqSearch(alts, subject, optional){ return pyqScan(alts, function(q){ return pyqEligible(q, subject, optional); }); }
 function pyqForLeaf(l){
   if(l.id in pyqMemo) return pyqMemo[l.id];
-  if(OPT_SUBJECTS[l.subject]){ var aq = optLeafQuestions(l); if(aq) return (pyqMemo[l.id] = aq); }
-  var meta = studyPlan ? planCatalog(studyPlan).map[l.subject] : null, optional = meta && meta.purpose==="Optional" ? meta.name : "";
+  if(OPT_SUBJECTS[optBase(l.subject)]){ var aq = optLeafQuestions(l); if(aq) return (pyqMemo[l.id] = aq); }
+  var optional = optBase(l.subject);   // optional chapters search the optional papers only; General Studies chapters never see them
   var alts = qAlts(l.unit, l.group).map(function(a){ return {a:a, s:-1}; });
   (l.subs || []).forEach(function(sb, i){ qAltsSub(sb).forEach(function(a){ alts.push({a:a, s:i}); }); });
   return (pyqMemo[l.id] = pyqSearch(alts, l.subject, optional));
@@ -6703,8 +6732,8 @@ var OPT_SUBJECTS = {
 var optLeafMemo = {};
 function optLeafKey(l){ return l.subject+"|"+String(l.group).split(/\s*[\u203a>]\s*/).pop()+"|"+l.unit; }   // group is "Physical Anthropology \u203a Human Genetics"; the chapter is keyed by its last part
 function optLeafTopics(l){
-  var S = OPT_SUBJECTS[l.subject]; if(!S) return null;
-  var spec = S.leaf[optLeafKey(l).slice(l.subject.length+1)], D = spec ? optLoad(l.subject) : null; if(!D) return null;
+  var S = OPT_SUBJECTS[optBase(l.subject)]; if(!S) return null;
+  var spec = S.leaf[String(l.group).split(/\s*[\u203a>]\s*/).pop()+"|"+l.unit], D = spec ? optLoad(optBase(l.subject)) : null; if(!D) return null;
   return D.topics.filter(function(t){
     return spec.some(function(x){ return D.itemIds[x] ? t.s===x : (/^(an|ag)\d+$/.test(x) ? t.id===x : t.t.toLowerCase().indexOf(x)>=0); });
   });
@@ -6720,14 +6749,14 @@ function optLeafTier(l){
 // every past question under a chapter's sub-topics, newest first, in the shape the PYQ sheet and Dashboard expect
 function optLeafQuestions(l){
   var ts = optLeafTopics(l); if(!ts) return null;
-  var S = OPT_SUBJECTS[l.subject], ix = pyqIndex(), byRef = {};
+  var S = OPT_SUBJECTS[optBase(l.subject)], ix = pyqIndex(), byRef = {};
   ix.Q.forEach(function(q){ if(q.exam==="optional" && S.re.test(q.paper)) byRef[q.year+"|"+(/II$/.test(q.paper) ? 2 : 1)+"|"+q.qno] = q; });
   var seen = {}, out = [];
   ts.forEach(function(t){ t.refs.forEach(function(r){ if(seen[r] || !byRef[r]) return; seen[r] = 1; var q = byRef[r]; out.push({exam:q.exam, paper:q.paper, year:q.year, qno:q.qno, marks:q.marks, text:q.text, subs:[], hits:[]}); }); });
   return out.sort(function(a,b){ return b.year-a.year || (a.paper<b.paper ? -1 : (a.paper>b.paper ? 1 : 0)) || (String(a.qno)<String(b.qno) ? -1 : 1); });
 }
 function tierInfo(l){
-  if(OPT_SUBJECTS[l.subject]){ var ai = optLeafTier(l); if(ai) return ai; }
+  if(OPT_SUBJECTS[optBase(l.subject)]){ var ai = optLeafTier(l); if(ai) return ai; }
   var key = l.subject+"|"+l.group+"|"+l.unit;
   var ct = chapterTiers().byId[l.id]; if(ct) return ct.info;
   if(TIER_BY_KEY[key]) return TIER_BY_KEY[key];
@@ -8897,7 +8926,7 @@ function uiThemeCardHtml(){
     }).join("")+'</div></div>';
 }
 function sampleLanes(){
-  var names = ["History","Art & Culture","Anthropology"], tot = [35,16,55], dn = [0,0,0];
+  var names = ["History","Art & Culture","Anthropology (Optional)"], tot = [35,16,55], dn = [0,0,0];
   return {n:3, lanes:names.map(function(n,i){ return {name:n, color:PATH_COLORS[i], pct:0, done:dn[i], total:tot[i], i:i}; }), dday:{label:"D-Day", days:0, sub:"your end date"}, locked:[], completed:[]};
 }
 function renderSettings(){
@@ -10045,6 +10074,7 @@ function boot(){
     else buildIndices();
     currentDailyKey = clampKey(todayKey);
 
+    migrateOptionalSeparation();
     migrateAnthroOfficial();
     migrateExtras();
     ensureTimerInterval();

@@ -12,6 +12,10 @@ Turns the past-question bank plus the syllabus into the searchable topic/tier li
 5. Tiers and trends are not stored; the app works them out from the lists (years asked out of all exam years, last 5 years against earlier ones), so they update when papers are added.
 6. Bump `CACHE_NAME` in `page/sw.js` when you publish.
 
+## Thumb rule: optional and General Studies are never mixed
+
+An optional subject is always its own subject in the app, named `<Subject> (Optional)` (for example `Agriculture (Optional)`), even when a General Studies subject has the same name (History, Geography, Agriculture). Their chapters, ticks, progress, sessions and questions are kept apart everywhere: an optional chapter only ever shows questions from the optional papers, and a General Studies chapter never shows an optional question. Saved plans made before this rule are renamed once by `migrateOptionalSeparation()` in `page/index.html`.
+
 ## Adding an optional subject (the Agriculture folder is the worked example)
 
 The **Tiers → Optional** screen, the Syllabus screen, the Planner chapters, the PYQ Bank and the Dashboard card all read from the registry `OPT_SUBJECTS` in `page/index.html`, so a new subject needs data, not code:
