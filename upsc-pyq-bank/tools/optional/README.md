@@ -27,3 +27,5 @@ The **Tiers → Optional** screen, the Syllabus screen, the Planner chapters, th
 5. Add the subject to `OPT_SUBJECTS` (and `OPT_PLAN_V` if an earlier plan may hold other chapters for it) and bump `CACHE_NAME` in `page/sw.js`.
 
 Done so far: Anthropology (2010-2026, 922 questions, 55 official items, 135 sub-topics) and Agriculture (2014-2026, 750 questions, 17 official paragraphs, 105 sub-topics). `agriculture-official-links.md` lists UPSC's own PDFs for the Agriculture papers.
+
+Animal Husbandry and Veterinary Science (`animal-husbandry/`, 2014-2026, 723 questions, 50 official paragraphs numbered by UPSC, 137 sub-topics): the questions were read from the bilingual scans through Drive's text extraction. Four papers are not in the bank yet: Paper I 2022 and Paper II 2023 were never supplied, and the files for Paper I 2020 (Q5-8) and Paper II 2021 (Q3(c), Q4, Q5) are missing pages. `build-ahvs.js` knows these (`PARTIAL`) and marks the two partial papers incomplete. Add the missing papers to `questions.txt` and run `build-ahvs.js`, then `build-planner.js` and `../gs/build-gs.js`.

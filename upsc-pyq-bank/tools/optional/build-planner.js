@@ -50,3 +50,29 @@ ag.topics.forEach(function(t){
   fs.writeFileSync(PAGE, h2);
   console.log("Agriculture chapters:", Object.keys(agLeaf).length, "| Paper I topics:", Object.keys(agTree["Paper I"]).length, "| Paper II topics:", Object.keys(agTree["Paper II"]).length);
 }
+
+// ---------------------------------------------------------------- Animal Husbandry and Veterinary Science (one chapter per syllabus sub-topic)
+{
+  const NAME = "Animal Husbandry and Veterinary Science";
+  let h3 = fs.readFileSync(PAGE, "utf8");
+  const m3 = h3.match(/<script type="application\/json" id="d-ahvs">(.*?)<\/script>/s);
+  if(!m3) throw new Error("build-planner: d-ahvs not found (run animal-husbandry/build-ahvs.js first), nothing written");
+  const ah = JSON.parse(m3[1]);
+  const ahTree = {"Paper I":{}, "Paper II":{}}, ahLeaf = {}, per = {};
+  ah.topics.forEach(function(t){
+    const it = ah.items.filter(function(x){ return x.id === t.s; })[0], grp = it.pp === 1 ? "Paper I" : "Paper II";
+    per[it.id] = (per[it.id] || 0) + 1;
+    const topic = it.id + "  " + it.t, unit = it.id + "." + per[it.id] + "  " + t.t;
+    (ahTree[grp][topic] = ahTree[grp][topic] || []).push(unit);
+    ahLeaf[topic + "|" + unit] = [t.id];
+  });
+  const cur3 = '  "' + NAME + '": ' + JSON.stringify(ahTree, null, 2).replace(/\n/g, "\n  ") + ',\n';
+  const a3 = h3.indexOf('  "' + NAME + '": {\n    "Paper I"');
+  if(a3 >= 0){ const re = /\n  "[A-Z]/g; re.lastIndex = a3 + 20; const m = re.exec(h3); if(!m) throw new Error("build-planner: end of AHVS block not found, nothing written"); h3 = h3.slice(0, a3) + cur3 + h3.slice(m.index + 1); }
+  else { const g = h3.indexOf('  "Geography": CT({'); if(g < 0) throw new Error("build-planner: insertion point not found, nothing written"); h3 = h3.slice(0, g) + cur3 + h3.slice(g); }
+  const la3 = h3.indexOf("var AHVS_LEAF = {"), leafTxt3 = "var AHVS_LEAF = " + JSON.stringify(ahLeaf, null, 1) + ";";
+  if(la3 >= 0){ const e3 = h3.indexOf("\n};", la3); if(e3 < 0) throw new Error("build-planner: AHVS_LEAF block not closed, nothing written"); h3 = h3.slice(0, la3) + leafTxt3 + h3.slice(h3.indexOf("\n", e3 + 1)); }
+  else { const lb = h3.indexOf("\n// Optional subjects that have a question analysis"); if(lb < 0) throw new Error("build-planner: insertion point not found, nothing written"); h3 = h3.slice(0, lb) + "\n" + leafTxt3 + h3.slice(lb); }
+  fs.writeFileSync(PAGE, h3);
+  console.log(NAME + " chapters:", Object.keys(ahLeaf).length, "| Paper I topics:", Object.keys(ahTree["Paper I"]).length, "| Paper II topics:", Object.keys(ahTree["Paper II"]).length);
+}
