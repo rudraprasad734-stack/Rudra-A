@@ -103,6 +103,9 @@ syl.agriculture = {}; freq.agriculture = {};
 console.log("agriculture items:", G.items.filter(function(i){ return i.pp === 1; }).length, "+", G.items.filter(function(i){ return i.pp === 2; }).length);
 console.log("anthropology items:", aItems[0].length, "+", aItems[1].length);
 if(check) process.exit(0);
+// every frequency map carries the number of exam years it covers, so the Syllabus badges can use the same tier rule as the Tiers pages
+freq.essay.__ny = 10; Object.keys(freq.gs).forEach(function(k){ freq.gs[k].__ny = 13; });
+Object.keys(freq.anthropology).forEach(function(k){ freq.anthropology[k].__ny = A.years.length; }); Object.keys(freq.agriculture).forEach(function(k){ freq.agriculture[k].__ny = G.years.length; });
 const j = function(o){ return JSON.stringify(o).replace(/</g, "\\u003c"); };
 html = html.replace(dsM[0], function(){ return '<script type="application/json" id="d-syllabus">' + j(syl) + '</script>'; });
 html = html.replace(dfM[0], function(){ return '<script type="application/json" id="d-freq">' + j(freq) + '</script>'; });

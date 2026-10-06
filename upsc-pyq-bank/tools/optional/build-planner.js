@@ -21,7 +21,8 @@ const cur = '  "Anthropology": ' + JSON.stringify(tree, null, 2).replace(/\n/g, 
 const a = html.indexOf('  "Anthropology": CT({'), b = html.indexOf('  "Geography": CT({', a);
 if(a < 0 || b < 0){ const a2 = html.indexOf('  "Anthropology": {\n    "Paper I"'); if(a2 < 0) throw new Error("CURR_OPT block not found"); html = html.slice(0, a2) + cur + html.slice(html.indexOf('  "Geography": CT({', a2)); }
 else html = html.slice(0, a) + cur + html.slice(b);
-const la = html.indexOf("var ANTHRO_LEAF = {"), lb = html.indexOf("\nvar anthroLeafMemo", la);
+const la = html.indexOf("var ANTHRO_LEAF = {"), lb = html.indexOf("\nvar AGRI_LEAF = {", la) >= 0 ? html.indexOf("\nvar AGRI_LEAF = {", la) : html.indexOf("\nvar optLeafMemo", la);
+if(la < 0 || lb < 0) throw new Error("build-planner: ANTHRO_LEAF block not found, nothing written");
 html = html.slice(0, la) + "var ANTHRO_LEAF = " + JSON.stringify(leaf, null, 1) + ";" + html.slice(lb);
 fs.writeFileSync(PAGE, html);
 console.log("chapters:", Object.keys(leaf).length, "| Paper I topics:", Object.keys(tree["Paper I"]).length, "| Paper II topics:", Object.keys(tree["Paper II"]).length);
@@ -44,8 +45,8 @@ ag.topics.forEach(function(t){
   else { const g = h2.indexOf('  "Geography": CT({'); h2 = h2.slice(0, g) + cur2 + h2.slice(g); }
   const la2 = h2.indexOf("var AGRI_LEAF = {");
   const leafTxt = "var AGRI_LEAF = " + JSON.stringify(agLeaf, null, 1) + ";";
-  if(la2 >= 0){ const lb2 = h2.indexOf("\n", h2.indexOf("\n};", la2) + 1); h2 = h2.slice(0, la2) + leafTxt + h2.slice(lb2); }
-  else { const lb = h2.indexOf("\nvar anthroLeafMemo"); h2 = h2.slice(0, lb) + "\n" + leafTxt + h2.slice(lb); }
+  if(la2 >= 0){ const e2b = h2.indexOf("\n};", la2); if(e2b < 0) throw new Error("build-planner: AGRI_LEAF block not closed, nothing written"); const lb2 = h2.indexOf("\n", e2b + 1); h2 = h2.slice(0, la2) + leafTxt + h2.slice(lb2); }
+  else { const lb = h2.indexOf("\n// Optional subjects that have a question analysis"); if(lb < 0) throw new Error("build-planner: insertion point not found, nothing written"); h2 = h2.slice(0, lb) + "\n" + leafTxt + h2.slice(lb); }
   fs.writeFileSync(PAGE, h2);
   console.log("Agriculture chapters:", Object.keys(agLeaf).length, "| Paper I topics:", Object.keys(agTree["Paper I"]).length, "| Paper II topics:", Object.keys(agTree["Paper II"]).length);
 }
