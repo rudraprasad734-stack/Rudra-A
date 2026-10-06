@@ -107,7 +107,7 @@ module.exports = [
  // ================= PAPER II =================
  // II-1.1 histology
  {s:"II-1.1", p:2, t:"Histological techniques and microscopy", re:"histolog|microscop|in vitro staining|staining"},
- {s:"II-1.1", p:2, t:"Cell structure, cell division and tissues", re:"cell division|body tissues|basic tissues|tissue structure|cytology|connective tissue cells"},
+ {s:"II-1.1", p:2, t:"Cell structure, cell division and tissues", re:"pituitary gland|cell division|body tissues|basic tissues|tissue structure|cytology|connective tissue cells"},
  {s:"II-1.1", p:2, t:"Histology of organs and glands, neurons and integument", re:"neurons|testis in bull|histology of (adrenal|ovary|testis)|ovary with|sweat glands|pancreas|histological structure of ovary|classify the glands in mammals|glands associated with male|regulation of hormone secretion|blood.?testis"},
  // II-1.2 embryology
  {s:"II-1.2", p:2, t:"Gametogenesis and germ layer derivatives", re:"spermatogenesis and oogenesis|gametogenesis|germ layer|ectodermal|endodermal|organogenesis"},
@@ -115,9 +115,9 @@ module.exports = [
  // II-1.3 bovine anatomy
  {s:"II-1.3", p:2, t:"Regional anatomy: sinuses, nerve blocks and lymph nodes", re:"paranasal|sinuses|lymph nodes|nerve blocks?|cornual|epidural"},
  {s:"II-1.3", p:2, t:"Cranial nerves, brachial and lumbosacral plexus", re:"cranial nerves?|brachial plexus|lumbosacral plexus|vagus|nerves originating|nerves constituting"},
- {s:"II-1.3", p:2, t:"Topographic anatomy of visceral organs (abdominal and pelvic cavities, stomach)", re:"abdominal cavity|pelvic cavity|ruminal stomach|rumen and reticulum|topograph|female genitalia|reproductive system of a bull|male reproductive organs of bovine|surface anatomy"},
+ {s:"II-1.3", p:2, t:"Topographic anatomy of visceral organs (abdominal and pelvic cavities, stomach)", re:"thoracic and pelvic|abdominal cavity|pelvic cavity|ruminal stomach|rumen and reticulum|topograph|female genitalia|reproductive system of a bull|male reproductive organs of bovine|surface anatomy"},
  // II-1.4 fowl
- {s:"II-1.4", p:2, t:"Musculo-skeletal system, air sacs and respiration in fowl", re:"musculo.?skeletal|airsacs?|air sacs|flying birds|respiration in fowl"},
+ {s:"II-1.4", p:2, t:"Musculo-skeletal system, air sacs and respiration in fowl", re:"anatomical adaptation for flight|musculo.?skeletal|airsacs?|air sacs|flying birds|respiration in fowl"},
  {s:"II-1.4", p:2, t:"Digestive system and egg production in fowl (ovary, oviduct)", re:"digestive system of fowl|crop and gizzard|ovary and oviduct|female fowl|functional anatomy of (female|domestic) fowl|formation of egg in hen|anatomical structures and formation of egg"},
  // II-1.5 pharmacology
  {s:"II-1.5", p:2, t:"Pharmacodynamics, pharmacokinetics, biotransformation and bioavailability", re:"biotransformation|bioavailability|pharmacodynamic|pharmacokinetic|developing a newer drug|pharmacology and clinical use"},
@@ -132,26 +132,26 @@ module.exports = [
  {s:"II-1.6", p:2, t:"Climate, environment and animal performance; industrialisation and animal agriculture", re:"climate scenario|indigenous livestock breeds|industriali[sz]ation|climate change|effect of (the )?environment|environment on production|photoperiod|heat stress|environmental"},
  {s:"II-1.6", p:2, t:"Housing requirements of livestock and poultry", re:"housing|brooder house|farrowing pen|calf pen|for pregnant cows and milking cows"},
  // II-2.1 infectious diseases
- {s:"II-2.1", p:2, t:"Infectious diseases of cattle and buffaloes (FMD, HS, brucellosis, trypanosomiasis, leptospirosis)", re:"foot and mouth|\\bfmd\\b|haemorrhagic septic|hemorrhagic septic|brucell|tubercul|trypanosom|leptospir|haemoprotozoan|hemoprotozoan|mediterranean fever|meningitis|mastitis|anthrax"},
+ {s:"II-2.1", p:2, t:"Infectious diseases of cattle and buffaloes (FMD, HS, brucellosis, trypanosomiasis, leptospirosis)", re:"lumpy skin|foot and mouth|\\bfmd\\b|haemorrhagic septic|hemorrhagic septic|brucell|tubercul|trypanosom|leptospir|haemoprotozoan|hemoprotozoan|mediterranean fever|meningitis|mastitis|anthrax"},
  {s:"II-2.1", p:2, t:"Infectious diseases of pigs, horses, sheep and goats (swine fever, erysipelas)", re:"swine fever|erysipelas|equine|sheep and goat|horses"},
  {s:"II-2.1", p:2, t:"Diseases of poultry (avian influenza, viral and bacterial diseases)", re:"avian influenza|poultry industry|bacterial and viral diseases of poultry|diseases of poultry|layer bird diseases|protection against layer"},
  {s:"II-2.1", p:2, t:"Rabies and diagnosis of viral diseases", re:"rabies|rabid|viral diseases|biochemical, biotechnological and immunological"},
  // II-2.2 production diseases
- {s:"II-2.2", p:2, t:"Production diseases of dairy animals (ketosis, milk fever, hypomagnesaemic tetany, haemoglobinuria, recumbency)", re:"ketosis|acetonaemia|hypocalc|hypomagnes|tetany|post.?parturient|haemoglobinur|recumbency|production diseases|grass staggers|monday morning"},
+ {s:"II-2.2", p:2, t:"Production diseases of dairy animals (ketosis, milk fever, hypomagnesaemic tetany, haemoglobinuria, recumbency)", re:"ketosis|acetonaemia|hypocalc|hypomagnes|tetany|post.?parturient|haemoglobinur|recumbency|production diseases|grass staggers|monday morning|milk fever"},
  // II-2.3 deficiency
  {s:"II-2.3", p:2, t:"Deficiency diseases of domestic animals and birds", re:"iodine|deficiency (disease|of|symptoms)|thiamine|vitamin (e|b)\\b|vitamin deficiency|leathery eggs|clinical signs exhibited by poultry"},
  // II-2.4 non specific
  {s:"II-2.4", p:2, t:"Impaction, bloat, indigestion, diarrhoea, dehydration and forestomach disorders", re:"anaemia|impaction|bloat|diarrhoea|indigestion|dehydration|fore.?stomach|rumenal disorders|heat stress|colic|esophagitis|heat stroke|stroke"},
  // II-2.5 neurological
- {s:"II-2.5", p:2, t:"Diagnosis and treatment of neurological disorders", re:"neurolog|nervous system|paralysis|convulsions|nervous"},
+ {s:"II-2.5", p:2, t:"Diagnosis and treatment of neurological disorders", re:"neurolog|nervous system|paralysis|convulsions|epilepsy|nervous"},
  // II-2.6 immunisation
  {s:"II-2.6", p:2, t:"Vaccines, immunisation schedules and types of immunity", re:"vaccin|immuni[sz]ation|types of immunity|herd immunity|immuni(ty|se)"},
- {s:"II-2.6", p:2, t:"Zero disease concept, disease-free zones and chemoprophylaxis", re:"control and eradication|zero disease|chemoprophyl|disease.?free zones?|disease prevention"},
+ {s:"II-2.6", p:2, t:"Zero disease concept, disease-free zones and chemoprophylaxis", re:"quarantine|control and eradication|zero disease|chemoprophyl|disease.?free zones?|disease prevention"},
  // II-2.7 surgery
  {s:"II-2.7", p:2, t:"Fractures and dislocations", re:"fractures?|dislocation|femur|non.?union|stay apparatus|bow and string"},
  {s:"II-2.7", p:2, t:"Hernia, choke, abomasal displacement, caesarean operation, castration", re:"hernia|choke|abomasal displacement|ca?esarean|rumenotomy|castration|surgical (condition|management|intervention)|stages of general anaesthesia"},
  // II-2.8 disease investigation
- {s:"II-2.8", p:2, t:"Materials and techniques for laboratory investigation", re:"biological samples|laboratory (investigation|diagnosis)|samples? (for|from)|dna fingerprint|disease investigation|neurological examination"},
+ {s:"II-2.8", p:2, t:"Materials and techniques for laboratory investigation", re:"collection and despatch|biological samples|laboratory (investigation|diagnosis)|samples? (for|from)|dna fingerprint|disease investigation|neurological examination"},
  {s:"II-2.8", p:2, t:"Animal health centres, veterinary hospital and outbreak investigation", re:"animal health centres?|veterinary hospital|infectious outbreak|outbreak|after floods"},
  // II-3.1 zoonoses
  {s:"II-3.1", p:2, t:"Zoonoses: classification, transmission and role of animals and birds", re:"zoono|animals and birds|zoonoses"},
