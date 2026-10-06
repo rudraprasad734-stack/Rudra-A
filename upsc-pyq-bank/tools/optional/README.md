@@ -12,4 +12,14 @@ Turns the past-question bank plus the syllabus into the searchable topic/tier li
 5. Tiers and trends are not stored; the app works them out from the lists (years asked out of all exam years, last 5 years against earlier ones), so they update when papers are added.
 6. Bump `CACHE_NAME` in `page/sw.js` when you publish.
 
-For another optional subject, copy `anthropology.topics.js`, change the topics, and point the builder at the new subject (the screen already takes its data from `d-anthro`; a subject picker is the next step).
+## Adding an optional subject (the Agriculture folder is the worked example)
+
+The **Tiers → Optional** screen, the Syllabus screen, the Planner chapters, the PYQ Bank and the Dashboard card all read from the registry `OPT_SUBJECTS` in `page/index.html`, so a new subject needs data, not code:
+
+1. Put the question text in `<subject>/questions.txt` (one part per line: `year|paper|qno|marks|text`; `#PREFIX|year|paper|q|text` gives the instruction printed above a question). Scanned papers are read with OCR and every page is checked against the image. The builder refuses a paper whose questions do not add up to 50 marks each.
+2. `<subject>/items.js` = the official syllabus paragraphs (word for word, from `../syllabus/official-2026/`), `<subject>/topics.js` = the sub-topics with their keyword patterns.
+3. `node upsc-pyq-bank/tools/optional/<subject>/build-<subject>.js` writes the papers into the question bank (`d-bank`) and the analysis into `<script id="d-<subject>">`. Same rules as above: 0 unmatched questions, every item has a sub-topic.
+4. `node upsc-pyq-bank/tools/optional/build-planner.js` writes the Planner chapters and the chapter-to-topic map; `node upsc-pyq-bank/tools/gs/build-gs.js` writes the official wording and frequency badges on the Syllabus screen.
+5. Add the subject to `OPT_SUBJECTS` (and `OPT_PLAN_V` if an earlier plan may hold other chapters for it) and bump `CACHE_NAME` in `page/sw.js`.
+
+Done so far: Anthropology (2010-2026, 922 questions, 55 official items, 135 sub-topics) and Agriculture (2014-2026, 750 questions, 17 official paragraphs, 105 sub-topics). `agriculture-official-links.md` lists UPSC's own PDFs for the Agriculture papers.

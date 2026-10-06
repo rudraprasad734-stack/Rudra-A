@@ -1,5 +1,6 @@
-// Writes the Planner's Anthropology chapter list (CURR_OPT["Anthropology"]) and the chapter -> official item lookup (ANTHRO_LEAF) in page/index.html
-// from the 55 official items in anthropology.items.js. One Planner chapter = one official item.
+// Writes the Planner's chapter lists for the optionals that have a question analysis, in page/index.html:
+//   CURR_OPT["Anthropology"] + ANTHRO_LEAF : one chapter per official item (55) from anthropology.items.js
+//   CURR_OPT["Agriculture"]  + AGRI_LEAF   : one chapter per syllabus sub-topic (105) from <script id="d-agri"> (run agriculture/build-agriculture.js first)
 //   node upsc-pyq-bank/tools/optional/build-planner.js
 const fs = require("fs"), path = require("path");
 const PAGE = path.join(__dirname, "../../page/index.html"), ITEMS = require("./anthropology.items.js").items;
@@ -24,3 +25,27 @@ const la = html.indexOf("var ANTHRO_LEAF = {"), lb = html.indexOf("\nvar anthroL
 html = html.slice(0, la) + "var ANTHRO_LEAF = " + JSON.stringify(leaf, null, 1) + ";" + html.slice(lb);
 fs.writeFileSync(PAGE, html);
 console.log("chapters:", Object.keys(leaf).length, "| Paper I topics:", Object.keys(tree["Paper I"]).length, "| Paper II topics:", Object.keys(tree["Paper II"]).length);
+
+// ---------------------------------------------------------------- Agriculture
+const ag = JSON.parse(html.match(/<script type="application\/json" id="d-agri">(.*?)<\/script>/s)[1]);
+const agTree = {"Paper I":{}, "Paper II":{}}, agLeaf = {}, perItem = {};
+ag.topics.forEach(function(t){
+  const it = ag.items.filter(function(x){ return x.id === t.s; })[0], grp = it.pp === 1 ? "Paper I" : "Paper II";
+  perItem[it.id] = (perItem[it.id] || 0) + 1;
+  const topic = it.id + "  " + it.t, unit = it.id + "." + perItem[it.id] + "  " + t.t;
+  (agTree[grp][topic] = agTree[grp][topic] || []).push(unit);
+  agLeaf[topic + "|" + unit] = [t.id];
+});
+{
+  let h2 = fs.readFileSync(PAGE, "utf8");
+  const cur2 = '  "Agriculture": ' + JSON.stringify(agTree, null, 2).replace(/\n/g, "\n  ") + ',\n';
+  const a2 = h2.indexOf('  "Agriculture": {\n    "Paper I"');
+  if(a2 >= 0){ const e2 = h2.indexOf('\n  "', a2 + 20); let b2 = a2; const re = /\n  "[A-Z]/g; re.lastIndex = a2 + 20; const m = re.exec(h2); b2 = m.index + 1; h2 = h2.slice(0, a2) + cur2 + h2.slice(b2); }
+  else { const g = h2.indexOf('  "Geography": CT({'); h2 = h2.slice(0, g) + cur2 + h2.slice(g); }
+  const la2 = h2.indexOf("var AGRI_LEAF = {");
+  const leafTxt = "var AGRI_LEAF = " + JSON.stringify(agLeaf, null, 1) + ";";
+  if(la2 >= 0){ const lb2 = h2.indexOf("\n", h2.indexOf("\n};", la2) + 1); h2 = h2.slice(0, la2) + leafTxt + h2.slice(lb2); }
+  else { const lb = h2.indexOf("\nvar anthroLeafMemo"); h2 = h2.slice(0, lb) + "\n" + leafTxt + h2.slice(lb); }
+  fs.writeFileSync(PAGE, h2);
+  console.log("Agriculture chapters:", Object.keys(agLeaf).length, "| Paper I topics:", Object.keys(agTree["Paper I"]).length, "| Paper II topics:", Object.keys(agTree["Paper II"]).length);
+}

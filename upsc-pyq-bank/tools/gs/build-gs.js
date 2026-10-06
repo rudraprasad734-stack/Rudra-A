@@ -84,6 +84,23 @@ aItems.forEach(function(list, pi){
   syl.anthropology["paper" + (pi + 1)] = {title:"Anthropology Optional — Paper " + (pi ? "II" : "I"), sections:[{heading:"Official syllabus (UPSC Examination Notice 2026)", topics:topics}]};
   freq.anthropology["paper" + (pi + 1)] = map;
 });
+// Agriculture: the 17 official paragraphs, word for word, with how often each was asked (from d-agri)
+const G = JSON.parse(html.match(/<script type="application\/json" id="d-agri">(.*?)<\/script>/s)[1]);
+syl.agriculture = {}; freq.agriculture = {};
+[1, 2].forEach(function(pn){
+  const list = G.items.filter(function(it){ return it.pp === pn; });
+  const refsBy = {}; G.topics.forEach(function(t){ (refsBy[t.s] = refsBy[t.s] || {}); t.q.forEach(function(r){ refsBy[t.s][r] = 1; }); });
+  const counts = list.map(function(it){ return Object.keys(refsBy[it.id] || {}).length; }), tr = tiers(counts), map = {}, topics = [];
+  list.forEach(function(it, i){
+    const label = it.id + "  " + it.full, refs = Object.keys(refsBy[it.id] || {}), ys = {};
+    refs.forEach(function(r){ ys[r.split("|")[0]] = 1; });
+    const yl = Object.keys(ys).map(Number).sort();
+    topics.push(label); map[label] = {count:refs.length, years:yl, tier:tr[i], recent:yl.length ? yl[yl.length - 1] : 0};
+  });
+  syl.agriculture["paper" + pn] = {title:"Agriculture Optional \u2014 Paper " + (pn === 2 ? "II" : "I"), sections:[{heading:"Official syllabus (UPSC Examination Notice 2026)", topics:topics}]};
+  freq.agriculture["paper" + pn] = map;
+});
+console.log("agriculture items:", G.items.filter(function(i){ return i.pp === 1; }).length, "+", G.items.filter(function(i){ return i.pp === 2; }).length);
 console.log("anthropology items:", aItems[0].length, "+", aItems[1].length);
 if(check) process.exit(0);
 const j = function(o){ return JSON.stringify(o).replace(/</g, "\\u003c"); };
