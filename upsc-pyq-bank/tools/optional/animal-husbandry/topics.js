@@ -32,21 +32,21 @@ module.exports = [
  {s:"I-1.6", p:1, t:"Feeding of breeding bulls", re:"breeding bulls?\\b.*(feed|diet|schedule)|feeding (schedule )?(of|for) breeding bulls|feeding of breeding bulls"},
  {s:"I-1.6", p:1, t:"Feeding of milch animals through the lactation cycle; effect on milk composition", re:"lactation|milk composition|composition of milk|high.?yield|milch|dairy cows?.*(feed|nutri)|feeding of high|guidelines to feed|high yielder"},
  {s:"I-1.6", p:1, t:"Feeding of goats for meat and milk production", re:"goat kids|goats?\\b.*(feed|food|stall|chevon|habit)|feeding (habits )?of goats|stall.?feeding of goats|chevon"},
- {s:"I-1.6", p:1, t:"Feeding of sheep for meat and wool production", re:"feeding of (sheep|lambs)|lambs? (raising|for)|lamb.raising|sheep for (good quality )?wool|mutton production|feeding of lambs"},
+ {s:"I-1.6", p:1, t:"Feeding of sheep for meat and wool production", re:"ewe flock|feeding of (sheep|lambs)|lambs? (raising|for)|lamb.raising|sheep for (good quality )?wool|mutton production|feeding of lambs"},
  {s:"I-1.6", p:1, t:"Rumen digestion and advances in ruminant nutrition", re:"rumen|ruminants?\\b.*(digest|diet|nutri)|microbial digestion|copper.?molybdenum|nutrient.?parasite|water requirements"},
  // I-1.7 Swine
- {s:"I-1.7", p:1, t:"Swine rations: creep, starter, grower, finisher and low cost rations", re:"creep feed|swine ration|rations? (of|for) pigs|economic ration of pigs|swine feeding|feeding of swine|piglets?.*(feed|ration)|amino acid imbalance in swine|feeding of breeding boars|feeding practices.*(pigs|sows)|adult female pigs|energy value.*swine|requirements in swine"},
+ {s:"I-1.7", p:1, t:"Swine rations: creep, starter, grower, finisher and low cost rations", re:"creep feed|least cost rations? for swine|swine ration|rations? (of|for) pigs|economic ration of pigs|swine feeding|feeding of swine|piglets?.*(feed|ration)|amino acid imbalance in swine|feeding of breeding boars|feeding practices.*(pigs|sows)|adult female pigs|energy value.*swine|requirements in swine"},
  {s:"I-1.7", p:1, t:"Feeding of pigs for lean meat production", re:"lean meat"},
  // I-1.8 Poultry nutrition
  {s:"I-1.8", p:1, t:"Poultry nutrition: nutrient requirements and feed formulation", re:"nutrient requirements? of chicken|poultry feed|ration (for|of) (laying|poultry)|laying hens|broilers? (and|chicks)|feed intake in poultry|poultry\\b.*(nutri|feed|ration)|(calorie|amino acid).*poultry|bis specifications|nutritional characteristics of feed ingredients|feeding of broiler"},
  // I-2.1 and 2.2 blood
  {s:"I-2.1", p:1, t:"Endocrine glands in health and disease; hormones of the pituitary and other glands", re:"endocrine and exocrine|endocrine glands?|pituitary|adrenal|hormones? secreted|gastrointestinal hormon|hormones? (are|is) (secreted|regulated)|secretion of hormones|hormone secretion"},
- {s:"I-2.2", p:1, t:"Blood constituents, plasma proteins and blood cell formation", re:"role of blood|blood.?proteins?|plasma proteins?|constituents of blood|general functions of blood|functions of blood|erythropoi|blood cell|haemoglobin|blood groups?|blood volume|buffer systems"},
+ {s:"I-2.2", p:1, t:"Blood constituents, plasma proteins and blood cell formation", re:"hematopoiesis|haematopoiesis|role of blood|blood.?proteins?|plasma proteins?|constituents of blood|general functions of blood|functions of blood|erythropoi|blood cell|haemoglobin|blood groups?|blood volume|buffer systems"},
  {s:"I-2.2", p:1, t:"Blood coagulation and haemorrhagic disorders", re:"coagulation|clotting|fibrinolysis|haemorrhagic disorders|hemorrhagic disorders|thrombocytopenia|anticoagulants?"},
  {s:"I-2.2", p:1, t:"Biochemical tests and their significance in disease diagnosis", re:"biochemical tests|haematobiochemical|hematobiochemical"},
  // I-2.3 circulation
  {s:"I-2.3", p:1, t:"Physiology of the heart: cardiac cycle, heart sounds, ECG", re:"cardiac|heart sounds?|heart beat|heartbeat|electrocardiogram|diagrammatic representation of heart|reno-?renal"},
- {s:"I-2.3", p:1, t:"Blood pressure, circulation, cerebrospinal fluid and blood-brain barrier", re:"blood pressure|circulatory system|pulmonary circulation|circulation of (blood|cerebro)|cerebrospinal|blood.?brain barrier|process of blood circulation|radiolabel"},
+ {s:"I-2.3", p:1, t:"Blood pressure, circulation, cerebrospinal fluid and blood-brain barrier", re:"blood vessels|blood pressure|circulatory system|pulmonary circulation|circulation of (blood|cerebro)|cerebrospinal|blood.?brain barrier|process of blood circulation|radiolabel"},
  // I-2.4 respiration
  {s:"I-2.4", p:1, t:"Mechanism and control of respiration; hypoxia; respiration in birds", re:"respiration|hypoxia|chemoreceptors?|exchange (of )?(gases|oxygen)|exchange gases|gas exchange"},
  // I-2.5 excretion
@@ -54,7 +54,7 @@ module.exports = [
  // I-2.6 endocrine
  {s:"I-2.6", p:1, t:"Hormone synthesis, receptors and regulation of secretion", re:"hormonal receptors?|hormone receptors?|signal transduction|third messenger|regulation of hormone|hormone secretion regulated|how is hormone"},
  // I-2.7 growth
- {s:"I-2.7", p:1, t:"Growth: prenatal and postnatal growth, growth curves, tissue growth factors", re:"growth curve|(pre|post).?natal|growth factors|postnatal growth|maturation|measures of growth|pre-natal"},
+ {s:"I-2.7", p:1, t:"Growth: prenatal and postnatal growth, growth curves, tissue growth factors", re:"factors which affect the growth|growth curve|(pre|post).?natal|growth factors|postnatal growth|maturation|measures of growth|pre-natal"},
  // I-2.8 milk, reproduction, digestion
  {s:"I-2.8", p:1, t:"Mammary development, milk secretion and milk ejection", re:"milk ejection|milk secretion|let.?down|udder development|mammary|dairy animals along with diagram"},
  {s:"I-2.8", p:1, t:"Male and female reproductive organs and their functions", re:"male reproductive|reproductive (system|organs)|accessor?y sex glands|seminal vesicle|spermatogenesis and oogenesis|formation and structure of various components of chicken egg|egg formation|hormones secreted by different reproductive"},
@@ -98,11 +98,11 @@ module.exports = [
  {s:"I-5.2", p:1, t:"Breeding value, variance components and resemblance between relatives", re:"breeding value|components of variance|covariance components|partitioning of variation|resemblance|sources of variation|variation is the raw|variance components|dominance|epistatic|genotype.*environment|repeated measurements"},
  // I-5.3 breeding systems
  {s:"I-5.3", p:1, t:"Heritability, repeatability and correlations", re:"heritability|repeatability|genetic parameters|genetic and phenotypic correlations"},
- {s:"I-5.3", p:1, t:"Methods of selection: individual, pedigree, family and within-family; selection indices", re:"individual selection|pedigree selection|family selection|within.?family|sib selection|selection indices|selection index|methods of selection|recurrent selection|define selection|sire ind(ex|ices)|aids to selection|criteria for selection|choosing traits|selection of breeding bulls|progeny test|under selection|multi.?traits|breeding worth"},
+ {s:"I-5.3", p:1, t:"Methods of selection: individual, pedigree, family and within-family; selection indices", re:"bases of selection|individual selection|pedigree selection|family selection|within.?family|sib selection|selection indices|selection index|methods of selection|recurrent selection|define selection|sire ind(ex|ices)|aids to selection|criteria for selection|choosing traits|selection of breeding bulls|progeny test|under selection|multi.?traits|breeding worth"},
  {s:"I-5.3", p:1, t:"Inbreeding, crossbreeding, heterosis and combining ability", re:"inbreeding|crossbreed|cross.?breeding|heterosis|combining ability|inbred lines|upgrading|synthesis of breeds|out.?breeding"},
  {s:"I-5.3", p:1, t:"Breeds of livestock and poultry; crossbreeding programmes in India", re:"breeds? (characteristics|of)|gir and sahiwal|indigenous cattle breeds|crossbred cattle breeds|experiences of crossbreeding|madras red"},
  // I-6 extension
- {s:"I-6", p:1, t:"Principles, objectives and methods of extension", re:"extension|training needs|method demonstration|extension education"},
+ {s:"I-6", p:1, t:"Principles, objectives and methods of extension", re:"educate farmers|extension|training needs|method demonstration|extension education"},
  {s:"I-6", p:1, t:"Transfer of technology, constraints and animal husbandry programmes for rural development", re:"transfer of technology|transfer technology|technology transfer|rural (development|women|farmers|planning)|participatory rural|role of nddb|socio-economic|animal husbandry programmes|livestock health and disease control|welfare of animal husbandry|gokul mission|cyber extension|information and communication|gender|backbone of poor rural farmers|dairy development programmes|national livestock mission"},
  // ================= PAPER II =================
  // II-1.1 histology
