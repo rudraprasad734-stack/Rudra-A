@@ -149,3 +149,17 @@
 2023|2|5(a)|7|0.15,0.495,0.70,0.58|Accumulated rainfall (cm) against time from start of storm (0, 6, 12, 18 hr)|crop
 2023|2|5(b)|8|0.14,0.095,0.92,0.27|Table of sub-area, area (km2), annual precipitation (mm) and annual evaporation (mm) for P, Q, R, S|crop
 2023|2|5(c)|8|0.14,0.515,0.84,0.645|Inflow hydrograph: time (hr) 0 to 28 and inflow (m3/s)|crop
+2024|1|1(a)|2|0.20,0.205,0.82,0.345|Cantilever ABCD, 2 m each: 10 kN/m between B and C, 50 kN-m clockwise moment at D, member stiffness 2I and I|crop
+2024|1|1(b)|2|0.26,0.585,0.78,0.805|Square section 600 mm x 600 mm with corners A, B, C, D, centre O, load point P offset 100 mm and 100 mm, 500 kN|crop
+2024|1|1(c)|3|0.18,0.12,0.74,0.255|Moving UDL 20 kN/m over 6 m on girder AB of 30 m, point C 6 m from A|crop
+2024|1|1(d)|3|0.14,0.43,0.82,0.83|Bracket on ISMB 250 with a 12 mm gusset plate, bolt A, 40 + 160 + 40 mm, 120 mm, 200 mm, 300 mm, load P|crop
+2024|1|2(a)|4|0.12,0.225,0.97,0.375|Cantilever ABC: 1.0 m + 1.0 m, sections 1-1 (0.2 x 0.45 m) and 2-2 (0.2 x 0.2 m)|crop
+2024|1|2(b)|4|0.28,0.605,0.78,0.915|Fig. 1 Stress-strain curve for concrete (parabolic curve, fck, 0.67 fck, 0.67 fck/gamma_m, strains 0.002 and 0.0035)|crop
+2024|1|2(b)|5|0.28,0.075,0.78,0.415|Fig. 2 Representative stress-strain curves for reinforcement: 23A cold worked deformed bar|crop
+2024|1|2(b)|5|0.28,0.49,0.78,0.765|Fig. 2 Representative stress-strain curves for reinforcement: 23B steel bar with definite yield point|crop
+2024|1|2(c)|6|0.20,0.225,0.94,0.495|Two angles ISA 100 x 100 x 12 welded to a 12 mm gusset plate, 540 kN, weld lengths l1 and l2, 29.2 mm|crop
+2024|1|3(a)|6|0.20,0.815,0.78,0.915|Fixed end moments of the box culvert members (MFAB, MFBA, MFBC, MFCB, MFCD, MFDC, MFAD, MFDA)|crop
+2024|1|3(a)|7|0.14,0.075,0.90,0.345|Box culvert ABCD: 6.0 m x 3.0 m, 50 kN at the top, 30 kN/m loads, member stiffness 2I, I, 3I|crop
+2024|1|4(b)|8|0.28,0.625,0.82,0.83|Pin-jointed truss ABCDE: 60 degrees, member forces 57.74 kN and 28.87 kN, 100 kN at C, 3.0 m + 3.0 m|crop
+2024|1|5(c)|9|0.22,0.72,0.78,0.935|Large tank with oil, 80 cm head, vertical pipe 70 cm long, diameter 2 cm, sections A and B|crop
+2024|1|7(a)|11|0.18,0.725,0.72,0.845|Stability number SN against phi for beta = 45 degrees (phi 5 to 25 degrees)|crop
