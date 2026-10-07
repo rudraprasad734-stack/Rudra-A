@@ -102,3 +102,29 @@ ag.topics.forEach(function(t){
   fs.writeFileSync(PAGE, h4);
   console.log(NAME + " chapters:", Object.keys(btLeaf).length, "| Paper I topics:", Object.keys(btTree["Paper I"]).length, "| Paper II topics:", Object.keys(btTree["Paper II"]).length);
 }
+
+// ---------------------------------------------------------------- Civil Engineering (one chapter per syllabus sub-topic)
+{
+  const NAME = "Civil Engineering";
+  let h5 = fs.readFileSync(PAGE, "utf8");
+  const m5 = h5.match(/<script type="application\/json" id="d-civil">(.*?)<\/script>/s);
+  if(!m5) throw new Error("build-planner: d-civil not found (run botany/build-civil.js first), nothing written");
+  const cv = JSON.parse(m5[1]);
+  const cvTree = {"Paper I":{}, "Paper II":{}}, cvLeaf = {}, per = {};
+  cv.topics.forEach(function(t){
+    const it = cv.items.filter(function(x){ return x.id === t.s; })[0], grp = it.pp === 1 ? "Paper I" : "Paper II";
+    per[it.id] = (per[it.id] || 0) + 1;
+    const topic = it.id + "  " + it.t, unit = it.id + "." + per[it.id] + "  " + t.t;
+    (cvTree[grp][topic] = cvTree[grp][topic] || []).push(unit);
+    cvLeaf[topic + "|" + unit] = [t.id];
+  });
+  const cur5 = '  "' + NAME + '": ' + JSON.stringify(cvTree, null, 2).replace(/\n/g, "\n  ") + ',\n';
+  const a5 = h5.indexOf('  "' + NAME + '": {\n    "Paper I"');
+  if(a5 >= 0){ const re = /\n  "[A-Z]/g; re.lastIndex = a5 + 20; const m = re.exec(h5); if(!m) throw new Error("build-planner: end of Civil Engineering block not found, nothing written"); h5 = h5.slice(0, a5) + cur5 + h5.slice(m.index + 1); }
+  else { const g = h5.indexOf('  "Geography": CT({'); if(g < 0) throw new Error("build-planner: insertion point not found, nothing written"); h5 = h5.slice(0, g) + cur5 + h5.slice(g); }
+  const la5 = h5.indexOf("var CIVIL_LEAF = {"), leafTxt5 = "var CIVIL_LEAF = " + JSON.stringify(cvLeaf, null, 1) + ";";
+  if(la5 >= 0){ const e5 = h5.indexOf("\n};", la5); if(e5 < 0) throw new Error("build-planner: CIVIL_LEAF block not closed, nothing written"); h5 = h5.slice(0, la5) + leafTxt5 + h5.slice(h5.indexOf("\n", e5 + 1)); }
+  else { const lb = h5.indexOf("\n// Optional subjects that have a question analysis"); if(lb < 0) throw new Error("build-planner: insertion point not found, nothing written"); h5 = h5.slice(0, lb) + "\n" + leafTxt5 + h5.slice(lb); }
+  fs.writeFileSync(PAGE, h5);
+  console.log(NAME + " chapters:", Object.keys(cvLeaf).length, "| Paper I topics:", Object.keys(cvTree["Paper I"]).length, "| Paper II topics:", Object.keys(cvTree["Paper II"]).length);
+}

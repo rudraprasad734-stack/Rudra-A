@@ -133,6 +133,23 @@ syl[BTK] = {}; freq[BTK] = {};
   freq[BTK]["paper" + pn] = map;
 });
 console.log("botany items:", BT.items.filter(function(i){ return i.pp === 1; }).length, "+", BT.items.filter(function(i){ return i.pp === 2; }).length);
+// Civil Engineering: the 36 syllabus items (12 + 24), with how often each was asked (from d-civil)
+const CV = JSON.parse(html.match(/<script type="application\/json" id="d-civil">(.*?)<\/script>/s)[1]), CVK = "civil engineering";
+syl[CVK] = {}; freq[CVK] = {};
+[1, 2].forEach(function(pn){
+  const list = CV.items.filter(function(it){ return it.pp === pn; });
+  const refsBy = {}; CV.topics.forEach(function(t){ (refsBy[t.s] = refsBy[t.s] || {}); t.q.forEach(function(r){ refsBy[t.s][r] = 1; }); });
+  const counts = list.map(function(it){ return Object.keys(refsBy[it.id] || {}).length; }), tr = tiers(counts), map = {}, topics = [];
+  list.forEach(function(it, i){
+    const label = it.id.replace(/^I+-/, "") + "  " + it.full, refs = Object.keys(refsBy[it.id] || {}), ys = {};
+    refs.forEach(function(r){ ys[r.split("|")[0]] = 1; });
+    const yl = Object.keys(ys).map(Number).sort();
+    topics.push(label); map[label] = {count:refs.length, years:yl, tier:tr[i], recent:yl.length ? yl[yl.length - 1] : 0};
+  });
+  syl[CVK]["paper" + pn] = {title:"Civil Engineering Optional \u2014 Paper " + (pn === 2 ? "II" : "I"), sections:[{heading:"Official syllabus (UPSC Examination Notice 2026)", topics:topics}]};
+  freq[CVK]["paper" + pn] = map;
+});
+console.log("civil engineering items:", CV.items.filter(function(i){ return i.pp === 1; }).length, "+", CV.items.filter(function(i){ return i.pp === 2; }).length);
 console.log("animal husbandry items:", AH.items.filter(function(i){ return i.pp === 1; }).length, "+", AH.items.filter(function(i){ return i.pp === 2; }).length);
 console.log("agriculture items:", G.items.filter(function(i){ return i.pp === 1; }).length, "+", G.items.filter(function(i){ return i.pp === 2; }).length);
 console.log("anthropology items:", aItems[0].length, "+", aItems[1].length);

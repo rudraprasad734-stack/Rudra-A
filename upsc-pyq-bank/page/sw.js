@@ -1,7 +1,7 @@
 // UPSC Companion service worker: caches the app shell so the page loads and
 // runs with zero network connectivity after the first successful visit.
 // Bump CACHE_NAME on any deploy that changes cached files so clients refresh.
-const CACHE_NAME = "upsc-companion-v98";
+const CACHE_NAME = "upsc-companion-v99";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -10,6 +10,58 @@ const APP_SHELL = [
   "./icon-192.png",
   "./icon-512.png",
   "./icon-512-maskable.png"
+];
+
+// Figures printed with optional-subject questions (cropped from the papers). Kept one by one so a missing file cannot stop the install.
+// Regenerate the list when figures are added: ls page/img/*/
+const FIGURES = [
+  "./img/civil-engineering/2018-1-1a-1.webp",
+  "./img/civil-engineering/2018-1-1d-1.webp",
+  "./img/civil-engineering/2018-1-2a-1.webp",
+  "./img/civil-engineering/2018-1-2c-1.webp",
+  "./img/civil-engineering/2018-1-3b-1.webp",
+  "./img/civil-engineering/2018-1-3c-1.webp",
+  "./img/civil-engineering/2018-1-4c-1.webp",
+  "./img/civil-engineering/2018-1-5a-1.webp",
+  "./img/civil-engineering/2018-1-5b-1.webp",
+  "./img/civil-engineering/2018-1-6b-1.webp",
+  "./img/civil-engineering/2018-1-7a-1.webp",
+  "./img/civil-engineering/2018-1-8c-1.webp",
+  "./img/civil-engineering/2018-2-3b-1.webp",
+  "./img/civil-engineering/2018-2-4c-1.webp",
+  "./img/civil-engineering/2019-2-3c-1.webp",
+  "./img/civil-engineering/2019-2-4b-1.webp",
+  "./img/civil-engineering/2019-2-5e-1.webp",
+  "./img/civil-engineering/2019-2-7a-1.webp",
+  "./img/civil-engineering/2020-1-1a-1.webp",
+  "./img/civil-engineering/2020-1-2a-1.webp",
+  "./img/civil-engineering/2020-1-4a-1.webp",
+  "./img/civil-engineering/2020-1-4b-1.webp",
+  "./img/civil-engineering/2020-1-4c-1.webp",
+  "./img/civil-engineering/2020-1-5a-1.webp",
+  "./img/civil-engineering/2020-1-5b-1.webp",
+  "./img/civil-engineering/2020-1-5c-1.webp",
+  "./img/civil-engineering/2020-1-5e-1.webp",
+  "./img/civil-engineering/2020-1-6b-1.webp",
+  "./img/civil-engineering/2020-1-6c-1.webp",
+  "./img/civil-engineering/2020-1-7b-1.webp",
+  "./img/civil-engineering/2020-1-8c-1.webp",
+  "./img/civil-engineering/2020-2-6a-1.webp",
+  "./img/civil-engineering/2020-2-6c-1.webp",
+  "./img/civil-engineering/2022-1-1a-1.webp",
+  "./img/civil-engineering/2022-1-1d-1.webp",
+  "./img/civil-engineering/2022-1-2a-1.webp",
+  "./img/civil-engineering/2022-1-3aii-1.webp",
+  "./img/civil-engineering/2022-1-3b-1.webp",
+  "./img/civil-engineering/2022-1-4a-1.webp",
+  "./img/civil-engineering/2022-1-4c-1.webp",
+  "./img/civil-engineering/2022-1-4c-2.webp",
+  "./img/civil-engineering/2022-1-4c-3.webp",
+  "./img/civil-engineering/2022-1-5a-1.webp",
+  "./img/civil-engineering/2022-1-6c-1.webp",
+  "./img/civil-engineering/2022-1-7b-1.webp",
+  "./img/civil-engineering/2022-1-8c-1.webp",
+  "./img/civil-engineering/2025-2-8a-1.webp"
 ];
 
 // keep good responses, plus the font files (they come back "opaque" from another site) so the fonts also work offline
@@ -22,7 +74,7 @@ function cacheable(req, res) {
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(APP_SHELL))
+      .then((cache) => cache.addAll(APP_SHELL).then(() => Promise.all(FIGURES.map((u) => cache.add(u).catch(() => {})))))
       .then(() => self.skipWaiting())
   );
 });
