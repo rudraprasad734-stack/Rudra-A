@@ -799,5 +799,101 @@
    "a": "Portal frame 2l x 2l with plastic moments Mp and 2Mp and loads F and 4F",
    "k": "crop"
   }
+ ],
+ "2021|1|1(a)": [
+  {
+   "u": "img/civil-engineering/2021-1-1a-1.webp",
+   "a": "Truss A-C-D-G-H on top with B, E, F below, 2 m panels, loads 5, 10, 10, 10, 5 kN",
+   "k": "crop"
+  }
+ ],
+ "2021|1|2(a)": [
+  {
+   "u": "img/civil-engineering/2021-1-2a-1.webp",
+   "a": "Beam A-B-C-D, A fixed, hinge at B, W at C, roller at D, L + L + L",
+   "k": "crop"
+  }
+ ],
+ "2021|1|3(a)": [
+  {
+   "u": "img/civil-engineering/2021-1-3a-1.webp",
+   "a": "Percent consolidation against square root of time (Hindi version of the graph)",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2021-1-3a-2.webp",
+   "a": "Strain against square root of time, with b, 1.15 b, a, 1.15 a and percent consolidation scale",
+   "k": "crop"
+  }
+ ],
+ "2021|1|4(a)": [
+  {
+   "u": "img/civil-engineering/2021-1-4a-1.webp",
+   "a": "Truss ABCDEF G / HIJKL, 6 panels at 4 m = 24 m, 3 m high; moving loads 125, 100, 50 kN at 2 m and 3 m",
+   "k": "crop"
+  }
+ ],
+ "2021|1|4(c)": [
+  {
+   "u": "img/civil-engineering/2021-1-4c-1.webp",
+   "a": "Retaining wall: 1 m top, 3 m base, 6 m high, granular backfill 17.5 kN/m3, phi 35 degrees, wall 24 kN/m3",
+   "k": "crop"
+  }
+ ],
+ "2021|1|5(a)": [
+  {
+   "u": "img/civil-engineering/2021-1-5a-1.webp",
+   "a": "Circular log G in a bracket: bar PN hinged at P, string MN, contact points Q and J, angle theta",
+   "k": "crop"
+  }
+ ],
+ "2021|1|5(b)": [
+  {
+   "u": "img/civil-engineering/2021-1-5b-1.webp",
+   "a": "T-beam: flange 1000 x 100 mm, web 300 mm, depth 400 mm, 4 bars of 25 mm, 50 mm cover",
+   "k": "crop"
+  }
+ ],
+ "2021|1|5(c)": [
+  {
+   "u": "img/civil-engineering/2021-1-5c-1.webp",
+   "a": "Fixed-end bar ABCD: PB at B, PC at C, 300 + 500 + 300 mm",
+   "k": "crop"
+  }
+ ],
+ "2021|1|6(b)": [
+  {
+   "u": "img/civil-engineering/2021-1-6b-1.webp",
+   "a": "Beam A-B-C-D-E-F: 25 kN/m on 0.5 m, 300 kN-m at C, 50 kN at D, 40 kN at F, spans 0.5, 1, 2, 1.5, 0.5, 0.5 m",
+   "k": "crop"
+  }
+ ],
+ "2021|1|6(c)": [
+  {
+   "u": "img/civil-engineering/2021-1-6c-1.webp",
+   "a": "Stress-strain curve for cold worked deformed bar (fy and fy/1.15, Es = 200000 N/mm2, strains 0.0001 to 0.004)",
+   "k": "crop"
+  }
+ ],
+ "2021|1|7(b)": [
+  {
+   "u": "img/civil-engineering/2021-1-7b-1.webp",
+   "a": "Table of phi against Nc, Nq and Ngamma (10 to 24 degrees)",
+   "k": "crop"
+  }
+ ],
+ "2021|1|8(a)": [
+  {
+   "u": "img/civil-engineering/2021-1-8a-1.webp",
+   "a": "Pile of 12 m in medium dense to dense sand, gamma 20.1 kN/m3, phi 38 degrees, k 0.95",
+   "k": "crop"
+  }
+ ],
+ "2021|1|8(c)": [
+  {
+   "u": "img/civil-engineering/2021-1-8c-1.webp",
+   "a": "Table of shear modulus, maximum shear stress and density of titanium alloy and aluminium, and the hollow shaft, 1 m long, 25 mm outer diameter",
+   "k": "crop"
+  }
  ]
 }
