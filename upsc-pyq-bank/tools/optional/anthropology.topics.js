@@ -65,7 +65,7 @@ module.exports = [
  {g:"Anthropological theories", t:"Neo-evolutionism (White, Steward, Sahlins, Service)", re:"neo-evolution|leslie white|steward|sahlins|service\\b|cultural evolution", p:1},
  {g:"Anthropological theories", t:"Cultural materialism and ecological anthropology", re:"materialism|ecological anthropology|ecological and adaptab|political economy|deep ecology", p:1},
  {g:"Anthropological theories", t:"Symbolic and interpretive anthropology (Turner, Geertz)", re:"symbolic|interpretive|geertz|victor turner|turner and|thick description|cock-?fight|interpretation of symbols", p:1},
- {g:"Anthropological theories", t:"Cognitive anthropology, emic-etic, phenomenology", re:"emic|cognitive|ethnoscience|phenomenolog|culture, language and thought", p:1},
+ {g:"Anthropological theories", t:"Cognitive anthropology, emic-etic, phenomenology", re:"\\bemic|cognitive|ethnoscience|phenomenolog|culture, language and thought", p:1},
  {g:"Anthropological theories", t:"Post-modernism, deconstruction and critical ethnography", re:"post-?modern|deconstruction|derrida|multi-?sited|critical ethnography|multispecies|experiential ethnography|interpretation and presentation of data", p:1},
  {g:"Language and communication", t:"Language and communication (origin of language, Sapir-Whorf, verbal and non-verbal, glottochronology)", re:"language|linguistic anthropology|sapir|glottochron|communication|verbal", p:1, ex:"endangered|indian"},
  {g:"Research methods in anthropology", t:"Fieldwork tradition, ethnography and fieldwork ethics", re:"field ?work|ethnograph|participant observation|participant-observation|ethics in anthropological|controversies related to fieldwork", re2:"book view|field view"},

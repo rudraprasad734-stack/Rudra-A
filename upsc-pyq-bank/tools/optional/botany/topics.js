@@ -10,9 +10,9 @@ module.exports = [
  // I-1 Viruses, bacteria, fungi, mycoplasma, applied microbiology
  {s:"I-1", p:1, t:"Viruses: structure, symmetry, replication, lytic and lysogenic cycles, bacteriophage", re:"\\bvirus|viruses|virion|bacteriophage|\\bphage|lytic|lysogenic|symmetry of virus", ex:"retrovirus"},
  {s:"I-1", p:1, t:"Viroids and prions", re:"viroid|\\bprion"},
- {s:"I-1", p:1, t:"Bacteria: cell wall, structure, sexual reproduction and genetic recombination", re:"bacteri(a|um|al)|gram.?(negative|positive)|endospore|conjugation|transformation in bacteria|bacterial cell wall", ex:"bacteriophage"},
+ {s:"I-1", p:1, t:"Bacteria: cell wall, structure, sexual reproduction and genetic recombination", re:"bacteri(a|um|al)|gram.?(negative|positive)|endospore|conjugation|transformation in bacteria|bacterial cell wall", ex:"bacteriophage|virus of bacteria"},
  {s:"I-1", p:1, t:"Mycoplasma", re:"mycoplasma"},
- {s:"I-1", p:1, t:"Applications of microbiology in agriculture, industry, medicine and pollution control", re:"microbes|micro-?organisms|microbiology|bioremediation|bioleaching|biopesticide|mycorrhiz|soil nutrient cycling|chemical recycling in nature|mining and pharmaceuticals|immobilised enzymes|industrial uses of microorganisms|soil solari[sz]ation|endophyte"},
+ {s:"I-1", p:1, t:"Applications of microbiology in agriculture, industry, medicine and pollution control", re:"microbes|micro-?organisms|microbiology|bioremediation|bioleaching|biopesticide|mycorrhiz|soil nutrient cycling|chemical recycling in nature|mining and pharmaceuticals|immobilised enzymes|industrial uses of microorganisms|soil solari[sz]ation|endophyte|mineralization|nitrogen fixation"},
  // I-2 Crop diseases, infection, parasitism
  {s:"I-2", p:1, t:"Important crop diseases: causal organism, symptoms, disease cycle and control", re:"plant disease control|causal (organism|agent)|symptoms|red rot|late blight|white rust|loose smut|citrus canker|\\bcanker|paddy blast|tikka|ergot|tundu|yellow vein|green ear|sandal spike|angular leaf|brown spot|stalk rot|rust of wheat|crop diseases?|nematode"},
  {s:"I-2", p:1, t:"Modes of infection and dissemination; molecular basis of disease resistance and defence", re:"modes of (entry|transmission)|entry of plant pathogens|infection|dissemination|defen[cs]e structures|disease resistance|plant pathogen"},
@@ -24,7 +24,7 @@ module.exports = [
  {s:"I-3", p:1, t:"Fungi: structure, fructification and reproduction (Puccinia, Rhizopus, Mucorales, Ascomycetes, myxomycetes)", re:"fung(i|al|us)|puccinia|parasexual|heterothall|dikaryot|rhizopus|mucorales|peziza|ascomycet|basidiomycet|myxomycet|fructification|apothecium|teleutosorus|rust and smut", ex:"fungal toxins"},
  {s:"I-3", p:1, t:"Lichens", re:"lichen|cyphellae|cephalodia"},
  {s:"I-3", p:1, t:"Bryophytes: classes, gametophyte and sporophyte, evolution of the sporophyte", re:"bryophyt|marchantia|anthoceros|anthocerotopsida|funaria|\\belaters?\\b|peristome|hepatic|bryopsida|sporogonium"},
- {s:"I-3", p:1, t:"Pteridophytes: stelar evolution, heterospory and seed habit, aquatic ferns", re:"pteridophyt|\\bstel(e|ar)|steles|marsilea|salvinia|azolla|equisetum|psilotum|homospor|heterospor|sporocarp|vascular cryptogam|seed habit|incipient|eusporangiate|leptosporangiate|\\bsori\\b"},
+ {s:"I-3", p:1, t:"Pteridophytes: stelar evolution, heterospory and seed habit, aquatic ferns", re:"pteridophyt|\\bstel(e|ar)|steles|marsilea|salvinia|azolla|equisetum|psilotum|homospor|heterospor|sporocarp|vascular cryptogam|seed habit|incipient|lycopodium|prothall|eusporangiate|leptosporangiate|\\bsori\\b"},
  {s:"I-3", p:1, t:"Distribution, ecological and economic importance of cryptogams in India", re:"distribution and economic importance of bryophytes|beneficial and harmful effects of algae|ecological and economic (significance|importance) of bryophytes|commercial cultivation|food and fuel production|economic importance of laminariales"},
  // I-4 Gymnosperms
  {s:"I-4", p:1, t:"Concept of progymnosperms", re:"progymnosperm"},
@@ -55,7 +55,7 @@ module.exports = [
  {s:"I-7", p:1, t:"Anatomy of C3 and C4 plants (Kranz anatomy)", re:"kranz|bundle sheath|leaf anatomy of c3|anatomy of c3"},
  {s:"I-7", p:1, t:"Xylem and phloem differentiation and wood anatomy", re:"xylem and phloem differentiation|differentiation of xylem|heart ?wood|sap ?wood|wood anatomy|vessel is structurally|cells cut off by cambium|xylem tissue"},
  // I-8 Embryology, palynology
- {s:"I-8", p:1, t:"Development of male and female gametophytes, pollination and fertilization in angiosperms", re:"gametophyte|pollination|fertili[sz]ation|embryo.?sac", ex:"pinus|gnetum|cycas|marsilea|marchantia|anthoceros|bryophyte|pteridophyte|ginkgo|post fertili"},
+ {s:"I-8", p:1, t:"Development of male and female gametophytes, pollination and fertilization in angiosperms", re:"gametophyte|pollination|fertili[sz]ation|embryo.?sac", ex:"lycopodium|pinus|gnetum|cycas|marsilea|marchantia|anthoceros|bryophyte|pteridophyte|ginkgo|post fertili"},
  {s:"I-8", p:1, t:"Endosperm: types, development and function", re:"endosperm|aleurone"},
  {s:"I-8", p:1, t:"Patterns of embryo development", re:"embryo (development|developments)|types of embryos|zygotic and somatic embryos|structural complexity of angiosperm embryo|arabidopsis|normal embryo sac"},
  {s:"I-8", p:1, t:"Polyembryony and apomixis (agamospermy)", re:"polyembryony|apomixis|agamospermy"},
@@ -63,8 +63,8 @@ module.exports = [
  {s:"I-8", p:1, t:"Experimental embryology: pollen storage and test-tube fertilization", re:"test.?tube|pollen storage|in vitro pollination|experimental embryology"},
  // I-9 Economic botany
  {s:"I-9", p:1, t:"Domestication and introduction of plants; origin of cultivated plants (Vavilov, de Candolle)", re:"domesticat|vavilov|centres? of origin|candolle"},
- {s:"I-9", p:1, t:"Plants as sources of food, fodder, fibres, spices and beverages", re:"fibre|fiber|spices|beverage|millets?|cereals?|maize|groundnut|soybean|vegetable fibers", ex:"fibre.?optic"},
- {s:"I-9", p:1, t:"Edible oils, drugs, narcotics, insecticides, latex and rubber", re:"oil|narcotic|latex|insecticide|\\bdrugs?\\b|rubber|medicinal|ethno-?medicin|perfumery|useful parts|botanical names? (and|,) ?(their )?famil|aconite", ex:"oil spill"},
+ {s:"I-9", p:1, t:"Plants as sources of food, fodder, fibres, spices and beverages", re:"fibre|fiber|spices|beverage|millets?|cereals?|maize|groundnut|soybean|vegetable fibers", ex:"causal|symptoms|disease|fibre.?optic"},
+ {s:"I-9", p:1, t:"Edible oils, drugs, narcotics, insecticides, latex and rubber", re:"\\boils?\\b|narcotic|latex|insecticide|\\bdrugs?\\b|rubber|medicinal|ethno-?medicin|perfumery|useful parts|botanical names? (and|,) ?(their )?famil|aconite", ex:"oil spill"},
  {s:"I-9", p:1, t:"Timber, gums, resins, dyes, cellulose and starch", re:"timber|\\bgums?\\b|resins?|\\bdyes?\\b|dye.?yielding|cellulose|starch|natural dyes"},
  {s:"I-9", p:1, t:"Ethnobotany in the Indian context", re:"ethnobotan|ethno-?medicin|traditional knowledge"},
  {s:"I-9", p:1, t:"Energy plantations and energy crops", re:"energy plantation|energy crop|biodiesel|hydrocarbon yielding"},
@@ -85,7 +85,7 @@ module.exports = [
  {s:"II-1", p:2, t:"Cytoskeleton, nucleus, nucleolus, nuclear pore complex, chromatin and nucleosome", re:"cytoskeleton|microtubule|nuclear pore|nucleolus|nucleosome|chromatin|histone", ex:"histone modification"},
  {s:"II-1", p:2, t:"Cell signalling, receptors and signal transduction", re:"signal(l)?ing|signal transduction|receptors|ins ?p3|ins ?pg"},
  {s:"II-1", p:2, t:"Mitosis, meiosis and the cell cycle", re:"cell cycle|mitosis|meiosis|cyclin|synaptonemal"},
- {s:"II-1", p:2, t:"Numerical and structural variations of chromosomes; polytene, B and lampbrush chromosomes", re:"numerical|structural variations|chromosomal aberration|translocation|inversion|polytene|polyteny|b.?chromosomes?|lampbrush|special types of chromosomes|polyploid|amphidiploid|c-value|numerical and structural|variations found in the structure"},
+ {s:"II-1", p:2, t:"Numerical and structural variations of chromosomes; polytene, B and lampbrush chromosomes", re:"numerical|structural variations|chromosomal aberration|translocation|inversion|polytene|polyteny|b.?chromosomes?|lampbrush|special types of chromosomes|polyploid|amphidiploid|c-value|numerical and structural|variations found in the structure", ex:"cellular signals"},
  // II-2 Genetics
  {s:"II-2", p:2, t:"Mendelian inheritance: incomplete dominance, polygenic inheritance, multiple alleles, epistasis", re:"incomplete dominance|polygenic|multiple (alleles|factor)|pseudoallele|epistasis|mendel|quantitative genetics|gene versus allele|genotype of each parent|dominant over"},
  {s:"II-2", p:2, t:"Linkage, crossing over, chiasma and gene mapping (molecular maps)", re:"linkage|crossing.?over|gene mapping|chiasma|chromosome map|recombination freq|molecular maps"},
@@ -135,7 +135,7 @@ module.exports = [
  {s:"II-7", p:2, t:"Forest types of India; afforestation, deforestation and social forestry", re:"forest|afforestation|deforestation|himalayan vegetation|altitudinal zonation"},
  {s:"II-7", p:2, t:"Phytogeographical regions of India and endemism", re:"phytogeograph|phyto-geograph|biogeograph|endemism|regions of india|flora of the region"},
  {s:"II-7", p:2, t:"Endangered plants, IUCN categories, Red Data Book and invasive species", re:"endangered|iucn|red data|red list|extinction|invasive|alien species|threat categories"},
- {s:"II-7", p:2, t:"Biodiversity and its conservation; Protected Area Network, biosphere reserves, Convention on Biological Diversity", re:"biodiversity|biosphere|protected area|germplasm|convention on biological|ex situ|in situ|conservation of biodiversity", ex:"energy conservation"},
+ {s:"II-7", p:2, t:"Biodiversity and its conservation; Protected Area Network, biosphere reserves, Convention on Biological Diversity", re:"biodiversity|biosphere|protected area|germplasm|convention on biological|ex situ|in situ|conservation of biodiversity", ex:"energy conservation|phosphorus"},
  {s:"II-7", p:2, t:"Farmers' Rights, Intellectual Property Rights and sustainable development", re:"farmers.? rights|intellectual property|\\bipr\\b|sustainable development"},
  {s:"II-7", p:2, t:"Global warming and climatic change", re:"global warming|climate change|climatic change|greenhouse|mean atmospheric temperature"},
  {s:"II-7", p:2, t:"Environmental Impact Assessment", re:"environmental impact assessment|\\beia\\b"}
