@@ -163,3 +163,10 @@
 2024|1|4(b)|8|0.28,0.625,0.82,0.83|Pin-jointed truss ABCDE: 60 degrees, member forces 57.74 kN and 28.87 kN, 100 kN at C, 3.0 m + 3.0 m|crop
 2024|1|5(c)|9|0.22,0.72,0.78,0.935|Large tank with oil, 80 cm head, vertical pipe 70 cm long, diameter 2 cm, sections A and B|crop
 2024|1|7(a)|11|0.18,0.725,0.72,0.845|Stability number SN against phi for beta = 45 degrees (phi 5 to 25 degrees)|crop
+2024|2|2(a)|3|0.20,0.265,0.76,0.50|Network 1 to 7 with three time estimates on each activity (3-6-15, 4-7-16, 4-8-18, 6-9-18, 5-9-19, 2-6-10, 8-11-20, 6-10-20, 3-5-13) and a dotted arrow 2 to 3|crop
+2024|2|3(a)(ii)|5|0.14,0.495,0.92,0.655|Table of mean values of speed and delay: journey time, stopped delay, vehicles overtaking, overtaken, in opposite direction|crop
+2024|2|3(b)(i)|6|0.22,0.145,0.70,0.245|Photographic coordinates of points A and B|crop
+2024|2|3(b)(ii)|6|0.24,0.495,0.74,0.625|Table of line, length (m), latitude and departure for AB, BC, CD|crop
+2024|2|4(a)|7|0.08,0.285,0.86,0.495|Network 1 to 8 with activity durations t = 6, 7, 8, 7, 6, 9, 8, 10, 9, 6|crop
+2024|2|5(a)|9|0.15,0.58,0.51,0.895|Monthly discharge Q (m3/s) of the river, January to December|crop
+2024|2|7(c)(i)|14|0.20,0.135,0.78,0.385|Gravity dam: 6 m top, 3 m water depth, 27 m height, 10 m and 20 m, slope 0.75 to 1.0, base 6 m + 15 m, W1, W2, toe|crop

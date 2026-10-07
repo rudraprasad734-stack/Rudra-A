@@ -1116,5 +1116,54 @@
    "a": "Stability number SN against phi for beta = 45 degrees (phi 5 to 25 degrees)",
    "k": "crop"
   }
+ ],
+ "2024|2|2(a)": [
+  {
+   "u": "img/civil-engineering/2024-2-2a-1.webp",
+   "a": "Network 1 to 7 with three time estimates on each activity (3-6-15, 4-7-16, 4-8-18, 6-9-18, 5-9-19, 2-6-10, 8-11-20, 6-10-20, 3-5-13) and a dotted arrow 2 to 3",
+   "k": "crop"
+  }
+ ],
+ "2024|2|3(a)(ii)": [
+  {
+   "u": "img/civil-engineering/2024-2-3aii-1.webp",
+   "a": "Table of mean values of speed and delay: journey time, stopped delay, vehicles overtaking, overtaken, in opposite direction",
+   "k": "crop"
+  }
+ ],
+ "2024|2|3(b)(i)": [
+  {
+   "u": "img/civil-engineering/2024-2-3bi-1.webp",
+   "a": "Photographic coordinates of points A and B",
+   "k": "crop"
+  }
+ ],
+ "2024|2|3(b)(ii)": [
+  {
+   "u": "img/civil-engineering/2024-2-3bii-1.webp",
+   "a": "Table of line, length (m), latitude and departure for AB, BC, CD",
+   "k": "crop"
+  }
+ ],
+ "2024|2|4(a)": [
+  {
+   "u": "img/civil-engineering/2024-2-4a-1.webp",
+   "a": "Network 1 to 8 with activity durations t = 6, 7, 8, 7, 6, 9, 8, 10, 9, 6",
+   "k": "crop"
+  }
+ ],
+ "2024|2|5(a)": [
+  {
+   "u": "img/civil-engineering/2024-2-5a-1.webp",
+   "a": "Monthly discharge Q (m3/s) of the river, January to December",
+   "k": "crop"
+  }
+ ],
+ "2024|2|7(c)(i)": [
+  {
+   "u": "img/civil-engineering/2024-2-7ci-1.webp",
+   "a": "Gravity dam: 6 m top, 3 m water depth, 27 m height, 10 m and 20 m, slope 0.75 to 1.0, base 6 m + 15 m, W1, W2, toe",
+   "k": "crop"
+  }
  ]
 }
