@@ -46,3 +46,34 @@
 2022|1|6(c)|11|0.28,0.125,0.79,0.35|Three reservoirs A, B, C with pump and pipe data|crop
 2022|1|7(b)|12|0.28,0.15,0.72,0.30|Two parallel plates moving in opposite directions (1 m/s and 2 m/s)|crop
 2022|1|8(c)|14|0.205,0.14,0.84,0.197|Plate load test: load intensity against settlement|crop
+2016|1|1(c)|3|0.26,0.165,0.68,0.288|Small block m with velocity v and a smooth irregular block M of height h on a smooth horizontal plane|crop
+2016|1|1(d)|3|0.28,0.555,0.78,0.715|Beam ABCD: A fixed, 2 EI over 4.0 m with 10 kN/m, free roller at C, EI over 2.0 m with 10 kN/m, D fixed|crop
+2016|1|2(a)|5|0.26,0.26,0.82,0.775|Cantilever retaining wall: 4000 above GL, 1200 below, 400 base, 1000 + 2100 + 200 toe and heel, 3500 base, 200 top|crop
+2016|1|2(b)|6|0.22,0.63,0.70,0.925|Subsoil: gravel 1.8 m (Gs 2.65, e 0.650), water table 1.2 m, silt 4.0 m (Gs 2.58, e 0.76), rock|crop
+2016|1|3(a)|7|0.20,0.745,0.92,0.93|Truss ABCDE with FGH, 5 m high, four 5 m panels, two 100 kN moving loads 5 m apart|crop
+2016|1|5(a)|11|0.18,0.12,0.55,0.80|Four beam cross-sections: (i) cross, (ii) I-section, (iii) square with circular hole, (iv) diamond|crop
+2016|1|5(d)|13|0.25,0.605,0.75,0.895|Ladder resting against a smooth wall and an incline at 45 degrees|crop
+2016|1|6(a)|15|0.17,0.285,0.84,0.545|Three metal cubes between rigid faces, 1000 N/mm2 on the central cube, axes x, y, z|crop
+2016|1|6(b)|16|0.22,0.155,0.60,0.43|Pile of length L in clay, qu = 115 kN/m2, gamma = 18.1 kN/m3, Q design = 500 kN|crop
+2016|1|6(c)|17|0.24,0.208,0.76,0.388|Percentage of steel against permissible shear stress for M 20|crop
+2016|1|8(a)(ii)|20|0.20,0.155,0.94,0.385|Simply supported beam AB, 10.0 m, 10 kN/m, 100 kN axial each end, section C 100 x 200 mm with points 1 and 2|crop
+2016|1|8(c)|22|0.25,0.295,0.84,0.68|Copper bar AB with two steel bars on a rigid plate, 1.0 m and 3.0 m lengths, 200 kN at B|crop
+2023|1|1(c)|3|0.30,0.125,0.68,0.32|Strong-box of mass 85 kg on a floor, force F at height h, weight W, base 0.70 m|crop
+2023|1|1(d)|4|0.36,0.255,0.68,0.575|I-section 450 mm deep, flanges 250 mm and 80 mm, web 80 mm, tendon 150 mm from the centre line|crop
+2023|1|1(e)|5|0.18,0.635,0.80,0.895|ISA 75 x 50 x 8 tie on a 12 mm gusset plate with 6 mm weld, lengths Lw1 and Lw2, Cxx 25.2 mm|crop
+2023|1|2(a)|6|0.19,0.275,0.83,0.425|Beam C-A-D-E-B-F with 2 kN/m, 8 kN, 6 kN-m, 4 kN and spans 1, 2, 1, 2, 2 m|crop
+2023|1|2(b)|7|0.16,0.868,0.82,0.935|KL/r against fcd (MPa) table|crop
+2023|1|2(b)|8|0.35,0.195,0.70,0.545|ISMB 550 section: tf 19.3, tw 11.2, r1 18, r2 9, depth 550, width 190|crop
+2023|1|2(c)|9|0.34,0.17,0.70,0.42|Frame ABC: A free end, 2.5 m beam I, 3.5 m column 2.5 I, C fixed, 8 kN at B, 15 kN at A|crop
+2023|1|3(a)|10|0.10,0.675,0.82,0.865|Bending moment coefficients when four edges are discontinuous (alpha_x for ly/lx 1.0 to 1.5, alpha_y)|crop
+2023|1|3(a)|11|0.10,0.055,0.88,0.505|Modification factor for tension reinforcement against percentage tension reinforcement (fs = 120 to 290)|crop
+2023|1|3(b)|12|0.28,0.65,0.64,0.925|ISMC 300 section: Cy 23.5, tf 13.6, tw 7.8, depth 300, width 90|crop
+2023|1|3(c)|13|0.28,0.395,0.58,0.605|Portal frame ABCD, 16 kN/m on BC, 4 m span, 3 m columns, A and D fixed|crop
+2023|1|4(a)|14|0.30,0.65,0.80,0.855|Truss ABCD, 4 m + 4 m, 3 m high, 50 kN at C|crop
+2023|1|4(a)|14|0.17,0.385,0.72,0.63|Table of areas of cross-section of members|crop
+2023|1|4(b)|15|0.28,0.295,0.86,0.435|Propped cantilever AB of span l with P per metre|crop
+2023|1|5(c)|17|0.28,0.145,0.66,0.385|Radial turbine, V1, V2, 30 degrees, b = 10 cm, radii 40 cm and 70 cm|crop
+2023|1|6(c)|20|0.12,0.072,0.92,0.43|Retaining wall with layer 1 (3 m) and layer 2 (4 m), ground water table|crop
+2023|1|7(b)|22|0.08,0.205,0.95,0.715|Pile group in firm, soft and stiff clay with depths and properties|crop
+2023|1|8(b)|25|0.16,0.57,0.68,0.87|Strip footing B = 2.8 m at 2.5 m depth, water table at 6 m|crop
+2023|1|8(c)|27|0.14,0.43,0.80,0.66|Pipe D1 = 10 cm, nozzle D2 = 2.5 cm, plate with force F, mercury manometer h|crop
