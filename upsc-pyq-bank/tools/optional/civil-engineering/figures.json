@@ -1289,5 +1289,118 @@
    "a": "CU triaxial tests: test sample, cell pressure, deviator stress, pore pressure",
    "k": "crop"
   }
+ ],
+ "2026|1|1(a)": [
+  {
+   "u": "img/civil-engineering/2026-1-1a-1.webp",
+   "a": "Frictionless pulley A on bars AB and AC hinged at B and C, cable hinged at D, 30 kN load at E, angles 60, 60, 30, 30 degrees",
+   "k": "crop"
+  }
+ ],
+ "2026|1|1(b)": [
+  {
+   "u": "img/civil-engineering/2026-1-1b-1.webp",
+   "a": "Cantilever ABCD: A fixed, B at 2 m, C 0.6 m below B, D 0.3 m from C with 12 kN",
+   "k": "crop"
+  }
+ ],
+ "2026|1|1(c)": [
+  {
+   "u": "img/civil-engineering/2026-1-1c-1.webp",
+   "a": "Diamond-shaped section: width b and height d with d/2 above and below the centre line",
+   "k": "crop"
+  }
+ ],
+ "2026|1|1(e)": [
+  {
+   "u": "img/civil-engineering/2026-1-1e-1.webp",
+   "a": "Plate girder: flanges 650 mm x 25 mm, web 1500 mm x 15 mm",
+   "k": "crop"
+  }
+ ],
+ "2026|1|2(c)": [
+  {
+   "u": "img/civil-engineering/2026-1-2c-1.webp",
+   "a": "Structure ABCD: A and C fixed, 100 kN and 80 kN loads, spans 4 m, 3 m, 2 m, 3 m, column BD 5 m, stiffness 2I, I, 2I",
+   "k": "crop"
+  }
+ ],
+ "2026|1|3(b)": [
+  {
+   "u": "img/civil-engineering/2026-1-3b-1.webp",
+   "a": "Shear force diagram of beam ABCDEF: 10 kN, 2 kN, 7 kN, 2 kN, spans 4, 3, 2, 2 m",
+   "k": "crop"
+  }
+ ],
+ "2026|1|3(c)": [
+  {
+   "u": "img/civil-engineering/2026-1-3c-1.webp",
+   "a": "Table of Mu/bd2 against pt (%)",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2026-1-3c-2.webp",
+   "a": "Plan and view AA of the passenger shelter: slab 150 mm, beam 250 mm, columns, 1500, 1500, 1000, 2000, 1000 mm",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2026-1-3c-3.webp",
+   "a": "Modification factor for tension reinforcement against percentage tension reinforcement (fs = 120 to 290)",
+   "k": "crop"
+  }
+ ],
+ "2026|1|4(a)": [
+  {
+   "u": "img/civil-engineering/2026-1-4a-1.webp",
+   "a": "Bodies 200 N, 800 N and 400 N over pulleys 1 and 2, 45 degrees, force F",
+   "k": "crop"
+  }
+ ],
+ "2026|1|4(b)(ii)": [
+  {
+   "u": "img/civil-engineering/2026-1-4bii-1.webp",
+   "a": "Beam AB, A fixed, l = 2 m, coordinates 1 (vertical) and 2 (rotation) at B",
+   "k": "crop"
+  }
+ ],
+ "2026|1|4(c)": [
+  {
+   "u": "img/civil-engineering/2026-1-4c-1.webp",
+   "a": "Gantry girder section: ISMB 600 with ISMC 300 on the top, 300, 600, 12, 20.8, 210, 90, 7.8",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2026-1-4c-2.webp",
+   "a": "Properties of ISMB 600 @ 1230 N/m and ISMC 300 @ 363 N/m",
+   "k": "crop"
+  }
+ ],
+ "2026|1|5(a)": [
+  {
+   "u": "img/civil-engineering/2026-1-5a-1.webp",
+   "a": "Water jet deflected by a hinged plate of 2.0 m with a spring k = 500 N/m, x0 = 1.0 m, angle theta",
+   "k": "crop"
+  }
+ ],
+ "2026|1|7(b)": [
+  {
+   "u": "img/civil-engineering/2026-1-7b-1.webp",
+   "a": "Plan of foundation ABCD with a semicircle, 8 m x 4 m, point O, radius 2 m",
+   "k": "crop"
+  }
+ ],
+ "2026|1|8(a)": [
+  {
+   "u": "img/civil-engineering/2026-1-8a-1.webp",
+   "a": "Table of specimen no., confining pressure, axial load, axial deformation and volume change",
+   "k": "crop"
+  }
+ ],
+ "2026|1|8(b)": [
+  {
+   "u": "img/civil-engineering/2026-1-8b-1.webp",
+   "a": "Sieve analysis: IS sieve and mass of the soil retained (g)",
+   "k": "crop"
+  }
  ]
 }

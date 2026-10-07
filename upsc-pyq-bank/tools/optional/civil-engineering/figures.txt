@@ -188,3 +188,20 @@
 2025|1|7(a)|19|0.28,0.05,0.62,0.405|Braced cut 3.0 m wide: struts A (0.5 m), B (2.5 m), C (2.5 m) and 1.5 m below|crop
 2025|1|7(c)(ii)|21|0.20,0.08,0.90,0.205|Tapering pipe: sections A and B with diameter, elevation and gauge pressure|crop
 2025|1|8(a)|21|0.15,0.685,0.95,0.865|CU triaxial tests: test sample, cell pressure, deviator stress, pore pressure|crop
+2026|1|1(a)|2|0.30,0.525,0.75,0.715|Frictionless pulley A on bars AB and AC hinged at B and C, cable hinged at D, 30 kN load at E, angles 60, 60, 30, 30 degrees|crop
+2026|1|1(b)|3|0.28,0.065,0.70,0.245|Cantilever ABCD: A fixed, B at 2 m, C 0.6 m below B, D 0.3 m from C with 12 kN|crop
+2026|1|1(c)|3|0.28,0.505,0.62,0.685|Diamond-shaped section: width b and height d with d/2 above and below the centre line|crop
+2026|1|1(e)|4|0.26,0.635,0.66,0.89|Plate girder: flanges 650 mm x 25 mm, web 1500 mm x 15 mm|crop
+2026|1|2(c)|6|0.20,0.185,0.78,0.375|Structure ABCD: A and C fixed, 100 kN and 80 kN loads, spans 4 m, 3 m, 2 m, 3 m, column BD 5 m, stiffness 2I, I, 2I|crop
+2026|1|3(b)|7|0.20,0.435,0.78,0.665|Shear force diagram of beam ABCDEF: 10 kN, 2 kN, 7 kN, 2 kN, spans 4, 3, 2, 2 m|crop
+2026|1|3(c)|9|0.12,0.105,0.90,0.18|Table of Mu/bd2 against pt (%)|crop
+2026|1|3(c)|9|0.10,0.245,0.80,0.48|Plan and view AA of the passenger shelter: slab 150 mm, beam 250 mm, columns, 1500, 1500, 1000, 2000, 1000 mm|crop
+2026|1|3(c)|9|0.12,0.545,0.88,0.915|Modification factor for tension reinforcement against percentage tension reinforcement (fs = 120 to 290)|crop
+2026|1|4(a)|10|0.20,0.44,0.80,0.59|Bodies 200 N, 800 N and 400 N over pulleys 1 and 2, 45 degrees, force F|crop
+2026|1|4(b)(ii)|11|0.30,0.335,0.76,0.43|Beam AB, A fixed, l = 2 m, coordinates 1 (vertical) and 2 (rotation) at B|crop
+2026|1|4(c)|13|0.25,0.34,0.78,0.60|Gantry girder section: ISMB 600 with ISMC 300 on the top, 300, 600, 12, 20.8, 210, 90, 7.8|crop
+2026|1|4(c)|13|0.15,0.625,0.88,0.86|Properties of ISMB 600 @ 1230 N/m and ISMC 300 @ 363 N/m|crop
+2026|1|5(a)|14|0.20,0.465,0.88,0.64|Water jet deflected by a hinged plate of 2.0 m with a spring k = 500 N/m, x0 = 1.0 m, angle theta|crop
+2026|1|7(b)|18|0.30,0.355,0.74,0.50|Plan of foundation ABCD with a semicircle, 8 m x 4 m, point O, radius 2 m|crop
+2026|1|8(a)|19|0.12,0.325,0.84,0.50|Table of specimen no., confining pressure, axial load, axial deformation and volume change|crop
+2026|1|8(b)|20|0.26,0.115,0.80,0.46|Sieve analysis: IS sieve and mass of the soil retained (g)|crop
