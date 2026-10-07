@@ -136,3 +136,10 @@
 2021|2|4(c)(ii)|6|0.36,0.55,0.74,0.93|Door with parts numbered 1 to 10 and floor level|crop
 2021|2|5(a)|7|0.20,0.24,0.90,0.60|One-hour unit hydrograph: discharge (m3/s) against time (h), 0 to 4 h, peak 3 m3/s at 1 h|crop
 2021|2|6(c)|9|0.14,0.285,0.96,0.64|Table of crops: base period, duty at field and area under crop|crop
+2022|2|2(b)|4|0.19,0.78,0.93,0.925|Table of vehicle type, gross weight, vehicles per day, wheel configuration and growth rate (bus and truck)|crop
+2022|2|2(b)|5|0.15,0.10,0.90,0.30|IRC 37, 2018 pavement composition for CBR 8%: design traffic (msa) against BC, DBM, WMM and GSB thicknesses|crop
+2022|2|2(c)|5|0.12,0.755,0.90,0.93|Spot speed study: speed range (km/hr) and number of vehicles|crop
+2022|2|3(c)|7|0.15,0.725,0.90,0.915|Activities 1-3, 1-2, 2-3, 3-4 with normal time (weeks) and normal cost (Rs lakh)|crop
+2022|2|5(a)|10|0.19,0.42,0.92,0.485|Annual rainfall (cm) at stations A to F|crop
+2022|2|5(e)|12|0.19,0.088,0.93,0.345|Multiple tube fermentation results and standard MPN values|crop
+2022|2|6(a)(ii)|13|0.29,0.112,0.63,0.45|Ordinates of the 4 hr unit hydrograph (time 0 to 44 h)|crop

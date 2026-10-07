@@ -937,5 +937,52 @@
    "a": "Table of crops: base period, duty at field and area under crop",
    "k": "crop"
   }
+ ],
+ "2022|2|2(b)": [
+  {
+   "u": "img/civil-engineering/2022-2-2b-1.webp",
+   "a": "Table of vehicle type, gross weight, vehicles per day, wheel configuration and growth rate (bus and truck)",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2022-2-2b-2.webp",
+   "a": "IRC 37, 2018 pavement composition for CBR 8%: design traffic (msa) against BC, DBM, WMM and GSB thicknesses",
+   "k": "crop"
+  }
+ ],
+ "2022|2|2(c)": [
+  {
+   "u": "img/civil-engineering/2022-2-2c-1.webp",
+   "a": "Spot speed study: speed range (km/hr) and number of vehicles",
+   "k": "crop"
+  }
+ ],
+ "2022|2|3(c)": [
+  {
+   "u": "img/civil-engineering/2022-2-3c-1.webp",
+   "a": "Activities 1-3, 1-2, 2-3, 3-4 with normal time (weeks) and normal cost (Rs lakh)",
+   "k": "crop"
+  }
+ ],
+ "2022|2|5(a)": [
+  {
+   "u": "img/civil-engineering/2022-2-5a-1.webp",
+   "a": "Annual rainfall (cm) at stations A to F",
+   "k": "crop"
+  }
+ ],
+ "2022|2|5(e)": [
+  {
+   "u": "img/civil-engineering/2022-2-5e-1.webp",
+   "a": "Multiple tube fermentation results and standard MPN values",
+   "k": "crop"
+  }
+ ],
+ "2022|2|6(a)(ii)": [
+  {
+   "u": "img/civil-engineering/2022-2-6aii-1.webp",
+   "a": "Ordinates of the 4 hr unit hydrograph (time 0 to 44 h)",
+   "k": "crop"
+  }
  ]
 }
