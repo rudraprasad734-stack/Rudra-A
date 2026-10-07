@@ -170,3 +170,21 @@
 2024|2|4(a)|7|0.08,0.285,0.86,0.495|Network 1 to 8 with activity durations t = 6, 7, 8, 7, 6, 9, 8, 10, 9, 6|crop
 2024|2|5(a)|9|0.15,0.58,0.51,0.895|Monthly discharge Q (m3/s) of the river, January to December|crop
 2024|2|7(c)(i)|14|0.20,0.135,0.78,0.385|Gravity dam: 6 m top, 3 m water depth, 27 m height, 10 m and 20 m, slope 0.75 to 1.0, base 6 m + 15 m, W1, W2, toe|crop
+2025|1|1(a)|2|0.25,0.465,0.92,0.745|Link ABCD with 480 N at E, dimensions 40, 80, 80, 40, 40 mm, pins at A, B and rollers C and D|crop
+2025|1|1(b)|3|0.28,0.215,0.80,0.385|Cantilever DC-B of 2L: w per unit length on the inner half, tie rod AB of length L|crop
+2025|1|1(c)|3|0.15,0.635,0.92,0.745|Beam AB 14 m: C and D 7 m each from A, five 160 kN loads at 1.52 m spacing|crop
+2025|1|1(d)|4|0.18,0.685,0.92,0.92|ISA 65 x 65 x 6 welded to an 8 mm gusset plate with 4 mm welds, 65 mm, 18.1 mm|crop
+2025|1|1(e)|5|0.12,0.355,0.85,0.475|Plan of the ground floor column: 600 x 300 mm, 8 mm ties at 200 c/c, 6 bars of 30 mm and 6 bars of 20 mm|crop
+2025|1|2(a)|6|0.12,0.185,0.97,0.47|T-section glued beam: 2 m span with w (N/m) and 4w (N-m), section 50 x 150 web on a 150 x 50 flange, point P|crop
+2025|1|2(b)|6|0.25,0.65,0.85,0.725|Beam AB, fixed ends, hinge at C, w per unit length on AC, L + L|crop
+2025|1|2(c)|7|0.24,0.80,0.66,0.94|Column section 500 x 300 mm with 8 mm ties and 6 bars of 25 mm|crop
+2025|1|2(c)|8|0.25,0.395,0.62,0.665|Design stress at specified strains for Fe 500 (strain, stress in MPa)|crop
+2025|1|3(a)|9|0.18,0.14,0.92,0.285|Continuous beam ABC: A fixed, 4 kN at 2 m, support B, C fixed, 2 m + 2 m + 6 m, EI constant|crop
+2025|1|3(c)|11|0.10,0.19,0.92,0.675|Two angles ISA 75 x 75 x 8 on a gusset plate with six 20 mm bolts at 50 mm, Lc = 250, tacking bolts|crop
+2025|1|4(a)|12|0.30,0.36,0.78,0.54|Frame ABCD: 40 kN at 2 m from B on BC (5 m), columns 3 m, beam 2I, columns I, A and D fixed|crop
+2025|1|4(c)(ii)|14|0.20,0.22,0.84,0.405|Plan of the dog-legged stair: 2600, 1250 + 100 + 1250, 625 + 625 + 2430 + 625 + 625|crop
+2025|1|5(d)|16|0.18,0.325,0.88,0.435|Casagrande liquid limit test: test no., moisture content (%) and number of blows|crop
+2025|1|6(c)(i)|18|0.40,0.235,0.72,0.505|Retaining wall 5 m high with 6 degrees batter and soil surface at 12 degrees|crop
+2025|1|7(a)|19|0.28,0.05,0.62,0.405|Braced cut 3.0 m wide: struts A (0.5 m), B (2.5 m), C (2.5 m) and 1.5 m below|crop
+2025|1|7(c)(ii)|21|0.20,0.08,0.90,0.205|Tapering pipe: sections A and B with diameter, elevation and gauge pressure|crop
+2025|1|8(a)|21|0.15,0.685,0.95,0.865|CU triaxial tests: test sample, cell pressure, deviator stress, pore pressure|crop
