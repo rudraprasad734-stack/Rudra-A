@@ -319,6 +319,7 @@
   .ot-s{font-size:11.5px; color:var(--ink-soft); margin-top:3px;}
   .ot-strip{display:flex; gap:2px; margin-top:7px;} .ot-strip i{flex:1; height:6px; border-radius:2px; background:var(--line-soft);} .ot-strip i.on{background:var(--link); opacity:.6;} .ot-strip i.on2{background:var(--link);}
   .ot-tr{background:var(--surface-2); color:var(--ink-soft);} .ot-tr.ot-up{background:var(--sage-soft); color:var(--sage);} .ot-tr.ot-down,.ot-tr.ot-cold{background:var(--brick-soft); color:var(--brick);}
+  .qfigs{display:grid; gap:8px; margin:8px 0 2px;} .qfigs figure{margin:0; background:#fff; border:1px solid var(--line, #d8d8d8); border-radius:10px; padding:6px; overflow:hidden;} .qfigs img{display:block; max-width:100%; height:auto; margin:0 auto;} .qfigs figcaption{font-size:11px; color:#555; margin-top:4px; text-align:right;} .qfigs .fg-r figcaption{color:#9a5b00;}
   .ot-q{padding:0 0 10px;} .ot-y{font-family:var(--font-mono); font-size:11.5px; font-weight:700; color:var(--link); margin:8px 0 3px;}
   .ot-r{font-size:12.5px; line-height:1.45; padding:5px 0; border-top:1px dashed var(--line-soft);} .ot-m{display:block; font-size:10.5px; color:var(--ink-faint); margin-bottom:1px;}
   .ot mark{background:var(--gold-soft); color:inherit; border-radius:3px; padding:0 1px;}
@@ -10418,7 +10419,7 @@ function optLoad(name){
   B.forEach(function(p){
     if(p.exam!=="optional" || !S.re.test(p.paper)) return;
     var pn = /II$/.test(p.paper) ? 2 : 1;
-    (p.questions||[]).forEach(function(q){ qs[p.year+"|"+pn+"|"+q.qno] = {y:p.year, p:pn, no:q.qno, m:q.marks, t:String(q.text||"").replace(/^Section [AB] — [^:]*:\s*/, "")}; });
+    (p.questions||[]).forEach(function(q){ qs[p.year+"|"+pn+"|"+q.qno] = {y:p.year, p:pn, no:q.qno, m:q.marks, g:q.figs, t:String(q.text||"").replace(/^Section [AB] — [^:]*:\s*/, "")}; });
   });
   var years = A.years.slice(), ny = years.length, from5 = years[Math.max(0, ny-5)];
   var cuts = tierCuts(ny);
@@ -10457,6 +10458,13 @@ function optSyncMode(D){
 }
 function optNo(D, id){ return D.name==="Anthropology" ? String(id).replace("II-","") : id; }
 var OPT_TREND = {up:["Rising","up"], down:["Fading","down"], steady:["Steady","steady"], cold:["Not asked lately","cold"], "new":["Recent only","up"], none:["Never asked","cold"]};
+// figures printed with a question in the paper (a crop of the paper, or a redrawn copy marked as such)
+function figHtml(figs){
+  if(!figs || !figs.length) return "";
+  return '<div class="qfigs">'+figs.map(function(g){
+    return '<figure class="'+(g.k==="redrawn" ? "fg-r" : "fg-c")+'"><a href="'+esc(g.u)+'" target="_blank" rel="noopener"><img src="'+esc(g.u)+'" alt="'+esc(g.a||"Figure from the question")+'" loading="lazy" decoding="async"></a><figcaption>'+(g.k==="redrawn" ? "Redrawn by the app. Check it against the original paper" : "From the paper")+'</figcaption></figure>';
+  }).join("")+'</div>';
+}
 function optHi(s, toks){
   var h = esc(s);
   toks.forEach(function(w){ if(w.length>1) h = h.replace(new RegExp("("+w.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+")","ig"), "<mark>$1</mark>"); });
@@ -10471,7 +10479,7 @@ function optTopicHtml(t, D, toks, open, parent){
     var yrNow = 0;
     body = '<div class="ot-q">'+(t.items.length ? t.items.map(function(q){
       var h = q.y!==yrNow ? '<div class="ot-y">'+q.y+'</div>' : ""; yrNow = q.y;
-      return h+'<div class="ot-r"><span class="ot-m">Paper '+(q.p===2 ? "II" : "I")+' · Q'+esc(q.no)+' · '+esc(q.m)+' marks</span>'+optHi(q.t, toks)+'</div>';
+      return h+'<div class="ot-r"><span class="ot-m">Paper '+(q.p===2 ? "II" : "I")+' · Q'+esc(q.no)+' · '+esc(q.m)+' marks</span>'+optHi(q.t, toks)+figHtml(q.g)+'</div>';
     }).join("") : '<div class="ot-r muted">No question on this has appeared in '+D.years[0]+'–'+D.years[D.ny-1]+'.</div>')+'</div>';
   }
   return '<div class="ot'+(open ? " open" : "")+'" data-ot="'+t.id+'">'+
@@ -11026,7 +11034,7 @@ function renderPyq(){
     }).join("")+'</ol>' : '';
     var ans = q.answer ? (open ? '<div class="ans">Answer: <b>('+q.answer.toLowerCase()+')</b></div>' : '<button class="link-btn reveal" data-key="'+esc(r.key)+'">Show answer</button>') : '';
     var psg = q.passage ? '<details class="psg"'+(f.q && q.passage.toLowerCase().indexOf(ql)>=0 ? ' open' : '')+'><summary>Read the passage</summary><div>'+hlText(q.passage, f.q)+'</div></details>' : '';
-    return head + '<div class="qitem"><div class="meta">'+esc(meta.join(" · "))+'</div>'+psg+'<div class="qtext">'+hlText(q.text, f.q)+'</div>'+opts+ans+'</div>';
+    return head + '<div class="qitem"><div class="meta">'+esc(meta.join(" · "))+'</div>'+psg+'<div class="qtext">'+hlText(q.text, f.q)+'</div>'+figHtml(q.figs)+opts+ans+'</div>';
   }).join("") + (lastGroup?'</div>':'');
   if(!rows.length) body = '<div class="card empty">'+(ql ? 'No questions match “'+esc(f.q)+'”.' : 'No questions for this selection yet.')+'</div>';
   if(rows.length > f.limit) body += '<button class="more-btn" id="pyqMore">Show '+Math.min(40, rows.length-f.limit)+' more</button>';
