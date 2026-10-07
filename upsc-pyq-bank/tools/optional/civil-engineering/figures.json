@@ -534,5 +534,129 @@
    "a": "Pipe D1 = 10 cm, nozzle D2 = 2.5 cm, plate with force F, mercury manometer h",
    "k": "crop"
   }
+ ],
+ "2016|2|3(a)": [
+  {
+   "u": "img/civil-engineering/2016-2-3a-1.webp",
+   "a": "Network: A 6 and B 1, C 5 and D 3, E 7 and F 4 (three parallel paths between start and end events)",
+   "k": "crop"
+  }
+ ],
+ "2016|2|3(d)(ii)": [
+  {
+   "u": "img/civil-engineering/2016-2-3dii-1.webp",
+   "a": "Traffic table: vehicle type, volume, annual growth rate, VDF; construction period 2 years, design life 20 years",
+   "k": "crop"
+  }
+ ],
+ "2017|1|1(d)": [
+  {
+   "u": "img/civil-engineering/2017-1-1d-1.webp",
+   "a": "Lever AB, 1.0 m long at 45 degrees, 600 N at B",
+   "k": "crop"
+  }
+ ],
+ "2017|1|1(e)": [
+  {
+   "u": "img/civil-engineering/2017-1-1e-1.webp",
+   "a": "Frame A-B-C-D: column 1.5 L, beam L/2 + L/2 + L/2, loads W at the middle of BC and at D, support at C",
+   "k": "crop"
+  }
+ ],
+ "2017|1|2(c)": [
+  {
+   "u": "img/civil-engineering/2017-1-2c-1.webp",
+   "a": "Plan of the dog-legged stair (250 x 400 beams, 250 x 250 columns, half landing, 1200, 2250, 1200) and Mu/bd2 against pt table",
+   "k": "crop"
+  }
+ ],
+ "2017|1|3(c)": [
+  {
+   "u": "img/civil-engineering/2017-1-3c-1.webp",
+   "a": "Plane truss ABCD, 4.0 m + 4.0 m, 3.0 m high, 100 kN at C",
+   "k": "crop"
+  }
+ ],
+ "2017|1|4(a)": [
+  {
+   "u": "img/civil-engineering/2017-1-4a-1.webp",
+   "a": "Two-layered backfill: layer I (5 m) and layer II (4 m) with unit weights and strength parameters",
+   "k": "crop"
+  }
+ ],
+ "2017|1|4(b)": [
+  {
+   "u": "img/civil-engineering/2017-1-4b-1.webp",
+   "a": "Two moving loads of 300 kN, 4.0 m apart, on a 20.0 m girder AB",
+   "k": "crop"
+  }
+ ],
+ "2017|1|4(c)": [
+  {
+   "u": "img/civil-engineering/2017-1-4c-1.webp",
+   "a": "Square hollow section welded to the flange, 100 mm, 150 mm, 75 mm, view A-A",
+   "k": "crop"
+  }
+ ],
+ "2017|1|5(c)": [
+  {
+   "u": "img/civil-engineering/2017-1-5c-1.webp",
+   "a": "Soil investigation table: depth from ground surface, type of soil, index properties",
+   "k": "crop"
+  }
+ ],
+ "2017|1|5(d)": [
+  {
+   "u": "img/civil-engineering/2017-1-5d-1.webp",
+   "a": "Two bars meeting at P, 45 degrees each, 3 m high",
+   "k": "crop"
+  }
+ ],
+ "2017|1|6(a)": [
+  {
+   "u": "img/civil-engineering/2017-1-6a-1.webp",
+   "a": "Three members at joint B (A, C, D), 10 m each, 100 kN-m clockwise moment at B",
+   "k": "crop"
+  }
+ ],
+ "2017|1|6(b)": [
+  {
+   "u": "img/civil-engineering/2017-1-6b-1.webp",
+   "a": "Table of 100Ast/bd against tau_c",
+   "k": "crop"
+  }
+ ],
+ "2017|1|7(b)": [
+  {
+   "u": "img/civil-engineering/2017-1-7b-1.webp",
+   "a": "Anchored sheet pile: sand over clay, water tables, anchor at 1.0 m, 2.0 m and 3.0 m depths",
+   "k": "crop"
+  }
+ ],
+ "2017|1|7(c)": [
+  {
+   "u": "img/civil-engineering/2017-1-7c-1.webp",
+   "a": "Cantilever beam with depth 300 mm at fixed end and 200 mm at free end, 1.0 m long, 100 kN",
+   "k": "crop"
+  }
+ ],
+ "2017|1|8(a)": [
+  {
+   "u": "img/civil-engineering/2017-1-8a-1.webp",
+   "a": "Cantilever retaining wall: 200 top, 3700 stem, 400 base, 800 toe, 350 stem, 1350 heel, 1000 below ground",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2017-1-8a-2.webp",
+   "a": "Table of Mu/bd2, pt and tau_c",
+   "k": "crop"
+  }
+ ],
+ "2017|1|8(c)": [
+  {
+   "u": "img/civil-engineering/2017-1-8c-1.webp",
+   "a": "Soil profile table: layer, depth, soil type, properties",
+   "k": "crop"
+  }
  ]
 }
