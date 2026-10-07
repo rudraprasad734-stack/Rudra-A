@@ -984,5 +984,45 @@
    "a": "Ordinates of the 4 hr unit hydrograph (time 0 to 44 h)",
    "k": "crop"
   }
+ ],
+ "2023|2|2(a)": [
+  {
+   "u": "img/civil-engineering/2023-2-2a-1.webp",
+   "a": "Table of activity, duration (days) and predecessor for P, Q, R, S, T, U",
+   "k": "crop"
+  }
+ ],
+ "2023|2|3(b)": [
+  {
+   "u": "img/civil-engineering/2023-2-3b-1.webp",
+   "a": "Staff readings: back sight and foresight at A to F",
+   "k": "crop"
+  }
+ ],
+ "2023|2|5(a)": [
+  {
+   "u": "img/civil-engineering/2023-2-5a-1.webp",
+   "a": "Ordinates of the 6-hour unit hydrograph (time 0 to 60 hr)",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2023-2-5a-2.webp",
+   "a": "Accumulated rainfall (cm) against time from start of storm (0, 6, 12, 18 hr)",
+   "k": "crop"
+  }
+ ],
+ "2023|2|5(b)": [
+  {
+   "u": "img/civil-engineering/2023-2-5b-1.webp",
+   "a": "Table of sub-area, area (km2), annual precipitation (mm) and annual evaporation (mm) for P, Q, R, S",
+   "k": "crop"
+  }
+ ],
+ "2023|2|5(c)": [
+  {
+   "u": "img/civil-engineering/2023-2-5c-1.webp",
+   "a": "Inflow hydrograph: time (hr) 0 to 28 and inflow (m3/s)",
+   "k": "crop"
+  }
  ]
 }
