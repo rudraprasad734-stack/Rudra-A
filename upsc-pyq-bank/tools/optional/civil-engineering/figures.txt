@@ -58,8 +58,8 @@
 2016|1|6(c)|17|0.24,0.208,0.76,0.388|Percentage of steel against permissible shear stress for M 20|crop
 2016|1|8(a)(ii)|20|0.20,0.155,0.94,0.385|Simply supported beam AB, 10.0 m, 10 kN/m, 100 kN axial each end, section C 100 x 200 mm with points 1 and 2|crop
 2016|1|8(c)|22|0.25,0.295,0.84,0.68|Copper bar AB with two steel bars on a rigid plate, 1.0 m and 3.0 m lengths, 200 kN at B|crop
-2023|1|1(c)|3|0.30,0.125,0.68,0.32|Strong-box of mass 85 kg on a floor, force F at height h, weight W, base 0.70 m|crop
-2023|1|1(d)|4|0.36,0.255,0.68,0.575|I-section 450 mm deep, flanges 250 mm and 80 mm, web 80 mm, tendon 150 mm from the centre line|crop
+2023|1|1(c)|3|0.30,0.1325,0.68,0.32|Strong-box of mass 85 kg on a floor, force F at height h, weight W, base 0.70 m|crop
+2023|1|1(d)|4|0.30,0.255,0.68,0.575|I-section 450 mm deep, flanges 250 mm and 80 mm, web 80 mm, tendon 150 mm from the centre line|crop
 2023|1|1(e)|5|0.18,0.635,0.80,0.895|ISA 75 x 50 x 8 tie on a 12 mm gusset plate with 6 mm weld, lengths Lw1 and Lw2, Cxx 25.2 mm|crop
 2023|1|2(a)|6|0.19,0.275,0.83,0.425|Beam C-A-D-E-B-F with 2 kN/m, 8 kN, 6 kN-m, 4 kN and spans 1, 2, 1, 2, 2 m|crop
 2023|1|2(b)|7|0.16,0.868,0.82,0.935|KL/r against fcd (MPa) table|crop
@@ -124,6 +124,8 @@
 2021|1|5(a)|11|0.26,0.64,0.74,0.885|Circular log G in a bracket: bar PN hinged at P, string MN, contact points Q and J, angle theta|crop
 2021|1|5(b)|12|0.20,0.545,0.80,0.855|T-beam: flange 1000 x 100 mm, web 300 mm, depth 400 mm, 4 bars of 25 mm, 50 mm cover|crop
 2021|1|5(c)|13|0.17,0.675,0.78,0.88|Fixed-end bar ABCD: PB at B, PC at C, 300 + 500 + 300 mm|crop
+2021|1|6(b)|15|0.20,0.768,0.66,0.868|Blank table to fill in: V and M at points A, B, C, D, E, F|crop
+2021|1|6(b)|16|0.18,0.112,0.76,0.196|Sign conventions for SFD and BMD: positive V and positive M|crop
 2021|1|6(b)|16|0.20,0.185,0.86,0.357|Beam A-B-C-D-E-F: 25 kN/m on 0.5 m, 300 kN-m at C, 50 kN at D, 40 kN at F, spans 0.5, 1, 2, 1.5, 0.5, 0.5 m|crop
 2021|1|6(c)|17|0.18,0.215,0.78,0.64|Stress-strain curve for cold worked deformed bar (fy and fy/1.15, Es = 200000 N/mm2, strains 0.0001 to 0.004)|crop
 2021|1|7(b)|19|0.20,0.44,0.72,0.885|Table of phi against Nc, Nq and Ngamma (10 to 24 degrees)|crop
@@ -158,8 +160,10 @@
 2024|1|2(b)|5|0.28,0.075,0.78,0.415|Fig. 2 Representative stress-strain curves for reinforcement: 23A cold worked deformed bar|crop
 2024|1|2(b)|5|0.28,0.49,0.78,0.765|Fig. 2 Representative stress-strain curves for reinforcement: 23B steel bar with definite yield point|crop
 2024|1|2(c)|6|0.20,0.225,0.94,0.495|Two angles ISA 100 x 100 x 12 welded to a 12 mm gusset plate, 540 kN, weld lengths l1 and l2, 29.2 mm|crop
-2024|1|3(a)|6|0.20,0.815,0.78,0.915|Fixed end moments of the box culvert members (MFAB, MFBA, MFBC, MFCB, MFCD, MFDC, MFAD, MFDA)|crop
+2024|1|2(c)|14|0.06,0.03,0.97,0.935|Enclosed extract: IS 800 : 2007 clauses 10.5.4.3 to 10.5.9 on welds (plug, intermittent, shop, site and long-joint welds, fillet welds at edges)|crop
+2024|1|3(a)|6|0.20,0.8135,0.78,0.8975|Fixed end moments of the box culvert members (MFAB, MFBA, MFBC, MFCB, MFCD, MFDC, MFAD, MFDA)|crop
 2024|1|3(a)|7|0.14,0.075,0.90,0.345|Box culvert ABCD: 6.0 m x 3.0 m, 50 kN at the top, 30 kN/m loads, member stiffness 2I, I, 3I|crop
+2024|1|3(b)|15|0.06,0.03,0.97,0.935|Enclosed extract: IS 456 : 2000 Annex G, moments of resistance of rectangular and T-sections (G-1 to G-2.3)|crop
 2024|1|4(b)|8|0.28,0.625,0.82,0.83|Pin-jointed truss ABCDE: 60 degrees, member forces 57.74 kN and 28.87 kN, 100 kN at C, 3.0 m + 3.0 m|crop
 2024|1|5(c)|9|0.22,0.72,0.78,0.935|Large tank with oil, 80 cm head, vertical pipe 70 cm long, diameter 2 cm, sections A and B|crop
 2024|1|7(a)|11|0.18,0.7395,0.72,0.822|Stability number SN against phi for beta = 45 degrees (phi 5 to 25 degrees)|crop
@@ -196,7 +200,7 @@
 2026|1|3(b)|7|0.20,0.464,0.78,0.665|Shear force diagram of beam ABCDEF: 10 kN, 2 kN, 7 kN, 2 kN, spans 4, 3, 2, 2 m|crop
 2026|1|3(c)|9|0.12,0.105,0.90,0.18|Table of Mu/bd2 against pt (%)|crop
 2026|1|3(c)|9|0.10,0.245,0.80,0.495|Plan and view AA of the passenger shelter: slab 150 mm, beam 250 mm, columns, 1500, 1500, 1000, 2000, 1000 mm|crop
-2026|1|3(c)|9|0.12,0.545,0.88,0.915|Modification factor for tension reinforcement against percentage tension reinforcement (fs = 120 to 290)|crop
+2026|1|3(c)|9|0.12,0.5075,0.88,0.915|Modification factor for tension reinforcement against percentage tension reinforcement (fs = 120 to 290)|crop
 2026|1|4(a)|10|0.20,0.44,0.80,0.59|Bodies 200 N, 800 N and 400 N over pulleys 1 and 2, 45 degrees, force F|crop
 2026|1|4(b)(ii)|11|0.30,0.335,0.76,0.43|Beam AB, A fixed, l = 2 m, coordinates 1 (vertical) and 2 (rotation) at B|crop
 2026|1|4(c)|13|0.25,0.34,0.78,0.612|Gantry girder section: ISMB 600 with ISMC 300 on the top, 300, 600, 12, 20.8, 210, 90, 7.8|crop

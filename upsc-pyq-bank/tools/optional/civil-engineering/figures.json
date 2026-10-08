@@ -857,6 +857,16 @@
  "2021|1|6(b)": [
   {
    "u": "img/civil-engineering/2021-1-6b-1.webp",
+   "a": "Blank table to fill in: V and M at points A, B, C, D, E, F",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2021-1-6b-2.webp",
+   "a": "Sign conventions for SFD and BMD: positive V and positive M",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2021-1-6b-3.webp",
    "a": "Beam A-B-C-D-E-F: 25 kN/m on 0.5 m, 300 kN-m at C, 50 kN at D, 40 kN at F, spans 0.5, 1, 2, 1.5, 0.5, 0.5 m",
    "k": "crop"
   }
@@ -1080,6 +1090,11 @@
    "u": "img/civil-engineering/2024-1-2c-1.webp",
    "a": "Two angles ISA 100 x 100 x 12 welded to a 12 mm gusset plate, 540 kN, weld lengths l1 and l2, 29.2 mm",
    "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2024-1-2c-2.webp",
+   "a": "Enclosed extract: IS 800 : 2007 clauses 10.5.4.3 to 10.5.9 on welds (plug, intermittent, shop, site and long-joint welds, fillet welds at edges)",
+   "k": "crop"
   }
  ],
  "2024|1|3(a)": [
@@ -1091,6 +1106,13 @@
   {
    "u": "img/civil-engineering/2024-1-3a-2.webp",
    "a": "Box culvert ABCD: 6.0 m x 3.0 m, 50 kN at the top, 30 kN/m loads, member stiffness 2I, I, 3I",
+   "k": "crop"
+  }
+ ],
+ "2024|1|3(b)": [
+  {
+   "u": "img/civil-engineering/2024-1-3b-1.webp",
+   "a": "Enclosed extract: IS 456 : 2000 Annex G, moments of resistance of rectangular and T-sections (G-1 to G-2.3)",
    "k": "crop"
   }
  ],

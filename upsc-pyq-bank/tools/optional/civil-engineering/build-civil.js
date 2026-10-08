@@ -22,6 +22,9 @@ const sums = {}; rows.forEach(function(r){ const k = r.y + "|" + r.p + "|" + r.q
 const badSum = Object.keys(sums).filter(function(k){ return Math.abs(sums[k] - 50) > 1e-9 && !(k in PARTIAL_Q); });
 const papers = {}; rows.forEach(function(r){ const k = r.y + "|" + r.p; (papers[k] = papers[k] || {})[r.qno.match(/^(\d)/)[1]] = 1; });
 const badPaper = Object.keys(papers).filter(function(k){ return Object.keys(papers[k]).length !== 8 && !(k in PARTIAL); });
+const qids = {}; rows.forEach(function(r){ qids[r.y+"|"+r.p+"|"+r.qno] = 1; });
+const orphanFigs = Object.keys(FIGS).filter(function(k){ return !qids[k]; });
+if(orphanFigs.length){ console.log("FIGURES WITH NO MATCHING QUESTION (check the question number in figures.txt):", orphanFigs.join(", ")); process.exit(1); }
 if(badSum.length || badPaper.length){ console.log("MARKS DO NOT ADD UP TO 50:", badSum.join(", "), "| PAPERS WITHOUT 8 QUESTIONS:", badPaper.join(", ")); process.exit(1); }
 
 // ---- tag topics

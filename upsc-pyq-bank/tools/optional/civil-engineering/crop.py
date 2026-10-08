@@ -17,7 +17,9 @@ def bands(a,axis,gap):
         if out and i-out[-1][1]<=gap: out[-1][1]=i
         else: out.append([i,i])
     return [b for b in out if b[1]-b[0]>=3 or len(out)==1]   # specks and hairlines are noise, not content
+STRIPLOG=[]
 def strip_edges(im,gap=2,maxh=70):
+    h0=im.height
     # drop slivers of the neighbouring question text that the box clips at the top or bottom edge:
     # a thin band of ink touching the crop edge, with clean paper between it and the figure
     for _ in range(4):
@@ -32,6 +34,7 @@ def strip_edges(im,gap=2,maxh=70):
         if t[0]<=2 and t[1]-t[0]<maxh and bs[1][0]-t[1]>gap: im=im.crop((0,bs[1][0]-4,im.width,H)); cut=True
         elif b[1]>=H-3 and b[1]-b[0]<maxh and b[0]-bs[-2][1]>gap: im=im.crop((0,0,im.width,bs[-2][1]+5)); cut=True
         if not cut: break
+    STRIPLOG.append(h0-im.height)
     return im
 def trim(im,pad=8,lv=True):
     # cut the blank margin so the crop hugs the drawing (the boxes in figures.txt are only approximate)
@@ -65,7 +68,8 @@ for line in open(os.path.join(here,'figures.txt'),encoding='utf8'):
         x0,y0,x1,y1=[float(v) for v in bb.split(',')]; r=page.rect
         clip=pymupdf.Rect(r.x0+x0*r.width,r.y0+y0*r.height,r.x0+x1*r.width,r.y0+y1*r.height)
         pix=page.get_pixmap(dpi=170,clip=clip); im=Image.frombytes('RGB',(pix.width,pix.height),pix.samples).convert('L')
-        im=trim(im)
+        n0=len(STRIPLOG); im=trim(im)
+        if STRIPLOG[-1]>0 and os.environ.get('STRIPLOG'): print('STRIPPED',key,n,STRIPLOG[-1],'px')
         t,b,g=TRIM.get(f'{key}|{n}',(0,0,7))
         if t or b: im=trim(drop_bands(im,t,b,g),lv=False)
         im.save(os.path.join(out,name),'WEBP',quality=80,method=6)
