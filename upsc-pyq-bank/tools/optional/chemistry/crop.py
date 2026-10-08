@@ -36,9 +36,9 @@ def strip_edges(im,gap=2,maxh=70):
         if not cut: break
     STRIPLOG.append(h0-im.height)
     return im
-def trim(im,pad=8,lv=True):
+def trim(im,pad=8,lv=True,strip=True):
     # cut the blank margin so the crop hugs the drawing (the boxes in figures.txt are only approximate)
-    im=strip_edges(levels(im) if lv else im); bb=im.point(lambda v:255 if v<185 else 0).getbbox()
+    im=(strip_edges if strip else (lambda x:x))(levels(im) if lv else im); bb=im.point(lambda v:255 if v<185 else 0).getbbox()
     if not bb: return im
     x0,y0,x1,y1=bb; return im.crop((max(0,x0-pad),max(0,y0-pad),min(im.width,x1+pad),min(im.height,y1+pad)))
 # trims.txt: year|paper|qno|n|top|bottom = how many whole bands of question text to drop above/below the n-th figure of that question
@@ -68,10 +68,10 @@ for line in open(os.path.join(here,'figures.txt'),encoding='utf8'):
         x0,y0,x1,y1=[float(v) for v in bb.split(',')]; r=page.rect
         clip=pymupdf.Rect(r.x0+x0*r.width,r.y0+y0*r.height,r.x0+x1*r.width,r.y0+y1*r.height)
         pix=page.get_pixmap(dpi=170,clip=clip); im=Image.frombytes('RGB',(pix.width,pix.height),pix.samples).convert('L')
-        n0=len(STRIPLOG); im=trim(im)
+        n0=len(STRIPLOG); ns=TRIM.get(f'{key}|{n}',(0,0,7))[0]==-1; im=trim(im,strip=not ns)
         if STRIPLOG[-1]>0 and os.environ.get('STRIPLOG'): print('STRIPPED',key,n,STRIPLOG[-1],'px')
         t,b,g=TRIM.get(f'{key}|{n}',(0,0,7))
-        if t or b: im=trim(drop_bands(im,t,b,g),lv=False)
+        if (t>0 or b>0): im=trim(drop_bands(im,t,b,g),lv=False)
         im.save(os.path.join(out,name),'WEBP',quality=80,method=6)
     figs.setdefault(key,[]).append({'u':f'img/{SUBJ}/{name}','a':alt,'k':kind})
 keep={os.path.basename(f['u']) for v in figs.values() for f in v}
