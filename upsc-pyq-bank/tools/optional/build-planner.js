@@ -128,3 +128,29 @@ ag.topics.forEach(function(t){
   fs.writeFileSync(PAGE, h5);
   console.log(NAME + " chapters:", Object.keys(cvLeaf).length, "| Paper I topics:", Object.keys(cvTree["Paper I"]).length, "| Paper II topics:", Object.keys(cvTree["Paper II"]).length);
 }
+
+// ---------------------------------------------------------------- Chemistry (one chapter per syllabus sub-topic)
+{
+  const NAME = "Chemistry";
+  let h6 = fs.readFileSync(PAGE, "utf8");
+  const m6 = h6.match(/<script type="application\/json" id="d-chem">(.*?)<\/script>/s);
+  if(!m6) throw new Error("build-planner: d-chem not found (run chemistry/build-chemistry.js first), nothing written");
+  const ch = JSON.parse(m6[1]);
+  const chTree = {"Paper I":{}, "Paper II":{}}, chLeaf = {}, per6 = {};
+  ch.topics.forEach(function(t){
+    const it = ch.items.filter(function(x){ return x.id === t.s; })[0], grp = it.pp === 1 ? "Paper I" : "Paper II";
+    per6[it.id] = (per6[it.id] || 0) + 1;
+    const topic = it.id + "  " + it.t, unit = it.id + "." + per6[it.id] + "  " + t.t;
+    (chTree[grp][topic] = chTree[grp][topic] || []).push(unit);
+    chLeaf[topic + "|" + unit] = [t.id];
+  });
+  const cur6 = '  "' + NAME + '": ' + JSON.stringify(chTree, null, 2).replace(/\n/g, "\n  ") + ',\n';
+  const a6 = h6.indexOf('  "' + NAME + '": {\n    "Paper I"');
+  if(a6 >= 0){ const re = /\n  "[A-Z]/g; re.lastIndex = a6 + 20; const m = re.exec(h6); if(!m) throw new Error("build-planner: end of Chemistry block not found, nothing written"); h6 = h6.slice(0, a6) + cur6 + h6.slice(m.index + 1); }
+  else { const g = h6.indexOf('  "Geography": CT({'); if(g < 0) throw new Error("build-planner: insertion point not found, nothing written"); h6 = h6.slice(0, g) + cur6 + h6.slice(g); }
+  const la6 = h6.indexOf("var CHEM_LEAF = {"), leafTxt6 = "var CHEM_LEAF = " + JSON.stringify(chLeaf, null, 1) + ";";
+  if(la6 >= 0){ const e6 = h6.indexOf("\n};", la6); if(e6 < 0) throw new Error("build-planner: CHEM_LEAF block not closed, nothing written"); h6 = h6.slice(0, la6) + leafTxt6 + h6.slice(h6.indexOf("\n", e6 + 1)); }
+  else { const lb6 = h6.indexOf("\n// Optional subjects that have a question analysis"); if(lb6 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h6 = h6.slice(0, lb6) + "\n" + leafTxt6 + h6.slice(lb6); }
+  fs.writeFileSync(PAGE, h6);
+  console.log(NAME + " chapters:", Object.keys(chLeaf).length, "| Paper I topics:", Object.keys(chTree["Paper I"]).length, "| Paper II topics:", Object.keys(chTree["Paper II"]).length);
+}

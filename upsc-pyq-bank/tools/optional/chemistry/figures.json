@@ -251,9 +251,9 @@
    "k": "crop"
   }
  ],
- "2014|2|6(a)": [
+ "2014|2|6(a)(ii)": [
   {
-   "u": "img/chemistry/2014-2-6a-1.webp",
+   "u": "img/chemistry/2014-2-6aii-1.webp",
    "a": "Carbonyl compounds with C=O stretch values 1683, 1812 and 1720 cm-1: acetophenone, benzoyl bromide, ethyl benzoate",
    "k": "crop"
   }
@@ -300,16 +300,16 @@
    "k": "crop"
   }
  ],
- "2018|1|3(a)": [
+ "2018|1|3(a)(ii)": [
   {
-   "u": "img/chemistry/2018-1-3a-1.webp",
+   "u": "img/chemistry/2018-1-3aii-1.webp",
    "a": "Two pressure-volume processes (a) and (b) between state 1 (P1, V1) and state 2 (P2, V2)",
    "k": "crop"
   }
  ],
- "2018|1|4(d)": [
+ "2018|1|4(d)(ii)": [
   {
-   "u": "img/chemistry/2018-1-4d-1.webp",
+   "u": "img/chemistry/2018-1-4dii-1.webp",
    "a": "Three diagrams to label and compare: a rising-falling curve, a U-shaped curve, and a closed loop",
    "k": "crop"
   }
@@ -321,9 +321,9 @@
    "k": "crop"
   }
  ],
- "2018|1|6(a)": [
+ "2018|1|6(a)(ii)": [
   {
-   "u": "img/chemistry/2018-1-6a-1.webp",
+   "u": "img/chemistry/2018-1-6aii-1.webp",
    "a": "Hydrolysis of ethyl acetate: t in minutes 0, 5, 15, 25, 35 against HCl in ml 16.0, 10.24, 6.13, 4.32, 3.41",
    "k": "crop"
   }
@@ -447,9 +447,9 @@
    "k": "crop"
   }
  ],
- "2019|2|4(c)": [
+ "2019|2|4(c)(i)": [
   {
-   "u": "img/chemistry/2019-2-4c-1.webp",
+   "u": "img/chemistry/2019-2-4ci-1.webp",
    "a": "Keto ester with (1) excess MeMgBr (2) Et2O giving (X), then (Y), then a tetramethyl tetrahydrofuran",
    "k": "crop"
   }
@@ -503,9 +503,9 @@
    "k": "crop"
   }
  ],
- "2019|2|8(c)": [
+ "2019|2|8(c)(ii)": [
   {
-   "u": "img/chemistry/2019-2-8c-1.webp",
+   "u": "img/chemistry/2019-2-8cii-1.webp",
    "a": "Diphenylindanone with hv giving (X), then maleic anhydride on heating giving (Y)",
    "k": "crop"
   }
@@ -552,9 +552,9 @@
    "k": "crop"
   }
  ],
- "2020|2|3(c)": [
+ "2020|2|3(c)(i)": [
   {
-   "u": "img/chemistry/2020-2-3c-1.webp",
+   "u": "img/chemistry/2020-2-3ci-1.webp",
    "a": "Octalin + Br2 giving one of four dibromides A, B, C, D",
    "k": "crop"
   }
@@ -573,14 +573,16 @@
    "k": "crop"
   }
  ],
- "2020|2|4(c)": [
+ "2020|2|4(c)(i)": [
   {
-   "u": "img/chemistry/2020-2-4c-1.webp",
+   "u": "img/chemistry/2020-2-4ci-1.webp",
    "a": "Nitro dimethoxy arylpropanoic acid with 1) SOCl2 2) CH2N2 3) AgNO3",
    "k": "crop"
-  },
+  }
+ ],
+ "2020|2|4(c)(ii)": [
   {
-   "u": "img/chemistry/2020-2-4c-2.webp",
+   "u": "img/chemistry/2020-2-4cii-1.webp",
    "a": "Diphenylchloromethane + pyridine + NEt3 (1:1, large excess) giving major product",
    "k": "crop"
   }
@@ -634,9 +636,9 @@
    "k": "crop"
   }
  ],
- "2020|2|7(c)": [
+ "2020|2|7(c)(ii)": [
   {
-   "u": "img/chemistry/2020-2-7c-1.webp",
+   "u": "img/chemistry/2020-2-7cii-1.webp",
    "a": "Alkene with conc. H2SO4 giving the isomerised alkene",
    "k": "crop"
   }
@@ -662,9 +664,9 @@
    "k": "crop"
   }
  ],
- "2021|1|3(c)": [
+ "2021|1|3(c)(ii)": [
   {
-   "u": "img/chemistry/2021-1-3c-1.webp",
+   "u": "img/chemistry/2021-1-3cii-1.webp",
    "a": "Insulated box with compartments V1 and V2, membrane removed so gas fills both",
    "k": "crop"
   }
@@ -716,26 +718,30 @@
    "k": "crop"
   }
  ],
- "2021|2|2(c)": [
+ "2021|2|2(c)(i)": [
   {
-   "u": "img/chemistry/2021-2-2c-1.webp",
+   "u": "img/chemistry/2021-2-2ci-1.webp",
    "a": "1-Phenylethanol with SOCl2/pyridine",
    "k": "crop"
-  },
+  }
+ ],
+ "2021|2|2(c)(ii)": [
   {
-   "u": "img/chemistry/2021-2-2c-2.webp",
+   "u": "img/chemistry/2021-2-2cii-1.webp",
    "a": "Cyclohexanone with NaH/THF giving [P], then CH3I giving Q and (CH3)3SiCl giving R",
    "k": "crop"
   }
  ],
- "2021|2|3(a)": [
+ "2021|2|3(a)(i)": [
   {
-   "u": "img/chemistry/2021-2-3a-1.webp",
+   "u": "img/chemistry/2021-2-3ai-1.webp",
    "a": "Cyclopentane-fused diol with two phenyl groups, conc. H2SO4",
    "k": "crop"
-  },
+  }
+ ],
+ "2021|2|3(a)(ii)": [
   {
-   "u": "img/chemistry/2021-2-3a-2.webp",
+   "u": "img/chemistry/2021-2-3aii-1.webp",
    "a": "Substituted chlorocyclohexane with EtO-",
    "k": "crop"
   }
@@ -747,30 +753,37 @@
    "k": "crop"
   }
  ],
- "2021|2|3(c)": [
+ "2021|2|3(c)(i)": [
   {
-   "u": "img/chemistry/2021-2-3c-1.webp",
+   "u": "img/chemistry/2021-2-3ci-1.webp",
    "a": "meso-2,3-Dibromobutane with I- and EtO-; and the AgNO3/EtOH reaction of a neopentyl-type iodide",
    "k": "crop"
   }
  ],
- "2021|2|4(b)": [
+ "2021|2|3(c)(ii)": [
   {
-   "u": "img/chemistry/2021-2-4b-1.webp",
+   "u": "img/chemistry/2021-2-3cii-1.webp",
+   "a": "meso-2,3-Dibromobutane with I- and EtO-; and the AgNO3/EtOH reaction of a neopentyl-type iodide",
+   "k": "crop"
+  }
+ ],
+ "2021|2|4(b)(ii)": [
+  {
+   "u": "img/chemistry/2021-2-4bii-1.webp",
    "a": "Allyl bromide with HBr, and with HBr in presence of benzoyl peroxide",
    "k": "crop"
   }
  ],
- "2021|2|4(c)": [
+ "2021|2|4(c)(i)": [
   {
-   "u": "img/chemistry/2021-2-4c-1.webp",
+   "u": "img/chemistry/2021-2-4ci-1.webp",
    "a": "PhCH2Cl with Ph3P then RLi then cyclohexanone; phenylhydrazine + cyclohexanone in glacial acetic acid",
    "k": "crop"
   }
  ],
- "2021|2|5(b)": [
+ "2021|2|5(b)(i)": [
   {
-   "u": "img/chemistry/2021-2-5b-1.webp",
+   "u": "img/chemistry/2021-2-5bi-1.webp",
    "a": "Three p-substituted styrenes: CH3, NO2, OCH3",
    "k": "crop"
   }
@@ -782,23 +795,37 @@
    "k": "crop"
   }
  ],
- "2021|2|5(d)": [
+ "2021|2|5(d)(i)": [
   {
-   "u": "img/chemistry/2021-2-5d-1.webp",
+   "u": "img/chemistry/2021-2-5di-1.webp",
    "a": "Ketone groups for Norrish type-II comparison: three aryl alkyl ketones; and an aryl propyl ketone, a tetralone and a norbornyl ketone",
    "k": "crop"
   }
  ],
- "2021|2|6(a)": [
+ "2021|2|5(d)(ii)": [
   {
-   "u": "img/chemistry/2021-2-6a-1.webp",
+   "u": "img/chemistry/2021-2-5dii-1.webp",
+   "a": "Ketone groups for Norrish type-II comparison: three aryl alkyl ketones; and an aryl propyl ketone, a tetralone and a norbornyl ketone",
+   "k": "crop"
+  }
+ ],
+ "2021|2|6(a)(ii)": [
+  {
+   "u": "img/chemistry/2021-2-6aii-1.webp",
    "a": "Pairs of carbonyl compounds: two lactones, and ethyl acetate with ethyl benzoate",
    "k": "crop"
   }
  ],
- "2021|2|6(c)": [
+ "2021|2|6(c)(i)": [
   {
-   "u": "img/chemistry/2021-2-6c-1.webp",
+   "u": "img/chemistry/2021-2-6ci-1.webp",
+   "a": "Cyclopropyl cyclohexanone with hv; a triphenyl ketone with hv",
+   "k": "crop"
+  }
+ ],
+ "2021|2|6(c)(ii)": [
+  {
+   "u": "img/chemistry/2021-2-6cii-1.webp",
    "a": "Cyclopropyl cyclohexanone with hv; a triphenyl ketone with hv",
    "k": "crop"
   }
@@ -817,14 +844,14 @@
    "k": "crop"
   }
  ],
- "2021|2|8(a)": [
+ "2021|2|8(a)(i)": [
   {
-   "u": "img/chemistry/2021-2-8a-1.webp",
+   "u": "img/chemistry/2021-2-8ai-1.webp",
    "a": "Dihydronaphthalene derivative with mCPBA; dihydronaphthalene with OsO4 then NaIO4",
    "k": "crop"
   },
   {
-   "u": "img/chemistry/2021-2-8a-2.webp",
+   "u": "img/chemistry/2021-2-8ai-2.webp",
    "a": "3-Hydroxybutanoic acid with BH3/THF; cyclohexene ring with CrO3-pyridine",
    "k": "crop"
   }
@@ -1264,9 +1291,9 @@
    "k": "crop"
   }
  ],
- "2023|2|1(e)": [
+ "2023|2|1(e)(i)": [
   {
-   "u": "img/chemistry/2023-2-1e-1.webp",
+   "u": "img/chemistry/2023-2-1ei-1.webp",
    "a": "2-Chloro-6-methylcyclohexanone with -OMe, and four candidate products A to D",
    "k": "crop"
   }
@@ -1502,37 +1529,29 @@
    "k": "crop"
   }
  ],
- "2024|2|1(d)(i)": [
+ "2024|2|1(d)": [
   {
-   "u": "img/chemistry/2024-2-1di-1.webp",
+   "u": "img/chemistry/2024-2-1d-1.webp",
    "a": "Bicyclic ketone converted to its lactone",
    "k": "crop"
-  }
- ],
- "2024|2|1(d)(ii)": [
+  },
   {
-   "u": "img/chemistry/2024-2-1dii-1.webp",
+   "u": "img/chemistry/2024-2-1d-2.webp",
    "a": "Aryl alkyl ketone with a hydroxycyclohexyl ring converted to the corresponding ethyl compound",
    "k": "crop"
-  }
- ],
- "2024|2|1(d)(iii)": [
+  },
   {
-   "u": "img/chemistry/2024-2-1diii-1.webp",
+   "u": "img/chemistry/2024-2-1d-3.webp",
    "a": "Diester CH2-CH2-CO-OCH3 chain converted to a cyclic beta-keto ester",
    "k": "crop"
-  }
- ],
- "2024|2|1(d)(iv)": [
+  },
   {
-   "u": "img/chemistry/2024-2-1div-1.webp",
+   "u": "img/chemistry/2024-2-1d-4.webp",
    "a": "CH3-CH2-N+Me3 to H2C=CH2 + NMe3",
    "k": "crop"
-  }
- ],
- "2024|2|1(d)(v)": [
+  },
   {
-   "u": "img/chemistry/2024-2-1dv-1.webp",
+   "u": "img/chemistry/2024-2-1d-5.webp",
    "a": "Benzaldehyde to benzoate and benzyl alcohol",
    "k": "crop"
   }
@@ -1649,37 +1668,29 @@
    "k": "crop"
   }
  ],
- "2024|2|5(d)(i)": [
+ "2024|2|5(d)": [
   {
-   "u": "img/chemistry/2024-2-5di-1.webp",
+   "u": "img/chemistry/2024-2-5d-1.webp",
    "a": "4-Methylacetophenone (A) and 2-methylacetophenone (B)",
    "k": "crop"
-  }
- ],
- "2024|2|5(d)(ii)": [
+  },
   {
-   "u": "img/chemistry/2024-2-5dii-1.webp",
+   "u": "img/chemistry/2024-2-5d-2.webp",
    "a": "Bicyclohexenyl (A) and cyclohexylidene-cyclohexylidene-type diene (B)",
    "k": "crop"
-  }
- ],
- "2024|2|5(d)(iii)": [
+  },
   {
-   "u": "img/chemistry/2024-2-5diii-1.webp",
+   "u": "img/chemistry/2024-2-5d-3.webp",
    "a": "trans-1,3-Pentadiene (A) and cis-1,3-pentadiene (B)",
    "k": "crop"
-  }
- ],
- "2024|2|5(d)(iv)": [
+  },
   {
-   "u": "img/chemistry/2024-2-5div-1.webp",
+   "u": "img/chemistry/2024-2-5d-4.webp",
    "a": "4-Nitroaniline (A) and 3-nitroaniline (B)",
    "k": "crop"
-  }
- ],
- "2024|2|5(d)(v)": [
+  },
   {
-   "u": "img/chemistry/2024-2-5dv-1.webp",
+   "u": "img/chemistry/2024-2-5d-5.webp",
    "a": "Two steroid-type enones A and B",
    "k": "crop"
   }
