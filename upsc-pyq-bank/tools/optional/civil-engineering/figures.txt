@@ -1,5 +1,5 @@
 # One figure per line:  year | paper | qno | page | x0,y0,x1,y1 (fractions of the page, from the top left) | what it shows | kind (crop = cut from the paper, redrawn = drawn by the app)
-2018|2|3(b)|4|0.20,0.118,0.78,0.31|Levelling readings (BS, IS, FS, RL, remarks)|crop
+2018|2|3(b)|4|0.20,0.108,0.78,0.31|Levelling readings (BS, IS, FS, RL, remarks)|crop
 2018|2|4(c)|5|0.28,0.385,0.76,0.56|Traverse ABCDEA: side, distance (m), azimuth|crop
 2019|2|3(c)|6|0.17,0.365,0.845,0.565|Level book page with missing values (station, BS, IS, FS, rise, fall, HI, RL)|crop
 2019|2|4(b)|7|0.35,0.305,0.70,0.41|Project network: 10 to 20, 20 to 30, 20 to 40, 30 to 40|crop

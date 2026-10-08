@@ -1,16 +1,20 @@
 # Civil Engineering optional (UPSC Civil Services Main). One question part per line:  year | paper | qno | marks | text
 # English text is read from the bilingual UPSC papers (scans). A figure printed with a question is listed in figures.txt.
-2018|2|1(a)|10|(i) What are artificial stones? Describe the process of preparing artificial marble. (ii) Enumerate the characteristics of good building stone.
+2018|2|1(a)(i)|5|What are artificial stones? Describe the process of preparing artificial marble.
+2018|2|1(a)(ii)|5|Enumerate the characteristics of good building stone.
 2018|2|1(b)|10|Two cars are approaching from the opposite directions at 100 kmph and 70 kmph. Compute the minimum sight distance required to avoid head-on collision of the cars, if reaction time of 2.5 seconds, coefficient of friction of 0.7 and brake efficiency of 50% are assumed.
-2018|2|1(c)|10|(i) With the help of a neat sketch, explain the traversing method of Plane Table Survey. (ii) A line AB on a topographical map at 1 : 50000 scale measures 12 cm. The same line on an aerial photograph taken from an aircraft of flying height 2.7 km measures 10 cm. Assuming the terrain to be flat, compute the focal length of the camera lens used for taking this photograph.
-2018|2|1(d)|10|(i) List different types of gauges along with their width specifications. List the factors affecting the choice of a gauge. (ii) A 6 degree curve branches off from a 3 degree main curve in an opposite direction in the layout of a BG yard. If the speed of train on the branch-line is restricted to 35 kmph, determine the speed restriction on the main line. Assume permissible deficiency in cant as 75 mm.
+2018|2|1(c)(i)|5|With the help of a neat sketch, explain the traversing method of Plane Table Survey.
+2018|2|1(c)(ii)|5|A line AB on a topographical map at 1 : 50000 scale measures 12 cm. The same line on an aerial photograph taken from an aircraft of flying height 2.7 km measures 10 cm. Assuming the terrain to be flat, compute the focal length of the camera lens used for taking this photograph.
+2018|2|1(d)(i)|5|List different types of gauges along with their width specifications. List the factors affecting the choice of a gauge.
+2018|2|1(d)(ii)|5|A 6 degree curve branches off from a 3 degree main curve in an opposite direction in the layout of a BG yard. If the speed of train on the branch-line is restricted to 35 kmph, determine the speed restriction on the main line. Assume permissible deficiency in cant as 75 mm.
 2018|2|1(e)|10|What are the advantages of pointing? Discuss the commonly employed types of pointing.
 2018|2|2(a)|15|Explain the following: (i) Bulking of sand (ii) Fineness modulus (iii) Water-cement ratio (iv) Slump test
 2018|2|2(b)|15|Define kerbs in roads. Discuss the important factors which control the geometric design of a highway.
 2018|2|2(c)|20|What are the various distinct stages in any construction project? Differentiate between briefing stage and tendering stage.
 2018|2|3(a)|15|Define 'optimistic time estimate', 'pessimistic time estimate' and 'most likely time estimate'. Explain how beta distribution is suitable for PERT analysis.
 2018|2|3(b)|15|Levelling was done from A to B and continued to a benchmark (BM) of elevation 88.500 m. The readings obtained in metre are given in the table below. Find the reduced level (RL) of A and B, and apply checks.
-2018|2|3(c)|20|(i) Discuss typical pavement failures along with their causes. (ii) Describe the purpose of traffic signals. Explain various methods of coordination of traffic signals.
+2018|2|3(c)(i)|10|Discuss typical pavement failures along with their causes.
+2018|2|3(c)(ii)|10|Describe the purpose of traffic signals. Explain various methods of coordination of traffic signals.
 2018|2|4(a)|15|What are the governing factors in selection of suitable roof-covering materials? Discuss various types of pitched roof.
 2018|2|4(b)|15|A horizontal circular curve is provided with a radius of 325 m for aligning a highway. Determine the following geometric features: (i) Superelevation (ii) Extra widening of pavement (iii) Length of transition curve. Given the following data: Design speed = 70 kmph; Length of wheel base of the largest truck = 6 m; Pavement width = 10.5 m.
 2018|2|4(c)|20|A traverse ABCDEA was run and observations are given in the table below. Find out the error of closure and compute the corrected latitude and departure.
