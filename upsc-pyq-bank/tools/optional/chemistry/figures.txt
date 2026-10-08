@@ -8,7 +8,7 @@
 2015|2|2(b)|4|0.24,0.16,0.70,0.35|Two pairs of carbocations: benzylic cations with OCH3 or CN, and 2-norbornyl cations|crop
 2015|2|2(c)|4|0.24,0.475,0.52,0.598|3,3-dimethyl-1-butene (A)|crop
 2015|2|2(d)|4|0.19,0.66,0.74,0.93|Three thermal reactions: (i) cyclopropane fused to a cyclohexadiene bearing CF3 and CN, (ii) anisole-type diene with a vinyl sulphone, (iii) allyl vinyl ether type substrate|crop
-2015|2|3(b)|5|0.20,0.50,0.64,0.69|Two reactions: (i) benzazocinium ion with CH2Ph and CH3 on nitrogen treated with NaNH2 in liquid NH3, (ii) a cyclohexane diol treated with H+|crop
+2015|2|3(b)|5|0.2000,0.5000,0.6400,0.6913|Two reactions: (i) benzazocinium ion with CH2Ph and CH3 on nitrogen treated with NaNH2 in liquid NH3, (ii) a cyclohexane diol treated with H+|crop
 2015|2|3(c)|5|0.22,0.795,0.72,0.905|Benzaldehyde with KCN, and with NH2NH2, KOH, heat|crop
 2015|2|3(d)|6|0.25,0.11,0.45,0.22|Tetrahydrocarbazole (indole fused to a cyclohexene)|crop
 2015|2|3(e)|6|0.20,0.475,0.84,0.65|Threo OBs substrate with a p-methoxyphenyl group acetolysed to the threo OAc product|crop
@@ -19,7 +19,7 @@
 2015|2|6(d)|9|0.17,0.715,0.68,0.905|LiAlH4 with (i) 1,2-epoxydecane type epoxide, (ii) an unsaturated carboxylic acid, (iii) p-methylphenylacetonitrile|crop
 2015|2|7(d)|11|0.17,0.115,0.68,0.44|(i) cyclopentane diol with HIO4, (ii) nitrobenzaldehyde with NaBH4 in methanol, (iii) methyl phenyl sulphoxide with LiAlH4, (iv) cyclohexanone-type ketone with CrO3|crop
 2015|2|8(a)|11|0.25,0.53,0.50,0.615|Decalin-type ketone with a propyl side chain|crop
-2015|2|8(b)|11|0.25,0.675,0.50,0.76|Cyclohexenone with hv|crop
+2015|2|8(b)|11|0.2500,0.6750,0.5000,0.7620|Cyclohexenone with hv|crop
 2015|2|8(c)|12|0.25,0.08,0.68,0.195|Benzoic acid reduced with Na in liquid NH3 to 1,4-dihydrobenzoic acid|crop
 2015|2|8(e)|12|0.25,0.495,0.86,0.58|Five compounds: cyclohexanol, cyclohexene, cyclohexanone, 2-cyclohexenone, 2-cyclohexenol|crop
 2014|1|6(a)|6|0.17,0.495,0.66,0.708|Reaction sequence: SiCl4 + CH3MgCl gives A then B (controlled pyrolysis); PCl5 + NH4Cl gives C then D; SCl2 + NH3 gives E then F; KI + F2 gives G then H|crop
@@ -67,9 +67,9 @@
 2019|2|5(b)|6|0.27,0.275,0.76,0.355|2,5-dimethoxybenzaldehyde with mCPBA in CHCl3 giving (X), then H3O+ giving (Y)|crop
 2019|2|5(c)|6|0.28,0.465,0.80,0.54|Norbornenone with hv giving (X), then hv giving (Y) plus ketene CH2=C=O|crop
 2019|2|5(d)|6|0.15,0.615,0.36,0.735|(i) a methoxy tetralone, (ii) a cyclohexylidene acetone enone|crop
-2019|2|5(e)|6|0.30,0.82,0.68,0.915|Two isoxazolone isomers I and II|crop
+2019|2|5(e)|6|0.3000,0.8179,0.6800,0.9150|Two isoxazolone isomers I and II|crop
 2019|2|6(b)|7|0.21,0.575,0.78,0.745|Three reactions: cyclohexene with NBS/phi.OOH giving (X) and with NBS/(CH3)4N+Br- giving (Y); methylenecyclobutane with dil. KMnO4 then NaIO4; benzene with H2O2/OsO4|crop
-2019|2|7(b)|8|0.335,0.51,0.72,0.585|Methyl branched ester-acid (EtO2C, CO2H) converted to a methyl delta-valerolactone|crop
+2019|2|7(b)|8|0.3350,0.5094,0.7200,0.5850|Methyl branched ester-acid (EtO2C, CO2H) converted to a methyl delta-valerolactone|crop
 2019|2|7(c)|9|0.21,0.085,0.63,0.33|Four reactions: maleic acid with H2O2/SeO2; o-phenylenediamine with Pb(OAc)4; cyclopentene with OsO4 then aq. Na2SO3; phenylmethylcyclopropane with OsO4 then NaSO3H then HIO3|crop
 2019|2|8(c)(ii)|10|0.345,0.505,0.76,0.62|Diphenylindanone with hv giving (X), then maleic anhydride on heating giving (Y)|crop
 2020|2|1(c)|2|0.40,0.455,0.62,0.525|trans-1,2-Dibromo-1-methylcyclohexane (target)|crop
@@ -93,7 +93,7 @@
 2020|2|7(c)(ii)|11|0.38,0.16,0.72,0.215|Alkene with conc. H2SO4 giving the isomerised alkene|crop
 2020|2|8(b)|11|0.18,0.635,0.72,0.79|(i) trimethylsilyl bicyclic enol ether with mCPBA giving X then H3O+ giving Y; (ii) tosylhydrazone with n-BuLi then H3O+ giving X|crop
 2020|2|8(c)|12|0.43,0.33,0.60,0.425|Structure X: 2-phenyl-3-methyl dihydropyranone|crop
-2021|1|1(b)|2|0.24,0.628,0.94,0.865|Born-Haber data tables for NaCl and NaCl2: U0, enthalpy of ionisation, electron affinity, dissociation and sublimation|crop
+2021|1|1(b)|2|0.2400,0.6280,0.9203,0.8650|Born-Haber data tables for NaCl and NaCl2: U0, enthalpy of ionisation, electron affinity, dissociation and sublimation|crop
 2021|1|3(c)(ii)|5|0.28,0.195,0.72,0.385|Insulated box with compartments V1 and V2, membrane removed so gas fills both|crop
 2021|2|1(a)|2|0.24,0.2285,0.76,0.2505|Reaction R-COO- + Br-CN (plus sign on the cyanogen bromide) giving R-CN + Br- + CO2|crop
 2021|2|1(b)|2|0.40,0.365,0.68,0.425|Quaternary ammonium salt (CH3)3N+-CH2-C6H5 X-|crop
@@ -112,7 +112,7 @@
 2021|2|4(b)(ii)|6|0.20,0.262,0.85,0.372|Allyl bromide with HBr, and with HBr in presence of benzoyl peroxide|crop
 2021|2|4(c)(i)|6|0.20,0.47,0.70,0.645|PhCH2Cl with Ph3P then RLi then cyclohexanone; phenylhydrazine + cyclohexanone in glacial acetic acid|crop
 2021|2|5(b)(i)|7|0.24,0.395,0.77,0.53|Three p-substituted styrenes: CH3, NO2, OCH3|crop
-2021|2|5(c)|7|0.14,0.712,0.50,0.903|Acetophenone with SeO2; benzoic acid with Na, NH3, C2H5OH|crop
+2021|2|5(c)|7|0.1400,0.7120,0.5000,0.8750|Acetophenone with SeO2; benzoic acid with Na, NH3, C2H5OH|crop
 2021|2|5(d)(i)|8|0.205,0.115,0.895,0.29|Ketone groups for Norrish type-II comparison: three aryl alkyl ketones; and an aryl propyl ketone, a tetralone and a norbornyl ketone|crop
 2021|2|5(d)(ii)|8|0.205,0.115,0.895,0.29|Ketone groups for Norrish type-II comparison: three aryl alkyl ketones; and an aryl propyl ketone, a tetralone and a norbornyl ketone|crop
 2021|2|6(a)(ii)|8|0.17,0.73,0.70,0.875|Pairs of carbonyl compounds: two lactones, and ethyl acetate with ethyl benzoate|crop
@@ -131,19 +131,19 @@
 2022|2|2(c)(ii)|5|0.22,0.15,0.78,0.24|L-Tyrosine (A) and L-dopa (B) structures|crop
 2022|2|3(a)|5|0.24,0.655,0.78,0.745|Acetal A plus alkenol B with propionic acid gives C then heat gives D|crop
 2022|2|3(a)|5|0.44,0.825,0.64,0.89|Ortho-ester E (trimethyl orthoester)|crop
-2022|2|3(b)(i)|6|0.14,0.22,0.85,0.375|Ergosterol A and precalciferol B steroid structures|crop
+2022|2|3(b)(i)|6|0.1400,0.2183,0.8591,0.3750|Ergosterol A and precalciferol B steroid structures|crop
 2022|2|3(c)(i)|6|0.36,0.64,0.66,0.675|Cl2HC-CF3 with EtO- giving product|crop
 2022|2|3(c)(ii)|6|0.22,0.80,0.84,0.895|Four bromides A (bicyclic bridgehead), B (bicyclo[2.2.2]), C (tert-butyl), D (9-bromo-9-phenyl anthracene-type)|crop
 2022|2|4(a)(i)|7|0.18,0.09,0.78,0.145|cis-2-Butene + PhCOOOH with OH-|crop
 2022|2|4(a)(ii)|7|0.20,0.215,0.62,0.285|Optically active imine A: Me, H, Ph, Ph substituents on C-N=C|crop
 2022|2|5(c)|8|0.43,0.635,0.58,0.705|Hydroxycyclopentane with a vinyl-type substituent (target compound)|crop
-2022|2|5(c)|8|0.22,0.735,0.80,0.83|Toluene with hv/NBS/dibenzoyl peroxide giving W; CrO3 giving X; Ac2O NaOAc heat giving Y; LiAlH4 excess giving Z|crop
+2022|2|5(c)|8|0.2200,0.7319,0.8000,0.8300|Toluene with hv/NBS/dibenzoyl peroxide giving W; CrO3 giving X; Ac2O NaOAc heat giving Y; LiAlH4 excess giving Z|crop
 2022|2|5(e)|10|0.16,0.08,0.52,0.51|Five candidate structures (1) to (5): methyl p-toluate, methyl phenylacetate, p-methylbenzoic acid, benzyl acetate, hydrocinnamic acid|crop
 2022|2|6(a)(i)|10|0.17,0.81,0.58,0.865|Phenyl ketone chain plus a deuterated cyclic ketone with hv|crop
 2022|2|6(a)(ii)|11|0.12,0.075,0.42,0.15|Branched ketone with hv|crop
 2022|2|6(c)(i)|11|0.20,0.54,0.865,0.625|Cyclopropane-fused bicyclic lactone with styryl-type side chain: (1) OsO4 (Pyridine) (2) H+, H2O gives X, HIO4 gives Y + Z|crop
 2022|2|6(c)(ii)|11|0.28,0.835,0.76,0.90|Chiral phenyl ketone with m-CPBA giving major product and minor product|crop
-2022|2|8(a)(i)|13|0.30,0.69,0.74,0.78|1-Acetylcyclohexene (I) and 1-acetyl-2-methylcyclohexene (II)|crop
+2022|2|8(a)(i)|13|0.3000,0.6793,0.7400,0.7800|1-Acetylcyclohexene (I) and 1-acetyl-2-methylcyclohexene (II)|crop
 2022|2|8(a)(ii)|13|0.34,0.825,0.72,0.895|Dimethylcyclohexanol with H+ giving A + B + C|crop
 2022|2|8(b)(i)|14|0.20,0.275,0.70,0.39|Steroid-type trienyl C9H19 compound (1) and cyclohexenyl vinyl compound (2)|crop
 2022|2|8(c)(ii)|15|0.30,0.22,0.78,0.315|Dienone A (dimethylcyclohexenyl enone) and dienone B (cyclohexenyl enone)|crop
@@ -153,15 +153,15 @@
 2024|1|7(b)(i)|13|0.20,0.545,0.84,0.645|Bond orders of Ni(CO)4 (M-C 1.33, C-O 2.64), [Co(CO)4]- (1.89, 2.14), [Fe(CO)4]2- (2.16, 1.85)|crop
 2024|1|7(b)(ii)|14|0.26,0.08,0.70,0.30|[Co(NH3)5Cl]Cl2 with NaNO2 giving A; standing/warm HCl and UV ray giving B; dilute NH3 giving C|crop
 2025|2|1(b)|2|0.24,0.455,0.80,0.64|Cyclohexyl methyl ketone with PCl5 (0 C, -POCl3) giving M; 1) 3 equiv. NaNH2, heat 2) HA giving N; NaNH2, C2H5Br giving O; then P giving (E)-1-cyclohexyl-1-butene|crop
-2025|2|1(c)|2|0.28,0.825,0.72,0.90|Neomenthyl chloride with -OEt|crop
+2025|2|1(c)|2|0.2800,0.8201,0.7200,0.9000|Neomenthyl chloride with -OEt|crop
 2025|2|2(a)(i)|3|0.20,0.605,0.76,0.665|Cyclopentanone diester with 1) NaOEt 2) HCl giving the ring-expanded keto ester|crop
 2025|2|2(a)(ii)|3|0.22,0.80,0.76,0.875|Epoxy-diene with H2SO4/H2O giving a decalin diol|crop
 2025|2|2(b)(i)|4|0.30,0.2415,0.72,0.2975|Alkene with cat. H2SO4/H2O (the reaction that does not give 3,3-dimethyl-2-butanol)|crop
-2025|2|2(b)(ii)|4|0.35,0.495,0.66,0.535|Styrene with BrCCl3 and hv|crop
+2025|2|2(b)(ii)|4|0.35,0.5008,0.66,0.535|Styrene with BrCCl3 and hv|crop
 2025|2|2(c)|5|0.12,0.095,0.55,0.415|Four reactions: (i) cyclohexanone with a 3-oxopentyl chain, 1) KOH 2) HA; (ii) quinuclidine diol with two Ph and H+; (iii) benzosuberone with 1) NH2OH 2) Al2O3; (iv) tetraester with -OEt|crop
 2025|2|3(a)(i)|5|0.17,0.715,0.66,0.895|(1) 2-bromocyclohexanone-type with -OMe; (2) alkene with EtO2C-NH-OSO2-C6H4-NO2 in excess NEt3|crop
 2025|2|3(a)(ii)|6|0.38,0.245,0.66,0.34|Ketone A: 2,6-dimethyl-4-heptanone|crop
-2025|2|3(b)(i)|6|0.26,0.47,0.80,0.55|tert-Butyl chloroacetate + ethyl acrylate with tBuOK giving a cyclopropane diester|crop
+2025|2|3(b)(i)|6|0.2600,0.4775,0.8000,0.5500|tert-Butyl chloroacetate + ethyl acrylate with tBuOK giving a cyclopropane diester|crop
 2025|2|3(b)(ii)|6|0.24,0.71,0.78,0.795|Long-chain diacid from ozonolysis (1) O3 2) HOAc) of C (C8H12); H2/Pt gives D (C8H16)|crop
 2025|2|3(c)(i)|7|0.22,0.11,0.78,0.165|Isoamyl alcohol to aldehyde (M), then N, O, P to the amino alcohol|crop
 2025|2|3(c)(ii)|7|0.34,0.322,0.66,0.405|Diazonium-substituted norbornanone with hv in MeOH|crop
@@ -175,8 +175,8 @@
 2025|2|6(c)(iv)|12|0.30,0.52,0.80,0.63|Ph2CH-CO-CHPh2 + PhCH2-CO-CH2Ph with hv giving A + B + C (major) + CO|crop
 2025|2|7(a)(ii)|12|0.20,0.76,0.90,0.89|Four enones A, B, C, D for Woodward-Fieser calculation|crop
 2025|2|7(b)(i)|13|0.20,0.44,0.78,0.535|Four dienes A (bicyclic), B (butadiene), C (s-trans-type diene), D (cyclohexadiene)|crop
-2025|2|7(b)(ii)|13|0.30,0.678,0.72,0.74|2-Methoxybutadiene with acrylonitrile, 1) heat 2) H+, H2O|crop
-2025|2|7(c)(i)|14|0.32,0.125,0.72,0.20|Vinylcyclopropane-type compound with Bu at 80 C in CCl4|crop
+2025|2|7(b)(ii)|13|0.3000,0.6793,0.7200,0.7400|2-Methoxybutadiene with acrylonitrile, 1) heat 2) H+, H2O|crop
+2025|2|7(c)(i)|14|0.3200,0.1232,0.7200,0.1987|Vinylcyclopropane-type compound with Bu at 80 C in CCl4|crop
 2025|2|7(c)(ii)|14|0.20,0.455,0.80,0.645|(A) cyclooctatriene giving a bicyclo-octadiene; (B) a fused polyene giving a bicyclic product|crop
 2025|2|8(a)(ii)|14|0.20,0.835,0.90,0.905|(1) A bromochloroethene with Ha and Hb, (2) B dichloroethene, (3) C chloropropyne|crop
 2025|2|8(a)(ii)|15|0.14,0.235,0.80,0.305|D methyl vinyl ether and E methyl vinyl ketone with Ha and Hb labelled|crop
@@ -191,7 +191,7 @@
 2023|2|2(a)(iii)|4|0.30,0.82,0.68,0.89|Butanone with NaOMe/MeOH giving A and LDA/THF -78 C giving B|crop
 2023|2|2(b)(i)|5|0.26,0.10,0.82,0.205|Bis(2-chloroethyl) sulphide (A) and 1,5-dichloropentane (B) with H2O giving diols, rates k1 and k2|crop
 2023|2|2(b)(ii)|5|0.16,0.39,0.86,0.83|Two acetylated glycosyl bromides A and B each giving the same methyl glycoside C with AgClO4, MeOH|crop
-2023|2|2(b)(iii)|6|0.36,0.095,0.76,0.195|Ketene H2C=C=O with i) hv ii) cis-but-2-ene|crop
+2023|2|2(b)(iii)|6|0.3600,0.0950,0.7600,0.1939|Ketene H2C=C=O with i) hv ii) cis-but-2-ene|crop
 2023|2|2(c)(i)|6|0.38,0.26,0.72,0.33|Cyclopentenylethyl tosylate with AcOH, heat (solvolysis)|crop
 2023|2|3(a)|6|0.37,0.55,0.72,0.625|Cyclooctatriene converted to a fused bicyclic isomer|crop
 2023|2|3(b)|6|0.22,0.70,0.78,0.86|Acrylic acid allyl ether converted on heating to 3-phenyl-4-pentenal|crop
@@ -205,7 +205,7 @@
 2023|2|5(b)|9|0.38,0.40,0.62,0.50|Methylenecyclopropane and methylenecyclobutane|crop
 2023|2|5(c)|9|0.30,0.63,0.66,0.67|2 CH=CH with Cu2Cl2/NH4Cl giving A; A with HCl giving B|crop
 2023|2|5(d)|10|0.33,0.11,0.74,0.265|Camphor reduced with LiAlH4 to the alcohol with OH cis to the bridge|crop
-2023|2|5(e)|10|0.22,0.37,0.58,0.52|Acetone with hv in vapour phase, and at room temperature|crop
+2023|2|5(e)|10|0.2076,0.3546,0.5800,0.5131|Acetone with hv in vapour phase, and at room temperature|crop
 2023|2|6(b)(i)|11|0.18,0.33,0.68,0.69|(A) methyl 4-oxocyclohexanecarboxylate with NaBH4 then H3O+; (B) steroid ketone with HC=CH, BuLi then H3O+; (C) anisole with Na, NH3, Et2O, EtOH|crop
 2023|2|6(c)(ii)|12|0.38,0.455,0.72,0.625|Oxepine-type compound with protons Ha, Hb, Hc, Hd (CH3), He labelled|crop
 2023|2|7(b)(i)|13|0.40,0.115,0.66,0.18|Cyclopentanone with hv in vapour phase|crop
@@ -231,7 +231,7 @@
 2024|2|2(b)(ii)|6|0.32,0.765,0.72,0.83|Tertiary alcohol with CS2, NaOH, CH3I giving X, which gives the alkene|crop
 2024|2|2(c)(i)|7|0.19,0.385,0.82,0.7105|(A) phenylhydrazine + a keto nitrile ester with AcOH heat; (B) amino aza-xanthone + glycerol with H2SO4, H3BO3, FeSO4; (C) N-methylazepane with 1) CH3I excess 2) Ag2O, H2O 3) heat|crop
 2024|2|2(c)(ii)|7|0.34,0.8175,0.66,0.893|CH3CH2CH=C(CH3)-COOH|crop
-2024|2|3(b)(i)|8|0.22,0.54,0.80,0.61|Methoxy diene ester with 1) 215 C 2) HCl (aq), EtOH giving the bicyclic enone ester|crop
+2024|2|3(b)(i)|8|0.2200,0.5400,0.8000,0.6121|Methoxy diene ester with 1) 215 C 2) HCl (aq), EtOH giving the bicyclic enone ester|crop
 2024|2|3(b)(ii)|8|0.34,0.825,0.74,0.885|Bicyclic diene at 33 C giving a bicyclic product|crop
 2024|2|3(b)(iii)|9|0.22,0.21,0.58,0.295|2-Methoxy-5-methyl-1,4-benzoquinone + butadiene at 100 C|crop
 2024|2|3(c)(i)|9|0.20,0.50,0.62,0.56|R-CO-Cl with 1) NaN3/inert solvent 2) heat|crop
