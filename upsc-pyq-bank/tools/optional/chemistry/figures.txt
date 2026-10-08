@@ -178,3 +178,38 @@
 2025|2|8(a)(ii)|14|0.20,0.835,0.90,0.905|(1) A bromochloroethene with Ha and Hb, (2) B dichloroethene, (3) C chloropropyne|crop
 2025|2|8(a)(ii)|15|0.14,0.235,0.80,0.305|D methyl vinyl ether and E methyl vinyl ketone with Ha and Hb labelled|crop
 2025|2|8(a)(iii)|15|0.16,0.495,0.58,0.55|(1) 2-chlorobutane type and (2) cis-dimethylcyclohexene|crop
+2023|2|1(a)(ii)|2|0.24,0.225,0.74,0.33|Cyclopropyl phenyl ketone (A) and cyclopropenyl phenyl ketone (B)|crop
+2023|2|1(b)(i)|2|0.36,0.425,0.70,0.545|Unsaturated hydroxy chloro aldehyde with wedge/dash stereochemistry (OH, Cl, H)|crop
+2023|2|1(b)(ii)|2|0.22,0.62,0.80,0.775|Three radicals: Ph3C, tris(4-fluorophenyl)-methyl type, and a diphenyl tert-butyl-substituted radical|crop
+2023|2|1(d)|3|0.30,0.105,0.62,0.185|Two cyclic polyenes A and B|crop
+2023|2|1(e)|3|0.18,0.29,0.82,0.575|2-Chloro-6-methylcyclohexanone with -OMe, and four candidate products A to D|crop
+2023|2|2(a)(i)|4|0.34,0.11,0.72,0.245|Cyclopentadiene (A), N-methyl borole (B), N-methyl phosphole (C)|crop
+2023|2|2(a)(ii)|4|0.19,0.35,0.88,0.70|Four labelled reactions A to D with starred hydrogen/deuterium|crop
+2023|2|2(a)(iii)|4|0.30,0.82,0.68,0.89|Butanone with NaOMe/MeOH giving A and LDA/THF -78 C giving B|crop
+2023|2|2(b)(i)|5|0.26,0.10,0.82,0.205|Bis(2-chloroethyl) sulphide (A) and 1,5-dichloropentane (B) with H2O giving diols, rates k1 and k2|crop
+2023|2|2(b)(ii)|5|0.16,0.39,0.86,0.83|Two acetylated glycosyl bromides A and B each giving the same methyl glycoside C with AgClO4, MeOH|crop
+2023|2|2(b)(iii)|6|0.36,0.095,0.76,0.195|Ketene H2C=C=O with i) hv ii) cis-but-2-ene|crop
+2023|2|2(c)(i)|6|0.38,0.26,0.72,0.33|Cyclopentenylethyl tosylate with AcOH, heat (solvolysis)|crop
+2023|2|3(a)|6|0.37,0.55,0.72,0.625|Cyclooctatriene converted to a fused bicyclic isomer|crop
+2023|2|3(b)|6|0.22,0.70,0.78,0.86|Acrylic acid allyl ether converted on heating to 3-phenyl-4-pentenal|crop
+2023|2|3(d)|7|0.16,0.68,0.58,0.86|(i) methoxy-diene + acrolein, heat; (ii) 1-methoxy-diene + acrolein, heat|crop
+2023|2|4(a)(i)|8|0.42,0.08,0.72,0.15|Norbornene with D-Br/H2O giving (A) + (B)|crop
+2023|2|4(a)(ii)|8|0.37,0.205,0.74,0.285|Four alkenes A, B, C, D|crop
+2023|2|4(a)(iii)|8|0.30,0.37,0.78,0.43|Diphenyl alkene with BH3.THF giving A and H2O2, -OH giving B|crop
+2023|2|4(b)|8|0.29,0.50,0.62,0.60|Benzazocinium ion (N-methyl, N-benzyl) with NaNH2, NH3|crop
+2023|2|4(c)(i)|8|0.34,0.69,0.68,0.75|Butanone + CH3CHO with -OH|crop
+2023|2|5(a)|9|0.26,0.16,0.70,0.285|4-Allyloxyacetophenone (A) and 1,2-dimethylcyclopropane (B)|crop
+2023|2|5(b)|9|0.38,0.40,0.62,0.50|Methylenecyclopropane and methylenecyclobutane|crop
+2023|2|5(c)|9|0.30,0.63,0.66,0.67|2 CH=CH with Cu2Cl2/NH4Cl giving A; A with HCl giving B|crop
+2023|2|5(d)|10|0.33,0.11,0.74,0.265|Camphor reduced with LiAlH4 to the alcohol with OH cis to the bridge|crop
+2023|2|5(e)|10|0.22,0.37,0.58,0.52|Acetone with hv in vapour phase, and at room temperature|crop
+2023|2|6(b)(i)|11|0.18,0.33,0.68,0.69|(A) methyl 4-oxocyclohexanecarboxylate with NaBH4 then H3O+; (B) steroid ketone with HC=CH, BuLi then H3O+; (C) anisole with Na, NH3, Et2O, EtOH|crop
+2023|2|6(c)(ii)|12|0.38,0.455,0.72,0.625|Oxepine-type compound with protons Ha, Hb, Hc, Hd (CH3), He labelled|crop
+2023|2|7(b)(i)|13|0.40,0.115,0.66,0.18|Cyclopentanone with hv in vapour phase|crop
+2023|2|7(b)(ii)|13|0.28,0.305,0.80,0.42|1,3-Butadiene: path I with hv giving cyclobutene and bicyclobutane; path II with benzophenone at 366 nm giving cyclobutanes and vinylcyclobutane-type products|crop
+2023|2|7(c)(i)|13|0.20,0.51,0.72,0.902|Five reactions: alcohol with CS2, NaOH, MeI then SeO2; dimethoxy benzocycloheptene with mCPBA; tetramethyl diacid with Pb(OAc)4, O2; methylcyclohexene with CrO3-pyridine|crop
+2023|2|7(c)(ii)|14|0.30,0.235,0.72,0.31|Cyclohexene with OsO4/pyridine giving (A), then (B) giving cis-1,2-cyclohexanediol|crop
+2023|2|7(c)(iii)|14|0.20,0.41,0.70,0.635|Polyol with cyclohexanone, BF3.Et2O, (MeO)3CH giving (A), then HIO4 giving (B)|crop
+2023|2|8(a)(i)|14|0.30,0.69,0.72,0.835|Dibenzoxepine with a dimethylaminopropylidene side chain|crop
+2023|2|8(b)(ii)|15|0.20,0.76,0.70,0.875|Three compounds A, B, C with lettered protons Ha and Hb|crop
+2023|2|8(c)(ii)|16|0.18,0.32,0.92,0.46|N,N-Dimethylpropanamide (I) and N-methylbutanamide (II)|crop
