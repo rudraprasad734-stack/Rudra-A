@@ -1,7 +1,7 @@
 // UPSC Companion service worker: caches the app shell so the page loads and
 // runs with zero network connectivity after the first successful visit.
 // Bump CACHE_NAME on any deploy that changes cached files so clients refresh.
-const CACHE_NAME = "upsc-companion-v106";
+const CACHE_NAME = "upsc-companion-v107";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -590,7 +590,45 @@ const FIGURES = [
   "./img/civil-engineering/2026-2-5a-1.webp",
   "./img/civil-engineering/2026-2-5b-1.webp",
   "./img/civil-engineering/2026-2-6a-1.webp",
-  "./img/civil-engineering/2026-2-8b-1.webp"
+  "./img/civil-engineering/2026-2-8b-1.webp",
+  "./img/commerce-and-accountancy/2018-1-2a-1.webp",
+  "./img/commerce-and-accountancy/2018-1-2b-1.webp",
+  "./img/commerce-and-accountancy/2018-1-2b-2.webp",
+  "./img/commerce-and-accountancy/2018-1-2b-3.webp",
+  "./img/commerce-and-accountancy/2018-1-4a-1.webp",
+  "./img/commerce-and-accountancy/2018-1-6a-1.webp",
+  "./img/commerce-and-accountancy/2018-1-7a-1.webp",
+  "./img/commerce-and-accountancy/2018-1-8c-1.webp",
+  "./img/commerce-and-accountancy/2019-1-2a-1.webp",
+  "./img/commerce-and-accountancy/2019-1-2b-1.webp",
+  "./img/commerce-and-accountancy/2019-1-6b-1.webp",
+  "./img/commerce-and-accountancy/2020-1-3a-1.webp",
+  "./img/commerce-and-accountancy/2020-1-7b-1.webp",
+  "./img/commerce-and-accountancy/2021-1-2a-1.webp",
+  "./img/commerce-and-accountancy/2021-1-3a-1.webp",
+  "./img/commerce-and-accountancy/2021-1-3c-1.webp",
+  "./img/commerce-and-accountancy/2021-1-6a-1.webp",
+  "./img/commerce-and-accountancy/2021-1-6a-2.webp",
+  "./img/commerce-and-accountancy/2021-1-7b-1.webp",
+  "./img/commerce-and-accountancy/2023-1-2a-1.webp",
+  "./img/commerce-and-accountancy/2023-1-3a-1.webp",
+  "./img/commerce-and-accountancy/2023-1-3b-1.webp",
+  "./img/commerce-and-accountancy/2023-1-7a-1.webp",
+  "./img/commerce-and-accountancy/2023-1-7a-2.webp",
+  "./img/commerce-and-accountancy/2023-1-8a-1.webp",
+  "./img/commerce-and-accountancy/2023-1-8b-1.webp",
+  "./img/commerce-and-accountancy/2025-1-2a-1.webp",
+  "./img/commerce-and-accountancy/2025-1-4c-1.webp",
+  "./img/commerce-and-accountancy/2025-1-8b-1.webp",
+  "./img/commerce-and-accountancy/2026-1-2a-1.webp",
+  "./img/commerce-and-accountancy/2026-1-3b-1.webp",
+  "./img/commerce-and-accountancy/2026-1-4a-1.webp",
+  "./img/commerce-and-accountancy/2026-1-4c-1.webp",
+  "./img/commerce-and-accountancy/2026-1-4c-2.webp",
+  "./img/commerce-and-accountancy/2026-1-6b-1.webp",
+  "./img/commerce-and-accountancy/2026-1-7a-1.webp",
+  "./img/commerce-and-accountancy/2026-1-7b-1.webp",
+  "./img/commerce-and-accountancy/2026-1-7b-2.webp"
 ];
 
 // keep good responses, plus the font files (they come back "opaque" from another site) so the fonts also work offline

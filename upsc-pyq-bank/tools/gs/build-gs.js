@@ -167,13 +167,30 @@ syl[CHK] = {}; freq[CHK] = {};
   freq[CHK]["paper" + pn] = map;
 });
 console.log("chemistry items:", CH.items.filter(function(i){ return i.pp === 1; }).length, "+", CH.items.filter(function(i){ return i.pp === 2; }).length);
+// Commerce and Accountancy: the 45 syllabus paragraphs, with how often each was asked (from d-comm)
+const CM = JSON.parse(html.match(/<script type="application\/json" id="d-comm">(.*?)<\/script>/s)[1]), CMK = "commerce and accountancy";
+syl[CMK] = {}; freq[CMK] = {};
+[1, 2].forEach(function(pn){
+  const list = CM.items.filter(function(it){ return it.pp === pn; });
+  const refsBy = {}; CM.topics.forEach(function(t){ (refsBy[t.s] = refsBy[t.s] || {}); t.q.forEach(function(r){ refsBy[t.s][r] = 1; }); });
+  const counts = list.map(function(it){ return Object.keys(refsBy[it.id] || {}).length; }), tr = tiers(counts), map = {}, topics = [];
+  list.forEach(function(it, i){
+    const label = it.id.replace(/^I+-/, "") + "  " + it.full, refs = Object.keys(refsBy[it.id] || {}), ys = {};
+    refs.forEach(function(r){ ys[r.split("|")[0]] = 1; });
+    const yl = Object.keys(ys).map(Number).sort();
+    topics.push(label); map[label] = {count:refs.length, years:yl, tier:tr[i], recent:yl.length ? yl[yl.length - 1] : 0};
+  });
+  syl[CMK]["paper" + pn] = {title:"Commerce and Accountancy Optional \u2014 Paper " + (pn === 2 ? "II" : "I"), sections:[{heading:"Official syllabus (UPSC Examination Notice 2026)", topics:topics}]};
+  freq[CMK]["paper" + pn] = map;
+});
+console.log("commerce and accountancy items:", CM.items.filter(function(i){ return i.pp === 1; }).length, "+", CM.items.filter(function(i){ return i.pp === 2; }).length);
 console.log("animal husbandry items:", AH.items.filter(function(i){ return i.pp === 1; }).length, "+", AH.items.filter(function(i){ return i.pp === 2; }).length);
 console.log("agriculture items:", G.items.filter(function(i){ return i.pp === 1; }).length, "+", G.items.filter(function(i){ return i.pp === 2; }).length);
 console.log("anthropology items:", aItems[0].length, "+", aItems[1].length);
 if(check) process.exit(0);
 // every frequency map carries the number of exam years it covers, so the Syllabus badges can use the same tier rule as the Tiers pages
 freq.essay.__ny = 10; Object.keys(freq.gs).forEach(function(k){ freq.gs[k].__ny = 13; });
-Object.keys(freq.anthropology).forEach(function(k){ freq.anthropology[k].__ny = A.years.length; }); Object.keys(freq.agriculture).forEach(function(k){ freq.agriculture[k].__ny = G.years.length; }); Object.keys(freq[AHK]).forEach(function(k){ freq[AHK][k].__ny = AH.years.length; }); Object.keys(freq[BTK]).forEach(function(k){ freq[BTK][k].__ny = BT.years.length; }); Object.keys(freq[CHK]).forEach(function(k){ freq[CHK][k].__ny = CH.years.length; });
+Object.keys(freq.anthropology).forEach(function(k){ freq.anthropology[k].__ny = A.years.length; }); Object.keys(freq.agriculture).forEach(function(k){ freq.agriculture[k].__ny = G.years.length; }); Object.keys(freq[AHK]).forEach(function(k){ freq[AHK][k].__ny = AH.years.length; }); Object.keys(freq[BTK]).forEach(function(k){ freq[BTK][k].__ny = BT.years.length; }); Object.keys(freq[CHK]).forEach(function(k){ freq[CHK][k].__ny = CH.years.length; }); Object.keys(freq[CMK]).forEach(function(k){ freq[CMK][k].__ny = CM.years.length; });
 const j = function(o){ return JSON.stringify(o).replace(/</g, "\\u003c"); };
 html = html.replace(dsM[0], function(){ return '<script type="application/json" id="d-syllabus">' + j(syl) + '</script>'; });
 html = html.replace(dfM[0], function(){ return '<script type="application/json" id="d-freq">' + j(freq) + '</script>'; });
