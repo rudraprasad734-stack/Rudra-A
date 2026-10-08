@@ -1,12 +1,15 @@
 # Cuts the figures listed in figures.txt out of the paper PDFs and writes figures.json.
 #   python3 -I crop.py <folder with the PDFs named <year>_<paper>.pdf>
 # Output images: upsc-pyq-bank/page/img/civil-engineering/<year>-<paper>-<qno>-<n>.webp (also read by the page as relative "img/...").
-import sys,os,re,json
+import sys,os,re,json,hashlib,subprocess
 import pymupdf
 from PIL import Image
 here=os.path.dirname(os.path.abspath(__file__)); pdfdir=sys.argv[1]
 SUBJ=os.path.basename(here); out=os.path.join(here,'../../../page/img',SUBJ); os.makedirs(out,exist_ok=True)
 import numpy as np
+sys.path.insert(0,os.path.join(here,'..'))
+import figsnap
+PAGES={}; QC={}
 def levels(im):
     # page show-through (the other side of the sheet) is pale grey: push it to white, keep the printed ink
     a=np.asarray(im,dtype=np.float32); a=np.where(a>=200,255,a*255/200); return Image.fromarray(a.astype('uint8'))
@@ -64,10 +67,14 @@ for line in open(os.path.join(here,'figures.txt'),encoding='utf8'):
     key=f'{y}|{p}|{q}'; n=count[key]=count.get(key,0)+1
     name=f'{y}-{p}-{re.sub(r"[^0-9a-z]","",q.lower())}-{n}.webp'
     if kind=='crop':
-        doc=pymupdf.open(os.path.join(pdfdir,f'{y}_{p}.pdf')); page=doc[int(pg)-1]
-        x0,y0,x1,y1=[float(v) for v in bb.split(',')]; r=page.rect
-        clip=pymupdf.Rect(r.x0+x0*r.width,r.y0+y0*r.height,r.x0+x1*r.width,r.y0+y1*r.height)
-        pix=page.get_pixmap(dpi=170,clip=clip); im=Image.frombytes('RGB',(pix.width,pix.height),pix.samples).convert('L')
+        pk=(y,p,pg)
+        if pk not in PAGES:
+            doc=pymupdf.open(os.path.join(pdfdir,f'{y}_{p}.pdf')); pix=doc[int(pg)-1].get_pixmap(dpi=170)
+            PAGES[pk]=np.asarray(Image.frombytes('RGB',(pix.width,pix.height),pix.samples).convert('L'))
+        full=PAGES[pk]; Hh,Ww=full.shape; x0,y0,x1,y1=[float(v) for v in bb.split(',')]
+        bx=(x0*Ww,y0*Hh,x1*Ww,y1*Hh); box,erase,notes=figsnap.snap(full<150,bx,prose=figsnap.prose_lines(full,bx))
+        crop_a=full[box[1]:box[3],box[0]:box[2]].copy(); crop_a[erase]=255; im=Image.fromarray(crop_a)
+        if notes: QC.setdefault(name,[]).extend(notes)
         n0=len(STRIPLOG); ns=TRIM.get(f'{key}|{n}',(0,0,7))[0]==-1; im=trim(im,strip=not ns)
         if STRIPLOG[-1]>0 and os.environ.get('STRIPLOG'): print('STRIPPED',key,n,STRIPLOG[-1],'px')
         t,b,g=TRIM.get(f'{key}|{n}',(0,0,7))
@@ -79,3 +86,40 @@ for f in os.listdir(out):
     if f.endswith('.webp') and f not in keep: os.remove(os.path.join(out,f))
 json.dump(figs,open(os.path.join(here,'figures.json'),'w'),indent=1)
 print(sum(len(v) for v in figs.values()),'figures for',len(figs),'questions')
+
+# ---- QC: only crops that look doubtful are listed, and only those are worth looking at -------------------------------
+# a crop is doubtful when snapping changed its box a lot, ink touches its edge (figure clipped), or it holds a line of prose (question text bled in)
+okp=os.path.join(here,'qc_ok.txt'); OK={}
+if os.path.exists(okp):
+    for l in open(okp): 
+        if l.strip(): a=l.split(); OK[a[0]]=a[1]
+flag={}
+for f in sorted(os.listdir(out)):
+    if not f.endswith('.webp'): continue
+    fp=os.path.join(out,f); h=hashlib.md5(open(fp,'rb').read()).hexdigest()[:10]
+    if OK.get(f)==h: continue
+    im=Image.open(fp).convert('L'); a=np.asarray(im); why=[]
+    if (a[:,:2]<140).any() or (a[:,-2:]<140).any() or (a[:2,:]<140).any() or (a[-2:,:]<140).any(): why.append('ink on the edge')
+    big=[n for n in QC.get(f,[]) if 'erased' in n or 'big blob' in n]
+    if big: why.append('; '.join(big))
+    big2=figsnap.prose_lines(a,(0,0,a.shape[1],a.shape[0]),margin=0)
+    if big2: why.append('a line of prose')
+    if why: flag[f]=(why,h)
+    else: OK[f]=h
+open(okp,'w').write(''.join(f'{k} {v}\n' for k,v in sorted(OK.items())))
+if flag:
+    cells=[]
+    for f,(why,h) in flag.items():
+        im=Image.open(os.path.join(out,f)).convert('RGB'); sc=min(540/im.width,260/im.height,1.4); im=im.resize((max(1,int(im.width*sc)),max(1,int(im.height*sc))))
+        c=Image.new('RGB',(550,im.height+14),'#ddd'); c.paste(im,(0,14))
+        from PIL import ImageDraw; ImageDraw.Draw(c).text((3,1),f+'  '+', '.join(why),fill='red'); cells.append(c)
+    rows=[cells[i:i+2] for i in range(0,len(cells),2)]; Hs=sum(max(c.height for c in r)+4 for r in rows); sh=Image.new('RGB',(1108,Hs),'gray'); yy=0
+    for r in rows:
+        for i,c in enumerate(r): sh.paste(c,(i*554,yy))
+        yy+=max(c.height for c in r)+4
+    sh.save(os.path.join(here,'qc_flagged.png'))
+    print(len(flag),'crops to look at: see qc_flagged.png; after checking them run:  python3 -I crop.py <pdfs> --approve')
+else: print('QC: nothing to look at')
+if '--approve' in sys.argv:
+    for f,(why,h) in flag.items(): OK[f]=h
+    open(okp,'w').write(''.join(f'{k} {v}\n' for k,v in sorted(OK.items()))); print('approved',len(flag))
