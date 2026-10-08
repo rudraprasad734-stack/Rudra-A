@@ -1,8 +1,12 @@
 # One figure per line:  year | paper | qno | page | x0,y0,x1,y1 (fractions of the page, from the top left) | what it shows | kind (crop = cut from the paper, redrawn = drawn by the app)
 2018|2|3(b)|4|0.20,0.108,0.78,0.31|Levelling readings (BS, IS, FS, RL, remarks)|crop
 2018|2|4(c)|5|0.28,0.385,0.76,0.56|Traverse ABCDEA: side, distance (m), azimuth|crop
+2020|2|2(a)|3|0.22,0.490,0.86,0.640|Project activity table: starting month, duration and cost per month for activities A to F|crop
+2020|2|3(b)|5|0.30,0.313,0.72,0.413|Traverse observations: length and bearing of lines AB, AD, DE and EF|crop
 2020|2|6(a)|9|0.24,0.125,0.85,0.365|Stream segments: average depth and velocity at 0.2d, 0.6d and 0.8d|crop
 2020|2|6(c)|10|0.31,0.09,0.62,0.245|Time-area histogram (area in km2 against time in hr: 10, 30, 20, 40)|crop
+2020|2|6(c)|10|0.18,0.272,0.82,0.320|Effective rainfall hyetograph ordinates for 0-6 hr|crop
+2020|2|7(b)|10|0.18,0.688,0.85,0.7435|Observed flow hydrograph: time from start of rainfall against flow|crop
 2020|1|1(a)|2|0.40,0.45,0.65,0.615|Quarter-circle cantilever of radius R with vertical load P at the free end|crop
 2020|1|2(a)|4|0.30,0.255,0.75,0.385|Truss ABCDEG, 3 m high, 3 bays of 4 m, 400 N at E, 1200 N at C|crop
 2020|1|4(a)|6|0.08,0.54,0.95,0.80|Inverted T-beam, loads P, P, 3P, strain gauge A, and section A-A dimensions|crop

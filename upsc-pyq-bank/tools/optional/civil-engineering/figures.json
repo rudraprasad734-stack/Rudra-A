@@ -13,6 +13,20 @@
    "k": "crop"
   }
  ],
+ "2020|2|2(a)": [
+  {
+   "u": "img/civil-engineering/2020-2-2a-1.webp",
+   "a": "Project activity table: starting month, duration and cost per month for activities A to F",
+   "k": "crop"
+  }
+ ],
+ "2020|2|3(b)": [
+  {
+   "u": "img/civil-engineering/2020-2-3b-1.webp",
+   "a": "Traverse observations: length and bearing of lines AB, AD, DE and EF",
+   "k": "crop"
+  }
+ ],
  "2020|2|6(a)": [
   {
    "u": "img/civil-engineering/2020-2-6a-1.webp",
@@ -24,6 +38,18 @@
   {
    "u": "img/civil-engineering/2020-2-6c-1.webp",
    "a": "Time-area histogram (area in km2 against time in hr: 10, 30, 20, 40)",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2020-2-6c-2.webp",
+   "a": "Effective rainfall hyetograph ordinates for 0-6 hr",
+   "k": "crop"
+  }
+ ],
+ "2020|2|7(b)": [
+  {
+   "u": "img/civil-engineering/2020-2-7b-1.webp",
+   "a": "Observed flow hydrograph: time from start of rainfall against flow",
    "k": "crop"
   }
  ],
