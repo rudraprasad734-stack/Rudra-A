@@ -7,7 +7,6 @@
 2019|2|7(a)|11|0.37,0.165,0.68,0.375|Masonry dam: 6 m high, 1.5 m top width, base width b, water on the vertical face|crop
 2020|2|6(a)|9|0.24,0.125,0.85,0.365|Stream segments: average depth and velocity at 0.2d, 0.6d and 0.8d|crop
 2020|2|6(c)|10|0.31,0.09,0.62,0.245|Time-area histogram (area in km2 against time in hr: 10, 30, 20, 40)|crop
-2025|2|8(a)|14|0.17,0.545,0.84,0.76|Overflow spillway 40 m high (P = 40 m), design head Hd = 2.5 m, energy line, hydraulic jump between sections 1 and 2 (depths y1, y2, V1, V2, EL)|crop
 2020|1|1(a)|2|0.40,0.45,0.65,0.615|Quarter-circle cantilever of radius R with vertical load P at the free end|crop
 2020|1|2(a)|4|0.30,0.255,0.75,0.385|Truss ABCDEG, 3 m high, 3 bays of 4 m, 400 N at E, 1200 N at C|crop
 2020|1|4(a)|6|0.08,0.54,0.95,0.80|Inverted T-beam, loads P, P, 3P, strain gauge A, and section A-A dimensions|crop
@@ -210,3 +209,8 @@
 2026|2|5(b)|8|0.23,0.285,0.88,0.35|Table of station A to F and rainfall (cm)|crop
 2026|2|6(a)|10|0.20,0.18,0.70,0.45|Table of capacity-inflow ratio and trap efficiency, 0.1 to 1.0|crop
 2026|2|8(b)|14|0.22,0.615,0.84,0.75|Tables of coal analysis: moisture, ash, carbon, hydrogen, nitrogen, sulphur, oxygen, calorific value, fly ash|crop
+2025|2|2(a)|4|0.18,0.12,0.89,0.295|Table of activity, activity name and remark for A, B, C, D|crop
+2025|2|2(a)|4|0.22,0.51,0.87,0.745|Table of normal and crash duration (days) and cost (Rs) for activities A to D|crop
+2025|2|4(c)|9|0.20,0.14,0.81,0.29|Floating car data: trip number and number of vehicles in opposite direction, overtaking, overtaken|crop
+2025|2|6(a)|11|0.27,0.145,0.73,0.495|Table of time from start of storm t (h) and accumulated rainfall (cm), 0 to 14 h|crop
+2025|2|8(a)|14|0.18,0.54,0.88,0.76|Overflow spillway 40 m high (P = 40 m), design head Hd = 2.5 m, energy line, hydraulic jump between sections 1 and 2 (depths y1, y2, V1, V2, EL)|crop

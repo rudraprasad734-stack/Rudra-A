@@ -55,13 +55,6 @@
    "k": "crop"
   }
  ],
- "2025|2|8(a)": [
-  {
-   "u": "img/civil-engineering/2025-2-8a-1.webp",
-   "a": "Overflow spillway 40 m high (P = 40 m), design head Hd = 2.5 m, energy line, hydraulic jump between sections 1 and 2 (depths y1, y2, V1, V2, EL)",
-   "k": "crop"
-  }
- ],
  "2020|1|1(a)": [
   {
    "u": "img/civil-engineering/2020-1-1a-1.webp",
@@ -1435,6 +1428,39 @@
   {
    "u": "img/civil-engineering/2026-2-8b-1.webp",
    "a": "Tables of coal analysis: moisture, ash, carbon, hydrogen, nitrogen, sulphur, oxygen, calorific value, fly ash",
+   "k": "crop"
+  }
+ ],
+ "2025|2|2(a)": [
+  {
+   "u": "img/civil-engineering/2025-2-2a-1.webp",
+   "a": "Table of activity, activity name and remark for A, B, C, D",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2025-2-2a-2.webp",
+   "a": "Table of normal and crash duration (days) and cost (Rs) for activities A to D",
+   "k": "crop"
+  }
+ ],
+ "2025|2|4(c)": [
+  {
+   "u": "img/civil-engineering/2025-2-4c-1.webp",
+   "a": "Floating car data: trip number and number of vehicles in opposite direction, overtaking, overtaken",
+   "k": "crop"
+  }
+ ],
+ "2025|2|6(a)": [
+  {
+   "u": "img/civil-engineering/2025-2-6a-1.webp",
+   "a": "Table of time from start of storm t (h) and accumulated rainfall (cm), 0 to 14 h",
+   "k": "crop"
+  }
+ ],
+ "2025|2|8(a)": [
+  {
+   "u": "img/civil-engineering/2025-2-8a-1.webp",
+   "a": "Overflow spillway 40 m high (P = 40 m), design head Hd = 2.5 m, energy line, hydraulic jump between sections 1 and 2 (depths y1, y2, V1, V2, EL)",
    "k": "crop"
   }
  ]
