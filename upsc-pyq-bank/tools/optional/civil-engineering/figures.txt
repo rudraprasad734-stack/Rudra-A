@@ -205,3 +205,8 @@
 2026|1|7(b)|18|0.30,0.355,0.74,0.50|Plan of foundation ABCD with a semicircle, 8 m x 4 m, point O, radius 2 m|crop
 2026|1|8(a)|19|0.12,0.325,0.84,0.50|Table of specimen no., confining pressure, axial load, axial deformation and volume change|crop
 2026|1|8(b)|20|0.26,0.115,0.80,0.46|Sieve analysis: IS sieve and mass of the soil retained (g)|crop
+2026|2|2(c)|4|0.24,0.525,0.64,0.845|Table of activity (i-j) and duration (t) in days, 1-2 to 7-8|crop
+2026|2|5(a)|7|0.24,0.605,0.58,0.92|Table of month and flow (m3/s), January to December|crop
+2026|2|5(b)|8|0.23,0.285,0.88,0.35|Table of station A to F and rainfall (cm)|crop
+2026|2|6(a)|10|0.20,0.18,0.70,0.45|Table of capacity-inflow ratio and trap efficiency, 0.1 to 1.0|crop
+2026|2|8(b)|14|0.22,0.615,0.84,0.75|Tables of coal analysis: moisture, ash, carbon, hydrogen, nitrogen, sulphur, oxygen, calorific value, fly ash|crop

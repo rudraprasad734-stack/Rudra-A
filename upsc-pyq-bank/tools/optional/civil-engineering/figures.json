@@ -1402,5 +1402,40 @@
    "a": "Sieve analysis: IS sieve and mass of the soil retained (g)",
    "k": "crop"
   }
+ ],
+ "2026|2|2(c)": [
+  {
+   "u": "img/civil-engineering/2026-2-2c-1.webp",
+   "a": "Table of activity (i-j) and duration (t) in days, 1-2 to 7-8",
+   "k": "crop"
+  }
+ ],
+ "2026|2|5(a)": [
+  {
+   "u": "img/civil-engineering/2026-2-5a-1.webp",
+   "a": "Table of month and flow (m3/s), January to December",
+   "k": "crop"
+  }
+ ],
+ "2026|2|5(b)": [
+  {
+   "u": "img/civil-engineering/2026-2-5b-1.webp",
+   "a": "Table of station A to F and rainfall (cm)",
+   "k": "crop"
+  }
+ ],
+ "2026|2|6(a)": [
+  {
+   "u": "img/civil-engineering/2026-2-6a-1.webp",
+   "a": "Table of capacity-inflow ratio and trap efficiency, 0.1 to 1.0",
+   "k": "crop"
+  }
+ ],
+ "2026|2|8(b)": [
+  {
+   "u": "img/civil-engineering/2026-2-8b-1.webp",
+   "a": "Tables of coal analysis: moisture, ash, carbon, hydrogen, nitrogen, sulphur, oxygen, calorific value, fly ash",
+   "k": "crop"
+  }
  ]
 }
