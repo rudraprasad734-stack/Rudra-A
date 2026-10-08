@@ -808,11 +808,6 @@
  "2021|1|3(a)": [
   {
    "u": "img/civil-engineering/2021-1-3a-1.webp",
-   "a": "Percent consolidation against square root of time (Hindi version of the graph)",
-   "k": "crop"
-  },
-  {
-   "u": "img/civil-engineering/2021-1-3a-2.webp",
    "a": "Strain against square root of time, with b, 1.15 b, a, 1.15 a and percent consolidation scale",
    "k": "crop"
   }
@@ -965,7 +960,12 @@
  "2022|2|5(e)": [
   {
    "u": "img/civil-engineering/2022-2-5e-1.webp",
-   "a": "Multiple tube fermentation results and standard MPN values",
+   "a": "Multiple tube fermentation: serial dilution and number of positives",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2022-2-5e-2.webp",
+   "a": "Standard MPN values for combinations of positive tubes (10 mL, 1 mL, 0.1 mL)",
    "k": "crop"
   }
  ],

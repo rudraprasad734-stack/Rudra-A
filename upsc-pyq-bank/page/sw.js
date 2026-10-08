@@ -1,7 +1,7 @@
 // UPSC Companion service worker: caches the app shell so the page loads and
 // runs with zero network connectivity after the first successful visit.
 // Bump CACHE_NAME on any deploy that changes cached files so clients refresh.
-const CACHE_NAME = "upsc-companion-v101";
+const CACHE_NAME = "upsc-companion-v102";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -109,7 +109,6 @@ const FIGURES = [
   "./img/civil-engineering/2021-1-1a-1.webp",
   "./img/civil-engineering/2021-1-2a-1.webp",
   "./img/civil-engineering/2021-1-3a-1.webp",
-  "./img/civil-engineering/2021-1-3a-2.webp",
   "./img/civil-engineering/2021-1-4a-1.webp",
   "./img/civil-engineering/2021-1-4c-1.webp",
   "./img/civil-engineering/2021-1-5a-1.webp",
@@ -145,6 +144,7 @@ const FIGURES = [
   "./img/civil-engineering/2022-2-3c-1.webp",
   "./img/civil-engineering/2022-2-5a-1.webp",
   "./img/civil-engineering/2022-2-5e-1.webp",
+  "./img/civil-engineering/2022-2-5e-2.webp",
   "./img/civil-engineering/2022-2-6aii-1.webp",
   "./img/civil-engineering/2023-1-1c-1.webp",
   "./img/civil-engineering/2023-1-1d-1.webp",
