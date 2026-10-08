@@ -111,7 +111,7 @@
 2021|2|4(b)|6|0.20,0.262,0.85,0.372|Allyl bromide with HBr, and with HBr in presence of benzoyl peroxide|crop
 2021|2|4(c)|6|0.20,0.47,0.70,0.645|PhCH2Cl with Ph3P then RLi then cyclohexanone; phenylhydrazine + cyclohexanone in glacial acetic acid|crop
 2021|2|5(b)|7|0.24,0.395,0.77,0.53|Three p-substituted styrenes: CH3, NO2, OCH3|crop
-2021|2|5(c)|7|0.14,0.712,0.50,0.895|Acetophenone with SeO2; benzoic acid with Na, NH3, C2H5OH|crop
+2021|2|5(c)|7|0.14,0.712,0.50,0.903|Acetophenone with SeO2; benzoic acid with Na, NH3, C2H5OH|crop
 2021|2|5(d)|8|0.19,0.115,0.93,0.29|Ketone groups for Norrish type-II comparison: three aryl alkyl ketones; and an aryl propyl ketone, a tetralone and a norbornyl ketone|crop
 2021|2|6(a)|8|0.17,0.73,0.70,0.875|Pairs of carbonyl compounds: two lactones, and ethyl acetate with ethyl benzoate|crop
 2021|2|6(c)|9|0.14,0.275,0.54,0.475|Cyclopropyl cyclohexanone with hv; a triphenyl ketone with hv|crop
@@ -119,3 +119,28 @@
 2021|2|7(b)|10|0.22,0.135,0.90,0.395|Two conversions: p-acetylbenzamide to the secondary alcohol, and an alkynol to the trans alkenol|crop
 2021|2|8(a)|10|0.25,0.765,0.72,0.92|Dihydronaphthalene derivative with mCPBA; dihydronaphthalene with OsO4 then NaIO4|crop
 2021|2|8(a)|11|0.20,0.05,0.60,0.205|3-Hydroxybutanoic acid with BH3/THF; cyclohexene ring with CrO3-pyridine|crop
+2022|2|1(b)|2|0.14,0.33,0.78,0.43|Predict X and Y: p-nitrophenyl epoxide with MeO-/MeOH giving X + Y|crop
+2022|2|1(d)|3|0.06,0.155,0.60,0.30|Two diastereomeric 2,3-diols bearing C6H5 and CH3 groups with H+, heat|crop
+2022|2|2(a)|3|0.06,0.485,0.70,0.745|Three reactions: bicyclic hydroxy alkene with (1) O3 (2) H2O2; bicyclic carboxylic acid with PBr3, Br2 (57%); isobutane with Br2/hv at 127 C|crop
+2022|2|2(b)(i)|3|0.39,0.825,0.62,0.895|2,2-Dimethyltetrahydrofuran A|crop
+2022|2|2(b)(ii)|4|0.16,0.135,0.88,0.185|Dihydronaphthalene with NBS/CCl4 giving [A], then NaOEt/EtOH heat giving [B]|crop
+2022|2|2(c)(i)|4|0.22,0.73,0.85,0.87|Set-I (quinoline, isoquinoline, indole) matched with Set-II reactant lists (1) to (4)|crop
+2022|2|2(c)(ii)|5|0.22,0.15,0.78,0.24|L-Tyrosine (A) and L-dopa (B) structures|crop
+2022|2|3(a)|5|0.24,0.655,0.78,0.745|Acetal A plus alkenol B with propionic acid gives C then heat gives D|crop
+2022|2|3(a)|5|0.44,0.825,0.64,0.89|Ortho-ester E (trimethyl orthoester)|crop
+2022|2|3(b)(i)|6|0.14,0.22,0.85,0.375|Ergosterol A and precalciferol B steroid structures|crop
+2022|2|3(c)(i)|6|0.36,0.64,0.66,0.675|Cl2HC-CF3 with EtO- giving product|crop
+2022|2|3(c)(ii)|6|0.22,0.80,0.84,0.895|Four bromides A (bicyclic bridgehead), B (bicyclo[2.2.2]), C (tert-butyl), D (9-bromo-9-phenyl anthracene-type)|crop
+2022|2|4(a)(i)|7|0.18,0.09,0.78,0.145|cis-2-Butene + PhCOOOH with OH-|crop
+2022|2|4(a)(ii)|7|0.20,0.215,0.62,0.285|Optically active imine A: Me, H, Ph, Ph substituents on C-N=C|crop
+2022|2|5(c)|8|0.43,0.635,0.58,0.705|Hydroxycyclopentane with a vinyl-type substituent (target compound)|crop
+2022|2|5(c)|8|0.22,0.735,0.80,0.83|Toluene with hv/NBS/dibenzoyl peroxide giving W; CrO3 giving X; Ac2O NaOAc heat giving Y; LiAlH4 excess giving Z|crop
+2022|2|5(e)|10|0.16,0.08,0.52,0.51|Five candidate structures (1) to (5): methyl p-toluate, methyl phenylacetate, p-methylbenzoic acid, benzyl acetate, hydrocinnamic acid|crop
+2022|2|6(a)(i)|10|0.17,0.81,0.58,0.865|Phenyl ketone chain plus a deuterated cyclic ketone with hv|crop
+2022|2|6(a)(ii)|11|0.12,0.075,0.42,0.15|Branched ketone with hv|crop
+2022|2|6(c)(i)|11|0.20,0.54,0.865,0.625|Cyclopropane-fused bicyclic lactone with styryl-type side chain: (1) OsO4 (Pyridine) (2) H+, H2O gives X, HIO4 gives Y + Z|crop
+2022|2|6(c)(ii)|11|0.28,0.835,0.76,0.90|Chiral phenyl ketone with m-CPBA giving major product and minor product|crop
+2022|2|8(a)(i)|13|0.30,0.69,0.74,0.78|1-Acetylcyclohexene (I) and 1-acetyl-2-methylcyclohexene (II)|crop
+2022|2|8(a)(ii)|13|0.34,0.825,0.72,0.895|Dimethylcyclohexanol with H+ giving A + B + C|crop
+2022|2|8(b)(i)|14|0.20,0.275,0.70,0.39|Steroid-type trienyl C9H19 compound (1) and cyclohexenyl vinyl compound (2)|crop
+2022|2|8(c)(ii)|15|0.30,0.22,0.78,0.315|Dienone A (dimethylcyclohexenyl enone) and dienone B (cyclohexenyl enone)|crop
