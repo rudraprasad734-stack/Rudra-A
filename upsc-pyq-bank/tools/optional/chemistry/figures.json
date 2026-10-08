@@ -1480,5 +1480,264 @@
    "a": "N,N-Dimethylpropanamide (I) and N-methylbutanamide (II)",
    "k": "crop"
   }
+ ],
+ "2024|2|1(a)(ii)": [
+  {
+   "u": "img/chemistry/2024-2-1aii-1.webp",
+   "a": "Diphenylcyclopropenone (cyclopropenone ring with two Ph groups)",
+   "k": "crop"
+  }
+ ],
+ "2024|2|1(b)": [
+  {
+   "u": "img/chemistry/2024-2-1b-1.webp",
+   "a": "Bromobenzene + -NH2 with heat giving aniline",
+   "k": "crop"
+  }
+ ],
+ "2024|2|1(c)": [
+  {
+   "u": "img/chemistry/2024-2-1c-1.webp",
+   "a": "(S)-2-Butanol to (S)-2-butyl chloride with wedge/dash stereochemistry",
+   "k": "crop"
+  }
+ ],
+ "2024|2|1(d)(i)": [
+  {
+   "u": "img/chemistry/2024-2-1di-1.webp",
+   "a": "Bicyclic ketone converted to its lactone",
+   "k": "crop"
+  }
+ ],
+ "2024|2|1(d)(ii)": [
+  {
+   "u": "img/chemistry/2024-2-1dii-1.webp",
+   "a": "Aryl alkyl ketone with a hydroxycyclohexyl ring converted to the corresponding ethyl compound",
+   "k": "crop"
+  }
+ ],
+ "2024|2|1(d)(iii)": [
+  {
+   "u": "img/chemistry/2024-2-1diii-1.webp",
+   "a": "Diester CH2-CH2-CO-OCH3 chain converted to a cyclic beta-keto ester",
+   "k": "crop"
+  }
+ ],
+ "2024|2|1(d)(iv)": [
+  {
+   "u": "img/chemistry/2024-2-1div-1.webp",
+   "a": "CH3-CH2-N+Me3 to H2C=CH2 + NMe3",
+   "k": "crop"
+  }
+ ],
+ "2024|2|1(d)(v)": [
+  {
+   "u": "img/chemistry/2024-2-1dv-1.webp",
+   "a": "Benzaldehyde to benzoate and benzyl alcohol",
+   "k": "crop"
+  }
+ ],
+ "2024|2|1(e)": [
+  {
+   "u": "img/chemistry/2024-2-1e-1.webp",
+   "a": "Cyclooctatetraene at 100 C (I step) giving a bicyclic product, hv (II step) giving M, 25 C (III step) giving a bicyclic product",
+   "k": "crop"
+  }
+ ],
+ "2024|2|2(a)(i)": [
+  {
+   "u": "img/chemistry/2024-2-2ai-1.webp",
+   "a": "2-Phenylethyl bromide with EtO- giving styrene (rate kH) and the dideuterated compound giving deuterated styrene (rate kD)",
+   "k": "crop"
+  }
+ ],
+ "2024|2|2(a)(ii)": [
+  {
+   "u": "img/chemistry/2024-2-2aii-1.webp",
+   "a": "1,3-Butadiene with HBr giving CH3-CH(Br)-CH=CH2 + CH3-CH=CH-CH2Br",
+   "k": "crop"
+  }
+ ],
+ "2024|2|2(b)(i)": [
+  {
+   "u": "img/chemistry/2024-2-2bi-1.webp",
+   "a": "Benzaldehyde + CH2(COOC2H5)2 with pyridine giving X",
+   "k": "crop"
+  }
+ ],
+ "2024|2|2(b)(ii)": [
+  {
+   "u": "img/chemistry/2024-2-2bii-1.webp",
+   "a": "Tertiary alcohol with CS2, NaOH, CH3I giving X, which gives the alkene",
+   "k": "crop"
+  }
+ ],
+ "2024|2|2(c)(i)": [
+  {
+   "u": "img/chemistry/2024-2-2ci-1.webp",
+   "a": "(A) phenylhydrazine + a keto nitrile ester with AcOH heat; (B) amino aza-xanthone + glycerol with H2SO4, H3BO3, FeSO4; (C) N-methylazepane with 1) CH3I excess 2) Ag2O, H2O 3) heat",
+   "k": "crop"
+  }
+ ],
+ "2024|2|2(c)(ii)": [
+  {
+   "u": "img/chemistry/2024-2-2cii-1.webp",
+   "a": "CH3CH2CH=C(CH3)-COOH",
+   "k": "crop"
+  }
+ ],
+ "2024|2|3(b)(i)": [
+  {
+   "u": "img/chemistry/2024-2-3bi-1.webp",
+   "a": "Methoxy diene ester with 1) 215 C 2) HCl (aq), EtOH giving the bicyclic enone ester",
+   "k": "crop"
+  }
+ ],
+ "2024|2|3(b)(ii)": [
+  {
+   "u": "img/chemistry/2024-2-3bii-1.webp",
+   "a": "Bicyclic diene at 33 C giving a bicyclic product",
+   "k": "crop"
+  }
+ ],
+ "2024|2|3(b)(iii)": [
+  {
+   "u": "img/chemistry/2024-2-3biii-1.webp",
+   "a": "2-Methoxy-5-methyl-1,4-benzoquinone + butadiene at 100 C",
+   "k": "crop"
+  }
+ ],
+ "2024|2|3(c)(i)": [
+  {
+   "u": "img/chemistry/2024-2-3ci-1.webp",
+   "a": "R-CO-Cl with 1) NaN3/inert solvent 2) heat",
+   "k": "crop"
+  }
+ ],
+ "2024|2|4(a)(i)": [
+  {
+   "u": "img/chemistry/2024-2-4ai-1.webp",
+   "a": "Furan with (CH3CO)2O, BF3, CH3COOH giving X",
+   "k": "crop"
+  }
+ ],
+ "2024|2|4(b)(i)": [
+  {
+   "u": "img/chemistry/2024-2-4bi-1.webp",
+   "a": "Allyl phenyl ether on heating giving o-allylphenol",
+   "k": "crop"
+  }
+ ],
+ "2024|2|4(c)(i)": [
+  {
+   "u": "img/chemistry/2024-2-4ci-1.webp",
+   "a": "(A) 1,1'-dihydroxybicyclopentyl with conc. H2SO4; (B) 3-methylbutan-2-one with 1) NH2OH 2) Al2O3; (C) bicyclic gem-dimethyl alcohol with H+",
+   "k": "crop"
+  }
+ ],
+ "2024|2|4(c)(ii)": [
+  {
+   "u": "img/chemistry/2024-2-4cii-1.webp",
+   "a": "Chlorodifluoromethyl phenyl ketone-type compound with Ac2O, AcONa, heat",
+   "k": "crop"
+  }
+ ],
+ "2024|2|5(b)": [
+  {
+   "u": "img/chemistry/2024-2-5b-1.webp",
+   "a": "CH3-C(CH3)=CH-CH2-C=C-CH3 with Na, NH3(l) giving P; 1) OsO4 2) NaHSO3, H2O giving Q; HIO4 giving R",
+   "k": "crop"
+  }
+ ],
+ "2024|2|5(d)(i)": [
+  {
+   "u": "img/chemistry/2024-2-5di-1.webp",
+   "a": "4-Methylacetophenone (A) and 2-methylacetophenone (B)",
+   "k": "crop"
+  }
+ ],
+ "2024|2|5(d)(ii)": [
+  {
+   "u": "img/chemistry/2024-2-5dii-1.webp",
+   "a": "Bicyclohexenyl (A) and cyclohexylidene-cyclohexylidene-type diene (B)",
+   "k": "crop"
+  }
+ ],
+ "2024|2|5(d)(iii)": [
+  {
+   "u": "img/chemistry/2024-2-5diii-1.webp",
+   "a": "trans-1,3-Pentadiene (A) and cis-1,3-pentadiene (B)",
+   "k": "crop"
+  }
+ ],
+ "2024|2|5(d)(iv)": [
+  {
+   "u": "img/chemistry/2024-2-5div-1.webp",
+   "a": "4-Nitroaniline (A) and 3-nitroaniline (B)",
+   "k": "crop"
+  }
+ ],
+ "2024|2|5(d)(v)": [
+  {
+   "u": "img/chemistry/2024-2-5dv-1.webp",
+   "a": "Two steroid-type enones A and B",
+   "k": "crop"
+  }
+ ],
+ "2024|2|5(e)": [
+  {
+   "u": "img/chemistry/2024-2-5e-1.webp",
+   "a": "Anthracene (I), cyclohexa-1,3-diene (II) and norbornadiene-type compound (III)",
+   "k": "crop"
+  }
+ ],
+ "2024|2|6(b)": [
+  {
+   "u": "img/chemistry/2024-2-6b-1.webp",
+   "a": "Compounds A, B and C: a bicyclic hydroxy ketone and its two photoproducts",
+   "k": "crop"
+  }
+ ],
+ "2024|2|6(c)": [
+  {
+   "u": "img/chemistry/2024-2-6c-1.webp",
+   "a": "A with NaBH4/MeOH giving cyclohexanol; H+ giving B; C giving bromocyclohexene; mCPBA giving D",
+   "k": "crop"
+  }
+ ],
+ "2024|2|7(a)": [
+  {
+   "u": "img/chemistry/2024-2-7a-1.webp",
+   "a": "Three polycyclic enones A, B and C",
+   "k": "crop"
+  }
+ ],
+ "2024|2|7(b)": [
+  {
+   "u": "img/chemistry/2024-2-7b-1.webp",
+   "a": "N-Boc piperidine aldehyde with LiAlH4/THF giving X; 1) BH3/THF 2) HO-, H2O2, H2O giving Y; CrO3/H2SO4 giving Z",
+   "k": "crop"
+  }
+ ],
+ "2024|2|7(c)(ii)": [
+  {
+   "u": "img/chemistry/2024-2-7cii-1.webp",
+   "a": "I: phenylpentanone-type ketone (m/z 58) and II: propylbenzene-type compound (m/z 92)",
+   "k": "crop"
+  }
+ ],
+ "2024|2|8(a)": [
+  {
+   "u": "img/chemistry/2024-2-8a-1.webp",
+   "a": "Bicyclic ketone I with hv in EtOH giving II, III and IV",
+   "k": "crop"
+  }
+ ],
+ "2024|2|8(b)(ii)": [
+  {
+   "u": "img/chemistry/2024-2-8bii-1.webp",
+   "a": "Three alkenes I, II, III bearing CH3, COOCH3, Ha and Hb",
+   "k": "crop"
+  }
  ]
 }

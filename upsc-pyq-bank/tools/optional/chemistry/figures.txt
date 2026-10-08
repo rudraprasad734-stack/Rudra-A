@@ -213,3 +213,40 @@
 2023|2|8(a)(i)|14|0.30,0.69,0.72,0.835|Dibenzoxepine with a dimethylaminopropylidene side chain|crop
 2023|2|8(b)(ii)|15|0.20,0.76,0.70,0.875|Three compounds A, B, C with lettered protons Ha and Hb|crop
 2023|2|8(c)(ii)|16|0.18,0.32,0.92,0.46|N,N-Dimethylpropanamide (I) and N-methylbutanamide (II)|crop
+2024|2|1(a)(ii)|2|0.40,0.555,0.62,0.63|Diphenylcyclopropenone (cyclopropenone ring with two Ph groups)|crop
+2024|2|1(b)|2|0.30,0.80,0.80,0.875|Bromobenzene + -NH2 with heat giving aniline|crop
+2024|2|1(c)|3|0.13,0.205,0.60,0.30|(S)-2-Butanol to (S)-2-butyl chloride with wedge/dash stereochemistry|crop
+2024|2|1(d)(i)|4|0.24,0.095,0.52,0.185|Bicyclic ketone converted to its lactone|crop
+2024|2|1(d)(ii)|4|0.20,0.19,0.68,0.335|Aryl alkyl ketone with a hydroxycyclohexyl ring converted to the corresponding ethyl compound|crop
+2024|2|1(d)(iii)|4|0.20,0.355,0.80,0.455|Diester CH2-CH2-CO-OCH3 chain converted to a cyclic beta-keto ester|crop
+2024|2|1(d)(iv)|4|0.20,0.475,0.68,0.515|CH3-CH2-N+Me3 to H2C=CH2 + NMe3|crop
+2024|2|1(d)(v)|4|0.20,0.52,0.80,0.585|Benzaldehyde to benzoate and benzyl alcohol|crop
+2024|2|1(e)|5|0.15,0.07,0.74,0.17|Cyclooctatetraene at 100 C (I step) giving a bicyclic product, hv (II step) giving M, 25 C (III step) giving a bicyclic product|crop
+2024|2|2(a)(i)|5|0.19,0.665,0.60,0.82|2-Phenylethyl bromide with EtO- giving styrene (rate kH) and the dideuterated compound giving deuterated styrene (rate kD)|crop
+2024|2|2(a)(ii)|6|0.22,0.255,0.78,0.325|1,3-Butadiene with HBr giving CH3-CH(Br)-CH=CH2 + CH3-CH=CH-CH2Br|crop
+2024|2|2(b)(i)|6|0.28,0.53,0.76,0.585|Benzaldehyde + CH2(COOC2H5)2 with pyridine giving X|crop
+2024|2|2(b)(ii)|6|0.32,0.765,0.72,0.83|Tertiary alcohol with CS2, NaOH, CH3I giving X, which gives the alkene|crop
+2024|2|2(c)(i)|7|0.19,0.385,0.82,0.7105|(A) phenylhydrazine + a keto nitrile ester with AcOH heat; (B) amino aza-xanthone + glycerol with H2SO4, H3BO3, FeSO4; (C) N-methylazepane with 1) CH3I excess 2) Ag2O, H2O 3) heat|crop
+2024|2|2(c)(ii)|7|0.34,0.8175,0.66,0.893|CH3CH2CH=C(CH3)-COOH|crop
+2024|2|3(b)(i)|8|0.22,0.54,0.80,0.61|Methoxy diene ester with 1) 215 C 2) HCl (aq), EtOH giving the bicyclic enone ester|crop
+2024|2|3(b)(ii)|8|0.34,0.825,0.74,0.885|Bicyclic diene at 33 C giving a bicyclic product|crop
+2024|2|3(b)(iii)|9|0.22,0.21,0.58,0.295|2-Methoxy-5-methyl-1,4-benzoquinone + butadiene at 100 C|crop
+2024|2|3(c)(i)|9|0.20,0.50,0.62,0.56|R-CO-Cl with 1) NaN3/inert solvent 2) heat|crop
+2024|2|4(a)(i)|10|0.25,0.195,0.60,0.26|Furan with (CH3CO)2O, BF3, CH3COOH giving X|crop
+2024|2|4(b)(i)|10|0.23,0.68,0.64,0.76|Allyl phenyl ether on heating giving o-allylphenol|crop
+2024|2|4(c)(i)|11|0.20,0.395,0.62,0.645|(A) 1,1'-dihydroxybicyclopentyl with conc. H2SO4; (B) 3-methylbutan-2-one with 1) NH2OH 2) Al2O3; (C) bicyclic gem-dimethyl alcohol with H+|crop
+2024|2|4(c)(ii)|11|0.36,0.83,0.64,0.88|Chlorodifluoromethyl phenyl ketone-type compound with Ac2O, AcONa, heat|crop
+2024|2|5(b)|12|0.20,0.44,0.80,0.54|CH3-C(CH3)=CH-CH2-C=C-CH3 with Na, NH3(l) giving P; 1) OsO4 2) NaHSO3, H2O giving Q; HIO4 giving R|crop
+2024|2|5(d)(i)|13|0.15,0.735,0.55,0.865|4-Methylacetophenone (A) and 2-methylacetophenone (B)|crop
+2024|2|5(d)(ii)|14|0.18,0.075,0.72,0.19|Bicyclohexenyl (A) and cyclohexylidene-cyclohexylidene-type diene (B)|crop
+2024|2|5(d)(iii)|14|0.18,0.21,0.72,0.31|trans-1,3-Pentadiene (A) and cis-1,3-pentadiene (B)|crop
+2024|2|5(d)(iv)|14|0.18,0.31,0.72,0.41|4-Nitroaniline (A) and 3-nitroaniline (B)|crop
+2024|2|5(d)(v)|14|0.18,0.435,0.72,0.545|Two steroid-type enones A and B|crop
+2024|2|5(e)|14|0.22,0.775,0.62,0.85|Anthracene (I), cyclohexa-1,3-diene (II) and norbornadiene-type compound (III)|crop
+2024|2|6(b)|15|0.15,0.545,0.74,0.655|Compounds A, B and C: a bicyclic hydroxy ketone and its two photoproducts|crop
+2024|2|6(c)|16|0.19,0.065,0.75,0.17|A with NaBH4/MeOH giving cyclohexanol; H+ giving B; C giving bromocyclohexene; mCPBA giving D|crop
+2024|2|7(a)|16|0.24,0.475,0.82,0.62|Three polycyclic enones A, B and C|crop
+2024|2|7(b)|16|0.15,0.795,0.90,0.89|N-Boc piperidine aldehyde with LiAlH4/THF giving X; 1) BH3/THF 2) HO-, H2O2, H2O giving Y; CrO3/H2SO4 giving Z|crop
+2024|2|7(c)(ii)|17|0.20,0.735,0.62,0.89|I: phenylpentanone-type ketone (m/z 58) and II: propylbenzene-type compound (m/z 92)|crop
+2024|2|8(a)|18|0.18,0.345,0.86,0.447|Bicyclic ketone I with hv in EtOH giving II, III and IV|crop
+2024|2|8(b)(ii)|19|0.18,0.185,0.86,0.285|Three alkenes I, II, III bearing CH3, COOCH3, Ha and Hb|crop
