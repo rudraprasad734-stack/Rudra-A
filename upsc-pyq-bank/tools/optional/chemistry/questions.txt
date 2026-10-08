@@ -650,3 +650,56 @@
 2025|2|8(b)(ii)|5|Two isomeric alkenes with same molecular formula C₆H₁₂ show strong peaks at m/z 42 and 56 in the mass spectrum. Propose fragmentation pattern for both the peaks.
 2025|2|8(c)(i)|10|(1) Phthalic acid diethyl ester shows a characteristic peak at m/z 149 in the mass spectrum. Account for the observance of this peak by fragmentation pattern. (2) The mass spectrum of ethylbenzene shows a characteristic peak at m/z 91 while n-propylbenzene shows strong peak at m/z 92. Explain with the help of fragmentation pattern.
 2025|2|8(c)(ii)|10|An unknown organic compound with molecular formula C₄H₅NO₂ displays a band at 2250 cm⁻¹ and a strong band at 1740 cm⁻¹ in the IR spectrum. The compound shows only two signals in 3 : 2 ratio in the ¹H NMR spectrum. Find out the structure of the compound. Justify your answer.
+2026|1|1(a)|5|One real gas equation is van der Waals equation (P + n²a/V²)(V − nb) = nRT. Which parameter in the above equation reflects the intermolecular force of attraction and which one reflects the intermolecular force of repulsion ? Give their units in SI system.
+2026|1|1(b)|5|The surface tension of liquid A is greater than that of liquid B. Which liquid will show larger (i) vapour pressure, (ii) cohesive force, (iii) boiling point, (iv) capillary action and (v) wetting property ? Explain.
+2026|1|1(c)|5|Two blocks of a metal having same mass have same heat capacity 15 J K⁻¹ (presumed independent of T), but are at different temperatures 300 K and 400 K, respectively. Calculate the final temperature and entropy change, if the blocks are in thermal contact and reach equilibrium. (Assume two blocks together constitute the isolated system)
+2026|1|1(d)|5|At 300 K temperature and 1 atm pressure, dinitrogen tetraoxide is 20 percent dissociated into nitrogen dioxide. Calculate the equilibrium constant (K_p) and standard free energy change for the reaction at this temperature : N₂O₄(g) ⇌ 2NO₂(g)
+2026|1|1(e)|5|NH₄Cl(s) decomposes when heated. (i) How many components and phases are present when the salt is heated in a closed container ? (ii) Now, suppose additional NH₃ is also present in the container. How many components and phases will be present ?
+2026|1|1(f)|5|One silver rod is immersed in a silver nitrate solution of the concentration C₁(AgNO₃) = 5 × 10⁻⁴ kmol m⁻³ and a second silver rod in the concentration C₂(AgNO₃) = 1 × 10⁻² kmol m⁻³. The electrolyte solutions are connected by salt bridge. Calculate the difference ΔE of the redox potential for the electrochemical cell at 25 °C (under equilibrium conditions).
+2026|1|1(g)|5|Why is it necessary to measure the cell potential using potentiometer under zero-current conditions ?
+2026|1|1(h)|5|Everyday experience demonstrates that food will spoil outside in a hot summer day much faster than it would be in a refrigerator. Estimate the activation energy of these decomposition processes by assuming that food will spoil about 40 times faster at a temperature of 30 °C than at a temperature of 8 °C.
+2026|1|1(i)|5|A flower is red in colour in daylight. What will be its colour in green light at night ? Justify your answer.
+2026|1|1(j)|5|Spontaneous adsorption of gas on solid surface favours low temperature. Explain, why.
+2026|1|2(a)|15|The Maxwell distribution of molecular speed of a gaseous system is dN_c = 4πN(M/2πRT)^(3/2) c² e^(−Mc²/2RT) dc (Symbols have their usual meanings). Plot (1/N)(dN_c/dc) against c — (i) at two different temperatures T₁ and T₂; T₂ > T₁; (ii) at two molar masses M₁ and M₂; M₂ > M₁. Justify your plots.
+2026|1|2(b)(i)|5|Two immiscible liquids A and B have surface tension values γ_A and γ_B, respectively. When both the liquids are taken in a container, then what would be the interfacial tension between the two liquid phases ? (Given : γ_A > γ_B)
+2026|1|2(b)(ii)|10|Calculate the pressure differential across the surface of ethanol spherical droplet of radius 220 nm at 20 °C. The surface tension of ethanol at that temperature is 22.39 mN m⁻¹.
+2026|1|2(c)(i)|10|At 25 °C, the latent heat of sublimation per mole of iodine is 62.3 kJ mol⁻¹ and the standard enthalpy of formation of HI(g) is 24.7 kJ mol⁻¹. Calculate the enthalpy change which occurs when HI(g) is formed from the gaseous elements at 225 °C. The mean molar heat capacities over the temperature range 25 °C to 225 °C are : H₂(g); C_p,m = 29.08 J K⁻¹ mol⁻¹; I₂(g); C_p,m = 33.56 J K⁻¹ mol⁻¹; HI(g); C_p,m = 29.87 J K⁻¹ mol⁻¹.
+2026|1|2(c)(ii)|10|Calculate ΔG° at 400 K temperature for the following reaction : ½N₂(g) + (3/2)H₂(g) → NH₃(g). Assume that ΔS° is independent of temperature. (Given : ΔG°₂₉₈ K = −16.496 kJ mol⁻¹; S°(NH₃) = 192.45 J K⁻¹ mol⁻¹; S°(N₂) = 191.61 J K⁻¹ mol⁻¹; S°(H₂) = 130.68 J K⁻¹ mol⁻¹)
+2026|1|3(a)(i)|10|Derive the expressions of chemical potential of a component in a mixture system in terms of extensive thermodynamic properties U, H, A and G.
+2026|1|3(a)(ii)|10|Cadmium (m. pt. = 321 °C) and bismuth (m. pt. = 271 °C) do not form solid solutions or compounds with one another. Their eutectic point lies at 61 weight percent of bismuth and 146 °C. Sketch their phase diagram and label each region to show what phases are present. Explain the cooling curves of this eutectic mixture.
+2026|1|3(a)(iii)|5|How does acetone-dry ice freezing mixture work ?
+2026|1|3(b)|10|In a homogeneous electric field E = 5 V cm⁻¹, the speed v of Zn²⁺ ions in aqueous solution at 25 °C is 2.74 × 10⁻⁵ m s⁻¹. (i) Estimate the radius r of the hydrated Zn²⁺ ion. The coefficient of viscosity η of water at the given temperature is 0.890 mPa s. (ii) Calculate the diffusion coefficient D of the ion.
+2026|1|3(c)(i)|5|Calculate the energy of 800 nm electromagnetic radiation per einstein in SI system.
+2026|1|3(c)(ii)|10|The photodecomposition of HI(g) takes place following three elementary steps : HI(g) + hν → H(g) + I(g); H(g) + HI(g) → H₂(g) + I(g) (rate constant k₂); I(g) + I(g) → I₂(g) (rate constant k₃). Find the expression of −d[HI(g)]/dt, quantum yield (φ) and kinetic order of the reaction.
+2026|1|4(a)|10|Draw and discuss the polarographic wave obtained in the case of a dropping mercury electrode in polarography.
+2026|1|4(b)(i)|15|The equilibrium A ⇌ B + C at 25 °C is subjected to a sudden temperature increase that slightly increases the concentrations of B and C. The measured relaxation time is 3.0 μs. The equilibrium constant for the system is 2.0 × 10⁻¹⁶ mol dm⁻³ at 25 °C, and the equilibrium concentrations of B and C at 25 °C are both 2.0 × 10⁻⁴ mol dm⁻³. Calculate the rate constants involved in the system.
+2026|1|4(b)(ii)|10|A substance B converts simultaneously to the products D and D′ by two parallel elementary reactions D ← B → D′ (rate coefficients k₁ and k₂). The initial concentration of B is C_B,0 = 0.5 kmol m⁻³. After 40 minutes, the concentration of B has decreased to 0.05 kmol m⁻³; in the same time, the product D′ with a concentration C_D′ = 0.1 kmol m⁻³ is formed. Calculate the rate coefficients k₁ and k₂.
+2026|1|4(c)|15|The kinetic order of the solid-surface catalyzed gas-phase decomposition reaction varies with the pressure of the gaseous reactant. Explain with plausible mechanism.
+2026|1|5(a)|5|What is the de Broglie wavelength for a baseball (140 g) moving at 40 m s⁻¹ ? Comment on your finding.
+2026|1|5(b)|5|Distinguish between cis- and trans-dichloroethylene by using dipole moments.
+2026|1|5(c)|5|Provide the resonance structures with formal charges for the nitrate ion.
+2026|1|5(d)|5|What is the shortest distance between two successive 111 planes of simple cubic lattice of edge length 200 pm ? Explain.
+2026|1|5(e)|5|What is ferredoxin ? How is it classified ?
+2026|1|5(f)|5|What is chelate effect ? How is it affected by the ring size ?
+2026|1|5(g)|5|Why is ferrocene termed as a sandwich compound ? Explain its structure.
+2026|1|5(h)|5|What is ionization isomerism ? Mention the type of isomerism in the given pairs of complexes : (i) [Cr(H₂O)₆Cl₃] and [CrCl(H₂O)₅]Cl₂·H₂O (ii) [Co(NH₃)₅SO₄]NO₃ and [Co(NH₃)₅NO₃]SO₄ (iii) [Pt(NH₃)₄][PtCl₆] and [Pt(NH₃)₄Cl₂][PtCl₄]
+2026|1|5(i)|5|What is inorganic benzene ? Explain it with structure.
+2026|1|5(j)|5|What is actinide contraction ? Explain.
+2026|1|6(a)(i)|10|Predict the Lewis structures and geometry of the following as per VSEPR theory : (1) SO₂, (2) I₃⁻, (3) SF₄, (4) BrF₅, (5) XeF₄
+2026|1|6(a)(ii)|10|Draw the molecular orbital diagram for F₂ molecule, and mention its bond order and magnetic behaviour.
+2026|1|6(b)(i)|10|Why is the electronic spectrum of [Co(H₂O)₆]²⁺ pale pink, whereas the spectrum of [CoCl₄]²⁻ is deep blue ? Explain.
+2026|1|6(b)(ii)|10|What is EAN rule ? Calculate the EAN value of the following : (1) [Cr(CO)₆] (2) [Fe(CN)₆]⁴⁻ (3) [Co(NH₃)₆]³⁺ (4) [Ni(NH₃)₆]²⁺
+2026|1|6(c)|10|Describe the bond order and quadruple bonding in [Re₂Cl₈]²⁻ ion.
+2026|1|7(a)(i)|5|Show that ψ(x) = e^(αx) is an eigenfunction for the operator Â = dⁿ/dxⁿ. What is the eigenvalue ?
+2026|1|7(a)(ii)|5|The time-independent Schrödinger equation for a free particle (of mass m) in a box of length L (inside the box potential energy is zero, but outside the box is infinity) is d²ψ/dx² + (2mE/ħ²)ψ(x) = 0; 0 ≤ x ≤ L. The solution of the above equation is ψₙ(x) = √(2/L) sin(nπx/L); where n = 1, 2, 3, … . Why is n = 0 not allowed ? Explain.
+2026|1|7(b)(i)|10|Find the minimum uncertainty in momentum and speed if we wish to locate an electron within an atom so that Δx ≈ 50 pm, using Δp_x × Δx ≥ h. Comment on your two findings.
+2026|1|7(b)(ii)|5|What are the n, l and m_l values of 2p_z orbital ? Explain.
+2026|1|7(c)(i)|20|Out of three lattice structures SC, BCC and FCC, which one is most economically packed and which one least ? Give your answer, calculating packing fraction of each lattice structure.
+2026|1|7(c)(ii)|5|For Bragg X-ray diffraction studies of crystalline solid, what is the Bragg condition for constructive interference ? Explain.
+2026|1|8(a)|10|Differentiate between T and R conformation of hemoglobin.
+2026|1|8(b)(i)|10|Describe the structure and bonding in diborane.
+2026|1|8(b)(ii)|10|How are silicates classified ? Predict the names and structures of the following silicates : (1) SiO₄⁴⁻ ion, (2) Si₂O₇⁶⁻ ion, (3) Si₃O₉⁶⁻ ion
+2026|1|8(c)(i)|5|Why do Eu³⁺ and Sm³⁺ not follow the trend of magnetic moment of lanthanides at 300 K ? Explain.
+2026|1|8(c)(ii)|5|Why do the metallic radii decrease from La to Lu except at Eu and Yb ?
+2026|1|8(c)(iii)|5|How are lanthanides separated by a complex formation method ? Give description.
+2026|1|8(c)(iv)|5|Why do Ce³⁺ and Yb³⁺ not absorb in the visible region, but show sharp absorption in the ultraviolet region ?
