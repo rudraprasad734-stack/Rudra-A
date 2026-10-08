@@ -10,9 +10,12 @@ import numpy as np
 sys.path.insert(0,os.path.join(here,'..'))
 import figsnap
 PAGES={}; QC={}
+PDPI={'2026|2':250}      # papers whose scan is sharper / has faint lines: render at a higher dpi
+PLV={'2026|2':235}      # and keep paler grey as ink (the usual 200 would erase thin faint bonds)
+LV=[200]
 def levels(im):
     # page show-through (the other side of the sheet) is pale grey: push it to white, keep the printed ink
-    a=np.asarray(im,dtype=np.float32); a=np.where(a>=200,255,a*255/200); return Image.fromarray(a.astype('uint8'))
+    a=np.asarray(im,dtype=np.float32); a=np.where(a>=LV[0],255,a*255/LV[0]); return Image.fromarray(a.astype('uint8'))
 def bands(a,axis,gap):
     # runs of rows (axis 1) or columns (axis 0) that hold ink, merged when closer than <gap>
     has=(a<140).any(axis=axis); idx=np.flatnonzero(has); out=[]
@@ -39,7 +42,7 @@ def strip_edges(im,gap=2,maxh=70):
         if not cut: break
     STRIPLOG.append(h0-im.height)
     return im
-def trim(im,pad=8,lv=True,strip=True):
+def trim(im,pad=8,lv=True,strip=False):   # strip_edges is off: figsnap already erases neighbouring text, and the strip removed real figure bands
     # cut the blank margin so the crop hugs the drawing (the boxes in figures.txt are only approximate)
     im=(strip_edges if strip else (lambda x:x))(levels(im) if lv else im); bb=im.point(lambda v:255 if v<185 else 0).getbbox()
     if not bb: return im
@@ -66,17 +69,24 @@ for line in open(os.path.join(here,'figures.txt'),encoding='utf8'):
     y,p,q,pg,bb,alt,kind=[x.strip() for x in line.rstrip('\n').split('|')]
     key=f'{y}|{p}|{q}'; n=count[key]=count.get(key,0)+1
     name=f'{y}-{p}-{re.sub(r"[^0-9a-z]","",q.lower())}-{n}.webp'
-    if kind=='crop':
+    only=[x[7:] for x in sys.argv if x.startswith('--only=')]   # --only=2015|1  : cut just the figures of those papers
+    if kind=='crop' and (not only or key.startswith(tuple(only))):
         pk=(y,p,pg)
         if pk not in PAGES:
-            doc=pymupdf.open(os.path.join(pdfdir,f'{y}_{p}.pdf')); pix=doc[int(pg)-1].get_pixmap(dpi=170)
+            doc=pymupdf.open(os.path.join(pdfdir,f'{y}_{p}.pdf')); pix=doc[int(pg)-1].get_pixmap(dpi=PDPI.get(f'{y}|{p}',170))
             PAGES[pk]=np.asarray(Image.frombytes('RGB',(pix.width,pix.height),pix.samples).convert('L'))
-        full=PAGES[pk]; Hh,Ww=full.shape; x0,y0,x1,y1=[float(v) for v in bb.split(',')]
-        bx=(x0*Ww,y0*Hh,x1*Ww,y1*Hh); box,erase,notes=figsnap.snap(full<150,bx,prose=figsnap.prose_lines(full,bx))
-        crop_a=full[box[1]:box[3],box[0]:box[2]].copy(); crop_a[erase]=255; im=Image.fromarray(crop_a)
+        LV[0]=PLV.get(f'{y}|{p}',200); full=PAGES[pk]; Hh,Ww=full.shape; x0,y0,x1,y1=[float(v) for v in bb.split(',')]
+        bx=(x0*Ww,y0*Hh,x1*Ww,y1*Hh); box,erase,notes=figsnap.snap(full<(150 if LV[0]<=200 else LV[0]-35),bx,prose=figsnap.prose_lines(full,bx))
+        crop_a=full[box[1]:box[3],box[0]:box[2]].copy(); crop_a[erase]=255
+        # a printed page rule or box line right at the top/bottom edge of the crop is not part of the figure: wipe rows that are one long unbroken line
+        n_=len(crop_a); edge_rows=list(range(min(14,n_)))+list(range(max(0,n_-14),n_))
+        wipe=[r for r in edge_rows if (crop_a[r]<195).mean()>=0.5]      # a row that is half ink is a rule, not drawing
+        for r in wipe:
+            for q in (r-1,r,r+1):
+                if 0<=q<n_: crop_a[q]=np.where(crop_a[q]<195,255,crop_a[q]) if q in wipe or q==r else crop_a[q]
+        im=Image.fromarray(crop_a)
         if notes: QC.setdefault(name,[]).extend(notes)
-        n0=len(STRIPLOG); ns=TRIM.get(f'{key}|{n}',(0,0,7))[0]==-1; im=trim(im,strip=not ns)
-        if STRIPLOG[-1]>0 and os.environ.get('STRIPLOG'): print('STRIPPED',key,n,STRIPLOG[-1],'px')
+        n0=len(STRIPLOG); ns=TRIM.get(f'{key}|{n}',(0,0,7))[0]==-1; im=trim(im,strip=False)
         t,b,g=TRIM.get(f'{key}|{n}',(0,0,7))
         if (t>0 or b>0): im=trim(drop_bands(im,t,b,g),lv=False)
         im.save(os.path.join(out,name),'WEBP',quality=80,method=6)
@@ -96,6 +106,7 @@ if os.path.exists(okp):
 flag={}
 for f in sorted(os.listdir(out)):
     if not f.endswith('.webp'): continue
+    if [x for x in sys.argv if x.startswith('--only=')] and not f.startswith(tuple(x[7:].replace('|','-')+'-' for x in sys.argv if x.startswith('--only='))): continue
     fp=os.path.join(out,f); h=hashlib.md5(open(fp,'rb').read()).hexdigest()[:10]
     if OK.get(f)==h: continue
     im=Image.open(fp).convert('L'); a=np.asarray(im); why=[]

@@ -42,8 +42,10 @@ def snap(ink, box, maxgrow=MAXGROW, it=2, prose=()):
         x, y, w, h, area = st[i]
         ix0, iy0, ix1, iy1 = max(x, x0), max(y, y0), min(x + w, x1), min(y + h, y1)
         sub = lab[iy0:iy1, ix0:ix1] == i
-        if i in istext or sub.sum() / area < THR:
+        if i in istext or (sub.sum() / area < THR and (sub.sum() < 450 or min(ix1 - ix0, iy1 - iy0) <= 14)):   # prose, a small piece, or a thin sliver of a neighbouring line
             erase[iy0 - y0:iy1 - y0, ix0 - x0:ix1 - x0] |= sub; notes.append('erased %d px of neighbouring text' % sub.sum())
+        elif sub.sum() / area < THR:
+            notes.append('big blob cut by the box edge, left as it is (%d px)' % sub.sum())
     return (x0, y0, x1, y1), erase, notes
 
 
