@@ -13,34 +13,6 @@
    "k": "crop"
   }
  ],
- "2019|2|3(c)": [
-  {
-   "u": "img/civil-engineering/2019-2-3c-1.webp",
-   "a": "Level book page with missing values (station, BS, IS, FS, rise, fall, HI, RL)",
-   "k": "crop"
-  }
- ],
- "2019|2|4(b)": [
-  {
-   "u": "img/civil-engineering/2019-2-4b-1.webp",
-   "a": "Project network: 10 to 20, 20 to 30, 20 to 40, 30 to 40",
-   "k": "crop"
-  }
- ],
- "2019|2|5(e)": [
-  {
-   "u": "img/civil-engineering/2019-2-5e-1.webp",
-   "a": "Chlorine dosage and chlorine residual (mg/L)",
-   "k": "crop"
-  }
- ],
- "2019|2|7(a)": [
-  {
-   "u": "img/civil-engineering/2019-2-7a-1.webp",
-   "a": "Masonry dam: 6 m high, 1.5 m top width, base width b, water on the vertical face",
-   "k": "crop"
-  }
- ],
  "2020|2|6(a)": [
   {
    "u": "img/civil-engineering/2020-2-6a-1.webp",
@@ -1461,6 +1433,53 @@
   {
    "u": "img/civil-engineering/2025-2-8a-1.webp",
    "a": "Overflow spillway 40 m high (P = 40 m), design head Hd = 2.5 m, energy line, hydraulic jump between sections 1 and 2 (depths y1, y2, V1, V2, EL)",
+   "k": "crop"
+  }
+ ],
+ "2019|2|2(c)": [
+  {
+   "u": "img/civil-engineering/2019-2-2c-1.webp",
+   "a": "Table of activity, predecessor and duration (weeks) for A to L (English)",
+   "k": "crop"
+  }
+ ],
+ "2019|2|3(c)": [
+  {
+   "u": "img/civil-engineering/2019-2-3c-1.webp",
+   "a": "Level book page with missing values (station, BS, IS, FS, Rise, Fall, HI, RL), English version",
+   "k": "crop"
+  }
+ ],
+ "2019|2|4(b)": [
+  {
+   "u": "img/civil-engineering/2019-2-4b-1.webp",
+   "a": "Project network: 10 to 20, 20 to 30, 20 to 40, 30 to 40",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2019-2-4b-2.webp",
+   "a": "Table of activity, normal time, crash time, normal cost, crash cost and cost slope",
+   "k": "crop"
+  }
+ ],
+ "2019|2|5(e)": [
+  {
+   "u": "img/civil-engineering/2019-2-5e-1.webp",
+   "a": "Chlorine dosage and chlorine residual (mg/L)",
+   "k": "crop"
+  }
+ ],
+ "2019|2|7(a)": [
+  {
+   "u": "img/civil-engineering/2019-2-7a-1.webp",
+   "a": "Masonry dam: 6 m high, 1.5 m top width, base width b, water on the vertical face",
+   "k": "crop"
+  }
+ ],
+ "2019|2|7(b)": [
+  {
+   "u": "img/civil-engineering/2019-2-7b-1.webp",
+   "a": "Table of station A to F and rainfall (cm)",
    "k": "crop"
   }
  ]
