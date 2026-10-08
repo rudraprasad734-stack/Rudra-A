@@ -1,7 +1,7 @@
 // UPSC Companion service worker: caches the app shell so the page loads and
 // runs with zero network connectivity after the first successful visit.
 // Bump CACHE_NAME on any deploy that changes cached files so clients refresh.
-const CACHE_NAME = "upsc-companion-v102";
+const CACHE_NAME = "upsc-companion-v103";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -20,6 +20,7 @@ const FIGURES = [
   "./img/civil-engineering/2016-1-2a-1.webp",
   "./img/civil-engineering/2016-1-2b-1.webp",
   "./img/civil-engineering/2016-1-3a-1.webp",
+  "./img/civil-engineering/2016-1-4c-1.webp",
   "./img/civil-engineering/2016-1-5a-1.webp",
   "./img/civil-engineering/2016-1-5d-1.webp",
   "./img/civil-engineering/2016-1-6a-1.webp",
@@ -115,6 +116,8 @@ const FIGURES = [
   "./img/civil-engineering/2021-1-5b-1.webp",
   "./img/civil-engineering/2021-1-5c-1.webp",
   "./img/civil-engineering/2021-1-6b-1.webp",
+  "./img/civil-engineering/2021-1-6b-2.webp",
+  "./img/civil-engineering/2021-1-6b-3.webp",
   "./img/civil-engineering/2021-1-6c-1.webp",
   "./img/civil-engineering/2021-1-7b-1.webp",
   "./img/civil-engineering/2021-1-8a-1.webp",
@@ -180,8 +183,10 @@ const FIGURES = [
   "./img/civil-engineering/2024-1-2b-2.webp",
   "./img/civil-engineering/2024-1-2b-3.webp",
   "./img/civil-engineering/2024-1-2c-1.webp",
+  "./img/civil-engineering/2024-1-2c-2.webp",
   "./img/civil-engineering/2024-1-3a-1.webp",
   "./img/civil-engineering/2024-1-3a-2.webp",
+  "./img/civil-engineering/2024-1-3b-1.webp",
   "./img/civil-engineering/2024-1-4b-1.webp",
   "./img/civil-engineering/2024-1-5c-1.webp",
   "./img/civil-engineering/2024-1-7a-1.webp",
