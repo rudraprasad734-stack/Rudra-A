@@ -411,5 +411,103 @@
    "a": "Structures X (dimethyl enone) and Y (cyclohexenyl enone)",
    "k": "crop"
   }
+ ],
+ "2019|2|1(d)": [
+  {
+   "u": "img/chemistry/2019-2-1d-1.webp",
+   "a": "Two reactions: a decalin-type diketone with mCPBA giving (X); 2-phenylethylamine with (1) CH3COCl (2) P2O5 (3) Pd/C 100 C giving (X)",
+   "k": "crop"
+  }
+ ],
+ "2019|2|1(e)": [
+  {
+   "u": "img/chemistry/2019-2-1e-1.webp",
+   "a": "Triene ester (CO2Et) with a ring bearing OCH2OCH2Ph, heated at 240 C",
+   "k": "crop"
+  }
+ ],
+ "2019|2|2(a)": [
+  {
+   "u": "img/chemistry/2019-2-2a-1.webp",
+   "a": "Three reactions: aminohexatriene with maleic anhydride, a dienyl aldehyde on heating, an ammonium iodide undergoing Stevens rearrangement",
+   "k": "crop"
+  }
+ ],
+ "2019|2|2(b)": [
+  {
+   "u": "img/chemistry/2019-2-2b-1.webp",
+   "a": "1,2-bis(styryl)benzene: benzene ring with two CH=CHPh groups",
+   "k": "crop"
+  }
+ ],
+ "2019|2|4(b)": [
+  {
+   "u": "img/chemistry/2019-2-4b-1.webp",
+   "a": "Three conversions: toluene to benzaldehyde; a methoxyphenyl keto ester to its (CH2)3 chain ester; cyclohexanone + MVK giving a bicyclic enone",
+   "k": "crop"
+  }
+ ],
+ "2019|2|4(c)": [
+  {
+   "u": "img/chemistry/2019-2-4c-1.webp",
+   "a": "Keto ester with (1) excess MeMgBr (2) Et2O giving (X), then (Y), then a tetramethyl tetrahydrofuran",
+   "k": "crop"
+  }
+ ],
+ "2019|2|5(b)": [
+  {
+   "u": "img/chemistry/2019-2-5b-1.webp",
+   "a": "2,5-dimethoxybenzaldehyde with mCPBA in CHCl3 giving (X), then H3O+ giving (Y)",
+   "k": "crop"
+  }
+ ],
+ "2019|2|5(c)": [
+  {
+   "u": "img/chemistry/2019-2-5c-1.webp",
+   "a": "Norbornenone with hv giving (X), then hv giving (Y) plus ketene CH2=C=O",
+   "k": "crop"
+  }
+ ],
+ "2019|2|5(d)": [
+  {
+   "u": "img/chemistry/2019-2-5d-1.webp",
+   "a": "(i) a methoxy tetralone, (ii) a cyclohexylidene acetone enone",
+   "k": "crop"
+  }
+ ],
+ "2019|2|5(e)": [
+  {
+   "u": "img/chemistry/2019-2-5e-1.webp",
+   "a": "Two isoxazolone isomers I and II",
+   "k": "crop"
+  }
+ ],
+ "2019|2|6(b)": [
+  {
+   "u": "img/chemistry/2019-2-6b-1.webp",
+   "a": "Three reactions: cyclohexene with NBS/phi.OOH giving (X) and with NBS/(CH3)4N+Br- giving (Y); methylenecyclobutane with dil. KMnO4 then NaIO4; benzene with H2O2/OsO4",
+   "k": "crop"
+  }
+ ],
+ "2019|2|7(b)": [
+  {
+   "u": "img/chemistry/2019-2-7b-1.webp",
+   "a": "Methyl branched ester-acid (EtO2C, CO2H) converted to a methyl delta-valerolactone",
+   "k": "crop"
+  }
+ ],
+ "2019|2|7(c)": [
+  {
+   "u": "img/chemistry/2019-2-7c-1.webp",
+   "a": "Four reactions: maleic acid with H2O2/SeO2; o-phenylenediamine with Pb(OAc)4; cyclopentene with OsO4 then aq. Na2SO3; phenylmethylcyclopropane with OsO4 then NaSO3H then HIO3",
+   "k": "crop"
+  }
+ ],
+ "2019|2|8(c)": [
+  {
+   "u": "img/chemistry/2019-2-8c-1.webp",
+   "a": "Diphenylindanone with hv giving (X), then maleic anhydride on heating giving (Y)",
+   "k": "crop"
+  }
  ]
 }
