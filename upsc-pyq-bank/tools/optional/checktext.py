@@ -13,7 +13,7 @@ def ocr(n):
     for i, p in enumerate(d):
         f = os.path.join(pdfs, 'ocr', f'{n}_{i+1}.png'); p.get_pixmap(dpi=200).save(f)
         txt.append(subprocess.run(['tesseract', f, '-', '-l', 'eng', '--psm', '4'], capture_output=True, text=True).stdout); os.remove(f)
-    t = '\n'.join(txt); open(out, 'w', encoding='utf8').write(t); return t
+    t = '\n\f\n'.join(txt); open(out, 'w', encoding='utf8').write(t); return t
 norm = lambda s: re.sub(r'[^a-z0-9]', '', s.lower())
 cache = {}
 for l in open(qs, encoding='utf8'):
@@ -21,8 +21,10 @@ for l in open(qs, encoding='utf8'):
     if len(f) < 5 or not re.match(r'\d{4}$', f[0]): continue
     n = f[0] + '_' + f[1]
     if only and n not in only: continue
-    if n not in cache: cache[n] = ocr(n); cache[n + 'w'] = set(re.findall(r'[a-z]{4,}', cache[n].lower())); cache[n + 'd'] = re.sub(r'[^0-9\n]+', ' ', cache[n])
-    o, words, dig = cache[n], cache[n + 'w'], cache[n + 'd']
+    if n not in cache: cache[n] = ocr(n); cache[n + 'p'] = [set(re.findall(r'[a-z]{4,}', t.lower())) for t in cache[n].split('\n\f\n')] if '\f' in cache[n] else [set(re.findall(r'[a-z]{4,}', cache[n].lower()))]; cache[n + 'w'] = set(re.findall(r'[a-z]{4,}', cache[n].lower()))
+    o = cache[n]
+    # page-local check: the words of a question must be printed on the page where it is (best-matching OCR page, plus the next one)
+    qw = set(re.findall(r'[a-z]{4,}', f[4].lower())); pg = cache[n + 'p']; sc = [len(qw & p) for p in pg]; best = sc.index(max(sc)); words = pg[best] | (pg[best + 1] if best + 1 < len(pg) else set())
     text = f[4].replace('₀', '0').replace('₁', '1').replace('₂', '2').replace('₃', '3').replace('₄', '4').replace('₅', '5').replace('₆', '6').replace('₇', '7').replace('₈', '8').replace('₉', '9')
     bad = []
     for tok in re.findall(r'\d+(?:[.,]\d+)*', text):
