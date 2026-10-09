@@ -232,3 +232,29 @@ ag.topics.forEach(function(t){
   fs.writeFileSync(PAGE, h9);
   console.log(NAME + " chapters:", Object.keys(ggLeaf).length, "| Paper I topics:", Object.keys(ggTree["Paper I"]).length, "| Paper II topics:", Object.keys(ggTree["Paper II"]).length);
 }
+
+// ---------------------------------------------------------------- Electrical Engineering (one chapter per syllabus sub-topic)
+{
+  const NAME = "Electrical Engineering";
+  let h10 = fs.readFileSync(PAGE, "utf8");
+  const m10 = h10.match(/<script type="application\/json" id="d-elec">(.*?)<\/script>/s);
+  if(!m10) throw new Error("build-planner: d-elec not found (run electrical-engineering/build-electrical.js first), nothing written");
+  const el = JSON.parse(m10[1]);
+  const elTree = {"Paper I":{}, "Paper II":{}}, elLeaf = {}, per10 = {};
+  el.topics.forEach(function(t){
+    const it = el.items.filter(function(x){ return x.id === t.s; })[0], grp = it.pp === 1 ? "Paper I" : "Paper II";
+    per10[it.id] = (per10[it.id] || 0) + 1;
+    const topic = it.id + "  " + it.t, unit = it.id + "." + per10[it.id] + "  " + t.t;
+    (elTree[grp][topic] = elTree[grp][topic] || []).push(unit);
+    elLeaf[topic + "|" + unit] = [t.id];
+  });
+  const cur10 = '  "' + NAME + '": ' + JSON.stringify(elTree, null, 2).replace(/\n/g, "\n  ") + ',\n';
+  const a10 = h10.indexOf('  "' + NAME + '": {\n    "Paper I"');
+  if(a10 >= 0){ const re = /\n  "[A-Z]/g; re.lastIndex = a10 + 20; const m = re.exec(h10); if(!m) throw new Error("build-planner: end of Electrical Engineering block not found, nothing written"); h10 = h10.slice(0, a10) + cur10 + h10.slice(m.index + 1); }
+  else { const g = h10.indexOf('  "Geography": {\n    "Paper I"'); if(g < 0) throw new Error("build-planner: insertion point not found, nothing written"); h10 = h10.slice(0, g) + cur10 + h10.slice(g); }
+  const la10 = h10.indexOf("var ELEC_LEAF = {"), leafTxt10 = "var ELEC_LEAF = " + JSON.stringify(elLeaf, null, 1) + ";";
+  if(la10 >= 0){ const e10 = h10.indexOf("\n};", la10); if(e10 < 0) throw new Error("build-planner: ELEC_LEAF block not closed, nothing written"); h10 = h10.slice(0, la10) + leafTxt10 + h10.slice(h10.indexOf("\n", e10 + 1)); }
+  else { const lb10 = h10.indexOf("\n// Optional subjects that have a question analysis"); if(lb10 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h10 = h10.slice(0, lb10) + "\n" + leafTxt10 + h10.slice(lb10); }
+  fs.writeFileSync(PAGE, h10);
+  console.log(NAME + " chapters:", Object.keys(elLeaf).length, "| Paper I topics:", Object.keys(elTree["Paper I"]).length, "| Paper II topics:", Object.keys(elTree["Paper II"]).length);
+}

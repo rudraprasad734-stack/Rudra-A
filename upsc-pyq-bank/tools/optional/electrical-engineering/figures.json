@@ -1,0 +1,1464 @@
+{
+ "2016|1|1(b)": [
+  {
+   "u": "img/electrical-engineering/2016-1-1b-1.webp",
+   "a": "Block diagram: h1(n), h2(n), h3(n) in series, then h4(n) and h5(n) in parallel combined by a summer",
+   "k": "crop"
+  }
+ ],
+ "2016|1|1(d)": [
+  {
+   "u": "img/electrical-engineering/2016-1-1d-1.webp",
+   "a": "Two diodes D1 and D2 in series with a 50 mV source",
+   "k": "crop"
+  }
+ ],
+ "2016|1|2(a)": [
+  {
+   "u": "img/electrical-engineering/2016-1-2a-1.webp",
+   "a": "Resistive circuit with source V, 5 \u03a9, 2 \u03a9, 4 \u03a9, a 2V1 controlled source, 10 \u03a9, 5 \u03a9, 2 \u03a9 and load RL = 4 \u03a9",
+   "k": "crop"
+  }
+ ],
+ "2016|1|2(c)": [
+  {
+   "u": "img/electrical-engineering/2016-1-2c-1.webp",
+   "a": "Transistor circuit with VCC, R1, R2, 1 k\u03a9 source resistance, 1 k\u03a9 emitter resistor and output Vo with Ro",
+   "k": "crop"
+  }
+ ],
+ "2016|1|3(a)": [
+  {
+   "u": "img/electrical-engineering/2016-1-3a-1.webp",
+   "a": "Coupled circuit: 5 \u03a9, j5 \u03a9, j2 \u03a9 mutual, j5 \u03a9, 5 \u03a9, 10\u22200\u00b0 and 10\u222090\u00b0 sources, capacitor \u2212j10 \u03a9",
+   "k": "crop"
+  }
+ ],
+ "2016|1|3(c)": [
+  {
+   "u": "img/electrical-engineering/2016-1-3c-1.webp",
+   "a": "Op-amp circuit with input R and C, feedback L and R, output Vo",
+   "k": "crop"
+  }
+ ],
+ "2016|1|4(c)": [
+  {
+   "u": "img/electrical-engineering/2016-1-4c-1.webp",
+   "a": "Op-amp circuit with R1, R2, R3, R4 and Vin, output Vo",
+   "k": "crop"
+  }
+ ],
+ "2016|1|5(c)": [
+  {
+   "u": "img/electrical-engineering/2016-1-5c-1.webp",
+   "a": "SCR circuit: Vs = 100 V, inductance L, R = 50 \u03a9, gate current ig",
+   "k": "crop"
+  }
+ ],
+ "2016|1|6(a)": [
+  {
+   "u": "img/electrical-engineering/2016-1-6a-1.webp",
+   "a": "R-2R ladder network with VR driving an op-amp with feedback RF, output Vo and current i",
+   "k": "crop"
+  }
+ ],
+ "2016|2|2(a)": [
+  {
+   "u": "img/electrical-engineering/2016-2-2a-1.webp",
+   "a": "Block diagram: R(s) with two summing junctions, forward block K/s(s+2), feedback block 0.25s, output C(s)",
+   "k": "crop"
+  }
+ ],
+ "2016|2|2(b)": [
+  {
+   "u": "img/electrical-engineering/2016-2-2b-1.webp",
+   "a": "Two-plant system: generators G1 and G2, buses 1 and 2, load at bus 2",
+   "k": "crop"
+  }
+ ],
+ "2016|2|5(b)": [
+  {
+   "u": "img/electrical-engineering/2016-2-5b-1.webp",
+   "a": "Five-bus power system with two generators and loads at buses 3, 4 and 5",
+   "k": "crop"
+  },
+  {
+   "u": "img/electrical-engineering/2016-2-5b-2.webp",
+   "a": "Table I: Line data (bus code, impedance zij in p.u., half-line charging admittance in p.u.)",
+   "k": "crop"
+  }
+ ],
+ "2016|2|7(c)": [
+  {
+   "u": "img/electrical-engineering/2016-2-7c-1.webp",
+   "a": "Probabilities p0 to p7 of the eight messages m0 to m7",
+   "k": "crop"
+  }
+ ],
+ "2017|1|1(a)": [
+  {
+   "u": "img/electrical-engineering/2017-1-1a-1.webp",
+   "a": "Circuit between A, B, C, D: 5 \u03a9, 20 \u03a9, 6 \u03a9, 7 \u03a9, 10 \u03a9 resistors and batteries E1 100 V, E2 40 V, E3 20 V, E4 20 V, E5 50 V, E6 30 V with 4 \u03a9",
+   "k": "crop"
+  }
+ ],
+ "2017|1|1(b)": [
+  {
+   "u": "img/electrical-engineering/2017-1-1b-1.webp",
+   "a": "Waveform x(t): ramp from \u22122 to 0 up to 1, then 1 from 0 to 2, 2 from 2 to 4",
+   "k": "crop"
+  }
+ ],
+ "2017|1|1(d)": [
+  {
+   "u": "img/electrical-engineering/2017-1-1d-1.webp",
+   "a": "Op-amp circuit: source v(s) = sin \u03c9t (\u03c9 = 2\u00b750\u00b7\u03c0), 660 \u03a9, 1 k\u03a9 and diode, 2 k\u03a9, supplies \u00b1 15 V, output Vo",
+   "k": "crop"
+  }
+ ],
+ "2017|1|3(c)": [
+  {
+   "u": "img/electrical-engineering/2017-1-3c-1.webp",
+   "a": "Parallel R-L-C circuit with current source Is, switch at t = 0, currents iR, iL, iC and voltage v",
+   "k": "crop"
+  }
+ ],
+ "2017|1|4(c)": [
+  {
+   "u": "img/electrical-engineering/2017-1-4c-1.webp",
+   "a": "Op-amp circuit with 1 k\u03a9 resistors, Zener diode (VZ = 2\u00b75 V, VFZ = 0 V), source v(t) = 5 sin \u03c9t, supplies \u00b1 15 V, output Vo",
+   "k": "crop"
+  }
+ ],
+ "2017|1|6(a)": [
+  {
+   "u": "img/electrical-engineering/2017-1-6a-1.webp",
+   "a": "Bridge rectifier D1 to D4 fed by v(t) = 320 sin \u03c9t (\u03c9 = 2\u00b7\u03c0\u00b750) with a 320 k\u03a9 load in series with a 160 V battery",
+   "k": "crop"
+  }
+ ],
+ "2017|2|2(c)": [
+  {
+   "u": "img/electrical-engineering/2017-2-2c-1.webp",
+   "a": "Single-line diagram: source with supply Vs, two transformers 100:400 V (X = 0\u00b71 p.u., 10 kVA) and 400:200 V (X = 0\u00b715 p.u., 10 kVA), parts A, B, C, point D, 200 V load",
+   "k": "crop"
+  }
+ ],
+ "2017|2|3(a)": [
+  {
+   "u": "img/electrical-engineering/2017-2-3a-1.webp",
+   "a": "Two-bus system: bus 1 (V1, P1 & Q1), line impedance Zl carrying current I, bus 2 (V2, P2 & Q2)",
+   "k": "crop"
+  }
+ ],
+ "2017|2|5(e)": [
+  {
+   "u": "img/electrical-engineering/2017-2-5e-1.webp",
+   "a": "Unity-feedback block diagram: R(s), gain K, 1/s(s+2), output C(s)",
+   "k": "crop"
+  }
+ ],
+ "2017|2|6(b)": [
+  {
+   "u": "img/electrical-engineering/2017-2-6b-1.webp",
+   "a": "Error signal (volt) against time: 5 V from 2 s to 10 s, zero elsewhere",
+   "k": "crop"
+  }
+ ],
+ "2018|1|1(b)": [
+  {
+   "u": "img/electrical-engineering/2018-1-1b-1.webp",
+   "a": "Periodic sawtooth f(t): ramps from 0 to 2 over each unit interval, repeating at t = 0, 2, 4 (drops at 1, 3, 5)",
+   "k": "crop"
+  }
+ ],
+ "2018|1|1(d)": [
+  {
+   "u": "img/electrical-engineering/2018-1-1d-1.webp",
+   "a": "Op-amp circuit with equal resistors R: input vi through R, feedback network of R, R, R with two R shunts to ground, output vo",
+   "k": "crop"
+  }
+ ],
+ "2018|1|3(c)": [
+  {
+   "u": "img/electrical-engineering/2018-1-3c-1.webp",
+   "a": "Circuit: 4 \u03a9, 2 \u03a9, 3 \u03a9, 3 A current source, 8 \u03a9 with voltage vo, 12 V battery",
+   "k": "crop"
+  }
+ ],
+ "2018|1|4(c)": [
+  {
+   "u": "img/electrical-engineering/2018-1-4c-1.webp",
+   "a": "Op-amp integrator: square-wave input through 400 \u03a9, 4\u00b77 k\u03a9 with 1 \u03bcF in feedback, 370 \u03a9 to ground, output vo",
+   "k": "crop"
+  }
+ ],
+ "2018|1|5(e)": [
+  {
+   "u": "img/electrical-engineering/2018-1-5e-1.webp",
+   "a": "Bridge-type network: 220 V source, 3 k\u03a9, 400 \u03a9, 1 k\u03a9, 600 \u03a9, 40 \u03a9 between terminals a and b",
+   "k": "crop"
+  }
+ ],
+ "2018|1|6(b)": [
+  {
+   "u": "img/electrical-engineering/2018-1-6b-1.webp",
+   "a": "Circuit with current source is(t), 2 \u03a9, 4 \u03a9 carrying io(t) and 0\u00b75 F capacitor",
+   "k": "crop"
+  }
+ ],
+ "2018|1|6(c)": [
+  {
+   "u": "img/electrical-engineering/2018-1-6c-1.webp",
+   "a": "Transistor oscillator: RB1, RB2, RFC = 100 \u03bcH, CC = 100 pF, L1 = 1 \u03bcH, C1 = 100 pF, C2 = 10 pF, output vo",
+   "k": "crop"
+  }
+ ],
+ "2018|1|7(a)(i)": [
+  {
+   "u": "img/electrical-engineering/2018-1-7ai-1.webp",
+   "a": "Wave from free space with Ei hits a 1 mm dielectric slab (\u03b5r = 20, \u03bcr = 1, \u03c3 = 0) between A and B; transmitted Et",
+   "k": "crop"
+  }
+ ],
+ "2018|1|8(a)": [
+  {
+   "u": "img/electrical-engineering/2018-1-8a-1.webp",
+   "a": "AC circuit: source v(t), 4 \u03a9, 0\u00b7096 H, 73\u00b73 \u03bcF, branch with L1 0\u00b7096 H and C1 73\u00b73 \u03bcF; currents I1 to I5; nodes a, b, c, d",
+   "k": "crop"
+  }
+ ],
+ "2018|1|8(b)": [
+  {
+   "u": "img/electrical-engineering/2018-1-8b-1.webp",
+   "a": "Summing op-amp network: inputs vi1, vi2 through R1, R2; vi3, vi4 through RA, RB; RC to ground; feedback RF; output vo",
+   "k": "crop"
+  }
+ ],
+ "2018|2|1(b)": [
+  {
+   "u": "img/electrical-engineering/2018-2-1b-1.webp",
+   "a": "Generator E\u2220\u03b4 connected through reactance jX to an infinite bus of voltage V\u22200\u00b0",
+   "k": "crop"
+  }
+ ],
+ "2018|2|5(a)": [
+  {
+   "u": "img/electrical-engineering/2018-2-5a-1.webp",
+   "a": "Two-bus system: generator SG1, bus 1 (V1 = 1\u22200\u00b0 p.u.), line X = j0\u00b75 p.u., bus 2, demands SD1 = (1 + j0) p.u. and SD2 = (1 + j0) p.u., capacitor QG2 at bus 2",
+   "k": "crop"
+  }
+ ],
+ "2018|2|5(c)": [
+  {
+   "u": "img/electrical-engineering/2018-2-5c-1.webp",
+   "a": "Convolutional encoder: input U through two delay boxes, two modulo-2 adders, switch alternating V1 and V2 to output V",
+   "k": "crop"
+  }
+ ],
+ "2018|2|8(b)(i)": [
+  {
+   "u": "img/electrical-engineering/2018-2-8bi-1.webp",
+   "a": "Block diagram: E(s) into K / s(Ts + 1), output \u03b8(s)",
+   "k": "crop"
+  }
+ ],
+ "2019|2|1(d)(ii)": [
+  {
+   "u": "img/electrical-engineering/2019-2-1dii-1.webp",
+   "a": "Triangular current waveform i against t with peak Imax",
+   "k": "crop"
+  }
+ ],
+ "2019|2|2(b)": [
+  {
+   "u": "img/electrical-engineering/2019-2-2b-1.webp",
+   "a": "Pin diagram of the 74LS373 octal latch",
+   "k": "crop"
+  },
+  {
+   "u": "img/electrical-engineering/2019-2-2b-2.webp",
+   "a": "Pin diagram of the 1408 D/A converter",
+   "k": "crop"
+  }
+ ],
+ "2019|2|4(a)(i)": [
+  {
+   "u": "img/electrical-engineering/2019-2-4ai-1.webp",
+   "a": "Electromechanical system: source e(t) with R, L, C, loops i1(t) and i2(t), coil back e.m.f. eb(t), force P(t) on mass M with spring K and damper D, displacement x(t)",
+   "k": "crop"
+  }
+ ],
+ "2019|2|4(a)(ii)": [
+  {
+   "u": "img/electrical-engineering/2019-2-4aii-1.webp",
+   "a": "Block diagram with inputs R1 and R2, blocks G1 to G4, feedback H1 and H2, outputs C1 and C2",
+   "k": "crop"
+  }
+ ],
+ "2019|2|4(b)": [
+  {
+   "u": "img/electrical-engineering/2019-2-4b-1.webp",
+   "a": "Percentage differential relay on an alternator winding: CTs 400/5, currents 304+j0 and 320+j0 A, neutral earthing, operating coil with restraint coil R",
+   "k": "crop"
+  }
+ ],
+ "2019|2|5(b)": [
+  {
+   "u": "img/electrical-engineering/2019-2-5b-1.webp",
+   "a": "\u0394-connected load with line currents Ia = 10\u22200\u00b0 A, Ib = 10\u2220180\u00b0 A and Ic = 0 (line c open)",
+   "k": "crop"
+  }
+ ],
+ "2019|2|5(c)": [
+  {
+   "u": "img/electrical-engineering/2019-2-5c-1.webp",
+   "a": "Four rectangular signals s1(t), s2(t), s3(t), s4(t) of height 1\u00b70: s1 from 0 to T/3, s2 from 0 to 2T/3, s3 from T/3 to T, s4 from 0 to T",
+   "k": "crop"
+  }
+ ],
+ "2020|1|1(a)": [
+  {
+   "u": "img/electrical-engineering/2020-1-1a-1.webp",
+   "a": "Circuit: 100 V battery, 20 \u03a9, switch at t = 0, 5 \u03a9 with a 100 V battery, 0\u00b75 H inductor carrying iL",
+   "k": "crop"
+  }
+ ],
+ "2020|1|1(d)": [
+  {
+   "u": "img/electrical-engineering/2020-1-1d-1.webp",
+   "a": "Darlington pair: VCC, R1 to base of T1, T1 emitter to base of T2, RE from T2 emitter to ground",
+   "k": "crop"
+  }
+ ],
+ "2020|1|2(a)(i)": [
+  {
+   "u": "img/electrical-engineering/2020-1-2ai-1.webp",
+   "a": "Two-port: 1 k\u03a9 across V1, dependent current source 10\u207b\u2075 V2, 10 k\u03a9 with dependent voltage source 100 V1, output V2",
+   "k": "crop"
+  }
+ ],
+ "2020|1|2(a)(ii)": [
+  {
+   "u": "img/electrical-engineering/2020-1-2aii-1.webp",
+   "a": "(A) Boost circuit: 100 V source, switch S, 100 \u03bcH inductor, diode, 500 V battery; (B) inductor current i against time with on-time Ton, off-time Toff and peak Ip",
+   "k": "crop"
+  }
+ ],
+ "2020|1|3(a)": [
+  {
+   "u": "img/electrical-engineering/2020-1-3a-1.webp",
+   "a": "Differential amplifier with three-transistor active load: Q1 to Q5, currents i1 to i4, IQ, VCC, \u2212VCC, load RL with output vo",
+   "k": "crop"
+  }
+ ],
+ "2020|1|3(b)(i)": [
+  {
+   "u": "img/electrical-engineering/2020-1-3bi-1.webp",
+   "a": "Coupled circuit: source Vs, 2 \u03a9, L1 and L2 with coupling k, 40 \u03a9 load with Vo",
+   "k": "crop"
+  }
+ ],
+ "2020|1|3(b)(ii)": [
+  {
+   "u": "img/electrical-engineering/2020-1-3bii-1.webp",
+   "a": "Network with impedances Z1, Z2, ZL between terminals X and Y, sources V1 = 30\u222045\u00b0 V and V2 = 30\u2220\u221245\u00b0 V",
+   "k": "crop"
+  }
+ ],
+ "2020|1|4(b)": [
+  {
+   "u": "img/electrical-engineering/2020-1-4b-1.webp",
+   "a": "State diagram of eight states 000, 001, 100, 111, 101, 110, 010, 011 with transitions",
+   "k": "crop"
+  }
+ ],
+ "2020|1|4(c)": [
+  {
+   "u": "img/electrical-engineering/2020-1-4c-1.webp",
+   "a": "Op-amp low-pass filter: R1 input, parallel R and C = 100 nF feedback, output Vo",
+   "k": "crop"
+  }
+ ],
+ "2020|1|5(a)": [
+  {
+   "u": "img/electrical-engineering/2020-1-5a-1.webp",
+   "a": "Single-phase fully-controlled thyristor bridge on 250 V rms 50 Hz supply feeding the armature Ra = 0\u00b72 \u03a9 of a dc motor with constant field",
+   "k": "crop"
+  }
+ ],
+ "2020|1|5(e)": [
+  {
+   "u": "img/electrical-engineering/2020-1-5e-1.webp",
+   "a": "Circuit: current source 10\u00b76\u22200\u00b0 A, 1 \u03a9, j2 \u03a9, 5 \u03a9, 10 \u03a9, \u2212j5 \u03a9 and dependent voltage source 20 Ix, branch currents Ia, Ib, Ic and Ix",
+   "k": "crop"
+  }
+ ],
+ "2020|1|6(b)": [
+  {
+   "u": "img/electrical-engineering/2020-1-6b-1.webp",
+   "a": "Step-up dc-dc converter: source Vd, inductor L, switch S, diode, capacitor C, load R with Vo",
+   "k": "crop"
+  }
+ ],
+ "2020|1|6(c)": [
+  {
+   "u": "img/electrical-engineering/2020-1-6c-1.webp",
+   "a": "Ideal slope circuit frequency response H1(f)/j: slope 2\u03c0a between fc \u2212 BT/2 and fc + BT/2 and mirrored at negative frequencies",
+   "k": "crop"
+  }
+ ],
+ "2020|1|7(b)": [
+  {
+   "u": "img/electrical-engineering/2020-1-7b-1.webp",
+   "a": "FM wave s(t) into delay line and summer (\u2212, +), then envelope detector, output \u03b1(t)",
+   "k": "crop"
+  }
+ ],
+ "2020|1|8(a)": [
+  {
+   "u": "img/electrical-engineering/2020-1-8a-1.webp",
+   "a": "SCR circuit: 100 V battery, SCR, 20 \u03a9 in series with 0\u00b75 H, 5 k\u03a9 load",
+   "k": "crop"
+  }
+ ],
+ "2019|2|8(a)(iii)": [
+  {
+   "u": "img/electrical-engineering/2019-2-8aiii-1.webp",
+   "a": "Rate 1/2, K = 4 convolutional encoder: input, three flip-flops, two mod-2 adders, output switch",
+   "k": "crop"
+  }
+ ],
+ "2019|2|8(c)": [
+  {
+   "u": "img/electrical-engineering/2019-2-8c-1.webp",
+   "a": "Primitive impedance matrix of a power system network: 5 \u00d7 5 table (elements 1 to 5)",
+   "k": "table"
+  }
+ ],
+ "2020|2|2(a)": [
+  {
+   "u": "img/electrical-engineering/2020-2-2a-1.webp",
+   "a": "Sustained oscillation of unit step response against time (0 to 6 s) with time x marked between two crossings",
+   "k": "crop"
+  }
+ ],
+ "2020|2|3(b)": [
+  {
+   "u": "img/electrical-engineering/2020-2-3b-1.webp",
+   "a": "Single-line diagram: generator, transformer T1 25 MVA 11/66 kV, line, transformer T2 25 MVA 66/11 kV, motor",
+   "k": "crop"
+  }
+ ],
+ "2020|2|6(a)": [
+  {
+   "u": "img/electrical-engineering/2020-2-6a-1.webp",
+   "a": "Cascade block diagram u into (s\u22121)/(s+1) then 1/(s\u22121), output y",
+   "k": "crop"
+  }
+ ],
+ "2020|2|7(c)": [
+  {
+   "u": "img/electrical-engineering/2020-2-7c-1.webp",
+   "a": "Lag network: 4 \u03a9 series, 2 \u03a9 shunt, 0\u00b75 F capacitor, input vi(t), output vo(t)",
+   "k": "crop"
+  }
+ ],
+ "2020|2|8(a)": [
+  {
+   "u": "img/electrical-engineering/2020-2-8a-1.webp",
+   "a": "Approximate Bode magnitude plot: 40 dB at 0\u00b705, \u221220 dB/D, corner at 2, \u221240 dB/D, corner at 10, \u221260 dB/D",
+   "k": "crop"
+  }
+ ],
+ "2021|1|1(a)": [
+  {
+   "u": "img/electrical-engineering/2021-1-1a-1.webp",
+   "a": "Two-port network with 2 H inductor, 100 sin(2t) source, 0\u00b701 F capacitor and 200 \u03a9 load",
+   "k": "crop"
+  }
+ ],
+ "2021|1|1(b)": [
+  {
+   "u": "img/electrical-engineering/2021-1-1b-1.webp",
+   "a": "Signal X(t): trapezoid with value 1 from \u22122 to 2, rising to 2 at \u22121 to 1, zero beyond \u00b13",
+   "k": "crop"
+  }
+ ],
+ "2021|1|1(d)": [
+  {
+   "u": "img/electrical-engineering/2021-1-1d-1.webp",
+   "a": "PNP transistor Q1 with VCC = 2\u00b75 V, 20 k\u03a9 from collector to base and 1\u00b76 k\u03a9 to ground",
+   "k": "crop"
+  }
+ ],
+ "2021|1|2(a)": [
+  {
+   "u": "img/electrical-engineering/2021-1-2a-1.webp",
+   "a": "Coupled circuit: 100\u22200\u00b0 V source, \u2212j2 \u03a9, j4 \u03a9 and j9 \u03a9 coils with k = 0\u00b75, j2 \u03a9, 2 \u03a9, j3 \u03a9 and load ZL",
+   "k": "crop"
+  }
+ ],
+ "2021|1|2(b)": [
+  {
+   "u": "img/electrical-engineering/2021-1-2b-1.webp",
+   "a": "Piecewise signal X(t) with levels 1, 2, 3, 2 on intervals 0\u20131, 1\u20132, 2\u20133, 3\u20134 and rectangular pulse V(t) of height 1 from \u22121 to 1",
+   "k": "crop"
+  }
+ ],
+ "2021|1|2(c)": [
+  {
+   "u": "img/electrical-engineering/2021-1-2c-1.webp",
+   "a": "Two J-K flip-flops with inputs A, B, C, output X and Y, clear and Start pulse",
+   "k": "crop"
+  }
+ ],
+ "2021|1|3(a)(i)": [
+  {
+   "u": "img/electrical-engineering/2021-1-3ai-1.webp",
+   "a": "Op-amp with VREF, R1, transistors Q1 and Q2, voltage V1, current IX",
+   "k": "crop"
+  }
+ ],
+ "2021|1|3(a)(ii)": [
+  {
+   "u": "img/electrical-engineering/2021-1-3aii-1.webp",
+   "a": "Modified topology with Q1 and Q2 separately grounded, voltage V1, current IX",
+   "k": "crop"
+  }
+ ],
+ "2021|1|3(b)": [
+  {
+   "u": "img/electrical-engineering/2021-1-3b-1.webp",
+   "a": "Circuit: V(t) source, 10 \u03a9, 0\u00b71 F capacitor with V0, 4 H, current source I(t), 20 V battery",
+   "k": "crop"
+  }
+ ],
+ "2021|1|4(b)": [
+  {
+   "u": "img/electrical-engineering/2021-1-4b-1.webp",
+   "a": "Multiplexer network: four 2:1 multiplexers (D0 to D7, S0) feeding a 4:1 multiplexer (S2, S1), output Y",
+   "k": "crop"
+  }
+ ],
+ "2021|1|4(c)": [
+  {
+   "u": "img/electrical-engineering/2021-1-4c-1.webp",
+   "a": "Inverting op-amp with Vin, R2, R3, R4, R1 and Vx, output Vout, A0 = \u221e",
+   "k": "crop"
+  }
+ ],
+ "2021|1|5(c)": [
+  {
+   "u": "img/electrical-engineering/2021-1-5c-1.webp",
+   "a": "Scott connection: teaser \u221a3/2 N1 and main N1/2 N1/2 on 11 kV 3-phase supply A, B, C, secondaries N2 in series, 1100 A resistive load at 100\u221a2 V",
+   "k": "crop"
+  }
+ ],
+ "2021|1|5(e)": [
+  {
+   "u": "img/electrical-engineering/2021-1-5e-1.webp",
+   "a": "Circuit with C1 = 0\u00b75 F with vC, dependent current source i/2, 3 \u03a9 and C2 = 1/3 F carrying i",
+   "k": "crop"
+  }
+ ],
+ "2021|1|6(b)": [
+  {
+   "u": "img/electrical-engineering/2021-1-6b-1.webp",
+   "a": "Three-phase bridge inverter Q1 to Q6 with diodes D1 to D6, supply VS, Y-connected load R at a, b, c, n",
+   "k": "crop"
+  }
+ ],
+ "2021|1|7(a)": [
+  {
+   "u": "img/electrical-engineering/2021-1-7a-1.webp",
+   "a": "Open circuit test table: If (A) against VLL (kV)",
+   "k": "table"
+  }
+ ],
+ "2021|2|1(b)": [
+  {
+   "u": "img/electrical-engineering/2021-2-1b-1.webp",
+   "a": "Single-line diagram: Vs, transformer 11/33 KV 10 MVA X = 10%, transformer 33/10 KV 10 MVA X = 12%, VR, 8 \u03a9 load",
+   "k": "crop"
+  }
+ ],
+ "2021|2|1(d)": [
+  {
+   "u": "img/electrical-engineering/2021-2-1d-1.webp",
+   "a": "Circuit: 1 mH, 1000 \u03a9, voltmeters (electrostatic), ammeters MC and MI carrying current i",
+   "k": "crop"
+  }
+ ],
+ "2021|2|2(a)": [
+  {
+   "u": "img/electrical-engineering/2021-2-2a-1.webp",
+   "a": "Star load with z1 in each phase, zn in the neutral and delta load with z2, supplied from R, Y, B",
+   "k": "crop"
+  }
+ ],
+ "2021|2|2(b)": [
+  {
+   "u": "img/electrical-engineering/2021-2-2b-1.webp",
+   "a": "RC ladder: input Vi(t), R1, I1(t), C1, R2, I2(t), C2 with output Vo(t)",
+   "k": "crop"
+  }
+ ],
+ "2021|2|3(b)": [
+  {
+   "u": "img/electrical-engineering/2021-2-3b-1.webp",
+   "a": "Laplacian pdf p(n) = (1/\u221a2\u03c3) e^(\u2212\u221a2\u00b7abs(n)/\u03c3), peaked at n = 0 with exponential decay",
+   "k": "crop"
+  }
+ ],
+ "2021|2|4(a)(i)": [
+  {
+   "u": "img/electrical-engineering/2021-2-4ai-1.webp",
+   "a": "Conductor arrangement of a 400 KV 3-phase line: sub-conductors a, a\u2032, b, b\u2032, c, c\u2032 with 10 m spacings and 0\u00b75 m bundle spacing",
+   "k": "crop"
+  }
+ ],
+ "2021|2|4(c)": [
+  {
+   "u": "img/electrical-engineering/2021-2-4c-1.webp",
+   "a": "Magnitude plot in dB against w (rad/sec) with corners at 2 and 20",
+   "k": "crop"
+  }
+ ],
+ "2021|2|5(b)": [
+  {
+   "u": "img/electrical-engineering/2021-2-5b-1.webp",
+   "a": "Routh table top rows: s\u2074 : 1, 10, 24; s\u00b3 : 5, 20",
+   "k": "table"
+  }
+ ],
+ "2021|2|6(a)": [
+  {
+   "u": "img/electrical-engineering/2021-2-6a-1.webp",
+   "a": "Synchronous machine with transformer T, double circuit Line-1 and Line-2 with breakers CB1 to CB4 to an infinite bus V = 1\u00b70\u22200\u00b0 p.u.",
+   "k": "crop"
+  }
+ ],
+ "2021|2|6(b)": [
+  {
+   "u": "img/electrical-engineering/2021-2-6b-1.webp",
+   "a": "Feedback loop: forward block 1/s(s+1), feedback block 2(s\u22122)",
+   "k": "crop"
+  }
+ ],
+ "2021|2|7(b)": [
+  {
+   "u": "img/electrical-engineering/2021-2-7b-1.webp",
+   "a": "Lead network: C in parallel with R1, then R2, input Vi(t), output Vo(t)",
+   "k": "crop"
+  }
+ ],
+ "2022|1|1(a)": [
+  {
+   "u": "img/electrical-engineering/2022-1-1a-1.webp",
+   "a": "Circuit: Vin source, 2 A, 5 \u03a9, 60 V source, 2 \u03a9, 8 A, 3 \u03a9 with ix, Vs battery and dependent source 4ix",
+   "k": "crop"
+  }
+ ],
+ "2022|1|1(d)": [
+  {
+   "u": "img/electrical-engineering/2022-1-1d-1.webp",
+   "a": "Op-amp circuit: 1 V source, 10 k\u03a9 input, 10 k\u03a9 feedback with 100 \u03a9 to ground and variable load RL carrying IL, currents I1, I2, I3, voltage Vx, output Vo",
+   "k": "crop"
+  }
+ ],
+ "2022|1|2(a)(i)": [
+  {
+   "u": "img/electrical-engineering/2022-1-2ai-1.webp",
+   "a": "Circuit: 100 V source, 50 \u03a9, switch S at t = 0, 100 \u03a9, 4 H coil carrying iL(t)",
+   "k": "crop"
+  }
+ ],
+ "2022|1|2(a)(ii)": [
+  {
+   "u": "img/electrical-engineering/2022-1-2aii-1.webp",
+   "a": "Network: 4 V source, 2 k\u03a9, 3 k\u03a9, dependent current source Vx/4 k\u03a9, terminals X and Y",
+   "k": "crop"
+  }
+ ],
+ "2022|1|2(c)": [
+  {
+   "u": "img/electrical-engineering/2022-1-2c-1.webp",
+   "a": "Single-phase thyristor bridge T1 to T4 on 200 V 50 Hz supply feeding load R with current iL",
+   "k": "crop"
+  }
+ ],
+ "2022|1|3(a)": [
+  {
+   "u": "img/electrical-engineering/2022-1-3a-1.webp",
+   "a": "Common-emitter amplifier: VCC, RC, CC, RL, Rsig, source Vsig, emitter bypass CE, current source I, output Vo",
+   "k": "crop"
+  }
+ ],
+ "2022|1|3(b)(ii)": [
+  {
+   "u": "img/electrical-engineering/2022-1-3bii-1.webp",
+   "a": "Network: source vin(t), 1 \u03a9, 1 H, 1 F capacitor with vo(t), 3 \u03a9 load",
+   "k": "crop"
+  }
+ ],
+ "2022|1|4(a)": [
+  {
+   "u": "img/electrical-engineering/2022-1-4a-1.webp",
+   "a": "Figure 4(a)(i) RC network: e(t), 1 \u03a9, 1 F, output u(t); Figure 4(a)(ii) rectangular pulse e(t) of height V from 0 to 1",
+   "k": "crop"
+  }
+ ],
+ "2022|1|4(c)": [
+  {
+   "u": "img/electrical-engineering/2022-1-4c-1.webp",
+   "a": "MOSFET amplifier: VDD, RD = 10 k\u03a9, output Vo, source resistor RS = 6 k\u03a9 with bypass CS, input Vi",
+   "k": "crop"
+  }
+ ],
+ "2022|1|5(a)": [
+  {
+   "u": "img/electrical-engineering/2022-1-5a-1.webp",
+   "a": "Master-slave S-R flip-flop built from gates G1 to G8 with inputs S, C, R and outputs Q2, Q\u03042, and input waveforms of CLK, S and R against t",
+   "k": "crop"
+  }
+ ],
+ "2022|1|6(b)": [
+  {
+   "u": "img/electrical-engineering/2022-1-6b-1.webp",
+   "a": "Buck regulator: Vs = 16 V, inductor L, diode, capacitor C, load with Va = 5 V",
+   "k": "crop"
+  }
+ ],
+ "2022|1|6(c)": [
+  {
+   "u": "img/electrical-engineering/2022-1-6c-1.webp",
+   "a": "Circuit: 2 A source, 10 \u03a9, 5 \u03a9 with V, 2 \u03a9, 4 A source",
+   "k": "crop"
+  }
+ ],
+ "2022|1|8(b)(i)": [
+  {
+   "u": "img/electrical-engineering/2022-1-8bi-1.webp",
+   "a": "Triangular noise PSD with peak 10\u207b\u2076 W/Hz, spanning \u2212400 kHz to 400 kHz",
+   "k": "crop"
+  }
+ ],
+ "2022|1|8(b)(ii)": [
+  {
+   "u": "img/electrical-engineering/2022-1-8bii-1.webp",
+   "a": "Block diagram: x(t) and n(t) into summer, two differentiators d/dt, low-pass filter, output y(t)",
+   "k": "crop"
+  }
+ ],
+ "2022|2|1(a)": [
+  {
+   "u": "img/electrical-engineering/2022-2-1a-1.webp",
+   "a": "Closed-loop block diagram: two summing junctions, forward block A/Js, 1/s, feedback block B, R(s) and C(s)",
+   "k": "crop"
+  }
+ ],
+ "2022|2|1(b)": [
+  {
+   "u": "img/electrical-engineering/2022-2-1b-1.webp",
+   "a": "Block diagram: R into summer, gain K, 1/(s\u00b2+2s+2), output Y, feedback 1/(s+1)",
+   "k": "crop"
+  }
+ ],
+ "2022|2|2(a)": [
+  {
+   "u": "img/electrical-engineering/2022-2-2a-1.webp",
+   "a": "Unity feedback loop: forward block (s+\u03b1)/(s\u00b3+(1+\u03b1)s\u00b2+(\u03b1\u22121)s+(1\u2212\u03b1)), R(s) and C(s)",
+   "k": "crop"
+  }
+ ],
+ "2022|2|2(b)": [
+  {
+   "u": "img/electrical-engineering/2022-2-2b-1.webp",
+   "a": "Table: Instruction and Clock cycle: LXI 10, CALL 18, DCX D 6, MOV A,D 4, ORA E 4, JNZ 7/10 (for Z=1 or 0), RET 10",
+   "k": "table"
+  }
+ ],
+ "2022|2|3(a)(i)": [
+  {
+   "u": "img/electrical-engineering/2022-2-3ai-1.webp",
+   "a": "Shunt ohmmeter: battery E, adjustable resistance R1 carrying I1, PMMC basic meter Rm with Im, switch S, unknown resistance Rx between A and B",
+   "k": "crop"
+  }
+ ],
+ "2022|2|4(b)": [
+  {
+   "u": "img/electrical-engineering/2022-2-4b-1.webp",
+   "a": "Maxwell bridge: 5 V AC 100 Hz source, R1 = 1K6, unknown coil Ls and Rs, detector D, R3 = 400E, R4 = 500E, C3 = 0\u00b72 \u03bcF",
+   "k": "crop"
+  }
+ ],
+ "2022|2|4(c)": [
+  {
+   "u": "img/electrical-engineering/2022-2-4c-1.webp",
+   "a": "Signal flow graph with R(s), gains G1(s) to G4(s), C(s) and feedback paths of \u22121",
+   "k": "crop"
+  }
+ ],
+ "2022|2|5(a)": [
+  {
+   "u": "img/electrical-engineering/2022-2-5a-1.webp",
+   "a": "Composite conductors: go conductor A (a, b, c, 2 cm radii, 4 m spacing) and return conductor B (a\u2032, b\u2032, 4 cm radii), 6 m apart",
+   "k": "crop"
+  }
+ ],
+ "2022|2|5(b)": [
+  {
+   "u": "img/electrical-engineering/2022-2-5b-1.webp",
+   "a": "Radial system: generator V1, transformer 11/220 kV 100 MVA X = 12%, line j100 \u03a9, transformer 220/66 kV 100 MVA X = 10%, V2 at 60 kV with 60 MW 0\u00b79 pf lagging",
+   "k": "crop"
+  }
+ ],
+ "2022|2|7(a)": [
+  {
+   "u": "img/electrical-engineering/2022-2-7a-1.webp",
+   "a": "Rate 1/2, k = 4 convolutional encoder: input, three flip-flops, modulo-2 adders, switch to output g(1)(x) and g(2)(x)",
+   "k": "crop"
+  }
+ ],
+ "2022|2|8(b)": [
+  {
+   "u": "img/electrical-engineering/2022-2-8b-1.webp",
+   "a": "Waveform s(t): two rectangular pulses of height A from 0 to 1 and from 2 to 3",
+   "k": "crop"
+  }
+ ],
+ "2023|1|1(a)": [
+  {
+   "u": "img/electrical-engineering/2023-1-1a-1.webp",
+   "a": "Coupled circuit: 10\u22200\u00b0 V source, 4 \u03a9, j8 \u03a9, j5 \u03a9 mutual, j4 \u03a9, 2 \u03a9, 10\u222090\u00b0 V source, terminals a and b",
+   "k": "crop"
+  }
+ ],
+ "2023|1|1(b)": [
+  {
+   "u": "img/electrical-engineering/2023-1-1b-1.webp",
+   "a": "Periodic sawtooth f(t) with amplitude 1 and period a: rises from 0 at 0, a, 2a, 3a",
+   "k": "crop"
+  },
+  {
+   "u": "img/electrical-engineering/2023-1-1b-2.webp",
+   "a": "Waveform with value 1 held from a to 3a, falling to 0 at 4a and rising to 1 at 5a",
+   "k": "crop"
+  }
+ ],
+ "2023|1|1(d)": [
+  {
+   "u": "img/electrical-engineering/2023-1-1d-1.webp",
+   "a": "Common-emitter amplifier: VCC = 12 V, R1 = 10 k\u03a9, RC = 1 k\u03a9, R2 = 1\u00b75 k\u03a9, RE = 0\u00b71 k\u03a9, RS = 0\u00b75 k\u03a9, CC = 0\u00b71 \u03bcF, source Vi, output Vo",
+   "k": "crop"
+  }
+ ],
+ "2023|1|1(e)": [
+  {
+   "u": "img/electrical-engineering/2023-1-1e-1.webp",
+   "a": "Metal bar sliding on conducting rails in uniform magnetic field with velocity u, resistance R between terminals 1 and 2, height h meters",
+   "k": "crop"
+  }
+ ],
+ "2023|1|2(a)": [
+  {
+   "u": "img/electrical-engineering/2023-1-2a-1.webp",
+   "a": "Network with nodes V1 to V4: 0\u00b75 \u03a9, 2 A source, 2 \u03a9, 12 V source, dependent sources 0\u00b75 Vx and 0\u00b72 Vy, 2\u00b75 \u03a9, 1 \u03a9",
+   "k": "crop"
+  }
+ ],
+ "2023|1|2(c)": [
+  {
+   "u": "img/electrical-engineering/2023-1-2c-1.webp",
+   "a": "Differential pair Q1 and Q2 with RC1, RC2, VCC, outputs X and Y, common-mode source VCM and current source IEE",
+   "k": "crop"
+  }
+ ],
+ "2023|1|3(a)(i)": [
+  {
+   "u": "img/electrical-engineering/2023-1-3ai-1.webp",
+   "a": "Four-stage shift register of D flip-flops with 2:1 multiplexers, inputs XL, X0 to X3, Load, CLR and CK",
+   "k": "crop"
+  },
+  {
+   "u": "img/electrical-engineering/2023-1-3ai-2.webp",
+   "a": "Truth table: Inputs CK, CLR, Load and Next State Q3 to Q0",
+   "k": "table"
+  }
+ ],
+ "2023|1|3(b)(i)": [
+  {
+   "u": "img/electrical-engineering/2023-1-3bi-1.webp",
+   "a": "Triangular pulse f(t) with peak V0 at t = 0, zero at \u2212a/2 and a/2",
+   "k": "crop"
+  }
+ ],
+ "2023|1|3(c)": [
+  {
+   "u": "img/electrical-engineering/2023-1-3c-1.webp",
+   "a": "Inverting op-amp with inputs v1 and v2 through R1 and R2, feedback Rf, output v0",
+   "k": "crop"
+  }
+ ],
+ "2023|1|4(a)": [
+  {
+   "u": "img/electrical-engineering/2023-1-4a-1.webp",
+   "a": "Transistor Q1 with VCC = 2\u00b75 V, 50 k\u03a9, 3 k\u03a9 collector load and 30 k\u03a9 base resistor",
+   "k": "crop"
+  }
+ ],
+ "2023|1|4(b)": [
+  {
+   "u": "img/electrical-engineering/2023-1-4b-1.webp",
+   "a": "Four switches SW1 to SW4, each with a 5 V source and resistor, feeding a logic circuit with output X",
+   "k": "crop"
+  }
+ ],
+ "2023|1|4(c)": [
+  {
+   "u": "img/electrical-engineering/2023-1-4c-1.webp",
+   "a": "Two-port network with VS1, VS2, I1, I2 and the experiments table",
+   "k": "crop"
+  }
+ ],
+ "2023|1|5(b)": [
+  {
+   "u": "img/electrical-engineering/2023-1-5b-1.webp",
+   "a": "Half-controlled bridge with thyristors and diodes on 240 V 50 Hz supply feeding 2 \u03a9, large inductance L and 100 V 1800 W battery",
+   "k": "crop"
+  }
+ ],
+ "2023|1|5(e)": [
+  {
+   "u": "img/electrical-engineering/2023-1-5e-1.webp",
+   "a": "Series RLC: 10 V source, switch positions 1 and 2, Q0 = 200 \u03bcF capacitor, 5 \u03a9, 0\u00b71 H, current i0",
+   "k": "crop"
+  }
+ ],
+ "2023|1|6(b)": [
+  {
+   "u": "img/electrical-engineering/2023-1-6b-1.webp",
+   "a": "Absorber material coated on a conducting sheet with incident wave in free space",
+   "k": "crop"
+  }
+ ],
+ "2023|1|7(c)": [
+  {
+   "u": "img/electrical-engineering/2023-1-7c-1.webp",
+   "a": "Thyristor circuit: 200 V source, thyristor with 1\u00b75 mF capacitor and 3\u00b70 mH inductor, 4 \u03a9 resistor",
+   "k": "crop"
+  }
+ ],
+ "2023|1|8(b)(ii)": [
+  {
+   "u": "img/electrical-engineering/2023-1-8bii-1.webp",
+   "a": "Cascade: attenuator loss = 3 dB, amplifier gain = 1000 noise figure = 1\u00b75 dB, mixer gain = 100 noise figure = 8 dB",
+   "k": "crop"
+  }
+ ],
+ "2023|2|1(a)": [
+  {
+   "u": "img/electrical-engineering/2023-2-1a-1.webp",
+   "a": "Unity feedback loop: u(t), summer, forward block K/(s+1)(s+2), output c(t)",
+   "k": "crop"
+  }
+ ],
+ "2023|2|2(a)": [
+  {
+   "u": "img/electrical-engineering/2023-2-2a-1.webp",
+   "a": "Feedback loop: R(s), forward block K/(s\u22121)(s\u00b2+4s+7), feedback block s+4, output C(s)",
+   "k": "crop"
+  }
+ ],
+ "2023|2|3(a)": [
+  {
+   "u": "img/electrical-engineering/2023-2-3a-1.webp",
+   "a": "Block diagram: u into summer, block \u22125/(s+4) giving x1, a unity block, block 1/(s\u22121) giving x2, summed to output y",
+   "k": "crop"
+  }
+ ],
+ "2023|2|5(a)": [
+  {
+   "u": "img/electrical-engineering/2023-2-5a-1.webp",
+   "a": "Compensator network: R1 in series, C and R2 to ground, input Vi(t) and output Vo(t)",
+   "k": "crop"
+  }
+ ],
+ "2023|2|6(a)(ii)": [
+  {
+   "u": "img/electrical-engineering/2023-2-6aii-1.webp",
+   "a": "Three-bus network: buses 1, 2, 3, series j0\u00b725 and \u2212j0\u00b708 between them, shunt j0\u00b715 at buses 1 and 3",
+   "k": "crop"
+  }
+ ],
+ "2023|2|6(c)": [
+  {
+   "u": "img/electrical-engineering/2023-2-6c-1.webp",
+   "a": "Series R and L feeding capacitor C, input Vi(t) and output Vo(t)",
+   "k": "crop"
+  }
+ ],
+ "2023|2|7(c)": [
+  {
+   "u": "img/electrical-engineering/2023-2-7c-1.webp",
+   "a": "Single-phase distributor A-B-C: loads 150 A at 0\u00b76 p.f. lagging at B and 150 A at 0\u00b78 p.f. lagging at C",
+   "k": "crop"
+  }
+ ],
+ "2023|2|8(a)": [
+  {
+   "u": "img/electrical-engineering/2023-2-8a-1.webp",
+   "a": "Unity feedback loop with G(s) between R(s) and C(s)",
+   "k": "crop"
+  }
+ ],
+ "2024|1|1(a)": [
+  {
+   "u": "img/electrical-engineering/2024-1-1a-1.webp",
+   "a": "Circuit: 10 V source, 2 \u03a9, node A, 1 \u03a9, 2 A source, 2 \u03a9, 3 \u03a9 with node B, 2 \u03a9 to ground, 5 V source",
+   "k": "crop"
+  }
+ ],
+ "2024|1|1(c)": [
+  {
+   "u": "img/electrical-engineering/2024-1-1c-1.webp",
+   "a": "Matched transistors T1 and T2 with 560 \u03a9 and 470 \u03a9 collector resistors from +12 V",
+   "k": "crop"
+  }
+ ],
+ "2024|1|1(e)": [
+  {
+   "u": "img/electrical-engineering/2024-1-1e-1.webp",
+   "a": "Circuit: 9 V source, L = 10 mH, diode D1, key K1 opened at t0, R1 = 0\u00b79 \u03a9, C1 = 100 \u03bcF",
+   "k": "crop"
+  }
+ ],
+ "2024|1|2(b)": [
+  {
+   "u": "img/electrical-engineering/2024-1-2b-1.webp",
+   "a": "Waveforms f1(t) (levels at 1, 2, 3 with impulse +1 at t = 3) and f2(t) (1 level with impulses \u22121 at three points)",
+   "k": "crop"
+  }
+ ],
+ "2024|1|2(c)": [
+  {
+   "u": "img/electrical-engineering/2024-1-2c-1.webp",
+   "a": "Circuit: 12 mA source, dependent source vx/20, 2 k\u03a9 with v1, 2 mA source, 1 k\u03a9 with vx, \u22125 mA, 4 k\u03a9, 5 V, 1 k\u03a9, 2 mA",
+   "k": "crop"
+  }
+ ],
+ "2024|1|3(b)": [
+  {
+   "u": "img/electrical-engineering/2024-1-3b-1.webp",
+   "a": "Op-amp circuit with I1, I2, I3, R1 to R6, Z1 and Z2 zeners, C1, outputs A and B",
+   "k": "crop"
+  }
+ ],
+ "2024|1|3(c)": [
+  {
+   "u": "img/electrical-engineering/2024-1-3c-1.webp",
+   "a": "Logic circuit with inputs D0 and D1 and outputs Y0 to Y3",
+   "k": "crop"
+  }
+ ],
+ "2024|1|4(a)": [
+  {
+   "u": "img/electrical-engineering/2024-1-4a-1.webp",
+   "a": "Circuit: 9 V, R1 = 12 \u03a9, R2 = 12 \u03a9, 3 V, controlled source 2Vab, R3 = 4 \u03a9, variable RL, terminals a and b",
+   "k": "crop"
+  }
+ ],
+ "2024|1|4(b)(ii)": [
+  {
+   "u": "img/electrical-engineering/2024-1-4bii-1.webp",
+   "a": "Linear regulated power supply: input 15 V to 20 V DC, 1 k\u03a9, 12 V zener, op-amp I1, T1, T2, 470 \u03a9, 0\u00b77 \u03a9, 1 k\u03a9, 10 k\u03a9, 1 k\u03a9, output",
+   "k": "crop"
+  }
+ ],
+ "2024|1|4(c)": [
+  {
+   "u": "img/electrical-engineering/2024-1-4c-1.webp",
+   "a": "Three 2-input multiplexers with inputs I0 to I3, selects S1 and S0, outputs Z1, Z2 and Z",
+   "k": "crop"
+  }
+ ],
+ "2024|1|5(c)": [
+  {
+   "u": "img/electrical-engineering/2024-1-5c-1.webp",
+   "a": "Series diode, switch S at t = 0, inductor L and capacitor C with VC(t = 0)",
+   "k": "crop"
+  }
+ ],
+ "2024|1|6(a)(i)": [
+  {
+   "u": "img/electrical-engineering/2024-1-6ai-1.webp",
+   "a": "Block diagram: s(t), squarer v1(t) = s\u00b2(t), low-pass filter v2(t), square rooter v3(t)",
+   "k": "crop"
+  }
+ ],
+ "2024|1|7(c)": [
+  {
+   "u": "img/electrical-engineering/2024-1-7c-1.webp",
+   "a": "Conducting plane at z = 0 with electric field E pointing along z above it",
+   "k": "crop"
+  }
+ ],
+ "2024|1|8(a)": [
+  {
+   "u": "img/electrical-engineering/2024-1-8a-1.webp",
+   "a": "Planes y + z = 1 separating region 1 (\u03bcr1 = 5, containing the origin O) and region 2 (\u03bcr2 = 7)",
+   "k": "crop"
+  }
+ ],
+ "2024|1|8(c)": [
+  {
+   "u": "img/electrical-engineering/2024-1-8c-1.webp",
+   "a": "DC-DC converter: source Vs, switch S, inductor L, diode, capacitor C, load with Vo",
+   "k": "crop"
+  }
+ ],
+ "2024|2|1(c)": [
+  {
+   "u": "img/electrical-engineering/2024-2-1c-1.webp",
+   "a": "Ohmmeter circuit: battery VB, unknown resistance Rx between A and B, R1, adjustable R2, meter Rm with Im, Ib, I2 and Vm",
+   "k": "crop"
+  }
+ ],
+ "2024|2|3(a)": [
+  {
+   "u": "img/electrical-engineering/2024-2-3a-1.webp",
+   "a": "Frequency response magnitude plot of M(j\u03c9) with 1\u00b70 at \u03c9 = 0 and peak 2\u00b75 at \u03c9n",
+   "k": "crop"
+  }
+ ],
+ "2024|2|4(c)": [
+  {
+   "u": "img/electrical-engineering/2024-2-4c-1.webp",
+   "a": "Figure I: u(t) into K/(s+a) giving c(t); Figure II: step response c(t) rising to 2\u00b70 with time constant marked at 0\u00b72 s",
+   "k": "crop"
+  }
+ ],
+ "2024|2|5(a)": [
+  {
+   "u": "img/electrical-engineering/2024-2-5a-1.webp",
+   "a": "Position control loop: R(s), G(s) = 10/s(s+1), H(s) = 5, output C(s)",
+   "k": "crop"
+  }
+ ],
+ "2024|2|5(c)": [
+  {
+   "u": "img/electrical-engineering/2024-2-5c-1.webp",
+   "a": "Network with reference node 0, buses 1 to 4, shunt \u2212j0\u00b73 branches with current sources, \u2212j4, \u2212j8, \u2212j6, \u2212j12, \u2212j6",
+   "k": "crop"
+  }
+ ],
+ "2024|2|6(a)": [
+  {
+   "u": "img/electrical-engineering/2024-2-6a-1.webp",
+   "a": "Transmission system: generators G1 and G2, buses 1 to 4, lines L1 L2 L3, currents I1 I2 I3 and voltages V1 V2 V3, load",
+   "k": "crop"
+  }
+ ],
+ "2024|2|8(a)": [
+  {
+   "u": "img/electrical-engineering/2024-2-8a-1.webp",
+   "a": "Joint probability matrix P(X, Y) for x1 to x3 against y1 to y3",
+   "k": "table"
+  }
+ ],
+ "2025|1|1(a)": [
+  {
+   "u": "img/electrical-engineering/2025-1-1a-1.webp",
+   "a": "Circuit: 3 A source, 12 \u03a9, 6 \u03a9, 9 \u03a9, 4 \u03a9, 3 \u03a9, 6 V and 12 V sources, 6 \u03a9, points A and B and ground G",
+   "k": "crop"
+  }
+ ],
+ "2025|1|1(b)": [
+  {
+   "u": "img/electrical-engineering/2025-1-1b-1.webp",
+   "a": "Plots of the magnitude of X(e^j\u03a9) (sin(\u03a9) segments, peak 1, repeating) and arg[X(e^j\u03a9)] (ramps from \u22122\u03c0 to 2\u03c0) against \u03a9",
+   "k": "crop"
+  }
+ ],
+ "2025|1|1(c)": [
+  {
+   "u": "img/electrical-engineering/2025-1-1c-1.webp",
+   "a": "Circuit: input, 100 \u03bcF capacitor C1, R1 = 10 K shunt, diode D1 with 3 V battery, output",
+   "k": "crop"
+  }
+ ],
+ "2025|1|1(e)": [
+  {
+   "u": "img/electrical-engineering/2025-1-1e-1.webp",
+   "a": "Two-port network with 3 \u03a9 series and 3 \u03a9, 3 \u03a9, 3 \u03a9 T-network, V1, I1, V2, I2",
+   "k": "crop"
+  }
+ ],
+ "2025|1|2(a)": [
+  {
+   "u": "img/electrical-engineering/2025-1-2a-1.webp",
+   "a": "Circuit: 5 \u03a9, 1 A source, 0\u00b71 A source, key K1, 95 \u03a9, 5 V source, capacitor C = 0\u00b71 F, output between B and A",
+   "k": "crop"
+  }
+ ],
+ "2025|1|2(b)": [
+  {
+   "u": "img/electrical-engineering/2025-1-2b-1.webp",
+   "a": "Op-amp relaxation oscillator: R1 = 100 K, C1 = 0\u00b71 \u03bcF, R2 = 1 K, R3 = 39 K, R4 = 1 K, supplies \u00b1 12 V, zeners Z1 and Z2, outputs V1, V2, V3",
+   "k": "crop"
+  }
+ ],
+ "2025|1|2(c)": [
+  {
+   "u": "img/electrical-engineering/2025-1-2c-1.webp",
+   "a": "z-plane pole-zero pattern: zeroes at \u22121/2 and \u22121/4, poles at 1/4, 1/2 and complex poles at radius 1/\u221a2 and angle \u00b1\u03c0/4",
+   "k": "crop"
+  }
+ ],
+ "2025|1|3(b)": [
+  {
+   "u": "img/electrical-engineering/2025-1-3b-1.webp",
+   "a": "Two-stage amplifier: T1 and T2, R1 = 9\u00b71 K, R2 = 2 K, R3 = 36 K, R4 = 100 K, R5 = 200 E, R6 = 1\u00b73 K, R7 = 1 K, RL = 10 K, VCC = 12 V, capacitors C1 to C5",
+   "k": "crop"
+  }
+ ],
+ "2025|1|4(a)": [
+  {
+   "u": "img/electrical-engineering/2025-1-4a-1.webp",
+   "a": "Schottky transistor circuit: Schottky diode with ID, IC, IB, Rs = 10 k\u03a9, VBB = 5\u00b78 V, RC = 1 k\u03a9, VCC = 5 V",
+   "k": "crop"
+  }
+ ],
+ "2025|1|4(c)": [
+  {
+   "u": "img/electrical-engineering/2025-1-4c-1.webp",
+   "a": "Transformer circuit: R1 = 40 ohms, source Vs with \u03c9 = 300 rad/sec, coupled coils, load RL, k = 1, n = 0\u00b72",
+   "k": "crop"
+  }
+ ],
+ "2025|1|5(a)": [
+  {
+   "u": "img/electrical-engineering/2025-1-5a-1.webp",
+   "a": "Dielectric boundary: E1 at 30\u00b0 below the surface in region (1) and E2 with En2 and Et2 at 65\u00b75\u00b0 above in region (2)",
+   "k": "crop"
+  }
+ ],
+ "2025|1|5(c)": [
+  {
+   "u": "img/electrical-engineering/2025-1-5c-1.webp",
+   "a": "Single-phase thyristor bridge: source vs, source inductance Ls with current is, four thyristors, 10 A constant current load",
+   "k": "crop"
+  }
+ ],
+ "2025|1|6(b)": [
+  {
+   "u": "img/electrical-engineering/2025-1-6b-1.webp",
+   "a": "Circuit: ac source, diode, resistor R and battery E = 24 V",
+   "k": "crop"
+  }
+ ],
+ "2025|1|6(c)": [
+  {
+   "u": "img/electrical-engineering/2025-1-6c-1.webp",
+   "a": "(a) Power spectral density Su(f) with peak P0 at \u00b1 fc and bandwidth W; (b) demodulator: r(t) multiplied by cos(2\u03c0fct), low-pass filter BW = W, output",
+   "k": "crop"
+  }
+ ],
+ "2025|1|8(a)(ii)": [
+  {
+   "u": "img/electrical-engineering/2025-1-8aii-1.webp",
+   "a": "Interface between region 1 (\u03b5r1, \u03bcr1) and free space (\u03b50, \u03bc0) with incident, reflected and transmitted fields E0^i, E0^r, E0^t and directions \u03c8i, \u03c8r, \u03c8t",
+   "k": "crop"
+  }
+ ],
+ "2025|2|1(a)": [
+  {
+   "u": "img/electrical-engineering/2025-2-1a-1.webp",
+   "a": "Block diagram: R(s), blocks G1 and G2 in series, forward path G3 to the output summer, feedback H1 and H2, output Y(s)",
+   "k": "crop"
+  }
+ ],
+ "2025|2|1(c)": [
+  {
+   "u": "img/electrical-engineering/2025-2-1c-1.webp",
+   "a": "Resistance network: R1 in series with R2 in parallel with R3, combined resistance R",
+   "k": "crop"
+  }
+ ],
+ "2025|2|3(a)(ii)": [
+  {
+   "u": "img/electrical-engineering/2025-2-3aii-1.webp",
+   "a": "Signal flow graph: R(s) to Y(s) with gains 1, 2, K1, 1/s(s+2), 1/s, 1 and feedback paths \u22121, \u22122, \u22121",
+   "k": "crop"
+  }
+ ],
+ "2025|2|4(a)(ii)": [
+  {
+   "u": "img/electrical-engineering/2025-2-4aii-1.webp",
+   "a": "Unity feedback loop: R, summer, forward block K/s(s+a), output Y",
+   "k": "crop"
+  }
+ ],
+ "2025|2|4(c)": [
+  {
+   "u": "img/electrical-engineering/2025-2-4c-1.webp",
+   "a": "Force F(N) against t: 0\u00b72 N from 0 to 4\u00d710\u207b\u00b3 s",
+   "k": "crop"
+  }
+ ],
+ "2025|2|7(a)": [
+  {
+   "u": "img/electrical-engineering/2025-2-7a-1.webp",
+   "a": "Generators G1 and G2 connected to the \u0394-Y transformer with fault F on the high-tension side",
+   "k": "crop"
+  }
+ ],
+ "2025|2|8(a)": [
+  {
+   "u": "img/electrical-engineering/2025-2-8a-1.webp",
+   "a": "Single-line diagram: generator E with X\u2032d = 0\u00b720, transformer j0\u00b715, parallel lines j0\u00b73 and j0\u00b73, infinite bus",
+   "k": "crop"
+  }
+ ],
+ "2026|1|1(a)": [
+  {
+   "u": "img/electrical-engineering/2026-1-1a-1.webp",
+   "a": "Circuit: 10 A source, 2 \u03a9 with i0, 1 \u03a9 between VA and VB, dependent source k\u00b7i0, 5 \u03a9, 20 V source",
+   "k": "crop"
+  }
+ ],
+ "2026|1|1(b)": [
+  {
+   "u": "img/electrical-engineering/2026-1-1b-1.webp",
+   "a": "Block diagram: x(t) into System 1, w(t), System 2, y(t), Overall system",
+   "k": "crop"
+  }
+ ],
+ "2026|1|1(c)": [
+  {
+   "u": "img/electrical-engineering/2026-1-1c-1.webp",
+   "a": "Two line currents I1 at y = d/2 and I2 at y = \u2212d/2 on the y-axis separated by d",
+   "k": "crop"
+  }
+ ],
+ "2026|1|1(d)": [
+  {
+   "u": "img/electrical-engineering/2026-1-1d-1.webp",
+   "a": "Two 2-to-4 decoders: inputs X and Y into A1 B1, outputs D0 to D3 through two XOR gates into A2 and B2, outputs Y0 to Y3",
+   "k": "crop"
+  }
+ ],
+ "2026|1|2(a)(i)": [
+  {
+   "u": "img/electrical-engineering/2026-1-2ai-1.webp",
+   "a": "Series circuit: 6 \u03a9, 0\u00b70255 H, current I, R and C with voltages Vb and Va, supply V = 240 V, 50 Hz",
+   "k": "crop"
+  }
+ ],
+ "2026|1|2(a)(ii)": [
+  {
+   "u": "img/electrical-engineering/2026-1-2aii-1.webp",
+   "a": "Circuit: 100 V source, 5 \u03a9, 10 \u03a9, 20 \u03a9, R, 10 A source",
+   "k": "crop"
+  }
+ ],
+ "2026|1|2(b)(i)": [
+  {
+   "u": "img/electrical-engineering/2026-1-2bi-1.webp",
+   "a": "Triangular x(t) rising from 0 at \u22121 to 2 at 1 and falling to 0 at 3",
+   "k": "crop"
+  }
+ ],
+ "2026|1|3(a)(i)": [
+  {
+   "u": "img/electrical-engineering/2026-1-3ai-1.webp",
+   "a": "Circuit: 50 V source, 5 \u03a9, 20 \u03a9 with 1 H, switch K at t = 0, RL = 20 \u03a9",
+   "k": "crop"
+  }
+ ],
+ "2026|1|3(a)(ii)": [
+  {
+   "u": "img/electrical-engineering/2026-1-3aii-1.webp",
+   "a": "Two-port: 1 \u03a9 shunt, 2 \u03a9 series, 2 \u03a9 shunt with dependent current source 3I1, ports 1-1\u2032 and 2-2\u2032",
+   "k": "crop"
+  }
+ ],
+ "2026|1|3(b)": [
+  {
+   "u": "img/electrical-engineering/2026-1-3b-1.webp",
+   "a": "Fig. (1) bridge with 20 \u03a9, 60 \u03a9, 80 \u03a9, 80 \u03a9, diode and 20 V battery; Fig. (2) diode I-V characteristic: id 1\u00b70 A at vd 0\u00b79 V, starting at 0\u00b77 V",
+   "k": "crop"
+  }
+ ],
+ "2026|1|4(b)(i)": [
+  {
+   "u": "img/electrical-engineering/2026-1-4bi-1.webp",
+   "a": "Two-transistor circuit: VCC = +12\u00b70 V, R1 = 100K, Q1, Q2, variable R2, Ro = 1 k\u03a9, output Vo = +5\u00b70 V",
+   "k": "crop"
+  }
+ ],
+ "2026|1|4(b)(ii)": [
+  {
+   "u": "img/electrical-engineering/2026-1-4bii-1.webp",
+   "a": "Bridge rectifier D1 to D4 on 240 V, 50 Hz supply with load RL = 100 \u03a9",
+   "k": "crop"
+  }
+ ],
+ "2026|1|5(a)": [
+  {
+   "u": "img/electrical-engineering/2026-1-5a-1.webp",
+   "a": "Op-amp circuit: Vin through C = 1\u00b70 \u03bcF, R1 = 10K to ground, R2 = 22K and R3 = 10K feedback, output Vo",
+   "k": "crop"
+  }
+ ],
+ "2026|1|5(c)": [
+  {
+   "u": "img/electrical-engineering/2026-1-5c-1.webp",
+   "a": "Circuit: 250 A current source, switch K, L = 10 \u03bcH, thyristor T, Vs = 200 V, C = 10 \u03bcF with Vc",
+   "k": "crop"
+  }
+ ],
+ "2026|1|5(d)": [
+  {
+   "u": "img/electrical-engineering/2026-1-5d-1.webp",
+   "a": "Probability density: impulses of weight 1 \u2212 p at x = 0 and p at x = 1",
+   "k": "crop"
+  }
+ ],
+ "2026|1|6(c)": [
+  {
+   "u": "img/electrical-engineering/2026-1-6c-1.webp",
+   "a": "Three amplifiers in cascade: F1 = 10 G1 = 20, F2 = 20 G2 = 40, F3 = 30 G3 = 50, input Pni and output Pno",
+   "k": "crop"
+  }
+ ],
+ "2026|1|7(c)": [
+  {
+   "u": "img/electrical-engineering/2026-1-7c-1.webp",
+   "a": "Signal m(t): ramps from 0 to 1 over 0 to 1, stays at 1 until 2, then \u22121 from 2 to 3",
+   "k": "crop"
+  }
+ ],
+ "2026|2|2(a)": [
+  {
+   "u": "img/electrical-engineering/2026-2-2a-1.webp",
+   "a": "Unity feedback loop: R(s), summer, block (s+1), block 2/s\u00b2, output C(s)",
+   "k": "crop"
+  }
+ ],
+ "2026|2|2(c)": [
+  {
+   "u": "img/electrical-engineering/2026-2-2c-1.webp",
+   "a": "Circuit: 200 V supply, 300 k\u03a9 series, 150 k\u03a9 with voltmeters V1 and V2 selected by a switch",
+   "k": "crop"
+  }
+ ],
+ "2026|2|5(a)": [
+  {
+   "u": "img/electrical-engineering/2026-2-5a-1.webp",
+   "a": "Series R-L circuit with voltage source V(t), current i(t) and capacitor C",
+   "k": "crop"
+  }
+ ]
+}
