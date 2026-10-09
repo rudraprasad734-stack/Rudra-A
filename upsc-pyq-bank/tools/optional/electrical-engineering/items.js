@@ -1,9 +1,9 @@
 // The official UPSC Electrical Engineering syllabus (Examination Notice 05/2026-CSE, Appendix I Section III), item by item.
 // UPSC numbers the sections itself: Paper I has 1-8 and Paper II has 1-6, so the ids are I-1 ... I-8 and II-1 ... II-6.
-// Source text: ../../syllabus/official-2026/economics.txt (the Electrical Engineering syllabus follows the Economics syllabus in that file).
+// Source text: ../../syllabus/official-2026/electrical-engineering.txt.
 // `t` is a short heading for lists; `full` is the official wording.
 const fs = require("fs"), path = require("path");
-let raw = fs.readFileSync(path.join(__dirname, "../../syllabus/official-2026/economics.txt"), "utf8").replace(/\x0c/g, "");
+let raw = fs.readFileSync(path.join(__dirname, "../../syllabus/official-2026/electrical-engineering.txt"), "utf8").replace(/\x0c/g, "");
 const a = raw.search(/ELECTRICAL\s+ENGINEERING/); if(a < 0) throw new Error("electrical syllabus: heading not found");
 raw = raw.slice(a);
 raw = raw.split("\n").filter(function(l){ return !/^\s*\d{1,3}\s*$/.test(l); }).join("\n").replace(/\s+/g, " ").trim();

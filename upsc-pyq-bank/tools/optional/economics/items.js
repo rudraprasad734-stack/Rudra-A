@@ -2,11 +2,11 @@
 // UPSC numbers Paper I itself (1 Advanced Micro Economics (a)-(d); 2 Advanced Macro Economics; 3 Money-Banking and Finance (a)-(b);
 // 4 International Economics (a)-(c) with sub-items (i)-(iv) and (i)-(ix); 5 Growth and Development (a)-(f) with (a)(i)-(v)).
 // Paper II is not numbered, so its ids are II-P (the Pre-Independence Era), II-A(i)-(v) (Pre-Liberalization Era) and II-B(i)-(viii) (Post Liberalization Era).
-// Source text: ../../syllabus/official-2026/economics.txt (the file also holds Electrical Engineering; it is cut at that heading).
+// Source text: ../../syllabus/official-2026/economics.txt.
 // `t` is a short heading for lists; `full` is the official wording.
 const fs = require("fs"), path = require("path");
 let raw = fs.readFileSync(path.join(__dirname, "../../syllabus/official-2026/economics.txt"), "utf8").replace(/\x0c/g, "");
-const e = raw.search(/ELECTRICAL\s+ENGINEERING/); if(e < 0) throw new Error("economics syllabus: Electrical Engineering heading not found");
+const e = raw.length; if(/ELECTRICAL\s+ENGINEERING/.test(raw)) throw new Error("economics syllabus file must not contain another subject");
 raw = raw.slice(0, e).split("\n").filter(function(l){ return !/^\s*\d{1,3}\s*$/.test(l); }).join("\n").replace(/\s+/g, " ").trim();
 const cut = raw.indexOf("PAPER-II"); if(cut < 0) throw new Error("economics syllabus: Paper II marker not found");
 // [id, short heading, text that starts the official wording, heading printed before the wording]
