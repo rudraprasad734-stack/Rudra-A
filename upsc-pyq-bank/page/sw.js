@@ -1,7 +1,7 @@
 // UPSC Companion service worker: caches the app shell so the page loads and
 // runs with zero network connectivity after the first successful visit.
 // Bump CACHE_NAME on any deploy that changes cached files so clients refresh.
-const CACHE_NAME = "upsc-companion-v107";
+const CACHE_NAME = "upsc-companion-v108";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -591,6 +591,13 @@ const FIGURES = [
   "./img/civil-engineering/2026-2-5b-1.webp",
   "./img/civil-engineering/2026-2-6a-1.webp",
   "./img/civil-engineering/2026-2-8b-1.webp",
+  "./img/commerce-and-accountancy/2016-1-2b-1.webp",
+  "./img/commerce-and-accountancy/2016-1-6b-1.webp",
+  "./img/commerce-and-accountancy/2016-1-7a-1.webp",
+  "./img/commerce-and-accountancy/2017-1-2a-1.webp",
+  "./img/commerce-and-accountancy/2017-1-3a-1.webp",
+  "./img/commerce-and-accountancy/2017-1-3c-1.webp",
+  "./img/commerce-and-accountancy/2017-1-8a-1.webp",
   "./img/commerce-and-accountancy/2018-1-2a-1.webp",
   "./img/commerce-and-accountancy/2018-1-2b-1.webp",
   "./img/commerce-and-accountancy/2018-1-2b-2.webp",
@@ -610,6 +617,10 @@ const FIGURES = [
   "./img/commerce-and-accountancy/2021-1-6a-1.webp",
   "./img/commerce-and-accountancy/2021-1-6a-2.webp",
   "./img/commerce-and-accountancy/2021-1-7b-1.webp",
+  "./img/commerce-and-accountancy/2022-1-2a-1.webp",
+  "./img/commerce-and-accountancy/2022-1-7b-1.webp",
+  "./img/commerce-and-accountancy/2022-1-8a-1.webp",
+  "./img/commerce-and-accountancy/2022-1-8a-2.webp",
   "./img/commerce-and-accountancy/2023-1-2a-1.webp",
   "./img/commerce-and-accountancy/2023-1-3a-1.webp",
   "./img/commerce-and-accountancy/2023-1-3b-1.webp",
@@ -617,6 +628,9 @@ const FIGURES = [
   "./img/commerce-and-accountancy/2023-1-7a-2.webp",
   "./img/commerce-and-accountancy/2023-1-8a-1.webp",
   "./img/commerce-and-accountancy/2023-1-8b-1.webp",
+  "./img/commerce-and-accountancy/2024-1-2a-1.webp",
+  "./img/commerce-and-accountancy/2024-1-2b-1.webp",
+  "./img/commerce-and-accountancy/2024-1-6a-1.webp",
   "./img/commerce-and-accountancy/2025-1-2a-1.webp",
   "./img/commerce-and-accountancy/2025-1-4c-1.webp",
   "./img/commerce-and-accountancy/2025-1-8b-1.webp",

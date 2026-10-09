@@ -252,5 +252,101 @@
    "a": "Present value of \u20b91 at 14 percent for years 1 to 5",
    "k": "table"
   }
+ ],
+ "2016|1|2(b)": [
+  {
+   "u": "img/commerce-and-accountancy/2016-1-2b-1.webp",
+   "a": "Operating details of Company No. 1 and Company No. 2: capacity utilization, sales, variable cost and fixed cost",
+   "k": "table"
+  }
+ ],
+ "2016|1|6(b)": [
+  {
+   "u": "img/commerce-and-accountancy/2016-1-6b-1.webp",
+   "a": "X Ltd. and Y Ltd.: equity, debt, earnings and interest",
+   "k": "table"
+  }
+ ],
+ "2016|1|7(a)": [
+  {
+   "u": "img/commerce-and-accountancy/2016-1-7a-1.webp",
+   "a": "Machines A and B: cost and anticipated after-tax cash flow in years 1 to 5",
+   "k": "table"
+  }
+ ],
+ "2017|1|2(a)": [
+  {
+   "u": "img/commerce-and-accountancy/2017-1-2a-1.webp",
+   "a": "Balance Sheets of Rakesh Ltd. and Lokesh Ltd. as at 31.12.2013: liabilities and assets",
+   "k": "table"
+  }
+ ],
+ "2017|1|3(a)": [
+  {
+   "u": "img/commerce-and-accountancy/2017-1-3a-1.webp",
+   "a": "Products A and B: annual output, total machine hours, total number of purchase orders and set-ups",
+   "k": "table"
+  }
+ ],
+ "2017|1|3(c)": [
+  {
+   "u": "img/commerce-and-accountancy/2017-1-3c-1.webp",
+   "a": "Properties A and B: municipal valuation, standard rent, municipal taxes, maintenance charges, date of completion, interest on home loans, fire insurance premium",
+   "k": "table"
+  }
+ ],
+ "2017|1|8(a)": [
+  {
+   "u": "img/commerce-and-accountancy/2017-1-8a-1.webp",
+   "a": "Balance Sheets of S.K. Ltd. as at 31.3.2014 and 31.3.2015: liabilities and assets",
+   "k": "table"
+  }
+ ],
+ "2022|1|2(a)": [
+  {
+   "u": "img/commerce-and-accountancy/2022-1-2a-1.webp",
+   "a": "Balance Sheets of A Ltd. and B Ltd. as on March 31, 2021: equity and liabilities, assets",
+   "k": "table"
+  }
+ ],
+ "2022|1|7(b)": [
+  {
+   "u": "img/commerce-and-accountancy/2022-1-7b-1.webp",
+   "a": "Summary Cash Account of Z Ltd. for the year ended March 31, 2022 (\u20b9 in '000): receipts and payments",
+   "k": "table"
+  }
+ ],
+ "2022|1|8(a)": [
+  {
+   "u": "img/commerce-and-accountancy/2022-1-8a-1.webp",
+   "a": "Trading and Profit & Loss Account of X Ltd. for the year ended March 31, 2022 (\u20b9 in lakh)",
+   "k": "table"
+  },
+  {
+   "u": "img/commerce-and-accountancy/2022-1-8a-2.webp",
+   "a": "Balance Sheet of X Ltd. as on March 31, 2022 (\u20b9 in lakh): liabilities and assets",
+   "k": "table"
+  }
+ ],
+ "2024|1|2(a)": [
+  {
+   "u": "img/commerce-and-accountancy/2024-1-2a-1.webp",
+   "a": "Balance Sheet of B Ltd. as at 31st March, 2024: equity and liabilities, assets",
+   "k": "table"
+  }
+ ],
+ "2024|1|2(b)": [
+  {
+   "u": "img/commerce-and-accountancy/2024-1-2b-1.webp",
+   "a": "Balance Sheet of A Ltd. as at 31st March, 2024 (in 000): equity and liabilities, assets",
+   "k": "table"
+  }
+ ],
+ "2024|1|6(a)": [
+  {
+   "u": "img/commerce-and-accountancy/2024-1-6a-1.webp",
+   "a": "Present value factor at 10% for years 1 to 8",
+   "k": "table"
+  }
  ]
 }
