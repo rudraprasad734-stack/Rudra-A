@@ -1,7 +1,7 @@
 // UPSC Companion service worker: caches the app shell so the page loads and
 // runs with zero network connectivity after the first successful visit.
 // Bump CACHE_NAME on any deploy that changes cached files so clients refresh.
-const CACHE_NAME = "upsc-companion-v112";
+const CACHE_NAME = "upsc-companion-v113";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -681,6 +681,22 @@ const FIGURES = [
   "./img/electrical-engineering/2018-2-5a-1.webp",
   "./img/electrical-engineering/2018-2-5c-1.webp",
   "./img/electrical-engineering/2018-2-8bi-1.webp",
+  "./img/electrical-engineering/2019-1-1a-1.webp",
+  "./img/electrical-engineering/2019-1-1c-1.webp",
+  "./img/electrical-engineering/2019-1-1e-1.webp",
+  "./img/electrical-engineering/2019-1-2a-1.webp",
+  "./img/electrical-engineering/2019-1-2c-1.webp",
+  "./img/electrical-engineering/2019-1-3a-1.webp",
+  "./img/electrical-engineering/2019-1-3c-1.webp",
+  "./img/electrical-engineering/2019-1-4b-1.webp",
+  "./img/electrical-engineering/2019-1-5d-1.webp",
+  "./img/electrical-engineering/2019-1-5e-1.webp",
+  "./img/electrical-engineering/2019-1-6d-1.webp",
+  "./img/electrical-engineering/2019-1-7b-1.webp",
+  "./img/electrical-engineering/2019-1-7d-1.webp",
+  "./img/electrical-engineering/2019-1-8b-1.webp",
+  "./img/electrical-engineering/2019-1-8c-1.webp",
+  "./img/electrical-engineering/2019-1-8c-2.webp",
   "./img/electrical-engineering/2019-2-1dii-1.webp",
   "./img/electrical-engineering/2019-2-2b-1.webp",
   "./img/electrical-engineering/2019-2-2b-2.webp",

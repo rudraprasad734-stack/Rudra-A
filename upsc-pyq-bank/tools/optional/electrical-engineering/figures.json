@@ -1460,5 +1460,115 @@
    "a": "Series R-L circuit with voltage source V(t), current i(t) and capacitor C",
    "k": "crop"
   }
+ ],
+ "2019|1|1(a)": [
+  {
+   "u": "img/electrical-engineering/2019-1-1a-1.webp",
+   "a": "Resistive network: 5 V source, R1 = 3 \u03a9, R3 = 4 \u03a9, R2 = 3 \u03a9 and variable load RL between terminals a and b",
+   "k": "crop"
+  }
+ ],
+ "2019|1|1(c)": [
+  {
+   "u": "img/electrical-engineering/2019-1-1c-1.webp",
+   "a": "Transistor with VCC, RC, RE, current gain \u03b2DC, input Vin, Iin and VBE",
+   "k": "crop"
+  }
+ ],
+ "2019|1|1(e)": [
+  {
+   "u": "img/electrical-engineering/2019-1-1e-1.webp",
+   "a": "Type-A chopper: Vdc, switch SW, diode D, DC motor shown as Ra, La and back e.m.f. Eb",
+   "k": "crop"
+  }
+ ],
+ "2019|1|2(a)": [
+  {
+   "u": "img/electrical-engineering/2019-1-2a-1.webp",
+   "a": "Circuit: 10 cos\u00b3 10t V source, 5 \u03a9, 500 \u03bcF, 6 mH, dependent source 3 i1, currents i1 and i2",
+   "k": "crop"
+  }
+ ],
+ "2019|1|2(c)": [
+  {
+   "u": "img/electrical-engineering/2019-1-2c-1.webp",
+   "a": "Triangular input wave between \u221210 V and +10 V (10 \u03bcs, 20 \u03bcs) and op-amp differentiator with 0\u00b7001 \u03bcF and Rf = 2\u00b72 k\u03a9, output Vo",
+   "k": "crop"
+  }
+ ],
+ "2019|1|3(a)": [
+  {
+   "u": "img/electrical-engineering/2019-1-3a-1.webp",
+   "a": "Series inverter: VDC, thyristors T1 and T2 with gate currents ig1 and ig2, C with VC, L with VL, load R with VR, currents is and iLoad",
+   "k": "crop"
+  }
+ ],
+ "2019|1|3(c)": [
+  {
+   "u": "img/electrical-engineering/2019-1-3c-1.webp",
+   "a": "Transistor with RB from collector to base, RC and VCC",
+   "k": "crop"
+  }
+ ],
+ "2019|1|4(b)": [
+  {
+   "u": "img/electrical-engineering/2019-1-4b-1.webp",
+   "a": "No-load characteristic: field current in A (1 to 7) against generated voltage in V",
+   "k": "table"
+  }
+ ],
+ "2019|1|5(d)": [
+  {
+   "u": "img/electrical-engineering/2019-1-5d-1.webp",
+   "a": "Circuit: 100u(t) V source, 5 \u03a9, 100 V battery, 5 \u03a9, 10 H inductor carrying i(t)",
+   "k": "crop"
+  }
+ ],
+ "2019|1|5(e)": [
+  {
+   "u": "img/electrical-engineering/2019-1-5e-1.webp",
+   "a": "Half-wave controlled rectifier: source Vs, 220/12 V transformer, thyristor with \u03b1 = \u03c0/4, load R = 10 \u03a9 with Vo",
+   "k": "crop"
+  }
+ ],
+ "2019|1|6(d)": [
+  {
+   "u": "img/electrical-engineering/2019-1-6d-1.webp",
+   "a": "Transistor circuit: VCC = \u221230 V, Rb = 10 k\u03a9, IB, Rc = 15 \u03a9 with load RL, coupling capacitor C, source Vs with Rs, Re = 5 \u03a9 with Ce",
+   "k": "crop"
+  }
+ ],
+ "2019|1|7(b)": [
+  {
+   "u": "img/electrical-engineering/2019-1-7b-1.webp",
+   "a": "JFET voltage divider bias: VDD = +12 V, R1 = 6\u00b78 M\u03a9, R2 = 1\u00b70 M\u03a9, RD = 3\u00b73 k\u03a9, RS = 2\u00b72 k\u03a9, ID and VD",
+   "k": "crop"
+  }
+ ],
+ "2019|1|7(d)": [
+  {
+   "u": "img/electrical-engineering/2019-1-7d-1.webp",
+   "a": "Combinational logic circuit: inputs A, B, C and D, inverters, AND and OR gates, output X",
+   "k": "crop"
+  }
+ ],
+ "2019|1|8(b)": [
+  {
+   "u": "img/electrical-engineering/2019-1-8b-1.webp",
+   "a": "Table: stage 1 to 3 with power gain 10, 25, 30 and noise figure 2, 4, 5",
+   "k": "table"
+  }
+ ],
+ "2019|1|8(c)": [
+  {
+   "u": "img/electrical-engineering/2019-1-8c-1.webp",
+   "a": "Magnetic circuit: two Al-ni-co-5 sections of length lm, air gap g, Am = Ag = 40 cm\u00b2, \u03bc0 = 4\u03c0 \u00d7 10\u207b\u2077",
+   "k": "crop"
+  },
+  {
+   "u": "img/electrical-engineering/2019-1-8c-2.webp",
+   "a": "Linearised second-quadrant B-H curve: B up to 1\u00b70 T, H from \u221250 to 0 kA/m, Hc marked",
+   "k": "crop"
+  }
  ]
 }

@@ -209,3 +209,19 @@
 2026|2|2(a)|4|0.05,0.30,0.78,0.43|Unity feedback loop: R(s), summer, block (s+1), block 2/s², output C(s)|crop
 2026|2|2(c)|5|0.22,0.76,0.72,0.90|Circuit: 200 V supply, 300 kΩ series, 150 kΩ with voltmeters V1 and V2 selected by a switch|crop
 2026|2|5(a)|9|0.20,0.35,0.50,0.46|Series R-L circuit with voltage source V(t), current i(t) and capacitor C|crop
+2019|1|1(a)|2|0.22,0.49,0.80,0.70|Resistive network: 5 V source, R1 = 3 Ω, R3 = 4 Ω, R2 = 3 Ω and variable load RL between terminals a and b|crop
+2019|1|1(c)|3|0.25,0.70,0.60,0.93|Transistor with VCC, RC, RE, current gain βDC, input Vin, Iin and VBE|crop
+2019|1|1(e)|4|0.22,0.745,0.86,0.93|Type-A chopper: Vdc, switch SW, diode D, DC motor shown as Ra, La and back e.m.f. Eb|crop
+2019|1|2(a)|5|0.25,0.37,0.86,0.57|Circuit: 10 cos³ 10t V source, 5 Ω, 500 μF, 6 mH, dependent source 3 i1, currents i1 and i2|crop
+2019|1|2(c)|6|0.16,0.374,0.88,0.56|Triangular input wave between −10 V and +10 V (10 μs, 20 μs) and op-amp differentiator with 0·001 μF and Rf = 2·2 kΩ, output Vo|crop
+2019|1|3(a)|7|0.22,0.725,0.86,0.945|Series inverter: VDC, thyristors T1 and T2 with gate currents ig1 and ig2, C with VC, L with VL, load R with VR, currents is and iLoad|crop
+2019|1|3(c)|8|0.27,0.67,0.60,0.92|Transistor with RB from collector to base, RC and VCC|crop
+2019|1|4(b)|10|0.15,0.385,0.88,0.455|No-load characteristic: field current in A (1 to 7) against generated voltage in V|table
+2019|1|5(d)|12|0.20,0.075,0.80,0.30|Circuit: 100u(t) V source, 5 Ω, 100 V battery, 5 Ω, 10 H inductor carrying i(t)|crop
+2019|1|5(e)|12|0.22,0.725,0.84,0.955|Half-wave controlled rectifier: source Vs, 220/12 V transformer, thyristor with α = π/4, load R = 10 Ω with Vo|crop
+2019|1|6(d)|14|0.20,0.545,0.76,0.850|Transistor circuit: VCC = −30 V, Rb = 10 kΩ, IB, Rc = 15 Ω with load RL, coupling capacitor C, source Vs with Rs, Re = 5 Ω with Ce|crop
+2019|1|7(b)|16|0.28,0.14,0.66,0.44|JFET voltage divider bias: VDD = +12 V, R1 = 6·8 MΩ, R2 = 1·0 MΩ, RD = 3·3 kΩ, RS = 2·2 kΩ, ID and VD|crop
+2019|1|7(d)|17|0.22,0.09,0.72,0.255|Combinational logic circuit: inputs A, B, C and D, inverters, AND and OR gates, output X|crop
+2019|1|8(b)|17|0.22,0.695,0.80,0.865|Table: stage 1 to 3 with power gain 10, 25, 30 and noise figure 2, 4, 5|table
+2019|1|8(c)|19|0.22,0.14,0.82,0.445|Magnetic circuit: two Al-ni-co-5 sections of length lm, air gap g, Am = Ag = 40 cm², μ0 = 4π × 10⁻⁷|crop
+2019|1|8(c)|19|0.22,0.505,0.78,0.790|Linearised second-quadrant B-H curve: B up to 1·0 T, H from −50 to 0 kA/m, Hc marked|crop
