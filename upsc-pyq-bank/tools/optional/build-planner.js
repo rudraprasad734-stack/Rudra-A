@@ -206,3 +206,29 @@ ag.topics.forEach(function(t){
   fs.writeFileSync(PAGE, h8);
   console.log(NAME + " chapters:", Object.keys(ecLeaf).length, "| Paper I topics:", Object.keys(ecTree["Paper I"]).length, "| Paper II topics:", Object.keys(ecTree["Paper II"]).length);
 }
+
+// ---------------------------------------------------------------- Geography (one chapter per syllabus sub-topic)
+{
+  const NAME = "Geography";
+  let h9 = fs.readFileSync(PAGE, "utf8");
+  const m9 = h9.match(/<script type="application\/json" id="d-geog">(.*?)<\/script>/s);
+  if(!m9) throw new Error("build-planner: d-geog not found (run chemistry/build-geogistry.js first), nothing written");
+  const gg = JSON.parse(m9[1]);
+  const ggTree = {"Paper I":{}, "Paper II":{}}, ggLeaf = {}, per9 = {};
+  gg.topics.forEach(function(t){
+    const it = gg.items.filter(function(x){ return x.id === t.s; })[0], grp = it.pp === 1 ? "Paper I" : "Paper II";
+    per9[it.id] = (per9[it.id] || 0) + 1;
+    const topic = it.id + "  " + it.t, unit = it.id + "." + per9[it.id] + "  " + t.t;
+    (ggTree[grp][topic] = ggTree[grp][topic] || []).push(unit);
+    ggLeaf[topic + "|" + unit] = [t.id];
+  });
+  const cur9 = '  "' + NAME + '": ' + JSON.stringify(ggTree, null, 2).replace(/\n/g, "\n  ") + ',\n';
+  const a9 = h9.indexOf('  "' + NAME + '": {\n    "Paper I"');
+  if(a9 >= 0){ const re = /\n  "[A-Z]/g; re.lastIndex = a9 + 20; const m = re.exec(h9); if(!m) throw new Error("build-planner: end of Geography block not found, nothing written"); h9 = h9.slice(0, a9) + cur9 + h9.slice(m.index + 1); }
+  else { const g = h9.indexOf('  "Geography": CT({'); if(g < 0) throw new Error("build-planner: insertion point not found, nothing written"); const ge = h9.indexOf('\n  }),\n', g); if(ge < 0) throw new Error("build-planner: old Geography outline not closed, nothing written"); h9 = h9.slice(0, g) + cur9 + h9.slice(ge + '\n  }),\n'.length); }
+  const la9 = h9.indexOf("var GEOG_LEAF = {"), leafTxt9 = "var GEOG_LEAF = " + JSON.stringify(ggLeaf, null, 1) + ";";
+  if(la9 >= 0){ const e9 = h9.indexOf("\n};", la9); if(e9 < 0) throw new Error("build-planner: GEOG_LEAF block not closed, nothing written"); h9 = h9.slice(0, la9) + leafTxt9 + h9.slice(h9.indexOf("\n", e9 + 1)); }
+  else { const lb9 = h9.indexOf("\n// Optional subjects that have a question analysis"); if(lb9 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h9 = h9.slice(0, lb9) + "\n" + leafTxt9 + h9.slice(lb9); }
+  fs.writeFileSync(PAGE, h9);
+  console.log(NAME + " chapters:", Object.keys(ggLeaf).length, "| Paper I topics:", Object.keys(ggTree["Paper I"]).length, "| Paper II topics:", Object.keys(ggTree["Paper II"]).length);
+}
