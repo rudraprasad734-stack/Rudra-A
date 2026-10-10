@@ -10192,6 +10192,7 @@ function goAction(el){
   else if(a==="subjday"){ var d = subjectNextDate(subj, leaf); if(!d) toast("No upcoming session for "+(subj||"this subject")+" yet. Showing today."); goPlanner("daily", {day: d || todayKey, subject: subj}); }
   else if(a==="subject") goPlanner("progress", {subject: subj});
   else if(a==="priority") goPlanner("priority", {subject: subj});
+  else if(a==="insights"){ insWeek = null; goPlanner("insights", {}); }
   else if(a==="tiers") setTab("prelims");
   else if(a==="reschedule") openReschedule();
 }
@@ -10435,15 +10436,8 @@ function weekReview(mon){
   days.forEach(function(d){ r.timerMs += +log[d] || 0; });
   return r;
 }
-function insightsHtml(plan, states){
-  var mon = insWeek ? parseKey(insWeek) : mondayOf(parseKey(todayKey));
-  insWeek = toKey(mon);
-  var r = weekReview(mon), isNow = insWeek === toKey(mondayOf(parseKey(todayKey)));
-  var counted = r.done + r.missed + r.skipped, rate = counted ? Math.round(100*r.done/counted) : 0;
-  var verdict = !r.planned ? "Nothing was scheduled this week." : (r.missed ? "You missed "+r.missed+" session"+(r.missed===1 ? "" : "s")+" this week." : (r.done ? "Nice work. You are on track." : (r.chapters.length ? "You finished "+r.chapters.length+" chapter"+(r.chapters.length===1 ? "" : "s")+" this week." : "Nothing is finished yet this week.")));
-  var hrs = function(m){ return fmtDurMin(m); };
-  var rows = Object.keys(r.subj).map(function(k){ var a = r.subj[k], pc = a.planned ? Math.round(100*a.done/a.planned) : 0;
-    return '<div class="ins-sb" title="'+esc(k)+': '+a.done+' of '+a.planned+' sessions done"><div class="ins-sbh"><span>'+esc(k)+'</span><b>'+a.done+'/'+a.planned+'</b></div><div class="ins-track"><i style="width:'+pc+'%"></i></div></div>'; }).join("");
+// the weekly review as pictures: an outcome ring, day-by-day bars and time bars (used by Planner > Insights and by the dashboard)
+function weekViz(r, rate, hrs){
   // outcome ring: every session of the week is in exactly one slice
   var parts = [{n:r.done, c:"#34b27b", l:"Done"}, {n:r.missed, c:"#e5675a", l:"Missed"}, {n:r.skipped, c:"#9aa5b1", l:"Skipped"}, {n:r.left, c:"var(--ink-soft)", l:"Still to come", o:.35}];
   var tot = parts.reduce(function(a, x){ return a + x.n; }, 0), ring = "", acc = 0, C = 2*Math.PI*40;
@@ -10462,6 +10456,18 @@ function insightsHtml(plan, states){
   var tm = Math.round(r.timerMs/60000), maxT = Math.max(r.plannedMin, r.actualMin, tm, 1);
   function tbar(lab, m, cls){ return '<div class="ins-tb"><div class="ins-sbh"><span>'+lab+'</span><b>'+esc(hrs(m))+'</b></div><div class="ins-track"><i class="'+cls+'" style="width:'+Math.round(100*m/maxT)+'%"></i></div></div>'; }
   var timeHtml = '<div class="section-title">Time</div>'+tbar("Planned", r.plannedMin, "p")+tbar("Logged in sessions", r.actualMin, "a")+tbar("Timer study time", tm, "t");
+  return {ring:ringHtml, days:daysHtml, time:timeHtml};
+}
+function insightsHtml(plan, states){
+  var mon = insWeek ? parseKey(insWeek) : mondayOf(parseKey(todayKey));
+  insWeek = toKey(mon);
+  var r = weekReview(mon), isNow = insWeek === toKey(mondayOf(parseKey(todayKey)));
+  var counted = r.done + r.missed + r.skipped, rate = counted ? Math.round(100*r.done/counted) : 0;
+  var verdict = !r.planned ? "Nothing was scheduled this week." : (r.missed ? "You missed "+r.missed+" session"+(r.missed===1 ? "" : "s")+" this week." : (r.done ? "Nice work. You are on track." : (r.chapters.length ? "You finished "+r.chapters.length+" chapter"+(r.chapters.length===1 ? "" : "s")+" this week." : "Nothing is finished yet this week.")));
+  var hrs = function(m){ return fmtDurMin(m); };
+  var rows = Object.keys(r.subj).map(function(k){ var a = r.subj[k], pc = a.planned ? Math.round(100*a.done/a.planned) : 0;
+    return '<div class="ins-sb" title="'+esc(k)+': '+a.done+' of '+a.planned+' sessions done"><div class="ins-sbh"><span>'+esc(k)+'</span><b>'+a.done+'/'+a.planned+'</b></div><div class="ins-track"><i style="width:'+pc+'%"></i></div></div>'; }).join("");
+  var V = weekViz(r, rate, hrs), ringHtml = V.ring, daysHtml = V.days, timeHtml = V.time;
   var perm = ("Notification" in window) ? Notification.permission : "unsupported";
   var rem = '<div class="card ins-card"><h3>Reminders</h3>'+
     '<div class="muted">A notification before each session and a nudge to log your day. They appear while the app is open or running in the background. Browsers cannot wake a fully closed app without a server.</div>'+
@@ -10943,9 +10949,15 @@ function dxPlanHtml(){
     '<small>'+(tp ? 'Planned '+esc(fmtDurMin(tp))+' &middot; Actual '+esc(fmtDurMin(ta))+(ta>tp ? ' (over plan)' : '') : 'Nothing planned today')+'</small>'+'</div>';
   var pyq = pyqCardHtml(running);
   var path = pathHtml(states);
+  // this week at a glance: the same ring and day bars as Planner > Insights
+  var wr = weekReview(mondayOf(parseKey(todayKey))), wcount = wr.done + wr.missed + wr.skipped, wrate = wcount ? Math.round(100*wr.done/wcount) : 0, week = "";
+  if(wr.planned){
+    var wv = weekViz(wr, wrate, fmtDurMin);
+    week = '<div class="dx-card dx-week"><div class="dx-k">THIS WEEK &middot; '+wr.done+' OF '+wr.planned+' SESSIONS DONE</div>'+wv.ring+wv.days+'<button type="button" class="dx-btn2" data-go="insights">Open weekly review &rsaquo;</button></div>';
+  }
   var upc = '<div class="dx-card dx-up"><div class="dx-k">UPCOMING</div>'+upcomingHtml()+'<button type="button" class="dx-btn2" id="dashOpenPlanner">Open planner</button></div>';
   // the cards are laid out one under another in renderDashboard, in the order the user chose
-  return {ring:ring, path:path, pace:pace, mods:mods, module:module, pyq:pyq, upc:upc};
+  return {ring:ring, path:path, pace:pace, week:week, mods:mods, module:module, pyq:pyq, upc:upc};
 }
 function bindDrum(host){
   var dr = host.querySelector("#dxDrum"); if(!dr) return;
@@ -12320,7 +12332,7 @@ function renderDashboard(){
       dxProfileHtml()+
       (P ? P.ring : plannerDashCard())+
       dxStreakHtml()+
-      (P ? P.path+P.pace : "")+
+      (P ? P.path+P.pace+P.week : "")+
       dxRevisionHtml()+
       (P ? (P.mods || P.module)+P.pyq+P.upc : "")+
       '<div class="hero card">'+
