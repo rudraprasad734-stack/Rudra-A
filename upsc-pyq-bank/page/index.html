@@ -963,6 +963,14 @@
   .ins-card{padding:14px 16px; margin:0 0 12px;}
   .ins-card h3{font-size:14px; margin:0 0 6px;}
   .ins-verdict{font-weight:700; font-size:14px; margin:0 0 10px;}
+  .ins-ringrow{display:flex; align-items:center; gap:16px; margin:2px 0 8px;} .ins-ring{position:relative; width:112px; height:112px; flex:0 0 auto;} .ins-ring svg{width:100%; height:100%;} .ins-ring > div{position:absolute; inset:0; display:grid; place-content:center; text-align:center;} .ins-ring b{font-size:22px; font-family:var(--font-display); color:var(--ink);} .ins-ring span{font-size:10.5px; color:var(--ink-soft);}
+  .ins-leg{list-style:none; margin:0; padding:0; flex:1 1 auto; min-width:0; display:flex; flex-direction:column; gap:6px; font-size:13px;} .ins-leg li{display:flex; align-items:center; gap:8px;} .ins-leg i{width:10px; height:10px; border-radius:50%; flex:0 0 auto;} .ins-leg span{flex:1 1 auto; color:var(--ink);} .ins-leg b{color:var(--ink);}
+  .ins-days{display:grid; grid-template-columns:repeat(7,1fr); gap:8px; align-items:end; margin:4px 0 6px;} .ins-day{display:flex; flex-direction:column; align-items:center; gap:3px; min-width:0;} .ins-dbar{position:relative; width:100%; max-width:34px; height:92px; display:flex; align-items:flex-end; justify-content:center;}
+  .ins-dbar i{position:absolute; bottom:0; left:0; right:0; border-radius:4px 4px 0 0; min-height:0;} .ins-dbar i.p{background:var(--tab-accent-soft); border:1px solid var(--tab-accent);} .ins-dbar i.a{background:var(--tab-accent); left:18%; right:18%;}
+  .ins-day em{width:7px; height:7px; border-radius:50%; background:transparent;} .ins-day em.miss{background:#e5675a;} .ins-day span{font-size:11px; color:var(--ink-soft);} .ins-day.now span{color:var(--ink); font-weight:800;}
+  .ins-key{display:flex; gap:14px; font-size:11.5px; color:var(--ink-soft); margin:0 0 6px;} .ins-key span{display:inline-flex; align-items:center; gap:5px;} .ins-key i{width:10px; height:10px; border-radius:3px; display:inline-block;} .ins-key i.p{background:var(--tab-accent-soft); border:1px solid var(--tab-accent);} .ins-key i.a{background:var(--tab-accent);} .ins-key i.m{background:#e5675a; border-radius:50%;}
+  .ins-sb, .ins-tb{padding:6px 0;} .ins-sbh{display:flex; justify-content:space-between; gap:10px; font-size:13px; margin-bottom:4px;} .ins-sbh span{min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--ink);} .ins-sbh b{color:var(--ink); flex:0 0 auto;}
+  .ins-track{height:8px; border-radius:4px; background:var(--tab-accent-soft); overflow:hidden;} .ins-track i{display:block; height:100%; border-radius:4px; background:var(--tab-accent);} .ins-track i.p{background:var(--ink-soft); opacity:.55;} .ins-track i.t{background:#6aa7ff;}
   .ins-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin:0 0 10px;}
   .ins-stat{background:var(--surface-2); border-radius:10px; padding:8px 4px; text-align:center;}
   .ins-stat b{display:block; font-size:18px;} .ins-stat span{font-size:10.5px; color:var(--ink-soft);}
@@ -10410,9 +10418,11 @@ function openCatchup(){
 
 function weekReview(mon){
   var days = [], i; for(i=0;i<7;i++) days.push(toKey(addDays(mon, i)));
-  var first = days[0], last = days[6], r = {first:first, last:last, planned:0, done:0, missed:0, skipped:0, left:0, plannedMin:0, actualMin:0, subj:{}, chapters:[], timerMs:0};
+  var first = days[0], last = days[6], r = {first:first, last:last, planned:0, done:0, missed:0, skipped:0, left:0, plannedMin:0, actualMin:0, subj:{}, chapters:[], timerMs:0, days:days.map(function(d){ return {date:d, plan:0, act:0, done:0, missed:0, left:0}; })};
   studySessions.forEach(function(x){
     if(x.date < first || x.date > last) return;
+    var dd = r.days[days.indexOf(x.date)]; dd.plan += x.duration||0; dd.act += x.actualDuration||0;
+    if(x.status==="completed") dd.done++; else if(x.status==="missed") dd.missed++; else if(x.status!=="skipped" && x.date >= todayKey) dd.left++;
     r.planned++; r.plannedMin += x.duration||0; r.actualMin += x.actualDuration||0;
     if(x.status==="completed") r.done++; else if(x.status==="missed") r.missed++; else if(x.status==="skipped") r.skipped++; else if(x.date >= todayKey) r.left++;
     if(x.kind==="study"){ var a = r.subj[x.subject] || (r.subj[x.subject] = {planned:0, done:0}); a.planned++; if(x.status==="completed") a.done++; }
@@ -10431,8 +10441,27 @@ function insightsHtml(plan, states){
   var r = weekReview(mon), isNow = insWeek === toKey(mondayOf(parseKey(todayKey)));
   var counted = r.done + r.missed + r.skipped, rate = counted ? Math.round(100*r.done/counted) : 0;
   var verdict = !r.planned ? "Nothing was scheduled this week." : (r.missed ? "You missed "+r.missed+" session"+(r.missed===1 ? "" : "s")+" this week." : (r.done ? "Nice work. You are on track." : (r.chapters.length ? "You finished "+r.chapters.length+" chapter"+(r.chapters.length===1 ? "" : "s")+" this week." : "Nothing is finished yet this week.")));
-  var rows = Object.keys(r.subj).map(function(k){ var a = r.subj[k]; return '<div class="ins-row"><span>'+esc(k)+'</span><b>'+a.done+'/'+a.planned+'</b></div>'; }).join("");
   var hrs = function(m){ return fmtDurMin(m); };
+  var rows = Object.keys(r.subj).map(function(k){ var a = r.subj[k], pc = a.planned ? Math.round(100*a.done/a.planned) : 0;
+    return '<div class="ins-sb" title="'+esc(k)+': '+a.done+' of '+a.planned+' sessions done"><div class="ins-sbh"><span>'+esc(k)+'</span><b>'+a.done+'/'+a.planned+'</b></div><div class="ins-track"><i style="width:'+pc+'%"></i></div></div>'; }).join("");
+  // outcome ring: every session of the week is in exactly one slice
+  var parts = [{n:r.done, c:"#34b27b", l:"Done"}, {n:r.missed, c:"#e5675a", l:"Missed"}, {n:r.skipped, c:"#9aa5b1", l:"Skipped"}, {n:r.left, c:"var(--ink-soft)", l:"Still to come", o:.35}];
+  var tot = parts.reduce(function(a, x){ return a + x.n; }, 0), ring = "", acc = 0, C = 2*Math.PI*40;
+  parts.forEach(function(x){ if(!x.n) return; var len = C*x.n/tot; ring += '<circle cx="50" cy="50" r="40" fill="none" stroke="'+x.c+'" stroke-opacity="'+(x.o||1)+'" stroke-width="14" stroke-dasharray="'+Math.max(0, len-(tot>x.n ? 2 : 0)).toFixed(2)+' '+C.toFixed(2)+'" stroke-dashoffset="'+(-acc).toFixed(2)+'" transform="rotate(-90 50 50)"><title>'+x.l+': '+x.n+'</title></circle>'; acc += len; });
+  if(!tot) ring = '<circle cx="50" cy="50" r="40" fill="none" stroke="var(--line)" stroke-width="14"/>';
+  var legend = parts.map(function(x){ return '<li><i style="background:'+x.c+';opacity:'+(x.o||1)+'"></i><span>'+x.l+'</span><b>'+x.n+'</b></li>'; }).join("");
+  var ringHtml = '<div class="ins-ringrow"><div class="ins-ring"><svg viewBox="0 0 100 100" role="img" aria-label="Sessions this week: '+r.done+' done, '+r.missed+' missed, '+r.skipped+' skipped, '+r.left+' still to come">'+ring+'</svg><div><b>'+rate+'%</b><span>completed</span></div></div><ul class="ins-leg">'+legend+'</ul></div>';
+  // day by day: pale bar = planned time, solid bar = time logged; a red dot marks a day with missed sessions
+  var maxDay = Math.max.apply(null, r.days.map(function(d){ return Math.max(d.plan, d.act); }).concat([60]));
+  var dayLab = ["M","T","W","T","F","S","S"];
+  var daysHtml = '<div class="section-title">Day by day</div><div class="ins-days">'+r.days.map(function(d, i){
+    var ph = Math.round(100*d.plan/maxDay), ah = Math.round(100*Math.min(d.act, maxDay)/maxDay), isT = d.date===todayKey;
+    return '<div class="ins-day'+(isT ? " now" : "")+'" title="'+esc(fmtDM(parseKey(d.date)))+': planned '+esc(hrs(d.plan))+', logged '+esc(hrs(d.act))+(d.missed ? ', '+d.missed+' missed' : '')+'"><div class="ins-dbar"><i class="p" style="height:'+ph+'%"></i><i class="a" style="height:'+ah+'%"></i></div><em class="'+(d.missed ? "miss" : "")+'"></em><span>'+dayLab[i]+'</span></div>';
+  }).join("")+'</div><div class="ins-key"><span><i class="p"></i>Planned</span><span><i class="a"></i>Logged</span><span><i class="m"></i>Missed</span></div>';
+  // time bars: planned, logged in sessions, timer
+  var tm = Math.round(r.timerMs/60000), maxT = Math.max(r.plannedMin, r.actualMin, tm, 1);
+  function tbar(lab, m, cls){ return '<div class="ins-tb"><div class="ins-sbh"><span>'+lab+'</span><b>'+esc(hrs(m))+'</b></div><div class="ins-track"><i class="'+cls+'" style="width:'+Math.round(100*m/maxT)+'%"></i></div></div>'; }
+  var timeHtml = '<div class="section-title">Time</div>'+tbar("Planned", r.plannedMin, "p")+tbar("Logged in sessions", r.actualMin, "a")+tbar("Timer study time", tm, "t");
   var perm = ("Notification" in window) ? Notification.permission : "unsupported";
   var rem = '<div class="card ins-card"><h3>Reminders</h3>'+
     '<div class="muted">A notification before each session and a nudge to log your day. They appear while the app is open or running in the background. Browsers cannot wake a fully closed app without a server.</div>'+
@@ -10447,15 +10476,7 @@ function insightsHtml(plan, states){
   return '<div class="navrow"><button type="button" class="btn ghost sm" data-pa="iPrev" aria-label="Previous week">&lsaquo;</button><b>'+esc(fmtDM(mon))+' – '+esc(fmtDM(addDays(mon,6)))+(isNow ? " · this week" : "")+'</b><button type="button" class="btn ghost sm" data-pa="iNext" aria-label="Next week">&rsaquo;</button></div>'+
     (isNow ? "" : '<div class="pill-row"><button type="button" class="btn ghost sm" data-pa="iNow">This week</button></div>')+
     '<div class="card ins-card"><h3>Weekly review</h3><div class="ins-verdict">'+esc(verdict)+'</div>'+
-      '<div class="ins-grid">'+
-        '<div class="ins-stat"><b>'+r.done+'</b><span>done</span></div>'+
-        '<div class="ins-stat"><b>'+r.missed+'</b><span>missed</span></div>'+
-        '<div class="ins-stat"><b>'+r.left+'</b><span>still to come</span></div>'+
-        '<div class="ins-stat"><b>'+rate+'%</b><span>completed</span></div>'+
-      '</div>'+
-      '<div class="ins-row"><span>Planned time</span><b>'+esc(hrs(r.plannedMin))+'</b></div>'+
-      '<div class="ins-row"><span>Logged in sessions</span><b>'+esc(hrs(r.actualMin))+'</b></div>'+
-      '<div class="ins-row"><span>Timer study time</span><b>'+esc(hrs(Math.round(r.timerMs/60000)))+'</b></div>'+
+      ringHtml+daysHtml+timeHtml+
       '<div class="ins-row"><span>Chapters finished</span><b>'+r.chapters.length+'</b></div>'+
       (r.chapters.length ? '<div class="muted small">'+r.chapters.map(esc).join(" · ")+'</div>' : "")+
       (rows ? '<div class="section-title">By subject</div>'+rows : "")+
