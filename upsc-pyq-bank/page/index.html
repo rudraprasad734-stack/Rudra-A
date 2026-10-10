@@ -193,6 +193,8 @@
   .dx-next{margin:10px 0; font-size:13px; color:var(--ink-soft); cursor:pointer;} .dx-next b{color:var(--ink);}
   .dx-btn{display:block; width:100%; border:none; border-radius:12px; background:var(--tab-accent); color:var(--tab-accent-ink); font:inherit; font-weight:700; font-size:15px; padding:11px 12px; cursor:pointer; margin-top:6px; text-align:center;}
   .dx-btn2{display:block; width:100%; border:none; border-radius:12px; background:var(--tab-accent-soft); color:var(--ink); font:inherit; font-size:13.5px; padding:10px 12px; cursor:pointer; margin-top:8px; text-align:center;}
+  .dx-pie{display:flex; flex-direction:column; align-items:center; gap:8px; margin:2px 0 8px;} .dx-pie svg{width:132px; height:132px; flex:0 0 auto;}
+  .dx-pie ul{list-style:none; margin:0; padding:0; width:100%; display:flex; flex-direction:column; gap:3px; font-size:12px;} .dx-pie li{display:flex; align-items:center; gap:6px; min-width:0;} .dx-pie li i{width:9px; height:9px; border-radius:50%; background:var(--bc); flex:0 0 auto;} .dx-pie li span{flex:1 1 auto; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--ink);} .dx-pie li b{flex:0 0 auto; font-weight:600; color:var(--ink-soft); font-size:11.5px;}
   .dx-seg{display:flex; gap:4px; margin:4px 0 8px;} .dx-seg i{flex:1 1 0; min-width:6px; height:12px; border-radius:6px; background:var(--tab-accent-soft); position:relative; overflow:hidden;} .dx-seg i b{position:absolute; inset:0 auto 0 0; background:var(--tab-accent); border-radius:6px;} .dx-kinds{display:block; margin-top:4px; line-height:1.4;}
   .dx-sess{display:inline-block; margin-left:6px; padding:1px 7px; border-radius:999px; background:var(--tab-accent); color:var(--tab-accent-ink); font-size:10px; letter-spacing:.06em; vertical-align:1px;}
   .dx-drum{position:relative; height:192px; overflow-y:auto; overflow-x:hidden; scroll-snap-type:y mandatory; scrollbar-width:none; padding:0; margin:0 -4px; -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 8px,#000 calc(100% - 8px),transparent 100%); mask-image:linear-gradient(to bottom,transparent 0,#000 8px,#000 calc(100% - 8px),transparent 100%);} .dx-drum::-webkit-scrollbar{display:none;}
@@ -10855,17 +10857,44 @@ function refreshPyqCard(){
   card.replaceWith(tmp.firstChild);
   bindDrum(host);
 }
+// Today's progress as a pie: each slice is one subject (or essay / test / PYQ practice / current affairs), its angle is the planned time,
+// the solid part of the slice is the time actually studied (its area grows with the share done), the pale part is what is still to do.
+function dxPieHtml(groups, lanes){
+  var colorOf = {}; (lanes || []).forEach(function(l){ if(l.subj) colorOf[l.subj.name] = l.subj.color; });
+  var fall = ["--tab-dashboard","--tab-tiers","--tab-logs","--tab-mocks","--tab-pyq","--tab-scheduler"], fi = 0;
+  var list = Object.keys(groups).map(function(k){ return groups[k]; }).filter(function(g){ return g.plan > 0; });
+  var total = list.reduce(function(a, g){ return a + g.plan; }, 0); if(!total) return "";
+  var R = 54, C = 60, a0 = -Math.PI/2, svg = "", leg = "";
+  function pt(a, r){ return (C + r*Math.cos(a)).toFixed(2)+" "+(C + r*Math.sin(a)).toFixed(2); }
+  function wedge(a, b, r, col, op){
+    if(b - a > Math.PI*2 - 1e-6) return '<circle cx="'+C+'" cy="'+C+'" r="'+r.toFixed(2)+'" fill="var('+col+')" fill-opacity="'+op+'"/>';
+    return '<path d="M'+C+' '+C+' L'+pt(a, r)+' A'+r.toFixed(2)+' '+r.toFixed(2)+' 0 '+((b - a) > Math.PI ? 1 : 0)+' 1 '+pt(b, r)+' Z" fill="var('+col+')" fill-opacity="'+op+'" stroke="var(--surface-solid, var(--surface))" stroke-width="1.5"/>';
+  }
+  list.forEach(function(g){
+    var col = colorOf[g.name] || (KIND_META[g.kind] && g.kind !== "study" && g.kind !== "revision" ? KIND_META[g.kind].color : fall[fi++ % fall.length]);
+    var a1 = a0 + Math.PI*2*g.plan/total, frac = Math.min(1, g.act/g.plan);
+    svg += wedge(a0, a1, R, col, ".26");
+    if(frac > 0) svg += wedge(a0, a1, R*Math.sqrt(frac), col, "1");
+    leg += '<li style="--bc:var('+col+')"><i></i><span>'+esc(g.name)+'</span><b>'+esc(fmtDurMin(Math.min(g.act, g.plan)))+' / '+esc(fmtDurMin(g.plan))+'</b></li>';
+    a0 = a1;
+  });
+  return '<div class="dx-pie"><svg viewBox="0 0 120 120" role="img" aria-label="Today\'s progress by subject, planned against studied time">'+svg+'</svg><ul>'+leg+'</ul></div>';
+}
+window.__dxPie = dxPieHtml;   // test hook, like __syncAudit
 function dxPlanHtml(){
   var states = subjectStates(studyPlan), op = overallProgress(studyPlan);
   var act = states.filter(function(x){ return x.state==="active"; })[0];
   var completed = states.filter(function(x){ return x.state==="completed"; }), rest = states.filter(function(x){ return x.state==="locked"; });
   // the whole day's plan: study, essay, PYQ practice, tests, revision, current affairs, all counted by time
-  var today = planSessionsOn(todayKey), tp = 0, ta = 0, segs = "", byKind = {};
+  var today = planSessionsOn(todayKey), tp = 0, ta = 0, segs = "", byKind = {}, pieGroups = {};
   today.forEach(function(x){
     var dmin = Math.max(0, x.duration||0), amin = x.actualDuration||0;
     tp += dmin; ta += amin;
     var lab = KIND_META[x.kind] ? KIND_META[x.kind].label : "Other"; byKind[lab] = (byKind[lab]||0) + dmin;
     segs += '<i style="flex:'+Math.max(1, dmin)+'" title="'+esc(lab+" · "+fmtDurMin(dmin))+'"><b style="width:'+Math.round(100*Math.min(dmin, amin)/Math.max(1, dmin))+'%"></b></i>';
+    // one pie slice per subject (study and revision of a subject share a slice); essay, tests, PYQ practice and current affairs get their own
+    var gname = (x.kind==="study" || x.kind==="revision") && x.subject ? x.subject : lab;
+    var g = pieGroups[gname] || (pieGroups[gname] = {name:gname, kind:x.kind, plan:0, act:0}); g.plan += dmin; g.act += amin;
   });
   var tpct = tp ? Math.min(100, Math.round(100*ta/tp)) : 0;
   var kinds = Object.keys(byKind).sort(function(x,y){ return byKind[y]-byKind[x]; }).slice(0,4).map(function(k){ return esc(k)+" "+esc(fmtDurMin(byKind[k])); }).join(" &middot; ");
@@ -10889,8 +10918,8 @@ function dxPlanHtml(){
   var mods = running.length > 1
     ? '<div class="dx-modsec"><div class="dx-k">RUNNING IN PARALLEL &middot; '+running.length+' SUBJECTS</div><div class="dx-mods">'+running.map(modCard).join("")+'</div></div>'
     : "";
-  var pace = '<div class="dx-card dx-pace"><div class="dx-k">TODAY'+(tp ? ' &middot; '+tpct+'%' : '')+'</div><div class="dx-seg">'+(segs || '<i style="flex:1"></i>')+'</div>'+
-    '<small>'+(tp ? 'Planned '+esc(fmtDurMin(tp))+' &middot; Actual '+esc(fmtDurMin(ta))+(ta>tp ? ' (over plan)' : '') : 'Nothing planned today')+'</small>'+(kinds ? '<small class="dx-kinds">'+kinds+'</small>' : '')+'</div>';
+  var pace = '<div class="dx-card dx-pace"><div class="dx-k">TODAY'+(tp ? ' &middot; '+tpct+'%' : '')+'</div>'+(tp ? dxPieHtml(pieGroups, pathCtx(states).lanes) : '<div class="dx-seg"><i style="flex:1"></i></div>')+
+    '<small>'+(tp ? 'Planned '+esc(fmtDurMin(tp))+' &middot; Actual '+esc(fmtDurMin(ta))+(ta>tp ? ' (over plan)' : '') : 'Nothing planned today')+'</small>'+'</div>';
   var pyq = pyqCardHtml(running);
   var path = pathHtml(states);
   var upc = '<div class="dx-card dx-up"><div class="dx-k">UPCOMING</div>'+upcomingHtml()+'<button type="button" class="dx-btn2" id="dashOpenPlanner">Open planner</button></div>';
