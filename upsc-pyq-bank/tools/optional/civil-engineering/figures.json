@@ -1,0 +1,1541 @@
+{
+ "2018|2|3(b)": [
+  {
+   "u": "img/civil-engineering/2018-2-3b-1.webp",
+   "a": "Levelling readings (BS, IS, FS, RL, remarks)",
+   "k": "crop"
+  }
+ ],
+ "2018|2|4(c)": [
+  {
+   "u": "img/civil-engineering/2018-2-4c-1.webp",
+   "a": "Traverse ABCDEA: side, distance (m), azimuth",
+   "k": "crop"
+  }
+ ],
+ "2020|2|2(a)": [
+  {
+   "u": "img/civil-engineering/2020-2-2a-1.webp",
+   "a": "Project activity table: starting month, duration and cost per month for activities A to F",
+   "k": "crop"
+  }
+ ],
+ "2020|2|3(b)": [
+  {
+   "u": "img/civil-engineering/2020-2-3b-1.webp",
+   "a": "Traverse observations: length and bearing of lines AB, AD, DE and EF",
+   "k": "crop"
+  }
+ ],
+ "2020|2|6(a)": [
+  {
+   "u": "img/civil-engineering/2020-2-6a-1.webp",
+   "a": "Stream segments: average depth and velocity at 0.2d, 0.6d and 0.8d",
+   "k": "crop"
+  }
+ ],
+ "2020|2|6(c)": [
+  {
+   "u": "img/civil-engineering/2020-2-6c-1.webp",
+   "a": "Time-area histogram (area in km2 against time in hr: 10, 30, 20, 40)",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2020-2-6c-2.webp",
+   "a": "Effective rainfall hyetograph ordinates for 0-6 hr",
+   "k": "crop"
+  }
+ ],
+ "2020|2|7(b)": [
+  {
+   "u": "img/civil-engineering/2020-2-7b-1.webp",
+   "a": "Observed flow hydrograph: time from start of rainfall against flow",
+   "k": "crop"
+  }
+ ],
+ "2020|1|1(a)": [
+  {
+   "u": "img/civil-engineering/2020-1-1a-1.webp",
+   "a": "Quarter-circle cantilever of radius R with vertical load P at the free end",
+   "k": "crop"
+  }
+ ],
+ "2020|1|2(a)": [
+  {
+   "u": "img/civil-engineering/2020-1-2a-1.webp",
+   "a": "Truss ABCDEG, 3 m high, 3 bays of 4 m, 400 N at E, 1200 N at C",
+   "k": "crop"
+  }
+ ],
+ "2020|1|4(a)": [
+  {
+   "u": "img/civil-engineering/2020-1-4a-1.webp",
+   "a": "Inverted T-beam, loads P, P, 3P, strain gauge A, and section A-A dimensions",
+   "k": "crop"
+  }
+ ],
+ "2020|1|4(b)": [
+  {
+   "u": "img/civil-engineering/2020-1-4b-1.webp",
+   "a": "Pipe bend laid horizontal, sections 1 and 2, theta = 60 degrees",
+   "k": "crop"
+  }
+ ],
+ "2020|1|4(c)": [
+  {
+   "u": "img/civil-engineering/2020-1-4c-1.webp",
+   "a": "Two footings on sand over compressible clay layer, water table, soil properties",
+   "k": "crop"
+  }
+ ],
+ "2020|1|5(a)": [
+  {
+   "u": "img/civil-engineering/2020-1-5a-1.webp",
+   "a": "Blocks A (300 N) and B (400 N) on inclined planes joined over a pulley, 60 and 30 degrees, mu = 0.2",
+   "k": "crop"
+  }
+ ],
+ "2020|1|5(b)": [
+  {
+   "u": "img/civil-engineering/2020-1-5b-1.webp",
+   "a": "Angle section ISA 125 x 95 x 10 with staggered 18 mm bolts and 20 mm bolts",
+   "k": "crop"
+  }
+ ],
+ "2020|1|5(c)": [
+  {
+   "u": "img/civil-engineering/2020-1-5c-1.webp",
+   "a": "Beam with udl, supports 6 m and 2 m, bending moment diagram with 30 kN-m",
+   "k": "crop"
+  }
+ ],
+ "2020|1|5(e)": [
+  {
+   "u": "img/civil-engineering/2020-1-5e-1.webp",
+   "a": "Unsupported vertical cut 4 m deep with soil properties",
+   "k": "crop"
+  }
+ ],
+ "2020|1|6(b)": [
+  {
+   "u": "img/civil-engineering/2020-1-6b-1.webp",
+   "a": "Portal frame ABCDE with 40 kN/m, spans 6 m and 4.5 m, height 6 m",
+   "k": "crop"
+  }
+ ],
+ "2020|1|6(c)": [
+  {
+   "u": "img/civil-engineering/2020-1-6c-1.webp",
+   "a": "Modification factor for tension reinforcement chart (fs = 120 to 290)",
+   "k": "crop"
+  }
+ ],
+ "2020|1|7(b)": [
+  {
+   "u": "img/civil-engineering/2020-1-7b-1.webp",
+   "a": "Bearing capacity factors Nc, Nq, Ngamma against phi (18 to 40 degrees)",
+   "k": "crop"
+  }
+ ],
+ "2020|1|8(c)": [
+  {
+   "u": "img/civil-engineering/2020-1-8c-1.webp",
+   "a": "Propped cantilever AB with udl w, length L",
+   "k": "crop"
+  }
+ ],
+ "2018|1|1(a)": [
+  {
+   "u": "img/civil-engineering/2018-1-1a-1.webp",
+   "a": "Two-part beam system A-B-C-D-E with 5 kN load and 0.3, 0.5, 0.3, 0.5 m spans",
+   "k": "crop"
+  }
+ ],
+ "2018|1|1(d)": [
+  {
+   "u": "img/civil-engineering/2018-1-1d-1.webp",
+   "a": "Velocity profile between two fixed parallel plates (h, y, u)",
+   "k": "crop"
+  }
+ ],
+ "2018|1|2(a)": [
+  {
+   "u": "img/civil-engineering/2018-1-2a-1.webp",
+   "a": "Warren truss L0-L5, U1-U5, 5 panels of 10 m, moving load 20 kN/m over 50 m",
+   "k": "crop"
+  }
+ ],
+ "2018|1|2(c)": [
+  {
+   "u": "img/civil-engineering/2018-1-2c-1.webp",
+   "a": "Inclined tube reservoir manometer (D, d, theta, h1, h2, L, gauge liquid)",
+   "k": "crop"
+  }
+ ],
+ "2018|1|3(b)": [
+  {
+   "u": "img/civil-engineering/2018-1-3b-1.webp",
+   "a": "Three-hinge parabolic arch ABC, span 30 m, rise 5 m, 10 kN/m load",
+   "k": "crop"
+  }
+ ],
+ "2018|1|3(c)": [
+  {
+   "u": "img/civil-engineering/2018-1-3c-1.webp",
+   "a": "Hanger connection: 230 mm end plate, two bolts, 35 mm end distance, 8 mm fillet weld, 200 kN",
+   "k": "crop"
+  }
+ ],
+ "2018|1|4(c)": [
+  {
+   "u": "img/civil-engineering/2018-1-4c-1.webp",
+   "a": "Bending moment diagram ABCDE with parabolic ends, 25 kN-m and 20 kN-m",
+   "k": "crop"
+  }
+ ],
+ "2018|1|5(a)": [
+  {
+   "u": "img/civil-engineering/2018-1-5a-1.webp",
+   "a": "Cantilever AB, 5.0 m span, with 200 mm x 400 mm section",
+   "k": "crop"
+  }
+ ],
+ "2018|1|5(b)": [
+  {
+   "u": "img/civil-engineering/2018-1-5b-1.webp",
+   "a": "Channel section 1020 mm wide, 1010 mm deep, 10 mm walls",
+   "k": "crop"
+  }
+ ],
+ "2018|1|6(b)": [
+  {
+   "u": "img/civil-engineering/2018-1-6b-1.webp",
+   "a": "Cylindrical chimney, d = 1 m, L = 25 m, drag force FD at L/2",
+   "k": "crop"
+  }
+ ],
+ "2018|1|7(a)": [
+  {
+   "u": "img/civil-engineering/2018-1-7a-1.webp",
+   "a": "Propped cantilever ABCDEF with loads 100, 100, 200 kN, spans 1, 2, 1, 2, 1 m",
+   "k": "crop"
+  }
+ ],
+ "2018|1|8(c)": [
+  {
+   "u": "img/civil-engineering/2018-1-8c-1.webp",
+   "a": "Footing 3 m wide, Q = 1100 kN, sand and gravel over normally consolidated clay (e0 = 1.2, Cc = 0.6)",
+   "k": "crop"
+  }
+ ],
+ "2022|1|1(a)": [
+  {
+   "u": "img/civil-engineering/2022-1-1a-1.webp",
+   "a": "Stepped rod with portions 1 to 4 (50 mm, d, 85 mm, 50 mm dia) under 95 kN",
+   "k": "crop"
+  }
+ ],
+ "2022|1|1(d)": [
+  {
+   "u": "img/civil-engineering/2022-1-1d-1.webp",
+   "a": "Simply supported beam ACB, 25 kN at C, 10 kN/m on CB, spans 3 m and 4 m",
+   "k": "crop"
+  }
+ ],
+ "2022|1|2(a)": [
+  {
+   "u": "img/civil-engineering/2022-1-2a-1.webp",
+   "a": "Pin-jointed truss ABCD with 20 kN and 10 kN at C",
+   "k": "crop"
+  }
+ ],
+ "2022|1|3(a)(ii)": [
+  {
+   "u": "img/civil-engineering/2022-1-3aii-1.webp",
+   "a": "Bridge truss AEJIHGF, 6 m high, four 8 m panels",
+   "k": "crop"
+  }
+ ],
+ "2022|1|3(b)": [
+  {
+   "u": "img/civil-engineering/2022-1-3b-1.webp",
+   "a": "Table of KL/r against fcd (MPa)",
+   "k": "crop"
+  }
+ ],
+ "2022|1|4(a)": [
+  {
+   "u": "img/civil-engineering/2022-1-4a-1.webp",
+   "a": "Bracket with six bolts, 50 mm spacing, load P at 400 mm",
+   "k": "crop"
+  }
+ ],
+ "2022|1|4(c)": [
+  {
+   "u": "img/civil-engineering/2022-1-4c-1.webp",
+   "a": "Retaining wall: 3 m stem, 1 m cover, base 700, 250 and 1300 mm, 400 mm thick",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2022-1-4c-2.webp",
+   "a": "Table of Mu/bd2 against pt",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2022-1-4c-3.webp",
+   "a": "Table of tau_c (MPa) against pt",
+   "k": "crop"
+  }
+ ],
+ "2022|1|5(a)": [
+  {
+   "u": "img/civil-engineering/2022-1-5a-1.webp",
+   "a": "Pipe of diameter D and length l ending in a nozzle of diameter d, friction coefficient f",
+   "k": "crop"
+  }
+ ],
+ "2022|1|6(c)": [
+  {
+   "u": "img/civil-engineering/2022-1-6c-1.webp",
+   "a": "Three reservoirs A, B, C with pump and pipe data",
+   "k": "crop"
+  }
+ ],
+ "2022|1|7(b)": [
+  {
+   "u": "img/civil-engineering/2022-1-7b-1.webp",
+   "a": "Two parallel plates moving in opposite directions (1 m/s and 2 m/s)",
+   "k": "crop"
+  }
+ ],
+ "2022|1|8(c)": [
+  {
+   "u": "img/civil-engineering/2022-1-8c-1.webp",
+   "a": "Plate load test: load intensity against settlement",
+   "k": "crop"
+  }
+ ],
+ "2016|1|1(c)": [
+  {
+   "u": "img/civil-engineering/2016-1-1c-1.webp",
+   "a": "Small block m with velocity v and a smooth irregular block M of height h on a smooth horizontal plane",
+   "k": "crop"
+  }
+ ],
+ "2016|1|1(d)": [
+  {
+   "u": "img/civil-engineering/2016-1-1d-1.webp",
+   "a": "Beam ABCD: A fixed, 2 EI over 4.0 m with 10 kN/m, free roller at C, EI over 2.0 m with 10 kN/m, D fixed",
+   "k": "crop"
+  }
+ ],
+ "2016|1|2(a)": [
+  {
+   "u": "img/civil-engineering/2016-1-2a-1.webp",
+   "a": "Cantilever retaining wall: 4000 above GL, 1200 below, 400 base, 1000 + 2100 + 200 toe and heel, 3500 base, 200 top",
+   "k": "crop"
+  }
+ ],
+ "2016|1|2(b)": [
+  {
+   "u": "img/civil-engineering/2016-1-2b-1.webp",
+   "a": "Subsoil: gravel 1.8 m (Gs 2.65, e 0.650), water table 1.2 m, silt 4.0 m (Gs 2.58, e 0.76), rock",
+   "k": "crop"
+  }
+ ],
+ "2016|1|3(a)": [
+  {
+   "u": "img/civil-engineering/2016-1-3a-1.webp",
+   "a": "Truss ABCDE with FGH, 5 m high, four 5 m panels, two 100 kN moving loads 5 m apart",
+   "k": "crop"
+  }
+ ],
+ "2016|1|4(c)": [
+  {
+   "u": "img/civil-engineering/2016-1-4c-1.webp",
+   "a": "Consolidated undrained triaxial results: sigma3, (sigma1'-sigma3') at peak and u at peak for three specimens",
+   "k": "crop"
+  }
+ ],
+ "2016|1|5(a)": [
+  {
+   "u": "img/civil-engineering/2016-1-5a-1.webp",
+   "a": "Four beam cross-sections: (i) cross, (ii) I-section, (iii) square with circular hole, (iv) diamond",
+   "k": "crop"
+  }
+ ],
+ "2016|1|5(d)": [
+  {
+   "u": "img/civil-engineering/2016-1-5d-1.webp",
+   "a": "Ladder resting against a smooth wall and an incline at 45 degrees",
+   "k": "crop"
+  }
+ ],
+ "2016|1|6(a)": [
+  {
+   "u": "img/civil-engineering/2016-1-6a-1.webp",
+   "a": "Three metal cubes between rigid faces, 1000 N/mm2 on the central cube, axes x, y, z",
+   "k": "crop"
+  }
+ ],
+ "2016|1|6(b)": [
+  {
+   "u": "img/civil-engineering/2016-1-6b-1.webp",
+   "a": "Pile of length L in clay, qu = 115 kN/m2, gamma = 18.1 kN/m3, Q design = 500 kN",
+   "k": "crop"
+  }
+ ],
+ "2016|1|6(c)": [
+  {
+   "u": "img/civil-engineering/2016-1-6c-1.webp",
+   "a": "Percentage of steel against permissible shear stress for M 20",
+   "k": "crop"
+  }
+ ],
+ "2016|1|8(a)(ii)": [
+  {
+   "u": "img/civil-engineering/2016-1-8aii-1.webp",
+   "a": "Simply supported beam AB, 10.0 m, 10 kN/m, 100 kN axial each end, section C 100 x 200 mm with points 1 and 2",
+   "k": "crop"
+  }
+ ],
+ "2016|1|8(c)": [
+  {
+   "u": "img/civil-engineering/2016-1-8c-1.webp",
+   "a": "Copper bar AB with two steel bars on a rigid plate, 1.0 m and 3.0 m lengths, 200 kN at B",
+   "k": "crop"
+  }
+ ],
+ "2023|1|1(c)": [
+  {
+   "u": "img/civil-engineering/2023-1-1c-1.webp",
+   "a": "Strong-box of mass 85 kg on a floor, force F at height h, weight W, base 0.70 m",
+   "k": "crop"
+  }
+ ],
+ "2023|1|1(d)": [
+  {
+   "u": "img/civil-engineering/2023-1-1d-1.webp",
+   "a": "I-section 450 mm deep, flanges 250 mm and 80 mm, web 80 mm, tendon 150 mm from the centre line",
+   "k": "crop"
+  }
+ ],
+ "2023|1|1(e)": [
+  {
+   "u": "img/civil-engineering/2023-1-1e-1.webp",
+   "a": "ISA 75 x 50 x 8 tie on a 12 mm gusset plate with 6 mm weld, lengths Lw1 and Lw2, Cxx 25.2 mm",
+   "k": "crop"
+  }
+ ],
+ "2023|1|2(a)": [
+  {
+   "u": "img/civil-engineering/2023-1-2a-1.webp",
+   "a": "Beam C-A-D-E-B-F with 2 kN/m, 8 kN, 6 kN-m, 4 kN and spans 1, 2, 1, 2, 2 m",
+   "k": "crop"
+  }
+ ],
+ "2023|1|2(b)": [
+  {
+   "u": "img/civil-engineering/2023-1-2b-1.webp",
+   "a": "KL/r against fcd (MPa) table",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2023-1-2b-2.webp",
+   "a": "ISMB 550 section: tf 19.3, tw 11.2, r1 18, r2 9, depth 550, width 190",
+   "k": "crop"
+  }
+ ],
+ "2023|1|2(c)": [
+  {
+   "u": "img/civil-engineering/2023-1-2c-1.webp",
+   "a": "Frame ABC: A free end, 2.5 m beam I, 3.5 m column 2.5 I, C fixed, 8 kN at B, 15 kN at A",
+   "k": "crop"
+  }
+ ],
+ "2023|1|3(a)": [
+  {
+   "u": "img/civil-engineering/2023-1-3a-1.webp",
+   "a": "Bending moment coefficients when four edges are discontinuous (alpha_x for ly/lx 1.0 to 1.5, alpha_y)",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2023-1-3a-2.webp",
+   "a": "Modification factor for tension reinforcement against percentage tension reinforcement (fs = 120 to 290)",
+   "k": "crop"
+  }
+ ],
+ "2023|1|3(b)": [
+  {
+   "u": "img/civil-engineering/2023-1-3b-1.webp",
+   "a": "ISMC 300 section: Cy 23.5, tf 13.6, tw 7.8, depth 300, width 90",
+   "k": "crop"
+  }
+ ],
+ "2023|1|3(c)": [
+  {
+   "u": "img/civil-engineering/2023-1-3c-1.webp",
+   "a": "Portal frame ABCD, 16 kN/m on BC, 4 m span, 3 m columns, A and D fixed",
+   "k": "crop"
+  }
+ ],
+ "2023|1|4(a)": [
+  {
+   "u": "img/civil-engineering/2023-1-4a-1.webp",
+   "a": "Truss ABCD, 4 m + 4 m, 3 m high, 50 kN at C",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2023-1-4a-2.webp",
+   "a": "Table of areas of cross-section of members",
+   "k": "crop"
+  }
+ ],
+ "2023|1|4(b)": [
+  {
+   "u": "img/civil-engineering/2023-1-4b-1.webp",
+   "a": "Propped cantilever AB of span l with P per metre",
+   "k": "crop"
+  }
+ ],
+ "2023|1|5(c)": [
+  {
+   "u": "img/civil-engineering/2023-1-5c-1.webp",
+   "a": "Radial turbine, V1, V2, 30 degrees, b = 10 cm, radii 40 cm and 70 cm",
+   "k": "crop"
+  }
+ ],
+ "2023|1|6(c)": [
+  {
+   "u": "img/civil-engineering/2023-1-6c-1.webp",
+   "a": "Retaining wall with layer 1 (3 m) and layer 2 (4 m), ground water table",
+   "k": "crop"
+  }
+ ],
+ "2023|1|7(b)": [
+  {
+   "u": "img/civil-engineering/2023-1-7b-1.webp",
+   "a": "Pile group in firm, soft and stiff clay with depths and properties",
+   "k": "crop"
+  }
+ ],
+ "2023|1|8(b)": [
+  {
+   "u": "img/civil-engineering/2023-1-8b-1.webp",
+   "a": "Strip footing B = 2.8 m at 2.5 m depth, water table at 6 m",
+   "k": "crop"
+  }
+ ],
+ "2023|1|8(c)": [
+  {
+   "u": "img/civil-engineering/2023-1-8c-1.webp",
+   "a": "Pipe D1 = 10 cm, nozzle D2 = 2.5 cm, plate with force F, mercury manometer h",
+   "k": "crop"
+  }
+ ],
+ "2016|2|3(a)": [
+  {
+   "u": "img/civil-engineering/2016-2-3a-1.webp",
+   "a": "Network: A 6 and B 1, C 5 and D 3, E 7 and F 4 (three parallel paths between start and end events)",
+   "k": "crop"
+  }
+ ],
+ "2016|2|3(d)(ii)": [
+  {
+   "u": "img/civil-engineering/2016-2-3dii-1.webp",
+   "a": "Traffic table: vehicle type, volume, annual growth rate, VDF; construction period 2 years, design life 20 years",
+   "k": "crop"
+  }
+ ],
+ "2017|1|1(d)": [
+  {
+   "u": "img/civil-engineering/2017-1-1d-1.webp",
+   "a": "Lever AB, 1.0 m long at 45 degrees, 600 N at B",
+   "k": "crop"
+  }
+ ],
+ "2017|1|1(e)": [
+  {
+   "u": "img/civil-engineering/2017-1-1e-1.webp",
+   "a": "Frame A-B-C-D: column 1.5 L, beam L/2 + L/2 + L/2, loads W at the middle of BC and at D, support at C",
+   "k": "crop"
+  }
+ ],
+ "2017|1|2(c)": [
+  {
+   "u": "img/civil-engineering/2017-1-2c-1.webp",
+   "a": "Plan of the dog-legged stair (250 x 400 beams, 250 x 250 columns, half landing, 1200, 2250, 1200) and Mu/bd2 against pt table",
+   "k": "crop"
+  }
+ ],
+ "2017|1|3(c)": [
+  {
+   "u": "img/civil-engineering/2017-1-3c-1.webp",
+   "a": "Plane truss ABCD, 4.0 m + 4.0 m, 3.0 m high, 100 kN at C",
+   "k": "crop"
+  }
+ ],
+ "2017|1|4(a)": [
+  {
+   "u": "img/civil-engineering/2017-1-4a-1.webp",
+   "a": "Two-layered backfill: layer I (5 m) and layer II (4 m) with unit weights and strength parameters",
+   "k": "crop"
+  }
+ ],
+ "2017|1|4(b)": [
+  {
+   "u": "img/civil-engineering/2017-1-4b-1.webp",
+   "a": "Two moving loads of 300 kN, 4.0 m apart, on a 20.0 m girder AB",
+   "k": "crop"
+  }
+ ],
+ "2017|1|4(c)": [
+  {
+   "u": "img/civil-engineering/2017-1-4c-1.webp",
+   "a": "Square hollow section welded to the flange, 100 mm, 150 mm, 75 mm, view A-A",
+   "k": "crop"
+  }
+ ],
+ "2017|1|5(c)": [
+  {
+   "u": "img/civil-engineering/2017-1-5c-1.webp",
+   "a": "Soil investigation table: depth from ground surface, type of soil, index properties",
+   "k": "crop"
+  }
+ ],
+ "2017|1|5(d)": [
+  {
+   "u": "img/civil-engineering/2017-1-5d-1.webp",
+   "a": "Two bars meeting at P, 45 degrees each, 3 m high",
+   "k": "crop"
+  }
+ ],
+ "2017|1|6(a)": [
+  {
+   "u": "img/civil-engineering/2017-1-6a-1.webp",
+   "a": "Three members at joint B (A, C, D), 10 m each, 100 kN-m clockwise moment at B",
+   "k": "crop"
+  }
+ ],
+ "2017|1|6(b)": [
+  {
+   "u": "img/civil-engineering/2017-1-6b-1.webp",
+   "a": "Table of 100Ast/bd against tau_c",
+   "k": "crop"
+  }
+ ],
+ "2017|1|7(b)": [
+  {
+   "u": "img/civil-engineering/2017-1-7b-1.webp",
+   "a": "Anchored sheet pile: sand over clay, water tables, anchor at 1.0 m, 2.0 m and 3.0 m depths",
+   "k": "crop"
+  }
+ ],
+ "2017|1|7(c)": [
+  {
+   "u": "img/civil-engineering/2017-1-7c-1.webp",
+   "a": "Cantilever beam with depth 300 mm at fixed end and 200 mm at free end, 1.0 m long, 100 kN",
+   "k": "crop"
+  }
+ ],
+ "2017|1|8(a)": [
+  {
+   "u": "img/civil-engineering/2017-1-8a-1.webp",
+   "a": "Cantilever retaining wall: 200 top, 3700 stem, 400 base, 800 toe, 350 stem, 1350 heel, 1000 below ground",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2017-1-8a-2.webp",
+   "a": "Table of Mu/bd2, pt and tau_c",
+   "k": "crop"
+  }
+ ],
+ "2017|1|8(c)": [
+  {
+   "u": "img/civil-engineering/2017-1-8c-1.webp",
+   "a": "Soil profile table: layer, depth, soil type, properties",
+   "k": "crop"
+  }
+ ],
+ "2017|2|1(a)": [
+  {
+   "u": "img/civil-engineering/2017-2-1a-1.webp",
+   "a": "Table of activities and durations (1-2 : 20, 1-3 : 25, 2-3 : 10, 2-4 : 12, 3-4 : 6, 4-5 : 10)",
+   "k": "crop"
+  }
+ ],
+ "2017|2|3(b)": [
+  {
+   "u": "img/civil-engineering/2017-2-3b-1.webp",
+   "a": "Table of contour (m) against area (m2), 441 to 465",
+   "k": "crop"
+  }
+ ],
+ "2017|2|4(b)": [
+  {
+   "u": "img/civil-engineering/2017-2-4b-1.webp",
+   "a": "Independent coordinates N and E of points A, B and C",
+   "k": "crop"
+  }
+ ],
+ "2017|2|6(b)(i)": [
+  {
+   "u": "img/civil-engineering/2017-2-6bi-1.webp",
+   "a": "Table of crops, base period, area and duty (sugarcane, overlap sugarcane, wheat, bajri, vegetables)",
+   "k": "crop"
+  }
+ ],
+ "2017|2|7(a)": [
+  {
+   "u": "img/civil-engineering/2017-2-7a-1.webp",
+   "a": "Table of percentage of surface area, type of surface and coefficient of runoff",
+   "k": "crop"
+  }
+ ],
+ "2019|1|1(b)": [
+  {
+   "u": "img/civil-engineering/2019-1-1b-1.webp",
+   "a": "Beam loaded with 30 kN/m: 10 m span between the supports and a 4 m overhang",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2019-1-1b-2.webp",
+   "a": "Table of 100As/bd against tau_c (N/mm2)",
+   "k": "crop"
+  }
+ ],
+ "2019|1|1(e)": [
+  {
+   "u": "img/civil-engineering/2019-1-1e-1.webp",
+   "a": "Phase diagram: Vt, Vv, Va, Vw, Vs, Wt, Ww, Ws (air, water, solid) with blanks to be filled",
+   "k": "crop"
+  }
+ ],
+ "2019|1|2(a)": [
+  {
+   "u": "img/civil-engineering/2019-1-2a-1.webp",
+   "a": "Prestressed I-beam section: flange 250 x 100, web 100, 500, 393.5 to the neutral axis, 200 x 100 bottom block, Ast = 605 mm2",
+   "k": "crop"
+  }
+ ],
+ "2019|1|3(b)": [
+  {
+   "u": "img/civil-engineering/2019-1-3b-1.webp",
+   "a": "Built-up column: two 300 x 30 mm flanges, 400 mm web 30 mm thick, axes y and z",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2019-1-3b-2.webp",
+   "a": "Table of slenderness ratio KL/r against design compressive stress fcd for curves b and c",
+   "k": "crop"
+  }
+ ],
+ "2019|1|5(a)": [
+  {
+   "u": "img/civil-engineering/2019-1-5a-1.webp",
+   "a": "200 kg block on a 20 degree incline with P at 30 degrees",
+   "k": "crop"
+  }
+ ],
+ "2019|1|5(b)": [
+  {
+   "u": "img/civil-engineering/2019-1-5b-1.webp",
+   "a": "Circular column 400 mm, 6 bars of 16 mm, 6 mm spiral at 45 mm c/c, 40 mm clear cover",
+   "k": "crop"
+  }
+ ],
+ "2019|1|6(a)": [
+  {
+   "u": "img/civil-engineering/2019-1-6a-1.webp",
+   "a": "Beam AB with moments of inertia I, 3I and 2I over 10 m + 10 m + 10 m, loads 75 kN at C and 150 kN at D",
+   "k": "crop"
+  }
+ ],
+ "2019|1|6(b)": [
+  {
+   "u": "img/civil-engineering/2019-1-6b-1.webp",
+   "a": "Table of KL/r against fcd for buckling curve c",
+   "k": "crop"
+  }
+ ],
+ "2019|1|6(c)": [
+  {
+   "u": "img/civil-engineering/2019-1-6c-1.webp",
+   "a": "Raft on 4 clay sub-layers: 100 kPa, 2 m + four 4 m layers with unit weight, e0 and Cc, water table",
+   "k": "crop"
+  }
+ ],
+ "2019|1|7(b)": [
+  {
+   "u": "img/civil-engineering/2019-1-7b-1.webp",
+   "a": "Tables of nominal concrete cover and basic span to effective depth ratios",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2019-1-7b-2.webp",
+   "a": "Modification factor for tension reinforcement against percentage tension reinforcement (fs = 120 to 290)",
+   "k": "crop"
+  }
+ ],
+ "2019|1|7(c)": [
+  {
+   "u": "img/civil-engineering/2019-1-7c-1.webp",
+   "a": "Continuous beam ABCD, three 10 m spans, moments of inertia 2I, I and 2I",
+   "k": "crop"
+  }
+ ],
+ "2019|1|8(a)": [
+  {
+   "u": "img/civil-engineering/2019-1-8a-1.webp",
+   "a": "Retaining wall 6.0 m high with 1.2 m top, 3.3 m base, surcharge 25.0 kN/m2 on backfill (17.0 kN/m3, 40 degrees), wall 24.0 kN/m3",
+   "k": "crop"
+  }
+ ],
+ "2019|1|8(b)": [
+  {
+   "u": "img/civil-engineering/2019-1-8b-1.webp",
+   "a": "Portal frame 2l x 2l with plastic moments Mp and 2Mp and loads F and 4F",
+   "k": "crop"
+  }
+ ],
+ "2021|1|1(a)": [
+  {
+   "u": "img/civil-engineering/2021-1-1a-1.webp",
+   "a": "Truss A-C-D-G-H on top with B, E, F below, 2 m panels, loads 5, 10, 10, 10, 5 kN",
+   "k": "crop"
+  }
+ ],
+ "2021|1|2(a)": [
+  {
+   "u": "img/civil-engineering/2021-1-2a-1.webp",
+   "a": "Beam A-B-C-D, A fixed, hinge at B, W at C, roller at D, L + L + L",
+   "k": "crop"
+  }
+ ],
+ "2021|1|3(a)": [
+  {
+   "u": "img/civil-engineering/2021-1-3a-1.webp",
+   "a": "Strain against square root of time, with b, 1.15 b, a, 1.15 a and percent consolidation scale",
+   "k": "crop"
+  }
+ ],
+ "2021|1|4(a)": [
+  {
+   "u": "img/civil-engineering/2021-1-4a-1.webp",
+   "a": "Truss ABCDEF G / HIJKL, 6 panels at 4 m = 24 m, 3 m high; moving loads 125, 100, 50 kN at 2 m and 3 m",
+   "k": "crop"
+  }
+ ],
+ "2021|1|4(c)": [
+  {
+   "u": "img/civil-engineering/2021-1-4c-1.webp",
+   "a": "Retaining wall: 1 m top, 3 m base, 6 m high, granular backfill 17.5 kN/m3, phi 35 degrees, wall 24 kN/m3",
+   "k": "crop"
+  }
+ ],
+ "2021|1|5(a)": [
+  {
+   "u": "img/civil-engineering/2021-1-5a-1.webp",
+   "a": "Circular log G in a bracket: bar PN hinged at P, string MN, contact points Q and J, angle theta",
+   "k": "crop"
+  }
+ ],
+ "2021|1|5(b)": [
+  {
+   "u": "img/civil-engineering/2021-1-5b-1.webp",
+   "a": "T-beam: flange 1000 x 100 mm, web 300 mm, depth 400 mm, 4 bars of 25 mm, 50 mm cover",
+   "k": "crop"
+  }
+ ],
+ "2021|1|5(c)": [
+  {
+   "u": "img/civil-engineering/2021-1-5c-1.webp",
+   "a": "Fixed-end bar ABCD: PB at B, PC at C, 300 + 500 + 300 mm",
+   "k": "crop"
+  }
+ ],
+ "2021|1|6(b)": [
+  {
+   "u": "img/civil-engineering/2021-1-6b-1.webp",
+   "a": "Blank table to fill in: V and M at points A, B, C, D, E, F",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2021-1-6b-2.webp",
+   "a": "Sign conventions for SFD and BMD: positive V and positive M",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2021-1-6b-3.webp",
+   "a": "Beam A-B-C-D-E-F: 25 kN/m on 0.5 m, 300 kN-m at C, 50 kN at D, 40 kN at F, spans 0.5, 1, 2, 1.5, 0.5, 0.5 m",
+   "k": "crop"
+  }
+ ],
+ "2021|1|6(c)": [
+  {
+   "u": "img/civil-engineering/2021-1-6c-1.webp",
+   "a": "Stress-strain curve for cold worked deformed bar (fy and fy/1.15, Es = 200000 N/mm2, strains 0.0001 to 0.004)",
+   "k": "crop"
+  }
+ ],
+ "2021|1|7(b)": [
+  {
+   "u": "img/civil-engineering/2021-1-7b-1.webp",
+   "a": "Table of phi against Nc, Nq and Ngamma (10 to 24 degrees)",
+   "k": "crop"
+  }
+ ],
+ "2021|1|8(a)": [
+  {
+   "u": "img/civil-engineering/2021-1-8a-1.webp",
+   "a": "Pile of 12 m in medium dense to dense sand, gamma 20.1 kN/m3, phi 38 degrees, k 0.95",
+   "k": "crop"
+  }
+ ],
+ "2021|1|8(c)": [
+  {
+   "u": "img/civil-engineering/2021-1-8c-1.webp",
+   "a": "Table of shear modulus, maximum shear stress and density of titanium alloy and aluminium, and the hollow shaft, 1 m long, 25 mm outer diameter",
+   "k": "crop"
+  }
+ ],
+ "2021|2|1(a)": [
+  {
+   "u": "img/civil-engineering/2021-2-1a-1.webp",
+   "a": "Plan of a pitched roof with components numbered 1, 2, 3 and 4",
+   "k": "crop"
+  }
+ ],
+ "2021|2|1(b)": [
+  {
+   "u": "img/civil-engineering/2021-2-1b-1.webp",
+   "a": "Activity-on-arrow network 1 to 8: A 5, B 3, C 8, H 4, G 4, F 6, E 7, I 7, J 2, L 6, K 6",
+   "k": "crop"
+  }
+ ],
+ "2021|2|2(a)": [
+  {
+   "u": "img/civil-engineering/2021-2-2a-1.webp",
+   "a": "Table of activity, duration (days) and resources (masons per day)",
+   "k": "crop"
+  }
+ ],
+ "2021|2|4(c)(ii)": [
+  {
+   "u": "img/civil-engineering/2021-2-4cii-1.webp",
+   "a": "Door with parts numbered 1 to 10 and floor level",
+   "k": "crop"
+  }
+ ],
+ "2021|2|5(a)": [
+  {
+   "u": "img/civil-engineering/2021-2-5a-1.webp",
+   "a": "One-hour unit hydrograph: discharge (m3/s) against time (h), 0 to 4 h, peak 3 m3/s at 1 h",
+   "k": "crop"
+  }
+ ],
+ "2021|2|6(c)": [
+  {
+   "u": "img/civil-engineering/2021-2-6c-1.webp",
+   "a": "Table of crops: base period, duty at field and area under crop",
+   "k": "crop"
+  }
+ ],
+ "2022|2|2(b)": [
+  {
+   "u": "img/civil-engineering/2022-2-2b-1.webp",
+   "a": "Table of vehicle type, gross weight, vehicles per day, wheel configuration and growth rate (bus and truck)",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2022-2-2b-2.webp",
+   "a": "IRC 37, 2018 pavement composition for CBR 8%: design traffic (msa) against BC, DBM, WMM and GSB thicknesses",
+   "k": "crop"
+  }
+ ],
+ "2022|2|2(c)": [
+  {
+   "u": "img/civil-engineering/2022-2-2c-1.webp",
+   "a": "Spot speed study: speed range (km/hr) and number of vehicles",
+   "k": "crop"
+  }
+ ],
+ "2022|2|3(c)": [
+  {
+   "u": "img/civil-engineering/2022-2-3c-1.webp",
+   "a": "Activities 1-3, 1-2, 2-3, 3-4 with normal time (weeks) and normal cost (Rs lakh)",
+   "k": "crop"
+  }
+ ],
+ "2022|2|5(a)": [
+  {
+   "u": "img/civil-engineering/2022-2-5a-1.webp",
+   "a": "Annual rainfall (cm) at stations A to F",
+   "k": "crop"
+  }
+ ],
+ "2022|2|5(e)": [
+  {
+   "u": "img/civil-engineering/2022-2-5e-1.webp",
+   "a": "Multiple tube fermentation: serial dilution and number of positives",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2022-2-5e-2.webp",
+   "a": "Standard MPN values for combinations of positive tubes (10 mL, 1 mL, 0.1 mL)",
+   "k": "crop"
+  }
+ ],
+ "2022|2|6(a)(ii)": [
+  {
+   "u": "img/civil-engineering/2022-2-6aii-1.webp",
+   "a": "Ordinates of the 4 hr unit hydrograph (time 0 to 44 h)",
+   "k": "crop"
+  }
+ ],
+ "2023|2|2(a)": [
+  {
+   "u": "img/civil-engineering/2023-2-2a-1.webp",
+   "a": "Table of activity, duration (days) and predecessor for P, Q, R, S, T, U",
+   "k": "crop"
+  }
+ ],
+ "2023|2|3(b)": [
+  {
+   "u": "img/civil-engineering/2023-2-3b-1.webp",
+   "a": "Staff readings: back sight and foresight at A to F",
+   "k": "crop"
+  }
+ ],
+ "2023|2|5(a)": [
+  {
+   "u": "img/civil-engineering/2023-2-5a-1.webp",
+   "a": "Ordinates of the 6-hour unit hydrograph (time 0 to 60 hr)",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2023-2-5a-2.webp",
+   "a": "Accumulated rainfall (cm) against time from start of storm (0, 6, 12, 18 hr)",
+   "k": "crop"
+  }
+ ],
+ "2023|2|5(b)": [
+  {
+   "u": "img/civil-engineering/2023-2-5b-1.webp",
+   "a": "Table of sub-area, area (km2), annual precipitation (mm) and annual evaporation (mm) for P, Q, R, S",
+   "k": "crop"
+  }
+ ],
+ "2023|2|5(c)": [
+  {
+   "u": "img/civil-engineering/2023-2-5c-1.webp",
+   "a": "Inflow hydrograph: time (hr) 0 to 28 and inflow (m3/s)",
+   "k": "crop"
+  }
+ ],
+ "2024|1|1(a)": [
+  {
+   "u": "img/civil-engineering/2024-1-1a-1.webp",
+   "a": "Cantilever ABCD, 2 m each: 10 kN/m between B and C, 50 kN-m clockwise moment at D, member stiffness 2I and I",
+   "k": "crop"
+  }
+ ],
+ "2024|1|1(b)": [
+  {
+   "u": "img/civil-engineering/2024-1-1b-1.webp",
+   "a": "Square section 600 mm x 600 mm with corners A, B, C, D, centre O, load point P offset 100 mm and 100 mm, 500 kN",
+   "k": "crop"
+  }
+ ],
+ "2024|1|1(c)": [
+  {
+   "u": "img/civil-engineering/2024-1-1c-1.webp",
+   "a": "Moving UDL 20 kN/m over 6 m on girder AB of 30 m, point C 6 m from A",
+   "k": "crop"
+  }
+ ],
+ "2024|1|1(d)": [
+  {
+   "u": "img/civil-engineering/2024-1-1d-1.webp",
+   "a": "Bracket on ISMB 250 with a 12 mm gusset plate, bolt A, 40 + 160 + 40 mm, 120 mm, 200 mm, 300 mm, load P",
+   "k": "crop"
+  }
+ ],
+ "2024|1|2(a)": [
+  {
+   "u": "img/civil-engineering/2024-1-2a-1.webp",
+   "a": "Cantilever ABC: 1.0 m + 1.0 m, sections 1-1 (0.2 x 0.45 m) and 2-2 (0.2 x 0.2 m)",
+   "k": "crop"
+  }
+ ],
+ "2024|1|2(b)": [
+  {
+   "u": "img/civil-engineering/2024-1-2b-1.webp",
+   "a": "Fig. 1 Stress-strain curve for concrete (parabolic curve, fck, 0.67 fck, 0.67 fck/gamma_m, strains 0.002 and 0.0035)",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2024-1-2b-2.webp",
+   "a": "Fig. 2 Representative stress-strain curves for reinforcement: 23A cold worked deformed bar",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2024-1-2b-3.webp",
+   "a": "Fig. 2 Representative stress-strain curves for reinforcement: 23B steel bar with definite yield point",
+   "k": "crop"
+  }
+ ],
+ "2024|1|2(c)": [
+  {
+   "u": "img/civil-engineering/2024-1-2c-1.webp",
+   "a": "Two angles ISA 100 x 100 x 12 welded to a 12 mm gusset plate, 540 kN, weld lengths l1 and l2, 29.2 mm",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2024-1-2c-2.webp",
+   "a": "Enclosed extract: IS 800 : 2007 clauses 10.5.4.3 to 10.5.9 on welds (plug, intermittent, shop, site and long-joint welds, fillet welds at edges)",
+   "k": "crop"
+  }
+ ],
+ "2024|1|3(a)": [
+  {
+   "u": "img/civil-engineering/2024-1-3a-1.webp",
+   "a": "Fixed end moments of the box culvert members (MFAB, MFBA, MFBC, MFCB, MFCD, MFDC, MFAD, MFDA)",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2024-1-3a-2.webp",
+   "a": "Box culvert ABCD: 6.0 m x 3.0 m, 50 kN at the top, 30 kN/m loads, member stiffness 2I, I, 3I",
+   "k": "crop"
+  }
+ ],
+ "2024|1|3(b)": [
+  {
+   "u": "img/civil-engineering/2024-1-3b-1.webp",
+   "a": "Enclosed extract: IS 456 : 2000 Annex G, moments of resistance of rectangular and T-sections (G-1 to G-2.3)",
+   "k": "crop"
+  }
+ ],
+ "2024|1|4(b)": [
+  {
+   "u": "img/civil-engineering/2024-1-4b-1.webp",
+   "a": "Pin-jointed truss ABCDE: 60 degrees, member forces 57.74 kN and 28.87 kN, 100 kN at C, 3.0 m + 3.0 m",
+   "k": "crop"
+  }
+ ],
+ "2024|1|5(c)": [
+  {
+   "u": "img/civil-engineering/2024-1-5c-1.webp",
+   "a": "Large tank with oil, 80 cm head, vertical pipe 70 cm long, diameter 2 cm, sections A and B",
+   "k": "crop"
+  }
+ ],
+ "2024|1|7(a)": [
+  {
+   "u": "img/civil-engineering/2024-1-7a-1.webp",
+   "a": "Stability number SN against phi for beta = 45 degrees (phi 5 to 25 degrees)",
+   "k": "crop"
+  }
+ ],
+ "2024|2|2(a)": [
+  {
+   "u": "img/civil-engineering/2024-2-2a-1.webp",
+   "a": "Network 1 to 7 with three time estimates on each activity (3-6-15, 4-7-16, 4-8-18, 6-9-18, 5-9-19, 2-6-10, 8-11-20, 6-10-20, 3-5-13) and a dotted arrow 2 to 3",
+   "k": "crop"
+  }
+ ],
+ "2024|2|3(a)(ii)": [
+  {
+   "u": "img/civil-engineering/2024-2-3aii-1.webp",
+   "a": "Table of mean values of speed and delay: journey time, stopped delay, vehicles overtaking, overtaken, in opposite direction",
+   "k": "crop"
+  }
+ ],
+ "2024|2|3(b)(i)": [
+  {
+   "u": "img/civil-engineering/2024-2-3bi-1.webp",
+   "a": "Photographic coordinates of points A and B",
+   "k": "crop"
+  }
+ ],
+ "2024|2|3(b)(ii)": [
+  {
+   "u": "img/civil-engineering/2024-2-3bii-1.webp",
+   "a": "Table of line, length (m), latitude and departure for AB, BC, CD",
+   "k": "crop"
+  }
+ ],
+ "2024|2|4(a)": [
+  {
+   "u": "img/civil-engineering/2024-2-4a-1.webp",
+   "a": "Network 1 to 8 with activity durations t = 6, 7, 8, 7, 6, 9, 8, 10, 9, 6",
+   "k": "crop"
+  }
+ ],
+ "2024|2|5(a)": [
+  {
+   "u": "img/civil-engineering/2024-2-5a-1.webp",
+   "a": "Monthly discharge Q (m3/s) of the river, January to December",
+   "k": "crop"
+  }
+ ],
+ "2024|2|7(c)(i)": [
+  {
+   "u": "img/civil-engineering/2024-2-7ci-1.webp",
+   "a": "Gravity dam: 6 m top, 3 m water depth, 27 m height, 10 m and 20 m, slope 0.75 to 1.0, base 6 m + 15 m, W1, W2, toe",
+   "k": "crop"
+  }
+ ],
+ "2025|1|1(a)": [
+  {
+   "u": "img/civil-engineering/2025-1-1a-1.webp",
+   "a": "Link ABCD with 480 N at E, dimensions 40, 80, 80, 40, 40 mm, pins at A, B and rollers C and D",
+   "k": "crop"
+  }
+ ],
+ "2025|1|1(b)": [
+  {
+   "u": "img/civil-engineering/2025-1-1b-1.webp",
+   "a": "Cantilever DC-B of 2L: w per unit length on the inner half, tie rod AB of length L",
+   "k": "crop"
+  }
+ ],
+ "2025|1|1(c)": [
+  {
+   "u": "img/civil-engineering/2025-1-1c-1.webp",
+   "a": "Beam AB 14 m: C and D 7 m each from A, five 160 kN loads at 1.52 m spacing",
+   "k": "crop"
+  }
+ ],
+ "2025|1|1(d)": [
+  {
+   "u": "img/civil-engineering/2025-1-1d-1.webp",
+   "a": "ISA 65 x 65 x 6 welded to an 8 mm gusset plate with 4 mm welds, 65 mm, 18.1 mm",
+   "k": "crop"
+  }
+ ],
+ "2025|1|1(e)": [
+  {
+   "u": "img/civil-engineering/2025-1-1e-1.webp",
+   "a": "Plan of the ground floor column: 600 x 300 mm, 8 mm ties at 200 c/c, 6 bars of 30 mm and 6 bars of 20 mm",
+   "k": "crop"
+  }
+ ],
+ "2025|1|2(a)": [
+  {
+   "u": "img/civil-engineering/2025-1-2a-1.webp",
+   "a": "T-section glued beam: 2 m span with w (N/m) and 4w (N-m), section 50 x 150 web on a 150 x 50 flange, point P",
+   "k": "crop"
+  }
+ ],
+ "2025|1|2(b)": [
+  {
+   "u": "img/civil-engineering/2025-1-2b-1.webp",
+   "a": "Beam AB, fixed ends, hinge at C, w per unit length on AC, L + L",
+   "k": "crop"
+  }
+ ],
+ "2025|1|2(c)": [
+  {
+   "u": "img/civil-engineering/2025-1-2c-1.webp",
+   "a": "Column section 500 x 300 mm with 8 mm ties and 6 bars of 25 mm",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2025-1-2c-2.webp",
+   "a": "Design stress at specified strains for Fe 500 (strain, stress in MPa)",
+   "k": "crop"
+  }
+ ],
+ "2025|1|3(a)": [
+  {
+   "u": "img/civil-engineering/2025-1-3a-1.webp",
+   "a": "Continuous beam ABC: A fixed, 4 kN at 2 m, support B, C fixed, 2 m + 2 m + 6 m, EI constant",
+   "k": "crop"
+  }
+ ],
+ "2025|1|3(c)": [
+  {
+   "u": "img/civil-engineering/2025-1-3c-1.webp",
+   "a": "Two angles ISA 75 x 75 x 8 on a gusset plate with six 20 mm bolts at 50 mm, Lc = 250, tacking bolts",
+   "k": "crop"
+  }
+ ],
+ "2025|1|4(a)": [
+  {
+   "u": "img/civil-engineering/2025-1-4a-1.webp",
+   "a": "Frame ABCD: 40 kN at 2 m from B on BC (5 m), columns 3 m, beam 2I, columns I, A and D fixed",
+   "k": "crop"
+  }
+ ],
+ "2025|1|4(c)(ii)": [
+  {
+   "u": "img/civil-engineering/2025-1-4cii-1.webp",
+   "a": "Plan of the dog-legged stair: 2600, 1250 + 100 + 1250, 625 + 625 + 2430 + 625 + 625",
+   "k": "crop"
+  }
+ ],
+ "2025|1|5(d)": [
+  {
+   "u": "img/civil-engineering/2025-1-5d-1.webp",
+   "a": "Casagrande liquid limit test: test no., moisture content (%) and number of blows",
+   "k": "crop"
+  }
+ ],
+ "2025|1|6(c)(i)": [
+  {
+   "u": "img/civil-engineering/2025-1-6ci-1.webp",
+   "a": "Retaining wall 5 m high with 6 degrees batter and soil surface at 12 degrees",
+   "k": "crop"
+  }
+ ],
+ "2025|1|7(a)": [
+  {
+   "u": "img/civil-engineering/2025-1-7a-1.webp",
+   "a": "Braced cut 3.0 m wide: struts A (0.5 m), B (2.5 m), C (2.5 m) and 1.5 m below",
+   "k": "crop"
+  }
+ ],
+ "2025|1|7(c)(ii)": [
+  {
+   "u": "img/civil-engineering/2025-1-7cii-1.webp",
+   "a": "Tapering pipe: sections A and B with diameter, elevation and gauge pressure",
+   "k": "crop"
+  }
+ ],
+ "2025|1|8(a)": [
+  {
+   "u": "img/civil-engineering/2025-1-8a-1.webp",
+   "a": "CU triaxial tests: test sample, cell pressure, deviator stress, pore pressure",
+   "k": "crop"
+  }
+ ],
+ "2026|1|1(a)": [
+  {
+   "u": "img/civil-engineering/2026-1-1a-1.webp",
+   "a": "Frictionless pulley A on bars AB and AC hinged at B and C, cable hinged at D, 30 kN load at E, angles 60, 60, 30, 30 degrees",
+   "k": "crop"
+  }
+ ],
+ "2026|1|1(b)": [
+  {
+   "u": "img/civil-engineering/2026-1-1b-1.webp",
+   "a": "Cantilever ABCD: A fixed, B at 2 m, C 0.6 m below B, D 0.3 m from C with 12 kN",
+   "k": "crop"
+  }
+ ],
+ "2026|1|1(c)": [
+  {
+   "u": "img/civil-engineering/2026-1-1c-1.webp",
+   "a": "Diamond-shaped section: width b and height d with d/2 above and below the centre line",
+   "k": "crop"
+  }
+ ],
+ "2026|1|1(e)": [
+  {
+   "u": "img/civil-engineering/2026-1-1e-1.webp",
+   "a": "Plate girder: flanges 650 mm x 25 mm, web 1500 mm x 15 mm",
+   "k": "crop"
+  }
+ ],
+ "2026|1|2(c)": [
+  {
+   "u": "img/civil-engineering/2026-1-2c-1.webp",
+   "a": "Structure ABCD: A and C fixed, 100 kN and 80 kN loads, spans 4 m, 3 m, 2 m, 3 m, column BD 5 m, stiffness 2I, I, 2I",
+   "k": "crop"
+  }
+ ],
+ "2026|1|3(b)": [
+  {
+   "u": "img/civil-engineering/2026-1-3b-1.webp",
+   "a": "Shear force diagram of beam ABCDEF: 10 kN, 2 kN, 7 kN, 2 kN, spans 4, 3, 2, 2 m",
+   "k": "crop"
+  }
+ ],
+ "2026|1|3(c)": [
+  {
+   "u": "img/civil-engineering/2026-1-3c-1.webp",
+   "a": "Table of Mu/bd2 against pt (%)",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2026-1-3c-2.webp",
+   "a": "Plan and view AA of the passenger shelter: slab 150 mm, beam 250 mm, columns, 1500, 1500, 1000, 2000, 1000 mm",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2026-1-3c-3.webp",
+   "a": "Modification factor for tension reinforcement against percentage tension reinforcement (fs = 120 to 290)",
+   "k": "crop"
+  }
+ ],
+ "2026|1|4(a)": [
+  {
+   "u": "img/civil-engineering/2026-1-4a-1.webp",
+   "a": "Bodies 200 N, 800 N and 400 N over pulleys 1 and 2, 45 degrees, force F",
+   "k": "crop"
+  }
+ ],
+ "2026|1|4(b)(ii)": [
+  {
+   "u": "img/civil-engineering/2026-1-4bii-1.webp",
+   "a": "Beam AB, A fixed, l = 2 m, coordinates 1 (vertical) and 2 (rotation) at B",
+   "k": "crop"
+  }
+ ],
+ "2026|1|4(c)": [
+  {
+   "u": "img/civil-engineering/2026-1-4c-1.webp",
+   "a": "Gantry girder section: ISMB 600 with ISMC 300 on the top, 300, 600, 12, 20.8, 210, 90, 7.8",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2026-1-4c-2.webp",
+   "a": "Properties of ISMB 600 @ 1230 N/m and ISMC 300 @ 363 N/m",
+   "k": "crop"
+  }
+ ],
+ "2026|1|5(a)": [
+  {
+   "u": "img/civil-engineering/2026-1-5a-1.webp",
+   "a": "Water jet deflected by a hinged plate of 2.0 m with a spring k = 500 N/m, x0 = 1.0 m, angle theta",
+   "k": "crop"
+  }
+ ],
+ "2026|1|7(b)": [
+  {
+   "u": "img/civil-engineering/2026-1-7b-1.webp",
+   "a": "Plan of foundation ABCD with a semicircle, 8 m x 4 m, point O, radius 2 m",
+   "k": "crop"
+  }
+ ],
+ "2026|1|8(a)": [
+  {
+   "u": "img/civil-engineering/2026-1-8a-1.webp",
+   "a": "Table of specimen no., confining pressure, axial load, axial deformation and volume change",
+   "k": "crop"
+  }
+ ],
+ "2026|1|8(b)": [
+  {
+   "u": "img/civil-engineering/2026-1-8b-1.webp",
+   "a": "Sieve analysis: IS sieve and mass of the soil retained (g)",
+   "k": "crop"
+  }
+ ],
+ "2026|2|2(c)": [
+  {
+   "u": "img/civil-engineering/2026-2-2c-1.webp",
+   "a": "Table of activity (i-j) and duration (t) in days, 1-2 to 7-8",
+   "k": "crop"
+  }
+ ],
+ "2026|2|5(a)": [
+  {
+   "u": "img/civil-engineering/2026-2-5a-1.webp",
+   "a": "Table of month and flow (m3/s), January to December",
+   "k": "crop"
+  }
+ ],
+ "2026|2|5(b)": [
+  {
+   "u": "img/civil-engineering/2026-2-5b-1.webp",
+   "a": "Table of station A to F and rainfall (cm)",
+   "k": "crop"
+  }
+ ],
+ "2026|2|6(a)": [
+  {
+   "u": "img/civil-engineering/2026-2-6a-1.webp",
+   "a": "Table of capacity-inflow ratio and trap efficiency, 0.1 to 1.0",
+   "k": "crop"
+  }
+ ],
+ "2026|2|8(b)": [
+  {
+   "u": "img/civil-engineering/2026-2-8b-1.webp",
+   "a": "Tables of coal analysis: moisture, ash, carbon, hydrogen, nitrogen, sulphur, oxygen, calorific value, fly ash",
+   "k": "crop"
+  }
+ ],
+ "2025|2|2(a)": [
+  {
+   "u": "img/civil-engineering/2025-2-2a-1.webp",
+   "a": "Table of activity, activity name and remark for A, B, C, D",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2025-2-2a-2.webp",
+   "a": "Table of normal and crash duration (days) and cost (Rs) for activities A to D",
+   "k": "crop"
+  }
+ ],
+ "2025|2|4(c)": [
+  {
+   "u": "img/civil-engineering/2025-2-4c-1.webp",
+   "a": "Floating car data: trip number and number of vehicles in opposite direction, overtaking, overtaken",
+   "k": "crop"
+  }
+ ],
+ "2025|2|6(a)": [
+  {
+   "u": "img/civil-engineering/2025-2-6a-1.webp",
+   "a": "Table of time from start of storm t (h) and accumulated rainfall (cm), 0 to 14 h",
+   "k": "crop"
+  }
+ ],
+ "2025|2|8(a)": [
+  {
+   "u": "img/civil-engineering/2025-2-8a-1.webp",
+   "a": "Overflow spillway 40 m high (P = 40 m), design head Hd = 2.5 m, energy line, hydraulic jump between sections 1 and 2 (depths y1, y2, V1, V2, EL)",
+   "k": "crop"
+  }
+ ],
+ "2019|2|2(c)": [
+  {
+   "u": "img/civil-engineering/2019-2-2c-1.webp",
+   "a": "Table of activity, predecessor and duration (weeks) for A to L (English)",
+   "k": "crop"
+  }
+ ],
+ "2019|2|3(c)": [
+  {
+   "u": "img/civil-engineering/2019-2-3c-1.webp",
+   "a": "Level book page with missing values (station, BS, IS, FS, Rise, Fall, HI, RL), English version",
+   "k": "crop"
+  }
+ ],
+ "2019|2|4(b)": [
+  {
+   "u": "img/civil-engineering/2019-2-4b-1.webp",
+   "a": "Project network: 10 to 20, 20 to 30, 20 to 40, 30 to 40",
+   "k": "crop"
+  },
+  {
+   "u": "img/civil-engineering/2019-2-4b-2.webp",
+   "a": "Table of activity, normal time, crash time, normal cost, crash cost and cost slope",
+   "k": "crop"
+  }
+ ],
+ "2019|2|5(e)": [
+  {
+   "u": "img/civil-engineering/2019-2-5e-1.webp",
+   "a": "Chlorine dosage and chlorine residual (mg/L)",
+   "k": "crop"
+  }
+ ],
+ "2019|2|7(a)": [
+  {
+   "u": "img/civil-engineering/2019-2-7a-1.webp",
+   "a": "Masonry dam: 6 m high, 1.5 m top width, base width b, water on the vertical face",
+   "k": "crop"
+  }
+ ],
+ "2019|2|7(b)": [
+  {
+   "u": "img/civil-engineering/2019-2-7b-1.webp",
+   "a": "Table of station A to F and rainfall (cm)",
+   "k": "crop"
+  }
+ ]
+}

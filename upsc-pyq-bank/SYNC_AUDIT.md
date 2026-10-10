@@ -7,7 +7,7 @@ Syllabus sub-topic listings for GS Paper I to IV, a Prelims topic outline, decod
 
 ## Result
 - Official syllabus lines (Prelims GS I + Mains GS I-IV): 82 of 83 covered by a planner topic.
-- Prelims topic outline: 301 of 314 lines covered (book lists, magazines and OCR noise filtered out).
+- Prelims topic outline: 301 of 311 lines covered (book lists, magazines and OCR noise filtered out).
 - Tier entries: 144 of 145 have a planner chapter. Existing Tier entries were not changed or removed; 11 Tier 4 / Low-yield entries were added for topics that had none.
 - Planner chapters: 271 in total, 32 of them new, all 271 with subtopics (1451 subtopics).
 - Past Mains marks: 208 chapters sit in one of 47 topic clusters that have a 2013-2022 marks table.
@@ -18,17 +18,15 @@ Syllabus sub-topic listings for GS Paper I to IV, a Prelims topic outline, decod
 - Prelims · Current Affairs & Society: Rolling last 12-15 months of current affairs (govt schemes, reports/indices, appointments, agreements)
 
 ## Outline lines not matched (mostly OCR noise or duplicates)
-- Important concepts: The Union Executive, Parliament, The State Executive, Judiciary, Local Government, Elections and Electoral reforms, Special Provisions for S
-- Judiciary: ofkational Income
+- Important concepts: The Union Executive, Parliament, The State Executive, Judiciary, Local Government, Elections and Electoral reforms, Special Provisions for States, Governance
 - Taxes, Subsidies etc
-- Local Urban Government Capital Gains, MAT etc 6
 - Present situation and Performance, Research and Development
 - Ancient Indian History (Importance, Background, Geographical Distribution and Characteristics)
 - Wildlife Trade (TRAFFIC), Trafficking (CAWT), Timber Org (ITTO), Global Tiger Forum (GTF)
 - UN Convention To Combat Desertification (UNCCD), UN Forum On Forests (UNFF)
 - Bio & Medicinal Chemistry
 - Superconductivity,Artificial Intelligence, Genetic Engineering
-- Wildlife Trade (TRAFFIC), Trafficking (CAWT), Timber Org (ITT0), Global Tiger Forum (GTF)
+- Wildlife Trade (TRAFFIC), Trafficking (CAWT), Timber Org (ITTO), Global Tiger Forum (GTF)
 - Superconductivity, Artificial Intelligence, Genetic Engineering
 
 ## Questions that match no chapter (first 40)

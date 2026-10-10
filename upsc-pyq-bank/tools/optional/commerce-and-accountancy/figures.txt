@@ -1,0 +1,53 @@
+# year|paper|qno|page|x0,y0,x1,y1 (fractions)|alt|table
+2018|1|2(a)|3|0.18,0.645,0.94,0.925|Balance Sheet of XYZ Ltd. as at 31st March 2017: Liabilities and Assets|table
+2018|1|2(b)|5|0.18,0.39,0.94,0.51|Process, normal wastage and sale value of wastage for processes A, B and C|table
+2018|1|2(b)|5|0.18,0.55,0.94,0.69|Expenses by process A, B and C: materials, direct labour, manufacturing expenses, other factory expenses|table
+2018|1|2(b)|5|0.18,0.75,0.94,0.875|Output of each process A, B and C|table
+2018|1|4(a)|9|0.19,0.085,0.96,0.52|Balances of Bhushan Co. Ltd. as on 31st March 2016: Debit and Credit|table
+2018|1|6(a)|11|0.19,0.44,0.95,0.645|Credit policy alternatives: existing policy, option A and option B|table
+2018|1|7(a)|13|0.19,0.42,0.95,0.585|Present value of Re 1 at 15% and present value of an annuity of Re 1 at 15%, years 1 to 5|table
+2018|1|8(c)|15|0.18,0.64,0.95,0.82|Ram Ltd. and Shyam Ltd.: net operating income, debt interest, debt and equity capitalisation rates, average cost of capital|table
+2019|1|2(a)|3|0.15,0.51,0.95,0.94|Balance sheets of Sun Ltd and Moon Ltd as on March 31, 2019: liabilities and assets, in lakhs|table
+2019|1|2(b)|4|0.17,0.665,0.90,0.775|Operating details of Company X and Company Y: capacity utilization, sales, variable cost, fixed cost|table
+2019|1|6(b)|10|0.16,0.325,0.84,0.525|Additional information: debtors, bills receivable, creditors, stock, salaries outstanding and prepaid insurance premium on 01.04.2018 and 01.04.2019|table
+2020|1|3(a)|5|0.20,0.235,0.93,0.455|Particulars of House (I) and House (II): municipal value, fair rent, standard rent, date of completion, municipal taxes, interest on borrowed amount for repair|table
+2020|1|7(b)|10|0.25,0.465,0.84,0.585|PAT, number of equity shares (in lakhs) and P/E ratio of X Ltd and Y Ltd (₹ 00000)|table
+2021|1|2(a)|4|0.17,0.205,0.86,0.685|Balance Sheets of X Ltd. and Y Ltd. as on 31.03.2021: equity and liabilities, assets|table
+2021|1|3(a)|6|0.15,0.135,0.88,0.595|Mr. B: bank account analysis (rent received, gift, winning, forfeited amount, Keyman policy) and other information (donation, PPF interest, PPF paid in the name of minor daughter, agricultural income at Malaysia)|table
+2021|1|3(c)|7|0.27,0.135,0.72,0.245|Process A and Process B costs: materials, labour, overheads|table
+2021|1|6(a)|9|0.15,0.195,0.80,0.325|Expected cash inflow and certainty equivalent (CE) coefficient of project X and project Y, years 1 to 3|table
+2021|1|6(a)|9|0.25,0.345,0.72,0.445|Present value factors (PVF) at 8%, 10% and 12% for years 1 to 3|table
+2021|1|7(b)|11|0.12,0.35,0.85,0.485|Capital structure of Shasun Ltd.: 30000 equity shares, 10000 8% preference shares, 20000 10% debentures, book value and market value per security|table
+2023|1|2(a)|4|0.20,0.06,0.91,0.375|Balance Sheet of AB Ltd. as on March 31, 2022: equity and liabilities, assets|table
+2023|1|3(a)|6|0.17,0.505,0.86,0.82|Processes A, B, C and finished stock: opening stock, direct material, direct wages, overheads, closing stock, profit on cost, inter-process profit|table
+2023|1|3(b)|7|0.15,0.475,0.80,0.80|Mr. A's House—I and House—II: standard rent, municipal valuation, fair rent, de facto rent, municipal taxes, fire insurance, water benefit tax, interest on loan, rent of lease, use of assets|table
+2023|1|7(a)|12|0.20,0.585,0.80,0.90|Balance Sheet as on 31st March, 2022: equity and liabilities|table
+2023|1|7(a)|13|0.17,0.055,0.80,0.495|Balance Sheet as on 31st March, 2022: assets|table
+2023|1|8(a)|14|0.16,0.43,0.84,0.525|Credit policy: increase in sales and percent of bad debt to sales for 1 month, 2 months and 3 months|table
+2023|1|8(b)|15|0.25,0.08,0.76,0.215|A Limited, B Limited and C Limited: r, k and E|table
+2025|1|2(a)|4|0.21,0.165,0.89,0.645|Trial Balance of AGN Ltd.: particulars, debit and credit|table
+2025|1|4(c)|7|0.18,0.745,0.80,0.895|Joint expenses and separate expenses for Alpha and Beta: materials, labour and overheads|table
+2025|1|8(b)|12|0.30,0.0895,0.70,0.235|Projected cash flows of the plant, year 0 to 3|table
+2026|1|2(a)|4|0.19,0.108,0.96,0.525|Summarised balance sheets of X ltd. and Y ltd. just prior to amalgamation: liabilities and assets|table
+2026|1|3(b)|6|0.19,0.70,0.96,0.905|Particulars of Process A, B and C: material, wages, expenses, passed to next process, carried to godown, in tons and rupees|table
+2026|1|4(a)|8|0.19,0.083,0.96,0.585|Financial position of a firm as on 31.3.2024 and 31.3.2025: equity and liabilities, assets|table
+2026|1|4(c)|9|0.23,0.295,0.82,0.375|Materials A and B: standard mix and standard rate per kg|table
+2026|1|4(c)|9|0.19,0.435,0.82,0.57|Material A and B: stock on 1.4.26 and 30.4.26, purchases during April in kg and cost|table
+2026|1|6(b)|10|0.27,0.46,0.87,0.595|Company X and Company Y: number of equity shares, 10% debentures, market price per share, profit before interest|table
+2026|1|7(a)|11|0.13,0.415,0.91,0.60|Balance Sheet to be completed: liabilities and equity, assets|table
+2026|1|7(b)|12|0.18,0.125,0.92,0.20|Earnings (₹ in lakh) for years 1 to 5|table
+2026|1|7(b)|12|0.28,0.335,0.83,0.405|Present value of ₹1 at 14 percent for years 1 to 5|table
+2016|1|2(b)|4|0.12,0.095,0.82,0.275|Operating details of Company No. 1 and Company No. 2: capacity utilization, sales, variable cost and fixed cost|table
+2016|1|6(b)|10|0.20,0.12,0.80,0.47|X Ltd. and Y Ltd.: equity, debt, earnings and interest|table
+2016|1|7(a)|11|0.17,0.62,0.83,0.775|Machines A and B: cost and anticipated after-tax cash flow in years 1 to 5|table
+2017|1|2(a)|4|0.05,0.085,0.97,0.39|Balance Sheets of Rakesh Ltd. and Lokesh Ltd. as at 31.12.2013: liabilities and assets|table
+2017|1|3(a)|5|0.13,0.555,0.96,0.69|Products A and B: annual output, total machine hours, total number of purchase orders and set-ups|table
+2017|1|3(c)|7|0.11,0.17,0.93,0.50|Properties A and B: municipal valuation, standard rent, municipal taxes, maintenance charges, date of completion, interest on home loans, fire insurance premium|table
+2017|1|8(a)|14|0.20,0.255,0.93,0.905|Balance Sheets of S.K. Ltd. as at 31.3.2014 and 31.3.2015: liabilities and assets|table
+2022|1|2(a)|4|0.18,0.24,0.84,0.915|Balance Sheets of A Ltd. and B Ltd. as on March 31, 2021: equity and liabilities, assets|table
+2022|1|7(b)|13|0.17,0.17,0.92,0.60|Summary Cash Account of Z Ltd. for the year ended March 31, 2022 (₹ in '000): receipts and payments|table
+2022|1|8(a)|15|0.06,0.335,0.93,0.91|Trading and Profit & Loss Account of X Ltd. for the year ended March 31, 2022 (₹ in lakh)|table
+2022|1|8(a)|16|0.19,0.05,0.93,0.405|Balance Sheet of X Ltd. as on March 31, 2022 (₹ in lakh): liabilities and assets|table
+2024|1|2(a)|5|0.13,0.088,0.83,0.90|Balance Sheet of B Ltd. as at 31st March, 2024: equity and liabilities, assets|table
+2024|1|2(b)|8|0.18,0.07,0.88,0.81|Balance Sheet of A Ltd. as at 31st March, 2024 (in 000): equity and liabilities, assets|table
+2024|1|6(a)|13|0.13,0.85,0.81,0.925|Present value factor at 10% for years 1 to 8|table
