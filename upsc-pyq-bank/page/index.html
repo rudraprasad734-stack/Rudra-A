@@ -966,7 +966,7 @@
   .ins-ringrow{display:flex; align-items:center; gap:16px; margin:2px 0 8px;} .ins-ring{position:relative; width:112px; height:112px; flex:0 0 auto;} .ins-ring svg{width:100%; height:100%;} .ins-ring > div{position:absolute; inset:0; display:grid; place-content:center; text-align:center;} .ins-ring b{font-size:22px; font-family:var(--font-display); color:var(--ink);} .ins-ring span{font-size:10.5px; color:var(--ink-soft);}
   .ins-leg{list-style:none; margin:0; padding:0; flex:1 1 auto; min-width:0; display:flex; flex-direction:column; gap:6px; font-size:13px;} .ins-leg li{display:flex; align-items:center; gap:8px;} .ins-leg i{width:10px; height:10px; border-radius:50%; flex:0 0 auto;} .ins-leg span{flex:1 1 auto; color:var(--ink);} .ins-leg b{color:var(--ink);}
   .ins-days{display:grid; grid-template-columns:repeat(7,1fr); gap:8px; align-items:end; margin:4px 0 6px;} .ins-day{display:flex; flex-direction:column; align-items:center; gap:3px; min-width:0;} .ins-dbar{position:relative; width:100%; max-width:34px; height:92px; display:flex; align-items:flex-end; justify-content:center;}
-  .ins-dbar i{position:absolute; bottom:0; left:0; right:0; border-radius:4px 4px 0 0; min-height:0;} .ins-dbar i.p{background:var(--tab-accent-soft); border:1px solid var(--tab-accent);} .ins-dbar i.a{background:var(--tab-accent); left:18%; right:18%;}
+  .ins-dbar i{position:absolute; bottom:0; left:0; right:0; border-radius:4px 4px 0 0; min-height:0;} .ins-dbar i.p{background:var(--tab-accent-soft); border:1px solid var(--tab-accent);} .ins-dbar i.a{background:var(--tab-accent); left:0; right:0; border-radius:3px 3px 0 0;} .ins-dbar{background:var(--tab-accent-soft); border:1px solid var(--tab-accent); border-radius:5px 5px 0 0; box-sizing:border-box; overflow:hidden;} .ins-dbar.none{background:transparent; border:1px dashed var(--line); opacity:.5;} .ins-day.fut .ins-dbar{opacity:.55;} .ins-pc{font-size:10.5px; font-weight:700; color:var(--ink); min-height:13px;}
   .ins-day em{width:7px; height:7px; border-radius:50%; background:transparent;} .ins-day em.miss{background:#e5675a;} .ins-day span{font-size:11px; color:var(--ink-soft);} .ins-day.now span{color:var(--ink); font-weight:800;}
   .ins-key{display:flex; gap:14px; font-size:11.5px; color:var(--ink-soft); margin:0 0 6px;} .ins-key span{display:inline-flex; align-items:center; gap:5px;} .ins-key i{width:10px; height:10px; border-radius:3px; display:inline-block;} .ins-key i.p{background:var(--tab-accent-soft); border:1px solid var(--tab-accent);} .ins-key i.a{background:var(--tab-accent);} .ins-key i.m{background:#e5675a; border-radius:50%;}
   .ins-sb, .ins-tb{padding:6px 0;} .ins-sbh{display:flex; justify-content:space-between; gap:10px; font-size:13px; margin-bottom:4px;} .ins-sbh span{min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--ink);} .ins-sbh b{color:var(--ink); flex:0 0 auto;}
@@ -10419,10 +10419,11 @@ function openCatchup(){
 
 function weekReview(mon){
   var days = [], i; for(i=0;i<7;i++) days.push(toKey(addDays(mon, i)));
-  var first = days[0], last = days[6], r = {first:first, last:last, planned:0, done:0, missed:0, skipped:0, left:0, plannedMin:0, actualMin:0, subj:{}, chapters:[], timerMs:0, days:days.map(function(d){ return {date:d, plan:0, act:0, done:0, missed:0, left:0}; })};
+  var first = days[0], last = days[6], r = {first:first, last:last, planned:0, done:0, missed:0, skipped:0, left:0, plannedMin:0, actualMin:0, subj:{}, chapters:[], timerMs:0, days:days.map(function(d){ return {date:d, plan:0, act:0, doneMin:0, done:0, missed:0, left:0}; })};
   studySessions.forEach(function(x){
     if(x.date < first || x.date > last) return;
     var dd = r.days[days.indexOf(x.date)]; dd.plan += x.duration||0; dd.act += x.actualDuration||0;
+    dd.doneMin += x.status==="completed" ? Math.max(x.duration||0, x.actualDuration||0) : Math.min(x.actualDuration||0, x.duration||0);
     if(x.status==="completed") dd.done++; else if(x.status==="missed") dd.missed++; else if(x.status!=="skipped" && x.date >= todayKey) dd.left++;
     r.planned++; r.plannedMin += x.duration||0; r.actualMin += x.actualDuration||0;
     if(x.status==="completed") r.done++; else if(x.status==="missed") r.missed++; else if(x.status==="skipped") r.skipped++; else if(x.date >= todayKey) r.left++;
@@ -10445,13 +10446,12 @@ function weekViz(r, rate, hrs){
   if(!tot) ring = '<circle cx="50" cy="50" r="40" fill="none" stroke="var(--line)" stroke-width="14"/>';
   var legend = parts.map(function(x){ return '<li><i style="background:'+x.c+';opacity:'+(x.o||1)+'"></i><span>'+x.l+'</span><b>'+x.n+'</b></li>'; }).join("");
   var ringHtml = '<div class="ins-ringrow"><div class="ins-ring"><svg viewBox="0 0 100 100" role="img" aria-label="Sessions this week: '+r.done+' done, '+r.missed+' missed, '+r.skipped+' skipped, '+r.left+' still to come">'+ring+'</svg><div><b>'+rate+'%</b><span>completed</span></div></div><ul class="ins-leg">'+legend+'</ul></div>';
-  // day by day: pale bar = planned time, solid bar = time logged; a red dot marks a day with missed sessions
-  var maxDay = Math.max.apply(null, r.days.map(function(d){ return Math.max(d.plan, d.act); }).concat([60]));
+  // day by day: every bar is that day's whole plan (full height = everything planned that day); the solid part is how much of it was finished
   var dayLab = ["M","T","W","T","F","S","S"];
   var daysHtml = '<div class="section-title">Day by day</div><div class="ins-days">'+r.days.map(function(d, i){
-    var ph = Math.round(100*d.plan/maxDay), ah = Math.round(100*Math.min(d.act, maxDay)/maxDay), isT = d.date===todayKey;
-    return '<div class="ins-day'+(isT ? " now" : "")+'" title="'+esc(fmtDM(parseKey(d.date)))+': planned '+esc(hrs(d.plan))+', logged '+esc(hrs(d.act))+(d.missed ? ', '+d.missed+' missed' : '')+'"><div class="ins-dbar"><i class="p" style="height:'+ph+'%"></i><i class="a" style="height:'+ah+'%"></i></div><em class="'+(d.missed ? "miss" : "")+'"></em><span>'+dayLab[i]+'</span></div>';
-  }).join("")+'</div><div class="ins-key"><span><i class="p"></i>Planned</span><span><i class="a"></i>Logged</span><span><i class="m"></i>Missed</span></div>';
+    var pct = d.plan ? Math.min(100, Math.round(100*d.doneMin/d.plan)) : 0, isT = d.date===todayKey, fut = d.date > todayKey;
+    return '<div class="ins-day'+(isT ? " now" : "")+(fut ? " fut" : "")+'" title="'+esc(fmtDM(parseKey(d.date)))+': '+(d.plan ? pct+'% of the plan finished ('+esc(hrs(Math.min(d.doneMin, d.plan)))+' of '+esc(hrs(d.plan))+')' : 'nothing planned')+(d.missed ? ', '+d.missed+' missed' : '')+'"><b class="ins-pc">'+(d.plan ? (fut && !pct ? "" : pct+"%") : "–")+'</b><div class="ins-dbar'+(d.plan ? "" : " none")+'"><i class="a" style="height:'+pct+'%"></i></div><em class="'+(d.missed ? "miss" : "")+'"></em><span>'+dayLab[i]+'</span></div>';
+  }).join("")+'</div><div class="ins-key"><span><i class="p"></i>Day\'s plan</span><span><i class="a"></i>Finished</span><span><i class="m"></i>Missed</span></div>';
   // time bars: planned, logged in sessions, timer
   var tm = Math.round(r.timerMs/60000), maxT = Math.max(r.plannedMin, r.actualMin, tm, 1);
   function tbar(lab, m, cls){ return '<div class="ins-tb"><div class="ins-sbh"><span>'+lab+'</span><b>'+esc(hrs(m))+'</b></div><div class="ins-track"><i class="'+cls+'" style="width:'+Math.round(100*m/maxT)+'%"></i></div></div>'; }
