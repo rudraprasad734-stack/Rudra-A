@@ -10923,8 +10923,8 @@ function dxPlanHtml(){
   var pyq = pyqCardHtml(running);
   var path = pathHtml(states);
   var upc = '<div class="dx-card dx-up"><div class="dx-k">UPCOMING</div>'+upcomingHtml()+'<button type="button" class="dx-btn2" id="dashOpenPlanner">Open planner</button></div>';
-  var main = running.length > 1 ? mods+'<div class="dx-grid dx-grid-eq">'+pace+pyq+'</div>' : '<div class="dx-grid">'+module+'<div class="dx-col">'+pace+pyq+'</div></div>';
-  return ring + main + path + upc;
+  // the cards are laid out one under another in renderDashboard, in the order the user chose
+  return {ring:ring, path:path, pace:pace, mods:mods, module:module, pyq:pyq, upc:upc};
 }
 function bindDrum(host){
   var dr = host.querySelector("#dxDrum"); if(!dr) return;
@@ -12292,13 +12292,16 @@ function renderDashboard(){
   var dp = diffDays(DATA.examDates.prelims, tKey);
   var dm = diffDays(DATA.examDates.mains, tKey);
 
+  var P = studyPlan ? dxPlanHtml() : null;   // the planner cards, built once and placed below
   host.innerHTML =
     timerCard()+
     '<div class="dx">'+
       dxProfileHtml()+
-      dxRevisionHtml()+
-      (studyPlan ? dxPlanHtml() : plannerDashCard())+
+      (P ? P.ring : plannerDashCard())+
       dxStreakHtml()+
+      (P ? P.path+P.pace : "")+
+      dxRevisionHtml()+
+      (P ? (P.mods || P.module)+P.pyq+P.upc : "")+
       '<div class="hero card">'+
         '<div class="hero-phase">'+esc(phase)+'</div>'+
         '<div class="countdowns">'+
