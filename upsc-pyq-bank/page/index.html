@@ -1006,6 +1006,8 @@
   .phero .row{display:flex; align-items:center; gap:14px; justify-content:space-between;} .phero h2{font-size:21px; margin:2px 0 4px; color:#fff; font-family:var(--font-display);} .hero-t{min-width:0; flex:1; font-size:13.5px; color:rgba(255,255,255,.92);} .hero-t > div{margin-bottom:8px;}
   .chip2{display:inline-block; padding:4px 11px; border-radius:99px; font-size:12px; font-weight:700; background:rgba(255,255,255,.18); color:#fff;}
   .ring2{width:78px; height:78px; flex:none; border-radius:50%; display:grid; place-items:center; background:conic-gradient(#fff calc(var(--p)*1%),rgba(255,255,255,.25) 0);} .ring2 span{width:60px; height:60px; border-radius:50%; background:#0e4a55; color:#fff; display:grid; place-items:center; font-weight:800;}
+  .pace-warn{margin:10px 0;} .pace-warn .pace-list{margin:8px 0;} .pace-warn ul{margin:6px 0 0; padding-left:18px;} .pace-adv{margin:6px 0;} .pace-btns{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;}
+  .restore-card{display:flex; align-items:center; gap:12px; justify-content:space-between; padding:14px; margin-bottom:12px;}
   .phero,.tlc,.nextup{padding:16px; margin:0 0 12px;} .nextup.done{padding:16px;}
   .k2{font-size:11px; letter-spacing:.12em; color:var(--ink-soft); font-weight:700; margin-bottom:10px;}
   .tl-row{display:flex; align-items:center; gap:8px; margin:9px 0; font-size:12.5px; cursor:pointer;} .tl-n{width:112px; flex:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;} .tl-row.locked{opacity:.55;}
@@ -6579,7 +6581,9 @@ function simulate(plan, from, frozen, strict){
     dayNew.forEach(function(s){ out.push(s); });
   });
   var left = {}; queue.forEach(function(it){ left[it.st.name] = (left[it.st.name]||0)+1; });
-  return {sessions:out, spans:spans, remaining:queue.length, left:left};
+  return {sessions:out, spans:spans, remaining:queue.length, left:left,
+    leftItems:queue.map(function(it){ return {subject:it.st.name, group:it.leaf.group, unit:it.leaf.unit, rem:it.rem}; }),
+    leftSessions:queue.reduce(function(a, it){ return a + it.rem; }, 0)};
 }
 
 // ---------- replan: freeze the past, rebuild the future ----------
@@ -6728,6 +6732,35 @@ function estimateBlocks(plan){
     if(c <= 1 || !simulate(plan, from, [], false).remaining) return c;   // revision and activities also take slots, so confirm it really fits
   }
   return 1;
+}
+// When the pace is too slow for the window: which chapters would be left out, and which paces would fit
+function paceFit(plan){
+  var idx = viewIndex();
+  if(idx.fit && idx.fitKey===plan.capacity.blocks) return idx.fit;
+  var from = maxKey(todayKey, plan.window.start), keep = plan.capacity.blocks, keepAuto = plan.capacity.auto, r = {cur:keep, auto:null, whole:null, items:[], sessions:0, perSubject:{}};
+  var sim = idx.sim; if(sim){ r.items = sim.leftItems || []; r.sessions = sim.leftSessions || 0; }
+  r.items.forEach(function(it){ r.perSubject[it.subject] = (r.perSubject[it.subject]||0)+1; });
+  try{
+    r.auto = estimateBlocks(plan); plan.capacity.blocks = keep;
+    for(var w = Math.floor(keep+1e-9)-1; w>=1; w--){ plan.capacity.blocks = w; if(!simulate(plan, from, [], false).remaining){ r.whole = w; break; } }
+  } finally { plan.capacity.blocks = keep; plan.capacity.auto = keepAuto; }
+  // does it fit even at the fastest pace? if not, only more time or more sessions will help
+  plan.capacity.blocks = 1; r.fastestLeft = simulate(plan, from, [], false).remaining; plan.capacity.blocks = keep;
+  idx.fit = r; idx.fitKey = keep;
+  return r;
+}
+function paceReportHtml(plan){
+  var f = paceFit(plan), n = f.items.length, cur = Math.round(plan.capacity.blocks*10)/10;
+  var subj = Object.keys(f.perSubject).map(function(k){ return esc(k)+' ('+f.perSubject[k]+')'; }).join(", ");
+  var list = f.items.slice(0, 8).map(function(it){ return '<li><b>'+esc(it.unit)+'</b> <span class="muted">'+esc(it.subject)+'</span></li>'; }).join("") + (n>8 ? '<li class="muted">and '+(n-8)+' more</li>' : "");
+  var opts = "";
+  if(f.auto && f.auto < cur-0.04 && !plan.capacity.auto) opts += '<button type="button" class="btn primary sm" data-pa="paceset" data-v="auto">Use Auto ('+(Math.round(f.auto*10)/10)+' per chapter)</button>';
+  if(f.whole) opts += '<button type="button" class="btn ghost sm" data-pa="paceset" data-v="'+f.whole+'">Use '+f.whole+' per chapter</button>';
+  var advice = f.fastestLeft ? 'Even at 1 session per chapter, '+f.fastestLeft+' chapter'+(f.fastestLeft===1 ? "" : "s")+' would not fit. Add study days or sessions, or move your end date later (Edit plan).' :
+    (f.whole || f.auto ? 'These paces fit every chapter before '+esc(fmtShort(parseKey(plan.window.end)))+': '+(f.auto ? '<b>Auto</b> (about '+(Math.round(f.auto*10)/10)+' per chapter)' : '')+(f.auto && f.whole ? ' or ' : '')+(f.whole ? '<b>'+f.whole+' per chapter</b>' : '')+'.' : "Choose a faster pace, add study days, or move your end date later.");
+  return '<div class="warn-list pace-warn"><b>'+n+' chapter'+(n===1 ? "" : "s")+' will not fit before '+esc(fmtShort(parseKey(plan.window.end)))+'</b> at '+cur+' session'+(cur===1 ? "" : "s")+' per chapter. They would need about '+f.sessions+' more session'+(f.sessions===1 ? "" : "s")+'.'+
+    '<details class="pace-list"><summary>Which chapters ('+subj+')</summary><ul>'+list+'</ul></details>'+
+    '<div class="pace-adv">'+advice+'</div>'+(opts ? '<div class="pace-btns">'+opts+'</div>' : "")+'</div>';
 }
 function recommendedView(w){ var s = windowStats(w); return (s.ok && s.days > 200) ? "yearly" : "monthly"; }
 function compilePlan(w){
@@ -7025,6 +7058,7 @@ function renderWizard(host){
   var stepper = '<div class="stepper">'+STEP_TITLES.map(function(t, i){ return '<button type="button" class="st'+(i===w.step?" cur":(i<w.step?" done":""))+'" data-wa="goto" data-v="'+i+'"><i>'+(i+1)+'</i><span>'+esc(t)+'</span></button>'; }).join("")+'</div>';
   host.innerHTML =
     '<div class="card wz-head"><div><h2>'+(studyPlan ? "Edit your preparation plan" : "Build your preparation plan")+'</h2><div class="muted">Plan &rarr; study &rarr; complete &rarr; unlock the next subject &rarr; the calendar adapts.</div></div>'+(studyPlan ? '<button type="button" class="link-btn" data-wa="cancelEdit">Cancel</button>' : "")+'</div>'+
+    (!studyPlan && planBackupInfo() ? '<div class="card restore-card"><div><b>You reset your plan</b><div class="muted">Your earlier plan and progress were kept. Restore them any time in the next 30 days.</div></div><button type="button" class="btn primary sm" data-pa="restorePlan">Restore previous plan</button></div>' : "")+
     stepper+
     '<div class="card wz-card">'+WZ_STEPS[w.step](w)+'</div>'+
     (w.err.length ? '<div class="form-err" role="alert"><b>Please fix:</b><br>'+w.err.map(esc).join("<br>")+'</div>' : "")+
@@ -7280,8 +7314,8 @@ function overviewHtml(plan, states){
   var st = windowStats(plan.cfg), op = overallProgress(plan), sim = viewIndex().sim, left = sim ? sim.remaining : 0;
   return planHeroHtml(plan)+planTimelineHtml(plan, states)+nextUpHtml()+activeCardHtml(states, false)+
     '<div class="section-title">Upcoming activities</div>'+upcomingHtml()+
-    '<div class="card pace"><div><b>Pace</b><div class="muted">Sessions per chapter. Slower pace makes each subject take longer; the next one still waits for completion, never the calendar. Now: <b>'+(Math.round(plan.capacity.blocks*10)/10)+' per chapter</b>'+(plan.capacity.auto ? " (auto)" : "")+'.</div></div><select data-pa="pace" aria-label="Sessions per chapter">'+paceOptions(plan.capacity.auto ? "auto" : plan.capacity.blocks)+'</select></div>'+
-    (left ? '<div class="warn-list">At the current pace, <b>'+left+' chapter(s)</b> are projected to finish after your window ends ('+esc(fmtShort(parseKey(plan.window.end)))+'). Add study days, add a session, or speed up the pace.</div>' : "")+
+    '<div class="card pace"><div><b>Pace</b><div class="muted">How many study sessions each chapter gets: a first read, then deeper passes. A slower pace means more sessions per chapter, so each subject takes longer. <b>Auto</b> works out the most your window allows. Now: <b>'+(Math.round(plan.capacity.blocks*10)/10)+' per chapter</b>'+(plan.capacity.auto ? " (auto)" : "")+'.</div></div><select data-pa="pace" aria-label="Sessions per chapter">'+paceOptions(plan.capacity.auto ? "auto" : plan.capacity.blocks)+'</select></div>'+
+    (left ? paceReportHtml(plan) : "")+
     '<div class="card ov-win"><div class="muted">Window '+esc(fmtShort(parseKey(plan.window.start)))+' &rarr; '+esc(fmtShort(parseKey(plan.window.end)))+' &middot; '+(st.ok ? st.days+" days &middot; "+st.hours+" study hours" : "")+'</div><div class="ov-btns"><button type="button" class="btn ghost sm" data-pa="edit">Edit plan</button><button type="button" class="btn danger sm" data-pa="reset">Reset plan</button></div></div>';
 }
 function yearlyHtml(plan, states){
@@ -10921,6 +10955,25 @@ function renderPlanner(){
 
 // ---------- actions ----------
 function shiftMonth(mk, n){ var d = new Date(+mk.slice(0,4), +mk.slice(5,7)-1+n, 1); return d.getFullYear()+"-"+pad2(d.getMonth()+1); }
+// Reset keeps a copy for 30 days so it can be undone from the setup screen
+var PLAN_BACKUP_KEY = "dossier.planBackup.v1";
+function planBackup(){ try{ lsSetJSON(PLAN_BACKUP_KEY, {at:Date.now(), plan:studyPlan, progress:studyProgress, sessions:studySessions}); }catch(e){} }
+function planBackupInfo(){ var b = lsGetJSON(PLAN_BACKUP_KEY, null); return (b && b.plan && Date.now()-b.at < 30*86400000) ? b : null; }
+function planRestore(){
+  var b = planBackupInfo(); if(!b){ toast("There is no earlier plan to restore."); return; }
+  studyPlan = b.plan; studyProgress = b.progress || {topics:{}, lastUnlock:null}; studySessions = b.sessions || studySessions; wiz = null; plannerEditing = false;
+  savePlan(); saveProgress(); saveSessions(); try{ localStorage.removeItem(PLAN_BACKUP_KEY); }catch(e){}
+  toast("Your previous plan is back.");
+}
+function openResetConfirm(){
+  var op = studyPlan ? overallProgress(studyPlan) : {done:0, total:0};
+  var m = showModal('<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="rsT"><h2 id="rsT">Reset your plan?</h2>'+
+    '<p>This removes your plan and ticks <b>'+op.done+' of '+op.total+' chapters</b> you have completed. Sessions you already logged stay on this device.</p>'+
+    '<p class="muted">You will go back to the setup screen. If you change your mind, <b>Restore previous plan</b> is there for 30 days.</p>'+
+    '<div class="modal-actions"><button type="button" class="btn ghost" id="rsNo">Keep my plan</button><button type="button" class="btn danger" id="rsYes">Reset plan</button></div></div>', true);
+  m.querySelector("#rsNo").addEventListener("click", closeModal);
+  m.querySelector("#rsYes").addEventListener("click", function(){ closeModal(); plannerAction("reset", document.body, true); });
+}
 function plannerAction(a, el, sure){
   var v = el.getAttribute("data-v");
   switch(a){
@@ -10962,9 +11015,15 @@ function plannerAction(a, el, sure){
       if(el.value==="auto"){ studyPlan.capacity.auto = true; studyPlan.capacity.blocks = estimateBlocks(studyPlan); studyPlan.cfg.cap.blocks = "auto"; }
       else { studyPlan.capacity.auto = false; studyPlan.capacity.blocks = +el.value; studyPlan.cfg.cap.blocks = +el.value; }
       savePlan(); replan(); break;
+    case "restorePlan": planRestore(); break;
+    case "paceset":
+      if(v==="auto"){ studyPlan.capacity.auto = true; studyPlan.capacity.blocks = estimateBlocks(studyPlan); studyPlan.cfg.cap.blocks = "auto"; }
+      else { studyPlan.capacity.auto = false; studyPlan.capacity.blocks = +v; studyPlan.cfg.cap.blocks = +v; }
+      savePlan(); replan(); toast("Pace updated. Every chapter now fits."); break;
     case "edit": plannerEditing = true; wiz = wizFromPlan(studyPlan); break;
     case "reset":
-      if(!sure && !confirm("Reset the plan and chapter progress? Sessions you already logged stay on this device.")) return;
+      if(!sure){ openResetConfirm(); return; }
+      planBackup();
       studyPlan = null; studyProgress = {topics:{}, lastUnlock:null}; wiz = null;
       try{ localStorage.removeItem(PLAN_KEY); }catch(x){}
       saveProgress();
@@ -13233,7 +13292,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "140";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "141";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
