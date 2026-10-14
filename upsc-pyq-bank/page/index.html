@@ -1006,6 +1006,15 @@
   .phero .row{display:flex; align-items:center; gap:14px; justify-content:space-between;} .phero h2{font-size:21px; margin:2px 0 4px; color:#fff; font-family:var(--font-display);} .hero-t{min-width:0; flex:1; font-size:13.5px; color:rgba(255,255,255,.92);} .hero-t > div{margin-bottom:8px;}
   .chip2{display:inline-block; padding:4px 11px; border-radius:99px; font-size:12px; font-weight:700; background:rgba(255,255,255,.18); color:#fff;}
   .ring2{width:78px; height:78px; flex:none; border-radius:50%; display:grid; place-items:center; background:conic-gradient(#fff calc(var(--p)*1%),rgba(255,255,255,.25) 0);} .ring2 span{width:60px; height:60px; border-radius:50%; background:#0e4a55; color:#fff; display:grid; place-items:center; font-weight:800;}
+  .info-card{border:1px solid var(--line); border-radius:14px; padding:10px 12px; margin:6px 0 14px; background:color-mix(in srgb,var(--tab-accent) 8%,var(--surface));} .info-card summary{font-weight:800; cursor:pointer;} .info-card .muted{margin-top:8px; line-height:1.5;}
+  .fit-range{margin:10px 0; padding:10px 12px; border-radius:12px; background:color-mix(in srgb,var(--ink) 6%,transparent);} .fit-range > span{display:block; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); font-weight:700; margin-bottom:8px;}
+  .fr-bar{position:relative; height:8px; border-radius:6px; background:linear-gradient(90deg,#5ee0b8,#22c55e); margin:4px 4px 12px;} .fr-bar i{position:absolute; top:-5px; width:18px; height:18px; margin-left:-9px; border-radius:50%; background:#fff; border:3px solid var(--tab-accent);}
+  .fr-row{display:grid; grid-template-columns:1fr 1fr; gap:10px;} .fr-row b{display:block; font-size:13px;} .fr-row small{display:block; color:var(--ink-soft); font-size:12px; line-height:1.35;} .fr-you{margin-top:8px; font-size:13px; line-height:1.4;}
+  .fit-card{margin:14px 0; padding:16px; border:2px solid var(--line);} .fit-card.ok{border-color:#22c55e;} .fit-card.bad{border-color:#e5675a;}
+  .fit-rows{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:10px;} .fit-rows div{background:color-mix(in srgb,var(--ink) 7%,transparent); border-radius:12px; padding:10px 8px; text-align:center;} .fit-rows b{display:block; font-size:22px; font-family:var(--font-display);} .fit-rows small{color:var(--ink-soft); font-size:11.5px; line-height:1.25; display:block;}
+  .fit-eq{display:flex; flex-direction:column; gap:6px; margin:8px 0; font-size:13.5px;} .fit-eq span{display:block; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); font-weight:700;} .fit-v{padding:10px 12px; border-radius:12px; font-size:14px; line-height:1.45;} .fit-v.ok{background:#22c55e22;} .fit-v.bad{background:#e5675a22;}
+  .pace-warn{margin:10px 0;} .pace-warn .pace-list{margin:8px 0;} .pace-warn ul{margin:6px 0 0; padding-left:18px;} .pace-adv{margin:6px 0;} .pace-btns{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;}
+  .restore-card{display:flex; align-items:center; gap:12px; justify-content:space-between; padding:14px; margin-bottom:12px;}
   .phero,.tlc,.nextup{padding:16px; margin:0 0 12px;} .nextup.done{padding:16px;}
   .k2{font-size:11px; letter-spacing:.12em; color:var(--ink-soft); font-weight:700; margin-bottom:10px;}
   .tl-row{display:flex; align-items:center; gap:8px; margin:9px 0; font-size:12.5px; cursor:pointer;} .tl-n{width:112px; flex:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;} .tl-row.locked{opacity:.55;}
@@ -6579,7 +6588,9 @@ function simulate(plan, from, frozen, strict){
     dayNew.forEach(function(s){ out.push(s); });
   });
   var left = {}; queue.forEach(function(it){ left[it.st.name] = (left[it.st.name]||0)+1; });
-  return {sessions:out, spans:spans, remaining:queue.length, left:left};
+  return {sessions:out, spans:spans, remaining:queue.length, left:left,
+    leftItems:queue.map(function(it){ return {subject:it.st.name, group:it.leaf.group, unit:it.leaf.unit, rem:it.rem}; }),
+    leftSessions:queue.reduce(function(a, it){ return a + it.rem; }, 0)};
 }
 
 // ---------- replan: freeze the past, rebuild the future ----------
@@ -6706,10 +6717,87 @@ function windowStats(w){
   });
   return {ok:true, end:end, days:days, weeks:Math.ceil(days/7), months:Math.round(days/30.44*10)/10, studyDays:studyDays, hours:Math.round(mins/6)/10};
 }
-function paceOptions(cur){
+function avgSessMin(sessions){
+  var d = (sessions||[]).map(function(x){ return toMin(x.end)-toMin(x.start); }).filter(function(m){ return m>0; });
+  return d.length ? Math.round(d.reduce(function(a, b){ return a+b; }, 0)/d.length) : 0;
+}
+function paceOptions(cur, avg){
+  function hrs(m){ return avg ? " \u00B7 "+fmtDurMin(Math.round(m*avg)) : ""; }
   var o = '<option value="auto"'+(cur==="auto"?" selected":"")+'>Auto - fit my window (recommended)</option>';
-  for(var m=1;m<=8;m++) o += '<option value="'+m+'"'+(String(cur)===String(m)?" selected":"")+'>'+m+(m===1?" session per chapter (fastest)":" sessions per chapter")+'</option>';
+  for(var m=1;m<=8;m++) o += '<option value="'+m+'"'+(String(cur)===String(m)?" selected":"")+'>'+m+(m===1?" session per chapter (fastest)":" sessions per chapter")+hrs(m)+'</option>';
   return o;
+}
+// ---- session length and the "will it fit" calculator ----
+var SESS_LENS = [30,45,60,90,120,150,180,240];
+function sessLenNow(w){ var d = w.cap.sessions.map(function(s){ return toMin(s.end)-toMin(s.start); }); return d.length && d.every(function(x){ return x===d[0]; }) ? d[0] : 0; }
+function setSessLen(w, mins){
+  var cur = w.cap.sessions, gap = Math.max(5, +w.cap.breakMin||5);
+  cur.forEach(function(sl, i){
+    var st = i ? toMin(cur[i-1].end)+gap : toMin(sl.start);
+    st = Math.max(0, Math.min(1439-mins, st));
+    sl.start = hmStr(st); sl.end = hmStr(st+mins);
+  });
+}
+function fitCalc(w){
+  var st = windowStats(w); if(!st.ok) return null;
+  var plan = compilePlan(w), from = maxKey(todayKey, plan.window.start), states = subjectStates(plan), needMap = blockNeeds(plan, states);
+  var chapters = 0, need = 0;
+  states.forEach(function(s){ s.leaves.forEach(function(l){ if(!isDone(l.id)){ chapters++; need += needMap[l.id]||1; } }); });
+  var rv = plan.activities && plan.activities.revision, autoRev = rv && rv.on && (rv.method==="auto" || rv.method==="both"), gaps = (rv && rv.gaps && rv.gaps.length) ? rv.gaps.length : 3;
+  var rev = autoRev ? chapters*gaps : 0;
+  var acts = activityCalendar(plan, from, plan.window.end), slots = 0, mins = 0, days = 0, studyDays = 0;
+  eachDay(from, plan.window.end, function(d){
+    days++;
+    if(onLeave(plan, d)) return;
+    var dow = dowOf(d); if(plan.capacity.days.indexOf(dow) < 0) return;
+    studyDays++;
+    var pd = plan.capacity.perDay && plan.capacity.perDay[dow], cnt = (pd!=null) ? +pd : plan.capacity.sessions.length;
+    plan.capacity.sessions.slice(0, cnt).forEach(function(sl){ if(!(acts[d]||[]).some(function(a){ return overlapR(a, sl); })){ slots++; mins += Math.max(0, toMin(sl.end)-toMin(sl.start)); } });
+  });
+  var sim = simulate(plan, from, [], false), avg = slots ? Math.round(mins/slots) : avgSessMin(plan.capacity.sessions);
+  // the range that fits: the most sessions per chapter that still fit, the least, and the fewest sessions a day at your pace
+  var keepB = plan.capacity.blocks, keepPD = plan.capacity.perDay, maxPace = null, minFits = false, minPerDay = null, nSess = plan.capacity.sessions.length;
+  function fitsAt(p){ plan.capacity.blocks = p; return !simulate(plan, from, [], false).remaining; }
+  try{
+    if(fitsAt(1)){
+      minFits = true; var lo = 1, hi = 8;
+      if(fitsAt(8)) lo = 8; else for(var it=0; it<7; it++){ var mid = (lo+hi)/2; if(fitsAt(mid)) lo = mid; else hi = mid; }
+      maxPace = Math.floor(lo*10)/10;
+    }
+    plan.capacity.blocks = keepB;
+    for(var c=1; c<=nSess; c++){
+      var pd = {}; plan.capacity.days.forEach(function(d){ pd[d] = c; }); plan.capacity.perDay = pd;
+      if(!simulate(plan, from, [], false).remaining){ minPerDay = c; break; }
+    }
+  } finally { plan.capacity.blocks = keepB; plan.capacity.perDay = keepPD; }
+  return {maxPace:maxPace, minFits:minFits, minPerDay:minPerDay, nSess:nSess, days:days, studyDays:studyDays, slots:slots, mins:mins, avg:avg, chapters:chapters, pace:plan.capacity.blocks, auto:!!plan.capacity.auto, need:need, rev:rev,
+    fits:!sim.remaining, leftChapters:sim.remaining, leftSessions:sim.leftSessions||0, end:plan.window.end};
+}
+function fitCalcHtml(w){
+  var f = fitCalc(w); if(!f) return '<div class="card fit-card"><div class="k2">WILL EVERYTHING FIT?</div><div class="muted">Set your duration first, then this shows whether your hours are enough.</div></div>';
+  var paceTxt = Math.round(f.pace*10)/10, total = f.need + f.rev, spare = f.slots - total;
+  var needMin = total*f.avg, perCh = function(p){ return Math.round(p*10)/10; };
+  var range = '';
+  if(f.minFits){
+    var s1 = f.chapters*1, sMax = Math.round(f.chapters*f.maxPace);
+    range = '<div class="fit-range"><span>The range that fits</span>'+
+      '<div class="fr-bar"><i style="left:'+Math.max(0, Math.min(100, (f.pace-1)/Math.max(.1, f.maxPace-1)*100)).toFixed(0)+'%"></i></div>'+
+      '<div class="fr-row"><div><b>Minimum: 1 session per chapter</b><small>'+s1+' sessions \u2248 '+esc(fmtDurMin(s1*f.avg))+' in all. The fastest, lightest plan.</small></div>'+
+      '<div><b>Maximum: '+perCh(f.maxPace)+' per chapter</b><small>'+sMax+' sessions \u2248 '+esc(fmtDurMin(sMax*f.avg))+' in all. The most study each chapter can get.</small></div></div>'+
+      '<div class="fr-you">You chose '+paceTxt+' per chapter'+(f.pace>f.maxPace+0.05 ? ', which is above the maximum.' : (f.pace<1.05 ? ', the minimum.' : ', which is inside the range.'))+'</div>'+
+      (f.minPerDay && f.minPerDay < f.nSess ? '<div class="fr-you">At your pace you could manage with as few as <b>'+f.minPerDay+' session'+(f.minPerDay===1 ? "" : "s")+' a day</b> ('+esc(fmtDurMin(f.minPerDay*f.avg))+') instead of '+f.nSess+'.</div>' : '')+'</div>';
+  } else {
+    var extra = Math.max(1, Math.ceil(f.leftSessions/Math.max(1, f.studyDays)));
+    range = '<div class="fit-range"><span>The range that fits</span><div class="fr-you"><b>Nothing fits yet.</b> Even the minimum, 1 session per chapter, runs past your end date. You need about <b>'+extra+' more session'+(extra===1 ? "" : "s")+' on each study day</b> (\u2248 '+esc(fmtDurMin(extra*f.avg))+' more a day), more study days, or a later end date.</div></div>';
+  }
+  var verdict = f.fits
+    ? '<div class="fit-v ok"><b>\u2713 Everything fits.</b> '+(spare>0 ? 'You have about '+spare+' spare session'+(spare===1 ? "" : "s")+' (\u2248 '+fmtDurMin(spare*f.avg)+') as a cushion for missed days.' : 'It is a tight fit, so a few missed days will push the end date.')+'</div>'
+    : '<div class="fit-v bad"><b>\u2717 It does not fit yet.</b> About '+f.leftChapters+' chapter'+(f.leftChapters===1 ? "" : "s")+' (\u2248 '+f.leftSessions+' sessions, '+fmtDurMin(f.leftSessions*f.avg)+') would run past your end date. To fix it: fewer sessions per chapter, a longer day (more or longer sessions), more study days, or a later end date.</div>';
+  return '<div class="card fit-card '+(f.fits ? "ok" : "bad")+'"><div class="k2">WILL EVERYTHING FIT?</div>'+
+    '<div class="fit-rows"><div><b>'+f.days+'</b><small>days left to '+esc(fmtShort(parseKey(f.end)))+'</small></div><div><b>'+f.studyDays+'</b><small>study days</small></div><div><b>'+f.slots+'</b><small>sessions you can do ('+esc(fmtDurMin(f.mins))+')</small></div></div>'+
+    '<div class="fit-eq"><div><span>What you have</span><b>'+f.studyDays+' study days \u00D7 your sessions \u2192 '+f.slots+' sessions</b></div>'+
+    '<div><span>What you need</span><b>'+f.chapters+' chapters \u00D7 '+paceTxt+(f.auto ? " (auto)" : "")+' = '+f.need+' sessions'+(f.rev ? ' + about '+f.rev+' for revision = '+total+' sessions' : '')+' (\u2248 '+esc(fmtDurMin(needMin))+')</b></div></div>'+
+    range+verdict+'</div>';
 }
 function estimateBlocks(plan){
   var st = subjectStates(plan), leaves = st.reduce(function(a, x){ return a + x.leaves.filter(function(l){ return !isDone(l.id); }).length; }, 0);
@@ -6728,6 +6816,35 @@ function estimateBlocks(plan){
     if(c <= 1 || !simulate(plan, from, [], false).remaining) return c;   // revision and activities also take slots, so confirm it really fits
   }
   return 1;
+}
+// When the pace is too slow for the window: which chapters would be left out, and which paces would fit
+function paceFit(plan){
+  var idx = viewIndex();
+  if(idx.fit && idx.fitKey===plan.capacity.blocks) return idx.fit;
+  var from = maxKey(todayKey, plan.window.start), keep = plan.capacity.blocks, keepAuto = plan.capacity.auto, r = {cur:keep, auto:null, whole:null, items:[], sessions:0, perSubject:{}};
+  var sim = idx.sim; if(sim){ r.items = sim.leftItems || []; r.sessions = sim.leftSessions || 0; }
+  r.items.forEach(function(it){ r.perSubject[it.subject] = (r.perSubject[it.subject]||0)+1; });
+  try{
+    r.auto = estimateBlocks(plan); plan.capacity.blocks = keep;
+    for(var w = Math.floor(keep+1e-9)-1; w>=1; w--){ plan.capacity.blocks = w; if(!simulate(plan, from, [], false).remaining){ r.whole = w; break; } }
+  } finally { plan.capacity.blocks = keep; plan.capacity.auto = keepAuto; }
+  // does it fit even at the fastest pace? if not, only more time or more sessions will help
+  plan.capacity.blocks = 1; r.fastestLeft = simulate(plan, from, [], false).remaining; plan.capacity.blocks = keep;
+  idx.fit = r; idx.fitKey = keep;
+  return r;
+}
+function paceReportHtml(plan){
+  var f = paceFit(plan), n = f.items.length, cur = Math.round(plan.capacity.blocks*10)/10;
+  var subj = Object.keys(f.perSubject).map(function(k){ return esc(k)+' ('+f.perSubject[k]+')'; }).join(", ");
+  var list = f.items.slice(0, 8).map(function(it){ return '<li><b>'+esc(it.unit)+'</b> <span class="muted">'+esc(it.subject)+'</span></li>'; }).join("") + (n>8 ? '<li class="muted">and '+(n-8)+' more</li>' : "");
+  var opts = "";
+  if(f.auto && f.auto < cur-0.04 && !plan.capacity.auto) opts += '<button type="button" class="btn primary sm" data-pa="paceset" data-v="auto">Use Auto ('+(Math.round(f.auto*10)/10)+' per chapter)</button>';
+  if(f.whole) opts += '<button type="button" class="btn ghost sm" data-pa="paceset" data-v="'+f.whole+'">Use '+f.whole+' per chapter</button>';
+  var advice = f.fastestLeft ? 'Even at 1 session per chapter, '+f.fastestLeft+' chapter'+(f.fastestLeft===1 ? "" : "s")+' would not fit. Add study days or sessions, or move your end date later (Edit plan).' :
+    (f.whole || f.auto ? 'These paces fit every chapter before '+esc(fmtShort(parseKey(plan.window.end)))+': '+(f.auto ? '<b>Auto</b> (about '+(Math.round(f.auto*10)/10)+' per chapter)' : '')+(f.auto && f.whole ? ' or ' : '')+(f.whole ? '<b>'+f.whole+' per chapter</b>' : '')+'.' : "Choose a faster pace, add study days, or move your end date later.");
+  return '<div class="warn-list pace-warn"><b>'+n+' chapter'+(n===1 ? "" : "s")+' will not fit before '+esc(fmtShort(parseKey(plan.window.end)))+'</b> at '+cur+' session'+(cur===1 ? "" : "s")+' per chapter. They would need about '+f.sessions+' more session'+(f.sessions===1 ? "" : "s")+'.'+
+    '<details class="pace-list"><summary>Which chapters ('+subj+')</summary><ul>'+list+'</ul></details>'+
+    '<div class="pace-adv">'+advice+'</div>'+(opts ? '<div class="pace-btns">'+opts+'</div>' : "")+'</div>';
 }
 function recommendedView(w){ var s = windowStats(w); return (s.ok && s.days > 200) ? "yearly" : "monthly"; }
 function compilePlan(w){
@@ -6962,7 +7079,10 @@ function wzCapacity(w){
   var c = w.cap, n = c.sessions.length;
   return '<h3>How much can you study?</h3>'+
     '<div class="cf"><label>Study days</label>'+dayChips("cap.days", c.days)+'</div>'+
+    '<details class="info-card" open><summary>What is a session?</summary><div class="muted">A <b>session</b> is one block of focused study on one chapter, and you decide how long it is. If you set sessions to 1 hour, 1 hour of study is 1 session.<br><br>'+
+      'The planner counts in sessions. It works out <b>what you need</b> (your chapters \u00D7 the sessions each chapter gets, called pace) and <b>what you have</b> (study days \u00D7 sessions per day, from today to your end date). If what you have is at least what you need, everything fits. Longer sessions or more sessions a day give you more hours; a higher pace uses them up faster. The box at the bottom does this sum for you.</div></details>'+
     '<div class="cf"><label>Sessions per day</label><select data-w="cap.count" data-after="sessCount">'+optsNum(1,6,n)+'</select></div>'+
+    '<div class="cf"><label>How long is one session?</label><select data-w="cap.sessLen" data-t="n" data-after="sessLen">'+(sessLenNow(w) ? "" : '<option value="0" selected>Mixed (set each one below)</option>')+SESS_LENS.map(function(m){ return '<option value="'+m+'"'+(sessLenNow(w)===m ? " selected" : "")+'>'+(m<60 ? m+" minutes" : (m%60 ? (m/60)+" hours" : (m/60)+(m===60 ? " hour" : " hours")))+'</option>'; }).join("")+'</select><div class="hint">Choosing a length sets every session to it and lines them up one after another with your minimum break between. You can still change the time of each session below.</div></div>'+
     '<div class="hint">For each session choose <b>which subject</b> and <b>from when to when</b>. &ldquo;Auto&rdquo; follows your current active subject. Pick a subject to study it in that session every day, alongside the main chain. A pinned subject starts right away, whatever its place in Priority.</div>'+
     '<div class="cap-sess">'+c.sessions.map(function(s, i){ return '<div class="slot"><div class="slot-h"><b>Session '+(i+1)+'</b><span class="dur">'+esc(toMin(s.end)>toMin(s.start)?fmtDurMin(toMin(s.end)-toMin(s.start)):"invalid")+'</span></div>'+
       '<div class="cf"><label>Subject</label><select data-w="cap.sessions.'+i+'.subject"><option value="">Auto &mdash; current active subject</option>'+w.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(s.subject===nm?" selected":"")+'>'+esc(nm)+'</option>'; }).join("")+'</select></div>'+
@@ -6972,8 +7092,8 @@ function wzCapacity(w){
       return '<label>'+DOW_SHORT[d]+'<select data-w="cap.perDay.'+d+'" data-t="n">'+optsNum(0,n,cur)+'</select></label>';
     }).join("")+'</div><div class="hint">Use the first N sessions on that day. For example Monday 2 sessions, Tuesday 1.</div></div>'+
     '<div class="two"><div class="cf"><label>Minimum break between sessions</label><select data-w="cap.breakMin" data-t="n">'+[5,10,15,20,30,45,60].map(function(m){ return '<option value="'+m+'"'+(+c.breakMin===m?" selected":"")+'>'+m+' min</option>'; }).join("")+'</select></div>'+
-    '<div class="cf"><label>Pace: sessions per chapter</label><select data-w="cap.blocks">'+paceOptions(c.blocks)+'</select></div></div>'+
-    '<div class="hint">Every session is independent, so mornings can be longer than evenings. Essay, PYQ, Test and Revision take over any study session they overlap on their day.</div>'+weekMapHtml(w);
+    '<div class="cf"><label>Pace: sessions per chapter</label><select data-w="cap.blocks">'+paceOptions(c.blocks, avgSessMin(c.sessions))+'</select></div></div>'+
+    '<div class="hint">Every session is independent, so mornings can be longer than evenings. Essay, PYQ, Test and Revision take over any study session they overlap on their day.</div>'+fitCalcHtml(w)+weekMapHtml(w);
 }
 function actCard(w, k){
   var a = w.acts[k], info = ACT_INFO[k];
@@ -7013,6 +7133,7 @@ function wzReview(w){
       var sp = sim.spans[s.name];
       return '<div class="cm" style="--bc:var('+s.color+')"><b>'+(i+1)+'. '+esc(s.name)+'</b><span>'+s.total+' chapters</span><em>'+(sp ? esc(fmtRange(sp.start, sp.end)) : "not scheduled")+'</em></div>';
     }).join('<div class="cm-arrow">↓</div>')+'</div>'+
+    fitCalcHtml(w)+
     (unfinished ? '<div class="warn-list">At this pace <b>'+unfinished+' chapter(s)</b> will not finish inside your window. You can add study days or sessions, choose a faster pace, or trim topics. The plan will still adapt as you study.</div>' : '<div class="hint ok">Everything you selected fits inside your window at this capacity. This is a projection: it moves as you finish chapters.</div>')+
     '<div class="act-sum">'+ACT_KINDS.filter(function(k){ return w.acts[k].on; }).map(function(k){ return '<span class="pill on" style="--bc:var('+ACT_INFO[k].color+')">'+esc(ACT_INFO[k].title)+'</span>'; }).join("")+(ACT_KINDS.every(function(k){ return !w.acts[k].on; }) ? '<span class="muted">No extra activities planned.</span>' : "")+'</div>'+
     '<button type="button" class="btn gen" data-wa="gen">'+(studyPlan ? "Save and regenerate plan" : "Generate my plan")+'</button>'+
@@ -7025,6 +7146,7 @@ function renderWizard(host){
   var stepper = '<div class="stepper">'+STEP_TITLES.map(function(t, i){ return '<button type="button" class="st'+(i===w.step?" cur":(i<w.step?" done":""))+'" data-wa="goto" data-v="'+i+'"><i>'+(i+1)+'</i><span>'+esc(t)+'</span></button>'; }).join("")+'</div>';
   host.innerHTML =
     '<div class="card wz-head"><div><h2>'+(studyPlan ? "Edit your preparation plan" : "Build your preparation plan")+'</h2><div class="muted">Plan &rarr; study &rarr; complete &rarr; unlock the next subject &rarr; the calendar adapts.</div></div>'+(studyPlan ? '<button type="button" class="link-btn" data-wa="cancelEdit">Cancel</button>' : "")+'</div>'+
+    (!studyPlan && planBackupInfo() ? '<div class="card restore-card"><div><b>You reset your plan</b><div class="muted">Your earlier plan and progress were kept. Restore them any time in the next 30 days.</div></div><button type="button" class="btn primary sm" data-pa="restorePlan">Restore previous plan</button></div>' : "")+
     stepper+
     '<div class="card wz-card">'+WZ_STEPS[w.step](w)+'</div>'+
     (w.err.length ? '<div class="form-err" role="alert"><b>Please fix:</b><br>'+w.err.map(esc).join("<br>")+'</div>' : "")+
@@ -7115,6 +7237,7 @@ function wizAfter(kind){
   var w = wiz;
   if(kind==="optional"){ w.customText = ""; delete w.init[optLabel(w.optional)]; delete w.init[""]; wizSync(w); }
   if(kind==="custom"){ delete w.init[optLabel(w.optional)]; wizSync(w); }
+  if(kind==="sessLen"){ var ln = +w.cap.sessLen; delete w.cap.sessLen; if(ln > 0) setSessLen(w, ln); }
   if(kind==="sessCount"){
     var n = +w.cap.count, cur = w.cap.sessions;
     while(cur.length < n){ var d = DEFAULT_TIMES[cur.length] || ["21:00","22:00"]; cur.push({start:d[0], end:d[1], subject:""}); }
@@ -7280,8 +7403,8 @@ function overviewHtml(plan, states){
   var st = windowStats(plan.cfg), op = overallProgress(plan), sim = viewIndex().sim, left = sim ? sim.remaining : 0;
   return planHeroHtml(plan)+planTimelineHtml(plan, states)+nextUpHtml()+activeCardHtml(states, false)+
     '<div class="section-title">Upcoming activities</div>'+upcomingHtml()+
-    '<div class="card pace"><div><b>Pace</b><div class="muted">Sessions per chapter. Slower pace makes each subject take longer; the next one still waits for completion, never the calendar. Now: <b>'+(Math.round(plan.capacity.blocks*10)/10)+' per chapter</b>'+(plan.capacity.auto ? " (auto)" : "")+'.</div></div><select data-pa="pace" aria-label="Sessions per chapter">'+paceOptions(plan.capacity.auto ? "auto" : plan.capacity.blocks)+'</select></div>'+
-    (left ? '<div class="warn-list">At the current pace, <b>'+left+' chapter(s)</b> are projected to finish after your window ends ('+esc(fmtShort(parseKey(plan.window.end)))+'). Add study days, add a session, or speed up the pace.</div>' : "")+
+    '<div class="card pace"><div><b>Pace</b><div class="muted">How many study sessions each chapter gets: a first read, then deeper passes. A slower pace means more sessions per chapter, so each subject takes longer. <b>Auto</b> works out the most your window allows. Now: <b>'+(Math.round(plan.capacity.blocks*10)/10)+' per chapter</b>'+(plan.capacity.auto ? " (auto)" : "")+'.</div></div><select data-pa="pace" aria-label="Sessions per chapter">'+paceOptions(plan.capacity.auto ? "auto" : plan.capacity.blocks, avgSessMin(plan.capacity.sessions))+'</select></div>'+
+    (left ? paceReportHtml(plan) : "")+
     '<div class="card ov-win"><div class="muted">Window '+esc(fmtShort(parseKey(plan.window.start)))+' &rarr; '+esc(fmtShort(parseKey(plan.window.end)))+' &middot; '+(st.ok ? st.days+" days &middot; "+st.hours+" study hours" : "")+'</div><div class="ov-btns"><button type="button" class="btn ghost sm" data-pa="edit">Edit plan</button><button type="button" class="btn danger sm" data-pa="reset">Reset plan</button></div></div>';
 }
 function yearlyHtml(plan, states){
@@ -10921,6 +11044,25 @@ function renderPlanner(){
 
 // ---------- actions ----------
 function shiftMonth(mk, n){ var d = new Date(+mk.slice(0,4), +mk.slice(5,7)-1+n, 1); return d.getFullYear()+"-"+pad2(d.getMonth()+1); }
+// Reset keeps a copy for 30 days so it can be undone from the setup screen
+var PLAN_BACKUP_KEY = "dossier.planBackup.v1";
+function planBackup(){ try{ lsSetJSON(PLAN_BACKUP_KEY, {at:Date.now(), plan:studyPlan, progress:studyProgress, sessions:studySessions}); }catch(e){} }
+function planBackupInfo(){ var b = lsGetJSON(PLAN_BACKUP_KEY, null); return (b && b.plan && Date.now()-b.at < 30*86400000) ? b : null; }
+function planRestore(){
+  var b = planBackupInfo(); if(!b){ toast("There is no earlier plan to restore."); return; }
+  studyPlan = b.plan; studyProgress = b.progress || {topics:{}, lastUnlock:null}; studySessions = b.sessions || studySessions; wiz = null; plannerEditing = false;
+  savePlan(); saveProgress(); saveSessions(); try{ localStorage.removeItem(PLAN_BACKUP_KEY); }catch(e){}
+  toast("Your previous plan is back.");
+}
+function openResetConfirm(){
+  var op = studyPlan ? overallProgress(studyPlan) : {done:0, total:0};
+  var m = showModal('<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="rsT"><h2 id="rsT">Reset your plan?</h2>'+
+    '<p>This removes your plan and ticks <b>'+op.done+' of '+op.total+' chapters</b> you have completed. Sessions you already logged stay on this device.</p>'+
+    '<p class="muted">You will go back to the setup screen. If you change your mind, <b>Restore previous plan</b> is there for 30 days.</p>'+
+    '<div class="modal-actions"><button type="button" class="btn ghost" id="rsNo">Keep my plan</button><button type="button" class="btn danger" id="rsYes">Reset plan</button></div></div>', true);
+  m.querySelector("#rsNo").addEventListener("click", closeModal);
+  m.querySelector("#rsYes").addEventListener("click", function(){ closeModal(); plannerAction("reset", document.body, true); });
+}
 function plannerAction(a, el, sure){
   var v = el.getAttribute("data-v");
   switch(a){
@@ -10962,9 +11104,15 @@ function plannerAction(a, el, sure){
       if(el.value==="auto"){ studyPlan.capacity.auto = true; studyPlan.capacity.blocks = estimateBlocks(studyPlan); studyPlan.cfg.cap.blocks = "auto"; }
       else { studyPlan.capacity.auto = false; studyPlan.capacity.blocks = +el.value; studyPlan.cfg.cap.blocks = +el.value; }
       savePlan(); replan(); break;
+    case "restorePlan": planRestore(); break;
+    case "paceset":
+      if(v==="auto"){ studyPlan.capacity.auto = true; studyPlan.capacity.blocks = estimateBlocks(studyPlan); studyPlan.cfg.cap.blocks = "auto"; }
+      else { studyPlan.capacity.auto = false; studyPlan.capacity.blocks = +v; studyPlan.cfg.cap.blocks = +v; }
+      savePlan(); replan(); toast("Pace updated. Every chapter now fits."); break;
     case "edit": plannerEditing = true; wiz = wizFromPlan(studyPlan); break;
     case "reset":
-      if(!sure && !confirm("Reset the plan and chapter progress? Sessions you already logged stay on this device.")) return;
+      if(!sure){ openResetConfirm(); return; }
+      planBackup();
       studyPlan = null; studyProgress = {topics:{}, lastUnlock:null}; wiz = null;
       try{ localStorage.removeItem(PLAN_KEY); }catch(x){}
       saveProgress();
@@ -13233,7 +13381,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "140";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "143";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
