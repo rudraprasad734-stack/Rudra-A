@@ -11184,6 +11184,78 @@ registerPathTheme({id:"mountain", name:"Mountain", icon:"⛰️", bg:"linear-gra
   o += '<rect x="149" y="42" width="2" height="34" fill="#f3ecdb"/><path d="M151 42 L172 50 L151 58Z" fill="#ff6b6b"/>'+ddayTag(c, 180, 34, "start");
   return o+'</svg>'; }});
 
+// ---- 8-12. Chart themes: the same progress, drawn as graphs ----
+function trunc(t, k){ return t.length>k ? t.slice(0,k-1)+"…" : t; }
+function arcPath(cx, cy, r, a0, a1){ var x0=cx+r*Math.cos(a0), y0=cy+r*Math.sin(a0), x1=cx+r*Math.cos(a1), y1=cy+r*Math.sin(a1); return "M"+x0.toFixed(1)+" "+y0.toFixed(1)+" A"+r+" "+r+" 0 "+((a1-a0)>Math.PI ? 1 : 0)+" 1 "+x1.toFixed(1)+" "+y1.toFixed(1); }
+function pctOf(l){ return Math.max(0, Math.min(100, l.pct||0)); }
+// 8. Bars: a horizontal bar graph with a 0-100% scale
+registerPathTheme({id:"bars", name:"Bar graph", icon:"📊", bg:"linear-gradient(#18243d,#0c1424)", draw:function(c){
+  var top = 26, rowH = 46, H = top + c.n*rowH + 66, o = svgOpen(H, "#0c1424"), x0 = 16, w = 268, i;
+  [0,25,50,75,100].forEach(function(p){ var x = x0 + w*p/100; o += '<line x1="'+x+'" y1="'+(top-8)+'" x2="'+x+'" y2="'+(H-58)+'" stroke="#ffffff" stroke-opacity="'+(p%50 ? .07 : .14)+'" stroke-width="1"/>'+sx(p+"%", x, H-46, "#8a96b0", 9, "middle", 600); });
+  c.lanes.forEach(function(l, i){
+    var y = top + i*rowH, p = pctOf(l), fw = Math.max(p>0 ? 8 : 0, w*p/100);
+    o += sx(trunc(l.name, 28)+"  "+l.done+"/"+l.total, x0, y+6, l.color, 11, "start", 700);
+    o += '<rect x="'+x0+'" y="'+(y+12)+'" width="'+w+'" height="18" rx="9" fill="#ffffff" fill-opacity=".08"/>';
+    if(fw>0) o += '<rect x="'+x0+'" y="'+(y+12)+'" width="'+fw.toFixed(1)+'" height="18" rx="9" fill="'+l.color+'"/>';
+    o += sx(Math.round(p)+"%", p>14 ? x0+fw-8 : x0+fw+6, y+25, p>14 ? "#0c1424" : l.color, 10.5, p>14 ? "end" : "start", 800);
+  });
+  o += ddayTag(c, 284, H-24, "end");
+  return o+'</svg>'; }});
+// 9. Pie: one pie chart per subject
+registerPathTheme({id:"pie", name:"Pie chart", icon:"🥧", bg:"linear-gradient(#2a1c4e,#120d26)", draw:function(c){
+  var cols = Math.min(c.n, 3), rows = Math.ceil(c.n/cols), cw = 300/cols, r = Math.min(42, cw/2-12), rowH = r*2+40, H = rows*rowH + 52, o = svgOpen(H, "#120d26");
+  c.lanes.forEach(function(l, i){
+    var cx = cw*(i%cols)+cw/2, cy = 16 + Math.floor(i/cols)*rowH + r + 4, p = pctOf(l);
+    o += '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="#ffffff" fill-opacity=".09"/>';
+    if(p>=99.5) o += '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="'+l.color+'"/>';
+    else if(p>0){ var a1 = -Math.PI/2 + Math.PI*2*p/100; o += '<path d="M'+cx+' '+cy+' L'+cx+' '+(cy-r)+' A'+r+' '+r+' 0 '+(p>50 ? 1 : 0)+' 1 '+(cx+r*Math.cos(a1)).toFixed(1)+' '+(cy+r*Math.sin(a1)).toFixed(1)+'Z" fill="'+l.color+'"/>'; }
+    o += '<circle cx="'+cx+'" cy="'+cy+'" r="'+(r*.46)+'" fill="#120d26"/>'+sx(Math.round(p)+"%", cx, cy+4, "#f3ecdb", 11, "middle", 800);
+    o += sx(trunc(l.name, c.n>2 ? 13 : 22), cx, cy+r+15, l.color, 10.5, "middle", 700)+sx(l.done+" / "+l.total, cx, cy+r+27, "#8a96b0", 9, "middle", 600);
+  });
+  o += ddayTag(c, 150, H-24, "middle");
+  return o+'</svg>'; }});
+// 10. Rings: concentric activity rings
+registerPathTheme({id:"rings", name:"Rings", icon:"🎯", bg:"linear-gradient(#0f2b2e,#071417)", draw:function(c){
+  var H = 210, cx = 100, cy = 105, o = svgOpen(H, "#071417"), step = Math.min(15, 80/Math.max(1,c.n)), sw = step-4;
+  c.lanes.forEach(function(l, i){
+    var r = 90 - i*step, C = 2*Math.PI*r, p = pctOf(l);
+    o += '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="none" stroke="'+l.color+'" stroke-opacity=".16" stroke-width="'+sw+'"/>';
+    if(p>0) o += '<circle cx="'+cx+'" cy="'+cy+'" r="'+r+'" fill="none" stroke="'+l.color+'" stroke-width="'+sw+'" stroke-linecap="round" stroke-dasharray="'+(C*p/100).toFixed(1)+' '+C.toFixed(1)+'" transform="rotate(-90 '+cx+' '+cy+')"/>';
+    var ly = 40 + i*Math.min(28, 150/Math.max(1,c.n));
+    o += '<circle cx="206" cy="'+(ly-4)+'" r="4.5" fill="'+l.color+'"/>'+sx(trunc(l.name, 15), 216, ly, "#f3ecdb", 10.5, "start", 700)+sx(Math.round(p)+"%  ·  "+l.done+"/"+l.total, 216, ly+11, "#8a96b0", 9, "start", 600);
+  });
+  o += sx(String(Math.max(0, c.dday.days)), cx, cy+2, "#f3ecdb", 22, "middle", 800)+sx("days to "+c.dday.label, cx, cy+16, "#8a96b0", 8.5, "middle", 600);
+  return o+'</svg>'; }});
+// 11. Gauges: a speedometer dial per subject
+registerPathTheme({id:"gauge", name:"Gauges", icon:"🏎️", bg:"linear-gradient(#33211a,#140d0a)", draw:function(c){
+  var cols = Math.min(c.n, 3), rows = Math.ceil(c.n/cols), cw = 300/cols, r = Math.min(52, cw/2-12), rowH = r+54, H = rows*rowH + 48, o = svgOpen(H, "#140d0a");
+  c.lanes.forEach(function(l, i){
+    var cx = cw*(i%cols)+cw/2, cy = 12 + Math.floor(i/cols)*rowH + r + 6, p = pctOf(l), a = Math.PI + Math.PI*p/100;
+    o += '<path d="'+arcPath(cx, cy, r, Math.PI, Math.PI*2)+'" fill="none" stroke="#ffffff" stroke-opacity=".1" stroke-width="9" stroke-linecap="round"/>';
+    if(p>0) o += '<path d="'+arcPath(cx, cy, r, Math.PI, a)+'" fill="none" stroke="'+l.color+'" stroke-width="9" stroke-linecap="round"/>';
+    for(var k=0;k<=4;k++){ var ta = Math.PI+Math.PI*k/4; o += '<line x1="'+(cx+(r-9)*Math.cos(ta)).toFixed(1)+'" y1="'+(cy+(r-9)*Math.sin(ta)).toFixed(1)+'" x2="'+(cx+(r-14)*Math.cos(ta)).toFixed(1)+'" y2="'+(cy+(r-14)*Math.sin(ta)).toFixed(1)+'" stroke="#ffffff" stroke-opacity=".3" stroke-width="1.5"/>'; }
+    o += '<line x1="'+cx+'" y1="'+cy+'" x2="'+(cx+(r-18)*Math.cos(a)).toFixed(1)+'" y2="'+(cy+(r-18)*Math.sin(a)).toFixed(1)+'" stroke="#f3ecdb" stroke-width="2.5" stroke-linecap="round"/><circle cx="'+cx+'" cy="'+cy+'" r="5" fill="#f3ecdb"/>';
+    o += sx(Math.round(p)+"%", cx, cy+22, "#f3ecdb", 13, "middle", 800)+sx(trunc(l.name, c.n>2 ? 13 : 22), cx, cy+36, l.color, 10, "middle", 700)+sx(l.done+" / "+l.total, cx, cy+47, "#8a96b0", 8.5, "middle", 600);
+  });
+  o += ddayTag(c, 150, H-24, "middle");
+  return o+'</svg>'; }});
+// 12. Skyline: each subject is a building that lights up floor by floor
+registerPathTheme({id:"skyline", name:"Skyline", icon:"🌆", bg:"linear-gradient(#1a2350,#e08a5a)", draw:function(c){
+  var H = 250, gy = 214, o = svgOpen(H, "#141b3d")+'<defs><linearGradient id="skyg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#141b3d"/><stop offset="1" stop-color="#6b3b5e"/></linearGradient></defs><rect width="300" height="'+H+'" fill="url(#skyg)"/>'+starsSvg(H, 22);
+  o += '<circle cx="42" cy="38" r="12" fill="#ffe7a8"/>';
+  var bw = Math.min(46, 250/Math.max(1,c.n)-12);
+  c.lanes.forEach(function(l, i){
+    var bx = spread(i, c.n, 40+bw/2, 260-bw/2) - bw/2 + (c.n<2 ? 0 : 0), full = 150, p = pctOf(l), fh = full*p/100, floors = 8, k, j;
+    o += '<rect x="'+bx.toFixed(1)+'" y="'+(gy-full)+'" width="'+bw+'" height="'+full+'" fill="#ffffff" fill-opacity=".07" stroke="'+l.color+'" stroke-opacity=".35" stroke-dasharray="3 3"/>';
+    if(fh>0) o += '<rect x="'+bx.toFixed(1)+'" y="'+(gy-fh).toFixed(1)+'" width="'+bw+'" height="'+fh.toFixed(1)+'" fill="'+l.color+'" fill-opacity=".92"/>';
+    for(k=0;k<floors;k++){ var wy = gy-full+8+k*(full-14)/floors, lit = (gy-wy) <= fh+2; for(j=0;j<2;j++) o += '<rect x="'+(bx+bw*(.2+j*.45)).toFixed(1)+'" y="'+wy.toFixed(1)+'" width="'+(bw*.22).toFixed(1)+'" height="7" fill="'+(lit ? "#fff6c8" : "#ffffff")+'" fill-opacity="'+(lit ? .95 : .08)+'"/>'; }
+    o += sx(Math.round(p)+"%", bx+bw/2, gy-Math.max(fh,0)-6, l.color, 10.5, "middle", 800);
+    o += sx(trunc(l.name, c.n>3 ? 8 : 12), bx+bw/2, gy+14, l.color, c.n>4 ? 8 : 9.5, "middle", 700)+sx(l.done+"/"+l.total, bx+bw/2, gy+25, "#c9c2d6", 8.5, "middle", 600);
+  });
+  o += '<rect x="0" y="'+gy+'" width="300" height="2" fill="#f3ecdb" fill-opacity=".5"/><rect x="262" y="26" width="2" height="30" fill="#f3ecdb"/><path d="M264 26 L284 33 L264 40Z" fill="#ff6b6b"/>'+ddayTag(c, 258, 38, "end");
+  return o+'</svg>'; }});
+
+
 function pathHtml(states){
   var c = pathCtx(states), th = pathThemeById(pathTheme);
   var rows = c.lanes.map(function(l){ return '<div class="pth-r" role="button" tabindex="0" data-go="subject" data-subj="'+esc(l.name)+'"><i style="background:'+l.color+'"></i><span>'+esc(l.name)+'</span><span>'+l.done+' / '+l.total+' &middot; '+l.pct+'%</span></div>'; }).join("");
@@ -13118,6 +13190,7 @@ function uiThemeCardHtml(){
       return '<button type="button" class="th-opt ui-opt'+(on ? " sel" : "")+'" role="radio" aria-checked="'+(on ? "true" : "false")+'" data-ui="'+t.id+'"><i class="ui-sw" style="background:'+(t.page||t.bg)+'"><b style="background:'+t.surface+';border:1px solid '+t.line+'"></b><b style="background:'+t.acc+'"></b><u style="background:'+t.a2+'"></u><u style="background:'+t.a3+'"></u></i><span>'+esc(t.name)+(on ? " \u2713" : "")+'</span></button>';
     }).join("")+'</div></div>';
 }
+window.__pathThemes = PATH_THEMES;   // test hook
 function sampleLanes(){
   var names = ["History","Art & Culture","Anthropology (Optional)"], tot = [35,16,55], dn = [0,0,0];
   return {n:3, lanes:names.map(function(n,i){ return {name:n, color:PATH_COLORS[i], pct:0, done:dn[i], total:tot[i], i:i}; }), dday:{label:"D-Day", days:0, sub:"your end date"}, locked:[], completed:[]};
