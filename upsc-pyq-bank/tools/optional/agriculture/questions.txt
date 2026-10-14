@@ -1,0 +1,785 @@
+# Agriculture optional (UPSC Civil Services Main). One question part per line:  year | paper | qno | marks | text
+# Q1 and Q5 of every paper carry an instruction line; by default it is 'Answer the following questions in about 150 words each:' and is added to every part of those two questions.
+# '#PREFIX|year|paper|q|text' overrides it where the paper words it differently.
+2026|1|1(a)|10|What are the major sources of water pollution in India? What are the ways to check it?
+2026|1|1(b)|10|What are the basic concepts of a farming system? Briefly explain three major indigenous farming systems followed in India.
+2026|1|1(c)|10|Write down the names and characteristics of tree species suitable for agroforestry.
+2026|1|1(d)|10|Write down the dissemination of weeds with appropriate examples.
+2026|1|1(e)|10|Write down the functions and deficiency symptoms of secondary nutrients in plants.
+2026|1|2(a)|20|Give an account of greenhouse gas (GHG) emissions from agriculture. State the mitigation strategies for reducing greenhouse gas (GHG) emissions in agriculture.
+2026|1|2(b)|20|Give a lucid account on the scope of precision farming in India. Enumerate its benefits and limitations in the Indian scenario.
+2026|1|2(c)|10|How can GIS be utilised for land use analysis and micro-watershed planning?
+2026|1|3(a)|20|Discuss the vegetative propagation methods adopted in forest plants with suitable examples and their limitations.
+2026|1|3(b)|20|Discuss in detail the management practices in the ratoon crop of sugarcane.
+2026|1|3(c)|10|Suggest suitable chemical weed management practices for the following crops: (i) Maize (ii) Moong (iii) Cotton (iv) Sugarcane
+2026|1|4(a)|20|What do you mean by soil consistency and soil plasticity? Briefly discuss the various forms of soil consistency found in soils.
+2026|1|4(b)|20|What is nitrification? Describe the factors affecting nitrification process in soil.
+2026|1|4(c)|10|Briefly discuss the reasons responsible for increasing available phosphorus after flooding, in most of the soils.
+2026|1|5(a)|10|Write down the approaches for soil conservation.
+2026|1|5(b)|10|Briefly discuss the criteria for irrigation scheduling in crop plants.
+2026|1|5(c)|10|Describe the various components of the drip irrigation system with the help of a schematic diagram.
+2026|1|5(d)|10|How are prices regulated through agricultural price policy?
+2026|1|5(e)|10|Write the steps involved in farm planning.
+2026|1|6(a)|10|On the basis of Boron content, classify irrigation water suitability for various soils and crops.
+2026|1|6(b)|20|Categorise industrial effluents and briefly discuss their effects on soil properties.
+2026|1|6(c)|20|Briefly discuss the problems associated with dryland agriculture in India. What are the ways to increase production and productivity in dryland areas?
+2026|1|7(a)|20|What are the various factors affecting farm profits? Discuss the decisions which are critical to attain good farm profits.
+2026|1|7(b)|20|Differentiate between extension education and extension services. Discuss extension education as an applied science.
+2026|1|7(c)|10|Write down the practices involved in 'Integrated Watershed Management' for improving livelihood security.
+2026|1|8(a)|20|Differentiate between monitoring and evaluation of extension programmes. Discuss the various types of evaluation of extension programmes.
+2026|1|8(b)|20|Discuss the rationale of Farmers' markets in India. Enlist the impact of farmers' markets on various stakeholders with suitable examples.
+2026|1|8(c)|10|Briefly discuss the measures to control soil erosion by wind.
+2026|2|1(a)|10|What is somatic hybridization? Explain its steps in production of hybrid plants.
+2026|2|1(b)|10|What are the biochemical changes that take place in seeds under prolonged storage?
+2026|2|1(c)|10|Describe the factors influencing nutrient absorption in plants from the soil.
+2026|2|1(d)|10|Describe the characteristics of a clone.
+2026|2|1(e)|10|Define mutagens. Explain the different mutagen groups.
+2026|2|2(a)|20|Describe the causes and sources of disease resistance in plants.
+2026|2|2(b)|20|Explain the functions and structure of mitochondria with suitable diagram.
+2026|2|2(c)|10|Describe the importance of molecular markers in plant improvements.
+2026|2|3(a)|20|Define heritability. What do you mean by broad sense and narrow sense heritability? Explain its applications in crop improvement.
+2026|2|3(b)|20|Discuss the principles and practices of seed production in self-pollinated and cross-pollinated crops.
+2026|2|3(c)|10|Define cytoplasmic inheritance. Explain briefly about sex-influenced and sex-limited traits.
+2026|2|4(a)|20|Discuss about the problems and intricacies in the profitable marketing of seeds.
+2026|2|4(b)|20|Explain the factors that affect the amount of soil water available for plants.
+2026|2|4(c)|10|Describe the different seed enhancement techniques used in seed industry and their benefits.
+2026|2|5(a)|10|What is topiary? Describe the characteristics of plants ideal for it.
+2026|2|5(b)|10|Describe terrace garden and moon garden.
+2026|2|5(c)|10|Discuss the quality indices for cauliflower, cabbage and broccoli.
+2026|2|5(d)|10|Discuss the major constraints for enhancing food grain production in India.
+2026|2|5(e)|10|Discuss the role of osmoprotectants in plants with reference to salt and water stress.
+2026|2|6(a)|20|What is high density orcharding? Describe management practices for high density orcharding in citrus group.
+2026|2|6(b)|20|Explain the biosynthetic pathways of chlorophylls and carotenoids in plants. How do environmental factors influence plant pigments?
+2026|2|6(c)|10|What do you mean by nutrient deficiency in humans? Write the major causes of nutrient deficiencies in India.
+2026|2|7(a)|20|Describe the scientific cultivation of mango with reference to regular bearer varieties, propagation, transplanting time, management of mealy bug and powdery mildew.
+2026|2|7(b)|20|What are the major causes of poverty in India? Describe the role of Agriculture in poverty alleviation and employment generation.
+2026|2|7(c)|10|Explain the different types of seed dormancy. What are the factors that are responsible for dormancy in seeds?
+2026|2|8(a)|20|Explain the factors encouraging infestation of pests during storage. Discuss control measures for pest infestation during storage.
+2026|2|8(b)|20|Discuss the production technology of carnation for cut flower in relation to improved varieties, growing requirements and season, flower regulation, post-harvest handling and physiological disorders.
+2026|2|8(c)|10|Discuss the steps taken by the Government of India for improving the food processing industry.
+2025|1|1(a)|10|Classify natural resources. Discuss the natural resource management with reference to ecological conservation.
+2025|1|1(b)|10|Differentiate between cropping system and cropping pattern, and describe the principles of cropping system.
+2025|1|1(c)|10|Differentiate between agrisilviculture and agrisilvipasture system. Give suitable examples of component crops.
+2025|1|1(d)|10|Elucidate different forest policies and their aims.
+2025|1|1(e)|10|Explain weed control efficiency (WCE). Work out WCE from the given data and offer your critical comment. Treatment and weed population per m2: T1 - Unweeded check, 90; T2 - Hand weeding, 55; T3 - Herbicide A, 45; T4 - Herbicide B, 40; T5 - Herbicide C, 50.
+2025|1|2(a)|20|Enumerate the impact of climate change with reference to agricultural production. Present the opinion of public on climate change.
+2025|1|2(b)|20|Write down the agronomic measures for climate-resilient crop production in rainfed areas.
+2025|1|2(c)|10|Write a brief note on the major soils of India.
+2025|1|3(a)|20|List out the cereal- and millet-based cropping systems practised in India based on soil type and irrigation availability.
+2025|1|3(b)|20|Discuss the production technology of rainfed cotton crop under the following heads: (i) Climate and soil requirement (ii) Methods of sowing and seed rate (iii) Manures and fertilizers (iv) Inter-culture operations
+2025|1|3(c)|10|Discuss different in situ moisture conservation practices recommended in dryland areas.
+2025|1|4(a)|20|Explain the productive, protective, ameliorative, recreational, educational and developmental functions of Indian forests.
+2025|1|4(b)|20|Explain weed seed bank. Describe the strategies to reduce weed seeds in soil.
+2025|1|4(c)|10|What is the need for integrated nutrient management (INM)? Suggest INM for transplanted rice.
+2025|1|5(a)|10|Explain saltation, surface creep and suspension with reference to wind erosion.
+2025|1|5(b)|10|Discuss the sensitive stages for drought and high temperature in cereals and pulses.
+2025|1|5(c)|10|'Pre-harvest scarcity and post-harvest glut'—elucidate with suitable examples, and give any two valid reasons behind such situation under Indian context.
+2025|1|5(d)|10|Explain the term 'market intelligence'. Briefly point out the role of market intelligence and how it is useful to the Government, traders, farmers, consumers and researchers.
+2025|1|5(e)|10|Explain 'Farmer FIRST'. Briefly discuss the objectives of 'Farmer FIRST'.
+2025|1|6(a)|20|Enumerate the harmful effects of herbicide residues in soil. Discuss the remedial measures to overcome the above problem.
+2025|1|6(b)|20|Give a lucid account on the factors influencing soil formation.
+2025|1|6(c)|10|Present a brief note on the types of mulches and their role in soil moisture conservation.
+2025|1|7(a)|20|Explain the term 'conjunctive use of water'. Suggest the management practices to improve poor quality irrigation water with reference to salinity hazards.
+2025|1|7(b)|20|Enunciate the reasons for waterlogging and describe various management strategies to mitigate waterlogging.
+2025|1|7(c)|10|Why is farm planning necessary? Brief the limitations of farm planning.
+2025|1|8(a)|20|Differentiate between partial and complete farm budget. Highlight the steps adopted while preparing farm planning and budgeting.
+2025|1|8(b)|20|Discuss various training methods suitable for agricultural extension personnel in India.
+2025|1|8(c)|10|Explain in detail about Bennett's hierarchy extension programme evaluation model.
+2025|2|1(a)|10|Define cell cycle. Describe different types and phases of cell cycle.
+2025|2|1(b)|10|Briefly discuss significant features of heterosis and explain the dominance and overdominance hypotheses of heterosis, giving their main features.
+2025|2|1(c)|10|Define Marker-Assisted Selection and give suitable examples. Discuss the applications of marker-assisted selection in recurrent selection, gene pyramiding and QTL introgression.
+2025|2|1(d)|10|Define 'Grow-out test'. Explain briefly the methods of roguing in seed fields.
+2025|2|1(e)|10|Classify plant mineral nutrients based on biochemical functions. How do excess minerals in the soil limit the plant growth?
+2025|2|2(a)|20|Explain mutagenesis with its classification. Discuss briefly the mechanisms of action of alkylating agents and azide mutagens in crop improvement.
+2025|2|2(b)|20|Give an account on double haploid and its applications in plant breeding. Also discuss the production methods of haploid.
+2025|2|2(c)|10|What do you mean by Intellectual Property? Discuss the protection of Intellectual Property Rights in reference to patent, plant breeders' rights and copyright.
+2025|2|3(a)|20|Why do fruit plants need to be propagated vegetatively? Explain the advantages and disadvantages of asexual and sexual propagation.
+2025|2|3(b)|20|Define genetic purity. How can the maintenance of genetic purity of varieties be done outside their normal cultivation area?
+2025|2|3(c)|10|Explain the functions of plant cell wall in growth, development, maintenance and reproduction of plants.
+2025|2|4(a)|20|What do you understand by water transport in xylem? Explain the Cohesion-Tension theory.
+2025|2|4(b)|20|How is the detailed record of relationship between the selected plants and their progenies maintained in the pedigree selection method? Discuss the procedure for pedigree selection method, with the help of a simplified schematic diagram.
+2025|2|4(c)|10|Describe the Indian Seeds Act, 1966. Also discuss the essential activities required for the success of seed industry in India.
+2025|2|5(a)|10|How do plants absorb nitrogen from the environment? Describe the mechanism of nitrate assimilation and synthesis of amino acids in plants.
+2025|2|5(b)|10|Explain the strategies to manage citrus decline in India.
+2025|2|5(c)|10|What do you understand by mango malformation? Elucidate symptoms, causal organism and control measures of floral mango malformation.
+2025|2|5(d)|10|What do you understand by food-based dietary approaches? Explain briefly how they will help to eliminate hunger.
+2025|2|5(e)|10|What are the major constraints of food grain processing in India?
+2025|2|6(a)|20|Write the cultivation practices of grapes in respect of soil and climatic requirements, improved varieties, training and pruning, fruit thinning and plant protection.
+2025|2|6(b)|20|What are the trends of food productivity in India? Give your opinion for sustainable food production system which can address food and nutritional security of India.
+2025|2|6(c)|10|How does salinity affect the growth and photosynthesis in plants? Elucidate the avoidance mechanisms of salt stress by plants.
+2025|2|7(a)|20|Discuss the production technologies of peas in relation to varieties, climate requirement, sowing time, seed rate and plant protection.
+2025|2|7(b)|20|Differentiate plant growth and development. Explain the different phases of growth in plants and also discuss the various methods of growth measurement and growth analysis.
+2025|2|7(c)|10|Elaborate the major constraints of food and nutritional security in India.
+2025|2|8(a)|20|What do you mean by new generation plant growth regulators? Enlist the different new generation plant growth regulators and also discuss their role in mitigating abiotic stresses.
+2025|2|8(b)|20|Elaborate the micronutrient deficiency in human beings. Comment on various strategies in combating protein-energy malnutrition with special reference to women and children.
+2025|2|8(c)|10|Give an account on mycoplasmal diseases and physiological disorders of Potato.
+2024|1|1(a)|10|Briefly discuss the principles of agro-ecology.
+2024|1|1(b)|10|What are the factors responsible for low production and productivity of pulses in India? Discuss strategies adopted for enhancing the pulse production and productivity.
+2024|1|1(c)|10|Describe the objectives of social forestry. Write down the plant species suitable for social forestry.
+2024|1|1(d)|10|Discuss the cultural methods of weed control.
+2024|1|1(e)|10|What are the two steps of nitrification and enlist micro-organisms responsible for each? Write down the importance of nitrification.
+2024|1|2(a)|20|Write down the physical environmental factors affecting the crop production. Discuss the effects of changing rainfall pattern on crop production in India.
+2024|1|2(b)|20|Describe the improved cultivation practices of Chickpea under the following heads: (i) Improved varieties (ii) Seed rate and row to row spacing (iii) Nutrient management (iv) Weed management (v) Insect-pest and disease management
+2024|1|2(c)|10|Discuss about the cropping patterns of Middle Gangetic Plain and Western Plateau and hills.
+2024|1|3(a)|20|What is the Arnon and Stout (1939) criteria for plant nutrient essentiality? Give account of forms of each essential plant nutrient element absorbed by plants.
+2024|1|3(b)|20|What do you mean by Forest products? Write about the value added products from forest.
+2024|1|3(c)|10|Give account of soil fertility evaluation techniques. Enlist the points to be considered along with soil test values for fertiliser dose recommendation.
+2024|1|4(a)|20|Explain the term conventional and conservation tillage. Give account of their comparative effects on soil properties and green house gas emissions.
+2024|1|4(b)|20|Discuss the Remote sensing system used for ecosystem analysis. Briefly discuss the use of Remote sensing for drought monitoring.
+2024|1|4(c)|10|Describe in detail about the weed control measures in Black Gram and Sesame.
+2024|1|5(a)|10|Write down the principles involved in Integrated Watershed Management. Briefly discuss the relevance of Integrated Watershed Management under climate change scenario.
+2024|1|5(b)|10|Explain the term irrigation scheduling. Elaborate the criteria IW/CPE ratio of irrigation scheduling along with its merits and demerits.
+2024|1|5(c)|10|Briefly discuss the price instability and its types. Write down the measurements for price instability.
+2024|1|5(d)|10|Give the account of new tools and methods used in agricultural extension.
+2024|1|5(e)|10|It is proposed to give four (4) irrigations to six (6) hectare area of wheat crop. Depth of each irrigation is 60 mm, which will be given with a pump of discharge @5 litre/second. Find out the duration (in days) of pump operation to discharge the required quantity of water.
+2024|1|6(a)|20|Briefly discuss the crop management practices for stabilising yield in dryland areas. Enlist the crops with their characteristics suitable for dryland agriculture.
+2024|1|6(b)|20|Discuss the changes in irrigated area through different sources of irrigation in India since independence. Classify the irrigation projects based on cultivable command area, purpose served and financial return.
+2024|1|6(c)|10|Describe the five steps of effective extension education process as per Leagans (1967).
+2024|1|7(a)|20|Discuss the chronological developments of National Extension System of India after independence.
+2024|1|7(b)|20|Briefly discuss the decisions involved in Farm management. Write down the principles applied in Farm management.
+2024|1|7(c)|10|Justify the statement that Krishi Vigyan Kendra (KVK) is playing vital role in solving location specific problems and transfer of technologies in agriculture.
+2024|1|8(a)|20|Explain different types of farming. Discuss the factors affecting types of farming.
+2024|1|8(b)|20|Explain the term water use efficiency in relation to crop production. Discuss the role of pressurised irrigation methods to achieve the objectives of more crop per drop programme.
+2024|1|8(c)|10|Briefly discuss the factors affecting soil erosion. Write down the agronomic measures for soil conservation.
+2024|2|1(a)|10|Explain the ultrastructure of chloroplast with the help of diagram. Briefly discuss the chemical composition and functions of chloroplast in higher plants.
+2024|2|1(b)|10|Describe the latest advances in biotechnology for crop improvement.
+2024|2|1(c)|10|Describe different approaches for improving the characteristics of inbred lines.
+2024|2|1(d)|10|Discuss various tests undertaken in seed testing laboratories.
+2024|2|1(e)|10|Discuss various theories of ion uptake with respect to passive absorption.
+2024|2|2(a)|20|What is chromosomal aberration? Briefly discuss the changes in chromosomal structure due to aberrations.
+2024|2|2(b)|20|Discuss the importance of crop genetic resource conservation and utilization.
+2024|2|2(c)|10|Briefly explain the Soil-Plant-Atmosphere Continuum (SPAC). How are rooting characteristics related to the moisture extraction pattern from the soil?
+2024|2|3(a)|20|What is allopolyploidy? Describe its applications and limitations in crops.
+2024|2|3(b)|20|Discuss the involvement of public and private sectors in production and marketing of seeds.
+2024|2|3(c)|10|Give an account of bulk method of breeding. Discuss its merits and demerits.
+2024|2|4(a)|20|Give an account of cytoplasmic genetic male sterility and its utilization in plant breeding. Also discuss its limitations.
+2024|2|4(b)|20|What is distant hybridization? Discuss its applications, achievements and limitations in plant breeding.
+2024|2|4(c)|10|Discuss the guidelines for planning and organization of seed production programme.
+2024|2|5(a)|10|Explain the properties and functions of enzymes in plants.
+2024|2|5(b)|10|Write the methods of production of seed tubers from true potato seeds (TPS) under protected cultivation.
+2024|2|5(c)|10|Discuss the systematic position, nature of damage and management of insect and mite pests of brinjal.
+2024|2|5(d)|10|What is the scenario of hunger and malnutrition in the country? Discuss the initiatives taken by the government for their mitigation.
+2024|2|5(e)|10|Illustrate how technology is improving the efficiency of public distribution system in the country.
+2024|2|6(a)|20|Describe the process of anaerobic respiration and explain the factors affecting respiration.
+2024|2|6(b)|20|Discuss banana crop in respect of its varieties, nutrient management, plant protection and post-harvest handling.
+2024|2|6(c)|10|Discuss the factors which contribute to food insecurity in the country despite of significant improvement in food production and distribution.
+2024|2|7(a)|20|Define water stress. Discuss the effects of water stress on anatomical and physiological changes in plant growth. Also discuss soil and weather based plant water stress indicators.
+2024|2|7(b)|20|Discuss the causal organism, symptoms and management of tungro disease in rice.
+2024|2|7(c)|10|What are the reasons behind food inflation? Discuss how it can be mitigated.
+2024|2|8(a)|20|Explain the mode of action of organophosphate and Bacillus thuringiensis which are used in pest management.
+2024|2|8(b)|20|What is phytochrome? Discuss its two forms and differentiate them.
+2024|2|8(c)|10|Discuss the reasons for gap between production and consumption of cereals in the country. How can it be rectified?
+2023|1|1(a)|10|Discuss the response of crop plants to rising temperature and carbon dioxide levels in relation to climate change, with suitable examples.
+2023|1|1(b)|10|How can the cropping intensity and farm profitability be enhanced with the incorporation of different types of speciality corn in existing cropping systems?
+2023|1|1(c)|10|What are non-wood forest products? How do they help local community development in terms of economy and employment?
+2023|1|1(d)|10|Briefly write about cultural and chemical weed control methods of soybean and wheat.
+2023|1|1(e)|10|Give an account of the genesis of soil structure and its significance to crop production.
+2023|1|2(a)|20|What do you understand by agroecology? How does agroecology help in crop distribution and sustainable food production?
+2023|1|2(b)|20|Classify the parasitic weeds on the basis of their parasitism. Explain the preventive measures and integrated management practices for Orobanche.
+2023|1|2(c)|10|Describe the concept of microbial consortia and its role in crop residue management.
+2023|1|3(a)|20|Give the specific features of organic farming and natural farming. Briefly discuss the preparations and role of biodynamics and cow-pat pit in organic crop production.
+2023|1|3(b)|20|Classify the agroforestry systems and explain in detail the importance of social forestry in Indian context.
+2023|1|3(c)|10|Write about the various tools used in proximal and remote sensing.
+2023|1|4(a)|20|Discuss the primary pathways of gaseous nitrogen losses from soil and the factors affecting nitrogen losses.
+2023|1|4(b)|20|Discuss the following in relation to groundnut: (i) Role of macro- and micro-nutrients (ii) Pegging (iii) Critical growth stages for irrigation (iv) Weed management (v) Region-specific cropping systems
+2023|1|4(c)|10|Give a brief note on GIS-based soil mapping and yield mapping.
+2023|1|5(a)|10|Discuss the ways and means of minimising erosion for conserving soil.
+2023|1|5(b)|10|What are the major aims of irrigation? Discuss the different types of irrigation efficiencies which are used in adjudging the most efficient irrigation method.
+2023|1|5(c)|10|Discuss on the various issues related to farm women empowerment. How do self-help groups play major role in empowering farm women?
+2023|1|5(d)|10|Explain the important types of agricultural markets in India.
+2023|1|5(e)|10|Discuss the efforts of the Government of India for extension, renovation and modernization of irrigation projects.
+2023|1|6(a)|20|Elaborate on the various problems encountered in agricultural production at dryland areas of Bundelkhand region of Uttar Pradesh and Deccan Plateau of Andhra Pradesh. Also explain the probable solutions to minimise the problems.
+2023|1|6(b)|20|Discuss the management practices for improving the crop yield potential in regions where poor quality water is available for irrigation.
+2023|1|6(c)|10|Explain the roles of various Non-Governmental Organizations in agriculture extension and socio-economic upliftment of landless agricultural labourers.
+2023|1|7(a)|20|Write the main functions of Directorate of Marketing and Inspection. Discuss the roles of AGMARK and e-NAM in agricultural marketing.
+2023|1|7(b)|20|How do Farmers Producers Organizations (FPOs) help in empowering the farmers through addressing their needs? Describe the role of Krishi Vigyan Kendras in climate resilient agriculture, citing suitable examples.
+2023|1|7(c)|10|Discuss the role of integrated watershed management in rainfed agriculture.
+2023|1|8(a)|20|What is the need for agricultural price policy? Write its objectives. Discuss the criteria for deciding minimum support price (MSP) for each crop.
+2023|1|8(b)|20|Why are the evaluation of extension programmes needed? Explain the various types of evaluation and also discuss the steps involved in the evaluation process.
+2023|1|8(c)|10|Discuss the causes of waterlogging and its effects on crop production.
+2023|2|1(a)|10|Enumerate the functions of Endoplasmic reticulum and Golgi apparatus.
+2023|2|1(b)|10|Explain inbreeding depression and its effect in crops. Also explain the degrees of inbreeding depression.
+2023|2|1(c)|10|Briefly discuss the requirements for production of certified seeds.
+2023|2|1(d)|10|Give the classification of soil water. Briefly discuss soil moisture availability with respect to soil type.
+2023|2|1(e)|10|Write down about the origin and domestication of rice.
+2023|2|2(a)|20|Enlist the molecular models of cell membrane and explain the models given by S.J. Singer and G. Nicholson (1972), Green and Capaldi (1974) and Racker (1976).
+2023|2|2(b)|20|Give an account of seven different pairs of contrasting characters whose inheritance was studied by Mendel in Garden Pea (Pisum sativum). Give the reasons for Mendel's success in the study.
+2023|2|2(c)|10|Explain various theories of inheritance. Write down the evidences suggesting the presence of cytoplasmic inheritance in the crosses' results.
+2023|2|3(a)|20|Describe the history of plant breeding in India. Write the objectives of plant breeding and methods for creation of variability for crop improvement.
+2023|2|3(b)|20|Describe Systemic Acquired Resistance (SAR) and source of disease resistance with suitable examples. Write the advantages of breeding for disease resistance in plants.
+2023|2|3(c)|10|What do you understand by graft incompatibility? Describe the symptoms and causes of graft incompatibility in plants with suitable examples.
+2023|2|4(a)|20|Discuss different forms of Intellectual Property Rights (IPR) in India.
+2023|2|4(b)|20|Give an account of stomate anatomy and cytology. Write down the effect of light, water deficit, CO2 concentration and temperature on stomatal movement along with the underlying mechanism.
+2023|2|4(c)|10|Describe the role of State Seed Certification Agencies.
+2023|2|5(a)|10|Write down the constraints of fruit processing industry in India.
+2023|2|5(b)|10|Describe mentha cultivation with reference to varieties, soil and climate, nutrient management and processing.
+2023|2|5(c)|10|Enlist the role of auxins in agriculture, with suitable examples.
+2023|2|5(d)|10|Briefly discuss Integrated Pest Management in cotton.
+2023|2|5(e)|10|Briefly discuss the micronutrient deficiencies observed in children and women in India along with the diseases associated with them.
+2023|2|6(a)|20|Describe the principles, components and strategies for Integrated Disease Management in crops. Write down its application in management of rice blast and bacterial blight of pomegranate.
+2023|2|6(b)|20|Discuss the package of Guava cultivation with reference to soil and climate, propagation, varieties, disease management and bahar treatment.
+2023|2|6(c)|10|Briefly discuss round-the-year marigold cultivation with reference to varieties, sowing and transplanting, disease management and value-addition.
+2023|2|7(a)|20|Enlist various photosynthetic pigments. Give a detailed account of chlorophyll synthesis along with the enzymes involved in the process. Also mention the role of carotenoids in photosynthesis.
+2023|2|7(b)|20|List the reactions of Calvin Cycle and Hatch-Slack Cycle for CO2 fixation in plants along with enzymes involved.
+2023|2|7(c)|10|Briefly discuss the pathways of carbohydrate metabolism in plants.
+2023|2|8(a)|20|How has food production, including horticultural crops, changed in India during the last one decade? Write down its impact on food and nutritional security.
+2023|2|8(b)|20|Write down the various programmes run by State and Central Governments for ensuring food security in our country. Briefly discuss the strategies for sustainable agricultural production.
+2023|2|8(c)|10|Classify foods on the basis of their functions. Write down a balanced diet for a sedentary man and woman in India.
+#PREFIX|2022|1|1|Describe the following in about 150 words each:
+#PREFIX|2022|1|5|Discuss the followings in about 150 words each:
+2022|1|1(a)|10|What is "Geographic Information System" (GIS)? Discuss its elements and prospects in agriculture.
+2022|1|1(b)|10|What is "precision farming"? Write its different aspects for resource conservation.
+2022|1|1(c)|10|Describe various methods for propagation of forest plants.
+2022|1|1(d)|10|Discuss selection criteria of successful bioagent and bio-herbicides. State at least two examples of biocontrol of weeds.
+2022|1|1(e)|10|How to enhance nitrogen use efficiency in transplanted rice?
+2022|1|2(a)|20|Write the various factors responsible for soil pollution. How organic and natural farming can play role in minimizing soil pollution?
+2022|1|2(b)|20|What is the significance of Direct Seeded Rice (DSR) and System of Rice Intensification (SRI)? Describe the package of practices for direct seeded rice.
+2022|1|2(c)|10|Discuss various steps for long term conservation of forest flora and fauna.
+2022|1|3(a)|20|How soil acidity affects crop production? Elaborate the remedial procedures of soil acidity.
+2022|1|3(b)|20|Classify various natural resources. Discuss the steps for long term conservation of natural resources.
+2022|1|3(c)|10|Describe the importance of millets in Indian Agriculture.
+2022|1|4(a)|20|Discuss about the types of herbicide resistance in weeds with specific example in Indian perspective. Discuss the management practices dealing with herbicide resistance in weeds.
+2022|1|4(b)|20|Why do we consider soil structure an important soil property for crop production? How is soil structure changed by various factors?
+2022|1|4(c)|10|Describe various components of agroforestry and state the benefits of agroforestry also.
+2022|1|5(a)|10|Self Help Groups (SHGs) and Farmers Producers Organizations (FPOs)
+2022|1|5(b)|10|Kisan Credit Card and Soil Health Card
+2022|1|5(c)|10|Contour bunding and Graded bunding
+2022|1|5(d)|10|Rain water harvesting and Watershed Management
+2022|1|5(e)|10|Cooperative Societies and Non Government Organizations (NGOs)
+2022|1|6(a)|20|What are the target groups in Agricultural Extension? What role KVKs can play to reach such target groups?
+2022|1|6(b)|20|Narrate various components of contingent crop planning in dry land agriculture.
+2022|1|6(c)|10|Enlist the problems of agricultural marketing in India and also describe the role of market intelligence in addressing these problems.
+2022|1|7(a)|20|Discuss about Micro-Irrigation Systems and their advantages in Indian Agriculture.
+2022|1|7(b)|20|Describe the procedure of making successful farm plan. Write the characteristics of good farm planning.
+2022|1|7(c)|10|Explain about Participatory Rural Appraisal technique for farmers' need identification.
+2022|1|8(a)|20|Discuss the various parameters of quality of irrigation water. Write irrigation scheduling for pulses cultivation in arid and semi-arid regions.
+2022|1|8(b)|20|Discuss the relevance of Integrated Nutrient Management in sustainable agriculture. Describe various types of biofertilizers.
+2022|1|8(c)|10|Describe the importance of crop insurance for small and marginal farmers in India. Write the role of insurance companies for crop insurance.
+2022|2|1(a)|10|What is polyploidy? Give a brief account of classification of polyploids.
+2022|2|1(b)|10|What are the applications of mass selection in self-pollinated crops? Describe its merits and demerits.
+2022|2|1(c)|10|What do you understand by the vertical and horizontal disease resistance in crop plants?
+2022|2|1(d)|10|Define seed quality. Describe the characteristics of a seed which decide its quality.
+2022|2|1(e)|10|Define matric potential, osmotic potential and turgor potential, and explain their interrelationships with water potential.
+2022|2|2(a)|20|Discuss the structure of a plant chromosome and its role in genetic diversity.
+2022|2|2(b)|20|Discuss the concept of centre of origin of crops and its role in plant breeding. Describe the role of N. I. Vavilov in identifying centre of origin of various crops with appropriate examples.
+2022|2|2(c)|10|What are the factors that affect the longevity of seeds during storage in warehouses? Describe.
+2022|2|3(a)|20|What do you mean by mutation? What is the significance of induced mutation in plant breeding?
+2022|2|3(b)|20|Describe in brief the applications of genetic engineering for insect and herbicide resistance in crop plants.
+2022|2|3(c)|10|What is the need for protection of intellectual property rights of traditional knowledge? Explain sui generis protection of traditional knowledge.
+2022|2|4(a)|20|Discuss the mechanisms of absorption and translocation of mineral nutrients in plants.
+2022|2|4(b)|20|Define aneuploidy. Give an account of morphological and cytological functions of aneuploidy, and discuss its application in crop improvement.
+2022|2|4(c)|10|Explain the techniques involved in somatic hybridization in crop plants.
+2022|2|5(a)|10|Give a detailed account of sucrose metabolism in plants.
+2022|2|5(b)|10|Enlist and explain the symptoms of plant diseases which disrupt the photosynthesis function.
+2022|2|5(c)|10|What are pesticide formulations? Discuss the different types of formulations used in pest control.
+2022|2|5(d)|10|Enlist and explain the salient features of Public Distribution System as per the provisions of the National Food Security Act, 2013.
+2022|2|5(e)|10|Enlist and explain the efforts of the Government of India in streamlining the current levels of poverty.
+2022|2|6(a)|20|Describe the vicious cycle of poverty and enlist the existing policy instruments for combating malnutrition.
+2022|2|6(b)|20|Enlist and explain 'Dos' and 'Don'ts' in pesticides' usage with reference to purchase, handling, application and disposal of pesticides.
+2022|2|6(c)|10|Define biotic stress in plants. Explain the role of salicylic acid in a plant's response to biotic stress.
+2022|2|7(a)|20|Enlist the different commercial flowers cultivated on a large scale for cut flower trade. Briefly discuss the factors affecting the keeping quality of cut flowers and the remedies.
+2022|2|7(b)|20|Discuss photorespiration. What is the relationship between photorespiration and photosynthesis?
+2022|2|7(c)|10|Enlist and explain the issues and challenges in the growth of food processing industry in India.
+2022|2|8(a)|20|Enlist the seed spices grown in India. Briefly discuss the cultivation and post-harvest management practices for coriander and cumin.
+2022|2|8(b)|20|Describe the various methods of pest control with appropriate examples.
+2022|2|8(c)|10|What is food security? Why is it essential? Describe the current food security system in India.
+#PREFIX|2021|1|1|Describe the following in about 150 words each:
+#PREFIX|2021|1|5|Describe Q. Nos. 5(a), 5(c), 5(d), 5(e) and answer Q. No. 5(b) (in about 150 words each):
+2021|1|1(a)|10|The major ways for sustainable management of natural resources
+2021|1|1(b)|10|Improved agro-practices for the production of quality protein maize
+2021|1|1(c)|10|Social forestry and various schemes related to social forestry
+2021|1|1(d)|10|The major weeds of rice and their management practices under both upland and lowland conditions
+2021|1|1(e)|10|Biofertilizers and the major constraints in popularization of biofertilizers
+2021|1|2(a)|20|What is greenhouse effect? Write in detail about various greenhouse gases and their impact on crop production.
+2021|1|2(b)|20|What is the role of new agricultural technologies and market policies in crop diversification? Discuss in detail.
+2021|1|2(c)|10|Discuss the activity and selectivity of herbicides.
+2021|1|3(a)|20|What do you understand by agroforestry? Discuss various types of agroforestry systems in India with the help of examples.
+2021|1|3(b)|20|What do you mean by Site-Specific Nutrient Management (SSNM)? Write the steps and recommendations for implementing SSNM in major cereals.
+2021|1|3(c)|10|Discuss various international conventions and recent global initiatives pertaining to climate change.
+2021|1|4(a)|20|What are the factors responsible for declining soil fertility? Discuss various measures adopted for improving soil productivity.
+2021|1|4(b)|20|Define Integrated Farming System (IFS). How can IFS improve the income of different landholding groups?
+2021|1|4(c)|10|Describe the major biological control methods of weeds.
+2021|1|5(a)|10|Technologies and policies for sustained crop production in rainfed agriculture
+2021|1|5(b)|10|Define Information and Communication Technologies (ICTs). Discuss various initiatives to promote ICTs in agriculture.
+2021|1|5(c)|10|The Minimum Support Price (MSP) and its determination
+2021|1|5(d)|10|Pradhan Mantri Fasal Bima Yojana (PMFBY) and its progress
+2021|1|5(e)|10|Parameters for determination of quality of irrigation water
+2021|1|6(a)|20|Define soil erosion and its different forms. Explain agronomic and mechanical measures to reduce the adverse effects of soil erosion in crop production.
+2021|1|6(b)|20|What is irrigation potential of India and how can it be increased through rain-water harvesting?
+2021|1|6(c)|10|Discuss cooperative marketing with successful case studies.
+2021|1|7(a)|20|Define ecology. Mention its basic concepts and relevance in crop production.
+2021|1|7(b)|20|How to improve drainage of waterlogged areas? Discuss the advantages and limitations of drip and sprinkler irrigation methods.
+2021|1|7(c)|10|Discuss various approaches of extension. Describe the recent emerging concepts in transfer of technology.
+2021|1|8(a)|20|Critically examine the major extension programmes of agricultural sector in India. Suggest different measures to improve technology dissemination and adoption at farmer's field.
+2021|1|8(b)|20|Discuss the success and failure of agricultural price policy since its inception. Discuss the recent initiatives/changes in agricultural price policy.
+2021|1|8(c)|10|Discuss the value addition of forest products.
+2021|2|1(a)|10|What do you mean by gene pool concept and genetic erosion? Classify the gene pool of a crop.
+2021|2|1(b)|10|Describe the advantages and disadvantages of mass selection, simple recurrent selection and clonal selection.
+2021|2|1(c)|10|Explain the importance of somatic hybridization in agriculture.
+2021|2|1(d)|10|'Intellectual Property Rights (IPR) issue is a sensitive topic in agriculture.' Concisely describe this with your conclusions.
+2021|2|1(e)|10|Write short notes on the following: (i) Asexual Reproduction (ii) Progeny Test (iii) Seed Bank (iv) Genetically Modified Crop
+2021|2|2(a)|15|Define cell. How is a plant cell different from an animal cell? Describe a typical cell structurally and functionally, with a suitable diagram.
+2021|2|2(b)|15|Describe the physiological and molecular basis of heterosis.
+2021|2|2(c)|20|Classify types of male sterility and self-incompatibility system in plants. Describe the limitations of cytoplasmic genetic male sterility system in hybrid seed production.
+2021|2|3(a)|15|What is clone? What do you understand by clonal selection? Describe the various steps involved in clonal selection.
+2021|2|3(b)|15|What do you understand by centre of origin? Discuss the law of homologous series of variation.
+2021|2|3(c)|20|Describe self-pollination, cross-pollination and often cross-pollination. Discuss different mechanisms for facilitating self-pollination and cross-pollination.
+2021|2|4(a)|15|What is the role and importance of "Seed treatment campaign" in India in the context of quality crop establishment?
+2021|2|4(b)|15|What is DNA fingerprinting? Discuss its applied aspects in modern agriculture.
+2021|2|4(c)|20|Describe the mechanisms involved in absorption of water in plants. Explain the factors affecting the water absorption rate in plants.
+2021|2|5(a)|10|Define seed viability. Describe in brief the metabolic aspects of seed germination.
+2021|2|5(b)|10|Define 'Pests' and 'Pesticides' in relation to pest management. Give a brief account of types and need for pesticide formulations.
+2021|2|5(c)|10|Narrate the role of post harvest technology in minimising losses in fruits and vegetables.
+2021|2|5(d)|10|What is "Plant Quarantine"? Describe the plant quarantine measures with suitable examples in Indian context.
+2021|2|5(e)|10|Discuss the importance of green-house in agriculture.
+2021|2|6(a)|15|What are enzymes? Describe "Key-lock theory" with respect to mode of enzyme action.
+2021|2|6(b)|15|What is plant physiological stress? Describe morphological and physiochemical changes taking place in plants under drought condition.
+2021|2|6(c)|20|What do you understand by vernalization? Describe its practical application in crops.
+2021|2|7(a)|15|What do you mean by "Economic Injury Level" (EIL) and "Economic Threshold Level" (ETL)? Describe their roles in classifying the pests in relevance to Integrated Pest Management (IPM).
+2021|2|7(b)|15|Describe the importance of fruit cultivation in India. Discuss the role of horticulture with respect to poverty alleviation and nutritional security.
+2021|2|7(c)|20|What is protected cultivation? What are its problems and prospects in comparison to open cultivation?
+2021|2|8(a)|15|What is the food production and consumption pattern of India in the last fifty years?
+2021|2|8(b)|15|What do you mean by 'hunger' and 'hidden hunger'? Comment on various strategies in combating hunger.
+2021|2|8(c)|20|What are the different "National Dietary Guidelines" of India? What is your opinion on balanced diet of Indians?
+#PREFIX|2020|1|1|Describe the following in 150 words each:
+#PREFIX|2020|1|5|Describe the following in about 150 words each:
+2020|1|1(a)|10|What is tillage? Why zero tillage is getting importance in Indian Agriculture?
+2020|1|1(b)|10|Describe in-situ and ex-situ management of Paddy Crop residue (Parali) in India.
+2020|1|1(c)|10|Write different elements of weather affecting crop production with suitable examples.
+2020|1|1(d)|10|Write the scope and needs of Agroforestry in India.
+2020|1|1(e)|10|What are the institutional arrangements and mechanism for imparting training for extension workers in India?
+2020|1|2(a)|20|Differentiate between the followings (5x4=20): (i) Fertigation and Herbigation (ii) Agroforestry and Agrostology (iii) Cooperative Societies and Non-Governmental Organizations (NGOs) (iv) Dry land farming and Irrigated farming
+2020|1|2(b)|20|Enlist and explain the effects of "Farmers (Empowerment and protection) agreement on price assurance and farm service Act-2020" on small and medium farmers in India.
+2020|1|2(c)|10|Explain El-Nino effect. Give causes and its impact on Indian Agriculture.
+2020|1|3(a)|20|What are the major causes of low productivity of oilseed and pulse crops in India? Suggest strategies for increasing the production and productivity of oilseed crops in the country.
+2020|1|3(b)|20|Describe the causes of increasing threats of Parthenium weed in the country. Write integrated methods of weed management with suitable examples.
+2020|1|3(c)|10|What is contingent crop planning? How it helps in dry land agriculture?
+2020|1|4(a)|20|Describe training methods suitable for small and marginal farmers and agriculture labours. Explain the contribution of self-help groups in Agriculture development in India.
+2020|1|4(b)|20|Define water harvesting along with different methods of water harvesting in India. Write governmental initiatives to promote rain water harvesting.
+2020|1|4(c)|10|Describe environmental pollution. Write the role of afforestation in minimizing the effects of environmental pollution.
+2020|1|5(a)|10|Define water use efficiency and water productivity. List the crops having high and low water use efficiency.
+2020|1|5(b)|10|Explain the institutional infrastructure of Agricultural marketing in India.
+2020|1|5(c)|10|Indian farmers usually choose crops and their varieties based on their socio-economic aspects and resources at their disposal. Critically comment.
+2020|1|5(d)|10|What is diversified system of farming? How it is beneficial to small and marginal farmers in India?
+2020|1|5(e)|10|What is integrated nutrient management (INM)? Explain the limitations in practice of INM at farmers level in India.
+2020|1|6(a)|20|What is scheduling of irrigation in crops? What are the important factors considered while deciding irrigation schedules for different regions and crops.
+2020|1|6(b)|20|Enlist and explain the methods of evaluation of extension programmes. Explain what kind of qualitative changes can be achieved by adopting educational approach in extension programmes.
+2020|1|6(c)|10|Describe precision agriculture and conservation agriculture.
+2020|1|7(a)|20|Define crop weed competition. Describe various factors affecting crop weed competition. Explain the factors affecting the efficacy of herbicides.
+2020|1|7(b)|20|What do you mean by problematic soil? How soil is converted into problematic soil? Explain various methods of reclamation of saline-alkali-soils.
+2020|1|7(c)|10|What is farm budgeting? Explain different types of farm budgeting.
+2020|1|8(a)|20|Rice-wheat crop rotation is very common in north Indian Agriculture. Discuss and describe the advantages and disadvantages of this crop rotation according to the principles of crop rotation.
+2020|1|8(b)|20|Describe the production technology of sugarcane crop on the following heads: (i) Improved varieties (ii) Methods of sowing and seed rate (iii) Fertilizers and irrigation management (iv) Inter culture operations (v) Plant protection
+2020|1|8(c)|10|Describe the principles of soil fertility. Explain the role of biofertilizers in enhancing the soil fertility.
+2020|2|1(a)|10|Differentiate between the following: (i) Varietal seed production and Hybrid seed production (ii) Conventional and Molecular breeding
+2020|2|1(b)|10|What is mass selection? Discuss its applications in varietal improvement.
+2020|2|1(c)|10|Enumerate factors responsible for absorption of nutrients by plants. Explain the mechanism of absorption of nutrients.
+2020|2|1(d)|10|Define synthetic variety. Discuss the operations involved in the production of synthetic varieties.
+2020|2|1(e)|10|Describe chromosome under the following headings: (i) Chromosome number (ii) Chemical constituents of chromosomes (iii) Chromomere (iv) Y chromosomes
+2020|2|2(a)|20|Explain self-incompatibility and its mechanism. Discuss relevance of self-incompatibility in plant breeding.
+2020|2|2(b)|15|What do you understand by the term 'seed quality'? Describe the regulatory and certification systems that are in place to ensure seed quality.
+2020|2|2(c)|15|Enumerate various types of structural chromosomal aberrations with their types. Give detailed account of inversion-type structural aberration.
+2020|2|3(a)|20|Explain the Protection of Plant Varieties and Farmers' Rights Act, 2001. Give an account of protection provided to farmers, breeders and indigenous property rights under this Act.
+2020|2|3(b)|15|Describe the applications of mutation breeding. Also discuss the limitations of this approach of plant breeding.
+2020|2|3(c)|15|Describe the role of molecular markers and marker-assisted selection in crop improvement.
+2020|2|4(a)|20|Define plant nutrition. Give an account of essential and beneficial nutrients to plants and their status in Indian soils.
+2020|2|4(b)|15|What do you understand by 'genetically modified crop plants'? Give an account of their uses in management of insect-pests, diseases and weeds.
+2020|2|4(c)|15|Write short notes on the following: (i) Sex-linkage (ii) Double cross-over (iii) Autosome (iv) Cytoplasmic male sterility (v) Aneuploids
+2020|2|5(a)|10|Differentiate between the following: (i) Plant hormones and Synthetic plant-growth regulators (ii) C3 and C4 plants
+2020|2|5(b)|10|Give a brief account of the effects of drought and salt stress on growth and development of crops.
+2020|2|5(c)|10|What is meant by physiological disorders? Describe physiological disorders of potato.
+2020|2|5(d)|10|Discuss the scope and importance of roof-gardening in cities.
+2020|2|5(e)|10|Discuss the role of nutri-cereals in managing malnutrition in India.
+2020|2|6(a)|20|Classify pesticides according to target pests. Describe the trend in pesticide consumption in India.
+2020|2|6(b)|15|Describe mango cultivation with respect to propagation, intercropping, biennial bearing, fruit drop and black-tip.
+2020|2|6(c)|15|What is Public Distribution System (PDS) and what are its objectives? How does targeted public distribution system overcome problems with PDS?
+2020|2|7(a)|20|What are the major constraints of food production in India? How will National Food Policy help in sustainable food security?
+2020|2|7(b)|15|List biotic and abiotic causes of plant diseases. Give an account of the classification of major physiological processes affected by diseases and symptom types.
+2020|2|7(c)|15|Define plant growth regulators. Elaborate their applications with suitable examples.
+2020|2|8(a)|20|Give a brief account of tomato cultivation with respect to climate and soils, sowing time, and nutrient, water and post-harvest management.
+2020|2|8(b)|15|What are the causes of post-harvest deterioration of flowers? Elaborate the techniques to enhance shelf-life of flowers.
+2020|2|8(c)|15|Give an account of steps taken by the government to cope up with constraints in procurement and marketing of agriculture produce.
+#PREFIX|2019|1|1|Describe the following in about 150 words each:
+#PREFIX|2019|1|5|Describe the following in about 150 words each:
+2019|1|1(a)|10|Biofortification.
+2019|1|1(b)|10|Effect of agricultural inputs on soil pollution.
+2019|1|1(c)|10|What are the effects of ozone layer depletion?
+2019|1|1(d)|10|Agroforestry systems in Indo-Gangetic plains.
+2019|1|1(e)|10|Current status of biological weed management.
+2019|1|2(a)|20|Differentiate the following with example (5x4=20): (i) Catch crop and trap crop. (ii) Narrow spectrum and broad spectrum herbicides. (iii) Fodder and forage crops. (iv) Social forestry and agroforestry.
+2019|1|2(b)|20|Define organic farming. Give an account of social, economic and environmental dimensions of organic farming.
+2019|1|2(c)|10|Choice of crops and cropping systems is governed by length of growing season: critically comment.
+2019|1|3(a)|20|How to increase the yield of wheat under late sown conditions?
+2019|1|3(b)|20|What do you mean by precision farming? Give an account of smart agricultural technologies used in precision farming.
+2019|1|3(c)|10|Calculate weed index in wheat crop with the given information and draw the inference. Treatment, dose (g ai/ha) and grain yield (kg/ha): T1 - Sulfosulfuron 25, 5,200; T2 - Isoproturon 750, 5,000; T3 - 2,4-D 500, 4,500; T4 - Weed free (Two Hand Weeding), 5,500.
+2019|1|4(a)|20|Explain the utility of remote sensing and geographic information system (GIS) in agriculture.
+2019|1|4(b)|20|Describe Ratoon sugarcane management practices for enhancing cane yield and quality.
+2019|1|4(c)|10|Explain the effects of climate change on crop production.
+2019|1|5(a)|10|Leaf colour chart and its use for nitrogen management in rice crop.
+2019|1|5(b)|10|Agronomic manipulation for preventing soil erosion.
+2019|1|5(c)|10|Soil health card.
+2019|1|5(d)|10|Biodrainage and its limitations.
+2019|1|5(e)|10|e-NAM (National Agriculture Market) and its advantages.
+2019|1|6(a)|20|Describe contract farming in India and its relevance in present scenario.
+2019|1|6(b)|20|Differentiate between saline and sodic soils. Give an account of agro-techniques for management of these soils.
+2019|1|6(c)|10|What do you mean by carbon-sequestration? Give the role of cropping systems for improving c-sequestration.
+2019|1|7(a)|20|Give an elaborate account of agronomic measures of watershed management.
+2019|1|7(b)|20|What is the present status of pulse production in India? Narrate the constraints and strategies for increasing the pulse production.
+2019|1|7(c)|10|Give the contributions of Self-help Groups for rural livelihood security.
+2019|1|8(a)|20|What are the reasons for low availability of phosphorus nutrient? Give an account of agronomic practices to improve the phosphorus-use efficiency.
+2019|1|8(b)|20|Give an account of modern communication technologies for agricultural transformation.
+2019|1|8(c)|10|What are the components of drip irrigation system? Enumerate the benefits of drip-fertigation.
+2019|2|1(a)|10|Define mutation. Write its classification and role in crop improvement.
+2019|2|1(b)|10|Define dormant and hard seeds. Describe the physiological basis of seed dormancy along with methods to overcome this problem.
+2019|2|1(c)|10|What makes a nutrient element become essential for plant growth and development? Which is the latest addition in the existing list of 16 essential plant nutrients? Mention its deficiency symptoms and functions.
+2019|2|1(d)|10|How is the patent system different from plant variety protection system?
+2019|2|1(e)|10|Enlist the storage pests of pulses with their nature of damage. Write their management practices.
+2019|2|2(a)|20|What are the major components that constitute cell structure? Describe their functions.
+2019|2|2(b)|15|Define pedigree method and give its importance in crop improvement, with suitable examples.
+2019|2|2(c)|15|Write important objectives of seed testing along with the methods used for testing of seed viability, seed vigour and genetic purity of a variety.
+2019|2|3(a)|20|Explain the role of plant growth substances in the various developmental stages of a plant with special reference to horticultural crops.
+2019|2|3(b)|15|Discuss the reasons for food grain surplus. Describe food grain production and consumption trends in India.
+2019|2|3(c)|15|Explain sterility systems in crop plants. Describe the role of male sterility in hybrid seed production in vegetable crops with suitable examples.
+2019|2|4(a)|20|Write the various methods of plant breeding and describe the back cross method with its importance in development of crop varieties.
+2019|2|4(b)|15|Describe the various types of field and seed standards followed in seed production and certification programmes.
+2019|2|4(c)|15|Name the major fruit crops along with the states commercially growing these crops. Describe the package of practices for papaya cultivation in India.
+2019|2|5(a)|10|How are vitamins classified? Name the blood clotting vitamin. Give its various functions and sources.
+2019|2|5(b)|10|What is polyploidy? Describe its application in crop improvement with its limitations.
+2019|2|5(c)|10|Describe the role of plant genetic resources conservation in crop improvement.
+2019|2|5(d)|10|Write the merits and limitations of using genetically modified crops. Present a brief account on the application of GM technology in India.
+2019|2|5(e)|10|"The rate of transpiration governs the growth of a plant." Justify the statement with reasoning for how transpiration is influenced by the environment.
+2019|2|6(a)|20|Define protected cultivation along with its major advantages and challenges for adoption in India. Describe the plastic low tunnel technology for off-season cultivation of vegetables.
+2019|2|6(b)|15|Describe various Laws of Heredity. Explain the Law of Independent Assortment with suitable examples.
+2019|2|6(c)|15|Write in detail about bacterial diseases of crop plants and their suitable management practices.
+2019|2|7(a)|20|Give the present status of vegetable cultivation in India and describe the package of practices of rabi and kharif onion cultivation in India.
+2019|2|7(b)|15|What is pesticide resistance? Differentiate between simple and multiple resistance in insect pests with examples. Prescribe measures to overcome pesticide resistance problems.
+2019|2|7(c)|15|Describe gene pyramiding and gene introgression with their importance in developing disease resistant varieties.
+2019|2|8(a)|20|Name the commercial floriculture crops being grown in India. Describe the package of practices of year round cultivation of chrysanthemum in India.
+2019|2|8(b)|15|Elaborate the role of seed industry in the development of Indian agriculture.
+2019|2|8(c)|15|Write the principles of biological control of plant pathogens. Describe the recent trends in bio-control strategies in the field of crop disease management.
+#PREFIX|2018|1|1|Describe the following in about 150 words each:
+#PREFIX|2018|1|5|Describe the following in about 150 words each:
+2018|1|1(a)|10|Global warming and its impact on crop productivity
+2018|1|1(b)|10|Contingency planning in dryland/rainfed agriculture
+2018|1|1(c)|10|Role of hybrids/high yielding varieties to meet national goal of food security
+2018|1|1(d)|10|Precise water saving irrigation practices to enhance water use efficiency
+2018|1|1(e)|10|Initiatives for improving agricultural marketing in India
+2018|1|2(a)|20|Discuss the importance and method of water harvesting under different agro-ecosystems.
+2018|1|2(b)|20|Explain the factors affecting soil organic matter content. Describe the techniques to increase soil organic matter.
+2018|1|2(c)|10|What is role of Non-Government Organizations (NGOs) and Self Help Groups in technology dissemination for agricultural development?
+2018|1|3(a)|20|Describe the comparative package of practices for direct seeded aerobic rice and S.R.I.
+2018|1|3(b)|20|What are the mandates of Krishi Vigyan Kendras? How KVKs are helping in dissemination of agricultural technologies and upliftment of socio-economic conditions of farmers?
+2018|1|3(c)|10|Discuss the utility of Remote Sensing in context of Indian Agriculture.
+2018|1|4(a)|20|What changes occur in rice puddled soil? Describe the fate of nitrogen and practices for enhancing nitrogen use efficiency in such soils.
+2018|1|4(b)|20|Describe the types and benefits of non-conventional forestry systems. State the characteristics of suitable tree species for non-conventional forestry.
+2018|1|4(c)|10|What is the phenomenon of herbicide resistance in weeds? Discuss the factors responsible for development of herbicide resistance.
+2018|1|5(a)|10|Innovations in biological weed management
+2018|1|5(b)|10|Role of forestry in carbon sequestration
+2018|1|5(c)|10|Problems and reclamation of saline and sodic soils
+2018|1|5(d)|10|Use of Information and Communication Technology (ICTs) in agricultural extension
+2018|1|5(e)|10|Role of organic farming for sustainability and profitability
+2018|1|6(a)|20|What are the different sources of soil and water pollutions? Describe the impact of soil and water pollution on crop productivity and environment.
+2018|1|6(b)|20|Discuss the kinds of bio-fertilizers and their application methods. Give the reasons for their limited acceptance among the Indian farmers.
+2018|1|6(c)|10|Discuss the crop insurance and its implications. Narrate the government initiatives taken for crop insurance.
+2018|1|7(a)|20|Explain the principles of conservation agriculture. Describe the practices and impact of conservation agriculture in Indian scenario.
+2018|1|7(b)|10|Listout the approaches for scheduling of irrigation.
+2018|1|7(c)|10|It is proposed to test the relative efficiency of scheduling irrigation to groundnut at 25%, 50% and 75% depletion of available soil moisture. Field capacity of soil in the effective root zone depth of 60 cm is 16% with a permanent wilting point of 6%. At what respective soil moisture contents, irrigations are to be scheduled with three irrigations?
+2018|1|7(d)|10|Elaborate the strategies for doubling the farmers' income by 2022.
+2018|1|8(a)|20|What is status of oilseed production and constraints of their production in India? Describe the strategies for attaining self-sufficiency in oilseed production.
+2018|1|8(b)|10|What are the characteristics of a good farm plan? What techniques will you adopt to solve the farm management problems?
+2018|1|8(c)|10|What is Front Line Demonstration (FLD)? How does it help in boosting the production and productivity of crops?
+2018|1|8(d)|10|What are the advances in chemical weed management?
+2018|2|1(a)|10|What is protoplasm? Briefly discuss its chemical composition and physical properties.
+2018|2|1(b)|10|Define mass selection. Explain its applications in self-pollinated crops.
+2018|2|1(c)|10|What do you mean by heterosis? Describe the physiological bases of heterosis.
+2018|2|1(d)|10|Explain seed enhancement with its merits. Describe in brief about the various practices used for seed enhancement.
+2018|2|1(e)|10|Define enzyme. Give a note on the factors affecting the rate of enzymic activities in plants.
+2018|2|2(a)|20|What do you mean by hybrid seed production? Describe the different types of sterility systems to facilitate hybrid seed production.
+2018|2|2(b)|15|What do you understand by chromosomal aberration? Discuss in brief, the major types of chromosomal aberrations.
+2018|2|2(c)|15|Enlist Mendel's different laws. Describe in detail about the law of segregation with suitable examples.
+2018|2|3(a)|20|Enumerate the various types of seeds. Give a stepwise account of techniques associated with seed production.
+2018|2|3(b)|15|What do you mean by self-incompatibility? Discuss ways and means to overcome self-incompatibility.
+2018|2|3(c)|15|Define Intellectual Property Rights (IPRs). Discuss IPRs' relevance to agriculture.
+2018|2|4(a)|20|Differentiate between aneuploid, euploid and polyploid. Explain in detail the applications of allopolyploidy in crop improvement.
+2018|2|4(b)|15|Give justification that "DNA fingerprinting is a vital tool for identification of the cultivars".
+2018|2|4(c)|15|What do you mean by Soil-Plant-Atmosphere Continuum (SPAC)? Describe the different soil moisture constants.
+2018|2|5(a)|10|What are the different methods of diagnosis of mineral nutrient deficiency? Describe the role and deficiency symptoms of zinc in rice and sulphur in oilseed crops.
+2018|2|5(b)|10|Explain C3, C4 and CAM mechanism in plants and their importance in changing climatic conditions.
+2018|2|5(c)|10|Enlist factors affecting the post-harvest life of flowers. How can it be controlled by growth regulators?
+2018|2|5(d)|10|Describe symptoms and management of leaf curl and mosaic diseases in tomato.
+2018|2|5(e)|10|Give a brief account of food security in India before and after the green revolution. Suggest sustainable solutions to strengthen food security in the country.
+2018|2|6(a)|20|Define auxins and explain their role in crop life cycles. Also, discuss the uses of auxins in agriculture.
+2018|2|6(b)|15|Discuss the effects of water stress on plant growth and development. Describe plant borne mechanisms to escape from drought and stress situations.
+2018|2|6(c)|15|What do you understand by seed dormancy? Discuss the reasons for seed dormancy. Also, describe the various methods for breaking seed dormancy.
+2018|2|7(a)|20|Give package of cultivation of pomegranate with reference to planting materials and methods, irrigation, nutrition, plant protection and post-harvest management.
+2018|2|7(b)|15|Enlist different vegetative propagation methods for fruit plants. Describe the different layering techniques employed for fruit plant propagation.
+2018|2|7(c)|15|Describe the post-harvest management and value-added products of black pepper.
+2018|2|8(a)|20|What do you mean by Integrated Pest Management (IPM)? Discuss the constraints in successful implementation of IPM.
+2018|2|8(b)|15|Describe the importance of micro-nutrients in human health. Justify with suitable examples.
+2018|2|8(c)|15|What do you understand by e-National Agriculture Market (e-NAM)? Discuss the prospects and constraints of e-NAM in the context of Indian farmers.
+#PREFIX|2017|1|1|Describe the following in about 150 words each:
+#PREFIX|2017|1|5|Describe the following in about 150 words each:
+2017|1|1(a)|10|Precision farming
+2017|1|1(b)|10|Ecological principles for productive and sustainable agriculture
+2017|1|1(c)|10|Greenhouse effect and global warming
+2017|1|1(d)|10|Role of Bt cotton in cotton production
+2017|1|1(e)|10|Soil health
+2017|1|2(a)|20|How are plant nutrients classified? What role do they play in crop productivity?
+2017|1|2(b)|20|What is organic farming? How does it help in sustaining the soil fertility and crop productivity?
+2017|1|2(c)|10|Describe the method of biological weed control with suitable examples.
+2017|1|3(a)|20|Describe the technologies for seeded and transplanted rice production.
+2017|1|3(b)|20|Describe the role of afforestation in minimising environmental pollution.
+2017|1|3(c)|10|Describe the utility of remote sensing and GIS in forest plantation.
+2017|1|4(a)|20|Describe crop-weed-competition. Discuss the different factors affecting the efficiency of herbicides.
+2017|1|4(b)|20|Describe the utility of forest products in increasing farmers' incomes.
+2017|1|4(c)|10|Describe 'soil salinity'. Enumerate various methods for soil reclamation.
+2017|1|5(a)|10|Problems of dryland agriculture
+2017|1|5(b)|10|Soil erosion and its management
+2017|1|5(c)|10|Small and marginal farmers
+2017|1|5(d)|10|Self-Help Group (SHG) approach for agriculture and rural development
+2017|1|5(e)|10|Crop Insurance
+2017|1|6(a)|20|How are soil and water polluted by industrial effluents? What are the strategies to minimise this problem?
+2017|1|6(b)|20|What are different techniques used for increasing water use efficiency in relation to crop production?
+2017|1|6(c)|10|What are the various farm management tools used in farm planning?
+2017|1|7(a)|20|What is the significance of marketing information in agricultural marketing? Discuss the status of market intelligence in India.
+2017|1|7(b)|20|What are the target groups in agricultural extension? What role can KVKs (Krishi Vigyan Kendras) play to reach such groups?
+2017|1|7(c)|10|Describe the significance of minimum support prices of agricultural produce in India. How are they worked out?
+2017|1|8(a)|20|What do you mean by integrated watershed management and what is its significance in dryland agriculture?
+2017|1|8(b)|20|Describe different measures to improve the drainage of water-logged soils to increase soil fertility and crop productivity.
+2017|1|8(c)|10|What are the principles of agricultural extension education? How does it differ from formal education?
+2017|2|1(a)|10|What is cell? Enlist different organelles of plant cell with brief description of functions of mitochondria.
+2017|2|1(b)|10|Give a brief account of conservation of crop genetic resources.
+2017|2|1(c)|10|What are the genetic and agronomic principles of seed production?
+2017|2|1(d)|10|What do you mean by male sterility? List various types of male sterility systems found in plants and discuss the chemically induced male sterility.
+2017|2|1(e)|10|What is embryo rescue? Write its advantages in crop improvement. Indicate the technique with special reference to interspecific and intergeneric hybridization.
+2017|2|2(a)|20|Describe various steps involved in seed certification and the institutions associated in the production of certified seeds.
+2017|2|2(b)|20|Describe the applications of molecular markers in crop improvement.
+2017|2|2(c)|10|Explain cytoplasmic inheritance and its characteristics.
+2017|2|3(a)|20|Define heterosis. How is heterosis being exploited in the development of hybrids?
+2017|2|3(b)|20|What is polyploidy? Briefly discuss its application and limitations in crop improvement.
+2017|2|3(c)|10|Narrate the role of genetic engineering in crop improvement.
+2017|2|4(a)|20|What are mutations? Indicate the use of induced mutation in varietal development.
+2017|2|4(b)|20|Explain the mechanism involved in breeding for resistance to insect-pests.
+2017|2|4(c)|10|Discuss the impact of PPV & FRA in varietal protection of crop plants.
+2017|2|5(a)|10|What are plant growth regulators? How do they differ from phytohormones? Indicate the applications of plant growth regulators in agriculture.
+2017|2|5(b)|10|Describe the criteria of essentiality of nutrients. Classify the essential nutrients for plants. Discuss the role of phosphorus and calcium in crops with special reference to pulses.
+2017|2|5(c)|10|Give a brief account of post-harvest losses in fruits. Suggest various management techniques to avoid losses due to post-harvest diseases.
+2017|2|5(d)|10|What are nutrition challenges? Discuss the factors contributing to the under-nutrition at different stages of life cycle.
+2017|2|5(e)|10|Define medicinal and aromatic plants. Discuss their importance and uses.
+2017|2|6(a)|20|Define 'evapotranspiration'. How is it affected by various factors? Briefly discuss the passive absorption of water by plants.
+2017|2|6(b)|20|What is photophosphorylation? Distinguish between cyclic and non-cyclic photophosphorylation. Give schematic structure of both the pathways.
+2017|2|6(c)|10|How does high-tech horticulture technology play role in enhancing resource use efficiency and farmers' income?
+2017|2|7(a)|20|Give a brief account of major pests and diseases of mango with their management measures.
+2017|2|7(b)|20|Suggest the measures to prevent the spread of exotic pests and diseases in the country.
+2017|2|7(c)|10|Differentiate between symbiotic and asymbiotic nitrogen fixation. How does symbiotic nitrogen fixation take place in crop plants?
+2017|2|8(a)|20|What are various ways of value addition in fruits and vegetables?
+2017|2|8(b)|20|What is protein energy malnutrition? Give micronutrient deficiency in women and children.
+2017|2|8(c)|10|What is food security? Indicate the major constraints in food procurement and distribution.
+#PREFIX|2016|1|1|Describe the following in not more than 150 words each:
+#PREFIX|2016|1|5|Describe the following in not more than 150 words each:
+2016|1|1(a)|10|Agroforestry and Agrostology
+2016|1|1(b)|10|Integrated Pest Management (IPM) vs Integrated Nutrient Management (INM)
+2016|1|1(c)|10|Farming system vs Mixed farming
+2016|1|1(d)|10|Decoy crop vs Trap crop
+2016|1|1(e)|10|Fertigation vs Herbigation
+2016|1|2(a)|20|List out the criteria for essentiality of nutrients. Differentiate between essential, beneficial and functional elements in plant nutrition. How are these nutrient elements absorbed by the plants?
+2016|1|2(b)|20|Differentiate between soil fertility and soil productivity. What is meant by the organic matter content of good agricultural soil? Compare it with that of forest soil. Suggest ways to maintain soil organic matter content and improve crop productivity.
+2016|1|2(c)|10|What do you mean by the terms remote sensing and GIS? What are their applications in agriculture and forestry?
+2016|1|3(a)|20|Write a brief note on the importance of pulses for sustainable future. Describe the international pulse year with its main objectives and strategies to enhance the production and availability of pulses.
+2016|1|3(b)|20|Describe the package of practices for raising a short duration pigeon pea. Discuss good agricultural practices (GAP) and their implications.
+2016|1|3(c)|10|Explain the critical period of crop-weed competition with suitable examples.
+2016|1|4(a)|20|Discuss the global initiatives and international conventions on climate change. What does NICRA stand for? What are the initiatives taken by the Indian Government in this regard?
+2016|1|4(b)|20|Briefly describe the various types of forestry plantations like social forestry, agroforestry and natural forests. What methods are employed for propagation of forest plants?
+2016|1|4(c)|10|List out the factors affecting efficacy of herbicides.
+2016|1|5(a)|10|Protected agriculture
+2016|1|5(b)|10|Phytostabilisation
+2016|1|5(c)|10|Role of Krishi Vigyan Kendras
+2016|1|5(d)|10|Farm planning and Farm management
+2016|1|5(e)|10|Kisan Credit Card
+2016|1|6(a)|20|Differentiate between rainfed and irrigated agriculture. List out the major problems of rainfed agriculture. Describe the various soil moisture conservation measures to boost crop production in rainfed farming.
+2016|1|6(b)|20|Discuss the various methods of evaluation of extension programmes. Discuss the significance of Self-Help Groups for rural development, with successful examples.
+2016|1|6(c)|10|Describe the concept of market intelligence and explain the various problems in agricultural marketing system in India.
+2016|1|7(a)|20|Define agricultural extension. Differentiate between extension education and formal education. Discuss its importance in agricultural development.
+2016|1|7(b)|20|Explain various soil conservation methods and integrated watershed management approach. What is soil erosion? Discuss the methods of managing soil erosion.
+2016|1|7(c)|10|What are the important principles of farm management?
+2016|1|8(a)|10|Discuss the mechanism of fixation of minimum support prices of agricultural products.
+2016|1|8(b)|20|Discuss the significance of quality of irrigation water and rain-water harvesting for crop productivity. Describe how irrigation is scheduled in the critical stage of crop growth.
+2016|1|8(c)|20|Explain how industrial effluents affect soil and water pollution. What measures can be taken to reduce this impact?
+#PREFIX|2016|2|2|Answer the following questions:
+#PREFIX|2016|2|3|Answer the following questions:
+#PREFIX|2016|2|4|Answer the following questions:
+#PREFIX|2016|2|6|Answer the following questions:
+#PREFIX|2016|2|7|Answer the following questions:
+#PREFIX|2016|2|8|Write notes on the following:
+2016|2|1(a)|10|Elaborate Mendel's law of independent assortment by giving suitable example.
+2016|2|1(b)|10|Define 'pure lines' along with their characteristics. How are they used in crop improvement?
+2016|2|1(c)|10|Explain Intellectual Property Rights. Give the present status of IPR in relation to agriculture.
+2016|2|1(d)|10|Explain the mechanism of absorption of salts. Give potassium, calcium and iron deficiency symptoms in plants.
+2016|2|1(e)|10|Discuss sterility systems used in hybrid seed production. Briefly mention chemically induced male sterility.
+2016|2|2(a)|12.5|Define 'general combining ability'. Explain the genetic basis and methods for estimating SCA in diallel mating system.
+2016|2|2(b)|12.5|What are the genetic consequences of self- and cross-pollination?
+2016|2|2(c)|12.5|Discuss the sui generis protection of traditional knowledge.
+2016|2|2(d)|12.5|How is water absorbed by land plants? Explain various external conditions affecting water absorption by roots.
+2016|2|3(a)|12.5|Explain oxidative decarboxylation citing suitable example.
+2016|2|3(b)|12.5|Give evidences supporting translocation of organic solutes in phloem. Explain Ringing experiment.
+2016|2|3(c)|12.5|Given the seed from a male sterile line of corn, how would you determine if the sterility is genetic or cytoplasmic?
+2016|2|3(d)|12.5|Discuss the importance of gene pyramiding and gene introgression in developing disease-resistant cultivars.
+2016|2|4(a)|12.5|Discuss the practical applications of mutations in wheat, rice and barley. Name two varieties of wheat released by the use of induced mutations in India.
+2016|2|4(b)|12.5|Give an account of mechanism of protein synthesis. Compare it with prokaryotes and eukaryotes.
+2016|2|4(c)|12.5|Explain formal and informal seed supply systems in India.
+2016|2|4(d)|12.5|Differentiate between transpiration and guttation. Why permanent wilting takes place?
+2016|2|5(a)|10|What are the important new varieties of carnation? Explain the importance of pinching operation for producing quality carnation.
+2016|2|5(b)|10|Explain the connection between anaerobic and aerobic respiration.
+2016|2|5(c)|10|Compare the inoculative and augmentative releases of natural enemies for biological control of pests.
+2016|2|5(d)|10|Discuss the strength and weakness of public distribution system in the country.
+2016|2|5(e)|10|Describe the procedure of tissue culture for multiplying new cultivars of gladiolus.
+2016|2|6(a)|12.5|What are the special schemes for providing food grains to underprivileged, destitutes and malnourished populations?
+2016|2|6(b)|12.5|Explain the production technology for commercial cultivation of marigold and aster flowers.
+2016|2|6(c)|12.5|Why are the concepts of economic threshold and economic injury levels important in IPM?
+2016|2|6(d)|12.5|Explain the phenomenon of passive absorption and give the factors affecting the rate of absorption of water.
+2016|2|7(a)|12.5|How does maturity control the post-harvest quality and storage life of fruits? Give maturity indices for some fruits and vegetables.
+2016|2|7(b)|12.5|Explain the present status of food and nutrition security in India.
+2016|2|7(c)|12.5|Discuss plant disease occurrence, epidemics and IDM.
+2016|2|7(d)|12.5|Explain the effect of concentration of enzyme on its activity. Give different methods for regulating the enzymic activity.
+2016|2|8(a)|12.5|Horizontal and vertical resistance
+2016|2|8(b)|12.5|Ionizing radiations and insect control
+2016|2|8(c)|12.5|Vascular wilt and xylem wilt
+2016|2|8(d)|12.5|Red flour beetle and Angoumois grain moth
+#PREFIX|2015|1|3|Differentiate and elaborate the following:
+2015|1|1(a)|10|Why is watershed management important in dryland agriculture?
+2015|1|1(b)|10|How is soil erosion caused?
+2015|1|1(c)|10|Discuss the farm management problems in the Indian context.
+2015|1|1(d)|10|How is 'contract farming' playing an important role in agrifood chain in the Indian context?
+2015|1|1(e)|10|How are the agro-climatic zones determined?
+2015|1|2(a)|20|Elaborate the environmental pollutions along with the role of afforestation in minimizing their effects.
+2015|1|2(b)|20|Discuss about the factors affecting the efficacy of herbicides.
+2015|1|2(c)|10|How does soil acidity affect the crops?
+2015|1|3(a)|10|Integrated nutrient management and Integrated pest management
+2015|1|3(b)|10|Intensive agriculture and Sustainable agriculture
+2015|1|3(c)|10|Agroforestry and Agrostology
+2015|1|3(d)|10|Frontline demonstration and Method demonstration
+2015|1|3(e)|10|Lime requirement and Leaching requirement
+2015|1|4(a)|20|Discuss nitrogen transformation and its management in submerged soil for rice production.
+2015|1|4(b)|15|Write about the needs and techniques of forage conservation.
+2015|1|4(c)|15|Write the approaches of biological weed control with suitable examples.
+2015|1|5(a)|10|Describe the agricultural regions of India.
+2015|1|5(b)|10|What benefits are derived from organic matter in soil?
+2015|1|5(c)|10|Elaborate the problems of residual toxicity of herbicide and its management.
+2015|1|5(d)|10|Detail the role of co-operative marketing.
+2015|1|5(e)|10|What is the importance of Krishi Vigyan Kendra (KVK) in the context of rural livelihood?
+2015|1|6(a)|20|Give the criteria of essentiality of plant nutrients. List the essential mineral elements required in plant nutrition. State the principal functions of N, P, K, Ca, Mg and S.
+2015|1|6(b)|15|Write the concept of soil moisture constraints. Write the role and availability of moisture to plants.
+2015|1|6(c)|15|Explain multiple cropping, its significance and constraints experienced by farmers.
+2015|1|7(a)|20|Is curing in tobacco beneficial? Describe the various curing processes adopted in tobacco growing regions of India.
+2015|1|7(b)|15|Explain El Nino effect, its causes and impact on Indian agriculture.
+2015|1|7(c)|15|Why is Broad Based Extension (BBE) multidirectional? What difficulties arise in its implementation?
+2015|1|8(a)|20|Elaborate the ways to increase fertilizer use efficiency.
+2015|1|8(b)|20|Why is crop diversification more beneficial than traditional monoculture system?
+2015|1|8(c)|10|Compare direct seeding and transplanting of rice.
+#PREFIX|2015|2|2|Answer each of the following questions:
+#PREFIX|2015|2|3|Answer each of the following questions:
+#PREFIX|2015|2|4|Answer each of the following questions:
+#PREFIX|2015|2|6|Answer each of the following questions:
+#PREFIX|2015|2|7|Answer each of the following questions:
+#PREFIX|2015|2|8|Write notes on each of the following:
+2015|2|1(a)|10|Classify the mutation. Explain the application of mutation breeding.
+2015|2|1(b)|10|Write the package and practices of Gladiolus cultivars citing method of propagation, soil, climatic conditions, harvesting and yield.
+2015|2|1(c)|10|What are Enzymes? Write the properties and factors affecting enzyme's activity.
+2015|2|1(d)|10|Explain the constraints in procurement and distribution policies in India.
+2015|2|1(e)|10|What do you mean by C3, C4 and CAM mechanisms?
+2015|2|2(a)|12.5|Discuss the impact of rapid increase in population on food and agriculture.
+2015|2|2(b)|12.5|Write the diagnostic symptoms of Blister Blight of Tea. Explain the causal organism and management of the disease in tea plantation.
+2015|2|2(c)|12.5|What is meant by linkage and crossover? Write their significance in recombination breeding.
+2015|2|2(d)|12.5|What do you mean by genetically modified crop plants? Write its advantages and disadvantages.
+2015|2|3(a)|12.5|Define cole crops. Explain on what basis cole crops are grouped.
+2015|2|3(b)|12.5|Explain the law of homologous series. How is it helpful in genetic resources, conservation and utilization?
+2015|2|3(c)|12.5|What do you mean by nutrient deficiency? Explain the micro-nutrient deficiency in context of work capacity of women and children.
+2015|2|3(d)|12.5|What is stress physiology? Write the physiology of seed germination and development.
+2015|2|4(a)|12.5|What is photoperiodism? Write at least one example of shortday plant, longday plant and day neutral plant.
+2015|2|4(b)|12.5|Write the distribution of mango malformation in India. What are the causes of different malformations? Suggest to combat the malformation.
+2015|2|4(c)|12.5|Write the essential nutrients required by plants for growth and development. Explain the boron deficiency symptom in Cauliflower and Litchi.
+2015|2|4(d)|12.5|What are the components of DNA and RNA? Give the characteristic difference of the DNA and RNA.
+2015|2|5(a)|10|What are objectives of seed testing? Write the testing procedure adopted in paddy and wheat crops.
+2015|2|5(b)|10|Name three important stored grain pests of Rice. Describe the biology and management of any one of them.
+2015|2|5(c)|10|Define Quarantine. Explain the plant quarantine regulation with respect to wart disease of Potato and bunchy top disease of Banana.
+2015|2|5(d)|10|What do you mean by Targeted Public Distribution System (TPDS)? Who are specially focussed group covered under this programme?
+2015|2|5(e)|10|Write the importance of pruning and Training in fruit crops. Describe the procedure adopted in Grapes.
+2015|2|6(a)|12.5|What are the reasons for food grain surplus in India? Write the steps taken by the government to save the food grains.
+2015|2|6(b)|12.5|Write the package and practices of Potato cultivation under the heads of soil and climatic condition, seed rate, nutrients requirement, time of planting, earthing and yield.
+2015|2|6(c)|12.5|Define respiration and state why is this process essential for plants.
+2015|2|6(d)|12.5|Discuss the importance of conservation of plant genetic resources for crop improvements.
+2015|2|7(a)|12.5|What are fungicides? How fungicides are classified on the basis of chemical nature?
+2015|2|7(b)|12.5|Name the process by which carbohydrates are synthesized in plants. Narrate its mechanism.
+2015|2|7(c)|12.5|Write the production technology of Marigold as it is one of the important flowers cultivated throughout the year.
+2015|2|7(d)|12.5|What is cell? Explain the structure and function of the cell.
+2015|2|8(a)|12.5|Predator and parasites
+2015|2|8(b)|12.5|Laws of heredity
+2015|2|8(c)|12.5|Biological control of pests and diseases
+2015|2|8(d)|12.5|Food production and consumption trends in India
+#PREFIX|2014|1|1|Answer the following in about 150 words each:
+#PREFIX|2014|1|5|Answer the following in about 150 words each:
+2014|1|1(a)|10|Discuss ecological principles to develop productive and sustainable ecosystems.
+2014|1|1(b)|10|Explain Indian efforts towards environmental problems at international level.
+2014|1|1(c)|10|Describe the management of paddy-wheat cropping system having forecast of poor rain.
+2014|1|1(d)|10|Describe the importance of organic farming with respect to nutritional value addition.
+2014|1|1(e)|10|Describe biological weed control with suitable example.
+2014|1|2(a)|10|What are suitable agroecological management strategies?
+2014|1|2(b)|20|Explain ecological concept of productivity.
+2014|1|2(c)|20|Discuss the impact of short duration and long duration varieties on deterioration of soil health.
+2014|1|3(a)|20|Describe the package of practices for production of pigeonpea.
+2014|1|3(b)|10|Write the importance of quarantine check of weed seeds in importing foodgrain.
+2014|1|3(c)|20|Define the theory of tolerance and relate it to the principles of plant distribution and adaptation.
+2014|1|4(a)|10|What are the important features of xerophytes for ecological adaptation?
+2014|1|4(b)|20|How agro-forestry plantation is helpful to the farmers?
+2014|1|4(c)|20|Describe crop-weed competition.
+2014|1|5(a)|10|What are important soil animals? Write their contributions to soil.
+2014|1|5(b)|10|What are the major causes of global warming?
+2014|1|5(c)|10|What are various drainage systems? Discuss their benefits.
+2014|1|5(d)|10|What is the role of Agricultural Technology Management Agency (ATMA) as a converging agency?
+2014|1|5(e)|10|Enumerate the procedures in developing farm plan and budget.
+2014|1|6(a)|10|Write a note on rain water harvesting and recharge of ground water.
+2014|1|6(b)|20|How does industrial effluent affect soil and water? Enumerate the methods of effluent management in agriculture.
+2014|1|6(c)|20|Discuss the mechanism of fixation of minimum support prices of agricultural products.
+2014|1|7(a)|20|How is a new technology assessed and refined?
+2014|1|7(b)|20|Why marketing information is considered important in agricultural marketing? Discuss the status of market intelligence in India.
+2014|1|7(c)|10|How to increase water absorption and retention capacity of soil?
+2014|1|8(a)|20|Who are the target groups in agricultural extension? State the mechanism to reach such groups.
+2014|1|8(b)|10|Explain various farm management tools in farm planning.
+2014|1|8(c)|20|What do you understand by slow release nitrogen from nitrogenous fertilizers? What is its importance?
+#PREFIX|2014|2|1|Answer the following in about 150 words each:
+#PREFIX|2014|2|4|Write notes on the following:
+#PREFIX|2014|2|5|Answer the following in about 150 words each:
+2014|2|1(a)|10|"Aneuploids are generally weak, but they are useful in plant breeding". Evaluate this statement in the light of available information.
+2014|2|1(b)|10|Explain the meaning of genetic purity of seed. Briefly describe the various approaches for testing genetic purity of seed.
+2014|2|1(c)|10|"Heterosis is observed in both self and cross-pollinated crops, but hybrid varieties are more common in cross-pollinated crops". Comment on this statement on the basis of relevant information.
+2014|2|1(d)|10|Briefly describe the procedure for utilization of induced mutation in plant breeding.
+2014|2|1(e)|10|Highlight the various contributions of inter-specific hybridization in crop improvement.
+2014|2|2(a)|12.5|Discuss the role of National Seeds Corporation in quality seed production in India.
+2014|2|2(b)|12.5|Define pureline. Discuss the relevance of pureline selection in self- and cross-pollinated crops.
+2014|2|2(c)|12.5|Explain the use of cytoplasmic-genetic male sterility in hybrid seed production.
+2014|2|2(d)|12.5|Why do quantitative traits show continuous variation?
+2014|2|3(a)|12.5|Discuss the relevance of mode of reproduction in plant breeding.
+2014|2|3(b)|12.5|DNA is the genetic material. How does DNA contribute to the development of various traits?
+2014|2|3(c)|12.5|Define general combining ability. Describe the procedure for recurrent selection for general combining ability.
+2014|2|3(d)|12.5|What is plant disease epidemic? Why do disease epidemics occur? How can they be managed?
+2014|2|4(a)|12.5|TRIPS Agreement
+2014|2|4(b)|12.5|Somaclonal variation
+2014|2|4(c)|12.5|Gene cloning and development of transgenics
+2014|2|4(d)|12.5|Gene Banks
+2014|2|5(a)|10|What are the fundamental difference between transpiration and guttation? In a winter morning, water droplets might be noticed on some plant leaves. How could it be ascertained whether the water droplets were those of dew drops or guttation water?
+2014|2|5(b)|10|What is meant by 'sigmoid' growth curve? Draw and describe a sigmoid growth curve citing its different phases.
+2014|2|5(c)|10|Show full reactions where (i) Alcohol dehydrogenase, (ii) Nitrate reductase, (iii) Glucokinase and (iv) Succinate dehydrogenase are involved, therewith mentioning respective co-factor, co-enzyme, prosthetic group etc., if so required.
+2014|2|5(d)|10|Differentiate between incipient wilting, temporary wilting and permanent wilting. Classify different types of droughts and mention how are they related to each other.
+2014|2|5(e)|10|Write short note on Hill reaction. Prove that O2 evolved during photosynthesis comes from water and not from CO2.
+2014|2|6(a)|12.5|Define vernalization. How vernalization is activated in plants? Briefly discuss its importance in agriculture.
+2014|2|6(b)|12.5|Name the causal agent of black Sigatoka disease of banana. Enumerate the diagnostic symptoms of the disease. Suggest remedial measures to control the disease.
+2014|2|6(c)|12.5|Give an account of different types of water present in soil.
+2014|2|6(d)|12.5|Enumerate objectives of Integrated Child Development Service Scheme.
+2014|2|7(a)|12.5|Explain in brief Targeted Public Distribution System (TPDS). What measures have been taken to increase transparency in the functioning of TPDS.
+2014|2|7(b)|12.5|Describe India's food security system. Enumerate reasons for disturbance in food demand and supply.
+2014|2|7(c)|12.5|What are the key determinants of malnutrition? What major initiatives have been taken to improve nutritional status of Indian population?
+2014|2|7(d)|12.5|Briefly discuss handling methods for export of mango.
+2014|2|8(a)|12.5|Describe the principles and practices of plant quarantine. Can import quarantine be exempted by submitting a phytosanitary certificate issued by the government of the exporting country? Also, are disinfestations of planting material in the exporting country prior to importation or disinfestations in transit performed on the high seas considered to fulfil the requirements for quarantine inspection?
+2014|2|8(b)|12.5|What is a pesticide formulation? Differentiate active ingredient from inert ingredient. Give at least two examples each of active and inert ingredients.
+2014|2|8(c)|12.5|Define jelly. Explain the principle of jelly formation. Briefly describe the preparation of jelly and enumerate problems in jelly making.
+2014|2|8(d)|12.5|What is meant by protective cultivation? Briefly discuss importance of greenhouse in protective cultivation.

@@ -1,0 +1,622 @@
+# Geology optional (UPSC Civil Services Main). One question part per line:  year | paper | qno | marks | text
+# English text is read from the bilingual UPSC papers (scans). Papers have few figures; any are listed in figures.txt.
+2016|1|1(a)|10|Describe the significance of unconformities in establishing stratigraphic record.
+2016|1|1(b)|10|Explain the utility of establishing seismic zones.
+2016|1|1(c)|10|Explain the nature and effects of seismic waves.
+2016|1|1(d)|10|Describe the importance of cleavage in geological studies.
+2016|1|1(e)|10|Write briefly on Global Positioning System (GPS).
+2016|1|2(a)|15|Explain the concept of Davis on geomorphic cycles.
+2016|1|2(b)|15|Describe the genetic classification of faults, aided with neat sketches.
+2016|1|2(c)|20|Discuss the classification and global distribution of volcanoes and describe various volcanic products.
+2016|1|3(a)|20|Discuss the applications of remote sensing in Geology.
+2016|1|3(b)|15|What are valley glaciers ? Describe the major landforms produced due to glacial erosion.
+2016|1|3(c)|15|Describe strain markers and their significance.
+2016|1|4(a)|20|Enumerate the tools and equipments required to undertake geological mapping. Explain the importance of geological mapping.
+2016|1|4(b)|20|Give an account of the application of Geographic Information Systems (GIS).
+2016|1|4(c)|10|Explain the major discontinuities within the Earth's interior.
+2016|1|5(a)|10|Bagh beds
+2016|1|5(b)|10|Importance of index fossils in establishing correlation
+2016|1|5(c)|10|Significance of biostratigraphy and its utility
+2016|1|5(d)|10|Types of forces acting on a dam
+2016|1|5(e)|10|Subsurface distribution of water
+2016|1|6(a)|20|Give an account of seismic refraction method in the exploration for groundwater.
+2016|1|6(b)|20|Explain the evolutionary trends of Hominidae.
+2016|1|6(c)|10|Describe the significance of trace fossils.
+2016|1|7(a)|20|What are landslides ? Explain the causes of landslides and the measures that can be taken to overcome this phenomenon.
+2016|1|7(b)|20|Give an account of the stratigraphy, lithology and environment of deposition of the Jurassic rocks of Kutch.
+2016|1|7(c)|10|Explain the process of separation of micro-fossils from the matrix.
+2016|1|8(a)|15|What are springs ? Give an account of various types of springs.
+2016|1|8(b)|20|Describe the evolution of the Himalayas.
+2016|1|8(c)|15|Give an account of the evolutionary changes noticed in the glabella of trilobites.
+2016|2|1(a)|10|Differentiate between magmatic differentiation and assimilation.
+2016|2|1(b)|10|Discuss the basic differences in the crystal structures, physical and optical properties of pyroxene and amphibole.
+2016|2|1(c)|10|Enumerate briefly on how the clastic rocks are classified on the basis of their grain-size.
+2016|2|1(d)|10|Describe briefly the different types of twinning commonly found in minerals. Comment upon causes of twinning.
+2016|2|1(e)|10|Explain why all pleochroic minerals are anisotropic but all anisotropic minerals are not pleochroic.
+2016|2|2(a)|20|With neat sketches describe the symmetry elements and forms of the normal class of the orthorhombic system. Name three minerals of this class.
+2016|2|2(b)|20|Give an account of the atomic structure, chemical composition, and physical and optical properties of the minerals of mica group.
+2016|2|2(c)|10|A mineral section remains dark in all positions under crossed polars. How would you proceed to determine whether the mineral is (i) isotropic, (ii) uniaxial or (iii) biaxial ?
+2016|2|3(a)|20|Discuss Bowen's Reaction Series. What is its significance in the process of crystallization of magma ?
+2016|2|3(b)|20|Briefly discuss the classification of sandstones. What is the general tectonic environment in which quartz arenites are found ?
+2016|2|3(c)|10|With neat sketches describe the textures and structures of metamorphic rocks.
+2016|2|4(a)|20|Discuss the origin of anorthosites.
+2016|2|4(b)|20|What are heavy minerals ? Discuss their significance in sedimentological studies.
+2016|2|4(c)|10|Write notes on (i) ACF diagram (ii) AKF diagram
+2016|2|5(a)|10|In a mineral, the refractive indices are determined as ω = 1·548 and ε = 1·634. Calculate the birefringence of the mineral and comment on its optic nature.
+2016|2|5(b)|10|Briefly discuss the different ore-forming processes in sedimentary environment.
+2016|2|5(c)|10|What is rank of coal ? Discuss the general changes that coal may undergo during its increase in rank.
+2016|2|5(d)|10|Describe the distribution of gold deposits in India.
+2016|2|5(e)|10|Describe the mineralogy, chemical composition and occurrences of manganese nodules in Indian Ocean.
+2016|2|6(a)|20|How oil reserves are formed and accumulated in nature ? What are the different types of oil traps ? Illustrate with neat diagrams.
+2016|2|6(b)|20|Discuss briefly the problem of fluoride contamination in groundwater giving emphasis on its distribution and related health hazards.
+2016|2|6(c)|10|What is an earthquake ? Discuss briefly the main causes of earthquake. How earthquake intensity is measured ?
+2016|2|7(a)|20|What are the common methods adopted for resistivity survey in an area ? Describe briefly their field procedures and working principle. Also discuss advantages – disadvantages of the methods.
+2016|2|7(b)|20|Describe briefly the geochemical classification of elements. Add a note on the role of trace elements in magmatic crystallisation.
+2016|2|7(c)|10|Discuss briefly the 'National Mineral Policy'.
+2016|2|8(a)|20|What are the differences between Banded Iron Formation and Ironstone ? Why there is minimum/no detritus found in Banded Iron Formation ?
+2016|2|8(b)|20|Give a brief description of mode of occurrence and distribution in India of Bauxite deposits.
+2016|2|8(c)|10|Enumerate the legislative measures in India for environment protection.
+2017|1|1(a)|10|Seismic hazard zones of India
+2017|1|1(b)|10|Origin of Karst topography
+2017|1|1(c)|10|Digital image processing
+2017|1|1(d)|10|Morphological classification of rock cleavage
+2017|1|1(e)|10|Fault zone rocks
+2017|1|2(a)|20|Discuss different types of plate boundaries and enumerate their characteristic features.
+2017|1|2(b)|15|Compare the geomorphological and geological features of peninsular and extra-peninsular regions of India.
+2017|1|2(c)|15|What are joints ? Discuss the types of joints developed during folding.
+2017|1|3(a)|15|What are river terraces ? Discuss their geological significance.
+2017|1|3(b)|20|How would you differentiate between a fault and an unconformity in the field ?
+2017|1|3(c)|15|Giving suitable examples discuss the strategies which may be adopted to control river water pollution.
+2017|1|4(a)|20|Discuss the recent advances and achievements of Indian Space Programme.
+2017|1|4(b)|15|Explain, how the geometry of minor folds are helpful in deciphering the geometry of regional folds in an area.
+2017|1|4(c)|15|Discuss the advantages and limitations of remote sensing studies with respect to conventional geological field work.
+2017|1|5(a)|10|Discuss the environment and modes of fossilization.
+2017|1|5(b)|10|Discuss the tectonic sub-divisions of Himalaya.
+2017|1|5(c)|10|Water bearing characteristics of rocks.
+2017|1|5(d)|10|Concept of rainwater harvesting.
+2017|1|5(e)|10|Lower Gondwana flora and its significance.
+2017|1|6(a)|15|How would you differentiate between 'in-situ' and 'derived fossils ?
+2017|1|6(b)|15|Geological considerations for construction of tunnels in deformed geological terrain.
+2017|1|6(c)|20|Give a stratigraphic account of Vindhyan Supergroup. Comment upon the life during Vindhyan times.
+2017|1|7(a)|15|Write short notes on the following : (i) Muth Quartzites (ii) Lameta Formation (iii) Tipam Formation
+2017|1|7(b)|15|Describe the significance of microfossils in petroleum exploration.
+2017|1|7(c)|20|Discuss the geological considerations for selection of a dam site in Himalayan terrain.
+2017|1|8(a)|15|What do you understand by groundwater recharge ? Describe various methods used in this process.
+2017|1|8(b)|20|Give an account of evolutionary trends in Equidae.
+2017|1|8(c)|15|Give a geological account of Deccan volcanic province.
+2017|2|1(a)|10|Explain Bragg's law of diffraction of X-rays by a crystal with suitable diagram.
+2017|2|1(b)|10|Differentiate between normal and reverse zoning in minerals with neat sketches.
+2017|2|1(c)|10|Discuss with the help of neat diagram the IUGS classification of phaneritic ultrabasic rocks.
+2017|2|1(d)|10|What is the process of recrystallization? Discuss the textures associated with the contact metamorphism.
+2017|2|1(e)|10|Describe the common structures of sedimentary rocks with neat sketches and also comment on their significance.
+2017|2|2(a)|20|Describe the structural classification of silicates with neat sketches and mineralogical examples.
+2017|2|2(b)|20|Give an account of the crystal structure, chemical composition and optical properties of the minerals of the feldspar group.
+2017|2|2(c)|10|With a suitable diagram, explain how the optic sign of a uniaxial mineral is determined.
+2017|2|3(a)|20|Give various types of granitoids and discuss the classification based on tectonic settings. Add a note on the role of mantle in the genesis of granitoids.
+2017|2|3(b)|20|Discuss metamorphic facies and series. Citing mafic assemblages of low grades, distinguish greenschist facies of metamorphism from prehnite-pumpellyite facies of metamorphism.
+2017|2|3(c)|10|Discuss the mineralogy, chemical characters and origin of carbonatites. Give suitable Indian examples.
+2017|2|4(a)|20|Discuss the processes of diagenesis and lithification.
+2017|2|4(b)|20|Give an account of the Proterozoic sedimentary basins of India.
+2017|2|4(c)|10|Differentiate between molasse and flysch facies.
+2017|2|5(a)|10|What are stratiform and strata-bound deposits? Explain with suitable examples.
+2017|2|5(b)|10|Describe the geological characteristics of important types of manganese deposits in the Indian shield.
+2017|2|5(c)|10|What are the field evidences of mineralization which can be useful in mineral prospecting?
+2017|2|5(d)|10|Discuss the texture, composition and types of aerolites. Comment upon the significance of chondrites.
+2017|2|5(e)|10|Discuss coal mine water pollution and its impact on groundwater regime. Comment on the preventive measures to be taken to control groundwater pollution.
+2017|2|6(a)|20|Write a detailed account on the geology and genesis of porphyry copper deposits.
+2017|2|6(b)|20|Describe the geological characteristics of any three important types of uranium deposits in India. Draw neat sketches illustrating the geological setting of these deposits.
+2017|2|6(c)|10|What are oil and gas windows? Explain with suitable diagram.
+2017|2|7(a)|20|What are the criteria based on which indicator elements are selected for geochemical exploration of mineral deposits? Describe any two methods of interpreting geochemical data for recognition of geochemical anomaly.
+2017|2|7(b)|20|Describe the objectives of detailed exploration stage of a mineral exploration programme. Add a note on exploratory mining and its application.
+2017|2|7(c)|10|Draw a typical flowchart of a mineral beneficiation process and briefly explain its components.
+2017|2|8(a)|20|Discuss different kinds of interatomic linkages. What are the principles of crystal structures? Comment upon the rules that govern atomic substitution of trace elements in silicates.
+2017|2|8(b)|20|What is high-level nuclear waste? How is it managed and safely disposed in a geological repository? Add a note on its Indian scenario.
+2017|2|8(c)|10|What do you understand by incompatibility of elements? Comment upon High Field Strength (HFS) and Large Ion Lithophile (LIL) elements.
+2018|1|1(a)|10|"Geomorphology is intimately related to tectonics." Explain with suitable examples.
+2018|1|1(b)|10|What are stream order and mean bifurcation ratio of a drainage basin ? Discuss their significance in the morphometric analysis of a drainage basin.
+2018|1|1(c)|10|Discuss about the Circum-Pacific volcanic belt. Which five countries have the highest volcanic threat in terms of human loss ?
+2018|1|1(d)|10|Differentiate between True Colour Composite (TCC) and False Colour Composite (FCC). Explain its importance in interpreting remote sensing images.
+2018|1|1(e)|10|Write about different types of unconformities and their significance.
+2018|1|2(a)|20|Describe a desert and discuss how a desert is classified. Discuss the morphology of a dune and conditions favouring formation of different dune types.
+2018|1|2(b)|15|Describe the different satellite orbits and their relative advantages.
+2018|1|2(c)|15|What are shear zones ? Explain diagrammatically the transition from brittle fault to ductile shear at depth.
+2018|1|3(a)|20|Describe different types of plate boundaries with suitable sketches.
+2018|1|3(b)|15|Describe 'Spectral Signature' and add a note on the spectral reflectance pattern of rocks, vegetation and water bodies.
+2018|1|3(c)|15|What are strain markers ? Discuss their significance.
+2018|1|4(a)|20|Discuss the mechanism of faulting.
+2018|1|4(b)|15|Describe the different types of coastal landforms.
+2018|1|4(c)|15|What are meteorites ? Discuss different types of meteorites.
+2018|1|5(a)|10|Discuss the modes of fossilization of hard parts of an organism.
+2018|1|5(b)|10|"Microfossils are superior to megafossils in correlation." Comment on the statement.
+2018|1|5(c)|10|State the methods of groundwater exploration.
+2018|1|5(d)|10|Explain the geological considerations for construction of roads in hilly terrain.
+2018|1|5(e)|10|Discuss the Precambrian-Cambrian boundary problem in the Indian geological context.
+2018|1|6(a)|20|Give an account of evolutionary trends in Proboscidea.
+2018|1|6(b)|15|Write short notes on the following : (i) Lower Gondwana Group (ii) Karewa Group (iii) Krol Group
+2018|1|6(c)|15|Give a succinct account of life during Vindhyan times.
+2018|1|7(a)|20|What are the different types of landslides ? Discuss their controlling measures.
+2018|1|7(b)|15|Give a brief account of the stratigraphy of Mesozoic rocks of Kachchh.
+2018|1|7(c)|15|Discuss the significance of fossils in paleoclimatic studies.
+2018|1|8(a)|20|Discuss the geological considerations for selection of sites for bridges.
+2018|1|8(b)|15|What do you understand by spring sanctuaries ? Describe the various types of springs.
+2018|1|8(c)|15|Discuss the stratigraphy of the Siwalik supergroup and comment on its vertebrate fossils.
+2018|2|1(a)|10|'Five-fold rotational symmetry is not possible in minerals' – justify the statement.
+2018|2|1(b)|10|Explain the symmetry elements in a stereogram of general form {hkil} in the hexagonal-scalenohedral class.
+2018|2|1(c)|10|Explain the role of decompression in magma generation.
+2018|2|1(d)|10|Illustrate with neat sketches the formation of porphyritic and ophitic textures in gabbroic rocks using suitable binary phase diagram of pyroxene and plagioclase feldspar.
+2018|2|1(e)|10|What are sparry allochemical carbonate rocks ? Comment on their depositional environment.
+2018|2|2(a)|20|Illustrate with neat sketches internal structure of pyroxene group of minerals. Give a generalized classification of pyroxene group based on composition.
+2018|2|2(b)|20|Illustrate with neat sketches internal structure of calcite. How would you explain the differences in the internal structure of calcite and its polymorph aragonite ?
+2018|2|2(c)|10|Explain with the help of indicatrix diagram how the birefringence of a uniaxial mineral depends on crystallographic orientation of the mineral thin-section when studied under petrological microscope.
+2018|2|3(a)|20|What are continental flood basalts ? Illustrate with example from India. Discuss the petrogenesis and tectonic significance of such basalts.
+2018|2|3(b)|20|Illustrate with appropriate mineral reactions prograde metamorphism of argillaceous sedimentary rocks.
+2018|2|3(c)|10|What are migmatites ? Comment on their origin.
+2018|2|4(a)|20|Illustrate with neat sketches primary sedimentary structures in sands from bed load transport. How such structures can be used for interpretation of depositional environments ?
+2018|2|4(b)|20|Give a generalized classification of sandstone. State genetic significance of such classification.
+2018|2|4(c)|10|Why are 'fining upward' facies sequences considered as one of the most important criteria for recognizing deposits of meandering fluvial depositional system ?
+2018|2|5(a)|10|Calculate the wt. % of iron in the following minerals, and arrange these minerals in order of increasing iron content. (Atomic weight of Fe = 56, Cr = 52, Ti = 48 and O = 16) Ilmenite, magnetite, chromite, hematite.
+2018|2|5(b)|10|Describe the geology of Neyveli lignite deposit and the unique problem in mining of this deposit.
+2018|2|5(c)|10|What are the types of samples collected and analysed in geochemical exploration programmes ? Which one of these samples is generally preferred and why is it preferred ?
+2018|2|5(d)|10|What are the surface manifestations of mineral deposits useful in mineral prospecting ?
+2018|2|5(e)|10|Explain the mineralogical phase changes in the mantle of Earth with depth.
+2018|2|6(a)|20|Explain the hydrothermal process of ore formation. Draw neat sketches illustrating important types of hydrothermal deposits formed in sea floor.
+2018|2|6(b)|20|Describe the geological characteristics of well-known copper deposits from different cratons of the Indian shield.
+2018|2|6(c)|10|Some ore deposit types have formed during specific geological periods. Explain with suitable examples the causes for time-bound nature of these deposits.
+2018|2|7(a)|20|What is path-finder element in geochemical exploration ? Explain the selection of path-finder elements and their application with suitable examples.
+2018|2|7(b)|20|Explain the process of mineral beneficiation by froth flotation and its application for sulphide ores.
+2018|2|7(c)|10|Five trenches are made at 20 m interval perpendicular to the strike direction of an 80 m long NE-SW trending molybdenite mineralised vein. The width of vein (in m) and assay value of Mo (in wt. %) in each trench (from NE to SW) are listed below : Calculate the average grade (wt. % Mo) of the vein.
+2018|2|8(a)|20|Give the classification of meteorites. How does the study of meteorites help in understanding the internal composition of the Earth ?
+2018|2|8(b)|20|Illustrate different type of mass wasting processes with suitable examples. Enumerate preventive measures for the mitigation of hazards from mass wasting.
+2018|2|8(c)|10|What are the sources of groundwater pollution ? Suggest preventive measures to control groundwater contamination.
+2019|1|1(a)|10|Discuss three indirect methods and three direct methods of dating geological formations and geological events.
+2019|1|1(b)|10|What are the characteristics of glacio-fluvial deposits? Discuss five glacio-fluvial depositional landforms with neat diagram.
+2019|1|1(c)|10|Explain the differences between satellite remote sensing and aerial photographs. What are their mutual advantages and limitations?
+2019|1|1(d)|10|Draw a cross-section from north to south and discuss the tectonic framework of the Himalaya.
+2019|1|1(e)|10|How do you differentiate between brittle and ductile deformation in rocks?
+2019|1|2(a)|20|What are folds? Describe the morphology of the folds. Discuss the criteria of their recognition in the field.
+2019|1|2(b)|15|What are the evidences supporting 'continental drift' theory and what are its limitations?
+2019|1|2(c)|15|Describe the spatial, spectral, radiometric and temporal resolutions of a satellite image. Discuss the spatial and temporal resolutions needed for geological, climatological, emergency response and meteorological study.
+2019|1|3(a)|20|Briefly describe Global Positioning System (GPS) and its characteristics, its different segments and GPS satellite signals. List any five applications of GPS.
+2019|1|3(b)|15|With the help of neat sketches, describe the effect of faults on outcrop pattern.
+2019|1|3(c)|15|What is volcano? Discuss four positive relief features and four negative relief features associated with a volcano.
+2019|1|4(a)|20|What are 'island arc' systems? What are its major characteristics? Draw a schematic section through an island arc system and describe all its components.
+2019|1|4(b)|15|What is meant by the term 'drainage pattern'? Draw neat diagrams and illustrate four different drainage patterns, and discuss their significance with respect to lithology and structure.
+2019|1|4(c)|15|What is rock cleavage? Give the significance of cleavage in deciphering the structure of a folded area.
+2019|1|5(a)|10|Define index fossils and give the characteristics of a good index fossil.
+2019|1|5(b)|10|Describe the mammalian fauna in the Siwalik Supergroup and add a note on the age.
+2019|1|5(c)|10|Give a short geological account of 'Deccan volcanic province'.
+2019|1|5(d)|10|Describe the geological factors to be considered in the construction of tunnels.
+2019|1|5(e)|10|Describe different types of aquifers and list the characteristics of a good aquifer.
+2019|1|6(a)|20|Define microfossil. Describe the characteristics like ecology, shape, size, composition and age range of Foraminifera.
+2019|1|6(b)|15|What are cratons? Give a brief account of stratigraphy and evolution of any one Indian craton.
+2019|1|6(c)|15|What are the factors that must be considered during the geological investigation for locating a dam site?
+2019|1|7(a)|20|Describe the groundwater provinces of India and comment on their hydrogeological potential.
+2019|1|7(b)|15|Write short notes on the following : (i) Lower Vindhyan Group (ii) Talchir Formation (iii) Upper Siwalik Group
+2019|1|7(c)|15|Describe the evolution of Equidae from Eohippus to Equus.
+2019|1|8(a)|20|Give an account of stratigraphy of the Aravalli Supergroup.
+2019|1|8(b)|15|Define 'specific yield' and 'specific retention' of aquifers. Explain how they are related to porosity with the help of equations.
+2019|1|8(c)|15|What are the objectives of the scientific nomenclature of species? Describe the binomial nomenclature.
+2019|2|1(a)|10|What are the principles of Miller Indices and Hermann Maugin notation for a crystal face ? Calculate Miller Indices of a crystal face which intersects a-axis at 2 unit distance, b-axis at 3 unit distance and is parallel to c-axis.
+2019|2|1(b)|10|What are 'porphyritic' and 'vitrophyric' textures ? Describe with the help of suitable sketches. Comment on petrogenetic significance of vitrophyric texture.
+2019|2|1(c)|10|Define 'partial melting'. Discuss the role of partial melting in magma generation.
+2019|2|1(d)|10|Define thermodynamic phase rule and state its mathematical expression. Determine the degree of freedom for a system under equilibrium with 8 components and 5 mineral phases. Briefly discuss the principle of ACF diagram.
+2019|2|1(e)|10|What are ripple marks ? Describe the different types of ripple marks and their geological significance.
+2019|2|2(a)|20|What is interference figure ? What are the conditions required for the formation of interference figures for uniaxial minerals. Draw optic axis for uniaxial negative and positive crystals.
+2019|2|2(b)|20|Discuss classification, composition and structure of pyroxene group of minerals. Comment upon optical properties and occurrence of hypersthene.
+2019|2|2(c)|10|Describe using projection diagram various crystal-forms developed in the normal class of tetragonal system.
+2019|2|3(a)|10|Explain using phase rule the binary eutectic nature of diopside-anorthite system. Comment upon textures produced during crystallization of basaltic magmas rich in diopside and anorthite components.
+2019|2|3(b)|20|What is the characteristic mineralogy and chemistry of alkaline rocks ? Discuss tectono magmatic setting and magma generation of alkaline rocks.
+2019|2|3(c)|20|What is the concept of 'facies' and 'grade' in metamorphism ? Discuss important facies associations in regionally and thermally metamorphosed rock.
+2019|2|4(a)|20|Define heavy minerals. Describe the different methods of their separation and comment on the utility of heavy mineral suite in provenance determination.
+2019|2|4(b)|20|What are conglomerates ? Describe their classification and geological significance.
+2019|2|4(c)|10|Discuss the fabric, composition and geological significance of arkose.
+2019|2|5(a)|10|Discuss various forms and structures associated with hydrothermal sulphide deposit. Comment upon sequence of mineral deposition in Singhbhum sulphide deposit.
+2019|2|5(b)|10|Discuss quality criteria used for limestone and gypsum in cement industry. Comment upon distribution of cement grade limestone in Vindhyan basin.
+2019|2|5(c)|10|What is meant by pitch and plunge of an ore body ? Calculate average grade of a Pb-ore body from the given data : Sample 1 : 20 cm × 2·8% Pb; Sample 2 : 40 cm × 2·5% Pb; Sample 3 : 12 cm × 3·2% Pb; Cut off grade is 2·4% Pb; Minimum stopping width 1·0 m.
+2019|2|5(d)|10|Discuss significance of meteorite in cosmochemistry.
+2019|2|5(e)|10|How is ground water of coastal areas contaminated by seawater intrusion and comment on its mitigation.
+2019|2|6(a)|20|Discuss distribution, mode of occurrence, mineralogy and genesis of Precambrian Iron ore deposits of India.
+2019|2|6(b)|20|What is refractory material ? Discuss geology, mode of occurrence and origin of refractory minerals of South India.
+2019|2|6(c)|10|Give distribution of petroliferous basins in India. Discuss geology of oil-fields of Assam basin.
+2019|2|7(a)|20|Enumerate different types of mining methods. Discuss in detail coal mining methods.
+2019|2|7(b)|20|Describe mineralogy and genesis of rock phosphate or phosphorite deposits of India. Comment upon its grade used in the fertilizer industry.
+2019|2|7(c)|10|Discuss various types of modifiers and their role in the froth flotation process.
+2019|2|8(a)|20|What are general characteristics of 'lanthanides' ? Why is Rare Earth Element (REE) abundances in a rock expressed with the help of chondrite normalized diagram ? What is petrogenetic significance of 'Ce' and 'Eu' anomaly ?
+2019|2|8(b)|10|Define 'isomorphism' and 'polymorphism' with suitable examples. What are different types of polymorphism ?
+2019|2|8(c)|20|What are different types of radioactive waste forms ? How are they disposed in geological repository ?
+2020|1|1(a)|10|Discuss the different types of meteorites.
+2020|1|1(b)|10|Discuss various fields in which IRS data can be used in the development work and management of resources.
+2020|1|1(c)|10|Briefly describe two diagnostic landforms each of hot-arid and cold-arid climate.
+2020|1|1(d)|10|How do we determine the top of beds from primary features?
+2020|1|1(e)|10|Briefly describe the classification of fold on the basis of fold attitude (dip and plunge).
+2020|1|2(a)|20|Explain the internal structure of the earth. Add a note on discontinuities with neat sketches.
+2020|1|2(b)|15|Discuss the difference in geomorphology of the Eastern Coast and Western Coast of India. What is the main reason of the difference?
+2020|1|2(c)|15|What is an unconformity and what are its structural and stratigraphic importances? Discuss four different types of unconformities with neat sketches.
+2020|1|3(a)|20|Discuss the salient features of Indian satellites Cartosat-3 and RISAT-2B. How are these superior to their predecessors?
+2020|1|3(b)|15|Explain the magnitude and intensity as an expression of the size of an earthquake. Add a note on the damage caused by an earthquake.
+2020|1|3(c)|15|What is a shear zone and what are the conditions of its formation? Discuss its general characteristics and types based on deformation type.
+2020|1|4(a)|20|Discuss Mohr's stress diagram and its significance. What is its relevance in interpreting different stress conditions in rocks?
+2020|1|4(b)|15|Discuss the mechanism of seafloor spreading and give four evidences indicating the expansion in oceanic crust.
+2020|1|4(c)|15|Describe three main controlling factors of soil formation. How does the modern soil differ from the palaeosoil?
+2020|1|5(a)|10|Describe three processes by which plant remains and invertebrate shells can be preserved as fossils.
+2020|1|5(b)|10|Give an account of the mineral wealth associated with the Cuddapah Supergroup of rocks.
+2020|1|5(c)|10|Briefly describe the economic mineral deposits associated with the Tertiary rocks of India.
+2020|1|5(d)|10|Explain the factors influencing the groundwater movement and storage.
+2020|1|5(e)|10|Discuss five engineering properties of rocks.
+2020|1|6(a)|20|Discuss the morphological trends in the evolution of Homo sapiens from Proto-hominins.
+2020|1|6(b)|15|Draw the tectonic sub-division map of India and discuss the salient features of each sub-division.
+2020|1|6(c)|15|Explain the process of saltwater intrusion with neat sketches. Give examples from India.
+2020|1|7(a)|20|Describe the standard stratigraphic time scale of the earth, beginning from the oldest to youngest. Discuss the principal events that took place during the time units.
+2020|1|7(b)|15|Give an account of the Lower Gondwana flora from peninsular and extra-peninsular India. What environmental conditions do they indicate?
+2020|1|7(c)|15|What is a landslide? Explain the different types and their causes. Give two examples from India.
+2020|1|8(a)|20|Explain the natural and artificial recharge processes to enhance the groundwater potential in hard and soft rock terrains.
+2020|1|8(b)|15|Name two microfossils and discuss how these are used in reconstructing the palaeoclimatic conditions.
+2020|1|8(c)|15|Discuss about the Cretaceous-Tertiary boundary (K-T boundary) with examples from India.
+2020|2|1(a)|10|How do you measure refractive index of minerals and distinguish high and low relief minerals under microscope ?
+2020|2|1(b)|10|Write about the symmetry elements of a crystal.
+2020|2|1(c)|10|Explain the salient features exhibited by rocks due to thermal metamorphism.
+2020|2|1(d)|10|Explain with suitable examples the implications of albite-anorthite solid solutions in the understanding of crystallisation of magma.
+2020|2|1(e)|10|How are sedimentary rocks classified in general based on their process of formation ?
+2020|2|2(a)|20|Write about the crystal structure of monoclinic amphiboles and cite mineral examples along with their formula. Add a note on their paragenesis.
+2020|2|2(b)|20|Briefly write about the crystal forms of hexagonal system using projection diagrams.
+2020|2|2(c)|10|Define pleochroism of minerals and write about the utility of pleochroism to distinguish minerals and provide examples.
+2020|2|3(a)|20|What do you understand by the term texture of a rock ? How do you relate the textures of igneous rocks with the process of magmatic crystallisation ?
+2020|2|3(b)|20|Critically discuss the petrogenesis of anorthosites. Comment on the tectonic significance on the distribution of anorthosites.
+2020|2|3(c)|10|Explain the effects of prograde metamorphism on impure carbonate rocks.
+2020|2|4(a)|20|Illustrate with neat sketches the sedimentary facies and facies associations that are likely to develop in a progradational deltaic environment.
+2020|2|4(b)|20|'Classification of carbonate rocks based on textural components may be useful for interpretation of depositional environment'. Justify the statement with reasons.
+2020|2|4(c)|10|How would you distinguish burial diagenetic cements in carbonate rocks from petrographic studies ? Draw neat sketches in support of your answer.
+2020|2|5(a)|10|Explain the processes of formation of syngenetic and epigenetic ore deposits with suitable examples.
+2020|2|5(b)|10|Describe the geology of the East Coast Bauxite deposits of India.
+2020|2|5(c)|10|Discuss various methods of conservation of mineral resources for achieving sustainable mineral development.
+2020|2|5(d)|10|Illustrate with examples the role of chemical bonding in minerals in determining certain properties.
+2020|2|5(e)|10|Write about the causes of Sea level changes.
+2020|2|6(a)|20|Discuss the salient features of various types of lead-zinc ore deposits. Illustrate your answer with schematic diagrams to explain the process of ore formation.
+2020|2|6(b)|20|Describe the geological characteristics of important chromite deposits from different parts of the Indian shield.
+2020|2|6(c)|10|What is coal bed methane ? How is it exploited ?
+2020|2|7(a)|20|What are the factors which influence the mobility of elements in near-surface environment ? How does understanding the mobility of elements help in choosing indicator elements for a geochemical exploration programme ?
+2020|2|7(b)|20|A vein-type copper ore body trending E–W with 90° dip and having strike length of 150 m is exposed on the surface. Four trenches are made across the ore body at constant interval, including one trench each at E and W end of the ore body. Thickness of the ore body and assay value measured from the trenches are given in the table. Assuming that the ore body extends up to a depth of 50 m, and the specific gravity of the ore is 2·8, calculate the tonnage, grade and total copper content of the ore body.
+2020|2|7(c)|10|Explain the seismic methods of mineral prospecting.
+2020|2|8(a)|20|What do you mean by 'primitive mantle' ? Illustrate the cosmochemical and observational constraints on mantle composition.
+2020|2|8(b)|20|Explain about the impact of volcanic eruptions on the environment.
+2020|2|8(c)|10|Briefly mention measures to mitigate landslides.
+2021|1|1(a)|10|Explain what is ring of fire ? How many plates and geographic areas are associated with ring of fire ?
+2021|1|1(b)|10|What is Geographic Information System (GIS) ? Explain the concepts, components and functions of GIS.
+2021|1|1(c)|10|Discuss stereoscopy and its advantages in aerial photo interpretation. Add a note on elements of photo interpretation.
+2021|1|1(d)|10|What is stereographic projection in structural geology ? Discuss its types, nomenclature and different types of geological plotting technique in a stereonet.
+2021|1|1(e)|10|Discuss stress and strain ellipsoids using neat diagrams.
+2021|1|2(a)|20|What are lithospheric plates ? Discuss the theory of plate tectonics. Which plates were involved when a major earthquake caused tsunami in Indian Ocean in 2004 ?
+2021|1|2(b)|15|Discuss the geomorphic processes. Cite any four aggradational and four degradational land forms associated with fluvial processes.
+2021|1|2(c)|15|What does attitude of a bed mean ? Define strike, dip direction and dip amount of a bed and explain how these are represented on a map for vertical, horizontal and inclined strata.
+2021|1|3(a)|20|What are the fundamental concepts used in Geomorphological studies ? Explain the concept "little of the earth's topography is older than Tertiary and most of it no older than Pleistocene ?
+2021|1|3(b)|15|What is isostacy and what are the different theories put forward to explain this concept ?
+2021|1|3(c)|15|What is a fold domain ? Discuss any eight types of folds depending on the closure of fold domain.
+2021|1|4(a)|20|What are hanging wall and footwall of a fault ? Describe the different classes of faults based on relative movement of walls.
+2021|1|4(b)(i)|5|What are atmospheric windows in Remote sensing ?
+2021|1|4(b)(ii)|10|What are spectral reflectance curves ? Explain how clear water, dry soil and healthy vegetation can be demarcated using spectral reflectance curves with neat sketches.
+2021|1|4(c)|15|Define drainage pattern, Drainage texture and Drainage anomaly. Also give their general classification. Discuss the significance of those in geological interpretation of aerial photos and satellite images.
+2021|1|5(a)|10|What are megafossils ? Give names of any three age-diagnostic megafossils indicating their significance in Indian stratigraphy.
+2021|1|5(b)|10|What is paleogeography ? Discuss various tools employed in paleogeographic reconstruction.
+2021|1|5(c)|10|Define lithostratigraphy. Enlist diagnostic properties of lithostratigraphic units giving example from Indian stratigraphy.
+2021|1|5(d)|10|Discuss characteristics of confined and unconfined aquifers.
+2021|1|5(e)|10|Discuss briefly characteristics of earthquake resistant structures.
+2021|1|6(a)|20|Discuss the evolutionary trends in the lineage of equidae and give any two examples of their Indian occurrences.
+2021|1|6(b)|15|Describe Cenozoic stratigraphy of Kuchh basin. Comment on its fossil content and depositional environment.
+2021|1|6(c)|15|Discuss briefly as to why artificial recharge is essentially required in confined aquifers. Explain with suitable diagrams a typical injection well for roof-top harvesting of water.
+2021|1|7(a)|20|Describe stratigraphy and depositional environment of Gondwana Supergroup and discuss why only certain intervals of Gondwana succession are rich in coal seam ?
+2021|1|7(b)|15|What are trace fossils ? Describe the modes of preservation of trace fossils and comment on their geological significance.
+2021|1|7(c)|15|Describe various types of Dam with suitable sketches. Comment on the geological conditions required for site selection for each type of Dam.
+2021|1|8(a)|20|Give a brief account of sources of groundwater pollution in India and discuss the management of groundwater resources.
+2021|1|8(b)|15|What are microfossils ? Discuss the application of microfossils in petroleum exploration.
+2021|1|8(c)|15|What are mass extinctions ? Comment on the various hypothesis proposed for the causes of Permian-Triassic mass extinction.
+2021|2|1(a)|10|How does one designate mirror plane, rotational axes of symmetry and centre of symmetry in Hermann-Mauguin notation? A crystal has one 4-fold axis, four 2-fold axes, five mirror planes and centre of symmetry. What will be its Hermann-Mauguin notation? Show on a stereographic projection diagram the symmetry elements of the above crystal and plot the faces of the form (hkl).
+2021|2|1(b)|10|Discuss with the help of a suitable diagram the crystallization of a melt having composition Diopside-70 and Anorthite-30 under 1 atmosphere pressure. After complete crystallization, what would be the texture of the rock?
+2021|2|1(c)|10|Describe 'continuous' and 'discontinuous' reaction series of minerals proposed by Bowen. Why is one series called as 'continuous' and the other as 'discontinuous'?
+2021|2|1(d)|10|Define 'prograde' and 'retrograde' metamorphism with suitable examples. Discuss the process of metasomatism.
+2021|2|1(e)|10|Give a brief account of Folk's classification of limestones.
+2021|2|2(a)|20|Give the classification scheme of silicate minerals on the basis of atomic structure, Si : O ratio and number of shared oxygen. Give suitable examples of each class.
+2021|2|2(b)|20|Define 'birefringence' and 'extinction angle' in minerals. How does one proceed to measure extinction angle of a mineral under microscope? Substantiate your answer with suitable sketches.
+2021|2|2(c)|10|Define 'twin plane', 'twin axis' and 'composition plane' in crystals. State different types of twinning observed in feldspars.
+2021|2|3(a)|20|Discuss briefly the processes of magma generation in the Earth's interior. How is grain size of an igneous rock related to the rate of cooling of magma? Discuss the role of fractional crystallization and assimilation in magmatic differentiation.
+2021|2|3(b)|20|Describe with suitable sketches four different types of structures/textures found in metamorphic rocks and add brief note on their origin.
+2021|2|3(c)|10|Define 'migmatite'. How does the process of migmatization help to understand the origin of granites?
+2021|2|4(a)|20|What is provenance? How can we use clastic quartz, feldspars and lithic grains in provenance interpretation of sandstones?
+2021|2|4(b)|20|Define a 'sedimentary facies model'. Illustrate with neat sketches the sedimentary facies and association facies likely to develop in a meandering fluvial depositional environment.
+2021|2|4(c)|10|Describe the genesis of any four sedimentary structures which have significance for palaeocurrent analysis.
+2021|2|5(a)|10|Lead (Pb) mineralization zone is drawn in the given diagram with nomenclature. The related data is also provided in the table. Calculate the average grade of lead (Pb) in percentage.
+2021|2|5(b)|10|Describe the geological nature of coal deposits of Jharia (Jharkhand) and comment on their economic potential.
+2021|2|5(c)|10|What are geophysical methods of exploration? How is gravity method useful in mapping the metallic ores?
+2021|2|5(d)|10|Define 'trace element'. Discuss the possible ways that a trace element can enter into a mineral structure.
+2021|2|5(e)|10|State the sea level changes in Late Pleistocene period with possible causes. Add a note on anthropogenic causes occurred in last two centuries.
+2021|2|6(a)|20|Give the modern classification of mineral deposits and explain in brief the residual and mechanical concentration deposits with suitable examples.
+2021|2|6(b)|20|Stating the premise of National Mineral Policy, give the outline of strategic, critical and essential minerals citing Indian examples.
+2021|2|6(c)|10|Give the mode of occurrence, distribution and uses of manganese deposits of India.
+2021|2|7(a)|20|State the characteristic features of cosmic abundance of elements. What are the bases of estimation of cosmic abundance of elements?
+2021|2|7(b)|10|Discuss briefly with examples about different types of chemical bonds observed in natural minerals.
+2021|2|7(c)|20|Describe briefly the geology, structure and mode of occurrence of hydrocarbons in western oil fields of India.
+2021|2|8(a)|10|How is unscientific development of catchments situated in mountainous regions responsible for increased threat of floods in plains?
+2021|2|8(b)|20|Describe various types of radioactive wastes. Write an account on various methods of their disposal.
+2021|2|8(c)|20|What is meant by waterlogging? Describe in detail the remedial measures of waterlogging and salinity.
+2022|1|1(a)|10|Explain 'convergent plate boundary' with suitable examples. Add a note about the characteristics of earthquakes at the convergent boundary.
+2022|1|1(b)|10|What is the difference between Raster and Vector data? Describe their characteristics as well as their advantages and disadvantages.
+2022|1|1(c)|10|Illustrate and describe any five types of drainage pattern and give an account of the factors that influence drainage pattern development.
+2022|1|1(d)|10|Explain through neat sketches what drag folds are, and how they can be used to determine major fold structure.
+2022|1|1(e)|10|Describe the structures showing gap in stratigraphic sequence caused by erosion and non-depositions.
+2022|1|2(a)|20|Discuss in detail the notion of 'continental drift' and the theories of plate tectonics as they relate to palaeogeography.
+2022|1|2(b)|15|Explain the principles of aerial photography and how it is classified.
+2022|1|2(c)|15|Illustrate and describe the linear structures of deformed rocks.
+2022|1|3(a)|20|Describe the geomorphic landforms produced by structural, weathering, erosional and depositional processes. Give four examples of each process.
+2022|1|3(b)|15|Illustrate the discontinuities in the Earth's interior and discuss the mechanical and compositional layering of the Earth.
+2022|1|3(c)|15|Illustrate the principles of stereographic projection. How are the 'pi' and 'beta' diagrams useful to analyze fold structure?
+2022|1|4(a)|20|Illustrate the common brittle-ductile shear zone structures. Using the stress ellipsoid, deduce the mechanism of faults.
+2022|1|4(b)|15|Describe the various platforms and sensors used in Remote Sensing.
+2022|1|4(c)|15|What are the weathering stages of soil formation? Discuss the active and passive factors of soil formation.
+2022|1|5(a)|10|Diagrammatically explain the types of biozonation.
+2022|1|5(b)|10|Define index fossil and discuss its significance. Give the examples of index fossils of Palaeozoic Era.
+2022|1|5(c)|10|Describe the lithostratigraphy, palaeoenvironment and age of Blaini Formation.
+2022|1|5(d)|10|What are the different sources for saline water intrusion in aquifers? Describe Ghyben-Herzberg relation.
+2022|1|5(e)|10|What are the geological investigations required for civil engineering projects of dams, reservoirs and tunnels?
+2022|1|6(a)|20|Elucidate the evolutionary trend of Hominidae with examples of Indian occurrence.
+2022|1|6(b)|15|Describe the Palaeozoic sequence of Kashmir Valley with fossils content.
+2022|1|6(c)|15|Describe the surface investigation methods of groundwater.
+2022|1|7(a)|20|Describe the stratigraphy of Singhbhum Craton and discuss its economic significance.
+2022|1|7(b)|15|Discuss the effects on dead organism after burial.
+2022|1|7(c)|15|Describe the types of landslide, and discuss its factors and mitigation measures.
+2022|1|8(a)|20|Give an account of interpretation of groundwater chemical quality through various graphic representation methods.
+2022|1|8(b)|15|Describe the Lower Gondwana flora of India and their significance.
+2022|1|8(c)|15|Describe the chronostratigraphic classification of geological time scale.
+2022|2|1(a)|10|How are Miller Indices of a crystal face calculated ? Calculate Miller Indices of following two crystal faces : (i) A face intersects all three crystallographic axes at 3-unit distance. (ii) A face intersects a-axis at 4-unit distance and is parallel to b and c axes.
+2022|2|1(b)|10|Explain the phenomena of solid solution and exsolution in minerals.
+2022|2|1(c)|10|Describe with suitable sketches 'intergranular' and 'sub-ophitic' textures. How do you explain presence of both these textures in a mafic rock ?
+2022|2|1(d)|10|How do increasing pressure and temperature either singularly or jointly, metamorphose a rock ?
+2022|2|1(e)|10|Describe the classification of sandstones on the basis of their composition and matrix.
+2022|2|2(a)|20|Describe the crystallographic, physical, optical and chemical properties of garnet group of minerals. Give examples of rocks in which each species of garnet occurs as an essential mineral.
+2022|2|2(b)|15|What are symmetry elements present in normal class of orthorhombic system ? Show the stereographic projection of a crystal face (hkl) for normal class of orthorhombic system. Write down Hermann-Mauguin notations of all classes of orthorhombic system.
+2022|2|2(c)|15|Why does an anisotropic mineral, viewed under crossed polars, suffer four times of complete extinction during a 360° rotation of microscope stage ? What is pleochroism and how is it determined ?
+2022|2|3(a)|20|What are different types of metamorphism and what are their controlling factors ? State characteristic mineral assemblages which appear under different facies during regional metamorphism of pelitic rocks.
+2022|2|3(b)|15|Define different types of zoning observed in minerals. Discuss processes of formation of different types of zoning in plagioclase with the help of Albite-Anorthite system.
+2022|2|3(c)|15|State the petrographic characters of different types of anorthosites. Write a note on petrogenesis of anorthosites.
+2022|2|4(a)|20|What do you understand by sedimentary depositional environment ? Describe fluvial environment in detail.
+2022|2|4(b)|15|Explain different processes of diagenesis in clastic sedimentary rocks. Describe common diagenetic structures.
+2022|2|4(c)|15|Enumerate the sedimentary basins of India based on their petroleum prospects.
+2022|2|5(a)|10|What are the major changes in the process of formation of uranium deposits through geological time ?
+2022|2|5(b)|10|Describe the geological setting of copper deposits in Singhbhum shear zone and Khetri copper belt.
+2022|2|5(c)|10|A beneficiation plant processes 12000 ton of copper ore containing 0·8 wt.% Cu in a day and produces ore concentrate containing 25 wt.% Cu. Assuming 80% ore recovery in the beneficiation process, how many ton of ore concentrate will be produced by the plant in a day ?
+2022|2|5(d)|10|Define equilibrium in a system. What are entropy, enthalpy and Gibb's free energy of a system ?
+2022|2|5(e)|10|Discuss about environmental hazards caused due to mining.
+2022|2|6(a)|20|Explain the processes by which sediment hosted Pb-Zn deposits are formed. Describe the geological setting of Agucha and Zawar Pb-Zn deposits in the Aravalli craton.
+2022|2|6(b)|15|How are diamond bearing kimberlites formed ? Write a note on Majhgawan kimberlite and Wajrakarur kimberlite field.
+2022|2|6(c)|15|Describe the geological setting and distribution of Tertiary coal deposits in NE India and Lignite deposits in Tamil Nadu.
+2022|2|7(a)|20|In a bauxite exploration, 12 vertical boreholes were drilled in square grid pattern along 3 E-W traverses, at an interval of 100 m. Thickness of bauxite and assay value determined from borehole samples are given in the above table. Density of bauxite is 2·6 g/cm³. Calculate the tonnage and average grade of bauxite in the ore body by extended area method.
+2022|2|7(b)|15|What are the drilling techniques adopted in mineral exploration ? What is exploratory mining and its application ?
+2022|2|7(c)|15|How is geochemical anomaly recognised from frequency distribution plot of concentration of indicator elements in samples collected during a bedrock geochemical survey ?
+2022|2|8(a)|20|Give the classification of landslides and discuss the causes of landslide.
+2022|2|8(b)|15|What is the structure of the Earth ? Is the Earth compositionally homogeneous or composition of the Earth varies with depth ? Write a note on distribution of elements in the Earth.
+2022|2|8(c)|15|Write the classification of meteorites. Discuss importance of study of meteorites in Earth Science.
+2023|1|1(a)|10|Describe the tectonic features and evolution of the 'continental crust'.
+2023|1|1(b)|10|Describe the physical and chemical weathering processes.
+2023|1|1(c)|10|Describe the Spatial and Spectral resolution of a remote sensor with examples.
+2023|1|1(d)|10|Briefly describe the Cataclasite and Pseudotachylite rocks.
+2023|1|1(e)|10|Discuss the differences between Symmetrical and Asymmetrical folds with the help of neat diagrams.
+2023|1|2(a)|20|Describe the types of radiometric dating techniques used to establish the age of the Earth.
+2023|1|2(b)|15|Discuss the different types of interaction of electromagnetic radiation with the atmosphere of the earth and its impact on remote sensing images.
+2023|1|2(c)|15|What are joints ? Describe the Geometric and Genetic classification of joints with neat diagrams.
+2023|1|3(a)|20|Elucidate the types of glacier and illustrate the erosional and depositional features produced by the valley-glaciers.
+2023|1|3(b)|15|Discuss the origin, composition and classification of meteorites.
+2023|1|3(c)|15|What is a rock cleavage ? Describe the different types of rock cleavages with the help of neat diagrams.
+2023|1|4(a)|20|What is a Shear Zone ? Describe the different Shear Sense indicators.
+2023|1|4(b)|15|Enumerate the Shepard's classification of coast's and briefly describe the marine cycle of erosion along a shoreline of submergence.
+2023|1|4(c)|15|Describe the different types of volcanoes based on mode of the eruption and its associated products. Add a note on positive and negative relief features associated with volcanoes.
+2023|1|5(a)|10|Enumerate the different types of siwalik fauna and discuss their palaeoecology.
+2023|1|5(b)|10|Define fossil and give examples of two index fossils each from Palaeozoic, Mesozoic and Cenozoic Era and indicate the age of those index fossils.
+2023|1|5(c)|10|Describe the lithology, palaeoenvironment and age of Krol Formation.
+2023|1|5(d)|10|Briefly discuss the water-bearing properties of rocks.
+2023|1|5(e)|10|What are the engineering properties of rocks that make them suitable for use as building materials ?
+2023|1|6(a)|20|Elucidate an evolutionary trend of Equidae with Indian occurrence.
+2023|1|6(b)|15|Discuss the pre-cambrian/cambrian boundary with Indian examples.
+2023|1|6(c)|15|What is "Rainwater harvesting" ? Describe its technique with neat sketches.
+2023|1|7(a)|20|Describe the stratigraphic sequence of Dharwar Supergroup and add a note on its economic importance.
+2023|1|7(b)|15|Elucidate the different types of microfossils and add a note on their composition and applications.
+2023|1|7(c)|15|How does an Earthquake occur ? Describe the construction patterns of earthquake resistant structures.
+2023|1|8(a)|20|Discuss briefly how do chemical, physical and bacteriological properties determine the usability of ground-water.
+2023|1|8(b)|15|Establish the ocean palaeobathymetry using marine fossils with the help of labelled diagram.
+2023|1|8(c)|15|Discuss the palaeozoic sequence of Kumaun and Garhwal (Tethyan sequence) Himalaya. Add a note on its fossil contents.
+2023|2|1(a)|10|How are the symmetry elements in a crystal of class 6/m 2/m 2/m oriented with respect to its crystallographic axes?
+2023|2|1(b)|10|Why do some minerals show pleochroism? Explain.
+2023|2|1(c)|10|Describe the compositional changes in the magnesium-rich magma due to progressive removal of olivine.
+2023|2|1(d)|10|Given a mafic protolith, what would be the characteristic mineral assemblages in (i) greenschist facies, (ii) amphibolite facies and (iii) granulite facies metamorphism?
+2023|2|1(e)|10|Explain the diagenetic changes in carbonate rocks.
+2023|2|2(a)|20|How does the Bragg equation explain X-ray diffraction from a crystal?
+2023|2|2(b)|15|How does Si-O polymerism help to classify silicate minerals? Give one example for each of these silicate subclasses.
+2023|2|2(c)|15|List all major differences among kaolinite, smectite and illite groups of clay minerals.
+2023|2|3(a)|20|Describe the changes in crystallized solid composition in albite-anorthite system at 1 atm pressure during cooling of a liquid of An50 composition from 1500 °C temperature.
+2023|2|3(b)|15|How is a granite defined? Discuss petrogenesis of a calc-alkaline peraluminous granite.
+2023|2|3(c)|15|What are the assumptions involved for plotting quartz-bearing metamorphic rocks of basaltic composition in an ACF triangular diagram?
+2023|2|4(a)|20|Classify the conglomerate rocks on the basis of clast composition and grain-matrix ratio and discuss their genetic importance.
+2023|2|4(b)|15|Briefly describe the mechanisms of gravity-controlled sediment flows and write about their characteristic features in the rocks.
+2023|2|4(c)|15|Explain mineral-based techniques to decipher the source terrains and transport history of sediments. Give a list of minerals diagnostic of igneous and metamorphic provenances.
+2023|2|5(a)|10|Explain the process of manganese nodules formation and give their major occurrences in the world.
+2023|2|5(b)|10|Describe the formation of replacement textures in ore minerals and give the criterion of their recognition.
+2023|2|5(c)|10|Explain the Kriging method for estimating ore reserve.
+2023|2|5(d)|10|Discuss environmental impacts of urbanization and their mitigations with special reference to land and water.
+2023|2|5(e)|10|How does coordination number depend on the ratio of ionic radii in a crystal?
+2023|2|6(a)|20|Describe the formation of Banded Iron Formation (BIF) during Precambrian metallogenic epoch. Write a note on the Indian BIF deposits.
+2023|2|6(b)|15|Discuss the late magmatic ore-forming processes. What are the salient field characters of such ore deposits?
+2023|2|6(c)|15|Describe the origin of porphyry copper deposits. Give the geological setup of one porphyry copper deposit of India.
+2023|2|7(a)|20|Give an account of external changes in flora due to the presence of anomalous concentration of base metal in a terrain.
+2023|2|7(b)|15|Explain the principle for flotation as a benefication technique. Name various parameters that regulate the flotation process. Explain frothing method giving appropriate examples.
+2023|2|7(c)|15|What do you understand by the term 'industrial minerals'? Give examples of any five industrial minerals, their sources, compositions and uses in the industry.
+2023|2|8(a)|20|Discuss the causes of various seismic discontinuities in the upper mantle.
+2023|2|8(b)|15|Discuss the composition, source, types, environmental hazard and utility of fly ash.
+2023|2|8(c)|15|Discuss the hazards in active volcanic terrain during and after eruption.
+2024|1|1(a)|10|Discuss two widely accepted theories of origin of the earth. Elucidate the position of all planets within the solar system and write the important facts of the earth.
+2024|1|1(b)|10|What are the planar and linear structures of a rock? Discuss the genesis of boudins.
+2024|1|1(c)|10|Discuss the applications of remote sensing in Geology.
+2024|1|1(d)|10|Discuss the process of soil formation.
+2024|1|1(e)|10|Define dip of a rock bed. What is true dip and apparent dip? Find the strike direction of a bed which dips 30°; towards North 30° East.
+2024|1|2(a)|20|Discuss the intensity and magnitude scale commonly used to assess seismic damage. Write a note on the global distribution pattern of earthquake. Mark the different seismic zones of India on the given map and discuss about them.
+2024|1|2(b)|15|Discuss in detail the ideas of geomorphic cycle proposed by Davis and Penck.
+2024|1|2(c)|15|What do contours represent in a toposheet? How do the contour lines help to identify the different geomorphic features of an area? Explain with neat diagrams.
+2024|1|3(a)|20|Discuss in detail, with diagrams, the landforms and features resulting from deposition by rivers.
+2024|1|3(b)|15|Describe the characteristics of Indian remote sensing satellites.
+2024|1|3(c)|15|Diagrammatically explain the formation of normal fault, strike-slip fault and thrust fault with the help of stress ellipsoid.
+2024|1|4(a)|20|Describe fold geometry. Illustrate various types of folds on the basis of their symmetry, orientation of axial plane and the trend of the fold axis.
+2024|1|4(b)|15|Describe and illustrate different types of plate boundaries, and explain the mechanism of plate motion.
+2024|1|4(c)|15|"At depth of compensation, the pressure generated by all overlying landmass substances on the earth is everywhere equal." Describe the hypotheses which support this statement.
+2024|1|5(a)|10|Define species and explain how paleontological species are different from biological species.
+2024|1|5(b)|10|Discuss the geological parameters used to subdivide the Dharwar Craton into two subcratons.
+2024|1|5(c)|10|Describe the Cretaceous volcanic province in India.
+2024|1|5(d)|10|Describe how Darcy's law and Reynolds' number are related to the types of fluid flow in aquifers.
+2024|1|5(e)|10|Describe the rehabilitation measures required in landslide-affected area to restore the community and the ecology of the area affected.
+2024|1|6(a)|20|Elucidate the evolutionary trend of Proboscidea with examples.
+2024|1|6(b)|15|Describe lithostratigraphic classification and shift of depositional environments during deposition of the Vindhyan Supergroup. Comment on the age of the Vindhyan succession.
+2024|1|6(c)|15|Describe briefly the characteristics of different types of aquifers and also discuss the important properties that an aquifer should possess.
+2024|1|7(a)|20|Discuss the merits and limitations of different methods of stratigraphic analysis in brief. Comment on the most suitable method of stratigraphic analysis with justification.
+2024|1|7(b)|15|Describe in brief various types of organic-walled microfossils. Add a note on their biostratigraphic and paleogeographic significance.
+2024|1|7(c)|15|Describe the types of geological investigation required before construction of a highway in the Himalayas.
+2024|1|8(a)|20|Explain the concept of drainage basin morphometry. How do morphometric parameters influence the groundwater conditions of an area?
+2024|1|8(b)|15|Discuss various modes of preservation of fossils.
+2024|1|8(c)|15|Discuss the evolution of the Himalayas. Illustrate your answer with suitable labelled sketches.
+2024|2|1(a)|10|What are the different types of rotational axes of symmetry present in a crystal ? What are the different types of twinning observed in quartz ?
+2024|2|1(b)|10|How does one define "Double refraction" and "Birefringence" of an anisotropic mineral ? Write with the help of suitable sketches.
+2024|2|1(c)|10|Show diagrammatically the characteristics of binary eutectic system under 1 atmosphere (1 atm pressure). How does one explain the formation of porphyritic basic rock with phenocryst of plagioclase in a groundmass with plagioclase and clinopyroxene with the help of a suitable binary eutectic system ?
+2024|2|1(d)|10|Explain the processes involved in magmatic differentiation.
+2024|2|1(e)|10|With the help of suitable diagrams, describe Folk's graphic classification of carbonate rocks.
+2024|2|2(a)|15|What are the symmetry elements present in the normal class of an isometric system ? Write the Hermann-Mauguin notation of the normal class of isometric system. Plot the face (hkl) and deduce the form generated by operation of symmetry elements from (hkl) on a stereogram of the normal class of isometric system.
+2024|2|2(b)|15|Draw and describe the structure of mica group of minerals. Describe the chemical composition and optical properties of minerals of mica group.
+2024|2|2(c)|20|Define polymorphism and discuss different types of polymorphic transitions. What are the different types of polymorphs of SiO2 and Al2SiO5 ?
+2024|2|3(a)|15|Describe the mineral reactions in prograde metamorphism of argillaceous sedimentary rocks with appropriate diagrams.
+2024|2|3(b)|15|Write the mineralogy and texture of basalt. How does basaltic magma form in deep earth ?
+2024|2|3(c)|20|Discuss the process of magma generation in the Earth's interior and its causes.
+2024|2|4(a)|15|Discuss the various factors that control the composition of sandstone.
+2024|2|4(b)|15|What do you understand by facies model ? Describe the facies and facies association produced in a fluvial environment.
+2024|2|4(c)|20|What are heavy minerals ? Describe methods of their separation and comment on the utility of heavy mineral suite in provenance interpretation.
+2024|2|5(a)|10|Give an account of the geology and the process of formation of aluminium mineral deposits of India.
+2024|2|5(b)|10|What are the Iron-Titanium oxides associated with igneous rocks ? Add an account of their mineral associations and textures.
+2024|2|5(c)|10|What is the difference between prospecting and exploration ? Explain the various techniques of sampling.
+2024|2|5(d)|10|Discuss briefly about the abundance of elements in the Universe. State Oddo-Harkins rule with examples.
+2024|2|5(e)|10|Describe the natural hazards due to earthquakes. Discuss the mitigation aspects of earthquake hazards.
+2024|2|6(a)|15|Explain the various peculiarities inherent in the mineral industry.
+2024|2|6(b)|15|What is mineral conservation ? Explain how it can be achieved.
+2024|2|6(c)|20|Describe the classification of magmatic deposits and add a note on "late magmatic deposits".
+2024|2|7(a)(i)|5|What is the difference between a sample and a specimen ?
+2024|2|7(a)(ii)|5|Describe the classification of mineral reserves.
+2024|2|7(a)(iii)|5|What are the different marine mineral resources ?
+2024|2|7(b)|15|What is the principle and nature of construction of Wilfley Table ? Which mineral product is separated in tabling ?
+2024|2|7(c)|20|What do you know about 'Neyveli Lignite Mine' ? Enumerate the methodology of mining and machinery under use in this mine, with neat sketches.
+2024|2|8(a)|15|What are the different layers in the Earth's interior ? How is the layered structure of the Earth determined ? Name two most abundant elements of each layer of the Earth.
+2024|2|8(b)|15|Define major, minor and trace elements. Write briefly about the characteristics of lithophile, chalcophile, siderophile and atmophile elements with examples. Why are trace elements considered more efficient than major elements in understanding the Earth's processes ?
+2024|2|8(c)|20|Discuss in detail the pollution of surface water and groundwater due to mining activities.
+2025|1|1(a)|10|Discuss the position of Asteroid belt within the solar system and comment on the composition of meteorites.
+2025|1|1(b)|10|What are sheath folds ? Discuss the deformational conditions of their formation.
+2025|1|1(c)|10|What is Global Positioning System (GPS) ? Explain its geological applications.
+2025|1|1(d)|10|Discuss the statement giving suitable examples. "Physical weathering adds to the effectiveness of Chemical weathering".
+2025|1|1(e)|10|Discuss the types of Penetrative and Non-penetrative lineations with the help of suitable diagrams and throw light on their genesis.
+2025|1|2(a)|20|What do you understand by continental drift ? Discuss various geological evidences in favour of continental drift.
+2025|1|2(b)|15|Geomorphic diversity is controlled by a number of endogenic and exogenic processes. Discuss this statement.
+2025|1|2(c)|15|Describe morphotectonic features characteristic of rejuvenation in a mountainous terrain.
+2025|1|3(a)|20|Waves are responsible for modifying the coastal geomorphology. Justify the statement giving suitable examples and neat diagrams.
+2025|1|3(b)|15|Explain how the Remote Sensing and Geographic Information System (GIS) may help in delineation of Groundwater potential zone ?
+2025|1|3(c)|15|Using neat sketches describe various types of Thrust geometries formed in a compressional regime.
+2025|1|4(a)|20|On the basis of dip isogons describe the classification of folds with neat diagrams.
+2025|1|4(b)|15|What are volcanoes ? Describe various causes and products of volcanism.
+2025|1|4(c)|15|How does strain analysis help in understanding the nature of rock deformation. Discuss centre to centre method of estimation of two dimensional strain.
+2025|1|5(a)|10|Discuss favourable conditions for fossilization.
+2025|1|5(b)|10|Discuss different concepts of biozonation with neat diagrams.
+2025|1|5(c)|10|Describe the lithology, type locality, age and depositional environment of Blaini Boulder Bed.
+2025|1|5(d)|10|What engineering properties make Marble, Sandstone and Granite useful as building stone ?
+2025|1|5(e)|10|Explain different generic type of water and their significance in water supply.
+2025|1|6(a)|20|Discuss the evolutionary lineage of Equidae and comment on its migration.
+2025|1|6(b)|15|Give the lithostratigraphic classification and distribution of Delhi Supergroup. Also comment on the economic significance of this supergroup.
+2025|1|6(c)|15|What are different type of wells used for the extraction of groundwater ? How and why the well field should be protected ?
+2025|1|7(a)|20|What do you understand by boundary problems in stratigraphy ? Discuss Cretaceous/Palaeogene (Cretaceous/Tertiary) boundary problem giving Indian examples.
+2025|1|7(b)|15|What are the important groups of microfossils ? Add notes on their composition and significance.
+2025|1|7(c)|15|Why Earthquake resistant structures are needed ? Discuss the geological considerations required for developing the Earthquake resistant structures.
+2025|1|8(a)|20|Discuss the interrelationship amongst Porosity, Permeability and Hydraulic conductivity. How they are important in groundwater movement ? A sediment sample with a cross section area of 0·02 m² is tested in a permeameter with a length of 30 cm. Water flows through the sample at a rate of 0·08 m³/sec with a head difference (h1 – h2) 20 cm. Calculate the Hydraulic conductivity.
+2025|1|8(b)|15|Describe important Lower Gondwana plant fossils with the help of neat diagrams and comment on their palaeobiogeographic significance.
+2025|1|8(c)|15|Discuss the lithology, fossil content and age of palaeozoic sequence of Spiti Basin of Himachal Pradesh.
+2025|2|1(a)|10|Describe the symmetry elements shown by the normal class of the orthorhombic system. What are the different forms for this class? Draw the sketch stereogram of the form {h k l}. Give examples of two minerals that crystallize in this system.
+2025|2|1(b)|10|Discuss in brief the characteristic optical properties of hornblende and augite under petrological microscope.
+2025|2|1(c)|10|Draw a neat labelled diagram for perthite texture. Explain the formation of perthite with the help of a suitable phase diagram.
+2025|2|1(d)|10|With the help of diagrams, describe the various diagenetic textures of carbonate rocks.
+2025|2|1(e)|10|Describe ultrahigh-pressure and ultrahigh-temperature metamorphism.
+2025|2|2(a)|15|Give a detailed account related to the classification of crystals into different crystallographic systems based on symmetry elements.
+2025|2|2(b)|15|Describe the structure of the pyroxene group of minerals with suitable diagrams. Discuss the chemical compositions and optical properties of orthopyroxene.
+2025|2|2(c)|20|Describe the structural classification of silicates with neat sketches. Give one example for each type.
+2025|2|3(a)|15|What are migmatites? Describe the important types of migmatites and the processes of their formation.
+2025|2|3(b)|15|Draw a neat labelled sketch for the albite-anorthite phase diagram (1 atm, dry). Trace the course of crystallization of an initial melt Ab20-An80 within this system. How can you interpret zoning in plagioclase with this system?
+2025|2|3(c)(i)|12|Briefly write on the characteristics of I, S, M and A type granites. Elucidate the petrographic and petrogenetic attributes for each type.
+2025|2|3(c)(ii)|8|Write a brief account on the Deccan Flood Basalt Volcanism in India.
+2025|2|4(a)|20|Discuss the genesis of any four sedimentary structures which are helpful in palaeocurrent analysis. How are palaeocurrent patterns helpful in establishing the depositional environment?
+2025|2|4(b)|15|Discuss the concept of facies model and give a brief account of deltaic facies model.
+2025|2|4(c)|15|What are conglomerates? Describe their fabrics, classification and geological significance.
+2025|2|5(a)|10|What do you understand by metallogenic epochs and provinces? Discuss any two major metallogenies in India.
+2025|2|5(b)|10|Discuss the mode of occurrence, origin and distribution of gold deposits in India.
+2025|2|5(c)|10|What do you understand by 'pathfinder' elements? What are the elements/ions used in the prospecting of sulphides of epigenetic origin, porphyry copper deposit and sulphide deposits in general?
+2025|2|5(d)|10|Define gravitation. What are the corrections necessary to obtain the absolute value of gravity (g) while using gravity method in mineral exploration?
+2025|2|5(e)|10|What are the major components of chondrites? Discuss the mineralogical and textural features, and significance of chondrites.
+2025|2|6(a)|15|Give an account of geology, mode of occurrence, genesis and distribution of Pb-Zn deposits of Aravalli region.
+2025|2|6(b)|15|Give the distribution of petroliferous basins of India. Discuss the geology of Cambay Basin.
+2025|2|6(c)|20|Give a brief account on the volcanogenic massive sulphide (VMS) deposit. Cite suitable Indian examples.
+2025|2|7(a)|20|Discuss the direct and indirect geochemical methods used for prospecting hydrocarbon deposits.
+2025|2|7(b)|15|What are the physiological and morphological changes of the plants helpful in geobotanical prospecting of copper, manganese and uranium deposits? Add a note on commonly found plant indicators for zinc.
+2025|2|7(c)|15|What do you understand by 'tonnage factor'? Discuss the geometric and graphic methods used in reserve calculation.
+2025|2|8(a)|20|What do you understand by isomorphism and polymorphism? Discuss monotropy by citing example of diamond and graphite.
+2025|2|8(b)|15|What are the most important conditions necessary for safe disposal of radioactive waste in geological repositories? Add a note on the concept of multiple barriers to protect biosphere and hydrosphere. (Give suitable diagrams wherever necessary.)
+2025|2|8(c)|15|What are the major environmental considerations while treating with the disseminated precious metal mine waste?
+2026|1|1(a)|10|What are transform and transcurrent faults? Illustrate them using neat sketches.
+2026|1|1(b)|10|Discuss the different types of plate boundaries with suitable sketches. Add a note on mid-oceanic ridges.
+2026|1|1(c)|10|Describe the types of unconformities with neat sketches. Add a note on their significance.
+2026|1|1(d)|10|Describe the major geomorphic provinces of Indian subcontinent. Add a note on their geological significance.
+2026|1|1(e)|10|What are the different resolutions used in remote sensing? Explain their significance.
+2026|1|2(a)|20|Describe the principles of geological mapping. Using sketches, describe the different types of symbols used in geological mapping.
+2026|1|2(b)|15|Discuss the relationship between drainage systems and underlying lithology and structure. Explain the concept of antecedent and superimposed drainage with examples.
+2026|1|2(c)|15|Discuss the merits and limitations of aerial photos vs. satellite imagery. How do multispectral data help in lithological and structural identification?
+2026|1|3(a)|20|Discuss the importance of Remote Sensing (RS) and Geographic Information System (GIS) in geological mapping. Elucidate the role of RS and GIS in mineral exploration.
+2026|1|3(b)|15|Discuss the types of folds. Add a note on the classification of folds based on the mechanism of folds.
+2026|1|3(c)|15|Describe the homogeneous and heterogeneous deformation of rocks. Add a note on progressive deformation.
+2026|1|4(a)|20|What is earthquake? How is the epicenter of an earthquake determined? Discuss on the disaster risk associated with earthquakes of different magnitudes.
+2026|1|4(b)|15|Discuss the most accepted hypothesis regarding the origin of the earth. Add a note on the interior of the earth with sketch.
+2026|1|4(c)|15|What are foliations? Discuss the various types and processes of formation of foliations.
+2026|1|5(a)|10|Discuss the conditions required for the preservation of soft parts of fossils.
+2026|1|5(b)|10|Discuss the principles of magnetostratigraphy.
+2026|1|5(c)|10|Draw the cratons and mobile belts of India on the given map. Enlist the major economic minerals associated with each craton and mobile belt.
+2026|1|5(d)|10|What is hydrologic cycle? Explain the importance of rainwater harvesting in groundwater management.
+2026|1|5(e)|10|Explain the morphometry of a drainage basin and its significance in groundwater studies.
+2026|1|6(a)|20|Compare the major morphological characters which differentiate Hominidae from ape-like primates. Discuss the evolutionary trend of Hominidae with example from Indian occurrence.
+2026|1|6(b)|15|What is Continental Flood Basalt (CFB)? Discuss the stratigraphic classification of Deccan Trap. Comment on the importance of inter-trappean beds.
+2026|1|6(c)|15|Discuss the hydrogeological properties of different rock types and their role in groundwater studies.
+2026|1|7(a)|20|Discuss the stratigraphic classification and depositional environment of Cuddapah Supergroup. Add a note on the tectonic evolution of the Cuddapah Basin with suitable sketch.
+2026|1|7(b)|15|Classify the important groups of microfossils based on their composition. Discuss the application of microfossils in hydrocarbon exploration.
+2026|1|7(c)|15|Discuss the geological challenges encountered in limestone terrains while building a tunnel. What specific remedial measures would you propose?
+2026|1|8(a)|20|What are landslides and avalanches? Discuss the causes and effects of landslides. Enumerate the remedial measures to prevent landslides.
+2026|1|8(b)|15|Explain the various methods used in paleogeographic reconstructions with suitable example.
+2026|1|8(c)|15|Discuss the stratigraphic classification of Siwalik Group. Comment on the paleogeographic setup and fossil assemblage of Siwalik Group.
+2026|2|1(a)|10|Describe the classification of crystals into crystal systems, and add a note on the types of symmetry shown by crystals.
+2026|2|1(b)|10|Discuss the classification of silicate mineral structures.
+2026|2|1(c)|10|What is granitization ? Explain with reference to the rock forming process.
+2026|2|1(d)|10|Based on texture, how is it possible to identify granulites ? Which are the granulite-associated metamorphic terrains of India ?
+2026|2|1(e)|10|Outline the petrographic features used to identify and classify sedimentary rocks in thin-section analysis.
+2026|2|2(a)|15|Describe common minerals of igneous and metamorphic rocks, and the diagnostic features of these minerals.
+2026|2|2(b)|15|Give an account of the optical properties of common rock-forming minerals. How can these properties be used to identify minerals under the microscope ?
+2026|2|2(c)|20|What is twinning ? Discuss the different types of twinning found in the feldspar group of minerals.
+2026|2|3(a)|15|Discuss the petrogenesis of carbonatite rocks.
+2026|2|3(b)|15|What is metasomatic replacement ? What is the role of the chemical composition of host rocks in this process ?
+2026|2|3(c)|20|Discuss the evolution of the Deccan Volcanic Province of India.
+2026|2|4(a)|20|Discuss the primary processes involved in the formation of sedimentary rocks, emphasizing the role of diagenesis and lithification.
+2026|2|4(b)|15|Explain how primary sedimentary processes influence the mineralogical composition and porosity of the resultant rocks.
+2026|2|4(c)|15|What are the major depositional environments of sedimentary rocks ? Discuss the characteristic features of rocks formed in different depositional environments.
+2026|2|5(a)|10|How is the 'Law of the Sea' relevant to the management of marine mineral resources ?
+2026|2|5(b)|10|Explain the causes and impacts of sea-level rise.
+2026|2|5(c)|10|Discuss the different types of prospecting methods used for locating metallic mineral deposits.
+2026|2|5(d)|10|What are the causes of groundwater and surface water pollution ? Explain.
+2026|2|5(e)|10|Discuss the environmental cost of growing urbanization. How can sustainability be ensured ?
+2026|2|6(a)|20|Explain the differences between ore, ore minerals and gangue, and discuss their significance in mineral processing.
+2026|2|6(b)|15|How does the tenor of an ore influence its economic viability ? What methods are used to determine it ?
+2026|2|6(c)|15|A mineral deposit has an estimated volume of 2 million cubic metres. The average density of the ore is 2·5 tonnes per cubic metre. The average grade of the mineral is 3% Cu. Calculate the proven reserves in tonnes and the amount of copper in these reserves.
+2026|2|7(a)|15|Describe Sampling. Add a note on common geological sampling methods.
+2026|2|7(b)|15|Explain the ore reserve estimation procedure. How are the tonnage and grade of an ore deposit calculated ?
+2026|2|7(c)|20|Explain the mineral beneficiation processes used in the enrichment of sulphide ore minerals.
+2026|2|8(a)|20|What are the causes of earthquakes and volcanic activities ? Discuss their mitigation possibilities.
+2026|2|8(b)|15|What is the status of legislative measures for environmental protection in India ? Discuss.
+2026|2|8(c)|15|Explain the use of primary thermodynamics in understanding geological processes.

@@ -1,0 +1,228 @@
+# One figure per line:  year | paper | qno | page | x0,y0,x1,y1 (fractions of the page, from the top left) | what it shows | kind (crop = cut from the paper, redrawn = drawn by the app)
+2018|2|3(b)|4|0.20,0.108,0.78,0.31|Levelling readings (BS, IS, FS, RL, remarks)|crop
+2018|2|4(c)|5|0.28,0.385,0.76,0.56|Traverse ABCDEA: side, distance (m), azimuth|crop
+2020|2|2(a)|3|0.22,0.490,0.86,0.640|Project activity table: starting month, duration and cost per month for activities A to F|crop
+2020|2|3(b)|5|0.30,0.313,0.72,0.413|Traverse observations: length and bearing of lines AB, AD, DE and EF|crop
+2020|2|6(a)|9|0.24,0.125,0.85,0.365|Stream segments: average depth and velocity at 0.2d, 0.6d and 0.8d|crop
+2020|2|6(c)|10|0.31,0.09,0.62,0.245|Time-area histogram (area in km2 against time in hr: 10, 30, 20, 40)|crop
+2020|2|6(c)|10|0.18,0.272,0.82,0.320|Effective rainfall hyetograph ordinates for 0-6 hr|crop
+2020|2|7(b)|10|0.18,0.688,0.85,0.7435|Observed flow hydrograph: time from start of rainfall against flow|crop
+2020|1|1(a)|2|0.40,0.45,0.65,0.615|Quarter-circle cantilever of radius R with vertical load P at the free end|crop
+2020|1|2(a)|4|0.30,0.255,0.75,0.385|Truss ABCDEG, 3 m high, 3 bays of 4 m, 400 N at E, 1200 N at C|crop
+2020|1|4(a)|6|0.08,0.54,0.95,0.80|Inverted T-beam, loads P, P, 3P, strain gauge A, and section A-A dimensions|crop
+2020|1|4(b)|7|0.25,0.505,0.72,0.765|Pipe bend laid horizontal, sections 1 and 2, theta = 60 degrees|crop
+2020|1|4(c)|9|0.15,0.27,0.78,0.64|Two footings on sand over compressible clay layer, water table, soil properties|crop
+2020|1|5(a)|10|0.26,0.435,0.78,0.605|Blocks A (300 N) and B (400 N) on inclined planes joined over a pulley, 60 and 30 degrees, mu = 0.2|crop
+2020|1|5(b)|11|0.15,0.466,0.75,0.80|Angle section ISA 125 x 95 x 10 with staggered 18 mm bolts and 20 mm bolts|crop
+2020|1|5(c)|12|0.20,0.515,0.78,0.80|Beam with udl, supports 6 m and 2 m, bending moment diagram with 30 kN-m|crop
+2020|1|5(e)|14|0.30,0.18,0.70,0.345|Unsupported vertical cut 4 m deep with soil properties|crop
+2020|1|6(b)|15|0.28,0.085,0.70,0.215|Portal frame ABCDE with 40 kN/m, spans 6 m and 4.5 m, height 6 m|crop
+2020|1|6(c)|16|0.12,0.155,0.91,0.585|Modification factor for tension reinforcement chart (fs = 120 to 290)|crop
+2020|1|7(b)|17|0.27,0.215,0.70,0.545|Bearing capacity factors Nc, Nq, Ngamma against phi (18 to 40 degrees)|crop
+2020|1|8(c)|19|0.30,0.64,0.66,0.74|Propped cantilever AB with udl w, length L|crop
+2018|1|1(a)|2|0.24,0.385,0.72,0.51|Two-part beam system A-B-C-D-E with 5 kN load and 0.3, 0.5, 0.3, 0.5 m spans|crop
+2018|1|1(d)|4|0.22,0.32,0.55,0.455|Velocity profile between two fixed parallel plates (h, y, u)|crop
+2018|1|2(a)|5|0.085,0.565,0.94,0.825|Warren truss L0-L5, U1-U5, 5 panels of 10 m, moving load 20 kN/m over 50 m|crop
+2018|1|2(c)|6|0.24,0.695,0.78,0.89|Inclined tube reservoir manometer (D, d, theta, h1, h2, L, gauge liquid)|crop
+2018|1|3(b)|8|0.22,0.23,0.90,0.385|Three-hinge parabolic arch ABC, span 30 m, rise 5 m, 10 kN/m load|crop
+2018|1|3(c)|9|0.18,0.21,0.91,0.46|Hanger connection: 230 mm end plate, two bolts, 35 mm end distance, 8 mm fillet weld, 200 kN|crop
+2018|1|4(c)|11|0.22,0.195,0.76,0.355|Bending moment diagram ABCDE with parabolic ends, 25 kN-m and 20 kN-m|crop
+2018|1|5(a)|12|0.24,0.775,0.68,0.89|Cantilever AB, 5.0 m span, with 200 mm x 400 mm section|crop
+2018|1|5(b)|13|0.23,0.68,0.76,0.885|Channel section 1020 mm wide, 1010 mm deep, 10 mm walls|crop
+2018|1|6(b)|15|0.25,0.784,0.52,0.915|Cylindrical chimney, d = 1 m, L = 25 m, drag force FD at L/2|crop
+2018|1|7(a)|16|0.24,0.615,0.73,0.76|Propped cantilever ABCDEF with loads 100, 100, 200 kN, spans 1, 2, 1, 2, 1 m|crop
+2018|1|8(c)|20|0.23,0.24,0.72,0.595|Footing 3 m wide, Q = 1100 kN, sand and gravel over normally consolidated clay (e0 = 1.2, Cc = 0.6)|crop
+2022|1|1(a)|2|0.225,0.40,0.83,0.55|Stepped rod with portions 1 to 4 (50 mm, d, 85 mm, 50 mm dia) under 95 kN|crop
+2022|1|1(d)|3|0.30,0.19,0.69,0.305|Simply supported beam ACB, 25 kN at C, 10 kN/m on CB, spans 3 m and 4 m|crop
+2022|1|2(a)|3|0.33,0.665,0.67,0.885|Pin-jointed truss ABCD with 20 kN and 10 kN at C|crop
+2022|1|3(a)(ii)|5|0.31,0.21,0.80,0.34|Bridge truss AEJIHGF, 6 m high, four 8 m panels|crop
+2022|1|3(b)|5|0.195,0.745,0.83,0.875|Table of KL/r against fcd (MPa)|crop
+2022|1|4(a)|6|0.33,0.41,0.75,0.67|Bracket with six bolts, 50 mm spacing, load P at 400 mm|crop
+2022|1|4(c)|7|0.31,0.65,0.73,0.90|Retaining wall: 3 m stem, 1 m cover, base 700, 250 and 1300 mm, 400 mm thick|crop
+2022|1|4(c)|8|0.195,0.085,0.87,0.158|Table of Mu/bd2 against pt|crop
+2022|1|4(c)|8|0.195,0.22,0.90,0.28|Table of tau_c (MPa) against pt|crop
+2022|1|5(a)|8|0.38,0.565,0.74,0.705|Pipe of diameter D and length l ending in a nozzle of diameter d, friction coefficient f|crop
+2022|1|6(c)|11|0.28,0.125,0.79,0.35|Three reservoirs A, B, C with pump and pipe data|crop
+2022|1|7(b)|12|0.28,0.15,0.72,0.30|Two parallel plates moving in opposite directions (1 m/s and 2 m/s)|crop
+2022|1|8(c)|14|0.205,0.14,0.84,0.197|Plate load test: load intensity against settlement|crop
+2016|1|1(c)|3|0.26,0.165,0.68,0.288|Small block m with velocity v and a smooth irregular block M of height h on a smooth horizontal plane|crop
+2016|1|1(d)|3|0.28,0.555,0.78,0.715|Beam ABCD: A fixed, 2 EI over 4.0 m with 10 kN/m, free roller at C, EI over 2.0 m with 10 kN/m, D fixed|crop
+2016|1|2(a)|5|0.26,0.26,0.82,0.775|Cantilever retaining wall: 4000 above GL, 1200 below, 400 base, 1000 + 2100 + 200 toe and heel, 3500 base, 200 top|crop
+2016|1|2(b)|6|0.22,0.63,0.70,0.925|Subsoil: gravel 1.8 m (Gs 2.65, e 0.650), water table 1.2 m, silt 4.0 m (Gs 2.58, e 0.76), rock|crop
+2016|1|3(a)|7|0.20,0.745,0.92,0.93|Truss ABCDE with FGH, 5 m high, four 5 m panels, two 100 kN moving loads 5 m apart|crop
+2016|1|4(c)|9|0.20,0.6925,0.80,0.8875|Consolidated undrained triaxial results: sigma3, (sigma1'-sigma3') at peak and u at peak for three specimens|crop
+2016|1|5(a)|11|0.18,0.12,0.55,0.80|Four beam cross-sections: (i) cross, (ii) I-section, (iii) square with circular hole, (iv) diamond|crop
+2016|1|5(d)|13|0.25,0.605,0.75,0.895|Ladder resting against a smooth wall and an incline at 45 degrees|crop
+2016|1|6(a)|15|0.17,0.2955,0.99,0.545|Three metal cubes between rigid faces, 1000 N/mm2 on the central cube, axes x, y, z|crop
+2016|1|6(b)|16|0.22,0.155,0.60,0.43|Pile of length L in clay, qu = 115 kN/m2, gamma = 18.1 kN/m3, Q design = 500 kN|crop
+2016|1|6(c)|17|0.24,0.208,0.76,0.388|Percentage of steel against permissible shear stress for M 20|crop
+2016|1|8(a)(ii)|20|0.20,0.155,0.94,0.385|Simply supported beam AB, 10.0 m, 10 kN/m, 100 kN axial each end, section C 100 x 200 mm with points 1 and 2|crop
+2016|1|8(c)|22|0.25,0.295,0.84,0.68|Copper bar AB with two steel bars on a rigid plate, 1.0 m and 3.0 m lengths, 200 kN at B|crop
+2023|1|1(c)|3|0.30,0.1325,0.68,0.32|Strong-box of mass 85 kg on a floor, force F at height h, weight W, base 0.70 m|crop
+2023|1|1(d)|4|0.30,0.255,0.68,0.575|I-section 450 mm deep, flanges 250 mm and 80 mm, web 80 mm, tendon 150 mm from the centre line|crop
+2023|1|1(e)|5|0.18,0.635,0.80,0.895|ISA 75 x 50 x 8 tie on a 12 mm gusset plate with 6 mm weld, lengths Lw1 and Lw2, Cxx 25.2 mm|crop
+2023|1|2(a)|6|0.19,0.275,0.83,0.425|Beam C-A-D-E-B-F with 2 kN/m, 8 kN, 6 kN-m, 4 kN and spans 1, 2, 1, 2, 2 m|crop
+2023|1|2(b)|7|0.16,0.868,0.82,0.935|KL/r against fcd (MPa) table|crop
+2023|1|2(b)|8|0.35,0.195,0.70,0.545|ISMB 550 section: tf 19.3, tw 11.2, r1 18, r2 9, depth 550, width 190|crop
+2023|1|2(c)|9|0.34,0.17,0.70,0.42|Frame ABC: A free end, 2.5 m beam I, 3.5 m column 2.5 I, C fixed, 8 kN at B, 15 kN at A|crop
+2023|1|3(a)|10|0.10,0.675,0.82,0.865|Bending moment coefficients when four edges are discontinuous (alpha_x for ly/lx 1.0 to 1.5, alpha_y)|crop
+2023|1|3(a)|11|0.10,0.055,0.88,0.505|Modification factor for tension reinforcement against percentage tension reinforcement (fs = 120 to 290)|crop
+2023|1|3(b)|12|0.28,0.65,0.64,0.925|ISMC 300 section: Cy 23.5, tf 13.6, tw 7.8, depth 300, width 90|crop
+2023|1|3(c)|13|0.28,0.395,0.58,0.605|Portal frame ABCD, 16 kN/m on BC, 4 m span, 3 m columns, A and D fixed|crop
+2023|1|4(a)|14|0.30,0.65,0.80,0.855|Truss ABCD, 4 m + 4 m, 3 m high, 50 kN at C|crop
+2023|1|4(a)|14|0.17,0.385,0.72,0.63|Table of areas of cross-section of members|crop
+2023|1|4(b)|15|0.28,0.295,0.86,0.406|Propped cantilever AB of span l with P per metre|crop
+2023|1|5(c)|17|0.28,0.145,0.66,0.385|Radial turbine, V1, V2, 30 degrees, b = 10 cm, radii 40 cm and 70 cm|crop
+2023|1|6(c)|20|0.12,0.072,0.92,0.43|Retaining wall with layer 1 (3 m) and layer 2 (4 m), ground water table|crop
+2023|1|7(b)|22|0.08,0.205,0.95,0.715|Pile group in firm, soft and stiff clay with depths and properties|crop
+2023|1|8(b)|25|0.16,0.57,0.68,0.87|Strip footing B = 2.8 m at 2.5 m depth, water table at 6 m|crop
+2023|1|8(c)|27|0.14,0.43,0.80,0.66|Pipe D1 = 10 cm, nozzle D2 = 2.5 cm, plate with force F, mercury manometer h|crop
+2016|2|3(a)|5|0.40,0.155,0.68,0.285|Network: A 6 and B 1, C 5 and D 3, E 7 and F 4 (three parallel paths between start and end events)|crop
+2016|2|3(d)(ii)|6|0.20,0.595,0.80,0.795|Traffic table: vehicle type, volume, annual growth rate, VDF; construction period 2 years, design life 20 years|crop
+2017|1|1(d)|2|0.27,0.72,0.64,0.93|Lever AB, 1.0 m long at 45 degrees, 600 N at B|crop
+2017|1|1(e)|3|0.30,0.57,0.74,0.80|Frame A-B-C-D: column 1.5 L, beam L/2 + L/2 + L/2, loads W at the middle of BC and at D, support at C|crop
+2017|1|2(c)|4|0.20,0.655,0.93,0.925|Plan of the dog-legged stair (250 x 400 beams, 250 x 250 columns, half landing, 1200, 2250, 1200) and Mu/bd2 against pt table|crop
+2017|1|3(c)|5|0.25,0.64,0.88,0.82|Plane truss ABCD, 4.0 m + 4.0 m, 3.0 m high, 100 kN at C|crop
+2017|1|4(a)|6|0.20,0.045,0.92,0.225|Two-layered backfill: layer I (5 m) and layer II (4 m) with unit weights and strength parameters|crop
+2017|1|4(b)|6|0.22,0.385,0.92,0.54|Two moving loads of 300 kN, 4.0 m apart, on a 20.0 m girder AB|crop
+2017|1|4(c)|6|0.18,0.605,0.86,0.925|Square hollow section welded to the flange, 100 mm, 150 mm, 75 mm, view A-A|crop
+2017|1|5(c)|8|0.13,0.335,0.97,0.435|Soil investigation table: depth from ground surface, type of soil, index properties|crop
+2017|1|5(d)|8|0.33,0.505,0.72,0.645|Two bars meeting at P, 45 degrees each, 3 m high|crop
+2017|1|6(a)|9|0.22,0.05,0.70,0.265|Three members at joint B (A, C, D), 10 m each, 100 kN-m clockwise moment at B|crop
+2017|1|6(b)|9|0.12,0.736,0.88,0.8115|Table of 100Ast/bd against tau_c|crop
+2017|1|7(b)|10|0.28,0.265,0.83,0.457|Anchored sheet pile: sand over clay, water tables, anchor at 1.0 m, 2.0 m and 3.0 m depths|crop
+2017|1|7(c)|10|0.30,0.595,0.78,0.762|Cantilever beam with depth 300 mm at fixed end and 200 mm at free end, 1.0 m long, 100 kN|crop
+2017|1|8(a)|11|0.20,0.055,0.72,0.31|Cantilever retaining wall: 200 top, 3700 stem, 400 base, 800 toe, 350 stem, 1350 heel, 1000 below ground|crop
+2017|1|8(a)|11|0.12,0.6555,0.88,0.7715|Table of Mu/bd2, pt and tau_c|crop
+2017|1|8(c)|12|0.14,0.635,0.97,0.88|Soil profile table: layer, depth, soil type, properties|crop
+2017|2|1(a)|2|0.39,0.425,0.73,0.592|Table of activities and durations (1-2 : 20, 1-3 : 25, 2-3 : 10, 2-4 : 12, 3-4 : 6, 4-5 : 10)|crop
+2017|2|3(b)|4|0.38,0.545,0.72,0.77|Table of contour (m) against area (m2), 441 to 465|crop
+2017|2|4(b)|6|0.38,0.385,0.84,0.52|Independent coordinates N and E of points A, B and C|crop
+2017|2|6(b)(i)|10|0.17,0.30,0.91,0.525|Table of crops, base period, area and duty (sugarcane, overlap sugarcane, wheat, bajri, vegetables)|crop
+2017|2|7(a)|11|0.14,0.475,0.86,0.635|Table of percentage of surface area, type of surface and coefficient of runoff|crop
+2019|1|1(b)|2|0.22,0.725,0.66,0.83|Beam loaded with 30 kN/m: 10 m span between the supports and a 4 m overhang|crop
+2019|1|1(b)|2|0.22,0.84,0.72,0.93|Table of 100As/bd against tau_c (N/mm2)|crop
+2019|1|1(e)|4|0.24,0.655,0.88,0.83|Phase diagram: Vt, Vv, Va, Vw, Vs, Wt, Ww, Ws (air, water, solid) with blanks to be filled|crop
+2019|1|2(a)|6|0.18,0.25,0.80,0.72|Prestressed I-beam section: flange 250 x 100, web 100, 500, 393.5 to the neutral axis, 200 x 100 bottom block, Ast = 605 mm2|crop
+2019|1|3(b)|9|0.26,0.23,0.82,0.68|Built-up column: two 300 x 30 mm flanges, 400 mm web 30 mm thick, axes y and z|crop
+2019|1|3(b)|9|0.19,0.74,0.92,0.92|Table of slenderness ratio KL/r against design compressive stress fcd for curves b and c|crop
+2019|1|5(a)|13|0.30,0.69,0.72,0.885|200 kg block on a 20 degree incline with P at 30 degrees|crop
+2019|1|5(b)|14|0.14,0.615,0.90,0.915|Circular column 400 mm, 6 bars of 16 mm, 6 mm spiral at 45 mm c/c, 40 mm clear cover|crop
+2019|1|6(a)|16|0.24,0.37,0.65,0.525|Beam AB with moments of inertia I, 3I and 2I over 10 m + 10 m + 10 m, loads 75 kN at C and 150 kN at D|crop
+2019|1|6(b)|17|0.24,0.345,0.75,0.445|Table of KL/r against fcd for buckling curve c|crop
+2019|1|6(c)|18|0.18,0.20,0.83,0.555|Raft on 4 clay sub-layers: 100 kPa, 2 m + four 4 m layers with unit weight, e0 and Cc, water table|crop
+2019|1|7(b)|20|0.19,0.19,0.88,0.375|Tables of nominal concrete cover and basic span to effective depth ratios|crop
+2019|1|7(b)|20|0.12,0.37,0.88,0.915|Modification factor for tension reinforcement against percentage tension reinforcement (fs = 120 to 290)|crop
+2019|1|7(c)|21|0.26,0.27,0.76,0.375|Continuous beam ABCD, three 10 m spans, moments of inertia 2I, I and 2I|crop
+2019|1|8(a)|22|0.20,0.215,0.88,0.585|Retaining wall 6.0 m high with 1.2 m top, 3.3 m base, surcharge 25.0 kN/m2 on backfill (17.0 kN/m3, 40 degrees), wall 24.0 kN/m3|crop
+2019|1|8(b)|23|0.20,0.105,0.66,0.385|Portal frame 2l x 2l with plastic moments Mp and 2Mp and loads F and 4F|crop
+2021|1|1(a)|2|0.20,0.40,0.84,0.60|Truss A-C-D-G-H on top with B, E, F below, 2 m panels, loads 5, 10, 10, 10, 5 kN|crop
+2021|1|2(a)|4|0.30,0.47,0.74,0.60|Beam A-B-C-D, A fixed, hinge at B, W at C, roller at D, L + L + L|crop
+2021|1|3(a)|6|0.28,0.375,0.77,0.72|Strain against square root of time, with b, 1.15 b, a, 1.15 a and percent consolidation scale|crop
+2021|1|4(a)|8|0.19,0.595,0.85,0.915|Truss ABCDEF G / HIJKL, 6 panels at 4 m = 24 m, 3 m high; moving loads 125, 100, 50 kN at 2 m and 3 m|crop
+2021|1|4(c)|10|0.34,0.32,0.72,0.58|Retaining wall: 1 m top, 3 m base, 6 m high, granular backfill 17.5 kN/m3, phi 35 degrees, wall 24 kN/m3|crop
+2021|1|5(a)|11|0.26,0.64,0.74,0.885|Circular log G in a bracket: bar PN hinged at P, string MN, contact points Q and J, angle theta|crop
+2021|1|5(b)|12|0.20,0.545,0.80,0.855|T-beam: flange 1000 x 100 mm, web 300 mm, depth 400 mm, 4 bars of 25 mm, 50 mm cover|crop
+2021|1|5(c)|13|0.17,0.675,0.78,0.88|Fixed-end bar ABCD: PB at B, PC at C, 300 + 500 + 300 mm|crop
+2021|1|6(b)|15|0.20,0.768,0.66,0.868|Blank table to fill in: V and M at points A, B, C, D, E, F|crop
+2021|1|6(b)|16|0.18,0.112,0.76,0.196|Sign conventions for SFD and BMD: positive V and positive M|crop
+2021|1|6(b)|16|0.20,0.185,0.86,0.357|Beam A-B-C-D-E-F: 25 kN/m on 0.5 m, 300 kN-m at C, 50 kN at D, 40 kN at F, spans 0.5, 1, 2, 1.5, 0.5, 0.5 m|crop
+2021|1|6(c)|17|0.18,0.215,0.78,0.64|Stress-strain curve for cold worked deformed bar (fy and fy/1.15, Es = 200000 N/mm2, strains 0.0001 to 0.004)|crop
+2021|1|7(b)|19|0.20,0.44,0.72,0.885|Table of phi against Nc, Nq and Ngamma (10 to 24 degrees)|crop
+2021|1|8(a)|21|0.34,0.675,0.82,0.915|Pile of 12 m in medium dense to dense sand, gamma 20.1 kN/m3, phi 38 degrees, k 0.95|crop
+2021|1|8(c)|23|0.14,0.232,0.92,0.56|Table of shear modulus, maximum shear stress and density of titanium alloy and aluminium, and the hollow shaft, 1 m long, 25 mm outer diameter|crop
+2021|2|1(a)|2|0.30,0.17,0.82,0.41|Plan of a pitched roof with components numbered 1, 2, 3 and 4|crop
+2021|2|1(b)|2|0.24,0.535,0.92,0.76|Activity-on-arrow network 1 to 8: A 5, B 3, C 8, H 4, G 4, F 6, E 7, I 7, J 2, L 6, K 6|crop
+2021|2|2(a)|3|0.28,0.52,0.80,0.825|Table of activity, duration (days) and resources (masons per day)|crop
+2021|2|4(c)(ii)|6|0.36,0.55,0.74,0.93|Door with parts numbered 1 to 10 and floor level|crop
+2021|2|5(a)|7|0.20,0.24,0.90,0.60|One-hour unit hydrograph: discharge (m3/s) against time (h), 0 to 4 h, peak 3 m3/s at 1 h|crop
+2021|2|6(c)|9|0.14,0.285,0.96,0.64|Table of crops: base period, duty at field and area under crop|crop
+2022|2|2(b)|4|0.19,0.78,0.93,0.925|Table of vehicle type, gross weight, vehicles per day, wheel configuration and growth rate (bus and truck)|crop
+2022|2|2(b)|5|0.15,0.10,0.90,0.30|IRC 37, 2018 pavement composition for CBR 8%: design traffic (msa) against BC, DBM, WMM and GSB thicknesses|crop
+2022|2|2(c)|5|0.12,0.755,0.90,0.93|Spot speed study: speed range (km/hr) and number of vehicles|crop
+2022|2|3(c)|7|0.15,0.725,0.90,0.915|Activities 1-3, 1-2, 2-3, 3-4 with normal time (weeks) and normal cost (Rs lakh)|crop
+2022|2|5(a)|10|0.19,0.42,0.92,0.485|Annual rainfall (cm) at stations A to F|crop
+2022|2|5(e)|12|0.19,0.099,0.93,0.156|Multiple tube fermentation: serial dilution and number of positives|crop
+2022|2|5(e)|12|0.19,0.197,0.93,0.323|Standard MPN values for combinations of positive tubes (10 mL, 1 mL, 0.1 mL)|crop
+2022|2|6(a)(ii)|13|0.29,0.112,0.63,0.45|Ordinates of the 4 hr unit hydrograph (time 0 to 44 h)|crop
+2023|2|2(a)|3|0.28,0.185,0.76,0.38|Table of activity, duration (days) and predecessor for P, Q, R, S, T, U|crop
+2023|2|3(b)|4|0.17,0.695,0.93,0.915|Staff readings: back sight and foresight at A to F|crop
+2023|2|5(a)|7|0.15,0.36,0.93,0.455|Ordinates of the 6-hour unit hydrograph (time 0 to 60 hr)|crop
+2023|2|5(a)|7|0.15,0.495,0.70,0.58|Accumulated rainfall (cm) against time from start of storm (0, 6, 12, 18 hr)|crop
+2023|2|5(b)|8|0.14,0.095,0.92,0.27|Table of sub-area, area (km2), annual precipitation (mm) and annual evaporation (mm) for P, Q, R, S|crop
+2023|2|5(c)|8|0.14,0.515,0.84,0.645|Inflow hydrograph: time (hr) 0 to 28 and inflow (m3/s)|crop
+2024|1|1(a)|2|0.20,0.205,0.82,0.360|Cantilever ABCD, 2 m each: 10 kN/m between B and C, 50 kN-m clockwise moment at D, member stiffness 2I and I|crop
+2024|1|1(b)|2|0.26,0.585,0.78,0.805|Square section 600 mm x 600 mm with corners A, B, C, D, centre O, load point P offset 100 mm and 100 mm, 500 kN|crop
+2024|1|1(c)|3|0.18,0.125,0.74,0.265|Moving UDL 20 kN/m over 6 m on girder AB of 30 m, point C 6 m from A|crop
+2024|1|1(d)|3|0.14,0.43,0.82,0.84|Bracket on ISMB 250 with a 12 mm gusset plate, bolt A, 40 + 160 + 40 mm, 120 mm, 200 mm, 300 mm, load P|crop
+2024|1|2(a)|4|0.12,0.225,0.97,0.39|Cantilever ABC: 1.0 m + 1.0 m, sections 1-1 (0.2 x 0.45 m) and 2-2 (0.2 x 0.2 m)|crop
+2024|1|2(b)|4|0.28,0.605,0.78,0.915|Fig. 1 Stress-strain curve for concrete (parabolic curve, fck, 0.67 fck, 0.67 fck/gamma_m, strains 0.002 and 0.0035)|crop
+2024|1|2(b)|5|0.28,0.075,0.78,0.415|Fig. 2 Representative stress-strain curves for reinforcement: 23A cold worked deformed bar|crop
+2024|1|2(b)|5|0.28,0.49,0.78,0.765|Fig. 2 Representative stress-strain curves for reinforcement: 23B steel bar with definite yield point|crop
+2024|1|2(c)|6|0.20,0.225,0.94,0.495|Two angles ISA 100 x 100 x 12 welded to a 12 mm gusset plate, 540 kN, weld lengths l1 and l2, 29.2 mm|crop
+2024|1|2(c)|14|0.06,0.03,0.97,0.935|Enclosed extract: IS 800 : 2007 clauses 10.5.4.3 to 10.5.9 on welds (plug, intermittent, shop, site and long-joint welds, fillet welds at edges)|crop
+2024|1|3(a)|6|0.20,0.8135,0.78,0.8975|Fixed end moments of the box culvert members (MFAB, MFBA, MFBC, MFCB, MFCD, MFDC, MFAD, MFDA)|crop
+2024|1|3(a)|7|0.14,0.075,0.90,0.345|Box culvert ABCD: 6.0 m x 3.0 m, 50 kN at the top, 30 kN/m loads, member stiffness 2I, I, 3I|crop
+2024|1|3(b)|15|0.06,0.03,0.97,0.935|Enclosed extract: IS 456 : 2000 Annex G, moments of resistance of rectangular and T-sections (G-1 to G-2.3)|crop
+2024|1|4(b)|8|0.28,0.625,0.82,0.83|Pin-jointed truss ABCDE: 60 degrees, member forces 57.74 kN and 28.87 kN, 100 kN at C, 3.0 m + 3.0 m|crop
+2024|1|5(c)|9|0.22,0.72,0.78,0.935|Large tank with oil, 80 cm head, vertical pipe 70 cm long, diameter 2 cm, sections A and B|crop
+2024|1|7(a)|11|0.18,0.7395,0.72,0.822|Stability number SN against phi for beta = 45 degrees (phi 5 to 25 degrees)|crop
+2024|2|2(a)|3|0.20,0.2745,0.76,0.5065|Network 1 to 7 with three time estimates on each activity (3-6-15, 4-7-16, 4-8-18, 6-9-18, 5-9-19, 2-6-10, 8-11-20, 6-10-20, 3-5-13) and a dotted arrow 2 to 3|crop
+2024|2|3(a)(ii)|5|0.14,0.495,0.92,0.655|Table of mean values of speed and delay: journey time, stopped delay, vehicles overtaking, overtaken, in opposite direction|crop
+2024|2|3(b)(i)|6|0.22,0.145,0.70,0.245|Photographic coordinates of points A and B|crop
+2024|2|3(b)(ii)|6|0.24,0.495,0.74,0.6178|Table of line, length (m), latitude and departure for AB, BC, CD|crop
+2024|2|4(a)|7|0.08,0.2918,0.86,0.4748|Network 1 to 8 with activity durations t = 6, 7, 8, 7, 6, 9, 8, 10, 9, 6|crop
+2024|2|5(a)|9|0.15,0.58,0.51,0.878|Monthly discharge Q (m3/s) of the river, January to December|crop
+2024|2|7(c)(i)|14|0.20,0.135,0.78,0.385|Gravity dam: 6 m top, 3 m water depth, 27 m height, 10 m and 20 m, slope 0.75 to 1.0, base 6 m + 15 m, W1, W2, toe|crop
+2025|1|1(a)|2|0.25,0.465,0.92,0.695|Link ABCD with 480 N at E, dimensions 40, 80, 80, 40, 40 mm, pins at A, B and rollers C and D|crop
+2025|1|1(b)|3|0.28,0.215,0.80,0.3565|Cantilever DC-B of 2L: w per unit length on the inner half, tie rod AB of length L|crop
+2025|1|1(c)|3|0.15,0.635,0.92,0.745|Beam AB 14 m: C and D 7 m each from A, five 160 kN loads at 1.52 m spacing|crop
+2025|1|1(d)|4|0.18,0.685,0.92,0.92|ISA 65 x 65 x 6 welded to an 8 mm gusset plate with 4 mm welds, 65 mm, 18.1 mm|crop
+2025|1|1(e)|5|0.12,0.355,0.85,0.475|Plan of the ground floor column: 600 x 300 mm, 8 mm ties at 200 c/c, 6 bars of 30 mm and 6 bars of 20 mm|crop
+2025|1|2(a)|6|0.12,0.2042,0.995,0.47|T-section glued beam: 2 m span with w (N/m) and 4w (N-m), section 50 x 150 web on a 150 x 50 flange, point P|crop
+2025|1|2(b)|6|0.25,0.65,0.85,0.725|Beam AB, fixed ends, hinge at C, w per unit length on AC, L + L|crop
+2025|1|2(c)|7|0.24,0.80,0.66,0.94|Column section 500 x 300 mm with 8 mm ties and 6 bars of 25 mm|crop
+2025|1|2(c)|8|0.25,0.395,0.62,0.665|Design stress at specified strains for Fe 500 (strain, stress in MPa)|crop
+2025|1|3(a)|9|0.18,0.14,0.92,0.285|Continuous beam ABC: A fixed, 4 kN at 2 m, support B, C fixed, 2 m + 2 m + 6 m, EI constant|crop
+2025|1|3(c)|11|0.10,0.19,0.92,0.675|Two angles ISA 75 x 75 x 8 on a gusset plate with six 20 mm bolts at 50 mm, Lc = 250, tacking bolts|crop
+2025|1|4(a)|12|0.30,0.353,0.78,0.532|Frame ABCD: 40 kN at 2 m from B on BC (5 m), columns 3 m, beam 2I, columns I, A and D fixed|crop
+2025|1|4(c)(ii)|14|0.20,0.22,0.84,0.405|Plan of the dog-legged stair: 2600, 1250 + 100 + 1250, 625 + 625 + 2430 + 625 + 625|crop
+2025|1|5(d)|16|0.18,0.325,0.88,0.418|Casagrande liquid limit test: test no., moisture content (%) and number of blows|crop
+2025|1|6(c)(i)|18|0.40,0.235,0.72,0.505|Retaining wall 5 m high with 6 degrees batter and soil surface at 12 degrees|crop
+2025|1|7(a)|19|0.28,0.05,0.62,0.405|Braced cut 3.0 m wide: struts A (0.5 m), B (2.5 m), C (2.5 m) and 1.5 m below|crop
+2025|1|7(c)(ii)|21|0.20,0.0795,0.90,0.205|Tapering pipe: sections A and B with diameter, elevation and gauge pressure|crop
+2025|1|8(a)|21|0.15,0.685,0.95,0.865|CU triaxial tests: test sample, cell pressure, deviator stress, pore pressure|crop
+2026|1|1(a)|2|0.30,0.509,0.75,0.715|Frictionless pulley A on bars AB and AC hinged at B and C, cable hinged at D, 30 kN load at E, angles 60, 60, 30, 30 degrees|crop
+2026|1|1(b)|3|0.28,0.106,0.70,0.245|Cantilever ABCD: A fixed, B at 2 m, C 0.6 m below B, D 0.3 m from C with 12 kN|crop
+2026|1|1(c)|3|0.28,0.505,0.62,0.685|Diamond-shaped section: width b and height d with d/2 above and below the centre line|crop
+2026|1|1(e)|4|0.26,0.635,0.66,0.89|Plate girder: flanges 650 mm x 25 mm, web 1500 mm x 15 mm|crop
+2026|1|2(c)|6|0.20,0.185,0.78,0.375|Structure ABCD: A and C fixed, 100 kN and 80 kN loads, spans 4 m, 3 m, 2 m, 3 m, column BD 5 m, stiffness 2I, I, 2I|crop
+2026|1|3(b)|7|0.20,0.464,0.78,0.665|Shear force diagram of beam ABCDEF: 10 kN, 2 kN, 7 kN, 2 kN, spans 4, 3, 2, 2 m|crop
+2026|1|3(c)|9|0.12,0.105,0.90,0.18|Table of Mu/bd2 against pt (%)|crop
+2026|1|3(c)|9|0.10,0.245,0.80,0.495|Plan and view AA of the passenger shelter: slab 150 mm, beam 250 mm, columns, 1500, 1500, 1000, 2000, 1000 mm|crop
+2026|1|3(c)|9|0.12,0.5075,0.88,0.915|Modification factor for tension reinforcement against percentage tension reinforcement (fs = 120 to 290)|crop
+2026|1|4(a)|10|0.20,0.44,0.80,0.59|Bodies 200 N, 800 N and 400 N over pulleys 1 and 2, 45 degrees, force F|crop
+2026|1|4(b)(ii)|11|0.30,0.335,0.76,0.43|Beam AB, A fixed, l = 2 m, coordinates 1 (vertical) and 2 (rotation) at B|crop
+2026|1|4(c)|13|0.25,0.34,0.78,0.612|Gantry girder section: ISMB 600 with ISMC 300 on the top, 300, 600, 12, 20.8, 210, 90, 7.8|crop
+2026|1|4(c)|13|0.15,0.625,0.88,0.86|Properties of ISMB 600 @ 1230 N/m and ISMC 300 @ 363 N/m|crop
+2026|1|5(a)|14|0.20,0.4860,0.88,0.64|Water jet deflected by a hinged plate of 2.0 m with a spring k = 500 N/m, x0 = 1.0 m, angle theta|crop
+2026|1|7(b)|18|0.30,0.355,0.74,0.50|Plan of foundation ABCD with a semicircle, 8 m x 4 m, point O, radius 2 m|crop
+2026|1|8(a)|19|0.12,0.325,0.84,0.50|Table of specimen no., confining pressure, axial load, axial deformation and volume change|crop
+2026|1|8(b)|20|0.26,0.115,0.80,0.3465|Sieve analysis: IS sieve and mass of the soil retained (g)|crop
+2026|2|2(c)|4|0.24,0.525,0.64,0.845|Table of activity (i-j) and duration (t) in days, 1-2 to 7-8|crop
+2026|2|5(a)|7|0.24,0.605,0.58,0.92|Table of month and flow (m3/s), January to December|crop
+2026|2|5(b)|8|0.23,0.285,0.88,0.35|Table of station A to F and rainfall (cm)|crop
+2026|2|6(a)|10|0.20,0.18,0.70,0.4535|Table of capacity-inflow ratio and trap efficiency, 0.1 to 1.0|crop
+2026|2|8(b)|14|0.22,0.615,0.84,0.75|Tables of coal analysis: moisture, ash, carbon, hydrogen, nitrogen, sulphur, oxygen, calorific value, fly ash|crop
+2025|2|2(a)|4|0.18,0.12,0.89,0.295|Table of activity, activity name and remark for A, B, C, D|crop
+2025|2|2(a)|4|0.22,0.51,0.87,0.745|Table of normal and crash duration (days) and cost (Rs) for activities A to D|crop
+2025|2|4(c)|9|0.20,0.14,0.81,0.29|Floating car data: trip number and number of vehicles in opposite direction, overtaking, overtaken|crop
+2025|2|6(a)|11|0.27,0.145,0.73,0.495|Table of time from start of storm t (h) and accumulated rainfall (cm), 0 to 14 h|crop
+2025|2|8(a)|14|0.18,0.54,0.88,0.76|Overflow spillway 40 m high (P = 40 m), design head Hd = 2.5 m, energy line, hydraulic jump between sections 1 and 2 (depths y1, y2, V1, V2, EL)|crop
+2019|2|2(c)|4|0.17,0.757,0.88,0.850|Table of activity, predecessor and duration (weeks) for A to L (English)|crop
+2019|2|3(c)|6|0.17,0.365,0.86,0.565|Level book page with missing values (station, BS, IS, FS, Rise, Fall, HI, RL), English version|crop
+2019|2|4(b)|7|0.30,0.305,0.72,0.408|Project network: 10 to 20, 20 to 30, 20 to 40, 30 to 40|crop
+2019|2|4(b)|7|0.19,0.422,0.88,0.558|Table of activity, normal time, crash time, normal cost, crash cost and cost slope|crop
+2019|2|5(e)|9|0.20,0.38,0.88,0.475|Chlorine dosage and chlorine residual (mg/L)|crop
+2019|2|7(a)|11|0.37,0.165,0.68,0.37|Masonry dam: 6 m high, 1.5 m top width, base width b, water on the vertical face|crop
+2019|2|7(b)|11|0.23,0.625,0.89,0.682|Table of station A to F and rainfall (cm)|crop

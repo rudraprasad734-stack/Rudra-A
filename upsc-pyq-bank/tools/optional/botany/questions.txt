@@ -1,0 +1,787 @@
+# Botany optional (UPSC Civil Services Main). One question part per line:  year | paper | qno | marks | text
+# Q1 and Q5 of every paper carry an instruction line, by default 'Answer the following questions in about 150 words each:'; '#PREFIX|year|paper|q|text' overrides it.
+# English text is taken from the bilingual UPSC papers (Drive copies of the scans, read through Drive's text extraction).
+#PREFIX|2014|1|1|Briefly describe the following in not more than 150 words each:
+#PREFIX|2014|1|5|Describe the following in about 150 words each:
+#PREFIX|2015|1|1|Briefly describe the following in not more than 150 words each:
+#PREFIX|2015|1|5|Describe the following in about 150 words each:
+#PREFIX|2016|1|1|Briefly describe the following in not more than 150 words each:
+#PREFIX|2016|1|5|Briefly describe the following in about 150 words each:
+#PREFIX|2017|1|1|Describe the following in about 150 words each:
+#PREFIX|2017|1|5|Describe the following in about 150 words each:
+#PREFIX|2018|1|1|Describe the following in about 150 words each:
+#PREFIX|2018|1|5|Describe the following in about 150 words each:
+#PREFIX|2019|1|1|Describe the following in about 150 words each:
+#PREFIX|2019|1|5|Describe the following in about 150 words each:
+#PREFIX|2020|1|1|Describe the following in about 150 words each:
+#PREFIX|2020|1|5|Describe the following in about 150 words each:
+#PREFIX|2021|1|1|Answer the following in about 150 words each:
+#PREFIX|2021|1|5|Answer the following in about 150 words each:
+#PREFIX|2014|2|1|Giving reasons explain the following:
+#PREFIX|2014|2|5|Explain the following:
+#PREFIX|2015|2|1|Explain the following:
+#PREFIX|2015|2|5|Explain the following:
+#PREFIX|2016|2|1|Explain the following:
+#PREFIX|2016|2|5|Explain the following:
+#PREFIX|2016|2|4|Briefly describe the characteristics and applications of the following:
+#PREFIX|2016|2|8|Briefly describe the given terms and emphasize their importance/significance:
+#PREFIX|2017|2|1|Answer / Explain the following:
+#PREFIX|2017|2|5|Explain the following:
+#PREFIX|2018|2|1|Answer the following questions:
+#PREFIX|2018|2|5|Explain each of the following:
+#PREFIX|2019|2|1|Answer the following questions:
+#PREFIX|2019|2|5|Answer the following questions:
+#PREFIX|2020|2|1|Write short notes on/Answer the following:
+#PREFIX|2020|2|5|Write short notes on/Answer the following:
+#PREFIX|2021|2|1|Write short notes on the following:
+#PREFIX|2021|2|5|Write short notes on the following:
+#PREFIX|2022|2|1|Write short notes on the following in about 150 words each:
+#PREFIX|2022|2|5|Write short notes on the following in about 150 words each:
+#PREFIX|2023|2|1|Write short notes on the following in about 150 words each:
+#PREFIX|2023|2|5|Write short notes on the following in about 150 words each:
+#PREFIX|2024|2|1|Write short notes on the following in about 150 words each:
+#PREFIX|2024|2|5|Write short notes on the following in about 150 words each:
+#PREFIX|2025|2|1|Write short notes on the following in about 150 words each:
+#PREFIX|2025|2|5|Write short notes on the following in about 150 words each:
+#PREFIX|2026|2|1|Write short notes on the following in about 150 words each:
+#PREFIX|2026|2|5|Write short notes on the following in about 150 words each:
+2026|1|1(a)|10|Blue-green algae are also considered as bacteria. Discuss their major similarities with bacteria.
+2026|1|1(b)|10|What do you mean by virus of bacteria? Describe their application in medical sciences.
+2026|1|1(c)|10|Describe mineralization, symbiotic and non-symbiotic nitrogen fixation. How do they help in improving the soil quality for agriculture?
+2026|1|1(d)|10|Define fossilization. Discuss the major types of fossils that occur in nature.
+2026|1|1(e)|10|What is chemotaxonomy? Analyze how chemical evidence contributes to solving taxonomic problems in plant classification.
+2026|1|2(a)|20|What are the major characteristics of Anthocerotopsida? Describe the gametophytic and sporophytic generations of Anthoceros.
+2026|1|2(b)|15|Describe the salient features and economic importance of Laminariales.
+2026|1|2(c)|15|Compare the ovule-bearing structures of Cycas and Pinus with the help of labelled diagrams.
+2026|1|3(a)|20|Name the organism that causes stalk rot disease in maize. Describe its symptoms, disease cycle, control and management.
+2026|1|3(b)|15|What are Mycoplasmas? How do they differ from spheroplast and protoplast? Describe their salient features.
+2026|1|3(c)|15|Write a note on geological time scale. Briefly discuss the plant life in each era.
+2026|1|4(a)|20|Explain the APG IV classification. State briefly how it differs from existing classifications. Discuss its merits and demerits.
+2026|1|4(b)|15|Describe in brief the major strategies adopted for plant disease control and management.
+2026|1|4(c)|15|Compare the sporophyte of Psilotum and Equisetum.
+2026|1|5(a)|10|Describe the androecium of Orchidaceae and Asclepiadaceae. Highlight the differences between them.
+2026|1|5(b)|10|Discuss the different types of polyembryony in plants and add a note on its importance.
+2026|1|5(c)|10|Write the botanical names and families of the following economically important plants: (i) Pearl millet (ii) Flax (iii) Pomegranate (iv) Bottle gourd (v) Chickpea
+2026|1|5(d)|10|Give a detailed account on cell suspension culture and its significance.
+2026|1|5(e)|10|Write an explanatory note on the history of plant domestication.
+2026|1|6(a)|20|Mention the diagnostic features of family Apiaceae and Solanaceae. Write the botanical names and uses of five members from each family.
+2026|1|6(b)|15|"Botanical gardens are considered as outdoor laboratories for botanists." Substantiate the statement.
+2026|1|6(c)|15|Describe the components of xylem tissue in plants. What is its role in plant survival and growth?
+2026|1|7(a)|20|Briefly explain the method of herbaria preparation. What is its role in modern taxonomic research?
+2026|1|7(b)|15|Write an account on types, regulation and significance of totipotency.
+2026|1|7(c)|15|Write an account on haploid plant production through tissue culture. What are the advantages of homozygous diploid lines?
+2026|1|8(a)|20|What is the role played by media and growth regulators in micropropagation? How to control exudation and contamination problems during micropropagation?
+2026|1|8(b)|15|Describe the techniques used in experimental embryology.
+2026|1|8(c)|15|Give an outline on the history and progress of ethnobotanical research in India.
+2025|1|1(a)|10|How many types of gametophytes are found in Lycopodium? Why is it difficult to collect such prothalli in nature?
+2025|1|1(b)|10|How does heterocyst differ from vegetative cell? Mention the factors controlling its formation and add a note on functions of heterocysts.
+2025|1|1(c)|10|Explain how the numerical expression of data is utilized in plant systematics.
+2025|1|1(d)|10|"Mycoplasma causes serious diseases in humans, animals and plants." Substantiate the statement with suitable examples.
+2025|1|1(e)|10|How does the infection of a pathogen affect the host plant physiology?
+2025|1|2(a)|20|Enumerate the types of fruiting bodies of Ascomycota and Basidiomycota. Write the various steps of ascus formation in Ascomycetous members with suitable illustrations.
+2025|1|2(b)|15|What are the various modes of infection and dissemination of plant diseases caused by viruses? Describe.
+2025|1|2(c)|15|Briefly describe the male and female strobili of Gnetum with suitable labelled diagrams. Why should you consider this plant a gymnosperm?
+2025|1|3(a)|20|Discuss how progressive sterilization of sporogenous tissue occurs in bryophytes, with suitable diagrams and examples.
+2025|1|3(b)|15|Describe the ranges of thallus organization in the members of Chlorophyceae.
+2025|1|3(c)|15|Explain holotype, isotype, paratype, lectotype and neotype. Mention the advantages of binomial system of plant nomenclature.
+2025|1|4(a)|20|Describe the causal organisms, disease cycle and control measures of Early Blight of Potato and Blast of Rice.
+2025|1|4(b)|15|What are eusporangiate and leptosporangiate sporangia? Classify the sori based on the mode of development of sporangia in ferns, with suitable illustrations.
+2025|1|4(c)|15|Give an account of structural variation in the megasporophylls of different Cycas species with illustrations. Add a brief note on the primitive features in Cycas.
+2025|1|5(a)|10|Give an account of post-fertilization changes leading to formation of seeds in angiosperms.
+2025|1|5(b)|10|What are the various anomalies causing anomalous secondary growth in dicotyledonous plants?
+2025|1|5(c)|10|Name three important Indian Botanical Gardens and discuss briefly the role of botanical gardens in modern plant research.
+2025|1|5(d)|10|Mention the botanical name and family of plants from which Aconite, Isabgol, Ashwagandha, Vasaka and Ipecac are obtained.
+2025|1|5(e)|10|What is embryo rescue? How does this method help in crop improvement? State two disadvantages of it.
+2025|1|6(a)|20|What are the diagnostic characters of the families Cucurbitaceae and Poaceae? Write the botanical names and economic importance of any five members from each family.
+2025|1|6(b)|15|Comment on Vavilov's contributions on the origin of cultivated plants. Write the botanical name and parts used of any three dye-yielding plants of India.
+2025|1|6(c)|15|What is the importance of pollen storage? Explain the methods adopted for storage of pollen grains. Add a note on test tube fertilization.
+2025|1|7(a)|20|Write the botanical name, family, morphology of useful parts and uses of the following plants: (i) Safflower (ii) Fennel (iii) Chicory (iv) Tapioca (v) Teak
+2025|1|7(b)|15|Explain the various steps involved in plant protoplast culture. Mention the major limitations of this technique. What is the role of somatic hybridization in crop improvement?
+2025|1|7(c)|15|Give an account of different types of axial parenchyma found in dicotyledonous woody plants stating their phylogenetic significance. Mention two primitive and two advanced features of ray parenchyma.
+2025|1|8(a)|20|What is micropropagation and how does it differ from traditional plant propagation methods? Give an account of the applications of micropropagation in crop improvement and conservation of endangered plants. Add a brief note on the challenges of this technique.
+2025|1|8(b)|15|Distinguish between polyembryony and parthenocarpy. Classify parthenocarpy and add a note on its significance.
+2025|1|8(c)|15|Give an outline on the process of producing cybrids. How do cybrids differ from hybrids in terms of their genetic composition? Comment on the potential applications of cybrid technology.
+2024|1|1(a)|10|How are viruses classified based on their symmetry? With a suitable diagram, explain the structure of T4 phage.
+2024|1|1(b)|10|Explain various modes of entry of plant pathogens into their hosts.
+2024|1|1(c)|10|Mention ecological and economic significance of bryophytes.
+2024|1|1(d)|10|Where are the gymnosperms distributed naturally in India? Mention the places where fossils of Bennettitales occur abundantly in India.
+2024|1|1(e)|10|What are the principal directions of evolution of floral structure in angiosperms? Name the ANA grade orders of angiosperms.
+2024|1|2(a)|20|Describe the five distinct stages in the life cycle of Puccinia graminis with suitable diagrams.
+2024|1|2(b)|15|With suitable examples, bring out the industrial uses of microorganisms. What are the advantages of using immobilised enzymes and cells in commercial processes?
+2024|1|2(c)|15|Why is Ginkgo biloba called a 'living fossil'? Discuss in the light of its reproductive structures.
+2024|1|3(a)|20|Enumerate the beneficial and harmful effects of algae. Add a note on their commercial cultivation.
+2024|1|3(b)|15|Draw the life cycles of a homosporous and a heterosporous pteridophyte. How do they differ? Which is more evolved and why?
+2024|1|3(c)|15|Compare the key features of classifications proposed by Hutchinson and Dahlgren. Discuss their merits and demerits.
+2024|1|4(a)|20|Describe the male and female gametophytes of Pinus. How are the processes of pollination and fertilization accomplished in Pinus?
+2024|1|4(b)|15|Illustrate the plant body of Psilotum. Add a note on the primitive characters of Psilotum which indicate its close relation to extinct group Psilotales.
+2024|1|4(c)|15|What are myxomycetes? Outline the life cycle of a typical myxomycete. Mention its protozoa-like and fungus-like characters.
+2024|1|5(a)|10|What are the consequences of domestication of plants? Explain.
+2024|1|5(b)|10|Describe how successive cambia cause thickening of the stem in some flowering plants. Name any two families that display this phenomenon.
+2024|1|5(c)|10|Distinguish various types of agamospermy. Why is apomixis now regarded a tool of practical importance?
+2024|1|5(d)|10|Write the botanical names, family and parts used of any five fibre-yielding plants.
+2024|1|5(e)|10|Differentiate between zygotic and somatic embryos.
+2024|1|6(a)|20|Describe different types of endosperm development in angiosperms. What is the significance of aleurone tissue? Mention the function of endosperm in seed.
+2024|1|6(b)|15|Explain and illustrate the characteristic features of Brassicaceae. Mention any five species of the family and their economic importance.
+2024|1|6(c)|15|Write an explanatory note on nutritional superiority of millets over cereals. Write the botanical names of any five millets grown in India. Mention the advantages of cultivating millets.
+2024|1|7(a)|15|Write an explanatory account of ethnobotany. Give a critical account of whether ethnobotany is a faith, myth or science.
+2024|1|7(b)|15|Compare the differentiation of xylem and phloem from the cells cut off by cambium. How is a vessel structurally different from a sieve element?
+2024|1|7(c)|20|What are the causes of variability in regenerated plants in tissue cultures? Give an account of utility of such variants in improvement of crop plants with examples.
+2024|1|8(a)|20|Basal media, growth regulators, sterilization and culture conditions are essential components of plant tissue culture techniques. Write an explanatory note on each of these components.
+2024|1|8(b)|15|How are pollen haploids produced? What are the methods to diploidize such haploids? Explain the importance of pollen haploids in agricultural research.
+2024|1|8(c)|15|"Polarity and symmetry are two essential components of morphogenesis in plants." Elaborate the statement.
+2022|1|1(a)|10|What is mycoplasma? Describe its types and importance in plant pathogenesis.
+2022|1|1(b)|10|Describe the ultrastructure of endospore of Bacillus sp.
+2022|1|1(c)|10|Describe the structure of strobilus of Equisetum with the help of a well-labelled diagram.
+2022|1|1(d)|10|What is chloroplast? Describe the fine structure of chloroplast in Chlorophyceae.
+2022|1|1(e)|10|Write a comparative account of the icosahedral and helical symmetry of viruses.
+2022|1|2(a)|20|What is brown spot disease of rice? Describe its causal organism, symptoms, disease cycle and its control. How does this disease damage the rural agroeconomy of India?
+2022|1|2(b)|15|Draw and describe the cell wall structure of Gram-positive bacteria. What are the major differences between the cell walls of Gram-positive and Gram-negative bacteria?
+2022|1|2(c)|15|Describe the 'Koch's postulate'. How does it help in avoiding the wrong identification of any plant pathogen?
+2022|1|3(a)|20|What is dikaryotization in fungi? Describe different methods of dikaryotization in basidiomycetes. How does dikaryotization in ascomycetes differ from basidiomycetes?
+2022|1|3(b)|15|Give an elaborate account of the use of algae in food and fuel production.
+2022|1|3(c)|15|Describe the development of male and female gametophytes of Marsilea.
+2022|1|4(a)|15|What are the characteristic features of the family Orchidaceae? How did the classification systems of Bentham and Hooker (1862), Engler and Prantl (1931) and Hutchinson (1959) deal with its placement among the families of monocots?
+2022|1|4(b)|20|Give a detailed account of the theories proposed to explain the origin of angiosperms.
+2022|1|4(c)|15|Give a detailed account of types of stomata in angiosperms.
+2022|1|5(a)|10|Mention the role of embryo rescue in interspecific hybridization.
+2022|1|5(b)|10|Explain 'cybridization'. Write one example of economically useful cybrid. Describe the methods to produce cybrids.
+2022|1|5(c)|10|Write an account of plants used as natural dyes. Give binomial name and family of any three dye-yielding plants that are used as food additives.
+2022|1|5(d)|10|Distinguish between anther culture and microspore culture. Which technique is more advantageous? Give reasons.
+2022|1|5(e)|10|Write a note on the role of palynology in plant systematics.
+2022|1|6(a)|20|Write a detailed account of homospory, anisospory, incipient heterospory and heterospory. Elaborate on the evolution from homospory to heterospory in relation to geological time.
+2022|1|6(b)|15|Endosperm is essentially a triploid tissue in angiosperms with some exceptions. Give a detailed account of Helobial endosperm emphasizing on the developmental variations. What type of differences can be seen in the sequence of occurrences of karyokinesis and cytokinesis in nuclear, cellular and Helobial type of endosperm?
+2022|1|6(c)|15|Using appropriate diagram of normal embryo sac, elaborate the structural complexity of angiosperm embryo.
+2022|1|7(a)|20|Write the uses, botanical name, family and morphology of useful parts of the following plants: (i) Cloves (ii) Saffron (iii) Nutmeg (iv) Date palm (v) Pineapple
+2022|1|7(b)|15|Discuss the role of botanical gardens in conserving biodiversity. Write the names of three important botanical gardens in India.
+2022|1|7(c)|15|Write a detailed note on the role of ethnobotany in conserving the Indian traditional knowledge of medicinal plants.
+2022|1|8(a)|20|Describe the protocol involved in rooting and acclimatization of plants produced using in vitro culture. Elaborate on the various problems and solutions associated with this technique.
+2022|1|8(b)|15|Differentiate between direct and indirect organogenesis. Discuss the merits and demerits of each method.
+2022|1|8(c)|15|What are 'energy plantations'? Narrate the salient features of this energy alternative for the energy security of India.
+2017|1|1(a)|10|Parasexuality in Fungi
+2017|1|1(b)|10|Phycobiliproteins
+2017|1|1(c)|10|Tetrapolar Heterothallism
+2017|1|1(d)|10|Salient features of Lichens
+2017|1|1(e)|10|Peristome
+2017|1|2(a)|15|What is meant by Modelling and how does it help in disease forecasting?
+2017|1|2(b)|15|Describe the diplobiontic life cycle of Polysiphonia.
+2017|1|2(c)|20|Draw a well-labelled diagram of L.S. of Gnetum ovule and briefly describe its female gametophyte also.
+2017|1|3(a)|20|Describe the symptoms, causal organisms and control measures of white rust of crucifers and red rot of sugarcane.
+2017|1|3(b)|15|Make a comparison of Hepaticopsida, Anthocerotopsida and Bryopsida classes of Bryophyta with special reference to sporophytes only.
+2017|1|3(c)|15|Give an account of distribution of living Gymnosperms in India.
+2017|1|4(a)|15|Give an account of genetic recombination in bacteria.
+2017|1|4(b)|20|Describe the evolution of Stellar System in Pteridophyta with proper diagrams.
+2017|1|4(c)|15|Give an account of different modes of transmission of plant viruses.
+2017|1|5(a)|10|Embryology in relation to Taxonomy, with examples
+2017|1|5(b)|10|Vavilov's centers of origin in plants
+2017|1|5(c)|10|Symmetry in plants with relation to morphogenesis
+2017|1|5(d)|10|International Code of Botanical Nomenclature
+2017|1|5(e)|10|Androgenic haploid plants
+2017|1|6(a)|20|Comment on polyembryony and apomixis in flowering plants.
+2017|1|6(b)|15|Write an account of Ethnobotany in relation to modern day drug discovery.
+2017|1|6(c)|15|"Clonal micropropagation is useful in Floriculture industry." Explain the process with some suitable examples.
+2017|1|7(a)|20|Describe the classification given by Engler and Prantl and comment on its merits and demerits.
+2017|1|7(b)|20|Give an account of the following: (i) Developmental details of interxylary phloem (ii) Anomalous secondary growth in Dracaena stem
+2017|1|7(c)|10|Explain the somaclonal variations and their applications in plant breeding.
+2017|1|8(a)|20|Write an account of the following families with reference to floral diagram and floral formula. Give botanical names of four important plant species belonging to each of the families and specify their uses: (i) Cucurbitaceae (ii) Solanaceae (iii) Liliaceae
+2017|1|8(b)|15|Describe the plants used as sources of fibres, dyes and resins with suitable examples.
+2017|1|8(c)|15|Write short notes on the following: (i) Cytoplasmic hybrids (ii) Chemotaxonomy
+2020|1|1(a)|10|Gram negative and Gram positive bacterial cell walls.
+2020|1|1(b)|10|Structure and reproduction of lichens.
+2020|1|1(c)|10|Heterotrichous habit in algae.
+2020|1|1(d)|10|Elaters and their significance.
+2020|1|1(e)|10|Draw a well labelled longitudinal sectional view of the structure of mature sporogonium of Anthoceros.
+2020|1|2(a)|20|Describe the life cycle of Puccinia graminis tritici with suitable sketch.
+2020|1|2(b)|15|Give an illustrated account of various types of stelar structures seen in Pteridophytes.
+2020|1|2(c)|15|Describe lytic and lysogenic cycle of viruses.
+2020|1|3(a)|20|Write the names of causal organisms, symptoms and control measures of citrus canker and late blight of potato.
+2020|1|3(b)|15|Compare and contrast the sporocarp of Marsilea and Salvinia.
+2020|1|3(c)|15|Discuss post fertilization changes with suitable diagrams in Polysiphonia.
+2020|1|4(a)|20|What do you understand by International Code of Botanical Nomenclature? Write its principles.
+2020|1|4(b)|15|Briefly explain anomalous secondary growth in Boerhaavia and Dracaena.
+2020|1|4(c)|15|Write applications of Microbiology in medicine.
+2020|1|5(a)|10|Plant cell, tissue and organ culture.
+2020|1|5(b)|10|Embryo rescue in angiosperms.
+2020|1|5(c)|10|Classification and importance of Polyembryony.
+2020|1|5(d)|10|Endosperm haustoria.
+2020|1|5(e)|10|Plants as source for perfumery.
+2020|1|6(a)|20|What are the identifying floral features, floral formula and floral diagram of Malvaceae and Orchidaceae?
+2020|1|6(b)|15|Write botanical names and ethno-medicinal uses of three medicinally important members in each case of Solanaceae and Apiaceae.
+2020|1|6(c)|15|Write botanical names and families of the plants yielding timber, insecticides and edible oil.
+2020|1|7(a)|20|Define protoplast. Write the methods of its isolation and factors affecting their yield and viability.
+2020|1|7(b)|15|Describe the development of male gametophyte in angiosperms with suitable diagrams.
+2020|1|7(c)|15|Compare and contrast the pattern of embryo developments in Dicots and Monocots with suitable illustrations.
+2020|1|8(a)|20|Discuss the primitive features of Cycadales. Why is Ginkgo considered as living fossil?
+2020|1|8(b)|15|Define somaclonal variations. How are these produced? Explain its applications in crop improvement.
+2020|1|8(c)|15|Write notes on the following: (i) Somatic hybrid and cybrid with their significance (ii) Totipotency, polarity and differentiation.
+2023|1|1(a)|10|What are prions? How do they differ from viruses? Mention few diseases caused by prions in animals and human beings.
+2023|1|1(b)|10|What is parasexuality in fungi? Explain the mechanism of parasexual cycle. What are the applications of parasexuality?
+2023|1|1(c)|10|State the distinguishing features of Cyanophyceae. Discuss the phylogeny and affinities of Cyanophyceae with other groups.
+2023|1|1(d)|10|Discuss the distribution of different modern species of Cycas found in India. Enumerate the fern characters observed in Cycas.
+2023|1|1(e)|10|State the principles of International Code of Botanical Nomenclature. How are Operational Taxonomic Units (OTUs) used in numerical taxonomy?
+2023|1|2(a)|20|What is lichen? With suitable diagrams, describe its types and structure. Write a note on the economic importance of lichens.
+2023|1|2(b)|15|Describe the three modes of sexual reproduction in bacteria.
+2023|1|2(c)|15|Characterise progymnosperms with examples. Mention their phylogenetic significance.
+2023|1|3(a)|20|Define microbial biopesticides. What are their types? With suitable examples, evaluate the potential of microbial biopesticides in pest and disease control in crop plants.
+2023|1|3(b)|15|Explain the general features of viroids. How do they differ from viruses? Name two diseases caused by virions.
+2023|1|3(c)|15|Distinguish between the natural and phylogenetic systems of plant classification. Mention their merits and demerits.
+2023|1|4(a)|20|Diagrammatically present the Geological Time Scale up to 'Epoch'. Write a note on the different types of fossils found in nature.
+2023|1|4(b)|15|Describe the symptoms, causal organism, disease cycle and control measures of red rot of sugarcane.
+2023|1|4(c)|15|What is stele? Give an illustrated account of various types of steles observed in pteridophytes.
+2023|1|5(a)|10|Alphonse de Candolle classified plants of economic importance into various classes. List these classes and state two examples from each.
+2023|1|5(b)|10|What are the anatomical differences of the bundle sheath and mesophyll cells between C3 and C4 plants?
+2023|1|5(c)|10|Give an account of different types of trichomes found in modern angiosperms. Write a brief note on the systematic value of trichomes.
+2023|1|5(d)|10|Discuss the classification of vegetable fibers (excluding wood fibers) according to their botanical origin and give examples.
+2023|1|5(e)|10|How is the isolation of single cells done from intact plant organs and how is the viability of single cells assessed?
+2023|1|6(a)|20|What are the different means of pollination in plants? Which natural devices ensure cross-pollination?
+2023|1|6(b)|15|Using diagrams, explain the characteristic features of the family Magnoliaceae. Why is this family considered primitive?
+2023|1|6(c)|15|Discuss the growth conditions of groundnut and soybean crops. Compare their oil compositions.
+2023|1|7(a)|20|Describe the botanical features, ecology and propagation of rubber tree. How is rubber obtained and processed from rubber tree?
+2023|1|7(b)|15|Classify and discuss maize varieties on the basis of endosperm and floral or glume characteristics.
+2023|1|7(c)|15|What causes somaclonal variations? How can somaclones be identified and isolated?
+2023|1|8(a)|20|What factors affect in vitro stages of micropropagation? Discuss the applications and limitations of micropropagation.
+2023|1|8(b)|15|Give an account of male gametophyte development in Gnetum. State the angiosperm characters shared by Gnetum.
+2023|1|8(c)|15|Discuss the factors affecting the yield and viability of protoplasts isolated from leaves. How are isolated protoplasts purified?
+2014|1|1(a)|10|Role of fungi in agriculture and medicine.
+2014|1|1(b)|10|Fructifications in Fungi.
+2014|1|1(c)|10|Reproductive organs in Chara.
+2014|1|1(d)|10|Plant quarantine.
+2014|1|1(e)|10|Energy plantations.
+2014|1|2(a)|20|With the help of suitable diagrams describe the evolution of sporophyte in Bryophytes.
+2014|1|2(b)|15|Give an account of pigments in Algae.
+2014|1|2(c)|15|Discuss about the physiology of parasitism.
+2014|1|3(a)|12.5|Draw a well labelled diagram of male thallus with antheridiophore of Marchantia.
+2014|1|3(b)|12.5|Draw a well labelled diagram of V.L.S. of Marsilea sporocarp.
+2014|1|3(c)|12.5|Draw a well labelled diagram of V.S. of sporophyte of Polysiphonia.
+2014|1|3(d)|12.5|Draw a well labelled diagram of V.S. of apothecium of Peziza.
+2014|1|4(a)|12.5|Give the causal organism, symptoms and control measures of Tikka disease of groundnut.
+2014|1|4(b)|12.5|Give the causal organism, symptoms and control measures of Citrus Canker.
+2014|1|4(c)|12.5|Give the causal organism, symptoms and control measures of Rust of wheat.
+2014|1|4(d)|12.5|Give the causal organism, symptoms and control measures of Ergot of Rye.
+2014|1|5(a)|10|Formation of Petrifaction.
+2014|1|5(b)|10|Relevance of numerical taxonomy.
+2014|1|5(c)|10|Position of monocots in APG classification.
+2014|1|5(d)|10|Embryo development in Arabidopsis.
+2014|1|5(e)|10|Importance of typification in plant nomenclature.
+2014|1|6(a)|12.5|Draw a well-labelled diagram of cone of Cycadeoidea.
+2014|1|6(b)|12.5|Draw a well-labelled diagram of T.S. of cyathium of Euphorbia.
+2014|1|6(c)|12.5|Draw a well-labelled diagram of T.S. of coralloid root of Cycas.
+2014|1|6(d)|12.5|Draw a well-labelled diagram of V.S. of leaf of Welwitschia.
+2014|1|7(a)|12.5|Write an account of the floral structure of Orchidaceae. Give the botanical names of three important plant species belonging to the family and specify their uses.
+2014|1|7(b)|12.5|Write an account of the floral structure of Magnoliaceae. Give the botanical names of three important plant species belonging to the family and specify their uses.
+2014|1|7(c)|12.5|Write an account of the floral structure of Asteraceae. Give the botanical names of three important plant species belonging to the family and specify their uses.
+2014|1|7(d)|12.5|Write an account of the floral structure of Rubiaceae. Give the botanical names of three important plant species belonging to the family and specify their uses.
+2014|1|8(a)|15|Discuss the role of tissue culture in crop improvement.
+2014|1|8(b)|15|How are plant protoplasts isolated and fused?
+2014|1|8(c)|20|Describe in detail Hutchinson's system of classification and compare it with the classification system of Engler and Prantl.
+2021|1|1(a)|10|Describe the structure and functions of cyphellae and cephalodia in lichens.
+2021|1|1(b)|10|What are prions? How are these different from viroids? How are prions transmitted?
+2021|1|1(c)|10|Explain the structure of sporangiophore and dehiscence of sporangium of Rhizopus.
+2021|1|1(d)|10|Enumerate the merits and demerits of numerical taxonomy.
+2021|1|1(e)|10|Briefly discuss the distribution of gymnosperms in India.
+2021|1|2(a)|20|Explain conjugation and transformation in bacteria. Write a brief note on their significance.
+2021|1|2(b)|20|Explain evolution of sex in algae with suitable examples.
+2021|1|2(c)|10|Describe the concept of progymnosperms with the help of suitable examples.
+2021|1|3(a)|20|Discuss about the names of causal organisms, symptoms, disease cycle and management of loose smut of wheat. What are the differences between rust and smut fungi?
+2021|1|3(b)|20|Enumerate the salient features of fossil gymnosperms using suitable examples with special reference to Bennettitales and Cordaitales.
+2021|1|3(c)|10|Give the general characteristics of bryophytes. Enlist the resemblances and differences of bryophytes with pteridophytes.
+2021|1|4(a)|20|Explain with the help of schematic diagrams haplontic, diplontic, isomorphic, heteromorphic and triphasic types of life cycles in algae. Give an example of each type.
+2021|1|4(b)|20|Describe stelar diversity in vascular cryptogams along with its evolutionary importance.
+2021|1|4(c)|10|Discuss the applications of microbes in bioremediation of soil and water.
+2021|1|5(a)|10|Enumerate different kinds of trichomes and explain their taxonomic importance.
+2021|1|5(b)|10|Discuss the advanced features of Asteraceae and Orchidaceae.
+2021|1|5(c)|10|Explain the importance of ethnobotany in human welfare.
+2021|1|5(d)|10|Mention the evolutionary changes that occur during domestication of plants. Also mention its advantages and disadvantages.
+2021|1|5(e)|10|Discuss the concept of cellular totipotency in higher plants.
+2021|1|6(a)|20|Describe the development of female gametophyte in angiosperms with the help of suitable illustrations.
+2021|1|6(b)|20|Give the botanical name, part used and ethnomedicinal importance of any three species each of Fabaceae, Euphorbiaceae and Liliaceae.
+2021|1|6(c)|10|Define secondary metabolites. Explain their importance in taxonomy.
+2021|1|7(a)|20|Describe the economic botany of fibre and gum yielding plants (five species each).
+2021|1|7(b)|20|Discuss the factors affecting somatic embryogenesis.
+2021|1|7(c)|10|Describe the method of isolation of protoplast from leaf tissue.
+2021|1|8(a)|20|Compare and contrast 'preservation' and 'conservation' of plants. Explain the importance of both in the utilization and management of plant resources.
+2021|1|8(b)|20|Describe different stages of micropropagation and discuss its advantages over conventional methods of propagation.
+2021|1|8(c)|10|Explain the technique used in producing androgenic haploids and its applications in agriculture.
+2015|1|1(a)|10|Role of microbes in soil nutrient cycling
+2015|1|1(b)|10|Algae as bioindicators
+2015|1|1(c)|10|Concept of Progymnosperms
+2015|1|1(d)|10|Chemical nature of viroids and their transmission in plants
+2015|1|1(e)|10|Evolution of sexual reproduction in fungi
+2015|1|2(a)|20|Describe the range of vegetative structures with suitable diagrams in Volvocales and their phylogenetic relationships.
+2015|1|2(b)|15|Describe the disease symptoms, causal organism and the control measures of the loose smut of wheat.
+2015|1|2(c)|15|Draw well labelled diagram of the L.S. of Anthoceros sporophyte. Discuss the evolutionary significance of Anthoceros also.
+2015|1|3(a)|15|Draw well labelled diagram of the T.S. of Teleutosorus of Puccinia and give a brief description of the same.
+2015|1|3(b)|15|Describe the symptoms, causal organism and the control measures of white rust of crucifers.
+2015|1|3(c)|20|Discuss the distribution of living Gymnosperms in India and their economic importance.
+2015|1|4(a)|25|Give the name of the causal organism, disease symptoms and disease control measures of the following: Red rot of sugarcane and Late blight of potato
+2015|1|4(b)|15|Give an account of sexual fruiting bodies in Ascomycetes.
+2015|1|4(c)|10|Describe the method of vegetative reproduction in Bryophytes.
+2015|1|5(a)|10|Mycotoxins
+2015|1|5(b)|10|Concept of totipotency in higher plants
+2015|1|5(c)|10|Dye yielding plants
+2015|1|5(d)|10|Ethnobotanical knowledge and beliefs in species conservation
+2015|1|5(e)|10|Use of somaclonal variations in crop improvement
+2015|1|6(a)|20|Write an account of the following families with respect to floral structures. Give the botanical names of three important plant species belonging to each of the families and specify their uses: Ranunculaceae and Fabaceae
+2015|1|6(b)|15|Discuss the components of a full-fledged Botanical garden.
+2015|1|6(c)|15|Give an account of micropropagation and its utility towards ex-situ conservation of rare and endangered plants.
+2015|1|7(a)|12.5|Describe the oil yielding plants of India and their economic importance.
+2015|1|7(b)|12.5|Distinguish the Androecium of Malvaceae, Asteraceae and Asclepiadaceae from each other.
+2015|1|7(c)|12.5|"Somatic hybrids can be characterized by a variety of methods." Substantiate the above statement.
+2015|1|7(d)|12.5|Compare the floral characters of the family Solanaceae and Malvaceae.
+2015|1|8(a)|17|Give an account of Vavilov's "Centres of Origin" of the cultivated plants.
+2015|1|8(b)|17|Describe the method of production of Androgenic haploids.
+2015|1|8(c)|16|Describe the anomalous secondary growth in monocots with suitable diagram.
+2016|1|1(a)|10|Role of microbes in mining and pharmaceuticals
+2016|1|1(b)|10|Ultrastructure of flagella in Algae
+2016|1|1(c)|10|Role of soil solarization in disease control
+2016|1|1(d)|10|Lytic cycle of bacteriophage
+2016|1|1(e)|10|Physiological relationship of two partners in Lichens
+2016|1|2(a)|20|Explain the molecular basis of infection and disease resistance in plants.
+2016|1|2(b)|15|Describe the characteristic features of Cyanobacteria and mention its role in nitrogen fixation.
+2016|1|2(c)|15|Write down the characters of pteridophytes resembling bryophytes and gymnosperms.
+2016|1|3(a)|20|Discuss the evolution of Sporophyte in Bryophytes.
+2016|1|3(b)|15|Trace the transition from multisporangia to conidia in Mucorales with illustrations and suitable examples.
+2016|1|3(c)|15|Describe the different stages in the development of female gametophyte within the ovule in Cycas.
+2016|1|4(a)|12.5|Give the name of the causal organism, symptoms and control measures of an important crop disease caused by a fungus.
+2016|1|4(b)|12.5|Give the name of the causal organism, symptoms and control measures of an important crop disease caused by a bacterium.
+2016|1|4(c)|12.5|Give the name of the causal organism, symptoms and control measures of an important crop disease caused by a virus.
+2016|1|4(d)|12.5|Give the name of the causal organism, symptoms and control measures of an important crop disease caused by a mycoplasma.
+2016|1|5(a)|10|Forensic application of palynology
+2016|1|5(b)|10|Procedure and maintenance of Herbarium.
+2016|1|5(c)|10|Tumour cells and their culture
+2016|1|5(d)|10|Xylem and phloem differentiation
+2016|1|5(e)|10|Energy plantations
+2016|1|6(a)|20|Describe the principles and application of embryo culture techniques, mentioning the protocol for embryo culture.
+2016|1|6(b)|30|Write an account of the following families in regard to their floral structures. Give the botanical names of three important plant species belonging to each of the families and specify their uses: (i) Asclepiadaceae (ii) Musaceae (iii) Apiaceae
+2016|1|7(a)|15|Discuss the principle and application of Numerical Taxonomy.
+2016|1|7(b)|15|Give the botanical names of latex yielding plants with narcotic properties and also write the names of the plant-parts used therein.
+2016|1|7(c)|20|How anthers and pollens are cultured in vitro? Discuss its importance in the production of haploid plants.
+2016|1|8(a)|20|Compare and contrast the systems of classification of angiosperms proposed by Hutchinson and Takhtajan.
+2016|1|8(b)|15|Differentiate between normal and abnormal secondary growth in dicot stem. Discuss with suitable examples. Draw labelled diagrams.
+2016|1|8(c)|15|Write notes on the following: (i) Heart wood and Sap wood (ii) Different types of trichomes
+2018|1|1(a)|10|Structure of mycoplasma and its importance
+2018|1|1(b)|10|Replication of plant viruses
+2018|1|1(c)|10|Plant Quarantine
+2018|1|1(d)|10|Spermocarp and Cystocarp
+2018|1|1(e)|10|Structure and importance of Lichens
+2018|1|2(a)|20|Describe the role of micro-organisms in medicine and industry.
+2018|1|2(b)|15|Write an account of defense structures in plants against pathogens.
+2018|1|2(c)|15|Comment on morphological nature of sporocarp in Marsilea.
+2018|1|3(a)|12.5|Write the name of the causal organism, symptoms and control measures of Green ear disease of Bajra.
+2018|1|3(b)|12.5|Write the name of the causal organism, symptoms and control measures of Paddy blast.
+2018|1|3(c)|12.5|Write the name of the causal organism, symptoms and control measures of Angular leaf spot of cotton.
+2018|1|3(d)|12.5|Write the name of the causal organism, symptoms and control measures of Sandal spike.
+2018|1|4(a)|15|Give an account of distribution and economic importance of Bryophytes in India.
+2018|1|4(b)|15|Describe the male and female cones of Pinus.
+2018|1|4(c)|20|Explain distinguishing characters of Dipterocarpaceae, Asteraceae and Orchidaceae.
+2018|1|5(a)|10|Floral morphology (Fructification) and L.S. of ovule of Cycadeoidea
+2018|1|5(b)|10|Typification in plant nomenclature
+2018|1|5(c)|10|Development of endosperm and its functions
+2018|1|5(d)|10|Different types of Herbaria
+2018|1|5(e)|10|Generation of Symmetric hybrids
+2018|1|6(a)|15|Compare the systems of classifications proposed by Hutchinson and Cronquist with a note on their merits and demerits.
+2018|1|6(b)|10|Describe the different types of stomata in dicots.
+2018|1|6(c)|10|Discuss the essential components of a Botanical garden. Write the names of important Botanical gardens in India.
+2018|1|6(d)|15|Describe the process of protoplast isolation and mention the applications of protoplast culture.
+2018|1|7(a)|20|Describe the role of xylem and phloem in secondary growth of plants.
+2018|1|7(b)|10|Comment on salient features of Cordaitales.
+2018|1|7(c)|10|Discuss the leaf anatomy of C3 and C4 plants.
+2018|1|7(d)|10|Describe the major types of embryos with suitable examples.
+2018|1|8(a)|20|Write an account of the following families with reference to floral formula and floral diagram. Give Botanical names of four important plant species belonging to each of the families and mention their uses: (i) Euphorbiaceae (ii) Asclepiadaceae (iii) Poaceae
+2018|1|8(b)|15|Write Botanical names and their families of plants yielding spices, drugs and insecticides and mention the parts used therein.
+2018|1|8(c)|15|Write notes on the following: (i) NPC system of classification of pollen grains (ii) Cytodifferentiation and its regulation
+2019|1|1(a)|10|Mycorrhizal association and its importance in plants.
+2019|1|1(b)|10|Differentiation between bioremediation and bioleaching.
+2019|1|1(c)|10|Nature and significance of plant-endophyte relationship.
+2019|1|1(d)|10|Alternation of heteromorphic generations in Bryophytes.
+2019|1|1(e)|10|Draw a well labelled longitudinal sectional view of the structure of capsule of Funaria.
+2019|1|2(a)|20|What are the characteristic features, means of reproduction and economic importance of Ascomycetes?
+2019|1|2(b)|15|Describe the characteristics and replication of viroids.
+2019|1|2(c)|15|What are the critical features of heterospory and seed habit in pteridophytes?
+2019|1|3(a)|20|Write the name of causal agent, symptoms and control measures of yellow vein of Okra and Tundu disease of wheat.
+2019|1|3(b)|15|Comment on the structure and ecological and physiological importance of leaf of Azolla.
+2019|1|3(c)|15|Compare the thallus forms of brown and green algae.
+2019|1|4(a)|20|Compare and contrast the systems of classifications of Bentham and Hooker, and Hutchinson. Add a note on their merits and demerits.
+2019|1|4(b)|15|What causes anomalous secondary growth in some dicot plants? Explain.
+2019|1|4(c)|15|State the applications of Microbiology in Agriculture.
+2019|1|5(a)|10|Importance of haploid plant production from pollen grains.
+2019|1|5(b)|10|Hydrocarbon yielding energy crops and advantages of biodiesel.
+2019|1|5(c)|10|Steps in the production of somatic hybrids and their advantages.
+2019|1|5(d)|10|Illustrate Kranz anatomy in a typical C4 plant leaf.
+2019|1|5(e)|10|Palynology and its significance.
+2019|1|6(a)|20|Define herbarium and give methods of its preparation and also mention the names of five major herbaria.
+2019|1|6(b)|15|Write botanical names and families of the plants yielding beverages, narcotics and gums.
+2019|1|6(c)|15|What are the identifying characters, floral diagram and floral formula of Verbenaceae and Liliaceae?
+2019|1|7(a)|20|Highlight the main features of Vavilov's centres of origin of crop plants.
+2019|1|7(b)|15|Define totipotency and discuss cytodifferentiation in plants.
+2019|1|7(c)|15|How is Embryology useful in Taxonomy?
+2019|1|8(a)|20|How many types of embryo-sacs are known among angiosperms? Describe their formation. Give one example for each.
+2019|1|8(b)|15|Discuss the salient features of Gnetales. Why are they regarded as the most evolved Gymnosperms?
+2019|1|8(c)|15|What are the different stages of micropropagation? Mention its advantages.
+2023|2|1(a)|10|Cell-cell adhesion mechanism
+2023|2|1(b)|10|Structure and functions of cytoskeleton
+2023|2|1(c)|10|Characteristics of triplet codon
+2023|2|1(d)|10|Crossing over and its significance
+2023|2|1(e)|10|Correlation, its types and significance
+2023|2|2(a)|15|Differentiate between polytene chromosomes and normal chromosomes.
+2023|2|2(b)|15|Describe polygenic inheritance by giving suitable examples.
+2023|2|2(c)|20|Describe the problems associated with gene transfer in plants. Write a note on the status of transgenic research in India.
+2023|2|3(a)|15|What are the major requirements for a successful back-crossing programme? Describe its procedure, advantages and limitations.
+2023|2|3(b)|15|Describe the mechanism involved in membrane transport and vesicular transport.
+2023|2|3(c)|20|Describe the theory of natural selection and its significance.
+2023|2|4(a)|20|Describe the structure, kinds, chemical nature, origin and functions of lysosomes.
+2023|2|4(b)|15|Explain multiple alleles and their characteristics. How are they different from pseudoalleles?
+2023|2|4(c)|15|Describe the procedure, requirements and efficiency level of gene amplification through Polymerase Chain Reaction (PCR).
+2023|2|5(a)|10|Biological significance of mineral elements in plants
+2023|2|5(b)|10|Photo-oxidation of water by photosystem II through oxygen-evolving complex
+2023|2|5(c)|10|Photoperiodic induction and the perception site of photoperiodic stimulus
+2023|2|5(d)|10|Role of light as a limiting factor in an ecosystem
+2023|2|5(e)|10|Forests are an important wealth of the country
+2023|2|6(a)|15|What are nastic movements, their types and mechanism? Explain.
+2023|2|6(b)|15|How is the transport of electrons and pumping of protons associated with ATP synthesis in mitochondria? Explain.
+2023|2|6(c)|20|Why is the conservation of biodiversity important? Discuss the various steps adopted for it by our country.
+2023|2|7(a)|20|How can the reaction equilibria and reaction rates be explained by using free energy diagram in a simple enzymatic reaction?
+2023|2|7(b)|20|Explain the following: (i) Nitrate and nitrite reduction in the leaves of higher plants. (ii) Protection of enzyme nitrogenase against oxygen and hydrogen damage.
+2023|2|7(c)|10|Comment on the following: (i) Biosphere reserves (ii) Red Data Book
+2023|2|8(a)|20|(i) How do the three stages in fatty acid oxidation converge to conserve energy as ATP? (ii) What is beta-oxidation? Describe various steps in fatty acid oxidation pathway involving saturated fatty acids.
+2023|2|8(b)|15|Explain the transfer of energy between different trophic levels of an ecosystem.
+2023|2|8(c)|15|What are the major gaseous pollutants and their sources? Explain the effects of air pollutants on human health.
+2017|2|1(a)|10|Draw a labelled diagram of prokaryotic and eukaryotic chloroplast and describe their functions.
+2017|2|1(b)|10|Molecular basis of sex differentiation
+2017|2|1(c)|10|Role of mutations in plant evolution
+2017|2|1(d)|10|Molecular basis of cell cycle
+2017|2|1(e)|10|Student's t-test is a test of significance. Explain.
+2017|2|2(a)|20|Explain the importance of numerical and structural variations in chromosomes with respect to crop varieties.
+2017|2|2(b)|15|What is the significance of chromatin organization and packaging in genome?
+2017|2|2(c)|15|What is apomixis? Write about its relevance in plant breeding.
+2017|2|3(a)|20|Define vertical and lateral transfer of genes. Explain their importance with at least one example of each.
+2017|2|3(b)|15|(i) What are the genetic bases of male sterility? (ii) How can a protein solution be sterilized?
+2017|2|3(c)|15|Explain the significance and importance of the following with at least one example: (i) Gene silencing (ii) Multigene families (iii) Transgenic crops and their future
+2017|2|4(a)|20|Explain with suitable examples the importance and significance of the following: (i) Quantitative genetics (ii) Linkage and crossing-over (iii) Molecular maps (iv) Sex-linked inheritance
+2017|2|4(b)|15|Elaborate on the use of molecular markers in plant breeding.
+2017|2|4(c)|15|Write brief notes on the following: (i) Southern blotting (ii) RT-PCR (iii) Mass selection
+2017|2|5(a)|10|Beta-oxidation
+2017|2|5(b)|10|GS-GOGAT system
+2017|2|5(c)|10|Phytochelatins
+2017|2|5(d)|10|Biotic factors
+2017|2|5(e)|10|Biosphere reserve as a part of protected area network
+2017|2|6(a)|15|Describe the nature and importance of ion fluxes during stomatal movement.
+2017|2|6(b)|20|Comment on compartmentation of biochemical events in photorespiration. Add a note on the significance of photorespiration.
+2017|2|6(c)|15|What are the purposes and aims of Environmental Impact Assessment (EIA)? What are the guiding principles for an effective EIA process? Write the main steps of an idealized EIA.
+2017|2|7(a)|20|Describe the physiological changes associated with the process of seed germination.
+2017|2|7(b)|10|Citric acid cycle is an amphibolic process. Discuss.
+2017|2|7(c)|20|What is sedimentary cycle? Explain the flow of an element showing sedimentary cycle through diagrammatic representation. What are the anthropogenic influences on such elemental cycle(s)?
+2017|2|8(a)|20|Differentiate between primary active transport and secondary active transport.
+2017|2|8(b)|15|What is the concept of ecosystem? How does succession influence the diversity and stability of an ecosystem?
+2017|2|8(c)|15|Define sustainable development. How do global warming and climatic changes influence the endemic flora and fauna of a region?
+2022|2|1(a)|10|Semi-autonomous cell organelles
+2022|2|1(b)|10|Multiple factor hypothesis
+2022|2|1(c)|10|Structure and functions of peroxisomes
+2022|2|1(d)|10|Cell wall in plants
+2022|2|1(e)|10|Southern blotting
+2022|2|2(a)|20|Discuss the different processes by which solute moves across cell membrane.
+2022|2|2(b)|15|What are B-chromosomes? Describe their significance.
+2022|2|2(c)|15|In a cross between pea plants with green and yellow coloured pods, the F2 individuals segregated into 787 green and 277 yellow pod coloured individuals. If you have to test that these results agree with the expected ratio 3:1, then apply Chi-square P = 5%. The control value of Chi-square at 0.05 for df = 2-1 = 1 is 3.84.
+2022|2|3(a)|15|What is organic evolution? Highlight the mechanisms governing organic evolution.
+2022|2|3(b)|15|Explain the phenomenon of incomplete dominance and its significance.
+2022|2|3(c)|20|What is gene editing? Discuss its applications and advantages for genetic engineering.
+2022|2|4(a)|20|How male sterility helps in heterosis breeding? Discuss the application of barnase-barstar system in achieving heterosis.
+2022|2|4(b)|15|Describe the steps in DNA sequencing. What are its applications?
+2022|2|4(c)|15|What do you mean by signal transduction? Explain the different types of intracellular signal transduction.
+2022|2|5(a)|10|Symptoms of mineral deficiencies
+2022|2|5(b)|10|RAPD PCR - strength, weakness and application.
+2022|2|5(c)|10|Photophosphorylation
+2022|2|5(d)|10|Endangered Plant Species
+2022|2|5(e)|10|Phytoremediation
+2022|2|6(a)|20|Differentiate between enzymes and coenzymes and describe their mechanisms of action.
+2022|2|6(b)|15|Define secondary metabolites. Discuss the importance of secondary metabolites to plants.
+2022|2|6(c)|15|What is phloem? Describe the various hypotheses concerning transportation in phloem.
+2022|2|7(a)|20|Describe the key goals of the convention on Biological Diversity. What steps have been taken in India to implement the provisions of CBD?
+2022|2|7(b)|15|Discuss the sequential steps in the process of primary autotrophic succession. What are the three popular theories that explain climax concept?
+2022|2|7(c)|15|Describe the movement of phosphorus through lithosphere, hydrosphere and biosphere. How human activities have impacted the phosphorus cycle in nature?
+2022|2|8(a)|20|Define the terms photoperiodism and florigen. Describe the mechanism of response in short day and long day plants giving suitable examples.
+2022|2|8(b)|15|Explain how the different greenhouse gases contribute to the raising global temperature. Add a note on the adverse effects of global warming and how to mitigate.
+2022|2|8(c)|15|Describe the phytogeographical regions of India. What are the environmental factors that influence their species composition?
+2026|2|1(a)|10|Frame Shift mutation
+2026|2|1(b)|10|Lampbrush chromosome and its significance
+2026|2|1(c)|10|Reporter genes
+2026|2|1(d)|10|Cell signalling and Cell receptors
+2026|2|1(e)|10|DNA finger printing
+2026|2|2(a)|20|Give a detailed account on sex linked inheritance.
+2026|2|2(b)|15|Explain the structural variations of chromosomes and their significance.
+2026|2|2(c)|15|Describe the role of Biochemical and Molecular basis of Mutation.
+2026|2|3(a)|20|(i) Write in detail the chemical composition of microtubules. (ii) Elaborate the functions of cytoplasmic microtubules.
+2026|2|3(b)|15|Explain the different means of passive transport across the plasma membrane.
+2026|2|3(c)|15|(i) Elaborate on the significance of molecular markers. (ii) Explain the significance of polyploidy in Agriculture.
+2026|2|4(a)|20|Discuss on the tools and techniques involved in PCR and FISH.
+2026|2|4(b)|15|Explain the causes of Heterosis and its impact in Agriculture.
+2026|2|4(c)|15|Describe the various evidences supporting organic evolution.
+2026|2|5(a)|10|Munch hypothesis
+2026|2|5(b)|10|Correlation and Regression
+2026|2|5(c)|10|Heat Shock Proteins (HSPs)
+2026|2|5(d)|10|Biogeochemical cycle
+2026|2|5(e)|10|Regulation of NIF genes
+2026|2|6(a)|20|(i) Explain the significance of Nod factors and the process of root nodule formation. (ii) Describe the process of amino acid biosynthesis in nitrogen metabolism.
+2026|2|6(b)|15|Differentiate between photophosphorylation and oxidative phosphorylation.
+2026|2|6(c)|15|Discuss the biochemical and physiological changes during the process of fruit ripening.
+2026|2|7(a)|20|(i) Explain the factors affecting enzyme activity. (ii) Describe the mechanism of enzyme action.
+2026|2|7(b)|15|Explain the following: (i) Acid rain (ii) Biocide as pollutant (iii) Photochemical smog
+2026|2|7(c)|15|(i) Describe seed dormancy and explain how is it getting regulated? (ii) Explain biochemical changes taking place during the seed germination.
+2026|2|8(a)|20|(i) What is the basic concept of phytogeography? (ii) Give a detailed account on various phytogeographical regions of India.
+2026|2|8(b)|15|Give an account on farmers rights and intellectual property rights.
+2026|2|8(c)|15|Discuss on the present status of forest resources of India. Give the factors responsible for deforestation.
+2019|2|1(a)|10|"DNA fingerprinting is important in any plant breeding programme." Justify the statement with suitable examples.
+2019|2|1(b)|10|Citing example, discuss briefly the process of cytoplasmic inheritance and the genes involved.
+2019|2|1(c)|10|Explain the mechanism of cell signalling and the role of cell receptors in regulating this process.
+2019|2|1(d)|10|How does silencing of the genes occur in eukaryotic genome and what are the implications of gene silencing?
+2019|2|1(e)|10|Explain, with required diagrams, the chemical structure and function of primary cell wall and plasma membrane.
+2019|2|2(a)|10|Dark brown seed coat colour in Phaseolus is dominant over light brown colour. The following progenies were produced from parents with known phenotypes but unknown genotypes in different experiments: (i) L. brown x L. brown: 0 D. brown, 75 L. brown (ii) D. brown x L. brown: 90, 0 (iii) D. brown x L. brown: 110, 105 (iv) D. brown x D. brown: 72, 27 (v) D. brown x D. brown: 60, 0. Mention the genotype of each parent in the five experiments by using the letter B for dark brown and b for light brown.
+2019|2|2(b)|20|Discuss the role of Histone in regulating chromatin structure with special emphasis on Histone N-terminal tails as well as nucleosome assembly.
+2019|2|2(c)|20|Describe the process of DNA replication in eukaryotic organisms with required diagrams, mentioning the role of enzymes in the different steps involved. Comment on the dynamics of replication fork in eukaryotes.
+2019|2|3(a)|20|Discuss briefly the general principles of cellular adhesion. Give a note on identification and characterization of adhesion receptors.
+2019|2|3(b)|20|Describe sequentially the steps of T-DNA transfer process from Agrobacterium cell to plant nuclear genome. Write a brief note on achievements of 'gene transfer technology' in crop improvement.
+2019|2|3(c)|10|Explain the role of transcription factors associated with transcription initiation, elongation and termination. How does Histone modification regulate chromatin accessibility?
+2019|2|4(a)|10|Describe the cellular structure and functions of Ribosome and Peroxisome.
+2019|2|4(b)|20|Discuss two DNA sequencing methods with suitable illustrations. Name two fully sequenced eukaryotic genomes with their sizes.
+2019|2|4(c)|20|Write explanatory notes on the following: (i) Polygenic Inheritance (ii) Sex-linked Inheritance
+2019|2|5(a)|10|Illustrate the difference between C4 and CAM pathways, giving suitable examples. Write a brief note on their importance.
+2019|2|5(b)|10|Name at least two plants known to be 'plant indicators' and explain their importance in relation to soil quality evaluation.
+2019|2|5(c)|10|Illustrate with example the importance of energy transfer and energy conservation for plant growth and development.
+2019|2|5(d)|10|Explain with example the impact of Intellectual Property Rights (IPR) and its global relevance with emphasis on Indian scenario.
+2019|2|5(e)|10|Discuss the processes of mineral nutrition and mineral deficiencies in dry land areas.
+2019|2|6(a)|15|Write explanatory notes with examples on the following: (i) Difference between aerobic and anaerobic respiration as well as fermentation processes (ii) Photorespiration (iii) Chemo-osmotic theory and ATP synthesis
+2019|2|6(b)|15|Write explanatory notes with examples on the following: (i) Restriction endonuclease (ii) Role of glyoxysomes in conversion of fats into simpler molecules (iii) Name specific physiological responses on the basis of which IAA, GA3 and Kinetin can be identified.
+2019|2|6(c)|20|(i) Explain and justify with examples that recycling plays an important role in solid waste management. (ii) "In the present scenario, Global Warming and Climate Change are amongst the greatest threats for human society." Justify the statement with examples.
+2019|2|7(a)|15|What are the molecular basis and possible manipulations which may help fruit ripening?
+2019|2|7(b)|15|Illustrate your answer with suitable example, the mechanism by which movement of ions takes place across the cell membrane.
+2019|2|7(c)|20|Explain with examples, in what way ecosystems and conservation help in the formation of a developed biosphere.
+2019|2|8(a)|15|Discuss the concept and dynamics of a plant community. Illustrate with suitable examples.
+2019|2|8(b)|15|Explain the relevance and importance of the following: (i) Protected area network (ii) Invasive species (iii) Approaches for 'Environmental Impact Assessment'
+2019|2|8(c)|20|Explain the approaches of Stress physiology in relation to salinity and metal stresses. Support your answer with examples.
+2014|2|1(a)|10|In what way does Mendel's law of inheritance (dominance) differ from incomplete dominance?
+2014|2|1(b)|10|Selection of cytoplasmic-genetic male sterility in the development of hybrid varieties
+2014|2|1(c)|10|Use of FISH technique in tracking the target organisms
+2014|2|1(d)|10|Application of radiomimetic chemicals
+2014|2|1(e)|10|Tests of significance in biology
+2014|2|2(a)|15|Why do chromosomal aberrations happen?
+2014|2|2(b)|15|What are molecular probes? Mention their applications in biology.
+2014|2|2(c)|20|How would you develop improved variety of basmati rice for organic farming conditions?
+2014|2|3(a)|20|When the glucose-grown cells of E. coli are transferred to the medium containing lactose, what will be the fate of Lac Operon?
+2014|2|3(b)|15|What do you understand by the 'cell cycle'? Mention the important proteins that control the cell cycle.
+2014|2|3(c)|15|What makes the ribosomal RNA gene (rRNA) suitable for phylogenetic studies?
+2014|2|4(a)|20|Briefly describe the various types of chromosomal aberrations.
+2014|2|4(b)|15|Give an experimental evidence to demonstrate that DNA is the genetic material.
+2014|2|4(c)|15|Describe in detail the structure and chemical composition of ribosomes.
+2014|2|5(a)|10|Apical dominance
+2014|2|5(b)|10|IUCN classification of extinction risks
+2014|2|5(c)|10|Biological species concept
+2014|2|5(d)|10|Zinc deficiency in crop plants
+2014|2|5(e)|10|Mechanism of drought resistance
+2014|2|6(a)|15|What is seed germination? Define normal and abnormal seedlings.
+2014|2|6(b)|20|Describe the roles played by mesophyll cells and bundle sheath cells in C4 pathway of CO2 fixation.
+2014|2|6(c)|15|Define 'biodiversity' and discuss the measures to conserve it.
+2014|2|7(a)|20|Describe the role of national and international organisations established for germplasm conservation.
+2014|2|7(b)|15|Explain how proton-motive force drives the synthesis of ATP.
+2014|2|7(c)|15|Give a brief note on the concept of sustainable development.
+2014|2|8(a)|20|Explain how air and water pollution affect the agro-ecosystems.
+2014|2|8(b)|15|What are 'symplasmids'? Mention their role in root nodulation and N2-fixation in the leguminous plants.
+2014|2|8(c)|15|Does the process of nitrification synthesize ATP, and how is this energy conserved?
+2015|2|1(a)|10|Mitochondria
+2015|2|1(b)|10|Extrinsic and Intrinsic proteins
+2015|2|1(c)|10|Genetic code
+2015|2|1(d)|10|Hybrid vigour
+2015|2|1(e)|10|Self-incompatibility.
+2015|2|2(a)|15|Distinguish between prokaryotic and eukaryotic cell.
+2015|2|2(b)|15|Discuss briefly the evidence of organic evolution.
+2015|2|2(c)|20|Describe briefly the various methods of gene transfer.
+2015|2|3(a)|15|Describe the structure, behaviour and significance of special types of chromosomes.
+2015|2|3(b)|20|What is the role of RNA in the origin and evolution of living organisms?
+2015|2|3(c)|15|Describe the method of developing disease and insect resistant varieties through back cross method of breeding crop varieties.
+2015|2|4(a)|15|Describe the numerical variation in chromosomes.
+2015|2|4(b)|20|What is the biochemical and molecular basis of mutations?
+2015|2|4(c)|15|Discuss briefly the mechanism of disease resistance.
+2015|2|5(a)|10|ATP synthase
+2015|2|5(b)|10|Senescence
+2015|2|5(c)|10|Conservation of biodiversity
+2015|2|5(d)|10|Species based mechanism of invasion
+2015|2|5(e)|10|Mainstream forms of renewable energy.
+2015|2|6(a)|20|Describe the process of biological nitrogen fixation with special emphasis on denitrogenase.
+2015|2|6(b)|15|Discuss the principal systems of environmental pollution and the reasons thereof.
+2015|2|6(c)|15|Describe different sub-mitochondrial complexes associated with electron transport chain of aerobic respiration.
+2015|2|7(a)|15|Enumerate the salient features of water relations in crop plants.
+2015|2|7(b)|15|What are the characteristics of phytochrome induced responses in flowering of higher plants? How do they control flowering?
+2015|2|7(c)|20|Distinguish between natural and social forests. Discuss in detail the various objectives of social forestry.
+2015|2|8(a)|15|Describe the mechanism of CO2 fixation in CAM plants.
+2015|2|8(b)|15|Describe any four principal phytogeographical regions of India.
+2015|2|8(c)|20|Discuss the various advantages and limitations of phytoremediation.
+2016|2|1(a)|10|Polyteny differs from polyploidy
+2016|2|1(b)|10|Factors affecting recombination frequencies
+2016|2|1(c)|10|Chi-square test as a test of goodness of fit
+2016|2|1(d)|10|C-value paradox
+2016|2|1(e)|10|Chemical mutagens
+2016|2|2(a)|20|Explain and describe the tools and techniques of FISH.
+2016|2|2(b)|15|Describe the basic structure of a nucleosome.
+2016|2|2(c)|15|"The consequences of translocations are profound. They lead not only to a change in gene linkage in the translocated sections but also to easily incurred meiotic abnormalities." Discuss.
+2016|2|3(a)|15|Citing suitable evidences, explain plastid inheritance in four o'clock plant.
+2016|2|3(b)|15|Discuss Inbreeding depression versus Heterosis.
+2016|2|3(c)|20|How does the Ins P3/DAG pathway participate in the process of translocation of cellular signals?
+2016|2|4(a)|10|Back cross method
+2016|2|4(b)|10|Restriction endonucleases
+2016|2|4(c)|10|Transgenic plants as living bioreactors
+2016|2|4(d)|10|Molecular markers
+2016|2|4(e)|10|Retroviruses as vectors
+2016|2|5(a)|10|Apoenzyme
+2016|2|5(b)|10|Ethylene as volatile hormone
+2016|2|5(c)|10|Soil salinity also restricts the growth of plants
+2016|2|5(d)|10|Taiga or Boreal forests
+2016|2|5(e)|10|"The pyramid of energy always takes a true upright shape." Why?
+2016|2|6(a)|15|Describe the role of glyoxysomes in conversion of fats into more mobile molecules.
+2016|2|6(b)|15|Distinguish between phloem loading and phloem unloading.
+2016|2|6(c)|20|What is Niche overlap? Narrate the biogeographic classifications of India.
+2016|2|7(a)|15|What are the functions of the enzymes which need copper, zinc and molybdenum as their co-factors?
+2016|2|7(b)|15|Enumerate the effects of oil spillage and suggest the control and remedial measures of it.
+2016|2|7(c)|20|Define ecological succession. Describe the causes and basic types of ecological succession.
+2016|2|8(a)|10|Recycling is an integral part of solid waste management
+2016|2|8(b)|10|OTEC
+2016|2|8(c)|10|Allosteric enzymes and Feedback control
+2016|2|8(d)|10|Biosafety and Bioremediation
+2016|2|8(e)|10|Solar pond
+2018|2|1(a)|10|"Organelles bound by membranes in eukaryotic cells have originated from endosymbiosis of prokaryotic cells." Explain this statement with the help of some suitable diagrams.
+2018|2|1(b)|10|Gray seed colour in peas is dominant over the white. In the following experiments, parents with known phenotypes but unknown genotypes produced the following progeny: (i) Gray x White: 82 gray, 78 white (ii) Gray x Gray: 118, 39 (iii) White x White: 0, 50 (iv) Gray x White: 74, 0 (v) Gray x Gray: 90, 0. Using the letter G for gray and g for white, give the genotype of each parent.
+2018|2|1(c)|10|Explain the concept of multiple alleles with one example.
+2018|2|1(d)|10|Why is RNA considered as the first living molecule? Discuss its role in the origin of life.
+2018|2|1(e)|10|Briefly describe the different methods of gene transfer in plants.
+2018|2|2(a)|20|Briefly discuss the cellular function of mitochondria and endoplasmic reticulum with required diagrams.
+2018|2|2(b)|20|How are insect resistant transgenic plants developed? Which gene is used in this technology? Briefly explain the rationale of the technology.
+2018|2|2(c)|10|Which statistical test is used to determine whether the observed progeny of a cross fits or differs from the expected values? Name the test and briefly describe the steps involved.
+2018|2|3(a)|20|Discuss the role of cyclin-dependent protein kinases in controlling the cell cycle. Explain with the help of a diagram.
+2018|2|3(b)|20|(i) Explain the synthetic theory of organic evolution. (ii) Enumerate the different causes of heterosis.
+2018|2|3(c)|10|Explain the importance of the following techniques: (i) FISH (ii) Molecular probe
+2018|2|4(a)|15|Briefly describe the following terms and emphasize their applications: (i) Restriction endonucleases (ii) Mutation breeding (iii) Gene mapping
+2018|2|4(b)|20|Describe with suitable diagram, the lac operon of bacterium E. coli. Discuss the control mechanism of the operon which produces the enzymes necessary for catabolizing the lactose.
+2018|2|4(c)|15|Describe the structure and function of Plasmodesmata.
+2018|2|5(a)|10|Water potential
+2018|2|5(b)|10|Glycolysis
+2018|2|5(c)|10|Phloem loading
+2018|2|5(d)|10|Phytogeographical regions of India
+2018|2|5(e)|10|Components of an ecosystem
+2018|2|6(a)|10|What is Phosphorylation? Differentiate between photophosphorylation and oxidative phosphorylation.
+2018|2|6(b)|20|What is red data book? Describe it. Discuss the various IUCN threat categories.
+2018|2|6(c)|20|How do plants monitor day length? Discuss the various categories of plants based on their photoperiodic responses. What happens when the dark period is interrupted by night break and why?
+2018|2|7(a)|15|What is ecological succession? Discuss the various models describing the mechanism of succession.
+2018|2|7(b)|15|Define plant community. Discuss the various analytical characters of plant community.
+2018|2|7(c)|20|Define enzyme, prosthetic groups, coenzymes and isoenzymes. Discuss the mechanism of enzyme action.
+2018|2|8(a)|20|Describe C4 pathway of CO2 fixation. Discuss the advantages that the C4 plants have over C3 plants.
+2018|2|8(b)|15|What is biodiversity? Discuss the major strategies for the conservation of biodiversity.
+2018|2|8(c)|15|Define natural forests and mention the name of the forest type covering the maximum area in India. Discuss the major forest types in India as described by Champion and Seth.
+2020|2|1(a)|10|Applications of probes in Southern blotting.
+2020|2|1(b)|10|Nuclear pore complex and its functions.
+2020|2|1(c)|10|Structure and behaviour of B-chromosomes.
+2020|2|1(d)|10|Why are overlapping genes important? Discuss.
+2020|2|1(e)|10|Describe Chi-square test and its applications in genetic study.
+2020|2|2(a)|15|Discuss major steps in signal transduction.
+2020|2|2(b)|15|Describe the significance and uses of the following: (i) Male sterility (ii) Polyploidy in plant breeding
+2020|2|2(c)|20|Transgenic technology is a breakthrough innovation. Justify with examples.
+2020|2|3(a)|15|Briefly describe two theories of Chiasma formation. Discuss whether Chiasmata are the cause or consequence of crossing-over.
+2020|2|3(b)|15|What is Antisense RNA? Explain its applications and describe the catalytic activity of RNA.
+2020|2|3(c)|20|Does Z-DNA play a regulatory role? Discuss critically.
+2020|2|4(a)|15|Explain the mode of biogenesis of peroxisomes and discuss their functions.
+2020|2|4(b)|15|Name the phyto-geographical regions of India. Which are the dominant flora of the region representing the west coast of India from Kanyakumari to Satpura ranges in Gujarat?
+2020|2|4(c)|20|"Cell cycle is an ordered series of events leading to cell replication." Discuss.
+2020|2|5(a)|10|Climacteric fruits and their advantage to fruit growers.
+2020|2|5(b)|10|Metabolic energy requirement for uptake of sucrose in apoplastic pathway.
+2020|2|5(c)|10|Cyanide-resistant respiration in plants.
+2020|2|5(d)|10|Can Intellectual Property Rights protect and safeguard farmers' rights and interests?
+2020|2|5(e)|10|What are the causes of the rise in mean atmospheric temperature and how will it influence the climate of a region?
+2020|2|6(a)|15|Carboxylation and oxygenation compete to decrease the efficiency of photosynthesis. Discuss.
+2020|2|6(b)|15|What is drought escape? Discuss different strategies adopted by plants for drought resistance.
+2020|2|6(c)|20|What is Clock hypothesis? Justify the importance of main photoreceptor and photoperiodic induction in photoperiodism.
+2020|2|7(a)|15|How can the two laws of thermodynamics be combined to determine spontaneity of a reaction? Also derive a relationship between free energy exchange and equilibrium constant.
+2020|2|7(b)|15|What is bioremediation? How can plants be used to detoxify the heavy metal containing industrial effluents?
+2020|2|7(c)|20|What is the importance of fatty acid synthase complex? Discuss the growth of fatty acyl chain through priming and elongation phases.
+2020|2|8(a)|15|How is solar energy trapped, fixed and transformed in an aquatic food chain?
+2020|2|8(b)|15|How do microbes help in chemical recycling in nature for a stable community climax?
+2020|2|8(c)|20|Eco-development sequence proceeds from a barren land to a climax and finally ends in a desert. Explain critically.
+2021|2|1(a)|10|Cell adhesion molecules
+2021|2|1(b)|10|Ribosomal RNA processing in nucleolus
+2021|2|1(c)|10|Genetic consequences of Inversion
+2021|2|1(d)|10|Gene silencing
+2021|2|1(e)|10|Use of apomixis in plant breeding
+2021|2|2(a)|20|Describe types and composition of chromatin. How is DNA packaged in a eukaryotic cell?
+2021|2|2(b)|15|Explain coupling and repulsion hypothesis in linkage. Give a brief account of procedure used in preparing a chromosome map with the help of three-point test cross.
+2021|2|2(c)|15|What do you understand by standard deviation and coefficient of variation? Discuss their significance.
+2021|2|3(a)|20|Describe properties of genetic code and briefly explain Wobble hypothesis.
+2021|2|3(b)|15|What are the characteristic features of Cytoplasmic inheritance? Describe the role of chloroplast and mitochondrial genes in this inheritance.
+2021|2|3(c)|15|Discuss the biosafety concerns of transgenic plants.
+2021|2|4(a)|15|Describe various methods of gene transfer in plants.
+2021|2|4(b)|20|Give an account of Operon model for regulation of gene activity.
+2021|2|4(c)|15|Explain the process of cell signalling highlighting the role of various signalling molecules.
+2021|2|5(a)|10|Alkaloids and their significance
+2021|2|5(b)|10|Role of growth substances in agri-horticulture
+2021|2|5(c)|10|Plant indicators
+2021|2|5(d)|10|Invasive species and their characteristics
+2021|2|5(e)|10|IUCN Red List Categories
+2021|2|6(a)|20|Describe C4 cycle of photosynthesis and differentiate amongst C3, C4 and CAM plants.
+2021|2|6(b)|15|Define Vernalization. Discuss its mechanism and importance.
+2021|2|6(c)|15|What is biological nitrogen fixation? Describe root nodule formation and role of nitrogenase complex in fixing of nitrogen.
+2021|2|7(a)|20|What is unique of Indian plant biodiversity? Discuss briefly the threats and various conservation strategies.
+2021|2|7(b)|15|What is social forestry? Explain its types and benefits.
+2021|2|7(c)|15|Give a brief account of ecological pyramids. Describe ecological factors and their significance in plants.
+2021|2|8(a)|20|What are the different types and causes of seed dormancy? Describe various methods used to overcome it. Is it an ecological adaptation? Explain.
+2021|2|8(b)|15|Describe the concept of sustainable development highlighting its objectives and importance.
+2021|2|8(c)|15|Describe in detail the endemism highlighting its categories, causes of endemism and conservation priorities.
+2025|2|1(a)|10|Nuclear pore complex
+2025|2|1(b)|10|Epistasis
+2025|2|1(c)|10|Synaptonemal complex
+2025|2|1(d)|10|Amphidiploidy
+2025|2|1(e)|10|Lysosome
+2025|2|2(a)|20|What are the different methods of DNA sequencing? Elaborate the shotgun sequencing method.
+2025|2|2(b)|15|Describe the phenomenon of linkage by giving suitable examples. Why is the linkage an exception to Mendel's second law?
+2025|2|2(c)|15|Explain the structure and behaviour of B chromosomes in plants.
+2025|2|3(a)|20|Elucidate the molecular basis of sex determination in plants. Explain the role of homomorphic and heteromorphic sex chromosomes.
+2025|2|3(b)|15|Describe the structure of nucleosome and its role in DNA packaging.
+2025|2|3(c)|15|Explain in detail the various methods of plant hybridization.
+2025|2|4(a)|20|What is organic evolution? Discuss in detail the indirect evidences of organic evolution with suitable examples.
+2025|2|4(b)|15|Describe the structure of chloroplast with labelled diagram and write about its functions.
+2025|2|4(c)|15|Discuss in detail the role of mutations in plant breeding and crop improvement.
+2025|2|5(a)|10|Tests of significance
+2025|2|5(b)|10|Kranz anatomy and its significance
+2025|2|5(c)|10|Vernalization
+2025|2|5(d)|10|The IUCN Red List categories
+2025|2|5(e)|10|Endemism
+2025|2|6(a)|20|What are transgenic crops? Discuss the prospects and risks involved in their cultivation.
+2025|2|6(b)|15|What is biological nitrogen fixation? Explain the mechanism of symbiotic nitrogen fixation with examples.
+2025|2|6(c)|15|Describe the different forest types in India. Discuss in detail the crucial ecosystem services provided by these forests.
+2025|2|7(a)|20|What are the different gene transfer methods in plants? Give a brief account of direct gene transfer methods.
+2025|2|7(b)|15|What are the different carbon fixation pathways in plants? Discuss in detail the CAM pathway and its role in stomatal activity.
+2025|2|7(c)|15|What are the causes and consequences of global warming and climate change? Explain the approaches to deal with global warming.
+2025|2|8(a)|20|Define biodiversity. Explain the various ex situ and in situ methods of conserving biodiversity.
+2025|2|8(b)|15|What are phytohormones? Briefly discuss the role of auxin in plant growth and development. Explain its mechanism of action.
+2025|2|8(c)|15|Describe the various types of tropic movements in plants. Discuss their mechanism.
+2024|2|1(a)|10|Explain the types of variations found in the structure of chromosomes and discuss their importance and significance.
+2024|2|1(b)|10|Explain with at least two examples what is incomplete dominance and polygenic inheritance and what happens as a result of these events?
+2024|2|1(c)|10|Discuss what are cell receptors and how do they help in cell signalling? Elaborate the answer with the help of at least one example.
+2024|2|1(d)|10|Discuss with one example the role of RNA in the origin and evolution of life.
+2024|2|1(e)|10|Probability and distribution are two important factors which should always be taken into account to establish a successful breeding programme. Explain with a suitable example.
+2024|2|2(a)|15|Explain briefly the process and importance of the following: (i) Male sterility and heterosis breeding. (ii) Molecular basis of cell cycle. (iii) Gene silencing.
+2024|2|2(b)|20|Discuss briefly different methods of gene mapping. How molecular maps are of help in evaluating the gene function?
+2024|2|2(c)|15|Explain what is apomixis and how this may be of help in plant breeding? Elaborate the answer with suitable examples.
+2024|2|3(a)|15|Describe along with illustrated diagrams the structure and function of mitochondria and endoplasmic reticulum.
+2024|2|3(b)|15|(i) Explain with example how male sterility is related to cytoplasmic inheritance? (ii) Discuss in brief the molecular basis of sex determination in plants.
+2024|2|3(c)|20|Explain the process of protein synthesis in plants and write a note on the structure and function of proteins.
+2024|2|4(a)|20|Discuss briefly the following and comment on their significance: (i) In what way the transfer of genes in plants help in their sustainable development? Support the answer with an example. (ii) Importance of biosafety aspects of transgenic crops. (iii) Polytene chromosomes.
+2024|2|4(b)|15|Explain how mass selection will be of help in a successful breeding program. Elaborate the answer with a suitable example.
+2024|2|4(c)|15|Briefly discuss various theories of organic evolution. Support the answer with a suitable example and evidence.
+2024|2|5(a)|10|Explain what is secondary active transport. Discuss its importance in ion acquisition in plants.
+2024|2|5(b)|10|Discuss what is GOGAT? Comment on its catalytic function.
+2024|2|5(c)|10|Regulation of seed dormancy and germination by phytohormones.
+2024|2|5(d)|10|Metallophytes and their practical importance.
+2024|2|5(e)|10|Invasive alien species and their impact on biodiversity.
+2024|2|6(a)|20|Explain the compartmentation of biochemical reactions in photorespiration. Comment upon the significance of the process.
+2024|2|6(b)|15|Describe the structure of phytochrome. Explain its mode of action in flowering plants.
+2024|2|6(c)|15|Give a concise account on altitudinal zonation of vegetation with special reference to Himalayan Vegetation.
+2024|2|7(a)|20|Define leaf senescence. Describe important physiological and biochemical changes taking place during this process. Comment upon the regulation of senescence by phytohormones.
+2024|2|7(b)|15|Describe the molecular organization of chloroplast ATP synthase. Explain its mechanism of action.
+2024|2|7(c)|15|(i) Discuss the causes, consequences and control of eutrophication. (ii) In present Indian scenario, explain the importance of biosphere reserves in bio-diversity conservation.
+2024|2|8(a)|15|(i) What are allosteric enzymes? Explain in detail on the allosteric enzyme modulation. (ii) Describe the process of gluconeogenesis and its significance.
+2024|2|8(b)|20|What is environmental management? Discuss various control measures to minimize environmental pollution.
+2024|2|8(c)|15|Differentiate between mutualism and commensalism by citing two examples for each of them.

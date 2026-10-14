@@ -1,0 +1,17 @@
+// The official UPSC Animal Husbandry and Veterinary Science syllabus (Examination Notice 05/2026-CSE, Appendix I Section III), paragraph by paragraph.
+// UPSC numbers these paragraphs itself (Paper I: 1.1-1.8, 2.1-2.9, 3, 4.1-4.3, 5.1-5.3, 6; Paper II: 1.1-1.6, 2.1-2.8, 3.1-3.3, 4.1-4.2, 5.1.1-5.5), so the ids are I-<number> and II-<number>.
+// Source text: ../../syllabus/official-2026/animal-husbandry-and-veterinary-science.txt. `t` is a short heading for lists; `full` is the official wording.
+const S = require("./parse-syllabus.js");
+const keep = function(b){ return !(/:\s*$/.test(b.text) || /^(Meat Hygiene|Meat Technology)$/.test(b.text)); };
+const p1 = S.p1.filter(keep), p2 = S.p2.filter(keep);
+const T1 = {"1.1":"Energy partitioning, calorimetry and energy requirements", "1.2":"Protein nutrition and protein quality", "1.3":"Minerals and vitamins", "1.4":"Feed additives and growth promoters", "1.5":"Fodder conservation, feed technology and feed analysis", "1.6":"Ruminant nutrition and feeding of cattle, goats and sheep", "1.7":"Swine nutrition", "1.8":"Poultry nutrition", "2.1":"Blood, circulation, respiration, excretion and endocrine glands", "2.2":"Blood constituents and biochemical tests", "2.3":"Circulation and the heart", "2.4":"Respiration", "2.5":"Excretion and the kidney", "2.6":"Endocrine glands and hormone receptors", "2.7":"Growth and animal production", "2.8":"Milk production, reproduction and digestion", "2.9":"Environmental physiology and behaviour", "3":"Animal reproduction: semen, preservation and artificial insemination", "4.1":"Commercial dairy farming", "4.2":"Commercial meat, egg and wool production", "4.3":"Feeding and management in drought, flood and calamities", "5.1":"Animal genetics, molecular genetics and cytogenetics", "5.2":"Population genetics applied to animal breeding", "5.3":"Breeding systems and selection", "6":"Extension"};
+const T2 = {"1.1":"Histology and histological techniques", "1.2":"Embryology", "1.3":"Bovine anatomy", "1.4":"Anatomy of fowl", "1.5":"Pharmacology and therapeutics", "1.6":"Veterinary hygiene: water, air and habitation", "2.1":"Infectious diseases", "2.2":"Production diseases", "2.3":"Deficiency diseases", "2.4":"Non-specific conditions: impaction, bloat, dehydration, poisoning", "2.5":"Neurological disorders", "2.6":"Immunisation, herd immunity, zero disease and chemoprophylaxis", "2.7":"Anaesthesia and surgery", "2.8":"Disease investigation techniques", "3.1":"Zoonoses", "3.2":"Epidemiology, OIE, WTO and SPS measures", "3.3":"Veterinary jurisprudence", "4.1":"Market milk", "4.2":"Milk products technology", "5.1.1":"Meat hygiene: ante mortem, slaughter, abattoir and inspection", "5.1.2":"Hygienic handling, spoilage and adulteration of meat", "5.2.1":"Meat technology: emulsions, preservation and processing", "5.3":"Slaughter house by-products", "5.4":"Poultry products technology", "5.5":"Rabbit and fur animal farming, wool"};
+function mk(list, pp, T){
+  return list.map(function(b){
+    if(!T[b.num]) throw new Error("no title for paper " + pp + " item " + b.num);
+    const full = b.text.replace(/^(Animal Reproduction|Extension)\s*:\s*/, "");
+    return {id:(pp === 1 ? "I-" : "II-") + b.num, pp:pp, t:T[b.num], full:full};
+  });
+}
+if(p1.length !== 25 || p2.length !== 25) throw new Error("ahvs syllabus paragraphs: " + p1.length + " + " + p2.length + " (expected 25 + 25)");
+module.exports.items = mk(p1, 1, T1).concat(mk(p2, 2, T2));
