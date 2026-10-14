@@ -978,7 +978,8 @@
   .rem-row select{max-width:55%;}
   .pl-tabs{display:flex; gap:6px; overflow-x:auto; padding-bottom:6px; margin-bottom:10px; scrollbar-width:none;}
   .pl-tabs::-webkit-scrollbar{display:none;}
-  .pl-tabs button{flex:0 0 auto; min-height:38px; padding:7px 14px; border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; font-size:14px; font-weight:600; cursor:pointer;}
+  .pl-sub{display:flex; gap:4px; padding:3px; margin:0 0 12px; border-radius:12px; background:var(--surface); border:1px solid var(--line);} .pl-sub button{flex:1 1 0; min-height:34px; border:0; border-radius:9px; background:transparent; color:var(--ink-soft); font:inherit; font-size:13.5px; font-weight:600; cursor:pointer;} .pl-sub button.on{background:var(--tab-accent); color:var(--tab-accent-ink);}
+  .pl-tabs button{flex:1 1 0; min-height:38px; padding:7px 14px; border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; font-size:14px; font-weight:600; cursor:pointer;}
   .pl-tabs button.on{background:var(--tab-accent); border-color:var(--tab-accent); color:var(--tab-accent-ink);}
   .stepper{display:flex; gap:6px; overflow-x:auto; margin-bottom:10px; padding-bottom:4px; scrollbar-width:none;}
   .stepper::-webkit-scrollbar{display:none;}
@@ -4129,6 +4130,13 @@ var DEFAULT_TIMES = [["06:00","08:00"],["10:00","12:00"],["16:00","17:00"],["19:
 var profile = lsGetJSON(PROFILE_KEY, null);
 var studySessions = lsGetJSON(SESSIONS_KEY, []);
 if(!Array.isArray(studySessions)) studySessions = [];
+// one-time clean slate while the app is still being built: ticks, session results and logged time from earlier testing are cleared (the plan itself stays)
+if(!lsGet("dossier.progressReset.v1")){
+  studySessions.forEach(function(x){ x.status = "not_started"; delete x.actualStart; delete x.actualEnd; delete x.actualDuration; delete x.breakMin; });
+  lsSetJSON(SESSIONS_KEY, studySessions);
+  ["dossier.progress.v1","dossier.timerLog","dossier.revdone.v1","dossier.catchup.v1"].forEach(function(k){ try{ localStorage.removeItem(k); }catch(e){} });
+  lsSet("dossier.progressReset.v1", "1");
+}
 (function(){ var ch = false; studySessions.forEach(function(x){ if(x.paper==="CSAT"){ x.paper = "GS 2 (CSAT)"; ch = true; } }); if(ch) lsSetJSON(SESSIONS_KEY, studySessions); })();
 function saveSessions(){ lsSetJSON(SESSIONS_KEY, studySessions); viewCache = null; }
 function uid(){ return "s-"+Date.now().toString(36)+"-"+Math.random().toString(36).slice(2,8); }
@@ -7071,7 +7079,11 @@ function wizGenerate(){
 // PLANNER HOME: LEGO chain + Yearly / Monthly / Weekly / Daily + Progress
 // ============================================================================
 var progOpen = {}, plannerView = "overview", plannerLanding = null, plannerMonth = null, plannerWeek = null, plannerDay = null;
-var PLANNER_TABS = [["overview","Overview"],["yearly","Yearly"],["monthly","Monthly"],["weekly","Weekly"],["daily","Daily"],["progress","Progress"],["priority","Priority"],["insights","Insights"]];
+// four tabs; Schedule and Plan each hold several views of the same data behind one switch
+var PLANNER_TABS = [["plan","Plan"],["schedule","Schedule"],["review","Review"],["priority","Priority"]];
+var SCHED_VIEWS = [["daily","Day"],["weekly","Week"],["monthly","Month"],["yearly","Year"]];
+function plannerTabOf(v){ return v==="overview"||v==="progress" ? "plan" : (v==="insights" ? "review" : (v==="priority" ? "priority" : "schedule")); }
+var lastSched = "daily";
 function kindMeta(s){ return KIND_META[s.kind] || {label:s.purpose, color:"--tab-scheduler"}; }
 function fmtMonthKey(mk){ return (DF_MK = DF_MK || new Intl.DateTimeFormat(undefined, {month:"long", year:"numeric"})).format(new Date(+mk.slice(0,4), +mk.slice(5,7)-1, 1)); }
 function fmtMonthShort(mk){ return (DF_MS = DF_MS || new Intl.DateTimeFormat(undefined, {month:"short", year:"numeric"})).format(new Date(+mk.slice(0,4), +mk.slice(5,7)-1, 1)); }
@@ -10768,9 +10780,13 @@ function renderPlannerHome(host){
   else if(plannerView==="priority") body = priorityHtml(plan, states);
   else if(plannerView==="insights") body = insightsHtml(plan, states);
   else body = overviewHtml(plan, states);
+  var tabNow = plannerTabOf(plannerView);
+  if(tabNow==="schedule") lastSched = plannerView;
+  if(tabNow==="plan") body = overviewHtml(plan, states)+'<div class="section-title">Chapters</div>'+progressHtml(plan, states);
+  var sub = tabNow==="schedule" ? '<div class="pl-sub" role="tablist">'+SCHED_VIEWS.map(function(t){ return '<button type="button" role="tab" class="'+(t[0]===plannerView?"on":"")+'" aria-selected="'+(t[0]===plannerView)+'" data-pa="view" data-v="'+t[0]+'">'+t[1]+'</button>'; }).join("")+'</div>' : "";
   host.innerHTML =
     '<div class="card pl-title"><div><h2>Preparation Planner</h2><div class="muted">Complete a subject to unlock the next. The calendar follows your progress.</div></div><button type="button" class="btn ghost sm" data-go="reschedule">Reschedule</button></div>'+
-    '<div class="pl-tabs">'+PLANNER_TABS.map(function(t){ return '<button type="button" class="'+(t[0]===plannerView?"on":"")+'" data-pa="view" data-v="'+t[0]+'">'+t[1]+'</button>'; }).join("")+'</div>'+(plannerView==="insights" ? "" : catchBannerHtml())+body;
+    '<div class="pl-tabs">'+PLANNER_TABS.map(function(t){ return '<button type="button" class="'+(t[0]===tabNow?"on":"")+'" data-pa="view" data-v="'+(t[0]==="plan" ? "overview" : (t[0]==="schedule" ? lastSched : (t[0]==="review" ? "insights" : "priority")))+'">'+t[1]+'</button>'; }).join("")+'</div>'+sub+(plannerView==="insights" ? "" : catchBannerHtml())+body;
   centerActive(host.querySelector(".pl-tabs"), "button.on", false);
   if(plannerView==="daily") bindPlannerDaily(host);
 }
