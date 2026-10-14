@@ -978,6 +978,16 @@
   .rem-row select{max-width:55%;}
   .pl-tabs{display:flex; gap:6px; overflow-x:auto; padding-bottom:6px; margin-bottom:10px; scrollbar-width:none;}
   .pl-tabs::-webkit-scrollbar{display:none;}
+  .sess-start{display:block; width:100%; margin:10px 0 2px; min-height:46px; border:0; border-radius:14px; background:var(--tab-accent); color:var(--tab-accent-ink); font:inherit; font-size:16px; font-weight:800; cursor:pointer; box-shadow:0 8px 18px -10px var(--tab-accent);}
+  .start-sheet .k{font-size:11px; letter-spacing:.12em; color:var(--ink-soft); font-weight:700; margin:14px 0 8px;}
+  .ss-mode{display:flex; align-items:center; gap:12px; width:100%; text-align:left; padding:12px; margin:8px 0; border-radius:16px; border:2px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; cursor:pointer;} .ss-mode.on{border-color:var(--tab-accent); background:var(--tab-accent-soft);}
+  .ss-mode b{display:block;} .ss-mode small{display:block; color:var(--ink-soft);} .ss-i{font-size:24px; width:44px; height:44px; border-radius:12px; display:grid; place-items:center; background:var(--line);}
+  .ss-r{margin-left:auto; width:20px; height:20px; border-radius:50%; border:2px solid var(--ink-soft); flex:none;} .ss-mode.on .ss-r{border-color:var(--tab-accent); background:radial-gradient(var(--tab-accent) 45%,transparent 50%);}
+  .ss-pre{display:flex; gap:6px; margin:0 0 4px;} .ss-pre[hidden]{display:none;} .ss-pre button{flex:1; min-height:38px; border-radius:11px; border:1px solid var(--line); background:var(--surface); color:var(--ink-soft); font:inherit; font-size:13px; font-weight:600; cursor:pointer;} .ss-pre button.on{background:var(--tab-accent); color:var(--tab-accent-ink); border-color:var(--tab-accent);}
+  .ss-go{width:100%; min-height:50px; margin-top:12px; font-size:16.5px; font-weight:800;}
+  .timer-subj{position:absolute; left:0; right:0; top:calc(176px + env(safe-area-inset-top,0px)); z-index:3; text-align:center; pointer-events:none; display:flex; flex-direction:column; align-items:center; gap:4px;}
+  .timer-subj .ts-pill{display:inline-flex; align-items:center; gap:8px; max-width:88%; padding:7px 14px; border-radius:99px; background:rgba(0,0,0,.55); border:1px solid rgba(255,255,255,.2); font-weight:700; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;} .timer-subj .ts-pill i{width:10px; height:10px; border-radius:50%; background:var(--sc); flex:none;} .timer-subj small{color:rgba(255,255,255,.7); font-size:12.5px; max-width:88%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;} .timer-subj .ts-unit{color:#fff; font-size:13.5px;}
+  body.dash-timer.ui-sleep .timer-subj{opacity:0; transition:opacity .7s;}
   .pl-sub{display:flex; gap:4px; padding:3px; margin:0 0 12px; border-radius:12px; background:var(--surface); border:1px solid var(--line);} .pl-sub button{flex:1 1 0; min-height:34px; border:0; border-radius:9px; background:transparent; color:var(--ink-soft); font:inherit; font-size:13.5px; font-weight:600; cursor:pointer;} .pl-sub button.on{background:var(--tab-accent); color:var(--tab-accent-ink);}
   .pl-tabs button{flex:1 1 0; min-height:38px; padding:7px 14px; border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; font-size:14px; font-weight:600; cursor:pointer;}
   .pl-tabs button.on{background:var(--tab-accent); border-color:var(--tab-accent); color:var(--tab-accent-ink);}
@@ -3611,7 +3621,7 @@ var todayKey = toKey(new Date());
 var timerInterval = null;
 var blackHoleAnimFrame = null, bhWait = null, bhSky = window.__bhSky = {next:0, glow:null}; // sky timing outlives the card, so tab switches don't reset it
 var TIMER_KEY = "dossier.timer.v2";
-function timerDefault(){ return {mode:"free", running:false, startedAt:0, accMs:0, studyMs:0, phase:"focus", cycle:0, preset:0, pending:0, brkMin:0, waiting:false, runStart:0, lastAt:0, brkIn:0, brkPend:0, pendInfo:null}; }
+function timerDefault(){ return {mode:"free", running:false, startedAt:0, accMs:0, studyMs:0, phase:"focus", cycle:0, preset:0, pending:0, brkMin:0, waiting:false, runStart:0, lastAt:0, brkIn:0, brkPend:0, pendInfo:null, target:""}; }
 var timerState = Object.assign(timerDefault(), (function(){ try{ var v = JSON.parse(localStorage.getItem(TIMER_KEY)||"null"); return v && typeof v==="object" ? v : {}; }catch(e){ return {}; } })());
 var currentDailyKey = todayKey;
 
@@ -6042,6 +6052,7 @@ function sessLogCard(s){
   return '<div class="sess-card pur-'+purClass(s.purpose)+' st-'+esc(s.status)+'" data-sid="'+esc(s.id)+'">'+
     '<div class="sess-top"><span class="sess-n">S'+s.sessionNumber+'</span><span class="sess-time">'+esc(fmt12(s.startTime))+' &ndash; '+esc(fmt12(s.endTime))+' &middot; '+esc(fmtDurMin(s.duration))+'</span><span class="chip pur">'+esc(s.kind && s.kind!=="study" && KIND_META[s.kind] ? KIND_META[s.kind].label : s.purpose)+'</span></div>'+
     '<div class="sess-sub"><b>'+esc(sessionPaperLabel(s))+'</b> &middot; '+esc(s.subject)+' &rsaquo; '+esc(s.topic)+' &rsaquo; '+esc(s.syllabusUnit)+(s.blkOf>1 ? ' <small>(session '+s.blk+' of '+s.blkOf+')</small>' : "")+(s.pinned ? ' <span class="chip pinc" title="Pinned to this session, studied alongside the main subject">Pinned</span>' : "")+'</div>'+
+    (s.date===todayKey && s.status!=="completed" && s.status!=="skipped" ? '<button type="button" class="sess-start" data-sact="start">&#9654; '+(s.status==="in_progress" ? "Continue" : "Start")+'</button>' : "")+
     '<div class="sess-ctl">'+
       '<label>Status<select data-sf="status">'+STATUSES.map(function(o){ return '<option value="'+o[0]+'"'+(o[0]===s.status?" selected":"")+'>'+o[1]+'</option>'; }).join("")+'</select></label>'+
       '<label>Actual start<input type="time" data-sf="actualStart" value="'+esc(s.actualStart)+'"></label>'+
@@ -6109,6 +6120,7 @@ function bindSessionCards(host){
       b.addEventListener("click", function(){
         var a = b.getAttribute("data-sact"), s = sessionById(id);
         if(a==="edit") openSessionEditor(id);
+        if(a==="start") openStartSheet(id);
         if(a==="same"){ updateSession(id, {actualStart:s.startTime, actualEnd:s.endTime, breakMin:0, pomoBreakMin:0, status:"completed"}); afterSessionChange(id); refreshView(); }
         if(a==="chapter"){
           if(leafStatus(s.topicId)==="completed") setLeaves([s.topicId], "not_started");
@@ -11543,12 +11555,45 @@ function timerToggle(){
 function timerStop(){
   setUiStage(2);
   timerAdvance();
-  var ms = Math.round(timerStudyMs()), keep = {mode:timerState.mode, preset:timerState.preset}, st0 = timerState, nowT = Date.now();
+  var ms = Math.round(timerStudyMs()), keep = {mode:timerState.mode, preset:timerState.preset, target:timerState.target||""}, st0 = timerState, nowT = Date.now();
   var live = st0.running && (st0.mode==="free" || st0.phase==="focus");
   var info = st0.runStart ? {startAt:st0.runStart, endAt:(live ? nowT : (st0.lastAt || nowT)), brkMs:(st0.mode==="pomo" ? (st0.brkIn||0) : 0), mode:st0.mode} : null;
   timerState = Object.assign(timerDefault(), keep, {pending: ms >= 1000 ? ms : 0, pendInfo: info});
   timerSave(); ensureTimerInterval(); timerUi();
   if(timerState.pending > 0){ var mn = ms/60000; trackEvent("timer_saved", {minutes:(mn<15 ? "<15" : mn<30 ? "15-30" : mn<60 ? "30-60" : "60+")}); openTimerSave(); }
+}
+function openStartSheet(sid){
+  var x = sessionById(sid); if(!x) return;
+  if(timerState.running || timerState.accMs>0 || timerState.studyMs>0 || timerState.pending>0){
+    toast("A timer is already in progress. Stop and save it first."); setTab("dashboard"); return;
+  }
+  var mode = timerState.mode==="pomo" ? "pomo" : "free", pre = Math.min(Math.max(0, timerState.preset||0), POMO_PRESETS.length-1);
+  var nm = x.kind==="study" || x.kind==="revision" ? x.subject : (KIND_META[x.kind] ? KIND_META[x.kind].label : x.subject);
+  var m = showModal('<div class="modal card start-sheet" role="dialog" aria-modal="true" aria-labelledby="ssT">'+
+    '<h2 id="ssT">'+esc(nm)+'</h2><div class="muted">'+(x.kind==="study" ? esc(x.syllabusUnit)+" · " : "")+'S'+x.sessionNumber+' · planned '+esc(fmtDurMin(x.duration))+'</div>'+
+    '<div class="k">HOW DO YOU WANT TO STUDY?</div>'+
+    '<button type="button" class="ss-mode'+(mode==="pomo" ? " on" : "")+'" data-m="pomo"><span class="ss-i">🍅</span><span><b>Pomodoro</b><small>Focus rounds with short breaks</small></span><i class="ss-r"></i></button>'+
+    '<div class="ss-pre" id="ssPre"'+(mode==="pomo" ? "" : " hidden")+'>'+POMO_PRESETS.map(function(p, i){ return '<button type="button" data-p="'+i+'"'+(i===pre ? ' class="on"' : "")+'>'+esc(p[0])+'</button>'; }).join("")+'</div>'+
+    '<button type="button" class="ss-mode'+(mode==="free" ? " on" : "")+'" data-m="free"><span class="ss-i">⏱</span><span><b>Stopwatch</b><small>Counts up, stop whenever you finish</small></span><i class="ss-r"></i></button>'+
+    '<button type="button" class="btn primary ss-go" id="ssGo">▶ Start studying</button>'+
+    '<div class="modal-actions"><button type="button" class="btn ghost" id="ssCancel">Cancel</button></div></div>', false);
+  var cur = mode, preSel = pre;
+  Array.prototype.forEach.call(m.querySelectorAll(".ss-mode"), function(b){ b.addEventListener("click", function(){
+    cur = b.getAttribute("data-m");
+    Array.prototype.forEach.call(m.querySelectorAll(".ss-mode"), function(o){ o.classList.toggle("on", o===b); });
+    m.querySelector("#ssPre").hidden = cur!=="pomo";
+  }); });
+  Array.prototype.forEach.call(m.querySelectorAll("#ssPre button"), function(b){ b.addEventListener("click", function(){
+    preSel = +b.getAttribute("data-p");
+    Array.prototype.forEach.call(m.querySelectorAll("#ssPre button"), function(o){ o.classList.toggle("on", o===b); });
+  }); });
+  m.querySelector("#ssCancel").addEventListener("click", closeModal);
+  m.querySelector("#ssGo").addEventListener("click", function(){
+    closeModal();
+    timerState.mode = cur; timerState.phase = "focus"; timerState.cycle = 0; timerState.preset = preSel; timerState.target = sid; timerSave();
+    setTab("dashboard"); renderDashboard();
+    if(!timerState.running) timerToggle();
+  });
 }
 function timerTargets(){ return planSessionsOn(todayKey).filter(function(x){ return !x.projected; }); }
 function hmStr(m){ m = Math.max(0, Math.min(1439, Math.round(m))); return pad2(Math.floor(m/60))+":"+pad2(m%60); }
@@ -11586,7 +11631,8 @@ function timerOverflow(sid, studyMin, brkMin){
 function openTimerSave(){
   var ms = timerState.pending, list = timerTargets(), pick = "", info = timerState.pendInfo;
   var studyMin = Math.max(1, Math.round(ms/60000)), brkMin = info ? Math.round((info.brkMs||0)/60000) : 0, win = timerRealWindow(info);
-  var pool = list.filter(function(x){ return x.status==="in_progress"; })[0] || list.filter(function(x){ return x.status==="not_started" && x.kind==="study"; })[0];
+  var tg = timerState.target && list.filter(function(x){ return x.id===timerState.target; })[0];
+  var pool = tg || list.filter(function(x){ return x.status==="in_progress"; })[0] || list.filter(function(x){ return x.status==="not_started" && x.kind==="study"; })[0];
   if(pool) pick = pool.id;
   var opts = list.map(function(x){
     var label = "S"+x.sessionNumber+" · "+fmt12(x.startTime)+"–"+fmt12(x.endTime)+" · "+(x.kind==="study" ? x.syllabusUnit : (KIND_META[x.kind] ? KIND_META[x.kind].label : x.subject))+" (planned "+fmtDurMin(x.duration)+", logged "+fmtDurMin(x.actualDuration||0)+")";
@@ -11616,12 +11662,12 @@ function openTimerSave(){
   document.getElementById("tsTarget").addEventListener("change", refresh);
   [].forEach.call(document.querySelectorAll('input[name="tsMode"]'), function(i){ i.addEventListener("change", refresh); });
   refresh();
-  document.getElementById("tsDiscard").addEventListener("click", function(){ timerState.pending = 0; timerState.pendInfo = null; timerSave(); closeModal(); timerUi(); toast("Timer discarded."); });
+  document.getElementById("tsDiscard").addEventListener("click", function(){ timerState.pending = 0; timerState.pendInfo = null; timerState.target = ""; timerSave(); closeModal(); timerUi(); renderView(activeTab); toast("Timer discarded."); });
   document.getElementById("tsSave").addEventListener("click", function(){
     var sid = document.getElementById("tsTarget").value, add = timerState.pending;
     timerAddToToday(add);
     if(sid) timerCommit(sid, add, info, carryOn());
-    timerState.pending = 0; timerState.pendInfo = null; timerSave(); closeModal();
+    timerState.pending = 0; timerState.pendInfo = null; timerState.target = ""; timerSave(); closeModal();
     toast(sid ? "Time saved to your session and today's study time." : "Added to today's study time.");
     renderView(activeTab);
   });
@@ -11655,6 +11701,14 @@ function timerSetMode(m){
   if(timerState.running || timerState.accMs>0 || timerState.studyMs>0 || timerState.pending>0) return;
   timerState.mode = m; timerState.phase = "focus"; timerState.cycle = 0; timerSave(); renderDashboard();
 }
+// the session this sitting is for (chosen with Start on a planned session)
+function timerSubjHtml(){
+  var x = timerState.target ? sessionById(timerState.target) : null;
+  if(!x) return "";
+  var col = (KIND_META[x.kind] && x.kind!=="study" && x.kind!=="revision") ? KIND_META[x.kind].color : "--tab-planner";
+  var nm = x.kind==="study" || x.kind==="revision" ? x.subject : (KIND_META[x.kind] ? KIND_META[x.kind].label : x.subject);
+  return '<div class="timer-subj" style="--sc:var('+col+')"><span class="ts-pill"><i></i>'+esc(nm.replace(/ \(Optional\)$/, ""))+'</span>'+(x.syllabusUnit && x.kind==="study" ? '<small class="ts-unit">'+esc(x.syllabusUnit)+'</small>' : "")+'<small>S'+x.sessionNumber+' · '+esc(fmt12(x.startTime))+' · '+esc(fmtDurMin(x.duration))+' planned</small></div>';
+}
 function timerCard(){
   var st = timerState, started = st.running || st.accMs>0 || st.studyMs>0;
   return '<div class="card timer-card '+(st.mode==="pomo" ? "pomo"+(st.phase!=="focus" ? " brk" : "") : "free")+'">'+
@@ -11663,6 +11717,7 @@ function timerCard(){
       '<button type="button" class="tm'+(st.mode==="free" ? " on" : "")+'" data-tmode="free"'+(started ? " disabled" : "")+'>Stopwatch</button>'+
       '<button type="button" class="tm'+(st.mode==="pomo" ? " on" : "")+'" data-tmode="pomo"'+(started ? " disabled" : "")+'>Pomodoro</button>'+
     '</div>'+
+    timerSubjHtml()+
     '<div class="timer-total" id="timerTodayTotal" title="Study time recorded today">Today '+fmtTimer(timerBanked()+timerStudyMs())+'</div>'+
     '<div class="timer-dial-wrap'+(st.running ? " running" : "")+'" id="timerDialWrap">'+
       '<div class="timer-dial-face"><div class="timer-display" id="timerDisplay">'+fmtTimer(timerDisplayMs())+'</div></div>'+
