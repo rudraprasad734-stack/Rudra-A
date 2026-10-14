@@ -7270,7 +7270,7 @@ function monthlyHtml(plan, states){
     '<div class="section-title">Subjects and chapters this month</div>'+subj;
 }
 function weeklyHtml(plan, states){
-  var mon = plannerWeek ? parseKey(plannerWeek) : mondayOf(parseKey(todayKey));
+  var mon = plannerWeek ? parseKey(plannerWeek) : sundayOf(parseKey(todayKey));
   plannerWeek = toKey(mon);
   var days = [], per = {}, units = {};
   for(var i=0;i<7;i++) days.push(toKey(addDays(mon, i)));
