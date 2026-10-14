@@ -984,7 +984,7 @@
   #view-dashboard .timer-card > .timer-snd{position:absolute; left:auto; right:16px;}
   .sc-t{min-width:0;} .snd-opt b,.scene-opt b{overflow-wrap:anywhere; font-size:14px;}
   body.dash-timer.ui-sleep .timer-card > .timer-snd{opacity:0 !important; pointer-events:none !important;}
-  .snd-opt{position:relative; cursor:pointer;} .snd-act{display:flex; flex-direction:column; gap:4px; margin-left:auto; flex:none;} .snd-dl,.snd-sv{width:30px; height:30px; border-radius:50%; border:1px solid var(--line); background:var(--surface); color:var(--ink); display:grid; place-items:center; font-size:14px; text-decoration:none; cursor:pointer; padding:0;} .snd-dl.saved{background:#22c55e; border-color:#22c55e; color:#fff;}
+  .snd-opt{position:relative; cursor:pointer;} .snd-act{display:flex; flex-direction:column; gap:4px; margin-left:auto; flex:none;} .snd-dl{width:34px; height:34px; border-radius:50%; border:1px solid var(--line); background:var(--surface); color:var(--ink); display:grid; place-items:center; font-size:14px; text-decoration:none; cursor:pointer; padding:0;} .snd-dl.saved{background:#22c55e; border-color:#22c55e; color:#fff;} .snd-dl.busy{padding:0; background:transparent; border:0; color:var(--ink);} .snd-dl svg{width:34px; height:34px; display:block;}
   .snd-all{width:100%; margin-top:12px;}
   .th-head{font-size:12px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); margin:14px 0 4px;}
   .snd-row{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:12px;} .snd-row input[type=range]{flex:1; max-width:220px;}
@@ -11896,28 +11896,54 @@ function ambRefreshSaved(){
     var m = {}; ks.forEach(function(k){ var x = /audio\/([a-z]+)\.flac/.exec(k.url); if(x) m[x[1]] = 1; }); amb.saved = m;
   }).catch(function(){});
 }
+function ambRing(p){
+  var C = 2*Math.PI*15;
+  return '<svg viewBox="0 0 36 36" aria-hidden="true"><circle cx="18" cy="18" r="15" fill="none" stroke="currentColor" stroke-opacity=".22" stroke-width="3"/><circle cx="18" cy="18" r="15" fill="none" stroke="var(--tab-accent)" stroke-width="3" stroke-linecap="round" stroke-dasharray="'+(C*Math.max(.02, p)).toFixed(1)+' '+C.toFixed(1)+'" transform="rotate(-90 18 18)"/><rect x="13.5" y="13.5" width="9" height="9" rx="2.2" fill="currentColor"/></svg>';
+}
 function ambPaintSaved(){
   Array.prototype.forEach.call(document.querySelectorAll(".snd-dl[data-id]"), function(b){
-    var id = b.getAttribute("data-id"), on = !!amb.saved[id];
-    b.classList.toggle("saved", on); b.textContent = on ? "✓" : "⬇"; b.setAttribute("aria-label", on ? "Saved for offline. Tap to remove" : "Download for offline use ("+AMB_MB[id]+" MB)");
+    var id = b.getAttribute("data-id"), on = !!amb.saved[id], d = amb.dl[id], tile = b.closest(".snd-opt"), sm = tile && tile.querySelector(".sc-t small");
+    b.classList.toggle("saved", on && !d); b.classList.toggle("busy", !!d);
+    if(sm){ if(!sm.hasAttribute("data-t")) sm.setAttribute("data-t", sm.textContent); sm.textContent = d ? Math.max(0, (AMB_MB[id]*(1-d.p))).toFixed(1)+" MB left" : sm.getAttribute("data-t"); }
+    if(d){ b.innerHTML = ambRing(d.p); b.setAttribute("aria-label", "Downloading, "+Math.round(d.p*100)+" percent. Tap to cancel"); }
+    else { b.textContent = on ? "✓" : "⬇"; b.setAttribute("aria-label", on ? "Saved in the app. Tap to remove" : "Download into the app ("+AMB_MB[id]+" MB)"); }
   });
-  var all = document.getElementById("sndAll"), n = Object.keys(amb.saved).length;
-  if(all) all.textContent = n>=AMB_SOUNDS.length ? "All sounds saved for offline" : "Download all for offline ("+Math.round(AMB_SOUNDS.reduce(function(a, x){ return a + (amb.saved[x[0]] ? 0 : AMB_MB[x[0]]); }, 0))+" MB)";
+  var all = document.getElementById("sndAll"), n = Object.keys(amb.saved).length, busy = Object.keys(amb.dl).length;
+  if(all) all.textContent = busy ? "Downloading… tap to cancel" : (n>=AMB_SOUNDS.length ? "All sounds are saved in the app" : "Download all into the app ("+Math.round(AMB_SOUNDS.reduce(function(a, x){ return a + (amb.saved[x[0]] ? 0 : AMB_MB[x[0]]); }, 0))+" MB)");
 }
+// downloads stream into the app's own storage, with a ring that fills as the file arrives
+amb.dl = {};
 function ambSave(id){
-  if(!window.caches){ toast("This browser cannot keep files offline."); return Promise.resolve(); }
-  var nm = AMB_SOUNDS.filter(function(x){ return x[0]===id; })[0][1];
-  toast("Downloading "+nm+" ("+AMB_MB[id]+" MB)…");
-  return caches.open(SND_CACHE).then(function(c){ return fetch(ambFile(id)).then(function(r){ if(!r.ok) throw new Error("bad"); return c.put(ambFile(id), r); }); })
-    .then(function(){ amb.saved[id] = 1; ambPaintSaved(); toast(nm+" is saved. It now plays offline."); })
-    .catch(function(){ toast("Could not download "+nm+". Check your connection and try again."); });
+  if(!window.caches){ toast("This browser cannot keep files in the app."); return Promise.resolve(); }
+  if(amb.dl[id]) return Promise.resolve();
+  var nm = AMB_SOUNDS.filter(function(x){ return x[0]===id; })[0][1], ctl = window.AbortController ? new AbortController() : null, st = amb.dl[id] = {p:0, got:0, ctl:ctl};
+  ambPaintSaved();
+  return caches.open(SND_CACHE).then(function(c){
+    return fetch(ambFile(id), ctl ? {signal:ctl.signal} : undefined).then(function(r){
+      if(!r.ok) throw new Error("bad");
+      var total = +r.headers.get("Content-Length") || AMB_MB[id]*1e6;
+      if(!r.body || !r.body.getReader) return r.blob().then(function(bl){ return c.put(ambFile(id), new Response(bl, {headers:{"Content-Type":"audio/flac"}})); });
+      var rd = r.body.getReader(), chunks = [];
+      function pump(){ return rd.read().then(function(x){
+        if(x.done) return;
+        chunks.push(x.value); st.got += x.value.length; st.p = Math.min(1, st.got/total); ambPaintSaved();
+        return pump();
+      }); }
+      return pump().then(function(){ return c.put(ambFile(id), new Response(new Blob(chunks, {type:"audio/flac"}), {headers:{"Content-Type":"audio/flac"}})); });
+    });
+  }).then(function(){ delete amb.dl[id]; amb.saved[id] = 1; ambPaintSaved(); toast(nm+" is saved in the app. It now plays offline."); })
+    .catch(function(e){ delete amb.dl[id]; ambPaintSaved(); toast(e && e.name==="AbortError" ? "Download cancelled." : "Could not download "+nm+". Check your connection and try again."); });
 }
+function ambCancel(id){ var d = amb.dl[id]; if(d && d.ctl) d.ctl.abort(); }
+window.__ambPaint = ambPaintSaved;   // test hook
 function ambUnsave(id){ if(!window.caches) return Promise.resolve(); return caches.open(SND_CACHE).then(function(c){ return c.delete(ambFile(id)); }).then(function(){ delete amb.saved[id]; ambPaintSaved(); toast("Removed the offline copy."); }); }
 function ambSaveAll(){
+  if(Object.keys(amb.dl).length){ amb.stopAll = true; Object.keys(amb.dl).forEach(ambCancel); return Promise.resolve(); }
   var ids = AMB_SOUNDS.map(function(x){ return x[0]; }).filter(function(i){ return !amb.saved[i]; }), p = Promise.resolve();
   if(!ids.length){ toast("Every sound is already saved."); return p; }
-  ids.forEach(function(i){ p = p.then(function(){ return ambSave(i); }); });
-  return p.then(function(){ toast("All sounds are saved for offline use."); });
+  amb.stopAll = false;
+  ids.forEach(function(i){ p = p.then(function(){ return amb.stopAll ? null : ambSave(i); }); });
+  return p.then(function(){ if(!amb.stopAll) toast("All sounds are saved in the app."); amb.stopAll = false; });
 }
 function ambGet(id){
   if(amb.cache[id]) return Promise.resolve(amb.cache[id]);
@@ -13216,12 +13242,12 @@ function sceneCardHtml(){
 }
 function soundCardHtml(){
   var on = ambOn(), cur = ambId(), vol = Math.round(ambVol()*100);
-  return '<div class="card set-card sound-card"><h3>Timer sounds</h3><div class="muted">Calm 60-second loops that play while the timer runs, with no break at the join. Tap \u2B07 to keep a sound on this phone so it plays with no internet. If you hear nothing, raise the volume and turn off silent mode.</div>'+
+  return '<div class="card set-card sound-card"><h3>Timer sounds</h3><div class="muted">Calm 60-second loops that play while the timer runs, with no break at the join. Tap \u2B07 to download a sound into the app, and it plays with no internet. If you hear nothing, raise the volume and turn off silent mode.</div>'+
     '<div class="snd-row"><span>Sound</span><button type="button" class="pill'+(on ? " on" : "")+'" data-snd="toggle" aria-pressed="'+on+'">'+(on ? "On" : "Off")+'</button></div>'+
     '<div class="snd-row"><span>Volume</span><input type="range" id="sndVol" min="0" max="100" value="'+vol+'" aria-label="Sound volume"></div>'+
     '<div class="snd-opts" role="radiogroup" aria-label="Sound">'+AMB_SOUNDS.map(function(o){
       return '<div class="snd-opt'+(cur===o[0] ? " sel" : "")+'" role="radio" tabindex="0" aria-checked="'+(cur===o[0])+'" data-snd="pick" data-id="'+o[0]+'"><span class="sn-i" aria-hidden="true">'+o[3]+'</span><span class="sc-t"><b>'+esc(o[1])+(cur===o[0] ? " \u2713" : "")+'</b><small>'+esc(o[2])+'</small></span>'+
-        '<span class="snd-act"><button type="button" class="snd-dl" data-snd="dl" data-id="'+o[0]+'" aria-label="Download for offline use">\u2B07</button><a class="snd-sv" data-snd="save" href="'+ambFile(o[0])+'" download="'+esc(o[1].toLowerCase().replace(/ /g, "-"))+'.flac" aria-label="Save the audio file to your device" title="Save the file to your device">\uD83D\uDCBE</a></span></div>';
+        '<span class="snd-act"><button type="button" class="snd-dl" data-snd="dl" data-id="'+o[0]+'" aria-label="Download for offline use">\u2B07</button></span></div>';
     }).join("")+'</div>'+
     '<button type="button" class="btn ghost snd-all" id="sndAll" data-snd="all">Download all for offline</button></div>';
 }
@@ -13344,8 +13370,7 @@ function renderSettings(){
       if(sd){
         var k = sd.getAttribute("data-snd");
         if(k==="toggle"){ ambSetOn(!ambOn()); renderSettings(); return; }
-        if(k==="save") return;                                   // the browser saves the file itself
-        if(k==="dl"){ var did = sd.getAttribute("data-id"); if(amb.saved[did]) ambUnsave(did); else ambSave(did); return; }
+        if(k==="dl"){ var did = sd.getAttribute("data-id"); if(amb.dl[did]) ambCancel(did); else if(amb.saved[did]) ambUnsave(did); else ambSave(did); return; }
         if(k==="all"){ ambSaveAll(); return; }
         if(k==="pick"){ if(e.target.closest && e.target.closest(".snd-act")) return; lsSet("dossier.soundId", sd.getAttribute("data-id")); if(!ambOn()) lsSet("dossier.soundOn", "1"); renderSettings(); ambPreview(6000); return; }
       }
