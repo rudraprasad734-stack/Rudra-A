@@ -967,7 +967,7 @@
   .ins-leg{list-style:none; margin:0; padding:0; flex:1 1 auto; min-width:0; display:flex; flex-direction:column; gap:6px; font-size:13px;} .ins-leg li{display:flex; align-items:center; gap:8px;} .ins-leg i{width:10px; height:10px; border-radius:50%; flex:0 0 auto;} .ins-leg span{flex:1 1 auto; color:var(--ink);} .ins-leg b{color:var(--ink);}
   .ins-days{display:grid; grid-template-columns:repeat(7,1fr); gap:8px; align-items:end; margin:4px 0 6px;} .ins-day{display:flex; flex-direction:column; align-items:center; gap:3px; min-width:0;} .ins-dbar{position:relative; width:100%; max-width:34px; height:92px; display:flex; align-items:flex-end; justify-content:center;}
   .ins-dbar i{position:absolute; bottom:0; left:0; right:0; border-radius:4px 4px 0 0; min-height:0;} .ins-dbar i.p{background:var(--tab-accent-soft); border:1px solid var(--tab-accent);} .ins-dbar i.a{background:var(--tab-accent); left:0; right:0; border-radius:3px 3px 0 0;} .ins-dbar{box-sizing:border-box;} .ins-pc{position:absolute; left:-4px; right:-4px; text-align:center; font-size:10.5px; font-weight:700; color:var(--ink); line-height:1;}
-  .ins-day em{width:7px; height:7px; border-radius:50%; background:transparent;} .ins-day em.miss{background:#e5675a;} .ins-day span{font-size:11px; color:var(--ink-soft);} .ins-day span{display:flex; flex-direction:column; align-items:center; line-height:1.15; padding:2px 4px; border-radius:8px;} .ins-day span small{font-size:10px; opacity:.75;} .ins-day.now span{color:#fff; background:var(--tab-accent); font-weight:800; font-size:13px; transform:scale(1.14); box-shadow:0 2px 8px rgba(0,0,0,.18);} .ins-day.now span small{opacity:.95;}
+  .ins-day em{width:7px; height:7px; border-radius:50%; background:transparent;} .ins-day em.miss{background:#e5675a;} .ins-day span{font-size:11px; color:var(--ink-soft);} .ins-day span{display:flex; flex-direction:column; align-items:center; line-height:1.15; padding:2px 4px; border-radius:8px;} .ins-day span small{font-size:10px; opacity:.75;} .ins-day.now span{color:var(--tab-accent-ink,#fff); background:var(--tab-accent); font-weight:800; font-size:13px; transform:scale(1.14); box-shadow:0 2px 8px rgba(0,0,0,.18);} .ins-day.now span small{opacity:.95;}
   .ins-key{display:flex; gap:14px; font-size:11.5px; color:var(--ink-soft); margin:0 0 6px;} .ins-key span{display:inline-flex; align-items:center; gap:5px;} .ins-key i{width:10px; height:10px; border-radius:3px; display:inline-block;} .ins-key i.p{background:var(--tab-accent-soft); border:1px solid var(--tab-accent);} .ins-key i.a{background:var(--tab-accent);} .ins-key i.m{background:#e5675a; border-radius:50%;}
   .ins-sb, .ins-tb{padding:6px 0;} .ins-sbh{display:flex; justify-content:space-between; gap:10px; font-size:13px; margin-bottom:4px;} .ins-sbh span{min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--ink);} .ins-sbh b{color:var(--ink); flex:0 0 auto;}
   .ins-track{height:8px; border-radius:4px; background:var(--tab-accent-soft); overflow:hidden;} .ins-track i{display:block; height:100%; border-radius:4px; background:var(--tab-accent);} .ins-track i.p{background:var(--ink-soft); opacity:.55;} .ins-track i.t{background:#6aa7ff;}
@@ -7101,7 +7101,7 @@ function wizGenerate(){
 // ============================================================================
 // PLANNER HOME: LEGO chain + Yearly / Monthly / Weekly / Daily + Progress
 // ============================================================================
-var progOpen = {}, plannerView = "overview", plannerLanding = null, plannerMonth = null, plannerWeek = null, plannerDay = null;
+var plannerScrollTo = "", progOpen = {}, plannerView = "overview", plannerLanding = null, plannerMonth = null, plannerWeek = null, plannerDay = null;
 // four tabs; Schedule and Plan each hold several views of the same data behind one switch
 var PLANNER_TABS = [["plan","Plan"],["schedule","Schedule"],["review","Review"],["priority","Priority"]];
 var SCHED_VIEWS = [["daily","Day"],["weekly","Week"],["monthly","Month"],["yearly","Year"]];
@@ -10442,7 +10442,7 @@ function goPlanner(view, o){
   if(!studyPlan){ setTab("planner"); return; }
   plannerView = view;
   if(o.day) plannerDay = o.day;
-  if(o.subject){ progOpen[o.subject] = true; priSubject = o.subject; }
+  if(o.subject){ progOpen[o.subject] = true; priSubject = o.subject; if(view=="progress") plannerScrollTo = o.subject; }
   setTab("planner");
 }
 function goAction(el){
@@ -10828,6 +10828,7 @@ function renderPlannerHome(host){
     '<div class="card pl-title"><div><h2>Preparation Planner</h2><div class="muted">Complete a subject to unlock the next. The calendar follows your progress.</div></div><button type="button" class="btn ghost sm" data-go="reschedule">Reschedule</button></div>'+
     '<div class="pl-tabs">'+PLANNER_TABS.map(function(t){ return '<button type="button" class="'+(t[0]===tabNow?"on":"")+'" data-pa="view" data-v="'+(t[0]==="plan" ? "overview" : (t[0]==="schedule" ? lastSched : (t[0]==="review" ? "insights" : "priority")))+'">'+t[1]+'</button>'; }).join("")+'</div>'+sub+(plannerView==="insights" ? "" : catchBannerHtml())+body;
   centerActive(host.querySelector(".pl-tabs"), "button.on", false);
+  if(plannerScrollTo){ var tgt = host.querySelector('[data-prog="'+plannerScrollTo.replace(/"/g, '\\"')+'"]'); plannerScrollTo = ""; if(tgt) setTimeout(function(){ tgt.scrollIntoView({block:"start"}); window.scrollBy(0, -70); }, 60); }
   if(plannerView==="daily") bindPlannerDaily(host);
 }
 function renderPlanner(){
@@ -11627,6 +11628,7 @@ function ambSync(){
   if(want) ambPlay(); else if(amb.playing) ambStop();
   var b = document.getElementById("timerSoundBtn"); if(b && b.getAttribute("data-s")!==String(ambOn())){ b.setAttribute("data-s", String(ambOn())); b.classList.toggle("on", ambOn()); b.setAttribute("aria-pressed", ambOn() ? "true" : "false"); b.setAttribute("aria-label", ambOn() ? "Sound on. Tap to turn off" : "Sound off. Tap to turn on"); b.innerHTML = ambOn() ? AMB_ICON_ON : AMB_ICON_OFF; }
 }
+document.addEventListener("pointerdown", function(){ if(amb.ctx && amb.ctx.state==="suspended" && amb.playing){ try{ amb.ctx.resume(); }catch(e){} } else if(!amb.playing && ambOn() && timerState.running) ambSync(); }, {passive:true});
 function ambPreview(ms){ amb.preview = Date.now() + (ms||6000); ambSync(); clearTimeout(amb.pvT); amb.pvT = setTimeout(ambSync, (ms||6000)+50); }
 function ambSetOn(v){ lsSet("dossier.soundOn", v ? "1" : "0"); if(v) ambPreview(5000); else { amb.preview = 0; ambSync(); } }
 var AMB_ICON_ON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 010 6M18.5 6.5a8 8 0 010 11"/></svg>';
@@ -11819,7 +11821,7 @@ function timerSetMode(m){
 // the session this sitting is for (chosen with Start on a planned session)
 function timerSubjHtml(){
   var x = timerState.target ? sessionById(timerState.target) : null;
-  if(!x) return "";
+  if(!x || x.date!==todayKey) return "";
   var col = (KIND_META[x.kind] && x.kind!=="study" && x.kind!=="revision") ? KIND_META[x.kind].color : "--tab-planner";
   var nm = x.kind==="study" || x.kind==="revision" ? x.subject : (KIND_META[x.kind] ? KIND_META[x.kind].label : x.subject);
   return '<div class="timer-subj" style="--sc:var('+col+')"><span class="ts-pill"><i></i>'+esc(nm.replace(/ \(Optional\)$/, ""))+'</span>'+(x.syllabusUnit && x.kind==="study" ? '<small class="ts-unit">'+esc(x.syllabusUnit)+'</small>' : "")+'<small>S'+x.sessionNumber+' · '+esc(fmt12(x.startTime))+' · '+esc(fmtDurMin(x.duration))+' planned</small></div>';
