@@ -988,6 +988,7 @@
   .snd-opts{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px;} .snd-opt{display:flex; align-items:center; gap:10px; min-width:0; text-align:left; padding:10px; border-radius:14px; border:2px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; cursor:pointer;} .snd-opt.sel{border-color:var(--tab-accent); background:var(--tab-accent-soft);} .sn-i{font-size:22px; width:40px; height:40px; border-radius:12px; display:grid; place-items:center; background:var(--line); flex:none;} .snd-opt small{display:block; color:var(--ink-soft); font-size:11.5px;}
   .scene-opts{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px;} .scene-opt{display:flex; align-items:center; gap:10px; min-width:0; text-align:left; padding:10px; border-radius:14px; border:2px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; cursor:pointer;} .scene-opt.sel{border-color:var(--tab-accent); background:var(--tab-accent-soft);}
   .sc-sw{width:44px; height:44px; border-radius:14px; flex:none; box-shadow:inset 0 0 0 1px rgba(255,255,255,.15);} .sc-t b{display:block;} .sc-t small{display:block; color:var(--ink-soft);}
+  .nextup .ses{margin:0;}
   .sess-start{display:block; width:100%; margin:10px 0 2px; min-height:46px; border:0; border-radius:14px; background:var(--tab-accent); color:var(--tab-accent-ink); font:inherit; font-size:16px; font-weight:800; cursor:pointer; box-shadow:0 8px 18px -10px var(--tab-accent);}
   .start-sheet .k{font-size:11px; letter-spacing:.12em; color:var(--ink-soft); font-weight:700; margin:14px 0 8px;}
   .ss-mode{display:flex; align-items:center; gap:12px; width:100%; text-align:left; padding:12px; margin:8px 0; border-radius:16px; border:2px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; cursor:pointer;} .ss-mode.on{border-color:var(--tab-accent); background:var(--tab-accent-soft);}
@@ -998,6 +999,26 @@
   .timer-subj{position:absolute; left:0; right:0; top:calc(176px + env(safe-area-inset-top,0px)); z-index:3; text-align:center; pointer-events:none; display:flex; flex-direction:column; align-items:center; gap:4px;}
   .timer-subj .ts-pill{display:inline-flex; align-items:center; gap:8px; max-width:88%; padding:7px 14px; border-radius:99px; background:rgba(0,0,0,.55); border:1px solid rgba(255,255,255,.2); font-weight:700; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;} .timer-subj .ts-pill i{width:10px; height:10px; border-radius:50%; background:var(--sc); flex:none;} .timer-subj small{color:rgba(255,255,255,.7); font-size:12.5px; max-width:88%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;} .timer-subj .ts-unit{color:#fff; font-size:13.5px;}
   body.dash-timer.ui-sleep .timer-subj{opacity:0; transition:opacity .7s;}
+  .phero{background:linear-gradient(135deg,#126c68,#1b4f9c) !important; border:0 !important; color:#fff; position:relative; overflow:hidden;} .phero:after{content:""; position:absolute; right:-30px; top:-30px; width:140px; height:140px; border-radius:50%; background:rgba(255,255,255,.07); pointer-events:none;}
+  .phero .row{display:flex; align-items:center; gap:14px; justify-content:space-between;} .phero h2{font-size:21px; margin:2px 0 4px; color:#fff; font-family:var(--font-display);} .hero-t{min-width:0; flex:1; font-size:13.5px; color:rgba(255,255,255,.92);} .hero-t > div{margin-bottom:8px;}
+  .chip2{display:inline-block; padding:4px 11px; border-radius:99px; font-size:12px; font-weight:700; background:rgba(255,255,255,.18); color:#fff;}
+  .ring2{width:78px; height:78px; flex:none; border-radius:50%; display:grid; place-items:center; background:conic-gradient(#fff calc(var(--p)*1%),rgba(255,255,255,.25) 0);} .ring2 span{width:60px; height:60px; border-radius:50%; background:#0e4a55; color:#fff; display:grid; place-items:center; font-weight:800;}
+  .phero,.tlc,.nextup{padding:16px; margin:0 0 12px;} .nextup.done{padding:16px;}
+  .k2{font-size:11px; letter-spacing:.12em; color:var(--ink-soft); font-weight:700; margin-bottom:10px;}
+  .tl-row{display:flex; align-items:center; gap:8px; margin:9px 0; font-size:12.5px; cursor:pointer;} .tl-n{width:112px; flex:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;} .tl-row.locked{opacity:.55;}
+  .tl-track{position:relative; flex:1; height:16px; border-radius:9px; background:color-mix(in srgb,var(--ink) 9%,transparent);} .tl-bar{position:absolute; top:0; bottom:0; border-radius:9px; background:color-mix(in srgb,var(--c) 55%,transparent); overflow:hidden;} .tl-bar i{display:block; height:100%; background:var(--c);} .tl-row.locked .tl-bar{background:color-mix(in srgb,var(--c) 40%,transparent);}
+  .tl-now{position:absolute; top:-5px; bottom:-5px; width:2px; background:var(--ink); border-radius:2px;}
+  .tl-key{display:flex; gap:14px; flex-wrap:wrap; font-size:11.5px; color:var(--ink-soft); margin-top:10px;}
+  .ses{border-radius:18px; margin:8px 0; padding:12px; background:color-mix(in srgb,var(--c) 14%,var(--surface)); border:1px solid color-mix(in srgb,var(--c) 40%,transparent);} .ses.next{box-shadow:0 0 0 2px var(--c),0 10px 26px -12px var(--c);}
+  .ses-row{display:flex; align-items:center; gap:12px;} .ses .ic{width:44px; height:44px; border-radius:14px; background:var(--c); display:grid; place-items:center; font-size:21px; flex:none; color:#fff;}
+  .ses-t{min-width:0; flex:1;} .ses-t b{display:block; font-size:15.5px; line-height:1.25;} .ses-t small{color:var(--ink-soft); font-size:12.5px;} .ses .tm{font-size:11.5px; color:var(--ink-soft); margin-bottom:2px;}
+  .ses .go{flex:none; padding:10px 15px; min-height:42px; border:0; border-radius:14px; background:var(--c); color:#1b1200; font:inherit; font-weight:800; font-size:14px; cursor:pointer; box-shadow:0 6px 14px -8px var(--c);} .ses .go.done{background:color-mix(in srgb,var(--ink) 10%,transparent); color:#22c55e; box-shadow:none; display:inline-block;}
+  .ses.st-completed{opacity:.62;} .ses.st-missed{border-color:#e5675a;} .ses.st-skipped{opacity:.6;}
+  .sess-more{margin-top:8px;} .sess-more summary{font-size:12.5px; font-weight:700; color:var(--tab-accent); cursor:pointer; list-style:none;} .sess-more summary::-webkit-details-marker{display:none;}
+  .sess-ctl input[type=time], .sess-ctl select{max-width:100%; min-width:0; box-sizing:border-box;}
+  #modalHost:has(.start-sheet){align-items:flex-end; padding-bottom:0;} .start-sheet{border-radius:26px 26px 0 0 !important; margin:0 auto !important; max-width:560px; padding-bottom:calc(20px + env(safe-area-inset-bottom,0px));}
+  .ss-head{display:flex; align-items:center; gap:12px;} .ss-head h2{margin:0; font-size:17px;} .ss-ic{width:46px; height:46px; border-radius:14px; background:var(--c); display:grid; place-items:center; font-size:22px; flex:none; color:#fff;}
+  .pl-tabs button.on{background:linear-gradient(135deg,var(--tab-accent),color-mix(in srgb,var(--tab-accent) 55%,#27b9ff)) !important; box-shadow:0 6px 16px -8px var(--tab-accent);}
   .pl-sub{display:flex; gap:4px; padding:3px; margin:0 0 12px; border-radius:12px; background:var(--surface); border:1px solid var(--line);} .pl-sub button{flex:1 1 0; min-height:34px; border:0; border-radius:9px; background:transparent; color:var(--ink-soft); font:inherit; font-size:13.5px; font-weight:600; cursor:pointer;} .pl-sub button.on{background:var(--tab-accent); color:var(--tab-accent-ink);}
   .pl-tabs button{flex:1 1 0; min-height:38px; padding:7px 14px; border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; font-size:14px; font-weight:600; cursor:pointer;}
   .pl-tabs button.on{background:var(--tab-accent); border-color:var(--tab-accent); color:var(--tab-accent-ink);}
@@ -6058,18 +6079,40 @@ function openSessionEditor(id){
 }
 
 // ---------- logs: per-day session cards ----------
-function sessLogCard(s){
-  return '<div class="sess-card pur-'+purClass(s.purpose)+' st-'+esc(s.status)+'" data-sid="'+esc(s.id)+'">'+
-    '<div class="sess-top"><span class="sess-n">S'+s.sessionNumber+'</span><span class="sess-time">'+esc(fmt12(s.startTime))+' &ndash; '+esc(fmt12(s.endTime))+' &middot; '+esc(fmtDurMin(s.duration))+'</span><span class="chip pur">'+esc(s.kind && s.kind!=="study" && KIND_META[s.kind] ? KIND_META[s.kind].label : s.purpose)+'</span></div>'+
-    '<div class="sess-sub"><b>'+esc(sessionPaperLabel(s))+'</b> &middot; '+esc(s.subject)+' &rsaquo; '+esc(s.topic)+' &rsaquo; '+esc(s.syllabusUnit)+(s.blkOf>1 ? ' <small>(session '+s.blk+' of '+s.blkOf+')</small>' : "")+(s.pinned ? ' <span class="chip pinc" title="Pinned to this session, studied alongside the main subject">Pinned</span>' : "")+'</div>'+
-    (s.date===todayKey && s.status!=="completed" && s.status!=="skipped" ? '<button type="button" class="sess-start" data-sact="start">&#9654; '+(s.status==="in_progress" ? "Continue" : "Start")+'</button>' : "")+
+function subjEmoji(name, kind){
+  var n = String(name||"").toLowerCase();
+  if(kind==="essay") return "✍️"; if(kind==="ca") return "📰"; if(kind==="test") return "📝"; if(kind==="pyq") return "🎯";
+  var map = [["history","📜"],["art","🏛"],["culture","🏛"],["geograph","🌍"],["polity","⚖️"],["governance","⚖️"],["econom","💹"],["environment","🌿"],["science","🔬"],["technolog","🔬"],["security","🛡️"],["international","🌐"],["society","👥"],["ethic","🧭"],["anthropolog","🧬"],["agricult","🌾"],["botany","🌱"],["zoology","🦋"],["chemist","⚗️"],["physics","⚛️"],["math","∑"],["geolog","🪨"],["electr","⚡"],["civil","🏗"],["mechanic","⚙️"],["law","⚖️"],["commerce","🧾"],["psycholog","🧠"],["sociolog","👥"],["philosoph","💭"],["statistic","📊"],["management","💼"],["public","🏢"],["medical","🩺"],["literature","📖"],["animal","🐄"]];
+  for(var i=0;i<map.length;i++) if(n.indexOf(map[i][0])>=0) return map[i][1];
+  return kind==="revision" ? "🔁" : "📚";
+}
+function sessColor(s, states){
+  if((s.kind==="study" || s.kind==="revision") && states) return stateColor(states, s.subject);
+  return (KIND_META[s.kind] || KIND_META.study).color;
+}
+function sessTitle(s){
+  if(s.kind==="study") return (s.subject||"").replace(/ \(Optional\)$/, "")+" · "+(s.syllabusUnit||s.topic||"");
+  if(s.kind==="revision") return "Revise: "+(s.syllabusUnit||s.subject);
+  return (KIND_META[s.kind] ? KIND_META[s.kind].label : (s.subject||"Session"))+(s.kind==="pyq" && s.topic ? " · "+s.topic : "");
+}
+function sessLogCard(s, states){
+  var live = s.date===todayKey && s.status!=="completed" && s.status!=="skipped";
+  var stTxt = {completed:"Completed ✓", in_progress:"In progress", missed:"Missed", skipped:"Skipped", not_started:"Not started"}[s.status] || "";
+  var act = live ? '<button type="button" class="go" data-sact="start">&#9654; '+(s.status==="in_progress" ? "Continue" : "Start")+'</button>'
+    : (s.status==="completed" ? '<span class="go done">✓ Done</span>' : "");
+  return '<div class="sess-card ses st-'+esc(s.status)+(live && s.status==="in_progress" ? " next" : "")+'" style="--c:var('+sessColor(s, states)+')" data-sid="'+esc(s.id)+'">'+
+    '<div class="ses-row"><div class="ic" aria-hidden="true">'+subjEmoji(s.subject, s.kind)+'</div>'+
+      '<div class="ses-t"><div class="tm">S'+s.sessionNumber+' &middot; '+esc(fmt12(s.startTime))+' &ndash; '+esc(fmt12(s.endTime))+' &middot; '+esc(fmtDurMin(s.duration))+'</div>'+
+      '<b>'+esc(sessTitle(s))+'</b><small>'+esc(stTxt)+(s.blkOf>1 ? ' &middot; part '+s.blk+' of '+s.blkOf : "")+(s.pinned ? ' &middot; pinned' : "")+'</small></div>'+act+'</div>'+
+    '<details class="sess-more"><summary>Log time or edit</summary>'+
+    '<div class="sess-sub"><b>'+esc(sessionPaperLabel(s))+'</b> &middot; '+esc(s.subject)+' &rsaquo; '+esc(s.topic)+' &rsaquo; '+esc(s.syllabusUnit)+'</div>'+
     '<div class="sess-ctl">'+
       '<label>Status<select data-sf="status">'+STATUSES.map(function(o){ return '<option value="'+o[0]+'"'+(o[0]===s.status?" selected":"")+'>'+o[1]+'</option>'; }).join("")+'</select></label>'+
       '<label>Actual start<input type="time" data-sf="actualStart" value="'+esc(s.actualStart)+'"></label>'+
       '<label>Actual end<input type="time" data-sf="actualEnd" value="'+esc(s.actualEnd)+'"></label>'+
       '<span class="sess-act">Actual study time <b>'+(s.actualDuration ? esc(fmtDurMin(s.actualDuration)) : "&mdash;")+'</b>'+(s.breakMin>0 ? ' <small>+ '+esc(fmtDurMin(s.breakMin))+' of breaks, not counted</small>' : "")+'</span>'+
     '</div><div class="sess-warn" role="alert" hidden></div>'+
-    '<div class="sess-links"><button class="link-btn" data-sact="same">Same as scheduled</button>'+(s.kind==="study" && s.topicId ? '<button class="link-btn" data-sact="chapter">'+(leafStatus(s.topicId)==="completed" ? "Chapter completed \u2713" : "Mark chapter complete")+'</button>' : "")+(s.origin==="auto" ? "" : '<button class="link-btn" data-sact="edit">Edit session</button>')+'</div>'+
+    '<div class="sess-links"><button class="link-btn" data-sact="same">Same as scheduled</button>'+(s.kind==="study" && s.topicId ? '<button class="link-btn" data-sact="chapter">'+(leafStatus(s.topicId)==="completed" ? "Chapter completed ✓" : "Mark chapter complete")+'</button>' : "")+(s.origin==="auto" ? "" : '<button class="link-btn" data-sact="edit">Edit session</button>')+'</div></details>'+
   '</div>';
 }
 function bindSessionCards(host){
@@ -7196,20 +7239,43 @@ function upcomingHtml(){
 
 // ---------- views ----------
 // the one session to do next today, with a Start button that opens the timer
+function planHeroHtml(plan){
+  var op = overallProgress(plan), sim = viewIndex().sim, left = sim ? sim.remaining : 0, fin = "";
+  var cands = (sim ? sim.sessions : []).concat(studySessions);
+  cands.forEach(function(x){ if(x.kind==="study" && x.status!=="skipped" && x.date>fin) fin = x.date; });
+  var miss = missedSessions().length, st = streakStats(studyMinutesByDay());
+  var title, line, chip;
+  if(op.pct>=100){ title = "All chapters done"; line = "Keep revising and practising."; }
+  else if(left>0){ title = "Needs attention"; line = left+" chapter"+(left===1 ? "" : "s")+" may not fit before "+esc(fmtShort(parseKey(plan.window.end)))+"."; }
+  else if(miss>0){ title = "A little behind"; line = (fin ? "Finish around <b>"+esc(fmtShort(parseKey(fin)))+"</b>." : "")+" "+miss+" session"+(miss===1 ? "" : "s")+" to catch up."; }
+  else { var wk = fin ? Math.floor(diffDays(plan.window.end, fin)/7) : 0; title = "You're on track"; line = (fin ? "Finish around <b>"+esc(fmtShort(parseKey(fin)))+"</b>" : "")+(wk>0 ? "<br>"+wk+" week"+(wk===1 ? "" : "s")+" before your window ends" : ""); }
+  chip = st.cur>0 ? '<span class="chip2">🔥 '+st.cur+'-day streak</span>' : '<span class="chip2">'+op.done+' of '+op.total+' chapters</span>';
+  return '<div class="card phero"><div class="row"><div class="ring2" style="--p:'+op.pct+'"><span>'+op.pct+'%</span></div><div class="hero-t"><h2>'+esc(title)+'</h2><div>'+line+'</div>'+chip+'</div></div></div>';
+}
+function planTimelineHtml(plan, states){
+  var a = plan.window.start, b = plan.window.end, span = Math.max(1, diffDays(b, a)), sim = viewIndex().sim;
+  var all = (sim ? sim.sessions : []).concat(studySessions), rng = {};
+  all.forEach(function(x){ if(x.kind!=="study" || x.status==="skipped") return; var r = rng[x.subject] || (rng[x.subject] = {lo:x.date, hi:x.date}); if(x.date<r.lo) r.lo = x.date; if(x.date>r.hi) r.hi = x.date; });
+  function pc(d){ return Math.max(0, Math.min(100, 100*diffDays(d, a)/span)); }
+  var rows = states.map(function(st){
+    var r = rng[st.name], run = st.state==="active" || (st.state==="locked" && st.pinned), locked = st.state==="locked" && !st.pinned;
+    var nm = st.name.replace(/ \(Optional\)$/, ""), bar = "";
+    if(r){ var l = pc(r.lo), w = Math.max(3, pc(r.hi)-l); bar = '<div class="tl-bar" style="left:'+l.toFixed(1)+'%;width:'+w.toFixed(1)+'%"><i style="width:'+st.pct+'%"></i></div>'; }
+    return '<div class="tl-row'+(locked ? " locked" : "")+(st.state==="completed" ? " done" : "")+'" style="--c:var('+st.color+')" data-go="subject" data-subj="'+esc(st.name)+'" role="button" tabindex="0"><span class="tl-n">'+(locked ? "🔒 " : subjEmoji(st.name)+" ")+esc(nm)+'</span><div class="tl-track">'+bar+'<span class="tl-now" style="left:'+pc(todayKey).toFixed(1)+'%"></span></div></div>';
+  }).join("");
+  return '<div class="card tlc"><div class="k2">YOUR SUBJECTS &middot; WHEN EACH RUNS</div>'+rows+'<div class="tl-key"><span>Coloured = running now</span><span>🔒 starts when earlier ones finish</span></div></div>';
+}
 function nextUpHtml(){
   var list = planSessionsOn(todayKey).filter(function(x){ return !x.projected && x.status!=="completed" && x.status!=="skipped"; });
   list.sort(function(a, b){ return (b.status==="in_progress") - (a.status==="in_progress") || toMin(a.startTime) - toMin(b.startTime); });
   var x = list[0];
   if(!x) return '<div class="card nextup done"><div class="k">NEXT UP</div><b>Nothing left today</b><div class="muted">Every session planned for today is done or skipped.</div></div>';
   var nm = x.kind==="study" || x.kind==="revision" ? x.subject : (KIND_META[x.kind] ? KIND_META[x.kind].label : x.subject);
-  return '<div class="card nextup"><div class="k">NEXT UP</div><div class="nu-row"><div class="nu-t"><b>'+esc(nm)+'</b><div class="muted">'+(x.kind==="study" && x.syllabusUnit ? esc(x.syllabusUnit)+' &middot; ' : '')+'S'+x.sessionNumber+' &middot; '+esc(fmt12(x.startTime))+' &middot; '+esc(fmtDurMin(x.duration))+'</div></div></div>'+
-    '<button type="button" class="sess-start" data-pa="startSess" data-v="'+esc(x.id)+'">&#9654; '+(x.status==="in_progress" ? "Continue" : "Start")+'</button></div>';
+  return '<div class="card nextup"><div class="k2">NEXT UP</div><div class="ses next" style="--c:var('+sessColor(x, subjectStates(studyPlan))+')"><div class="ses-row"><div class="ic" aria-hidden="true">'+subjEmoji(x.subject, x.kind)+'</div><div class="ses-t"><div class="tm">Today &middot; '+esc(fmt12(x.startTime))+' &middot; '+esc(fmtDurMin(x.duration))+'</div><b>'+esc(sessTitle(x))+'</b></div><button type="button" class="go" data-pa="startSess" data-v="'+esc(x.id)+'">&#9654; '+(x.status==="in_progress" ? "Continue" : "Start")+'</button></div></div></div>';
 }
 function overviewHtml(plan, states){
   var st = windowStats(plan.cfg), op = overallProgress(plan), sim = viewIndex().sim, left = sim ? sim.remaining : 0;
-  return nextUpHtml()+activeCardHtml(states, false)+
-    '<div class="card pad"><div class="ov-h"><b>Overall progress</b><span>'+op.pct+'%</span></div><div class="pbar big"><i style="width:'+op.pct+'%"></i></div><div class="muted">'+op.done+' of '+op.total+' selected chapters completed</div></div>'+
-    '<div class="section-title">Subject chain</div>'+chainHtml(states)+
+  return planHeroHtml(plan)+planTimelineHtml(plan, states)+nextUpHtml()+activeCardHtml(states, false)+
     '<div class="section-title">Upcoming activities</div>'+upcomingHtml()+
     '<div class="card pace"><div><b>Pace</b><div class="muted">Sessions per chapter. Slower pace makes each subject take longer; the next one still waits for completion, never the calendar. Now: <b>'+(Math.round(plan.capacity.blocks*10)/10)+' per chapter</b>'+(plan.capacity.auto ? " (auto)" : "")+'.</div></div><select data-pa="pace" aria-label="Sessions per chapter">'+paceOptions(plan.capacity.auto ? "auto" : plan.capacity.blocks)+'</select></div>'+
     (left ? '<div class="warn-list">At the current pace, <b>'+left+' chapter(s)</b> are projected to finish after your window ends ('+esc(fmtShort(parseKey(plan.window.end)))+'). Add study days, add a session, or speed up the pace.</div>' : "")+
@@ -7305,12 +7371,15 @@ function dailyHtml(plan){
   plannerDay = d;
   var list = (d>=plan.window.start && d<=plan.window.end) ? planSessionsOn(d) : [];
   var real = list.filter(function(s){ return !s.projected; }), done = real.filter(function(s){ return s.status==="completed"; }).length;
-  var st = getDayState(d);
+  var st = getDayState(d), states = subjectStates(plan);
+  var pm = 0, dm = 0; real.forEach(function(x){ pm += x.duration||0; dm += x.status==="completed" ? Math.max(x.duration||0, x.actualDuration||0) : Math.min(x.actualDuration||0, x.duration||0); });
+  var dpct = pm ? Math.min(100, Math.round(100*dm/pm)) : 0;
+  var hero = real.length ? '<div class="card phero"><div class="row"><div class="hero-t">'+(d===todayKey ? '<span class="chip2">TODAY</span>' : "")+'<h2>'+esc(fmtLong(parseKey(d)))+'</h2><div>'+esc(fmtDurMin(Math.min(dm, pm)))+' done of '+esc(fmtDurMin(pm))+'</div></div><div class="ring2" style="--p:'+dpct+'"><span>'+dpct+'%</span></div></div></div>' : "";
   return '<div class="navrow"><button type="button" class="btn ghost sm" data-pa="dPrev">&lsaquo;</button><b>'+esc(fmtLong(parseKey(d)))+'</b><button type="button" class="btn ghost sm" data-pa="dNext">&rsaquo;</button></div>'+
     '<div class="pill-row"><button type="button" class="btn ghost sm" data-pa="dToday">Today</button></div>'+
-    '<div class="card sess-day"><div class="sess-day-head"><h3>Sessions</h3><span class="muted">'+(real.length ? done+"/"+real.length+" completed" : "none scheduled")+'</span></div>'+
+    hero+'<div class="card sess-day"><div class="sess-day-head"><h3>Sessions</h3><span class="muted">'+(real.length ? done+"/"+real.length+" completed" : "none scheduled")+'</span></div>'+
       logHelpHtml()+
-      (list.length ? list.map(function(s){ return s.projected ? planRow(s) : sessLogCard(s); }).join("") : '<div class="muted sess-empty">Nothing planned on this day.</div>')+'</div>'+
+      (list.length ? list.map(function(s){ return s.projected ? planRow(s) : sessLogCard(s, states); }).join("") : '<div class="muted sess-empty">Nothing planned on this day.</div>')+'</div>'+
     '<div class="notes-card card"><h3>Notes</h3><textarea id="dayNotes" placeholder="How did today go? Anything to revise or flag for tomorrow...">'+esc(st.notes||"")+'</textarea><div class="save-hint" id="dayNotesHint">'+(db ? "Saves automatically as you type" : "Saved on this device")+'</div></div>'+
     '<div class="hint">Set a session&rsquo;s status or actual time here. Your plan, progress and dashboard update automatically.</div>';
 }
@@ -11687,7 +11756,7 @@ function openStartSheet(sid){
   var mode = timerState.mode==="pomo" ? "pomo" : "free", pre = Math.min(Math.max(0, timerState.preset||0), POMO_PRESETS.length-1);
   var nm = x.kind==="study" || x.kind==="revision" ? x.subject : (KIND_META[x.kind] ? KIND_META[x.kind].label : x.subject);
   var m = showModal('<div class="modal card start-sheet" role="dialog" aria-modal="true" aria-labelledby="ssT">'+
-    '<h2 id="ssT">'+esc(nm)+'</h2><div class="muted">'+(x.kind==="study" ? esc(x.syllabusUnit)+" · " : "")+'S'+x.sessionNumber+' · planned '+esc(fmtDurMin(x.duration))+'</div>'+
+    '<div class="ss-head"><div class="ss-ic" style="--c:var('+sessColor(x, studyPlan ? subjectStates(studyPlan) : null)+')">'+subjEmoji(x.subject, x.kind)+'</div><div><h2 id="ssT">'+esc(sessTitle(x))+'</h2><div class="muted">S'+x.sessionNumber+' · planned '+esc(fmtDurMin(x.duration))+'</div></div></div>'+
     '<div class="k">HOW DO YOU WANT TO STUDY?</div>'+
     '<button type="button" class="ss-mode'+(mode==="pomo" ? " on" : "")+'" data-m="pomo"><span class="ss-i">🍅</span><span><b>Pomodoro</b><small>Focus rounds with short breaks</small></span><i class="ss-r"></i></button>'+
     '<div class="ss-pre" id="ssPre"'+(mode==="pomo" ? "" : " hidden")+'>'+POMO_PRESETS.map(function(p, i){ return '<button type="button" data-p="'+i+'"'+(i===pre ? ' class="on"' : "")+'>'+esc(p[0])+'</button>'; }).join("")+'</div>'+
