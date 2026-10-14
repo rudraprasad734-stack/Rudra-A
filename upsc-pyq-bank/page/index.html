@@ -11073,7 +11073,16 @@ function pathCtx(states){
     if(s.state==="active" || s.pinned) lanes.push({name:s.name, color:PATH_COLORS[lanes.length % PATH_COLORS.length], pct:s.pct, done:s.done, total:s.total, i:lanes.length, subj:s});
   });
   var days = studyPlan && studyPlan.window ? diffDays(studyPlan.window.end, todayKey) : 0;
-  return {n:lanes.length, lanes:lanes, dday:{label:"D-Day", days:days, sub:(days>=0 ? days+" day"+(days===1?"":"s") : "passed")},
+  var ov = null;
+  if(studyPlan && studyPlan.window){
+    var w0 = studyPlan.window.start, w1 = studyPlan.window.end, span = Math.max(1, diffDays(w1, w0)), opx = overallProgress(studyPlan), hist = [], cum = {}, dd;
+    Object.keys(studyProgress.topics).forEach(function(id){ var t = studyProgress.topics[id]; if(t.status==="completed" && t.completedAt){ cum[t.completedAt] = (cum[t.completedAt]||0) + 1; } });
+    var run = 0, nowD = Math.max(0, Math.min(span, diffDays(todayKey, w0)));
+    Object.keys(cum).forEach(function(k){ if(k < w0) run += cum[k]; });
+    for(dd = 0; dd <= nowD; dd++){ var key = toKey(addDays(parseKey(w0), dd)); run += (cum[key]||0) * (key>=w0 ? 1 : 0); hist.push([dd/span, opx.total ? 100*Math.min(run, opx.total)/opx.total : 0]); }
+    ov = {pct:opx.pct, t:nowD/span, hist:hist, span:span, nowD:nowD};
+  }
+  return {n:lanes.length, lanes:lanes, overall:ov, dday:{label:"D-Day", days:days, sub:(days>=0 ? days+" day"+(days===1?"":"s") : "passed")},
     locked:states.filter(function(s){ return s.state!=="completed" && !(s.state==="active" || s.pinned); }),
     completed:states.filter(function(s){ return s.state==="completed"; })};
 }
@@ -11254,6 +11263,52 @@ registerPathTheme({id:"skyline", name:"Skyline", icon:"🌆", bg:"linear-gradien
   });
   o += '<rect x="0" y="'+gy+'" width="300" height="2" fill="#f3ecdb" fill-opacity=".5"/><rect x="262" y="26" width="2" height="30" fill="#f3ecdb"/><path d="M264 26 L284 33 L264 40Z" fill="#ff6b6b"/>'+ddayTag(c, 258, 38, "end");
   return o+'</svg>'; }});
+
+// 13. Growth curve: your real progress so far against the planned pace to D-Day, with a forecast
+registerPathTheme({id:"curve", name:"Growth curve", icon:"📈", bg:"linear-gradient(#0f2733,#08141c)", draw:function(c){
+  var H = 244, x0 = 30, x1 = 284, y0 = 188, y1 = 38, o = svgOpen(H, "#0a1620"), g, k;
+  var avg = c.lanes.length ? c.lanes.reduce(function(a, l){ return a+pctOf(l); }, 0)/c.lanes.length : 0;
+  var ov = c.overall || {pct:avg, t:.2, hist:[[0,0],[.2,avg]], span:1, nowD:0}, tNow = Math.max(.005, ov.t), pNow = ov.pct;
+  function X(t){ return x0 + (x1-x0)*t; } function Y(p){ return y0 - (y0-y1)*p/100; }
+  o += '<defs><linearGradient id="cvA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5ee0b8" stop-opacity=".5"/><stop offset="1" stop-color="#5ee0b8" stop-opacity="0"/></linearGradient></defs>';
+  for(g=0; g<=4; g++){ var gy = Y(g*25); o += '<line x1="'+x0+'" y1="'+gy+'" x2="'+x1+'" y2="'+gy+'" stroke="#fff" stroke-opacity=".08"/>'+sx(g*25+"%", x0-6, gy+3, "#7d8aa6", 8.5, "end", 600); }
+  o += '<line x1="'+X(0)+'" y1="'+Y(0)+'" x2="'+X(1)+'" y2="'+Y(100)+'" stroke="#9db7ff" stroke-opacity=".5" stroke-dasharray="4 4" stroke-width="1.5"/>'+sx("planned pace", X(.6), Y(60)-9, "#9db7ff", 8.5, "start", 700);
+  var h = ov.hist.length>1 ? ov.hist : [[0,0],[tNow,pNow]], d = "";
+  h.forEach(function(q, i){ d += (i ? " L" : "M")+X(q[0]).toFixed(1)+" "+Y(q[1]).toFixed(1); });
+  o += '<path d="'+d+' L'+X(h[h.length-1][0]).toFixed(1)+' '+Y(0)+' L'+X(0)+' '+Y(0)+'Z" fill="url(#cvA)"/><path d="'+d+'" fill="none" stroke="#5ee0b8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>';
+  // forecast: carry on at the pace of the last two weeks (or since the start) until it reaches 100% or D-Day
+  var back = Math.max(0, h.length-15), dayStep = 1/Math.max(1, ov.span), recent = h.length>1 ? (h[h.length-1][1]-h[back][1])/Math.max(7,(h.length-1-back)) : 0;   // at least a week, so one busy first day is not stretched into a year
+  if(recent>0 && pNow<100){
+    var days = Math.min((100-pNow)/recent, (1-tNow)/dayStep), tEnd = tNow+days*dayStep, pEnd = Math.min(100, pNow+recent*days);
+    o += '<line x1="'+X(tNow).toFixed(1)+'" y1="'+Y(pNow).toFixed(1)+'" x2="'+X(tEnd).toFixed(1)+'" y2="'+Y(pEnd).toFixed(1)+'" stroke="#5ee0b8" stroke-opacity=".7" stroke-width="2" stroke-dasharray="2 5" stroke-linecap="round"/>';
+  }
+  var plan = tNow*100, diff = Math.round(pNow - plan), tag = diff>=2 ? diff+"% ahead of plan" : (diff<=-2 ? Math.abs(diff)+"% behind plan" : "on plan");
+  var lx = X(tNow) > 190 ? X(tNow)-10 : X(tNow)+10, la = X(tNow) > 190 ? "end" : "start";
+  o += '<circle cx="'+X(tNow).toFixed(1)+'" cy="'+Y(pNow).toFixed(1)+'" r="6" fill="#fff" stroke="#5ee0b8" stroke-width="3"/>'+sx("You are here · "+Math.round(pNow)+"%", lx, Y(pNow)-12, "#e8fff6", 10, la, 800)+sx(tag, lx, Y(pNow)-1+ (Y(pNow)<60 ? 24 : -0), diff>=2 ? "#8ff0c8" : (diff<=-2 ? "#ffb08a" : "#cfd6ea"), 9, la, 700);
+  o += '<line x1="'+X(1)+'" y1="'+(y1-8)+'" x2="'+X(1)+'" y2="'+y0+'" stroke="#ff6b6b" stroke-width="1.5"/>'+sx("D-Day", X(1), y1-12, "#ff9a9a", 9, "end", 800);
+  o += sx("Start", X(0), y0+15, "#8a96b0", 8.5, "start", 600)+sx(Math.max(0,c.dday.days)+" days left", X(1), y0+15, "#8a96b0", 8.5, "end", 600);
+  o += sx("Overall progress across all chapters", 150, H-8, "#8aa0a8", 8.5, "middle", 600);
+  return o+'</svg>'; }});
+// 14. Liquid glasses: every subject is a glass that fills as chapters are completed
+registerPathTheme({id:"glass", name:"Liquid glasses", icon:"🥛", bg:"linear-gradient(#0f2a33,#07151b)", draw:function(c){
+  var H = 252, gy = 200, h = 140, bw = Math.min(50, 250/Math.max(1,c.n)-12), o = svgOpen(H, "#08161c");
+  o += '<defs><linearGradient id="glG" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset=".2" stop-color="#fff" stop-opacity=".04"/><stop offset="1" stop-color="#fff" stop-opacity=".1"/></linearGradient></defs>';
+  c.lanes.forEach(function(l, i){
+    var x = (300/c.n)*i + (300/c.n-bw)/2, top = gy-h, p = pctOf(l), lvl = gy-h*p/100, id = "glc"+i, shape = 'M'+x.toFixed(1)+' '+top+' L'+(x+bw).toFixed(1)+' '+top+' L'+(x+bw-5).toFixed(1)+' '+gy+' Q'+(x+bw/2).toFixed(1)+' '+(gy+7)+' '+(x+5).toFixed(1)+' '+gy+'Z';
+    o += '<defs><clipPath id="'+id+'"><path d="'+shape+'"/></clipPath></defs><g clip-path="url(#'+id+')"><rect x="'+x.toFixed(1)+'" y="'+top+'" width="'+bw+'" height="'+h+'" fill="#fff" fill-opacity=".05"/>';
+    if(p>0){
+      var w = 'M'+(x-4).toFixed(1)+' '+gy+' L'+(x-4).toFixed(1)+' '+lvl.toFixed(1), k;
+      for(k=0;k<=20;k++) w += ' L'+(x-4+(bw+8)*k/20).toFixed(1)+' '+(lvl+Math.sin(k*.9+i*2)*2.4).toFixed(1);
+      w += ' L'+(x+bw+4).toFixed(1)+' '+gy+'Z';
+      o += '<path d="'+w+'" fill="'+l.color+'" fill-opacity=".9"/><path d="'+w+'" fill="#000" fill-opacity=".12" transform="translate(0 6)"/>';
+      for(var b=0;b<5;b++) o += '<circle cx="'+(x+8+((b*17+i*9)%Math.max(6,bw-14)))+'" cy="'+(lvl+8+((b*29+i*13)%Math.max(8,gy-lvl-14)))+'" r="'+(1+b%3*.6)+'" fill="#fff" opacity=".4"/>';
+    }
+    o += '</g><path d="'+shape+'" fill="url(#glG)" stroke="#fff" stroke-opacity=".28" stroke-width="1.4"/>';
+    o += sx(Math.round(p)+"%", x+bw/2, top-8, l.color, 12, "middle", 800)+sx(trunc(l.name, c.n>4 ? 8 : 11), x+bw/2, gy+24, l.color, 9.5, "middle", 700)+sx(l.done+"/"+l.total, x+bw/2, gy+36, "#8aa0a8", 8.5, "middle", 600);
+  });
+  o += '<rect x="0" y="'+(gy+9)+'" width="300" height="2" fill="#fff" fill-opacity=".1"/>'+sx("Fill every glass by "+c.dday.label+" · "+Math.max(0,c.dday.days)+" days", 150, 16, "#cfe9ee", 10, "middle", 700);
+  return o+'</svg>'; }});
+
 
 
 function pathHtml(states){
