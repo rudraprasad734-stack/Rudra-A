@@ -979,6 +979,9 @@
   .pl-tabs{display:flex; gap:6px; overflow-x:auto; padding-bottom:6px; margin-bottom:10px; scrollbar-width:none;}
   .pl-tabs::-webkit-scrollbar{display:none;}
   .nextup .k{font-size:11px; letter-spacing:.12em; color:var(--ink-soft); font-weight:700; margin-bottom:8px;} .nextup b{font-size:17px;}
+  canvas.black-hole-scene.alt-scene{filter:none !important;}
+  .scene-opts{display:flex; flex-direction:column; gap:8px; margin-top:10px;} .scene-opt{display:flex; align-items:center; gap:12px; text-align:left; padding:10px; border-radius:14px; border:2px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; cursor:pointer;} .scene-opt.sel{border-color:var(--tab-accent); background:var(--tab-accent-soft);}
+  .sc-sw{width:54px; height:54px; border-radius:14px; flex:none; box-shadow:inset 0 0 0 1px rgba(255,255,255,.15);} .sc-t b{display:block;} .sc-t small{display:block; color:var(--ink-soft);}
   .sess-start{display:block; width:100%; margin:10px 0 2px; min-height:46px; border:0; border-radius:14px; background:var(--tab-accent); color:var(--tab-accent-ink); font:inherit; font-size:16px; font-weight:800; cursor:pointer; box-shadow:0 8px 18px -10px var(--tab-accent);}
   .start-sheet .k{font-size:11px; letter-spacing:.12em; color:var(--ink-soft); font-weight:700; margin:14px 0 8px;}
   .ss-mode{display:flex; align-items:center; gap:12px; width:100%; text-align:left; padding:12px; margin:8px 0; border-radius:16px; border:2px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; cursor:pointer;} .ss-mode.on{border-color:var(--tab-accent); background:var(--tab-accent-soft);}
@@ -11762,11 +11765,112 @@ function perfStartTier(){
 var bhTier = null;
 function bhCurrentTier(){ if(bhTier===null) bhTier = perfStartTier(); return bhTier; }
 function perfSet(mode){ lsSet(PERF_KEY, mode); try{ localStorage.removeItem(PERF_AUTO_KEY); }catch(e){} bhTier = null; }
+// ---- timer backgrounds: Black hole (above) plus four lighter scenes. Chosen in Settings, kept on this device. ----
+var TIMER_SCENES = [["hole","Black hole","Matter spiralling in. The original.","linear-gradient(135deg,#010207,#7a3410)"],["aurora","Aurora","Green and violet curtains of light over a still sky.","linear-gradient(135deg,#061a22,#1fbf8f 55%,#7a5cff)"],["rain","Night rain","Rain on the window with soft city lights behind it.","linear-gradient(135deg,#0a1220,#26405f 60%,#d99a3a)"],["warp","Warp","Stars streaming past as you fly. Faster while you study.","linear-gradient(135deg,#000,#1b2a6b 60%,#9ad0ff)"],["ocean","Moonlit sea","Slow waves under a low moon.","linear-gradient(135deg,#050b1a,#12356b 60%,#cfe3ff)"]];
+function timerSceneId(){ var v = lsGet("dossier.timerScene"); return TIMER_SCENES.some(function(x){ return x[0]===v; }) ? v : "hole"; }
+function initAltScene(canvas, ctx, id, reduced){
+  var T = BH_TIERS[bhCurrentTier()], dpr = Math.min(window.devicePixelRatio||1, T.dpr), w = 1, h = 1, cx = 0, cy = 0, U = 1, lastT = 0, rnd = Math.random, E = {}, TAU = Math.PI*2;
+  var N = Math.round(T.particles*(id==="rain" ? 2.2 : id==="warp" ? 2 : .9));
+  function resize(){ var r = canvas.getBoundingClientRect(); w = Math.max(1, r.width); h = Math.max(1, r.height); canvas.width = Math.floor(w*dpr); canvas.height = Math.floor(h*dpr); ctx.setTransform(dpr,0,0,dpr,0,0); cx = w*.5; cy = h*.49; U = Math.max(.8, Math.min(2.4, Math.min(w/390, h/620))); seed(); }
+  var P = [], stars = [], lights = [];
+  function seed(){
+    P = []; stars = []; lights = [];
+    for(var i=0;i<N;i++){
+      if(id==="rain") P.push({x:rnd()*w, y:rnd()*h, v:.6+rnd()*.9, l:10+rnd()*22, a:.15+rnd()*.35});
+      else if(id==="warp") P.push({a:rnd()*TAU, z:rnd(), s:.4+rnd()});
+    }
+    for(var j=0;j<Math.round(T.stars/12);j++) stars.push({x:rnd(), y:rnd()*.8, r:.4+rnd()*1.1, t:rnd()*TAU});
+    for(var k=0;k<14;k++) lights.push({x:rnd()*w, y:h*(.35+rnd()*.5), r:14+rnd()*40, c:["255,190,90","120,170,255","255,120,150","150,255,210"][k%4], t:rnd()*TAU});
+  }
+  function sky(top, bot){ var g = ctx.createLinearGradient(0,0,0,h); g.addColorStop(0, top); g.addColorStop(1, bot); ctx.fillStyle = g; ctx.fillRect(0,0,w,h); }
+  function starfield(t, a){ ctx.fillStyle = "#fff"; for(var i=0;i<stars.length;i++){ var s = stars[i]; ctx.globalAlpha = a*(.35+.65*Math.sin(t*.0012 + s.t)*.5+.325); ctx.beginPath(); ctx.arc(s.x*w, s.y*h, s.r, 0, TAU); ctx.fill(); } ctx.globalAlpha = 1; }
+  function aurora(t, sp){
+    sky("#02060f", "#04141c"); starfield(t, .8);
+    var cols = [["60,255,170","rgba(60,255,170,"],["80,170,255","rgba(80,170,255,"],["170,110,255","rgba(170,110,255,"]];
+    ctx.globalCompositeOperation = "lighter";
+    for(var b=0;b<3;b++){
+      var base = h*(.22 + b*.1), amp = 38*U*(1+b*.3), c = cols[b][1];
+      for(var x=0; x<=w; x+=6){
+        var ph = x*.011 + t*.00022*sp*(1+b*.4) + b*2, yy = base + Math.sin(ph)*amp + Math.sin(ph*2.3 + b)*amp*.5, len = (150 + 90*Math.sin(x*.006 + t*.0003*sp + b))*U;
+        var g = ctx.createLinearGradient(0, yy-len*.2, 0, yy+len);
+        g.addColorStop(0, c+"0)"); g.addColorStop(.25, c+".30)"); g.addColorStop(1, c+"0)");
+        ctx.fillStyle = g; ctx.fillRect(x-2, yy-len*.2, 11, len*1.2);
+      }
+    }
+    ctx.globalCompositeOperation = "source-over";
+    var gr = ctx.createLinearGradient(0,h*.82,0,h); gr.addColorStop(0,"rgba(0,0,0,0)"); gr.addColorStop(1,"rgba(0,6,8,.9)"); ctx.fillStyle = gr; ctx.fillRect(0,h*.82,w,h*.18);
+  }
+  function rain(t, sp, dt){
+    sky("#070c18", "#101a2c");
+    for(var i=0;i<lights.length;i++){ var L = lights[i], tw = .55 + .25*Math.sin(t*.0009 + L.t); var g = ctx.createRadialGradient(L.x,L.y,0,L.x,L.y,L.r*U); g.addColorStop(0,"rgba("+L.c+","+(.42*tw)+")"); g.addColorStop(1,"rgba("+L.c+",0)"); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(L.x,L.y,L.r*U,0,TAU); ctx.fill(); }
+    ctx.fillStyle = "rgba(10,18,32,.35)"; ctx.fillRect(0,0,w,h);
+    ctx.lineCap = "round";
+    for(var j=0;j<P.length;j++){ var d = P[j]; d.y += d.v*sp*dt*.55*U; d.x -= d.v*sp*dt*.08; if(d.y > h+30){ d.y = -30; d.x = rnd()*(w+60); }
+      ctx.strokeStyle = "rgba(190,215,255,"+d.a+")"; ctx.lineWidth = .8+d.v*.5; ctx.beginPath(); ctx.moveTo(d.x, d.y); ctx.lineTo(d.x+d.l*.14*U, d.y-d.l*U); ctx.stroke(); }
+    // a few droplets running down the glass
+    for(var k=0;k<7;k++){ var x = (k*97.3 + 31)%w, y = ((t*.012*(.4+k*.07)) + k*131)%(h*1.1); var gg = ctx.createLinearGradient(x,y-26,x,y+3); gg.addColorStop(0,"rgba(220,235,255,0)"); gg.addColorStop(1,"rgba(220,235,255,.35)"); ctx.strokeStyle = gg; ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo(x,y-26); ctx.lineTo(x,y); ctx.stroke(); }
+  }
+  function warp(t, sp, dt){
+    ctx.fillStyle = "#000108"; ctx.fillRect(0,0,w,h);
+    var R = Math.max(w,h)*.75;
+    for(var i=0;i<P.length;i++){ var s = P[i], z0 = s.z; s.z += dt*.00045*sp*s.s*(1+s.z*2.2); if(s.z >= 1){ s.z = rnd()*.05; s.a = rnd()*TAU; s.s = .4+rnd(); z0 = s.z; }
+      var r1 = Math.pow(z0,1.7)*R, r2 = Math.pow(s.z,1.7)*R, ca = Math.cos(s.a), sa = Math.sin(s.a);
+      ctx.strokeStyle = "rgba("+(170+s.z*85|0)+","+(200+s.z*55|0)+",255,"+Math.min(1,.15+s.z*1.1)+")"; ctx.lineWidth = .5 + s.z*1.8*U; ctx.beginPath(); ctx.moveTo(cx+ca*r1, cy+sa*r1); ctx.lineTo(cx+ca*r2, cy+sa*r2); ctx.stroke(); }
+    var g = ctx.createRadialGradient(cx,cy,0,cx,cy,R*.5); g.addColorStop(0,"rgba(80,120,255,.16)"); g.addColorStop(1,"rgba(0,0,0,0)"); ctx.fillStyle = g; ctx.fillRect(0,0,w,h);
+  }
+  function ocean(t, sp){
+    sky("#040a18", "#0b1e3d"); starfield(t, .6);
+    var mx = w*.72, my = h*.2, mr = 34*U, mg = ctx.createRadialGradient(mx,my,0,mx,my,mr*4.2); mg.addColorStop(0,"rgba(220,235,255,.5)"); mg.addColorStop(.25,"rgba(160,195,255,.16)"); mg.addColorStop(1,"rgba(160,195,255,0)"); ctx.fillStyle = mg; ctx.beginPath(); ctx.arc(mx,my,mr*4.2,0,TAU); ctx.fill();
+    ctx.fillStyle = "#e8f1ff"; ctx.beginPath(); ctx.arc(mx,my,mr,0,TAU); ctx.fill();
+    var hz = h*.5;
+    for(var b=0;b<6;b++){
+      var y0 = hz + b*(h*.5/6)*1.05, amp = (3 + b*3.2)*U, k = .012 - b*.001, spd = (.0004 + b*.00014)*sp;
+      ctx.beginPath(); ctx.moveTo(0,h);
+      for(var x=0;x<=w;x+=5) ctx.lineTo(x, y0 + Math.sin(x*k + t*spd + b*1.7)*amp + Math.sin(x*k*2.1 - t*spd*1.3)*amp*.4);
+      ctx.lineTo(w,h); ctx.closePath();
+      var gg = ctx.createLinearGradient(0,y0-amp,0,h); gg.addColorStop(0,"rgba("+(22+b*4)+","+(60+b*10)+","+(120+b*14)+",.95)"); gg.addColorStop(1,"rgba(3,10,26,.98)"); ctx.fillStyle = gg; ctx.fill();
+      ctx.strokeStyle = "rgba(190,215,255,"+(.12+b*.03)+")"; ctx.lineWidth = 1; ctx.stroke();
+    }
+    // moon path on the water
+    var sh = ctx.createLinearGradient(0,hz,0,h); sh.addColorStop(0,"rgba(220,235,255,.28)"); sh.addColorStop(1,"rgba(220,235,255,0)"); ctx.fillStyle = sh;
+    for(var q=0;q<18;q++){ var yy = hz + q*(h*.5/18)*1.0, ww = (6 + q*5)*U*(.6+.4*Math.sin(t*.002 + q)); ctx.globalAlpha = .55 - q*.025; ctx.fillRect(mx - ww/2 + Math.sin(t*.0012+q)*4, yy, ww, 2*U); }
+    ctx.globalAlpha = 1;
+  }
+  function disc(t, pv){
+    // the dark disc the time sits in, with a thin ring that fills as a Pomodoro round passes
+    var R = pv.pomo ? Math.min(70*U, Math.min(w,h)/2*.39) : Math.min(62*U, Math.min(w,h)/2*.28);
+    var g = ctx.createRadialGradient(cx,cy,R*.6,cx,cy,R*1.6); g.addColorStop(0,"rgba(0,0,0,.6)"); g.addColorStop(1,"rgba(0,0,0,0)"); ctx.fillStyle = g; ctx.beginPath(); ctx.arc(cx,cy,R*1.6,0,TAU); ctx.fill();
+    ctx.fillStyle = "rgba(0,0,0,.88)"; ctx.beginPath(); ctx.arc(cx,cy,R,0,TAU); ctx.fill();
+    var warm = pv.pomo ? pv.focus : true, col = warm ? "120,255,235" : "255,200,120";
+    ctx.lineWidth = 2.2; ctx.strokeStyle = "rgba("+col+",.28)"; ctx.beginPath(); ctx.arc(cx,cy,R+1,0,TAU); ctx.stroke();
+    var prog = pv.pomo ? pv.p : ((t*.00004)%1);
+    ctx.strokeStyle = "rgba("+col+",.95)"; ctx.lineWidth = 2.6; ctx.lineCap = "round"; ctx.beginPath();
+    if(pv.pomo) ctx.arc(cx,cy,R+1,-Math.PI/2,-Math.PI/2+TAU*Math.max(.003,prog)); else ctx.arc(cx,cy,R+1,-Math.PI/2+prog*TAU,-Math.PI/2+prog*TAU+.9);
+    ctx.stroke();
+  }
+  function draw(t){
+    try{
+      if(!canvas.isConnected){ blackHoleAnimFrame = null; return; }
+      if(!reduced && canvas.offsetParent === null){ lastT = 0; bhWait = setTimeout(function(){ blackHoleAnimFrame = requestAnimationFrame(draw); }, 600); return; }
+      if(!reduced && lastT && T.ivl && t - lastT < T.ivl){ blackHoleAnimFrame = requestAnimationFrame(draw); return; }
+      var dt = (!reduced && lastT) ? Math.min(90, t-lastT) : 16; lastT = t;
+      var pv = timerVisual(), sp = (timerState.running ? 1.7 : .8) * (reduced ? 0 : 1);
+      ctx.clearRect(0,0,w,h);
+      if(id==="aurora") aurora(t, sp||.3); else if(id==="rain") rain(t, sp||.3, dt); else if(id==="warp") warp(t, sp||.3, dt); else ocean(t, sp||.3);
+      disc(t, pv);
+      if(!reduced && typeof requestAnimationFrame==="function") blackHoleAnimFrame = requestAnimationFrame(draw);
+    }catch(e){ console.error("Timer scene failed:", e); blackHoleAnimFrame = null; }
+  }
+  resize(); if(window.ResizeObserver){ var ro = new ResizeObserver(resize); ro.observe(canvas); }
+  draw(performance.now());
+  if(reduced) blackHoleAnimFrame = setInterval(function(){ if(!canvas.isConnected){ clearInterval(blackHoleAnimFrame); return; } draw(performance.now()); }, 1000);
+}
 function initBlackHoleScene(host){
   if(bhWait){clearTimeout(bhWait);bhWait=null;}
   if(blackHoleAnimFrame){cancelAnimationFrame(blackHoleAnimFrame);clearInterval(blackHoleAnimFrame);blackHoleAnimFrame=null;}
   var canvas=host.querySelector("#blackHoleScene"),ctx=canvas&&canvas.getContext("2d");if(!ctx)return;
   var reduced=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var scn = timerSceneId(); canvas.classList.toggle("alt-scene", scn!=="hole"); if(scn!=="hole"){ initAltScene(canvas, ctx, scn, reduced); return; }
   var T = BH_TIERS[bhCurrentTier()], dpr=Math.min(window.devicePixelRatio||1,T.dpr),w=1,h=1,cx=0,cy=0,scale=1,sceneU=1,particles=[],count=T.particles;
   function resize(){var r=canvas.getBoundingClientRect();w=Math.max(1,r.width);h=Math.max(1,r.height);canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);cx=w*.5;cy=h*.49;scale=Math.min(w,h)/2;sceneU=Math.max(.8,Math.min(2.4,Math.min(w/390,h/620)));}
   function spawn(p){p.r=.34+Math.random()*.88;p.a=Math.random()*Math.PI*2;p.prevR=p.r;p.prevA=p.a;p.pull=.00045+Math.random()*.0018;p.spin=(Math.random()<.75?1:-1)*(.002+Math.random()*.007);p.size=.55+Math.random()*1.35;p.alpha=.5+Math.random()*.5;p.warm=Math.random()<.2;p.life=0;p.max=500+Math.random()*1000;}
@@ -12603,6 +12707,13 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
+function sceneCardHtml(){
+  var cur = timerSceneId();
+  return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
+    '<div class="scene-opts" role="radiogroup" aria-label="Timer background">'+TIMER_SCENES.map(function(o){
+      return '<button type="button" class="scene-opt'+(cur===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(cur===o[0])+'" data-scene="'+o[0]+'"><span class="sc-sw" style="background:'+o[3]+'"></span><span class="sc-t"><b>'+esc(o[1])+(cur===o[0] ? " \u2713" : "")+'</b><small>'+esc(o[2])+'</small></span></button>';
+    }).join("")+'</div></div>';
+}
 function guidesCardHtml(){
   var off = guideOff();
   return '<div class="card set-card guides-card"><h3>App guides</h3>'+
@@ -12691,7 +12802,7 @@ function renderSettings(){
       }).join("")+'</div>'+
       '<div class="th-prev"><div class="dx pth-prevbox"><div class="pth-scene pth-'+th.id+'">'+th.draw(ctx)+'</div></div>'+(real && real.n ? '' : '<div class="muted small">Preview with sample subjects. Build a plan to see your own.</div>')+'</div>'+
     '</div>'+
-    perfCardHtml()+
+    sceneCardHtml()+perfCardHtml()+
     guidesCardHtml()+
     '<div class="card set-card about-card"><h3>About</h3><div class="muted">UPSC Companion works offline and keeps your data on this phone unless you sign in. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a> &middot; <a href="privacy.html#delete" target="_blank" rel="noopener">How to delete your data</a></div></div>';
   // keep each row where it was, then glide the chosen theme into the middle so you always know where you are
@@ -12713,6 +12824,8 @@ function renderSettings(){
     host._wired = true;
     host.addEventListener("click", function(e){
       // match the picker buttons only: <html> itself carries data-ui / data-theme, so a bare [data-...] lookup would match every click
+      var sc = e.target.closest ? e.target.closest(".scene-opt[data-scene]") : null;
+      if(sc){ lsSet("dossier.timerScene", sc.getAttribute("data-scene")); renderSettings(); toast("Timer background: "+sc.querySelector("b").textContent.replace(/ \u2713/, "")+"."); return; }
       var pf = e.target.closest ? e.target.closest("[data-perf]") : null;
       if(pf){ perfSet(pf.getAttribute("data-perf")); renderSettings(); toast("Timer animation: "+pf.querySelector("b").textContent.replace(/ \u2713/, "")+"."); return; }
       var u = e.target.closest ? e.target.closest(".ui-opt[data-ui]") : null;
