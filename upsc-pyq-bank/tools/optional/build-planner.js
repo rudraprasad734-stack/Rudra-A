@@ -284,3 +284,29 @@ ag.topics.forEach(function(t){
   fs.writeFileSync(PAGE, h11);
   console.log(NAME + " chapters:", Object.keys(glLeaf).length, "| Paper I topics:", Object.keys(glTree["Paper I"]).length, "| Paper II topics:", Object.keys(glTree["Paper II"]).length);
 }
+
+// ---------------------------------------------------------------- History (one chapter per syllabus sub-topic)
+{
+  const NAME = "History";
+  let h12 = fs.readFileSync(PAGE, "utf8");
+  const m12 = h12.match(/<script type="application\/json" id="d-hist">(.*?)<\/script>/s);
+  if(!m12) throw new Error("build-planner: d-hist not found (run history/build-history.js first), nothing written");
+  const hs = JSON.parse(m12[1]);
+  const hsTree = {"Paper I":{}, "Paper II":{}}, hsLeaf = {}, per12 = {};
+  hs.topics.forEach(function(t){
+    const it = hs.items.filter(function(x){ return x.id === t.s; })[0], grp = it.pp === 1 ? "Paper I" : "Paper II";
+    per12[it.id] = (per12[it.id] || 0) + 1;
+    const topic = it.id + "  " + it.t, unit = it.id + "." + per12[it.id] + "  " + t.t;
+    (hsTree[grp][topic] = hsTree[grp][topic] || []).push(unit);
+    hsLeaf[topic + "|" + unit] = [t.id];
+  });
+  const cur12 = '  "' + NAME + '": ' + JSON.stringify(hsTree, null, 2).replace(/\n/g, "\n  ") + ',\n';
+  const a12 = h12.indexOf('  "' + NAME + '": {\n    "Paper I"');
+  if(a12 >= 0){ const re = /\n  "[A-Z]/g; re.lastIndex = a12 + 20; const m = re.exec(h12); if(!m) throw new Error("build-planner: end of History block not found, nothing written"); h12 = h12.slice(0, a12) + cur12 + h12.slice(m.index + 1); }
+  else { const g = h12.indexOf('  "History": CT({'); if(g < 0) throw new Error("build-planner: History placeholder not found, nothing written"); const ge = h12.indexOf('\n  })\n', g); if(ge < 0) throw new Error("build-planner: History placeholder not closed, nothing written"); h12 = h12.slice(0, g) + h12.slice(ge + '\n  })\n'.length); const so = h12.indexOf('  "Sociology": CT({'); if(so < 0) throw new Error("build-planner: insertion point not found, nothing written"); h12 = h12.slice(0, so) + cur12 + h12.slice(so); }
+  const la12 = h12.indexOf("var HIST_LEAF = {"), leafTxt12 = "var HIST_LEAF = " + JSON.stringify(hsLeaf, null, 1) + ";";
+  if(la12 >= 0){ const e12 = h12.indexOf("\n};", la12); if(e12 < 0) throw new Error("build-planner: HIST_LEAF block not closed, nothing written"); h12 = h12.slice(0, la12) + leafTxt12 + h12.slice(h12.indexOf("\n", e12 + 1)); }
+  else { const lb12 = h12.indexOf("\n// Optional subjects that have a question analysis"); if(lb12 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h12 = h12.slice(0, lb12) + "\n" + leafTxt12 + h12.slice(lb12); }
+  fs.writeFileSync(PAGE, h12);
+  console.log(NAME + " chapters:", Object.keys(hsLeaf).length, "| Paper I topics:", Object.keys(hsTree["Paper I"]).length, "| Paper II topics:", Object.keys(hsTree["Paper II"]).length);
+}
