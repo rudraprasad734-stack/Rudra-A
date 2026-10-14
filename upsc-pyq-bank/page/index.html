@@ -11679,16 +11679,33 @@ function ambStop(){
   try{ m.gain.cancelScheduledValues(c.currentTime); m.gain.setTargetAtTime(0, c.currentTime, .15); }catch(e){}
   setTimeout(function(){ nodes.forEach(function(n){ try{ n.stop(); }catch(e){} try{ n.disconnect(); }catch(e){} }); try{ m.disconnect(); }catch(e){} }, 700);
   amb.master = null;
+  setTimeout(function(){ if(!amb.playing && amb.el) try{ amb.el.pause(); }catch(e){} }, 900);
+}
+// iPhones mute Web Audio when the silent switch is on and stop it when the screen sleeps unless the page counts as "playing media".
+// Asking for the playback audio session, and keeping a silent audio element looping, makes the sound play like music does.
+function ambUnlock(){
+  try{ if(navigator.audioSession) navigator.audioSession.type = "playback"; }catch(e){}
+  try{
+    if(!amb.el){
+      var rate = 8000, n = rate, buf = new ArrayBuffer(44 + n*2), v = new DataView(buf), i;
+      function str(o, t){ for(var k=0;k<t.length;k++) v.setUint8(o+k, t.charCodeAt(k)); }
+      str(0,"RIFF"); v.setUint32(4, 36+n*2, true); str(8,"WAVE"); str(12,"fmt "); v.setUint32(16,16,true); v.setUint16(20,1,true); v.setUint16(22,1,true); v.setUint32(24,rate,true); v.setUint32(28,rate*2,true); v.setUint16(32,2,true); v.setUint16(34,16,true); str(36,"data"); v.setUint32(40,n*2,true);
+      for(i=0;i<n;i++) v.setInt16(44+i*2, (i%2 ? 1 : -1), true);   // inaudible, but not true silence, so it is not skipped
+      var a = new Audio(URL.createObjectURL(new Blob([buf], {type:"audio/wav"}))); a.loop = true; a.setAttribute("playsinline", ""); a.volume = 1; amb.el = a;
+    }
+    var pr = amb.el.play(); if(pr && pr.catch) pr.catch(function(){});
+  }catch(e){}
 }
 function ambPlay(){
   try{
+    ambUnlock();
     var AC = window.AudioContext || window.webkitAudioContext; if(!AC) return;
     if(!amb.ctx) amb.ctx = new AC();
     if(amb.ctx.state==="suspended") amb.ctx.resume();
-    if(amb.playing && amb.id===ambId()){ if(amb.master) amb.master.gain.setTargetAtTime(ambVol(), amb.ctx.currentTime, .1); return; }
+    if(amb.playing && amb.id===ambId()){ if(amb.master) amb.master.gain.setTargetAtTime(ambVol()*1.6, amb.ctx.currentTime, .1); return; }
     if(amb.playing || amb.master) ambStop();
-    amb.id = ambId(); amb.master = amb.ctx.createGain(); amb.master.gain.value = 0; amb.master.connect(amb.ctx.destination); amb.playing = true;
-    ambBuild(amb.id); amb.master.gain.setTargetAtTime(ambVol(), amb.ctx.currentTime, .4);
+    amb.id = ambId(); amb.master = amb.ctx.createGain(); amb.master.gain.value = 0; if(!amb.comp){ amb.comp = amb.ctx.createDynamicsCompressor(); amb.comp.connect(amb.ctx.destination); } amb.master.connect(amb.comp); amb.playing = true;
+    ambBuild(amb.id); amb.master.gain.setTargetAtTime(ambVol()*1.6, amb.ctx.currentTime, .4);
   }catch(e){ console.error("Sound failed:", e); amb.playing = false; }
 }
 // sound plays while the timer runs (or briefly as a preview) and only when it is switched on
@@ -11698,6 +11715,7 @@ function ambSync(){
   var b = document.getElementById("timerSoundBtn"); if(b && b.getAttribute("data-s")!==String(ambOn())){ b.setAttribute("data-s", String(ambOn())); b.classList.toggle("on", ambOn()); b.setAttribute("aria-pressed", ambOn() ? "true" : "false"); b.setAttribute("aria-label", ambOn() ? "Sound on. Tap to turn off" : "Sound off. Tap to turn on"); b.innerHTML = ambOn() ? AMB_ICON_ON : AMB_ICON_OFF; }
 }
 document.addEventListener("pointerdown", function(){ if(amb.ctx && amb.ctx.state==="suspended" && amb.playing){ try{ amb.ctx.resume(); }catch(e){} } else if(!amb.playing && ambOn() && timerState.running) ambSync(); }, {passive:true});
+document.addEventListener("visibilitychange", function(){ if(document.visibilityState==="visible" && amb.ctx && amb.playing && amb.ctx.state!=="running"){ try{ amb.ctx.resume(); }catch(e){} } });
 function ambPreview(ms){ amb.preview = Date.now() + (ms||6000); ambSync(); clearTimeout(amb.pvT); amb.pvT = setTimeout(ambSync, (ms||6000)+50); }
 function ambSetOn(v){ lsSet("dossier.soundOn", v ? "1" : "0"); if(v) ambPreview(5000); else { amb.preview = 0; ambSync(); } }
 var AMB_ICON_ON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 010 6M18.5 6.5a8 8 0 010 11"/></svg>';
@@ -12932,7 +12950,7 @@ function sceneCardHtml(){
 }
 function soundCardHtml(){
   var on = ambOn(), cur = ambId(), vol = Math.round(ambVol()*100);
-  return '<div class="card set-card sound-card"><h3>Timer sounds</h3><div class="muted">Calm sounds while the timer runs. They are made on your phone, so they work offline.</div>'+
+  return '<div class="card set-card sound-card"><h3>Timer sounds</h3><div class="muted">Calm sounds while the timer runs. They are made on your phone, so they work offline. If you hear nothing, raise the volume and turn off silent mode.</div>'+
     '<div class="snd-row"><span>Sound</span><button type="button" class="pill'+(on ? " on" : "")+'" data-snd="toggle" aria-pressed="'+on+'">'+(on ? "On" : "Off")+'</button></div>'+
     '<div class="snd-row"><span>Volume</span><input type="range" id="sndVol" min="0" max="100" value="'+vol+'" aria-label="Sound volume"></div>'+
     '<div class="snd-opts" role="radiogroup" aria-label="Sound">'+AMB_SOUNDS.map(function(o){
@@ -13045,7 +13063,7 @@ function renderSettings(){
   bindStats(host);
   bindGuides(host);
   if(cloudConfigured() && !cloud.user) cloudPrepare();
-  var vr = host.querySelector("#sndVol"); if(vr) vr.oninput = function(){ lsSet("dossier.soundVol", String(vr.value/100)); if(amb.master && amb.ctx) amb.master.gain.setTargetAtTime(vr.value/100, amb.ctx.currentTime, .05); else if(ambOn()) ambPreview(3000); };
+  var vr = host.querySelector("#sndVol"); if(vr) vr.oninput = function(){ lsSet("dossier.soundVol", String(vr.value/100)); if(amb.master && amb.ctx) amb.master.gain.setTargetAtTime(vr.value/100*1.6, amb.ctx.currentTime, .05); else if(ambOn()) ambPreview(3000); };
   if(!host._wired){
     host._wired = true;
     host.addEventListener("click", function(e){
