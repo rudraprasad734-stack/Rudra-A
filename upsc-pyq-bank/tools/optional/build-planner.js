@@ -258,3 +258,29 @@ ag.topics.forEach(function(t){
   fs.writeFileSync(PAGE, h10);
   console.log(NAME + " chapters:", Object.keys(elLeaf).length, "| Paper I topics:", Object.keys(elTree["Paper I"]).length, "| Paper II topics:", Object.keys(elTree["Paper II"]).length);
 }
+
+// ---------------------------------------------------------------- Geology (one chapter per syllabus sub-topic)
+{
+  const NAME = "Geology";
+  let h11 = fs.readFileSync(PAGE, "utf8");
+  const m11 = h11.match(/<script type="application\/json" id="d-geol">(.*?)<\/script>/s);
+  if(!m11) throw new Error("build-planner: d-geol not found (run geology/build-geology.js first), nothing written");
+  const gl = JSON.parse(m11[1]);
+  const glTree = {"Paper I":{}, "Paper II":{}}, glLeaf = {}, per11 = {};
+  gl.topics.forEach(function(t){
+    const it = gl.items.filter(function(x){ return x.id === t.s; })[0], grp = it.pp === 1 ? "Paper I" : "Paper II";
+    per11[it.id] = (per11[it.id] || 0) + 1;
+    const topic = it.id + "  " + it.t, unit = it.id + "." + per11[it.id] + "  " + t.t;
+    (glTree[grp][topic] = glTree[grp][topic] || []).push(unit);
+    glLeaf[topic + "|" + unit] = [t.id];
+  });
+  const cur11 = '  "' + NAME + '": ' + JSON.stringify(glTree, null, 2).replace(/\n/g, "\n  ") + ',\n';
+  const a11 = h11.indexOf('  "' + NAME + '": {\n    "Paper I"');
+  if(a11 >= 0){ const re = /\n  "[A-Z]/g; re.lastIndex = a11 + 20; const m = re.exec(h11); if(!m) throw new Error("build-planner: end of Geology block not found, nothing written"); h11 = h11.slice(0, a11) + cur11 + h11.slice(m.index + 1); }
+  else { const g = h11.indexOf('  "Sociology": CT({'); if(g < 0) throw new Error("build-planner: insertion point not found, nothing written"); h11 = h11.slice(0, g) + cur11 + h11.slice(g); }
+  const la11 = h11.indexOf("var GEOL_LEAF = {"), leafTxt11 = "var GEOL_LEAF = " + JSON.stringify(glLeaf, null, 1) + ";";
+  if(la11 >= 0){ const e11 = h11.indexOf("\n};", la11); if(e11 < 0) throw new Error("build-planner: GEOL_LEAF block not closed, nothing written"); h11 = h11.slice(0, la11) + leafTxt11 + h11.slice(h11.indexOf("\n", e11 + 1)); }
+  else { const lb11 = h11.indexOf("\n// Optional subjects that have a question analysis"); if(lb11 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h11 = h11.slice(0, lb11) + "\n" + leafTxt11 + h11.slice(lb11); }
+  fs.writeFileSync(PAGE, h11);
+  console.log(NAME + " chapters:", Object.keys(glLeaf).length, "| Paper I topics:", Object.keys(glTree["Paper I"]).length, "| Paper II topics:", Object.keys(glTree["Paper II"]).length);
+}

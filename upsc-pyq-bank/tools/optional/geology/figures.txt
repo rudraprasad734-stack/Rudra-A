@@ -1,0 +1,7 @@
+# One figure per line:  year | paper | qno | page | x0,y0,x1,y1 (fractions of the page, from the top left) | what it shows | kind (crop = cut from the paper, table = a ruled table)
+2018|2|7(c)|4|0.15,0.475,0.53,0.655|Table: trench number, width of vein (m) and Mo assay (wt. %) for trenches 1 to 5|table
+2019|2|5(c)|3|0.52,0.675,0.78,0.775|Ore body section divided into three parts 1, 2 and 3 by slanting lines (the sample lengths of the three parts)|crop
+2020|2|7(b)|4|0.17,0.345,0.91,0.47|Table: trench number (E to W), thickness of ore body (m) and assay (wt.% Cu) for trenches 1 to 4|table
+2021|2|5(a)|4|0.18,0.265,0.86,0.435|Lead (Pb) mineralization zone drawn to scale (1 inch = 10 feet) with samples S-1 to S-4 and zones of influence L-1 to L-4|crop
+2021|2|5(a)|4|0.18,0.46,0.86,0.66|Table: sample no., zone of influence L (ft), width W (ft), W x L (ft2) and lead % for S-1 to S-4|table
+2022|2|7(a)|6|0.19,0.16,0.97,0.435|Table: borehole number, thickness (m) and assay (wt.% Al2O3) for boreholes 1 to 12|table
