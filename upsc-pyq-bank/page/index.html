@@ -984,8 +984,11 @@
   #view-dashboard .timer-card > .timer-snd{position:absolute; left:auto; right:16px;}
   .sc-t{min-width:0;} .snd-opt b,.scene-opt b{overflow-wrap:anywhere; font-size:14px;}
   body.dash-timer.ui-sleep .timer-card > .timer-snd{opacity:0 !important; pointer-events:none !important;}
+  .snd-opt{position:relative; cursor:pointer;} .snd-act{display:flex; flex-direction:column; gap:4px; margin-left:auto; flex:none;} .snd-dl,.snd-sv{width:30px; height:30px; border-radius:50%; border:1px solid var(--line); background:var(--surface); color:var(--ink); display:grid; place-items:center; font-size:14px; text-decoration:none; cursor:pointer; padding:0;} .snd-dl.saved{background:#22c55e; border-color:#22c55e; color:#fff;}
+  .snd-all{width:100%; margin-top:12px;}
+  .th-head{font-size:12px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); margin:14px 0 4px;}
   .snd-row{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:12px;} .snd-row input[type=range]{flex:1; max-width:220px;}
-  .snd-opts{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px;} .snd-opt{display:flex; align-items:center; gap:10px; min-width:0; text-align:left; padding:10px; border-radius:14px; border:2px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; cursor:pointer;} .snd-opt.sel{border-color:var(--tab-accent); background:var(--tab-accent-soft);} .sn-i{font-size:22px; width:40px; height:40px; border-radius:12px; display:grid; place-items:center; background:var(--line); flex:none;} .snd-opt small{display:block; color:var(--ink-soft); font-size:11.5px;}
+  .snd-opts{display:grid; grid-template-columns:1fr; gap:8px; margin-top:12px;} .snd-opt{display:flex; align-items:center; gap:10px; min-width:0; text-align:left; padding:10px; border-radius:14px; border:2px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; cursor:pointer;} .snd-opt.sel{border-color:var(--tab-accent); background:var(--tab-accent-soft);} .sn-i{font-size:22px; width:40px; height:40px; border-radius:12px; display:grid; place-items:center; background:var(--line); flex:none;} .snd-opt small{display:block; color:var(--ink-soft); font-size:11.5px;}
   .scene-opts{display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px;} .scene-opt{display:flex; align-items:center; gap:10px; min-width:0; text-align:left; padding:10px; border-radius:14px; border:2px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; cursor:pointer;} .scene-opt.sel{border-color:var(--tab-accent); background:var(--tab-accent-soft);}
   .sc-sw{width:44px; height:44px; border-radius:14px; flex:none; box-shadow:inset 0 0 0 1px rgba(255,255,255,.15);} .sc-t b{display:block;} .sc-t small{display:block; color:var(--ink-soft);}
   .nextup .ses{margin:0;}
@@ -11194,6 +11197,7 @@ registerPathTheme({id:"mountain", name:"Mountain", icon:"⛰️", bg:"linear-gra
   return o+'</svg>'; }});
 
 // ---- 8-12. Chart themes: the same progress, drawn as graphs ----
+var CLASSIC_PATH = ["metro","railway","ocean","space","highway","garden","mountain"];   // the original seven; everything added later is an Insight theme
 function trunc(t, k){ return t.length>k ? t.slice(0,k-1)+"…" : t; }
 function arcPath(cx, cy, r, a0, a1){ var x0=cx+r*Math.cos(a0), y0=cy+r*Math.sin(a0), x1=cx+r*Math.cos(a1), y1=cy+r*Math.sin(a1); return "M"+x0.toFixed(1)+" "+y0.toFixed(1)+" A"+r+" "+r+" 0 "+((a1-a0)>Math.PI ? 1 : 0)+" 1 "+x1.toFixed(1)+" "+y1.toFixed(1); }
 function pctOf(l){ return Math.max(0, Math.min(100, l.pct||0)); }
@@ -11876,11 +11880,52 @@ function ambMake(id){
     return out;
   });
 }
+var AMB_MB = {"fire": 3.5, "brown": 1.9, "drone": 1.2, "wind": 3.2, "waves": 2.5, "white": 3.5, "rain": 4.2, "stream": 3.7, "storm": 4.2, "forest": 3.3}, SND_CACHE = "upsc-sounds-v1";
+function ambFile(id){ return "./audio/"+id+".flac"; }
+// the recorded loops live in audio/*.flac; once saved to the phone they play with no internet at all
+function ambLoadFile(id){
+  function net(){ return fetch(ambFile(id)).then(function(r){ if(!r || !r.ok) throw new Error("no file"); return r; }); }
+  if(!window.caches) return net().then(function(r){ return r.arrayBuffer(); });
+  return caches.open(SND_CACHE).then(function(c){ return c.match(ambFile(id)); }).then(function(hit){ return hit || net(); }).then(function(r){ return r.arrayBuffer(); });
+}
+function ambDecode(buf){ return new Promise(function(res, rej){ var p = amb.ctx.decodeAudioData(buf, res, rej); if(p && p.then) p.then(res, rej); }); }
+amb.saved = {};
+function ambRefreshSaved(){
+  if(!window.caches) return Promise.resolve();
+  return caches.open(SND_CACHE).then(function(c){ return c.keys(); }).then(function(ks){
+    var m = {}; ks.forEach(function(k){ var x = /audio\/([a-z]+)\.flac/.exec(k.url); if(x) m[x[1]] = 1; }); amb.saved = m;
+  }).catch(function(){});
+}
+function ambPaintSaved(){
+  Array.prototype.forEach.call(document.querySelectorAll(".snd-dl[data-id]"), function(b){
+    var id = b.getAttribute("data-id"), on = !!amb.saved[id];
+    b.classList.toggle("saved", on); b.textContent = on ? "✓" : "⬇"; b.setAttribute("aria-label", on ? "Saved for offline. Tap to remove" : "Download for offline use ("+AMB_MB[id]+" MB)");
+  });
+  var all = document.getElementById("sndAll"), n = Object.keys(amb.saved).length;
+  if(all) all.textContent = n>=AMB_SOUNDS.length ? "All sounds saved for offline" : "Download all for offline ("+Math.round(AMB_SOUNDS.reduce(function(a, x){ return a + (amb.saved[x[0]] ? 0 : AMB_MB[x[0]]); }, 0))+" MB)";
+}
+function ambSave(id){
+  if(!window.caches){ toast("This browser cannot keep files offline."); return Promise.resolve(); }
+  var nm = AMB_SOUNDS.filter(function(x){ return x[0]===id; })[0][1];
+  toast("Downloading "+nm+" ("+AMB_MB[id]+" MB)…");
+  return caches.open(SND_CACHE).then(function(c){ return fetch(ambFile(id)).then(function(r){ if(!r.ok) throw new Error("bad"); return c.put(ambFile(id), r); }); })
+    .then(function(){ amb.saved[id] = 1; ambPaintSaved(); toast(nm+" is saved. It now plays offline."); })
+    .catch(function(){ toast("Could not download "+nm+". Check your connection and try again."); });
+}
+function ambUnsave(id){ if(!window.caches) return Promise.resolve(); return caches.open(SND_CACHE).then(function(c){ return c.delete(ambFile(id)); }).then(function(){ delete amb.saved[id]; ambPaintSaved(); toast("Removed the offline copy."); }); }
+function ambSaveAll(){
+  var ids = AMB_SOUNDS.map(function(x){ return x[0]; }).filter(function(i){ return !amb.saved[i]; }), p = Promise.resolve();
+  if(!ids.length){ toast("Every sound is already saved."); return p; }
+  ids.forEach(function(i){ p = p.then(function(){ return ambSave(i); }); });
+  return p.then(function(){ toast("All sounds are saved for offline use."); });
+}
 function ambGet(id){
   if(amb.cache[id]) return Promise.resolve(amb.cache[id]);
   if(amb.pending[id]) return amb.pending[id];
   if(!amb.ctx) return Promise.reject(new Error("no audio"));
-  return amb.pending[id] = ambMake(id).then(function(b){
+  // recorded file first; the live-built version is only a fallback when the file cannot be reached
+  var fromFile = ambLoadFile(id).then(ambDecode);
+  return amb.pending[id] = fromFile.catch(function(){ return ambMake(id); }).then(function(b){
     amb.cache[id] = b; delete amb.pending[id];
     var keys = Object.keys(amb.cache); if(keys.length>2) keys.forEach(function(k){ if(k!==id && k!==amb.id && keys.length>2){ delete amb.cache[k]; keys.splice(keys.indexOf(k),1); } });
     return b;
@@ -11921,7 +11966,7 @@ function ambPlay(){
     if(amb.playing || amb.master) ambStop();
     amb.id = ambId(); amb.master = amb.ctx.createGain(); amb.master.gain.value = 0; if(!amb.comp){ amb.comp = amb.ctx.createDynamicsCompressor(); amb.comp.connect(amb.ctx.destination); } amb.master.connect(amb.comp); amb.playing = true;
     var tok = ++amb.tok, myId = amb.id;
-    if(!amb.cache[myId] && typeof toast==="function") toast("Preparing the sound\u2026");
+    if(!amb.cache[myId] && !amb.saved[myId] && typeof toast==="function") toast("Loading the sound\u2026");
     ambGet(myId).then(function(buf){
       if(tok!==amb.tok || !amb.playing || !amb.master) return;
       var src = amb.ctx.createBufferSource(); src.buffer = buf; src.loop = true; src.connect(amb.master); src.start(); amb.nodes.push(src);
@@ -12176,7 +12221,7 @@ var bhTier = null;
 function bhCurrentTier(){ if(bhTier===null) bhTier = perfStartTier(); return bhTier; }
 function perfSet(mode){ lsSet(PERF_KEY, mode); try{ localStorage.removeItem(PERF_AUTO_KEY); }catch(e){} bhTier = null; }
 // ---- timer backgrounds: Black hole (above) plus four lighter scenes. Chosen in Settings, kept on this device. ----
-var TIMER_SCENES = [["hole","Black hole","Matter spiralling in. The original.","linear-gradient(135deg,#010207,#7a3410)"],["aurora","Aurora","Green and violet curtains of light over a still sky.","linear-gradient(135deg,#061a22,#1fbf8f 55%,#7a5cff)"],["rain","Night rain","Rain on the window with soft city lights behind it.","linear-gradient(135deg,#0a1220,#26405f 60%,#d99a3a)"],["warp","Warp","Stars streaming past as you fly. Faster while you study.","linear-gradient(135deg,#000,#1b2a6b 60%,#9ad0ff)"],["ocean","Moonlit sea","Slow waves under a low moon.","linear-gradient(135deg,#050b1a,#12356b 60%,#cfe3ff)"],["fireflies","Fireflies","Warm lights drifting through a dark forest.","linear-gradient(135deg,#04100a,#0f3a22 55%,#d8f56a)"],["snow","Snowfall","Quiet snow falling through blue dusk.","linear-gradient(135deg,#0b1730,#2a4a7c 60%,#eaf4ff)"],["nebula","Nebula","Slow clouds of colour with distant stars.","linear-gradient(135deg,#0a0420,#6a1fa8 55%,#ff5fa2)"],["sakura","Sakura","Cherry blossom petals on a gentle wind.","linear-gradient(135deg,#1a0a16,#6b2a50 60%,#ffc2d9)"],["embers","Campfire","Embers rising into the night.","linear-gradient(135deg,#0a0502,#6b1f05 55%,#ffb347)"]];
+var TIMER_SCENES = [["hole","Classic Black hole","Matter spiralling in. The original.","linear-gradient(135deg,#010207,#7a3410)"],["aurora","Aurora","Green and violet curtains of light over a still sky.","linear-gradient(135deg,#061a22,#1fbf8f 55%,#7a5cff)"],["rain","Night rain","Rain on the window with soft city lights behind it.","linear-gradient(135deg,#0a1220,#26405f 60%,#d99a3a)"],["warp","Warp","Stars streaming past as you fly. Faster while you study.","linear-gradient(135deg,#000,#1b2a6b 60%,#9ad0ff)"],["ocean","Moonlit sea","Slow waves under a low moon.","linear-gradient(135deg,#050b1a,#12356b 60%,#cfe3ff)"],["fireflies","Fireflies","Warm lights drifting through a dark forest.","linear-gradient(135deg,#04100a,#0f3a22 55%,#d8f56a)"],["snow","Snowfall","Quiet snow falling through blue dusk.","linear-gradient(135deg,#0b1730,#2a4a7c 60%,#eaf4ff)"],["nebula","Nebula","Slow clouds of colour with distant stars.","linear-gradient(135deg,#0a0420,#6a1fa8 55%,#ff5fa2)"],["sakura","Sakura","Cherry blossom petals on a gentle wind.","linear-gradient(135deg,#1a0a16,#6b2a50 60%,#ffc2d9)"],["embers","Campfire","Embers rising into the night.","linear-gradient(135deg,#0a0502,#6b1f05 55%,#ffb347)"]];
 function timerSceneId(){ var v = lsGet("dossier.timerScene"); return TIMER_SCENES.some(function(x){ return x[0]===v; }) ? v : "hole"; }
 function initAltScene(canvas, ctx, id, reduced){
   var T = BH_TIERS[bhCurrentTier()], dpr = Math.min(window.devicePixelRatio||1, T.dpr), w = 1, h = 1, cx = 0, cy = 0, U = 1, lastT = 0, rnd = Math.random, E = {}, TAU = Math.PI*2;
@@ -13171,12 +13216,14 @@ function sceneCardHtml(){
 }
 function soundCardHtml(){
   var on = ambOn(), cur = ambId(), vol = Math.round(ambVol()*100);
-  return '<div class="card set-card sound-card"><h3>Timer sounds</h3><div class="muted">Calm sounds while the timer runs. They are made on your phone, so they work offline. If you hear nothing, raise the volume and turn off silent mode.</div>'+
+  return '<div class="card set-card sound-card"><h3>Timer sounds</h3><div class="muted">Calm 60-second loops that play while the timer runs, with no break at the join. Tap \u2B07 to keep a sound on this phone so it plays with no internet. If you hear nothing, raise the volume and turn off silent mode.</div>'+
     '<div class="snd-row"><span>Sound</span><button type="button" class="pill'+(on ? " on" : "")+'" data-snd="toggle" aria-pressed="'+on+'">'+(on ? "On" : "Off")+'</button></div>'+
     '<div class="snd-row"><span>Volume</span><input type="range" id="sndVol" min="0" max="100" value="'+vol+'" aria-label="Sound volume"></div>'+
     '<div class="snd-opts" role="radiogroup" aria-label="Sound">'+AMB_SOUNDS.map(function(o){
-      return '<button type="button" class="snd-opt'+(cur===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(cur===o[0])+'" data-snd="pick" data-id="'+o[0]+'"><span class="sn-i" aria-hidden="true">'+o[3]+'</span><span class="sc-t"><b>'+esc(o[1])+(cur===o[0] ? " \u2713" : "")+'</b><small>'+esc(o[2])+'</small></span></button>';
-    }).join("")+'</div></div>';
+      return '<div class="snd-opt'+(cur===o[0] ? " sel" : "")+'" role="radio" tabindex="0" aria-checked="'+(cur===o[0])+'" data-snd="pick" data-id="'+o[0]+'"><span class="sn-i" aria-hidden="true">'+o[3]+'</span><span class="sc-t"><b>'+esc(o[1])+(cur===o[0] ? " \u2713" : "")+'</b><small>'+esc(o[2])+'</small></span>'+
+        '<span class="snd-act"><button type="button" class="snd-dl" data-snd="dl" data-id="'+o[0]+'" aria-label="Download for offline use">\u2B07</button><a class="snd-sv" data-snd="save" href="'+ambFile(o[0])+'" download="'+esc(o[1].toLowerCase().replace(/ /g, "-"))+'.flac" aria-label="Save the audio file to your device" title="Save the file to your device">\uD83D\uDCBE</a></span></div>';
+    }).join("")+'</div>'+
+    '<button type="button" class="btn ghost snd-all" id="sndAll" data-snd="all">Download all for offline</button></div>';
 }
 function guidesCardHtml(){
   var off = guideOff();
@@ -13262,9 +13309,11 @@ function renderSettings(){
     uiThemeCardHtml()+
     '<div class="card set-card"><h3>Learning path theme</h3>'+
       '<div class="muted">How your journey looks on the Dashboard. Every subject running in parallel gets its own lane, and each marker moves as you finish chapters.</div>'+
-      '<div class="th-row" role="radiogroup" aria-label="Learning path theme">'+PATH_THEMES.map(function(t){
-        return '<button type="button" class="th-opt'+(t.id===th.id ? " sel" : "")+'" role="radio" aria-checked="'+(t.id===th.id ? "true" : "false")+'" data-theme="'+t.id+'"><i style="background:'+t.bg+'">'+t.icon+'</i><span>'+esc(t.name)+(t.id===th.id ? " ✓" : "")+'</span></button>';
-      }).join("")+'</div>'+
+      ["classic","insight"].map(function(g){
+        return '<div class="th-head">'+(g==="classic" ? "Classic themes" : "Insight themes")+'</div><div class="th-row" role="radiogroup" aria-label="'+(g==="classic" ? "Classic" : "Insight")+' learning path themes">'+PATH_THEMES.filter(function(t){ return (CLASSIC_PATH.indexOf(t.id)>=0 ? "classic" : "insight")===g; }).map(function(t){
+          return '<button type="button" class="th-opt'+(t.id===th.id ? " sel" : "")+'" role="radio" aria-checked="'+(t.id===th.id ? "true" : "false")+'" data-theme="'+t.id+'"><i style="background:'+t.bg+'">'+t.icon+'</i><span>'+esc(t.name)+(t.id===th.id ? " \u2713" : "")+'</span></button>';
+        }).join("")+'</div>';
+      }).join("")+
       '<div class="th-prev"><div class="dx pth-prevbox"><div class="pth-scene pth-'+th.id+'">'+th.draw(ctx)+'</div></div>'+(real && real.n ? '' : '<div class="muted small">Preview with sample subjects. Build a plan to see your own.</div>')+'</div>'+
     '</div>'+
     sceneCardHtml()+soundCardHtml()+perfCardHtml()+
@@ -13285,6 +13334,7 @@ function renderSettings(){
   bindStats(host);
   bindGuides(host);
   if(cloudConfigured() && !cloud.user) cloudPrepare();
+  ambRefreshSaved().then(ambPaintSaved); ambPaintSaved();
   var vr = host.querySelector("#sndVol"); if(vr) vr.oninput = function(){ lsSet("dossier.soundVol", String(vr.value/100)); if(amb.master && amb.ctx) amb.master.gain.setTargetAtTime(vr.value/100*1.6, amb.ctx.currentTime, .05); else if(ambOn()) ambPreview(3000); };
   if(!host._wired){
     host._wired = true;
@@ -13294,7 +13344,10 @@ function renderSettings(){
       if(sd){
         var k = sd.getAttribute("data-snd");
         if(k==="toggle"){ ambSetOn(!ambOn()); renderSettings(); return; }
-        if(k==="pick"){ lsSet("dossier.soundId", sd.getAttribute("data-id")); if(!ambOn()) lsSet("dossier.soundOn", "1"); renderSettings(); ambPreview(6000); return; }
+        if(k==="save") return;                                   // the browser saves the file itself
+        if(k==="dl"){ var did = sd.getAttribute("data-id"); if(amb.saved[did]) ambUnsave(did); else ambSave(did); return; }
+        if(k==="all"){ ambSaveAll(); return; }
+        if(k==="pick"){ if(e.target.closest && e.target.closest(".snd-act")) return; lsSet("dossier.soundId", sd.getAttribute("data-id")); if(!ambOn()) lsSet("dossier.soundOn", "1"); renderSettings(); ambPreview(6000); return; }
       }
       var sc = e.target.closest ? e.target.closest(".scene-opt[data-scene]") : null;
       if(sc){ lsSet("dossier.timerScene", sc.getAttribute("data-scene")); renderSettings(); toast("Timer background: "+sc.querySelector("b").textContent.replace(/ \u2713/, "")+"."); return; }

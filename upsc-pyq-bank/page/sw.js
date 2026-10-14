@@ -1,7 +1,7 @@
 // UPSC Companion service worker: caches the app shell so the page loads and
 // runs with zero network connectivity after the first successful visit.
 // Bump CACHE_NAME on any deploy that changes cached files so clients refresh.
-const CACHE_NAME = "upsc-companion-v137";
+const CACHE_NAME = "upsc-companion-v138";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -906,7 +906,7 @@ self.addEventListener("install", (event) => {
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys()
-      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k))))
+      .then((keys) => Promise.all(keys.filter((k) => k !== CACHE_NAME && k.indexOf("upsc-sounds") !== 0).map((k) => caches.delete(k))))
       .then(() => self.clients.claim())
   );
 });
@@ -914,6 +914,8 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   const req = event.request;
   if (req.method !== "GET") return;
+  // the sound files are large: the app keeps them in its own "upsc-sounds" store, only when the user asks
+  if (new URL(req.url).pathname.indexOf("/audio/") >= 0) return;
 
   event.respondWith(
     caches.match(req).then((cached) => {
