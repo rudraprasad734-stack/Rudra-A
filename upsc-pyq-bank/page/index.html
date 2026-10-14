@@ -978,6 +978,7 @@
   .rem-row select{max-width:55%;}
   .pl-tabs{display:flex; gap:6px; overflow-x:auto; padding-bottom:6px; margin-bottom:10px; scrollbar-width:none;}
   .pl-tabs::-webkit-scrollbar{display:none;}
+  .nextup .k{font-size:11px; letter-spacing:.12em; color:var(--ink-soft); font-weight:700; margin-bottom:8px;} .nextup b{font-size:17px;}
   .sess-start{display:block; width:100%; margin:10px 0 2px; min-height:46px; border:0; border-radius:14px; background:var(--tab-accent); color:var(--tab-accent-ink); font:inherit; font-size:16px; font-weight:800; cursor:pointer; box-shadow:0 8px 18px -10px var(--tab-accent);}
   .start-sheet .k{font-size:11px; letter-spacing:.12em; color:var(--ink-soft); font-weight:700; margin:14px 0 8px;}
   .ss-mode{display:flex; align-items:center; gap:12px; width:100%; text-align:left; padding:12px; margin:8px 0; border-radius:16px; border:2px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; cursor:pointer;} .ss-mode.on{border-color:var(--tab-accent); background:var(--tab-accent-soft);}
@@ -7185,9 +7186,19 @@ function upcomingHtml(){
 }
 
 // ---------- views ----------
+// the one session to do next today, with a Start button that opens the timer
+function nextUpHtml(){
+  var list = planSessionsOn(todayKey).filter(function(x){ return !x.projected && x.status!=="completed" && x.status!=="skipped"; });
+  list.sort(function(a, b){ return (b.status==="in_progress") - (a.status==="in_progress") || toMin(a.startTime) - toMin(b.startTime); });
+  var x = list[0];
+  if(!x) return '<div class="card nextup done"><div class="k">NEXT UP</div><b>Nothing left today</b><div class="muted">Every session planned for today is done or skipped.</div></div>';
+  var nm = x.kind==="study" || x.kind==="revision" ? x.subject : (KIND_META[x.kind] ? KIND_META[x.kind].label : x.subject);
+  return '<div class="card nextup"><div class="k">NEXT UP</div><div class="nu-row"><div class="nu-t"><b>'+esc(nm)+'</b><div class="muted">'+(x.kind==="study" && x.syllabusUnit ? esc(x.syllabusUnit)+' &middot; ' : '')+'S'+x.sessionNumber+' &middot; '+esc(fmt12(x.startTime))+' &middot; '+esc(fmtDurMin(x.duration))+'</div></div></div>'+
+    '<button type="button" class="sess-start" data-pa="startSess" data-v="'+esc(x.id)+'">&#9654; '+(x.status==="in_progress" ? "Continue" : "Start")+'</button></div>';
+}
 function overviewHtml(plan, states){
   var st = windowStats(plan.cfg), op = overallProgress(plan), sim = viewIndex().sim, left = sim ? sim.remaining : 0;
-  return activeCardHtml(states, false)+
+  return nextUpHtml()+activeCardHtml(states, false)+
     '<div class="card pad"><div class="ov-h"><b>Overall progress</b><span>'+op.pct+'%</span></div><div class="pbar big"><i style="width:'+op.pct+'%"></i></div><div class="muted">'+op.done+' of '+op.total+' selected chapters completed</div></div>'+
     '<div class="section-title">Subject chain</div>'+chainHtml(states)+
     '<div class="section-title">Upcoming activities</div>'+upcomingHtml()+
@@ -10832,6 +10843,7 @@ function plannerAction(a, el, sure){
   var v = el.getAttribute("data-v");
   switch(a){
     case "view": plannerView = v; break;
+    case "startSess": openStartSheet(v); return;
     case "prisubj": priSubject = el.value; break;
     case "catchopen": openCatchup(); return;
     case "gapopen": openGapPrompt(); return;
