@@ -1103,6 +1103,7 @@
   .brick.st-active{box-shadow:0 0 0 3px color-mix(in srgb,var(--bc) 45%,transparent),0 8px 22px -8px var(--bc); animation:brickPulse 3s ease-in-out infinite;}
   .brick.st-active .b-tag{background:var(--bc); color:var(--on-accent,#fff);}
   .brick.st-locked{filter:grayscale(.85); opacity:.72;}
+  .brick.st-parallel{box-shadow:0 0 0 2px color-mix(in srgb,var(--bc) 40%,transparent),0 6px 18px -8px var(--bc);} .brick.st-parallel .b-tag{background:var(--bc); color:var(--on-accent,#fff);}
   @keyframes brickPulse{50%{transform:translateY(-2px);}}
   @media (prefers-reduced-motion: reduce){ .brick.st-active{animation:none;} }
   .active-card{padding:16px 18px; margin-bottom:12px; border:2px solid var(--bc); background:linear-gradient(135deg,color-mix(in srgb,var(--bc) 22%,var(--surface)),color-mix(in srgb,var(--bc) 8%,var(--surface)));}
@@ -7117,13 +7118,20 @@ var LOCK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="tru
 var CHECK_SVG = '<svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" d="m5 12.5 4.5 4.5L19 7.5"/></svg>';
 function brickHtml(st){
   var tag = st.state==="completed" ? CHECK_SVG+" COMPLETED" : (st.state==="active" ? "ACTIVE" : (st.pinned ? "PARALLEL" : LOCK_SVG+" LOCKED"));
-  return '<div class="brick st-'+st.state+'" style="--bc:var('+st.color+')" data-brick="'+esc(st.name)+'" role="button" tabindex="0" data-go="subject" data-subj="'+esc(st.name)+'"><div class="studs"><i></i><i></i><i></i><i></i></div>'+
+  return '<div class="brick st-'+(st.state==="locked" && st.pinned ? "parallel" : st.state)+'" style="--bc:var('+st.color+')" data-brick="'+esc(st.name)+'" role="button" tabindex="0" data-go="subject" data-subj="'+esc(st.name)+'"><div class="studs"><i></i><i></i><i></i><i></i></div>'+
     '<div class="b-main"><span class="b-name">'+esc(st.name)+'</span><span class="b-tag">'+tag+'</span></div>'+
     '<div class="b-bar"><i style="width:'+st.pct+'%"></i></div><div class="b-sub">'+st.done+' / '+st.total+' chapters &middot; '+st.pct+'%</div></div>';
 }
 function chainHtml(states){
-  return '<div class="lego">'+states.map(brickHtml).join('<div class="lego-arrow" aria-hidden="true">↓ unlocks at 100%</div>')+'</div>';
+  // subjects running in parallel are unlocked: no "unlocks at" arrow between them, only before ones that are really still locked
+  var run = function(x){ return x.state==="active" || (x.state==="locked" && x.pinned); };
+  return '<div class="lego">'+states.map(function(x, i){
+    var nx = states[i+1], arrow = "";
+    if(nx) arrow = run(x) && run(nx) ? '<div class="lego-arrow" aria-hidden="true">⇅ running side by side</div>' : '<div class="lego-arrow" aria-hidden="true">↓ unlocks at 100%</div>';
+    return brickHtml(x)+arrow;
+  }).join("")+'</div>';
 }
+window.__chain = chainHtml;   // test hook
 // which numbered session(s) of the day a subject is studied in: today's, or the next day that has one
 function sessionTagFor(name){
   var nums = [];
