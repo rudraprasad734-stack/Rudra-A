@@ -967,7 +967,7 @@
   .ins-leg{list-style:none; margin:0; padding:0; flex:1 1 auto; min-width:0; display:flex; flex-direction:column; gap:6px; font-size:13px;} .ins-leg li{display:flex; align-items:center; gap:8px;} .ins-leg i{width:10px; height:10px; border-radius:50%; flex:0 0 auto;} .ins-leg span{flex:1 1 auto; color:var(--ink);} .ins-leg b{color:var(--ink);}
   .ins-days{display:grid; grid-template-columns:repeat(7,1fr); gap:8px; align-items:end; margin:4px 0 6px;} .ins-day{display:flex; flex-direction:column; align-items:center; gap:3px; min-width:0;} .ins-dbar{position:relative; width:100%; max-width:34px; height:92px; display:flex; align-items:flex-end; justify-content:center;}
   .ins-dbar i{position:absolute; bottom:0; left:0; right:0; border-radius:4px 4px 0 0; min-height:0;} .ins-dbar i.p{background:var(--tab-accent-soft); border:1px solid var(--tab-accent);} .ins-dbar i.a{background:var(--tab-accent); left:0; right:0; border-radius:3px 3px 0 0;} .ins-dbar{box-sizing:border-box;} .ins-pc{position:absolute; left:-4px; right:-4px; text-align:center; font-size:10.5px; font-weight:700; color:var(--ink); line-height:1;}
-  .ins-day em{width:7px; height:7px; border-radius:50%; background:transparent;} .ins-day em.miss{background:#e5675a;} .ins-day span{font-size:11px; color:var(--ink-soft);} .ins-day.now span{color:var(--ink); font-weight:800;}
+  .ins-day em{width:7px; height:7px; border-radius:50%; background:transparent;} .ins-day em.miss{background:#e5675a;} .ins-day span{font-size:11px; color:var(--ink-soft);} .ins-day span{display:flex; flex-direction:column; align-items:center; line-height:1.15; padding:2px 4px; border-radius:8px;} .ins-day span small{font-size:10px; opacity:.75;} .ins-day.now span{color:#fff; background:var(--tab-accent); font-weight:800; font-size:13px; transform:scale(1.14); box-shadow:0 2px 8px rgba(0,0,0,.18);} .ins-day.now span small{opacity:.95;}
   .ins-key{display:flex; gap:14px; font-size:11.5px; color:var(--ink-soft); margin:0 0 6px;} .ins-key span{display:inline-flex; align-items:center; gap:5px;} .ins-key i{width:10px; height:10px; border-radius:3px; display:inline-block;} .ins-key i.p{background:var(--tab-accent-soft); border:1px solid var(--tab-accent);} .ins-key i.a{background:var(--tab-accent);} .ins-key i.m{background:#e5675a; border-radius:50%;}
   .ins-sb, .ins-tb{padding:6px 0;} .ins-sbh{display:flex; justify-content:space-between; gap:10px; font-size:13px; margin-bottom:4px;} .ins-sbh span{min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; color:var(--ink);} .ins-sbh b{color:var(--ink); flex:0 0 auto;}
   .ins-track{height:8px; border-radius:4px; background:var(--tab-accent-soft); overflow:hidden;} .ins-track i{display:block; height:100%; border-radius:4px; background:var(--tab-accent);} .ins-track i.p{background:var(--ink-soft); opacity:.55;} .ins-track i.t{background:#6aa7ff;}
@@ -6179,6 +6179,7 @@ CURR_OPT["Psychology"] = CT({
 function maxKey(a, b){ return a > b ? a : b; }
 function minKey(a, b){ return a < b ? a : b; }
 function dowOf(k){ return parseKey(k).getDay(); }
+function sundayOf(d){ var r = new Date(d.getFullYear(), d.getMonth(), d.getDate()); r.setDate(r.getDate() - r.getDay()); return r; }
 function mondayOf(d){ var r = new Date(d.getFullYear(), d.getMonth(), d.getDate()); r.setDate(r.getDate() - ((r.getDay()+6)%7)); return r; }
 function eachDay(from, to, fn){ for(var k = from; k <= to; k = toKey(addDays(parseKey(k), 1))) fn(k); }
 function addMonthsKey(startKey, n){ var d = parseKey(startKey), r = new Date(d.getFullYear(), d.getMonth()+n, d.getDate()); r.setDate(r.getDate()-1); return toKey(r); }
@@ -10640,7 +10641,13 @@ function weekReview(mon){
     if(t.status==="completed" && t.completedAt >= first && t.completedAt <= last) r.chapters.push(id.split("|").slice(-1)[0]);
   });
   var log = {}; try{ log = JSON.parse(lsGet("dossier.timerLog")||"{}"); }catch(e){}
-  days.forEach(function(d){ r.timerMs += +log[d] || 0; });
+  r.days.forEach(function(dd){
+    var ms = +log[dd.date] || 0; r.timerMs += ms; dd.timerMin = Math.round(ms/60000);
+    // time studied that day = the larger of what its sessions record and what the timer logged (the timer also feeds the sessions, so adding both would count it twice)
+    dd.studied = Math.max(dd.doneMin, dd.timerMin);
+    dd.chapters = 0;
+  });
+  Object.keys(studyProgress.topics).forEach(function(id){ var t = studyProgress.topics[id], k = days.indexOf(t.completedAt); if(t.status==="completed" && k>=0) r.days[k].chapters++; });
   return r;
 }
 // the weekly review as pictures: an outcome ring, day-by-day bars and time bars (used by Planner > Insights and by the dashboard)
@@ -10653,10 +10660,10 @@ function weekViz(r, rate, hrs){
   var legend = parts.map(function(x){ return '<li><i style="background:'+x.c+';opacity:'+(x.o||1)+'"></i><span>'+x.l+'</span><b>'+x.n+'</b></li>'; }).join("");
   var ringHtml = '<div class="ins-ringrow"><div class="ins-ring"><svg viewBox="0 0 100 100" role="img" aria-label="Sessions this week: '+r.done+' done, '+r.missed+' missed, '+r.skipped+' skipped, '+r.left+' still to come">'+ring+'</svg><div><b>'+rate+'%</b><span>completed</span></div></div><ul class="ins-leg">'+legend+'</ul></div>';
   // day by day: every bar is that day's whole plan (full height = everything planned that day); the solid part is how much of it was finished
-  var dayLab = ["M","T","W","T","F","S","S"];
+  var dayLab = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
   var daysHtml = '<div class="section-title">Day by day</div><div class="ins-days">'+r.days.map(function(d, i){
-    var pct = d.plan ? Math.min(100, Math.round(100*d.doneMin/d.plan)) : 0, isT = d.date===todayKey, fut = d.date > todayKey;
-    return '<div class="ins-day'+(isT ? " now" : "")+(fut ? " fut" : "")+'" title="'+esc(fmtDM(parseKey(d.date)))+': '+(d.plan ? pct+'% of the plan finished ('+esc(hrs(Math.min(d.doneMin, d.plan)))+' of '+esc(hrs(d.plan))+')' : 'nothing planned')+(d.missed ? ', '+d.missed+' missed' : '')+'"><div class="ins-dbar">'+(d.plan && !(fut && !pct) ? '<b class="ins-pc" style="bottom:calc('+pct+'% + 3px)">'+pct+'%</b>' : '')+(pct ? '<i class="a" style="height:'+pct+'%"></i>' : '')+'</div><em class="'+(d.missed ? "miss" : "")+'"></em><span>'+dayLab[i]+'</span></div>';
+    var extra = !d.plan && d.studied > 0, pct = d.plan ? Math.min(100, Math.round(100*d.studied/d.plan)) : (extra ? 100 : 0), isT = d.date===todayKey, fut = d.date > todayKey;
+    return '<div class="ins-day'+(isT ? " now" : "")+(fut ? " fut" : "")+'" title="'+esc(fmtDM(parseKey(d.date)))+': '+(d.plan ? pct+'% of the plan finished ('+esc(hrs(Math.min(d.studied, d.plan)))+' of '+esc(hrs(d.plan))+')' : (extra ? esc(hrs(d.studied))+' studied, nothing was planned' : 'nothing planned'))+(d.missed ? ', '+d.missed+' missed' : '')+'"><div class="ins-dbar">'+((d.plan || extra) && !(fut && !pct) ? '<b class="ins-pc" style="bottom:calc('+pct+'% + 3px)">'+(extra ? esc(hrs(d.studied)) : pct+'%')+'</b>' : '')+(pct ? '<i class="a" style="height:'+pct+'%"></i>' : '')+'</div><em class="'+(d.missed ? "miss" : "")+'"></em><span>'+dayLab[parseKey(d.date).getDay()]+'<small>'+parseKey(d.date).getDate()+'</small></span></div>';
   }).join("")+'</div><div class="ins-key"><span><i class="a"></i>Share of the day\'s plan finished</span><span><i class="m"></i>Missed</span></div>';
   // time bars: planned, logged in sessions, timer
   var tm = Math.round(r.timerMs/60000), maxT = Math.max(r.plannedMin, r.actualMin, tm, 1);
@@ -10665,9 +10672,9 @@ function weekViz(r, rate, hrs){
   return {ring:ringHtml, days:daysHtml, time:timeHtml};
 }
 function insightsHtml(plan, states){
-  var mon = insWeek ? parseKey(insWeek) : mondayOf(parseKey(todayKey));
+  var mon = insWeek ? parseKey(insWeek) : sundayOf(parseKey(todayKey));
   insWeek = toKey(mon);
-  var r = weekReview(mon), isNow = insWeek === toKey(mondayOf(parseKey(todayKey)));
+  var r = weekReview(mon), isNow = insWeek === toKey(sundayOf(parseKey(todayKey)));
   var counted = r.done + r.missed + r.skipped, rate = counted ? Math.round(100*r.done/counted) : 0;
   var verdict = !r.planned ? "Nothing was scheduled this week." : (r.missed ? "You missed "+r.missed+" session"+(r.missed===1 ? "" : "s")+" this week." : (r.done ? "Nice work. You are on track." : (r.chapters.length ? "You finished "+r.chapters.length+" chapter"+(r.chapters.length===1 ? "" : "s")+" this week." : "Nothing is finished yet this week.")));
   var hrs = function(m){ return fmtDurMin(m); };
@@ -10793,8 +10800,8 @@ function plannerAction(a, el, sure){
     case "catchopen": openCatchup(); return;
     case "gapopen": openGapPrompt(); return;
     case "catch": if(catchApply(v)===false) return; break;
-    case "iPrev": insWeek = toKey(addDays(parseKey(insWeek || toKey(mondayOf(parseKey(todayKey)))), -7)); break;
-    case "iNext": insWeek = toKey(addDays(parseKey(insWeek || toKey(mondayOf(parseKey(todayKey)))), 7)); break;
+    case "iPrev": insWeek = toKey(addDays(parseKey(insWeek || toKey(sundayOf(parseKey(todayKey)))), -7)); break;
+    case "iNext": insWeek = toKey(addDays(parseKey(insWeek || toKey(sundayOf(parseKey(todayKey)))), 7)); break;
     case "iNow": insWeek = null; break;
     case "remon": remToggle(); return;
     case "remlead": remState.lead = +el.value; remSave(); break;
@@ -11121,7 +11128,7 @@ function dxPlanHtml(){
   // the whole day's plan: study, essay, PYQ practice, tests, revision, current affairs, all counted by time
   var today = planSessionsOn(todayKey), tp = 0, ta = 0, segs = "", byKind = {}, pieGroups = {};
   today.forEach(function(x){
-    var dmin = Math.max(0, x.duration||0), amin = x.actualDuration||0;
+    var dmin = Math.max(0, x.duration||0), amin = x.status==="completed" ? Math.max(dmin, x.actualDuration||0) : Math.min(x.actualDuration||0, dmin);
     tp += dmin; ta += amin;
     var lab = KIND_META[x.kind] ? KIND_META[x.kind].label : "Other"; byKind[lab] = (byKind[lab]||0) + dmin;
     segs += '<i style="flex:'+Math.max(1, dmin)+'" title="'+esc(lab+" · "+fmtDurMin(dmin))+'"><b style="width:'+Math.round(100*Math.min(dmin, amin)/Math.max(1, dmin))+'%"></b></i>';
@@ -11129,6 +11136,7 @@ function dxPlanHtml(){
     var gname = (x.kind==="study" || x.kind==="revision") && x.subject ? x.subject : lab;
     var g = pieGroups[gname] || (pieGroups[gname] = {name:gname, kind:x.kind, plan:0, act:0}); g.plan += dmin; g.act += amin;
   });
+  ta = Math.max(ta, Math.round(timerBanked()/60000));   // the timer's own log counts too, even when it was not saved to a session
   var tpct = tp ? Math.min(100, Math.round(100*ta/tp)) : 0;
   var kinds = Object.keys(byKind).sort(function(x,y){ return byKind[y]-byKind[x]; }).slice(0,4).map(function(k){ return esc(k)+" "+esc(fmtDurMin(byKind[k])); }).join(" &middot; ");
   var firstName = act ? act.name : "";
@@ -11156,7 +11164,7 @@ function dxPlanHtml(){
   var pyq = pyqCardHtml(running);
   var path = pathHtml(states);
   // this week at a glance: the same ring and day bars as Planner > Insights
-  var wr = weekReview(mondayOf(parseKey(todayKey))), wcount = wr.done + wr.missed + wr.skipped, wrate = wcount ? Math.round(100*wr.done/wcount) : 0, week = "";
+  var wr = weekReview(sundayOf(parseKey(todayKey))), wcount = wr.done + wr.missed + wr.skipped, wrate = wcount ? Math.round(100*wr.done/wcount) : 0, week = "";
   if(wr.planned){
     var wv = weekViz(wr, wrate, fmtDurMin);
     week = '<div class="dx-card dx-week"><div class="dx-k">THIS WEEK &middot; '+wr.done+' OF '+wr.planned+' SESSIONS DONE</div>'+wv.ring+wv.days+'<button type="button" class="dx-btn2" data-go="insights">Open weekly review &rsaquo;</button></div>';
