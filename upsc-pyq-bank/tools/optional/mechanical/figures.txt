@@ -61,7 +61,7 @@
 2020|2|4(a)|6|0.38,0.24,0.60,0.40|Piston and cylinder loaded by a linear spring, with a stop limiting the volume and a valve connecting the cylinder to the air supply line|crop
 2020|2|6(b)|9|0.26,0.155,0.78,0.245|Properties of refrigerant R-12: saturation temperature -8 °C enthalpy liquid 28.70, vapour 184.06 kJ/kg, entropy liquid 0.1148, vapour 0.7007 kJ/kg-K; 30 °C 64.59, 199.62, 0.2400, 0.6853|table
 2020|2|7(a)|10|0.11,0.055,0.84,0.81|Psychrometric chart, barometric pressure 1.01325 bar sea level|crop
-2021|1|1(a)|2|0.57,0.19,0.85,0.30|Cantilever beam AB fixed at A with a triangular load rising to 400 N/m over 1.5 m, a 300 N load at 2 m, and a 500 N force at B inclined at 30 degrees, spans 1.5 m, 0.5 m and 1 m|crop
+2021|1|1(a)|2|0.380,0.375,0.750,0.495|Cantilever beam AB fixed at A with a triangular load rising to 400 N/m over 1.5 m, a 300 N load at 2 m, and a 500 N force at B inclined at 30 degrees, spans 1.5 m, 0.5 m and 1 m|crop
 2021|1|1(d)|3|0.08,0.21,0.65,0.42|Epicyclic gear train with wheel C keyed to shaft B, compound gears D and E, gears F, G and shaft A|crop
 2021|1|2(c)|5|0.220,0.130,0.680,0.240|Beam AE supported at C and B with a 2 kN-m couple at C, 1 kN loads at D and E, spans 2 m, 2 m, 2 m and 1 m|crop
 2021|1|6(a)|9|0.200,0.095,0.760,0.300|Five jobs A to E with processing times 6, 4, 5, 8, 7 days and due dates 5, 10, 15, 20, 30 days|table
@@ -72,7 +72,7 @@
 2021|2|3(a)|4|0.300,0.770,0.720,0.935|Two parallel black plates A1 and A2 drawn as a cube connected by re-radiating walls|crop
 2021|2|8(a)|13|0.150,0.665,0.910,0.800|Properties of ammonia: at -6.7 °C hf -29.3, hfg 1293.8, hg 1264.5 kJ/kg, sf -0.113, sg 4.752; at 26.7 °C hf 125.6, hfg 1172.4, hg 1297.9, sf 0.427, sg 4.334|table
 2021|2|7(b)|12|0.05,0.06,0.94,0.95|Psychrometric chart, barometric pressure 1.01325 bar sea level|crop
-2022|1|1(a)|2|0.14,0.19,0.58,0.37|Slider-crank mechanism with crank OA of radius 60 mm at 60 degrees, connecting rod of length 240 mm at 90 degrees to the crank, slider at B, A and B on the same horizontal level|crop
+2022|1|1(a)|2|0.340,0.485,0.750,0.640|Slider-crank mechanism with crank OA of radius 60 mm at 60 degrees, connecting rod of length 240 mm at 90 degrees to the crank, slider at B, A and B on the same horizontal level|crop
 2022|1|1(c)|3|0.240,0.115,0.660,0.520|Pipe fixed at the wall at A with axes x, y, z: 20 m along x, 8 m and 10 m segments, loads 900 N, 200 N, 300 N, 600 N, 400 N and 500 N|crop
 2022|1|7(a)|12|0.240,0.145,0.860,0.300|Operations 1 to 4 with mean time 7, 5, 9, 6 hours and tolerance 7 plus or minus 0.6, 5 plus or minus 0.6, 9 plus or minus 0.8, 6 plus or minus 0.3|table
 2022|1|7(b)(ii)|13|0.210,0.265,0.880,0.405|Locations X, Y, Z rated on availability of labour 70, 60, 55, proximity to suppliers 60, 45, 95 and proximity to markets 45, 90, 50|table
@@ -132,19 +132,19 @@
 2025|2|1(e)|4|0.17,0.145,0.63,0.405|Black body radiation function table: lambda T 1300, 1400, 2400, 2500 micrometre-kelvin with f from 0 to lambda 0.004317, 0.007791, 0.140266, 0.161366|table
 2025|2|1(b)|18|0.10,0.10,0.90,0.90|Table of normal shocks in perfect gases, gamma 1.4: Mx from 1.00 to 5.00 with My, py/px, Ty/Tx, p0y/p0x and p0y/px|table
 2025|2|8(a)|16|0.16,0.52,0.91,0.66|Properties of R134a: at -10 °C 2.014 bar vg 0.0994, hf 186.7, hg 392.4, sf 0.9512, sg 1.733; at 35 °C 8.870 bar hf 249.1, hg 417.6, sf 1.1680, sg 1.715|table
-2026|1|1(a)|2|0.57,0.19,0.93,0.50|Beam fixed at O with a 3 kN load at A, 1.8 m and 0.6 m spans, then bent at 30 degrees with 0.6 m segments, a 4 kN-m couple at B and a 1.4 kN force at C|crop
-2026|1|1(b)(i)|3|0.05,0.14,0.37,0.34|Fixed-ended bar ABCD with end segments of area A1 and length L1 and middle segment of area A2 and length L2, loads PB at B and PC at C|crop
-2026|1|1(e)|4|0.55,0.64,0.92,0.93|Turbine shaft of diameter d under thrust load P and torque T|crop
-2026|1|3(a)(ii)|7|0.14,0.50,0.60,0.88|Pressurised tank with a helical weld making an angle alpha with the longitudinal axis|crop
-2026|1|3(b)(i)|8|0.55,0.65,0.95,0.93|Stress element with sigma y and shear stress tau xy and sigma x = 110 MPa along the x axis|crop
-2026|1|3(b)(ii)|10|0.56,0.115,0.93,0.42|Lever pivoted at O with spring k to the ground at A on the left, damper C to a fixed support B above at distance b, mass m at distance l, distances a and b marked|crop
-2026|1|4(a)|11|0.12,0.20,0.60,0.43|Simply supported beam AB of length L with a triangular distributed load of intensity W0 at A decreasing to zero at B, y and x axes|crop
-2026|1|4(c)|13|0.17,0.37,0.58,0.57|Block of mass m0 on a rough floor with a bar of mass m hinged at B on the wall and resting at A on the block at angle theta, horizontal force P(B) from the left or P(A) from the right, friction coefficients mu s and mu k|crop
-2026|1|6(c)|18|0.56,0.145,0.95,0.37|Jobs J1 to J5 with routing, total work 21, 20, 20, 21, 20 and due date 28, 25, 30, 35, 32|table
-2026|2|1(d)|3|0.14,0.11,0.50,0.29|Composite wall of blocks A, B, C, D and E with T1 = 800 °C on the left and T2 = 200 °C on the right, A = 1 m2, thicknesses 5 cm, 10 cm, 10 cm and 5 cm, heat Q entering at the left|crop
-2026|2|4(b)|7|0.12,0.09,0.50,0.23|Horizontal insulated cylinder with a frictionless piston filled with helium, a valve connecting to the supply line, and the external force F ext acting on the piston|crop
-2026|2|4(c)|7|0.14,0.62,0.50,0.92|Two black surfaces A1 with temperature T1 and A2 with temperature T2 separated by the distance r, their normals shown|crop
-2026|2|7(b)|11|0.12,0.12,0.50,0.30|Properties of R717: at -16 °C hf 126.73, hg 1442.60 kJ/kg, sf 0.72511, sg 5.8420 kJ/kg-K; at 40 °C hf 390.59, hg 1490.42, sf 1.64377, sg 5.1558|table
+2026|1|1(a)|2|0.210,0.515,0.770,0.795|Beam fixed at O with a 3 kN load at A, 1.8 m and 0.6 m spans, then bent at 30 degrees with 0.6 m segments, a 4 kN-m couple at B and a 1.4 kN force at C|crop
+2026|1|1(b)(i)|3|0.270,0.145,0.750,0.315|Fixed-ended bar ABCD with end segments of area A1 and length L1 and middle segment of area A2 and length L2, loads PB at B and PC at C|crop
+2026|1|1(e)|4|0.200,0.690,0.770,0.945|Turbine shaft of diameter d under thrust load P and torque T|crop
+2026|1|3(a)(ii)|8|0.140,0.355,0.840,0.500|Pressurised tank with a helical weld making an angle alpha with the longitudinal axis|crop
+2026|1|3(b)(i)|9|0.280,0.255,0.760,0.575|Stress element with sigma y and shear stress tau xy and sigma x = 110 MPa along the x axis|crop
+2026|1|3(b)(ii)|10|0.350,0.115,0.830,0.425|Lever pivoted at O with spring k to the ground at A on the left, damper C to a fixed support B above at distance b, mass m at distance l, distances a and b marked|crop
+2026|1|4(a)|11|0.280,0.180,0.720,0.435|Simply supported beam AB of length L with a triangular distributed load of intensity W0 at A decreasing to zero at B, y and x axes|crop
+2026|1|4(c)|12|0.260,0.690,0.770,0.965|Block of mass m0 on a rough floor with a bar of mass m hinged at B on the wall and resting at A on the block at angle theta, horizontal force P(B) from the left or P(A) from the right, friction coefficients mu s and mu k|crop
+2026|1|6(c)|18|0.190,0.150,0.950,0.400|Jobs J1 to J5 with routing, total work 21, 20, 20, 21, 20 and due date 28, 25, 30, 35, 32|table
+2026|2|1(d)|2|0.310,0.755,0.810,0.900|Composite wall of blocks A, B, C, D and E with T1 = 800 °C on the left and T2 = 200 °C on the right, A = 1 m2, thicknesses 5 cm, 10 cm, 10 cm and 5 cm, heat Q entering at the left|crop
+2026|2|4(b)|6|0.370,0.685,0.670,0.790|Horizontal insulated cylinder with a frictionless piston filled with helium, a valve connecting to the supply line, and the external force F ext acting on the piston|crop
+2026|2|4(c)|7|0.350,0.765,0.570,0.895|Two black surfaces A1 with temperature T1 and A2 with temperature T2 separated by the distance r, their normals shown|crop
+2026|2|7(b)|11|0.220,0.210,0.830,0.410|Properties of R717: at -16 °C hf 126.73, hg 1442.60 kJ/kg, sf 0.72511, sg 5.8420 kJ/kg-K; at 40 °C hf 390.59, hg 1490.42, sf 1.64377, sg 5.1558|table
 2026|2|7(a)|14|0.06,0.075,0.94,0.92|Saturated water pressure entry table: specific volume and internal energy against pressure from 0.6113 to 800 kPa|table
 2026|2|7(a)|15|0.07,0.075,0.93,0.92|Saturated water pressure entry table: enthalpy and entropy against pressure from 0.6113 to 800 kPa|table
 2026|2|8(a)|16|0.08,0.08,0.95,0.95|Psychrometric chart, barometric pressure 1.01325 bar sea level|crop
