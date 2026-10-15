@@ -1,0 +1,52 @@
+# year|paper|qno|page|x0,y0,x1,y1 (fractions)|alt|table
+2016|2|2(a)|4|0.25,0.63,0.70,0.92|Tasks, task times (in sec) and predecessors A to K for the toy company's production line|table
+2016|2|3(a)|7|0.20,0.295,0.86,0.43|Market potential, probability and PV of profit for the large, moderate and low market|table
+2016|2|3(b)(ii)|8|0.18,0.088,0.94,0.265|Cost of spare, salary of maintenance staff, loss due to breakdown and resale value of the machine for years 0 to 6|table
+2016|2|4(b)|9|0.24,0.65,0.79,0.88|Product structure of A with lead times and quantities: B(1400), C(1400), D(4200), E(2800), F(1400)|crop
+2017|2|1(a)|2|0.22,0.482,0.93,0.606|Movie preference (liked, disliked, indifferent) by age group: under 20, 20-39, 40-59, 60 and above|table
+2017|2|3(c)|6|0.21,0.125,0.88,0.395|Work element, time (in sec) and immediate predecessors A to J, total 720|table
+2017|2|4(a)(i)|7|0.24,0.13,0.80,0.425|Month, advertising expenditure (in thousand rupees) and sales (in units) for January to December|table
+2017|2|4(b)|8|0.21,0.095,0.87,0.325|Activities A to G with optimistic, most likely and pessimistic time estimates (in weeks) and immediate predecessors|table
+2018|1|5(d)|7|0.235,0.541,0.84,0.90|Ajay Ltd: statement of profit and loss for the year ended 31/03/2017 and relevant balance sheet accounts (inventory, accounts receivable, accounts payable, income tax payable) at 31/03/2017 and 31/03/2016|table
+2018|1|8(c)|10|0.185,0.62,0.82,0.81|Atul Mahindra Ltd capital structure: type of financing (8% NCD, 7.5% preference share capital, equity share capital), book value and market value|table
+2018|2|2(a)|5|0.19,0.23,0.86,0.565|Observation number, number of workers and tons of steel production for 8 working days|table
+2018|2|6(a)|16|0.185,0.105,0.89,0.545|Table 1: performance data of business units A to E (sales, competitors, sales of market leaders, industry growth rate, industry profitability, size of the industry, business unit profitability, share of international sales)|table
+2019|1|7(c)|6|0.23,0.68,0.72,0.78|Vendor A and Vendor B: sales, cost of goods sold (50% of sales) and wages|table
+2019|2|2(b)|4|0.19,0.615,0.74,0.825|Number of units produced by workers I to IV on machine types A to E|table
+2019|2|3(b)(i)|7|0.22,0.69,0.89,0.795|Scores of the ten accountants in test 1 and test 4|table
+2020|1|6(b)|5|0.21,0.395,0.76,0.535|Selected financial data for X, Y and Z companies: variable expenses as percentage of sales, interest expenses, degree of operating leverage, degree of financial leverage and income-tax rate|table
+2020|2|1(e)|5|0.27,0.06,0.83,0.32|Activity and time (in months) for the building project: 1-2, 1-3, 1-4, 2-5, 3-6, 3-7, 4-6, 5-8, 6-9, 7-8, 8-9|table
+2020|2|3(a)(i)|8|0.24,0.165,0.65,0.575|Time spent (in days) and number of applications evaluated by the ten CIPB officers|table
+2020|2|4(b)|11|0.20,0.125,0.90,0.24|Pathologists A to E: number of tests done and number of reported errors|table
+2020|2|4(b)|11|0.23,0.365,0.78,0.775|Chi-squared distribution: critical values of chi-squared at 5%, 1% and 0.1% significance for 1 to 10 degrees of freedom|table
+2020|2|4(c)|12|0.24,0.46,0.85,0.625|Transportation cost per unit from depots 1 to 3 to markets A to C, with stock at each depot and demand at each market|table
+2021|2|2(a)(ii)|4|0.265,0.64,0.865,0.76|Payoff table: states of nature E1, E2, E3 against alternatives A1, A2, A3|table
+2021|2|3(b)(ii)|7|0.215,0.395,0.87,0.505|Treatment (drug, sugar pills) against helped, harmed and no effect, with totals|table
+2021|2|3(c)(ii)|9|0.26,0.505,0.65,0.59|Number of defective units (150) and total units sampled (1,000)|table
+2021|2|4(a)(iv)|10|0.315,0.595,0.815,0.86|Activity, node and expected activity completion time for activities A to J|table
+2021|2|4(b)(i)|11|0.255,0.525,0.77,0.845|Twelve salesmen A to L ranked on efficiency and length of service|table
+2022|1|6(b)|5|0.20,0.185,0.82,0.93|ROT90:Present value interest factor PVIF(r, n) = (1 + r)^-n for periods 0 to 30 and rates 1% to 13%|table
+2022|1|6(b)|6|0.22,0.055,0.81,0.80|ROT90:Present value interest factor for an annuity PVIFA(r, n) = [1 - 1/(1 + r)^n] / r for periods 0 to 30 and rates 1% to 13%|table
+2022|1|8(a)|8|0.185,0.094,0.96,0.505|ABC Ltd. data for February and January: sales and production (units), selling price, variable production cost, fixed production overhead incurred and absorption rate, selling, distribution and administration cost|table
+2022|2|1(d)|2|0.20,0.79,0.80,0.855|Police personnel ID 1 to 11 with Test 1 marks and Test 2 marks|table
+2022|2|2(a)|3|0.25,0.607,0.745,0.805|Sales territory 1 to 8 with sales (crores of rupees) and number of selling agents|table
+2022|2|2(b)|4|0.30,0.612,0.695,0.855|Waiting times (in the emergency wing) of 10 cases for Hospital 1, Hospital 2 and Hospital 3|table
+2022|2|3(c)(iii)|7|0.25,0.135,0.755,0.505|Inspection results of 10 lots in November (dates 4 to 14): number of pieces inspected (300 each) and number of defective pieces found, total 3000 and 350|table
+2023|1|6(a)(i)|5|0.20,0.08,0.73,0.232|Firm A and Firm B data: net profit, sales revenue, total assets and equity|table
+2023|2|2(a)|3|0.16,0.475,0.91,0.64|Production in three shifts (I, II, III) and number of defective goods in the 1st, 2nd and 3rd week, with totals|table
+2023|2|2(c)|6|0.28,0.745,0.93,0.92|Capacity of the machines for production: available time in machine hours per week for the milling, lathe and grinder machines|table
+2024|1|6(a)|6|0.305,0.305,0.57,0.49|Cost per unit: raw material 52.00, direct labour 19.50, overheads 39.00, total cost 110.50, profit 19.50, selling price 130.00|table
+2024|1|8(a)|10|0.20,0.185,0.96,0.48|Income statement of ABC Ltd. for 2021-22 and 2022-23: cash sales, credit sales, cost of goods sold, gross profit, operating expenses and net profit|table
+2024|1|8(a)|10|0.20,0.51,0.96,0.93|Balance sheet of ABC Ltd. for 2021-22 and 2022-23: fixed assets, receivables, cash at bank, stock, payables, working capital, net assets, share capital, reserve and surplus, debentures|table
+2024|2|2(a)|2|0.22,0.795,0.88,0.85|Test score and sales ('000) of the ten salesmen|table
+2024|2|3(c)|4|0.26,0.358,0.76,0.55|Processing time (in hours) on Machine-1 and Machine-2 for jobs A to F|table
+2025|2|1(c)|4|0.17,0.65,0.91,0.77|Sheet number 1 to 20 and the defect count on each sheet|table
+2025|2|1(d)|5|0.27,0.74,0.65,0.93|Number of breakdowns (0 to 3) and number of months that breakdown occurred (4, 8, 6, 2)|table
+2025|2|2(a)|6|0.27,0.73,0.75,0.93|Year 2018 to 2024 and electrical power demand (megawatts): 94, 99, 100, 110, 125, 162, 142|table
+2025|2|2(b)|7|0.255,0.38,0.73,0.445|Weight gains (kg) of eight animals on Feed A and Feed B|table
+2025|2|2(c)|9|0.18,0.325,0.855,0.475|Product X, Y, Z: raw material per unit (kg), labour hours per unit and profit contribution per unit (₹)|table
+2025|2|3(b)|10|0.19,0.725,0.91,0.815|Regular time, overtime and subcontracting: production capacity per month and production cost per unit|table
+2025|2|3(c)|12|0.18,0.11,0.91,0.60|Activities A to I of the computer system installation with description, immediate predecessor and most optimistic, most likely and most pessimistic time in days|table
+2026|2|2(a)|3|0.17,0.60,0.78,0.845|Demand for repair: period 1 to 12 (January to December) with demand 40, 43, 44, 40, 45, 50, 45, 48, 57, 55, 56, 55|table
+2026|2|4(a)|6|0.20,0.47,0.85,0.815|Work elements A to J with time in seconds and immediate predecessors|table
+2026|2|4(c)|8|0.25,0.14,0.80,0.405|Activities 1-2 to 6-7 with normal and crash time (days) and normal and crash cost (₹)|table
