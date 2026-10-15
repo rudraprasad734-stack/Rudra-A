@@ -388,3 +388,29 @@ ag.topics.forEach(function(t){
   fs.writeFileSync(PAGE, h15);
   console.log(NAME + " chapters:", Object.keys(mtLeaf).length, "| Paper I topics:", Object.keys(mtTree["Paper I"]).length, "| Paper II topics:", Object.keys(mtTree["Paper II"]).length);
 }
+
+// ---------------------------------------------------------------- Mechanical Engineering (one chapter per syllabus sub-topic)
+{
+  const NAME = "Mechanical Engineering";
+  let h16 = fs.readFileSync(PAGE, "utf8");
+  const m16 = h16.match(/<script type="application\/json" id="d-mechanical">(.*?)<\/script>/s);
+  if(!m16) throw new Error("build-planner: d-mechanical not found (run management/build-mechanical.js first), nothing written");
+  const mem = JSON.parse(m16[1]);
+  const meTree = {"Paper I":{}, "Paper II":{}}, meLeaf = {}, per16 = {};
+  mem.topics.forEach(function(t){
+    const it = mem.items.filter(function(x){ return x.id === t.s; })[0], grp = it.pp === 1 ? "Paper I" : "Paper II";
+    per16[it.id] = (per16[it.id] || 0) + 1;
+    const topic = it.id + "  " + it.t, unit = it.id + "." + per16[it.id] + "  " + t.t;
+    (meTree[grp][topic] = meTree[grp][topic] || []).push(unit);
+    meLeaf[topic + "|" + unit] = [t.id];
+  });
+  const cur16 = '  "' + NAME + '": ' + JSON.stringify(meTree, null, 2).replace(/\n/g, "\n  ") + ',\n';
+  const a16 = h16.indexOf('  "' + NAME + '": {\n    "Paper I"');
+  if(a16 >= 0){ const re = /\n  "[A-Z]/g; re.lastIndex = a16 + 20; const m = re.exec(h16); if(!m) throw new Error("build-planner: end of Mechanical Engineering block not found, nothing written"); h16 = h16.slice(0, a16) + cur16 + h16.slice(m.index + 1); }
+  else { const so3 = h16.indexOf('  "Sociology": CT({'); if(so3 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h16 = h16.slice(0, so3) + cur16 + h16.slice(so3); }
+  const la16 = h16.indexOf("var MECH_LEAF = {"), leafTxt16 = "var MECH_LEAF = " + JSON.stringify(meLeaf, null, 1) + ";";
+  if(la16 >= 0){ const e16 = h16.indexOf("\n};", la16); if(e16 < 0) throw new Error("build-planner: MECH_LEAF block not closed, nothing written"); h16 = h16.slice(0, la16) + leafTxt16 + h16.slice(h16.indexOf("\n", e16 + 1)); }
+  else { const lb16 = h16.indexOf("\n// Optional subjects that have a question analysis"); if(lb16 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h16 = h16.slice(0, lb16) + "\n" + leafTxt16 + h16.slice(lb16); }
+  fs.writeFileSync(PAGE, h16);
+  console.log(NAME + " chapters:", Object.keys(meLeaf).length, "| Paper I topics:", Object.keys(meTree["Paper I"]).length, "| Paper II topics:", Object.keys(meTree["Paper II"]).length);
+}
