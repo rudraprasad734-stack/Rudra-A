@@ -310,3 +310,29 @@ ag.topics.forEach(function(t){
   fs.writeFileSync(PAGE, h12);
   console.log(NAME + " chapters:", Object.keys(hsLeaf).length, "| Paper I topics:", Object.keys(hsTree["Paper I"]).length, "| Paper II topics:", Object.keys(hsTree["Paper II"]).length);
 }
+
+// ---------------------------------------------------------------- Law (one chapter per syllabus sub-topic)
+{
+  const NAME = "Law";
+  let h13 = fs.readFileSync(PAGE, "utf8");
+  const m13 = h13.match(/<script type="application\/json" id="d-law">(.*?)<\/script>/s);
+  if(!m13) throw new Error("build-planner: d-law not found (run history/build-lawory.js first), nothing written");
+  const lw = JSON.parse(m13[1]);
+  const lwTree = {"Paper I":{}, "Paper II":{}}, lwLeaf = {}, per13 = {};
+  lw.topics.forEach(function(t){
+    const it = lw.items.filter(function(x){ return x.id === t.s; })[0], grp = it.pp === 1 ? "Paper I" : "Paper II";
+    per13[it.id] = (per13[it.id] || 0) + 1;
+    const topic = it.id + "  " + it.t, unit = it.id + "." + per13[it.id] + "  " + t.t;
+    (lwTree[grp][topic] = lwTree[grp][topic] || []).push(unit);
+    lwLeaf[topic + "|" + unit] = [t.id];
+  });
+  const cur13 = '  "' + NAME + '": ' + JSON.stringify(lwTree, null, 2).replace(/\n/g, "\n  ") + ',\n';
+  const a13 = h13.indexOf('  "' + NAME + '": {\n    "Paper I"');
+  if(a13 >= 0){ const re = /\n  "[A-Z]/g; re.lastIndex = a13 + 20; const m = re.exec(h13); if(!m) throw new Error("build-planner: end of Law block not found, nothing written"); h13 = h13.slice(0, a13) + cur13 + h13.slice(m.index + 1); }
+  else { const so = h13.indexOf('  "Sociology": CT({'); if(so < 0) throw new Error("build-planner: insertion point not found, nothing written"); h13 = h13.slice(0, so) + cur13 + h13.slice(so); }
+  const la13 = h13.indexOf("var LAW_LEAF = {"), leafTxt13 = "var LAW_LEAF = " + JSON.stringify(lwLeaf, null, 1) + ";";
+  if(la13 >= 0){ const e13 = h13.indexOf("\n};", la13); if(e13 < 0) throw new Error("build-planner: LAW_LEAF block not closed, nothing written"); h13 = h13.slice(0, la13) + leafTxt13 + h13.slice(h13.indexOf("\n", e13 + 1)); }
+  else { const lb13 = h13.indexOf("\n// Optional subjects that have a question analysis"); if(lb13 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h13 = h13.slice(0, lb13) + "\n" + leafTxt13 + h13.slice(lb13); }
+  fs.writeFileSync(PAGE, h13);
+  console.log(NAME + " chapters:", Object.keys(lwLeaf).length, "| Paper I topics:", Object.keys(lwTree["Paper I"]).length, "| Paper II topics:", Object.keys(lwTree["Paper II"]).length);
+}
