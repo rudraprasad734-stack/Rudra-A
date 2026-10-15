@@ -1,7 +1,7 @@
 // UPSC Companion service worker: caches the app shell so the page loads and
 // runs with zero network connectivity after the first successful visit.
 // Bump CACHE_NAME on any deploy that changes cached files so clients refresh.
-const CACHE_NAME = "upsc-companion-v146";
+const CACHE_NAME = "upsc-companion-v147";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -896,7 +896,58 @@ const FIGURES = [
   "./img/history/2023-1-1a-1.webp",
   "./img/history/2024-1-1a-1.webp",
   "./img/history/2025-1-1a-1.webp",
-  "./img/history/2026-1-1a-1.webp"
+  "./img/history/2026-1-1a-1.webp",
+  "./img/management/2016-2-2a-1.webp",
+  "./img/management/2016-2-3a-1.webp",
+  "./img/management/2016-2-3bii-1.webp",
+  "./img/management/2016-2-4b-1.webp",
+  "./img/management/2017-2-1a-1.webp",
+  "./img/management/2017-2-3c-1.webp",
+  "./img/management/2017-2-4ai-1.webp",
+  "./img/management/2017-2-4b-1.webp",
+  "./img/management/2018-1-5d-1.webp",
+  "./img/management/2018-1-8c-1.webp",
+  "./img/management/2018-2-2a-1.webp",
+  "./img/management/2018-2-6a-1.webp",
+  "./img/management/2019-1-7c-1.webp",
+  "./img/management/2019-2-2b-1.webp",
+  "./img/management/2019-2-3bi-1.webp",
+  "./img/management/2020-1-6b-1.webp",
+  "./img/management/2020-2-1e-1.webp",
+  "./img/management/2020-2-3ai-1.webp",
+  "./img/management/2020-2-4b-1.webp",
+  "./img/management/2020-2-4b-2.webp",
+  "./img/management/2020-2-4c-1.webp",
+  "./img/management/2021-2-2aii-1.webp",
+  "./img/management/2021-2-3bii-1.webp",
+  "./img/management/2021-2-3cii-1.webp",
+  "./img/management/2021-2-4aiv-1.webp",
+  "./img/management/2021-2-4bi-1.webp",
+  "./img/management/2022-1-6b-1.webp",
+  "./img/management/2022-1-6b-2.webp",
+  "./img/management/2022-1-8a-1.webp",
+  "./img/management/2022-2-1d-1.webp",
+  "./img/management/2022-2-2a-1.webp",
+  "./img/management/2022-2-2b-1.webp",
+  "./img/management/2022-2-3ciii-1.webp",
+  "./img/management/2023-1-6ai-1.webp",
+  "./img/management/2023-2-2a-1.webp",
+  "./img/management/2023-2-2c-1.webp",
+  "./img/management/2024-1-6a-1.webp",
+  "./img/management/2024-1-8a-1.webp",
+  "./img/management/2024-1-8a-2.webp",
+  "./img/management/2024-2-2a-1.webp",
+  "./img/management/2024-2-3c-1.webp",
+  "./img/management/2025-2-1c-1.webp",
+  "./img/management/2025-2-1d-1.webp",
+  "./img/management/2025-2-2a-1.webp",
+  "./img/management/2025-2-2b-1.webp",
+  "./img/management/2025-2-2c-1.webp",
+  "./img/management/2025-2-3b-1.webp",
+  "./img/management/2025-2-3c-1.webp",
+  "./img/management/2026-2-2a-1.webp",
+  "./img/management/2026-2-4a-1.webp",
+  "./img/management/2026-2-4c-1.webp"
 ];
 
 // keep good responses, plus the font files (they come back "opaque" from another site) so the fonts also work offline

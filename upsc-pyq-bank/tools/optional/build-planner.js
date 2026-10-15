@@ -336,3 +336,29 @@ ag.topics.forEach(function(t){
   fs.writeFileSync(PAGE, h13);
   console.log(NAME + " chapters:", Object.keys(lwLeaf).length, "| Paper I topics:", Object.keys(lwTree["Paper I"]).length, "| Paper II topics:", Object.keys(lwTree["Paper II"]).length);
 }
+
+// ---------------------------------------------------------------- Management (one chapter per syllabus sub-topic)
+{
+  const NAME = "Management";
+  let h14 = fs.readFileSync(PAGE, "utf8");
+  const m14 = h14.match(/<script type="application\/json" id="d-management">(.*?)<\/script>/s);
+  if(!m14) throw new Error("build-planner: d-management not found (run management/build-management.js first), nothing written");
+  const mgm = JSON.parse(m14[1]);
+  const mgTree = {"Paper I":{}, "Paper II":{}}, mgLeaf = {}, per14 = {};
+  mgm.topics.forEach(function(t){
+    const it = mgm.items.filter(function(x){ return x.id === t.s; })[0], grp = it.pp === 1 ? "Paper I" : "Paper II";
+    per14[it.id] = (per14[it.id] || 0) + 1;
+    const topic = it.id + "  " + it.t, unit = it.id + "." + per14[it.id] + "  " + t.t;
+    (mgTree[grp][topic] = mgTree[grp][topic] || []).push(unit);
+    mgLeaf[topic + "|" + unit] = [t.id];
+  });
+  const cur14 = '  "' + NAME + '": ' + JSON.stringify(mgTree, null, 2).replace(/\n/g, "\n  ") + ',\n';
+  const a14 = h14.indexOf('  "' + NAME + '": {\n    "Paper I"');
+  if(a14 >= 0){ const re = /\n  "[A-Z]/g; re.lastIndex = a14 + 20; const m = re.exec(h14); if(!m) throw new Error("build-planner: end of Management block not found, nothing written"); h14 = h14.slice(0, a14) + cur14 + h14.slice(m.index + 1); }
+  else { const so = h14.indexOf('  "Sociology": CT({'); if(so < 0) throw new Error("build-planner: insertion point not found, nothing written"); h14 = h14.slice(0, so) + cur14 + h14.slice(so); }
+  const la14 = h14.indexOf("var MGMT_LEAF = {"), leafTxt14 = "var MGMT_LEAF = " + JSON.stringify(mgLeaf, null, 1) + ";";
+  if(la14 >= 0){ const e14 = h14.indexOf("\n};", la14); if(e14 < 0) throw new Error("build-planner: MGMT_LEAF block not closed, nothing written"); h14 = h14.slice(0, la14) + leafTxt14 + h14.slice(h14.indexOf("\n", e14 + 1)); }
+  else { const lb14 = h14.indexOf("\n// Optional subjects that have a question analysis"); if(lb14 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h14 = h14.slice(0, lb14) + "\n" + leafTxt14 + h14.slice(lb14); }
+  fs.writeFileSync(PAGE, h14);
+  console.log(NAME + " chapters:", Object.keys(mgLeaf).length, "| Paper I topics:", Object.keys(mgTree["Paper I"]).length, "| Paper II topics:", Object.keys(mgTree["Paper II"]).length);
+}

@@ -22,17 +22,17 @@
 2020|2|4(c)|12|0.24,0.46,0.85,0.625|Transportation cost per unit from depots 1 to 3 to markets A to C, with stock at each depot and demand at each market|table
 2021|2|2(a)(ii)|4|0.265,0.64,0.865,0.76|Payoff table: states of nature E1, E2, E3 against alternatives A1, A2, A3|table
 2021|2|3(b)(ii)|7|0.215,0.395,0.87,0.505|Treatment (drug, sugar pills) against helped, harmed and no effect, with totals|table
-2021|2|3(c)(ii)|9|0.26,0.505,0.65,0.59|Number of defective units (150) and total units sampled (1,000) for the past 10 samples|table
+2021|2|3(c)(ii)|9|0.26,0.505,0.65,0.59|Number of defective units (150) and total units sampled (1,000)|table
 2021|2|4(a)(iv)|10|0.315,0.595,0.815,0.86|Activity, node and expected activity completion time for activities A to J|table
 2021|2|4(b)(i)|11|0.255,0.525,0.77,0.845|Twelve salesmen A to L ranked on efficiency and length of service|table
 2022|1|6(b)|5|0.20,0.185,0.82,0.93|ROT90:Present value interest factor PVIF(r, n) = (1 + r)^-n for periods 0 to 30 and rates 1% to 13%|table
 2022|1|6(b)|6|0.22,0.055,0.81,0.80|ROT90:Present value interest factor for an annuity PVIFA(r, n) = [1 - 1/(1 + r)^n] / r for periods 0 to 30 and rates 1% to 13%|table
-2022|1|8(a)|8|0.23,0.085,0.83,0.50|ABC Ltd. data for February and January: sales and production (units), selling price, variable production cost, fixed production overhead incurred and absorption rate, selling, distribution and administration cost|table
+2022|1|8(a)|8|0.185,0.094,0.96,0.505|ABC Ltd. data for February and January: sales and production (units), selling price, variable production cost, fixed production overhead incurred and absorption rate, selling, distribution and administration cost|table
 2022|2|1(d)|2|0.20,0.79,0.80,0.855|Police personnel ID 1 to 11 with Test 1 marks and Test 2 marks|table
 2022|2|2(a)|3|0.25,0.607,0.745,0.805|Sales territory 1 to 8 with sales (crores of rupees) and number of selling agents|table
 2022|2|2(b)|4|0.30,0.612,0.695,0.855|Waiting times (in the emergency wing) of 10 cases for Hospital 1, Hospital 2 and Hospital 3|table
 2022|2|3(c)(iii)|7|0.25,0.135,0.755,0.505|Inspection results of 10 lots in November (dates 4 to 14): number of pieces inspected (300 each) and number of defective pieces found, total 3000 and 350|table
-2023|1|6(a)(i)|5|0.17,0.075,0.64,0.23|Firm A and Firm B data: net profit, sales revenue, total assets and equity|table
+2023|1|6(a)(i)|5|0.20,0.08,0.73,0.232|Firm A and Firm B data: net profit, sales revenue, total assets and equity|table
 2023|2|2(a)|3|0.16,0.475,0.91,0.64|Production in three shifts (I, II, III) and number of defective goods in the 1st, 2nd and 3rd week, with totals|table
 2023|2|2(c)|6|0.28,0.745,0.93,0.92|Capacity of the machines for production: available time in machine hours per week for the milling, lathe and grinder machines|table
 2024|1|6(a)|6|0.305,0.305,0.57,0.49|Cost per unit: raw material 52.00, direct labour 19.50, overheads 39.00, total cost 110.50, profit 19.50, selling price 130.00|table
@@ -47,6 +47,6 @@
 2025|2|2(c)|9|0.18,0.325,0.855,0.475|Product X, Y, Z: raw material per unit (kg), labour hours per unit and profit contribution per unit (₹)|table
 2025|2|3(b)|10|0.19,0.725,0.91,0.815|Regular time, overtime and subcontracting: production capacity per month and production cost per unit|table
 2025|2|3(c)|12|0.18,0.11,0.91,0.60|Activities A to I of the computer system installation with description, immediate predecessor and most optimistic, most likely and most pessimistic time in days|table
-2026|2|2(a)|3|0.17,0.60,0.78,0.835|Demand for repair: period 1 to 12 (January to December) with demand 40, 43, 44, 40, 45, 50, 45, 48, 57, 55, 56, 55|table
+2026|2|2(a)|3|0.17,0.60,0.78,0.845|Demand for repair: period 1 to 12 (January to December) with demand 40, 43, 44, 40, 45, 50, 45, 48, 57, 55, 56, 55|table
 2026|2|4(a)|6|0.20,0.47,0.85,0.815|Work elements A to J with time in seconds and immediate predecessors|table
-2026|2|4(c)|8|0.25,0.14,0.80,0.395|Activities 1-2 to 6-7 with normal and crash time (days) and normal and crash cost (₹)|table
+2026|2|4(c)|8|0.25,0.14,0.80,0.405|Activities 1-2 to 6-7 with normal and crash time (days) and normal and crash cost (₹)|table
