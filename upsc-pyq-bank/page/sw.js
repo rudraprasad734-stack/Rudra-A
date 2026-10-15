@@ -1,7 +1,7 @@
 // UPSC Companion service worker: caches the app shell so the page loads and
 // runs with zero network connectivity after the first successful visit.
 // Bump CACHE_NAME on any deploy that changes cached files so clients refresh.
-const CACHE_NAME = "upsc-companion-v147";
+const CACHE_NAME = "upsc-companion-v148";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -947,7 +947,20 @@ const FIGURES = [
   "./img/management/2025-2-3c-1.webp",
   "./img/management/2026-2-2a-1.webp",
   "./img/management/2026-2-4a-1.webp",
-  "./img/management/2026-2-4c-1.webp"
+  "./img/management/2026-2-4c-1.webp",
+  "./img/mathematics/2017-2-4b-1.webp",
+  "./img/mathematics/2018-2-4c-1.webp",
+  "./img/mathematics/2018-2-5d-1.webp",
+  "./img/mathematics/2020-2-4c-1.webp",
+  "./img/mathematics/2021-2-1e-1.webp",
+  "./img/mathematics/2021-2-6b-1.webp",
+  "./img/mathematics/2022-2-4c-1.webp",
+  "./img/mathematics/2022-2-7b-1.webp",
+  "./img/mathematics/2023-2-4c-1.webp",
+  "./img/mathematics/2024-2-4c-1.webp",
+  "./img/mathematics/2025-2-4c-1.webp",
+  "./img/mathematics/2026-2-2c-1.webp",
+  "./img/mathematics/2026-2-5c-1.webp"
 ];
 
 // keep good responses, plus the font files (they come back "opaque" from another site) so the fonts also work offline
