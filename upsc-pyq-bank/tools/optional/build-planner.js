@@ -362,3 +362,80 @@ ag.topics.forEach(function(t){
   fs.writeFileSync(PAGE, h14);
   console.log(NAME + " chapters:", Object.keys(mgLeaf).length, "| Paper I topics:", Object.keys(mgTree["Paper I"]).length, "| Paper II topics:", Object.keys(mgTree["Paper II"]).length);
 }
+
+// ---------------------------------------------------------------- Mathematics (one chapter per syllabus sub-topic)
+{
+  const NAME = "Mathematics";
+  let h15 = fs.readFileSync(PAGE, "utf8");
+  const m15 = h15.match(/<script type="application\/json" id="d-mathematics">(.*?)<\/script>/s);
+  if(!m15) throw new Error("build-planner: d-mathematics not found (run management/build-mathematics.js first), nothing written");
+  const mtm = JSON.parse(m15[1]);
+  const mtTree = {"Paper I":{}, "Paper II":{}}, mtLeaf = {}, per15 = {};
+  mtm.topics.forEach(function(t){
+    const it = mtm.items.filter(function(x){ return x.id === t.s; })[0], grp = it.pp === 1 ? "Paper I" : "Paper II";
+    per15[it.id] = (per15[it.id] || 0) + 1;
+    const topic = it.id + "  " + it.t, unit = it.id + "." + per15[it.id] + "  " + t.t;
+    (mtTree[grp][topic] = mtTree[grp][topic] || []).push(unit);
+    mtLeaf[topic + "|" + unit] = [t.id];
+  });
+  const cur15 = '  "' + NAME + '": ' + JSON.stringify(mtTree, null, 2).replace(/\n/g, "\n  ") + ',\n';
+  const a15 = h15.indexOf('  "' + NAME + '": {\n    "Paper I"');
+  if(a15 >= 0){ const re = /\n  "[A-Z]/g; re.lastIndex = a15 + 20; const m = re.exec(h15); if(!m) throw new Error("build-planner: end of Mathematics block not found, nothing written"); h15 = h15.slice(0, a15) + cur15 + h15.slice(m.index + 1); }
+  else { const so2 = h15.indexOf('  "Sociology": CT({'); if(so2 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h15 = h15.slice(0, so2) + cur15 + h15.slice(so2); }
+  const la15 = h15.indexOf("var MATH_LEAF = {"), leafTxt15 = "var MATH_LEAF = " + JSON.stringify(mtLeaf, null, 1) + ";";
+  if(la15 >= 0){ const e15 = h15.indexOf("\n};", la15); if(e15 < 0) throw new Error("build-planner: MATH_LEAF block not closed, nothing written"); h15 = h15.slice(0, la15) + leafTxt15 + h15.slice(h15.indexOf("\n", e15 + 1)); }
+  else { const lb15 = h15.indexOf("\n// Optional subjects that have a question analysis"); if(lb15 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h15 = h15.slice(0, lb15) + "\n" + leafTxt15 + h15.slice(lb15); }
+  fs.writeFileSync(PAGE, h15);
+  console.log(NAME + " chapters:", Object.keys(mtLeaf).length, "| Paper I topics:", Object.keys(mtTree["Paper I"]).length, "| Paper II topics:", Object.keys(mtTree["Paper II"]).length);
+}
+
+// ---------------------------------------------------------------- Mechanical Engineering (one chapter per syllabus sub-topic)
+{
+  const NAME = "Mechanical Engineering";
+  let h16 = fs.readFileSync(PAGE, "utf8");
+  const m16 = h16.match(/<script type="application\/json" id="d-mechanical">(.*?)<\/script>/s);
+  if(!m16) throw new Error("build-planner: d-mechanical not found (run management/build-mechanical.js first), nothing written");
+  const mem = JSON.parse(m16[1]);
+  const meTree = {"Paper I":{}, "Paper II":{}}, meLeaf = {}, per16 = {};
+  mem.topics.forEach(function(t){
+    const it = mem.items.filter(function(x){ return x.id === t.s; })[0], grp = it.pp === 1 ? "Paper I" : "Paper II";
+    per16[it.id] = (per16[it.id] || 0) + 1;
+    const topic = it.id + "  " + it.t, unit = it.id + "." + per16[it.id] + "  " + t.t;
+    (meTree[grp][topic] = meTree[grp][topic] || []).push(unit);
+    meLeaf[topic + "|" + unit] = [t.id];
+  });
+  const cur16 = '  "' + NAME + '": ' + JSON.stringify(meTree, null, 2).replace(/\n/g, "\n  ") + ',\n';
+  const a16 = h16.indexOf('  "' + NAME + '": {\n    "Paper I"');
+  if(a16 >= 0){ const re = /\n  "[A-Z]/g; re.lastIndex = a16 + 20; const m = re.exec(h16); if(!m) throw new Error("build-planner: end of Mechanical Engineering block not found, nothing written"); h16 = h16.slice(0, a16) + cur16 + h16.slice(m.index + 1); }
+  else { const so3 = h16.indexOf('  "Sociology": CT({'); if(so3 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h16 = h16.slice(0, so3) + cur16 + h16.slice(so3); }
+  const la16 = h16.indexOf("var MECH_LEAF = {"), leafTxt16 = "var MECH_LEAF = " + JSON.stringify(meLeaf, null, 1) + ";";
+  if(la16 >= 0){ const e16 = h16.indexOf("\n};", la16); if(e16 < 0) throw new Error("build-planner: MECH_LEAF block not closed, nothing written"); h16 = h16.slice(0, la16) + leafTxt16 + h16.slice(h16.indexOf("\n", e16 + 1)); }
+  else { const lb16 = h16.indexOf("\n// Optional subjects that have a question analysis"); if(lb16 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h16 = h16.slice(0, lb16) + "\n" + leafTxt16 + h16.slice(lb16); }
+  fs.writeFileSync(PAGE, h16);
+  console.log(NAME + " chapters:", Object.keys(meLeaf).length, "| Paper I topics:", Object.keys(meTree["Paper I"]).length, "| Paper II topics:", Object.keys(meTree["Paper II"]).length);
+}
+// ---------------------------------------------------------------- Medical Science (one chapter per syllabus sub-topic)
+{
+  const NAME = "Medical Science";
+  let h17 = fs.readFileSync(PAGE, "utf8");
+  const m17 = h17.match(/<script type="application\/json" id="d-medical">(.*?)<\/script>/s);
+  if(!m17) throw new Error("build-planner: d-medical not found (run medical-science/build-medical.js first), nothing written");
+  const mdm = JSON.parse(m17[1]);
+  const mdTree = {"Paper I":{}, "Paper II":{}}, mdLeaf = {}, per17 = {};
+  mdm.topics.forEach(function(t){
+    const it = mdm.items.filter(function(x){ return x.id === t.s; })[0], grp = it.pp === 1 ? "Paper I" : "Paper II";
+    per17[it.id] = (per17[it.id] || 0) + 1;
+    const topic = it.id + "  " + it.t, unit = it.id + "." + per17[it.id] + "  " + t.t;
+    (mdTree[grp][topic] = mdTree[grp][topic] || []).push(unit);
+    mdLeaf[topic + "|" + unit] = [t.id];
+  });
+  const cur17 = '  "' + NAME + '": ' + JSON.stringify(mdTree, null, 2).replace(/\n/g, "\n  ") + ',\n';
+  const a17 = h17.indexOf('  "' + NAME + '": {\n    "Paper I"');
+  if(a17 >= 0){ const re = /\n  "[A-Z]/g; re.lastIndex = a17 + 20; const m = re.exec(h17); if(!m) throw new Error("build-planner: end of Medical Science block not found, nothing written"); h17 = h17.slice(0, a17) + cur17 + h17.slice(m.index + 1); }
+  else { const so4 = h17.indexOf('  "Sociology": CT({'); if(so4 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h17 = h17.slice(0, so4) + cur17 + h17.slice(so4); }
+  const la17 = h17.indexOf("var MED_LEAF = {"), leafTxt17 = "var MED_LEAF = " + JSON.stringify(mdLeaf, null, 1) + ";";
+  if(la17 >= 0){ const e17 = h17.indexOf("\n};", la17); if(e17 < 0) throw new Error("build-planner: MED_LEAF block not closed, nothing written"); h17 = h17.slice(0, la17) + leafTxt17 + h17.slice(h17.indexOf("\n", e17 + 1)); }
+  else { const lb17 = h17.indexOf("\n// Optional subjects that have a question analysis"); if(lb17 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h17 = h17.slice(0, lb17) + "\n" + leafTxt17 + h17.slice(lb17); }
+  fs.writeFileSync(PAGE, h17);
+  console.log(NAME + " chapters:", Object.keys(mdLeaf).length, "| Paper I topics:", Object.keys(mdTree["Paper I"]).length, "| Paper II topics:", Object.keys(mdTree["Paper II"]).length);
+}

@@ -1,0 +1,14 @@
+# year|paper|qno|page|x0,y0,x1,y1 (fractions)|alt|table
+2017|2|4(b)|5|0.13,0.345,0.71,0.535|Transportation problem: origins O1 to O3 and destinations D1 to D5 with unit costs, supply 14, 9, 17 and demand 8, 3, 8, 13, 8|table
+2018|2|4(c)|5|0.26,0.19,0.64,0.395|Cost matrix of operators O1 to O5 and machines M1 to M5 (rows 24 29 18 32 19; 17 26 34 22 21; 27 16 28 17 25; 22 18 28 30 24; 28 16 31 24 27)|table
+2018|2|5(d)|6|0.17,0.165,0.855,0.285|Time (minutes) 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 and speed (km/h) 10, 18, 25, 29, 32, 20, 11, 5, 2, 8.5|table
+2020|2|4(c)|4|0.22,0.595,0.80,0.80|Transportation problem: sources S1 to S3 and destinations D1 to D4 with unit costs, availability 15, 25, 10 and demand 5, 20, 15, 10|table
+2021|2|1(e)|3|0.26,0.135,0.72,0.30|Effectiveness matrix: time in hours for jobs A to E and employees I to V (A: 10 5 13 15 16; B: 3 9 18 13 6; C: 10 7 2 2 2; D: 7 11 9 7 12; E: 7 9 10 4 12)|table
+2021|2|6(b)|7|0.28,0.105,0.70,0.335|Truth table of F(x, y, z) for the eight combinations of x, y, z (F = 1, 1, 1, 0, 1, 0, 0, 0)|table
+2022|2|4(c)|5|0.14,0.125,0.62,0.275|Transportation problem: sources S1 to S3 and destinations A to D with unit costs (21 16 25 13; 17 18 14 23; 32 27 18 41), availability 11, 13, 19 and requirement 6, 10, 12, 15|table
+2022|2|7(b)|7|0.15,0.535,0.84,0.595|Time t (minutes) 2, 4, 6, 8, 10, 12, 14, 16, 18, 20 and velocity v (km/hour) 16, 28.8, 40, 46.4, 51.2, 32, 17.6, 8, 3.2, 0|table
+2023|2|4(c)|4|0.45,0.685,0.75,0.835|Time (hours) for subordinates I to V on jobs A to E (I: 4 9 4 12 4; II: 15 11 20 5 8; III: 17 7 15 12 18; IV: 9 13 11 9 14; V: 6 11 12 9 14)|table
+2024|2|4(c)|6|0.25,0.17,0.86,0.365|Cost of relocation (thousand Rupees) of officers A, B, C at the offices Delhi, Mumbai, Kolkata, Chennai (A: 16 22 24 20; B: 10 32 26 16; C: 10 20 46 30)|table
+2025|2|4(c)|5|0.24,0.585,0.66,0.76|Warehouse A, B, C by Market I to IV: unit transportation costs (A: 5 2 4 3; B: 4 8 1 6; C: 4 6 7 5), supply 22, 15, 8 and requirement 7, 12, 17, 9|table
+2026|2|2(c)|5|0.20,0.405,0.70,0.585|Estimated cost of assigning jobs J1 to J3 to machines M1 to M4 (J1: 8 24 28 32; J2: 8 13 17 19; J3: 8 15 19 22)|table
+2026|2|5(c)|8|0.16,0.058,0.80,0.31|Logic circuit L: inputs A, B, C (with inverters on B and C) feeding three AND gates whose outputs go to one OR gate giving output Y|crop

@@ -1,0 +1,150 @@
+# year|paper|qno|page|x0,y0,x1,y1 (fractions)|alt|table
+2016|1|1(a)|2|0.24,0.20,0.58,0.49|Shaded area: a rectangle 10 cm wide and 20 cm high with a semicircle of radius 5 cm cut out of the top edge CD, with corners A, B, C, D|crop
+2016|1|1(e)|3|0.20,0.315,0.86,0.545|Compound gear train of gears 1 to 6 with teeth T1 = 30, T2 = 75, T3 = 40, T4 = 120, T5 = 28, T6 = 70|crop
+2016|1|2(b)|4|0.24,0.165,0.85,0.375|Shear force diagram of a beam with overhangs: spans 3 m, 5 m and 2 m, with shear force values 1 kN, 1, 5, 5, 2 and 2 kN|crop
+2016|1|3(b)|5|0.22,0.195,0.50,0.295|Simply supported beam AB of span L carrying a uniformly distributed load w|crop
+2016|1|3(c)|5|0.22,0.478,0.55,0.57|Shaft of length 800 mm simply supported at both ends with a 1 kg mass at mid span|crop
+2016|1|6(b)|9|0.24,0.28,0.76,0.785|Layout of departments A, C, E (top row) and B, D, F (bottom row), and the handling frequency table between departments A to F|table
+2016|1|6(c)|11|0.23,0.195,0.89,0.675|Activities A to K with predecessor activities and optimistic, most likely and pessimistic times in days|table
+2016|1|7(b)|14|0.27,0.15,0.81,0.285|Locations A, B, C with fixed cost per annum 300, 500, 250 lakh rupees and variable cost per unit 3000, 2000, 3500 rupees|table
+2016|1|7(c)|15|0.03,0.13,0.90,0.42|Averages and ranges of spindle diameters for 30 sub-groups of 5 items|table
+2016|1|8(b)|16|0.20,0.385,0.90,0.50|Population of the city in lakhs 5, 7, 15, 22, 27, 36 and number of washing machines demanded in hundreds 28, 40, 65, 80, 96, 130|table
+2016|1|8(c)|17|0.21,0.23,0.67,0.355|Price per bag: 400 rupees for 0 to 1999 bags and 395 rupees for 2000 bags and above|table
+2016|2|7(b)|10|0.10,0.345,0.935,0.435|Refrigerant property table: at 10 bar saturation temperature 25 °C, liquid heat 298.9, latent heat 1166.94 kJ/kg, liquid entropy 1.1242, vapour entropy 5.0391 kJ/kg K; at 3 bar -10 °C, 135.37, 1297.68, 0.5443, 5.4770|table
+2017|1|1(a)|2|0.37,0.265,0.74,0.465|Beam AB of length 2 m hinged at A and held at B by a cord over two frictionless pulleys P and Q carrying a 50 kN load; a 100 kN load acts on the beam at distance x from A|crop
+2017|1|1(b)|2|0.36,0.665,0.74,0.87|Plane stress element: 10 MPa and 50 MPa normal stresses with 40 MPa and 10 MPa shear stress arrows (Fig. 1(b))|crop
+2017|1|2(a)|4|0.40,0.21,0.70,0.285|Simply supported beam AB of span 4 m carrying a uniformly distributed load of 6 kN/m|crop
+2017|1|2(c)|4|0.36,0.715,0.74,0.87|Three blocks of 25 kg, 45 kg and 35 kg stacked on a 30 degree incline with coefficients of static friction 0.25, 0.35 and 0.40, force P on the middle block, the top block tied to a fixed support|crop
+2017|1|3(b)|5|0.33,0.535,0.66,0.735|Compound epicyclic gear train with gears A, B, C, D, E, arm F and axes P and Q|crop
+2017|2|6(a)|7|0.12,0.107,0.95,0.285|Table of properties of refrigerant R-134a: at 2.104 bar and -10 °C vg 0.0994 m3/kg, hf 186.7, hg 392.4 kJ/kg, sf 0.9512, sg 1.733 kJ/kg-K; at 8.870 bar and 35 °C hf 249.1, hg 417.6, sf 1.1680, sg 1.715|table
+2017|2|7(b)|8|0.27,0.575,0.80,0.925|Satellite 1 at a height of 300 km above the earth 2 of radius 6250 km, with the surroundings 3 and the sun rays arriving from below|crop
+2018|1|1(a)|2|0.26,0.585,0.6,0.895|Pulley carrying a 200 N load rolling on a cord ACB attached to two vertical walls 3 m apart at A and B (B is 1 m above A), distance X marked|crop
+2018|1|1(b)|4|0.32,0.13,0.67,0.425|Stress element with sigma x = 80, sigma y = -100 and shear stress 50 MPa acting on a plane AB whose normal is at 110 degrees to the X-axis|crop
+2018|1|3(a)|6|0.26,0.775,0.78,0.925|Beam ACBD supported at A and B with spans AC 2 m, CB 2 m and BD 1 m, a 100 kN load at D (Figure 3)|crop
+2018|1|4(b)|9|0.26,0.12,0.62,0.405|Pressure tank issuing water horizontally at velocity u from A towards a wall 3 m away with opening BC 1 m high, B 1.5 m above C|crop
+2018|1|5(d)|11|0.18,0.1,0.9,0.163|Year 1 to 10 and demand units 124, 135, 145, 150, 167, 157, 161, 170, 187, 168|table
+2018|1|6(a)|12|0.17,0.125,0.90,0.415|Standard time per piece in minutes and average quantity per month for control shaft, serration shaft, oil pump gear, helical oil pump gear, brake shaft, hub, hex nut and thread rolls|table
+2018|1|8(a)|15|0.18,0.16,0.89,0.86|Twenty samples of 20 observations with the number of defective tires and fraction defective|table
+2018|2|1(c)|3|0.36,0.125,0.67,0.41|Heat pump HP between the house at TH = 21 °C (heat loss 135000 kJ/hr) and the cold outside air at TL = -5 °C with heat flows QH and QL and work input W net in|crop
+2018|2|2(a)|4|0.06,0.675,0.92,0.875|Table 1 of saturated water properties at 75, 80, 85, 90, 95 and 100 °C: saturation pressure, specific volume, internal energy, enthalpy and entropy|table
+2018|2|4(b)|7|0.33,0.325,0.71,0.52|Aircraft engine with diffuser and compressor: T1 = 255.7 K, P1 = 54.05 kPa, V1 = 250 m/s at inlet; stagnation states P01, T01 after the diffuser and P02, T02 after the compressor|crop
+2018|2|8(a)|11|0.24,0.475,0.80,0.585|Properties of refrigerant R-12: at 1.509 bar and -20 °C vg 0.1088 m3/kg, hf 54.23, hg 178.61, sg 0.7082; at 9.607 bar and 40 °C hf 74.53, hg 203.05, sg 0.682|table
+2019|1|1(a)|2|0.27,0.61,0.72,0.925|600 N cylinder of radius 150 mm resting in the frame BCD hinged at D, frame width 300 mm and height 600 mm, contact points A, B and C|crop
+2019|1|1(b)|3|0.28,0.585,0.70,0.835|Stress element: 80 MPa horizontal compression, 120 MPa vertical compression and complementary shear stress tau xy|crop
+2019|1|2(a)|5|0.20,0.12,0.78,0.265|Single overhanging beam ABC supported at A and B with spans 2L and L, uniformly distributed load q kN/m on AB and point load P kN at C|crop
+2019|1|2(b)|5|0.20,0.685,0.78,0.935|500 N block B on a horizontal plane pulled by force P at 30 degrees, joined over a smooth pulley to a 750 N block A on a plane inclined at 60 degrees|crop
+2019|1|2(c)|6|0.20,0.76,0.80,0.925|Four-bar linkages A, B and C with link lengths in cm: A 16, 20, 18, 10; B 16, 30, 20, 24; C 16, 10, 18, 20|crop
+2019|1|3(a)|7|0.19,0.51,0.90,0.70|Beam AB with overhang BC, uniformly distributed load q = 1.5 kN/m over 2L = 2 m, point load P = 1 kN at C, L = 1 m, with the rectangular cross-section 120 mm by 240 mm|crop
+2019|1|3(c)|8|0.36,0.695,0.66,0.945|Epicyclic gear train with gears A, B, C, E and fixed annular wheel D|crop
+2019|1|4(c)|10|0.28,0.17,0.74,0.38|Circular cylinder of mass m rolling on a horizontal rough surface, connected to a wall by a spring of stiffness K, displacement X|crop
+2019|1|6(a)|12|0.18,0.545,0.81,0.855|Work elements A to J with times in seconds 45, 70, 35, 30, 25, 20, 110, 140, 130, 120 and immediate predecessors|table
+2019|1|6(b)|13|0.19,0.425,0.89,0.58|Locations A to D with fixed costs per annum 9,00,000, 15,00,000, 25,00,000, 30,00,000 rupees and variable costs per unit 300, 150, 125, 110 rupees|table
+2019|1|6(c)|14|0.21,0.125,0.90,0.305|Tool materials X and Y with tool life 25, 10, 40, 20 minutes and cutting speed 100, 150, 200, 250 metres per minute|table
+2019|1|7(c)|15|0.20,0.72,0.92,0.90|Jobs A to D and times in minutes on machines 1 to 5: A 7 5 2 3 9; B 6 6 4 5 10; C 5 4 5 6 8; D 8 3 3 2 5|table
+2019|1|8(b)|17|0.20,0.115,0.88,0.455|PERT activities 1-2, 1-3, 1-4, 3-5, 4-5, 5-6, 2-6 with optimistic, most likely and pessimistic times in weeks|table
+2019|1|8(b)|18|0.07,0.05,0.93,0.91|Areas under the standard normal probability distribution: table of z from 0.0 to 3.0 with columns .00 to .09|table
+2019|2|4(c)|8|0.26,0.24,0.70,0.89|Blackbody radiation function f lambda against lambda T in micrometre-kelvin, from 200 to 100000|table
+2019|2|5(e)|10|0.3,0.18,0.63,0.452|Saturated water-temperature table: temperature 0.01, 5, 10, 15, 20, 25, 30, 35, 40, 45 °C and saturation pressure 0.6117, 0.8725, 1.2281, 1.7057, 2.3392, 3.1698, 4.2469, 5.6291, 7.3851, 9.5953 kPa|table
+2019|2|7(a)|12|0.06,0.06,0.84,0.93|Psychrometric chart, barometric pressure 1.01325 bar sea level, with dry bulb temperature, moisture content, relative humidity, enthalpy and sensible heat factor scales|crop
+2019|2|8(a)|14|0.04,0.65,0.9,0.72|Properties of Freon 22 at saturation temperature 5 °C: Psat 5.836 bar, hf 205.9, hg 407.1 kJ/kg, sf 1.02115, sg 1.7447, vg 0.0404; at 40 °C: 15.331 bar, 249.53, 416.4, 1.16659, 1.69953|table
+2020|1|1(b)|3|0.33,0.10,0.78,0.36|Tower guy wire anchored by a bolt at A: tower of height 80 m with top B, A at 40 m along x and 30 m along z, axes x, y, z|crop
+2020|1|1(c)(i)|3|0.40,0.66,0.76,0.79|Five-bar chain with links 1 to 5|crop
+2020|1|1(c)(ii)|4|0.38,0.245,0.70,0.375|Chain with links 1 to 9 and joints A to F, shown not to be a kinematic chain|crop
+2020|1|1(e)|4|0.36,0.70,0.63,0.795|Shaft of length 0.8 m simply supported at its ends with a 1 kg mass at mid span|crop
+2020|1|2(a)|5|0.27,0.59,0.75,0.80|Stress element with sigma x = 120 MN/m2, sigma y = 60 MN/m2 and shear stress 80 MN/m2|crop
+2020|1|2(c)|6|0.33,0.64,0.74,0.785|Shaded area: rectangle 240 mm wide and 120 mm high with a semicircle of radius 90 mm cut out of the top edge, x-axis along the base|crop
+2020|1|3(a)|7|0.30,0.36,0.74,0.495|Beam ABCDE with loads 90 kN at B, 54 kN at C and 22 kN/m over DE; supports at A and D; spans AB 1.8 m, BC 2.4 m, CD 3 m, DE 2.4 m|crop
+2020|1|4(b)|9|0.38,0.50,0.60,0.80|Rotor planes A, B, C, D along the shaft, spaced 350, 500 and 250 mm, with the direction of D at 120 degrees|crop
+2020|1|6(b)|13|0.18,0.475,0.90,0.655|Centre lathe and turret lathe: set-up time 30 and 120 minutes, processing time 10 and 5 minutes, tooling-up cost 200 and 500 rupees, labour cost per hour 2 and 2 rupees, depreciation and other costs per hour 10 and 20 rupees|table
+2020|1|7(a)|14|0.27,0.525,0.68,0.805|Sales in thousands by year: 1986 30, 1987 33, 1988 37, 1989 39, 1990 42, 1991 46, 1992 48, 1993 50, 1994 55, 1995 58|table
+2020|2|2(b)|4|0.12,0.17,0.85,0.285|Properties of saturated steam: at 3.6 bar tsat 140.0 °C, vf 0.00108, vg 0.511 m3/kg, hf 588.6, hg 2733.7 kJ/kg, sf 1.738, sg 6.931; at 7.0 bar 165.0 °C, 0.001108, 0.273, 697.2, 2763.5, 1.992, 6.708|table
+2020|2|4(a)|6|0.38,0.24,0.60,0.40|Piston and cylinder loaded by a linear spring, with a stop limiting the volume and a valve connecting the cylinder to the air supply line|crop
+2020|2|6(b)|9|0.26,0.155,0.78,0.245|Properties of refrigerant R-12: saturation temperature -8 °C enthalpy liquid 28.70, vapour 184.06 kJ/kg, entropy liquid 0.1148, vapour 0.7007 kJ/kg-K; 30 °C 64.59, 199.62, 0.2400, 0.6853|table
+2020|2|7(a)|10|0.11,0.055,0.84,0.81|Psychrometric chart, barometric pressure 1.01325 bar sea level|crop
+2021|1|1(a)|2|0.380,0.375,0.750,0.495|Cantilever beam AB fixed at A with a triangular load rising to 400 N/m over 1.5 m, a 300 N load at 2 m, and a 500 N force at B inclined at 30 degrees, spans 1.5 m, 0.5 m and 1 m|crop
+2021|1|1(d)|3|0.08,0.21,0.65,0.42|Epicyclic gear train with wheel C keyed to shaft B, compound gears D and E, gears F, G and shaft A|crop
+2021|1|2(c)|5|0.220,0.130,0.680,0.240|Beam AE supported at C and B with a 2 kN-m couple at C, 1 kN loads at D and E, spans 2 m, 2 m, 2 m and 1 m|crop
+2021|1|6(a)|9|0.2,0.095,0.76,0.275|Five jobs A to E with processing times 6, 4, 5, 8, 7 days and due dates 5, 10, 15, 20, 30 days|table
+2021|1|6(b)|9|0.200,0.785,0.820,0.935|Chennai, Delhi, Kolkata: fixed cost 800000, 600000, 500000 rupees, variable cost per unit 30, 40, 50 rupees, revenue per unit 60, 60, 60 rupees|table
+2021|1|7(a)|11|0.01,0.265,0.93,0.92|Factors for computing centerline and three-sigma control limits for X-bar, s and R charts, sample sizes 2 to 25|table
+2021|1|7(a)|12|0.07,0.06,0.94,0.78|Cumulative standard normal distribution table, z from 0.00 to 3.00|table
+2021|1|8(b)|15|0.140,0.215,0.900,0.675|Layout of the material storage section with sections 1 to 10 around the packing area 6, and the table of average annual load and distance covered for each flow|crop
+2021|2|3(a)|4|0.300,0.770,0.720,0.935|Two parallel black plates A1 and A2 drawn as a cube connected by re-radiating walls|crop
+2021|2|8(a)|13|0.140,0.665,0.910,0.840|Properties of ammonia: at -6.7 °C hf -29.3, hfg 1293.8, hg 1264.5 kJ/kg, sf -0.113, sg 4.752; at 26.7 °C hf 125.6, hfg 1172.4, hg 1297.9, sf 0.427, sg 4.334|table
+2021|2|7(b)|12|0.05,0.06,0.94,0.95|Psychrometric chart, barometric pressure 1.01325 bar sea level|crop
+2022|1|1(a)|2|0.34,0.485,0.75,0.624|Slider-crank mechanism with crank OA of radius 60 mm at 60 degrees, connecting rod of length 240 mm at 90 degrees to the crank, slider at B, A and B on the same horizontal level|crop
+2022|1|1(c)|3|0.24,0.115,0.66,0.49|Pipe fixed at the wall at A with axes x, y, z: 20 m along x, 8 m and 10 m segments, loads 900 N, 200 N, 300 N, 600 N, 400 N and 500 N|crop
+2022|1|7(a)|12|0.240,0.145,0.860,0.300|Operations 1 to 4 with mean time 7, 5, 9, 6 hours and tolerance 7 plus or minus 0.6, 5 plus or minus 0.6, 9 plus or minus 0.8, 6 plus or minus 0.3|table
+2022|1|7(b)(ii)|13|0.210,0.265,0.880,0.405|Locations X, Y, Z rated on availability of labour 70, 60, 55, proximity to suppliers 60, 45, 95 and proximity to markets 45, 90, 50|table
+2022|1|8(b)(ii)|15|0.220,0.150,0.720,0.470|Item codes XA-101 to XA-111 with annual demand 400, 300, 120, 80, 50, 40, 20, 15, 8, 6, 5 and cost per unit 4.00, 5.00, 3.00, 2.00, 2.50, 1.50, 2.20, 32.00, 51.80, 42.00, 3.00|table
+2022|1|5(e)|16|0.07,0.045,0.94,0.94|Areas under the standard normal probability distribution, z from 0.0 to 3.0|table
+2022|1|7(a)|16|0.07,0.045,0.94,0.94|Areas under the standard normal probability distribution, z from 0.0 to 3.0|table
+2022|2|1(a)|2|0.34,0.585,0.70,0.775|Two chambers of 28 litres, air with heat input Q on the left and hydrogen on the right, separated by a non-heat-conducting piston, walls insulated|crop
+2022|2|3(b)|6|0.30,0.105,0.74,0.315|Solar collector 1 m wide and 5 m long with glass cover at 20 °C, collector plate at 60 °C, 3 cm spacing, insulation below, air entering at 30 °C and 0.15 m3/s|crop
+2022|2|4(c)|8|0.29,0.225,0.72,0.69|Shell and tube heat exchanger with two shell passes and chart of effectiveness against number of transfer units NTUmax for Cmin/Cmax from 0 to 1.00|crop
+2022|2|5(b)|9|0.240,0.085,0.600,0.250|Reactor placed inside a containment room (Fig. 5(b))|crop
+2022|2|5(b)|16|0.10,0.085,0.92,0.72|Saturated water temperature table from 0.01 to 200 °C: saturation pressure, specific volume, internal energy, enthalpy, entropy|table
+2022|2|7(b)|12|0.13,0.335,0.88,0.80|Table for properties of air: temperature 100 to 1600 K, density, specific heat, viscosity, kinematic viscosity, conductivity, diffusivity and Prandtl number|table
+2022|2|8(b)|14|0.10,0.11,0.89,0.88|Mollier diagram for steam, enthalpy 1700 to 4000 kJ/kg against entropy 5.5 to 8.5 kJ/kg-K|crop
+2023|1|2(a)|4|0.18,0.17,0.78,0.42|Rigid bar AB hinged at A, steel rod CE (1 m long, at 1 m from A) and copper rod DF (1 m long, at 3 m from A), 30 kN load at free end B, B 1 m beyond D|crop
+2023|1|3(a)|5|0.13,0.595,0.66,0.925|Block A of 100 kg against a wall and wedge B of 50 kg on a 15 degree incline, 25 kg force on B, base 0.6 m and width 0.6 m|crop
+2023|1|3(b)|6|0.18,0.575,0.76,0.915|Stress element with P1 = 80 N/mm2, P2 = 20 N/mm2 and shear stress q = 30 N/mm2|crop
+2023|1|5(d)|11|0.17,0.13,0.81,0.37|Tasks A to H with immediate predecessors and times in seconds: A none 55, B A 30, C A 22, D B 35, E B and C 50, F C 15, G F 5, H G 10|table
+2023|1|5(e)|11|0.16,0.845,0.77,0.93|Year number 1 to 5 and demand in units 40, 60, 200, 700, 1000|table
+2023|1|6(a)|12|0.21,0.355,0.80,0.495|Work material X and Y with cutting tool life 20, 15, 45, 25 minutes and cutting speed 125, 150, 250, 300 m/min|table
+2023|1|6(b)|12|0.23,0.77,0.80,0.915|Jobs A to E with processing time 5, 10, 2, 8, 6 days and due date 10, 15, 5, 12, 8 days|table
+2023|1|7(a)(i)|14|0.25,0.61,0.88,0.93|Tube drawing: die, plug and tube, tube bore 18 mm and 20 mm, wall 1.5 mm and 2.0 mm, die angle 15 degrees and plug angle 10 degrees|crop
+2023|1|7(a)(ii)|15|0.18,0.635,0.78,0.92|Surface profile over a sample length of 20 mm with measured heights 70, 35, 75, 20, 65, 40, 80, 50 micrometres at points 1 to 8|crop
+2023|1|7(b)|16|0.22,0.55,0.78,0.70|Lot size and unit price: 1 to 999 22.00 rupees, 1000 to 1499 20.00, 1500 to 1999 19.00, 2000 and above 18.50|table
+2023|1|8(a)|18|0.14,0.135,0.96,0.69|Sample 1 to 10, number of non-conforming units for process A 5, 6, 7, 5, 4, 6, 5, 7, 9, 6 and process B 8, 7, 8, 9, 10, 11, 15, 8, 9, 7|table
+2023|1|8(a)|19|0.02,0.04,0.95,0.91|Areas under the standard normal probability distribution, z from 0.0 to 3.0|table
+2023|1|8(c)|21|0.28,0.55,0.72,0.91|Parts moved between work-centres A to D (A to B 400, A to C 500, A to D 50, B to A 300, B to C 200, C to D 700) and the existing layout A, B, C, D with 30 m between centres|crop
+2023|2|2(a)|3|0.40,0.58,0.62,0.74|Cylinder with water above a thin insulated piston and argon below, atmospheric pressure P0 acting on the top, gravity g downward|crop
+2023|2|2(c)|5|0.160,0.065,0.840,0.890|Gas table: isentropic flow, Mach number M from 0 to 10 with M*, A/A*, p/p0, rho/rho0 and T/T0|table
+2023|2|3(b)|6|0.360,0.760,0.680,0.955|Heat engine HE and heat pump HP sharing work W, waste energy at 50 °C as Qw1 and Qw2, Q_L at 30 °C and Q_H at 150 °C (T_H)|crop
+2023|2|5(e)|10|0.300,0.680,0.700,0.955|Vapour pressure of water in bar at 10, 12, 14, 16, 18, 20, 22, 24, 32, 34 and 36 °C|table
+2023|2|7(b)|13|0.15,0.19,0.89,0.325|Properties of R134a at -10 °C 2.005 bar and 44 °C 11.3 bar: liquid density 1326 and 1129, vapour specific volume 0.09963 and 0.01786, enthalpy hf 186.78 and 262.38, hg 392.75 and 421.28, entropy sf 0.951 and 1.209, sg 1.734 and 1.71|table
+2023|2|8(b)|15|0.08,0.10,0.78,0.93|Psychrometric chart, barometric pressure 1.01325 bar sea level|crop
+2024|1|1(a)|2|0.370,0.515,0.690,0.735|Rod of length 2 m and weight 450 N resting on the ground at one end with friction coefficient 0.4, the other end held by a cord over a pulley with 200 N force, 1 m marks, angles alpha and beta|crop
+2024|1|1(c)|3|0.320,0.430,0.640,0.575|Copper tube of bore 14 mm and 20 mm outer diameter with a 12 mm steel bolt and nut and washers at both ends, length 120 mm|crop
+2024|1|2(a)|4|0.350,0.365,0.680,0.525|Bodies A 100 N and B 200 N hanging from massless pulleys and body C 150 N on a 30 degree incline|crop
+2024|1|3(a)|5|0.320,0.640,0.740,0.900|Bending moment diagrams on a simply supported beam AB: (i) -1600 N-m at A, 800 N-m parabolic peak, spans 3 m and 3 m; (ii) -1500 N-m at A and -2300 N-m at B over 3 m|crop
+2024|1|3(b)|6|0.280,0.575,0.800,0.780|Rectangular plate with central hole of 250 mm diameter, direct stresses 20 MN/m2 and 10 MN/m2 and shear stress 7.5 MN/m2|crop
+2024|1|4(b)|7|0.300,0.640,0.740,0.755|Simply supported beam AB with 15 kN loads at the left end and at 1.2 m, a 20 kN/m load over 1.2 m, spans 0.6 m, 1.2 m, 1.2 m|crop
+2024|1|5(e)|9|0.290,0.595,0.710,0.870|New marriages X 200, 235, 210, 195, 225, 240, 217, 225 and demand for toys Y 165, 184, 180, 145, 190, 169, 180, 170|table
+2024|1|6(b)|11|0.12,0.17,0.92,0.425|Samples 1 to 20 with the number of dissatisfied customers 10, 12, 8, 9, 6, 11, 13, 10, 8, 9, 6, 19, 10, 7, 8, 4, 11, 10, 6, 7|table
+2024|1|7(b)|13|0.09,0.12,0.88,0.235|Raw material per ton of paint, exterior and interior: M1 6 and 4 with 24 tons availability, M2 1 and 2 with 6 tons, profit per ton 4,00,000 and 3,20,000 rupees|table
+2024|1|8(c)|15|0.12,0.235,0.90,0.445|Grid map of supply points A to D with X and Y coordinates in units, and table of coordinates and annual supply|crop
+2024|2|7(a)|27|0.08,0.08,0.88,0.95|Psychrometric chart, barometric pressure 1.01325 bar sea level|crop
+2025|1|1(a)|2|0.170,0.645,0.650,0.930|Gripper with a handle lever and square threaded screw: points A, B, C, D, E, G, 200 mm and 200 mm dimensions and 125 mm handle length|crop
+2025|1|1(b)|3|0.200,0.615,0.580,0.890|Aluminium rod ABC of 38 mm and 56 mm diameter, lengths 300 mm and 450 mm, and steel rod DE of diameter d, both carrying 125 kN|crop
+2025|1|1(c)|4|0.260,0.595,0.570,0.890|Cylindrical tank with applied torque T at its top end, standing on a base plate|crop
+2025|1|2(a)(i)|6|0.330,0.395,0.630,0.565|Cylinder C of diameter 2 m resting on two cylinders A and B of 1 m diameter in a 3 m wide channel, contact points P, Q and R|crop
+2025|1|3(b)|9|0.210,0.250,0.680,0.425|Beam AB with a uniformly distributed load of 750 N/m, bracket DEF welded at D carrying a 700 N load at F, dimensions 2.4 m, 0.9 m, 1.5 m|crop
+2025|1|4(b)|10|0.260,0.620,0.740,0.895|Shaft AB driven by motor M through gears D and E, with gears F and G, dimensions 150 mm, 225 mm, 225 mm, 100 mm, 150 mm and 60 mm|crop
+2025|1|4(c)(i)|11|0.370,0.720,0.650,0.925|Epicyclic gear train: annular gear A, three planet wheels P, sun wheel S and star shaped spider C|crop
+2025|1|5(d)|14|0.190,0.420,0.900,0.625|Tasks A to E against products 1 to 5 with times in seconds: A 5 5 - 5 5; B 6 6 6 - 6; C 6 - 6 6 -; D 7 7 - - 7; E - 4 4 4 -|table
+2025|1|6(b)(ii)|16|0.220,0.450,0.830,0.845|Gram atomic weight, valency of dissolution and density of Ni 58.71 2/3 8.90, Cr 51.99 2/3/6 7.19, Fe 55.85 2/3 7.86, Si 28.09 4 2.33, Mn 54.94 2/4/6/7 7.43, Cu 63.57 1/2 8.96, Ti 47.9 3/4 4.51|table
+2025|1|7(c)|19|0.160,0.505,0.890,0.740|Cost elements with variable and fixed cost: direct material 32.8, direct labour 28.4, factory overheads 12.6 and 1,89,900, distribution overheads 4.1 and 58,400, general administrative overheads 1.1 and 66,700, budgeted sales 18,50,000|table
+2025|1|8(b)|20|0.170,0.640,0.930,0.865|Samples 1 to 5 of 5 bolts each, weights in grams for days 1 to 5|table
+2025|1|8(c)|21|0.15,0.125,0.52,0.24|Welding and forging: fixed cost 15,000 and 94,000 rupees, variable cost per unit 5 and 4.25 rupees|table
+2025|2|1(d)|3|0.38,0.30,0.58,0.48|Wall of thickness 50 cm shown hatched with x axis from x = 0 to x = 0.5 m|crop
+2025|2|1(e)|4|0.17,0.145,0.63,0.405|Black body radiation function table: lambda T 1300, 1400, 2400, 2500 micrometre-kelvin with f from 0 to lambda 0.004317, 0.007791, 0.140266, 0.161366|table
+2025|2|1(b)|18|0.10,0.10,0.90,0.90|Table of normal shocks in perfect gases, gamma 1.4: Mx from 1.00 to 5.00 with My, py/px, Ty/Tx, p0y/p0x and p0y/px|table
+2025|2|8(a)|16|0.16,0.52,0.91,0.66|Properties of R134a: at -10 °C 2.014 bar vg 0.0994, hf 186.7, hg 392.4, sf 0.9512, sg 1.733; at 35 °C 8.870 bar hf 249.1, hg 417.6, sf 1.1680, sg 1.715|table
+2026|1|1(a)|2|0.210,0.515,0.770,0.795|Beam fixed at O with a 3 kN load at A, 1.8 m and 0.6 m spans, then bent at 30 degrees with 0.6 m segments, a 4 kN-m couple at B and a 1.4 kN force at C|crop
+2026|1|1(b)(i)|3|0.270,0.145,0.750,0.315|Fixed-ended bar ABCD with end segments of area A1 and length L1 and middle segment of area A2 and length L2, loads PB at B and PC at C|crop
+2026|1|1(e)|4|0.200,0.690,0.770,0.945|Turbine shaft of diameter d under thrust load P and torque T|crop
+2026|1|3(a)(ii)|8|0.140,0.355,0.840,0.500|Pressurised tank with a helical weld making an angle alpha with the longitudinal axis|crop
+2026|1|3(b)(i)|9|0.280,0.255,0.760,0.575|Stress element with sigma y and shear stress tau xy and sigma x = 110 MPa along the x axis|crop
+2026|1|3(b)(ii)|10|0.350,0.115,0.830,0.425|Lever pivoted at O with spring k to the ground at A on the left, damper C to a fixed support B above at distance b, mass m at distance l, distances a and b marked|crop
+2026|1|4(a)|11|0.280,0.180,0.720,0.435|Simply supported beam AB of length L with a triangular distributed load of intensity W0 at A decreasing to zero at B, y and x axes|crop
+2026|1|4(c)|12|0.260,0.690,0.770,0.965|Block of mass m0 on a rough floor with a bar of mass m hinged at B on the wall and resting at A on the block at angle theta, horizontal force P(B) from the left or P(A) from the right, friction coefficients mu s and mu k|crop
+2026|1|6(c)|18|0.190,0.150,0.950,0.400|Jobs J1 to J5 with routing, total work 21, 20, 20, 21, 20 and due date 28, 25, 30, 35, 32|table
+2026|2|1(d)|2|0.310,0.755,0.810,0.900|Composite wall of blocks A, B, C, D and E with T1 = 800 °C on the left and T2 = 200 °C on the right, A = 1 m2, thicknesses 5 cm, 10 cm, 10 cm and 5 cm, heat Q entering at the left|crop
+2026|2|4(b)|6|0.370,0.685,0.670,0.790|Horizontal insulated cylinder with a frictionless piston filled with helium, a valve connecting to the supply line, and the external force F ext acting on the piston|crop
+2026|2|4(c)|7|0.350,0.765,0.570,0.895|Two black surfaces A1 with temperature T1 and A2 with temperature T2 separated by the distance r, their normals shown|crop
+2026|2|7(b)|11|0.220,0.210,0.830,0.410|Properties of R717: at -16 °C hf 126.73, hg 1442.60 kJ/kg, sf 0.72511, sg 5.8420 kJ/kg-K; at 40 °C hf 390.59, hg 1490.42, sf 1.64377, sg 5.1558|table
+2026|2|7(a)|14|0.06,0.075,0.94,0.92|Saturated water pressure entry table: specific volume and internal energy against pressure from 0.6113 to 800 kPa|table
+2026|2|7(a)|15|0.07,0.075,0.93,0.92|Saturated water pressure entry table: enthalpy and entropy against pressure from 0.6113 to 800 kPa|table
+2026|2|8(a)|16|0.08,0.08,0.95,0.95|Psychrometric chart, barometric pressure 1.01325 bar sea level|crop
