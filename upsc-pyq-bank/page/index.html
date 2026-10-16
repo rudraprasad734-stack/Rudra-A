@@ -1020,6 +1020,8 @@
   .tl-row{display:flex; align-items:center; gap:8px; margin:9px 0; font-size:12.5px; cursor:pointer;} .tl-n{width:112px; flex:none; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;} .tl-row.locked{opacity:.55;}
   .tl-track{position:relative; flex:1; height:16px; border-radius:9px; background:color-mix(in srgb,var(--ink) 9%,transparent);} .tl-bar{position:absolute; top:0; bottom:0; border-radius:9px; background:color-mix(in srgb,var(--c) 55%,transparent); overflow:hidden;} .tl-bar i{display:block; height:100%; background:var(--c);} .tl-row.locked .tl-bar{background:color-mix(in srgb,var(--c) 40%,transparent);}
   .tl-now{position:absolute; top:-5px; bottom:-5px; width:2px; background:var(--ink); border-radius:2px;}
+  .tl2{margin:12px 0; cursor:pointer;} .tl2.locked{opacity:.6;} .tl2-h{display:flex; justify-content:space-between; align-items:baseline; gap:8px; font-size:13.5px;} .tl2-n{font-weight:600; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;} .tl2-w{font-size:11.5px; color:var(--ink-soft); white-space:nowrap;} .tl2-w b{color:var(--c);}
+  .tl2-t{height:8px; border-radius:6px; background:color-mix(in srgb,var(--ink) 9%,transparent); margin-top:6px; overflow:hidden;} .tl2-t i{display:block; height:100%; background:var(--c); border-radius:6px;} .tl2-p{font-size:11px; color:var(--ink-soft); margin-top:3px;}
   .tl-key{display:flex; gap:14px; flex-wrap:wrap; font-size:11.5px; color:var(--ink-soft); margin-top:10px;}
   .ses{border-radius:18px; margin:8px 0; padding:12px; background:color-mix(in srgb,var(--c) 14%,var(--surface)); border:1px solid color-mix(in srgb,var(--c) 40%,transparent);} .ses.next{box-shadow:0 0 0 2px var(--c),0 10px 26px -12px var(--c);}
   .ses-row{display:flex; align-items:center; gap:12px;} .ses .ic{width:44px; height:44px; border-radius:14px; background:var(--c); display:grid; place-items:center; font-size:21px; flex:none; color:#fff;}
@@ -8273,17 +8275,19 @@ function planHeroHtml(plan){
   return '<div class="card phero"><div class="row"><div class="ring2" style="--p:'+op.pct+'"><span>'+op.pct+'%</span></div><div class="hero-t"><h2>'+esc(title)+'</h2><div>'+line+'</div>'+chip+'</div></div></div>';
 }
 function planTimelineHtml(plan, states){
-  var a = plan.window.start, b = plan.window.end, span = Math.max(1, diffDays(b, a)), sim = viewIndex().sim;
-  var all = (sim ? sim.sessions : []).concat(studySessions), rng = {};
+  var sim = viewIndex().sim, all = (sim ? sim.sessions : []).concat(studySessions), rng = {};
   all.forEach(function(x){ if(x.kind!=="study" || x.status==="skipped") return; var r = rng[x.subject] || (rng[x.subject] = {lo:x.date, hi:x.date}); if(x.date<r.lo) r.lo = x.date; if(x.date>r.hi) r.hi = x.date; });
-  function pc(d){ return Math.max(0, Math.min(100, 100*diffDays(d, a)/span)); }
+  function dm(k){ return parseKey(k).toLocaleDateString(undefined, {day:"numeric", month:"short"}); }
   var rows = states.map(function(st){
-    var r = rng[st.name], run = st.state==="active" || (st.state==="locked" && st.pinned), locked = st.state==="locked" && !st.pinned;
-    var nm = st.name.replace(/ \(Optional\)$/, ""), bar = "";
-    if(r){ var l = pc(r.lo), w = Math.max(3, pc(r.hi)-l); bar = '<div class="tl-bar" style="left:'+l.toFixed(1)+'%;width:'+w.toFixed(1)+'%"><i style="width:'+st.pct+'%"></i></div>'; }
-    return '<div class="tl-row'+(locked ? " locked" : "")+(st.state==="completed" ? " done" : "")+'" style="--c:var('+st.color+')" data-go="subject" data-subj="'+esc(st.name)+'" role="button" tabindex="0"><span class="tl-n">'+(locked ? "🔒 " : subjEmoji(st.name)+" ")+esc(nm)+'</span><div class="tl-track">'+bar+'<span class="tl-now" style="left:'+pc(todayKey).toFixed(1)+'%"></span></div></div>';
+    var r = rng[st.name], locked = st.state==="locked" && !st.pinned, nm = st.name.replace(/ \(Optional\)$/, ""), tag, when;
+    if(st.state==="completed"){ tag = "Done"; when = ""; }
+    else if(locked){ tag = "Later"; when = r ? "starts " + dm(r.lo) : ""; }
+    else { tag = "Studying now"; when = r ? "until " + dm(r.hi) : ""; }
+    return '<div class="tl2'+(locked ? " locked" : "")+(st.state==="completed" ? " done" : "")+'" style="--c:var('+st.color+')" data-go="subject" data-subj="'+esc(st.name)+'" role="button" tabindex="0">'
+      +'<div class="tl2-h"><span class="tl2-n">'+(locked ? "🔒 " : subjEmoji(st.name)+" ")+esc(nm)+'</span><span class="tl2-w"><b>'+tag+'</b>'+(when ? " &middot; "+esc(when) : "")+'</span></div>'
+      +'<div class="tl2-t"><i style="width:'+st.pct+'%"></i></div><div class="tl2-p">'+st.pct+'% done</div></div>';
   }).join("");
-  return '<div class="card tlc"><div class="k2">YOUR SUBJECTS &middot; WHEN EACH RUNS</div>'+rows+'<div class="tl-key"><span>Coloured = running now</span><span>🔒 starts when earlier ones finish</span></div></div>';
+  return '<div class="card tlc"><div class="k2">YOUR SUBJECTS, ONE AFTER ANOTHER</div>'+rows+'<div class="tl-key"><span>Bar = how much you have finished</span><span>🔒 starts after the one above</span></div></div>';
 }
 function nextUpHtml(){
   var list = planSessionsOn(todayKey).filter(function(x){ return !x.projected && x.status!=="completed" && x.status!=="skipped"; });
@@ -15715,7 +15719,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "150";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "151";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
