@@ -8237,6 +8237,7 @@ function activeCardHtml(states, forDash){
     banner = '<div class="unlock-banner"><b>'+CHECK_SVG+' '+esc(u.done.toUpperCase())+' COMPLETED</b>'+(u.next ? '<span>NEXT SUBJECT UNLOCKED</span><strong>'+esc(u.next.toUpperCase())+' &middot; '+(function(){ var x = states.filter(function(s){ return s.name===u.next; })[0]; return x ? x.pct : 0; })()+'%</strong>' : '<span>Every selected subject is complete</span>')+'</div>';
   }
   if(!act) return banner+'<div class="card active-card done"><div class="ac-k">ALL SUBJECTS COMPLETED</div><div class="ac-name">Well done</div><div class="ac-sub">Every chapter in your selected scope is finished. Keep up your revision, tests and current affairs.</div></div>';
+  if(forDash === "banner") return banner;
   // every subject running right now: the active one plus any pinned to a session slot
   var running = pathCtx(states).lanes.map(function(l){ return l.subj; });
   if(!running.length) running = [act];
@@ -8286,7 +8287,7 @@ function planTimelineHtml(plan, states){
     else { tag = "Studying now"; when = r ? "until " + dm(r.hi) : ""; }
     return '<div class="tl2'+(locked ? " locked" : "")+(st.state==="completed" ? " done" : "")+'" style="--c:var('+st.color+')" data-go="subject" data-subj="'+esc(st.name)+'" role="button" tabindex="0">'
       +'<div class="tl2-h"><span class="tl2-n">'+(locked ? "🔒 " : subjEmoji(st.name)+" ")+esc(nm)+'</span><span class="tl2-w"><b>'+tag+'</b>'+(when ? " &middot; "+esc(when) : "")+'</span></div>'
-      +'<div class="tl2-t"><i style="width:'+st.pct+'%"></i></div><div class="tl2-p">'+st.pct+'% done</div></div>';
+      +'<div class="tl2-t"><i style="width:'+st.pct+'%"></i></div><div class="tl2-p">'+st.pct+'% done'+(function(){ var nl = st.state==="completed" || locked ? null : nextLeaf(st); return nl ? ' &middot; Next: <b>'+esc(nl.unit)+'</b>' : ""; })()+'</div></div>';
   }).join("");
   return '<div class="card tlc"><div class="k2">YOUR SUBJECTS, ONE AFTER ANOTHER</div>'+rows+'<div class="tl-key"><span>Bar = how much you have finished</span><span>🔒 starts after the one above</span></div></div>';
 }
@@ -8300,7 +8301,7 @@ function nextUpHtml(){
 }
 function overviewHtml(plan, states){
   var st = windowStats(plan.cfg), op = overallProgress(plan), sim = viewIndex().sim, left = sim ? sim.remaining : 0;
-  return planHeroHtml(plan)+planTimelineHtml(plan, states)+nextUpHtml()+activeCardHtml(states, false)+
+  return planHeroHtml(plan)+planTimelineHtml(plan, states)+nextUpHtml()+activeCardHtml(states, "banner")+
     '<div class="section-title">Upcoming activities</div>'+upcomingHtml()+
     '<div class="card pace"><div><b>Pace</b><div class="muted">How many study sessions each chapter gets: a first read, then deeper passes. A slower pace means more sessions per chapter, so each subject takes longer. <b>Auto</b> works out the most your window allows. Now: <b>'+(Math.round(plan.capacity.blocks*10)/10)+' per chapter</b>'+(plan.capacity.auto ? " (auto)" : "")+'.</div></div><select data-pa="pace" aria-label="Sessions per chapter">'+paceOptions(plan.capacity.auto ? "auto" : plan.capacity.blocks, avgSessMin(plan.capacity.sessions))+'</select></div>'+
     (left ? paceReportHtml(plan) : "")+
@@ -13520,10 +13521,7 @@ function plannerDashCard(){
   today.forEach(function(s){ tp += s.duration; ta += s.actualDuration||0; });
   return '<div class="card pl-dash">'+
     '<div class="ov-h"><b>Overall preparation</b><span>'+op.pct+'%</span></div><div class="pbar big"><i style="width:'+op.pct+'%"></i></div>'+
-    activeCardHtml(states, true)+
-    '<div class="pl-cols"><div><div class="mini-t">Completed</div>'+(completed.length ? completed.map(function(s){ return '<span class="tagc" role="button" tabindex="0" data-go="subject" data-subj="'+esc(s.name)+'" style="--bc:var('+s.color+')">'+CHECK_SVG+esc(s.name)+'</span>'; }).join("") : '<span class="muted">None yet</span>')+'</div>'+
-    '<div><div class="mini-t">Up next</div>'+(rest.length ? rest.map(function(s){ return '<span class="tagc lock" role="button" tabindex="0" data-go="subject" data-subj="'+esc(s.name)+'" style="--bc:var('+s.color+')">'+LOCK_SVG+esc(s.name)+'</span>'; }).join("") : '<span class="muted">Nothing left</span>')+'</div></div>'+
-    chainHtml(states)+
+    activeCardHtml(states, "banner")+planTimelineHtml(studyPlan, states)+
     '<div class="mini-t">Today</div><div class="muted">Planned '+esc(fmtDurMin(tp))+' &middot; Actual '+esc(fmtDurMin(ta))+' &middot; '+today.length+' sessions</div>'+
     '<div class="mini-t">Upcoming</div>'+upcomingHtml()+
     '<button type="button" class="btn ghost sm" id="dashOpenPlanner">Open planner</button></div>';
@@ -15720,7 +15718,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "154";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "155";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
