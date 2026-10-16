@@ -1022,6 +1022,7 @@
   .tl-now{position:absolute; top:-5px; bottom:-5px; width:2px; background:var(--ink); border-radius:2px;}
   .tl2{margin:12px 0; cursor:pointer;} .tl2.locked{opacity:.6;} .tl2-h{display:flex; justify-content:space-between; align-items:baseline; gap:8px; font-size:13.5px;} .tl2-n{font-weight:600; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;} .tl2-w{font-size:11.5px; color:var(--ink-soft); white-space:nowrap;} .tl2-w b{color:var(--c);}
   .tl2-t{height:8px; border-radius:6px; background:color-mix(in srgb,var(--ink) 9%,transparent); margin-top:6px; overflow:hidden;} .tl2-t i{display:block; height:100%; background:var(--c); border-radius:6px;} .tl2-p{font-size:11px; color:var(--ink-soft); margin-top:3px;}
+  .day-note{display:flex; align-items:center; justify-content:space-between; gap:10px; padding:12px 14px; margin:0 0 10px;}
   .tl-key{display:flex; gap:14px; flex-wrap:wrap; font-size:11.5px; color:var(--ink-soft); margin-top:10px;}
   .ses{border-radius:18px; margin:8px 0; padding:12px; background:color-mix(in srgb,var(--c) 14%,var(--surface)); border:1px solid color-mix(in srgb,var(--c) 40%,transparent);} .ses.next{box-shadow:0 0 0 2px var(--c),0 10px 26px -12px var(--c);}
   .ses-row{display:flex; align-items:center; gap:12px;} .ses .ic{width:44px; height:44px; border-radius:14px; background:var(--c); display:grid; place-items:center; font-size:21px; flex:none; color:#fff;}
@@ -1346,6 +1347,7 @@
     <section class="view" id="view-prelims"></section>
     <section class="view" id="view-mains"></section>
     <section class="view" id="view-optional"></section>
+    <section class="view" id="view-priority"></section>
     <section class="view" id="view-mocks"></section>
     <section class="view" id="view-syllabus"></section>
     <section class="view" id="view-pyq"></section>
@@ -8169,7 +8171,7 @@ function wizGenerate(){
 // ============================================================================
 var plannerScrollTo = "", progOpen = {}, plannerView = "overview", plannerLanding = null, plannerMonth = null, plannerWeek = null, plannerDay = null;
 // four tabs; Schedule and Plan each hold several views of the same data behind one switch
-var PLANNER_TABS = [["plan","Plan"],["schedule","Schedule"],["review","Review"],["priority","Priority"]];
+var PLANNER_TABS = [["plan","Plan"],["schedule","Schedule"],["review","Review"]];
 var SCHED_VIEWS = [["daily","Day"],["weekly","Week"],["monthly","Month"],["yearly","Year"]];
 function plannerTabOf(v){ return v==="overview"||v==="progress" ? "plan" : (v==="insights" ? "review" : (v==="priority" ? "priority" : "schedule")); }
 var lastSched = "daily";
@@ -8401,7 +8403,8 @@ function dailyHtml(plan){
   var pm = 0, dm = 0; real.forEach(function(x){ pm += x.duration||0; dm += x.status==="completed" ? Math.max(x.duration||0, x.actualDuration||0) : Math.min(x.actualDuration||0, x.duration||0); });
   var dpct = pm ? Math.min(100, Math.round(100*dm/pm)) : 0;
   var hero = real.length ? '<div class="card phero"><div class="row"><div class="hero-t">'+(d===todayKey ? '<span class="chip2">TODAY</span>' : "")+'<h2>'+esc(fmtLong(parseKey(d)))+'</h2><div>'+esc(fmtDurMin(Math.min(dm, pm)))+' done of '+esc(fmtDurMin(pm))+'</div></div><div class="ring2" style="--p:'+dpct+'"><span>'+dpct+'%</span></div></div></div>' : "";
-  return '<div class="navrow"><button type="button" class="btn ghost sm" data-pa="dPrev">&lsaquo;</button><b>'+esc(fmtLong(parseKey(d)))+'</b><button type="button" class="btn ghost sm" data-pa="dNext">&rsaquo;</button></div>'+
+  var otherDay = d!==todayKey ? '<div class="card day-note"><div class="muted">You are looking at '+(d>todayKey ? "a later day" : "an earlier day")+'. Start works only on today&rsquo;s sessions.</div><button type="button" class="btn primary sm" data-pa="dToday">Go to today &rsaquo;</button></div>' : "";
+  return otherDay+'<div class="navrow"><button type="button" class="btn ghost sm" data-pa="dPrev">&lsaquo;</button><b>'+esc(fmtLong(parseKey(d)))+'</b><button type="button" class="btn ghost sm" data-pa="dNext">&rsaquo;</button></div>'+
     '<div class="pill-row"><button type="button" class="btn ghost sm" data-pa="dToday">Today</button></div>'+
     hero+'<div class="card sess-day"><div class="sess-day-head"><h3>Sessions</h3><span class="muted">'+(real.length ? done+"/"+real.length+" completed" : "none scheduled")+'</span></div>'+
       logHelpHtml()+
@@ -12974,7 +12977,8 @@ function subjectNextDate(name, leafId){
 }
 function goPlanner(view, o){
   o = o || {};
-  if(!studyPlan){ setTab("planner"); return; }
+  if(!studyPlan){ setTab(view==="priority" ? "priority" : "planner"); return; }
+  if(view==="priority"){ if(o.subject) priSubject = o.subject; setTab("priority"); return; }
   plannerView = view;
   if(o.day) plannerDay = o.day;
   if(o.subject){ progOpen[o.subject] = true; priSubject = o.subject; if(view=="progress") plannerScrollTo = o.subject; }
@@ -13366,6 +13370,13 @@ function renderPlannerHome(host){
   if(plannerScrollTo){ var tgt = host.querySelector('[data-prog="'+plannerScrollTo.replace(/"/g, '\\"')+'"]'); plannerScrollTo = ""; if(tgt) setTimeout(function(){ tgt.scrollIntoView({block:"start"}); window.scrollBy(0, -70); }, 60); }
   if(plannerView==="daily") bindPlannerDaily(host);
 }
+function renderPriorityPage(){
+  var host = document.getElementById("view-priority");
+  wirePlanner(host);
+  if(!profile){ host.innerHTML = '<div class="card empty">Set up your profile first.</div>'; openProfileModal(false); return; }
+  if(!studyPlan){ host.innerHTML = '<div class="card empty">Build your preparation plan first, then your subjects and their topic priority (tiers) show up here.<div style="margin-top:10px"><button type="button" class="btn primary" data-go="day">Build my plan</button></div></div>'; return; }
+  host.innerHTML = priorityHtml(studyPlan, subjectStates(studyPlan));
+}
 function renderPlanner(){
   var host = document.getElementById("view-planner");
   wirePlanner(host);
@@ -13459,7 +13470,7 @@ function plannerAction(a, el, sure){
       studySessions = studySessions.filter(function(s){ return !(s.origin==="auto" && s.date>=todayKey && !isTouched(s)); });
       saveSessions(); break;
   }
-  renderPlanner();
+  if(activeTab==="priority") renderPriorityPage(); else renderPlanner();
 }
 var plannerWired = false;
 function wirePlanner(host){
@@ -13961,6 +13972,7 @@ var TAB_GROUPS = [
     {id:"mains", label:"Mains"},
     {id:"optional", label:"Optional"},
   ]},
+  {id:"priority", label:"Priority", accent:"tiers"},
   {id:"mocks", label:"Mocks", accent:"mocks"},
   {id:"pyq", label:"PYQ Bank", accent:"pyq"},
   {id:"quotes", label:"Quotes", accent:"quotes"},
@@ -13992,7 +14004,7 @@ function applyAccent(groupId){
   root.setProperty("--tab-accent-soft", "var(--tab-"+g.accent+"-soft)");
 }
 
-var TAB_DOT = {settings:"--tab-scheduler", dashboard:"--tab-dashboard", planner:"--tab-planner", syllabus:"--tab-syllabus", tiers:"--tab-tiers", mocks:"--tab-mocks", pyq:"--tab-pyq", quotes:"--tab-quotes"};
+var TAB_DOT = {settings:"--tab-scheduler", dashboard:"--tab-dashboard", planner:"--tab-planner", syllabus:"--tab-syllabus", tiers:"--tab-tiers", priority:"--tab-tiers", mocks:"--tab-mocks", pyq:"--tab-pyq", quotes:"--tab-quotes"};
 function setMenu(open){
   document.body.classList.toggle("menu-open", !!open);
   var d = document.getElementById("drawer"); if(d) d.setAttribute("aria-hidden", open ? "false" : "true");
@@ -14114,6 +14126,7 @@ function renderView(id){
   else if(id==="prelims") renderChecklist("prelims");
   else if(id==="mains") renderChecklist("mains");
   else if(id==="optional") renderOptional();
+  else if(id==="priority") renderPriorityPage();
   else if(id==="mocks") renderMocks();
   else if(id==="syllabus") renderSyllabus();
   else if(id==="pyq") renderPyq();
@@ -15718,7 +15731,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "155";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "156";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
