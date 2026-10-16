@@ -8277,7 +8277,7 @@ function planHeroHtml(plan){
 function planTimelineHtml(plan, states){
   var sim = viewIndex().sim, all = (sim ? sim.sessions : []).concat(studySessions), rng = {};
   all.forEach(function(x){ if(x.kind!=="study" || x.status==="skipped") return; var r = rng[x.subject] || (rng[x.subject] = {lo:x.date, hi:x.date}); if(x.date<r.lo) r.lo = x.date; if(x.date>r.hi) r.hi = x.date; });
-  function dm(k){ return parseKey(k).toLocaleDateString(undefined, {day:"numeric", month:"short"}); }
+  function dm(k){ var d = parseKey(k), o = {day:"numeric", month:"short"}; if(d.getFullYear() !== parseKey(todayKey).getFullYear()) o.year = "numeric"; return d.toLocaleDateString(undefined, o); }
   var rows = states.map(function(st){
     var r = rng[st.name], locked = st.state==="locked" && !st.pinned, nm = st.name.replace(/ \(Optional\)$/, ""), tag, when;
     if(st.state==="completed"){ tag = "Done"; when = ""; }
@@ -15719,7 +15719,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "151";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "152";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
