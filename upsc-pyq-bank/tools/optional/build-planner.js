@@ -414,3 +414,28 @@ ag.topics.forEach(function(t){
   fs.writeFileSync(PAGE, h16);
   console.log(NAME + " chapters:", Object.keys(meLeaf).length, "| Paper I topics:", Object.keys(meTree["Paper I"]).length, "| Paper II topics:", Object.keys(meTree["Paper II"]).length);
 }
+// ---------------------------------------------------------------- Medical Science (one chapter per syllabus sub-topic)
+{
+  const NAME = "Medical Science";
+  let h17 = fs.readFileSync(PAGE, "utf8");
+  const m17 = h17.match(/<script type="application\/json" id="d-medical">(.*?)<\/script>/s);
+  if(!m17) throw new Error("build-planner: d-medical not found (run medical-science/build-medical.js first), nothing written");
+  const mdm = JSON.parse(m17[1]);
+  const mdTree = {"Paper I":{}, "Paper II":{}}, mdLeaf = {}, per17 = {};
+  mdm.topics.forEach(function(t){
+    const it = mdm.items.filter(function(x){ return x.id === t.s; })[0], grp = it.pp === 1 ? "Paper I" : "Paper II";
+    per17[it.id] = (per17[it.id] || 0) + 1;
+    const topic = it.id + "  " + it.t, unit = it.id + "." + per17[it.id] + "  " + t.t;
+    (mdTree[grp][topic] = mdTree[grp][topic] || []).push(unit);
+    mdLeaf[topic + "|" + unit] = [t.id];
+  });
+  const cur17 = '  "' + NAME + '": ' + JSON.stringify(mdTree, null, 2).replace(/\n/g, "\n  ") + ',\n';
+  const a17 = h17.indexOf('  "' + NAME + '": {\n    "Paper I"');
+  if(a17 >= 0){ const re = /\n  "[A-Z]/g; re.lastIndex = a17 + 20; const m = re.exec(h17); if(!m) throw new Error("build-planner: end of Medical Science block not found, nothing written"); h17 = h17.slice(0, a17) + cur17 + h17.slice(m.index + 1); }
+  else { const so4 = h17.indexOf('  "Sociology": CT({'); if(so4 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h17 = h17.slice(0, so4) + cur17 + h17.slice(so4); }
+  const la17 = h17.indexOf("var MED_LEAF = {"), leafTxt17 = "var MED_LEAF = " + JSON.stringify(mdLeaf, null, 1) + ";";
+  if(la17 >= 0){ const e17 = h17.indexOf("\n};", la17); if(e17 < 0) throw new Error("build-planner: MED_LEAF block not closed, nothing written"); h17 = h17.slice(0, la17) + leafTxt17 + h17.slice(h17.indexOf("\n", e17 + 1)); }
+  else { const lb17 = h17.indexOf("\n// Optional subjects that have a question analysis"); if(lb17 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h17 = h17.slice(0, lb17) + "\n" + leafTxt17 + h17.slice(lb17); }
+  fs.writeFileSync(PAGE, h17);
+  console.log(NAME + " chapters:", Object.keys(mdLeaf).length, "| Paper I topics:", Object.keys(mdTree["Paper I"]).length, "| Paper II topics:", Object.keys(mdTree["Paper II"]).length);
+}
