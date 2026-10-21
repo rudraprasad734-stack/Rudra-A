@@ -15506,7 +15506,7 @@ function cloudSync(){
   }).catch(function(e){
     cloud.busy = false;
     var denied = e && /permission|PERMISSION/.test(String(e.code||e.message||""));
-    setCloud("err", denied ? "The cloud refused the request. Check the database rules in Firebase." : "Couldn't sync just now. Will try again.");
+    setCloud("err", denied ? "The cloud refused the request. Please try again later." : "Couldn't sync just now. Will try again.");
     if(!denied) setTimeout(cloudSoon, 60000);
   });
 }
@@ -15549,7 +15549,7 @@ function cloudSignIn(){
   Promise.resolve(cloud.adapter.signIn()).catch(function(e){
     var c = String(e && (e.code || e.message) || "");
     if(/popup-closed|cancelled|user-cancel/.test(c)) return;
-    toast(/unauthorized-domain/.test(c) ? "Add this website to Authorized domains in Firebase." : "Sign-in didn't work. Please try again.");
+    toast(/unauthorized-domain/.test(c) ? "Sign-in is not available on this web address yet." : "Sign-in didn't work. Please try again.");
   });
 }
 function cloudSignOut(){
@@ -15802,7 +15802,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "166";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "167";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
