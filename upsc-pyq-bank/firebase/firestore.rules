@@ -1,5 +1,5 @@
 rules_version = '2';
-// UPSC Companion cloud sync.
+// CSE Companion cloud sync.
 // Each signed-in student can read and write ONLY their own documents:
 //   users/{their uid}/data/{docId}
 // Everything else is closed.

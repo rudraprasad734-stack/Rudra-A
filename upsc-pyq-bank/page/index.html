@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>UPSC Companion</title>
+<title>CSE Companion</title>
 <meta name="description" content="A daily-use companion to the 18-month UPSC prep plan">
 <meta name="theme-color" content="#1F2A52">
 <link rel="manifest" href="./manifest.json">
@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="./apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="UPSC Companion">
+<meta name="apple-mobile-web-app-title" content="CSE Companion">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <!-- fonts load in the background so they never hold up the first screen -->
@@ -1337,7 +1337,7 @@
   <button type="button" id="dashFab" aria-label="Open Dashboard"><svg class="fab-dash" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 16.5a8 8 0 1115 0"/><path d="M12 16.5l3.6-5"/><circle cx="12" cy="16.5" r="1.4"/><path d="M6.5 19.5h11"/></svg><svg class="fab-timer" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13.5" r="7"/><path d="M12 9.8v4l2.6 1.6M9.5 3.5h5"/></svg></button>
   <div id="drawerDim"></div>
   <aside id="drawer" aria-label="Menu" aria-hidden="true">
-    <div class="dr-who"><div class="dr-brand">UPSC Companion</div><div class="dr-date" id="topbarDate">&mdash;</div><div class="dr-av" aria-hidden="true">&#9733;</div><small class="greet"><button type="button" class="profile-btn" id="profileBtn"></button></small></div>
+    <div class="dr-who"><div class="dr-brand">CSE Companion</div><div class="dr-date" id="topbarDate">&mdash;</div><div class="dr-av" aria-hidden="true">&#9733;</div><small class="greet"><button type="button" class="profile-btn" id="profileBtn"></button></small></div>
     <nav id="tabs" aria-label="Sections"></nav>
   </aside>
 
@@ -4024,7 +4024,7 @@ function bindPlanSetupCard(host){
 // account db too, if that's available at the time).
 function collectBackupData(){
   return {
-    app: "UPSC Companion backup",
+    app: "CSE Companion backup",
     version: 1,
     exportedAt: new Date().toISOString(),
     planConfig: {startDate:DATA.startDate, prelimsDate:DATA.examDates.prelims, mainsDate:DATA.examDates.mains},
@@ -4073,7 +4073,7 @@ function refreshBackupCards(){ [].forEach.call(document.querySelectorAll(".backu
 try{ if(navigator.storage && navigator.storage.persist){ navigator.storage.persisted().then(function(p){ if(p){ window.__persisted = true; refreshBackupCards(); } else navigator.storage.persist().then(function(g){ window.__persisted = !!g; refreshBackupCards(); }); }).catch(function(){}); } }catch(e){}
 function downloadBackup(){
   var json = JSON.stringify(collectBackupData(), null, 2);
-  var filename = "upsc-companion-backup-"+todayKey+".json";
+  var filename = "cse-companion-backup-"+todayKey+".json";
   getDownloadsNs().then(function(downloads){
     if(!downloads){
       try{
@@ -4095,7 +4095,7 @@ function downloadBackup(){
   });
 }
 function applyBackupData(data){
-  if(!data || typeof data!=="object" || !data.app || data.app.indexOf("UPSC Companion")!==0) throw new Error("not a recognized backup file");
+  if(!data || typeof data!=="object" || !data.app || (data.app.indexOf("CSE Companion")!==0 && data.app.indexOf("UPSC Companion")!==0)) throw new Error("not a recognized backup file");
   prelimsState = data.prelimsState || {};
   mainsState = data.mainsState || {};
   monthsState = data.monthsState || {};
@@ -4141,8 +4141,8 @@ function handleBackupFile(file){
   var reader = new FileReader();
   reader.onload = function(){
     var data;
-    try { data = JSON.parse(reader.result); if(!data || typeof data!=="object" || !data.app || String(data.app).indexOf("UPSC Companion")!==0) throw new Error("bad"); }
-    catch(e){ toast("That doesn't look like a UPSC Companion backup file."); return; }
+    try { data = JSON.parse(reader.result); if(!data || typeof data!=="object" || !data.app || (String(data.app).indexOf("CSE Companion")!==0 && String(data.app).indexOf("UPSC Companion")!==0)) throw new Error("bad"); }
+    catch(e){ toast("That doesn't look like a CSE Companion backup file."); return; }
     if(!window.confirm("Replace everything on this device with this backup?\n\n"+backupSummary(data)+"\n\nYour current data is kept so you can undo this right after.")) return;
     try {
       var cur = collectBackupData(); lsSetJSON(PREBKP_KEY, cur);
@@ -15620,7 +15620,7 @@ function bindStats(host){
 function analyticsAsk(){
   if(!analyticsConfigured() || analyticsChoice() || !profile || document.getElementById("modalHost")) return;
   var m = showModal('<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="anTitle">'+
-    '<h2 id="anTitle">Help improve UPSC Companion?</h2>'+
+    '<h2 id="anTitle">Help improve CSE Companion?</h2>'+
     '<p>Share <b>anonymous usage statistics</b>: which screens are used, which features help, and what phone model and app version you have.</p>'+
     '<p class="muted">We never send your name, email, notes, subjects or anything you study. It is off unless you say yes, and you can change it any time in Settings. <a href="privacy.html#analytics" target="_blank" rel="noopener">Read more</a></p>'+
     '<div class="modal-actions"><button class="btn ghost" id="anNo">No thanks</button><button class="btn primary" id="anYes">Yes, share</button></div></div>', false);
@@ -15731,7 +15731,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "156";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "157";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -15843,7 +15843,7 @@ function renderSettings(){
     '</div>'+
     sceneCardHtml()+soundCardHtml()+perfCardHtml()+
     guidesCardHtml()+
-    '<div class="card set-card about-card"><h3>About</h3><div class="muted">UPSC Companion works offline and keeps your data on this phone unless you sign in. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a> &middot; <a href="privacy.html#delete" target="_blank" rel="noopener">How to delete your data</a></div><div class="muted small about-ver">Version '+APP_BUILD+'</div><button type="button" class="btn ghost" data-upd="1" style="margin-top:10px">Check for updates</button></div>';
+    '<div class="card set-card about-card"><h3>About</h3><div class="muted">CSE Companion works offline and keeps your data on this phone unless you sign in. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a> &middot; <a href="privacy.html#delete" target="_blank" rel="noopener">How to delete your data</a></div><div class="muted small about-ver">Version '+APP_BUILD+'</div><button type="button" class="btn ghost" data-upd="1" style="margin-top:10px">Check for updates</button></div>';
   // keep each row where it was, then glide the chosen theme into the middle so you always know where you are
   [].forEach.call(host.querySelectorAll(".th-row"), function(row, ix){
     var cur = row.querySelector(".sel"), prevLeft = prevLefts[ix] == null ? -1 : prevLefts[ix];
