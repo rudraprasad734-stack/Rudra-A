@@ -15845,7 +15845,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "170";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "171";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -15936,6 +15936,12 @@ function sampleLanes(){
   var names = ["History","Art & Culture","Anthropology (Optional)"], tot = [35,16,55], dn = [0,0,0];
   return {n:3, lanes:names.map(function(n,i){ return {name:n, color:PATH_COLORS[i], pct:0, done:dn[i], total:tot[i], i:i}; }), dday:{label:"D-Day", days:0, sub:"your end date"}, locked:[], completed:[]};
 }
+// one tap to write to us, with the app version already in the message so a problem can be traced
+function feedbackCardHtml(){
+  var body = "Tell us what happened, or what you would like to see:\n\n\n\n---\nPlease keep the lines below, they help us find the problem.\nApp version: "+APP_BUILD+"\nScreen: "+(activeTab||"")+"\nDevice: "+(navigator.userAgent||"");
+  var href = "mailto:support@csecompanion.in?subject="+encodeURIComponent("CSE Companion feedback (v"+APP_BUILD+")")+"&body="+encodeURIComponent(body);
+  return '<div class="card set-card feedback-card"><h3>Help &amp; feedback</h3><div class="muted">Found a problem or have an idea? Write to us. Your app version is added to the message so we can look into it.</div><a class="btn primary" href="'+href+'" style="display:inline-block;margin-top:10px;text-decoration:none">Send feedback</a></div>';
+}
 function renderSettings(){
   var host = document.getElementById("view-settings"); if(!host) return;
   var th = pathThemeById(pathTheme), real = studyPlan ? pathCtx(subjectStates(studyPlan)) : null;
@@ -15957,7 +15963,8 @@ function renderSettings(){
     '</div>'+
     sceneCardHtml()+soundCardHtml()+perfCardHtml()+
     guidesCardHtml()+
-    '<div class="card set-card about-card"><h3>About</h3><div class="muted">CSE Companion works offline and keeps your data on this phone unless you sign in. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a> &middot; <a href="privacy.html#delete" target="_blank" rel="noopener">How to delete your data</a></div><div class="muted small about-ver">Version '+APP_BUILD+'</div><button type="button" class="btn ghost" data-upd="1" style="margin-top:10px">Check for updates</button></div>';
+    feedbackCardHtml()+
+    '<div class="card set-card about-card"><h3>About</h3><div class="muted">CSE Companion works offline and keeps your data on this phone unless you sign in. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a> &middot; <a href="terms.html" target="_blank" rel="noopener">Terms</a> &middot; <a href="delete-account.html" target="_blank" rel="noopener">How to delete your data</a></div><div class="muted small about-ver">Version '+APP_BUILD+'</div><button type="button" class="btn ghost" data-upd="1" style="margin-top:10px">Check for updates</button></div>';
   // keep each row where it was, then glide the chosen theme into the middle so you always know where you are
   [].forEach.call(host.querySelectorAll(".th-row"), function(row, ix){
     var cur = row.querySelector(".sel"), prevLeft = prevLefts[ix] == null ? -1 : prevLefts[ix];
