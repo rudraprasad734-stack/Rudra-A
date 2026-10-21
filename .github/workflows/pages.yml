@@ -1,0 +1,37 @@
+name: Deploy site (page/ as root)
+
+on:
+  push:
+    branches: [main]
+    paths: ["upsc-pyq-bank/page/**", ".github/workflows/pages.yml"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      # Built by hand (not upload-pages-artifact) so dot-folders like .well-known/ are kept.
+      - name: Package page/ as the Pages artifact
+        run: tar --dereference --hard-dereference -cf "$RUNNER_TEMP/artifact.tar" -C upsc-pyq-bank/page .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: github-pages
+          path: ${{ runner.temp }}/artifact.tar
+          retention-days: 1
+          if-no-files-found: error
+      - id: deployment
+        uses: actions/deploy-pages@v4

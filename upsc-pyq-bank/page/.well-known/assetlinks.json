@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "in.csecompanion.app",
+    "sha256_cert_fingerprints": [
+      "AC:D3:2A:D7:D9:7E:05:A8:4B:FB:E3:BF:42:48:9C:42:8C:D2:3B:FE:0E:BF:3C:F9:52:42:E3:53:40:CF:27:16"
+    ]
+  }
+}]
