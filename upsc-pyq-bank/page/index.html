@@ -15519,7 +15519,7 @@ function cloudCardHtml(){
     inner = '<div class="sub">Sign in to keep your plan, progress and study history safe online and open them on any phone. The app still works offline.</div>'+
       (cloud.msg ? '<div class="cl-st err">'+esc(cloud.msg)+'</div>' : '')+
       '<div class="backup-btns"><button type="button" data-cloud="in">Continue with Google</button></div>'+
-      '<div class="cl-fine">Your study data is stored in your own account and is not shown to anyone else. You can delete it any time. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a></div>';
+      '<div class="cl-fine">Your study data is stored in your own account and is not shown to anyone else. You can delete it any time. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a> &middot; <a href="terms.html" target="_blank" rel="noopener">Terms</a> &middot; <a href="delete-account.html" target="_blank" rel="noopener">Delete account</a></div>';
   }
   return '<div class="card set-card cloud-card"><h3>Cloud sync</h3>'+inner+'</div>';
 }
@@ -15739,7 +15739,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "158";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "159";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
