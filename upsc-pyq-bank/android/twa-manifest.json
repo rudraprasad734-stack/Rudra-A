@@ -13,10 +13,10 @@
   "backgroundColor": "#20262D",
   "enableNotifications": false,
   "startUrl": "/index.html",
-  "iconUrl": "http://localhost:8765/icon-512.png",
-  "maskableIconUrl": "http://localhost:8765/icon-512-maskable.png",
-  "appVersion": "1.0.2",
-  "appVersionCode": 3,
+  "iconUrl": "http://localhost:8766/icon-2048.png",
+  "maskableIconUrl": "http://localhost:8766/icon-2048-maskable.png",
+  "appVersion": "1.0.3",
+  "appVersionCode": 4,
   "signingKey": {
     "path": "/home/user/cse-keystore/cse-companion-release.keystore",
     "alias": "cse-companion"
