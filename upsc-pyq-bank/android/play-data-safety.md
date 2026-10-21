@@ -46,3 +46,8 @@ count as "sharing". This stays true only if the Analytics data-sharing settings 
 4. **Play Console > App content:** privacy policy URL `https://csecompanion.in/privacy.html`; target audience 18+; ads: No; data deletion URL as above.
 5. **Store listing:** say plainly that the app is independent and not affiliated with UPSC or any government body.
 6. Keep the form, the policy and the app in step. If you later add ads, payments, crash reports or new data, update all three.
+
+## Subscriptions (added with build 172)
+- Financial info > Purchase history: **No** (payments and purchase records stay with Google Play; the app only asks Google Play on the phone whether a subscription is active and keeps that yes/no on the phone).
+- App activity: the free-trial start date is stored with the synced data of signed-in users (already covered by "Other user-generated content / App info" answers; no change to sharing).
+- Declare "In-app purchases: Yes, subscriptions" on the store listing; "Contains ads: No".

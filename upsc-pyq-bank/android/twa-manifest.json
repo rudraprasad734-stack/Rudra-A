@@ -11,12 +11,12 @@
   "navigationDividerColor": "#1F2A52",
   "navigationDividerColorDark": "#1F2A52",
   "backgroundColor": "#20262D",
-  "enableNotifications": false,
+  "enableNotifications": true,
   "startUrl": "/index.html",
   "iconUrl": "http://localhost:8766/icon-2048.png",
   "maskableIconUrl": "http://localhost:8766/icon-2048-maskable.png",
-  "appVersion": "1.0.4",
-  "appVersionCode": 5,
+  "appVersion": "1.0.5",
+  "appVersionCode": 6,
   "signingKey": {
     "path": "/home/user/cse-keystore/cse-companion-release.keystore",
     "alias": "cse-companion"
@@ -27,7 +27,11 @@
   "fullScopeUrl": "https://csecompanion.in/",
   "minSdkVersion": 24,
   "targetSdkVersion": 36,
-  "features": {},
+  "features": {
+    "playBilling": {
+      "enabled": true
+    }
+  },
   "generatorApp": "bubblewrap-cli",
   "isChromeOSOnly": false,
   "isMetaQuest": false,
