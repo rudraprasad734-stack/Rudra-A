@@ -15,8 +15,8 @@
   "startUrl": "/index.html",
   "iconUrl": "http://localhost:8766/icon-2048.png",
   "maskableIconUrl": "http://localhost:8766/icon-2048-maskable.png",
-  "appVersion": "1.0.3",
-  "appVersionCode": 4,
+  "appVersion": "1.0.4",
+  "appVersionCode": 5,
   "signingKey": {
     "path": "/home/user/cse-keystore/cse-companion-release.keystore",
     "alias": "cse-companion"
