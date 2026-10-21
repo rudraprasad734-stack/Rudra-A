@@ -15447,7 +15447,7 @@ function mergeDoc(id, L, R){
     Object.keys(L).forEach(function(d){ var add = Math.max(0, (+L[d]||0) - (+tl0[d]||0)); out[d] = Math.max(+L[d]||0, (+out[d]||0) + add); });
     return out;
   }
-  if(id==="sub") return {t0:Math.min(+L.t0||Infinity, +R.t0||Infinity)};
+  if(id==="sub"){ var m0 = Math.min(+L.t0||Infinity, +R.t0||Infinity); return {t0: isFinite(m0) ? m0 : (+L.t0||+R.t0||0)}; }
   if(id==="prefs"){
     var lt = L._t || {}, rt = R._t || {}; out = {_t:{}};
     Object.keys(PREF_LS).forEach(function(q){ var lv = L[q], rv = R[q]; if(lv==null && rv==null) return; var useL = rv==null || (lv!=null && (lt[q]||0) > (rt[q]||0)); out[q] = useL ? lv : rv; out._t[q] = useL ? (lt[q]||0) : (rt[q]||0); });
@@ -15474,7 +15474,7 @@ function applyRemoteDocs(take){
     else if(id==="prefs"){ prefsIn = v; if(v.pathTheme) data.pathTheme = v.pathTheme; if(v.uiTheme) data.uiTheme = v.uiTheme; }
     else if(/^sessions-/.test(id)){ if(!sessM){ sessM = {}; studySessions.forEach(function(x){ if(derivedSession(x)) return; var k = monthOfKey(x.date); (sessM[k] = sessM[k] || []).push(x); }); } sessM[id.slice(9)] = v; }
     else if(/^daily-/.test(id)){ if(!dailyM){ dailyM = {}; Object.keys(dailyState).forEach(function(d){ dailyM[d] = dailyState[d]; }); } var mk = id.slice(6); Object.keys(dailyM).forEach(function(d){ if(monthOfKey(d)===mk) delete dailyM[d]; }); Object.keys(v).forEach(function(d){ dailyM[d] = v[d]; }); }
-    else if(id==="sub"){ if(+v.t0 && (!sub.t0 || +v.t0 < sub.t0)){ sub.t0 = +v.t0; subSave(); } }
+    else if(id==="sub"){ if(+v.t0 && +v.t0 <= subNow()+DAY_MS && (!sub.t0 || +v.t0 < sub.t0)){ sub.t0 = +v.t0; subSave(); } }
     else if(id==="prelims") data.prelimsState = v;
     else if(id==="mains") data.mainsState = v;
     else if(id==="months") data.monthsState = v;
@@ -15859,7 +15859,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "173";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "174";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -15966,10 +15966,21 @@ var SUB_SKU = "cse_companion_yearly", TRIAL_DAYS = 14, SUB_KEY = "dossier.sub.v1
 var SUB_FALLBACK_PRICE = "₹199 for the first year (about ₹17 a month)";
 var DAY_MS = 86400000;
 var sub = lsGetJSON(SUB_KEY, null) || {};
-var BILL = {svc:null, checked:false, active:false, details:null, busy:false, err:""};
-function subSave(){ lsSet(SUB_KEY, JSON.stringify({t0:sub.t0||0, seen:sub.seen||0})); }
-// "now" can never go backwards, so setting the phone clock back does not give more trial time
-function subNow(){ var n = Math.max(Date.now(), +sub.seen||0); if(n !== sub.seen){ sub.seen = n; subSave(); } return n; }
+var BILL = {svc:null, checked:false, active:false, details:null, busy:false, err:"", seen:!!lsGet("dossier.billing.seen"), sig:"", pend:null};
+function subSave(){ lsSet(SUB_KEY, JSON.stringify({t0:sub.t0||0, seen:sub.seen||0, off:sub.off||0})); }
+// "now" = the phone clock corrected by our own server time (learned whenever online), and it never goes backwards while offline,
+// so neither a wrong clock nor setting the clock back changes the trial.
+function subNow(){
+  var n = Math.max(Date.now() + (+sub.off||0), +sub.seen||0);
+  if(n - (+sub.seen||0) > 60000){ sub.seen = n; subSave(); }
+  return n;
+}
+function subClockSync(){
+  if(navigator.onLine === false || !/^https?:/.test(location.protocol)) return Promise.resolve();
+  return fetch("./__time?"+Date.now(), {cache:"no-store"}).then(function(r){
+    var n = Date.parse(r.headers.get("Date") || ""); if(n > 0){ sub.off = n - Date.now(); sub.seen = n; subSave(); }
+  }).catch(function(){});
+}
 function subStart(){ if(!sub.t0){ sub.t0 = subNow(); subSave(); } }
 function trialLeftDays(){ if(!sub.t0) return TRIAL_DAYS; return Math.max(0, Math.ceil((sub.t0 + TRIAL_DAYS*DAY_MS - subNow())/DAY_MS)); }
 function trialEndsText(){ var d = new Date((sub.t0||subNow()) + TRIAL_DAYS*DAY_MS); return d.toLocaleDateString(undefined, {day:"numeric", month:"long", year:"numeric"}); }
@@ -15987,10 +15998,12 @@ function billingPriceText(){
   return billingFmt(p)+(p===d.price ? " a year" : " for the first year")+" (about "+billingFmt({currency:p.currency, value:mo})+" a month)";
 }
 // asks Google Play what this person owns; remembers the answer so the app also works offline
-function billingRefresh(){
-  return billingService().then(function(svc){
+function billingRefresh(skipClock){
+  if(BILL.pend) return BILL.pend;
+  BILL.pend = (skipClock ? Promise.resolve() : subClockSync()).then(function(){ return billingService(); }).then(function(svc){
     BILL.svc = svc; BILL.checked = true;
-    if(!svc){ subUi(); return; }
+    if(svc && !BILL.seen){ BILL.seen = true; lsSet("dossier.billing.seen", "1"); }
+    if(!svc){ if(BILL.seen) BILL.active = entCached(); return; }   // inside the Android app but Google Play is not answering: use what we remembered
     return Promise.all([
       Promise.resolve(svc.getDetails([SUB_SKU])).then(function(r){ BILL.details = (r && r[0]) || null; }).catch(function(){}),
       Promise.resolve(svc.listPurchases()).then(function(list){
@@ -15999,8 +16012,9 @@ function billingRefresh(){
         if(mine){ billingAck(svc, mine.purchaseToken); lsSet(ENT_KEY, JSON.stringify({ok:true, at:subNow()})); }
         else lsSet(ENT_KEY, JSON.stringify({ok:false, at:subNow()}));
       }).catch(function(){ BILL.active = entCached(); })
-    ]).then(function(){ subUi(); });
-  }).catch(function(){ BILL.checked = true; subUi(); });
+    ]);
+  }).catch(function(){ BILL.checked = true; if(BILL.seen) BILL.active = entCached(); }).then(function(){ BILL.pend = null; subUi(); });
+  return BILL.pend;
 }
 // Google refunds a purchase that is not acknowledged within 3 days
 function billingAck(svc, token){
@@ -16008,15 +16022,16 @@ function billingAck(svc, token){
   Promise.resolve(svc.acknowledge(token, "onetime")).then(function(){ lsSet("dossier.ack."+token.slice(-24), "1"); }).catch(function(){});
 }
 function billingBuy(){
-  if(BILL.busy || !BILL.svc) return;
+  if(BILL.busy) return;
+  if(!BILL.svc){ BILL.err = "Google Play is not available right now. Check your internet connection and try again."; billingRefresh(); subUi(); return; }
   BILL.busy = true; BILL.err = ""; subUi();
   var done = function(){ BILL.busy = false; subUi(); };
   try{
     var req = new PaymentRequest([{supportedMethods:"https://play.google.com/billing", data:{sku:SUB_SKU}}], {total:{label:"Total", amount:{currency:"INR", value:"0"}}});
     req.show().then(function(res){
       var tok = res.details && res.details.purchaseToken;
-      return Promise.resolve(BILL.svc.acknowledge ? BILL.svc.acknowledge(tok, "onetime") : 0).catch(function(){}).then(function(){ return res.complete("success"); }).then(function(){
-        BILL.active = true; lsSet(ENT_KEY, JSON.stringify({ok:true, at:subNow()})); if(tok) lsSet("dossier.ack."+tok.slice(-24), "1");
+      return Promise.resolve(BILL.svc.acknowledge && tok ? BILL.svc.acknowledge(tok, "onetime") : 0).then(function(){ if(tok) lsSet("dossier.ack."+tok.slice(-24), "1"); }, function(){}).then(function(){ return res.complete("success"); }).then(function(){
+        BILL.active = true; lsSet(ENT_KEY, JSON.stringify({ok:true, at:subNow()}));
         toast("Thank you! Your subscription is active.");
       });
     }).catch(function(e){ if(!(e && e.name==="AbortError")) BILL.err = "The purchase did not go through. You have not been charged. Please try again."; }).then(done);
@@ -16024,7 +16039,7 @@ function billingBuy(){
 }
 function billingManage(){ window.open("https://play.google.com/store/account/subscriptions?sku="+SUB_SKU+"&package=in.csecompanion.app", "_blank"); }
 function subMode(){   // "free" (no billing here) | "trial" | "active" | "locked"
-  if(!BILL.svc) return "free";
+  if(!BILL.svc && !BILL.seen) return "free";
   if(BILL.active) return "active";
   return trialLeftDays() > 0 ? "trial" : "locked";
 }
@@ -16043,12 +16058,15 @@ function paywallHtml(){
 }
 function subUi(){
   var mode = subMode(), el = document.getElementById("paywall");
+  var sig = [mode, trialLeftDays(), BILL.busy, BILL.err, BILL.details ? billingPriceText() : ""].join("|");
+  if(sig === BILL.sig && (mode !== "locked" || el)) return;
+  BILL.sig = sig;
   if(mode === "locked"){
     if(!el){ el = document.createElement("div"); el.id = "paywall"; document.body.appendChild(el); }
     el.innerHTML = paywallHtml(); document.body.classList.add("pw-on");
     var q = function(i, f){ var b = document.getElementById(i); if(b) b.addEventListener("click", function(e){ e.preventDefault(); f(); }); };
     q("pwBuy", billingBuy); q("pwManage", billingManage); q("pwBackup", downloadBackup);
-    q("pwRestore", function(){ BILL.err = ""; billingRefresh().then(function(){ if(subMode()==="locked"){ BILL.err = "No active subscription was found on this Google account."; subUi(); } }); });
+    q("pwRestore", function(){ BILL.err = ""; billingRefresh().then(function(){ if(subMode()==="locked"){ BILL.err = navigator.onLine===false ? "You are offline. Connect to the internet and try again." : "No active subscription was found on this Google account."; BILL.sig = ""; subUi(); } }); });
   } else if(el){ el.remove(); document.body.classList.remove("pw-on"); }
   if(activeTab === "settings") try{ renderSettings(); }catch(e){}
 }
@@ -16071,8 +16089,7 @@ function subWire(host){
   var m = host.querySelector("#subManage"); if(m) m.addEventListener("click", billingManage);
 }
 function subInit(){
-  subStart(); subNow();
-  billingRefresh();
+  subClockSync().then(function(){ subStart(); subNow(); return billingRefresh(true); });
   document.addEventListener("visibilitychange", function(){ if(document.visibilityState==="visible") billingRefresh(); });
   setInterval(function(){ billingRefresh(); }, 6*3600*1000);
 }

@@ -1,7 +1,7 @@
 // CSE Companion service worker: caches the app shell so the page loads and
 // runs with zero network connectivity after the first successful visit.
 // Bump CACHE_NAME on any deploy that changes cached files so clients refresh.
-const CACHE_NAME = "cse-companion-v173";
+const CACHE_NAME = "cse-companion-v174";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -1142,6 +1142,8 @@ self.addEventListener("fetch", (event) => {
   if (req.method !== "GET") return;
   // the sound files are large: the app keeps them in its own "upsc-sounds" store, only when the user asks
   if (new URL(req.url).pathname.indexOf("/audio/") >= 0) return;
+  // trusted-time probe used by the subscription trial: always straight to the network
+  if (new URL(req.url).pathname.indexOf("/__time") >= 0) return;
 
   event.respondWith(
     caches.match(req).then((cached) => {
