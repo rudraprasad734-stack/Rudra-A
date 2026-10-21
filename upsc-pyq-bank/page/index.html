@@ -15859,7 +15859,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "172";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "173";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -15963,7 +15963,7 @@ function feedbackCardHtml(){
 // Prices are set in Play Console (base plan + a first-year offer); the text below is only shown if Google does not supply them.
 // ============================================================================
 var SUB_SKU = "cse_companion_yearly", TRIAL_DAYS = 14, SUB_KEY = "dossier.sub.v1", ENT_KEY = "dossier.entitlement.v1", ENT_GRACE_DAYS = 14;
-var SUB_FALLBACK_PRICE = "₹199 for the first year, then ₹399 a year";
+var SUB_FALLBACK_PRICE = "₹199 for the first year (about ₹17 a month)";
 var DAY_MS = 86400000;
 var sub = lsGetJSON(SUB_KEY, null) || {};
 var BILL = {svc:null, checked:false, active:false, details:null, busy:false, err:""};
@@ -15982,9 +15982,9 @@ function billingService(){
 function billingFmt(p){ try{ return new Intl.NumberFormat(undefined, {style:"currency", currency:p.currency, maximumFractionDigits:0}).format(+p.value); }catch(e){ return p.value+" "+p.currency; } }
 function billingPriceText(){
   var d = BILL.details; if(!d || !d.price) return SUB_FALLBACK_PRICE;
-  var base = billingFmt(d.price)+" a year";
-  if(d.introductoryPrice && d.introductoryPrice.value != null) return billingFmt(d.introductoryPrice)+" for the first year, then "+base;
-  return base;
+  var p = (d.introductoryPrice && d.introductoryPrice.value != null) ? d.introductoryPrice : d.price;
+  var mo = Math.max(1, Math.round((+p.value||0)/12));
+  return billingFmt(p)+(p===d.price ? " a year" : " for the first year")+" (about "+billingFmt({currency:p.currency, value:mo})+" a month)";
 }
 // asks Google Play what this person owns; remembers the answer so the app also works offline
 function billingRefresh(){
