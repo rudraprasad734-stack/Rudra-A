@@ -13008,7 +13008,7 @@ function tierModeHtml(ny){
 }
 function setTierMode(m){
   if(m!==tierMode){
-    tierMode = m; try{ localStorage.setItem("dossier.tierMode", m); }catch(e){}
+    tierMode = m; lsSet("dossier.tierMode", m);
     chapterTierMemo = null; tierCache = {}; optLeafMemo = {}; auditCache = null;
   }
   try{ refreshView(); }catch(e){}
@@ -15321,9 +15321,15 @@ var syncMeta = lsGetJSON(SYNC_META_KEY, null) || {};
 if(!syncMeta.hash) syncMeta.hash = {};
 if(!syncMeta.base) syncMeta.base = {};
 if(!syncMeta.device) syncMeta.device = "d-"+Math.random().toString(36).slice(2,10);
+if(!syncMeta.tl) syncMeta.tl = (syncMeta.uid && syncMeta.hash && syncMeta.hash.timerlog) ? lsGetJSON("dossier.timerLog", {}) : {};
+if(!syncMeta.pt) syncMeta.pt = {};
 function saveSyncMeta(){ lsSetJSON(SYNC_META_KEY, syncMeta); }
 function cloudConfigured(){ return !!(window.__cloudTestAdapter || (FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.projectId)); }
-var CLOUD_KEY_RE = /^dossier\.(plan\.v1|progress\.v1|sessions\.v1|profile\.v1|state\.(prelims|mains|months|daily|mockTests)|timerLog|revdone\.v1|catchup\.v1|planConfig|pathTheme|uiTheme)$/;
+var CLOUD_KEY_RE = /^dossier\.(plan\.v1|progress\.v1|sessions\.v1|profile\.v1|state\.(prelims|mains|months|daily|mockTests)|timerLog|revdone\.v1|catchup\.v1|planConfig|pathTheme|uiTheme|timerScene|soundId|soundOn|soundVol|tierMode)$/;
+// settings that follow the person from phone to phone (each one keeps its own change time, so the latest change on any device wins)
+var PREF_LS = {pathTheme:"dossier.pathTheme", uiTheme:"dossier.uiTheme", timerScene:"dossier.timerScene", soundId:"dossier.soundId", soundOn:"dossier.soundOn", soundVol:"dossier.soundVol", tierMode:"dossier.tierMode"};
+function prefKeyOf(lsKey){ for(var k in PREF_LS) if(PREF_LS[k]===lsKey) return k; return null; }
+function prefValue(k){ return k==="pathTheme" ? pathTheme : (k==="uiTheme" ? window.currentUiTheme() : lsGet(PREF_LS[k])); }
 
 // ---- the real Firebase adapter (loaded only when needed, never at start-up when signed out) ----
 function makeFirebaseAdapter(){
@@ -15357,8 +15363,15 @@ function makeFirebaseAdapter(){
     },
     signOut: function(){ return m.auth.signOut(auth); },
     list: function(uid){ return m.fs.getDocs(col(uid)).then(function(s){ var out = []; s.forEach(function(d){ var v = d.data(); out.push({id:d.id, json:v.json, updatedAt:+v.updatedAt||0}); }); return out; }); },
-    put: function(uid, id, obj){ return m.fs.setDoc(m.fs.doc(fs, "users", uid, "data", id), obj); },
+    // expect = the version (updatedAt) we read before deciding. If another phone has written since, refuse (so nothing is overwritten) and let the caller merge again.
+    put: function(uid, id, obj, expect){
+      var ref = m.fs.doc(fs, "users", uid, "data", id);
+      if(expect===undefined) return m.fs.setDoc(ref, obj);
+      return m.fs.runTransaction(fs, function(tx){ return tx.get(ref).then(function(snap){ var cur = snap.exists() ? (+snap.data().updatedAt||0) : 0; if(cur !== expect){ var er = new Error("conflict"); er.conflict = true; throw er; } tx.set(ref, obj); }); });
+    },
     remove: function(uid, ids){ return Promise.all(ids.map(function(id){ return m.fs.deleteDoc(m.fs.doc(fs, "users", uid, "data", id)); })); },
+    // tells us the moment another phone changes something (changes made on this phone are ignored)
+    watch: function(uid, cb){ var first = true; return m.fs.onSnapshot(col(uid), function(snap){ if(first){ first = false; return; } if(snap.metadata.hasPendingWrites) return; cb(); }, function(){}); },
     deleteAccount: function(){
       var u = auth.currentUser;
       return m.auth.deleteUser(u).catch(function(e){
@@ -15392,7 +15405,8 @@ function localDocs(){
   if(!isEmptyObj(revDone)) out.revdone = JSON.stringify(revDone);
   if(catchState && (catchState.doneOn || catchState.promptedOn)) out.catch = JSON.stringify(catchState);
   var pc = lsGetJSON("dossier.planConfig", null); if(pc && pc.startDate) out.planconfig = JSON.stringify(pc);
-  out.prefs = JSON.stringify({pathTheme:pathTheme, uiTheme:window.currentUiTheme()});
+  var pv = {_t:{}}; Object.keys(PREF_LS).forEach(function(k){ var v = prefValue(k); if(v!=null && v!==""){ pv[k] = v; pv._t[k] = (syncMeta.pt && syncMeta.pt[k]) || 0; } });
+  out.prefs = JSON.stringify(pv);
   return out;
 }
 // what an emptied document looks like (so a deletion on one phone reaches the others)
@@ -15415,12 +15429,23 @@ function mergeDoc(id, L, R){
     R.concat(L).forEach(function(x){ var key = x.id; if(!key){ order.push(x); return; } var o = by[key]; if(!o){ by[key] = x; order.push(key); } else if((x.updatedAt||x.createdAt||"") > (o.updatedAt||o.createdAt||"")) by[key] = x; });
     return order.map(function(o){ return typeof o==="string" ? by[o] : o; });
   }
-  if(id==="timerlog"){ out = Object.assign({}, R); Object.keys(L).forEach(function(d){ out[d] = Math.max(+L[d]||0, +out[d]||0); }); return out; }
+  if(id==="timerlog"){
+    // focus time only ever grows. What this phone added since the last sync is added on top of what the cloud holds,
+    // so time logged on two phones on the same day adds up instead of one of them being dropped.
+    var tl0 = syncMeta.tl || {}; out = Object.assign({}, R);
+    Object.keys(L).forEach(function(d){ var add = Math.max(0, (+L[d]||0) - (+tl0[d]||0)); out[d] = Math.max(+L[d]||0, (+out[d]||0) + add); });
+    return out;
+  }
+  if(id==="prefs"){
+    var lt = L._t || {}, rt = R._t || {}; out = {_t:{}};
+    Object.keys(PREF_LS).forEach(function(q){ var lv = L[q], rv = R[q]; if(lv==null && rv==null) return; var useL = rv==null || (lv!=null && (lt[q]||0) > (rt[q]||0)); out[q] = useL ? lv : rv; out._t[q] = useL ? (lt[q]||0) : (rt[q]||0); });
+    return out;
+  }
   if(id==="prelims" || id==="mains"){ out = Object.assign({}, R); Object.keys(L).forEach(function(d){ if(L[d]) out[d] = true; }); return out; }
   if(/^daily-/.test(id) || id==="months" || id==="revdone") return Object.assign({}, L, R);
   return null;
 }
-function cloudMergeable(id){ return /^(progress|sessions-.*|daily-.*|mocks|timerlog|prelims|mains|months|revdone)$/.test(id); }
+function cloudMergeable(id){ return /^(progress|sessions-.*|daily-.*|mocks|timerlog|prelims|mains|months|revdone|prefs)$/.test(id); }
 
 // ---- apply downloaded documents to this device (reuses the backup restore code) ----
 function applyRemoteDocs(take){
@@ -15428,13 +15453,13 @@ function applyRemoteDocs(take){
   delete data.reminders;
   var curCfg = lsGetJSON("dossier.planConfig", null);
   data.planConfig = null;
-  var sessM = null, dailyM = null;
+  var sessM = null, dailyM = null, prefsIn = null;
   ids.forEach(function(id){
     var v = JSON.parse(take[id]);
     if(id==="plan") data.studyPlan = v;
     else if(id==="progress") data.studyProgress = v;
     else if(id==="profile") data.profile = v;
-    else if(id==="prefs"){ if(v.pathTheme) data.pathTheme = v.pathTheme; if(v.uiTheme) data.uiTheme = v.uiTheme; }
+    else if(id==="prefs"){ prefsIn = v; if(v.pathTheme) data.pathTheme = v.pathTheme; if(v.uiTheme) data.uiTheme = v.uiTheme; }
     else if(/^sessions-/.test(id)){ if(!sessM){ sessM = {}; studySessions.forEach(function(x){ if(derivedSession(x)) return; var k = monthOfKey(x.date); (sessM[k] = sessM[k] || []).push(x); }); } sessM[id.slice(9)] = v; }
     else if(/^daily-/.test(id)){ if(!dailyM){ dailyM = {}; Object.keys(dailyState).forEach(function(d){ dailyM[d] = dailyState[d]; }); } var mk = id.slice(6); Object.keys(dailyM).forEach(function(d){ if(monthOfKey(d)===mk) delete dailyM[d]; }); Object.keys(v).forEach(function(d){ dailyM[d] = v[d]; }); }
     else if(id==="prelims") data.prelimsState = v;
@@ -15449,6 +15474,15 @@ function applyRemoteDocs(take){
   if(sessM){ var all = []; Object.keys(sessM).sort().forEach(function(k){ all = all.concat(sessM[k]); }); data.studySessions = all; }
   if(dailyM) data.dailyState = dailyM;
   applyBackupData(data);
+  if(prefsIn){
+    syncMeta.pt = syncMeta.pt || {};
+    Object.keys(PREF_LS).forEach(function(k){
+      if(prefsIn[k]==null) return;
+      if(k==="tierMode"){ if((prefsIn[k]==="years" || prefsIn[k]==="count") && prefsIn[k]!==tierMode){ tierMode = prefsIn[k]; chapterTierMemo = null; tierCache = {}; optLeafMemo = {}; auditCache = null; } }
+      if(k!=="pathTheme" && k!=="uiTheme"){ try{ localStorage.setItem(PREF_LS[k], String(prefsIn[k])); }catch(e){} }
+      syncMeta.pt[k] = (prefsIn._t || {})[k] || 0;
+    });
+  }
   if(sessM || take.plan || take.progress){ try{ if(studyPlan) replan(); }catch(e){} }
   viewCache = null;
 }
@@ -15467,8 +15501,12 @@ function cloudSync(){
     [local, rmap, syncMeta.hash].forEach(function(o){ Object.keys(o).forEach(function(k){ ids[k] = 1; }); });
     Object.keys(ids).forEach(function(id){
       var L = local[id], R = rmap[id], seen = syncMeta.hash[id], base = syncMeta.base[id] || 0;
+      if(id==="timerlog" && L==null){ if(R) take[id] = R.json; return; }   // focus time is never erased by an empty copy
       var changed = seen==null ? L!=null : (L==null ? "-" : hashStr(L)) !== seen;
-      if(R && R.updatedAt > base){
+      // did the cloud copy change since this phone last looked? Judged by its contents (clocks on different phones disagree), falling back to the old time check for phones that have not recorded contents yet.
+      var rseen = syncMeta.rh && syncMeta.rh[id], remoteNew = !!R && (rseen!==undefined ? hashStr(R.json)!==rseen : R.updatedAt > base);
+      if(R && !remoteNew && rseen===undefined){ (syncMeta.rh || (syncMeta.rh = {}))[id] = hashStr(R.json); }
+      if(R && remoteNew){
         if(!changed){ take[id] = R.json; return; }
         if(L!=null && cloudMergeable(id)){
           try{ var mg = mergeDoc(id, JSON.parse(L), JSON.parse(R.json)); if(mg!=null){ take[id] = JSON.stringify(mg); pushIds[id] = 1; return; } }catch(e){}
@@ -15484,7 +15522,7 @@ function cloudSync(){
       cloud.applying = true;
       try{ applyRemoteDocs(take); } finally { cloud.applying = false; }
       var after = localDocs();
-      Object.keys(take).forEach(function(id){ if(pushIds[id]) return; syncMeta.hash[id] = after[id]!=null ? hashStr(after[id]) : "-"; syncMeta.base[id] = rmap[id].updatedAt; });
+      Object.keys(take).forEach(function(id){ if(pushIds[id]) return; syncMeta.hash[id] = after[id]!=null ? hashStr(after[id]) : "-"; syncMeta.base[id] = rmap[id].updatedAt; (syncMeta.rh || (syncMeta.rh = {}))[id] = hashStr(rmap[id].json); });
       renderCurrentView();
     }
     var now = localDocs(), ops = [], tooBig = 0;
@@ -15493,43 +15531,48 @@ function cloudSync(){
       if(json==null) return;
       if(json.length > SYNC_MAX_DOC){ tooBig++; return; }
       var stamp = Math.max(Date.now(), (syncMeta.base[id]||0) + 1, rmap[id] ? rmap[id].updatedAt + 1 : 0);
-      ops.push({id:id, json:json, stamp:stamp});
+      ops.push({id:id, json:json, stamp:stamp, expect:rmap[id] ? rmap[id].updatedAt : 0});
     });
     var chain = Promise.resolve();
-    ops.forEach(function(o){ chain = chain.then(function(){ return A.put(uid, o.id, {json:o.json, updatedAt:o.stamp, device:syncMeta.device}).then(function(){ syncMeta.hash[o.id] = now[o.id]!=null ? hashStr(now[o.id]) : "-"; syncMeta.base[o.id] = o.stamp; }); }); });
-    return chain.then(function(){ saveSyncMeta(); return {pushed:ops.length, pulled:Object.keys(take).length, tooBig:tooBig}; });
+    ops.forEach(function(o){ chain = chain.then(function(){ return A.put(uid, o.id, {json:o.json, updatedAt:o.stamp, device:syncMeta.device}, o.expect).then(function(){ syncMeta.hash[o.id] = now[o.id]!=null ? hashStr(now[o.id]) : "-"; syncMeta.base[o.id] = o.stamp; (syncMeta.rh || (syncMeta.rh = {}))[o.id] = hashStr(o.json); }); }); });
+    return chain.then(function(){ syncMeta.tl = lsGetJSON("dossier.timerLog", {}); syncMeta.last = {at:Date.now(), pulled:Object.keys(take).length, pushed:ops.length}; saveSyncMeta(); return {pushed:ops.length, pulled:Object.keys(take).length, tooBig:tooBig}; });
   }).then(function(r){
-    cloud.busy = false;
+    cloud.busy = false; cloud.conflicts = 0;
     setCloud(r.tooBig ? "err" : "ok", r.tooBig ? "Some of your data is too large to sync. Use Download backup to keep a copy." : "");
     if(dismissFirstRunProfile()) renderCurrentView();
     if(cloud.queued) cloudSoon(800);
   }).catch(function(e){
     cloud.busy = false;
+    if(e && (e.conflict || e.message==="conflict")){ cloud.conflicts = (cloud.conflicts||0) + 1; if(cloud.conflicts < 8){ cloudSoon(150); return; } }
+    cloud.conflicts = 0;
     var denied = e && /permission|PERMISSION/.test(String(e.code||e.message||""));
     setCloud("err", denied ? "The cloud refused the request. Please try again later." : "Couldn't sync just now. Will try again.");
     if(!denied) setTimeout(cloudSoon, 60000);
   });
 }
-function cloudSoon(ms){ if(!cloud.user) return; clearTimeout(cloud.timer); cloud.timer = setTimeout(cloudSync, ms==null ? 4000 : ms); }
+function cloudSoon(ms){ if(!cloud.user) return; clearTimeout(cloud.timer); cloud.timer = setTimeout(cloudSync, ms==null ? 1500 : ms); }
 function cloudTouched(key){
   if(cloud.applying || !CLOUD_KEY_RE.test(key)) return;
   syncMeta.touch = Date.now();
+  var pk = prefKeyOf(key); if(pk){ (syncMeta.pt || (syncMeta.pt = {}))[pk] = Date.now(); saveSyncMeta(); }
   if(cloud.user) cloudSoon();
 }
 cloudHook = cloudTouched;
 
 // ---- sign-in / sign-out ----
+function cloudUnwatch(){ try{ if(cloud.unwatch) cloud.unwatch(); }catch(e){} cloud.unwatch = null; }
+function cloudWatch(uid){ cloudUnwatch(); try{ if(cloud.adapter && cloud.adapter.watch) cloud.unwatch = cloud.adapter.watch(uid, function(){ cloudSoon(300); }); }catch(e){} }
 function cloudOnUser(u){
-  if(!u){ cloud.user = null; setCloud("off", ""); return; }
+  if(!u){ cloudUnwatch(); cloud.user = null; setCloud("off", ""); return; }
   if(syncMeta.uid && syncMeta.uid !== u.uid){
     if(hasBackupWorthyData() && !window.confirm("This phone still holds study data from a different account.\n\nOK = add it to "+(u.email||"this account")+"\nCancel = sign out again")){
       if(cloud.adapter) cloud.adapter.signOut();
       return;
     }
-    syncMeta.hash = {}; syncMeta.base = {};
+    syncMeta.hash = {}; syncMeta.base = {}; syncMeta.rh = {}; syncMeta.tl = {};
   }
   syncMeta.uid = u.uid; syncMeta.email = u.email || ""; saveSyncMeta();
-  cloud.user = u; setCloud("sync", "Syncing…");
+  cloud.user = u; setCloud("sync", "Syncing…"); cloudWatch(u.uid);
   if(!cloud.tracked){ cloud.tracked = true; trackEvent("cloud_sign_in", {}); }
   cloudSync().then(function(){
     renderGreeting();
@@ -15563,7 +15606,7 @@ function cloudDeleteAll(){
   setCloud("sync", "Deleting…");
   Promise.resolve(A.list(uid)).then(function(rs){ return A.remove(uid, rs.map(function(r){ return r.id; })); })
     .then(function(){ return A.deleteAccount(); })
-    .then(function(){ syncMeta = {hash:{}, base:{}, device:syncMeta.device}; saveSyncMeta(); cloud.user = null; setCloud("off", ""); toast("Your cloud copy and account were deleted."); })
+    .then(function(){ cloudUnwatch(); syncMeta = {hash:{}, base:{}, device:syncMeta.device}; saveSyncMeta(); cloud.user = null; setCloud("off", ""); toast("Your cloud copy and account were deleted."); })
     .catch(function(){ setCloud("err", "Couldn't delete everything. Please try again."); });
 }
 
@@ -15605,9 +15648,9 @@ function bindCloud(host){
     if(a==="in") cloudSignIn(); else if(a==="out") cloudSignOut(); else if(a==="sync") cloudSync(); else if(a==="delete") cloudDeleteAll();
   });
 }
-document.addEventListener("visibilitychange", function(){ if(!cloud.user) return; if(document.visibilityState==="hidden") cloudSync(); else if(Date.now() - (cloud.at||0) > 20000) cloudSync(); });
+document.addEventListener("visibilitychange", function(){ if(!cloud.user) return; if(document.visibilityState==="hidden") cloudSync(); else if(Date.now() - (cloud.at||0) > 3000) cloudSync(); });
 window.addEventListener("online", function(){ if(cloud.user) cloudSoon(500); });
-setInterval(function(){ if(cloud.user && document.visibilityState==="visible") cloudSync(); }, 300000);
+setInterval(function(){ if(cloud.user && document.visibilityState==="visible") cloudSync(); }, 45000);
 // signed in before? reconnect quietly after the app has settled
 setTimeout(function(){ if(cloudConfigured() && syncMeta.uid && navigator.onLine!==false) cloudPrepare(); }, 2500);
 
@@ -15802,7 +15845,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "168";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "170";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
