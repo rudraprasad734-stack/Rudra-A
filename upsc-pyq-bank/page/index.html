@@ -15859,7 +15859,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "174";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "175";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -16117,7 +16117,7 @@ function renderSettings(){
     guidesCardHtml()+
     subCardHtml()+
     feedbackCardHtml()+
-    '<div class="card set-card about-card"><h3>About</h3><div class="muted">CSE Companion works offline and keeps your data on this phone unless you sign in. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a> &middot; <a href="terms.html" target="_blank" rel="noopener">Terms</a> &middot; <a href="delete-account.html" target="_blank" rel="noopener">How to delete your data</a></div><div class="muted small about-ver">Version '+APP_BUILD+'</div><button type="button" class="btn ghost" data-upd="1" style="margin-top:10px">Check for updates</button></div>';
+    '<div class="card set-card about-card"><h3>About</h3><div class="muted">CSE Companion works offline and keeps your data on this phone unless you sign in. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a> &middot; <a href="terms.html" target="_blank" rel="noopener">Terms</a> &middot; <a href="delete-account.html" target="_blank" rel="noopener">How to delete your data</a></div><div class="muted small" style="margin-top:6px">&copy; 2026 CSE Companion. All rights reserved.</div><div class="muted small about-ver">Version '+APP_BUILD+'</div><button type="button" class="btn ghost" data-upd="1" style="margin-top:10px">Check for updates</button></div>';
   // keep each row where it was, then glide the chosen theme into the middle so you always know where you are
   [].forEach.call(host.querySelectorAll(".th-row"), function(row, ix){
     var cur = row.querySelector(".sel"), prevLeft = prevLefts[ix] == null ? -1 : prevLefts[ix];
