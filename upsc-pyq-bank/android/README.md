@@ -1,6 +1,6 @@
 # CSE Companion — Android (TWA) build
 
-Trusted Web Activity wrapper for https://csecompanion.in (package `in.csecompanion.app`, v1.0.0, versionCode 1).
+Trusted Web Activity wrapper for https://csecompanion.in (package `in.csecompanion.app`, v1.0.1, versionCode 2).
 
 - `app-release-bundle.aab` — upload to Google Play Console.
 - `cse-companion.apk` — signed APK for sideload testing.

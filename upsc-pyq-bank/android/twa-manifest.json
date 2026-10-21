@@ -10,14 +10,17 @@
   "navigationColorDark": "#1F2A52",
   "navigationDividerColor": "#1F2A52",
   "navigationDividerColorDark": "#1F2A52",
-  "backgroundColor": "#ECEEF3",
+  "backgroundColor": "#1F2A52",
   "enableNotifications": false,
   "startUrl": "/index.html",
   "iconUrl": "http://localhost:8765/icon-512.png",
   "maskableIconUrl": "http://localhost:8765/icon-512-maskable.png",
-  "appVersion": "1.0.0",
-  "appVersionCode": 1,
-  "signingKey": {"path": "/home/user/cse-keystore/cse-companion-release.keystore", "alias": "cse-companion"},
+  "appVersion": "1.0.1",
+  "appVersionCode": 2,
+  "signingKey": {
+    "path": "/home/user/cse-keystore/cse-companion-release.keystore",
+    "alias": "cse-companion"
+  },
   "orientation": "portrait",
   "fallbackType": "customtabs",
   "webManifestUrl": "https://csecompanion.in/manifest.json",
@@ -33,5 +36,7 @@
   "shortcuts": [],
   "splashScreenFadeOutDuration": 300,
   "enableSiteSettingsShortcut": true,
-  "alphaDependencies": {"enabled": false}
+  "alphaDependencies": {
+    "enabled": false
+  }
 }
