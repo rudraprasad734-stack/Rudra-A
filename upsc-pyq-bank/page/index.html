@@ -4116,7 +4116,7 @@ function applyBackupData(data){
   if(data.reminders && typeof data.reminders==='object'){ remState = Object.assign({}, remState, data.reminders, {on:false, sent:{}}); remSave(); }
   if(data.studyProgress && data.studyProgress.topics){ studyProgress = data.studyProgress; saveProgress(); }
   try{ migrateOptionalSeparation(); migrateAnthroOfficial(); }catch(e){}
-  if(data.profile && data.profile.name){ profile = data.profile; lsSetJSON(PROFILE_KEY, profile); renderGreeting(); }
+  if(data.profile && data.profile.name){ profile = data.profile; lsSetJSON(PROFILE_KEY, profile); renderGreeting(); dismissFirstRunProfile(); }
   var p = data.planConfig;
   if(p && p.startDate && p.prelimsDate && p.mainsDate) applyDynamicPlan(p.startDate, p.prelimsDate, p.mainsDate);
   if(db){
@@ -4234,6 +4234,12 @@ function renderGreeting(){
   if(!b) return;
   b.innerHTML = profile ? "Welcome "+esc(profile.prefix)+" "+esc(profile.name)+'<span class="greet-loc">'+esc(profile.district)+", "+esc(profile.state)+"</span>" : "Set up your profile";
   b.title = "Edit profile";
+}
+// The first-run "User Setup" card has no Cancel button. Once a profile exists (restored from the cloud, a backup, or typed in) it must go away by itself.
+function dismissFirstRunProfile(){
+  var m = document.getElementById("modalHost");
+  if(profile && profile.name && m && m.querySelector("#pfSave") && !m.querySelector("#pfCancel")){ closeModal(); renderGreeting(); return true; }
+  return false;
 }
 function openProfileModal(isEdit){
   var p = profile || {name:"", district:"", state:"", prefix:"IAS"};
@@ -15438,6 +15444,7 @@ function cloudSync(){
   }).then(function(r){
     cloud.busy = false;
     setCloud(r.tooBig ? "err" : "ok", r.tooBig ? "Some of your data is too large to sync. Use Download backup to keep a copy." : "");
+    if(dismissFirstRunProfile()) renderCurrentView();
     if(cloud.queued) cloudSoon(800);
   }).catch(function(e){
     cloud.busy = false;
@@ -15467,11 +15474,10 @@ function cloudOnUser(u){
   syncMeta.uid = u.uid; syncMeta.email = u.email || ""; saveSyncMeta();
   cloud.user = u; setCloud("sync", "Syncing…");
   if(!cloud.tracked){ cloud.tracked = true; trackEvent("cloud_sign_in", {}); }
-  var m = document.getElementById("modalHost");
   cloudSync().then(function(){
-    if(m && profile && document.getElementById("modalHost") === m && m.querySelector("#pfSave")) closeModal();
     renderGreeting();
-    if(!profile && !document.getElementById("modalHost")) openProfileModal(false);
+    if(dismissFirstRunProfile()) renderCurrentView();
+    else if(!profile && !document.getElementById("modalHost")) openProfileModal(false);
   });
 }
 function cloudPrepare(){
@@ -15739,7 +15745,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "159";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "160";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
