@@ -3,6 +3,8 @@
 The app is already coded for this. These are the settings you create once in Play Console so it works.
 Do them after the app is uploaded to a testing track (Play only lets you create subscriptions once an app with billing permission is uploaded).
 
+> **Two ways to pay, one subscription.** From build 185 the website also sells a one-year pass through Razorpay (setup: `firebase/WEB-PAYMENTS.md`). The pass is saved against the Google account, and the Android app counts it, so nobody pays twice. The Play subscription below is for people who pay inside the Android app. The web payment is never shown inside the Android app.
+
 ## 1. Merchant account
 Play Console > Setup > Payments profile. Add your bank account and tax details so Google can pay you.
 

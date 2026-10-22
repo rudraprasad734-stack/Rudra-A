@@ -15396,6 +15396,15 @@ function makeFirebaseAdapter(){
     remove: function(uid, ids){ return Promise.all(ids.map(function(id){ return m.fs.deleteDoc(m.fs.doc(fs, "users", uid, "data", id)); })); },
     // tells us the moment another phone changes something (changes made on this phone are ignored)
     watch: function(uid, cb){ var first = true; return m.fs.onSnapshot(col(uid), function(snap){ if(first){ first = false; return; } if(snap.metadata.hasPendingWrites) return; cb(); }, function(){}); },
+    // web payments: the paid-until record (written only by our payment server) and the server calls
+    entitlement: function(uid){ return m.fs.getDoc(m.fs.doc(fs, "entitlements", uid)).then(function(d){ return d.exists() ? d.data() : null; }); },
+    api: function(path, body){
+      var u = auth.currentUser; if(!u) return Promise.reject(new Error("signin"));
+      return u.getIdToken().then(function(t){
+        return fetch(API_BASE+path, {method:"POST", headers:{"Content-Type":"application/json", "Authorization":"Bearer "+t}, body:JSON.stringify(body || {})})
+          .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ if(!r.ok) throw new Error(j.error || "failed"); return j; }); });
+      });
+    },
     deleteAccount: function(){
       var u = auth.currentUser;
       return m.auth.deleteUser(u).catch(function(e){
@@ -15604,6 +15613,7 @@ function cloudOnUser(u){
   syncMeta.uid = u.uid; syncMeta.email = u.email || ""; saveSyncMeta();
   cloud.user = u; setCloud("sync", "Syncing…"); cloudWatch(u.uid);
   if(!cloud.tracked){ cloud.tracked = true; trackEvent("cloud_sign_in", {}); }
+  webEntRefresh();
   cloudSync().then(function(){
     renderGreeting();
     if(dismissFirstRunProfile()) renderCurrentView();
@@ -15631,7 +15641,7 @@ function cloudSignOut(){
 }
 function cloudDeleteAll(){
   if(!cloud.user || !cloud.adapter) return;
-  if(!window.confirm("Delete your cloud copy and your account?\n\nThis removes everything stored online for "+(cloud.user.email||"this account")+". The data on this phone is NOT deleted. This cannot be undone.")) return;
+  if(!window.confirm("Delete your cloud copy and your account?\n\nThis removes everything stored online for "+(cloud.user.email||"this account")+". The data on this phone is NOT deleted. This cannot be undone."+(webPaid() ? "\n\nYou have a one-year pass paid on the website. It belongs to this account, so deleting the account ends it. Ask support@csecompanion.in first if you want to keep it." : ""))) return;
   var uid = cloud.user.uid, A = cloud.adapter;
   setCloud("sync", "Deleting…");
   Promise.resolve(A.list(uid)).then(function(rs){ return A.remove(uid, rs.map(function(r){ return r.id; })); })
@@ -15655,7 +15665,7 @@ function cloudCardHtml(){
     inner = '<div class="sub">Sign in to keep your plan, progress and study history safe online and open them on any phone. The app still works offline.</div>'+
       (cloud.msg ? '<div class="cl-st err">'+esc(cloud.msg)+'</div>' : '')+
       '<div class="backup-btns"><button type="button" data-cloud="in">Continue with Google</button></div>'+
-      '<div class="cl-fine">Your study data is stored in your own account and is not shown to anyone else. You can delete it any time. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a> &middot; <a href="terms.html" target="_blank" rel="noopener">Terms</a> &middot; <a href="delete-account.html" target="_blank" rel="noopener">Delete account</a></div>';
+      '<div class="cl-fine">Your study data is stored in your own account and is not shown to anyone else. You can delete it any time. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a> &middot; <a href="terms.html" target="_blank" rel="noopener">Terms</a> &middot; <a href="refund.html" target="_blank" rel="noopener">Refunds</a> &middot; <a href="delete-account.html" target="_blank" rel="noopener">Delete account</a></div>';
   }
   return '<div class="card set-card cloud-card"><h3>Cloud sync</h3>'+inner+'</div>';
 }
@@ -15875,7 +15885,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "183";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "186";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -16062,60 +16072,146 @@ function billingBuy(){
   }catch(e){ BILL.err = "Google Play could not be opened. Please try again."; done(); }
 }
 function billingManage(){ window.open("https://play.google.com/store/account/subscriptions?sku="+SUB_SKU+"&package=in.csecompanion.app", "_blank"); }
-function subMode(){   // "free" (no billing here) | "trial" | "active" | "locked"
-  if(!BILL.svc && !BILL.seen) return "free";
-  if(BILL.active) return "active";
-  return trialLeftDays() > 0 ? "trial" : "locked";
+// ---- web payments (Razorpay): one payment = one year, saved against the Google account, so it unlocks every phone and computer ----
+var API_BASE = "https://asia-south1-upsc-companion-3adb3.cloudfunctions.net/api", WEBENT_KEY = "dossier.webent.v1", RZP_JS = "https://checkout.razorpay.com/v1/checkout.js";
+var WEB_PRICE_FALLBACK = "₹299 for one year (about ₹25 a month)";
+// Switch for charging on the website. false = the website stays free (nothing is locked there) until the payment server is deployed; flip to true then (see firebase/WEB-PAYMENTS.md, step 6).
+var WEB_PAY_ON = window.__webPayOn !== undefined ? !!window.__webPayOn : false;
+var WEB = {until:0, uid:"", loaded:false, busy:false, err:"", cfg:null, t0:Date.now()};
+(function(){ var c = lsGetJSON(WEBENT_KEY, null); if(c && c.uid){ WEB.until = +c.until || 0; WEB.uid = c.uid; } })();
+function webEntSave(){ lsSet(WEBENT_KEY, JSON.stringify({uid:WEB.uid, until:WEB.until})); }
+function onPlay(){ return !!(BILL.svc || BILL.seen); }   // inside the Android app from Google Play: only Google Play payments are offered there
+function webPaid(){ return WEB.until > subNow() && !!syncMeta.uid && WEB.uid === syncMeta.uid; }
+function webPriceText(){
+  var c = WEB.cfg; if(!c || !c.amount) return WEB_PRICE_FALLBACK;
+  var v = c.amount/100, mo = Math.max(1, Math.round(v/12));
+  return billingFmt({currency:c.currency||"INR", value:v})+" for one year (about "+billingFmt({currency:c.currency||"INR", value:mo})+" a month)";
 }
-function subLegalLinks(){ return '<a href="./terms.html">Terms</a> · <a href="./privacy.html">Privacy</a> · <a href="./delete-account.html">Delete my data</a>'; }
+function webEntRefresh(){
+  var u = cloud.user, A = cloud.adapter;
+  if(!u || !A || !A.entitlement){ return Promise.resolve(); }
+  var cfg = (A.api && !WEB.cfg) ? Promise.resolve(A.api("/config", {})).then(function(c){ WEB.cfg = c; }).catch(function(){}) : Promise.resolve();
+  return Promise.all([cfg, Promise.resolve(A.entitlement(u.uid)).then(function(e){ WEB.until = e && +e.paidUntil || 0; WEB.uid = u.uid; webEntSave(); WEB.loaded = true; }).catch(function(){ WEB.loaded = true; })]).then(function(){ BILL.sig = ""; subUi(); });
+}
+function loadRazorpay(){
+  if(window.Razorpay) return Promise.resolve();
+  return new Promise(function(res, rej){ var s = document.createElement("script"); s.src = RZP_JS; s.onload = res; s.onerror = function(){ rej(new Error("load")); }; document.head.appendChild(s); });
+}
+function webSignIn(){ cloudPrepare().then(function(){ cloudSignIn(); }); }
+function webPay(){
+  if(WEB.busy || onPlay()) return;
+  if(!cloud.user){ webSignIn(); return; }
+  WEB.busy = true; WEB.err = ""; BILL.sig = ""; subUi();
+  var A = cloud.adapter, done = function(){ WEB.busy = false; BILL.sig = ""; subUi(); };
+  Promise.resolve(A.api("/order", {})).then(function(o){
+    return loadRazorpay().then(function(){
+      return new Promise(function(res, rej){
+        var rz = new window.Razorpay({key:o.keyId, order_id:o.orderId, amount:o.amount, currency:o.currency, name:"CSE Companion", description:"One year of CSE Companion",
+          prefill:{email:cloud.user.email || "", name:cloud.user.name || ""}, theme:{color:"#46C8B9"},
+          handler:function(r){ res(r); }, modal:{ondismiss:function(){ rej({dismissed:true}); }}});
+        if(rz.on) rz.on("payment.failed", function(){ rej({failed:true}); });
+        rz.open();
+      });
+    });
+  }).then(function(r){
+    return Promise.resolve(A.api("/verify", {orderId:r.razorpay_order_id, paymentId:r.razorpay_payment_id, signature:r.razorpay_signature})).then(function(v){
+      WEB.until = +v.paidUntil || 0; WEB.uid = cloud.user.uid; webEntSave(); toast("Thank you! Your subscription is active.");
+    });
+  }).catch(function(e){
+    if(e && e.dismissed) return;
+    WEB.err = e && e.failed ? "The payment did not go through. You have not been charged. Please try again."
+      : "We could not confirm the payment. If money was taken it will be added within a few minutes: tap “I have already paid” to check.";
+  }).then(done);
+}
+function subMode(){   // "wait" (not known yet) | "trial" | "active" | "locked"
+  if(!BILL.checked) return "wait";
+  if(!onPlay() && !WEB_PAY_ON) return "wait";   // website payments not switched on yet: the website stays free
+  if((onPlay() && BILL.active) || webPaid()) return "active";
+  if(trialLeftDays() > 0) return "trial";
+  // a returning subscriber is signed in and checked in a moment: do not flash the sign-up page at them
+  if(syncMeta.uid && !WEB.loaded && Date.now() - WEB.t0 < 7000) return "wait";
+  return "locked";
+}
+function subLegalLinks(){ return '<a href="./terms.html">Terms</a> · <a href="./refund.html">Refunds</a> · <a href="./privacy.html">Privacy</a> · <a href="./delete-account.html">Delete my data</a>'; }
 function paywallHtml(){
-  return '<div class="pw-box"><img src="./icon-192.png" width="72" height="72" alt="">'+
-    '<h2>Your free trial has ended</h2>'+
-    '<p>Thank you for trying CSE Companion. A yearly subscription is needed to keep using the app. Your 14-day trial was free and nothing was charged.</p>'+
-    '<div class="pw-price">'+billingPriceText()+'</div>'+
-    '<button class="btn primary pw-buy" id="pwBuy"'+(BILL.busy?' disabled':'')+'>'+(BILL.busy?'Opening Google Play…':'Subscribe')+'</button>'+
-    (BILL.err ? '<div class="pw-err">'+BILL.err+'</div>' : '')+
-    '<button class="btn pw-alt" id="pwRestore">Already subscribed? Restore</button>'+
-    '<div class="pw-fine">Billed to your Google Play account. The yearly plan renews automatically until you cancel it in Google Play (Menu › Subscriptions); cancelling stops the next renewal.</div>'+
-    '<div class="pw-safe">Your plan and progress stay safe on this phone. <a href="#" id="pwBackup">Download a backup</a></div>'+
-    '<div class="pw-links">'+subLegalLinks()+' · <a href="#" id="pwManage">Manage subscription</a></div></div>';
+  var play = onPlay(), signed = !!cloud.user, busy = play ? BILL.busy : WEB.busy, err = play ? BILL.err : WEB.err;
+  var head = '<div class="pw-box"><img src="./icon-192.png" width="72" height="72" alt=""><h2>Your free trial has ended</h2>';
+  var body;
+  if(play){
+    body = '<p>Thank you for trying CSE Companion. A yearly subscription is needed to keep using the app. Your 14-day trial was free and nothing was charged.</p>'+
+      '<div class="pw-price">'+billingPriceText()+'</div>'+
+      '<button class="btn primary pw-buy" id="pwBuy"'+(busy?' disabled':'')+'>'+(busy?'Opening Google Play…':'Subscribe')+'</button>'+
+      (err ? '<div class="pw-err">'+err+'</div>' : '')+
+      '<button class="btn pw-alt" id="pwRestore">Already subscribed? Restore</button>'+
+      (signed ? '' : '<button class="btn pw-alt" id="pwSign">Already subscribed? Sign in with Google</button>')+
+      '<div class="pw-fine">Billed to your Google Play account. The yearly plan renews automatically until you cancel it in Google Play (Menu › Subscriptions); cancelling stops the next renewal.</div>';
+  } else {
+    body = '<p>Thank you for trying CSE Companion. A one-year pass is needed to keep using the app. Your 14-day trial was free and nothing was charged.</p>'+
+      '<div class="pw-price">'+webPriceText()+'</div>'+
+      (signed ? '<button class="btn primary pw-buy" id="pwPay"'+(busy?' disabled':'')+'>'+(busy?'Opening payment…':'Pay and continue')+'</button>'
+              : '<button class="btn primary pw-buy" id="pwSign">Sign in with Google to subscribe</button>')+
+      (err ? '<div class="pw-err">'+err+'</div>' : '')+
+      '<button class="btn pw-alt" id="pwRestore">I have already paid</button>'+
+      '<div class="pw-fine">One payment gives 12 months of full access on every phone and computer where you sign in with this Google account. It does not renew by itself, and we remind you before it ends. Payment is handled securely by Razorpay (UPI, cards, net banking).</div>';
+  }
+  return head + body +
+    '<div class="pw-safe">Your plan and progress stay safe on this device. <a href="#" id="pwBackup">Download a backup</a></div>'+
+    '<div class="pw-links">'+subLegalLinks()+(play ? ' · <a href="#" id="pwManage">Manage subscription</a>' : '')+'</div></div>';
 }
 function subUi(){
   var mode = subMode(), el = document.getElementById("paywall");
-  var sig = [mode, trialLeftDays(), BILL.busy, BILL.err, BILL.details ? billingPriceText() : ""].join("|");
+  var sig = [mode, trialLeftDays(), BILL.busy, BILL.err, BILL.details ? billingPriceText() : "", WEB.busy, WEB.err, !!cloud.user, WEB.cfg ? webPriceText() : "", webPaid()].join("|");
   if(sig === BILL.sig && (mode !== "locked" || el)) return;
   BILL.sig = sig;
   if(mode === "locked"){
     if(!el){ el = document.createElement("div"); el.id = "paywall"; document.body.appendChild(el); }
     el.innerHTML = paywallHtml(); document.body.classList.add("pw-on");
     var q = function(i, f){ var b = document.getElementById(i); if(b) b.addEventListener("click", function(e){ e.preventDefault(); f(); }); };
-    q("pwBuy", billingBuy); q("pwManage", billingManage); q("pwBackup", downloadBackup);
-    q("pwRestore", function(){ BILL.err = ""; billingRefresh().then(function(){ if(subMode()==="locked"){ BILL.err = navigator.onLine===false ? "You are offline. Connect to the internet and try again." : "No active subscription was found on this Google account."; BILL.sig = ""; subUi(); } }); });
+    q("pwBuy", billingBuy); q("pwManage", billingManage); q("pwBackup", downloadBackup); q("pwPay", webPay); q("pwSign", webSignIn);
+    q("pwRestore", function(){
+      var again = function(){ BILL.sig = ""; if(subMode()==="locked"){ var msg = navigator.onLine===false ? "You are offline. Connect to the internet and try again." : (onPlay() ? "No active subscription was found on this Google account." : (cloud.user ? "No payment was found for this Google account yet. If you just paid, wait a minute and try again." : "Please sign in with the Google account you paid with.")); if(onPlay()) BILL.err = msg; else WEB.err = msg; BILL.sig = ""; subUi(); } };
+      BILL.err = ""; WEB.err = "";
+      if(!onPlay() && !cloud.user){ webSignIn(); return; }
+      Promise.all([billingRefresh(), webEntRefresh()]).then(again);
+    });
+    if(!cloud.adapter) cloudPrepare();
   } else if(el){ el.remove(); document.body.classList.remove("pw-on"); }
   if(activeTab === "settings") try{ renderSettings(); }catch(e){}
 }
 function subCardHtml(){
-  var mode = subMode(); if(mode === "free") return "";
-  var body, btns = "";
+  var mode = subMode(); if(mode === "wait") return "";
+  var play = onPlay(), body, btns = "", foot;
   if(mode === "active"){
-    body = '<div class="muted">Your subscription is active. Thank you for supporting CSE Companion.</div>';
-    btns = '<button class="btn" id="subManage">Manage subscription</button>';
+    var viaWeb = webPaid() && !(play && BILL.active);
+    if(viaWeb){
+      var left = Math.max(0, Math.ceil((WEB.until - subNow())/DAY_MS)), d = new Date(WEB.until).toLocaleDateString(undefined, {day:"numeric", month:"long", year:"numeric"});
+      body = '<div class="muted">Your one-year pass is active until <b>'+d+'</b> ('+left+' day'+(left===1?'':'s')+' left). It works on every phone and computer where you sign in with this Google account.</div>';
+      if(!play) btns = '<button class="btn" id="subBuy">'+(left < 60 ? 'Renew for another year' : 'Add another year')+'</button>'+(WEB.err ? '<div class="pw-err">'+WEB.err+'</div>' : '');
+      foot = 'It does not renew by itself; we remind you before it ends. ';
+    } else {
+      body = '<div class="muted">Your subscription is active. Thank you for supporting CSE Companion.</div>';
+      btns = '<button class="btn" id="subManage">Manage subscription</button>';
+      foot = 'Billed yearly to your Google Play account and renewed automatically until you cancel in Google Play. ';
+    }
   } else {
     var n = trialLeftDays();
-    body = '<div class="muted"><b>'+n+' day'+(n===1?'':'s')+' left</b> in your free trial (until '+trialEndsText()+'). Everything is free until then and nothing is charged for the trial. After that a yearly subscription is needed to keep using the app: '+billingPriceText()+'. It renews every year until you cancel.</div>';
-    btns = '<button class="btn primary" id="subBuy">Subscribe now</button>'+(BILL.err ? '<div class="pw-err">'+BILL.err+'</div>' : '');
+    body = '<div class="muted"><b>'+n+' day'+(n===1?'':'s')+' left</b> in your free trial (until '+trialEndsText()+'). Everything is free until then and nothing is charged for the trial. After that '+(play ? 'a yearly subscription is needed to keep using the app: '+billingPriceText()+'. It renews every year until you cancel.' : 'a one-year pass is needed to keep using the app: '+webPriceText()+'. It does not renew by itself.')+'</div>';
+    btns = '<button class="btn primary" id="subBuy">'+(play || cloud.user ? 'Subscribe now' : 'Sign in to subscribe')+'</button>'+((play ? BILL.err : WEB.err) ? '<div class="pw-err">'+(play ? BILL.err : WEB.err)+'</div>' : '');
+    foot = play ? 'Billed yearly to your Google Play account and renewed automatically until you cancel in Google Play. ' : 'One payment, handled by Razorpay. ';
   }
   return '<div class="card set-card sub-card"><h3>Subscription</h3>'+body+'<div class="row" style="margin-top:10px">'+btns+'</div>'+
-    '<div class="muted" style="margin-top:8px;font-size:12px">Billed yearly to your Google Play account and renewed automatically until you cancel in Google Play. '+subLegalLinks()+'</div></div>';
+    '<div class="muted" style="margin-top:8px;font-size:12px">'+foot+subLegalLinks()+'</div></div>';
 }
 function subWire(host){
-  var b = host.querySelector("#subBuy"); if(b) b.addEventListener("click", billingBuy);
+  var b = host.querySelector("#subBuy"); if(b) b.addEventListener("click", onPlay() ? billingBuy : webPay);
   var m = host.querySelector("#subManage"); if(m) m.addEventListener("click", billingManage);
 }
 function subInit(){
+  try{ if(/^android-app:/.test(document.referrer || "") && !BILL.seen){ BILL.seen = true; lsSet("dossier.billing.seen", "1"); } }catch(e){}
   subClockSync().then(function(){ subStart(); subNow(); return billingRefresh(true); });
-  document.addEventListener("visibilitychange", function(){ if(document.visibilityState==="visible") billingRefresh(); });
-  setInterval(function(){ billingRefresh(); }, 6*3600*1000);
+  document.addEventListener("visibilitychange", function(){ if(document.visibilityState==="visible"){ billingRefresh(); webEntRefresh(); } });
+  setInterval(function(){ billingRefresh(); webEntRefresh(); }, 6*3600*1000);
+  setTimeout(function(){ BILL.sig = ""; subUi(); }, 7300);
 }
 
 function renderSettings(){
@@ -16141,7 +16237,7 @@ function renderSettings(){
     guidesCardHtml()+
     subCardHtml()+
     feedbackCardHtml()+
-    '<div class="card set-card about-card"><h3>About</h3><div class="muted">CSE Companion works offline and keeps your data on this phone unless you sign in. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a> &middot; <a href="terms.html" target="_blank" rel="noopener">Terms</a> &middot; <a href="delete-account.html" target="_blank" rel="noopener">How to delete your data</a></div><div class="muted small" style="margin-top:6px">&copy; 2026 CSE Companion. All rights reserved.</div><div class="muted small about-ver">Version '+APP_BUILD+'</div><button type="button" class="btn ghost" data-upd="1" style="margin-top:10px">Check for updates</button></div>';
+    '<div class="card set-card about-card"><h3>About</h3><div class="muted">CSE Companion works offline and keeps your data on this phone unless you sign in. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a> &middot; <a href="terms.html" target="_blank" rel="noopener">Terms</a> &middot; <a href="refund.html" target="_blank" rel="noopener">Refunds</a> &middot; <a href="delete-account.html" target="_blank" rel="noopener">How to delete your data</a></div><div class="muted small" style="margin-top:6px">&copy; 2026 CSE Companion. All rights reserved.</div><div class="muted small about-ver">Version '+APP_BUILD+'</div><button type="button" class="btn ghost" data-upd="1" style="margin-top:10px">Check for updates</button></div>';
   // keep each row where it was, then glide the chosen theme into the middle so you always know where you are
   [].forEach.call(host.querySelectorAll(".th-row"), function(row, ix){
     var cur = row.querySelector(".sel"), prevLeft = prevLefts[ix] == null ? -1 : prevLefts[ix];

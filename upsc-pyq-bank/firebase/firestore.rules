@@ -14,6 +14,11 @@ service cloud.firestore {
                             && request.resource.data.json.size() < 950000
                             && request.resource.data.updatedAt is number;
     }
+    // Paid-until date for web subscriptions. The person can read their own; only our payment server (admin) can write it.
+    match /entitlements/{uid} {
+      allow read: if request.auth != null && request.auth.uid == uid;
+      allow write: if false;
+    }
     match /{document=**} {
       allow read, write: if false;
     }
