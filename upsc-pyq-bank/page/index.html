@@ -15475,6 +15475,7 @@ function cloudMergeable(id){ return /^(progress|sessions-.*|daily-.*|mocks|timer
 
 // ---- apply downloaded documents to this device (reuses the backup restore code) ----
 function applyRemoteDocs(take){
+  var prefsBefore = Object.keys(PREF_LS).map(function(k){ return String(prefValue(k)); }).join('|');
   var data = collectBackupData(), ids = Object.keys(take);
   delete data.reminders;
   var curCfg = lsGetJSON("dossier.planConfig", null);
@@ -15509,6 +15510,7 @@ function applyRemoteDocs(take){
       if(k!=="pathTheme" && k!=="uiTheme"){ try{ localStorage.setItem(PREF_LS[k], String(prefsIn[k])); }catch(e){} }
       syncMeta.pt[k] = (prefsIn._t || {})[k] || 0;
     });
+    if(Object.keys(PREF_LS).map(function(k){ return String(prefValue(k)); }).join('|') !== prefsBefore) setTimeout(function(){ toast('Settings updated from your other phone.'); }, 400);
   }
   if(sessM || take.plan || take.progress){ try{ if(studyPlan) replan(); }catch(e){} }
   viewCache = null;
@@ -15582,7 +15584,7 @@ function cloudSoon(ms){ if(!cloud.user) return; clearTimeout(cloud.timer); cloud
 function cloudTouched(key){
   if(cloud.applying || !CLOUD_KEY_RE.test(key)) return;
   syncMeta.touch = Date.now();
-  var pk = prefKeyOf(key); if(pk){ (syncMeta.pt || (syncMeta.pt = {}))[pk] = Date.now(); saveSyncMeta(); }
+  var pk = prefKeyOf(key); if(pk){ (syncMeta.pt || (syncMeta.pt = {}))[pk] = (typeof subNow==='function' ? subNow() : Date.now()); saveSyncMeta(); }
   if(cloud.user) cloudSoon();
 }
 cloudHook = cloudTouched;
@@ -15873,7 +15875,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "181";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "182";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
