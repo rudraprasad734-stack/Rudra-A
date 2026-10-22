@@ -15010,7 +15010,7 @@ function initBlackHoleScene(host){
   for(var mi=0; mi<130; mi++){ var mm = {}; spawnMid(mm, false); midS.push(mm); }
   for(var ai=0; ai<2; ai++) for(var pi=0; pi<170; pi++){ var u = Math.pow(Math.random(), .85); arms.push({arm:ai, u:u, j:(Math.random()+Math.random()+Math.random()-1.5), s:rnd(.45,1.1), tw:rnd(0,6.283)}); }
   function mkTex(S, fn){ var c = document.createElement("canvas"); c.width = c.height = S; fn(c.getContext("2d"), S); return c; }
-  var mwTex = null, sn = null, nextSN = 0;
+  var mwTex = null, sn = null, nextSN = Infinity;   // no distant-supernova flash (it looked like a glowing eye)
   function buildMW(){
     var W = Math.max(2, Math.floor(w)), H = Math.max(2, Math.floor(h));
     mwTex = document.createElement("canvas"); mwTex.width = W; mwTex.height = H;
@@ -15035,7 +15035,16 @@ function initBlackHoleScene(host){
     for(k=0;k<700;k++){ var rr = Math.pow(Math.random(), .8), th = Math.random()*6.283, gx = Math.cos(th)*rr*sx*1.25, gy = Math.sin(th)*rr*sy*1.25, core = 1 - rr;
       pts.push({x:gx*ca - gy*sa, y:gx*sa + gy*ca, s:rnd(1.3,2.5), a:.11 + .26*core*core + Math.random()*.08, c:Math.random() < .12 ? 1 : (core > .55 ? 0 : (Math.random() < .5 ? 0 : 2))}); }
     return {ox:rnd(-12,12), oy:start, pts:pts}; }
-  gals = [mkGal(150), mkGal(150 + 430)];
+  // Two distant galaxies that appear right behind the hole, bend into a glittering ring around it, then fade away on the spot.
+  // They never travel in from the edge of the screen or leave over the top.
+  var GAL_LIFE = 20000;
+  gals = [{ph:0}, {ph:GAL_LIFE/2}];
+  function reGal(o, t){
+    var g = mkGal(0), ang = rnd(0, 6.283), dist = rnd(0, .4)*eR;
+    o.pts = g.pts; o.ox = Math.cos(ang)*dist; o.oy = Math.sin(ang)*dist;
+    var da = rnd(0, 6.283), sp = rnd(.1, .22)*eR/GAL_LIFE; o.vx = Math.cos(da)*sp; o.vy = Math.sin(da)*sp;
+    o.t0 = t;
+  }
   function lensImg(dx, dy, size, alpha, col, hr){
     var d = Math.sqrt(dx*dx + dy*dy) || 1, u = d/eR, sq = Math.sqrt(u*u + 4), a = Math.atan2(dy, dx), sgn, r, tg, rd, len, wd, mg = (u*u + 2)/(2*u*sq);
     for(sgn=0; sgn<(T.lens2 ? 2 : 1); sgn++){
@@ -15057,9 +15066,12 @@ function initBlackHoleScene(host){
       lensImg(dx, dy, o.s, o.a*(.75 + .25*Math.sin(t*.0005 + o.tw)), col, holeR);
     }
     ctx.globalCompositeOperation = "lighter";
-    for(i=0;i<gals.length;i++){ o = gals[i]; var skipG = Math.abs(o.oy) > h*.62 + 40;
-      if(dt){ o.oy -= gsp; if(o.oy < -(h*.62 + 90)){ var ng = mkGal(h*.62 + 90 + rnd(120, 260)); o.ox = ng.ox; o.oy = ng.oy; o.pts = ng.pts; } }
-      if(!skipG) for(k=0;k<Math.min(o.pts.length, T.gal);k++){ var q = o.pts[k]; lensImg(o.ox + q.x, o.oy + q.y, q.s, q.a, q.c === 0 ? "rgb(214,229,255)" : (q.c === 1 ? "rgb(255,236,214)" : "rgb(150,185,245)"), holeR); }
+    for(i=0;i<gals.length;i++){ o = gals[i];
+      if(!o.pts){ reGal(o, t - o.ph); }
+      if(dt){ if(t - o.t0 >= GAL_LIFE) reGal(o, t); o.ox += o.vx*dt; o.oy += o.vy*dt; }
+      var gp = Math.max(0, Math.min(1, (t - o.t0)/GAL_LIFE)), env = Math.pow(Math.sin(Math.PI*gp), 2);
+      if(env < .01) continue;
+      for(k=0;k<Math.min(o.pts.length, T.gal);k++){ var q = o.pts[k]; lensImg(o.ox + q.x, o.oy + q.y, q.s, q.a*env, q.c === 0 ? "rgb(214,229,255)" : (q.c === 1 ? "rgb(255,236,214)" : "rgb(150,185,245)"), holeR); }
     }
     ctx.globalCompositeOperation = "source-over"; ctx.globalAlpha = 1;
   }
@@ -15141,8 +15153,7 @@ function initBlackHoleScene(host){
     drawLensed(t, dt);
     for(i=0;i<nearS.length;i++){ o = nearS[i]; if(dt){ o.x += dt*.0000045; o.y += dt*.0000028; if(o.x>1.02) o.x = -.02; if(o.y>1.02) o.y = -.02; }
       x = o.x*w; y = o.y*h; ctx.globalAlpha = o.a*(.65+.35*Math.sin(t*.0013+o.tw)); ctx.fillStyle = o.warm ? "#ffe3b8" : "#e8efff";
-      ctx.beginPath(); ctx.arc(x, y, o.s, 0, 6.283); ctx.fill();
-      ctx.globalAlpha *= .22; ctx.beginPath(); ctx.arc(x, y, o.s*2.6, 0, 6.283); ctx.fill(); }
+      ctx.beginPath(); ctx.arc(x, y, o.s, 0, 6.283); ctx.fill(); }
     ctx.globalAlpha = 1;
     if(dt){
       if(!bhSky.next) bhSky.next = t + rnd(480000, 600000);
@@ -15859,7 +15870,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "175";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "177";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
