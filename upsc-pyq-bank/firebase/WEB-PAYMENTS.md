@@ -1,6 +1,6 @@
 # Web payments with Razorpay: setup
 
-One payment on the website gives 12 months, saved against the person's Google account. The same account is unlocked in the Android app too (no second payment). Everything below can be done from a phone browser. Nothing here is live until you finish step 6.
+One payment on the website gives 12 months, saved against the person's Google account. The same account is unlocked in the Android app too (no second payment). Everything below can be done from a phone browser. Nothing here is live until you finish step 6, and the website stays free until the switch in step 7 is turned on.
 
 How it fits together: the website asks our payment server for an order, the person pays in Razorpay's window, the server checks the payment is real, then writes a "paid until" date into the database (`entitlements/{uid}`). Only the server can write that date (database rules). The app reads it.
 
@@ -46,3 +46,6 @@ GitHub > the repository > Settings > Secrets and variables > Actions > **New rep
 ## Rules to keep
 - The website payment must never appear inside the Android app from Google Play (Google forbids steering to other payments). The app already hides it there.
 - Keep the Key Secret and webhook secret only in GitHub secrets, never in code or chat.
+
+## 7. The switch (website stays free until you flip it)
+In `upsc-pyq-bank/page/index.html` the line `var WEB_PAY_ON = ... : false;` keeps the website free for everyone (nothing locked, no payment button). After steps 1 to 6 work in live mode, tell me "switch web payments on" and I will set it to `true`, bump the version and merge it. The Android app from Google Play is not affected by this switch.
