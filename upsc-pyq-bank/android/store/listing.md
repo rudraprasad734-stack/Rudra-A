@@ -42,6 +42,9 @@ YOURS, ON EVERY PHONE
 • Choose from many app themes and timer backgrounds. Your choices follow you across phones.
 • Download a backup file at any time. You can delete your online data and account from inside the app.
 
+FREE TRIAL AND SUBSCRIPTION
+Every feature is free for 14 days, with nothing charged. After that, a yearly subscription is needed to keep using the app. The price, any first-year offer and the renewal price are shown in the app and on the Google Play payment screen before you pay. The subscription renews every year until you cancel it in Google Play (Menu > Payments & subscriptions > Subscriptions).
+
 YOUR PRIVACY
 We do not sell your data or show ads. Anonymous usage statistics are optional and off unless you say yes. Read our privacy policy at csecompanion.in/privacy.html.
 

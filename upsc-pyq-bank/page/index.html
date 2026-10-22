@@ -15873,7 +15873,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "179";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "180";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -15977,7 +15977,7 @@ function feedbackCardHtml(){
 // Prices are set in Play Console (base plan + a first-year offer); the text below is only shown if Google does not supply them.
 // ============================================================================
 var SUB_SKU = "cse_companion_yearly", TRIAL_DAYS = 14, SUB_KEY = "dossier.sub.v1", ENT_KEY = "dossier.entitlement.v1", ENT_GRACE_DAYS = 14;
-var SUB_FALLBACK_PRICE = "₹199 for the first year (about ₹17 a month)";
+var SUB_FALLBACK_PRICE = "₹199 for the first year (about ₹17 a month), then renews yearly at the price shown in Google Play";
 var DAY_MS = 86400000;
 var sub = lsGetJSON(SUB_KEY, null) || {};
 var BILL = {svc:null, checked:false, active:false, details:null, busy:false, err:"", seen:!!lsGet("dossier.billing.seen"), sig:"", pend:null};
@@ -16007,9 +16007,10 @@ function billingService(){
 function billingFmt(p){ try{ return new Intl.NumberFormat(undefined, {style:"currency", currency:p.currency, maximumFractionDigits:0}).format(+p.value); }catch(e){ return p.value+" "+p.currency; } }
 function billingPriceText(){
   var d = BILL.details; if(!d || !d.price) return SUB_FALLBACK_PRICE;
-  var p = (d.introductoryPrice && d.introductoryPrice.value != null) ? d.introductoryPrice : d.price;
+  var intro = d.introductoryPrice && d.introductoryPrice.value != null ? d.introductoryPrice : null, p = intro || d.price;
   var mo = Math.max(1, Math.round((+p.value||0)/12));
-  return billingFmt(p)+(p===d.price ? " a year" : " for the first year")+" (about "+billingFmt({currency:p.currency, value:mo})+" a month)";
+  var head = billingFmt(p)+(intro ? " for the first year" : " a year")+" (about "+billingFmt({currency:p.currency, value:mo})+" a month)";
+  return intro ? head+", then "+billingFmt(d.price)+" a year" : head;
 }
 // asks Google Play what this person owns; remembers the answer so the app also works offline
 function billingRefresh(skipClock){
@@ -16061,7 +16062,7 @@ function subLegalLinks(){ return '<a href="./terms.html">Terms</a> · <a href=".
 function paywallHtml(){
   return '<div class="pw-box"><img src="./icon-192.png" width="72" height="72" alt="">'+
     '<h2>Your free trial has ended</h2>'+
-    '<p>Thank you for trying CSE Companion. To keep planning, timing and revising, subscribe for a year.</p>'+
+    '<p>Thank you for trying CSE Companion. A yearly subscription is needed to keep using the app. Your 14-day trial was free and nothing was charged.</p>'+
     '<div class="pw-price">'+billingPriceText()+'</div>'+
     '<button class="btn primary pw-buy" id="pwBuy"'+(BILL.busy?' disabled':'')+'>'+(BILL.busy?'Opening Google Play…':'Subscribe')+'</button>'+
     (BILL.err ? '<div class="pw-err">'+BILL.err+'</div>' : '')+
@@ -16092,7 +16093,7 @@ function subCardHtml(){
     btns = '<button class="btn" id="subManage">Manage subscription</button>';
   } else {
     var n = trialLeftDays();
-    body = '<div class="muted"><b>'+n+' day'+(n===1?'':'s')+' left</b> in your free trial (until '+trialEndsText()+'). Everything is free until then. After that: '+billingPriceText()+'.</div>';
+    body = '<div class="muted"><b>'+n+' day'+(n===1?'':'s')+' left</b> in your free trial (until '+trialEndsText()+'). Everything is free until then and nothing is charged for the trial. After that a yearly subscription is needed to keep using the app: '+billingPriceText()+'. It renews every year until you cancel.</div>';
     btns = '<button class="btn primary" id="subBuy">Subscribe now</button>'+(BILL.err ? '<div class="pw-err">'+BILL.err+'</div>' : '');
   }
   return '<div class="card set-card sub-card"><h3>Subscription</h3>'+body+'<div class="row" style="margin-top:10px">'+btns+'</div>'+
