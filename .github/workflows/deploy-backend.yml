@@ -1,0 +1,41 @@
+# Deploys the payment server (Cloud Functions) and the database rules. Run it by hand: Actions > "Deploy payment server" > Run workflow.
+# Needs these repository secrets (see upsc-pyq-bank/firebase/WEB-PAYMENTS.md):
+#   FIREBASE_SERVICE_ACCOUNT, RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET, RAZORPAY_WEBHOOK_SECRET
+name: Deploy payment server
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install and test the payment logic
+        working-directory: upsc-pyq-bank/firebase/functions
+        run: |
+          npm install --no-audit --no-fund
+          npm test
+      - name: Deploy
+        working-directory: upsc-pyq-bank/firebase
+        env:
+          SA_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          RZP_KEY_ID: ${{ secrets.RAZORPAY_KEY_ID }}
+          RZP_KEY_SECRET: ${{ secrets.RAZORPAY_KEY_SECRET }}
+          RZP_HOOK: ${{ secrets.RAZORPAY_WEBHOOK_SECRET }}
+        run: |
+          set -e
+          test -n "$SA_JSON" && test -n "$RZP_KEY_ID" && test -n "$RZP_KEY_SECRET" && test -n "$RZP_HOOK" || { echo "A required secret is missing"; exit 1; }
+          printf '%s' "$SA_JSON" > "$RUNNER_TEMP/sa.json"
+          export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
+          printf '%s' "$RZP_KEY_ID"     > "$RUNNER_TEMP/k1"
+          printf '%s' "$RZP_KEY_SECRET" > "$RUNNER_TEMP/k2"
+          printf '%s' "$RZP_HOOK"       > "$RUNNER_TEMP/k3"
+          npx -y firebase-tools@13 functions:secrets:set RAZORPAY_KEY_ID         --data-file "$RUNNER_TEMP/k1" --force --project upsc-companion-3adb3
+          npx -y firebase-tools@13 functions:secrets:set RAZORPAY_KEY_SECRET     --data-file "$RUNNER_TEMP/k2" --force --project upsc-companion-3adb3
+          npx -y firebase-tools@13 functions:secrets:set RAZORPAY_WEBHOOK_SECRET --data-file "$RUNNER_TEMP/k3" --force --project upsc-companion-3adb3
+          npx -y firebase-tools@13 deploy --only functions,firestore:rules --project upsc-companion-3adb3 --non-interactive --force
+          rm -f "$RUNNER_TEMP/sa.json" "$RUNNER_TEMP/k1" "$RUNNER_TEMP/k2" "$RUNNER_TEMP/k3"

@@ -22,3 +22,7 @@ Checked against Google's Play policies (Payments, Subscriptions, Metadata, Decep
 - **Past exam questions** belong to UPSC. Keep the source line, never imply endorsement, and be ready to remove an item if asked.
 - **Renewal price in the app.** Google requires the renewal cost to be disclosed without extra steps, so the app shows "then <regular price> a year" (taken from Google Play, not typed in the app).
 - **Notification permission.** Billing in a Trusted Web Activity needs notification delegation, which adds the notification permission. Answer the permissions/Data safety questions to match.
+
+## Web payments and Play policy (build 185)
+- Google forbids steering Play users to other payment methods from inside the app (Payments policy, section 4). The Android app from Google Play therefore shows only the Google Play subscribe flow. The Razorpay button exists only in a browser. The app counts a web-paid account as subscribed (letting people use what they bought elsewhere is allowed) but never tells Play users how or where to pay on the web. The sign-in button on the Play paywall says only "Already subscribed? Sign in with Google".
+- The Play store listing must not mention website payments.

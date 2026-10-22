@@ -51,3 +51,8 @@ count as "sharing". This stays true only if the Analytics data-sharing settings 
 - Financial info > Purchase history: **No** (payments and purchase records stay with Google Play; the app only asks Google Play on the phone whether a subscription is active and keeps that yes/no on the phone).
 - App activity: the free-trial start date is stored with the synced data of signed-in users (already covered by "Other user-generated content / App info" answers; no change to sharing).
 - Declare "In-app purchases: Yes, subscriptions" on the store listing; "Contains ads: No".
+
+## Web payments (added with build 185)
+- Financial info > **Purchase history: Yes, collected.** For web payments the server stores the payment ID, amount and paid-until date against the Google account (needed so the pass works on every device and for refunds). Purpose: App functionality. Not shared with third parties (Razorpay processes the payment as our service provider). Not optional for people who choose to pay on the web; no payment data is collected for anyone else.
+- Card, UPI and bank details are entered with Razorpay or Google Play and never reach us: do not declare "Payment info" as collected.
+- Account deletion: a one-year pass paid on the web is attached to the account; the delete page explains that deleting the account ends it and that the payment record is kept for accounting.
