@@ -14,20 +14,17 @@ Play Console > Monetize with Play > Products > Subscriptions > Create subscripti
 ### Base plan
 - Base plan ID: `yearly`
 - Billing period: Yearly, Auto-renewing
-- Price: the normal yearly price from the second year (start with 399, change later)
+- Price: **₹299** (India). This is the only price people see, now and at renewal, so there is nothing to hide. Google converts it for other countries if you let it.
 - Grace period / account hold: leave the defaults (they keep people from losing access on a failed card)
+- **Do not add any offer.** The 14-day free trial is built into the app (no card needed), so Play does not need a free-trial or discount offer.
 
-### Offer (the first-year price)
-Base plan > Add offer
-- Offer ID: `first-year`
-- Eligibility: **New customer acquisition** (never subscribed before)
-- Phase: **Single payment** (or "Discounted recurring payment" for 1 cycle), price **199**, duration 1 year
-- No free-trial phase here: the 14-day free trial is built into the app, so people do not need to enter a card for it.
+Activate the base plan.
 
-Activate the base plan and the offer.
-
-## 3. Price later
-Raising the price for the second year onward: change the base plan price (Play asks how to treat existing subscribers; choose to apply to new subscribers and to existing ones at their next renewal with Google's notice).
+## 3. Changing the price later
+Plan: stay at ₹299 until the app has answer explanations or mock tests and some reviews, then move new subscribers to ₹399 to ₹499.
+- Play Console > Subscriptions > cse_companion_yearly > Base plan > Edit price.
+- Raising the price for existing subscribers: Google tells them and they must accept; those who do not accept stop at the end of the period they paid for. You can keep existing subscribers on ₹299 ("legacy price") and charge new ones the new price.
+- The app needs no change: it reads the price from Google Play and shows "₹X a year (about ₹Y a month)".
 
 ## 4. Test it without paying
 Play Console > Settings > License testing: add the Gmail addresses of your testers. They install from the internal-testing link and Google shows a test payment sheet that charges nothing, with renewals sped up (a yearly plan renews in about 30 minutes in tests, up to 6 times).
