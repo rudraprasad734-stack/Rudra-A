@@ -40,7 +40,7 @@ GitHub > the repository > Settings > Secrets and variables > Actions > **New rep
 
 ## Everyday jobs
 - **Give someone a free year** (a friend, a prize): Firebase console > Firestore > `entitlements` > add a document whose id is their user id (shown under Authentication > Users) with a number field `paidUntil` = the end date in milliseconds (example for 1 Jan 2028: 1830297600000).
-- **Refund:** Razorpay dashboard > Payments > the payment > Refund. The webhook removes the year.
+- **Refund (only for the cases in refund.html: duplicate, error, not delivered): Razorpay dashboard > Payments > the payment > Refund. The webhook removes the year.
 - **Change the price:** edit `PRICE_PAISE` (29900 = ₹299) in `functions/lib.js` (default) and the fallback text in the app, then re-run the deploy. Old payments are unaffected.
 
 ## Rules to keep

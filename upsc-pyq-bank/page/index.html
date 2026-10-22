@@ -15894,7 +15894,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "187";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "188";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -16161,7 +16161,7 @@ function paywallHtml(){
               : '<button class="btn primary pw-buy" id="pwSign">Sign in with Google to subscribe</button>')+
       (err ? '<div class="pw-err">'+err+'</div>' : '')+
       '<button class="btn pw-alt" id="pwRestore">I have already paid</button>'+
-      '<div class="pw-fine">One payment gives 12 months of full access on every phone and computer where you sign in with this Google account. It does not renew by itself, and we remind you before it ends. Payment is handled securely by Razorpay (UPI, cards, net banking).</div>';
+      '<div class="pw-fine">One payment gives 12 months of full access on every phone and computer where you sign in with this Google account. It does not renew by itself, and we remind you before it ends. Payment is handled securely by Razorpay (UPI, cards, net banking). Payments are not refundable once access is added, except as set out in the <a href="./refund.html">Refund Policy</a>; the 14-day trial is free.</div>';
   }
   return head + body +
     '<div class="pw-safe">Your plan and progress stay safe on this device. <a href="#" id="pwBackup">Download a backup</a></div>'+
@@ -16206,7 +16206,7 @@ function subCardHtml(){
     var n = trialLeftDays();
     body = '<div class="muted"><b>'+n+' day'+(n===1?'':'s')+' left</b> in your free trial (until '+trialEndsText()+'). Everything is free until then and nothing is charged for the trial. After that '+(play ? 'a yearly subscription is needed to keep using the app: '+billingPriceText()+'. It renews every year until you cancel.' : 'a one-year pass is needed to keep using the app: '+webPriceText()+'. It does not renew by itself.')+'</div>';
     btns = '<button class="btn primary" id="subBuy">'+(play || cloud.user ? 'Subscribe now' : 'Sign in to subscribe')+'</button>'+((play ? BILL.err : WEB.err) ? '<div class="pw-err">'+(play ? BILL.err : WEB.err)+'</div>' : '');
-    foot = play ? 'Billed yearly to your Google Play account and renewed automatically until you cancel in Google Play. ' : 'One payment, handled by Razorpay. ';
+    foot = play ? 'Billed yearly to your Google Play account and renewed automatically until you cancel in Google Play. ' : 'One payment, handled by Razorpay, not refundable once access is added (see Refunds). ';
   }
   return '<div class="card set-card sub-card"><h3>Subscription</h3>'+body+'<div class="row" style="margin-top:10px">'+btns+'</div>'+
     '<div class="muted" style="margin-top:8px;font-size:12px">'+foot+subLegalLinks()+'</div></div>';
