@@ -15873,7 +15873,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "180";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "181";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -15977,7 +15977,7 @@ function feedbackCardHtml(){
 // Prices are set in Play Console (base plan + a first-year offer); the text below is only shown if Google does not supply them.
 // ============================================================================
 var SUB_SKU = "cse_companion_yearly", TRIAL_DAYS = 14, SUB_KEY = "dossier.sub.v1", ENT_KEY = "dossier.entitlement.v1", ENT_GRACE_DAYS = 14;
-var SUB_FALLBACK_PRICE = "₹199 for the first year (about ₹17 a month), then renews yearly at the price shown in Google Play";
+var SUB_FALLBACK_PRICE = "₹299 a year (about ₹25 a month), renewing yearly at the price shown in Google Play";
 var DAY_MS = 86400000;
 var sub = lsGetJSON(SUB_KEY, null) || {};
 var BILL = {svc:null, checked:false, active:false, details:null, busy:false, err:"", seen:!!lsGet("dossier.billing.seen"), sig:"", pend:null};
