@@ -9,3 +9,12 @@ vault/temp/
 
 *.log
 .DS_Store
+
+# Secrets must never be committed (payment keys, service accounts, signing keys)
+.env
+.env.*
+*.keystore
+*.jks
+sa.json
+serviceAccount*.json
+*-adminsdk-*.json

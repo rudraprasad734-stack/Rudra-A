@@ -43,6 +43,8 @@ const sig = (o, p) => crypto.createHmac("sha256", env.RAZORPAY_KEY_SECRET).updat
   const fail = async (fn) => { try { await fn(); return null; } catch (e) { return e.status || "err"; } };
 
   ok((await api.config()).amount === 29900, "config reports the price");
+  const badApi = makeApi({ db, rzp, env: Object.assign({}, env, { PRICE_PAISE: "50" }), now: () => t, verifyIdToken: async () => ({ uid: "userA" }) });
+  ok(await fail(() => badApi.order(req("tokA"))) === 500, "a price below 100 paise is refused (Razorpay minimum)");
   ok(await fail(() => api.order(req(null))) === 401, "order needs sign-in");
   ok(await fail(() => api.order(req("nope"))) === 401, "order rejects a bad token");
 

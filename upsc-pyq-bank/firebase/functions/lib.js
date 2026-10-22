@@ -7,7 +7,8 @@ const DAY = 86400000;
 
 function makeApi(deps) {
   const { db, verifyIdToken, rzp, env, now } = deps;
-  const price = () => +env.PRICE_PAISE || 29900;
+  // Razorpay's minimum is 100 paise (₹1); anything lower is a configuration mistake, so refuse rather than create a broken order
+  const price = () => { const v = +env.PRICE_PAISE || 29900; if (!(v >= 100)) throw httpError(500, "Price is not configured correctly."); return v; };
   const days = () => +env.PERIOD_DAYS || 365;
   const clock = now || Date.now;
 
