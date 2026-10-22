@@ -15983,7 +15983,7 @@ var SUB_FALLBACK_PRICE = "₹299 a year (about ₹25 a month), renewing yearly a
 var DAY_MS = 86400000;
 var sub = lsGetJSON(SUB_KEY, null) || {};
 var BILL = {svc:null, checked:false, active:false, details:null, busy:false, err:"", seen:!!lsGet("dossier.billing.seen"), sig:"", pend:null};
-function subSave(){ lsSet(SUB_KEY, JSON.stringify({t0:sub.t0||0, seen:sub.seen||0, off:sub.off||0, v:sub.v||0})); }
+function subSave(){ lsSet(SUB_KEY, JSON.stringify({t0:sub.t0||0, seen:sub.seen||0, off:sub.off||0, v:sub.v||0, u:sub.u||0})); }
 // "now" = the phone clock corrected by our own server time (learned whenever online), and it never goes backwards while offline,
 // so neither a wrong clock nor setting the clock back changes the trial.
 function subNow(){
@@ -15998,12 +15998,13 @@ function subClockSync(){
     if(n > 0){
       var off = n - Date.now();
       // a trial that began while the phone could not check the time (and may have had a wrong clock) is moved onto true time the first time it can
-      if(!sub.v){ if(sub.t0) sub.t0 += off - (+sub.off||0); sub.v = 1; }
+      if(sub.u){ if(sub.t0) sub.t0 += off - (+sub.off||0); sub.u = 0; }
+      sub.v = 1;
       sub.off = off; sub.seen = n; subSave();
     }
   }).catch(function(){});
 }
-function subStart(){ if(!sub.t0){ sub.t0 = subNow(); subSave(); } }
+function subStart(){ if(!sub.t0){ sub.t0 = subNow(); if(!sub.v) sub.u = 1; subSave(); } }
 function trialLeftDays(){ if(!sub.t0) return TRIAL_DAYS; return Math.max(0, Math.ceil((sub.t0 + TRIAL_DAYS*DAY_MS - subNow())/DAY_MS)); }
 function trialEndsText(){ var d = new Date((sub.t0||subNow()) + TRIAL_DAYS*DAY_MS); return d.toLocaleDateString(undefined, {day:"numeric", month:"long", year:"numeric"}); }
 function entCached(){ var e = lsGetJSON(ENT_KEY, null); return !!(e && e.ok && subNow() - e.at < ENT_GRACE_DAYS*DAY_MS); }
