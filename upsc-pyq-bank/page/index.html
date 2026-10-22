@@ -1336,15 +1336,17 @@
 #paywall .pw-fine,#paywall .pw-safe,#paywall .pw-links{font-size:12px;opacity:.78;margin-top:12px;line-height:1.45}
 #paywall a{color:#46C8B9}
 body.pw-on{overflow:hidden}
-#splash{position:fixed;inset:0;z-index:2147483000;background:#20262D;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:1;transition:opacity .38s ease}
+#splash{position:fixed;inset:-160px -4px;z-index:2147483000;background:#20262D;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:1;transition:opacity .38s ease}
 #splash.out{opacity:0}
+html.sp-on,html.sp-on body{background:#20262D !important}
+html.sp-on #app,html.sp-on #toast{visibility:hidden}
 #splash .sp-stage{position:relative;width:148px;height:148px}
 #splash .sp-r{position:absolute;inset:0;border-radius:50%;border:2px solid #46C8B9;opacity:0;animation:spIn .95s cubic-bezier(.25,.6,.35,1) both}
 #splash .sp-r:nth-child(2){animation-delay:.2s;border-width:1.5px}
 #splash .sp-r:nth-child(3){animation-delay:.4s;border-width:1px}
-#splash .sp-ic{position:absolute;inset:0;width:148px;height:148px;border-radius:50%;display:block;animation:spIc 1.45s ease both;box-shadow:0 0 0 0 rgba(70,200,185,.0)}
+#splash .sp-ic{position:absolute;inset:0;width:148px;height:148px;border-radius:50%;display:block;animation:spIc 2.2s ease both;box-shadow:0 0 0 0 rgba(70,200,185,.0)}
 @keyframes spIn{0%{transform:scale(2.9);opacity:0}30%{opacity:.85}100%{transform:scale(1);opacity:0}}
-@keyframes spIc{0%{transform:scale(1);opacity:1}55%{transform:scale(1);box-shadow:0 0 0 0 rgba(70,200,185,0)}74%{transform:scale(1.07);box-shadow:0 0 28px 6px rgba(70,200,185,.45)}100%{transform:scale(1);box-shadow:0 0 0 0 rgba(70,200,185,0)}}
+@keyframes spIc{0%{transform:scale(1);opacity:1;box-shadow:0 0 0 0 rgba(70,200,185,0)}40%{transform:scale(1);opacity:1;box-shadow:0 0 0 0 rgba(70,200,185,0)}58%{transform:scale(1.07);box-shadow:0 0 28px 6px rgba(70,200,185,.45)}100%{transform:scale(1.07);box-shadow:0 0 28px 6px rgba(70,200,185,.45)}}
 @media (prefers-reduced-motion:reduce){#splash .sp-r{display:none}#splash .sp-ic{animation:none}}
 </style>
 <div id="splash" aria-hidden="true"><div class="sp-stage"><i class="sp-r"></i><i class="sp-r"></i><i class="sp-r"></i><img class="sp-ic" src="./icon-512.png" width="148" height="148" alt=""></div></div>
@@ -1355,8 +1357,9 @@ body.pw-on{overflow:hidden}
   try{ if(sessionStorage.getItem("cse.splash")) skip = true; else sessionStorage.setItem("cse.splash", "1"); }catch(e){}
   if(navigator.webdriver && !/[?&]splash=1/.test(location.search)) skip = true;
   if(skip){ s.parentNode.removeChild(s); return; }
-  var t0 = 0, loaded = false, reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches, min = reduce ? 500 : 1450;
-  function done(){ if(!s.parentNode) return; s.className = "out"; setTimeout(function(){ if(s.parentNode) s.parentNode.removeChild(s); }, 400); }
+  document.documentElement.className += " sp-on";
+  var t0 = 0, loaded = false, reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches, min = reduce ? 500 : 2250;
+  function done(){ if(!s.parentNode) return; document.documentElement.className = document.documentElement.className.replace(/\bsp-on\b/, "").replace(/\s+$/, ""); s.className = "out"; setTimeout(function(){ if(s.parentNode) s.parentNode.removeChild(s); }, 400); }
   // the clock starts at the first frame actually drawn, so a slow page load cannot eat the animation
   function tick(){ if(!s.parentNode) return; if(loaded && t0 && Date.now() - t0 >= min) done(); else setTimeout(tick, 60); }
   if(window.requestAnimationFrame) requestAnimationFrame(function(){ t0 = Date.now(); }); else t0 = Date.now();
@@ -15870,7 +15873,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "178";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "179";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
