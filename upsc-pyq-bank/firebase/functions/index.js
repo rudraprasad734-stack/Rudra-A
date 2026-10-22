@@ -19,7 +19,7 @@ async function rzp(method, path, body) {
     body: body ? JSON.stringify(body) : undefined
   });
   const j = await r.json().catch(() => ({}));
-  if (!r.ok) { const e = new Error((j.error && j.error.description) || "Razorpay error"); e.status = 502; throw e; }
+  if (!r.ok) { const e = new Error((j.error && j.error.description) || "Razorpay error"); e.status = 500; throw e; }   // Razorpay refused or is down: a server error from the person's point of view
   return j;
 }
 

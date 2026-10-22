@@ -40,7 +40,7 @@ GitHub > the repository > Settings > Secrets and variables > Actions > **New rep
 
 ## Everyday jobs
 - **Give someone a free year** (a friend, a prize): Firebase console > Firestore > `entitlements` > add a document whose id is their user id (shown under Authentication > Users) with a number field `paidUntil` = the end date in milliseconds (example for 1 Jan 2028: 1830297600000).
-- **Refund:** Razorpay dashboard > Payments > the payment > Refund. The webhook removes the year.
+- **Refund (only for the cases in refund.html: duplicate, error, not delivered): Razorpay dashboard > Payments > the payment > Refund. The webhook removes the year.
 - **Change the price:** edit `PRICE_PAISE` (29900 = ₹299) in `functions/lib.js` (default) and the fallback text in the app, then re-run the deploy. Old payments are unaffected.
 
 ## Rules to keep
@@ -49,3 +49,33 @@ GitHub > the repository > Settings > Secrets and variables > Actions > **New rep
 
 ## 7. The switch (website stays free until you flip it)
 In `upsc-pyq-bank/page/index.html` the line `var WEB_PAY_ON = ... : false;` keeps the website free for everyone (nothing locked, no payment button). After steps 1 to 6 work in live mode, tell me "switch web payments on" and I will set it to `true`, bump the version and merge it. The Android app from Google Play is not affected by this switch.
+
+## Razorpay reference and checklist (so nothing surprises us later)
+
+**What Razorpay's own "integrate" prompt asks for, and where it already is here**
+| Razorpay asks for | Here |
+|---|---|
+| Backend endpoint that creates an order (`POST /v1/orders`, amount in paise, minimum 100) | `functions/lib.js` `order()`; refuses a price under 100 paise |
+| Checkout script `https://checkout.razorpay.com/v1/checkout.js` and a Pay button that opens the modal with `order_id` | `index.html` `loadRazorpay()` / `webPay()` (loaded only when someone taps Pay) |
+| Backend verify: HMAC-SHA256 of `order_id|payment_id` with the key secret, 400 on mismatch, never mark paid | `lib.js` `verify()`; also re-checks the order belongs to the signed-in account, the amount, and that the payment is captured |
+| Handle the user closing the modal and the `payment.failed` event, show an error | `webPay()` |
+| Secrets only in environment variables, key secret never in front-end code, `.env` in `.gitignore` | Secrets live in GitHub secrets / Google Secret Manager; `.gitignore` blocks `.env`, key files and service accounts |
+| Errors: 401 when not signed in, 400 for missing fields or bad signature, 500 when Razorpay fails | `lib.js` / `index.js` |
+Extras we add on top: webhook for payments the browser never confirmed, refund handling, duplicate-payment protection, one year added per payment, "paid until" saved against the Google account so the Android app unlocks too.
+
+**Razorpay website checks.** Razorpay reviews your site before live payments. It looks for these, all of which exist and are linked from the home page footer:
+- Terms: https://csecompanion.in/terms.html
+- Privacy policy: https://csecompanion.in/privacy.html
+- Cancellation and refund policy: https://csecompanion.in/refund.html
+- Contact us (email, what is sold, how it is delivered): https://csecompanion.in/contact.html
+- Price shown: "₹299 for one year" on the footer, the Contact page and the payment page.
+If Razorpay asks for a business address or phone number, give it to them in the dashboard; it does not need to appear on the site.
+
+**Links**
+- Standard Checkout steps: https://razorpay.com/docs/payments/payment-gateway/web-integration/standard/integration-steps/
+- Test cards and UPI for test mode: https://razorpay.com/docs/payments/payments/test-card-details/
+- Webhooks: https://razorpay.com/docs/webhooks/
+- Refunds: https://razorpay.com/docs/payments/refunds/
+- Settlements and payouts: https://razorpay.com/docs/payments/settlements/
+
+**Keys.** If a Key Secret is ever pasted anywhere public (chat, GitHub, screenshot), regenerate it in Razorpay (Account & Settings > API keys), update the `RAZORPAY_KEY_SECRET` secret in GitHub and re-run **Deploy payment server**.
