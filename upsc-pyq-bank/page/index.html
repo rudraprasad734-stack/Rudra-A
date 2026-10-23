@@ -215,6 +215,10 @@
   .dx .backup-card{background:var(--surface) !important; border-color:var(--line) !important;} .dx .backup-card h3{color:var(--ink);} .dx .backup-card .sub{color:var(--ink-soft);}
   .dx .hero{background:var(--surface) !important; border-color:var(--line) !important;}
   @media (max-width:380px){ .dx-grid{grid-template-columns:1fr;} }
+  .dx-wheelwrap{position:relative; margin:0 0 12px;} .dx-wheel{height:468px; overflow-y:auto; overflow-x:hidden; scroll-snap-type:y mandatory; scrollbar-width:none; overscroll-behavior:contain; -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - 52px),transparent 100%); mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - 52px),transparent 100%);} .dx-wheel::-webkit-scrollbar{display:none;}
+  .dm-i{height:408px; margin-bottom:12px; scroll-snap-align:start; scroll-snap-stop:always;} .dm-i .dx-mod{height:100%; overflow:hidden; margin:0;}
+  .dm-time{font-size:13px; font-weight:700; color:var(--ink-soft); margin:2px 0 6px; letter-spacing:.02em;}
+  .dm-dots{position:absolute; right:7px; top:50%; transform:translateY(-50%); z-index:2; display:flex; flex-direction:column; gap:7px; pointer-events:none;} .dm-dots i{width:7px; height:7px; border-radius:50%; background:var(--line);} .dm-dots i.on{height:20px; border-radius:6px; background:var(--tab-accent);}
   .dx-modsec{margin:0 0 12px;} .dx-modsec > .dx-k{margin:0 2px 8px;}
   .dx-mods{display:flex; gap:12px; overflow-x:auto; scroll-snap-type:x mandatory; padding:2px 2px 6px; scrollbar-width:none; -webkit-overflow-scrolling:touch;} .dx-mods::-webkit-scrollbar{display:none;}
   .dx-mods .dx-mod{flex:0 0 min(78%, 320px); scroll-snap-align:start; margin:0;}
@@ -13930,12 +13934,29 @@ function daysLogged(){
   var d = {}; studySessions.forEach(function(x){ if((x.actualDuration||0) > 0) d[x.date] = 1; });
   return Object.keys(d).length;
 }
-function pyqCardHtml(running){
-  // one recent question for the chapter each running subject is on now, in a drum you scroll
-  var drum = [];
+// What the dashboard's Active module wheel and Recent PYQ drum show, one entry each, in the same order:
+// today's study sessions (each with its own subject and chapter); if today has none, one entry per running subject.
+var dxModIdx = 0;
+function dashItems(states, running){
+  var out = [];
+  planSessionsOn(todayKey).filter(function(x){ return x.kind==="study" && x.topicId && x.sessionNumber; }).sort(function(a,b){ return a.sessionNumber-b.sessionNumber; }).forEach(function(x){
+    var m = states.filter(function(st){ return st.name===x.subject; })[0], l = null; if(!m) return;
+    for(var i=0; i<m.leaves.length; i++) if(m.leaves[i].id===x.topicId){ l = m.leaves[i]; break; }
+    if(l) out.push({m:m, leaf:l, tag:"SESSION "+x.sessionNumber, time:fmt12(x.startTime)+" \u2013 "+fmt12(x.endTime), over:x.status==="completed"||x.status==="skipped"||x.status==="missed"});
+  });
+  // a running subject with no session today (or fewer sessions than subjects) still gets its card, so none ever disappears
   running.forEach(function(m){
-    var l = nextLeaf(m); if(!l) return;
-    var ready = !!(pyqIdx || (l.id in pyqMemo)), ql = ready ? pyqForLeaf(l).slice().sort(function(x,y){ return y.year-x.year; }) : [], qq = ql[0], tag = sessionTagFor(m.name);
+    if(out.some(function(it){ return it.m.name===m.name; })) return;
+    var l = nextLeaf(m); if(l) out.push({m:m, leaf:l, tag:sessionTagFor(m.name), time:"", over:false});
+  });
+  return out;
+}
+function pyqCardHtml(items){
+  // one recent question for the chapter of each entry, in a drum; it follows the Active module wheel
+  var drum = [];
+  items.forEach(function(it){
+    var m = it.m, l = it.leaf; if(!l) return;
+    var ready = !!(pyqIdx || (l.id in pyqMemo)), ql = ready ? pyqForLeaf(l).slice().sort(function(x,y){ return y.year-x.year; }) : [], qq = ql[0], tag = it.tag;
     drum.push('<div class="dr-i" style="--bc:var('+m.color+')"><div class="dr-s">'+esc(m.name)+(tag ? ' <em>'+esc(tag.replace("SESSIONS","S").replace("SESSION","S"))+'</em>' : '')+'</div><div class="dr-c">'+esc(l.unit)+'</div>'+
       (!ready ? '<p class="muted">Getting your question ready\u2026</p>' : qq ? '<p>'+esc(String(qq.text).replace(/\s+/g," ").trim())+'</p><small>'+(qq.exam==="prelims" ? "Prelims" : (qq.exam==="optional" ? "Optional" : "Mains"))+" "+qq.year+'</small><button type="button" class="dx-btn" data-pyq="'+esc(l.id)+'" data-subj="'+esc(m.name)+'">See more PYQs ('+ql.length+')</button>'
           : '<p>No question in the bank matched this chapter yet.</p><button type="button" class="dx-btn2" data-dx="pyq">Open PYQ Bank</button>')+'</div>');
@@ -13948,9 +13969,11 @@ function refreshPyqCard(){
   var host = document.getElementById("view-dashboard"), card = host && host.querySelector(".dx-pyq");
   if(!card || !studyPlan) return;
   var tmp = document.createElement("div");
-  tmp.innerHTML = pyqCardHtml(pathCtx(subjectStates(studyPlan)).lanes.map(function(l){ return l.subj; }));
+  var sts = subjectStates(studyPlan);
+  tmp.innerHTML = pyqCardHtml(dashItems(sts, pathCtx(sts).lanes.map(function(l){ return l.subj; })));
   card.replaceWith(tmp.firstChild);
   bindDrum(host);
+  var dr = host.querySelector("#dxDrum"); if(dr && dr.children[dxModIdx]){ var it = dr.children[dxModIdx]; dr.scrollTop = it.offsetTop - (dr.clientHeight - it.offsetHeight)/2; }
 }
 // Today's progress as a pie: each slice is one subject (or essay / test / PYQ practice / current affairs), its angle is the planned time,
 // the solid part of the slice is the time actually studied (its area grows with the share done), the pale part is what is still to do.
@@ -13997,26 +14020,28 @@ function dxPlanHtml(){
   var firstName = act ? act.name : "";
   var ring = '<div class="dx-card dx-journey"><div class="dx-ring" style="--p:'+op.pct+'"><b>'+op.pct+'%</b><span>COMPLETE</span></div>'+
     '<div class="dx-jt"><h3>UPSC Journey Progress</h3><div>Current status:</div><div>'+op.done+' / '+op.total+' chapters completed</div><div>'+daysLogged()+' day'+(daysLogged()===1 ? "" : "s")+' logged</div></div></div>';
-  function modCard(m){
-    var n = nextLeaf(m);
-    var tag = sessionTagFor(m.name);
+  function modCard(m, it){
+    var n = it ? it.leaf : nextLeaf(m);
+    var tag = it ? it.tag : sessionTagFor(m.name);
     return '<div class="dx-card dx-mod" style="--bc:var('+m.color+')"><div class="dx-k">ACTIVE MODULE'+(tag ? ' <span class="dx-sess">'+esc(tag)+'</span>' : '')+'</div><svg class="dx-book" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 14h20a6 6 0 016 6v32a5 5 0 00-5-5H8z"/><path d="M56 14H36a6 6 0 00-6 6v32a5 5 0 015-5h21z"/></svg>'+
-      '<div class="dx-subj">'+esc(m.name)+'</div><div class="dx-bar"><i style="width:'+m.pct+'%"></i></div><div class="dx-pc"><b>'+m.pct+'% COMPLETE</b><small>('+m.done+' of '+m.total+' chapters)</small></div>'+
-      (n ? '<div class="dx-next" role="button" tabindex="0" data-go="subjday" data-subj="'+esc(m.name)+'" data-leaf="'+esc(n.id)+'">Next: <b>'+esc(n.unit)+'</b></div>' : '')+
+      '<div class="dx-subj">'+esc(m.name)+'</div>'+(it && it.time ? '<div class="dm-time">'+esc(it.time)+'</div>' : '')+'<div class="dx-bar"><i style="width:'+m.pct+'%"></i></div><div class="dx-pc"><b>'+m.pct+'% COMPLETE</b><small>('+m.done+' of '+m.total+' chapters)</small></div>'+
+      (n ? '<div class="dx-next" role="button" tabindex="0" data-go="subjday" data-subj="'+esc(m.name)+'" data-leaf="'+esc(n.id)+'">'+(it && it.over && isDone(n.id) ? "Done: " : "Next: ")+'<b>'+esc(n.unit)+'</b></div>' : '')+
       '<button type="button" class="dx-btn" data-go="subjday" data-subj="'+esc(m.name)+'">Go to Planner</button>'+
       '<button type="button" class="dx-btn2" data-go="priority" data-subj="'+esc(m.name)+'">Topic Priority (Tiers) &rsaquo;</button></div>';
   }
   // every subject running right now: the active one plus any pinned to a session slot
   var running = pathCtx(states).lanes.map(function(l){ return l.subj; });
-  var module = running.length
-    ? (running.length > 1 ? '' : modCard(running[0]))
+  var items = dashItems(states, running);
+  var module = items.length > 1
+    ? '<div class="dx-wheelwrap"><div class="dm-dots" id="dmDots" aria-hidden="true">'+items.map(function(_, i){ return '<i'+(i===0 ? ' class="on"' : '')+'></i>'; }).join("")+'</div><div class="dx-wheel" id="dxMods" tabindex="0" role="group" aria-label="Active module, one card per session. Scroll up or down.">'+items.map(function(it){ return '<div class="dm-i">'+modCard(it.m, it)+'</div>'; }).join("")+'</div></div>'
+    : items.length ? modCard(items[0].m, items[0])
+    : running.length
+    ? modCard(running[0])
     : '<div class="dx-card dx-mod"><div class="dx-k">ALL SUBJECTS COMPLETED</div><div class="dx-subj">Well done</div><button type="button" class="dx-btn" data-go="day">Open planner</button></div>';
-  var mods = running.length > 1
-    ? '<div class="dx-modsec"><div class="dx-k">RUNNING IN PARALLEL &middot; '+running.length+' SUBJECTS</div><div class="dx-mods">'+running.map(modCard).join("")+'</div></div>'
-    : "";
+  var mods = "";
   var pace = '<div class="dx-card dx-pace"><div class="dx-k">TODAY'+(tp ? ' &middot; '+tpct+'%' : '')+'</div>'+(tp ? dxPieHtml(pieGroups, pathCtx(states).lanes) : '<div class="dx-seg"><i style="flex:1"></i></div>')+
     '<small>'+(tp ? 'Planned '+esc(fmtDurMin(tp))+' &middot; Actual '+esc(fmtDurMin(ta))+(ta>tp ? ' (over plan)' : '') : 'Nothing planned today')+'</small>'+'</div>';
-  var pyq = pyqCardHtml(running);
+  var pyq = pyqCardHtml(items);
   var path = pathHtml(states);
   // this week at a glance: the same ring and day bars as Planner > Insights
   var wr = weekReview(sundayOf(parseKey(todayKey))), wcount = wr.done + wr.missed + wr.skipped, wrate = wcount ? Math.round(100*wr.done/wcount) : 0, week = "";
@@ -14045,8 +14070,41 @@ function bindDrum(host){
   dr.addEventListener("scroll", function(){ if(!raf) raf = requestAnimationFrame(upd); }, {passive:true});
   upd();
 }
+// The Active module wheel drives the PYQ drum: when the card in view changes, the question below changes to that session's subject.
+function bindWheel(host){
+  var w = host.querySelector("#dxMods"); if(!w) return;
+  var items = [].slice.call(w.querySelectorAll(".dm-i")), dots = [].slice.call(host.querySelectorAll("#dmDots i")), cur = -1, raf = 0;
+  function pyqTo(i, smooth){
+    var dr = host.querySelector("#dxDrum"); if(!dr || !dr.children[i]) return;
+    var it = dr.children[i], top = it.offsetTop - (dr.clientHeight - it.offsetHeight)/2;
+    if(smooth && dr.scrollTo) dr.scrollTo({top:top, behavior:"smooth"}); else dr.scrollTop = top;
+  }
+  function upd(){
+    raf = 0;
+    var best = 0, bd = 1e9;
+    items.forEach(function(it, i){ var d = Math.abs(it.offsetTop - w.scrollTop); if(d < bd){ bd = d; best = i; } });
+    if(best === cur) return;
+    var first = cur < 0; cur = best; dxModIdx = best;
+    dots.forEach(function(d, i){ d.classList.toggle("on", i===best); });
+    if(!first) pyqTo(best, true);
+  }
+  w.addEventListener("scroll", function(){ if(!raf) raf = requestAnimationFrame(upd); }, {passive:true});
+  // open on the session you are in now (or the next one not finished yet), not always Session 1
+  var nowM = toMin(nowHM()), start = 0, found = false;
+  planSessionsOn(todayKey).filter(function(x){ return x.kind==="study" && x.topicId && x.sessionNumber; }).sort(function(a,b){ return a.sessionNumber-b.sessionNumber; }).forEach(function(x, i){
+    if(found || i >= items.length) return;
+    if(x.status!=="completed" && x.status!=="skipped" && x.status!=="missed" && toMin(x.endTime) > nowM){ start = i; found = true; }
+  });
+  if(dxModIdx > 0 && dxModIdx < items.length && !found) start = dxModIdx;
+  if(dxModIdx > 0 && dxModIdx < items.length) start = dxModIdx;   // keep the place after a refresh
+  var placed = false;
+  function place(){ placed = true; if(start && items[start]) w.scrollTop = items[start].offsetTop; upd(); pyqTo(cur < 0 ? 0 : cur, false); }
+  // the dashboard sits under the timer until it is revealed, so it has no size yet: place the wheel the first time it can be measured
+  if(w.clientHeight) place();
+  else if(window.ResizeObserver){ var ro = new ResizeObserver(function(){ if(!placed && w.clientHeight){ ro.disconnect(); place(); } }); ro.observe(w); }
+}
 function bindPlannerDash(host){
-  bindDrum(host);
+  bindDrum(host); bindWheel(host);
   var a = host.querySelector("#dashSetupPlan"), b = host.querySelector("#dashOpenPlanner");
   if(a) a.addEventListener("click", function(){ setTab("planner"); });
   if(b) b.addEventListener("click", function(){ setTab("planner"); });
@@ -15915,7 +15973,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "191";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "192";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
