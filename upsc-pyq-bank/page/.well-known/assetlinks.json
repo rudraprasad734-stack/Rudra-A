@@ -1,10 +1,15 @@
-[{
-  "relation": ["delegate_permission/common.handle_all_urls"],
-  "target": {
-    "namespace": "android_app",
-    "package_name": "in.csecompanion.app",
-    "sha256_cert_fingerprints": [
-      "AC:D3:2A:D7:D9:7E:05:A8:4B:FB:E3:BF:42:48:9C:42:8C:D2:3B:FE:0E:BF:3C:F9:52:42:E3:53:40:CF:27:16"
-    ]
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "in.csecompanion.app",
+      "sha256_cert_fingerprints": [
+        "AC:D3:2A:D7:D9:7E:05:A8:4B:FB:E3:BF:42:48:9C:42:8C:D2:3B:FE:0E:BF:3C:F9:52:42:E3:53:40:CF:27:16",
+        "7D:1B:5D:FD:F7:96:1B:B7:A1:20:AC:E6:A2:58:A8:70:4C:95:49:30:75:1E:95:03:7A:3C:9E:07:C3:76:6B:BF"
+      ]
+    }
   }
-}]
+]
