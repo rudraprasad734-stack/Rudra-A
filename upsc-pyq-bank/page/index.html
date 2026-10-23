@@ -1080,6 +1080,8 @@
   .scope summary::-webkit-details-marker{display:none;}
   .scope .cnt{font-size:12px; color:var(--ink-soft); font-weight:600;}
   .scope .sacts{margin-left:auto; display:flex; gap:6px;}
+  .pl-done{text-align:center;} .pl-done h2{margin:10px 0 8px;} .pl-done p{color:var(--ink-soft); line-height:1.5; margin:0 0 14px;} .pl-done .modal-actions{justify-content:center;}
+  .pl-done .pd-mark{width:64px; height:64px; margin:4px auto 0; border-radius:50%; display:grid; place-items:center; font-size:32px; font-weight:800; color:#fff; background:linear-gradient(135deg,#2de2d6,#3d6eff); box-shadow:0 0 0 8px color-mix(in srgb,#3d6eff 16%,transparent), 0 8px 28px color-mix(in srgb,#3d6eff 45%,transparent);}
   .scope summary::before{content:"\25B8"; font-size:15px; color:var(--ink-soft); transition:transform .15s;} .scope[open] summary::before{transform:rotate(90deg);}
   .scope.all{background:color-mix(in srgb,#3d6eff 14%,var(--surface)); border-color:#3d6eff; border-left-color:#3d6eff;}
   .scope.some{background:color-mix(in srgb,#3d6eff 6%,var(--surface));}
@@ -8225,9 +8227,19 @@ function wizGenerate(){
   plannerEditing = false; wiz = null; clearWizDraft();
   plannerView = wasEditing ? plannerView : "overview";
   plannerLanding = wasEditing ? null : v;
-  toast("Plan generated. Yearly, monthly, weekly and daily plans are ready.");
   setTab("planner");
   scrollPlannerTop();
+  if(wasEditing){ toast("Plan updated. Yearly, monthly, weekly and daily plans are ready."); return; }
+  planReadyModal();
+}
+// Shown once, when the plan is first created: reassures the student, then takes them to the Dashboard (where the timer is).
+function planReadyModal(){
+  var m = showModal('<div class="modal card pl-done" role="dialog" aria-modal="true" aria-labelledby="pdTitle">'+
+    '<div class="pd-mark" aria-hidden="true">\u2713</div>'+
+    '<h2 id="pdTitle">Congratulations! Your planner is ready</h2>'+
+    '<p>Sit back, relax and just study. We take care of the rest of your preparation: what to study today, what comes next, and keeping your plan on track as you go.</p>'+
+    '<div class="modal-actions"><button class="btn primary" id="pdGo">Start studying &rarr;</button></div></div>', false);
+  m.querySelector("#pdGo").addEventListener("click", function(){ closeModal(); setTab("dashboard"); });
 }
 
 // ============================================================================
