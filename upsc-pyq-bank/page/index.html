@@ -1080,6 +1080,15 @@
   .scope summary::-webkit-details-marker{display:none;}
   .scope .cnt{font-size:12px; color:var(--ink-soft); font-weight:600;}
   .scope .sacts{margin-left:auto; display:flex; gap:6px;}
+  .pl-done{text-align:center;} .pl-done h2{margin:10px 0 8px;} .pl-done p{color:var(--ink-soft); line-height:1.5; margin:0 0 14px;} .pl-done .modal-actions{justify-content:center;}
+  .pl-done .pd-mark{width:64px; height:64px; margin:4px auto 0; border-radius:50%; display:grid; place-items:center; font-size:32px; font-weight:800; color:#fff; background:linear-gradient(135deg,#2de2d6,#3d6eff); box-shadow:0 0 0 8px color-mix(in srgb,#3d6eff 16%,transparent), 0 8px 28px color-mix(in srgb,#3d6eff 45%,transparent);}
+  .scope summary::before{content:"\25B8"; font-size:15px; color:var(--ink-soft); transition:transform .15s;} .scope[open] summary::before{transform:rotate(90deg);}
+  .scope .subline{flex:1 1 100%; display:flex; align-items:center; gap:10px; min-width:0; margin-top:-2px;}
+  .scope .sgroups{flex:1 1 auto; min-width:0; font-size:12px; color:var(--ink-soft); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;}
+  .scope .vc{flex:0 0 auto; font-size:12.5px; font-weight:700; color:#5aa0ff; text-decoration:underline; text-underline-offset:3px;} .scope .vc-c{display:none;} .scope[open] .vc-o{display:none;} .scope[open] .vc-c{display:inline;}
+  .scope.all{background:color-mix(in srgb,#3d6eff 14%,var(--surface)); border-color:#3d6eff; border-left-color:#3d6eff;}
+  .scope.some{background:color-mix(in srgb,#3d6eff 6%,var(--surface));}
+  .scope .sacts .btn.on{background:linear-gradient(135deg,#6d4aff,#3d6eff); color:#fff; border-color:transparent;}
   .grp{border-top:1px solid var(--line-soft); padding:8px 0;}
   .gh, .gh2{display:flex; align-items:center; gap:8px; flex-wrap:wrap;} .gh2 .btn{margin-left:auto;}
   .leafs{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:4px 12px; margin:6px 0 2px 22px;}
@@ -8021,11 +8030,13 @@ function wzPriority(w){
 }
 function wzTopics(w){
   var cat = wizCatalog(w);
-  return '<h3>Select topics and syllabus</h3><p class="hint">Your plan only tracks what you select here. A subject is complete when every selected chapter is done.</p>'+
+  return '<h3>Select topics and syllabus</h3><p class="hint">Your plan only tracks what you select here. A subject is complete when every selected chapter is done. Tap a subject to see or change its chapters.</p>'+
     w.order.map(function(n, i){
       var e = cat.map[n], leaves = catalogLeaves(e), on = leaves.filter(function(l){ return w.sel[l.id]; }).length, col = BRICK_COLORS[i % BRICK_COLORS.length];
-      return '<details class="scope" data-sub="'+esc(n)+'" style="--bc:var('+col+')"'+(w.open[n]?" open":"")+'><summary><b>'+(i+1)+'. '+esc(n)+'</b><span class="cnt">'+on+' / '+leaves.length+' chapters</span>'+
-        '<span class="sacts"><button type="button" class="btn ghost sm" data-wa="scopeAll" data-v="'+esc(n)+'">Select all</button><button type="button" class="btn ghost sm" data-wa="scopeNone" data-v="'+esc(n)+'">Clear</button></span></summary>'+
+      var allOn = leaves.length > 0 && on === leaves.length;
+      return '<details class="scope'+(allOn?" all":(on?" some":""))+'" data-sub="'+esc(n)+'" style="--bc:var('+col+')"'+(w.open[n]?" open":"")+'><summary><b>'+(i+1)+'. '+esc(n)+'</b><span class="cnt">'+on+' / '+leaves.length+' chapters</span>'+
+        '<span class="sacts"><button type="button" class="btn ghost sm'+(allOn?" on":"")+'" data-wa="scopeAll" data-v="'+esc(n)+'" aria-pressed="'+allOn+'">'+(allOn?"\u2713 All selected":"Select all")+'</button><button type="button" class="btn ghost sm" data-wa="scopeNone" data-v="'+esc(n)+'">Clear</button></span>'+
+        '<span class="subline"><span class="sgroups">'+esc(Object.keys(e.topics).join(" \u00B7 "))+'</span><span class="vc"><span class="vc-o">View chapters</span><span class="vc-c">Hide chapters</span></span></span></summary>'+
         Object.keys(e.topics).map(function(g){
           var gl = e.topics[g].map(function(u){ return n+"|"+g+"|"+u; }), gon = gl.filter(function(id){ return w.sel[id]; }).length;
           return '<div class="grp"><label class="gh"><input type="checkbox" data-selgroup="'+esc(n)+'" data-g="'+esc(g)+'"'+(gon===gl.length?" checked":"")+'> <b>'+esc(g)+'</b> <span class="cnt">'+gon+'/'+gl.length+'</span></label><div class="leafs">'+
@@ -8181,7 +8192,7 @@ function wizAction(a, b){
     case "rmSubject": w.order.splice(+v,1); wizSync(w); break;
     case "allSubjects": w.order = wizCatalog(w).order.slice(); wizSync(w); break;
     case "clearSubjects": w.order = []; wizSync(w); break;
-    case "scopeAll": case "scopeNone": var cat = wizCatalog(w); catalogLeaves(cat.map[v]).forEach(function(l){ if(a==="scopeAll") w.sel[l.id]=1; else delete w.sel[l.id]; }); w.open[v] = true; break;
+    case "scopeAll": case "scopeNone": var cat = wizCatalog(w); catalogLeaves(cat.map[v]).forEach(function(l){ if(a==="scopeAll") w.sel[l.id]=1; else delete w.sel[l.id]; }); break;
     case "everyDay": w.acts[v].days = [0,1,2,3,4,5,6]; w.acts[v].mode = "weekly"; break;
     case "addDate": var inp = document.getElementById("actDate_"+v); if(inp && inp.value && w.acts[v].dates.indexOf(inp.value)<0) w.acts[v].dates.push(inp.value); break;
     case "rmDate": var pr = v.split("|"), ds = w.acts[pr[0]].dates, di = ds.indexOf(pr[1]); if(di>=0) ds.splice(di,1); break;
@@ -8220,9 +8231,19 @@ function wizGenerate(){
   plannerEditing = false; wiz = null; clearWizDraft();
   plannerView = wasEditing ? plannerView : "overview";
   plannerLanding = wasEditing ? null : v;
-  toast("Plan generated. Yearly, monthly, weekly and daily plans are ready.");
   setTab("planner");
   scrollPlannerTop();
+  if(wasEditing){ toast("Plan updated. Yearly, monthly, weekly and daily plans are ready."); return; }
+  planReadyModal();
+}
+// Shown once, when the plan is first created: reassures the student, then takes them to the Dashboard (where the timer is).
+function planReadyModal(){
+  var m = showModal('<div class="modal card pl-done" role="dialog" aria-modal="true" aria-labelledby="pdTitle">'+
+    '<div class="pd-mark" aria-hidden="true">\u2713</div>'+
+    '<h2 id="pdTitle">Congratulations! Your planner is ready</h2>'+
+    '<p>Sit back, relax and just study. We take care of the rest of your preparation: what to study today, what comes next, and keeping your plan on track as you go.</p>'+
+    '<div class="modal-actions"><button class="btn primary" id="pdGo">Start studying &rarr;</button></div></div>', false);
+  m.querySelector("#pdGo").addEventListener("click", function(){ closeModal(); setTab("dashboard"); });
 }
 
 // ============================================================================
@@ -15894,7 +15915,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "190";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "191";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
