@@ -15973,7 +15973,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "192";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "193";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -16350,11 +16350,18 @@ function renderSettings(){
       // match the picker buttons only: <html> itself carries data-ui / data-theme, so a bare [data-...] lookup would match every click
       var up = e.target.closest ? e.target.closest("[data-upd]") : null;
       if(up){
+        // Ask the server which build is live (straight from the network, not from any cache) and compare it with the one running here.
         toast("Checking for updates\u2026");
-        var rg = window.__swReg;
-        (rg ? rg.update() : Promise.resolve()).catch(function(){}).then(function(){
-          setTimeout(function(){ if(rg && (rg.installing || rg.waiting)) toast("Updating\u2026"); else toast("You already have the latest version."); }, 1800);
-        });
+        fetch("./sw.js?c="+Date.now(), {cache:"no-store"}).then(function(r){ if(!r.ok) throw new Error("x"); return r.text(); }).then(function(t){
+          var m = /cse-companion-v(\d+)/.exec(t), live = m ? +m[1] : 0;
+          if(!live || live <= +APP_BUILD){ toast("You already have the latest version (build "+APP_BUILD+")."); return; }
+          toast("Updating to build "+live+"\u2026");
+          // clear the app's copies (not the sounds, not your progress) and register again, so every file comes fresh from the server
+          var regs = navigator.serviceWorker ? navigator.serviceWorker.getRegistrations() : Promise.resolve([]);
+          Promise.all([regs.then(function(rs){ return Promise.all(rs.map(function(r){ return r.unregister(); })); }),
+            window.caches ? caches.keys().then(function(ks){ return Promise.all(ks.filter(function(k){ return k.indexOf("upsc-sounds")!==0; }).map(function(k){ return caches.delete(k); })); }) : null
+          ]).catch(function(){}).then(function(){ setTimeout(function(){ location.reload(); }, 600); });
+        }).catch(function(){ toast("Could not check. Connect to the internet and try again."); });
         return;
       }
       var sd = e.target.closest ? e.target.closest("[data-snd]") : null;

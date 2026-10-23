@@ -1,7 +1,7 @@
 // CSE Companion service worker: caches the app shell so the page loads and
 // runs with zero network connectivity after the first successful visit.
 // Bump CACHE_NAME on any deploy that changes cached files so clients refresh.
-const CACHE_NAME = "cse-companion-v192";
+const CACHE_NAME = "cse-companion-v193";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -1126,7 +1126,9 @@ function cacheable(req, res) {
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then((cache) => cache.addAll(APP_SHELL).then(() => Promise.all(FIGURES.map((u) => cache.add(u).catch(() => {})))))
+      // fetch each file past the browser's own HTTP cache ("reload"), or a new version installed within minutes of a deploy could store the old files
+      .then((cache) => Promise.all(APP_SHELL.map((u) => fetch(new Request(u, { cache: "reload" })).then((res) => { if (!res.ok) throw new Error(u + " " + res.status); return cache.put(u, res); })))
+        .then(() => Promise.all(FIGURES.map((u) => cache.add(u).catch(() => {})))))
       .then(() => self.skipWaiting())
   );
 });
@@ -1146,6 +1148,8 @@ self.addEventListener("fetch", (event) => {
   if (new URL(req.url).pathname.indexOf("/audio/") >= 0) return;
   // trusted-time probe used by the subscription trial: always straight to the network
   if (new URL(req.url).pathname.indexOf("/__time") >= 0) return;
+  // "Check for updates" asks the network which build is live: never answer that from (or store it in) the cache
+  if (/\/sw\.js$/.test(new URL(req.url).pathname) && new URL(req.url).searchParams.has("c")) return;
 
   event.respondWith(
     caches.match(req).then((cached) => {
