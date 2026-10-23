@@ -1,0 +1,7 @@
+{
+  "name": "cse-companion-pay",
+  "private": true,
+  "type": "module",
+  "scripts": { "test": "node test.mjs" },
+  "devDependencies": { "wrangler": "^3.90.0" }
+}

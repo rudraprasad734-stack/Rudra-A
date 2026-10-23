@@ -1,5 +1,7 @@
 # Web payments with Razorpay: setup
 
+> **Current server: Cloudflare Worker (free, no card).** Follow `../cloudflare/SETUP.md` for the server and secrets. Steps 2 to 5 below describe the older Firebase Blaze route and are kept only for reference; the Razorpay, test and go-live steps still apply.
+
 One payment on the website gives 12 months, saved against the person's Google account. The same account is unlocked in the Android app too (no second payment). Everything below can be done from a phone browser. Nothing here is live until you finish step 6, and the website stays free until the switch in step 7 is turned on.
 
 How it fits together: the website asks our payment server for an order, the person pays in Razorpay's window, the server checks the payment is real, then writes a "paid until" date into the database (`entitlements/{uid}`). Only the server can write that date (database rules). The app reads it.
