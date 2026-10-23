@@ -7095,7 +7095,7 @@ function sessLogCard(s, states){
       '<label>Actual end<input type="time" data-sf="actualEnd" value="'+esc(s.actualEnd)+'"></label>'+
       '<span class="sess-act">Actual study time <b>'+(s.actualDuration ? esc(fmtDurMin(s.actualDuration)) : "&mdash;")+'</b>'+(s.breakMin>0 ? ' <small>+ '+esc(fmtDurMin(s.breakMin))+' of breaks, not counted</small>' : "")+'</span>'+
     '</div><div class="sess-warn" role="alert" hidden></div>'+
-    '<div class="sess-links"><button class="link-btn" data-sact="same">Same as scheduled</button>'+(s.kind==="study" && s.topicId ? '<button class="link-btn" data-sact="chapter">'+(leafStatus(s.topicId)==="completed" ? "Chapter completed ✓" : "Mark chapter complete")+'</button>' : "")+(s.origin==="auto" ? "" : '<button class="link-btn" data-sact="edit">Edit session</button>')+'</div></details>'+
+    '<div class="sess-links"><button class="link-btn" data-sact="same">Same as scheduled</button>'+(s.kind==="study" && s.topicId ? '<button class="link-btn" data-sact="chapter">'+(leafStatus(s.topicId)==="completed" ? "Chapter completed ✓" : "Mark current chapter complete")+'</button>' : "")+(s.origin==="auto" ? "" : '<button class="link-btn" data-sact="edit">Edit session</button>')+'</div></details>'+
   '</div>';
 }
 function bindSessionCards(host){
@@ -8332,7 +8332,7 @@ function activeCardHtml(states, forDash){
     var nl = nextLeaf(m);
     return '<div class="card active-card" style="--bc:var('+m.color+')"><div class="ac-k">'+(multi ? "RUNNING NOW" : "CURRENTLY ACTIVE")+(sessionTagFor(m.name) ? ' &middot; '+sessionTagFor(m.name) : "")+'</div><div class="ac-name">'+esc(m.name.toUpperCase())+'</div><div class="ac-pct">'+m.pct+'% &middot; <span class="ac-cnt">'+m.done+' / '+m.total+' chapters</span></div>'+
       '<div class="pbar"><i style="width:'+m.pct+'%"></i></div>'+
-      (nl ? '<div class="ac-next" role="button" tabindex="0" data-go="subjday" data-subj="'+esc(m.name)+'" data-leaf="'+esc(nl.id)+'" title="Open this chapter in the planner">Next: <b>'+esc(nl.unit)+'</b> <small>'+esc(nl.group)+'</small>'+tierBadge(nl)+'</div>' : "")+
+      (nl ? '<div class="ac-next" role="button" tabindex="0" data-go="subjday" data-subj="'+esc(m.name)+'" data-leaf="'+esc(nl.id)+'" title="Open this chapter in the planner">Currently running: <b>'+esc(nl.unit)+'</b> <small>'+esc(nl.group)+'</small>'+tierBadge(nl)+'</div>' : "")+
       '<div class="ac-links"><button type="button" class="link-btn" data-go="priority" data-subj="'+esc(m.name)+'">Topic priority (Tiers) &rsaquo;</button></div>'+
       (forDash || multi ? "" : '<div class="ac-actions"><button type="button" class="btn ghost sm" data-pa="undoLast">Undo last completion</button></div>')+'</div>';
   }
@@ -8373,7 +8373,7 @@ function planTimelineHtml(plan, states){
     else { tag = "Studying now"; when = r ? "until " + dm(r.hi) : ""; }
     return '<div class="tl2'+(locked ? " locked" : "")+(st.state==="completed" ? " done" : "")+'" style="--c:var('+st.color+')" data-go="subject" data-subj="'+esc(st.name)+'" role="button" tabindex="0">'
       +'<div class="tl2-h"><span class="tl2-n">'+(locked ? "🔒 " : subjEmoji(st.name)+" ")+esc(nm)+'</span><span class="tl2-w"><b>'+tag+'</b>'+(when ? " &middot; "+esc(when) : "")+'</span></div>'
-      +'<div class="tl2-t"><i style="width:'+st.pct+'%"></i></div><div class="tl2-p">'+st.pct+'% done'+(function(){ var nl = st.state==="completed" || locked ? null : nextLeaf(st); return nl ? ' &middot; Next: <b>'+esc(nl.unit)+'</b>' : ""; })()+'</div></div>';
+      +'<div class="tl2-t"><i style="width:'+st.pct+'%"></i></div><div class="tl2-p">'+st.pct+'% done'+(function(){ var nl = st.state==="completed" || locked ? null : nextLeaf(st); return nl ? ' &middot; Running now: <b>'+esc(nl.unit)+'</b>' : ""; })()+'</div></div>';
   }).join("");
   return '<div class="card tlc"><div class="k2">YOUR SUBJECTS, ONE AFTER ANOTHER</div>'+rows+'<div class="tl-key"><span>Bar = how much you have finished</span><span>🔒 starts after the one above</span></div></div>';
 }
@@ -8472,7 +8472,7 @@ function logHelpHtml(){
         '<li><b>Studied exactly as planned?</b> Tap <i>Same as scheduled</i>. It fills in the planned times and marks the session Completed.</li>'+
         '<li><b>Studied at a different time, or without your phone?</b> Type the real <i>Actual start</i> and <i>Actual end</i>. Tap an empty time and the clock opens on the planned time: choose yours. The end must be after the start. It does not have to match the planned slot, and it can be longer.</li>'+
         '<li><b>Missed a session?</b> You can come back any time. Use the <b>&lsaquo; &rsaquo;</b> arrows above to open that day and enter what you studied.</li>'+
-        '<li><b>Finished the chapter?</b> Tap <i>Mark chapter complete</i>. The planner then moves to the next chapter.</li>'+
+        '<li><b>Finished the chapter?</b> Tap <i>Mark current chapter complete</i>. The planner then moves to the next chapter.</li>'+
       '</ol>'+
       '<p><b>The Status updates itself.</b> Studied the full planned time: <i>Completed</i>. Studied part of it: <i>In progress</i>. A Missed or Skipped session comes back as soon as you enter time. You can still change the Status yourself.</p>'+
       '<p><b>Why it matters.</b> Completed sessions finish chapters and unlock the next subject. Your actual time feeds the Today bar, your study streak and the weekly hours in Insights.</p>'+
@@ -14025,7 +14025,7 @@ function dxPlanHtml(){
     var tag = it ? it.tag : sessionTagFor(m.name);
     return '<div class="dx-card dx-mod" style="--bc:var('+m.color+')"><div class="dx-k">ACTIVE MODULE'+(tag ? ' <span class="dx-sess">'+esc(tag)+'</span>' : '')+'</div><svg class="dx-book" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 14h20a6 6 0 016 6v32a5 5 0 00-5-5H8z"/><path d="M56 14H36a6 6 0 00-6 6v32a5 5 0 015-5h21z"/></svg>'+
       '<div class="dx-subj">'+esc(m.name)+'</div>'+(it && it.time ? '<div class="dm-time">'+esc(it.time)+'</div>' : '')+'<div class="dx-bar"><i style="width:'+m.pct+'%"></i></div><div class="dx-pc"><b>'+m.pct+'% COMPLETE</b><small>('+m.done+' of '+m.total+' chapters)</small></div>'+
-      (n ? '<div class="dx-next" role="button" tabindex="0" data-go="subjday" data-subj="'+esc(m.name)+'" data-leaf="'+esc(n.id)+'">'+(it && it.over && isDone(n.id) ? "Done: " : "Next: ")+'<b>'+esc(n.unit)+'</b></div>' : '')+
+      (n ? '<div class="dx-next" role="button" tabindex="0" data-go="subjday" data-subj="'+esc(m.name)+'" data-leaf="'+esc(n.id)+'">'+(it && it.over && isDone(n.id) ? "Done: " : "Currently running: ")+'<b>'+esc(n.unit)+'</b></div>' : '')+
       '<button type="button" class="dx-btn" data-go="subjday" data-subj="'+esc(m.name)+'">Go to Planner</button>'+
       '<button type="button" class="dx-btn2" data-go="priority" data-subj="'+esc(m.name)+'">Topic Priority (Tiers) &rsaquo;</button></div>';
   }
@@ -15900,7 +15900,7 @@ var GUIDES = {
     "<b>Capacity</b> is your daily study sessions. Pin a subject to a session to study it in parallel.",
     "Nothing is final. Change it later with <b>Reschedule</b> or <b>Edit plan</b>, and your progress is kept."]},
   planner:{icon:"🧭", name:"Planner", title:"Your Planner", steps:[
-    "<b>Overview</b> shows the subjects running now. Tap <b>Mark next chapter complete</b> when you finish a chapter.",
+    "<b>Overview</b> shows the subjects running now. Tap <b>Mark current chapter complete</b> when you finish the chapter you are on.",
     "<b>Yearly, Monthly, Weekly</b> and <b>Daily</b> are the same plan at different zoom levels. <b>Daily</b> is where you log what you studied.",
     "<b>Progress</b> lists every chapter. <b>Priority</b> shows which topics matter most and how many past questions each has. <b>Insights</b> shows hours, reminders and catch-up.",
     "Fell behind? Tap <b>Reschedule</b> and the plan moves forward. Finish a subject and the next one unlocks."]},
@@ -15973,7 +15973,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "193";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "194";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
