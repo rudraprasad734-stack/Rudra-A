@@ -13944,7 +13944,11 @@ function dashItems(states, running){
     for(var i=0; i<m.leaves.length; i++) if(m.leaves[i].id===x.topicId){ l = m.leaves[i]; break; }
     if(l) out.push({m:m, leaf:l, tag:"SESSION "+x.sessionNumber, time:fmt12(x.startTime)+" \u2013 "+fmt12(x.endTime), over:x.status==="completed"||x.status==="skipped"||x.status==="missed"});
   });
-  if(!out.length) running.forEach(function(m){ var l = nextLeaf(m); if(l) out.push({m:m, leaf:l, tag:sessionTagFor(m.name), time:"", over:false}); });
+  // a running subject with no session today (or fewer sessions than subjects) still gets its card, so none ever disappears
+  running.forEach(function(m){
+    if(out.some(function(it){ return it.m.name===m.name; })) return;
+    var l = nextLeaf(m); if(l) out.push({m:m, leaf:l, tag:sessionTagFor(m.name), time:"", over:false});
+  });
   return out;
 }
 function pyqCardHtml(items){
@@ -14029,9 +14033,10 @@ function dxPlanHtml(){
   var running = pathCtx(states).lanes.map(function(l){ return l.subj; });
   var items = dashItems(states, running);
   var module = items.length > 1
-    ? '<div class="dx-wheelwrap"><div class="dm-dots" id="dmDots" aria-hidden="true">'+items.map(function(_, i){ return '<i'+(i===0 ? ' class="on"' : '')+'></i>'; }).join("")+'</div><div class="dx-wheel" id="dxMods" role="group" aria-label="Active module, one card per session. Scroll up or down.">'+items.map(function(it){ return '<div class="dm-i">'+modCard(it.m, it)+'</div>'; }).join("")+'</div></div>'
+    ? '<div class="dx-wheelwrap"><div class="dm-dots" id="dmDots" aria-hidden="true">'+items.map(function(_, i){ return '<i'+(i===0 ? ' class="on"' : '')+'></i>'; }).join("")+'</div><div class="dx-wheel" id="dxMods" tabindex="0" role="group" aria-label="Active module, one card per session. Scroll up or down.">'+items.map(function(it){ return '<div class="dm-i">'+modCard(it.m, it)+'</div>'; }).join("")+'</div></div>'
+    : items.length ? modCard(items[0].m, items[0])
     : running.length
-    ? (running.length > 1 ? '' : modCard(running[0], items[0]))
+    ? modCard(running[0])
     : '<div class="dx-card dx-mod"><div class="dx-k">ALL SUBJECTS COMPLETED</div><div class="dx-subj">Well done</div><button type="button" class="dx-btn" data-go="day">Open planner</button></div>';
   var mods = "";
   var pace = '<div class="dx-card dx-pace"><div class="dx-k">TODAY'+(tp ? ' &middot; '+tpct+'%' : '')+'</div>'+(tp ? dxPieHtml(pieGroups, pathCtx(states).lanes) : '<div class="dx-seg"><i style="flex:1"></i></div>')+
