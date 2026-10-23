@@ -1,6 +1,8 @@
-# Deploys the payment server (Cloud Functions) and the database rules. Run it by hand: Actions > "Deploy payment server" > Run workflow.
-# Needs these repository secrets (see upsc-pyq-bank/firebase/WEB-PAYMENTS.md):
-#   FIREBASE_SERVICE_ACCOUNT, RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET, RAZORPAY_WEBHOOK_SECRET
+# Deploys the payment server (Cloudflare Worker, free plan, no card) and the Firestore rules.
+# Run by hand: Actions > "Deploy payment server" > Run workflow.
+# Repository secrets needed (see upsc-pyq-bank/cloudflare/SETUP.md):
+#   CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID, FIREBASE_SERVICE_ACCOUNT,
+#   RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET, RAZORPAY_WEBHOOK_SECRET
 name: Deploy payment server
 on:
   workflow_dispatch:
@@ -9,33 +11,43 @@ permissions:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      SA_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+      RZP_KEY_ID: ${{ secrets.RAZORPAY_KEY_ID }}
+      RZP_KEY_SECRET: ${{ secrets.RAZORPAY_KEY_SECRET }}
+      RZP_HOOK: ${{ secrets.RAZORPAY_WEBHOOK_SECRET }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Install and test the payment logic
-        working-directory: upsc-pyq-bank/firebase/functions
+      - name: Check all secrets are present
         run: |
+          for v in CLOUDFLARE_API_TOKEN CLOUDFLARE_ACCOUNT_ID SA_JSON RZP_KEY_ID RZP_KEY_SECRET RZP_HOOK; do
+            if [ -z "${!v}" ]; then echo "A required secret is missing: $v"; exit 1; fi
+          done
+      - name: Test the payment logic
+        run: |
+          node upsc-pyq-bank/firebase/functions/test.js
+          cd upsc-pyq-bank/cloudflare
           npm install --no-audit --no-fund
           npm test
-      - name: Deploy
-        working-directory: upsc-pyq-bank/firebase
-        env:
-          SA_JSON: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
-          RZP_KEY_ID: ${{ secrets.RAZORPAY_KEY_ID }}
-          RZP_KEY_SECRET: ${{ secrets.RAZORPAY_KEY_SECRET }}
-          RZP_HOOK: ${{ secrets.RAZORPAY_WEBHOOK_SECRET }}
+      - name: Deploy the Worker and store the secrets
+        working-directory: upsc-pyq-bank/cloudflare
         run: |
           set -e
-          test -n "$SA_JSON" && test -n "$RZP_KEY_ID" && test -n "$RZP_KEY_SECRET" && test -n "$RZP_HOOK" || { echo "A required secret is missing"; exit 1; }
+          npx wrangler deploy 2>&1 | tee "$RUNNER_TEMP/deploy.log"
+          node -e 'const e=process.env;require("fs").writeFileSync(process.env.RUNNER_TEMP+"/s.json",JSON.stringify({FIREBASE_SERVICE_ACCOUNT:e.SA_JSON,RAZORPAY_KEY_ID:e.RZP_KEY_ID,RAZORPAY_KEY_SECRET:e.RZP_KEY_SECRET,RAZORPAY_WEBHOOK_SECRET:e.RZP_HOOK}))'
+          npx wrangler secret bulk "$RUNNER_TEMP/s.json"
+          rm -f "$RUNNER_TEMP/s.json"
+          echo "Server address:"; grep -Eo 'https://[a-z0-9.-]+\.workers\.dev' "$RUNNER_TEMP/deploy.log" | head -1
+      - name: Deploy the database rules
+        working-directory: upsc-pyq-bank/firebase
+        run: |
+          set -e
           printf '%s' "$SA_JSON" > "$RUNNER_TEMP/sa.json"
           export GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/sa.json"
-          printf '%s' "$RZP_KEY_ID"     > "$RUNNER_TEMP/k1"
-          printf '%s' "$RZP_KEY_SECRET" > "$RUNNER_TEMP/k2"
-          printf '%s' "$RZP_HOOK"       > "$RUNNER_TEMP/k3"
-          npx -y firebase-tools@13 functions:secrets:set RAZORPAY_KEY_ID         --data-file "$RUNNER_TEMP/k1" --force --project upsc-companion-3adb3
-          npx -y firebase-tools@13 functions:secrets:set RAZORPAY_KEY_SECRET     --data-file "$RUNNER_TEMP/k2" --force --project upsc-companion-3adb3
-          npx -y firebase-tools@13 functions:secrets:set RAZORPAY_WEBHOOK_SECRET --data-file "$RUNNER_TEMP/k3" --force --project upsc-companion-3adb3
-          npx -y firebase-tools@13 deploy --only functions,firestore:rules --project upsc-companion-3adb3 --non-interactive --force
-          rm -f "$RUNNER_TEMP/sa.json" "$RUNNER_TEMP/k1" "$RUNNER_TEMP/k2" "$RUNNER_TEMP/k3"
+          npx -y firebase-tools@13 deploy --only firestore:rules --project upsc-companion-3adb3 --non-interactive
+          rm -f "$RUNNER_TEMP/sa.json"
