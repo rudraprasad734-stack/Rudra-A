@@ -1063,6 +1063,14 @@
   #modalHost:has(.start-sheet){align-items:flex-end; padding-bottom:0;} .start-sheet{border-radius:26px 26px 0 0 !important; margin:0 auto !important; max-width:560px; padding-bottom:calc(20px + env(safe-area-inset-bottom,0px));}
   .ss-head{display:flex; align-items:center; gap:12px;} .ss-head h2{margin:0; font-size:17px;} .ss-ic{width:46px; height:46px; border-radius:14px; background:var(--c); display:grid; place-items:center; font-size:22px; flex:none; color:#fff;}
   .pl-tabs button.on{background:linear-gradient(135deg,var(--tab-accent),color-mix(in srgb,var(--tab-accent) 55%,#27b9ff)) !important; box-shadow:0 6px 16px -8px var(--tab-accent);}
+  .sa-hero{display:flex; align-items:center; gap:14px; padding:14px !important; margin:0 0 12px;} .sa-ring{flex:none; display:block;} .sa-trk{fill:none; stroke:var(--surface-2);} .sa-arc{fill:none; stroke-linecap:round;} .sa-ring text{fill:var(--navy); font-weight:700; font-family:var(--font-body);} .sa-ring .sa-sub{fill:var(--ink-faint); font-weight:400;}
+  .sa-ht{min-width:0; flex:1;} .sa-k{font-size:12px; color:var(--ink-faint);} .sa-big{font-size:24px; font-weight:700; color:var(--navy); line-height:1.15; margin:2px 0 6px;} .sa-sub2{font-size:12px; color:var(--ink-faint); margin-top:7px; line-height:1.45;}
+  .sa-chip{display:inline-block; font-size:11px; font-weight:700; border-radius:999px; padding:3px 10px;} .sa-chip.ok{background:var(--sage-soft); color:#0b6b33;} .sa-chip.warn{background:var(--gold-soft); color:#8a4f00;} .sa-chip.bad{background:var(--brick-soft); color:#a02018;} .sa-chip.idle{background:var(--surface-2); color:var(--ink-soft);}
+  .sa-card{padding:14px; margin:0 0 12px;} .sa-h{font-size:11px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-faint); margin:0 0 8px;}
+  .sa-bar{height:8px; border-radius:99px; background:var(--surface-2); overflow:hidden;} .sa-bar i{display:block; height:100%; border-radius:99px; background:var(--bc,var(--tab-planner));} .sa-row{margin:9px 0;} .sa-row .l{display:flex; justify-content:space-between; gap:8px; font-size:12px; color:var(--ink-soft); margin-bottom:4px;}
+  .sa-chart text{font-size:10px; fill:var(--ink-soft);} .sa-chart text.v{fill:var(--navy); font-size:9px; font-weight:600;} .sa-chart text.nw{fill:var(--tab-planner); font-weight:700;} .sa-chart line{stroke:var(--line-soft);} .sa-pl{fill:var(--surface-2); background:var(--surface-2);} .sa-dn{fill:var(--sage); background:var(--sage);} .sa-now{fill:var(--tab-planner); background:var(--tab-planner);}
+  .sa-leg{display:flex; gap:12px; flex-wrap:wrap; font-size:11px; color:var(--ink-soft); margin-top:8px;} .sa-leg b{display:inline-block; width:9px; height:9px; border-radius:3px; margin-right:4px; vertical-align:-1px; border:1px solid var(--line-soft);}
+  .cal-c.h0{background:var(--brick-soft);} .cal-c.h1{background:color-mix(in srgb,var(--sage) 22%,var(--surface));} .cal-c.h2{background:color-mix(in srgb,var(--sage) 42%,var(--surface));} .cal-c.h3{background:color-mix(in srgb,var(--sage) 65%,var(--surface));} .legend .hl{border-radius:3px; border:1px solid var(--line-soft);} .legend .hl.h0{background:var(--brick-soft);} .legend .hl.h1{background:color-mix(in srgb,var(--sage) 22%,var(--surface));} .legend .hl.h3{background:color-mix(in srgb,var(--sage) 65%,var(--surface));}
   .pl-sub{display:flex; gap:4px; padding:3px; margin:0 0 12px; border-radius:12px; background:var(--surface); border:1px solid var(--line);} .pl-sub button{flex:1 1 0; min-height:34px; border:0; border-radius:9px; background:transparent; color:var(--ink-soft); font:inherit; font-size:13.5px; font-weight:600; cursor:pointer;} .pl-sub button.on{background:var(--tab-accent); color:var(--tab-accent-ink);}
   .pl-tabs button{flex:1 1 0; min-height:38px; padding:7px 14px; border-radius:999px; border:1px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; font-size:14px; font-weight:600; cursor:pointer;}
   .pl-tabs button.on{background:var(--tab-accent); border-color:var(--tab-accent); color:var(--tab-accent-ink);}
@@ -8447,10 +8455,10 @@ function planReadyModal(){
 // PLANNER HOME: LEGO chain + Yearly / Monthly / Weekly / Daily + Progress
 // ============================================================================
 var plannerScrollTo = "", progOpen = {}, plannerView = "overview", plannerLanding = null, plannerMonth = null, plannerWeek = null, plannerDay = null;
-// four tabs; Schedule and Plan each hold several views of the same data behind one switch
-var PLANNER_TABS = [["plan","Plan"],["schedule","Schedule"],["review","Review"]];
+// two tabs: Plan (the subjects, pace, chapters, reminders) and Schedule (Day, Week, Month, Year, each opening with a progress ring)
+var PLANNER_TABS = [["plan","Plan"],["schedule","Schedule"]];
 var SCHED_VIEWS = [["daily","Day"],["weekly","Week"],["monthly","Month"],["yearly","Year"]];
-function plannerTabOf(v){ return v==="overview"||v==="progress" ? "plan" : (v==="insights" ? "review" : (v==="priority" ? "priority" : "schedule")); }
+function plannerTabOf(v){ return v==="overview"||v==="progress" ? "plan" : (v==="priority" ? "priority" : "schedule"); }
 var lastSched = "daily";
 function kindMeta(s){ return KIND_META[s.kind] || {label:s.purpose, color:"--tab-scheduler"}; }
 function fmtMonthKey(mk){ return (DF_MK = DF_MK || new Intl.DateTimeFormat(undefined, {month:"long", year:"numeric"})).format(new Date(+mk.slice(0,4), +mk.slice(5,7)-1, 1)); }
@@ -8542,18 +8550,16 @@ function upcomingHtml(){
 
 // ---------- views ----------
 // the one session to do next today, with a Start button that opens the timer
-function planHeroHtml(plan){
+function planHealth(plan){
   var op = overallProgress(plan), sim = viewIndex().sim, left = sim ? sim.remaining : 0, fin = "";
   var cands = (sim ? sim.sessions : []).concat(studySessions);
   cands.forEach(function(x){ if(x.kind==="study" && x.status!=="skipped" && x.date>fin) fin = x.date; });
-  var miss = missedSessions().length, st = streakStats(studyMinutesByDay());
-  var title, line, chip;
+  var miss = missedSessions().length, title, line, cls = "ok";
   if(op.pct>=100){ title = "All chapters done"; line = "Keep revising and practising."; }
-  else if(left>0){ title = "Needs attention"; line = left+" chapter"+(left===1 ? "" : "s")+" may not fit before "+esc(fmtShort(parseKey(plan.window.end)))+"."; }
-  else if(miss>0){ title = "A little behind"; line = (fin ? "Finish around <b>"+esc(fmtShort(parseKey(fin)))+"</b>." : "")+" "+miss+" session"+(miss===1 ? "" : "s")+" to catch up."; }
-  else { var wk = fin ? Math.floor(diffDays(plan.window.end, fin)/7) : 0; title = "You're on track"; line = (fin ? "Finish around <b>"+esc(fmtShort(parseKey(fin)))+"</b>" : "")+(wk>0 ? "<br>"+wk+" week"+(wk===1 ? "" : "s")+" before your window ends" : ""); }
-  chip = st.cur>0 ? '<span class="chip2">🔥 '+st.cur+'-day streak</span>' : '<span class="chip2">'+op.done+' of '+op.total+' chapters</span>';
-  return '<div class="card phero"><div class="row"><div class="ring2" style="--p:'+op.pct+'"><span>'+op.pct+'%</span></div><div class="hero-t"><h2>'+esc(title)+'</h2><div>'+line+'</div>'+chip+'</div></div></div>';
+  else if(left>0){ title = "Needs attention"; cls = "bad"; line = left+" chapter"+(left===1 ? "" : "s")+" may not fit before "+esc(fmtShort(parseKey(plan.window.end)))+"."; }
+  else if(miss>0){ title = "A little behind"; cls = "warn"; line = (fin ? "Finish around <b>"+esc(fmtShort(parseKey(fin)))+"</b>. " : "")+miss+" session"+(miss===1 ? "" : "s")+" to catch up."; }
+  else { var wk = fin ? Math.floor(diffDays(plan.window.end, fin)/7) : 0; title = "On track"; line = (fin ? "Finish around <b>"+esc(fmtShort(parseKey(fin)))+"</b>" : "")+(wk>0 ? ", "+wk+" week"+(wk===1 ? "" : "s")+" before your window ends" : ""); }
+  return {title:title, line:line, cls:cls, op:op};
 }
 function planTimelineHtml(plan, states){
   var sim = viewIndex().sim, all = (sim ? sim.sessions : []).concat(studySessions), rng = {};
@@ -8580,15 +8586,46 @@ function nextUpHtml(){
 }
 function overviewHtml(plan, states){
   var st = windowStats(plan.cfg), op = overallProgress(plan), sim = viewIndex().sim, left = sim ? sim.remaining : 0;
-  return planHeroHtml(plan)+planTimelineHtml(plan, states)+nextUpHtml()+activeCardHtml(states, "banner")+
-    '<div class="section-title">Upcoming activities</div>'+upcomingHtml()+
+  return planTimelineHtml(plan, states)+
     '<div class="card pace"><div><b>Pace</b><div class="muted">How many study sessions each chapter gets: a first read, then deeper passes. A slower pace means more sessions per chapter, so each subject takes longer. <b>Auto</b> works out the most your window allows. Now: <b>'+(Math.round(plan.capacity.blocks*10)/10)+' per chapter</b>'+(plan.capacity.auto ? " (auto)" : "")+'.</div></div><select data-pa="pace" aria-label="Sessions per chapter">'+paceOptions(plan.capacity.auto ? "auto" : plan.capacity.blocks, avgSessMin(plan.capacity.sessions))+'</select></div>'+
     (left ? paceReportHtml(plan) : "")+
     '<div class="card ov-win"><div class="muted">Window '+esc(fmtShort(parseKey(plan.window.start)))+' &rarr; '+esc(fmtShort(parseKey(plan.window.end)))+' &middot; '+(st.ok ? st.days+" days &middot; "+st.hours+" study hours" : "")+'</div><div class="ov-btns"><button type="button" class="btn ghost sm" data-pa="edit">Edit plan</button><button type="button" class="btn danger sm" data-pa="reset">Reset plan</button></div></div>';
 }
+// ---------- Schedule views: every view opens with one progress ring, then a chart ----------
+function saRing(p, size, w, label, sub, col){
+  p = Math.max(0, Math.min(1, p || 0));
+  var r = (size-w)/2, c = 2*Math.PI*r, h = size/2, fs = String(label).length>4 ? size/5.4 : size/4;
+  return '<svg class="sa-ring" width="'+size+'" height="'+size+'" viewBox="0 0 '+size+' '+size+'" role="img" aria-label="'+esc(label+(sub ? " "+sub : ""))+'"><circle class="sa-trk" cx="'+h+'" cy="'+h+'" r="'+r+'" stroke-width="'+w+'"/>'+
+    (p>0 ? '<circle class="sa-arc" cx="'+h+'" cy="'+h+'" r="'+r+'" stroke-width="'+w+'" style="stroke:var('+(col||"--tab-planner")+')" stroke-dasharray="'+(c*p).toFixed(1)+' '+c.toFixed(1)+'" transform="rotate(-90 '+h+' '+h+')"/>' : "")+
+    '<text x="50%" y="'+(sub ? "46%" : "52%")+'" text-anchor="middle" dominant-baseline="middle" font-size="'+fs.toFixed(1)+'">'+esc(label)+'</text>'+(sub ? '<text class="sa-sub" x="50%" y="68%" text-anchor="middle" font-size="'+(size/10.5).toFixed(1)+'">'+esc(sub)+'</text>' : "")+'</svg>';
+}
+function saHero(o){
+  return '<div class="card sa-hero">'+saRing(o.p, o.size || 112, 12, o.label, o.sub, o.col)+'<div class="sa-ht"><div class="sa-k">'+o.kicker+'</div><div class="sa-big">'+esc(o.big)+'</div>'+(o.chip ? '<span class="sa-chip '+o.chip[0]+'">'+esc(o.chip[1])+'</span>' : "")+'<div class="sa-sub2">'+o.lines.join("<br>")+'</div></div></div>';
+}
+function saNice(m){ if(m<=1) return 1; var st = m<=4 ? 1 : m<=10 ? 2 : m<=25 ? 5 : m<=60 ? 10 : 20; return Math.ceil(m/st)*st; }
+// bars: planned (grey) behind done (green, purple for today); items = [{lab, plan, done, now, fut}] in the unit the caller formats
+function saBars(items, fmt, lab, nowLab){
+  var W = 310, H = 150, L = 26, B = 22, T = 14, mx = 0; items.forEach(function(it){ mx = Math.max(mx, it.plan, it.done); });
+  var top = saNice(mx || 1), n = items.length, slot = (W-L)/n, bw = Math.min(28, slot*.66), ph = H-B-T, g = "", bars = "";
+  [0, .5, 1].forEach(function(f){ var y = H-B-ph*f; g += '<line x1="'+L+'" x2="'+W+'" y1="'+y+'" y2="'+y+'"/><text x="0" y="'+(y+3)+'">'+fmt(top*f)+'</text>'; });
+  items.forEach(function(it, i){
+    var x = L + i*slot + (slot-bw)/2, hp = ph*it.plan/top, hd = ph*Math.min(it.done, top)/top;
+    if(hp>0) bars += '<rect class="sa-pl" x="'+x+'" y="'+(H-B-hp)+'" width="'+bw+'" height="'+hp+'" rx="5"/>';
+    if(hd>0) bars += '<rect class="'+(it.now ? "sa-now" : "sa-dn")+'" x="'+x+'" y="'+(H-B-hd)+'" width="'+bw+'" height="'+hd+'" rx="5"/><text class="v" x="'+(x+bw/2)+'" y="'+(H-B-Math.max(hd, hp)-3)+'" text-anchor="middle">'+fmt(it.done)+'</text>';
+    bars += '<text'+(it.now ? ' class="nw"' : '')+' x="'+(x+bw/2)+'" y="'+(H-6)+'" text-anchor="middle">'+esc(it.lab)+'</text>';
+  });
+  return '<svg class="sa-chart" width="100%" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+esc(lab)+'">'+g+bars+'</svg>'+
+    '<div class="sa-leg"><span><b class="sa-pl"></b>Planned</span><span><b class="sa-dn"></b>Done</span><span><b class="sa-now"></b>'+esc(nowLab || "Now")+'</span></div>';
+}
+function saDur(m){ m = Math.round(m||0); var h = Math.floor(m/60), r = m%60; return h ? h+"h"+(r ? " "+r+"m" : "") : r+"m"; }
+function saRows(rows){
+  return rows.map(function(r){ var pc = r.plan ? Math.min(100, Math.round(100*r.done/r.plan)) : 0;
+    return '<div class="sa-row"><div class="l"><span>'+esc(r.name)+'</span><span>'+esc(r.val)+'</span></div><div class="sa-bar" style="--bc:var('+r.color+')"><i style="width:'+pc+'%"></i></div></div>'; }).join("");
+}
+function monShort(mk){ return new Date(+mk.slice(0,4), +mk.slice(5,7)-1, 1).toLocaleDateString(undefined, {month:"short"}); }
 function yearlyHtml(plan, states){
   var idx = viewIndex(), months = monthList(plan), sp = idx.sim ? idx.sim.spans : {}, left = idx.sim ? idx.sim.left || {} : {};
-  var cur = todayKey.slice(0,7);
+  var cur = todayKey.slice(0,7), bars = [];
   var rows = months.map(function(mk){
     var per = {}, kinds = {study:0, essay:0, pyq:0, test:0, revision:0, ca:0}, total = 0, done = 0;
     monthDates(mk).forEach(function(d){ if(d < plan.window.start || d > plan.window.end) return; planSessionsOn(d).forEach(function(s){
@@ -8596,6 +8633,7 @@ function yearlyHtml(plan, states){
       if(s.kind==="study"){ kinds.study++; per[s.subject] = (per[s.subject]||0)+1; } else if(kinds[s.kind]!=null) kinds[s.kind]++;
     }); });
     var sum = Object.keys(per).reduce(function(a, k){ return a+per[k]; }, 0) || 1;
+    bars.push({mk:mk, lab:monShort(mk), plan:total, done:done, now:mk===cur});
     return '<button type="button" class="yr-row'+(mk<cur?" past":(mk===cur?" cur":""))+'" data-pa="openMonth" data-v="'+mk+'"><span class="yr-m">'+esc(fmtMonthShort(mk))+'<small>'+(mk<cur?"past":(mk===cur?"this month":"projected"))+'</small></span>'+
       '<span class="yr-bar">'+Object.keys(per).map(function(k){ return '<i style="width:'+Math.round(100*per[k]/sum)+'%;background:var('+stateColor(states,k)+')" title="'+esc(k)+'"></i>'; }).join("")+'</span>'+
       '<span class="yr-chips">'+Object.keys(per).map(function(k){ return '<em style="--bc:var('+stateColor(states,k)+')">'+esc(k)+' '+per[k]+'</em>'; }).join("")+
@@ -8610,34 +8648,47 @@ function yearlyHtml(plan, states){
     else when = "Not scheduled";
     return '<div class="proj" style="--bc:var('+s.color+')"><b>'+esc(s.name)+'</b><em>'+s.pct+'%</em><span>'+esc(when)+'</span></div>';
   }).join("");
-  return '<div class="hint">This is a projection. It moves forward when you finish a subject early and backward when you fall behind. Past months show what really happened.</div>'+'<div class="section-title">Subject projection</div>'+proj+'<div class="section-title">Month by month</div><div class="yrlist">'+rows+'</div>';
+  var H = planHealth(plan), daysLeft = Math.max(0, diffDays(plan.window.end, todayKey)), ci = 0;
+  bars.forEach(function(b, i){ if(b.mk===cur) ci = i; });
+  var shown = bars.length>12 ? bars.slice(Math.max(0, Math.min(ci-2, bars.length-12)), Math.max(0, Math.min(ci-2, bars.length-12))+12) : bars;
+  var hero = saHero({p:H.op.pct/100, label:H.op.pct+"%", sub:"syllabus", kicker:"Your window ends "+esc(fmtShort(parseKey(plan.window.end))), big:daysLeft+" day"+(daysLeft===1 ? "" : "s")+" left", chip:[H.cls, H.title], lines:[H.op.done+" of "+H.op.total+" chapters done", H.line]});
+  return hero+'<div class="card sa-card"><div class="sa-h">Sessions per month</div>'+saBars(shown, function(v){ return String(Math.round(v)); }, "Sessions planned and done per month", "This month")+'</div>'+
+    '<div class="hint">This is a projection. It moves forward when you finish a subject early and backward when you fall behind. Past months show what really happened.</div>'+'<div class="section-title">Subject projection</div>'+proj+'<div class="section-title">Month by month</div><div class="yrlist">'+rows+'</div>';
 }
 function monthlyHtml(plan, states){
   var mk = plannerMonth || todayKey.slice(0,7), months = monthList(plan);
   if(months.indexOf(mk) < 0) mk = months[0];
   plannerMonth = mk;
-  var dates = monthDates(mk), first = parseKey(dates[0]), lead = (first.getDay()+6)%7, per = {}, kinds = {}, units = {}, total = 0, done = 0, actual = 0, planned = 0;
+  var dates = monthDates(mk), first = parseKey(dates[0]), lead = (first.getDay()+6)%7, per = {}, kinds = {}, units = {}, total = 0, done = 0, actual = 0, planned = 0, pastN = 0, pastMiss = 0, perDone = {};
   var cells = "";
   for(var i=0;i<lead;i++) cells += '<div class="cal-c empty"></div>';
   dates.forEach(function(d){
     var list = (d>=plan.window.start && d<=plan.window.end) ? planSessionsOn(d) : [], dots = {}, study = 0;
     list.forEach(function(s){
       total++; planned += s.duration; actual += s.actualDuration||0; if(s.status==="completed") done++;
-      if(s.kind==="study"){ study++; per[s.subject] = (per[s.subject]||0)+1; (units[s.subject] = units[s.subject] || []).indexOf(s.syllabusUnit)<0 && units[s.subject].push(s.syllabusUnit); }
+      if(d<todayKey && !s.projected){ pastN++; if(s.status!=="completed" && s.status!=="skipped") pastMiss++; }
+      if(s.kind==="study"){ study++; per[s.subject] = (per[s.subject]||0)+1; if(s.status==="completed") perDone[s.subject] = (perDone[s.subject]||0)+1; (units[s.subject] = units[s.subject] || []).indexOf(s.syllabusUnit)<0 && units[s.subject].push(s.syllabusUnit); }
       else if(s.kind) kinds[s.kind] = (kinds[s.kind]||0)+1;
       dots[s.kind || "study"] = 1;
     });
-    cells += '<button type="button" class="cal-c'+(d===todayKey?" today":"")+(d<todayKey?" past":"")+'" data-pa="openDay" data-v="'+d+'"><b>'+(+d.slice(8))+'</b><span class="dots">'+Object.keys(dots).map(function(k){ return '<i style="background:var('+(KIND_META[k]?KIND_META[k].color:"--tab-scheduler")+')"></i>'; }).join("")+'</span>'+(study ? '<small>'+study+' study</small>' : "")+'</button>';
+    var cn = list.filter(function(s){ return !s.projected; }).length, cd = list.filter(function(s){ return s.status==="completed"; }).length, hc = "";
+    if(cn && d<=todayKey){ var rt = cd/cn; hc = rt===0 ? (d<todayKey ? " h0" : "") : rt<.5 ? " h1" : rt<1 ? " h2" : " h3"; }
+    cells += '<button type="button" class="cal-c'+(d===todayKey?" today":"")+(d<todayKey?" past":"")+hc+'" data-pa="openDay" data-v="'+d+'"><b>'+(+d.slice(8))+'</b><span class="dots">'+Object.keys(dots).map(function(k){ return '<i style="background:var('+(KIND_META[k]?KIND_META[k].color:"--tab-scheduler")+')"></i>'; }).join("")+'</span>'+(study ? '<small>'+study+' study</small>' : "")+'</button>';
   });
   var subj = Object.keys(per).map(function(k){
     var us = units[k] || [];
-    return '<div class="proj" style="--bc:var('+stateColor(states,k)+')"><b>'+esc(k)+'</b><em>'+per[k]+' sessions</em><span>'+esc(us.slice(0,6).join(", ")+(us.length>6 ? " +"+(us.length-6)+" more" : ""))+'</span></div>';
+    return '<div class="proj" style="--bc:var('+stateColor(states,k)+')"><b>'+esc(k)+'</b><em>'+(perDone[k]||0)+'/'+per[k]+' sessions</em><span>'+esc(us.slice(0,6).join(", ")+(us.length>6 ? " +"+(us.length-6)+" more" : ""))+'</span></div>';
   }).join("") || '<div class="muted">No study sessions planned in this month.</div>';
+  var mpct = total ? done/total : 0, isCur = mk===todayKey.slice(0,7), isFut = mk>todayKey.slice(0,7);
+  var mchip = !total ? ["idle","Nothing planned"] : isFut ? ["idle","Upcoming"] : pastMiss ? ["warn", pastMiss+" missed"] : (done>=total ? ["ok","Month complete"] : ["ok","On track"]);
+  var mhero = saHero({p:mpct, label:Math.round(100*mpct)+"%", sub:"done", kicker:isCur ? "This month" : "Month", big:done+" / "+total+" sessions", chip:mchip, lines:["Planned "+esc(saDur(planned))+" · Studied "+esc(saDur(actual))]});
+  var mrows = Object.keys(per).map(function(k){ return {name:k, plan:per[k], done:perDone[k]||0, val:(perDone[k]||0)+" / "+per[k]+" sessions", color:stateColor(states,k)}; });
   return '<div class="navrow"><button type="button" class="btn ghost sm" data-pa="mPrev"'+(months.indexOf(mk)===0?" disabled":"")+'>&lsaquo;</button><b>'+esc(fmtMonthKey(mk))+'</b><button type="button" class="btn ghost sm" data-pa="mNext"'+(months.indexOf(mk)===months.length-1?" disabled":"")+'>&rsaquo;</button></div>'+
-    '<div class="stat-grid"><div class="stat"><span>Sessions</span><b>'+total+'</b></div><div class="stat"><span>Completed</span><b>'+done+'</b></div><div class="stat"><span>Planned</span><b>'+esc(fmtDurMin(planned))+'</b></div><div class="stat"><span>Actual</span><b>'+esc(fmtDurMin(actual))+'</b></div>'+
+    mhero+(mrows.length ? '<div class="card sa-card"><div class="sa-h">Progress by subject</div>'+saRows(mrows)+'</div>' : "")+
+    '<div class="stat-grid">'+
     ACT_KINDS.map(function(k){ return '<div class="stat" style="--bc:var('+KIND_META[k].color+')"><span>'+esc(ACT_INFO[k].title)+'</span><b>'+(kinds[k]||0)+'</b></div>'; }).join("")+'</div>'+
     '<div class="cal"><div class="cal-h">'+["Mon","Tue","Wed","Thu","Fri","Sat","Sun"].map(function(x){ return '<span>'+x+'</span>'; }).join("")+'</div><div class="cal-g">'+cells+'</div></div>'+
-    '<div class="legend">'+["study","essay","pyq","test","revision","ca"].map(function(k){ return '<span><i style="background:var('+KIND_META[k].color+')"></i>'+esc(KIND_META[k].label)+'</span>'; }).join("")+'</div>'+
+    '<div class="legend">'+["study","essay","pyq","test","revision","ca"].map(function(k){ return '<span><i style="background:var('+KIND_META[k].color+')"></i>'+esc(KIND_META[k].label)+'</span>'; }).join("")+'<span><i class="hl h3"></i>All done</span><span><i class="hl h1"></i>Partly</span><span><i class="hl h0"></i>Missed</span></div>'+
     '<div class="section-title">Subjects and chapters this month</div>'+subj;
 }
 function weeklyHtml(plan, states){
@@ -8652,7 +8703,19 @@ function weeklyHtml(plan, states){
     return '<div class="wk-day'+(d===todayKey?" today":"")+'"><button type="button" class="wk-h" data-pa="openDay" data-v="'+d+'"><b>'+DOW_LONG[dt.getDay()]+'</b><span>'+esc(fmtDM(dt))+'</span></button>'+(list.length ? list.map(planRow).join("") : '<div class="muted small">Rest day</div>')+'</div>';
   }).join("");
   var focus = Object.keys(per).map(function(k){ return '<div class="proj" style="--bc:var('+stateColor(states,k)+')"><b>'+esc(k)+'</b><em>'+per[k]+' sessions</em><span>'+esc((units[k]||[]).join(", "))+'</span></div>'; }).join("") || '<div class="muted">No study sessions this week.</div>';
-  return '<div class="navrow"><button type="button" class="btn ghost sm" data-pa="wPrev">&lsaquo;</button><b>'+esc(fmtDM(mon))+' – '+esc(fmtDM(addDays(mon,6)))+'</b><button type="button" class="btn ghost sm" data-pa="wNext">&rsaquo;</button></div>'+
+  var r = weekReview(mon), pm = 0, sm = 0, pastPlan = 0, pastStud = 0, dayOk = 0, dayN = 0;
+  r.days.forEach(function(d){ pm += d.plan; sm += d.studied; if(d.date<todayKey){ pastPlan += d.plan; pastStud += Math.min(d.studied, d.plan); } if(d.plan){ dayN++; if(d.studied>=d.plan) dayOk++; } });
+  var wp = pm ? Math.min(1, sm/pm) : 0, wk0 = toKey(mon), wkEnd = toKey(addDays(mon,6)), behind = pastPlan-pastStud;
+  var wchip = !pm ? ["idle","Rest week"] : wk0>todayKey ? ["idle","Upcoming"] : wp>=1 ? ["ok","Week done"] : behind>=15 ? ["warn", saDur(behind)+" behind"] : (wkEnd<todayKey ? ["warn","Week finished"] : ["ok","On track"]);
+  var whero = saHero({p:wp, label:saDur(Math.min(sm, pm)), sub:"of "+saDur(pm), kicker:(wk0<=todayKey && todayKey<=wkEnd ? "This week" : "Week of "+esc(fmtDM(mon))), big:Math.round(100*wp)+"%", chip:wchip, lines:[dayOk+" of "+dayN+" study days on target", r.chapters.length+" chapter"+(r.chapters.length===1 ? "" : "s")+" finished"]});
+  var bars = r.days.map(function(d){ var dt = parseKey(d.date); return {lab:DOW_LONG[dt.getDay()].slice(0,3), plan:d.plan/60, done:Math.min(d.studied, Math.max(d.plan, d.studied))/60, now:d.date===todayKey}; });
+  var srows = Object.keys(r.subj).map(function(k){ var a = r.subj[k]; return {name:k, plan:a.planned, done:a.done, val:a.done+" / "+a.planned+" sessions", color:stateColor(states,k)}; });
+  var counted = r.done+r.missed+r.skipped, rate = counted ? Math.round(100*r.done/counted) : 0, V = weekViz(r, rate, fmtDurMin);
+  var verdict = !r.planned ? "Nothing was scheduled this week." : (r.missed ? "You missed "+r.missed+" session"+(r.missed===1 ? "" : "s")+" this week." : (r.done ? "Nice work. You are on track." : "Nothing is finished yet this week."));
+  return '<div class="navrow"><button type="button" class="btn ghost sm" data-pa="wPrev" aria-label="Previous week">&lsaquo;</button><b>'+esc(fmtDM(mon))+' – '+esc(fmtDM(addDays(mon,6)))+'</b><button type="button" class="btn ghost sm" data-pa="wNext" aria-label="Next week">&rsaquo;</button></div>'+
+    whero+'<div class="card sa-card"><div class="sa-h">Hours per day</div>'+saBars(bars, function(v){ return String(Math.round(v*10)/10); }, "Hours planned and studied each day", "Today")+'</div>'+
+    (srows.length ? '<div class="card sa-card"><div class="sa-h">Planned vs done by subject</div>'+saRows(srows)+'</div>' : "")+
+    '<div class="card sa-card"><div class="sa-h">Weekly review</div><div class="ins-verdict">'+esc(verdict)+'</div>'+(r.chapters.length ? '<div class="muted small">Chapters finished: '+r.chapters.map(esc).join(" · ")+'</div>' : "")+V.time+'</div>'+
     '<div class="section-title">Focus this week</div>'+focus+'<div class="section-title">Days</div>'+body;
 }
 // a short guide for aspirants, shown open the first time and remembered once they close it
@@ -8679,14 +8742,23 @@ function dailyHtml(plan){
   var st = getDayState(d), states = subjectStates(plan);
   var pm = 0, dm = 0; real.forEach(function(x){ pm += x.duration||0; dm += x.status==="completed" ? Math.max(x.duration||0, x.actualDuration||0) : Math.min(x.actualDuration||0, x.duration||0); });
   var dpct = pm ? Math.min(100, Math.round(100*dm/pm)) : 0;
-  var hero = real.length ? '<div class="card phero"><div class="row"><div class="hero-t">'+(d===todayKey ? '<span class="chip2">TODAY</span>' : "")+'<h2>'+esc(fmtLong(parseKey(d)))+'</h2><div>'+esc(fmtDurMin(Math.min(dm, pm)))+' done of '+esc(fmtDurMin(pm))+'</div></div><div class="ring2" style="--p:'+dpct+'"><span>'+dpct+'%</span></div></div></div>' : "";
+  var nowM = new Date().getHours()*60 + new Date().getMinutes(), expect = 0;
+  if(d===todayKey) real.forEach(function(x){ var a = toMin(x.startTime), b = toMin(x.endTime); expect += nowM>=b ? (x.duration||0) : (nowM>a ? Math.min(x.duration||0, nowM-a) : 0); });
+  var behind = Math.max(0, expect-dm), dchip = !real.length ? ["idle","Rest day"] : dpct>=100 ? ["ok","Day complete"] : d>todayKey ? ["idle","Planned"] : d<todayKey ? ["warn", saDur(pm-dm)+" short"] : (behind>=10 ? ["warn", saDur(behind)+" behind"] : ["ok","On track"]);
+  var stk = streakStats(studyMinutesByDay()).cur;
+  var hero = saHero({p:dpct/100, label:saDur(Math.min(dm, pm)) || "0m", sub:pm ? "of "+saDur(pm) : "", kicker:d===todayKey ? "Today" : DOW_LONG[parseKey(d).getDay()], big:real.length ? dpct+"%" : "–", chip:dchip, lines:[real.length ? done+" of "+real.length+" sessions done" : "Nothing planned", stk>0 ? "🔥 "+stk+"-day streak" : "No streak yet"]});
+  var sgroup = {}, sorder = [];
+  real.forEach(function(x){ var k = x.kind==="study" || x.kind==="revision" ? x.subject : (KIND_META[x.kind] ? KIND_META[x.kind].label : x.subject); if(!sgroup[k]){ sgroup[k] = {name:k, plan:0, done:0, color:(x.kind==="study" || x.kind==="revision") ? stateColor(states, x.subject) : (KIND_META[x.kind] ? KIND_META[x.kind].color : "--tab-planner")}; sorder.push(k); } var g = sgroup[k]; g.plan += x.duration||0; g.done += x.status==="completed" ? Math.max(x.duration||0, x.actualDuration||0) : Math.min(x.actualDuration||0, x.duration||0); });
+  var bysub = sorder.length>1 || (sorder.length===1 && pm) ? '<div class="card sa-card"><div class="sa-h">By subject</div>'+saRows(sorder.map(function(k){ var g = sgroup[k]; g.val = saDur(Math.min(g.done, g.plan))+" / "+saDur(g.plan); return g; }))+'</div>' : "";
+  var todayExtra = d===todayKey ? nextUpHtml()+activeCardHtml(states, "banner") : "";
   var otherDay = d!==todayKey ? '<div class="card day-note"><div class="muted">You are looking at '+(d>todayKey ? "a later day" : "an earlier day")+'. Start works only on today&rsquo;s sessions.</div><button type="button" class="btn primary sm" data-pa="dToday">Go to today &rsaquo;</button></div>' : "";
   return otherDay+'<div class="navrow"><button type="button" class="btn ghost sm" data-pa="dPrev">&lsaquo;</button><b>'+esc(fmtLong(parseKey(d)))+'</b><button type="button" class="btn ghost sm" data-pa="dNext">&rsaquo;</button></div>'+
     '<div class="pill-row"><button type="button" class="btn ghost sm" data-pa="dToday">Today</button></div>'+
-    hero+'<div class="card sess-day"><div class="sess-day-head"><h3>Sessions</h3><span class="muted">'+(real.length ? done+"/"+real.length+" completed" : "none scheduled")+'</span></div>'+
+    hero+todayExtra+bysub+'<div class="card sess-day"><div class="sess-day-head"><h3>Sessions</h3><span class="muted">'+(real.length ? done+"/"+real.length+" completed" : "none scheduled")+'</span></div>'+
       logHelpHtml()+
       (list.length ? list.map(function(s){ return s.projected ? planRow(s) : sessLogCard(s, states); }).join("") : '<div class="muted sess-empty">Nothing planned on this day.</div>')+'</div>'+
     '<div class="notes-card card"><h3>Notes</h3><textarea id="dayNotes" placeholder="How did today go? Anything to revise or flag for tomorrow...">'+esc(st.notes||"")+'</textarea><div class="save-hint" id="dayNotesHint">'+(db ? "Saves automatically as you type" : "Saved on this device")+'</div></div>'+
+    (d===todayKey ? '<div class="section-title">Upcoming activities</div>'+upcomingHtml() : "")+
     '<div class="hint">Set a session&rsquo;s status or actual time here. Your plan, progress and dashboard update automatically.</div>';
 }
 function bindPlannerDaily(host){
@@ -13362,7 +13434,7 @@ function goAction(el){
   else if(a==="subjday"){ var d = subjectNextDate(subj, leaf); if(!d) toast("No upcoming session for "+(subj||"this subject")+" yet. Showing today."); goPlanner("daily", {day: d || todayKey, subject: subj}); }
   else if(a==="subject") goPlanner("progress", {subject: subj});
   else if(a==="priority") goPlanner("priority", {subject: subj});
-  else if(a==="insights"){ insWeek = null; goPlanner("insights", {}); }
+  else if(a==="insights"){ insWeek = null; plannerWeek = null; goPlanner("weekly", {}); }
   else if(a==="tiers") setTab("prelims");
   else if(a==="reschedule") openReschedule();
 }
@@ -13634,16 +13706,7 @@ function weekViz(r, rate, hrs){
   var timeHtml = '<div class="section-title">Time</div>'+tbar("Planned", r.plannedMin, "p")+tbar("Logged in sessions", r.actualMin, "a")+tbar("Timer study time", tm, "t");
   return {ring:ringHtml, days:daysHtml, time:timeHtml};
 }
-function insightsHtml(plan, states){
-  var mon = insWeek ? parseKey(insWeek) : sundayOf(parseKey(todayKey));
-  insWeek = toKey(mon);
-  var r = weekReview(mon), isNow = insWeek === toKey(sundayOf(parseKey(todayKey)));
-  var counted = r.done + r.missed + r.skipped, rate = counted ? Math.round(100*r.done/counted) : 0;
-  var verdict = !r.planned ? "Nothing was scheduled this week." : (r.missed ? "You missed "+r.missed+" session"+(r.missed===1 ? "" : "s")+" this week." : (r.done ? "Nice work. You are on track." : (r.chapters.length ? "You finished "+r.chapters.length+" chapter"+(r.chapters.length===1 ? "" : "s")+" this week." : "Nothing is finished yet this week.")));
-  var hrs = function(m){ return fmtDurMin(m); };
-  var rows = Object.keys(r.subj).map(function(k){ var a = r.subj[k], pc = a.planned ? Math.round(100*a.done/a.planned) : 0;
-    return '<div class="ins-sb" title="'+esc(k)+': '+a.done+' of '+a.planned+' sessions done"><div class="ins-sbh"><span>'+esc(k)+'</span><b>'+a.done+'/'+a.planned+'</b></div><div class="ins-track"><i style="width:'+pc+'%"></i></div></div>'; }).join("");
-  var V = weekViz(r, rate, hrs), ringHtml = V.ring, daysHtml = V.days, timeHtml = V.time;
+function remindersHtml(){
   var perm = ("Notification" in window) ? Notification.permission : "unsupported";
   var rem = '<div class="card ins-card"><h3>Reminders</h3>'+
     '<div class="muted">A notification before each session and a nudge to log your day. They appear while the app is open or running in the background. Browsers cannot wake a fully closed app without a server.</div>'+
@@ -13653,16 +13716,7 @@ function insightsHtml(plan, states){
     (remState.on && perm==="denied" ? '<div class="form-err">Notifications are blocked for this site in your browser settings. Allow them there to get reminders.</div>' : "")+
     (perm==="unsupported" ? '<div class="muted">This browser does not support notifications.</div>' : '<button type="button" class="btn ghost sm" data-pa="remtest">Send a test reminder</button>')+
   '</div>';
-  var gapCard = planGapDays() > GAP_DAYS ? '<div class="card ins-card"><h3>Long break</h3><div class="muted">It has been '+planGapDays()+' days since you last studied.</div><button type="button" class="btn primary sm" data-pa="gapopen">Choose how to continue</button></div>' : "";
-  var catchCard = gapCard || (missedLeaves().length ? '<div class="card ins-card"><h3>Catch up</h3><div class="muted">You have missed sessions. Choose how to make them up.</div>'+catchOptionsHtml()+'</div>' : "");
-  return '<div class="navrow"><button type="button" class="btn ghost sm" data-pa="iPrev" aria-label="Previous week">&lsaquo;</button><b>'+esc(fmtDM(mon))+' – '+esc(fmtDM(addDays(mon,6)))+(isNow ? " · this week" : "")+'</b><button type="button" class="btn ghost sm" data-pa="iNext" aria-label="Next week">&rsaquo;</button></div>'+
-    (isNow ? "" : '<div class="pill-row"><button type="button" class="btn ghost sm" data-pa="iNow">This week</button></div>')+
-    '<div class="card ins-card"><h3>Weekly review</h3><div class="ins-verdict">'+esc(verdict)+'</div>'+
-      ringHtml+daysHtml+timeHtml+
-      '<div class="ins-row"><span>Chapters finished</span><b>'+r.chapters.length+'</b></div>'+
-      (r.chapters.length ? '<div class="muted small">'+r.chapters.map(esc).join(" · ")+'</div>' : "")+
-      (rows ? '<div class="section-title">By subject</div>'+rows : "")+
-    '</div>'+catchCard+rem;
+  return rem;
 }
 
 // ---- reminders ----
@@ -13723,21 +13777,21 @@ document.addEventListener("visibilitychange", function(){ if(document.visibility
 
 function renderPlannerHome(host){
   var plan = studyPlan, states = subjectStates(plan), body;
+  if(plannerView==="insights") plannerView = "weekly";
   if(plannerView==="yearly") body = yearlyHtml(plan, states);
   else if(plannerView==="monthly") body = monthlyHtml(plan, states);
   else if(plannerView==="weekly") body = weeklyHtml(plan, states);
   else if(plannerView==="daily") body = dailyHtml(plan);
   else if(plannerView==="progress") body = progressHtml(plan, states);
   else if(plannerView==="priority") body = priorityHtml(plan, states);
-  else if(plannerView==="insights") body = insightsHtml(plan, states);
   else body = overviewHtml(plan, states);
   var tabNow = plannerTabOf(plannerView);
   if(tabNow==="schedule") lastSched = plannerView;
-  if(tabNow==="plan") body = overviewHtml(plan, states)+'<div class="section-title">Chapters</div>'+progressHtml(plan, states);
+  if(tabNow==="plan") body = overviewHtml(plan, states)+remindersHtml()+'<div class="section-title">Chapters</div>'+progressHtml(plan, states);
   var sub = tabNow==="schedule" ? '<div class="pl-sub" role="tablist">'+SCHED_VIEWS.map(function(t){ return '<button type="button" role="tab" class="'+(t[0]===plannerView?"on":"")+'" aria-selected="'+(t[0]===plannerView)+'" data-pa="view" data-v="'+t[0]+'">'+t[1]+'</button>'; }).join("")+'</div>' : "";
   host.innerHTML =
     '<div class="card pl-title"><div><h2>Preparation Planner</h2><div class="muted">Complete a subject to unlock the next. The calendar follows your progress.</div></div><button type="button" class="btn ghost sm" data-go="reschedule">Reschedule</button></div>'+
-    '<div class="pl-tabs">'+PLANNER_TABS.map(function(t){ return '<button type="button" class="'+(t[0]===tabNow?"on":"")+'" data-pa="view" data-v="'+(t[0]==="plan" ? "overview" : (t[0]==="schedule" ? lastSched : (t[0]==="review" ? "insights" : "priority")))+'">'+t[1]+'</button>'; }).join("")+'</div>'+sub+(plannerView==="insights" ? "" : catchBannerHtml())+body;
+    '<div class="pl-tabs">'+PLANNER_TABS.map(function(t){ return '<button type="button" class="'+(t[0]===tabNow?"on":"")+'" data-pa="view" data-v="'+(t[0]==="plan" ? "overview" : (t[0]==="schedule" ? lastSched : "priority"))+'">'+t[1]+'</button>'; }).join("")+'</div>'+sub+catchBannerHtml()+body;
   centerActive(host.querySelector(".pl-tabs"), "button.on", false);
   if(plannerScrollTo){ var tgt = host.querySelector('[data-prog="'+plannerScrollTo.replace(/"/g, '\\"')+'"]'); plannerScrollTo = ""; if(tgt) setTimeout(function(){ tgt.scrollIntoView({block:"start"}); window.scrollBy(0, -70); }, 60); }
   if(plannerView==="daily") bindPlannerDaily(host);
@@ -16243,7 +16297,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "199";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "200";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
