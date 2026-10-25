@@ -217,6 +217,27 @@
   @media (max-width:380px){ .dx-grid{grid-template-columns:1fr;} }
   .dx-wheelwrap{position:relative; margin:0 0 12px;} .dx-wheel{height:468px; overflow-y:auto; overflow-x:hidden; scroll-snap-type:y mandatory; scrollbar-width:none; overscroll-behavior:contain; -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - 52px),transparent 100%); mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - 52px),transparent 100%);} .dx-wheel::-webkit-scrollbar{display:none;}
   .dm-i{height:408px; margin-bottom:12px; scroll-snap-align:start; scroll-snap-stop:always;} .dm-i .dx-mod{height:100%; overflow:hidden; margin:0;}
+  button.pre{display:block; width:100%; text-align:left; color:inherit; font:inherit; cursor:pointer; min-height:44px;} .pre-row{display:grid; gap:10px; margin-top:10px;} .pre{border:1px solid var(--line); border-radius:16px; padding:12px 14px; background:var(--surface);} .pre.on{border-color:#2de2d6; background:color-mix(in srgb,#2de2d6 12%,var(--surface));} .pre b{display:block; font-size:15px;} .pre span{display:block; font-size:12.5px; color:var(--ink-soft); margin-top:2px;} .pre i{float:right; font-style:normal; font-size:11px; font-weight:800; padding:2px 8px; border-radius:999px; background:#2de2d6; color:#052;}
+  .fr-full{position:fixed; inset:0; z-index:5000; display:flex; flex-direction:column; padding:26px 22px 28px; background:radial-gradient(120% 80% at 50% 0%, #0b3a45 0%, #041a22 55%, #02101a 100%); color:#e8fbff}
+  .fr-skip{align-self:flex-end; background:none; border:0; font:inherit; font-size:14px; font-weight:700; color:#5aa0ff; padding:8px; cursor:pointer}
+  .fr-slides{flex:1; display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; overscroll-behavior-x:contain;} .fr-slides::-webkit-scrollbar{display:none;}
+  .fr-slide{flex:0 0 100%; scroll-snap-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:14px; padding:0 6px;}
+  .fr-ico{width:120px; height:120px; border-radius:50%; display:grid; place-items:center; font-size:54px; background:radial-gradient(circle at 35% 30%, #2de2d6, #3d6eff 70%); box-shadow:0 0 0 12px color-mix(in srgb,#3d6eff 16%,transparent), 0 14px 50px color-mix(in srgb,#3d6eff 45%,transparent);}
+  .fr-slide h1{font-family:var(--font-display,inherit); font-size:28px; line-height:1.15; margin:8px 0 0;} .fr-slide p{font-size:15px; line-height:1.45; opacity:.82; margin:0; max-width:300px;}
+  .fr-dots{display:flex; gap:8px; justify-content:center; margin:0 0 16px;} .fr-dots i{width:9px; height:9px; border-radius:50%; background:#2b5560; transition:width .2s;} .fr-dots i.on{width:26px; border-radius:6px; background:#2de2d6;}
+  .fr-cta{min-height:54px; border:0; border-radius:16px; font:800 17px system-ui; color:#052; background:linear-gradient(135deg,#2de2d6,#5ad4ff); width:100%; cursor:pointer;}
+  .modal-back.fr-b{align-items:flex-end; padding:0;} .fr-b .fr-sheet{width:100%; max-width:none; margin:0; border-radius:26px 26px 0 0; padding:22px 20px 26px;} .fr-sheet h2{margin:0 0 6px;} .fr-sheet p{margin:0 0 16px; opacity:.82;}
+  .fr-g{display:flex; align-items:center; justify-content:center; gap:12px; width:100%; min-height:54px; border-radius:16px; border:0; background:#fff; color:#1f1f1f; font:700 16px system-ui; cursor:pointer;} .fr-g i{width:24px; height:24px; border-radius:50%; display:grid; place-items:center; font:800 15px system-ui; font-style:normal; color:#fff; background:conic-gradient(#ea4335 0 25%, #fbbc05 0 50%, #34a853 0 75%, #4285f4 0);}
+  .fr-later{display:block; width:100%; text-align:center; margin-top:12px; padding:8px; background:none; border:0; font:inherit; font-size:13.5px; font-weight:700; color:#5aa0ff; cursor:pointer;} .fr-later.dim{color:var(--ink-soft); font-weight:600; margin-top:0;}
+  .fr-ok{display:flex; align-items:center; gap:12px; padding:12px 14px; border-radius:16px; background:color-mix(in srgb,#34a853 18%,transparent); border:1px solid #34a853; margin:0 0 14px; font-size:14px; line-height:1.4; overflow-wrap:anywhere;} .fr-ok .tick{width:30px; height:30px; border-radius:50%; background:#34a853; color:#fff; display:grid; place-items:center; font-size:17px; flex:0 0 auto;}
+  .pf-signin.fr-ok{margin:14px 0 0;}
+  .fr-welcome,.fr-end{text-align:center;} .fr-welcome .fr-ico{margin:2px auto 14px; width:96px; height:96px; font-size:44px;} .fr-welcome h2,.fr-end h2{margin:4px 0 8px;} .fr-welcome p,.fr-end p{margin:0 0 16px; opacity:.85; line-height:1.45;} .fr-go{width:100%; min-height:50px; font-size:16px;} .fr-big{font:800 40px system-ui; color:#2de2d6; margin:2px 0;}
+  .fr-hint{position:fixed; left:14px; right:14px; bottom:116px; z-index:900; padding:15px 16px; border-radius:20px; background:#e9fbff; color:#052; box-shadow:0 12px 44px rgba(0,0,0,.55);} .fr-hint b{display:block; font-size:16px; margin-bottom:3px;} .fr-hint p{margin:0 0 12px; font-size:13.5px; line-height:1.4;} .fr-hint .row{display:flex; gap:10px;} .fr-hint button{flex:1; min-height:44px; border-radius:12px; border:0; font:800 14.5px system-ui; cursor:pointer;} .fr-hint .go{background:#0a6; color:#fff;} .fr-hint .no{background:#cfeef5; color:#052;}
+  .start-choice h2{margin:0 0 6px;} .start-choice .pre{margin-top:10px;} .qs-go2{width:100%; min-height:46px; margin-top:10px;}
+  .qs-q{margin:14px 0 4px; font-weight:800; font-size:15px;} .qs-done{margin-top:14px; padding:12px; border-radius:14px; border:1px dashed var(--line); font-size:13px; line-height:1.45;} .qs-go{width:100%; min-height:50px; font-size:16px; margin-top:14px;}
+  .qs-link{display:block; width:100%; text-align:center; margin:10px 0 0; padding:8px; font:inherit; font-size:13.5px; font-weight:700; text-decoration:underline; text-underline-offset:3px; color:#5aa0ff; background:none; border:0; cursor:pointer;}
+  .qs-note{margin:10px 0 6px; padding:12px; border-radius:14px; background:color-mix(in srgb,#3d6eff 14%,transparent); border:1px solid #3d6eff; font-size:13.5px; line-height:1.5;}
+  .qs-row{display:flex; gap:10px; align-items:flex-start; padding:10px 0; border-top:1px solid var(--line-soft);} .qs-row > div{min-width:0; flex:1 1 auto;} .qs-row small{display:block; color:var(--ink-soft); font-size:12px; font-weight:600;} .qs-row b{display:block; font-size:14.5px; overflow-wrap:anywhere;} .qs-row .btn{flex:0 0 auto;}
   .dm-time{font-size:13px; font-weight:700; color:var(--ink-soft); margin:2px 0 6px; letter-spacing:.02em;}
   .dm-dots{position:absolute; right:7px; top:50%; transform:translateY(-50%); z-index:2; display:flex; flex-direction:column; gap:7px; pointer-events:none;} .dm-dots i{width:7px; height:7px; border-radius:50%; background:var(--line);} .dm-dots i.on{height:20px; border-radius:6px; background:var(--tab-accent);}
   .dx-modsec{margin:0 0 12px;} .dx-modsec > .dx-k{margin:0 2px 8px;}
@@ -4308,7 +4329,7 @@ function dismissFirstRunProfile(){
   return false;
 }
 function openProfileModal(isEdit){
-  var p = profile || {name:"", district:"", state:"", prefix:"IAS"};
+  var p = profile || {name:((typeof cloud !== "undefined" && cloud.user && cloud.user.name) || ""), district:"", state:"", prefix:"IAS"};
   var custom = PREFIXES.indexOf(p.prefix) < 0;
   var html =
     '<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="pfTitle">'+
@@ -4323,7 +4344,7 @@ function openProfileModal(isEdit){
       '<div class="sf" id="pfCustomWrap"'+(custom?"":" hidden")+'><label for="pfCustom">Custom prefix / post</label><input id="pfCustom" type="text" placeholder="e.g. IFoS" value="'+esc(custom?p.prefix:"")+'"></div>'+
       '<div class="form-err" id="pfErr" role="alert" hidden></div>'+
       '<div class="modal-actions">'+(isEdit?'<button class="btn ghost" id="pfCancel">Cancel</button>':'')+'<button class="btn primary" id="pfSave">'+(isEdit?"Save":"Continue")+' &rarr;</button></div>'+
-      (!isEdit && !profile && cloudConfigured() ? '<div class="pf-signin"><span>Already use the app on another phone?</span> <button type="button" class="linkbtn" id="pfCloud">Sign in to restore your data</button></div>' : '')+
+      (!isEdit && !profile && cloudConfigured() ? (cloud.user ? frSignedHtml("pf-signin") : '<div class="pf-signin"><span>Already use the app on another phone?</span> <button type="button" class="linkbtn" id="pfCloud">Sign in to restore your data</button></div>') : '')+
     '</div>';
   var m = showModal(html, isEdit);
   var prefixSel = m.querySelector("#pfPrefix"), wrap = m.querySelector("#pfCustomWrap");
@@ -4350,11 +4371,109 @@ function openProfileModal(isEdit){
     lsSetJSON(PROFILE_KEY, profile);
     closeModal();
     renderGreeting();
-    toast(firstTime ? "Profile saved. Now plan your day." : "Profile updated.");
-    if(firstTime) scheduleGuide(1800);
-    if(firstTime) setTab("planner"); else renderView(activeTab);
+    if(firstTime){ frWelcome(); }
+    else { toast("Profile updated."); renderView(activeTab); }
   });
   setTimeout(function(){ var f = m.querySelector("#pfName"); if(f) f.focus(); }, 30);
+}
+
+// ---------- first run: glance > sign in > user setup > welcome > timer ----------
+var FR_KEY = "dossier.firstrun.v1", PLANHINT_KEY = "dossier.planHint.v1", NOPLAN_KEY = "dossier.noPlanAsk.v1";
+function frGet(){ return lsGetJSON(FR_KEY, null) || {}; }
+function frMark(k){ var o = frGet(); o[k] = 1; lsSetJSON(FR_KEY, o); }
+function frSignedHtml(cls){
+  var u = cloud.user || {};
+  return '<div class="'+(cls || "")+' fr-ok"><span class="tick" aria-hidden="true">&#10003;</span><div><b>Signed in as '+esc(u.email || u.name || "your account")+'</b><br>Sync is on</div></div>';
+}
+function frNext(){
+  if(profile) return;
+  var fr = frGet();
+  if(!fr.glance){ frGlance(); return; }
+  if(!fr.signin && cloudConfigured() && !cloud.user){ frSignIn(); return; }
+  openProfileModal(false);
+}
+// 1. a short glance: three cards, about ten seconds
+function frGlance(){
+  if(document.getElementById("frGlance")) return;
+  var S = [["&#9201;","Study with a focus timer","Start, study, stop. Your time is saved and your progress updates."],
+           ["&#128467;","Plan your whole syllabus","Tell us how long you have. The plan moves when you finish early or fall behind."],
+           ["&#10067;","Practise real questions","Previous-year questions for every chapter, right where you study."]];
+  var el = document.createElement("div"); el.id = "frGlance"; el.className = "fr-full"; el.setAttribute("role", "dialog"); el.setAttribute("aria-label", "A quick look at the app");
+  el.innerHTML = '<button type="button" class="fr-skip" id="frSkip">Skip</button>'+
+    '<div class="fr-slides" id="frSlides">'+S.map(function(x){ return '<div class="fr-slide"><div class="fr-ico" aria-hidden="true">'+x[0]+'</div><h1>'+x[1]+'</h1><p>'+x[2]+'</p></div>'; }).join("")+'</div>'+
+    '<div class="fr-dots" id="frDots">'+S.map(function(_, i){ return '<i'+(i===0 ? ' class="on"' : "")+'></i>'; }).join("")+'</div>'+
+    '<button type="button" class="fr-cta" id="frNext">Next</button>';
+  document.body.appendChild(el); document.body.style.overflow = "hidden";
+  var sl = el.querySelector("#frSlides"), dots = [].slice.call(el.querySelectorAll("#frDots i")), nx = el.querySelector("#frNext"), cur = 0;
+  function show(i){ cur = i; dots.forEach(function(d, k){ d.classList.toggle("on", k===i); }); nx.textContent = i===S.length-1 ? "Get started" : "Next"; }
+  var moving = 0;   // while the Next button is sliding the cards, the half-way scroll positions must not move the dots back
+  sl.addEventListener("scroll", function(){ if(moving) return; var i = Math.round(sl.scrollLeft / Math.max(1, sl.clientWidth)); if(i !== cur) show(Math.max(0, Math.min(S.length-1, i))); }, {passive:true});
+  function finish(){ if(el.parentNode) el.parentNode.removeChild(el); document.body.style.overflow = ""; frMark("glance"); frNext(); }
+  nx.addEventListener("click", function(){
+    if(cur < S.length-1){ moving = 1; show(cur+1); sl.scrollTo({left:cur*sl.clientWidth, behavior:"smooth"}); setTimeout(function(){ moving = 0; }, 700); }
+    else finish();
+  });
+  el.querySelector("#frSkip").addEventListener("click", finish);
+}
+// 2. sign in with Google: the account that holds the sync, so there is no separate sign-up
+function frSheet(inner){
+  var m = showModal('<div class="modal card fr-sheet" role="dialog" aria-modal="true">'+inner+'</div>', false);
+  m.classList.add("fr-b"); return m;
+}
+function frSignIn(){
+  cloudPrepare();   // starts loading the sign-in service while the sheet is on screen
+  var m = frSheet('<h2>Sign in to keep your progress</h2><p>Your plan and study time are saved to your account and follow you to a new phone.</p>'+
+    '<button type="button" class="fr-g" id="frG"><i>G</i> Continue with Google</button><button type="button" class="fr-later" id="frLater">Not now</button>');
+  m.querySelector("#frG").addEventListener("click", function(){ frMark("signin"); cloudSignIn(); });
+  m.querySelector("#frLater").addEventListener("click", function(){ frMark("signin"); closeModal(); openProfileModal(false); });
+}
+// 3. signed in: say so, then on to User Setup
+function frSignedIn(){
+  var m0 = document.getElementById("modalHost");
+  if(m0 && m0.querySelector("#pfSave")){ profileModalSignedIn(); return; }   // the setup form is already open: just update it
+  if(m0 && !m0.querySelector(".fr-sheet")) return;                              // some other pop-up is open
+  frMark("signin");
+  var m = frSheet(frSignedHtml("")+'<button type="button" class="fr-cta" id="frCont">Continue</button>');
+  m.querySelector("#frCont").addEventListener("click", function(){ closeModal(); if(!profile) openProfileModal(false); else { renderGreeting(); renderCurrentView(); } });
+}
+function profileModalSignedIn(){
+  var m = document.getElementById("modalHost"); if(!m) return;
+  var box = m.querySelector(".pf-signin"); if(box) box.outerHTML = frSignedHtml("pf-signin");
+  var nm = m.querySelector("#pfName"); if(nm && !nm.value && cloud.user && cloud.user.name) nm.value = cloud.user.name;
+}
+// 4. welcome, then straight to the timer with one small plan prompt
+function frWelcome(){
+  try{ guidesSeen.home = 1; lsSetJSON(GUIDE_KEY, guidesSeen); }catch(e){}   // the timer needs no tips pop-up on day one
+  var m = showModal('<div class="modal card fr-welcome" role="dialog" aria-modal="true" aria-labelledby="fwT"><div class="fr-ico" aria-hidden="true">&#128075;</div>'+
+    '<h2 id="fwT">Welcome, '+esc(profile.prefix)+' '+esc(profile.name)+'</h2>'+
+    '<p>Your study timer is ready. Start it whenever you sit down to study. You can plan your syllabus any time.</p>'+
+    '<button type="button" class="btn primary fr-go" id="frOpen">Open my timer</button></div>', false);
+  m.querySelector("#frOpen").addEventListener("click", function(){ closeModal(); setTab("dashboard"); setTimeout(planHintShow, 1200); });
+}
+function planHintShow(){
+  if(studyPlan || lsGet(PLANHINT_KEY) || activeTab !== "dashboard" || document.getElementById("modalHost") || document.getElementById("planHint")) return;
+  var c = document.createElement("div"); c.id = "planHint"; c.className = "fr-hint"; c.setAttribute("role", "dialog"); c.setAttribute("aria-label", "Plan your study");
+  c.innerHTML = '<b>Plan your study?</b><p>A plan saves your study time against chapters and shows what to study next. It takes about a minute.</p><div class="row"><button type="button" class="no" id="phLater">Later</button><button type="button" class="go" id="phGo">Make my plan</button></div>';
+  document.body.appendChild(c);
+  c.querySelector("#phLater").addEventListener("click", function(){ lsSet(PLANHINT_KEY, "1"); c.remove(); });
+  c.querySelector("#phGo").addEventListener("click", function(){ lsSet(PLANHINT_KEY, "1"); c.remove(); setTab("planner"); });
+}
+// when a timer or Pomodoro ends and there is no plan yet: the time is saved either way, and they are invited to plan
+function openTimerNoPlan(){
+  var ms = timerState.pending, mn = Math.max(1, Math.round(ms/60000));
+  lsSet(NOPLAN_KEY, String((+lsGet(NOPLAN_KEY) || 0) + 1));
+  var m = showModal('<div class="modal card fr-end" role="dialog" aria-modal="true" aria-labelledby="npT"><div class="fr-big">'+esc(fmtTimer(ms))+'</div>'+
+    '<h2 id="npT">Nice work.'+(ms < 60000 ? "" : " "+esc(mn < 60 ? mn+" min" : Math.floor(mn/60)+" h"+(mn % 60 ? " "+(mn % 60)+" min" : ""))+" studied.")+'</h2>'+
+    '<p>Your time is saved in today&rsquo;s study time. Without a plan it is not linked to a chapter, so it will not count towards chapter progress.</p>'+
+    '<button type="button" class="btn primary fr-go" id="npPlan">Make my plan</button><button type="button" class="fr-later" id="npSave">Just save it</button><button type="button" class="fr-later dim" id="npDiscard">Discard</button></div>', false);
+  function done(msg, then){
+    var add = timerState.pending; timerAddToToday(add);
+    timerState.pending = 0; timerState.pendInfo = null; timerState.target = ""; timerSave(); closeModal(); timerUi();
+    toast(msg); if(then) then(); else renderView(activeTab);
+  }
+  m.querySelector("#npPlan").addEventListener("click", function(){ done("Saved to today's study time.", function(){ setTab("planner"); }); });
+  m.querySelector("#npSave").addEventListener("click", function(){ done("Added to today's study time."); });
+  m.querySelector("#npDiscard").addEventListener("click", function(){ timerState.pending = 0; timerState.pendInfo = null; timerState.target = ""; timerSave(); closeModal(); timerUi(); renderView(activeTab); toast("Timer discarded."); });
 }
 
 // ---------- curriculum: Purpose > Paper > Subject > Topic > Syllabus unit ----------
@@ -7646,7 +7765,7 @@ var ACT_INFO = {
   ca:{title:"Current Affairs", hint:"Daily, specific days or weekly", color:"--tab-scheduler"}
 };
 function wizDefaults(){
-  return {step:0, err:[], open:{}, init:{}, durMode:"months", months:12, target:"", start:todayKey, startView:"auto",
+  return {step:0, qs:{screen:"choice", months:12, mode:"both", hours:4, preset:""}, err:[], open:{}, init:{}, durMode:"months", months:12, target:"", start:todayKey, startView:"auto",
     mode:"mains", gs1:true, csat:true, gs:[1,2,3,4], essay:true, optionalOn:true, optional:"", customText:"",
     order:[], sel:{},
     cap:{days:[1,2,3,4,5,6], sessions:[{start:"06:00",end:"08:00",subject:""},{start:"10:00",end:"12:00",subject:""},{start:"16:00",end:"17:00",subject:""}], perDay:{}, breakMin:15, blocks:"auto"},
@@ -7659,7 +7778,7 @@ function wizDefaults(){
     }};
 }
 function wizFromPlan(p){ var w = JSON.parse(JSON.stringify(p.cfg)); w.step = 0; w.err = []; w.open = {}; return w; }
-function wizSnapshot(w){ var c = JSON.parse(JSON.stringify(w)); delete c.step; delete c.err; delete c.open; return c; }
+function wizSnapshot(w){ var c = JSON.parse(JSON.stringify(w)); delete c.step; delete c.err; delete c.open; delete c.qs; return c; }
 function wizCatCfg(w){ return {prelims:w.mode!=="mains", mains:w.mode!=="prelims", gs1:!!w.gs1, csat:!!w.csat, gs:w.gs.slice(), optionalOn:!!w.optionalOn, optional:w.optional, customText:w.customText}; }
 function wizCatalog(w){ return buildCatalog(wizCatCfg(w)); }
 function wizSync(w){
@@ -8017,9 +8136,10 @@ function wzPrep(w){
 }
 function wzPriority(w){
   var cat = wizCatalog(w), avail = cat.order;
-  return '<h3>Select Subject Preferences for Your Preparation</h3>'+
-    '<p class="hint">Select your subjects in the order you want to study them. The first subject you select will be your first priority. After all required topics under that subject are completed, the next selected subject will automatically become active. The last selected subject will be studied last. You will not have to wait for a predefined month for the next subject to unlock.</p>'+
-    '<div class="pill-row mb"><button type="button" class="btn ghost sm" data-wa="allSubjects">Select all in default order</button><button type="button" class="btn ghost sm" data-wa="clearSubjects">Clear</button></div>'+
+  return '<h3>Which subject first?</h3>'+
+    '<p class="hint">Tap subjects in the order you want to study them. The next one unlocks when you finish the one before.</p>'+
+    '<details class="info-card" data-wopen="priInfo"'+(w.open.priInfo ? " open" : "")+'><summary>How does the order work?</summary><div class="muted">The first subject you select is your first priority. After all required topics under that subject are completed, the next selected subject automatically becomes active. The last selected subject is studied last. You never wait for a fixed month for the next subject to unlock.</div></details>'+
+    '<div class="pill-row mb"><button type="button" class="btn ghost sm" data-wa="allSubjects">Use recommended order</button><button type="button" class="btn ghost sm" data-wa="clearSubjects">Clear</button></div>'+
     '<div class="subj-grid">'+avail.map(function(n){
       var i = w.order.indexOf(n), e = cat.map[n];
       return '<button type="button" class="subj-chip'+(i>=0?" on":"")+'" data-wa="pickSubject" data-v="'+esc(n)+'">'+(i>=0?'<i>'+(i+1)+'</i>':'<i class="off">+</i>')+esc(n)+'<small>'+esc(e.purpose+" · "+e.paper)+'</small></button>';
@@ -8048,25 +8168,34 @@ function wzTopics(w){
         }).join("")+'</details>';
     }).join("");
 }
+function fitLineHtml(w){
+  var f = null; try{ f = fitCalc(w); }catch(e){}
+  if(!f) return '<div class="muted mt">Set your duration first, then this shows whether your hours are enough.</div>';
+  var total = f.need + f.rev, spare = f.slots - total;
+  return f.fits ? '<div class="fit-v ok"><b>\u2713 Everything fits.</b> '+(spare>0 ? 'About '+spare+' spare session'+(spare===1 ? "" : "s")+' as a cushion.' : 'It is a tight fit.')+'</div>'
+    : '<div class="fit-v bad"><b>\u2717 It does not fit yet.</b> Try a longer day, more study days, or a later end date. Open Fine-tune below for details.</div>';
+}
 function wzCapacity(w){
-  var c = w.cap, n = c.sessions.length;
-  return '<h3>How much can you study?</h3>'+
-    '<div class="cf"><label>Study days</label>'+dayChips("cap.days", c.days)+'</div>'+
-    '<details class="info-card" open><summary>What is a session?</summary><div class="muted">A <b>session</b> is one block of focused study on one chapter, and you decide how long it is. If you set sessions to 1 hour, 1 hour of study is 1 session.<br><br>'+
-      'The planner counts in sessions. It works out <b>what you need</b> (your chapters \u00D7 the sessions each chapter gets, called pace) and <b>what you have</b> (study days \u00D7 sessions per day, from today to your end date). If what you have is at least what you need, everything fits. Longer sessions or more sessions a day give you more hours; a higher pace uses them up faster. The box at the bottom does this sum for you.</div></details>'+
-    '<div class="cf"><label>Sessions per day</label><select data-w="cap.count" data-after="sessCount">'+optsNum(1,6,n)+'</select></div>'+
-    '<div class="cf"><label>How long is one session?</label><select data-w="cap.sessLen" data-t="n" data-after="sessLen">'+(sessLenNow(w) ? "" : '<option value="0" selected>Mixed (set each one below)</option>')+SESS_LENS.map(function(m){ return '<option value="'+m+'"'+(sessLenNow(w)===m ? " selected" : "")+'>'+(m<60 ? m+" minutes" : (m%60 ? (m/60)+" hours" : (m/60)+(m===60 ? " hour" : " hours")))+'</option>'; }).join("")+'</select><div class="hint">Choosing a length sets every session to it and lines them up one after another with your minimum break between. You can still change the time of each session below.</div></div>'+
-    '<div class="hint">For each session choose <b>which subject</b> and <b>from when to when</b>. &ldquo;Auto&rdquo; follows your current active subject. Pick a subject to study it in that session every day, alongside the main chain. A pinned subject starts right away, whatever its place in Priority.</div>'+
+  var c = w.cap, n = c.sessions.length, P = [["light","Light",2,60],["regular","Regular",2,120],["intense","Intense",3,120]];
+  var presets = '<div class="pre-row">'+P.map(function(x){ var on = n===x[2] && sessLenNow(w)===x[3]; return '<button type="button" class="pre'+(on ? " on" : "")+'" data-wa="capPreset" data-v="'+x[0]+'"><b>'+x[1]+'</b><span>'+esc(fmtDurMin(x[2]*x[3]))+' a day \u00B7 '+x[2]+' sessions</span></button>'; }).join("")+'</div>';
+  var adv = '<div class="cf"><label>Sessions per day</label><select data-w="cap.count" data-after="sessCount">'+optsNum(1,6,n)+'</select></div>'+
+    '<div class="cf"><label>How long is one session?</label><select data-w="cap.sessLen" data-t="n" data-after="sessLen">'+(sessLenNow(w) ? "" : '<option value="0" selected>Mixed (set each one below)</option>')+SESS_LENS.map(function(m){ return '<option value="'+m+'"'+(sessLenNow(w)===m ? " selected" : "")+'>'+(m<60 ? m+" minutes" : (m%60 ? (m/60)+" hours" : (m/60)+(m===60 ? " hour" : " hours")))+'</option>'; }).join("")+'</select></div>'+
+    '<div class="hint">For each session choose <b>which subject</b> and <b>from when to when</b>. &ldquo;Auto&rdquo; follows your current active subject; a pinned subject runs in that session every day, alongside the main chain.</div>'+
     '<div class="cap-sess">'+c.sessions.map(function(s, i){ return '<div class="slot"><div class="slot-h"><b>Session '+(i+1)+'</b><span class="dur">'+esc(toMin(s.end)>toMin(s.start)?fmtDurMin(toMin(s.end)-toMin(s.start)):"invalid")+'</span></div>'+
       '<div class="cf"><label>Subject</label><select data-w="cap.sessions.'+i+'.subject"><option value="">Auto &mdash; current active subject</option>'+w.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(s.subject===nm?" selected":"")+'>'+esc(nm)+'</option>'; }).join("")+'</select></div>'+
       '<div class="cf"><label>Time (from &ndash; to)</label>'+timePair("cap.sessions."+i+".start","cap.sessions."+i+".end",s.start,s.end)+'</div></div>'; }).join("")+'</div>'+
     '<div class="cf"><label>Sessions on each study day</label><div class="perday">'+c.days.slice().sort(function(a,b){ return DOW_ORDER.indexOf(a)-DOW_ORDER.indexOf(b); }).map(function(d){
       var pd = c.perDay[d], cur = (pd!=null && pd!=="") ? +pd : n;
       return '<label>'+DOW_SHORT[d]+'<select data-w="cap.perDay.'+d+'" data-t="n">'+optsNum(0,n,cur)+'</select></label>';
-    }).join("")+'</div><div class="hint">Use the first N sessions on that day. For example Monday 2 sessions, Tuesday 1.</div></div>'+
+    }).join("")+'</div><div class="hint">Use the first N sessions on that day.</div></div>'+
     '<div class="two"><div class="cf"><label>Minimum break between sessions</label><select data-w="cap.breakMin" data-t="n">'+[5,10,15,20,30,45,60].map(function(m){ return '<option value="'+m+'"'+(+c.breakMin===m?" selected":"")+'>'+m+' min</option>'; }).join("")+'</select></div>'+
     '<div class="cf"><label>Pace: sessions per chapter</label><select data-w="cap.blocks">'+paceOptions(c.blocks, avgSessMin(c.sessions))+'</select></div></div>'+
-    '<div class="hint">Every session is independent, so mornings can be longer than evenings. Essay, PYQ, Test and Revision take over any study session they overlap on their day.</div>'+fitCalcHtml(w)+weekMapHtml(w);
+    '<div class="hint">Essay, PYQ, Test and Revision take over any study session they overlap on their day.</div>'+fitCalcHtml(w)+weekMapHtml(w);
+  return '<h3>How much can you study?</h3>'+presets+
+    '<div class="cf"><label>Study days</label>'+dayChips("cap.days", c.days)+'</div>'+
+    fitLineHtml(w)+
+    '<details class="info-card" data-wopen="capInfo"'+(w.open.capInfo ? " open" : "")+'><summary>What is a session?</summary><div class="muted">A <b>session</b> is one block of focused study on one chapter, and you decide how long it is. The planner counts in sessions: <b>what you need</b> (chapters \u00D7 sessions per chapter) against <b>what you have</b> (study days \u00D7 sessions a day). If you have at least what you need, everything fits.</div></details>'+
+    '<details class="info-card cap-adv" data-wopen="capAdv"'+(w.open.capAdv ? " open" : "")+'><summary>Fine-tune sessions and times</summary>'+adv+'</details>';
 }
 function actCard(w, k){
   var a = w.acts[k], info = ACT_INFO[k];
@@ -8120,11 +8249,69 @@ function renderWizard(host){
   host.innerHTML =
     '<div class="card wz-head"><div><h2>'+(studyPlan ? "Edit your preparation plan" : "Build your preparation plan")+'</h2><div class="muted">Plan &rarr; study &rarr; complete &rarr; unlock the next subject &rarr; the calendar adapts.</div></div>'+(studyPlan ? '<button type="button" class="link-btn" data-wa="cancelEdit">Cancel</button>' : "")+'</div>'+
     (!studyPlan && planBackupInfo() ? '<div class="card restore-card"><div><b>You reset your plan</b><div class="muted">Your earlier plan and progress were kept. Restore them any time in the next 30 days.</div></div><button type="button" class="btn primary sm" data-pa="restorePlan">Restore previous plan</button></div>' : "")+
-    stepper+
-    '<div class="card wz-card">'+WZ_STEPS[w.step](w)+'</div>'+
+    (w.qs && !studyPlan ? "" : stepper)+
+    '<div class="card wz-card">'+(w.qs && !studyPlan ? qsHtml(w) : WZ_STEPS[w.step](w))+'</div>'+
     (w.err.length ? '<div class="form-err" role="alert"><b>Please fix:</b><br>'+w.err.map(esc).join("<br>")+'</div>' : "")+
-    (w.step < 7 ? '<div class="wz-nav">'+(w.step>0 ? '<button type="button" class="btn ghost" data-wa="back">Back</button>' : '<span></span>')+'<button type="button" class="btn primary" data-wa="next">Next &rarr;</button></div>' : '<div class="wz-nav"><button type="button" class="btn ghost" data-wa="back">Back</button><span></span></div>');
+    (w.qs && !studyPlan ? "" : w.step < 7 ? '<div class="wz-nav">'+(w.step>0 ? '<button type="button" class="btn ghost" data-wa="back">Back</button>' : '<span></span>')+'<button type="button" class="btn primary" data-wa="next">Next &rarr;</button></div>' : '<div class="wz-nav"><button type="button" class="btn ghost" data-wa="back">Back</button><span></span></div>');
   centerActive(host.querySelector(".stepper"), ".st.cur", false);
+  if(w.qs && w.qs.screen==="choice" && !studyPlan && !document.getElementById("modalHost")) openStartChoice();
+}
+// The first thing a new student sees: customise (recommended) or start from a pre-made plan.
+function openStartChoice(){
+  var m = showModal('<div class="modal card start-choice" role="dialog" aria-modal="true" aria-labelledby="scTitle">'+
+    '<h2 id="scTitle">How do you want to start?</h2>'+
+    '<button type="button" class="pre on" id="scCustom"><i>Recommended</i><b>Customise my plan</b><span>Choose your subjects, chapters and daily study yourself. About 2 minutes.</span></button>'+
+    '<button type="button" class="pre" id="scPre"><b>Use a pre-made plan</b><span>Start from a ready-made plan. You can still customise it before it is built, and any time later.</span></button></div>', false);
+  m.querySelector("#scCustom").addEventListener("click", function(){ closeModal(); if(wiz){ wiz.qs = null; wiz.step = 0; wiz.err = []; wizRender(); scrollPlannerTop(); } });
+  m.querySelector("#scPre").addEventListener("click", function(){ closeModal(); if(wiz && wiz.qs){ wiz.qs.screen = "plans"; wizRender(); scrollPlannerTop(); } });
+}
+// ---- quick start: ready-made plans, three questions, and a summary before anything is built ----
+var QS_PRESETS = [
+  {id:"p1", name:"Prelims + Mains, 12 months", desc:"All GS subjects \u00B7 4 hours a day \u00B7 Mon\u2013Sat", months:12, mode:"both", hours:4, tag:"Popular"},
+  {id:"p2", name:"Prelims sprint, 6 months", desc:"Prelims papers \u00B7 6 hours a day \u00B7 Mon\u2013Sat", months:6, mode:"prelims", hours:6},
+  {id:"p3", name:"Mains focus, 8 months", desc:"GS I\u2013IV and Essay \u00B7 6 hours a day \u00B7 Mon\u2013Sat", months:8, mode:"mains", hours:6},
+  {id:"p4", name:"Working professional, 18 months", desc:"Prelims + Mains \u00B7 2 hours a day \u00B7 Mon\u2013Sat", months:18, mode:"both", hours:2}
+];
+var QS_HOURS = {2:[2,60], 4:[2,120], 6:[3,120], 8:[4,120]};   // hours a day -> [sessions, minutes each]
+function qsApply(w){
+  var q = w.qs, hr = QS_HOURS[q.hours] || QS_HOURS[4];
+  w.durMode = "months"; w.months = +q.months; w.start = todayKey; w.target = ""; w.startView = "auto";
+  w.mode = q.mode; w.gs1 = true; w.csat = true; w.gs = [1,2,3,4]; w.essay = true; w.optionalOn = false; w.optional = ""; w.customText = "";
+  w.order = []; w.sel = {}; w.init = {}; wizSync(w);
+  w.order = wizCatalog(w).order.slice(); w.init = {}; wizSync(w);   // the recommended order, every chapter
+  w.cap.days = [1,2,3,4,5,6]; w.cap.perDay = {}; w.cap.breakMin = 15; w.cap.blocks = "auto";
+  w.cap.count = hr[0]; w.cap.sessions = []; wizAfter("sessCount"); setSessLen(w, hr[1]);
+}
+function qsHtml(w){
+  var q = w.qs;
+  if(q.screen !== "sum"){   // "choice" (pop-up open on top) and "plans" both show the list of pre-made plans
+    return '<h3>Pick a pre-made plan</h3><p class="hint">You can still customise everything: check the summary next and tap <b>Customise</b>, or change it any time later in <b>Planner \u2192 Edit plan</b>.</p>'+
+      '<div class="pre-row">'+QS_PRESETS.map(function(x){ return '<button type="button" class="pre" data-wa="qsPreset" data-v="'+x.id+'">'+(x.tag ? '<i>'+esc(x.tag)+'</i>' : "")+'<b>'+esc(x.name)+'</b><span>'+esc(x.desc)+'</span></button>'; }).join("")+'</div>'+
+      '<button type="button" class="qs-link" data-wa="qsFull">Customise my own plan instead (recommended)</button>';
+  }
+  // summary
+  var st = windowStats(w), cat = wizCatalog(w), nCh = 0;
+  w.order.forEach(function(n){ nCh += catalogLeaves(cat.map[n]).filter(function(l){ return w.sel[l.id]; }).length; });
+  var perDay = w.cap.sessions.reduce(function(a, x){ var m = toMin(x.end)-toMin(x.start); return a + (m > 0 ? m : 0); }, 0);
+  var days = w.cap.days.slice().sort(function(a,b){ return DOW_ORDER.indexOf(a)-DOW_ORDER.indexOf(b); });
+  var daysTxt = days.length===7 ? "every day" : (days.length===6 && days.indexOf(0)<0 ? "Mon\u2013Sat" : days.map(function(d){ return DOW_SHORT[d]; }).join(", "));
+  var modeTxt = w.mode==="prelims" ? "Prelims (GS Paper I, CSAT)" : (w.mode==="mains" ? "Mains (GS I\u2013IV, Essay)" : "Prelims and Mains");
+  var f = null; try{ f = fitCalc(w); }catch(e){}
+  var fit = f ? (f.fits ? '<div class="fit-v ok"><b>\u2713 Everything fits</b> in your window.</div>' : '<div class="fit-v bad"><b>\u2717 Not everything fits yet.</b> Tap Customise, or choose a longer plan.</div>') : "";
+  var row = function(label, text, step){ return '<div class="qs-row"><div><small>'+esc(label)+'</small><b>'+text+'</b></div><button type="button" class="btn ghost sm" data-wa="qsEdit" data-v="'+step+'">Edit</button></div>'; };
+  var pre = QS_PRESETS.filter(function(x){ return x.id===q.preset; })[0];
+  return '<h3>Your plan, in short</h3>'+
+    '<div class="qs-note"><b>You chose the pre-made plan \u201C'+esc(pre ? pre.name : "")+'\u201D.</b><br>It is a starting point, not a final plan. You can still customise it: tap <b>Customise this plan</b> below, or any time later open <b>Planner \u2192 Edit plan</b> for every setting, or <b>Reschedule</b> if you fall behind. Your progress is always kept.</div>'+
+    row("Time window", st.ok ? esc((+w.months)+" months \u00B7 "+fmtRange(w.start, st.end)) : "Not set", 0)+
+    row("Preparing for", esc(modeTxt)+'<br><small>Add your optional subject any time in Edit plan.</small>', 2)+
+    row("Study order", esc(w.order.slice(0,4).join(" \u2192 "))+(w.order.length>4 ? esc(" +"+(w.order.length-4)+" more") : ""), 3)+
+    row("Chapters", esc(nCh+" chapters in "+w.order.length+" subjects"), 4)+
+    row("Daily study", esc(fmtDurMin(perDay)+" a day \u00B7 "+w.cap.sessions.length+" sessions \u00B7 "+daysTxt), 5)+
+    row("Extras", 'None yet<br><small>Essay, tests, revision and current affairs can be added later.</small>', 6)+
+    fit+
+    '<button type="button" class="btn primary qs-go" data-wa="gen">Build my plan &rarr;</button>'+
+    '<button type="button" class="btn ghost qs-go2" data-wa="qsFull">Customise this plan</button>'+
+    '<button type="button" class="qs-link" data-wa="qsBack">&larr; Choose another plan</button>';
 }
 // ---- pinning a subject that Priority would not reach for a long time ----
 // When is this subject expected to start if it were NOT pinned? (null = not within the plan window)
@@ -8200,6 +8387,11 @@ function wizAction(a, b){
     case "everyDay": w.acts[v].days = [0,1,2,3,4,5,6]; w.acts[v].mode = "weekly"; break;
     case "addDate": var inp = document.getElementById("actDate_"+v); if(inp && inp.value && w.acts[v].dates.indexOf(inp.value)<0) w.acts[v].dates.push(inp.value); break;
     case "rmDate": var pr = v.split("|"), ds = w.acts[pr[0]].dates, di = ds.indexOf(pr[1]); if(di>=0) ds.splice(di,1); break;
+    case "qsPreset": var pr0 = QS_PRESETS.filter(function(x){ return x.id===v; })[0]; if(pr0){ w.qs = {screen:"sum", months:pr0.months, mode:pr0.mode, hours:pr0.hours, preset:pr0.id}; qsApply(w); scrollPlannerTop(); } break;
+    case "qsBack": w.qs.screen = "plans"; w.qs.preset = ""; break;
+    case "qsEdit": w.qs = null; w.step = +v; w.err = []; break;
+    case "qsFull": w.qs = null; w.step = 0; w.err = []; break;
+    case "capPreset": var cp = {light:[2,60], regular:[2,120], intense:[3,120]}[v]; if(cp){ w.cap.count = cp[0]; wizAfter("sessCount"); setSessLen(w, cp[1]); } break;
     case "cancelEdit": plannerEditing = false; wiz = null; renderPlanner(); return;
     case "gen": wizGenerate(); return;
   }
@@ -8246,6 +8438,7 @@ function planReadyModal(){
     '<div class="pd-mark" aria-hidden="true">\u2713</div>'+
     '<h2 id="pdTitle">Congratulations! Your planner is ready</h2>'+
     '<p>Sit back, relax and just study. We take care of the rest of your preparation: what to study today, what comes next, and keeping your plan on track as you go.</p>'+
+    '<p class="muted">Want to change something? Open <b>Planner \u2192 Edit plan</b> any time. Your progress is kept.</p>'+
     '<div class="modal-actions"><button class="btn primary" id="pdGo">Start studying &rarr;</button></div></div>', false);
   m.querySelector("#pdGo").addEventListener("click", function(){ closeModal(); setTab("dashboard"); });
 }
@@ -13611,6 +13804,7 @@ function wirePlanner(host){
   host.addEventListener("toggle", function(e){
     var d = e.target;
     if(d.classList && d.classList.contains("scope") && wiz && d.getAttribute("data-sub")) wiz.open[d.getAttribute("data-sub")] = d.open;
+    if(d.hasAttribute && d.hasAttribute("data-wopen") && wiz) wiz.open[d.getAttribute("data-wopen")] = d.open;
     if(d.classList && d.classList.contains("progsub") && d.getAttribute("data-prog")) progOpen[d.getAttribute("data-prog")] = d.open;
   }, true);
   host.addEventListener("dragstart", function(e){
@@ -14208,7 +14402,7 @@ function wakeUi(ms){ setUiStage(2, ms); }
 document.addEventListener("click", function(e){
   var b = document.body;
   if(!b.classList.contains("dash-timer") || b.classList.contains("menu-open")) return;
-  if(e.target.closest && e.target.closest("#modalHost, #drawer, #drawerDim")) return;
+  if(e.target.closest && e.target.closest("#modalHost, #drawer, #drawerDim, #frGlance, #planHint")) return;
   if(!b.classList.contains("ui-sleep")){ setUiStage(2); return; }   // controls are showing: the tap goes through and keeps them up
   e.preventDefault(); e.stopPropagation();            // controls are hidden: this tap only reveals things
   if(uiStage === 0 && digitsHiddenWhenCalm()) setUiStage(1);   // first tap: show the running time
@@ -14267,6 +14461,7 @@ function renderSubTabs(){
 }
 function setTab(id){
   if(!VIEW_TO_GROUP[id]) id = "dashboard";
+  if(id !== "dashboard"){ var ph = document.getElementById("planHint"); if(ph) ph.remove(); }
   if(id==="dashboard" && activeTab!=="dashboard") dashMore = false;
   activeTab = id;
   renderTabs();
@@ -14782,6 +14977,7 @@ function timerOverflow(sid, studyMin, brkMin){
   return studyMin + brkMin > Math.max(0, x.duration - ((x.actualDuration||0) + (x.pomoBreakMin||0)));
 }
 function openTimerSave(){
+  if(!studyPlan && (+lsGet(NOPLAN_KEY) || 0) < 3){ openTimerNoPlan(); return; }
   var ms = timerState.pending, list = timerTargets(), pick = "", info = timerState.pendInfo;
   var studyMin = Math.max(1, Math.round(ms/60000)), brkMin = info ? Math.round((info.brkMs||0)/60000) : 0, win = timerRealWindow(info);
   var tg = timerState.target && list.filter(function(x){ return x.id===timerState.target; })[0];
@@ -15700,6 +15896,7 @@ function cloudOnUser(u){
   }
   syncMeta.uid = u.uid; syncMeta.email = u.email || ""; saveSyncMeta();
   cloud.user = u; setCloud("sync", "Syncing…"); cloudWatch(u.uid);
+  if(!profile) frSignedIn();
   if(!cloud.tracked){ cloud.tracked = true; trackEvent("cloud_sign_in", {}); }
   webEntRefresh();
   cloudSync().then(function(){
@@ -15860,7 +16057,7 @@ function bindStats(host){
 }
 // asked once, after the person has set up their profile
 function analyticsAsk(){
-  if(!analyticsConfigured() || analyticsChoice() || !profile || document.getElementById("modalHost")) return;
+  if(!analyticsConfigured() || analyticsChoice() || !profile || !studyPlan || document.getElementById("modalHost")) return;   // asked once a plan exists, never in the middle of setup
   var m = showModal('<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="anTitle">'+
     '<h2 id="anTitle">Help improve CSE Companion?</h2>'+
     '<p>Share <b>anonymous usage statistics</b>: which screens are used, which features help, and what phone model and app version you have.</p>'+
@@ -15889,16 +16086,15 @@ var GUIDES = {
     "The round button at the bottom opens your <b>Dashboard</b>. The <b>☰</b> button at the top left opens the menu."]},
   dash:{icon:"📊", name:"Dashboard", title:"Your Dashboard", steps:[
     "<b>Journey progress</b> at the top shows how many chapters you have finished overall.",
-    "<b>Active module</b> cards show each subject you are studying now and which session it belongs to. Swipe sideways when there is more than one.",
+    "<b>Active module</b> cards show each subject you are studying now and which session it belongs to. Scroll up or down to see each session's card.",
     "<b>Today</b> compares the time you planned with the time you studied, counting every session of the day.",
-    "<b>Recent PYQ</b> gives one real exam question for each subject you are on. Scroll it like a wheel and tap <b>See more PYQs</b> to read every question on the chapter.",
+    "<b>Recent PYQ</b> gives one real exam question for each subject you are on. It follows the card above, and <b>See more PYQs</b> opens every question on the chapter.",
     "<b>Study streak</b> counts the days in a row you studied. <b>Revise today</b> lists chapters due for a quick recall: tap ✓ when done.",
     "No plan yet? Build one in the Planner and these cards fill up. <b>Backup</b> is at the bottom."]},
   plansetup:{icon:"🗓", name:"Planner setup", title:"Build your plan", steps:[
-    "Answer a few short steps: how long you have, Prelims, Mains or both, the order of your subjects, which chapters to include, your daily sessions, extras like essay and tests, then review.",
-    "<b>Priority</b> is the order you study subjects. When one reaches 100%, the next one unlocks.",
-    "<b>Capacity</b> is your daily study sessions. Pin a subject to a session to study it in parallel.",
-    "Nothing is final. Change it later with <b>Reschedule</b> or <b>Edit plan</b>, and your progress is kept."]},
+    "Choose to <b>customise</b> your plan (recommended) or use a <b>pre-made plan</b>. A pre-made plan shows a summary first, and you can still customise it.",
+    "<b>Priority</b> is the order you study subjects. When one reaches 100%, the next unlocks.",
+    "Nothing is final. Change anything later in the Planner with <b>Edit plan</b> or <b>Reschedule</b>. Your progress is kept."]},
   planner:{icon:"🧭", name:"Planner", title:"Your Planner", steps:[
     "<b>Overview</b> shows the subjects running now. Tap <b>Mark current chapter complete</b> when you finish the chapter you are on.",
     "<b>Yearly, Monthly, Weekly</b> and <b>Daily</b> are the same plan at different zoom levels. <b>Daily</b> is where you log what you studied.",
@@ -15935,7 +16131,7 @@ function guideOff(){ return lsGet(GUIDE_OFF_KEY)==="1"; }
 function currentGuideId(){
   var t = activeTab;
   if(t==="dashboard") return dashMore ? "dash" : "home";
-  if(t==="planner") return (studyPlan && !plannerEditing) ? "planner" : "plansetup";
+  if(t==="planner") return (studyPlan && !plannerEditing) ? "planner" : ((wiz && wiz.qs) ? "" : "plansetup");   // the start pop-up and pre-made plan screens explain themselves
   if(t==="prelims" || t==="mains" || t==="optional") return "tiers";
   return GUIDES[t] ? t : "";
 }
@@ -15973,7 +16169,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "194";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "197";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -17507,7 +17703,7 @@ function boot(){
     renderView(activeTab);
     setTimeout(function(){ pyqWarm(function(){ refreshPyqCard(); setTimeout(warmChapterMatches, 600); }); }, 900);
     subInit();
-    if(!profile) openProfileModal(false);
+    if(!profile) frNext();
 
     var capPromise = (window.claude && window.claude.use) ? window.claude.use("db") : Promise.resolve(null);
     capPromise.then(function(d){
