@@ -218,6 +218,21 @@
   .dx-wheelwrap{position:relative; margin:0 0 12px;} .dx-wheel{height:468px; overflow-y:auto; overflow-x:hidden; scroll-snap-type:y mandatory; scrollbar-width:none; overscroll-behavior:contain; -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - 52px),transparent 100%); mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - 52px),transparent 100%);} .dx-wheel::-webkit-scrollbar{display:none;}
   .dm-i{height:408px; margin-bottom:12px; scroll-snap-align:start; scroll-snap-stop:always;} .dm-i .dx-mod{height:100%; overflow:hidden; margin:0;}
   button.pre{display:block; width:100%; text-align:left; color:inherit; font:inherit; cursor:pointer; min-height:44px;} .pre-row{display:grid; gap:10px; margin-top:10px;} .pre{border:1px solid var(--line); border-radius:16px; padding:12px 14px; background:var(--surface);} .pre.on{border-color:#2de2d6; background:color-mix(in srgb,#2de2d6 12%,var(--surface));} .pre b{display:block; font-size:15px;} .pre span{display:block; font-size:12.5px; color:var(--ink-soft); margin-top:2px;} .pre i{float:right; font-style:normal; font-size:11px; font-weight:800; padding:2px 8px; border-radius:999px; background:#2de2d6; color:#052;}
+  .fr-full{position:fixed; inset:0; z-index:5000; display:flex; flex-direction:column; padding:26px 22px 28px; background:radial-gradient(120% 80% at 50% 0%, #0b3a45 0%, #041a22 55%, #02101a 100%); color:#e8fbff}
+  .fr-skip{align-self:flex-end; background:none; border:0; font:inherit; font-size:14px; font-weight:700; color:#5aa0ff; padding:8px; cursor:pointer}
+  .fr-slides{flex:1; display:flex; overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; overscroll-behavior-x:contain;} .fr-slides::-webkit-scrollbar{display:none;}
+  .fr-slide{flex:0 0 100%; scroll-snap-align:center; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; gap:14px; padding:0 6px;}
+  .fr-ico{width:120px; height:120px; border-radius:50%; display:grid; place-items:center; font-size:54px; background:radial-gradient(circle at 35% 30%, #2de2d6, #3d6eff 70%); box-shadow:0 0 0 12px color-mix(in srgb,#3d6eff 16%,transparent), 0 14px 50px color-mix(in srgb,#3d6eff 45%,transparent);}
+  .fr-slide h1{font-family:var(--font-display,inherit); font-size:28px; line-height:1.15; margin:8px 0 0;} .fr-slide p{font-size:15px; line-height:1.45; opacity:.82; margin:0; max-width:300px;}
+  .fr-dots{display:flex; gap:8px; justify-content:center; margin:0 0 16px;} .fr-dots i{width:9px; height:9px; border-radius:50%; background:#2b5560; transition:width .2s;} .fr-dots i.on{width:26px; border-radius:6px; background:#2de2d6;}
+  .fr-cta{min-height:54px; border:0; border-radius:16px; font:800 17px system-ui; color:#052; background:linear-gradient(135deg,#2de2d6,#5ad4ff); width:100%; cursor:pointer;}
+  .modal-back.fr-b{align-items:flex-end; padding:0;} .fr-b .fr-sheet{width:100%; max-width:none; margin:0; border-radius:26px 26px 0 0; padding:22px 20px 26px;} .fr-sheet h2{margin:0 0 6px;} .fr-sheet p{margin:0 0 16px; opacity:.82;}
+  .fr-g{display:flex; align-items:center; justify-content:center; gap:12px; width:100%; min-height:54px; border-radius:16px; border:0; background:#fff; color:#1f1f1f; font:700 16px system-ui; cursor:pointer;} .fr-g i{width:24px; height:24px; border-radius:50%; display:grid; place-items:center; font:800 15px system-ui; font-style:normal; color:#fff; background:conic-gradient(#ea4335 0 25%, #fbbc05 0 50%, #34a853 0 75%, #4285f4 0);}
+  .fr-later{display:block; width:100%; text-align:center; margin-top:12px; padding:8px; background:none; border:0; font:inherit; font-size:13.5px; font-weight:700; color:#5aa0ff; cursor:pointer;} .fr-later.dim{color:var(--ink-soft); font-weight:600; margin-top:0;}
+  .fr-ok{display:flex; align-items:center; gap:12px; padding:12px 14px; border-radius:16px; background:color-mix(in srgb,#34a853 18%,transparent); border:1px solid #34a853; margin:0 0 14px; font-size:14px; line-height:1.4; overflow-wrap:anywhere;} .fr-ok .tick{width:30px; height:30px; border-radius:50%; background:#34a853; color:#fff; display:grid; place-items:center; font-size:17px; flex:0 0 auto;}
+  .pf-signin.fr-ok{margin:14px 0 0;}
+  .fr-welcome,.fr-end{text-align:center;} .fr-welcome .fr-ico{margin:2px auto 14px; width:96px; height:96px; font-size:44px;} .fr-welcome h2,.fr-end h2{margin:4px 0 8px;} .fr-welcome p,.fr-end p{margin:0 0 16px; opacity:.85; line-height:1.45;} .fr-go{width:100%; min-height:50px; font-size:16px;} .fr-big{font:800 40px system-ui; color:#2de2d6; margin:2px 0;}
+  .fr-hint{position:fixed; left:14px; right:14px; bottom:116px; z-index:900; padding:15px 16px; border-radius:20px; background:#e9fbff; color:#052; box-shadow:0 12px 44px rgba(0,0,0,.55);} .fr-hint b{display:block; font-size:16px; margin-bottom:3px;} .fr-hint p{margin:0 0 12px; font-size:13.5px; line-height:1.4;} .fr-hint .row{display:flex; gap:10px;} .fr-hint button{flex:1; min-height:44px; border-radius:12px; border:0; font:800 14.5px system-ui; cursor:pointer;} .fr-hint .go{background:#0a6; color:#fff;} .fr-hint .no{background:#cfeef5; color:#052;}
   .start-choice h2{margin:0 0 6px;} .start-choice .pre{margin-top:10px;} .qs-go2{width:100%; min-height:46px; margin-top:10px;}
   .qs-q{margin:14px 0 4px; font-weight:800; font-size:15px;} .qs-done{margin-top:14px; padding:12px; border-radius:14px; border:1px dashed var(--line); font-size:13px; line-height:1.45;} .qs-go{width:100%; min-height:50px; font-size:16px; margin-top:14px;}
   .qs-link{display:block; width:100%; text-align:center; margin:10px 0 0; padding:8px; font:inherit; font-size:13.5px; font-weight:700; text-decoration:underline; text-underline-offset:3px; color:#5aa0ff; background:none; border:0; cursor:pointer;}
@@ -4314,7 +4329,7 @@ function dismissFirstRunProfile(){
   return false;
 }
 function openProfileModal(isEdit){
-  var p = profile || {name:"", district:"", state:"", prefix:"IAS"};
+  var p = profile || {name:((typeof cloud !== "undefined" && cloud.user && cloud.user.name) || ""), district:"", state:"", prefix:"IAS"};
   var custom = PREFIXES.indexOf(p.prefix) < 0;
   var html =
     '<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="pfTitle">'+
@@ -4329,7 +4344,7 @@ function openProfileModal(isEdit){
       '<div class="sf" id="pfCustomWrap"'+(custom?"":" hidden")+'><label for="pfCustom">Custom prefix / post</label><input id="pfCustom" type="text" placeholder="e.g. IFoS" value="'+esc(custom?p.prefix:"")+'"></div>'+
       '<div class="form-err" id="pfErr" role="alert" hidden></div>'+
       '<div class="modal-actions">'+(isEdit?'<button class="btn ghost" id="pfCancel">Cancel</button>':'')+'<button class="btn primary" id="pfSave">'+(isEdit?"Save":"Continue")+' &rarr;</button></div>'+
-      (!isEdit && !profile && cloudConfigured() ? '<div class="pf-signin"><span>Already use the app on another phone?</span> <button type="button" class="linkbtn" id="pfCloud">Sign in to restore your data</button></div>' : '')+
+      (!isEdit && !profile && cloudConfigured() ? (cloud.user ? frSignedHtml("pf-signin") : '<div class="pf-signin"><span>Already use the app on another phone?</span> <button type="button" class="linkbtn" id="pfCloud">Sign in to restore your data</button></div>') : '')+
     '</div>';
   var m = showModal(html, isEdit);
   var prefixSel = m.querySelector("#pfPrefix"), wrap = m.querySelector("#pfCustomWrap");
@@ -4356,11 +4371,109 @@ function openProfileModal(isEdit){
     lsSetJSON(PROFILE_KEY, profile);
     closeModal();
     renderGreeting();
-    toast(firstTime ? "Profile saved. Now plan your day." : "Profile updated.");
-    if(firstTime) scheduleGuide(1800);
-    if(firstTime) setTab("planner"); else renderView(activeTab);
+    if(firstTime){ frWelcome(); }
+    else { toast("Profile updated."); renderView(activeTab); }
   });
   setTimeout(function(){ var f = m.querySelector("#pfName"); if(f) f.focus(); }, 30);
+}
+
+// ---------- first run: glance > sign in > user setup > welcome > timer ----------
+var FR_KEY = "dossier.firstrun.v1", PLANHINT_KEY = "dossier.planHint.v1", NOPLAN_KEY = "dossier.noPlanAsk.v1";
+function frGet(){ return lsGetJSON(FR_KEY, null) || {}; }
+function frMark(k){ var o = frGet(); o[k] = 1; lsSetJSON(FR_KEY, o); }
+function frSignedHtml(cls){
+  var u = cloud.user || {};
+  return '<div class="'+(cls || "")+' fr-ok"><span class="tick" aria-hidden="true">&#10003;</span><div><b>Signed in as '+esc(u.email || u.name || "your account")+'</b><br>Sync is on</div></div>';
+}
+function frNext(){
+  if(profile) return;
+  var fr = frGet();
+  if(!fr.glance){ frGlance(); return; }
+  if(!fr.signin && cloudConfigured() && !cloud.user){ frSignIn(); return; }
+  openProfileModal(false);
+}
+// 1. a short glance: three cards, about ten seconds
+function frGlance(){
+  if(document.getElementById("frGlance")) return;
+  var S = [["&#9201;","Study with a focus timer","Start, study, stop. Your time is saved and your progress updates."],
+           ["&#128467;","Plan your whole syllabus","Tell us how long you have. The plan moves when you finish early or fall behind."],
+           ["&#10067;","Practise real questions","Previous-year questions for every chapter, right where you study."]];
+  var el = document.createElement("div"); el.id = "frGlance"; el.className = "fr-full"; el.setAttribute("role", "dialog"); el.setAttribute("aria-label", "A quick look at the app");
+  el.innerHTML = '<button type="button" class="fr-skip" id="frSkip">Skip</button>'+
+    '<div class="fr-slides" id="frSlides">'+S.map(function(x){ return '<div class="fr-slide"><div class="fr-ico" aria-hidden="true">'+x[0]+'</div><h1>'+x[1]+'</h1><p>'+x[2]+'</p></div>'; }).join("")+'</div>'+
+    '<div class="fr-dots" id="frDots">'+S.map(function(_, i){ return '<i'+(i===0 ? ' class="on"' : "")+'></i>'; }).join("")+'</div>'+
+    '<button type="button" class="fr-cta" id="frNext">Next</button>';
+  document.body.appendChild(el); document.body.style.overflow = "hidden";
+  var sl = el.querySelector("#frSlides"), dots = [].slice.call(el.querySelectorAll("#frDots i")), nx = el.querySelector("#frNext"), cur = 0;
+  function show(i){ cur = i; dots.forEach(function(d, k){ d.classList.toggle("on", k===i); }); nx.textContent = i===S.length-1 ? "Get started" : "Next"; }
+  var moving = 0;   // while the Next button is sliding the cards, the half-way scroll positions must not move the dots back
+  sl.addEventListener("scroll", function(){ if(moving) return; var i = Math.round(sl.scrollLeft / Math.max(1, sl.clientWidth)); if(i !== cur) show(Math.max(0, Math.min(S.length-1, i))); }, {passive:true});
+  function finish(){ if(el.parentNode) el.parentNode.removeChild(el); document.body.style.overflow = ""; frMark("glance"); frNext(); }
+  nx.addEventListener("click", function(){
+    if(cur < S.length-1){ moving = 1; show(cur+1); sl.scrollTo({left:cur*sl.clientWidth, behavior:"smooth"}); setTimeout(function(){ moving = 0; }, 700); }
+    else finish();
+  });
+  el.querySelector("#frSkip").addEventListener("click", finish);
+}
+// 2. sign in with Google: the account that holds the sync, so there is no separate sign-up
+function frSheet(inner){
+  var m = showModal('<div class="modal card fr-sheet" role="dialog" aria-modal="true">'+inner+'</div>', false);
+  m.classList.add("fr-b"); return m;
+}
+function frSignIn(){
+  cloudPrepare();   // starts loading the sign-in service while the sheet is on screen
+  var m = frSheet('<h2>Sign in to keep your progress</h2><p>Your plan and study time are saved to your account and follow you to a new phone.</p>'+
+    '<button type="button" class="fr-g" id="frG"><i>G</i> Continue with Google</button><button type="button" class="fr-later" id="frLater">Not now</button>');
+  m.querySelector("#frG").addEventListener("click", function(){ frMark("signin"); cloudSignIn(); });
+  m.querySelector("#frLater").addEventListener("click", function(){ frMark("signin"); closeModal(); openProfileModal(false); });
+}
+// 3. signed in: say so, then on to User Setup
+function frSignedIn(){
+  var m0 = document.getElementById("modalHost");
+  if(m0 && m0.querySelector("#pfSave")){ profileModalSignedIn(); return; }   // the setup form is already open: just update it
+  if(m0 && !m0.querySelector(".fr-sheet")) return;                              // some other pop-up is open
+  frMark("signin");
+  var m = frSheet(frSignedHtml("")+'<button type="button" class="fr-cta" id="frCont">Continue</button>');
+  m.querySelector("#frCont").addEventListener("click", function(){ closeModal(); if(!profile) openProfileModal(false); else { renderGreeting(); renderCurrentView(); } });
+}
+function profileModalSignedIn(){
+  var m = document.getElementById("modalHost"); if(!m) return;
+  var box = m.querySelector(".pf-signin"); if(box) box.outerHTML = frSignedHtml("pf-signin");
+  var nm = m.querySelector("#pfName"); if(nm && !nm.value && cloud.user && cloud.user.name) nm.value = cloud.user.name;
+}
+// 4. welcome, then straight to the timer with one small plan prompt
+function frWelcome(){
+  try{ guidesSeen.home = 1; lsSetJSON(GUIDE_KEY, guidesSeen); }catch(e){}   // the timer needs no tips pop-up on day one
+  var m = showModal('<div class="modal card fr-welcome" role="dialog" aria-modal="true" aria-labelledby="fwT"><div class="fr-ico" aria-hidden="true">&#128075;</div>'+
+    '<h2 id="fwT">Welcome, '+esc(profile.prefix)+' '+esc(profile.name)+'</h2>'+
+    '<p>Your study timer is ready. Start it whenever you sit down to study. You can plan your syllabus any time.</p>'+
+    '<button type="button" class="btn primary fr-go" id="frOpen">Open my timer</button></div>', false);
+  m.querySelector("#frOpen").addEventListener("click", function(){ closeModal(); setTab("dashboard"); setTimeout(planHintShow, 1200); });
+}
+function planHintShow(){
+  if(studyPlan || lsGet(PLANHINT_KEY) || activeTab !== "dashboard" || document.getElementById("modalHost") || document.getElementById("planHint")) return;
+  var c = document.createElement("div"); c.id = "planHint"; c.className = "fr-hint"; c.setAttribute("role", "dialog"); c.setAttribute("aria-label", "Plan your study");
+  c.innerHTML = '<b>Plan your study?</b><p>A plan saves your study time against chapters and shows what to study next. It takes about a minute.</p><div class="row"><button type="button" class="no" id="phLater">Later</button><button type="button" class="go" id="phGo">Make my plan</button></div>';
+  document.body.appendChild(c);
+  c.querySelector("#phLater").addEventListener("click", function(){ lsSet(PLANHINT_KEY, "1"); c.remove(); });
+  c.querySelector("#phGo").addEventListener("click", function(){ lsSet(PLANHINT_KEY, "1"); c.remove(); setTab("planner"); });
+}
+// when a timer or Pomodoro ends and there is no plan yet: the time is saved either way, and they are invited to plan
+function openTimerNoPlan(){
+  var ms = timerState.pending, mn = Math.max(1, Math.round(ms/60000));
+  lsSet(NOPLAN_KEY, String((+lsGet(NOPLAN_KEY) || 0) + 1));
+  var m = showModal('<div class="modal card fr-end" role="dialog" aria-modal="true" aria-labelledby="npT"><div class="fr-big">'+esc(fmtTimer(ms))+'</div>'+
+    '<h2 id="npT">Nice work.'+(ms < 60000 ? "" : " "+esc(mn < 60 ? mn+" min" : Math.floor(mn/60)+" h"+(mn % 60 ? " "+(mn % 60)+" min" : ""))+" studied.")+'</h2>'+
+    '<p>Your time is saved in today&rsquo;s study time. Without a plan it is not linked to a chapter, so it will not count towards chapter progress.</p>'+
+    '<button type="button" class="btn primary fr-go" id="npPlan">Make my plan</button><button type="button" class="fr-later" id="npSave">Just save it</button><button type="button" class="fr-later dim" id="npDiscard">Discard</button></div>', false);
+  function done(msg, then){
+    var add = timerState.pending; timerAddToToday(add);
+    timerState.pending = 0; timerState.pendInfo = null; timerState.target = ""; timerSave(); closeModal(); timerUi();
+    toast(msg); if(then) then(); else renderView(activeTab);
+  }
+  m.querySelector("#npPlan").addEventListener("click", function(){ done("Saved to today's study time.", function(){ setTab("planner"); }); });
+  m.querySelector("#npSave").addEventListener("click", function(){ done("Added to today's study time."); });
+  m.querySelector("#npDiscard").addEventListener("click", function(){ timerState.pending = 0; timerState.pendInfo = null; timerState.target = ""; timerSave(); closeModal(); timerUi(); renderView(activeTab); toast("Timer discarded."); });
 }
 
 // ---------- curriculum: Purpose > Paper > Subject > Topic > Syllabus unit ----------
@@ -14289,7 +14402,7 @@ function wakeUi(ms){ setUiStage(2, ms); }
 document.addEventListener("click", function(e){
   var b = document.body;
   if(!b.classList.contains("dash-timer") || b.classList.contains("menu-open")) return;
-  if(e.target.closest && e.target.closest("#modalHost, #drawer, #drawerDim")) return;
+  if(e.target.closest && e.target.closest("#modalHost, #drawer, #drawerDim, #frGlance, #planHint")) return;
   if(!b.classList.contains("ui-sleep")){ setUiStage(2); return; }   // controls are showing: the tap goes through and keeps them up
   e.preventDefault(); e.stopPropagation();            // controls are hidden: this tap only reveals things
   if(uiStage === 0 && digitsHiddenWhenCalm()) setUiStage(1);   // first tap: show the running time
@@ -14348,6 +14461,7 @@ function renderSubTabs(){
 }
 function setTab(id){
   if(!VIEW_TO_GROUP[id]) id = "dashboard";
+  if(id !== "dashboard"){ var ph = document.getElementById("planHint"); if(ph) ph.remove(); }
   if(id==="dashboard" && activeTab!=="dashboard") dashMore = false;
   activeTab = id;
   renderTabs();
@@ -14863,6 +14977,7 @@ function timerOverflow(sid, studyMin, brkMin){
   return studyMin + brkMin > Math.max(0, x.duration - ((x.actualDuration||0) + (x.pomoBreakMin||0)));
 }
 function openTimerSave(){
+  if(!studyPlan && (+lsGet(NOPLAN_KEY) || 0) < 3){ openTimerNoPlan(); return; }
   var ms = timerState.pending, list = timerTargets(), pick = "", info = timerState.pendInfo;
   var studyMin = Math.max(1, Math.round(ms/60000)), brkMin = info ? Math.round((info.brkMs||0)/60000) : 0, win = timerRealWindow(info);
   var tg = timerState.target && list.filter(function(x){ return x.id===timerState.target; })[0];
@@ -15781,6 +15896,7 @@ function cloudOnUser(u){
   }
   syncMeta.uid = u.uid; syncMeta.email = u.email || ""; saveSyncMeta();
   cloud.user = u; setCloud("sync", "Syncing…"); cloudWatch(u.uid);
+  if(!profile) frSignedIn();
   if(!cloud.tracked){ cloud.tracked = true; trackEvent("cloud_sign_in", {}); }
   webEntRefresh();
   cloudSync().then(function(){
@@ -16053,7 +16169,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "196";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "197";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -17587,7 +17703,7 @@ function boot(){
     renderView(activeTab);
     setTimeout(function(){ pyqWarm(function(){ refreshPyqCard(); setTimeout(warmChapterMatches, 600); }); }, 900);
     subInit();
-    if(!profile) openProfileModal(false);
+    if(!profile) frNext();
 
     var capPromise = (window.claude && window.claude.use) ? window.claude.use("db") : Promise.resolve(null);
     capPromise.then(function(d){
