@@ -218,6 +218,7 @@
   .dx-wheelwrap{position:relative; margin:0 0 12px;} .dx-wheel{height:468px; overflow-y:auto; overflow-x:hidden; scroll-snap-type:y mandatory; scrollbar-width:none; overscroll-behavior:contain; -webkit-mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - 52px),transparent 100%); mask-image:linear-gradient(to bottom,#000 0,#000 calc(100% - 52px),transparent 100%);} .dx-wheel::-webkit-scrollbar{display:none;}
   .dm-i{height:408px; margin-bottom:12px; scroll-snap-align:start; scroll-snap-stop:always;} .dm-i .dx-mod{height:100%; overflow:hidden; margin:0;}
   button.pre{display:block; width:100%; text-align:left; color:inherit; font:inherit; cursor:pointer; min-height:44px;} .pre-row{display:grid; gap:10px; margin-top:10px;} .pre{border:1px solid var(--line); border-radius:16px; padding:12px 14px; background:var(--surface);} .pre.on{border-color:#2de2d6; background:color-mix(in srgb,#2de2d6 12%,var(--surface));} .pre b{display:block; font-size:15px;} .pre span{display:block; font-size:12.5px; color:var(--ink-soft); margin-top:2px;} .pre i{float:right; font-style:normal; font-size:11px; font-weight:800; padding:2px 8px; border-radius:999px; background:#2de2d6; color:#052;}
+  .start-choice h2{margin:0 0 6px;} .start-choice .pre{margin-top:10px;} .qs-go2{width:100%; min-height:46px; margin-top:10px;}
   .qs-q{margin:14px 0 4px; font-weight:800; font-size:15px;} .qs-done{margin-top:14px; padding:12px; border-radius:14px; border:1px dashed var(--line); font-size:13px; line-height:1.45;} .qs-go{width:100%; min-height:50px; font-size:16px; margin-top:14px;}
   .qs-link{display:block; width:100%; text-align:center; margin:10px 0 0; padding:8px; font:inherit; font-size:13.5px; font-weight:700; text-decoration:underline; text-underline-offset:3px; color:#5aa0ff; background:none; border:0; cursor:pointer;}
   .qs-note{margin:10px 0 6px; padding:12px; border-radius:14px; background:color-mix(in srgb,#3d6eff 14%,transparent); border:1px solid #3d6eff; font-size:13.5px; line-height:1.5;}
@@ -7651,7 +7652,7 @@ var ACT_INFO = {
   ca:{title:"Current Affairs", hint:"Daily, specific days or weekly", color:"--tab-scheduler"}
 };
 function wizDefaults(){
-  return {step:0, qs:{screen:"start", months:12, mode:"both", hours:4, preset:""}, err:[], open:{}, init:{}, durMode:"months", months:12, target:"", start:todayKey, startView:"auto",
+  return {step:0, qs:{screen:"choice", months:12, mode:"both", hours:4, preset:""}, err:[], open:{}, init:{}, durMode:"months", months:12, target:"", start:todayKey, startView:"auto",
     mode:"mains", gs1:true, csat:true, gs:[1,2,3,4], essay:true, optionalOn:true, optional:"", customText:"",
     order:[], sel:{},
     cap:{days:[1,2,3,4,5,6], sessions:[{start:"06:00",end:"08:00",subject:""},{start:"10:00",end:"12:00",subject:""},{start:"16:00",end:"17:00",subject:""}], perDay:{}, breakMin:15, blocks:"auto"},
@@ -8140,6 +8141,16 @@ function renderWizard(host){
     (w.err.length ? '<div class="form-err" role="alert"><b>Please fix:</b><br>'+w.err.map(esc).join("<br>")+'</div>' : "")+
     (w.qs && !studyPlan ? "" : w.step < 7 ? '<div class="wz-nav">'+(w.step>0 ? '<button type="button" class="btn ghost" data-wa="back">Back</button>' : '<span></span>')+'<button type="button" class="btn primary" data-wa="next">Next &rarr;</button></div>' : '<div class="wz-nav"><button type="button" class="btn ghost" data-wa="back">Back</button><span></span></div>');
   centerActive(host.querySelector(".stepper"), ".st.cur", false);
+  if(w.qs && w.qs.screen==="choice" && !studyPlan && !document.getElementById("modalHost")) openStartChoice();
+}
+// The first thing a new student sees: customise (recommended) or start from a pre-made plan.
+function openStartChoice(){
+  var m = showModal('<div class="modal card start-choice" role="dialog" aria-modal="true" aria-labelledby="scTitle">'+
+    '<h2 id="scTitle">How do you want to start?</h2>'+
+    '<button type="button" class="pre on" id="scCustom"><i>Recommended</i><b>Customise my plan</b><span>Choose your subjects, chapters and daily study yourself. About 2 minutes.</span></button>'+
+    '<button type="button" class="pre" id="scPre"><b>Use a pre-made plan</b><span>Start from a ready-made plan. You can still customise it before it is built, and any time later.</span></button></div>', false);
+  m.querySelector("#scCustom").addEventListener("click", function(){ closeModal(); if(wiz){ wiz.qs = null; wiz.step = 0; wiz.err = []; wizRender(); scrollPlannerTop(); } });
+  m.querySelector("#scPre").addEventListener("click", function(){ closeModal(); if(wiz && wiz.qs){ wiz.qs.screen = "plans"; wizRender(); scrollPlannerTop(); } });
 }
 // ---- quick start: ready-made plans, three questions, and a summary before anything is built ----
 var QS_PRESETS = [
@@ -8158,23 +8169,12 @@ function qsApply(w){
   w.cap.days = [1,2,3,4,5,6]; w.cap.perDay = {}; w.cap.breakMin = 15; w.cap.blocks = "auto";
   w.cap.count = hr[0]; w.cap.sessions = []; wizAfter("sessCount"); setSessLen(w, hr[1]);
 }
-function qsPills(path, cur, items){ return '<div class="pill-row">'+items.map(function(it){ return '<button type="button" class="pill'+(String(cur)===String(it[0])?" on":"")+'" data-wa="set" data-path="'+path+'"'+(typeof it[0]==="number" ? ' data-n="1"' : "")+' data-v="'+esc(it[0])+'">'+esc(it[1])+'</button>'; }).join("")+'</div>'; }
 function qsHtml(w){
   var q = w.qs;
-  if(q.screen === "start"){
-    return '<h3>Start your plan</h3><p class="hint">Pick a ready-made plan, or answer three quick questions. You will see a summary before anything is built, and you can change everything later.</p>'+
-      '<div class="pre-row">'+QS_PRESETS.map(function(x){ return '<button type="button" class="pre" data-wa="qsPreset" data-v="'+x.id+'">'+(x.tag ? '<i>'+esc(x.tag)+'</i>' : "")+'<b>'+esc(x.name)+'</b><span>'+esc(x.desc)+'</span></button>'; }).join("")+
-      '<button type="button" class="pre" data-wa="qsMine"><b>Build my own</b><span>Three quick questions</span></button></div>'+
-      '<button type="button" class="qs-link" data-wa="qsFull">Customize every detail (8 steps)</button>';
-  }
-  if(q.screen === "quick"){
-    return '<h3>Three quick questions</h3>'+
-      '<div class="qs-q">1. How long do you have?</div>'+qsPills("qs.months", q.months, [[6,"6 mo"],[8,"8 mo"],[12,"12 mo"],[18,"18 mo"],[24,"24 mo"]])+
-      '<div class="qs-q">2. What are you preparing for?</div>'+qsPills("qs.mode", q.mode, [["prelims","Prelims"],["mains","Mains"],["both","Both"]])+
-      '<div class="qs-q">3. Hours you can study a day</div>'+qsPills("qs.hours", q.hours, [[2,"2 h"],[4,"4 h"],[6,"6 h"],[8,"8 h"]])+
-      '<div class="qs-done">We set the subject order, chapters and daily sessions for you.</div>'+
-      '<button type="button" class="btn primary qs-go" data-wa="qsSummary">See my plan summary &rarr;</button>'+
-      '<button type="button" class="qs-link" data-wa="qsBack">&larr; Ready-made plans</button>';
+  if(q.screen !== "sum"){   // "choice" (pop-up open on top) and "plans" both show the list of pre-made plans
+    return '<h3>Pick a pre-made plan</h3><p class="hint">You can still customise everything: check the summary next and tap <b>Customise</b>, or change it any time later in <b>Planner \u2192 Edit plan</b>.</p>'+
+      '<div class="pre-row">'+QS_PRESETS.map(function(x){ return '<button type="button" class="pre" data-wa="qsPreset" data-v="'+x.id+'">'+(x.tag ? '<i>'+esc(x.tag)+'</i>' : "")+'<b>'+esc(x.name)+'</b><span>'+esc(x.desc)+'</span></button>'; }).join("")+'</div>'+
+      '<button type="button" class="qs-link" data-wa="qsFull">Customise my own plan instead (recommended)</button>';
   }
   // summary
   var st = windowStats(w), cat = wizCatalog(w), nCh = 0;
@@ -8184,11 +8184,11 @@ function qsHtml(w){
   var daysTxt = days.length===7 ? "every day" : (days.length===6 && days.indexOf(0)<0 ? "Mon\u2013Sat" : days.map(function(d){ return DOW_SHORT[d]; }).join(", "));
   var modeTxt = w.mode==="prelims" ? "Prelims (GS Paper I, CSAT)" : (w.mode==="mains" ? "Mains (GS I\u2013IV, Essay)" : "Prelims and Mains");
   var f = null; try{ f = fitCalc(w); }catch(e){}
-  var fit = f ? (f.fits ? '<div class="fit-v ok"><b>\u2713 Everything fits</b> in your window.</div>' : '<div class="fit-v bad"><b>\u2717 Not everything fits yet.</b> Tap Edit on Daily study, or choose a longer window.</div>') : "";
+  var fit = f ? (f.fits ? '<div class="fit-v ok"><b>\u2713 Everything fits</b> in your window.</div>' : '<div class="fit-v bad"><b>\u2717 Not everything fits yet.</b> Tap Customise, or choose a longer plan.</div>') : "";
   var row = function(label, text, step){ return '<div class="qs-row"><div><small>'+esc(label)+'</small><b>'+text+'</b></div><button type="button" class="btn ghost sm" data-wa="qsEdit" data-v="'+step+'">Edit</button></div>'; };
   var pre = QS_PRESETS.filter(function(x){ return x.id===q.preset; })[0];
   return '<h3>Your plan, in short</h3>'+
-    '<div class="qs-note"><b>'+(pre ? 'You chose the ready-made plan \u201C'+esc(pre.name)+'\u201D.' : 'Check this summary.')+'</b><br>'+(pre ? 'It is a starting point, not a final plan. ' : '')+'You can change anything later: open the <b>Planner</b> and tap <b>Edit plan</b> for every setting, or <b>Reschedule</b> if you fall behind. Your progress is always kept.</div>'+
+    '<div class="qs-note"><b>You chose the pre-made plan \u201C'+esc(pre ? pre.name : "")+'\u201D.</b><br>It is a starting point, not a final plan. You can still customise it: tap <b>Customise this plan</b> below, or any time later open <b>Planner \u2192 Edit plan</b> for every setting, or <b>Reschedule</b> if you fall behind. Your progress is always kept.</div>'+
     row("Time window", st.ok ? esc((+w.months)+" months \u00B7 "+fmtRange(w.start, st.end)) : "Not set", 0)+
     row("Preparing for", esc(modeTxt)+'<br><small>Add your optional subject any time in Edit plan.</small>', 2)+
     row("Study order", esc(w.order.slice(0,4).join(" \u2192 "))+(w.order.length>4 ? esc(" +"+(w.order.length-4)+" more") : ""), 3)+
@@ -8197,8 +8197,8 @@ function qsHtml(w){
     row("Extras", 'None yet<br><small>Essay, tests, revision and current affairs can be added later.</small>', 6)+
     fit+
     '<button type="button" class="btn primary qs-go" data-wa="gen">Build my plan &rarr;</button>'+
-    '<button type="button" class="qs-link" data-wa="qsBack">&larr; Change my answers</button>'+
-    '<button type="button" class="qs-link" data-wa="qsFull">Customize everything (8 steps)</button>';
+    '<button type="button" class="btn ghost qs-go2" data-wa="qsFull">Customise this plan</button>'+
+    '<button type="button" class="qs-link" data-wa="qsBack">&larr; Choose another plan</button>';
 }
 // ---- pinning a subject that Priority would not reach for a long time ----
 // When is this subject expected to start if it were NOT pinned? (null = not within the plan window)
@@ -8274,10 +8274,8 @@ function wizAction(a, b){
     case "everyDay": w.acts[v].days = [0,1,2,3,4,5,6]; w.acts[v].mode = "weekly"; break;
     case "addDate": var inp = document.getElementById("actDate_"+v); if(inp && inp.value && w.acts[v].dates.indexOf(inp.value)<0) w.acts[v].dates.push(inp.value); break;
     case "rmDate": var pr = v.split("|"), ds = w.acts[pr[0]].dates, di = ds.indexOf(pr[1]); if(di>=0) ds.splice(di,1); break;
-    case "qsPreset": var pr0 = QS_PRESETS.filter(function(x){ return x.id===v; })[0]; if(pr0){ w.qs = {screen:"sum", months:pr0.months, mode:pr0.mode, hours:pr0.hours, preset:pr0.id}; qsApply(w); } break;
-    case "qsMine": w.qs = {screen:"quick", months:12, mode:"both", hours:4, preset:""}; break;
-    case "qsSummary": w.qs.screen = "sum"; w.qs.preset = ""; qsApply(w); break;
-    case "qsBack": if(w.qs.screen==="sum" && !w.qs.preset) w.qs.screen = "quick"; else { w.qs.screen = (w.qs.screen==="quick" || w.qs.preset) ? "start" : "quick"; w.qs.preset = ""; } break;
+    case "qsPreset": var pr0 = QS_PRESETS.filter(function(x){ return x.id===v; })[0]; if(pr0){ w.qs = {screen:"sum", months:pr0.months, mode:pr0.mode, hours:pr0.hours, preset:pr0.id}; qsApply(w); scrollPlannerTop(); } break;
+    case "qsBack": w.qs.screen = "plans"; w.qs.preset = ""; break;
     case "qsEdit": w.qs = null; w.step = +v; w.err = []; break;
     case "qsFull": w.qs = null; w.step = 0; w.err = []; break;
     case "capPreset": var cp = {light:[2,60], regular:[2,120], intense:[3,120]}[v]; if(cp){ w.cap.count = cp[0]; wizAfter("sessCount"); setSessLen(w, cp[1]); } break;
@@ -15978,7 +15976,7 @@ var GUIDES = {
     "<b>Study streak</b> counts the days in a row you studied. <b>Revise today</b> lists chapters due for a quick recall: tap ✓ when done.",
     "No plan yet? Build one in the Planner and these cards fill up. <b>Backup</b> is at the bottom."]},
   plansetup:{icon:"🗓", name:"Planner setup", title:"Build your plan", steps:[
-    "Pick a <b>ready-made plan</b>, or answer 3 quick questions. You see a summary before anything is built.",
+    "Choose to <b>customise</b> your plan (recommended) or use a <b>pre-made plan</b>. A pre-made plan shows a summary first, and you can still customise it.",
     "<b>Priority</b> is the order you study subjects. When one reaches 100%, the next unlocks.",
     "Nothing is final. Change anything later in the Planner with <b>Edit plan</b> or <b>Reschedule</b>. Your progress is kept."]},
   planner:{icon:"🧭", name:"Planner", title:"Your Planner", steps:[
@@ -16017,7 +16015,7 @@ function guideOff(){ return lsGet(GUIDE_OFF_KEY)==="1"; }
 function currentGuideId(){
   var t = activeTab;
   if(t==="dashboard") return dashMore ? "dash" : "home";
-  if(t==="planner") return (studyPlan && !plannerEditing) ? "planner" : "plansetup";
+  if(t==="planner") return (studyPlan && !plannerEditing) ? "planner" : ((wiz && wiz.qs) ? "" : "plansetup");   // the start pop-up and pre-made plan screens explain themselves
   if(t==="prelims" || t==="mains" || t==="optional") return "tiers";
   return GUIDES[t] ? t : "";
 }
@@ -16055,7 +16053,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "195";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "196";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
