@@ -253,6 +253,7 @@
   .qx-leg{display:flex; gap:12px; flex-wrap:wrap; font-size:11px; color:var(--ink-soft); margin-top:8px;} .qx-leg i{display:inline-block; width:9px; height:9px; border-radius:3px; margin-right:4px;}
   .qx-kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:10px 0;} .qx-kpis div{background:var(--surface); border:1.5px solid var(--line); border-radius:14px; padding:10px 6px; text-align:center;} .qx-kpis b{display:block; font-size:18px; color:var(--ink);} .qx-kpis span{font-size:10.5px; color:var(--ink-soft);} .qx-kpis .bad{border-color:var(--brick);} .qx-kpis .bad b{color:var(--brick);}
   .qx-sum{display:flex; gap:6px; flex-wrap:wrap; margin:14px 0 10px;} .qx-sum span{font-size:11.5px; background:var(--surface-2); border:1px solid var(--line); color:var(--ink-soft); padding:3px 10px; border-radius:99px;}
+  .qx-link.qx-small{font-size:11.5px; font-weight:500; color:var(--ink-faint); margin-top:16px; padding:4px;}
   .qx-go{width:100%; min-height:52px; font-size:16px; margin-top:6px;} .qx-link{display:block; width:100%; text-align:center; margin:10px 0 0; padding:8px; font:inherit; font-size:13.5px; font-weight:700; color:var(--ink-soft); background:none; border:0; cursor:pointer; text-decoration:underline; text-underline-offset:3px;}
   .dm-time{font-size:13px; font-weight:700; color:var(--ink-soft); margin:2px 0 6px; letter-spacing:.02em;}
   .dm-dots{position:absolute; right:7px; top:50%; transform:translateY(-50%); z-index:2; display:flex; flex-direction:column; gap:7px; pointer-events:none;} .dm-dots i{width:7px; height:7px; border-radius:50%; background:var(--line);} .dm-dots i.on{height:20px; border-radius:6px; background:var(--tab-accent);}
@@ -8394,7 +8395,7 @@ function qsHtml(w){
     (w.err.length ? '<div class="form-err" role="alert">'+w.err.map(esc).join("<br>")+'</div>' : "")+
     (chips.length ? '<div class="qx-sum">'+chips.map(function(c){ return '<span>'+esc(c)+'</span>'; }).join("")+'</div>' : "")+
     '<button type="button" class="btn primary qx-go" '+act+'>'+btn+(q.screen==="week" ? "" : " →")+'</button>'+
-    (link ? '<button type="button" class="qx-link" '+linkAct+'>'+link+'</button>' : "")+'</div>';
+    (link ? '<button type="button" class="qx-link'+(q.screen==="opt" ? " qx-small" : "")+'" '+linkAct+'>'+link+'</button>' : "")+'</div>';
 }
 // ---- pinning a subject that Priority would not reach for a long time ----
 // When is this subject expected to start if it were NOT pinned? (null = not within the plan window)
@@ -16377,7 +16378,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "205";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "206";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
