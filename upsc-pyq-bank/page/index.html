@@ -4234,6 +4234,7 @@ function applyBackupData(data){
   if(data.uiTheme) window.applyUiTheme(data.uiTheme, true);
   if(Array.isArray(data.studySessions)){ studySessions = data.studySessions; saveSessions(); }
   if(data.studyPlan){ studyPlan = data.studyPlan; savePlan(); }
+  else if(data.studyPlan === null && studyPlan){ studyPlan = null; savePlan(); }   // the backup was taken before any plan: "replace everything" means no plan here either
   if(data.catchState && typeof data.catchState==='object'){ catchState = Object.assign({promptedOn:"", doneOn:""}, data.catchState); saveCatch(); }
   if(data.revDone && typeof data.revDone==="object"){ revDone = data.revDone; revSave(); }
   if(data.reminders && typeof data.reminders==='object'){ remState = Object.assign({}, remState, data.reminders, {on:false, sent:{}}); remSave(); }
@@ -16484,7 +16485,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "216";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "217";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
