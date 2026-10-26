@@ -7863,13 +7863,17 @@ function wizDefaults(){
       ca:{on:false, mode:"weekly", days:[0,1,2,3,4,5,6], interval:1, count:8, dates:[], start:"21:00", end:"21:30"}
     }};
 }
-function wizFromPlan(p){ var w = JSON.parse(JSON.stringify(p.cfg)); w.step = 0; w.err = []; w.open = {}; return w; }
+function wizFromPlan(p){ var w = JSON.parse(JSON.stringify(p.cfg)); w.step = 0; w.err = []; w.open = {}; if(!w.seen){ w.seen = {}; wizCatalog(w).order.forEach(function(n){ w.seen[n] = 1; }); } return w; }
 function wizSnapshot(w){ var c = JSON.parse(JSON.stringify(w)); delete c.step; delete c.err; delete c.open; delete c.qs; return c; }
 function wizCatCfg(w){ return {prelims:w.mode!=="mains", mains:w.mode!=="prelims", gs1:!!w.gs1, csat:!!w.csat, gs:w.gs.slice(), optionalOn:!!w.optionalOn, optional:w.optional, customText:w.customText}; }
 function wizCatalog(w){ return buildCatalog(wizCatCfg(w)); }
 function wizSync(w){
   if(!(+w.cap.breakMin >= 5)) w.cap.breakMin = 5;
   var cat = wizCatalog(w), valid = {}, init = {};
+  // a subject that has just become available (an optional, another paper) joins the end of the order; one you took out by hand stays out
+  if(w.orderAuto) w.order = cat.order.slice();   // an order nobody touched follows the recommended order for whatever is chosen
+  else if(w.seen) cat.order.forEach(function(n){ if(!w.seen[n] && w.order.indexOf(n) < 0) w.order.push(n); });
+  if(w.seen){ w.seen = {}; cat.order.forEach(function(n){ w.seen[n] = 1; }); }
   w.order = w.order.filter(function(n){ return !!cat.map[n]; });
   w.order.forEach(function(n){
     catalogLeaves(cat.map[n]).forEach(function(l){ valid[l.id] = 1; if(!w.init[n]) w.sel[l.id] = 1; });
@@ -7904,7 +7908,8 @@ function paceOptions(cur, avg){
   return o;
 }
 // ---- session length and the "will it fit" calculator ----
-var SESS_LENS = [30,45,60,90,120,150,180,240];
+var SESS_LENS = [30,45,60,75,90,105,120,150,180,240];
+function lensWith(cur){ return cur && SESS_LENS.indexOf(cur) < 0 ? SESS_LENS.concat([cur]).sort(function(a, b){ return a-b; }) : SESS_LENS; }   // a length you set in Fine-tune is shown too
 function sessLenNow(w){ var d = w.cap.sessions.map(function(s){ return toMin(s.end)-toMin(s.start); }); return d.length && d.every(function(x){ return x===d[0]; }) ? d[0] : 0; }
 function setSessLen(w, mins){
   var cur = w.cap.sessions, gap = Math.max(5, +w.cap.breakMin||5);
@@ -8265,8 +8270,8 @@ function wzCapacity(w){
   var c = w.cap, n = c.sessions.length, P = [["light","Light",2,60],["regular","Regular",2,120],["intense","Intense",3,120]];
   var presets = '<div class="pre-row">'+P.map(function(x){ var on = n===x[2] && sessLenNow(w)===x[3]; return '<button type="button" class="pre'+(on ? " on" : "")+'" data-wa="capPreset" data-v="'+x[0]+'"><b>'+x[1]+'</b><span>'+esc(fmtDurMin(x[2]*x[3]))+' a day \u00B7 '+x[2]+' sessions</span></button>'; }).join("")+'</div>';
   var tot = c.sessions.reduce(function(t, x){ var m = toMin(x.end)-toMin(x.start); return t + (m > 0 ? m : 0); }, 0);
-  var manual = '<div class="cap-manual"><div class="cap-mh">Or set your own</div><div class="two"><div class="cf"><label>Sessions per day</label><select data-w="cap.count" data-after="sessCount">'+optsNum(1,6,n)+'</select></div>'+
-    '<div class="cf"><label>Length of one session</label><select data-w="cap.sessLen" data-t="n" data-after="sessLen">'+(sessLenNow(w) ? "" : '<option value="0" selected>Mixed (see Fine-tune)</option>')+SESS_LENS.map(function(m){ return '<option value="'+m+'"'+(sessLenNow(w)===m ? " selected" : "")+'>'+(m<60 ? m+" minutes" : (m%60 ? (m/60)+" hours" : (m/60)+(m===60 ? " hour" : " hours")))+'</option>'; }).join("")+'</select></div></div>'+
+  var manual = '<div class="cap-manual"><div class="cap-mh">Or set your own</div><div class="two"><div class="cf"><label>Sessions per day</label><select data-w="cap.count" data-t="n" data-after="sessCount">'+optsNum(1,6,n)+'</select></div>'+
+    '<div class="cf"><label>Length of one session</label><select data-w="cap.sessLen" data-t="n" data-after="sessLen">'+(sessLenNow(w) ? "" : '<option value="0" selected>Mixed (see Fine-tune)</option>')+lensWith(sessLenNow(w)).map(function(m){ return '<option value="'+m+'"'+(sessLenNow(w)===m ? " selected" : "")+'>'+(m<60 ? m+" minutes" : fmtDurMin(m))+'</option>'; }).join("")+'</select></div></div>'+
     '<div class="hint">That is <b>'+esc(fmtDurMin(tot))+' a day</b>. For exact times, subjects and breaks, open <b>Fine-tune sessions and times</b> below.</div></div>';
   var adv = ''+
     '<div class="hint">For each session choose <b>which subject</b> and <b>from when to when</b>. &ldquo;Auto&rdquo; follows your current active subject; a pinned subject runs in that session every day, alongside the main chain.</div>'+
@@ -8353,7 +8358,8 @@ function renderWizard(host){
 var QS_SCREENS = ["exam","time","opt","start","week"], QS_COL = ["#8E7BFF","#2DE6D6","#FFB020","#34D58A","#FF6FAE","#5FD0FF"], QS_HOURS = [3,4,6,8,10];
 function qsNew(){ return {screen:"exam", exam:"both", hours:6, days:[1,2,3,4,5,6], opt:"", all:false, start:"foundation"}; }
 function qsList(q){ return QS_SCREENS.filter(function(s){ return !(s==="opt" && q.exam==="prelims"); }); }
-function qsHoursPlan(h){ var n = Math.max(1, Math.ceil(h/2)); return [n, Math.round(h*60/n/5)*5]; }   // 6 h -> 3 sessions of 120 min
+// 6 h -> 3 sessions of 120 min. Lengths stay in whole quarter hours so the total is exactly the hours chosen (9 h -> 6 x 90, not 5 x 110).
+function qsHoursPlan(h){ var n = Math.max(1, Math.ceil(h/2)); while(n < 6 && (h*60/n) % 15) n++; return [n, Math.round(h*60/n/5)*5]; }
 function qsExamKey(ex){ return ex==="prelims" ? DATA.examDates.prelims : DATA.examDates.mains; }
 function qsApply(w){
   var q = w.qs, hp = qsHoursPlan(q.hours), ex = q.exam, key = qsExamKey(ex);
@@ -8364,9 +8370,10 @@ function qsApply(w){
   w.order = []; w.sel = {}; w.init = {}; wizSync(w);
   var ord = wizCatalog(w).order.slice();
   if(q.start==="optional" && w.optionalOn){ var on = optLabel(w.optional), ix = ord.indexOf(on); if(ix > 0){ ord.splice(ix, 1); ord.unshift(on); } }
-  w.order = ord; w.init = {}; wizSync(w);
+  w.order = ord; w.orderAuto = !(q.start==="optional" && w.optionalOn); w.init = {}; wizSync(w);
   w.cap.days = q.days.slice(); w.cap.perDay = {}; w.cap.breakMin = 15; w.cap.blocks = "auto";
   w.cap.count = hp[0]; w.cap.sessions = []; wizAfter("sessCount"); setSessLen(w, hp[1]);
+  w.seen = {}; wizCatalog(w).order.forEach(function(n){ w.seen[n] = 1; });
 }
 function qsKeyText(k){ return parseKey(k).toLocaleDateString(undefined, {day:"numeric", month:"short", year:"numeric"}); }
 function qsOpt(ic, title, sub, on, act, path, val, tag){
@@ -8491,7 +8498,7 @@ function wget(path){ var p = path.split("."), o = wiz; for(var i=0;i<p.length;i+
 function wset(path, v){ var p = path.split("."), o = wiz; for(var i=0;i<p.length-1;i++){ if(o[p[i]]==null) o[p[i]] = {}; o = o[p[i]]; } o[p[p.length-1]] = v; }
 function moveOrder(from, to){
   if(from===to || from<0 || to<0 || from>=wiz.order.length || to>=wiz.order.length) return;
-  var it = wiz.order.splice(from, 1)[0]; wiz.order.splice(to, 0, it);
+  wiz.orderAuto = false; var it = wiz.order.splice(from, 1)[0]; wiz.order.splice(to, 0, it);
 }
 // keep the active pill in the middle of a sideways-scrolling row, so you always see where you are
 function centerActive(row, sel, pad){
@@ -8517,12 +8524,12 @@ function wizAction(a, b){
     case "set": wset(path, b.getAttribute("data-n") ? +v : v); if(path==="mode"){ wizSync(w); } break;
     case "toggleBool": wset(path, !wget(path)); wizSync(w); break;
     case "toggleArr": var arr = wget(path), val = +v, i = arr.indexOf(val); if(i>=0) arr.splice(i,1); else arr.push(val); if(path==="gs") arr.sort(); wizSync(w); break;
-    case "pickSubject": var ix = w.order.indexOf(v); if(ix>=0) w.order.splice(ix,1); else w.order.push(v); wizSync(w); break;
+    case "pickSubject": w.orderAuto = false; var ix = w.order.indexOf(v); if(ix>=0) w.order.splice(ix,1); else w.order.push(v); wizSync(w); break;
     case "up": moveOrder(+v, +v-1); break;
     case "down": moveOrder(+v, +v+1); break;
-    case "rmSubject": w.order.splice(+v,1); wizSync(w); break;
-    case "allSubjects": w.order = wizCatalog(w).order.slice(); wizSync(w); break;
-    case "clearSubjects": w.order = []; wizSync(w); break;
+    case "rmSubject": w.orderAuto = false; w.order.splice(+v,1); wizSync(w); break;
+    case "allSubjects": w.order = wizCatalog(w).order.slice(); w.orderAuto = true; w.seen = {}; w.order.forEach(function(n){ w.seen[n] = 1; }); wizSync(w); break;
+    case "clearSubjects": w.order = []; w.orderAuto = false; wizSync(w); break;
     case "scopeAll": case "scopeNone": var cat = wizCatalog(w); catalogLeaves(cat.map[v]).forEach(function(l){ if(a==="scopeAll") w.sel[l.id]=1; else delete w.sel[l.id]; }); break;
     case "everyDay": w.acts[v].days = [0,1,2,3,4,5,6]; w.acts[v].mode = "weekly"; break;
     case "addDate": var inp = document.getElementById("actDate_"+v); if(inp && inp.value && w.acts[v].dates.indexOf(inp.value)<0) w.acts[v].dates.push(inp.value); break;
@@ -16465,7 +16472,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "213";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "214";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
