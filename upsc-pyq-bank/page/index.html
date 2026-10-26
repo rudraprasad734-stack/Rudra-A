@@ -8297,7 +8297,7 @@ function actCard(w, k){
     body += '<div class="cf"><label>Time (from &ndash; to)</label>'+timePair("acts."+k+".start","acts."+k+".end",a.start,a.end)+'</div>'+freeHint(w, k);
     if(k==="revision") body += '<div class="cf"><label>Revision method</label><select data-w="acts.revision.method"><option value="fixed"'+(a.method==="fixed"?" selected":"")+'>Fixed days (chosen above)</option><option value="auto"'+(a.method==="auto"?" selected":"")+'>After each chapter (spaced: +3, +10, +30 days)</option><option value="both"'+(a.method==="both"?" selected":"")+'>Both</option></select></div>';
   }
-  return '<div class="act-card'+(a.on?" on":"")+'" style="--bc:var('+info.color+')"><label class="tog"><input type="checkbox" data-w="acts.'+k+'.on"> <b>'+esc(info.title)+'</b><small>'+esc(info.hint)+'</small></label>'+body+'</div>';
+  return '<div class="act-card'+(a.on?" on":"")+'" style="--bc:var('+info.color+')"><label class="tog"><input type="checkbox" data-w="acts.'+k+'.on"'+(a.on?" checked":"")+'> <b>'+esc(info.title)+'</b><small>'+esc(info.hint)+'</small></label>'+body+'</div>';
 }
 function wzActivities(w){
   return '<h3>Plan Additional UPSC Activities</h3><p class="hint">These run in parallel to your subject order. They appear automatically in the Yearly, Monthly, Weekly and Daily plans, and they never block the next subject from unlocking.</p>'+ACT_KINDS.map(function(k){ return actCard(w, k); }).join("")+weekMapHtml(w);
@@ -16430,7 +16430,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "207";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "208";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
