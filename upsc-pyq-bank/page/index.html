@@ -7053,6 +7053,13 @@ function optLabel(n){ return n+" (Optional)"; }
 function optBase(subject){ var m = /^(.*) \(Optional\)$/.exec(subject || ""); return m ? m[1] : ""; }   // "Agriculture (Optional)" -> "Agriculture"; "" for a General Studies subject
 function optKey(n){ return OPT_ALIAS[n] || n; }
 function isOptionalName(n){ return ALL_OPTIONALS.indexOf(n)>=0; }
+// The optional the student chose in their plan ("" if none). When set, the Optional tab, Syllabus and Question bank show only that optional; with none chosen they show them all.
+function myOptional(){ var c = studyPlan && studyPlan.catCfg; return c && c.optionalOn && c.optional ? optKey(c.optional) : ""; }
+function optPaperOk(paper){
+  var m = myOptional(); if(!m) return true;
+  var S = (typeof OPT_SUBJECTS !== "undefined") ? OPT_SUBJECTS[m] : null;
+  return S ? S.re.test(paper || "") : new RegExp("^"+String(m).replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i").test(paper || "");
+}
 function optFullName(n){ for(var k in OPT_ALIAS) if(OPT_ALIAS[k]===n) return k; return n; }
 function curriculumCA(){
   var months = [], d = new Date(); d.setDate(1);
@@ -16370,7 +16377,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "204";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "205";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -17128,7 +17135,7 @@ function optListHtml(D){
   });
   return out;
 }
-function optAvailable(){ return ALL_OPTIONALS.filter(function(n){ return OPT_SUBJECTS[n]; }); }
+function optAvailable(){ var m = myOptional(); return ALL_OPTIONALS.filter(function(n){ return OPT_SUBJECTS[n] && (!m || n===m); }); }
 function optSubject(){
   var av = optAvailable();
   if(optUi.subject && av.indexOf(optUi.subject)>=0) return optUi.subject;
@@ -17137,12 +17144,12 @@ function optSubject(){
 }
 function renderOptional(){
   var host = document.getElementById("view-optional"), D = optSyncMode(optLoad(optSubject()));
-  if(!D){ host.innerHTML = '<div class="card empty">The optional-subject analysis is not available in this copy of the app.</div>'; return; }
+  if(!D){ var mo = myOptional(); host.innerHTML = '<div class="card empty">'+(mo ? 'There is no ready-made syllabus or past-question analysis for <b>'+esc(mo)+'</b> yet. The chapters you added for it are in your Planner.' : 'The optional-subject analysis is not available in this copy of the app.')+'</div>'; return; }
   var cnt = [0,0,0,0,0]; D.topics.forEach(function(t){ cnt[t.tier]++; });
   var tierChips = '<button type="button" class="sub-chip'+(optUi.tier ? "" : " on")+'" data-otier="0">All <b>'+D.topics.length+'</b></button>'+[1,2,3,4].map(function(n){ return '<button type="button" class="sub-chip'+(optUi.tier===n ? " on" : "")+'" data-otier="'+n+'">Tier '+n+' <b>'+cnt[n]+'</b></button>'; }).join("");
   var paperChips = [[0,"Both papers"],[1,"Paper I"],[2,"Paper II"]].map(function(p){ return '<button type="button" class="sub-chip'+(optUi.paper===p[0] ? " on" : "")+'" data-opaper="'+p[0]+'">'+p[1]+'</button>'; }).join("");
   var subjChips = optAvailable().length>1 ? '<div class="sub-chips" role="group" aria-label="Optional subject">'+optAvailable().map(function(n){ return '<button type="button" class="sub-chip'+(n===D.name ? " on" : "")+'" data-osubj="'+esc(n)+'">'+esc(n)+'</button>'; }).join("")+'</div>' : "";
-  host.innerHTML = '<div class="section-title">'+esc(D.name)+' optional</div>'+subjChips+tierModeHtml(0)+
+  host.innerHTML = '<div class="section-title">'+esc(D.name)+' optional</div>'+(myOptional() ? '<div class="muted" style="margin:-4px 0 10px">This is your optional. To change it, open <b>Planner \u2192 Edit plan</b>.</div>' : "")+subjChips+tierModeHtml(0)+
     '<div class="card note-card"><b>'+D.items.length+' official syllabus items, '+D.topics.length+' sub-topics, '+D.total+' past questions, '+D.years[0]+'–'+D.years[D.ny-1]+'.</b> '+
       'The headings are the official UPSC syllabus (Examination Notice 2026). Every question from Paper I and Paper II is filed under the sub-topic(s) it tests, so none is left out. Tap a sub-topic to read its questions.'+
       '<details class="ot-how"><summary>How tiers and trends are worked out</summary>'+
@@ -17442,7 +17449,7 @@ function loadPyq(){
 }
 function pyqPapersFor(exam){
   var map = {};
-  (pyqDocs||[]).forEach(function(d){ if(d.exam===exam){ (map[d.paper] = map[d.paper]||[]).push(d); } });
+  (pyqDocs||[]).forEach(function(d){ if(d.exam===exam && (exam!=="optional" || optPaperOk(d.paper))){ (map[d.paper] = map[d.paper]||[]).push(d); } });
   return Object.keys(map).sort().map(function(p){
     return {paper:p, docs:map[p].sort(function(a,b){ return b.year-a.year; })};
   });
@@ -17542,6 +17549,7 @@ function renderPyq(){
     return;
   }
   var f = pyqFilter;
+  if(f.exam==="optional" && f.paper!=="all" && !optPaperOk(f.paper)){ f.paper = "all"; f.year = "all"; }
   var mode = pyqMode==="frequency" ? "trends" : "questions";
 
   var examPills = PYQ_EXAMS.map(function(e){
@@ -17551,7 +17559,7 @@ function renderPyq(){
     return '<button class="pill'+(mode===m[0]?" active":"")+'" aria-pressed="'+(mode===m[0])+'" data-mode="'+m[0]+'">'+m[1]+'</button>';
   }).join("");
 
-  var html = '<div class="card pyq-note">Exact questions from previous papers, filed by year. Mains: GS I–IV and Essay (2014–2023), GS I–IV (2024–2026). Optional: Anthropology Papers I and II, 2010–2026; Agriculture Papers I and II, 2014–2026; Animal Husbandry and Veterinary Science Papers I and II, 2014–2026; Botany Papers I and II, 2014–2026; Civil Engineering Papers I and II, 2016–2026 (all 22 papers); Chemistry Papers I and II, 2014–2026 (all 26 papers); Commerce and Accountancy Papers I and II, 2016–2026 (all 22 papers); Economics Papers I and II, 2016–2026 (all 22 papers); Electrical Engineering Papers I and II, 2016–2026 (all 22 papers); Geography Papers I and II, 2016–2026 (all 22 papers); Geology Papers I and II, 2016–2026 (all 22 papers); History Papers I and II, 2016–2026 (all 22 papers); Law Papers I and II, 2016–2026 (all 22 papers); Management Papers I and II, 2016–2026 (all 22 papers). Prelims GS I: 2014 to 2021, 2024 and 2025 (2016 to 2019 were read from scans by OCR, so a few words may be misread and some questions are missing), plus 2020 and 2021 CSAT. Prelims 2022, 2023 and 2026 are not in the bank yet.</div>'+
+  var html = '<div class="card pyq-note">Exact questions from previous papers, filed by year. Mains: GS I–IV and Essay (2014–2023), GS I–IV (2024–2026). '+(myOptional() ? 'Optional: only your optional, '+esc(myOptional())+', is shown here. ' : 'Optional: Anthropology Papers I and II, 2010–2026; Agriculture Papers I and II, 2014–2026; Animal Husbandry and Veterinary Science Papers I and II, 2014–2026; Botany Papers I and II, 2014–2026; Civil Engineering Papers I and II, 2016–2026 (all 22 papers); Chemistry Papers I and II, 2014–2026 (all 26 papers); Commerce and Accountancy Papers I and II, 2016–2026 (all 22 papers); Economics Papers I and II, 2016–2026 (all 22 papers); Electrical Engineering Papers I and II, 2016–2026 (all 22 papers); Geography Papers I and II, 2016–2026 (all 22 papers); Geology Papers I and II, 2016–2026 (all 22 papers); History Papers I and II, 2016–2026 (all 22 papers); Law Papers I and II, 2016–2026 (all 22 papers); Management Papers I and II, 2016–2026 (all 22 papers). ')+'Prelims GS I: 2014 to 2021, 2024 and 2025 (2016 to 2019 were read from scans by OCR, so a few words may be misread and some questions are missing), plus 2020 and 2021 CSAT. Prelims 2022, 2023 and 2026 are not in the bank yet.</div>'+
              '<div class="pill-row"><span class="pill-label">Exam</span>'+examPills+'</div>'+
              '<div class="pill-row"><span class="pill-label">View</span>'+modePills+'</div>';
 
@@ -17594,6 +17602,7 @@ function renderPyq(){
   var rows = [];
   (pyqDocs||[]).forEach(function(d){
     if(d.exam!==f.exam) return;
+    if(d.exam==="optional" && !optPaperOk(d.paper)) return;
     if(f.paper!=="all" && d.paper!==f.paper) return;
     if(f.year!=="all" && String(d.year)!==String(f.year)) return;
     (d.questions||[]).forEach(function(q, i){
