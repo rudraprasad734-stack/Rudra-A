@@ -233,11 +233,27 @@
   .pf-signin.fr-ok{margin:14px 0 0;}
   .fr-welcome,.fr-end{text-align:center;} .fr-welcome .fr-ico{margin:2px auto 14px; width:96px; height:96px; font-size:44px;} .fr-welcome h2,.fr-end h2{margin:4px 0 8px;} .fr-welcome p,.fr-end p{margin:0 0 16px; opacity:.85; line-height:1.45;} .fr-go{width:100%; min-height:50px; font-size:16px;} .fr-big{font:800 40px system-ui; color:#2de2d6; margin:2px 0;}
   .fr-hint{position:fixed; left:14px; right:14px; bottom:116px; z-index:900; padding:15px 16px; border-radius:20px; background:#e9fbff; color:#052; box-shadow:0 12px 44px rgba(0,0,0,.55);} .fr-hint b{display:block; font-size:16px; margin-bottom:3px;} .fr-hint p{margin:0 0 12px; font-size:13.5px; line-height:1.4;} .fr-hint .row{display:flex; gap:10px;} .fr-hint button{flex:1; min-height:44px; border-radius:12px; border:0; font:800 14.5px system-ui; cursor:pointer;} .fr-hint .go{background:#0a6; color:#fff;} .fr-hint .no{background:#cfeef5; color:#052;}
-  .start-choice h2{margin:0 0 6px;} .start-choice .pre{margin-top:10px;} .qs-go2{width:100%; min-height:46px; margin-top:10px;}
-  .qs-q{margin:14px 0 4px; font-weight:800; font-size:15px;} .qs-done{margin-top:14px; padding:12px; border-radius:14px; border:1px dashed var(--line); font-size:13px; line-height:1.45;} .qs-go{width:100%; min-height:50px; font-size:16px; margin-top:14px;}
-  .qs-link{display:block; width:100%; text-align:center; margin:10px 0 0; padding:8px; font:inherit; font-size:13.5px; font-weight:700; text-decoration:underline; text-underline-offset:3px; color:#5aa0ff; background:none; border:0; cursor:pointer;}
-  .qs-note{margin:10px 0 6px; padding:12px; border-radius:14px; background:color-mix(in srgb,#3d6eff 14%,transparent); border:1px solid #3d6eff; font-size:13.5px; line-height:1.5;}
-  .qs-row{display:flex; gap:10px; align-items:flex-start; padding:10px 0; border-top:1px solid var(--line-soft);} .qs-row > div{min-width:0; flex:1 1 auto;} .qs-row small{display:block; color:var(--ink-soft); font-size:12px; font-weight:600;} .qs-row b{display:block; font-size:14.5px; overflow-wrap:anywhere;} .qs-row .btn{flex:0 0 auto;}
+  .qx-card{padding:16px;} .qx [hidden]{display:none !important;}
+  .qx-top{display:flex; justify-content:space-between; align-items:center; margin:-4px 0 8px;} .qx-top button{background:none; border:0; padding:6px 2px; font:inherit; font-size:13px; font-weight:700; color:var(--ink-soft); cursor:pointer; min-height:36px;}
+  .qx-dots{display:flex; gap:5px; margin-bottom:16px;} .qx-dots i{flex:1; height:4px; border-radius:9px; background:var(--line);} .qx-dots i.on{background:linear-gradient(90deg,var(--tab-accent),var(--sky,#5fd0ff));}
+  .qx h2{font-family:var(--font-display); font-size:27px; line-height:1.12; margin:0 0 6px; color:var(--ink);} .qx-hint{font-size:13.5px; color:var(--ink-soft); margin-bottom:14px;}
+  .qx-opt{display:flex; align-items:center; gap:12px; width:100%; text-align:left; font:inherit; color:var(--ink); background:var(--surface); border:1.5px solid var(--line); border-radius:16px; padding:13px 14px; margin-bottom:10px; cursor:pointer; min-height:64px;} .qx-opt.on{border-color:var(--tab-accent); background:color-mix(in srgb,var(--tab-accent) 14%,var(--surface)); box-shadow:0 0 0 3px color-mix(in srgb,var(--tab-accent) 18%,transparent);}
+  .qx-opt .ic{width:42px; height:42px; border-radius:12px; display:grid; place-items:center; font-size:20px; background:var(--surface-2); flex:none;} .qx-opt .tx{flex:1; min-width:0;} .qx-opt b{display:block; font-size:15px;} .qx-opt b em{font-style:normal; font-size:10px; font-weight:800; color:#000; background:var(--gold); border-radius:99px; padding:2px 8px; margin-left:8px; vertical-align:2px;} .qx-opt small{display:block; font-size:12px; color:var(--ink-soft); margin-top:2px;}
+  .qx-opt .tick{width:22px; height:22px; border-radius:50%; border:2px solid var(--line); flex:none; display:grid; place-items:center; font-size:13px; font-weight:800; color:#000;} .qx-opt.on .tick{background:var(--tab-accent); border-color:var(--tab-accent);}
+  .qx-info{background:var(--surface); border:1.5px dashed var(--line); border-radius:16px; padding:14px; margin-top:6px;} .qx-info b{display:block; font-size:22px; color:var(--tab-accent);} .qx-info small{display:block; font-size:12px; color:var(--ink-soft); margin-top:2px;} .qx-info.warn{border-style:solid; border-color:var(--brick); font-size:13px; margin-top:10px;}
+  .qx-big{font-size:56px; font-weight:700; text-align:center; line-height:1; margin:6px 0 2px; color:var(--ink);} .qx-big small{font-size:20px; font-weight:500; color:var(--ink-soft);}
+  .qx-range{width:100%; margin:14px 0 10px; accent-color:var(--tab-accent); min-height:30px;}
+  .qx-chips{display:flex; gap:8px; justify-content:center; flex-wrap:wrap;} .qx-chip{padding:10px 15px; border-radius:13px; border:1.5px solid var(--line); background:var(--surface); color:var(--ink-soft); font:inherit; font-size:14px; font-weight:700; cursor:pointer; min-height:42px;} .qx-chip.on{border-color:var(--tab-accent); color:var(--ink); background:color-mix(in srgb,var(--tab-accent) 16%,var(--surface));}
+  .qx-lab{font-size:11px; font-weight:700; letter-spacing:.08em; color:var(--ink-faint); text-transform:uppercase; margin:16px 0 8px;} .qx-days{display:grid; grid-template-columns:repeat(7,1fr); gap:6px;} .qx-days button{aspect-ratio:1; border-radius:12px; border:1.5px solid var(--line); background:var(--surface); color:var(--ink-faint); font:inherit; font-size:13px; font-weight:800; cursor:pointer; min-height:40px;} .qx-days button.on{border-color:var(--tab-accent); color:var(--ink); background:color-mix(in srgb,var(--tab-accent) 16%,var(--surface));}
+  .qx-sub{text-align:center; font-size:13px; color:var(--ink-soft); margin:12px 0;} .qx-sub b{color:var(--tab-accent);}
+  .qx-strip{display:flex; gap:4px; height:22px; margin:8px 0 6px;} .qx-strip i{border-radius:7px;} .qx-strip-l{display:flex; gap:4px; font-size:10.5px; color:var(--ink-soft);} .qx-strip-l span{overflow:hidden; text-overflow:ellipsis; white-space:nowrap; text-align:center;}
+  .qx-search{width:100%; background:var(--surface); border:1.5px solid var(--line); border-radius:13px; padding:12px 13px; font:inherit; font-size:14px; color:var(--ink); margin-bottom:12px;} .qx-grid{display:grid; grid-template-columns:1fr 1fr; gap:9px;} .qx-sq{background:var(--surface); border:1.5px solid var(--line); border-radius:14px; padding:12px 8px; font:inherit; font-size:13px; font-weight:700; text-align:center; color:var(--ink-soft); cursor:pointer; min-height:46px;} .qx-sq.on{border-color:var(--tab-accent); color:var(--ink); background:color-mix(in srgb,var(--tab-accent) 16%,var(--surface));}
+  .qx-order{display:flex; flex-wrap:wrap; gap:6px 10px;} .qx-order span{display:inline-flex; align-items:center; gap:5px; font-size:12px; color:var(--ink-soft);} .qx-order i{width:24px; height:24px; border-radius:50%; display:grid; place-items:center; font-style:normal; font-weight:800; font-size:12px; color:#000;}
+  .qx-week{background:var(--surface); border:1.5px solid var(--line); border-radius:16px; padding:12px; margin-bottom:10px;} .qx-wd{display:grid; grid-template-columns:34px 1fr; gap:8px; align-items:center; margin:5px 0;} .qx-wd span{font-size:11px; color:var(--ink-faint);} .qx-wd div{display:flex; gap:3px; height:20px;} .qx-wd div i{border-radius:6px; min-width:6px;} .qx-wd div i.rest{display:grid; place-items:center; font-style:normal; font-size:10px; color:var(--sage); background:color-mix(in srgb,var(--sage) 18%,transparent); border:1px dashed var(--sage);}
+  .qx-leg{display:flex; gap:12px; flex-wrap:wrap; font-size:11px; color:var(--ink-soft); margin-top:8px;} .qx-leg i{display:inline-block; width:9px; height:9px; border-radius:3px; margin-right:4px;}
+  .qx-kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:10px 0;} .qx-kpis div{background:var(--surface); border:1.5px solid var(--line); border-radius:14px; padding:10px 6px; text-align:center;} .qx-kpis b{display:block; font-size:18px; color:var(--ink);} .qx-kpis span{font-size:10.5px; color:var(--ink-soft);} .qx-kpis .bad{border-color:var(--brick);} .qx-kpis .bad b{color:var(--brick);}
+  .qx-sum{display:flex; gap:6px; flex-wrap:wrap; margin:14px 0 10px;} .qx-sum span{font-size:11.5px; background:var(--surface-2); border:1px solid var(--line); color:var(--ink-soft); padding:3px 10px; border-radius:99px;}
+  .qx-go{width:100%; min-height:52px; font-size:16px; margin-top:6px;} .qx-link{display:block; width:100%; text-align:center; margin:10px 0 0; padding:8px; font:inherit; font-size:13.5px; font-weight:700; color:var(--ink-soft); background:none; border:0; cursor:pointer; text-decoration:underline; text-underline-offset:3px;}
   .dm-time{font-size:13px; font-weight:700; color:var(--ink-soft); margin:2px 0 6px; letter-spacing:.02em;}
   .dm-dots{position:absolute; right:7px; top:50%; transform:translateY(-50%); z-index:2; display:flex; flex-direction:column; gap:7px; pointer-events:none;} .dm-dots i{width:7px; height:7px; border-radius:50%; background:var(--line);} .dm-dots i.on{height:20px; border-radius:6px; background:var(--tab-accent);}
   .dx-modsec{margin:0 0 12px;} .dx-modsec > .dx-k{margin:0 2px 8px;}
@@ -7774,7 +7790,7 @@ var ACT_INFO = {
   ca:{title:"Current Affairs", hint:"Daily, specific days or weekly", color:"--tab-scheduler"}
 };
 function wizDefaults(){
-  return {step:0, qs:{screen:"choice", months:12, mode:"both", hours:4, preset:""}, err:[], open:{}, init:{}, durMode:"months", months:12, target:"", start:todayKey, startView:"auto",
+  return {step:0, qs:qsNew(), err:[], open:{}, init:{}, durMode:"months", months:12, target:"", start:todayKey, startView:"auto",
     mode:"mains", gs1:true, csat:true, gs:[1,2,3,4], essay:true, optionalOn:true, optional:"", customText:"",
     order:[], sel:{},
     cap:{days:[1,2,3,4,5,6], sessions:[{start:"06:00",end:"08:00",subject:""},{start:"10:00",end:"12:00",subject:""},{start:"16:00",end:"17:00",subject:""}], perDay:{}, breakMin:15, blocks:"auto"},
@@ -8253,74 +8269,125 @@ function wzReview(w){
 var WZ_STEPS = [wzDuration, wzStartView, wzPrep, wzPriority, wzTopics, wzCapacity, wzActivities, wzReview];
 function renderWizard(host){
   var w = wiz;
+  if(w.qs && QS_SCREENS.indexOf(w.qs.screen) < 0) w.qs = qsNew();   // a draft saved by an older version
+  if(w.qs && !studyPlan){
+    host.innerHTML = (planBackupInfo() ? '<div class="card restore-card"><div><b>You reset your plan</b><div class="muted">Your earlier plan and progress were kept. Restore them any time in the next 30 days.</div></div><button type="button" class="btn primary sm" data-pa="restorePlan">Restore previous plan</button></div>' : "")+'<div class="card qx-card">'+qsHtml(w)+'</div>';
+    return;
+  }
   wizSync(w);
   var stepper = '<div class="stepper">'+STEP_TITLES.map(function(t, i){ return '<button type="button" class="st'+(i===w.step?" cur":(i<w.step?" done":""))+'" data-wa="goto" data-v="'+i+'"><i>'+(i+1)+'</i><span>'+esc(t)+'</span></button>'; }).join("")+'</div>';
   host.innerHTML =
     '<div class="card wz-head"><div><h2>'+(studyPlan ? "Edit your preparation plan" : "Build your preparation plan")+'</h2><div class="muted">Plan &rarr; study &rarr; complete &rarr; unlock the next subject &rarr; the calendar adapts.</div></div>'+(studyPlan ? '<button type="button" class="link-btn" data-wa="cancelEdit">Cancel</button>' : "")+'</div>'+
     (!studyPlan && planBackupInfo() ? '<div class="card restore-card"><div><b>You reset your plan</b><div class="muted">Your earlier plan and progress were kept. Restore them any time in the next 30 days.</div></div><button type="button" class="btn primary sm" data-pa="restorePlan">Restore previous plan</button></div>' : "")+
     (w.qs && !studyPlan ? "" : stepper)+
-    '<div class="card wz-card">'+(w.qs && !studyPlan ? qsHtml(w) : WZ_STEPS[w.step](w))+'</div>'+
+    '<div class="card wz-card">'+(w.qs && !studyPlan ? "" : WZ_STEPS[w.step](w))+'</div>'+
     (w.err.length ? '<div class="form-err" role="alert"><b>Please fix:</b><br>'+w.err.map(esc).join("<br>")+'</div>' : "")+
     (w.qs && !studyPlan ? "" : w.step < 7 ? '<div class="wz-nav">'+(w.step>0 ? '<button type="button" class="btn ghost" data-wa="back">Back</button>' : '<span></span>')+'<button type="button" class="btn primary" data-wa="next">Next &rarr;</button></div>' : '<div class="wz-nav"><button type="button" class="btn ghost" data-wa="back">Back</button><span></span></div>');
   centerActive(host.querySelector(".stepper"), ".st.cur", false);
-  if(w.qs && w.qs.screen==="choice" && !studyPlan && !document.getElementById("modalHost")) openStartChoice();
 }
-// The first thing a new student sees: customise (recommended) or start from a pre-made plan.
-function openStartChoice(){
-  var m = showModal('<div class="modal card start-choice" role="dialog" aria-modal="true" aria-labelledby="scTitle">'+
-    '<h2 id="scTitle">How do you want to start?</h2>'+
-    '<button type="button" class="pre on" id="scCustom"><i>Recommended</i><b>Customise my plan</b><span>Choose your subjects, chapters and daily study yourself. About 2 minutes.</span></button>'+
-    '<button type="button" class="pre" id="scPre"><b>Use a pre-made plan</b><span>Start from a ready-made plan. You can still customise it before it is built, and any time later.</span></button></div>', false);
-  m.querySelector("#scCustom").addEventListener("click", function(){ closeModal(); if(wiz){ wiz.qs = null; wiz.step = 0; wiz.err = []; wizRender(); scrollPlannerTop(); } });
-  m.querySelector("#scPre").addEventListener("click", function(){ closeModal(); if(wiz && wiz.qs){ wiz.qs.screen = "plans"; wizRender(); scrollPlannerTop(); } });
-}
-// ---- quick start: ready-made plans, three questions, and a summary before anything is built ----
-var QS_PRESETS = [
-  {id:"p1", name:"Prelims + Mains, 12 months", desc:"All GS subjects \u00B7 4 hours a day \u00B7 Mon\u2013Sat", months:12, mode:"both", hours:4, tag:"Popular"},
-  {id:"p2", name:"Prelims sprint, 6 months", desc:"Prelims papers \u00B7 6 hours a day \u00B7 Mon\u2013Sat", months:6, mode:"prelims", hours:6},
-  {id:"p3", name:"Mains focus, 8 months", desc:"GS I\u2013IV and Essay \u00B7 6 hours a day \u00B7 Mon\u2013Sat", months:8, mode:"mains", hours:6},
-  {id:"p4", name:"Working professional, 18 months", desc:"Prelims + Mains \u00B7 2 hours a day \u00B7 Mon\u2013Sat", months:18, mode:"both", hours:2}
-];
-var QS_HOURS = {2:[2,60], 4:[2,120], 6:[3,120], 8:[4,120]};   // hours a day -> [sessions, minutes each]
+// ---- quick setup: four questions and a look at the first week before anything is built ----
+var QS_SCREENS = ["exam","time","opt","start","week"], QS_COL = ["#8E7BFF","#2DE6D6","#FFB020","#34D58A","#FF6FAE","#5FD0FF"], QS_HOURS = [3,4,6,8,10];
+function qsNew(){ return {screen:"exam", exam:"both", hours:6, days:[1,2,3,4,5,6], opt:"", all:false, start:"foundation"}; }
+function qsList(q){ return QS_SCREENS.filter(function(s){ return !(s==="opt" && q.exam==="prelims"); }); }
+function qsHoursPlan(h){ var n = Math.max(1, Math.ceil(h/2)); return [n, Math.round(h*60/n/5)*5]; }   // 6 h -> 3 sessions of 120 min
+function qsExamKey(ex){ return ex==="prelims" ? DATA.examDates.prelims : DATA.examDates.mains; }
 function qsApply(w){
-  var q = w.qs, hr = QS_HOURS[q.hours] || QS_HOURS[4];
-  w.durMode = "months"; w.months = +q.months; w.start = todayKey; w.target = ""; w.startView = "auto";
-  w.mode = q.mode; w.gs1 = true; w.csat = true; w.gs = [1,2,3,4]; w.essay = true; w.optionalOn = false; w.optional = ""; w.customText = "";
+  var q = w.qs, hp = qsHoursPlan(q.hours), ex = q.exam, key = qsExamKey(ex);
+  w.mode = ex; w.gs1 = true; w.csat = true; w.gs = [1,2,3,4]; w.essay = true;
+  w.optionalOn = ex!=="prelims" && !!q.opt; w.optional = w.optionalOn ? q.opt : ""; w.customText = "";
+  w.start = todayKey; w.startView = "auto";
+  if(key && diffDays(key, todayKey) >= 45){ w.durMode = "date"; w.target = key; } else { w.durMode = "months"; w.months = ex==="prelims" ? 6 : 12; w.target = ""; }
   w.order = []; w.sel = {}; w.init = {}; wizSync(w);
-  w.order = wizCatalog(w).order.slice(); w.init = {}; wizSync(w);   // the recommended order, every chapter
-  w.cap.days = [1,2,3,4,5,6]; w.cap.perDay = {}; w.cap.breakMin = 15; w.cap.blocks = "auto";
-  w.cap.count = hr[0]; w.cap.sessions = []; wizAfter("sessCount"); setSessLen(w, hr[1]);
+  var ord = wizCatalog(w).order.slice();
+  if(q.start==="optional" && w.optionalOn){ var on = optLabel(w.optional), ix = ord.indexOf(on); if(ix > 0){ ord.splice(ix, 1); ord.unshift(on); } }
+  w.order = ord; w.init = {}; wizSync(w);
+  w.cap.days = q.days.slice(); w.cap.perDay = {}; w.cap.breakMin = 15; w.cap.blocks = "auto";
+  w.cap.count = hp[0]; w.cap.sessions = []; wizAfter("sessCount"); setSessLen(w, hp[1]);
+}
+function qsKeyText(k){ return parseKey(k).toLocaleDateString(undefined, {day:"numeric", month:"short", year:"numeric"}); }
+function qsOpt(ic, title, sub, on, act, path, val, tag){
+  return '<button type="button" class="qx-opt'+(on ? " on" : "")+'" data-wa="'+act+'" data-path="'+path+'" data-v="'+esc(val)+'"><span class="ic" aria-hidden="true">'+ic+'</span><span class="tx"><b>'+title+(tag ? '<em>'+tag+'</em>' : "")+'</b><small>'+sub+'</small></span><span class="tick" aria-hidden="true">'+(on ? "✓" : "")+'</span></button>';
+}
+function qsExamLabel(ex){ return ex==="prelims" ? "Prelims" : (ex==="mains" ? "Mains" : "Prelims + Mains"); }
+function qsPreviewData(w){
+  if(!windowStats(w).ok) return null;
+  var plan = compilePlan(w), from = maxKey(todayKey, plan.window.start), sim = simulate(plan, from, [], false), days = [], fin = "", i;
+  for(i=0;i<7;i++){ var k = toKey(addDays(parseKey(from), i)); days.push({key:k, list:sim.sessions.filter(function(s){ return s.date===k; }).sort(function(a, b){ return toMin(a.startTime)-toMin(b.startTime); })}); }
+  sim.sessions.forEach(function(s){ if(s.kind==="study" && s.date>fin) fin = s.date; });
+  return {plan:plan, sim:sim, days:days, fin:fin, chapters:Object.keys(w.sel).length};
+}
+function qsWeekHtml(w){
+  var pv = qsPreviewData(w); if(!pv) return {html:'<div class="qx-info">We could not build a preview. Tap <b>Change something</b> to set the dates yourself.</div>', first:""};
+  var col = function(name){ var i = w.order.indexOf(name); return QS_COL[(i < 0 ? 0 : i) % QS_COL.length]; }, seen = {}, first = "";
+  var rows = pv.days.map(function(d){
+    var dt = parseKey(d.key), bar;
+    if(d.list.length) bar = d.list.map(function(s){ if(!first && s.kind==="study") first = s.subject; seen[s.subject] = 1; return '<i style="flex:'+Math.max(1, s.duration||60)+';background:'+(s.kind==="study" ? col(s.subject) : "var(--sage)")+'" title="'+esc(s.subject+" · "+fmt12(s.startTime))+'"></i>'; }).join("");
+    else bar = '<i class="rest" style="flex:1">Rest day</i>';
+    return '<div class="qx-wd"><span>'+DOW_SHORT[dt.getDay()]+'</span><div>'+bar+'</div></div>';
+  }).join("");
+  var spans = [], names = w.order.filter(function(n){ return pv.sim.spans[n]; }).slice(0, 4);
+  names.forEach(function(n){ var sp = pv.sim.spans[n]; spans.push({n:n, len:Math.max(2, diffDays(sp.end, sp.start)+1)}); });
+  var strip = spans.length > 1 ? '<div class="qx-info"><small>After this week</small><div class="qx-strip">'+spans.map(function(s){ return '<i style="flex:'+s.len+';background:'+col(s.n)+'"></i>'; }).join("")+'</div><div class="qx-strip-l">'+spans.map(function(s){ return '<span style="flex:'+s.len+'">'+esc(s.n.replace(/ \(Optional\)$/, "").split(" ")[0])+'</span>'; }).join("")+'</div></div>' : "";
+  var fits = !pv.sim.remaining, spare = pv.fin ? Math.floor(diffDays(pv.plan.window.end, pv.fin)/7) : 0;
+  var finTxt = pv.fin ? parseKey(pv.fin).toLocaleDateString(undefined, {month:"short", year:"numeric"}) : "–";
+  var legend = Object.keys(seen).map(function(n){ return '<span><i style="background:'+col(n)+'"></i>'+esc(n.replace(/ \(Optional\)$/, ""))+'</span>'; }).join("");
+  return {first:first, html:'<div class="qx-week">'+rows+(legend ? '<div class="qx-leg">'+legend+'</div>' : "")+'</div>'+strip+
+    '<div class="qx-kpis"><div><b>'+pv.chapters+'</b><span>chapters</span></div><div class="'+(fits ? "" : "bad")+'"><b>'+(fits ? esc(finTxt) : "Too much")+'</b><span>'+(fits ? "first pass done" : "for the time")+'</span></div><div class="'+(fits ? "" : "bad")+'"><b>'+(fits ? Math.max(0, spare)+" wk" : pv.sim.remaining+" left")+'</b><span>'+(fits ? "to spare" : "chapters")+'</span></div></div>'+
+    (fits ? "" : '<div class="qx-info warn">Not every chapter fits before your exam. Try more hours a day, or tap <b>Change something</b>.</div>')};
 }
 function qsHtml(w){
-  var q = w.qs;
-  if(q.screen !== "sum"){   // "choice" (pop-up open on top) and "plans" both show the list of pre-made plans
-    return '<h3>Pick a pre-made plan</h3><p class="hint">You can still customise everything: check the summary next and tap <b>Customise</b>, or change it any time later in <b>Planner \u2192 Edit plan</b>.</p>'+
-      '<div class="pre-row">'+QS_PRESETS.map(function(x){ return '<button type="button" class="pre" data-wa="qsPreset" data-v="'+x.id+'">'+(x.tag ? '<i>'+esc(x.tag)+'</i>' : "")+'<b>'+esc(x.name)+'</b><span>'+esc(x.desc)+'</span></button>'; }).join("")+'</div>'+
-      '<button type="button" class="qs-link" data-wa="qsFull">Customise my own plan instead (recommended)</button>';
+  var q = w.qs, L = qsList(q), idx = L.indexOf(q.screen), body = "", title = "", hint = "", btn = "Next", link = "", chips = [];
+  if(q.screen==="exam"){
+    var dp = diffDays(DATA.examDates.prelims, todayKey), dm = diffDays(DATA.examDates.mains, todayKey), mo = function(d){ return Math.max(1, Math.round(d/30.44)); };
+    title = "Which exam?"; hint = "You can change this later.";
+    body = qsOpt("🎯", "Prelims", esc(qsKeyText(DATA.examDates.prelims))+" · "+mo(dp)+" months", q.exam==="prelims", "set", "qs.exam", "prelims")+
+      qsOpt("📝", "Mains", esc(qsKeyText(DATA.examDates.mains))+" · "+mo(dm)+" months", q.exam==="mains", "set", "qs.exam", "mains")+
+      qsOpt("🏁", "Prelims + Mains", "One plan for both", q.exam==="both", "set", "qs.exam", "both", "Best")+
+      '<div class="qx-info"><b>'+Math.max(0, q.exam==="mains" ? dm : dp)+' days</b><small>from today to '+(q.exam==="mains" ? "Mains" : "Prelims")+', about '+Math.round((q.exam==="mains" ? dm : dp)/7)+' weeks'+(q.exam==="both" ? ". Mains is "+Math.max(0, dm)+" days away." : "")+'</small></div>';
+  } else if(q.screen==="time"){
+    var wk = q.hours*q.days.length;
+    title = "Hours a day?"; hint = "Be honest. We plan around it."; chips = [qsExamLabel(q.exam)];
+    var hp = qsHoursPlan(q.hours);
+    body = '<div class="qx-big"><span id="qsHrs">'+q.hours+'</span><small> h / day</small></div>'+
+      '<input type="range" class="qx-range" min="2" max="10" step="1" value="'+q.hours+'" data-w="qs.hours" data-t="n" data-qsrange="1" aria-label="Hours a day">'+
+      '<div class="qx-chips">'+QS_HOURS.map(function(h){ return '<button type="button" class="qx-chip'+(q.hours===h ? " on" : "")+'" data-wa="set" data-path="qs.hours" data-n="1" data-v="'+h+'">'+h+'h</button>'; }).join("")+'</div>'+
+      '<div class="qx-lab">Study days</div><div class="qx-days">'+[1,2,3,4,5,6,0].map(function(d, i){ return '<button type="button" class="'+(q.days.indexOf(d)>=0 ? "on" : "")+'" data-wa="toggleArr" data-path="qs.days" data-v="'+d+'" aria-label="'+DOW_LONG[d]+'" aria-pressed="'+(q.days.indexOf(d)>=0)+'">'+"MTWTFSS".charAt(i)+'</button>'; }).join("")+'</div>'+
+      '<div class="qx-sub">'+(q.days.length ? "That is about <b>"+wk+" hours</b> a week" : "Pick at least one study day")+'</div>'+
+      '<div class="qx-info"><small>A usual day</small><div class="qx-strip">'+Array.apply(null, Array(hp[0])).map(function(){ return '<i style="flex:1;background:'+QS_COL[0]+'"></i>'; }).join("")+'</div><small>'+hp[0]+' session'+(hp[0]===1 ? "" : "s")+' of '+esc(fmtDurMin(hp[1]))+'</small></div>';
+  } else if(q.screen==="opt"){
+    var all = ALL_OPTIONALS.filter(function(n){ return hasBundledSyllabus(n); }), top = ["Anthropology","Sociology","Geography","History","Public Administration","Political Science and International Relations","Philosophy","Psychology"].filter(function(n){ return all.indexOf(n) >= 0; });
+    var shown = q.all ? all : top.concat(q.opt && top.indexOf(q.opt)<0 ? [q.opt] : []);
+    title = "Your optional?"; hint = "Skip if you are not sure yet."; chips = [qsExamLabel(q.exam), q.hours+" h · "+q.days.length+" days"];
+    body = '<input type="search" class="qx-search" placeholder="Search subjects" data-qsearch="1" aria-label="Search optional subjects">'+
+      '<div class="qx-grid">'+shown.map(function(n){ return '<button type="button" class="qx-sq'+(q.opt===n ? " on" : "")+'" data-qsname="'+esc(n)+'" data-wa="set" data-path="qs.opt" data-v="'+(q.opt===n ? "" : esc(n))+'">'+esc(n)+'</button>'; }).join("")+'</div>'+
+      (q.all ? "" : '<button type="button" class="qx-link" data-wa="set" data-path="qs.all" data-v="1">See all '+all.length+' optional subjects ›</button>');
+    link = q.opt ? "" : "Choose later";
+  } else if(q.screen==="start"){
+    var hasOpt = q.exam!=="prelims" && !!q.opt, bo = wizCatalog({mode:q.exam, gs1:true, csat:true, gs:[1,2,3,4], optionalOn:hasOpt, optional:q.opt, customText:""}).order.slice(), ol = optLabel(q.opt);
+    var found = bo.filter(function(n){ return n!==ol; }).slice(0, 4).map(function(n){ return n.replace(/ \(Optional\)$/, ""); });
+    if(q.start==="optional" && hasOpt && bo.indexOf(ol) > 0){ bo.splice(bo.indexOf(ol), 1); bo.unshift(ol); }
+    var ord = bo.map(function(n){ return n.replace(/ \(Optional\)$/, ""); });
+    title = "Start with?"; hint = "We line up the rest after it."; btn = "See my first week"; chips = [qsExamLabel(q.exam), q.hours+" h · "+q.days.length+" days"].concat(q.opt ? [q.opt] : []);
+    body = qsOpt("🧱", "Foundation first", esc(found.join(", ")), q.start==="foundation", "set", "qs.start", "foundation", "Recommended")+
+      (hasOpt ? qsOpt("🎓", "Optional first", esc(q.opt || "Your optional")+", then GS", q.start==="optional", "set", "qs.start", "optional") : "")+
+      qsOpt("✋", "I will pick", "Choose subjects and order", q.start==="pick", "set", "qs.start", "pick")+
+      (q.start==="pick" ? "" : '<div class="qx-lab">Your order</div><div class="qx-order">'+ord.slice(0, 4).map(function(n, i){ return '<span><i style="background:'+QS_COL[i % QS_COL.length]+'">'+(i+1)+'</i>'+esc(n.split(" ")[0])+'</span>'; }).join("")+'</div>');
+    if(q.start==="pick") btn = "Choose my subjects";
+  } else {
+    var pvh = qsWeekHtml(w);
+    title = "Your first week"; hint = (pvh.first ? esc(pvh.first.replace(/ \(Optional\)$/, ""))+" first. " : "")+"Looks good?"; btn = "Start my plan"; link = "Change something";
+    body = pvh.html;
+    chips = [qsExamLabel(q.exam), q.hours+" h · "+q.days.length+" days"].concat(q.opt ? [q.opt] : []);
   }
-  // summary
-  var st = windowStats(w), cat = wizCatalog(w), nCh = 0;
-  w.order.forEach(function(n){ nCh += catalogLeaves(cat.map[n]).filter(function(l){ return w.sel[l.id]; }).length; });
-  var perDay = w.cap.sessions.reduce(function(a, x){ var m = toMin(x.end)-toMin(x.start); return a + (m > 0 ? m : 0); }, 0);
-  var days = w.cap.days.slice().sort(function(a,b){ return DOW_ORDER.indexOf(a)-DOW_ORDER.indexOf(b); });
-  var daysTxt = days.length===7 ? "every day" : (days.length===6 && days.indexOf(0)<0 ? "Mon\u2013Sat" : days.map(function(d){ return DOW_SHORT[d]; }).join(", "));
-  var modeTxt = w.mode==="prelims" ? "Prelims (GS Paper I, CSAT)" : (w.mode==="mains" ? "Mains (GS I\u2013IV, Essay)" : "Prelims and Mains");
-  var f = null; try{ f = fitCalc(w); }catch(e){}
-  var fit = f ? (f.fits ? '<div class="fit-v ok"><b>\u2713 Everything fits</b> in your window.</div>' : '<div class="fit-v bad"><b>\u2717 Not everything fits yet.</b> Tap Customise, or choose a longer plan.</div>') : "";
-  var row = function(label, text, step){ return '<div class="qs-row"><div><small>'+esc(label)+'</small><b>'+text+'</b></div><button type="button" class="btn ghost sm" data-wa="qsEdit" data-v="'+step+'">Edit</button></div>'; };
-  var pre = QS_PRESETS.filter(function(x){ return x.id===q.preset; })[0];
-  return '<h3>Your plan, in short</h3>'+
-    '<div class="qs-note"><b>You chose the pre-made plan \u201C'+esc(pre ? pre.name : "")+'\u201D.</b><br>It is a starting point, not a final plan. You can still customise it: tap <b>Customise this plan</b> below, or any time later open <b>Planner \u2192 Edit plan</b> for every setting, or <b>Reschedule</b> if you fall behind. Your progress is always kept.</div>'+
-    row("Time window", st.ok ? esc((+w.months)+" months \u00B7 "+fmtRange(w.start, st.end)) : "Not set", 0)+
-    row("Preparing for", esc(modeTxt)+'<br><small>Add your optional subject any time in Edit plan.</small>', 2)+
-    row("Study order", esc(w.order.slice(0,4).join(" \u2192 "))+(w.order.length>4 ? esc(" +"+(w.order.length-4)+" more") : ""), 3)+
-    row("Chapters", esc(nCh+" chapters in "+w.order.length+" subjects"), 4)+
-    row("Daily study", esc(fmtDurMin(perDay)+" a day \u00B7 "+w.cap.sessions.length+" sessions \u00B7 "+daysTxt), 5)+
-    row("Extras", 'None yet<br><small>Essay, tests, revision and current affairs can be added later.</small>', 6)+
-    fit+
-    '<button type="button" class="btn primary qs-go" data-wa="gen">Build my plan &rarr;</button>'+
-    '<button type="button" class="btn ghost qs-go2" data-wa="qsFull">Customise this plan</button>'+
-    '<button type="button" class="qs-link" data-wa="qsBack">&larr; Choose another plan</button>';
+  var act = q.screen==="week" ? 'data-wa="gen"' : 'data-wa="qsNext"', linkAct = q.screen==="week" ? 'data-wa="qsFull"' : 'data-wa="qsNext"';
+  return '<div class="qx">'+
+    '<div class="qx-top">'+(idx>0 ? '<button type="button" data-wa="qsBack">‹ Back</button>' : '<span></span>')+'<button type="button" data-wa="qsFull">Detailed setup ›</button></div>'+
+    '<div class="qx-dots">'+L.map(function(s, k){ return '<i class="'+(k<=idx ? "on" : "")+'"></i>'; }).join("")+'</div>'+
+    '<h2>'+title+'</h2><div class="qx-hint">'+hint+'</div>'+body+
+    (w.err.length ? '<div class="form-err" role="alert">'+w.err.map(esc).join("<br>")+'</div>' : "")+
+    (chips.length ? '<div class="qx-sum">'+chips.map(function(c){ return '<span>'+esc(c)+'</span>'; }).join("")+'</div>' : "")+
+    '<button type="button" class="btn primary qx-go" '+act+'>'+btn+(q.screen==="week" ? "" : " →")+'</button>'+
+    (link ? '<button type="button" class="qx-link" '+linkAct+'>'+link+'</button>' : "")+'</div>';
 }
 // ---- pinning a subject that Priority would not reach for a long time ----
 // When is this subject expected to start if it were NOT pinned? (null = not within the plan window)
@@ -8396,10 +8463,15 @@ function wizAction(a, b){
     case "everyDay": w.acts[v].days = [0,1,2,3,4,5,6]; w.acts[v].mode = "weekly"; break;
     case "addDate": var inp = document.getElementById("actDate_"+v); if(inp && inp.value && w.acts[v].dates.indexOf(inp.value)<0) w.acts[v].dates.push(inp.value); break;
     case "rmDate": var pr = v.split("|"), ds = w.acts[pr[0]].dates, di = ds.indexOf(pr[1]); if(di>=0) ds.splice(di,1); break;
-    case "qsPreset": var pr0 = QS_PRESETS.filter(function(x){ return x.id===v; })[0]; if(pr0){ w.qs = {screen:"sum", months:pr0.months, mode:pr0.mode, hours:pr0.hours, preset:pr0.id}; qsApply(w); scrollPlannerTop(); } break;
-    case "qsBack": w.qs.screen = "plans"; w.qs.preset = ""; break;
-    case "qsEdit": w.qs = null; w.step = +v; w.err = []; break;
-    case "qsFull": w.qs = null; w.step = 0; w.err = []; break;
+    case "qsNext":
+      var ql = qsList(w.qs), qi = ql.indexOf(w.qs.screen); w.err = [];
+      if(w.qs.screen==="time" && !w.qs.days.length){ w.err = ["Pick at least one study day."]; break; }
+      if(w.qs.screen==="start" && w.qs.start==="pick"){ qsApply(w); w.qs = null; w.step = 3; scrollPlannerTop(); break; }
+      w.qs.screen = ql[Math.min(ql.length-1, qi+1)];
+      if(w.qs.screen==="week") qsApply(w);
+      scrollPlannerTop(); break;
+    case "qsBack": var bl = qsList(w.qs), bi = bl.indexOf(w.qs.screen); w.err = []; w.qs.screen = bl[Math.max(0, bi-1)]; scrollPlannerTop(); break;
+    case "qsFull": qsApply(w); w.qs = null; w.step = 0; w.err = []; scrollPlannerTop(); break;
     case "capPreset": var cp = {light:[2,60], regular:[2,120], intense:[3,120]}[v]; if(cp){ w.cap.count = cp[0]; wizAfter("sessCount"); setSessLen(w, cp[1]); } break;
     case "cancelEdit": plannerEditing = false; wiz = null; renderPlanner(); return;
     case "gen": wizGenerate(); return;
@@ -13930,6 +14002,11 @@ function wirePlanner(host){
     }
     if(["leafsel","pace","prisubj","remlead","remeod"].indexOf(t.getAttribute("data-pa"))>=0) plannerAction(t.getAttribute("data-pa"), t);
   });
+  host.addEventListener("input", function(e){
+    var t = e.target; if(!t.hasAttribute) return;
+    if(t.hasAttribute("data-qsrange")){ var o = document.getElementById("qsHrs"); if(o) o.textContent = t.value; return; }
+    if(t.hasAttribute("data-qsearch")){ var qv = t.value.trim().toLowerCase(); [].forEach.call(host.querySelectorAll("[data-qsname]"), function(b){ b.hidden = !!qv && b.getAttribute("data-qsname").toLowerCase().indexOf(qv) < 0; }); }
+  });
   host.addEventListener("toggle", function(e){
     var d = e.target;
     if(d.classList && d.classList.contains("scope") && wiz && d.getAttribute("data-sub")) wiz.open[d.getAttribute("data-sub")] = d.open;
@@ -16216,7 +16293,7 @@ var GUIDES = {
     "<b>Study streak</b> counts the days in a row you studied. <b>Revise today</b> lists chapters due for a quick recall: tap ✓ when done.",
     "No plan yet? Build one in the Planner and these cards fill up. <b>Backup</b> is at the bottom."]},
   plansetup:{icon:"🗓", name:"Planner setup", title:"Build your plan", steps:[
-    "Choose to <b>customise</b> your plan (recommended) or use a <b>pre-made plan</b>. A pre-made plan shows a summary first, and you can still customise it.",
+    "Work through the steps. Each one starts with a sensible choice, so tap <b>Next</b> if you are unsure.",
     "<b>Priority</b> is the order you study subjects. When one reaches 100%, the next unlocks.",
     "Nothing is final. Change anything later in the Planner with <b>Edit plan</b> or <b>Reschedule</b>. Your progress is kept."]},
   planner:{icon:"🧭", name:"Planner", title:"Your Planner", steps:[
@@ -16293,7 +16370,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "203";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "204";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
