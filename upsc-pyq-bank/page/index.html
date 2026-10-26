@@ -8412,12 +8412,16 @@ function qsWeekHtml(w){
 function qsHtml(w){
   var q = w.qs, L = qsList(q), idx = L.indexOf(q.screen), body = "", title = "", hint = "", btn = "Next", link = "", chips = [];
   if(q.screen==="exam"){
-    var dp = diffDays(DATA.examDates.prelims, todayKey), dm = diffDays(DATA.examDates.mains, todayKey), mo = function(d){ return Math.max(1, Math.round(d/30.44)); };
+    var dp = diffDays(DATA.examDates.prelims, todayKey), dm = diffDays(DATA.examDates.mains, todayKey);
+    var mo = function(d){ if(d <= 0) return "date passed"; var n = Math.max(1, Math.round(d/30.44)); return n+(n===1 ? " month" : " months"); };
+    var tgt = q.exam==="mains" ? dm : (q.exam==="prelims" ? dp : (dp > 0 ? dp : dm)), tn = q.exam==="mains" ? "Mains" : (q.exam==="prelims" ? "Prelims" : (dp > 0 ? "Prelims" : "Mains")), fall = q.exam==="prelims" ? 6 : 12;
     title = "Which exam?"; hint = "You can change this later.";
-    body = qsOpt("🎯", "Prelims", esc(qsKeyText(DATA.examDates.prelims))+" · "+mo(dp)+" months", q.exam==="prelims", "set", "qs.exam", "prelims")+
-      qsOpt("📝", "Mains", esc(qsKeyText(DATA.examDates.mains))+" · "+mo(dm)+" months", q.exam==="mains", "set", "qs.exam", "mains")+
+    body = qsOpt("🎯", "Prelims", esc(qsKeyText(DATA.examDates.prelims))+" · "+mo(dp), q.exam==="prelims", "set", "qs.exam", "prelims")+
+      qsOpt("📝", "Mains", esc(qsKeyText(DATA.examDates.mains))+" · "+mo(dm), q.exam==="mains", "set", "qs.exam", "mains")+
       qsOpt("🏁", "Prelims + Mains", "One plan for both", q.exam==="both", "set", "qs.exam", "both", "Best")+
-      '<div class="qx-info"><b>'+Math.max(0, q.exam==="mains" ? dm : dp)+' days</b><small>from today to '+(q.exam==="mains" ? "Mains" : "Prelims")+', about '+Math.round((q.exam==="mains" ? dm : dp)/7)+' weeks'+(q.exam==="both" ? ". Mains is "+Math.max(0, dm)+" days away." : "")+'</small></div>';
+      (tgt <= 0
+        ? '<div class="qx-info"><b>Date passed</b><small>The '+tn+' date is behind us, so your plan runs for '+fall+' months from today.</small></div>'
+        : '<div class="qx-info"><b>'+tgt+' days</b><small>from today to '+tn+', about '+Math.round(tgt/7)+' weeks'+(q.exam==="both" && dp > 0 ? ". Mains is "+Math.max(0, dm)+" days away." : "")+(tgt < 45 ? ". That is very close, so your plan runs for "+fall+" months instead." : "")+'</small></div>');
   } else if(q.screen==="time"){
     var wk = q.hours*q.days.length;
     title = "Hours a day?"; hint = "Be honest. We plan around it."; chips = [qsExamLabel(q.exam)];
@@ -16485,7 +16489,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "217";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "218";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
