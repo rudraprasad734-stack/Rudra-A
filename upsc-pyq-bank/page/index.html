@@ -8790,7 +8790,7 @@ function yearlyHtml(plan, states){
   var shown = bars.length>12 ? bars.slice(Math.max(0, Math.min(ci-2, bars.length-12)), Math.max(0, Math.min(ci-2, bars.length-12))+12) : bars;
   var hero = saHero({p:H.op.pct/100, label:H.op.pct+"%", sub:"syllabus", kicker:"Your window ends "+esc(fmtShort(parseKey(plan.window.end))), big:daysLeft+" day"+(daysLeft===1 ? "" : "s")+" left", chip:[H.cls, H.title], lines:[H.op.done+" of "+H.op.total+" chapters done", H.line]});
   return hero+'<div class="card sa-card"><div class="sa-h">Sessions per month</div>'+saBars(shown, function(v){ return String(Math.round(v)); }, "Sessions planned and done per month", "This month")+'</div>'+
-    '<div class="hint">This is a projection. It moves forward when you finish a subject early and backward when you fall behind. Past months show what really happened.</div>'+'<div class="section-title">Subject projection</div>'+proj+'<div class="section-title">Month by month</div><div class="yrlist">'+rows+'</div>';
+    '<div class="hint">This is a forecast. Finish a subject early and the dates come sooner; fall behind and they slip later. Past months show what you actually did.</div>'+'<div class="section-title">Subject projection</div>'+proj+'<div class="section-title">Month by month</div><div class="yrlist">'+rows+'</div>';
 }
 function monthlyHtml(plan, states){
   var mk = plannerMonth || todayKey.slice(0,7), months = monthList(plan);
@@ -16434,7 +16434,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "209";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "210";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
