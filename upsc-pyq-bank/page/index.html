@@ -1063,6 +1063,7 @@
   .ss-head{display:flex; align-items:center; gap:12px;} .ss-head h2{margin:0; font-size:17px;} .ss-ic{width:46px; height:46px; border-radius:14px; background:var(--c); display:grid; place-items:center; font-size:22px; flex:none; color:#fff;}
   .pl-tabs button.on{background:linear-gradient(135deg,var(--tab-accent),color-mix(in srgb,var(--tab-accent) 55%,#27b9ff)) !important; box-shadow:0 6px 16px -8px var(--tab-accent);}
   .ts-split{margin:0 0 10px; padding:9px 11px; border-radius:10px; background:var(--surface-2); color:var(--ink-soft); font-size:13px; line-height:1.45;}
+  .trial-bar{margin:0 0 10px;} .trial-top{display:flex; justify-content:space-between; font-size:13px; color:var(--ink); margin-bottom:5px;} .trial-top span{color:var(--ink-soft);} .trial-chip{display:inline-block; margin-top:8px; font-size:11.5px; font-weight:700; border-radius:999px; padding:3px 10px; background:var(--tab-planner-soft); color:var(--tab-planner);}
   .sa-hero{display:flex; align-items:center; gap:14px; padding:14px !important; margin:0 0 12px;} .sa-ring{flex:none; display:block;} .sa-trk{fill:none; stroke:var(--surface-2);} .sa-arc{fill:none; stroke-linecap:round;} .sa-ring text{fill:var(--navy); font-weight:700; font-family:var(--font-body);} .sa-ring .sa-sub{fill:var(--ink-faint); font-weight:400;}
   .sa-ht{min-width:0; flex:1;} .sa-k{font-size:12px; color:var(--ink-faint);} .sa-big{font-size:24px; font-weight:700; color:var(--navy); line-height:1.15; margin:2px 0 6px;} .sa-sub2{font-size:12px; color:var(--ink-faint); margin-top:7px; line-height:1.45;}
   .sa-chip{display:inline-block; font-size:11px; font-weight:700; border-radius:999px; padding:3px 10px;} .sa-chip.ok{background:var(--sage-soft); color:#0b6b33;} .sa-chip.warn{background:var(--gold-soft); color:#8a4f00;} .sa-chip.bad{background:var(--brick-soft); color:#a02018;} .sa-chip.idle{background:var(--surface-2); color:var(--ink-soft);}
@@ -13790,7 +13791,7 @@ function renderPlannerHome(host){
   if(tabNow==="plan") body = overviewHtml(plan, states)+remindersHtml()+'<div class="section-title">Chapters</div>'+progressHtml(plan, states);
   var sub = tabNow==="schedule" ? '<div class="pl-sub" role="tablist">'+SCHED_VIEWS.map(function(t){ return '<button type="button" role="tab" class="'+(t[0]===plannerView?"on":"")+'" aria-selected="'+(t[0]===plannerView)+'" data-pa="view" data-v="'+t[0]+'">'+t[1]+'</button>'; }).join("")+'</div>' : "";
   host.innerHTML =
-    '<div class="card pl-title"><div><h2>Preparation Planner</h2><div class="muted">Complete a subject to unlock the next. The calendar follows your progress.</div></div><button type="button" class="btn ghost sm" data-go="reschedule">Reschedule</button></div>'+
+    '<div class="card pl-title"><div><h2>Preparation Planner</h2><div class="muted">Complete a subject to unlock the next. The calendar follows your progress.</div>'+(subMode()==="trial" ? '<div class="trial-chip">Free trial · Day '+trialInfo().day+' of '+TRIAL_DAYS+' · '+esc(trialInfo().leftText)+'</div>' : "")+'</div><button type="button" class="btn ghost sm" data-go="reschedule">Reschedule</button></div>'+
     '<div class="pl-tabs">'+PLANNER_TABS.map(function(t){ return '<button type="button" class="'+(t[0]===tabNow?"on":"")+'" data-pa="view" data-v="'+(t[0]==="plan" ? "overview" : (t[0]==="schedule" ? lastSched : "priority"))+'">'+t[1]+'</button>'; }).join("")+'</div>'+sub+catchBannerHtml()+body;
   centerActive(host.querySelector(".pl-tabs"), "button.on", false);
   if(plannerScrollTo){ var tgt = host.querySelector('[data-prog="'+plannerScrollTo.replace(/"/g, '\\"')+'"]'); plannerScrollTo = ""; if(tgt) setTimeout(function(){ tgt.scrollIntoView({block:"start"}); window.scrollBy(0, -70); }, 60); }
@@ -16292,7 +16293,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "201";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "202";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -16423,6 +16424,11 @@ function subClockSync(){
 }
 function subStart(){ if(!sub.t0){ sub.t0 = subNow(); if(!sub.v) sub.u = 1; subSave(); } }
 function trialLeftDays(){ if(!sub.t0) return TRIAL_DAYS; return Math.max(0, Math.ceil((sub.t0 + TRIAL_DAYS*DAY_MS - subNow())/DAY_MS)); }
+// "Day 3 of 14", whole days left and, on the last day, the hours left
+function trialInfo(){
+  var t0 = sub.t0 || subNow(), el = Math.max(0, subNow()-t0), left = trialLeftDays(), msLeft = Math.max(0, t0+TRIAL_DAYS*DAY_MS-subNow());
+  return {day:Math.min(TRIAL_DAYS, Math.floor(el/DAY_MS)+1), left:left, pct:Math.min(100, Math.round(100*el/(TRIAL_DAYS*DAY_MS))), leftText:left>1 ? left+" days left" : (msLeft>3600000 ? "about "+Math.ceil(msLeft/3600000)+" hours left" : "less than an hour left")};
+}
 function trialEndsText(){ var d = new Date((sub.t0||subNow()) + TRIAL_DAYS*DAY_MS); return d.toLocaleDateString(undefined, {day:"numeric", month:"long", year:"numeric"}); }
 function entCached(){ var e = lsGetJSON(ENT_KEY, null); return !!(e && e.ok && subNow() - e.at < ENT_GRACE_DAYS*DAY_MS); }
 function billingService(){
@@ -16601,8 +16607,9 @@ function subCardHtml(){
       foot = 'Billed yearly to your Google Play account and renewed automatically until you cancel in Google Play. ';
     }
   } else {
-    var n = trialLeftDays();
-    body = '<div class="muted"><b>'+n+' day'+(n===1?'':'s')+' left</b> in your free trial (until '+trialEndsText()+'). Everything is free until then and nothing is charged for the trial. After that '+(play ? 'a yearly subscription is needed to keep using the app: '+billingPriceText()+'. It renews every year until you cancel.' : 'a one-year pass is needed to keep using the app: '+webPriceText()+'. It does not renew by itself.')+'</div>';
+    var ti = trialInfo();
+    body = '<div class="trial-bar" role="img" aria-label="Day '+ti.day+' of '+TRIAL_DAYS+'"><div class="trial-top"><b>Day '+ti.day+' of '+TRIAL_DAYS+'</b><span>'+esc(ti.leftText)+'</span></div><div class="sa-bar"><i style="width:'+Math.max(4, ti.pct)+'%"></i></div></div>'+
+      '<div class="muted">Your free trial ends on '+trialEndsText()+'. Everything is free until then and nothing is charged for the trial. After that '+(play ? 'a yearly subscription is needed to keep using the app: '+billingPriceText()+'. It renews every year until you cancel.' : 'a one-year pass is needed to keep using the app: '+webPriceText()+'. It does not renew by itself.')+'</div>';
     btns = '<button class="btn primary" id="subBuy">'+(play || cloud.user ? 'Subscribe now' : 'Sign in to subscribe')+'</button>'+((play ? BILL.err : WEB.err) ? '<div class="pw-err">'+(play ? BILL.err : WEB.err)+'</div>' : '');
     foot = play ? 'Billed yearly to your Google Play account and renewed automatically until you cancel in Google Play. ' : 'One payment, handled by Razorpay, not refundable once access is added (see Refunds). ';
   }
