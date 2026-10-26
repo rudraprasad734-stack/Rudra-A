@@ -16152,7 +16152,7 @@ function cloudUnwatch(){ try{ if(cloud.unwatch) cloud.unwatch(); }catch(e){} clo
 function cloudWatch(uid){ cloudUnwatch(); try{ if(cloud.adapter && cloud.adapter.watch) cloud.unwatch = cloud.adapter.watch(uid, function(){ cloudSoon(300); }); }catch(e){} }
 function cloudOnUser(u){
   if(!u){ cloudUnwatch(); cloud.user = null; setCloud("off", ""); return; }
-  if(syncMeta.uid && syncMeta.uid !== u.uid){
+  if((syncMeta.uid && syncMeta.uid !== u.uid) || (!syncMeta.uid && syncMeta.out)){
     // a different person on this phone: they start clean and get their own cloud copy, never the previous person's data
     cloudWipeLocal(); if(cloudRestartClean()) return;
   }
@@ -16185,23 +16185,23 @@ function cloudSignIn(){
 // removes this account's study data from the phone (the cloud copy is untouched) so the next person starts clean.
 // Device-level things stay: the free-trial start, store purchases, first-run flags and analytics choice.
 var WIPE_KEYS = {"dossier.lastBackup.v1":1, "dossier.prerestore.v1":1, "dossier.reminders.v1":1, "dossier.wizdraft.v1":1, "dossier.planBackup.v1":1, "dossier.timer.v2":1, "dossier.progressReset.v1":1, "dossier.noPlanAsk.v1":1, "dossier.planHint.v1":1, "dossier.bkpNudge.v1":1, "dossier.help.log":1};
-function cloudWipeLocal(){
+function cloudWipeLocal(signedOut){
   cloudUnwatch(); clearTimeout(cloud.timer); cloud.user = null;   // nothing may sync while the phone is being cleared
   try{ Object.keys(localStorage).forEach(function(k){ if(CLOUD_KEY_RE.test(k) || WIPE_KEYS[k]) localStorage.removeItem(k); }); }catch(e){}
-  syncMeta = {device:syncMeta.device}; saveSyncMeta();
+  syncMeta = signedOut ? {device:syncMeta.device, out:1} : {device:syncMeta.device}; saveSyncMeta();   // out: this phone has had an account, so anything on it now is not for the next one
 }
 // restart so no old data stays in memory; not if the phone could not clear its storage, or it would restart forever
 function cloudRestartClean(){
   var saved = lsGetJSON(SYNC_META_KEY, null);
-  if(saved && saved.uid) return false;
+  if(saved && (saved.uid || saved.out)) return false;   // clearing did not stick
   location.reload(); return true;
 }
 function cloudSignOut(){
   if(!cloud.adapter) return;
   if(!window.confirm("Sign out?\n\nYour study data is saved in your account and will come back when you sign in again. It will be cleared from this phone.")) return;
   var done = function(){
-    cloudWipeLocal();
-    Promise.resolve(cloud.adapter.signOut()).then(cloudRestartClean, cloudRestartClean);
+    cloudWipeLocal(true);
+    Promise.resolve(cloud.adapter.signOut()).then(function(){ location.reload(); }, function(){ location.reload(); });
   };
   if(!cloud.user){ done(); return; }
   var stuck = function(){ if(window.confirm("Your latest changes could not be saved online.\n\nOK = sign out anyway (they will be lost)\nCancel = stay signed in")) done(); };
@@ -16458,7 +16458,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "212";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "213";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
