@@ -16207,11 +16207,18 @@ function cloudSignOut(){
   var stuck = function(){ if(window.confirm("Your latest changes could not be saved online.\n\nOK = sign out anyway (they will be lost)\nCancel = stay signed in")) done(); };
   if(navigator.onLine===false){ stuck(); return; }
   setCloud("sync", "Saving…");
-  var t0 = Date.now(), check = function(){
-    if(cloud.busy && Date.now()-t0 < 10000){ setTimeout(check, 200); return; }
-    if(cloud.state==="ok" && !cloud.busy) done(); else stuck();
+  // a sync already under way may have started before the latest change: keep going until a whole pass finds nothing left to save
+  var t0 = Date.now(), pass = 0, run = function(){
+    pass++; cloud.queued = false; clearTimeout(cloud.timer);
+    cloudSync().then(wait, stuck);
+  }, wait = function(){
+    if(cloud.busy && Date.now()-t0 < 15000){ setTimeout(wait, 200); return; }
+    if(cloud.busy || cloud.state!=="ok"){ stuck(); return; }
+    var last = syncMeta.last || {};
+    if((cloud.queued || last.pushed || last.pulled) && pass < 4){ run(); return; }
+    done();
   };
-  cloudSync().then(check, stuck);
+  run();
 }
 function cloudDeleteAll(){
   if(!cloud.user || !cloud.adapter) return;
