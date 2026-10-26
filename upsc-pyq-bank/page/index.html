@@ -1332,6 +1332,24 @@
     input[type="checkbox"], input[type="radio"]{width:20px; height:20px;}
     .cov-paper{min-height:32px; padding:6px 0;}
   }
+  /* ===== fits every phone: nothing sticks out of its card, on small screens and with large text ===== */
+  body{overflow-x:clip;}
+  img, svg, video{max-width:100%;}
+  .card, .modal{max-width:100%;}
+  .card h2, .card h3, .modal h2{overflow-wrap:anywhere;}
+  .qx-days{grid-template-columns:repeat(7,minmax(0,1fr)); gap:5px;}
+  .qx-days button{aspect-ratio:auto; height:40px; min-width:0; padding:0;}
+  .qx-grid{grid-template-columns:repeat(2,minmax(0,1fr));} .qx-sq{min-width:0; overflow-wrap:anywhere;}
+  .qx-strip-l span{white-space:normal; overflow-wrap:anywhere; line-height:1.15; font-size:10px; min-width:0;}
+  .prio li, .prio .pname{min-width:0;} .prio .pname{overflow-wrap:anywhere;}
+  @media (max-width:420px){ .prio li{flex-wrap:wrap; gap:8px;} .prio .pname{flex:1 1 55%;} .pacts{margin-left:auto;} }
+  .cap-sess{grid-template-columns:minmax(0,1fr);} .slot{min-width:0;} .slot .tpair{flex-wrap:wrap;} .tpair input, .tpair select{min-width:0; max-width:100%;}
+  .sess-links{flex-wrap:wrap; gap:4px 14px;} .link-btn{white-space:normal; text-align:left;}
+  .pl-title, .wz-head{flex-wrap:wrap;}
+  .fit-rows{grid-template-columns:repeat(3,minmax(0,1fr));} .fit-rows b{font-size:clamp(17px,6vw,22px); overflow-wrap:anywhere;}
+  .loadrow{grid-template-columns:minmax(0,1fr) auto auto;} .loadrow .lv{white-space:normal; text-align:right;}
+  .wk-day{min-width:0;} .plrow{grid-template-columns:auto minmax(0,1fr) auto;} .plrow .pl, .plrow .ps{min-width:0; overflow-wrap:anywhere;}
+  @media (max-width:400px){ .plrow{grid-template-columns:minmax(0,1fr) auto;} .plrow .pt{grid-column:1 / -1;} }
 </style>
 <script>
 /* ===========================================================================
@@ -16489,7 +16507,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "218";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "219";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
