@@ -8414,14 +8414,14 @@ function qsHtml(w){
   if(q.screen==="exam"){
     var dp = diffDays(DATA.examDates.prelims, todayKey), dm = diffDays(DATA.examDates.mains, todayKey);
     var mo = function(d){ if(d <= 0) return "date passed"; var n = Math.max(1, Math.round(d/30.44)); return n+(n===1 ? " month" : " months"); };
-    var tgt = q.exam==="mains" ? dm : (q.exam==="prelims" ? dp : (dp > 0 ? dp : dm)), tn = q.exam==="mains" ? "Mains" : (q.exam==="prelims" ? "Prelims" : (dp > 0 ? "Prelims" : "Mains")), fall = q.exam==="prelims" ? 6 : 12;
+    var tgt = q.exam==="mains" ? dm : (q.exam==="prelims" ? dp : (dp > 0 ? dp : dm)), tn = q.exam==="mains" ? "Mains" : (q.exam==="prelims" ? "Prelims" : (dp > 0 ? "Prelims" : "Mains")), fall = q.exam==="prelims" ? 6 : 12, wt = q.exam==="prelims" ? dp : dm;   // the date the plan itself runs to (Both runs to Mains)
     title = "Which exam?"; hint = "You can change this later.";
     body = qsOpt("🎯", "Prelims", esc(qsKeyText(DATA.examDates.prelims))+" · "+mo(dp), q.exam==="prelims", "set", "qs.exam", "prelims")+
       qsOpt("📝", "Mains", esc(qsKeyText(DATA.examDates.mains))+" · "+mo(dm), q.exam==="mains", "set", "qs.exam", "mains")+
       qsOpt("🏁", "Prelims + Mains", "One plan for both", q.exam==="both", "set", "qs.exam", "both", "Best")+
       (tgt <= 0
         ? '<div class="qx-info"><b>Date passed</b><small>The '+tn+' date is behind us, so your plan runs for '+fall+' months from today.</small></div>'
-        : '<div class="qx-info"><b>'+tgt+' days</b><small>from today to '+tn+', about '+Math.round(tgt/7)+' weeks'+(q.exam==="both" && dp > 0 ? ". Mains is "+Math.max(0, dm)+" days away." : "")+(tgt < 45 ? ". That is very close, so your plan runs for "+fall+" months instead." : "")+'</small></div>');
+        : '<div class="qx-info"><b>'+tgt+' days</b><small>from today to '+tn+', about '+Math.round(tgt/7)+' weeks'+(q.exam==="both" && dp > 0 ? ". Mains is "+Math.max(0, dm)+" days away" : "")+(wt > 0 && wt < 45 ? ". That is very close, so your plan runs for "+fall+" months instead" : "")+'.</small></div>');
   } else if(q.screen==="time"){
     var wk = q.hours*q.days.length;
     title = "Hours a day?"; hint = "Be honest. We plan around it."; chips = [qsExamLabel(q.exam)];
