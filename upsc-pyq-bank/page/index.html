@@ -242,6 +242,7 @@
   .tp-c{padding:10px 0; border-radius:12px; border:1.5px solid var(--line); background:var(--surface-2); color:var(--ink); font:inherit; font-size:15px; font-weight:700; cursor:pointer; min-height:44px;} .tp-c.on{background:var(--tab-accent); border-color:var(--tab-accent); color:#000;}
   .tp-fine{display:flex; gap:8px; margin-top:8px;} .tp-fine button{flex:1; padding:8px; border-radius:12px; border:1.5px solid var(--line); background:var(--surface); color:var(--ink-soft); font:inherit; font-size:13px; font-weight:700; cursor:pointer; min-height:40px;}
   .tp-act{display:flex; gap:8px; align-items:center; margin-top:16px;} .tp-act span{flex:1;} .tp-x{background:none; border:0; font:inherit; font-size:14px; font-weight:700; color:var(--ink-soft); padding:12px 10px; cursor:pointer; min-height:46px;} .tp-ok{background:linear-gradient(90deg,var(--tab-accent),var(--sky,#5fd0ff)); color:#000; border:0; border-radius:14px; font:inherit; font-size:16px; font-weight:800; padding:12px 30px; cursor:pointer; min-height:48px;}
+  .cap-manual{margin:14px 0 4px; padding:12px; border:1.5px dashed var(--line); border-radius:14px;} .cap-mh{font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-faint); margin-bottom:8px;} .cap-manual .cf{margin-bottom:6px;}
   .qx-card{padding:16px;} .qx [hidden]{display:none !important;}
   .qx-top{display:flex; justify-content:space-between; align-items:center; margin:-4px 0 8px;} .qx-top button{background:none; border:0; padding:6px 2px; font:inherit; font-size:13px; font-weight:700; color:var(--ink-soft); cursor:pointer; min-height:36px;}
   .qx-dots{display:flex; gap:5px; margin-bottom:16px;} .qx-dots i{flex:1; height:4px; border-radius:9px; background:var(--line);} .qx-dots i.on{background:linear-gradient(90deg,var(--tab-accent),var(--sky,#5fd0ff));}
@@ -8263,8 +8264,11 @@ function fitLineHtml(w){
 function wzCapacity(w){
   var c = w.cap, n = c.sessions.length, P = [["light","Light",2,60],["regular","Regular",2,120],["intense","Intense",3,120]];
   var presets = '<div class="pre-row">'+P.map(function(x){ var on = n===x[2] && sessLenNow(w)===x[3]; return '<button type="button" class="pre'+(on ? " on" : "")+'" data-wa="capPreset" data-v="'+x[0]+'"><b>'+x[1]+'</b><span>'+esc(fmtDurMin(x[2]*x[3]))+' a day \u00B7 '+x[2]+' sessions</span></button>'; }).join("")+'</div>';
-  var adv = '<div class="cf"><label>Sessions per day</label><select data-w="cap.count" data-after="sessCount">'+optsNum(1,6,n)+'</select></div>'+
-    '<div class="cf"><label>How long is one session?</label><select data-w="cap.sessLen" data-t="n" data-after="sessLen">'+(sessLenNow(w) ? "" : '<option value="0" selected>Mixed (set each one below)</option>')+SESS_LENS.map(function(m){ return '<option value="'+m+'"'+(sessLenNow(w)===m ? " selected" : "")+'>'+(m<60 ? m+" minutes" : (m%60 ? (m/60)+" hours" : (m/60)+(m===60 ? " hour" : " hours")))+'</option>'; }).join("")+'</select></div>'+
+  var tot = c.sessions.reduce(function(t, x){ var m = toMin(x.end)-toMin(x.start); return t + (m > 0 ? m : 0); }, 0);
+  var manual = '<div class="cap-manual"><div class="cap-mh">Or set your own</div><div class="two"><div class="cf"><label>Sessions per day</label><select data-w="cap.count" data-after="sessCount">'+optsNum(1,6,n)+'</select></div>'+
+    '<div class="cf"><label>Length of one session</label><select data-w="cap.sessLen" data-t="n" data-after="sessLen">'+(sessLenNow(w) ? "" : '<option value="0" selected>Mixed (see Fine-tune)</option>')+SESS_LENS.map(function(m){ return '<option value="'+m+'"'+(sessLenNow(w)===m ? " selected" : "")+'>'+(m<60 ? m+" minutes" : (m%60 ? (m/60)+" hours" : (m/60)+(m===60 ? " hour" : " hours")))+'</option>'; }).join("")+'</select></div></div>'+
+    '<div class="hint">That is <b>'+esc(fmtDurMin(tot))+' a day</b>. For exact times, subjects and breaks, open <b>Fine-tune sessions and times</b> below.</div></div>';
+  var adv = ''+
     '<div class="hint">For each session choose <b>which subject</b> and <b>from when to when</b>. &ldquo;Auto&rdquo; follows your current active subject; a pinned subject runs in that session every day, alongside the main chain.</div>'+
     '<div class="cap-sess">'+c.sessions.map(function(s, i){ return '<div class="slot"><div class="slot-h"><b>Session '+(i+1)+'</b><span class="dur">'+esc(toMin(s.end)>toMin(s.start)?fmtDurMin(toMin(s.end)-toMin(s.start)):"invalid")+'</span></div>'+
       '<div class="cf"><label>Subject</label><select data-w="cap.sessions.'+i+'.subject"><option value="">Auto &mdash; current active subject</option>'+w.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(s.subject===nm?" selected":"")+'>'+esc(nm)+'</option>'; }).join("")+'</select></div>'+
@@ -8276,11 +8280,11 @@ function wzCapacity(w){
     '<div class="two"><div class="cf"><label>Minimum break between sessions</label><select data-w="cap.breakMin" data-t="n">'+[5,10,15,20,30,45,60].map(function(m){ return '<option value="'+m+'"'+(+c.breakMin===m?" selected":"")+'>'+m+' min</option>'; }).join("")+'</select></div>'+
     '<div class="cf"><label>Pace: sessions per chapter</label><select data-w="cap.blocks">'+paceOptions(c.blocks, avgSessMin(c.sessions))+'</select></div></div>'+
     '<div class="hint">Essay, PYQ, Test and Revision take over any study session they overlap on their day.</div>'+fitCalcHtml(w)+weekMapHtml(w);
-  return '<h3>How much can you study?</h3>'+presets+
+  return '<h3>How much can you study?</h3>'+presets+manual+
     '<div class="cf"><label>Study days</label>'+dayChips("cap.days", c.days)+'</div>'+
     fitLineHtml(w)+
-    '<details class="info-card" data-wopen="capInfo"'+(w.open.capInfo ? " open" : "")+'><summary>What is a session?</summary><div class="muted">A <b>session</b> is one block of focused study on one chapter, and you decide how long it is. The planner counts in sessions: <b>what you need</b> (chapters \u00D7 sessions per chapter) against <b>what you have</b> (study days \u00D7 sessions a day). If you have at least what you need, everything fits.</div></details>'+
-    '<details class="info-card cap-adv" data-wopen="capAdv"'+(w.open.capAdv ? " open" : "")+'><summary>Fine-tune sessions and times</summary>'+adv+'</details>';
+    '<details class="info-card cap-adv" data-wopen="capAdv"'+(w.open.capAdv ? " open" : "")+'><summary>Fine-tune sessions and times</summary>'+adv+'</details>'+
+    '<details class="info-card" data-wopen="capInfo"'+(w.open.capInfo ? " open" : "")+'><summary>What is a session?</summary><div class="muted">A <b>session</b> is one block of focused study on one chapter, and you decide how long it is. The planner counts in sessions: <b>what you need</b> (chapters \u00D7 sessions per chapter) against <b>what you have</b> (study days \u00D7 sessions a day). If you have at least what you need, everything fits.</div></details>';
 }
 function actCard(w, k){
   var a = w.acts[k], info = ACT_INFO[k];
@@ -16430,7 +16434,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "208";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "209";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
