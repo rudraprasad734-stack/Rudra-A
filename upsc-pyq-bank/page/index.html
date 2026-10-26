@@ -7875,12 +7875,14 @@ function wizSync(w){
   else if(w.seen) cat.order.forEach(function(n){ if(!w.seen[n] && w.order.indexOf(n) < 0) w.order.push(n); });
   if(w.seen){ w.seen = {}; cat.order.forEach(function(n){ w.seen[n] = 1; }); }
   w.order = w.order.filter(function(n){ return !!cat.map[n]; });
+  // chapters that have just become available in a subject you already have (another exam or paper chosen) are selected too; ones you unticked stay off
+  var lseen = w.lseen, nextL = {};
   w.order.forEach(function(n){
-    catalogLeaves(cat.map[n]).forEach(function(l){ valid[l.id] = 1; if(!w.init[n]) w.sel[l.id] = 1; });
+    catalogLeaves(cat.map[n]).forEach(function(l){ valid[l.id] = 1; if(!w.init[n] || (lseen && !lseen[l.id])) w.sel[l.id] = 1; nextL[l.id] = 1; });
     init[n] = 1;
   });
   Object.keys(w.sel).forEach(function(id){ if(!valid[id]) delete w.sel[id]; });
-  w.init = init;
+  w.init = init; w.lseen = nextL;
   w.cap.sessions.forEach(function(sl){ if(sl.subject && w.order.indexOf(sl.subject) < 0) sl.subject = ""; });
 }
 function windowStats(w){
