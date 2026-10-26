@@ -15259,6 +15259,7 @@ function openTimerSave(){
   if(!studyPlan && (+lsGet(NOPLAN_KEY) || 0) < 3){ openTimerNoPlan(); return; }
   var ms = timerState.pending, list = timerTargets(), pick = "", info = timerState.pendInfo;
   var studyMin = Math.max(1, Math.round(ms/60000)), brkMin = info ? Math.round((info.brkMs||0)/60000) : 0, win = timerRealWindow(info);
+  var tooLong = studyMin > 12*60;   // a timer left running for more than half a day: ask how long they really studied
   var tg = timerState.target && list.filter(function(x){ return x.id===timerState.target; })[0];
   var pool = tg || list.filter(function(x){ return x.status==="in_progress"; })[0] || list.filter(function(x){ return x.status==="not_started" && x.kind==="study"; })[0];
   if(pool) pick = pool.id;
@@ -15268,7 +15269,8 @@ function openTimerSave(){
   }).join("");
   showModal('<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="tsTitle">'+
     '<h2 id="tsTitle">Save your study time</h2>'+
-    '<p>You studied for <b>'+esc(fmtDurMin(studyMin))+'</b> ('+esc(fmtTimer(ms))+').'+(win ? ' From <b>'+esc(fmt12(hmStr(win.s)))+'</b> to <b>'+esc(fmt12(hmStr(win.e)))+'</b>'+(brkMin ? ', with <b>'+esc(fmtDurMin(brkMin))+'</b> of breaks between rounds' : "")+'.' : '')+'</p>'+
+    (tooLong ? '<p>The timer ran for <b>'+esc(fmtDurMin(studyMin))+'</b>. It was probably left on by mistake. How long did you really study?</p><div class="cf"><label for="tsReal">Hours really studied (up to 16)</label><input id="tsReal" type="number" inputmode="decimal" min="0.25" max="16" step="0.25" placeholder="for example 3"></div>' : '')+
+    '<p'+(tooLong ? ' hidden' : '')+'>You studied for <b>'+esc(fmtDurMin(studyMin))+'</b> ('+esc(fmtTimer(ms))+').'+(win ? ' From <b>'+esc(fmt12(hmStr(win.s)))+'</b> to <b>'+esc(fmt12(hmStr(win.e)))+'</b>'+(brkMin ? ', with <b>'+esc(fmtDurMin(brkMin))+'</b> of breaks between rounds' : "")+'.' : '')+'</p>'+
     '<div class="cf"><label for="tsTarget">Record it against</label><select id="tsTarget">'+opts+'<option value=""'+(pick ? "" : " selected")+'>Only add to today&rsquo;s study time</option></select></div>'+
     '<p class="ts-split" id="tsPreview" hidden></p>'+
     '<p class="muted small">Today&rsquo;s study time always includes it. Only focus time counts as study. Breaks between Pomodoro rounds are not study time, but they do count toward finishing a session&rsquo;s planned length.</p>'+
@@ -15284,10 +15286,18 @@ function openTimerSave(){
     else pv.textContent = (room ? "This session only has "+fmtDurMin(room)+" left. " : "This session is already full. ")+"Your time is shared like this: "+others.map(function(q){ var x = sessionById(q.id); return "S"+x.sessionNumber+" "+fmtDurMin(q.study); }).join(", ")+".";
   }
   document.getElementById("tsTarget").addEventListener("change", refresh);
+  if(tooLong) document.getElementById("tsReal").addEventListener("input", function(){
+    var h = parseFloat(this.value); ms = (h > 0 ? Math.min(h, 16) : 0) * 3600000; studyMin = Math.max(1, Math.round(ms/60000)); brkMin = 0; win = null; info = null; refresh();
+  });
   refresh();
   document.getElementById("tsDiscard").addEventListener("click", function(){ timerState.pending = 0; timerState.pendInfo = null; timerState.target = ""; timerSave(); closeModal(); timerUi(); renderView(activeTab); toast("Timer discarded."); });
   document.getElementById("tsSave").addEventListener("click", function(){
     var sid = document.getElementById("tsTarget").value, add = timerState.pending;
+    if(tooLong){
+      var hrs = parseFloat(document.getElementById("tsReal").value);
+      if(!(hrs > 0 && hrs <= 16)){ toast("Enter the hours you really studied (up to 16), or tap Discard."); return; }
+      add = Math.round(hrs*3600000); info = null;
+    }
     timerAddToToday(add);
     if(sid) timerCommit(sid, add, info, true);
     timerState.pending = 0; timerState.pendInfo = null; timerState.target = ""; timerSave(); closeModal();
@@ -16474,7 +16484,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "215";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "216";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
