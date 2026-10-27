@@ -4357,10 +4357,11 @@ function purClass(p){ return String(p||"").replace(/[^A-Za-z]/g,""); }
 
 // ---------- modal ----------
 var modalDismissible = false;
-function closeModal(){ var m=document.getElementById("modalHost"); if(m) m.remove(); document.body.style.overflow=""; modalDismissible=false; }
+var nudgeBack = false;   // set when a dialog pushed the welcome-back note away: it comes back when the dialog closes
+function closeModal(){ var m=document.getElementById("modalHost"); if(m) m.remove(); document.body.style.overflow=""; modalDismissible=false; if(nudgeBack && m){ nudgeBack = false; setTimeout(function(){ try{ nudgeShow(); }catch(e){} }, 900); } }
 function showModal(inner, dismissible){
   closeModal();
-  var qn = document.getElementById("quietNudge"); if(qn){ qn.remove(); try{ nudge.shownOn = ""; nudgeSave(); }catch(e){} }   // a dialog takes priority; the welcome-back note comes back later
+  var qn = document.getElementById("quietNudge"); if(qn){ qn.remove(); nudgeBack = true; try{ nudge.shownOn = ""; nudgeSave(); }catch(e){} }   // a dialog takes priority; the welcome-back note comes back later
 
   var m = el('<div class="modal-back" id="modalHost">'+inner+'</div>');
   document.body.appendChild(m);
