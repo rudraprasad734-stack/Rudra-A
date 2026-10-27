@@ -305,7 +305,7 @@
   body.dash-timer #menuBtn, body.dash-timer #dashFab, body.dash-timer .timer-card > .timer-mode, body.dash-timer .timer-card > .timer-total,
   body.dash-timer .timer-card > .timer-phase, body.dash-timer .timer-card > .timer-set, body.dash-timer .timer-card > .timer-btns, body.dash-timer .timer-card > .goal-strip, body.dash-timer .timer-card .timer-display{transition:opacity .7s ease;}
   body.dash-timer.ui-sleep #menuBtn, body.dash-timer.ui-sleep #dashFab, body.dash-timer.ui-sleep .timer-card > .timer-mode, body.dash-timer.ui-sleep .timer-card > .timer-total,
-  body.dash-timer.ui-sleep .timer-card > .timer-phase, body.dash-timer.ui-sleep .timer-card > .timer-set, body.dash-timer.ui-sleep .timer-card > .timer-brk, body.dash-timer.ui-sleep .timer-card > .goal-strip, body.dash-timer.ui-sleep .timer-card > .timer-btns{opacity:0 !important; pointer-events:none !important;}
+  body.dash-timer.ui-sleep .timer-card > .timer-phase, body.dash-timer.ui-sleep .timer-card > .timer-set, body.dash-timer.ui-sleep .timer-card > .timer-brk, body.dash-timer.ui-sleep .timer-card > .goal-strip, body.dash-timer.ui-sleep .timer-card > .today-tg, body.dash-timer.ui-sleep .timer-card > .timer-btns{opacity:0 !important; pointer-events:none !important;}
   body.dash-timer #view-dashboard > *:not(.timer-card){display:none;}
   body.dash-timer #view-dashboard .timer-card{position:fixed; inset:0; z-index:5; height:auto; min-height:0; margin:0; border-radius:0; border:0;}
   body.dash-timer .timer-card > .timer-mode, body.dash-timer .timer-card > .timer-total{top:calc(64px + env(safe-area-inset-top,0px));}
@@ -1367,7 +1367,19 @@
   .gs-d i{width:30px; height:30px; margin:0 auto; border-radius:50%; display:grid; place-items:center; font-style:normal; font-size:12px; font-weight:800; border:1.5px solid rgba(255,255,255,.2); color:rgba(255,255,255,.55);}
   .gs-d i.done{background:#2ee6d6; border-color:#2ee6d6; color:#05221f;} .gs-d i.now{border:2px solid #2ee6d6; color:#2ee6d6;} .gs-d i.rest{border-style:dashed; border-color:rgba(255,255,255,.35);} .gs-d i.fut{opacity:.4;}
   .gs-rev{display:block; margin:8px auto 0; border:1px solid rgba(255,255,255,.28); background:rgba(8,24,28,.7); color:#fff; border-radius:99px; padding:7px 14px; font:700 12.5px system-ui; cursor:pointer;}
-  @media (min-aspect-ratio: 6/5){ #view-dashboard .timer-card > .goal-strip{display:none;} }
+  #view-dashboard .timer-card > .today-tg{position:absolute; right:16px; top:calc(64px + 38px + 40px + 12px + env(safe-area-inset-top,0px)); z-index:9; width:40px; height:40px; border-radius:50%; border:1px solid rgba(255,255,255,.25); background:rgba(0,0,0,.45); color:rgba(255,255,255,.85); display:grid; place-items:center; cursor:pointer; padding:0;}
+  .today-tg.hide{display:none;} .today-tg svg{width:18px; height:18px; transition:transform .25s ease;} .today-tg.open{border-color:rgba(46,230,214,.7); color:#2ee6d6;} .today-tg.open svg{transform:rotate(180deg);}
+  #view-dashboard .timer-card > .goal-strip{top:calc(64px + 38px + 40px + 12px + 40px + 10px + env(safe-area-inset-top,0px));}
+  .goal-strip{display:none;} .goal-strip.open{display:block;} #view-dashboard .timer-card > .goal-strip.open{z-index:12;} .goal-strip .gs-top, .goal-strip .gs-list{background:rgba(6,20,24,.96);} .goal-strip .gs-days{background:rgba(6,20,24,.96); margin:8px 0 0; padding:8px 0 4px; border-radius:16px; border:1px solid rgba(46,230,214,.2);}
+  .gs-top{cursor:default !important;}
+  .gs-list{margin-top:8px; padding:10px 14px 8px; border-radius:18px; background:rgba(8,24,28,.78); border:1px solid rgba(46,230,214,.35); backdrop-filter:blur(10px);}
+  .gs-body{max-height:clamp(60px, calc(100vh - 585px), 210px); overflow:auto; -webkit-overflow-scrolling:touch;}
+  @media (max-height:680px){ .goal-strip .gs-days{display:none;} .gs-body{max-height:clamp(60px, calc(100vh - 520px), 210px);} }
+  .gs-list h4{margin:0 0 6px; font-size:10.5px; letter-spacing:.12em; font-weight:800; color:rgba(255,255,255,.6);}
+  .gs-row{display:flex; justify-content:space-between; gap:10px; align-items:baseline; padding:6px 0; border-top:1px solid rgba(255,255,255,.08); font-size:13.5px;} .gs-row:first-of-type{border-top:0;}
+  .gs-row span{min-width:0; overflow-wrap:anywhere;} .gs-row small{display:block; font-size:11.5px; color:rgba(255,255,255,.55);} .gs-row b{flex:none; font-weight:800; font-size:13.5px; color:#2ee6d6; white-space:nowrap;}
+  .gs-none{padding:8px 0 6px; font-size:13px; color:rgba(255,255,255,.7);} .gs-sum{display:flex; justify-content:space-between; margin-top:4px; padding-top:7px; border-top:1px solid rgba(255,255,255,.18); font-size:13px; font-weight:800;}
+  @media (min-aspect-ratio: 6/5){ #view-dashboard .timer-card > .goal-strip, #view-dashboard .timer-card > .today-tg{display:none;} }
   .wk-num{display:flex; flex-wrap:wrap; align-items:flex-end; gap:8px 12px; margin:6px 0 10px;} .wk-num b{font-family:var(--font-display); font-size:34px; line-height:1;}
   .wk-diff{font-size:12.5px; font-weight:700; padding:4px 10px; border-radius:99px; background:color-mix(in srgb,#34D58A 18%, transparent); color:var(--ink);} .wk-diff.dn{background:color-mix(in srgb,#ffb020 20%, transparent);}
   .wk-bars{display:flex; align-items:flex-end; gap:8px; height:98px;} .wk-bar{flex:1; min-width:0; text-align:center; display:flex; flex-direction:column; justify-content:flex-end;}
@@ -15321,7 +15333,7 @@ function timerUi(){
   var dw = document.getElementById("timerDialWrap"); if(dw){ dw.classList.toggle("running", st.running); }
   Array.prototype.forEach.call(document.querySelectorAll("[data-tmode]"), function(b){ b.classList.toggle("on", b.getAttribute("data-tmode")===st.mode); b.disabled = started; });
   var ps = document.getElementById("pomoPreset"); if(ps) ps.disabled = started;
-  Array.prototype.forEach.call(document.querySelectorAll(".timer-mode, .timer-set, .goal-strip"), function(e){ e.classList.toggle("hide", started); });
+  Array.prototype.forEach.call(document.querySelectorAll(".timer-mode, .timer-set, .goal-strip, .today-tg"), function(e){ e.classList.toggle("hide", started); });
   applyUiStage(); ambSync();
 }
 function timerTick(){
@@ -16017,10 +16029,8 @@ function dxStreakHtml(){
 
 // ---- today's goal, the week at a glance, and where you are falling behind ----
 var GOAL_KEY = "dossier.goal.v1", WEEKLY_KEY = "dossier.weekly.v1";
-function goalPref(){ var g = lsGetJSON(GOAL_KEY, null); return g && +g.min > 0 ? +g.min : 0; }
 // today's goal: what you chose, else what your plan has for today (a rest day has none), else two hours
 function todayGoal(){
-  var pref = goalPref(); if(pref) return {min:pref, rest:false, custom:true};
   if(studyPlan){
     if(isRestDayKey(todayKey)) return {min:0, rest:true};
     var tot = 0; planSessionsOn(todayKey).forEach(function(x){ if(x.kind==="study" || x.kind==="revision") tot += x.duration || 0; });
@@ -16031,6 +16041,21 @@ function todayGoal(){
 function ringSvg(frac, size, stroke, inner){
   var r = (size-stroke)/2, c = 2*Math.PI*r;
   return '<span class="gs-ring" style="width:'+size+'px;height:'+size+'px"><svg width="'+size+'" height="'+size+'" viewBox="0 0 '+size+' '+size+'" aria-hidden="true"><circle cx="'+size/2+'" cy="'+size/2+'" r="'+r+'" class="gs-trk" stroke-width="'+stroke+'"/><circle cx="'+size/2+'" cy="'+size/2+'" r="'+r+'" class="gs-arc" stroke-width="'+stroke+'" stroke-dasharray="'+(c*Math.max(0, Math.min(1, frac)))+' '+c+'" transform="rotate(-90 '+size/2+' '+size/2+')"/></svg><b>'+inner+'</b></span>';
+}
+var TODAY_OPEN_KEY = "dossier.todayOpen.v1";
+function todayOpen(){ return lsGet(TODAY_OPEN_KEY) === "1"; }
+// what was studied today and for how long: each session you logged time against, plus any timer time not tied to a session
+function todayStudied(){
+  var rows = [], sum = 0;
+  studySessions.forEach(function(x){
+    var m = Math.round(+x.actualDuration || 0);
+    if(x.date !== todayKey || m <= 0) return;
+    rows.push({t:(x.subject || "Study").replace(/ \(Optional\)$/, ""), s:x.syllabusUnit || x.topic || "", m:m, at:x.actualStart || ""}); sum += m;
+  });
+  rows.sort(function(a, b){ return a.at < b.at ? -1 : a.at > b.at ? 1 : 0; });
+  var logged = Math.round((+timerLogGet()[todayKey] || 0)/60000);
+  if(logged > sum + 1){ rows.push({t:"Timer", s:"Study not tied to a planned session", m:logged - sum, at:"~"}); sum = logged; }
+  return {rows:rows, total:sum};
 }
 function goalStripHtml(){
   var st = timerState; if(st.running || st.accMs>0 || st.studyMs>0 || st.pending>0) return "";
@@ -16050,21 +16075,16 @@ function goalStripHtml(){
     dots += '<span class="gs-d"><i class="'+cls+'">'+ch+'</i><small>'+"MTWTFSS".charAt(i)+'</small></span>';
   }
   var rv = revisionsDue().length;
-  return '<div class="goal-strip" id="goalStrip"><div class="gs-top" data-goal="edit" role="button" tabindex="0" aria-label="Change today\'s goal">'+ringHtml+
+  var open = todayOpen(), td = todayStudied();
+  var list = td.rows.length
+    ? '<div class="gs-body">'+td.rows.map(function(r){ return '<div class="gs-row"><span>'+esc(r.t)+(r.s ? '<small>'+esc(r.s)+'</small>' : '')+'</span><b>'+esc(fmtDurMin(r.m))+'</b></div>'; }).join("")+'</div><div class="gs-sum"><span>Total today</span><span>'+esc(fmtDurMin(td.total))+'</span></div>'
+    : '<div class="gs-none">Nothing studied yet today. Start the timer and it will show here.</div>';
+  return '<button type="button" class="today-tg'+(open ? " open" : "")+'" id="todayToggle" aria-expanded="'+(open ? "true" : "false")+'" aria-controls="goalStrip" aria-label="'+(open ? "Hide today\'s study" : "Show today\'s study")+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>'+
+    '<div class="goal-strip'+(open ? " open" : "")+'" id="goalStrip"><div class="gs-top">'+ringHtml+
     '<span class="gs-t"><b>'+esc(title)+'</b><small>'+esc(sub)+'</small></span><span class="gs-fl"><i aria-hidden="true">'+(ss.cur>0 ? "🔥" : "🌱")+'</i><b>'+ss.cur+' day'+(ss.cur===1 ? "" : "s")+'</b></span></div>'+
     '<div class="gs-days">'+dots+'</div>'+
+    '<div class="gs-list"><h4>STUDIED TODAY</h4>'+list+'</div>'+
     (rv ? '<button type="button" class="gs-rev" data-goal="rev">📚 '+rv+' chapter'+(rv===1 ? "" : "s")+' to revise today</button>' : '')+'</div>';
-}
-function openGoalModal(){
-  var cur = goalPref(), opts = [1,2,3,4,5,6,8];
-  var m = showModal('<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="glT"><h2 id="glT">Today\'s goal</h2>'+
-    '<p class="muted">How long do you want to study each day? Your plan\'s own hours are used until you choose.</p>'+
-    '<div class="pill-row">'+opts.map(function(h){ return '<button type="button" class="pill'+(cur===h*60 ? " on" : "")+'" data-gl="'+h*60+'">'+h+' h</button>'; }).join("")+'</div>'+
-    '<div class="modal-actions">'+(studyPlan ? '<button class="btn ghost" id="glPlan">Follow my plan</button>' : '')+'<button class="btn primary" id="glClose">Done</button></div></div>', true);
-  var set = function(v){ if(v) lsSetJSON(GOAL_KEY, {min:v}); else lsSetJSON(GOAL_KEY, null); closeModal(); renderDashboard(); };
-  Array.prototype.forEach.call(m.querySelectorAll("[data-gl]"), function(b){ b.addEventListener("click", function(){ set(+b.getAttribute("data-gl")); }); });
-  var pl = m.querySelector("#glPlan"); if(pl) pl.addEventListener("click", function(){ set(0); });
-  m.querySelector("#glClose").addEventListener("click", closeModal);
 }
 function weekStats(monKey){
   var m = studyMinutesByDay(), days = [], total = 0, best = {k:"", v:0}, studyDays = 0, i, k;
@@ -16165,8 +16185,10 @@ function fallingBehindHtml(){
 function bindGoal(host){
   if(host._goal) return; host._goal = true;
   host.addEventListener("click", function(e){
+    var tg = e.target.closest ? e.target.closest("#todayToggle") : null;
+    if(tg){ var on = !todayOpen(); lsSet(TODAY_OPEN_KEY, on ? "1" : "0"); tg.classList.toggle("open", on); tg.setAttribute("aria-expanded", on ? "true" : "false"); var gs = host.querySelector("#goalStrip"); if(gs) gs.classList.toggle("open", on); setUiStage(2); return; }
     var g = e.target.closest ? e.target.closest("[data-goal]") : null;
-    if(g){ var a = g.getAttribute("data-goal"); if(a==="edit") openGoalModal(); else if(a==="rev"){ dashMore = true; applyDashMode(); setTimeout(function(){ var r = host.querySelector(".dx-rev"); if(r) r.scrollIntoView({block:"center", behavior:"smooth"}); }, 250); } return; }
+    if(g){ var a = g.getAttribute("data-goal"); if(a==="rev"){ dashMore = true; applyDashMode(); setTimeout(function(){ var r = host.querySelector(".dx-rev"); if(r) r.scrollIntoView({block:"center", behavior:"smooth"}); }, 250); } return; }
     var w = e.target.closest ? e.target.closest("[data-wk]") : null;
     if(w && w.getAttribute("data-wk")==="share") shareWeek(weekStats(toKey(mondayOf(parseKey(todayKey)))));
   });
@@ -16815,7 +16837,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "227";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "228";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
