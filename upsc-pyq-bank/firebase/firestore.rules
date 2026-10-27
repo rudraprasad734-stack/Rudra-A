@@ -5,10 +5,15 @@ rules_version = '2';
 // Everything else is closed.
 service cloud.firestore {
   match /databases/{database}/documents {
+    // Only the document names the app really uses (plan, progress, sessions-2026-10, ...) can be created, so nobody can fill their space with endless made-up documents.
+    function knownDoc(docId) {
+      return docId.matches('^(plan|progress|profile|prelims|mains|months|mocks|timerlog|revdone|catch|planconfig|prefs|sub|(sessions|daily)-[0-9A-Za-z_-]{1,12})$');
+    }
     match /users/{uid}/data/{docId} {
       allow read, delete: if request.auth != null && request.auth.uid == uid;
       allow create, update: if request.auth != null
                             && request.auth.uid == uid
+                            && knownDoc(docId)
                             && request.resource.data.keys().hasOnly(['json', 'updatedAt', 'device'])
                             && request.resource.data.json is string
                             && request.resource.data.json.size() < 950000

@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="object-src 'none'; base-uri 'self'">
 <title>CSE Companion</title>
 <meta name="description" content="A daily-use companion to the 18-month UPSC prep plan">
 <meta name="theme-color" content="#1F2A52">
@@ -3801,9 +3802,16 @@ function toast(msg){
 var saveFailed = false;
 function onSaveError(){ saveFailed = true; toast("Couldn't save that change. Check your connection and try again."); }
 function lsGet(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } }
+// the test hooks (fake sign-in, fake billing, payments switch) only exist on a developer machine: on csecompanion.in a value typed into the browser console cannot unlock anything
+var DEV_HOST = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname) || location.protocol === "file:";
+function devHook(n){ return DEV_HOST ? window[n] : undefined; }
 var cloudHook = null;
 function lsSet(k,v){ try{ localStorage.setItem(k,v); }catch(e){} if(cloudHook) cloudHook(k); }
 function lsGetJSON(k, fallback){ try{ var v = JSON.parse(lsGet(k)); return v==null ? fallback : v; }catch(e){ return fallback; } }
+// stored data can be damaged (a bad backup, a hand edit, a half-finished write): anything that is not the expected shape is set aside, never allowed to stop the app from opening
+function lsGetObj(k, fallback){ var v = lsGetJSON(k, fallback); if(v && typeof v==="object" && !Array.isArray(v)) return v; if(v!==fallback) lsSetAside(k); return fallback; }
+function lsSetAside(k){ try{ var raw = lsGet(k); if(raw && raw.length < 600000) localStorage.setItem("dossier.damaged."+k.replace(/^dossier\./, ""), raw); }catch(e){} }
+function timerLogGet(){ var v = null; try{ v = JSON.parse(lsGet("dossier.timerLog")||"{}"); }catch(e){} return v && typeof v==="object" && !Array.isArray(v) ? v : {}; }
 function lsSetJSON(k, v){ lsSet(k, JSON.stringify(v)); }
 
 // ============================================================================
@@ -4263,11 +4271,19 @@ function downloadBackup(){
 }
 function applyBackupData(data){
   if(!data || typeof data!=="object" || !data.app || (data.app.indexOf("CSE Companion")!==0 && data.app.indexOf("UPSC Companion")!==0)) throw new Error("not a recognized backup file");
+  // a backup is a file anyone can edit or send: check its shapes before any of it is used, and change nothing if it is damaged
+  var plain = function(v){ return v && typeof v==="object" && !Array.isArray(v); };
+  if((data.studyPlan && !planValid(data.studyPlan)) || (data.studySessions!=null && !Array.isArray(data.studySessions)) || (data.mockTests!=null && !Array.isArray(data.mockTests)) ||
+     ["prelimsState","mainsState","monthsState","dailyState","timerLog","revDone"].some(function(k){ return data[k]!=null && !plain(data[k]); }) ||
+     (data.studyProgress && (!plain(data.studyProgress) || !plain(data.studyProgress.topics)))) throw new Error("not a recognized backup file");
+  if(Array.isArray(data.studySessions)) data.studySessions = data.studySessions.filter(function(x){ return x && typeof x==="object"; });
+  if(data.studyProgress) Object.keys(data.studyProgress.topics).forEach(function(id){ var t = data.studyProgress.topics[id]; if(!t || typeof t!=="object") delete data.studyProgress.topics[id]; });
+  if(data.profile && data.profile.name && typeof data.profile.name!=="string") data.profile = null;
   prelimsState = data.prelimsState || {};
   mainsState = data.mainsState || {};
   monthsState = data.monthsState || {};
   dailyState = data.dailyState || {};
-  mockTests = data.mockTests || [];
+  mockTests = (data.mockTests || []).filter(function(x){ return x && typeof x==="object"; });
   lsSetJSON("dossier.state.prelims", prelimsState);
   lsSetJSON("dossier.state.mains", mainsState);
   lsSetJSON("dossier.state.months", monthsState);
@@ -4360,9 +4376,11 @@ var PURPOSES = ["Prelims","Mains","Optional","Essay","PYQ Practice","Current Aff
 var STATUSES = [["not_started","Not started"],["in_progress","In progress"],["completed","Completed"],["skipped","Skipped"],["missed","Missed"]];
 var DEFAULT_TIMES = [["06:00","08:00"],["10:00","12:00"],["16:00","17:00"],["19:00","20:00"],["08:15","09:15"],["12:30","13:30"],["14:00","15:00"],["20:15","21:15"]];
 
-var profile = lsGetJSON(PROFILE_KEY, null);
+var profile = lsGetObj(PROFILE_KEY, null);
+if(profile) ["name","district","state","prefix"].forEach(function(f){ if(typeof profile[f]!=="string") profile[f] = f==="prefix" ? "IAS" : ""; });
 var studySessions = lsGetJSON(SESSIONS_KEY, []);
-if(!Array.isArray(studySessions)) studySessions = [];
+if(!Array.isArray(studySessions)){ lsSetAside(SESSIONS_KEY); studySessions = []; }
+else if(studySessions.some(function(x){ return !x || typeof x!=="object"; })){ lsSetAside(SESSIONS_KEY); studySessions = studySessions.filter(function(x){ return x && typeof x==="object"; }); }
 // one-time clean slate while the app is still being built: ticks, session results and logged time from earlier testing are cleared (the plan itself stays)
 if(!lsGet("dossier.progressReset.v1")){
   studySessions.forEach(function(x){ x.status = "not_started"; delete x.actualStart; delete x.actualEnd; delete x.actualDuration; delete x.breakMin; });
@@ -7452,8 +7470,13 @@ function sessMini(list){
 // ============================================================================
 var PLAN_KEY = "dossier.plan.v1", PROG_KEY = "dossier.progress.v1";
 var studyPlan = lsGetJSON(PLAN_KEY, null);
+// a plan without its dates and weekdays cannot be drawn: keep a copy of it aside and start with no plan rather than a blank screen
+function planValid(p){ return !!(p && typeof p==="object" && !Array.isArray(p) && p.window && typeof p.window.start==="string" && p.capacity && Array.isArray(p.capacity.days)); }
+if(studyPlan && !planValid(studyPlan)){ lsSetAside(PLAN_KEY); studyPlan = null; }
 var studyProgress = lsGetJSON(PROG_KEY, null);
 if(!studyProgress || typeof studyProgress!=="object" || !studyProgress.topics) studyProgress = {topics:{}, lastUnlock:null};
+else if(typeof studyProgress.topics!=="object" || Array.isArray(studyProgress.topics)) studyProgress.topics = {};
+Object.keys(studyProgress.topics).forEach(function(id){ var t = studyProgress.topics[id]; if(!t || typeof t!=="object") delete studyProgress.topics[id]; });
 var viewCache = null;
 function savePlan(){ lsSetJSON(PLAN_KEY, studyPlan); viewCache = null; }
 function saveProgress(){ lsSetJSON(PROG_KEY, studyProgress); viewCache = null; }
@@ -13781,7 +13804,7 @@ function lastActivityKey(){
   var best = "";
   studySessions.forEach(function(x){ if((x.status==="completed" || x.status==="in_progress" || x.actualDuration>0) && x.date<=todayKey && x.date>best) best = x.date; });
   Object.keys(studyProgress.topics).forEach(function(id){ var c = studyProgress.topics[id].completedAt; if(c && c<=todayKey && c>best) best = c; });
-  var log = {}; try{ log = JSON.parse(lsGet("dossier.timerLog")||"{}"); }catch(e){}
+  var log = timerLogGet();
   Object.keys(log).forEach(function(k){ if(+log[k]>0 && k<=todayKey && k>best) best = k; });
   return maxKey(maxKey(best, studyPlan.window.start), catchState.doneOn || "");
 }
@@ -13873,7 +13896,7 @@ function weekReview(mon){
     var t = studyProgress.topics[id];
     if(t.status==="completed" && t.completedAt >= first && t.completedAt <= last) r.chapters.push(id.split("|").slice(-1)[0]);
   });
-  var log = {}; try{ log = JSON.parse(lsGet("dossier.timerLog")||"{}"); }catch(e){}
+  var log = timerLogGet();
   r.days.forEach(function(dd){
     var ms = +log[dd.date] || 0; r.timerMs += ms; dd.timerMin = Math.round(ms/60000);
     // time studied that day = the larger of what its sessions record and what the timer logged (the timer also feeds the sessions, so adding both would count it twice)
@@ -13988,7 +14011,7 @@ function lastStudyKeyRaw(){
   var best = "";
   studySessions.forEach(function(x){ if((x.status==="completed" || x.status==="in_progress" || x.actualDuration>0) && x.date<=todayKey && x.date>best) best = x.date; });
   Object.keys(studyProgress.topics).forEach(function(id){ var c = studyProgress.topics[id].completedAt; if(c && c<=todayKey && c>best) best = c; });
-  var log = {}; try{ log = JSON.parse(lsGet("dossier.timerLog")||"{}"); }catch(e){}
+  var log = timerLogGet();
   Object.keys(log).forEach(function(k){ if(+log[k]>0 && k<=todayKey && k>best) best = k; });
   return best;
 }
@@ -14900,7 +14923,7 @@ function fmtTimer(ms){
 }
 function timerBanked(){
   var v = 0;
-  try { v = +(JSON.parse(lsGet("dossier.timerLog")||"{}")[todayKey]) || 0; } catch(e){}
+  try { v = +(timerLogGet()[todayKey]) || 0; } catch(e){}
   return v;
 }
 // a sitting that crossed midnight is shared between the days it ran on, by the clock time spent on each (breaks are taken off in proportion)
@@ -14921,7 +14944,7 @@ function timerSplitDays(ms, info){
 }
 function timerAddToToday(ms, info){
   var log = {}, parts = timerSplitDays(ms, info);
-  try { log = JSON.parse(lsGet("dossier.timerLog")||"{}"); } catch(e){}
+  try { log = timerLogGet(); } catch(e){}
   if(parts) Object.keys(parts).forEach(function(k){ log[k] = (log[k]||0) + parts[k]; });
   else log[todayKey] = (log[todayKey]||0) + ms;
   var cutoff = toKey(addDays(new Date(), -800));
@@ -15939,7 +15962,7 @@ function bindTimerCard(host){
 // STUDY STREAK + REVISION REMINDERS
 // ============================================================================
 function studyMinutesByDay(){
-  var m = {}, log = lsGetJSON("dossier.timerLog", {}) || {};
+  var m = {}, log = timerLogGet();
   Object.keys(log).forEach(function(k){ var v = Math.round((+log[k]||0)/60000); if(v>0) m[k] = v; });
   var ss = {};
   studySessions.forEach(function(x){ if((x.actualDuration||0)>0) ss[x.date] = (ss[x.date]||0) + x.actualDuration; });
@@ -16219,7 +16242,7 @@ if(!syncMeta.device) syncMeta.device = "d-"+Math.random().toString(36).slice(2,1
 if(!syncMeta.tl) syncMeta.tl = (syncMeta.uid && syncMeta.hash && syncMeta.hash.timerlog) ? lsGetJSON("dossier.timerLog", {}) : {};
 if(!syncMeta.pt) syncMeta.pt = {};
 function saveSyncMeta(){ lsSetJSON(SYNC_META_KEY, syncMeta); }
-function cloudConfigured(){ return !!(window.__cloudTestAdapter || (FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.projectId)); }
+function cloudConfigured(){ return !!(devHook("__cloudTestAdapter") || (FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.projectId)); }
 var CLOUD_KEY_RE = /^dossier\.(plan\.v1|progress\.v1|sessions\.v1|profile\.v1|state\.(prelims|mains|months|daily|mockTests)|timerLog|revdone\.v1|catchup\.v1|planConfig|pathTheme|uiTheme|timerScene|soundId|soundOn|soundVol|tierMode)$/;
 // settings that follow the person from phone to phone (each one keeps its own change time, so the latest change on any device wins)
 var PREF_LS = {pathTheme:"dossier.pathTheme", uiTheme:"dossier.uiTheme", timerScene:"dossier.timerScene", soundId:"dossier.soundId", soundOn:"dossier.soundOn", soundVol:"dossier.soundVol", tierMode:"dossier.tierMode"};
@@ -16491,7 +16514,7 @@ function cloudOnUser(u){
 }
 function cloudPrepare(){
   if(!cloudConfigured() || cloud.adapter) return Promise.resolve();
-  cloud.adapter = window.__cloudTestAdapter || makeFirebaseAdapter();
+  cloud.adapter = devHook("__cloudTestAdapter") || makeFirebaseAdapter();
   return Promise.resolve(cloud.adapter.start(cloudOnUser)).catch(function(){ cloud.adapter = null; setCloud("off", "Couldn't reach the sign-in service. Check your internet."); });
 }
 function cloudSignIn(){
@@ -16509,7 +16532,7 @@ function cloudSignIn(){
 var WIPE_KEYS = {"dossier.lastBackup.v1":1, "dossier.prerestore.v1":1, "dossier.reminders.v1":1, "dossier.wizdraft.v1":1, "dossier.planBackup.v1":1, "dossier.timer.v2":1, "dossier.progressReset.v1":1, "dossier.noPlanAsk.v1":1, "dossier.planHint.v1":1, "dossier.bkpNudge.v1":1, "dossier.help.log":1, "dossier.nudge.v1":1, "dossier.goal.v1":1, "dossier.weekly.v1":1};
 function cloudWipeLocal(signedOut){
   cloudUnwatch(); clearTimeout(cloud.timer); cloud.user = null;   // nothing may sync while the phone is being cleared
-  try{ Object.keys(localStorage).forEach(function(k){ if(CLOUD_KEY_RE.test(k) || WIPE_KEYS[k]) localStorage.removeItem(k); }); }catch(e){}
+  try{ Object.keys(localStorage).forEach(function(k){ if(CLOUD_KEY_RE.test(k) || WIPE_KEYS[k] || k.indexOf("dossier.damaged.")===0) localStorage.removeItem(k); }); }catch(e){}
   syncMeta = signedOut ? {device:syncMeta.device, out:1} : {device:syncMeta.device}; saveSyncMeta();   // out: this phone has had an account, so anything on it now is not for the next one
 }
 // restart so no old data stays in memory; not if the phone could not clear its storage, or it would restart forever
@@ -16787,7 +16810,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "224";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "225";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -16895,7 +16918,7 @@ function feedbackCardHtml(){
 var SUB_SKU = "cse_companion_yearly", TRIAL_DAYS = 14, SUB_KEY = "dossier.sub.v1", ENT_KEY = "dossier.entitlement.v1", ENT_GRACE_DAYS = 14;
 var SUB_FALLBACK_PRICE = "₹299 a year (about ₹25 a month), renewing yearly at the price shown in Google Play";
 var DAY_MS = 86400000;
-var sub = lsGetJSON(SUB_KEY, null) || {};
+var sub = lsGetObj(SUB_KEY, null) || {};
 var BILL = {svc:null, checked:false, active:false, details:null, busy:false, err:"", seen:!!lsGet("dossier.billing.seen"), sig:"", pend:null};
 function subSave(){ lsSet(SUB_KEY, JSON.stringify({t0:sub.t0||0, seen:sub.seen||0, off:sub.off||0, v:sub.v||0, u:sub.u||0})); }
 // "now" = the phone clock corrected by our own server time (learned whenever online), and it never goes backwards while offline,
@@ -16926,9 +16949,9 @@ function trialInfo(){
   return {day:Math.min(TRIAL_DAYS, Math.floor(el/DAY_MS)+1), left:left, pct:Math.min(100, Math.round(100*el/(TRIAL_DAYS*DAY_MS))), leftText:left>1 ? left+" days left" : (msLeft>3600000 ? "about "+Math.ceil(msLeft/3600000)+" hours left" : "less than an hour left")};
 }
 function trialEndsText(){ var d = new Date((sub.t0||subNow()) + TRIAL_DAYS*DAY_MS); return d.toLocaleDateString(undefined, {day:"numeric", month:"long", year:"numeric"}); }
-function entCached(){ var e = lsGetJSON(ENT_KEY, null); return !!(e && e.ok && subNow() - e.at < ENT_GRACE_DAYS*DAY_MS); }
+function entCached(){ var e = lsGetJSON(ENT_KEY, null); return !!(e && e.ok && typeof e.at==="number" && e.at <= subNow() + DAY_MS && subNow() - e.at < ENT_GRACE_DAYS*DAY_MS); }
 function billingService(){
-  if(window.__billingTestAdapter) return Promise.resolve(window.__billingTestAdapter);
+  if(devHook("__billingTestAdapter")) return Promise.resolve(devHook("__billingTestAdapter"));
   if(!window.getDigitalGoodsService) return Promise.resolve(null);
   return window.getDigitalGoodsService("https://play.google.com/billing").catch(function(){ return null; });
 }
@@ -16985,12 +17008,12 @@ function billingManage(){ window.open("https://play.google.com/store/account/sub
 var API_BASE = "https://asia-south1-upsc-companion-3adb3.cloudfunctions.net/api", WEBENT_KEY = "dossier.webent.v1", RZP_JS = "https://checkout.razorpay.com/v1/checkout.js";
 var WEB_PRICE_FALLBACK = "₹299 for one year (about ₹25 a month)";
 // Switch for charging on the website. false = the website stays free (nothing is locked there) until the payment server is deployed; flip to true then (see firebase/WEB-PAYMENTS.md, step 6).
-var WEB_PAY_ON = window.__webPayOn !== undefined ? !!window.__webPayOn : false;
+var WEB_PAY_ON = devHook("__webPayOn") !== undefined ? !!devHook("__webPayOn") : false;
 var WEB = {until:0, uid:"", loaded:false, busy:false, err:"", cfg:null, t0:Date.now()};
 (function(){ var c = lsGetJSON(WEBENT_KEY, null); if(c && c.uid){ WEB.until = +c.until || 0; WEB.uid = c.uid; } })();
 function webEntSave(){ lsSet(WEBENT_KEY, JSON.stringify({uid:WEB.uid, until:WEB.until})); }
 function onPlay(){ return !!(BILL.svc || BILL.seen); }   // inside the Android app from Google Play: only Google Play payments are offered there
-function webPaid(){ return WEB.until > subNow() && !!syncMeta.uid && WEB.uid === syncMeta.uid; }
+function webPaid(){ return WEB.until > subNow() && WEB.until < subNow() + 1830*DAY_MS && !!syncMeta.uid && WEB.uid === syncMeta.uid; }   // the server never grants more than a few years
 function webPriceText(){
   var c = WEB.cfg; if(!c || !c.amount) return WEB_PRICE_FALLBACK;
   var v = c.amount/100, mo = Math.max(1, Math.round(v/12));
@@ -17120,7 +17143,7 @@ function subWire(host){
 }
 function subInit(){
   try{ if(/^android-app:/.test(document.referrer || "") && !BILL.seen){ BILL.seen = true; lsSet("dossier.billing.seen", "1"); } }catch(e){}
-  subClockSync().then(function(){ subStart(); subNow(); return billingRefresh(true); });
+  subClockSync().then(function(){ if(sub.t0 && sub.t0 > subNow() + DAY_MS){ sub.t0 = subNow(); subSave(); } subStart(); subNow(); return billingRefresh(true); });   // a trial cannot start in the future
   document.addEventListener("visibilitychange", function(){ if(document.visibilityState==="visible"){ billingRefresh(); webEntRefresh(); } });
   setInterval(function(){ billingRefresh(); webEntRefresh(); }, 6*3600*1000);
   setTimeout(function(){ BILL.sig = ""; subUi(); }, 7300);

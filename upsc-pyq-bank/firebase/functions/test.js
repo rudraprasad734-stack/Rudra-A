@@ -103,5 +103,41 @@ const sig = (o, p) => crypto.createHmac("sha256", env.RAZORPAY_KEY_SECRET).updat
   const r2 = await api.webhook(b, s);
   ok(!r2.revoked, "a refund notice repeated takes back nothing more");
 
+
+  // ---- attacker's view ----
+  // a server whose webhook secret was never set must not accept a signature made with an empty secret
+  const noSecret = makeApi({ db, rzp, env: Object.assign({}, env, { RAZORPAY_WEBHOOK_SECRET: "" }), now: () => t, verifyIdToken: async () => ({ uid: "userA" }) });
+  const forgedBody = JSON.stringify({ event: "payment.captured", payload: { payment: { entity: { id: "pay_f", order_id: "order_f", amount: 29900 } } } });
+  const forgedSig = crypto.createHmac("sha256", "").update(forgedBody).digest("hex");
+  ok(await fail(() => noSecret.webhook(forgedBody, forgedSig)) === 500, "empty webhook secret: a forged webhook is refused");
+  const noKey = makeApi({ db, rzp, env: Object.assign({}, env, { RAZORPAY_KEY_SECRET: undefined }), now: () => t, verifyIdToken: async () => ({ uid: "userA" }) });
+  ok(await fail(() => noKey.verify(req("tokA", { orderId: "o", paymentId: "p", signature: "s" }))) === 500, "missing key secret: verify refuses to run");
+  // odd input shapes
+  ok(await fail(() => api.verify(req("tokA", { orderId: { a: 1 }, paymentId: "p", signature: "s" }))) === 400, "an object instead of an order id is refused");
+  ok(await fail(() => api.verify(req("tokA", { orderId: "o", paymentId: "p", signature: ["x"] }))) === 400, "an array instead of a signature is refused");
+  ok(await fail(() => api.verify(req("tokA", { orderId: "o".repeat(500), paymentId: "p", signature: "s" }))) === 400, "an enormous order id is refused");
+  const okBody = JSON.stringify({ event: "ping" }); const okSig = crypto.createHmac("sha256", env.RAZORPAY_WEBHOOK_SECRET).update(okBody).digest("hex");
+  ok((await api.webhook(okBody, okSig)).ignored, "a signed event we do not handle is ignored");
+  const junk = "not json"; ok(await fail(() => api.webhook(junk, crypto.createHmac("sha256", env.RAZORPAY_WEBHOOK_SECRET).update(junk).digest("hex"))) === 400, "a signed but broken body is a clean 400");
+  // a payment for the wrong amount on a correct-looking order
+  const o6 = await api.order(req("tokB"));
+  payments.pay_6 = { id: "pay_6", order_id: o6.orderId, amount: 100, status: "captured" };
+  ok(await fail(() => api.verify(req("tokB", { orderId: o6.orderId, paymentId: "pay_6", signature: sig(o6.orderId, "pay_6") }))) === 400, "a payment for less than the price gives nothing");
+  // a refund notice that arrives before the payment was recorded must not leave a free year behind
+  const o7 = await api.order(req("tokB"));
+  payments.pay_7 = { id: "pay_7", order_id: o7.orderId, amount: 29900, status: "captured" };
+  const before = db.store["entitlements/userB"].paidUntil;
+  let [rb, rs] = hook({ event: "refund.processed", payload: { refund: { entity: { payment_id: "pay_7" } } } });
+  await api.webhook(rb, rs);
+  [b, s] = hook({ event: "payment.captured", payload: { payment: { entity: { id: "pay_7", order_id: o7.orderId, amount: 29900 } } } });
+  await api.webhook(b, s);
+  const vv = await api.verify(req("tokB", { orderId: o7.orderId, paymentId: "pay_7", signature: sig(o7.orderId, "pay_7") }));
+  ok(db.store["entitlements/userB"].paidUntil === before && vv.paidUntil === before, "refund first, payment later: no year is granted");
+  // flooding: one account cannot create unlimited Razorpay orders
+  let blocked = 0; for (let i = 0; i < 30; i++) { if (await fail(() => api.order(req("tokA"))) === 429) blocked++; }
+  ok(blocked >= 15, "creating orders over and over is stopped (" + blocked + " of 30 refused)");
+  t += 11 * 60000; ok(!(await fail(() => api.order(req("tokA")))), "and works again after a few minutes");
+  ok(await fail(() => api.verify(req("tokA", {}))) === 400, "verify with nothing in it is a clean 400");
+
   console.log(fails ? "FAILS " + fails : "ALL OK"); process.exit(fails ? 1 : 0);
 })();

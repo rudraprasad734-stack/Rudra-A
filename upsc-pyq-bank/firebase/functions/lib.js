@@ -11,6 +11,16 @@ function makeApi(deps) {
   const price = () => { const v = +env.PRICE_PAISE || 29900; if (!(v >= 100)) throw httpError(500, "Price is not configured correctly."); return v; };
   const days = () => +env.PERIOD_DAYS || 365;
   const clock = now || Date.now;
+  // a signing secret that is missing or empty would let anyone forge a signature: refuse to run instead
+  const secret = (name) => { const v = env[name]; if (typeof v !== "string" || !v.trim()) throw httpError(500, "Payments are not configured."); return v; };
+  // best-effort limit per person (kept in memory, so it holds per server instance): stops one account from flooding Razorpay with orders
+  const hits = new Map();
+  function throttle(key, max, windowMs) {
+    const t = clock(); const h = (hits.get(key) || []).filter((x) => t - x < windowMs);
+    if (h.length >= max) throw httpError(429, "Too many attempts. Please wait a few minutes and try again.");
+    h.push(t); hits.set(key, h);
+    if (hits.size > 5000) for (const [k, v] of hits) if (!v.length || t - v[v.length - 1] >= windowMs) hits.delete(k);
+  }
 
   async function grant(uid, paymentId, amount) {
     const entRef = db.doc("entitlements/" + uid);
@@ -32,7 +42,9 @@ function makeApi(deps) {
     const payRef = db.doc("payments/" + paymentId);
     return db.runTransaction(async (tx) => {
       const p = await tx.get(payRef);
-      if (!p.exists || p.data().refunded) return { revoked: false };
+      // a refund that arrives before the payment was recorded is remembered, so the payment cannot give a year afterwards
+      if (!p.exists) { tx.set(payRef, { uid: null, amount: 0, grantedAt: 0, refunded: true }); return { revoked: false, early: true }; }
+      if (p.data().refunded) return { revoked: false };
       const uid = p.data().uid;
       const entRef = db.doc("entitlements/" + uid);
       const e = await tx.get(entRef);
@@ -67,6 +79,7 @@ function makeApi(deps) {
   // POST /order  -> creates a Razorpay order for the signed-in person
   async function order(req) {
     const uid = await authUid(req);
+    throttle("order:" + uid, 8, 10 * 60000);
     const o = await rzp("POST", "/orders", {
       amount: price(), currency: "INR", payment_capture: 1,
       receipt: ("cse_" + uid.slice(0, 16) + "_" + clock()).slice(0, 40),
@@ -78,13 +91,14 @@ function makeApi(deps) {
   // POST /verify {orderId, paymentId, signature} -> checks the payment really happened, then adds a year
   async function verify(req) {
     const uid = await authUid(req);
+    throttle("verify:" + uid, 20, 10 * 60000);
     const b = req.body || {};
-    if (!b.orderId || !b.paymentId || !b.signature) throw httpError(400, "Missing payment details.");
-    if (!same(hmac(env.RAZORPAY_KEY_SECRET, b.orderId + "|" + b.paymentId), b.signature)) throw httpError(400, "Payment could not be verified.");
+    if (typeof b.orderId !== "string" || typeof b.paymentId !== "string" || typeof b.signature !== "string" || !b.orderId || !b.paymentId || !b.signature || b.orderId.length > 64 || b.paymentId.length > 64) throw httpError(400, "Missing payment details.");
+    if (!same(hmac(secret("RAZORPAY_KEY_SECRET"), b.orderId + "|" + b.paymentId), b.signature)) throw httpError(400, "Payment could not be verified.");
     const o = await rzp("GET", "/orders/" + encodeURIComponent(b.orderId));
     if (!o || !o.notes || o.notes.uid !== uid || +o.amount !== price() || o.currency !== "INR") throw httpError(400, "This payment does not belong to your account.");
     let p = await rzp("GET", "/payments/" + encodeURIComponent(b.paymentId));
-    if (!p || p.order_id !== b.orderId) throw httpError(400, "Payment does not match the order.");
+    if (!p || p.order_id !== b.orderId || +p.amount !== price() || (p.currency && p.currency !== "INR")) throw httpError(400, "Payment does not match the order.");
     if (p.status === "authorized") p = await rzp("POST", "/payments/" + encodeURIComponent(b.paymentId) + "/capture", { amount: price(), currency: "INR" });
     if (!p || p.status !== "captured") throw httpError(402, "The payment has not completed yet.");
     const g = await grant(uid, b.paymentId, +p.amount);
@@ -93,11 +107,13 @@ function makeApi(deps) {
 
   // Razorpay -> us. Catches payments whose browser never came back, and refunds.
   async function webhook(rawBody, signature) {
-    if (!signature || !same(hmac(env.RAZORPAY_WEBHOOK_SECRET, rawBody), signature)) throw httpError(400, "bad signature");
-    const ev = JSON.parse(rawBody);
-    const type = ev.event;
+    const key = secret("RAZORPAY_WEBHOOK_SECRET");
+    if (!signature || !same(hmac(key, rawBody), signature)) throw httpError(400, "bad signature");
+    let ev; try { ev = JSON.parse(rawBody); } catch (e) { throw httpError(400, "bad body"); }
+    if (!ev || typeof ev !== "object") throw httpError(400, "bad body");
+    const type = ev.event, payload = ev.payload || {};
     if (type === "payment.captured" || type === "order.paid") {
-      const pay = (ev.payload.payment || {}).entity || {};
+      const pay = (payload.payment || {}).entity || {};
       if (!pay.order_id || !pay.id) return { ignored: true };
       const o = await rzp("GET", "/orders/" + encodeURIComponent(pay.order_id));
       if (!o || !o.notes || !o.notes.uid || +o.amount !== price() || o.currency !== "INR" || +pay.amount !== price()) return { ignored: true };
@@ -105,7 +121,7 @@ function makeApi(deps) {
       return { granted: true };
     }
     if (type === "refund.processed" || type === "refund.created") {
-      const ref = (ev.payload.refund || {}).entity || {};
+      const ref = (payload.refund || {}).entity || {};
       if (ref.payment_id && type === "refund.processed") return revoke(ref.payment_id);
     }
     return { ignored: true };
