@@ -1353,8 +1353,8 @@
   @media (max-width:400px){ .plrow{grid-template-columns:minmax(0,1fr) auto;} .plrow .pt{grid-column:1 / -1;} }
 
   /* ===== today's goal strip, week card, falling behind ===== */
-  .goal-strip.hide{display:none;}
-  .goal-strip{position:absolute; left:14px; right:14px; top:calc(112px + env(safe-area-inset-top,0px)); z-index:6; color:#fff;}
+  #view-dashboard .timer-card > .goal-strip{position:absolute; left:14px; right:14px; width:auto; top:calc(150px + env(safe-area-inset-top,0px)); z-index:6; color:#fff; text-align:left;}
+  #view-dashboard .timer-card > .goal-strip.hide{display:none;}
   .goal-strip .gs-top{display:flex; align-items:center; gap:12px; padding:10px 14px; border-radius:18px; background:rgba(8,24,28,.78); border:1px solid rgba(46,230,214,.35); backdrop-filter:blur(10px); cursor:pointer;}
   .gs-ring{position:relative; flex:none; display:inline-grid; place-items:center;} .gs-ring svg{position:absolute; inset:0;} .gs-ring b{position:relative; font-size:12px; font-weight:800;}
   .gs-trk{fill:none; stroke:rgba(255,255,255,.14);} .gs-arc{fill:none; stroke:#2ee6d6; stroke-linecap:round;}
@@ -1364,7 +1364,7 @@
   .gs-d i{width:30px; height:30px; margin:0 auto; border-radius:50%; display:grid; place-items:center; font-style:normal; font-size:12px; font-weight:800; border:1.5px solid rgba(255,255,255,.2); color:rgba(255,255,255,.55);}
   .gs-d i.done{background:#2ee6d6; border-color:#2ee6d6; color:#05221f;} .gs-d i.now{border:2px solid #2ee6d6; color:#2ee6d6;} .gs-d i.rest{border-style:dashed; border-color:rgba(255,255,255,.35);} .gs-d i.fut{opacity:.4;}
   .gs-rev{display:block; margin:8px auto 0; border:1px solid rgba(255,255,255,.28); background:rgba(8,24,28,.7); color:#fff; border-radius:99px; padding:7px 14px; font:700 12.5px system-ui; cursor:pointer;}
-  @media (min-aspect-ratio: 6/5){ .goal-strip{display:none;} }
+  @media (min-aspect-ratio: 6/5){ #view-dashboard .timer-card > .goal-strip{display:none;} }
   .wk-num{display:flex; flex-wrap:wrap; align-items:flex-end; gap:8px 12px; margin:6px 0 10px;} .wk-num b{font-family:var(--font-display); font-size:34px; line-height:1;}
   .wk-diff{font-size:12.5px; font-weight:700; padding:4px 10px; border-radius:99px; background:color-mix(in srgb,#34D58A 18%, transparent); color:var(--ink);} .wk-diff.dn{background:color-mix(in srgb,#ffb020 20%, transparent);}
   .wk-bars{display:flex; align-items:flex-end; gap:8px; height:98px;} .wk-bar{flex:1; min-width:0; text-align:center; display:flex; flex-direction:column; justify-content:flex-end;}
@@ -16081,7 +16081,7 @@ function weekBodyHtml(ws){
 function dxWeekHtml(){
   var mon = toKey(mondayOf(parseKey(todayKey))), ws = weekStats(mon);
   if(ws.total === 0 && !studyPlan) return "";
-  return '<div class="dx-card dx-week"><div class="dx-k">YOUR WEEK SO FAR</div>'+weekBodyHtml(ws)+
+  return '<div class="dx-card dx-wkly"><div class="dx-k">YOUR WEEK SO FAR</div>'+weekBodyHtml(ws)+
     '<div class="wk-btns"><button type="button" class="dx-btn2" data-wk="share">Share my week</button></div></div>';
 }
 function shareWeek(ws){
