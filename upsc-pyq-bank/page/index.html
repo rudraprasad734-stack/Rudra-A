@@ -14769,7 +14769,7 @@ function wakeUi(ms){ setUiStage(2, ms); }
 document.addEventListener("click", function(e){
   var b = document.body;
   if(!b.classList.contains("dash-timer") || b.classList.contains("menu-open")) return;
-  if(e.target.closest && e.target.closest("#modalHost, #drawer, #drawerDim, #frGlance, #planHint")) return;
+  if(e.target.closest && e.target.closest("#modalHost, #drawer, #drawerDim, #frGlance, #planHint, #quietNudge")) return;
   if(!b.classList.contains("ui-sleep")){ setUiStage(2); return; }   // controls are showing: the tap goes through and keeps them up
   e.preventDefault(); e.stopPropagation();            // controls are hidden: this tap only reveals things
   if(uiStage === 0 && digitsHiddenWhenCalm()) setUiStage(1);   // first tap: show the running time
