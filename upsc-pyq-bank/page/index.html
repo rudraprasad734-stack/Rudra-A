@@ -1092,6 +1092,8 @@
   .ss-head{display:flex; align-items:center; gap:12px;} .ss-head h2{margin:0; font-size:17px;} .ss-ic{width:46px; height:46px; border-radius:14px; background:var(--c); display:grid; place-items:center; font-size:22px; flex:none; color:#fff;}
   .pl-tabs button.on{background:linear-gradient(135deg,var(--tab-accent),color-mix(in srgb,var(--tab-accent) 55%,#27b9ff)) !important; box-shadow:0 6px 16px -8px var(--tab-accent);}
   .ts-split{margin:0 0 10px; padding:9px 11px; border-radius:10px; background:var(--surface-2); color:var(--ink-soft); font-size:13px; line-height:1.45;}
+  .sub-modal .sm-st{display:flex;flex-direction:column;gap:3px;margin:2px 0 8px;font-size:14px;color:var(--ink-soft)} .sub-modal .sm-st b{font-size:16px;color:var(--ink)} .sub-modal .sm-st.on b{color:#34D58A}
+  .sub-modal .sm-h{margin:14px 0 6px;font-size:11px;letter-spacing:.12em;color:var(--ink-faint)} .sub-modal .sm-plan{border:1px solid var(--line,rgba(255,255,255,.14));border-radius:12px;padding:10px 12px;margin-bottom:8px;display:flex;flex-direction:column;gap:3px} .sub-modal .sm-plan.on{border-color:#46C8B9} .sub-modal .sm-plan span{color:var(--ink);font-size:14px} .sub-modal .sm-plan small{color:var(--ink-soft);font-size:12px;line-height:1.4}
   .trial-bar{margin:0 0 10px;} .trial-top{display:flex; justify-content:space-between; font-size:13px; color:var(--ink); margin-bottom:5px;} .trial-top span{color:var(--ink-soft);} .trial-chip{display:inline-block; margin-top:8px; font-size:11.5px; font-weight:700; border-radius:999px; padding:3px 10px; background:var(--tab-planner-soft); color:var(--tab-planner);}
   .sa-hero{display:flex; align-items:center; gap:14px; padding:14px !important; margin:0 0 12px;} .sa-ring{flex:none; display:block;} .sa-trk{fill:none; stroke:var(--surface-2);} .sa-arc{fill:none; stroke-linecap:round;} .sa-ring text{fill:var(--navy); font-weight:700; font-family:var(--font-body);} .sa-ring .sa-sub{fill:var(--ink-faint); font-weight:400;}
   .sa-ht{min-width:0; flex:1;} .sa-k{font-size:12px; color:var(--ink-faint);} .sa-big{font-size:24px; font-weight:700; color:var(--navy); line-height:1.15; margin:2px 0 6px;} .sa-sub2{font-size:12px; color:var(--ink-faint); margin-top:7px; line-height:1.45;}
@@ -14859,6 +14861,9 @@ function renderTabs(){
       nav.appendChild(row);
     }
   });
+  var sb = el('<button type="button" class="tab" id="subMenuBtn"><span class="dot" style="--dc:var(--tab-quotes)"></span>Subscription</button>');
+  sb.addEventListener("click", function(){ setMenu(false); openSubModal(); });
+  nav.appendChild(sb);
   var inPage = activeGroup !== "dashboard";
   document.body.classList.toggle("in-page", inPage);
   applyDashMode();
@@ -16810,7 +16815,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "226";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "227";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -17113,6 +17118,7 @@ function subUi(){
     if(!cloud.adapter) cloudPrepare();
   } else if(el){ el.remove(); document.body.classList.remove("pw-on"); [].forEach.call(document.querySelectorAll("[data-pw-inert]"), function(c){ c.removeAttribute("inert"); c.removeAttribute("data-pw-inert"); }); }
   if(activeTab === "settings") try{ renderSettings(); }catch(e){}
+  try{ subModalRefresh(); }catch(e){}
 }
 function subCardHtml(){
   var mode = subMode(); if(mode === "wait") return "";
@@ -17139,6 +17145,57 @@ function subCardHtml(){
   return '<div class="card set-card sub-card"><h3>Subscription</h3>'+body+'<div class="row" style="margin-top:10px">'+btns+'</div>'+
     '<div class="muted" style="margin-top:8px;font-size:12px">'+foot+subLegalLinks()+'</div></div>';
 }
+// ---- the Subscription screen (opened from the menu): your status, the plan, and every way to pay, renew, restore or manage ----
+function subModalBodyHtml(){
+  var mode = subMode(), play = onPlay(), signed = !!cloud.user, status, btns = "", plan;
+  if(mode === "active"){
+    var viaWeb = webPaid() && !(play && BILL.active);
+    if(viaWeb){
+      var left = Math.max(0, Math.ceil((WEB.until - subNow())/DAY_MS)), d = new Date(WEB.until).toLocaleDateString(undefined, {day:"numeric", month:"long", year:"numeric"});
+      status = '<div class="sm-st on"><b>Active</b><span>Your one-year pass runs until <b>'+d+'</b> ('+left+' day'+(left===1?'':'s')+' left).</span></div>';
+      btns = '<button type="button" class="btn" id="subBuy">'+(left < 60 ? 'Renew for another year' : 'Add another year')+'</button>';
+    } else {
+      status = '<div class="sm-st on"><b>Active</b><span>Your yearly subscription is active. Thank you for supporting CSE Companion.</span></div>';
+      btns = '<button type="button" class="btn" id="subManage">Manage subscription</button>';
+    }
+  } else if(mode === "trial"){
+    var ti = trialInfo();
+    status = '<div class="sm-st"><b>Free trial</b><span>Day '+ti.day+' of '+TRIAL_DAYS+' · '+esc(ti.leftText)+'. Everything is free until '+esc(trialEndsText())+'. Nothing is charged for the trial.</span></div>'+
+      '<div class="sa-bar"><i style="width:'+Math.max(4, ti.pct)+'%"></i></div>';
+    btns = play || WEB_PAY_ON ? '<button type="button" class="btn primary" id="subBuy">'+(play || signed ? 'Subscribe now' : 'Sign in to subscribe')+'</button>' : '';
+  } else if(mode === "locked"){
+    status = '<div class="sm-st"><b>Free trial ended</b><span>A subscription is needed to keep using the app. Your plan and progress stay safe.</span></div>';
+    btns = '<button type="button" class="btn primary" id="subBuy">'+(play || signed ? 'Subscribe now' : 'Sign in to subscribe')+'</button>';
+  } else {
+    status = '<div class="sm-st"><b>'+(play && !BILL.checked ? 'Checking…' : 'Free for now')+'</b><span>'+(play && !BILL.checked ? 'Asking Google Play about your subscription.' : 'Everything on the website is free right now. We will tell you well before that changes.')+'</span></div>';
+  }
+  var err = play ? BILL.err : WEB.err;
+  if(play) plan = '<div class="sm-plan on"><b>Yearly subscription · Google Play</b><span>'+esc(billingPriceText())+'</span><small>Billed yearly to your Google Play account. It renews every year until you cancel in Google Play (Menu › Subscriptions).</small></div>';
+  else plan = '<div class="sm-plan on"><b>One-year pass · every phone and computer</b><span>'+esc(webPriceText())+'</span><small>One payment gives 12 months on every device where you sign in with the same Google account. It does not renew by itself, and we remind you before it ends. Paid securely by Razorpay (UPI, cards, net banking).</small></div>'+
+    '<div class="sm-plan"><b>Android app · Google Play</b><span>Yearly subscription, renews until cancelled</span><small>If you use the Android app, the plan is billed through Google Play instead. The two are separate.</small></div>';
+  return status+(err ? '<div class="pw-err">'+esc(err)+'</div>' : '')+(btns ? '<div class="row" style="margin:12px 0 4px">'+btns+'</div>' : '')+
+    '<div class="sm-h">PLANS</div>'+plan+
+    '<div class="row" style="margin-top:12px"><button type="button" class="btn ghost" id="subRestore">'+(play ? 'Restore my subscription' : 'I have already paid')+'</button></div>'+
+    '<div class="muted" style="margin-top:10px;font-size:12px">'+subLegalLinks()+'</div>';
+}
+function subModalWire(host){
+  subWire(host);
+  var r = host.querySelector("#subRestore");
+  if(r) r.addEventListener("click", function(){
+    if(!onPlay() && !cloud.user){ closeModal(); webSignIn(); return; }
+    if(navigator.onLine === false){ toast("You are offline. Connect to the internet and try again."); return; }
+    Promise.all([billingRefresh(), webEntRefresh()]).then(function(){ toast(subMode()==="active" ? "Your subscription is active." : (onPlay() ? "No active subscription was found on this Google account." : "No payment was found for this Google account yet. If you just paid, wait a minute and try again.")); });
+  });
+}
+function openSubModal(){
+  var m = showModal('<div class="modal card sub-modal" role="dialog" aria-modal="true" aria-labelledby="smT"><h2 id="smT">Subscription</h2><div id="subModalBody">'+subModalBodyHtml()+'</div>'+
+    '<div class="modal-actions"><button type="button" class="btn primary" id="smClose">Close</button></div></div>', true);
+  subModalWire(m.querySelector("#subModalBody"));
+  m.querySelector("#smClose").addEventListener("click", closeModal);
+  if(!cloud.adapter) cloudPrepare();
+  Promise.all([billingRefresh(), webEntRefresh()]).catch(function(){});
+}
+function subModalRefresh(){ var b = document.getElementById("subModalBody"); if(b){ b.innerHTML = subModalBodyHtml(); subModalWire(b); } }
 function subWire(host){
   var b = host.querySelector("#subBuy"); if(b) b.addEventListener("click", onPlay() ? billingBuy : webPay);
   var m = host.querySelector("#subManage"); if(m) m.addEventListener("click", billingManage);
