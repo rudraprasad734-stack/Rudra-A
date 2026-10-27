@@ -302,9 +302,9 @@
   body.dash-timer .timer-card > .timer-set select{pointer-events:auto;}
   /* calm mode: controls fade away after a moment; a tap on the screen brings them back */
   body.dash-timer #menuBtn, body.dash-timer #dashFab, body.dash-timer .timer-card > .timer-mode, body.dash-timer .timer-card > .timer-total,
-  body.dash-timer .timer-card > .timer-phase, body.dash-timer .timer-card > .timer-set, body.dash-timer .timer-card > .timer-btns, body.dash-timer .timer-card .timer-display{transition:opacity .7s ease;}
+  body.dash-timer .timer-card > .timer-phase, body.dash-timer .timer-card > .timer-set, body.dash-timer .timer-card > .timer-btns, body.dash-timer .timer-card > .goal-strip, body.dash-timer .timer-card .timer-display{transition:opacity .7s ease;}
   body.dash-timer.ui-sleep #menuBtn, body.dash-timer.ui-sleep #dashFab, body.dash-timer.ui-sleep .timer-card > .timer-mode, body.dash-timer.ui-sleep .timer-card > .timer-total,
-  body.dash-timer.ui-sleep .timer-card > .timer-phase, body.dash-timer.ui-sleep .timer-card > .timer-set, body.dash-timer.ui-sleep .timer-card > .timer-brk, body.dash-timer.ui-sleep .timer-card > .timer-btns{opacity:0 !important; pointer-events:none !important;}
+  body.dash-timer.ui-sleep .timer-card > .timer-phase, body.dash-timer.ui-sleep .timer-card > .timer-set, body.dash-timer.ui-sleep .timer-card > .timer-brk, body.dash-timer.ui-sleep .timer-card > .goal-strip, body.dash-timer.ui-sleep .timer-card > .timer-btns{opacity:0 !important; pointer-events:none !important;}
   body.dash-timer #view-dashboard > *:not(.timer-card){display:none;}
   body.dash-timer #view-dashboard .timer-card{position:fixed; inset:0; z-index:5; height:auto; min-height:0; margin:0; border-radius:0; border:0;}
   body.dash-timer .timer-card > .timer-mode, body.dash-timer .timer-card > .timer-total{top:calc(64px + env(safe-area-inset-top,0px));}
@@ -321,6 +321,7 @@
     background:var(--drawer-bg, linear-gradient(#10211b,#0a1812)); color:#fff; padding:calc(26px + env(safe-area-inset-top,0px)) 18px calc(20px + env(safe-area-inset-bottom,0px));
     transform:translateX(-102%); visibility:hidden; transition:transform .25s ease, visibility 0s .25s; display:flex; flex-direction:column;}
   body.menu-open #drawer{transform:none; visibility:visible; transition:transform .25s ease;}
+  #drawer .dr-foot{margin-top:auto; padding-top:22px; text-align:center; font-size:12px; letter-spacing:.04em; color:rgba(255,255,255,.55);}
   body.menu-open #drawerDim{opacity:1; visibility:visible; transition:opacity .25s;}
   @media (prefers-reduced-motion: reduce){ #drawer,#drawerDim{transition:none;} }
   .dr-who{text-align:center; margin-bottom:14px;}
@@ -1350,6 +1351,30 @@
   .loadrow{grid-template-columns:minmax(0,1fr) auto auto;} .loadrow .lv{white-space:normal; text-align:right;}
   .wk-day{min-width:0;} .plrow{grid-template-columns:auto minmax(0,1fr) auto;} .plrow .pl, .plrow .ps{min-width:0; overflow-wrap:anywhere;}
   @media (max-width:400px){ .plrow{grid-template-columns:minmax(0,1fr) auto;} .plrow .pt{grid-column:1 / -1;} }
+
+  /* ===== today's goal strip, week card, falling behind ===== */
+  #view-dashboard .timer-card > .goal-strip{position:absolute; left:14px; right:14px; width:auto; top:calc(150px + env(safe-area-inset-top,0px)); z-index:6; color:#fff; text-align:left;}
+  #view-dashboard .timer-card > .goal-strip.hide{display:none;}
+  .goal-strip .gs-top{display:flex; align-items:center; gap:12px; padding:10px 14px; border-radius:18px; background:rgba(8,24,28,.78); border:1px solid rgba(46,230,214,.35); backdrop-filter:blur(10px); cursor:pointer;}
+  .gs-ring{position:relative; flex:none; display:inline-grid; place-items:center;} .gs-ring svg{position:absolute; inset:0;} .gs-ring b{position:relative; font-size:12px; font-weight:800;}
+  .gs-trk{fill:none; stroke:rgba(255,255,255,.14);} .gs-arc{fill:none; stroke:#2ee6d6; stroke-linecap:round;}
+  .gs-t{flex:1; min-width:0; display:flex; flex-direction:column;} .gs-t b{font-size:14.5px; font-weight:800;} .gs-t small{font-size:12.5px; color:rgba(255,255,255,.72); overflow-wrap:anywhere;}
+  .gs-fl{flex:none; text-align:center; line-height:1.15;} .gs-fl i{display:block; font-style:normal; font-size:22px;} .gs-fl b{font-size:12.5px; font-weight:800; white-space:nowrap;}
+  .gs-days{display:flex; justify-content:center; gap:6px; margin-top:8px;} .gs-d{width:34px; text-align:center;} .gs-d small{display:block; font-size:10px; margin-top:3px; color:rgba(255,255,255,.55);}
+  .gs-d i{width:30px; height:30px; margin:0 auto; border-radius:50%; display:grid; place-items:center; font-style:normal; font-size:12px; font-weight:800; border:1.5px solid rgba(255,255,255,.2); color:rgba(255,255,255,.55);}
+  .gs-d i.done{background:#2ee6d6; border-color:#2ee6d6; color:#05221f;} .gs-d i.now{border:2px solid #2ee6d6; color:#2ee6d6;} .gs-d i.rest{border-style:dashed; border-color:rgba(255,255,255,.35);} .gs-d i.fut{opacity:.4;}
+  .gs-rev{display:block; margin:8px auto 0; border:1px solid rgba(255,255,255,.28); background:rgba(8,24,28,.7); color:#fff; border-radius:99px; padding:7px 14px; font:700 12.5px system-ui; cursor:pointer;}
+  @media (min-aspect-ratio: 6/5){ #view-dashboard .timer-card > .goal-strip{display:none;} }
+  .wk-num{display:flex; flex-wrap:wrap; align-items:flex-end; gap:8px 12px; margin:6px 0 10px;} .wk-num b{font-family:var(--font-display); font-size:34px; line-height:1;}
+  .wk-diff{font-size:12.5px; font-weight:700; padding:4px 10px; border-radius:99px; background:color-mix(in srgb,#34D58A 18%, transparent); color:var(--ink);} .wk-diff.dn{background:color-mix(in srgb,#ffb020 20%, transparent);}
+  .wk-bars{display:flex; align-items:flex-end; gap:8px; height:98px;} .wk-bar{flex:1; min-width:0; text-align:center; display:flex; flex-direction:column; justify-content:flex-end;}
+  .wk-bar i{display:block; border-radius:8px 8px 4px 4px; background:color-mix(in srgb,var(--tab-accent) 45%, transparent);} .wk-bar i.best{background:linear-gradient(var(--tab-accent),#5fd0ff);} .wk-bar i.fut,.wk-bar i.rest{opacity:.45;} .wk-bar small{font-size:11px; margin-top:5px; color:var(--ink-faint);}
+  .wk-facts{display:flex; gap:6px; margin:14px 0;} .wk-facts span{flex:1; min-width:0; text-align:center; font-size:12px; color:var(--ink-soft);} .wk-facts b{display:block; font-size:21px; color:var(--ink);}
+  .wk-tip{padding:12px 14px; border-radius:14px; background:color-mix(in srgb,#ffb020 14%, transparent); border:1px solid color-mix(in srgb,#ffb020 45%, transparent); font-size:13.5px; line-height:1.4;} .wk-tip b{display:block; margin-bottom:3px;}
+  .wk-btns{margin-top:12px;} .wk-modal .modal-actions{margin-top:14px;}
+  .fb-row{padding:10px 0; border-top:1px solid var(--line-soft);} .fb-h{display:flex; align-items:center; gap:8px;} .fb-h i{width:10px; height:10px; border-radius:50%; flex:none;} .fb-h b{flex:1; min-width:0; overflow-wrap:anywhere;} .fb-h span{font-weight:800; white-space:nowrap;}
+  .fb-bar{height:8px; border-radius:99px; background:color-mix(in srgb,var(--ink) 10%, transparent); margin:8px 0 5px; overflow:hidden;} .fb-bar i{display:block; height:100%; border-radius:99px;} .fb-row small{color:var(--ink-soft); font-size:12px;}
+  .fb-ok{padding:10px 0; font-weight:700;} .fb-strong,.fb-mock{margin-top:8px; padding-top:8px; border-top:1px solid var(--line-soft); font-size:13px; color:var(--ink-soft);} .fb-card .btn{margin-top:10px;}
 </style>
 <script>
 /* ===========================================================================
@@ -1474,6 +1499,7 @@ html.sp-on #app,html.sp-on #toast{visibility:hidden}
   <aside id="drawer" aria-label="Menu" aria-hidden="true">
     <div class="dr-who"><div class="dr-brand">CSE Companion</div><div class="dr-date" id="topbarDate">&mdash;</div><div class="dr-av" aria-hidden="true">&#9733;</div><small class="greet"><button type="button" class="profile-btn" id="profileBtn"></button></small></div>
     <nav id="tabs" aria-label="Sections"></nav>
+    <div class="dr-foot">&copy; 2026 CSE Companion</div>
   </aside>
 
   <main>
@@ -14024,7 +14050,7 @@ function renderPlannerHome(host){
   else body = overviewHtml(plan, states);
   var tabNow = plannerTabOf(plannerView);
   if(tabNow==="schedule") lastSched = plannerView;
-  if(tabNow==="plan") body = overviewHtml(plan, states)+remindersHtml()+'<div class="section-title">Chapters</div>'+progressHtml(plan, states);
+  if(tabNow==="plan") body = overviewHtml(plan, states)+fallingBehindHtml()+remindersHtml()+'<div class="section-title">Chapters</div>'+progressHtml(plan, states);
   var sub = tabNow==="schedule" ? '<div class="pl-sub" role="tablist">'+SCHED_VIEWS.map(function(t){ return '<button type="button" role="tab" class="'+(t[0]===plannerView?"on":"")+'" aria-selected="'+(t[0]===plannerView)+'" data-pa="view" data-v="'+t[0]+'">'+t[1]+'</button>'; }).join("")+'</div>' : "";
   host.innerHTML =
     '<div class="card pl-title"><div><h2>Preparation Planner</h2><div class="muted">Complete a subject to unlock the next. The calendar follows your progress.</div>'+(subMode()==="trial" ? '<div class="trial-chip">Free trial · Day '+trialInfo().day+' of '+TRIAL_DAYS+' · '+esc(trialInfo().leftText)+'</div>' : "")+'</div><button type="button" class="btn ghost sm" data-go="reschedule">Reschedule</button></div>'+
@@ -15267,7 +15293,7 @@ function timerUi(){
   var dw = document.getElementById("timerDialWrap"); if(dw){ dw.classList.toggle("running", st.running); }
   Array.prototype.forEach.call(document.querySelectorAll("[data-tmode]"), function(b){ b.classList.toggle("on", b.getAttribute("data-tmode")===st.mode); b.disabled = started; });
   var ps = document.getElementById("pomoPreset"); if(ps) ps.disabled = started;
-  Array.prototype.forEach.call(document.querySelectorAll(".timer-mode, .timer-set"), function(e){ e.classList.toggle("hide", started); });
+  Array.prototype.forEach.call(document.querySelectorAll(".timer-mode, .timer-set, .goal-strip"), function(e){ e.classList.toggle("hide", started); });
   applyUiStage(); ambSync();
 }
 function timerTick(){
@@ -15455,7 +15481,7 @@ function timerSubjHtml(){
 function timerCard(){
   var st = timerState, started = st.running || st.accMs>0 || st.studyMs>0;
   return '<div class="card timer-card '+(st.mode==="pomo" ? "pomo"+(st.phase!=="focus" ? " brk" : "") : "free")+'">'+
-    '<canvas class="black-hole-scene" id="blackHoleScene" aria-hidden="true"></canvas>'+
+    '<canvas class="black-hole-scene" id="blackHoleScene" aria-hidden="true"></canvas>'+goalStripHtml()+
     '<div class="timer-mode'+(started ? " hide" : "")+'" role="group" aria-label="Timer mode">'+
       '<button type="button" class="tm'+(st.mode==="free" ? " on" : "")+'" data-tmode="free"'+(started ? " disabled" : "")+'>Stopwatch</button>'+
       '<button type="button" class="tm'+(st.mode==="pomo" ? " on" : "")+'" data-tmode="pomo"'+(started ? " disabled" : "")+'>Pomodoro</button>'+
@@ -15921,14 +15947,24 @@ function studyMinutesByDay(){
   Object.keys(studyProgress.topics||{}).forEach(function(id){ var t = studyProgress.topics[id]; if(t && t.status==="completed" && t.completedAt && !m[t.completedAt]) m[t.completedAt] = 1; });
   return m;
 }
+// a planned rest day (a day your plan has off, or a day on leave) never breaks a streak, and one missed study day in any week is forgiven
+function isRestDayKey(k){
+  if(!studyPlan || k < studyPlan.window.start) return false;
+  return studyPlan.capacity.days.indexOf(dowOf(k)) < 0 || onLeave(studyPlan, k);
+}
 function streakStats(m){
-  var cur = 0, d = todayKey;
-  if(!m[d]) d = toKey(addDays(parseKey(d), -1));
-  while(m[d]){ cur++; d = toKey(addDays(parseKey(d), -1)); }
-  var keys = Object.keys(m).filter(function(k){ return m[k]>0; }).sort(), best = 0, run = 0, prev = "";
-  keys.forEach(function(k){ run = (prev && diffDays(k, prev)===1) ? run+1 : 1; if(run>best) best = run; prev = k; });
+  var keys = Object.keys(m).filter(function(k){ return m[k]>0; }).sort(), best = 0, run = 0;
+  if(keys.length){
+    var graceAt = -99, i = 0;
+    for(var d = keys[0]; d <= todayKey && i < 1500; d = toKey(addDays(parseKey(d), 1)), i++){
+      if(m[d] > 0){ run++; if(run > best) best = run; }
+      else if(d === todayKey || isRestDayKey(d)){ /* today is not over, and rest days are neutral */ }
+      else if(run > 0 && i - graceAt > 7){ graceAt = i; }
+      else run = 0;
+    }
+  }
   var mo = todayKey.slice(0,7), inMonth = keys.filter(function(k){ return k.slice(0,7)===mo; }).length;
-  return {cur:cur, best:best, total:keys.length, month:inMonth, today:!!m[todayKey]};
+  return {cur:run, best:best, total:keys.length, month:inMonth, today:!!m[todayKey]};
 }
 function dxStreakHtml(){
   var m = studyMinutesByDay(), st = streakStats(m), WEEKS = 18;
@@ -15943,12 +15979,169 @@ function dxStreakHtml(){
     }
     cols += '<div class="hm-col">'+col+'</div>';
   }
-  var msg = st.cur>0 ? (st.today ? "Keep it going tomorrow." : "Study today to keep your streak alive.") : "Study today to start a new streak.";
+  var msg = st.cur>0 ? (st.today ? "Keep it going tomorrow." : (isRestDayKey(todayKey) ? "Rest day today. Your streak is safe." : "Study today to keep your streak alive.")) : "Study today to start a new streak.";
   return '<div class="dx-card dx-streak"><div class="dx-k">STUDY STREAK</div>'+
     '<div class="st-top"><div class="st-flame" aria-hidden="true">'+(st.cur>0 ? "🔥" : "🌱")+'</div><div><div class="st-num"><b>'+st.cur+'</b> day'+(st.cur===1 ? "" : "s")+'</div><small>'+esc(msg)+'</small></div></div>'+
     '<div class="st-facts"><span><b>'+st.best+'</b>best streak</span><span><b>'+st.month+'</b>days this month</span><span><b>'+st.total+'</b>days in all</span></div>'+
     '<div class="hm" aria-label="Study days, last '+WEEKS+' weeks">'+cols+'</div>'+
     '<div class="hm-key"><span>Less</span><i class="l0"></i><i class="l1"></i><i class="l2"></i><i class="l3"></i><i class="l4"></i><span>More</span></div></div>';
+}
+
+// ---- today's goal, the week at a glance, and where you are falling behind ----
+var GOAL_KEY = "dossier.goal.v1", WEEKLY_KEY = "dossier.weekly.v1";
+function goalPref(){ var g = lsGetJSON(GOAL_KEY, null); return g && +g.min > 0 ? +g.min : 0; }
+// today's goal: what you chose, else what your plan has for today (a rest day has none), else two hours
+function todayGoal(){
+  var pref = goalPref(); if(pref) return {min:pref, rest:false, custom:true};
+  if(studyPlan){
+    if(isRestDayKey(todayKey)) return {min:0, rest:true};
+    var tot = 0; planSessionsOn(todayKey).forEach(function(x){ if(x.kind==="study" || x.kind==="revision") tot += x.duration || 0; });
+    if(tot > 0) return {min:tot, rest:false};
+  }
+  return {min:120, rest:false};
+}
+function ringSvg(frac, size, stroke, inner){
+  var r = (size-stroke)/2, c = 2*Math.PI*r;
+  return '<span class="gs-ring" style="width:'+size+'px;height:'+size+'px"><svg width="'+size+'" height="'+size+'" viewBox="0 0 '+size+' '+size+'" aria-hidden="true"><circle cx="'+size/2+'" cy="'+size/2+'" r="'+r+'" class="gs-trk" stroke-width="'+stroke+'"/><circle cx="'+size/2+'" cy="'+size/2+'" r="'+r+'" class="gs-arc" stroke-width="'+stroke+'" stroke-dasharray="'+(c*Math.max(0, Math.min(1, frac)))+' '+c+'" transform="rotate(-90 '+size/2+' '+size/2+')"/></svg><b>'+inner+'</b></span>';
+}
+function goalStripHtml(){
+  var st = timerState; if(st.running || st.accMs>0 || st.studyMs>0 || st.pending>0) return "";
+  var g = todayGoal(), m = studyMinutesByDay(), done = m[todayKey] || 0, ss = streakStats(m);
+  var left = Math.max(0, g.min - done), reached = g.min > 0 && done >= g.min;
+  var ringHtml = g.rest ? ringSvg(0, 46, 6, "☾") : ringSvg(g.min ? done/g.min : 0, 46, 6, Math.min(100, Math.round(100*done/Math.max(1, g.min)))+"%");
+  var title = g.rest ? "Rest day" : (reached ? "Goal reached" : "Today's goal");
+  var sub = g.rest ? (done>0 ? fmtDurMin(done)+" studied anyway. Nice." : "Your plan has the day off. Streak safe.") : (reached ? fmtDurMin(done)+" studied today" : fmtDurMin(done)+" of "+fmtDurMin(g.min)+" · "+fmtDurMin(left)+" to go");
+  var mon = mondayOf(parseKey(todayKey)), dots = "";
+  for(var i=0;i<7;i++){
+    var k = toKey(addDays(mon, i)), cls, ch = "";
+    if(m[k] > 0){ cls = "done"; ch = "✓"; }
+    else if(k === todayKey) cls = "now";
+    else if(k > todayKey) cls = "fut";
+    else if(isRestDayKey(k)){ cls = "rest"; ch = "☾"; }
+    else cls = "miss";
+    dots += '<span class="gs-d"><i class="'+cls+'">'+ch+'</i><small>'+"MTWTFSS".charAt(i)+'</small></span>';
+  }
+  var rv = revisionsDue().length;
+  return '<div class="goal-strip" id="goalStrip"><div class="gs-top" data-goal="edit" role="button" tabindex="0" aria-label="Change today\'s goal">'+ringHtml+
+    '<span class="gs-t"><b>'+esc(title)+'</b><small>'+esc(sub)+'</small></span><span class="gs-fl"><i aria-hidden="true">'+(ss.cur>0 ? "🔥" : "🌱")+'</i><b>'+ss.cur+' day'+(ss.cur===1 ? "" : "s")+'</b></span></div>'+
+    '<div class="gs-days">'+dots+'</div>'+
+    (rv ? '<button type="button" class="gs-rev" data-goal="rev">📚 '+rv+' chapter'+(rv===1 ? "" : "s")+' to revise today</button>' : '')+'</div>';
+}
+function openGoalModal(){
+  var cur = goalPref(), opts = [1,2,3,4,5,6,8];
+  var m = showModal('<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="glT"><h2 id="glT">Today\'s goal</h2>'+
+    '<p class="muted">How long do you want to study each day? Your plan\'s own hours are used until you choose.</p>'+
+    '<div class="pill-row">'+opts.map(function(h){ return '<button type="button" class="pill'+(cur===h*60 ? " on" : "")+'" data-gl="'+h*60+'">'+h+' h</button>'; }).join("")+'</div>'+
+    '<div class="modal-actions">'+(studyPlan ? '<button class="btn ghost" id="glPlan">Follow my plan</button>' : '')+'<button class="btn primary" id="glClose">Done</button></div></div>', true);
+  var set = function(v){ if(v) lsSetJSON(GOAL_KEY, {min:v}); else lsSetJSON(GOAL_KEY, null); closeModal(); renderDashboard(); };
+  Array.prototype.forEach.call(m.querySelectorAll("[data-gl]"), function(b){ b.addEventListener("click", function(){ set(+b.getAttribute("data-gl")); }); });
+  var pl = m.querySelector("#glPlan"); if(pl) pl.addEventListener("click", function(){ set(0); });
+  m.querySelector("#glClose").addEventListener("click", closeModal);
+}
+function weekStats(monKey){
+  var m = studyMinutesByDay(), days = [], total = 0, best = {k:"", v:0}, studyDays = 0, i, k;
+  for(i=0;i<7;i++){ k = toKey(addDays(parseKey(monKey), i)); var v = k > todayKey ? 0 : (m[k] || 0); days.push({k:k, v:v, rest:isRestDayKey(k), fut:k > todayKey}); total += v; if(v > 0) studyDays++; if(v > best.v) best = {k:k, v:v}; }
+  // a week still in progress is compared with the same days of last week, not the whole of it
+  var prevMon = toKey(addDays(parseKey(monKey), -7)), prev = 0;
+  for(i=0;i<7;i++){ if(toKey(addDays(parseKey(monKey), i)) > todayKey) break; prev += m[toKey(addDays(parseKey(prevMon), i))] || 0; }
+  var end = toKey(addDays(parseKey(monKey), 6)), chapters = 0;
+  Object.keys(studyProgress.topics || {}).forEach(function(id){ var t = studyProgress.topics[id]; if(t && t.status==="completed" && t.completedAt && t.completedAt >= monKey && t.completedAt <= end) chapters++; });
+  var missed = {}; studySessions.forEach(function(x){ if(x.kind==="study" && x.status==="missed" && x.date >= monKey && x.date <= end) missed[x.subject] = (missed[x.subject] || 0) + 1; });
+  var top = "", tn = 0; Object.keys(missed).forEach(function(n){ if(missed[n] > tn){ top = n; tn = missed[n]; } });
+  return {mon:monKey, end:end, days:days, total:total, prev:prev, chapters:chapters, best:best, studyDays:studyDays, behind:top, behindN:tn};
+}
+function weekAdvice(ws){
+  if(ws.behind && ws.behindN >= 2){
+    var extra = "";
+    for(var i=1;i<=7 && !extra;i++){ var k = toKey(addDays(parseKey(ws.end), i)); if(isRestDayKey(k)) extra = DOW_LONG[dowOf(k)]; }
+    return ws.behind.replace(/ \(Optional\)$/, "")+" is "+ws.behindN+" session"+(ws.behindN===1 ? "" : "s")+" behind plan. "+(extra ? "Add one extra session on "+extra+" to catch up." : "Add one extra session next week to catch up.");
+  }
+  if(ws.total === 0) return "Start the new week with one short session. Twenty-five minutes is enough.";
+  if(ws.prev > 0 && ws.total < ws.prev*0.8) return "You studied less than last week. One 25 minute round tomorrow gets you back on pace.";
+  if(ws.prev > 0 && ws.total >= ws.prev) return "A steady week, as much as last week or more. Keep the same pace.";
+  return "Good start. A little more each day builds the habit.";
+}
+function weekShareText(ws){
+  var s = ws.total ? "This week on CSE Companion: "+fmtDurMin(ws.total)+" studied" : "This week on CSE Companion";
+  s += ws.chapters ? ", "+ws.chapters+" chapter"+(ws.chapters===1 ? "" : "s")+" finished" : "";
+  var ss = streakStats(studyMinutesByDay()); if(ss.cur > 1) s += ", "+ss.cur+"-day streak";
+  return s+". https://csecompanion.in";
+}
+function weekBodyHtml(ws){
+  var mx = Math.max(60, ws.days.reduce(function(a, d){ return Math.max(a, d.v); }, 0)), diff = ws.total - ws.prev;
+  var bars = ws.days.map(function(d, i){
+    var h = d.v > 0 ? Math.max(6, Math.round(78*d.v/mx)) : 4;
+    return '<span class="wk-bar"><i class="'+(d.v>0 && d.k===ws.best.k ? "best" : (d.fut ? "fut" : (d.rest && !d.v ? "rest" : "")))+'" style="height:'+h+'px"></i><small>'+"MTWTFSS".charAt(i)+'</small></span>';
+  }).join("");
+  var ss = streakStats(studyMinutesByDay());
+  return '<div class="wk-num"><b>'+esc(fmtDurMin(ws.total))+'</b>'+(ws.prev > 0 ? '<span class="wk-diff'+(diff<0 ? " dn" : "")+'">'+(diff>=0 ? "▲ " : "▼ ")+esc(fmtDurMin(Math.abs(diff)))+' vs last week</span>' : '')+'</div>'+
+    '<div class="wk-bars">'+bars+'</div>'+
+    '<div class="wk-facts"><span><b>'+ws.chapters+'</b>chapter'+(ws.chapters===1 ? "" : "s")+' finished</span><span><b>'+(ws.best.k ? DOW_SHORT[dowOf(ws.best.k)] : "–")+'</b>best day</span><span><b>'+(ss.cur>0 ? "🔥 " : "")+ss.cur+'</b>day streak</span></div>'+
+    '<div class="wk-tip"><b>💡 For next week</b>'+esc(weekAdvice(ws))+'</div>';
+}
+function dxWeekHtml(){
+  var mon = toKey(mondayOf(parseKey(todayKey))), ws = weekStats(mon);
+  if(ws.total === 0 && !studyPlan) return "";
+  return '<div class="dx-card dx-wkly"><div class="dx-k">YOUR WEEK SO FAR</div>'+weekBodyHtml(ws)+
+    '<div class="wk-btns"><button type="button" class="dx-btn2" data-wk="share">Share my week</button></div></div>';
+}
+function shareWeek(ws){
+  var text = weekShareText(ws);
+  if(navigator.share){ navigator.share({text:text}).catch(function(){}); return; }
+  try{ navigator.clipboard.writeText(text).then(function(){ toast("Copied. Paste it anywhere to share."); }, function(){ toast(text); }); }catch(e){ toast(text); }
+}
+// on Sunday evening and on Monday the finished week is shown once as a short card
+function weekSheetMaybe(){
+  var now = new Date(), dow = now.getDay();
+  if(!(dow===0 && now.getHours() >= 18) && dow !== 1) return;
+  var mon = dow===1 ? toKey(addDays(mondayOf(parseKey(todayKey)), -7)) : toKey(mondayOf(parseKey(todayKey)));
+  if(lsGet(WEEKLY_KEY) === mon || nudge.shownOn===todayKey && document.getElementById("quietNudge")) return;
+  if(!profile || activeTab !== "dashboard" || document.getElementById("modalHost") || document.getElementById("planHint") || document.getElementById("quietNudge")) return;
+  if(timerState.running || timerState.accMs>0 || timerState.studyMs>0 || timerState.pending>0) return;
+  var ws = weekStats(mon); if(ws.total <= 0) return;
+  lsSet(WEEKLY_KEY, mon);
+  var m = showModal('<div class="modal card wk-modal" role="dialog" aria-modal="true" aria-labelledby="wkT"><div class="dx-k" id="wkT">YOUR WEEK · '+esc(fmtDM(parseKey(ws.mon)))+' – '+esc(fmtDM(parseKey(ws.end)))+'</div>'+weekBodyHtml(ws)+
+    '<div class="modal-actions"><button class="btn ghost" id="wkShare">Share my week</button><button class="btn primary" id="wkClose">Plan next week</button></div></div>', true);
+  m.querySelector("#wkShare").addEventListener("click", function(){ shareWeek(ws); });
+  m.querySelector("#wkClose").addEventListener("click", function(){ closeModal(); setTab(studyPlan ? "planner" : "dashboard"); });
+}
+setTimeout(weekSheetMaybe, 4200);
+document.addEventListener("visibilitychange", function(){ if(document.visibilityState==="visible") setTimeout(weekSheetMaybe, 1200); });
+function fallingBehind(){
+  if(!studyPlan) return null;
+  var from = toKey(addDays(parseKey(todayKey), -21)), by = {};
+  studySessions.forEach(function(x){
+    if(x.kind!=="study" || x.date < from || x.date >= todayKey || x.date < studyPlan.window.start) return;
+    var b = by[x.subject] || (by[x.subject] = {n:x.subject, plan:0, done:0, missed:0});
+    b.plan++; if(x.status==="completed") b.done++; else if(x.status==="missed") b.missed++;
+  });
+  var all = Object.keys(by).map(function(k){ var b = by[k]; b.pct = Math.round(100*b.done/b.plan); return b; }).filter(function(b){ return b.plan >= 3; }).sort(function(a, b){ return a.pct - b.pct || b.missed - a.missed; });
+  return {low:all.filter(function(b){ return b.pct < 80; }).slice(0, 3), all:all};
+}
+function fallingBehindHtml(){
+  var f = fallingBehind(); if(!f || !f.all.length) return "";
+  var mk = mockTests.slice().sort(function(a, b){ return a.date < b.date ? -1 : 1; }).filter(function(t){ return +t.maxScore > 0; }), mockLine = "";
+  if(mk.length >= 2){
+    var pc = function(t){ return Math.round(100*t.score/t.maxScore); }, last = pc(mk[mk.length-1]), prev = pc(mk[mk.length-2]);
+    mockLine = '<div class="fb-mock">Mock tests: latest <b>'+last+'%</b> '+(last > prev ? "▲" : last < prev ? "▼" : "▬")+' from '+prev+'%</div>';
+  } else if(mk.length === 1) mockLine = '<div class="fb-mock">Mock tests: latest <b>'+Math.round(100*mk[0].score/mk[0].maxScore)+'%</b></div>';
+  var colors = ["#FFB020","#34D58A","#2DE6D6"];
+  var body = f.low.length
+    ? f.low.map(function(b, i){ return '<div class="fb-row"><div class="fb-h"><i style="background:'+colors[i%3]+'"></i><b>'+esc(b.n.replace(/ \(Optional\)$/, ""))+'</b><span>'+b.pct+'% done</span></div><div class="fb-bar"><i style="width:'+Math.max(3, b.pct)+'%;background:'+colors[i%3]+'"></i></div><small>'+b.done+' of '+b.plan+' planned sessions in the last 3 weeks'+(b.missed ? " · "+b.missed+" missed" : "")+'</small></div>'; }).join("")
+    : '<div class="fb-ok">You are on track in every subject. Keep going.</div>';
+  var strong = f.all.slice().sort(function(a, b){ return b.pct - a.pct; }).filter(function(b){ return b.pct >= 80; }).slice(0, 2);
+  return '<div class="card ins-card fb-card"><div class="k2">'+(f.low.length ? "WHERE YOU ARE FALLING BEHIND" : "HOW YOUR SUBJECTS ARE GOING")+'</div>'+body+
+    (strong.length ? '<div class="fb-strong">Strongest: '+strong.map(function(b){ return '<b>'+esc(b.n.replace(/ \(Optional\)$/, ""))+' '+b.pct+'%</b>'; }).join(" · ")+'</div>' : '')+mockLine+
+    (missedLeaves().length ? '<button type="button" class="btn ghost sm" data-pa="catchopen">Catch up on missed chapters</button>' : '')+'</div>';
+}
+function bindGoal(host){
+  if(host._goal) return; host._goal = true;
+  host.addEventListener("click", function(e){
+    var g = e.target.closest ? e.target.closest("[data-goal]") : null;
+    if(g){ var a = g.getAttribute("data-goal"); if(a==="edit") openGoalModal(); else if(a==="rev"){ dashMore = true; applyDashMode(); setTimeout(function(){ var r = host.querySelector(".dx-rev"); if(r) r.scrollIntoView({block:"center", behavior:"smooth"}); }, 250); } return; }
+    var w = e.target.closest ? e.target.closest("[data-wk]") : null;
+    if(w && w.getAttribute("data-wk")==="share") shareWeek(weekStats(toKey(mondayOf(parseKey(todayKey)))));
+  });
 }
 
 var REV_KEY = "dossier.revdone.v1", REV_GAPS = [1,7,30], REV_MAX_LATE = 60;
@@ -16313,7 +16506,7 @@ function cloudSignIn(){
 }
 // removes this account's study data from the phone (the cloud copy is untouched) so the next person starts clean.
 // Device-level things stay: the free-trial start, store purchases, first-run flags and analytics choice.
-var WIPE_KEYS = {"dossier.lastBackup.v1":1, "dossier.prerestore.v1":1, "dossier.reminders.v1":1, "dossier.wizdraft.v1":1, "dossier.planBackup.v1":1, "dossier.timer.v2":1, "dossier.progressReset.v1":1, "dossier.noPlanAsk.v1":1, "dossier.planHint.v1":1, "dossier.bkpNudge.v1":1, "dossier.help.log":1, "dossier.nudge.v1":1};
+var WIPE_KEYS = {"dossier.lastBackup.v1":1, "dossier.prerestore.v1":1, "dossier.reminders.v1":1, "dossier.wizdraft.v1":1, "dossier.planBackup.v1":1, "dossier.timer.v2":1, "dossier.progressReset.v1":1, "dossier.noPlanAsk.v1":1, "dossier.planHint.v1":1, "dossier.bkpNudge.v1":1, "dossier.help.log":1, "dossier.nudge.v1":1, "dossier.goal.v1":1, "dossier.weekly.v1":1};
 function cloudWipeLocal(signedOut){
   cloudUnwatch(); clearTimeout(cloud.timer); cloud.user = null;   // nothing may sync while the phone is being cleared
   try{ Object.keys(localStorage).forEach(function(k){ if(CLOUD_KEY_RE.test(k) || WIPE_KEYS[k]) localStorage.removeItem(k); }); }catch(e){}
@@ -16594,7 +16787,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "221";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "224";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -16646,6 +16839,7 @@ function renderDashboard(){
     '<div class="dx">'+
       dxProfileHtml()+
       (P ? P.ring : plannerDashCard())+
+      dxWeekHtml()+
       dxStreakHtml()+
       (P ? P.path+P.pace+P.week : "")+
       dxRevisionHtml()+
@@ -16666,6 +16860,7 @@ function renderDashboard(){
   bindBackupCard(host);
   bindPlannerDash(host);
   bindRevision(host);
+  bindGoal(host);
 }
 
 // ============================================================================
