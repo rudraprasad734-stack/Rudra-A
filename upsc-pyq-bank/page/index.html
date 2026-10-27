@@ -13998,7 +13998,8 @@ function nudgeShow(){
 function nudgeAct(a){
   if(a==="pomo"){
     if(!(timerState.running || timerState.accMs>0 || timerState.studyMs>0)){ timerState.mode = "pomo"; timerState.preset = 0; timerState.phase = "focus"; timerState.cycle = 0; timerSave(); renderDashboard(); }
-    setTimeout(function(){ var b = document.getElementById("timerToggleBtn"); if(b) b.click(); }, 250);
+    try{ setUiStage(2); }catch(e){}   // the timer screen hides its buttons when calm; show them so the tap is not swallowed
+    setTimeout(function(){ var b = document.getElementById("timerToggleBtn"); if(b) b.click(); }, 300);
   } else if(a==="catch"){ setTab("planner"); }
   else if(a==="today"){ plannerView = "daily"; lastSched = "daily"; setTab("planner"); }
   else if(a==="light" && studyPlan){ plannerEditing = true; wiz = wizFromPlan(studyPlan); wiz.step = 5; setTab("planner"); }
