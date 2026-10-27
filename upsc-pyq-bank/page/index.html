@@ -232,7 +232,7 @@
   .fr-ok{display:flex; align-items:center; gap:12px; padding:12px 14px; border-radius:16px; background:color-mix(in srgb,#34a853 18%,transparent); border:1px solid #34a853; margin:0 0 14px; font-size:14px; line-height:1.4; overflow-wrap:anywhere;} .fr-ok .tick{width:30px; height:30px; border-radius:50%; background:#34a853; color:#fff; display:grid; place-items:center; font-size:17px; flex:0 0 auto;}
   .pf-signin.fr-ok{margin:14px 0 0;}
   .fr-welcome,.fr-end{text-align:center;} .fr-welcome .fr-ico{margin:2px auto 14px; width:96px; height:96px; font-size:44px;} .fr-welcome h2,.fr-end h2{margin:4px 0 8px;} .fr-welcome p,.fr-end p{margin:0 0 16px; opacity:.85; line-height:1.45;} .fr-go{width:100%; min-height:50px; font-size:16px;} .fr-big{font:800 40px system-ui; color:#2de2d6; margin:2px 0;}
-  .fr-hint{position:fixed; left:14px; right:14px; bottom:116px; z-index:900; padding:15px 16px; border-radius:20px; background:#e9fbff; color:#052; box-shadow:0 12px 44px rgba(0,0,0,.55);} .fr-hint b{display:block; font-size:16px; margin-bottom:3px;} .fr-hint p{margin:0 0 12px; font-size:13.5px; line-height:1.4;} .fr-hint .row{display:flex; gap:10px;} .fr-hint button{flex:1; min-height:44px; border-radius:12px; border:0; font:800 14.5px system-ui; cursor:pointer;} .fr-hint .go{background:#0a6; color:#fff;} .fr-hint .no{background:#cfeef5; color:#052;}
+  .fr-hint{position:fixed; left:14px; right:14px; bottom:116px; z-index:900; padding:15px 16px; border-radius:20px; background:#e9fbff; color:#052; box-shadow:0 12px 44px rgba(0,0,0,.55);} .fr-hint b{display:block; font-size:16px; margin-bottom:3px;} .fr-hint p{margin:0 0 12px; font-size:13.5px; line-height:1.4;} .fr-hint .row{display:flex; gap:10px;} .fr-hint button{flex:1; min-height:44px; border-radius:12px; border:0; font:800 14.5px system-ui; cursor:pointer;} .fr-hint .go{background:#0a6; color:#fff;} .fr-hint .no{background:#cfeef5; color:#052;} .fr-hint .qn-off{flex:none; min-height:0; width:auto; margin:10px auto 0; display:block; background:none; color:#375; font:600 12px system-ui; text-decoration:underline;}
   input[type=time][data-tp]{cursor:pointer;}
   .tp-back{position:fixed; inset:0; z-index:2147481000; background:rgba(5,8,20,.62); display:flex; align-items:flex-end; justify-content:center;}
   .tp-sheet{width:100%; max-width:480px; background-color:var(--bg,#0b1f27); background-image:linear-gradient(var(--surface),var(--surface)); color:var(--ink); border-radius:24px 24px 0 0; border-top:2px solid var(--tab-accent); padding:16px 16px calc(16px + env(safe-area-inset-bottom,0px)); box-shadow:0 -20px 40px rgba(0,0,0,.4); max-height:96vh; overflow:auto;}
@@ -13880,6 +13880,7 @@ function remindersHtml(){
   var rem = '<div class="card ins-card"><h3>Reminders</h3>'+
     '<div class="muted">A notification before each session and a nudge to log your day. They appear while the app is open or running in the background. Browsers cannot wake a fully closed app without a server.</div>'+
     '<div class="rem-row"><span>Study reminders</span><button type="button" class="pill'+(remState.on ? " on" : "")+'" data-pa="remon" aria-pressed="'+(remState.on ? "true" : "false")+'">'+(remState.on ? "On" : "Off")+'</button></div>'+
+    '<div class="rem-row"><span>Welcome-back reminders after a few quiet days</span><button type="button" class="pill'+(nudge.off ? "" : " on")+'" data-pa="nudgeon" aria-pressed="'+(nudge.off ? "false" : "true")+'">'+(nudge.off ? "Off" : "On")+'</button></div>'+
     '<div class="rem-row"><span>Remind me before a session</span><select data-pa="remlead" aria-label="Minutes before">'+[0,5,10,15,30].map(function(v){ return '<option value="'+v+'"'+(remState.lead===v ? " selected" : "")+'>'+(v ? v+" min before" : "At start time")+'</option>'; }).join("")+'</select></div>'+
     '<div class="rem-row"><span>Evening nudge to log progress</span><select data-pa="remeod" aria-label="Evening nudge">'+['off','19:00','20:00','21:00','22:00'].map(function(v){ return '<option value="'+v+'"'+((v==="off" ? !remState.eod : remState.eod && remState.eodTime===v) ? " selected" : "")+'>'+(v==="off" ? "Off" : fmt12(v))+'</option>'; }).join("")+'</select></div>'+
     (remState.on && perm==="denied" ? '<div class="form-err">Notifications are blocked for this site in your browser settings. Allow them there to get reminders.</div>' : "")+
@@ -13930,6 +13931,11 @@ function remTick(){
     var rn = revisionsDue().length;
     if(rn) remNotify("Revision due today", rn+" chapter"+(rn===1 ? " is" : "s are")+" ready to revise. A quick recall now makes it stick.", t+"|rev");
   }
+  if(mins >= 570 && !remState.sent[t+"|quiet"]){
+    remState.sent[t+"|quiet"] = 1; changed = true;
+    var qd = quietDays();
+    if(!nudge.off && qd >= 2) remNotify("We saved your place", qd+" days since your last study session. Even 25 minutes today keeps your plan alive.", t+"|quiet");
+  }
   if(remState.eod && mins >= toMin(remState.eodTime) && !remState.sent[t+"|eod"]){
     var open = planSessionsOn(t).filter(function(x){ return !x.projected && (x.status==="not_started" || x.status==="in_progress"); }).length;
     remState.sent[t+"|eod"] = 1; changed = true;
@@ -13943,6 +13949,64 @@ function remTick(){
 }
 setInterval(remTick, 30000);
 document.addEventListener("visibilitychange", function(){ if(document.visibilityState==="visible") remTick(); });
+
+// ---- welcome-back nudges: a friendly, once-a-day prompt for students who have gone quiet ----
+var NUDGE_KEY = "dossier.nudge.v1";
+var nudge = Object.assign({off:false, shownOn:"", skipped:0}, lsGetJSON(NUDGE_KEY, {}) || {});
+function nudgeSave(){ lsSetJSON(NUDGE_KEY, nudge); }
+// the last day anything was studied (a timer, a logged session, a finished chapter); "" if nothing ever was
+function lastStudyKeyRaw(){
+  var best = "";
+  studySessions.forEach(function(x){ if((x.status==="completed" || x.status==="in_progress" || x.actualDuration>0) && x.date<=todayKey && x.date>best) best = x.date; });
+  Object.keys(studyProgress.topics).forEach(function(id){ var c = studyProgress.topics[id].completedAt; if(c && c<=todayKey && c>best) best = c; });
+  var log = {}; try{ log = JSON.parse(lsGet("dossier.timerLog")||"{}"); }catch(e){}
+  Object.keys(log).forEach(function(k){ if(+log[k]>0 && k<=todayKey && k>best) best = k; });
+  return best;
+}
+function quietDays(){
+  var last = lastStudyKeyRaw();
+  if(!last){ var c = (studyPlan && studyPlan.createdAt) || (profile && profile.createdAt) || ""; last = c ? toKey(new Date(c)) : todayKey; }
+  return Math.max(0, diffDays(todayKey, last));
+}
+function nudgeData(){
+  var d = quietDays(); if(d < 2) return null;
+  var ever = !!lastStudyKeyRaw(), missed = studyPlan ? missedSessions().length : 0;
+  if(!ever) return {title:"Ready for your first session?", text:"Even 25 minutes counts. Tap Start and the timer does the rest.", go:"Start 25 min", act:"pomo"};
+  if(d <= 3) return {title:"Welcome back", text:"It has been "+d+" days since you last studied. One short session today gets the habit going again.", go:"Start 25 min", act:"pomo"};
+  if(d < 14){
+    if(!studyPlan) return {title:d+" days away", text:"Your study time is kept. Set up a plan so every session counts towards a chapter, or just start the timer.", go:"Make my plan", act:"plan"};
+    return {title:d+" days away", text:(missed ? "You missed "+missed+" session"+(missed===1 ? "" : "s")+". It takes a minute to choose how to make them up." : "Your plan is waiting. Pick up today's session."), go:(missed ? "Catch me up" : "Open today"), act:(missed ? "catch" : "today")};
+  }
+  if(!studyPlan) return {title:"It has been "+d+" days", text:"Start again with one short session. Everything you studied before is kept.", go:"Start 25 min", act:"pomo"};
+  return {title:"It has been "+d+" days", text:"Restart gently: a lighter plan for the next week, then build back up. Your progress is kept.", go:"Lighter plan", act:"light"};
+}
+function nudgeShow(){
+  if(quietDays() < 2){ if(nudge.skipped){ nudge.skipped = 0; nudgeSave(); } return; }
+  if(nudge.off || nudge.shownOn===todayKey || !profile || activeTab !== "dashboard" || document.getElementById("modalHost") || document.getElementById("planHint") || document.getElementById("quietNudge")) return;
+  if(timerState.running || timerState.accMs>0 || timerState.studyMs>0 || timerState.pending>0) return;
+  if(!studyPlan && !lastStudyKeyRaw()) return;   // brand new and no plan: the "Plan your study?" prompt does this job
+  var n = nudgeData(); if(!n) return;
+  if(nudge.skipped >= 3 && quietDays() % 3) return;   // never nag: after three "not today" in a row, only every third day
+  nudge.shownOn = todayKey; nudgeSave();
+  var c = document.createElement("div"); c.id = "quietNudge"; c.className = "fr-hint"; c.setAttribute("role", "dialog"); c.setAttribute("aria-label", n.title);
+  c.innerHTML = '<b>'+esc(n.title)+'</b><p>'+esc(n.text)+'</p><div class="row"><button type="button" class="no" id="qnLater">Not today</button><button type="button" class="go" id="qnGo">'+esc(n.go)+'</button></div><button type="button" class="qn-off" id="qnOff">Stop these reminders</button>';
+  document.body.appendChild(c);
+  c.querySelector("#qnLater").addEventListener("click", function(){ nudge.skipped++; nudgeSave(); c.remove(); });
+  c.querySelector("#qnOff").addEventListener("click", function(){ nudge.off = true; nudgeSave(); c.remove(); toast("Welcome-back reminders are off. You can turn them on again in Planner."); });
+  c.querySelector("#qnGo").addEventListener("click", function(){ nudge.skipped = 0; nudgeSave(); c.remove(); nudgeAct(n.act); });
+}
+function nudgeAct(a){
+  if(a==="pomo"){
+    if(!(timerState.running || timerState.accMs>0 || timerState.studyMs>0)){ timerState.mode = "pomo"; timerState.preset = 0; timerState.phase = "focus"; timerState.cycle = 0; timerSave(); renderDashboard(); }
+    setTimeout(function(){ var b = document.getElementById("timerToggleBtn"); if(b) b.click(); }, 250);
+  } else if(a==="catch"){ setTab("planner"); }
+  else if(a==="today"){ plannerView = "daily"; lastSched = "daily"; setTab("planner"); }
+  else if(a==="light" && studyPlan){ plannerEditing = true; wiz = wizFromPlan(studyPlan); wiz.step = 5; setTab("planner"); }
+  else setTab("planner");
+}
+setTimeout(nudgeShow, 3500);
+document.addEventListener("visibilitychange", function(){ if(document.visibilityState==="visible") setTimeout(nudgeShow, 800); });
+
 
 function renderPlannerHome(host){
   var plan = studyPlan, states = subjectStates(plan), body;
@@ -14022,6 +14086,7 @@ function plannerAction(a, el, sure){
     case "iNext": insWeek = toKey(addDays(parseKey(insWeek || toKey(sundayOf(parseKey(todayKey)))), 7)); break;
     case "iNow": insWeek = null; break;
     case "remon": remToggle(); return;
+    case "nudgeon": nudge.off = !nudge.off; nudgeSave(); break;
     case "remlead": remState.lead = +el.value; remSave(); break;
     case "remeod": remState.eod = el.value!=="off"; if(el.value!=="off") remState.eodTime = el.value; remSave(); break;
     case "remtest": remNotify("Study reminder test", "This is how your reminders will look.", "rem-test"); toast("Test reminder sent."); return;
@@ -14763,7 +14828,7 @@ function renderSubTabs(){
 }
 function setTab(id){
   if(!VIEW_TO_GROUP[id]) id = "dashboard";
-  if(id !== "dashboard"){ var ph = document.getElementById("planHint"); if(ph) ph.remove(); }
+  if(id !== "dashboard"){ var ph = document.getElementById("planHint"); if(ph) ph.remove(); var qn = document.getElementById("quietNudge"); if(qn) qn.remove(); }
   if(id==="dashboard" && activeTab!=="dashboard") dashMore = false;
   activeTab = id;
   renderTabs();
@@ -16244,7 +16309,7 @@ function cloudSignIn(){
 }
 // removes this account's study data from the phone (the cloud copy is untouched) so the next person starts clean.
 // Device-level things stay: the free-trial start, store purchases, first-run flags and analytics choice.
-var WIPE_KEYS = {"dossier.lastBackup.v1":1, "dossier.prerestore.v1":1, "dossier.reminders.v1":1, "dossier.wizdraft.v1":1, "dossier.planBackup.v1":1, "dossier.timer.v2":1, "dossier.progressReset.v1":1, "dossier.noPlanAsk.v1":1, "dossier.planHint.v1":1, "dossier.bkpNudge.v1":1, "dossier.help.log":1};
+var WIPE_KEYS = {"dossier.lastBackup.v1":1, "dossier.prerestore.v1":1, "dossier.reminders.v1":1, "dossier.wizdraft.v1":1, "dossier.planBackup.v1":1, "dossier.timer.v2":1, "dossier.progressReset.v1":1, "dossier.noPlanAsk.v1":1, "dossier.planHint.v1":1, "dossier.bkpNudge.v1":1, "dossier.help.log":1, "dossier.nudge.v1":1};
 function cloudWipeLocal(signedOut){
   cloudUnwatch(); clearTimeout(cloud.timer); cloud.user = null;   // nothing may sync while the phone is being cleared
   try{ Object.keys(localStorage).forEach(function(k){ if(CLOUD_KEY_RE.test(k) || WIPE_KEYS[k]) localStorage.removeItem(k); }); }catch(e){}
@@ -16525,7 +16590,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "220";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "221";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
