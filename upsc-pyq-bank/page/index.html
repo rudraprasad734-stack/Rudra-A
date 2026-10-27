@@ -16073,7 +16073,7 @@ function weekBodyHtml(ws){
     return '<span class="wk-bar"><i class="'+(d.v>0 && d.k===ws.best.k ? "best" : (d.fut ? "fut" : (d.rest && !d.v ? "rest" : "")))+'" style="height:'+h+'px"></i><small>'+"MTWTFSS".charAt(i)+'</small></span>';
   }).join("");
   var ss = streakStats(studyMinutesByDay());
-  return '<div class="wk-num"><b>'+esc(fmtDurMin(ws.total))+'</b>'+(ws.prev > 0 || ws.total > 0 ? '<span class="wk-diff'+(diff<0 ? " dn" : "")+'">'+(diff>=0 ? "▲ " : "▼ ")+esc(fmtDurMin(Math.abs(diff)))+' vs last week</span>' : '')+'</div>'+
+  return '<div class="wk-num"><b>'+esc(fmtDurMin(ws.total))+'</b>'+(ws.prev > 0 ? '<span class="wk-diff'+(diff<0 ? " dn" : "")+'">'+(diff>=0 ? "▲ " : "▼ ")+esc(fmtDurMin(Math.abs(diff)))+' vs last week</span>' : '')+'</div>'+
     '<div class="wk-bars">'+bars+'</div>'+
     '<div class="wk-facts"><span><b>'+ws.chapters+'</b>chapter'+(ws.chapters===1 ? "" : "s")+' finished</span><span><b>'+(ws.best.k ? DOW_SHORT[dowOf(ws.best.k)] : "–")+'</b>best day</span><span><b>'+(ss.cur>0 ? "🔥 " : "")+ss.cur+'</b>day streak</span></div>'+
     '<div class="wk-tip"><b>💡 For next week</b>'+esc(weekAdvice(ws))+'</div>';
