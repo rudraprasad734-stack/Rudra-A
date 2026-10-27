@@ -321,6 +321,7 @@
     background:var(--drawer-bg, linear-gradient(#10211b,#0a1812)); color:#fff; padding:calc(26px + env(safe-area-inset-top,0px)) 18px calc(20px + env(safe-area-inset-bottom,0px));
     transform:translateX(-102%); visibility:hidden; transition:transform .25s ease, visibility 0s .25s; display:flex; flex-direction:column;}
   body.menu-open #drawer{transform:none; visibility:visible; transition:transform .25s ease;}
+  #drawer .dr-foot{margin-top:auto; padding-top:22px; text-align:center; font-size:12px; letter-spacing:.04em; color:rgba(255,255,255,.55);}
   body.menu-open #drawerDim{opacity:1; visibility:visible; transition:opacity .25s;}
   @media (prefers-reduced-motion: reduce){ #drawer,#drawerDim{transition:none;} }
   .dr-who{text-align:center; margin-bottom:14px;}
@@ -1474,6 +1475,7 @@ html.sp-on #app,html.sp-on #toast{visibility:hidden}
   <aside id="drawer" aria-label="Menu" aria-hidden="true">
     <div class="dr-who"><div class="dr-brand">CSE Companion</div><div class="dr-date" id="topbarDate">&mdash;</div><div class="dr-av" aria-hidden="true">&#9733;</div><small class="greet"><button type="button" class="profile-btn" id="profileBtn"></button></small></div>
     <nav id="tabs" aria-label="Sections"></nav>
+    <div class="dr-foot">&copy; 2026 CSE Companion</div>
   </aside>
 
   <main>
@@ -16594,7 +16596,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "221";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "222";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
