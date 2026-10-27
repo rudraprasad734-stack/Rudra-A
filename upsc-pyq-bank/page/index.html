@@ -16810,7 +16810,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "225";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "226";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -17005,10 +17005,12 @@ function billingBuy(){
 }
 function billingManage(){ window.open("https://play.google.com/store/account/subscriptions?sku="+SUB_SKU+"&package=in.csecompanion.app", "_blank"); }
 // ---- web payments (Razorpay): one payment = one year, saved against the Google account, so it unlocks every phone and computer ----
-var API_BASE = "https://asia-south1-upsc-companion-3adb3.cloudfunctions.net/api", WEBENT_KEY = "dossier.webent.v1", RZP_JS = "https://checkout.razorpay.com/v1/checkout.js";
+var API_BASE = "https://cse-companion-pay.rudraprasad734.workers.dev", WEBENT_KEY = "dossier.webent.v1", RZP_JS = "https://checkout.razorpay.com/v1/checkout.js";
 var WEB_PRICE_FALLBACK = "₹299 for one year (about ₹25 a month)";
 // Switch for charging on the website. false = the website stays free (nothing is locked there) until the payment server is deployed; flip to true then (see firebase/WEB-PAYMENTS.md, step 6).
-var WEB_PAY_ON = devHook("__webPayOn") !== undefined ? !!devHook("__webPayOn") : false;
+// Private test switch: opening csecompanion.in/?paytest=1 turns the payment screens on for this phone only (?paytest=0 turns them off again). Everyone else is unaffected.
+try{ var ptm = /[?&]paytest=([01])/.exec(location.search); if(ptm){ if(ptm[1]==="1") localStorage.setItem("dossier.paytest.v1", "1"); else localStorage.removeItem("dossier.paytest.v1"); } }catch(e){}
+var WEB_PAY_ON = devHook("__webPayOn") !== undefined ? !!devHook("__webPayOn") : lsGet("dossier.paytest.v1")==="1";
 var WEB = {until:0, uid:"", loaded:false, busy:false, err:"", cfg:null, t0:Date.now()};
 (function(){ var c = lsGetJSON(WEBENT_KEY, null); if(c && c.uid){ WEB.until = +c.until || 0; WEB.uid = c.uid; } })();
 function webEntSave(){ lsSet(WEBENT_KEY, JSON.stringify({uid:WEB.uid, until:WEB.until})); }
