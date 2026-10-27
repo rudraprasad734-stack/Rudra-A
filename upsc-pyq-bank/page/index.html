@@ -302,9 +302,9 @@
   body.dash-timer .timer-card > .timer-set select{pointer-events:auto;}
   /* calm mode: controls fade away after a moment; a tap on the screen brings them back */
   body.dash-timer #menuBtn, body.dash-timer #dashFab, body.dash-timer .timer-card > .timer-mode, body.dash-timer .timer-card > .timer-total,
-  body.dash-timer .timer-card > .timer-phase, body.dash-timer .timer-card > .timer-set, body.dash-timer .timer-card > .timer-btns, body.dash-timer .timer-card .timer-display{transition:opacity .7s ease;}
+  body.dash-timer .timer-card > .timer-phase, body.dash-timer .timer-card > .timer-set, body.dash-timer .timer-card > .timer-btns, body.dash-timer .timer-card > .goal-strip, body.dash-timer .timer-card .timer-display{transition:opacity .7s ease;}
   body.dash-timer.ui-sleep #menuBtn, body.dash-timer.ui-sleep #dashFab, body.dash-timer.ui-sleep .timer-card > .timer-mode, body.dash-timer.ui-sleep .timer-card > .timer-total,
-  body.dash-timer.ui-sleep .timer-card > .timer-phase, body.dash-timer.ui-sleep .timer-card > .timer-set, body.dash-timer.ui-sleep .timer-card > .timer-brk, body.dash-timer.ui-sleep .timer-card > .timer-btns{opacity:0 !important; pointer-events:none !important;}
+  body.dash-timer.ui-sleep .timer-card > .timer-phase, body.dash-timer.ui-sleep .timer-card > .timer-set, body.dash-timer.ui-sleep .timer-card > .timer-brk, body.dash-timer.ui-sleep .timer-card > .goal-strip, body.dash-timer.ui-sleep .timer-card > .timer-btns{opacity:0 !important; pointer-events:none !important;}
   body.dash-timer #view-dashboard > *:not(.timer-card){display:none;}
   body.dash-timer #view-dashboard .timer-card{position:fixed; inset:0; z-index:5; height:auto; min-height:0; margin:0; border-radius:0; border:0;}
   body.dash-timer .timer-card > .timer-mode, body.dash-timer .timer-card > .timer-total{top:calc(64px + env(safe-area-inset-top,0px));}
@@ -1353,6 +1353,7 @@
   @media (max-width:400px){ .plrow{grid-template-columns:minmax(0,1fr) auto;} .plrow .pt{grid-column:1 / -1;} }
 
   /* ===== today's goal strip, week card, falling behind ===== */
+  .goal-strip.hide{display:none;}
   .goal-strip{position:absolute; left:14px; right:14px; top:calc(112px + env(safe-area-inset-top,0px)); z-index:6; color:#fff;}
   .goal-strip .gs-top{display:flex; align-items:center; gap:12px; padding:10px 14px; border-radius:18px; background:rgba(8,24,28,.78); border:1px solid rgba(46,230,214,.35); backdrop-filter:blur(10px); cursor:pointer;}
   .gs-ring{position:relative; flex:none; display:inline-grid; place-items:center;} .gs-ring svg{position:absolute; inset:0;} .gs-ring b{position:relative; font-size:12px; font-weight:800;}
@@ -15292,7 +15293,7 @@ function timerUi(){
   var dw = document.getElementById("timerDialWrap"); if(dw){ dw.classList.toggle("running", st.running); }
   Array.prototype.forEach.call(document.querySelectorAll("[data-tmode]"), function(b){ b.classList.toggle("on", b.getAttribute("data-tmode")===st.mode); b.disabled = started; });
   var ps = document.getElementById("pomoPreset"); if(ps) ps.disabled = started;
-  Array.prototype.forEach.call(document.querySelectorAll(".timer-mode, .timer-set"), function(e){ e.classList.toggle("hide", started); });
+  Array.prototype.forEach.call(document.querySelectorAll(".timer-mode, .timer-set, .goal-strip"), function(e){ e.classList.toggle("hide", started); });
   applyUiStage(); ambSync();
 }
 function timerTick(){
@@ -16136,7 +16137,7 @@ function bindGoal(host){
   if(host._goal) return; host._goal = true;
   host.addEventListener("click", function(e){
     var g = e.target.closest ? e.target.closest("[data-goal]") : null;
-    if(g){ var a = g.getAttribute("data-goal"); if(a==="edit") openGoalModal(); else if(a==="rev"){ var r = host.querySelector(".dx-rev"); if(r) r.scrollIntoView({block:"center", behavior:"smooth"}); } return; }
+    if(g){ var a = g.getAttribute("data-goal"); if(a==="edit") openGoalModal(); else if(a==="rev"){ dashMore = true; applyDashMode(); setTimeout(function(){ var r = host.querySelector(".dx-rev"); if(r) r.scrollIntoView({block:"center", behavior:"smooth"}); }, 250); } return; }
     var w = e.target.closest ? e.target.closest("[data-wk]") : null;
     if(w && w.getAttribute("data-wk")==="share") shareWeek(weekStats(toKey(mondayOf(parseKey(todayKey)))));
   });
