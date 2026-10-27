@@ -13,7 +13,7 @@ async function rzp(env, method, path, body) {
     body: body ? JSON.stringify(body) : undefined
   });
   const j = await r.json().catch(() => ({}));
-  if (!r.ok) { const e = new Error((j.error && j.error.description) || "Razorpay error"); e.status = 500; throw e; }
+  if (!r.ok) { console.error("Razorpay refused", r.status, (j.error && j.error.description) || ""); const e = new Error("The payment service could not be reached. Please try again in a moment."); e.status = 502; throw e; }
   return j;
 }
 
@@ -43,6 +43,7 @@ export default {
     if (request.method === "OPTIONS") return new Response(null, { status: 204, headers: cors });
     if (request.method !== "POST") return json({ error: "POST only" }, 405, cors);
     try {
+      if (+request.headers.get("Content-Length") > 200000) return json({ error: "Too large" }, 413, cors);
       const a = build(env);
       if (path === "/razorpayWebhook") {
         const out = await a.webhook(await request.text(), request.headers.get("x-razorpay-signature"));
