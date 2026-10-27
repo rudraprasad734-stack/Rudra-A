@@ -16041,8 +16041,9 @@ function openGoalModal(){
 function weekStats(monKey){
   var m = studyMinutesByDay(), days = [], total = 0, best = {k:"", v:0}, studyDays = 0, i, k;
   for(i=0;i<7;i++){ k = toKey(addDays(parseKey(monKey), i)); var v = k > todayKey ? 0 : (m[k] || 0); days.push({k:k, v:v, rest:isRestDayKey(k), fut:k > todayKey}); total += v; if(v > 0) studyDays++; if(v > best.v) best = {k:k, v:v}; }
+  // a week still in progress is compared with the same days of last week, not the whole of it
   var prevMon = toKey(addDays(parseKey(monKey), -7)), prev = 0;
-  for(i=0;i<7;i++) prev += m[toKey(addDays(parseKey(prevMon), i))] || 0;
+  for(i=0;i<7;i++){ if(toKey(addDays(parseKey(monKey), i)) > todayKey) break; prev += m[toKey(addDays(parseKey(prevMon), i))] || 0; }
   var end = toKey(addDays(parseKey(monKey), 6)), chapters = 0;
   Object.keys(studyProgress.topics || {}).forEach(function(id){ var t = studyProgress.topics[id]; if(t && t.status==="completed" && t.completedAt && t.completedAt >= monKey && t.completedAt <= end) chapters++; });
   var missed = {}; studySessions.forEach(function(x){ if(x.kind==="study" && x.status==="missed" && x.date >= monKey && x.date <= end) missed[x.subject] = (missed[x.subject] || 0) + 1; });
@@ -16786,7 +16787,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "223";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "224";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
