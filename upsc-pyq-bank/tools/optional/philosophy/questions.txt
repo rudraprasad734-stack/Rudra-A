@@ -1,0 +1,664 @@
+# Philosophy optional: past questions, one part per line:  year|paper|qno|marks|text
+# #PREFIX|year|paper|question number|instruction printed above the question
+# Source: official UPSC Main papers 2016-2026 (English version), checked page by page against the scans.
+# Each question adds up to 50 marks (the builder refuses otherwise).
+#PREFIX|2016|1|1|Answer the following in about 150 words each :
+2016|1|1(a)|10|What is the logical necessity for Locke to introduce the concept of secondary qualities? Give reasons for your answer.
+2016|1|1(b)|10|Examine Kant's criticism on Descartes' view of Self.
+2016|1|1(c)|10|Why does Wittgenstein reject the possibility of private language?
+2016|1|1(d)|10|Explain verification theory. Does it lead to elimination of metaphysics?
+2016|1|1(e)|10|Discuss Quine's attack on the analytic-synthetic distinction.
+2016|1|2(a)|20|Does Aristotle treat matter as a 'Substance'? Give reasons for your answer.
+2016|1|2(b)|15|Critically examine Hume's views on the relation of cause and effect.
+2016|1|2(c)|15|Discuss Sartre's notion of 'Nothingness'.
+2016|1|3(a)|20|Does Plato's 'Theory of Form' explain the 'change' and 'sensibility' of matter? Give reasons for your answer.
+2016|1|3(b)|15|What, according to Kant, are 'pure concepts'? Examine their role in the process of knowing.
+2016|1|3(c)|15|Explain Russell's view that "the physical object is a logical construction from sense-data". Why does he call his metaphysical view 'neutral monism'?
+2016|1|4(a)|20|What, according to Husserl, is the task of a philosopher? Do you think his methods are relevant to philosophy? Discuss.
+2016|1|4(b)|15|What is Hegel's view on God? Do you think that his interpretation of God was contributive to the colonial and imperial expansionist designs? Explain.
+2016|1|4(c)|15|Discuss the various stances on God taken by Rationalists and Empiricists.
+#PREFIX|2016|1|5|Answer the following in about 150 words each :
+2016|1|5(a)|10|Differentiate the concept of 'Kaivalya' as discussed in Jaina and Yoga philosophies.
+2016|1|5(b)|10|How does 'Kṣaṇikavāda' strengthen the arguments for 'Nairātmyavāda'? Explain.
+2016|1|5(c)|10|Critically examine the role of 'Prakṛti' in the process of evolution.
+2016|1|5(d)|10|Examine Jaina stance of 'Naya'. How does it differ from 'Syādvāda'?
+2016|1|5(e)|10|Evaluate Śaṅkara's position on Īśvara.
+2016|1|6(a)|20|Does the 'Doctrine of Dependent Origination' reconcile the two extreme views on the law of causation, namely Satkāryavāda and Asatkāryavāda? Give reasons for your answer.
+2016|1|6(b)|15|Can the 'Tattvārtha' theory of Jainism be acceptable for scientific explanations? Explain.
+2016|1|6(c)|15|Is the doctrine of 'Self' acceptable in the modern age of science and reason? Examine the view in the light of Indian philosophy.
+2016|1|7(a)|20|Discuss Aurobindo's views on 'Evolution' and 'Involution'. How do they differ from traditional Yoga philosophy?
+2016|1|7(b)|15|What would be Cārvāka's view on Vyāpti? Can this view be acceptable to the Naiyāyikas? Give reasons for your answer.
+2016|1|7(c)|15|What is the logical necessity for the Mīmāṃsakas to treat 'Arthāpatti' as an independent Pramāṇa? Discuss.
+2016|1|8(a)|20|How do the Naiyāyikas justify the introduction of 'Abhāva' as an independent category? Explain.
+2016|1|8(b)|15|What are Kleśas? How can these be eliminated? Explain.
+2016|1|8(c)|15|Give a critical exposition of the concept of 'Brahman' as discussed by Śaṅkara, Rāmānuja and Mādhava.
+#PREFIX|2016|2|1|Answer all of the following questions in about 150 words each :
+2016|2|1(a)|10|"Sovereignty is the supreme power over citizens and subjects, unrestrained by law." Discuss.
+2016|2|1(b)|10|A well-ordered society, according to Rawls, is effectively regulated by a public conception of justice. Do you agree? Give reasons.
+2016|2|1(c)|10|"Socialism itself is the fulfilment of democracy." Analyse.
+2016|2|1(d)|10|Evaluate the statement that all human beings have certain unalienable rights.
+2016|2|1(e)|10|"The goal in punishing should be to reform the individual." Comment.
+2016|2|2(a)|15|Is liberty a positive and equal opportunity of self-realization? Discuss.
+2016|2|2(b)|15|On what grounds does Laski criticize Austin's concept of sovereignty?
+2016|2|2(c)|20|"The right of free speech implies the genuine independence of the judiciary and its complete separation from the executive." Evaluate.
+2016|2|3(a)|20|Is the State an agency for expressing the will of the ruling classes? Examine.
+2016|2|3(b)|15|Can we consider "freedom from domination" as one of the justifications for multiculturalism? Give reasons for your answer.
+2016|2|3(c)|15|Is it possible to measure social progress independent of economic development? Discuss.
+2016|2|4(a)|15|"To me the female sex is not the weaker sex. It is the nobler of the two." Evaluate this statement of Gandhi.
+2016|2|4(b)|15|Do you agree that women become empowered through collective reflection and decision-making? Discuss.
+2016|2|4(c)|20|How did Ambedkar analyse the caste system from the historical and social perspectives? Explain.
+#PREFIX|2016|2|5|Answer the following questions in about 150 words each :
+2016|2|5(a)|10|Critically discuss the view that 'modern sensibility and total obedience to a despotic God' do not go hand in hand.
+2016|2|5(b)|10|"World-religion is a spiritualistic and humanistic composite." Evaluate.
+2016|2|5(c)|10|Is Religious absolutism a threat to Religious pluralism? Discuss.
+2016|2|5(d)|10|Buddhism disbelieves in the immortality of soul, but accepts the phenomenon of rebirth. Examine.
+2016|2|5(e)|10|Faith means human awareness of God; but it cannot be irrational. Analyse.
+2016|2|6(a)|15|The content of revelation is a body of truths expressed in statements or propositions. But it cannot be against reason. Discuss.
+2016|2|6(b)|20|Compare and contrast the relation of man to the world in the oriental religions.
+2016|2|6(c)|15|Show how the attributes of immanence and transcendence of God go with omnipresence and infinitude.
+2016|2|7(a)|20|State and evaluate the nature and validity of mystic experience.
+2016|2|7(b)|15|"Moral principles function better when they remain independent and unconnected with religion." Discuss.
+2016|2|7(c)|15|"It would be self-contradictory to say that the most perfect conceivable being lacks the attribute of existence." Analyse.
+2016|2|8(a)|20|"If God is all-powerful, God must wish to abolish all evils; but moral and natural evils are rampant in the world." How would a theist react to this?
+2016|2|8(b)|15|Among the different views of religious language, which one is more satisfactory and why?
+2016|2|8(c)|15|"The natural world is as complexly and manifestly designed as a watch." Evaluate.
+#PREFIX|2017|1|1|Write short answers to the following in about 150 words each :
+2017|1|1(a)|10|Elaborate Hegel's dictum: "All identity is identity and difference."
+2017|1|1(b)|10|Explain Husserl's reasons for advocating phenomenological reductionism.
+2017|1|1(c)|10|How is the statement, 'I met a man', semantically problematic for Russell? How does he account for the meaningfulness of this statement?
+2017|1|1(d)|10|In what sense can ideas be both immanent and transcendent? Discuss in this context Plato's theory of universals and particulars.
+2017|1|1(e)|10|Show how Hume's analysis of experience leaves no ground for belief in any permanent reality either physical or mental.
+2017|1|2(a)|20|How is 'all bodies are extended' an analytic judgement but 'all bodies are heavy' a synthetic judgement? Is 'every event has a cause' an analytic or a synthetic judgement? Explain.
+2017|1|2(b)|15|What is Wittgenstein's picture theory of meaning? What are his reasons for giving up this theory and suggesting the use theory of meaning?
+2017|1|2(c)|15|Explain Aristotle's theory of form and matter. How does it help him resolve the problem of change and permanence?
+2017|1|3(a)|20|Elaborate Kant's theory of space and time. How does this theory enable him to explain how mathematical propositions can be both synthetic and a priori?
+2017|1|3(b)|15|What, according to Descartes, is a 'clear and distinct idea'? What is the epistemological status of clear and distinct ideas? Does this account help Descartes prove that material objects exist? Explain.
+2017|1|3(c)|15|What are the two dogmas of empiricism that Quine attacks? What are his arguments against what he calls the second dogma?
+2017|1|4(a)|20|How does Locke draw a distinction between primary and secondary qualities? Does he also draw a distinction between the idea of primary qualities and primary qualities as well as the idea of secondary qualities and secondary qualities? Discuss.
+2017|1|4(b)|15|Does the sentence, 'Whatever is coloured is extended', satisfy the criterion of meaningfulness proposed by the logical positivists? Explain.
+2017|1|4(c)|15|Discuss Heidegger's concept of authenticity and explain how an inauthentic Dasein regains the lost self?
+#PREFIX|2017|1|5|Write short answers to the following in about 150 words each :
+2017|1|5(a)|10|"The soul is nothing but conscious body." What are the reasons for Cārvāka in holding this view?
+2017|1|5(b)|10|What are the necessary characteristics of padārtha according to Vaiśeṣika philosophy?
+2017|1|5(c)|10|Explain the conditions of valid hetu as propounded in Nyāya philosophy.
+2017|1|5(d)|10|What is meant by "yogaścittavṛttinirodhaḥ"? Explain cittavṛtti and its effects according to Yoga philosophy.
+2017|1|5(e)|10|Elucidate the role of catuṣkoṭi in explaining the nature of reality according to Mādhyamika school of thought.
+2017|1|6(a)|20|Explain the early Nyāya definition of perception. Why is this definition considered inadequate by the later Naiyāyikas?
+2017|1|6(b)|15|"The Jaina metaphysics is relativistic and realistic pluralism." Discuss.
+2017|1|6(c)|15|What are the arguments of the Buddhists to establish Kṣaṇikavāda? Do they necessarily lead to kṛtanāśa and akṛtābhyupagama?
+2017|1|7(a)|20|How do Mādhyamikas, Yogācāravādins and Sarvāstivādins differ among themselves concerning the nature of reality? How do Sarvāstivādins differ among themselves with regard to knowledgeability of reality?
+2017|1|7(b)|15|How does Sri Aurobindo's integral yoga help in the realization of supramental consciousness? Discuss.
+2017|1|7(c)|15|Distinguish between vivartavāda and pariṇāmavāda with reference to causation and explain how in the light of these theories Śaṅkara and Rāmānuja differ on the status of the world.
+2017|1|8(a)|20|Explain the theory of Validity of Knowledge (prāmāṇyavāda) according to Mīmāṃsakas. How did they criticize the Nyāya theory of Validity?
+2017|1|8(b)|15|Explain Rāmānuja's conception of God and examine the difficulties he faced in explaining the relation of God to matter and spirit.
+2017|1|8(c)|15|Given its theory of causation, is it possible for Sāṃkhya to explain the presence of consciousness in the world? Discuss.
+#PREFIX|2017|2|1|Answer the following questions in about 150 words each :
+2017|2|1(a)|10|Discuss in the context of anarchy whether the freedom of an individual is consistent with the sovereignty of the State.
+2017|2|1(b)|10|Discuss whether a blending of monarchy with democracy is conceivable to avoid their undesirable defects for making the governance better for citizens and State.
+2017|2|1(c)|10|Is caste discrimination a result of the superiority complex of a privileged class of the society or of religious rituals? Discuss with reference to the views propounded by Dr. B.R. Ambedkar.
+2017|2|1(d)|10|Out of rights and duties, which one is prior to the other? Discuss in the context of accountability.
+2017|2|1(e)|10|Discuss the different aspects of the fundamental distinction between democratic equality and the Marxian notion of equality.
+2017|2|2(a)|20|Do you agree with the view that secularism as a western ideal is redundant in the Indian context? Discuss in the context of the multicultural Indian society.
+2017|2|2(b)|15|Critically evaluate whether the ideal of social progress gives a secondary significance to an individual's freedom over his duties.
+2017|2|2(c)|15|Discuss whether Kautilya's concept of sovereignty turns into a despotic rule. How far is it comparable to Bodin's concept? Discuss.
+2017|2|3(a)|20|Does Marxism curb individual freedom in the name of protecting social justice? Discuss.
+2017|2|3(b)|15|Can you justify capital punishment for crimes like rape, murder and corruption? Discuss.
+2017|2|3(c)|15|Is empowerment of women a sufficient means to their equal rights to land, property and divorce? Discuss in the context of religious sanctions.
+2017|2|4(a)|20|Evaluate the concept of social development as rooted in ethical principles against the concept of social progress being based on economic and political ideals.
+2017|2|4(b)|15|How far do Marx, Gandhi and Amartya Sen agree and disagree on the concept of justice in the Indian democracy? Discuss.
+2017|2|4(c)|15|Will a severe punishment for crimes against women change the mind-set of society? Justify your position.
+#PREFIX|2017|2|5|Answer the following questions in about 150 words each :
+2017|2|5(a)|10|Does a committed religious person go against social morality? Discuss from the moral perspective.
+2017|2|5(b)|10|How do you define a non-theological concept of evil? Explain.
+2017|2|5(c)|10|Is God necessary for religion? Justify your answer.
+2017|2|5(d)|10|Discuss whether the doctrine of immortality of soul is indispensable for a religion.
+2017|2|5(e)|10|Critically discuss the relationship of man with God in the Yoga system of philosophy.
+2017|2|6(a)|20|Is there an essential difference between the concept of Liberation in theological and non-theological approaches to life? Discuss.
+2017|2|6(b)|15|Does religion guarantee the absolute truth? Discuss in the context of religious pluralism.
+2017|2|6(c)|15|Compare and contrast the different forms of cosmological argument for the existence of God.
+2017|2|7(a)|20|Is not the language of analogies more confusing and the language of symbols more unintelligible? Evaluate it in the case of a religious language.
+2017|2|7(b)|15|What will be the authority and acceptance of the absolute ethical values in the non-theological system of social practices? Discuss.
+2017|2|7(c)|15|Discuss whether the voluntarist's theories of faith are adequate.
+2017|2|8(a)|20|Can a religious person take an elastic view about religious ideals, principles and practices, etc. which are supposed to be eternal? Will it make the religion progressive or will it demolish its authority? Discuss critically.
+2017|2|8(b)|15|What is a non-theological concept of God? How is it different from a theological concept of God? Discuss with arguments.
+2017|2|8(c)|15|In order to make expressions of religious experiences communicable, what kind of language needs to be constructed and used? Explain.
+#PREFIX|2018|1|1|Write short answers to the following in about 150 words each:
+2018|1|1(a)|10|Are the two truths 'The Sun will rise tomorrow' and '2+2=4' of the same necessity for Hume? Give reasons in favour of your answer.
+2018|1|1(b)|10|Is there any place for freedom in Leibniz's philosophy, when he speaks of 'pre-established harmony'? Discuss.
+2018|1|1(c)|10|How does the notion of 'family resemblance' help Wittgenstein to uphold that 'Language is a game'? Discuss.
+2018|1|1(d)|10|How does Sartre connect inauthenticity with bad faith? Why does Sartre show that inauthenticity and bad faith lead to alienation? Discuss.
+2018|1|1(e)|10|How does Strawson explain the concept of person in his philosophy? Discuss.
+2018|1|2(a)|20|What is the reason for the difference in the definitions and classifications of substances made by Descartes, Spinoza and Leibniz in spite of the fact that they all belonged to the rationalist school of thought? Discuss.
+2018|1|2(b)|15|Explain the significance of the Kantian dictum, 'Understanding makes Nature'. How far do you agree that Hegel's Absolutism is the culmination of the Kantian Dualism? Discuss. Give reasons in favour of your answer.
+2018|1|2(c)|15|How does Quine show that the notion of a priori knowledge as discussed by Kant is 'a metaphysical article of faith'? Give reasons for your answer.
+2018|1|3(a)|20|How does Berkeley establish that Mind and its ideas alone are real? How do Moore and Russell react to Berkeley's view in this regard? Do you find any difference between Moore's reaction and Russell's one? Discuss.
+2018|1|3(b)|15|How do the logical positivists show that metaphysical sentences are meaningless? Can their verification theory of meaning account for the meaningfulness of all scientific sentences? Discuss.
+2018|1|3(c)|15|How does Wittgenstein apply the distinction between 'saying' and 'showing' to point to a single way of apprehending the most decisive problems of philosophy? Is he justified? Give reasons for your answer.
+2018|1|4(a)|20|What is Epoché? How does Heidegger reject this method of phenomenological reduction? Explain Heidegger's concept of 'being in the world' as opposed to the concept of a transcendental ego.
+2018|1|4(b)|15|Is the relation between the Idea and the World as discussed by Plato logically consistent? Discuss Aristotle's views regarding this and also give arguments in favour of your answer.
+2018|1|4(c)|15|How is Russell's theory of definite description related to his Logical Atomism? Discuss and give reasons for your answer.
+#PREFIX|2018|1|5|Write short answers to the following in about 150 words each:
+2018|1|5(a)|10|How do the Vaiśeṣika philosophers explain the difference of the relationships in the two cases—(i) the brown colour of the table and (ii) the book on the table? Discuss.
+2018|1|5(b)|10|How do the Mādhyamika Buddhists apply the notion of Pratītyasamutpāda to establish their doctrine of Śūnyatā? Discuss.
+2018|1|5(c)|10|What is the difference between the indescribability (Anirvacanīyatā) of Brahman and the indescribability (Anirvacanīyatā) of Māyā in the Advaita Vedānta system? Discuss.
+2018|1|5(d)|10|How do the Buddhists and the Nyāya philosophers explain our knowledge of 'the absence of the jar on the table'? Answer in detail.
+2018|1|5(e)|10|Is Puruṣa one or many? Explain the Sāṃkhya position in this regard and give arguments in support of your answer.
+2018|1|6(a)|20|How do the Naiyāyikas prove the existence of God? Do the Yoga philosophers prove God in the same way? If yes, how? And if no, why? Give reasons for your answer.
+2018|1|6(b)|15|Is it consistent for the Buddhists to admit the theory of Nairātmyavāda and the doctrine of Nirvāṇa simultaneously? Give reasons in favour of your answer.
+2018|1|6(c)|15|How do the Jaina philosophers explain 'bondage'? What, according to them, is the distinction between 'liberated soul' and 'bound soul'? What do the Jainas think about the condition of the 'liberated soul'? Discuss.
+2018|1|7(a)|20|Give a comparative exposition of the concept of Mokṣa as found in the systems of Viśiṣṭādvaita, Dvaita, Śuddhādvaita and Acintyabhedābheda.
+2018|1|7(b)|15|How do the Advaita Vedāntins react to the Prakṛtipariṇāmavāda of the Sāṃkhya philosophy? How do the Sāṃkhyas defend their own position in this regard? Discuss.
+2018|1|7(c)|15|How does Rāmānuja refute the doctrine of Māyā as propounded by Śaṅkara? Why is Māyā needed by both Rāmānuja and Śaṅkara to establish their doctrines? Discuss.
+2018|1|8(a)|20|Does the admission of Svayamprakāśavāda necessarily lead to the admission of Svataḥprāmāṇyavāda? Discuss after the Naiyāyikas, the Mīmāṃsakas and the Advaita Vedāntins.
+2018|1|8(b)|15|Is Cārvāka rejection of inference acceptable to the other systems of Indian philosophy? If not, why? Do you think the views of other systems to be justified? Give reasons for your answer.
+2018|1|8(c)|15|What is Evolution according to Sri Aurobindo? Describe the process of triple transformation and the nature of gnostic being in his philosophy.
+#PREFIX|2018|2|1|Answer the following questions in about 150 words each :
+2018|2|1(a)|10|What is meant by liberal democracy? Does it require deeper principles for social cohesion to balance its own strong affirmation of individual rights? Give reasons from the Indian context.
+2018|2|1(b)|10|Do you subscribe to the view that Indian cultural identity needs to integrate the principles of multi-culturalism and respect for the dignity of each person? Justify your answer.
+2018|2|1(c)|10|It is said that the traditional hold of caste-based groups on Indian social behaviour has survived all attempts to build alternate identities. Discuss in the light of M.K. Gandhi.
+2018|2|1(d)|10|Discuss Kautilya's concept of sovereignty in the light of 'Danda-neeti'.
+2018|2|1(e)|10|What measures do you suggest to eradicate corruption in Indian democracy?
+2018|2|2(a)|20|How far can liberty and equality be considered as distinctive features of democracy? Discuss.
+2018|2|2(b)|15|Critically evaluate Laski's view on sovereignty as a satisfactory position in political theory.
+2018|2|2(c)|15|Do you subscribe to the political ideology of Anarchists? Justify your answer.
+2018|2|3(a)|20|What do you understand by multi-culturalism? How are globalization and multi-culturalism related? How does their relationship affect cultural changes?
+2018|2|3(b)|15|Are Marxian Socialism and individual freedom consistent? Discuss critically.
+2018|2|3(c)|15|What form of humanism do you approve as relevant in the present day context? Discuss in detail.
+2018|2|4(a)|20|"Human rights and human dignity would no longer be the product of a particular culture, rather a common human aspiration for an ideal world." Discuss.
+2018|2|4(b)|15|How do you evaluate gender discrimination in the context of female foeticide?
+2018|2|4(c)|15|Is feminism an ideology for empowerment or for equality? Discuss.
+#PREFIX|2018|2|5|Answer the following questions in about 150 words each :
+2018|2|5(a)|10|In what sense is the secular use of language different from the religious use of language? Discuss.
+2018|2|5(b)|10|How far is it plausible to argue that the anti-theistic religions' stand on the concept of rebirth is philosophically significant?
+2018|2|5(c)|10|Can you justify religion without God? Support your answer.
+2018|2|5(d)|10|Can one claim that there is an inter-relatedness between 'religiosity' and 'immorality'? Discuss.
+2018|2|5(e)|10|Is Hinduism poly-theistic? Give reasons for your answer.
+2018|2|6(a)|20|Distinguish between Exclusivism, Inclusivism and Pluralism with regard to the conflicting truth-claims of different religions.
+2018|2|6(b)|15|"Truth is one, yet people perceive differently." Critically evaluate by considering the present Indian context.
+2018|2|6(c)|15|Does the concept of God entail the existence of God? Examine from the perspective of ontological argument.
+2018|2|7(a)|20|The terms 'Sacred' and 'Holy' have come to serve as generic names for the object of religion. Do you agree that one can have God as the object of religion? Discuss.
+2018|2|7(b)|15|Critically examine Braithwaite's non-cognitive theory of religious language.
+2018|2|7(c)|15|Evaluate the concept of Bhakti (Devotion) as a pathway to attain liberation.
+2018|2|8(a)|20|Compare St. Thomas Aquinas' five ways of knowing God with the arguments of the Nyaya School of Indian Philosophy for the existence of God.
+2018|2|8(b)|15|Critically evaluate the Buddhistic arguments against the existence of God as the creator of the world.
+2018|2|8(c)|15|Explain the significance of religious symbols as transcendent referent that mediates into the cultural, spatial and temporal world.
+#PREFIX|2019|1|1|Write short answers to the following in about 150 words each :
+2019|1|1(a)|10|What does Plato want to prove by his 'Allegory of Cave'?
+2019|1|1(b)|10|Can hallucination be regarded as an intentional act by Husserl? Explain.
+2019|1|1(c)|10|What is the role of dialectics in realizing the truth in Hegel's philosophy?
+2019|1|1(d)|10|How does Descartes prove the existence of things other than himself and God? Discuss.
+2019|1|1(e)|10|Explain Quine's arguments against synthetic-analytic distinction.
+2019|1|2(a)|20|How do the logical positivists account for the meaning of general statements? Can the same account be applied to metaphysical statements? Discuss.
+2019|1|2(b)|15|What are the reasons for developmental changes in substance according to Aristotle? Discuss.
+2019|1|2(c)|15|What do you understand by Spinoza's statement that what is, cannot be other than what it is? Explain.
+2019|1|3(a)|20|Is Dasein authentic existence for Heidegger? How does he relate temporality with Dasein? Discuss.
+2019|1|3(b)|15|Show how Wittgenstein's critique of solipsism culminates in the critique of private language.
+2019|1|3(c)|15|Why is Moore's philosophy called common-sense realism?
+2019|1|4(a)|20|How does Kant argue for the transcendence of Space and Time? Discuss.
+2019|1|4(b)|15|Is there any element of necessity in causal relations according to Hume? Discuss.
+2019|1|4(c)|15|How does Sartre look at the problem of freedom of choice and determinism? Explain.
+#PREFIX|2019|1|5|Write short answers to the following in about 150 words each :
+2019|1|5(a)|10|Justify the status of Abhāva as a category in Vaiśeṣika philosophy.
+2019|1|5(b)|10|How do the Yogācāra Buddhists deny the existence of the external world? Discuss.
+2019|1|5(c)|10|Are the Cārvākas consistent when they hold that inference is not a source of knowledge? Discuss.
+2019|1|5(d)|10|Critically discuss the metaphysical status of a Jīva and a Puruṣa according to Sāṃkhya philosophy.
+2019|1|5(e)|10|How does Mīmāṃsā establish the authority of Vedic knowledge?
+2019|1|6(a)|20|How is reality defined by the Jainas? How is this theory of reality reflected in their view on judgements? Discuss.
+2019|1|6(b)|15|What is the role of Jñānalakṣaṇa-pratyakṣa in explaining Anyathākhyāti?
+2019|1|6(c)|15|What is wrong according to the Cārvākas with the following argument? All men are mortal. Socrates is a man. Therefore, Socrates is mortal. Justify your answer with arguments.
+2019|1|7(a)|20|How does Udayana prove the existence of God through Kāryāt, Āyojanāt, Dhṛtyādeḥ and Śruteḥ? Discuss.
+2019|1|7(b)|15|How would Yoga philosophy comprehend the Citta-levels of a Scientist, a God-realized Devotee and a Self-realized Yogi? Justify your answer.
+2019|1|7(c)|15|What is Pratītyasamutpāda? How do the Buddhists apply this concept to prove that everything is momentary?
+2019|1|8(a)|20|Explain the logical consequences of the metaphysical absolutism of Advaitism.
+2019|1|8(b)|15|Explain the unique position of the Supermind in the metaphysical scheme of Aurobindo's philosophy.
+2019|1|8(c)|15|Which Sāṃkhya proof for the existence of Prakṛti actually shows that there can be only one Prakṛti? Justify your answer.
+#PREFIX|2019|2|1|Answer the following questions in about 150 words each :
+2019|2|1(a)|10|How far do you think John Rawls is continuing with Plato's concept of justice?
+2019|2|1(b)|10|Discuss the status of theocracy in the modern secular state.
+2019|2|1(c)|10|Evaluate Mahatma Gandhi as a political anarchist.
+2019|2|1(d)|10|Is corruption not a form of mass violence? Discuss.
+2019|2|1(e)|10|Can gender equality be realised within a socialist regime? Analyse.
+2019|2|2(a)|20|Do rights make citizens accountable to the State? Argue in the context of the present Indian scenario.
+2019|2|2(b)|15|What are the descriptive and normative perspectives on ideas of multiculturalism?
+2019|2|2(c)|15|Does technological development lead to progress in the ethical standards of the society? Explain.
+2019|2|3(a)|20|Discuss how far does Austin's concept of sovereignty go along with Kautilya's concept of sovereignty.
+2019|2|3(b)|15|Consider critically, that gender discrimination is a rather man-made concept but not naturally endowed.
+2019|2|3(c)|15|What do you consider to be the future of Marxism in the context of the prevalent free market economy?
+2019|2|4(a)|20|Examine whether there is any difference between the views of Mahatma Gandhi and Dr. Babasaheb Ambedkar on the philosophical foundations of secular democracy.
+2019|2|4(b)|15|Does liberty put limitations to equality? Discuss.
+2019|2|4(c)|15|Does capital punishment weaken the doctrine of social justice? Discuss.
+#PREFIX|2019|2|5|Answer the following questions in about 150 words each :
+2019|2|5(a)|10|What is instrumental to self-revelation: Faith or Reason? Justify your position.
+2019|2|5(b)|10|Is religion a uniting force for humanity in the globalizing world as of today? Discuss.
+2019|2|5(c)|10|Can there be a philosophical argument to support violence in the name of religion? Discuss.
+2019|2|5(d)|10|Does a devoted commitment to a religious way of life make man go astray from social morality? Examine.
+2019|2|5(e)|10|State and evaluate the proofs for the existence of God as propounded in Jainism.
+2019|2|6(a)|20|Discuss whether and how does religious symbolism lead to mysticism.
+2019|2|6(b)|15|What role do the concepts of evil and profane play to provide a firm foundation to religion?
+2019|2|6(c)|15|How would a religious person deny the possibility of a religion without God? Discuss.
+2019|2|7(a)|20|Expound and explain the central problem in the discussion between religious pluralists and religious exclusivists.
+2019|2|7(b)|15|Secular ethics cannot fully resolve as to why one should be moral all the time. Examine.
+2019|2|7(c)|15|How far can religious experience be made a topic of public discourse? Analyse.
+2019|2|8(a)|20|State and explain the doctrines of Karma, Rebirth and Reincarnation in Hinduism.
+2019|2|8(b)|15|State and evaluate the personalistic and impersonalistic aspects of God.
+2019|2|8(c)|15|Discuss the relationship between man and God according to any one of the religions in India.
+#PREFIX|2020|1|1|Write short answers to the following in about 150 words each
+2020|1|1(a)|10|How does Aristotle argue for the priority of Form over Matter and Actuality over Potentiality? Critically discuss.
+2020|1|1(b)|10|How does Leibniz's conception of monads bear upon his views on determinism and freedom? Discuss with your own comments.
+2020|1|1(c)|10|What, according to Husserl, is wrong with psychologism? How does Husserl address the problems with psychologism in his phenomenological method?
+2020|1|1(d)|10|Examine the reality of the phenomenal world in the light of Hegel's Absolute Idealism.
+2020|1|1(e)|10|"The Soul of Superman is Good." Critically examine the above statement in the light of logical positivism.
+2020|1|2(a)|20|"I never can catch myself at any time without perception, and never can observe anything but the perception." How does this statement by Hume problematize the philosophical notion of personal identity? How does Kant deal with this problem in his Critique of Pure Reason?
+2020|1|2(b)|15|Critically discuss the following statement by Moore: "If anyone tells us that to say 'Blue exists' is the same thing as to say that 'Both blue and consciousness exist', he makes a mistake and a self-contradictory mistake."
+2020|1|2(c)|15|"The reason that I call my doctrine logical atomism is because the atoms that I wish to arrive at as the sort of last residue in analysis are logical atoms and not physical atoms." Write a note on the nature of atomic facts according to Russell in the light of the above statement.
+2020|1|3(a)|20|What does Kierkegaard mean by saying "Subjectivity is the truth" in the context of the problem of 'the single individual'?
+2020|1|3(b)|15|Evaluate the role of spatio-temporal thinking in objective thinking with reference to Strawson's theory of basic particulars.
+2020|1|3(c)|15|When does Pure Reason enter into the realm of Antinomies according to Kant? Is Kant's notion of Antinomies of Pure Reason a natural culmination of his distinction between Phenomena and Noumena? Give reasons in favour of your answer.
+2020|1|4(a)|20|"You can always make something out of what you have been made into." Critically discuss this statement by Sartre with reference to his views on existentialism.
+2020|1|4(b)|15|"From the necessity of the divine nature there must follow infinitely many things in infinitely many ways." Explain this statement by Spinoza along with some possible criticisms.
+2020|1|4(c)|15|"But could we also imagine a language in which a person could write down or give vocal expression to his inner experiences—his feelings, moods and the rest—for his private use?" Critically discuss the answer offered by Wittgenstein to this question.
+#PREFIX|2020|1|5|Write short answers to the following in about 150 words each
+2020|1|5(a)|10|Examine the concept of Karma according to Jainism. How does it bear upon their conception of Liberation?
+2020|1|5(b)|10|Explain the difference between Samprajñāta Samādhi and Asamprajñāta Samādhi.
+2020|1|5(c)|10|Why is memory not a valid knowledge according to Mīmāṃsā?
+2020|1|5(d)|10|Point out the significance of the five-fold differences in the Dualistic School of Vedānta.
+2020|1|5(e)|10|Discuss the nature and types of matter according to Nimbārka.
+2020|1|6(a)|20|How is Kṣaṇikavāda a logical derivative of Pratītyasamutpāda in Buddhism? Explain.
+2020|1|6(b)|15|Critically evaluate Cārvākas' rejection of Ākāśa as one of the elements of reality and examine their criticism of transmigration of Soul.
+2020|1|6(c)|15|Explain the concepts of 'Anyathāsiddha' and 'Ananyathāsiddha' in the context of Asatkāryavāda.
+2020|1|7(a)|20|"A mango tree is grown out of a mango seed." How will Sāṃkhya system explain this process through their theory of causation by rejecting their rival perspectives?
+2020|1|7(b)|15|How does Buddhism explain Self in terms of Pañcaskandhas? What is Liberation for Buddhism if there is no Soul?
+2020|1|7(c)|15|Explain the differences of conception of Reality between Cārvāka and Jainism.
+2020|1|8(a)|20|What does Aurobindo mean by 'life divine' as a possibility and inevitability?
+2020|1|8(b)|15|Critically evaluate the logical and metaphysical status of Viśeṣa in the context of Vaiśeṣika Philosophy.
+2020|1|8(c)|15|Discuss the nature and relationship of Jīva and Jīva-sākṣī according to non-dualism.
+#PREFIX|2020|2|1|Answer the following questions in about 150 words each:
+2020|2|1(a)|10|Is the concept of 'liberty' realizable in the modern technological society? Explain.
+2020|2|1(b)|10|How far do the liberal democracies safeguard the interests of minorities? Evaluate critically.
+2020|2|1(c)|10|Do you think that secularism requires complete separation of 'religion' and 'state'? Discuss.
+2020|2|1(d)|10|Explain the importance of Bodin's theory of sovereignty.
+2020|2|1(e)|10|Do you think that the prevailing pandemic will lead to anarchism in society? Discuss.
+2020|2|2(a)|20|State and examine the Gandhian concept of social development.
+2020|2|2(b)|15|How far is Marxism as a philosophical doctrine relevant in the present context? Justify your answer.
+2020|2|2(c)|15|Is Indian tradition antagonistic to Individual Rights? Consider it by taking recourse to the doctrine of 'Human Rights'.
+2020|2|3(a)|20|State and examine B.R. Ambedkar's contribution towards social changes in Independent India.
+2020|2|3(b)|15|What do you understand by multiculturalism? Explain the structural characteristics that make a nation multicultural.
+2020|2|3(c)|15|Do you think that retributive theory of punishment is against human rights? Discuss.
+2020|2|4(a)|20|Do you agree that empowering women can eliminate gender discrimination? Discuss.
+2020|2|4(b)|15|State and explain the relevance of the doctrine of sovereignty in times of globalization.
+2020|2|4(c)|15|How far do the social and political regimes condition corrupt practices in a nation-state? Discuss.
+#PREFIX|2020|2|5|Answer the following questions in about 150 words each:
+2020|2|5(a)|10|Discuss the significance of 'Religion' vis-à-vis the present scientific and technological development.
+2020|2|5(b)|10|The concept of 'Immortality' is a basic presupposition of religion. Elaborate your answer.
+2020|2|5(c)|10|Is it acceptable that the History of Religions is the History of Conflicts? Discuss.
+2020|2|5(d)|10|Is there any compatibility between 'Freedom of Will' and 'Omnipotent God'? Discuss.
+2020|2|5(e)|10|What is the importance of religious tolerance in a multicultural pluralistic society? Justify your answer.
+2020|2|6(a)|20|Is the ontological proof for the existence of God by St. Anselm logical? Discuss.
+2020|2|6(b)|15|What is the logical problem of evil? Discuss.
+2020|2|6(c)|15|Critically examine the concept of God as prerequisite for a religion.
+2020|2|7(a)|20|Discuss the nature of God in Hinduism with special reference to Vishishtadvaita (Qualified non-dualism).
+2020|2|7(b)|15|Distinguish between prayer and worship and determine their place in religion.
+2020|2|7(c)|15|What are the basic tenets of faith? Distinguish between faith and belief.
+2020|2|8(a)|20|Does religious language carry cognitive content? Elucidate in detail.
+2020|2|8(b)|15|Are religious beliefs and practices incompatible with moral behaviour? Discuss.
+2020|2|8(c)|15|Do you accept that Knowledge, Action and Devotion are the means to attain liberation in Indian tradition? Discuss.
+#PREFIX|2021|1|1|Write short answers to the following in about 150 words each :
+2021|1|1(a)|10|"There is a red chair." How would Plato explain this statement with the use of his theory of forms? Examine.
+2021|1|1(b)|10|"Potentiality is indefinable" according to Aristotle. Explain the relationship between potentiality and actuality with reference to the above philosophical position by taking the example of a "wooden table".
+2021|1|1(c)|10|"Sensible things are those only which are immediately perceived by sense." Explain Berkeley's theory of knowledge with reference to the above statement.
+2021|1|1(d)|10|Examine the concept of personal identity by Locke.
+2021|1|1(e)|10|"The relation between cause and effect is one of constant conjunction". Examine Hume's criticism of causation in the light of the above statement.
+2021|1|2(a)|20|Discuss Hegel's Dialectical method. Explain how his dialectical method leads him to the Absolute Idealism.
+2021|1|2(b)|15|What according to Logical Positivists are "pseudostatements"? How does one identify "pseudostatements"? Critically discuss with examples.
+2021|1|2(c)|15|Explain how Cartesian formulation of ontological argument is criticised by Kant.
+2021|1|3(a)|20|What are the main arguments put forward by Moore in his paper "A Defence of Common Sense" to prove that there are possible propositions about the world that are known to be true with certainty? Do you think Moore's arguments provide a sufficient response to objections presented by the sceptic against the possibility of knowledge? Give reasons in support of your answer.
+2021|1|3(b)|15|What according to Strawson are basic particulars? What reasons does Strawson offer to believe that 'material bodies' and 'persons' are basic particulars? Critically discuss.
+2021|1|3(c)|15|Critically examine Quine's postulate of empiricism without the dogmas with reference to his 'Two Dogmas of Empiricism'.
+2021|1|4(a)|20|Present a critical exposition of Husserl's criticism of 'natural attitude'. How does Husserl propose to address the problems involved in natural attitude through his phenomenological method?
+2021|1|4(b)|15|"I can always choose, but I ought to know that if I do not choose, I am still choosing". Critically discuss Sartre's conception of choice and responsibility in the light of above statement.
+2021|1|4(c)|15|What does Wittgenstein mean by the statement – "Whereof one cannot speak, thereof one must be silent?" Critically discuss.
+#PREFIX|2021|1|5|Write short answers to the following in about 150 words each :
+2021|1|5(a)|10|Does the seed contain the tree? Discuss with reference to Nyāya-Vaiśeṣika Philosophy.
+2021|1|5(b)|10|Explain with reference to Nyāya Philosophy, the nature of śabda as the advice of āpta (a reliable person).
+2021|1|5(c)|10|Is 'inseparability' (ayuta-siddhatva) a necessary condition or a sufficient condition for defining characteristics (lakṣaṇa) of samavāya (inherence)? Explain with reference to Vaiśeṣika Philosophy.
+2021|1|5(d)|10|Distinguish between pudgala-nairātmyavāda and dharma-nairātmyavāda with reference to Buddhist Philosophy.
+2021|1|5(e)|10|Comment on the bearing of Cārvāka epistemology on the rejection of transcendental entities by them.
+2021|1|6(a)|20|Explain with reference to Yoga Philosophy, the nature of kleśas. How does the removal of these lead to kaivalya?
+2021|1|6(b)|15|Explain the Sāṃkhya view on three guṇas (guṇa-traya) and their modifications.
+2021|1|6(c)|15|What, according to Mīmāṃsakas, is the ontological status of abhāva (absence) and how does one know it? Explain and examine.
+2021|1|7(a)|20|How do the advocates of anirvacanīya-khyāti refute the position of the Naiyāyikas and establish the position of Advaitins regarding the problem of error? Critically discuss.
+2021|1|7(b)|15|If everything is momentary then how do the Buddhists explain the problem of memory and personal identity? Critically discuss.
+2021|1|7(c)|15|Explain the Jain view of seven-fold (sapta-bhaṅgī) 'Naya'.
+2021|1|8(a)|20|According to Śrī Aurobindo, 'the awakening of the psychic being and its gradual prominence over all other parts of the being is the first step in the conscious evolution of man'. Explain and examine.
+2021|1|8(b)|15|Compare and contrast the views of Śaṅkara and Rāmānuja regarding the status of the world.
+2021|1|8(c)|15|Explain the status of jīva and jagat in the philosophy of Mādhvācārya.
+#PREFIX|2021|2|1|Answer the following questions in about 150 words each :
+2021|2|1(a)|10|Discuss critically the distributive theory of justice as propounded by R. Nozick.
+2021|2|1(b)|10|How does Rousseau distinguish between natural and artificial inequality? Explain.
+2021|2|1(c)|10|Is Austin's theory of sovereignty compatible with democracy? Discuss.
+2021|2|1(d)|10|Does monarchy as a form of government leave room for individual freedom? Explain.
+2021|2|1(e)|10|How far can land and property rights be effective in empowerment of women? Explain.
+2021|2|2(a)|20|Discuss whether Amartya Sen's idea of justice is an improvement upon Rawls' theory of justice.
+2021|2|2(b)|15|Explain the reformative theory of punishment and discuss whether this is in tune with human dignity.
+2021|2|2(c)|15|Can humanism be a substitute for religion? Explain and evaluate in the context of the present Indian society.
+2021|2|3(a)|20|Discuss anarchism as a political ideology. Is it possible to dispense with political authority completely? Give reasons for your answer.
+2021|2|3(b)|15|Discuss the distinctive features of Gandhian Socialism and its contemporary relevance.
+2021|2|3(c)|15|Discuss Kautilya's contribution regarding the concept of sovereignty. Is it applicable in a democratic form of government? Explain.
+2021|2|4(a)|20|Discuss the views of Dr. B.R. Ambedkar regarding caste-discrimination in Indian society. What are the measures suggested by him for its elimination? Explain.
+2021|2|4(b)|15|What are the main causes of female foeticide in India? Is it the result of demonic application of technology only? Discuss.
+2021|2|4(c)|15|Evaluate whether the social contract theory adequately addresses the different issues of human rights.
+#PREFIX|2021|2|5|Answer the following questions in about 150 words each :
+2021|2|5(a)|10|Discuss the nature of God as propounded in Nyāya philosophy.
+2021|2|5(b)|10|Discuss the possibility of Absolute Truth in the context of religious pluralism.
+2021|2|5(c)|10|Is religious freedom possible in a multireligious society? Explain.
+2021|2|5(d)|10|Is religious life possible without the belief in God? Discuss.
+2021|2|5(e)|10|Discuss the paradox of omnipotence of God in the context of the existence of evil.
+2021|2|6(a)|20|Discuss the concept of immortality of soul with special reference to Hindu tradition.
+2021|2|6(b)|15|Elucidate the concept of liberation according to Advaita Vedānta. Explain the role of knowledge in the attainment of liberation.
+2021|2|6(c)|15|Do you consider that religion and morality are inseparable? Give reasons for your answer.
+2021|2|7(a)|20|Discuss the role of reason and faith in religion. Can reason be a regulative force in the formulation of religious beliefs? Explain.
+2021|2|7(b)|15|Give a critical account of moral argument to prove the existence of God.
+2021|2|7(c)|15|Explain the concept of religious experience in the light of Vedāntic tradition.
+2021|2|8(a)|20|What is non-cognitive theory of religious language? Explain critically in the light of R.B. Braithwaite's views.
+2021|2|8(b)|15|Discuss and evaluate the doctrine of Karma as an essential postulate of Hinduism.
+2021|2|8(c)|15|Explain the symbolic nature of religious language with special reference to Paul Tillich.
+#PREFIX|2022|1|1|Answer the following questions in about 150 words each :
+2022|1|1(a)|10|How does Plato use the theory of forms to establish the relation between epistemology and metaphysics? Discuss.
+2022|1|1(b)|10|What is Bertrand Russell's method of logical analysis? How does it ultimately end in establishing atomic theory of meaning? Discuss.
+2022|1|1(c)|10|Establish the tenability of later Wittgenstein's notion of language as form of life.
+2022|1|1(d)|10|What is psychologism? Critically discuss the way Edmund Husserl avoids the problem of psychologism in the discourse of transcendental phenomenology.
+2022|1|1(e)|10|What is apperception, according to Immanuel Kant? Discuss with reference to his transcendental exposition of space and time.
+2022|1|2(a)|20|Provide a critical account of Heidegger's Being-in-the-world and discuss the problem of 'authenticity' in the context of Dasein.
+2022|1|2(b)|15|Is Aristotle's view of nature of identity in consonance with his metaphysical view of causes as processes? Discuss giving suitable examples.
+2022|1|2(c)|15|Discuss the concept of substance according to Spinoza. Does his discussion on substance lead to pantheism? Substantiate your view.
+2022|1|3(a)|20|How does Kant construct antinomies to illustrate the illusory tendencies of pure reason? Explain and examine the antinomies presented by Kant.
+2022|1|3(b)|15|What is the dialectical method in the philosophy of Georg Wilhelm Hegel? How does this method help in realizing the Absolute? Discuss.
+2022|1|3(c)|15|Is there any difference between pictorial form and logical form in Ludwig Wittgenstein's picture theory of language? How does the logical form define the relation between language and reality? Explain.
+2022|1|4(a)|20|How does Søren Kierkegaard define the notion of 'subjectivity'? Explain it with reference to three stages of existence as propounded by him.
+2022|1|4(b)|15|How does René Descartes explain the notion of certainty with reference to knowledge of the self? Critically discuss the way it differs from the knowledge of the world.
+2022|1|4(c)|15|Why and how does John Locke refute the innate ideas? Elucidate the nature and source of knowledge in Locke's epistemology.
+#PREFIX|2022|1|5|Answer the following questions in about 150 words each :
+2022|1|5(a)|10|Examine and evaluate the proofs given by Sāṃkhya philosophy to prove the existence of Puruṣa.
+2022|1|5(b)|10|What is the ontological status of Sāmānya, according to Vaiśeṣika Philosophy? Critically examine.
+2022|1|5(c)|10|Discuss the nature and different stages of Samādhi as per Pātañjala yoga and examine the role of Īśvara in it.
+2022|1|5(d)|10|How does Jaina view of Karma bear upon their soteriology? Critically discuss.
+2022|1|5(e)|10|Do you agree with the view that 'Vivartavāda is the logical development of Pariṇāmavāda'? Give reasons in support of your answer.
+2022|1|6(a)|20|How compatible is Buddhist theory of momentariness with their theory of Karma? In this regard how do Buddhists respond to objections raised by their opponents? Critically discuss.
+2022|1|6(b)|15|'The doctrine of 'Relativism' of Jain Philosophy cannot be logically sustained without postulating 'Absolutism'.' Critically examine this view and give reasons in the favour of your answer.
+2022|1|6(c)|15|How do Mīmāṃsakas refute the Nyāya view that Implication (arthāpatti) is reducible to Inference (anumāna) and establish Implication as an independent means of valid knowledge (pramāṇa)? Critically discuss.
+2022|1|7(a)|20|Inspite of accepting the intrinsic validity of knowledge, why and how Prabhākara and Kumārila differ in their interpretation of erroneous cognition? Discuss.
+2022|1|7(b)|15|Explain Buddhist concept of Triratna and their internal relation. Critically examine the consistency of Triratnas with the Buddhist concept of No-soul (Nairātmyavāda).
+2022|1|7(c)|15|How do Naiyāyikas respond to Cārvāka's objections against inference (anumāna) and establish inference as an independent means of knowledge? Critically discuss.
+2022|1|8(a)|20|'Brahma satyaṃ jaganmithyā, jīvo Brahmaiva nāparaḥ'. In the light of this statement explain the ontological status of Īśvara, Jīva and Sākṣī as elucidated in Advaita Vedānta.
+2022|1|8(b)|15|Explain and evaluate the role of integral yoga in the process of triple transformation for individual evolution as expounded by Sri Aurobindo.
+2022|1|8(c)|15|How does the concept of Liberation (Mokṣa) of Madhvācārya differ from that of Rāmānujācārya? Explain.
+#PREFIX|2022|2|1|Answer the following questions in about 150 words each :
+2022|2|1(a)|10|Discuss the role of enlightenment movement in the rise of humanism.
+2022|2|1(b)|10|In the age of individualism and universal franchise, what role does caste play in body-politic? Discuss.
+2022|2|1(c)|10|Is corruption a systemic issue or an ethical issue? Give your critical comments.
+2022|2|1(d)|10|"Complete liberty may lead to inequality while order and restrictions imply a necessary loss of freedom." Critically discuss.
+2022|2|1(e)|10|What are the moral justifications of capital punishment? Discuss.
+2022|2|2(a)|20|What arguments does Bodin present to contend that sovereignty must be absolute, perpetual and undivided? Is Bodin's conception of sovereignty compatible with the social and political ideals of equality, justice and liberty? Critically discuss.
+2022|2|2(b)|15|Critically evaluate Gandhi's views on eradication of caste discrimination.
+2022|2|2(c)|15|Explain the difference between the notion of equity and equality with reference to Marxian philosophy.
+2022|2|3(a)|20|Do you agree that economic development does not on its own lead to human development and social progress? Give reasons and justifications for your answer.
+2022|2|3(b)|15|Discuss gender as a cultural category as opposed to sex as a biological category.
+2022|2|3(c)|15|Critically analyze the descriptive and normative aspects of multiculturalism.
+2022|2|4(a)|20|Discuss propaganda as a challenge to democratic form of government.
+2022|2|4(b)|15|Does idea of unconditional rights necessarily lead to anarchy? Critically examine.
+2022|2|4(c)|15|Are monarchy and theocracy necessarily related? Discuss with reference to the theory of Divine Right.
+#PREFIX|2022|2|5|Answer the following questions in about 150 words each :
+2022|2|5(a)|10|Write an essay on Spinoza's notion of God and His attributes.
+2022|2|5(b)|10|"One can have morality without religion but not religion without morality." Discuss.
+2022|2|5(c)|10|"Immortality of Soul is a necessary postulate for rebirth." Critically examine with reference to Buddhism.
+2022|2|5(d)|10|Is the notion of faith indispensable for the idea of revelation? Critically comment.
+2022|2|5(e)|10|Explain the difference between the cognitivist and non-cognitivist approaches to the religious language with reference to the statement—"God exists".
+2022|2|6(a)|20|Present a critical exposition of different arguments offered by St. Thomas Aquinas to prove the existence of God also known as 'Five Ways'. Which one of them do you find philosophically most interesting? Give reasons in support of your answer.
+2022|2|6(b)|15|Explain the relation between the God and the Self according to Rāmānujācārya.
+2022|2|6(c)|15|If God is the Absolute Creator, then the responsibility of the evil cannot belong to the human agent. Critically examine.
+2022|2|7(a)|20|"An unquestionable acceptance of only one Absolute Truth will inevitably result in religious exclusivism." Discuss.
+2022|2|7(b)|15|Is it possible to have an idea of Liberation without the conception of a real agent? In this context, discuss the difference between Advaita and Viśiṣṭādvaita systems of thought.
+2022|2|7(c)|15|Discuss the nature and variety of religious experiences as presented by William James.
+2022|2|8(a)|20|Discuss the main points of distinction between a priori and a posteriori arguments for the existence of God. Which one according to you should be preferred over the other? Give reasons and justifications for your answer.
+2022|2|8(b)|15|Discuss the nature of Soul and Bondage according to Jainism.
+2022|2|8(c)|15|Critically examine the idea of Brahman in Advaita philosophy of Śaṃkara. Does Śaṃkara's conception of Brahman leave room for theism? Discuss.
+#PREFIX|2023|1|1|Write short answers to the following in about 150 words each :
+2023|1|1(a)|10|"Precepts without concepts are blind and concepts without precepts are empty." In the light of this statement discuss how Kant reconciles rationalism with empiricism.
+2023|1|1(b)|10|"History is a process of dialectical change." In the light of this statement discuss Hegel's approach in understanding history.
+2023|1|1(c)|10|"That thing is said to be free which exists solely from the necessity of its own nature, and is determined to action by itself alone." Discuss Spinoza's views on freedom and determinism in the light of the above statement.
+2023|1|1(d)|10|How does Kierkegaard argue against Hegel's idea of universal spirit in favour of the individual as the essence of spirit? Critically discuss.
+2023|1|1(e)|10|What are the main arguments offered by Kant to prove that apriori synthetic judgements are possible? Discuss with examples.
+2023|1|2(a)|20|Critically analyse Hume's argument that causality is a matter of habit/custom involving psychological principle of association.
+2023|1|2(b)|15|Present an exposition of Aristotle's distinction between actuality and potentiality. Does it provide a solution to the problem of being and becoming as presented in ancient Greek philosophy? Discuss with suitable examples.
+2023|1|2(c)|15|Discuss Descartes' theory of innate ideas and the grounds on which Locke refutes it.
+2023|1|3(a)|20|Does the rejection of metaphysics as proposed by Logical Positivists relate to problem of meaning or problem of knowledge or nature of things or all of them together? Discuss with suitable examples.
+2023|1|3(b)|15|Elucidate the significance of bracketing and reduction in Husserl's phenomenological method.
+2023|1|3(c)|15|"Consciousness is what it is not and is not what it is." In the light of this statement bring out the chief features of Sartre's conception of consciousness.
+2023|1|4(a)|20|Why does Strawson consider person to be a primitive concept? What implication does it have for the mind-body dualism? Discuss.
+2023|1|4(b)|15|Why according to Russell is the proposition – "The present king of France is bald" problematic? Critically discuss.
+2023|1|4(c)|15|What were the main reasons that led Wittgenstein to shift from picture-theory of meaning to use-theory of meaning? Critically discuss.
+#PREFIX|2023|1|5|Write short answers to the following in about 150 words each :
+2023|1|5(a)|10|"All human knowledge is empirical and therefore relative." Critically examine Jaina theory of sevenfold judgement (saptabhaṅginaya) in the light of above statement.
+2023|1|5(b)|10|"If Puruṣa and Prakṛti are two completely independent realities, then no relation between the two is possible." In the light of this statement make a brief presentation of Śaṅkara's criticism of Sāṃkhya dualism.
+2023|1|5(c)|10|What is Advaitin interpretation of the great sentence (mahāvākya) 'Thou art that' (tat tvam asi)? Briefly discuss.
+2023|1|5(d)|10|Present an account of Vaiśeṣika's view of negation in the light of their statement – "Negation always has a counterpositive and absolute negation is an impossibility."
+2023|1|5(e)|10|Explain the nature and role of Supermind in evolution as per Aurobindo's philosophy.
+2023|1|6(a)|20|Discuss Rāmānuja's criticism of Śaṅkara's conception of Brahman and Īśvara (God).
+2023|1|6(b)|15|Present Bhāṭṭa's view of anupalabdhi (non-cognition) as a valid means of knowledge.
+2023|1|6(c)|15|Elucidate Naiyāyikas view of ordinary and extraordinary perception. Are they justified in accepting that universals are perceived? Discuss.
+2023|1|7(a)|20|Elucidate Naiyāyikas account of fallacies of the middle term in relation to five characteristics of valid middle term.
+2023|1|7(b)|15|Liberation is defined by Advaita Vedāntins as 'attainment of that which is already attained'. How does Śaṅkara illustrate this statement? Discuss with your own comments.
+2023|1|7(c)|15|Explain Citta and its modifications in the philosophy of Yoga. Why does Yoga philosophy prescribe cessation of modifications of Citta? Give reasons in support of your answer.
+2023|1|8(a)|20|"Ignorance of dependent origination is suffering while its knowledge is cessation of suffering." Present an account of Buddhist soteriology in the light of above statement.
+2023|1|8(b)|15|Write a note on Nyāya notion of Prāgabhāva (prior non-existence). How does this notion help Naiyāyikas in defending their position on causation against the Sāṃkhya view of causation? Critically discuss.
+2023|1|8(c)|15|Do words refer to universals or particulars or both? Present an exposition of Nyāya and Mīmāṃsā position with regard to above question along with suitable examples.
+#PREFIX|2023|2|1|Answer the following questions in about 150 words each :
+2023|2|1(a)|10|What is meant by justice as fairness? Explain Rawls' theory of justice.
+2023|2|1(b)|10|Critically examine the anarchist's view that "all States always and everywhere are illegitimate and unjust."
+2023|2|1(c)|10|Do you agree that the rights concerning land and property have empowered women? Discuss.
+2023|2|1(d)|10|Critically examine the challenges faced by a multicultural society with reference to India.
+2023|2|1(e)|10|If monarchs are above politics, can monarchy be a systematic form of government? Discuss.
+2023|2|2(a)|20|Elucidate why the absolute nature of sovereignty was rejected by Laski.
+2023|2|2(b)|15|Do you agree that duty and accountability must be given priority over rights for the better functioning of a State? Justify your answer.
+2023|2|2(c)|15|In the present scenario, will the emphasis on skill education enhance development? Evaluate.
+2023|2|3(a)|20|Explain Historical Materialism and discuss its relevance in the context of social development and change.
+2023|2|3(b)|15|Critically analyse the social and political significance of Ambedkar's notion of annihilation of caste.
+2023|2|3(c)|15|How does gender discrimination lead to female foeticide and social imbalance? Discuss.
+2023|2|4(a)|20|"Severity of punishment should be proportionate to the seriousness of the crime." — Do you agree that while punishing a juvenile, the nature of the crime should be considered? Justify your answer.
+2023|2|4(b)|15|Explain the challenges faced by a democratic state and the ways to overcome them.
+2023|2|4(c)|15|Secularism is not a rejection of religion but acceptance of all religions. Discuss.
+#PREFIX|2023|2|5|Answer the following questions in about 150 words each :
+2023|2|5(a)|10|Elucidate the personalistic and impersonalistic aspects of God.
+2023|2|5(b)|10|Can religious beliefs be justified? Discuss.
+2023|2|5(c)|10|Does religion influence the moral behaviour? Explain the interactive relation between religion and morality.
+2023|2|5(d)|10|Discuss Wittgenstein's view about the non-cognitive nature of religious language.
+2023|2|5(e)|10|What is Agnosticism? How do agnostics conceptualize the relation between religion and God? Discuss.
+2023|2|6(a)|20|Critically examine Plato's apriori proofs for the immortality of the soul.
+2023|2|6(b)|15|In what sense is God both immanent and transcendent in theism? Discuss.
+2023|2|6(c)|15|Explain the rational and irrational aspects of faith in the discourse of religion.
+2023|2|7(a)|20|Critically examine the arguments of Nyāya for the existence of God.
+2023|2|7(b)|15|Examine the significance of the concept of rebirth in the theory of Karma.
+2023|2|7(c)|15|Explain the symbolic nature of religious language according to Tillich.
+2023|2|8(a)|20|"All evil is either sin or punishment for sin." – St. Augustine. Critically discuss.
+2023|2|8(b)|15|Does religious pluralism invite inter-religious conflicts and destroy the truth of religion? Discuss.
+2023|2|8(c)|15|Examine the relation between mystical experience and revelation and expound their significance in the religious life.
+#PREFIX|2024|1|1|Answer the following questions in about 150 words each :
+2024|1|1(a)|10|Differentiate between Plato's and Aristotle's conceptions of form.
+2024|1|1(b)|10|How does Kant respond to Hume's scepticism with regard to a priori judgments? Discuss.
+2024|1|1(c)|10|What arguments are offered by Moore to prove that there are certain truisms, knowledge of which is a matter of common sense? Critically discuss.
+2024|1|1(d)|10|Why does later Wittgenstein think that there cannot be a language that only one person can speak — a language that is essentially private? Discuss.
+2024|1|1(e)|10|How does Kierkegaard define truth in terms of subjectivity? Critically discuss.
+2024|1|2(a)|20|Is rejection of Locke's notion of primary qualities instrumental in Berkeley's leaning towards idealism? In this context, also discuss how Berkeley's subjective idealism is different from the absolute idealism proposed by Hegel.
+2024|1|2(b)|15|How does Spinoza establish that God alone is absolutely real with his statement – "Whatever is, is in God"? Critically discuss.
+2024|1|2(c)|15|Critically examine Kant's objections against the ontological argument for the existence of God.
+2024|1|3(a)|20|Explain Russell's notion of incomplete symbols. Also explain how this notion leads to the doctrine of logical atomism.
+2024|1|3(b)|15|Is the sentence "All objects are either red or not red" meaningful in the same way as "This page is white" is, according to the logical positivists? Discuss with arguments.
+2024|1|3(c)|15|Among the rationalists, whose account of mind-body problem is compatible with the notion of human freedom and free will? Critically discuss.
+2024|1|4(a)|20|What do the existentialist thinkers mean by the slogan "existence precedes essence"? How is human existence related to human freedom according to them? Discuss.
+2024|1|4(b)|15|Why does Husserl think that essences exhibit a kind of continuity between consciousness and being? Discuss.
+2024|1|4(c)|15|Explain the nature of the two dogmas that Quine refers to in his paper 'Two Dogmas of Empiricism'.
+#PREFIX|2024|1|5|Answer the following questions in about 150 words each :
+2024|1|5(a)|10|Do you think Cārvāka's philosophy is positivistic in nature? Give reasons and justifications for your answer.
+2024|1|5(b)|10|Explain the six reasons offered by the Naiyāyikas to prove the existence of the self.
+2024|1|5(c)|10|Do these two sentences "Air does not have heat" and "Air is not fire" refer to the same type of absence or abhāva, according to the Vaiśeṣikas? Discuss.
+2024|1|5(d)|10|How does Bhāṭṭa's view of nature of word-meaning and sentential-meaning differ from Prābhākara's view? Critically discuss.
+2024|1|5(e)|10|"In Viśiṣṭādvaita philosophy, the relationship between God and the world is parallel to that between an individual self and its body." Critically discuss.
+2024|1|6(a)|20|Differentiate between the Cārvākas' refutation of self as a transcendental category and the Buddhist rejection of ātmā.
+2024|1|6(b)|15|How do the two schools of Buddhism arrive at two opposed conclusions, namely "everything is void" and "everything is real" from the same doctrine of Pratītyasamutpāda? Answer with arguments.
+2024|1|6(c)|15|What is the distinction between Bhāvabandha and Dravyabandha, according to the Jainas? Discuss.
+2024|1|7(a)|20|Present an account of evolution of Prakṛti as propounded in Sāṃkhyakārikā. In this context, also explain the difference between buddhi, mahat and ahaṃkāra.
+2024|1|7(b)|15|"So long as there are changes and modifications in citta, the self is reflected therein, and, in the absence of discriminative knowledge, identifies itself with them." Present an appraisal of Yoga Soteriology in the light of the above statement.
+2024|1|7(c)|15|"Our Yoga is a double movement of ascent and descent." Discuss the above statement in the context of Sri Aurobindo's conception of Integral Yoga.
+2024|1|8(a)|20|How do I know that I know? Answer this question with reference to the Naiyāyikas, the Bhāṭṭa Mīmāṃsākas and the Prābhākaras.
+2024|1|8(b)|15|"A candidate who is never seen to be studying during the day time secures a high position in a competitive exam." How would the Bhāṭṭa Mīmāṃsākas and the Naiyāyikas explain the success of this candidate? Discuss.
+2024|1|8(c)|15|On what grounds do the Prābhākaras and the Naiyāyikas reject memory as a source of knowledge? Discuss.
+#PREFIX|2024|2|1|Answer the following questions in about 150 words each :
+2024|2|1(a)|10|Briefly discuss Plato's concept of justice.
+2024|2|1(b)|10|Present a brief account of origin and development of Social Contract Theory.
+2024|2|1(c)|10|Discuss the main factors responsible for caste discrimination.
+2024|2|1(d)|10|Present an exposition of the concept of alienation as propounded by Marx.
+2024|2|1(e)|10|Compare socialism and communism as two distinct political ideologies.
+2024|2|2(a)|20|Delineate the central tenets of Humanism. How does advent of enlightenment in Europe pave the way for Humanism? Discuss.
+2024|2|2(b)|15|Critically evaluate the concepts of liberty and equality as political ideals.
+2024|2|2(c)|15|Present an exposition of Gandhi's views on secularism as one of the foundational principles of democracy.
+2024|2|3(a)|20|Do you agree with the view that Aristotle was more successful than Plato in steering a middle course between 'Statism' and 'individualism'? Discuss with arguments.
+2024|2|3(b)|15|On what grounds would you accept or reject the idea of capital punishment as an effective deterrent? Discuss.
+2024|2|3(c)|15|Is economic development a necessary condition, sufficient condition, both or neither, in order to achieve social progress? Give reasons and justifications for your answer.
+2024|2|4(a)|20|Discuss gender equality as a necessary condition to achieve empowerment of women. Also examine the role of women empowerment in curbing the menace of female foeticide.
+2024|2|4(b)|15|What insights does the Arthaśāstra offer with regard to the concept of sovereignty? Does it have any relevance in the modern times? Critically discuss.
+2024|2|4(c)|15|Discuss the role of ethical principles of tolerance and coexistence for the rise of multicultural societies.
+#PREFIX|2024|2|5|Answer the following questions in about 150 words each :
+2024|2|5(a)|10|Can there be a religion without morality? Discuss.
+2024|2|5(b)|10|Write a note on the notion of absolute truth in the context of religion.
+2024|2|5(c)|10|Discuss the concept of liberation (Apavarga) according to Nyāya-Vaiśeṣika.
+2024|2|5(d)|10|Discuss the role of reason in religion.
+2024|2|5(e)|10|Explain the analogical nature of religious language.
+2024|2|6(a)|20|Is it necessary to adhere to the notions of immortality of soul and rebirth in order to have a robust conception of liberation? Give reasons and justifications for your answer.
+2024|2|6(b)|15|How does the notion of God in Spinoza's philosophy embedded in his metaphysics of substance and attributes? Critically discuss.
+2024|2|6(c)|15|"The problem of evil is a direct offshoot of how God is conceptualised in a system." Critically discuss.
+2024|2|7(a)|20|State and evaluate Buddhism as a religion without God.
+2024|2|7(b)|15|What kind of epistemic justifications are possible with regard to claims to revelation? Discuss with your own comments.
+2024|2|7(c)|15|Present an exposition of ontological proof for the existence of God along with its criticism.
+2024|2|8(a)|20|Distinguish between cognitivist and non-cognitivist account of religious language. Does the cognitivist account lead to any contradiction? Answer with reference to the philosophical views of R. B. Braithwaite.
+2024|2|8(b)|15|"In order to be conceived as the ultimate cause of the world, God must necessarily have some form of physical manifestation." Do you agree with this view? Give reasons and justifications for your answer.
+2024|2|8(c)|15|Discuss the main features of religious experience according to Advaita Vedānta.
+#PREFIX|2025|1|1|Answer the following questions in about 150 words each :
+2025|1|1(a)|10|"Ideas are timeless and spaceless." Elucidate this statement with reference to Plato.
+2025|1|1(b)|10|"In the empirical world, everything is a compound of Matter and Form." Evaluate this statement with reference to Aristotle.
+2025|1|1(c)|10|Explain the difference between being-for-itself and being-in-itself as presented by Sartre.
+2025|1|1(d)|10|"The golden mountain is very high." Discuss this statement in the context of Russell's theory of descriptions.
+2025|1|1(e)|10|How does Hegel challenge Kant's distinction between Phenomena and Noumena? Discuss.
+2025|1|2(a)|20|What are the basic tenets of Rationalism? How does Descartes build a system of Philosophy in consonance with them? Discuss.
+2025|1|2(b)|15|"All determination is negation." Comment with reference to Spinoza.
+2025|1|2(c)|15|Examine Hume's refutation of Causal relation and Kant's response to it.
+2025|1|3(a)|20|"We should look not to an ideal language which derives its meaning from facts and has a precise logical structure but empirically, to the ways in which languages are actually used." Explain the transition from early views of Wittgenstein to his later views on language and meaning with reference to this statement.
+2025|1|3(b)|15|Present an exposition of the verification theory of meaning as propounded by the logical positivists. In this context also differentiate between the "strong" and the "weak" sense of the word "verifiable".
+2025|1|3(c)|15|"Blue is one object of sensation and green is another, and consciousness, which both sensations have in common, is different from either." Present an account of Moore's refutation of idealism with reference to this statement.
+2025|1|4(a)|20|How is Husserl's account of "I think" different from that of Descartes? Critically discuss.
+2025|1|4(b)|15|"We can affirm the truth of any sentence in our total system, in the face of whatever experience, just so long as we are prepared to make adjustments elsewhere." Discuss this statement in the light of Quine's 'Two Dogmas of Empiricism'.
+2025|1|4(c)|15|Explain Berkeley's doctrine of nominalism and his refutation of Abstract ideas.
+#PREFIX|2025|1|5|Answer the following questions in about 150 words each :
+2025|1|5(a)|10|Explain the ground on which Cārvāka rejects inference (anumāna) as a valid source of knowledge.
+2025|1|5(b)|10|Present an exposition of the debate between Naiyāyikas and Buddhists with reference to the notion of Pramāṇa and Pramāṇaphala.
+2025|1|5(c)|10|Delineate the main points of difference between the theory of intrinsic validation (svataḥ prāmāṇyavāda) and theory of extrinsic validation (parataḥ prāmāṇyavāda) in classical Indian philosophy.
+2025|1|5(d)|10|Examine Rāmānuja's seven objections against Māyāvāda of Advaita.
+2025|1|5(e)|10|Present an exposition of Nyāya-Vaiśeṣika's theory of causation.
+2025|1|6(a)|20|Present a detailed account of Gautama's definition of Perception.
+2025|1|6(b)|15|How is Brahman conceptualised in Advaita philosophy as both Nimitta and Upādāna Kāraṇa of the World? Discuss with suitable examples.
+2025|1|6(c)|15|Discuss the debate between the Bhāṭṭa and the Prābhākara mīmāṃsakas with reference to the nature of Non-existence (Abhāva) and its knowledge.
+2025|1|7(a)|20|Why does Śaṃkara consider Sāṃkhya Philosophy as his chief opponent (pradhāna malla)? Examine his arguments against Sāṃkhya Philosophy.
+2025|1|7(b)|15|Explain the nature of God and its role in Kaivalya in yoga philosophy.
+2025|1|7(c)|15|Is Jaina philosophy pluralistic and realistic? Critically discuss.
+2025|1|8(a)|20|Discuss the idea of Bimba-pratibimbavāda as presented in Vedānta philosophy along with its soteriological significance.
+2025|1|8(b)|15|'Both Ascetic and materialist are partial in their negation of each other'. Explain Sri Aurobindo's integral philosophy in the light of the above statement.
+2025|1|8(c)|15|Is Buddhist notion of Nirvāṇa in consonance with their conception of Kṣaṇikavāda (momentariness) and Nairātmyavāda (no-soul theory)? Critically discuss.
+#PREFIX|2025|2|1|Answer the following questions in about 150 words each :
+2025|2|1(a)|10|"Corrupt practices reveal an inherent tension between particularistic and universalistic normative standards." Do you agree with this statement? Give reasons and justification for your answer.
+2025|2|1(b)|10|How does gender as a social construct affect individuals' opportunities, rights, and access to resources? Critically discuss.
+2025|2|1(c)|10|Is the idea of secularism necessarily related to the idea of religious pluralism? Discuss.
+2025|2|1(d)|10|Comment on Plato's critique of Democracy.
+2025|2|1(e)|10|Discuss the salient features of equality according to J.S. Mill.
+2025|2|2(a)|20|Present a detailed account of the debate between Gandhi and Ambedkar on the issue of caste discrimination.
+2025|2|2(b)|15|Evaluate Marxism as a Political Ideology.
+2025|2|2(c)|15|'There is no permanent friend or permanent enemy.' Discuss this statement in the light of Kautilya's view on Sovereignty.
+2025|2|3(a)|20|Can one's right to life be absolute? Answer with reference to the idea of Capital Punishment.
+2025|2|3(b)|15|How does the reconciliation of opposites take place in the Humanism of Tagore? Evaluate.
+2025|2|3(c)|15|Is it possible to reconcile the concept of development with tribal values to bring social and economic progress? Discuss.
+2025|2|4(a)|20|How are both equality and liberty inadequate as social and political ideals without justice? Discuss.
+2025|2|4(b)|15|Can Theocracy be accepted as a valid form of Government? Give reasons and justification in support of your answer.
+2025|2|4(c)|15|"Duties are of the nature of obligation while Rights are of the nature of entitlement. Therefore there is no necessary connection between the two." Do you agree with this statement? Give reasons and justification for your answer.
+#PREFIX|2025|2|5|Answer the following questions in about 150 words each :
+2025|2|5(a)|10|Discuss Cārvāka's critique of the belief in the existence of suprasensible entities.
+2025|2|5(b)|10|Is religious language symbolic? Give reasons and justification in support of your answer.
+2025|2|5(c)|10|Present an account of Nietzsche's criticism of religion and morality.
+2025|2|5(d)|10|Discuss the nature of embodied liberation (jīvanmukti) with reference to Advaita Vedānta.
+2025|2|5(e)|10|How does Aquinas' account of Faith as "an intellectual assent" reconcile the juxtaposition between Reason and Faith? Discuss.
+2025|2|6(a)|20|Present an account of Design argument to prove the existence of God along with its criticism by David Hume.
+2025|2|6(b)|15|Explain the main tenets of the Process Theodicy as an explanation of the problem of evil.
+2025|2|6(c)|15|Distinguish between Natural Theology and Revealed Theology in the context of the Propositional view of Revelation.
+2025|2|7(a)|20|How does the Vedāntic view of Religious Pluralism address the conflicting truth claims of different faiths? Answer with reference to Swami Vivekananda's view of Universal Religion.
+2025|2|7(b)|15|What proofs do Nyāya philosophers offer for the existence of God? Discuss.
+2025|2|7(c)|15|Is the concept of immortality of soul a necessary condition for Rebirth? Discuss with reference to the Bhagavad Gītā.
+2025|2|8(a)|20|Evaluate the nature and object of Religious Experience as explained by Radhakrishnan in 'The Hindu View of Life'.
+2025|2|8(b)|15|Is it necessary for the normative principles to bear reference to God in order to produce a feeling of obligation in a moral agent? Critically discuss.
+2025|2|8(c)|15|Discuss the Advaitic notion of indescribability (anirvachanīyatā) in the context of nature of religious language.
+#PREFIX|2026|1|1|Answer the following questions in about 150 words each :
+2026|1|1(a)|10|How does Spinoza explain the relationship between states of mind and bodily processes?
+2026|1|1(b)|10|Explain the distinction between Intuitive knowledge and Demonstrative knowledge as propounded by Locke.
+2026|1|1(c)|10|Explain Hegel's idea that the concept of the Absolute as being is the concept of the Absolute as becoming as a process of self-development.
+2026|1|1(d)|10|Compare and contrast the notion of entelechy as presented in Aristotle's and Leibniz's philosophy.
+2026|1|1(e)|10|"I can prove now, for instance, that two human hands exist." How does Moore use this illustration to prove the existence of an external world? Critically discuss.
+2026|1|2(a)|20|What, according to Aristotle, is the fundamental problem of metaphysics? Discuss this in relation with Aristotle's account of the essence of the world, where he rejects the views of both the Atomists and Plato.
+2026|1|2(b)|15|How does Hume account for ideas of reason? How does Kant respond to Hume's views in this regard? Critically discuss.
+2026|1|2(c)|15|Describe Sartre's notion of consciousness as 'nothing'. How is it different from Husserl's notion of consciousness? Discuss.
+2026|1|3(a)|20|Why are states of consciousness ascribed to anything at all and why are they ascribed to the same things to which we also ascribe physical properties? How does Strawson answer these questions in his work Individuals?
+2026|1|3(b)|15|Explain Heidegger's conception of authenticity and inauthenticity as modes of Dasein's being.
+2026|1|3(c)|15|Can words be viewed as the ideas in the mind of the person who uses them? Answer with reference to the philosophy of later Wittgenstein.
+2026|1|4(a)|20|"Wittgenstein's difficulty about not being able to say anything within a given language about the structure of that language can be met by the idea of a hierarchy of languages." Do you agree with this statement? Give reasons and justifications for your answer.
+2026|1|4(b)|15|Analyze and discuss the different ways in which Kant and Hegel conceived the relationship between reality and our thinking about reality.
+2026|1|4(c)|15|How did the logical positivists try to make philosophy a handmaid to science and establish a unified language of science? Why did their project fail? Discuss.
+#PREFIX|2026|1|5|Answer the following questions in about 150 words each :
+2026|1|5(a)|10|According to Nyāya view of inference (Anumāna), what are the characteristics that ascertain the validity of inferential sign (Hetu)? Discuss.
+2026|1|5(b)|10|How does the Buddhist theory of momentariness problematize the issue of human action and responsibility? Critically discuss.
+2026|1|5(c)|10|Is Puruṣa one or many? Explain and examine the Sāṃkhya position in this context.
+2026|1|5(d)|10|Critically explain the nature of Samavāya (inherence) as propounded in Vaiśeṣika philosophy.
+2026|1|5(e)|10|Explain, as per Yoga philosophy, the nature of Samādhi with special reference to the difference between Samprajñāta Samādhi and Asamprajñāta Samādhi.
+2026|1|6(a)|20|"A mango tree is grown out of a mango seed." How do the Sāṃkhya philosophers explain this process through their theory of causation by rejecting their rival perspectives?
+2026|1|6(b)|15|Explain the basic characteristics of Sri Aurobindo's Integral Yoga for the realization of supramental consciousness through triple transformation.
+2026|1|6(c)|15|Bring out the main points of contestation between Naiyāyikas and Prābhākara Mīmāṃsakas with reference to knowledge through words (Śābdabodha).
+2026|1|7(a)|20|Critically explain the arguments presented by the Akhyātivādins for explaining erroneous cognition. Evaluate the arguments against Akhyātivādins by the Anyathākhyātivādins.
+2026|1|7(b)|15|Explain the meaning of seven steps of judgement (Saptabhaṅgīnaya) and its application in Jaina's Syādvāda for advocating a philosophy of non-absolutism (Anekāntavāda).
+2026|1|7(c)|15|Do you agree with Nimbārka's explanation of the nature of God, Souls and Matter? Justify your answer.
+2026|1|8(a)|20|Present an account of Upamāna as an instrument of knowledge (Pramāṇa). How is Nyāya view of Upamāna different from Mīmāṃsā view? Discuss.
+2026|1|8(b)|15|Critically explain Rāmānuja's conception of Brahman with special reference to the difficulties in explaining the relation of Brahman to Spirit (Cit) and Matter (Acit).
+2026|1|8(c)|15|Why does the Dualistic School of Vedānta consider that differences (Bhedas) have separate existence and constitute the unique nature of things? Answer with reference to the theory of five-fold difference (Pañcavidhabheda).
+#PREFIX|2026|2|1|Answer the following questions in about 150 words each :
+2026|2|1(a)|10|Why does Rawls consider it necessary that the two principles of justice be applied in lexical order? Explain.
+2026|2|1(b)|10|Is Plato's vision of an ideal state compatible with the rights and liberties of individual citizens? Discuss.
+2026|2|1(c)|10|Anarchism is not an independent political ideology in itself, rather it is inspired by liberalism on the one hand and socialism on the other. Analyze.
+2026|2|1(d)|10|On what grounds does Marxism criticize pure democracy?
+2026|2|1(e)|10|How does value based education address the problem of corruption?
+2026|2|2(a)|20|Evaluate the importance of Kautilya's theory of Rajamandala in the context of sovereignty.
+2026|2|2(b)|15|Does providing land and property rights to women constitute a necessary condition or a sufficient condition or both for ensuring social equality among the genders? Discuss.
+2026|2|2(c)|15|Examine the challenges faced by a multicultural society in creating a harmonious balance between group rights and individual rights.
+2026|2|3(a)|20|Retributivism presents a deontological justification for capital punishment, whereas deterrence presents a consequential justification for it. Explain.
+2026|2|3(b)|15|"The two antagonistic state structures – monarchy and democracy, both share some common features with dictatorship". Do you agree with this view? Give reasons and justifications for your answer.
+2026|2|3(c)|15|Negative liberty seems to embody the idea of ultimate personal freedom, whereas positive liberty enables individuals to achieve their full potential. Discuss.
+2026|2|4(a)|20|How has Ambedkar applied the concept of 'Social Endosmosis' for annihilation of castes. Evaluate its relevance for contemporary debates on identity and the politics of difference.
+2026|2|4(b)|15|Explain the contrast between the monistic and pluralistic approaches to sovereignty.
+2026|2|4(c)|15|Examine the relationship between democracy and development. Does democracy promote or hinder development?
+#PREFIX|2026|2|5|Answer the following questions in about 150 words each :
+2026|2|5(a)|10|On what grounds does William James characterize mystical states as a genuine expression of religious experience? Elaborate.
+2026|2|5(b)|10|Discuss Aquinas' argument from the contingency of the world to prove the existence of God.
+2026|2|5(c)|10|How does Paul Tillich's idea of faith as ultimate concern address the relation between faith, doubt and reason? Evaluate.
+2026|2|5(d)|10|Critically discuss the views of R. B. Braithwaite on the nature of religious language.
+2026|2|5(e)|10|"If religion were a subject of reason alone, it would have lacked an experiential account." Do you agree with this statement? Give reasons in support of your answer.
+2026|2|6(a)|20|In what sense does St. Augustine's identification of all evil as either sin or as the punishment of sin succeed or fail in providing a coherent account of both moral and natural evil? Evaluate.
+2026|2|6(b)|15|How does the issue of moral autonomy conflict with conception of religion as a source of morality? Critically discuss.
+2026|2|6(c)|15|Does the idea of Religious Pluralism necessarily entail moral relativism? Critically discuss.
+2026|2|7(a)|20|Analyse R. M. Hare's concept of 'blik' and assess whether it successfully defends the meaningfulness of religious language.
+2026|2|7(b)|15|Discuss the difference between personalistic and impersonalistic notions of God in the context of devotion.
+2026|2|7(c)|15|Can conflicting truth claims among religions be reconciled within the framework of religious pluralism? Critically discuss.
+2026|2|8(a)|20|Critically evaluate the shift in Gandhi's view from 'God is Truth' to 'Truth is God', in the context of interrelation between religion and morality.
+2026|2|8(b)|15|Explain and examine Madhvācārya's arguments for the existence of God.
+2026|2|8(c)|15|Present an account of criticisms against omniscience and omnipotence as attributes of God.

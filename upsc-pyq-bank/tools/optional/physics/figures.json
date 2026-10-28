@@ -1,0 +1,184 @@
+{
+ "2016|1|2(a)": [
+  {
+   "u": "img/physics/2016-1-2a-1.webp",
+   "a": "Four solid spheres A, B, C and D at the corners of a square of side b",
+   "k": "crop"
+  }
+ ],
+ "2016|1|5(a)": [
+  {
+   "u": "img/physics/2016-1-5a-1.webp",
+   "a": "Circuit: voltmeter V across a 400 \u03a9 resistor in series with a 300 \u03a9 resistor, supply 100 volts",
+   "k": "crop"
+  }
+ ],
+ "2017|2|5(e)": [
+  {
+   "u": "img/physics/2017-2-5e-1.webp",
+   "a": "Operational amplifier circuit: Input to the + terminal, R1 from the \u2212 input to ground, feedback resistor R2 from the output to the \u2212 input, output terminal",
+   "k": "crop"
+  }
+ ],
+ "2017|2|8(a)": [
+  {
+   "u": "img/physics/2017-2-8a-1.webp",
+   "a": "Common-emitter transistor amplifier: +9 V supply, 10 k\u03a9 and 10 k\u03a9 bias resistors, 1 k\u03a9 in series with Vin, 2.5 k\u03a9 collector resistor, 4.3 k\u03a9 emitter resistor with bypass capacitor C, output Vout",
+   "k": "crop"
+  }
+ ],
+ "2017|2|8(b)": [
+  {
+   "u": "img/physics/2017-2-8b-1.webp",
+   "a": "Self-biased p-channel JFET circuit: \u221212 V supply, 2 k\u03a9 drain resistor, 5 k\u03a9 gate resistor to ground, 1 k\u03a9 source resistor to ground",
+   "k": "crop"
+  }
+ ],
+ "2018|1|1(b)": [
+  {
+   "u": "img/physics/2018-1-1b-1.webp",
+   "a": "Axes x, y, z with a block of mass m sliding along x with velocity v, and point A at height l on the y-axis",
+   "k": "crop"
+  }
+ ],
+ "2018|1|2(b)": [
+  {
+   "u": "img/physics/2018-1-2b-1.webp",
+   "a": "Rod of length L along the x-axis from the end O, with axes x, y, z",
+   "k": "crop"
+  }
+ ],
+ "2018|1|4(a)": [
+  {
+   "u": "img/physics/2018-1-4a-1.webp",
+   "a": "Rod AB of length l\u2080 at angle \u03b8\u2080 to the x\u2032 axis in the primed frame, with the unprimed x and y axes",
+   "k": "crop"
+  }
+ ],
+ "2020|1|5(a)": [
+  {
+   "u": "img/physics/2020-1-5a-1.webp",
+   "a": "Vertical electric dipole (+q above \u2212q, separation d) at height h above a grounded infinite horizontal conducting plate",
+   "k": "crop"
+  }
+ ],
+ "2020|1|5(c)": [
+  {
+   "u": "img/physics/2020-1-5c-1.webp",
+   "a": "Hysteresis loops (B against H) for soft iron (narrow tall loop) and steel (wide loop)",
+   "k": "crop"
+  }
+ ],
+ "2020|1|8(a)": [
+  {
+   "u": "img/physics/2020-1-8a-1.webp",
+   "a": "Cubic cavity of side L with a small hole on one face (black body model)",
+   "k": "crop"
+  }
+ ],
+ "2020|2|5(a)": [
+  {
+   "u": "img/physics/2020-2-5a-1.webp",
+   "a": "Step potential V(x): zero for x < 0 (region I) and V\u2080 for x > 0 (region II), V\u2080 marked by a vertical arrow, axes V(x) and x",
+   "k": "crop"
+  }
+ ],
+ "2021|2|8(a)": [
+  {
+   "u": "img/physics/2021-2-8a-1.webp",
+   "a": "Transistor circuit: +20 V supply Vcc, collector resistor Rc = 10 k\u03a9, base resistor RB from Vcc to the base, currents IC and IB, voltages VBE and VCE",
+   "k": "crop"
+  }
+ ],
+ "2022|1|3(a)": [
+  {
+   "u": "img/physics/2022-1-3a-1.webp",
+   "a": "Right triangular pyramid with edges a along x and y from origin O and height 3a/2 along z",
+   "k": "crop"
+  }
+ ],
+ "2022|1|4(a)": [
+  {
+   "u": "img/physics/2022-1-4a-1.webp",
+   "a": "Horizontal pipe carrying water flow Q with a constriction of area A\u2082 between two sections of area A\u2081 and two manometer tubes showing height difference h",
+   "k": "crop"
+  }
+ ],
+ "2022|1|5(e)": [
+  {
+   "u": "img/physics/2022-1-5e-1.webp",
+   "a": "R-L-C circuit: 4 V battery with switch K, 1 mH inductor in series with a 4 \u03a9 resistor, in parallel with a 2 mF capacitor",
+   "k": "crop"
+  }
+ ],
+ "2023|2|8(c)(i)": [
+  {
+   "u": "img/physics/2023-2-8ci-1.webp",
+   "a": "Non-inverting op-amp amplifier: Vin at the + input, output Vout, feedback resistor Rf = 220 k\u03a9 from the output to the \u2212 input, Ri = 10 k\u03a9 from the \u2212 input to ground",
+   "k": "crop"
+  }
+ ],
+ "2024|1|7(c)": [
+  {
+   "u": "img/physics/2024-1-7c-1.webp",
+   "a": "Conducting wire PQ sliding on horizontal parallel rails in a uniform magnetic field B (into the page, shown by crosses) with a resistance R connecting the rails outside the field",
+   "k": "crop"
+  }
+ ],
+ "2025|1|6(b)": [
+  {
+   "u": "img/physics/2025-1-6b-1.webp",
+   "a": "Series circuit: 200 V, 60 Hz source, capacitor XC = 30 \u03a9, resistor R\u2081 = 44 \u03a9, coil with XL = 90 \u03a9 and R\u2082 = 36 \u03a9",
+   "k": "crop"
+  }
+ ],
+ "2026|1|3(b)": [
+  {
+   "u": "img/physics/2026-1-3b-1.webp",
+   "a": "Pion \u03c0 at rest (before) and, after decay, the muon \u03bc moving upward and the neutrino \u03bd moving downward",
+   "k": "crop"
+  }
+ ],
+ "2026|1|5(a)": [
+  {
+   "u": "img/physics/2026-1-5a-1.webp",
+   "a": "Resistor network between A and B: 3 \u03a9 in parallel with 6 \u03a9, then 18 \u03a9 and 8 \u03a9 in series, with a 5 \u03a9 resistor in a loop across the 3 \u03a9\u20136 \u03a9 pair and 18 \u03a9",
+   "k": "crop"
+  }
+ ],
+ "2026|2|7(b)": [
+  {
+   "u": "img/physics/2026-2-7b-1.webp",
+   "a": "Figure (I): sine wave input Vin between +5 V and \u22125 V against time t; Figure (II): comparator op-amp with Vin at the + input, the \u2212 input tied to the junction of R1 = 8.2 k\u03a9 (from +15 V) and R2 = 1.0 k\u03a9 (to ground), output Vout",
+   "k": "crop"
+  }
+ ],
+ "2021|1|1(e)": [
+  {
+   "u": "img/physics/2021-1-1e-1.webp",
+   "a": "Mass m hung from the ceiling by two springs in series, k\u2081 above and k\u2082 below, with the mass m at the bottom",
+   "k": "crop"
+  }
+ ],
+ "2021|1|5(e)": [
+  {
+   "u": "img/physics/2021-1-5e-1.webp",
+   "a": "Two-branch parallel circuit: one branch has R_L in series with an inductor L, the other has R_C in series with a capacitor C",
+   "k": "crop"
+  }
+ ],
+ "2021|1|6(b)": [
+  {
+   "u": "img/physics/2021-1-6b-1.webp",
+   "a": "Circuit: a coil (L, R) in parallel with R\u2080, the pair connected in series with a switch S and a battery E",
+   "k": "crop"
+  }
+ ],
+ "2023|1|7(b)": [
+  {
+   "u": "img/physics/2023-1-7b-1.webp",
+   "a": "Piston\u2013cylinder device: air (V\u2081 = 400 L, P\u2081 = 150 kPa, T\u2081 = 27\u00b0C) below a piston resting on a pair of stops, heat Q supplied from below",
+   "k": "crop"
+  }
+ ]
+}
