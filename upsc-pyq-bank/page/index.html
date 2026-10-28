@@ -16837,7 +16837,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "228";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "229";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -16996,7 +16996,7 @@ function billingRefresh(skipClock){
   BILL.pend = (skipClock ? Promise.resolve() : subClockSync()).then(function(){ return billingService(); }).then(function(svc){
     BILL.svc = svc; BILL.checked = true;
     if(svc && !BILL.seen){ BILL.seen = true; lsSet("dossier.billing.seen", "1"); }
-    if(!svc){ if(BILL.seen) BILL.active = entCached(); return; }   // inside the Android app but Google Play is not answering: use what we remembered
+    if(!svc){ if(seenInApp()) BILL.active = entCached(); return; }   // inside the Android app but Google Play is not answering: use what we remembered
     return Promise.all([
       Promise.resolve(svc.getDetails([SUB_SKU])).then(function(r){ BILL.details = (r && r[0]) || null; }).catch(function(){}),
       Promise.resolve(svc.listPurchases()).then(function(list){
@@ -17006,7 +17006,7 @@ function billingRefresh(skipClock){
         else lsSet(ENT_KEY, JSON.stringify({ok:false, at:subNow()}));
       }).catch(function(){ BILL.active = entCached(); })
     ]);
-  }).catch(function(){ BILL.checked = true; if(BILL.seen) BILL.active = entCached(); }).then(function(){ BILL.pend = null; subUi(); });
+  }).catch(function(){ BILL.checked = true; if(seenInApp()) BILL.active = entCached(); }).then(function(){ BILL.pend = null; subUi(); });
   return BILL.pend;
 }
 // Google refunds a purchase that is not acknowledged within 3 days
@@ -17041,7 +17041,11 @@ var WEB_PAY_ON = devHook("__webPayOn") !== undefined ? !!devHook("__webPayOn") :
 var WEB = {until:0, uid:"", loaded:false, busy:false, err:"", cfg:null, t0:Date.now()};
 (function(){ var c = lsGetJSON(WEBENT_KEY, null); if(c && c.uid){ WEB.until = +c.until || 0; WEB.uid = c.uid; } })();
 function webEntSave(){ lsSet(WEBENT_KEY, JSON.stringify({uid:WEB.uid, until:WEB.until})); }
-function onPlay(){ return !!(BILL.svc || BILL.seen); }   // inside the Android app from Google Play: only Google Play payments are offered there
+// The Android app (a Trusted Web Activity) and Chrome on the same phone share their saved data, so the saved "I have been inside the app" flag is only believed
+// while the page really is in an app window; in a normal browser tab it is ignored and the website payment is shown.
+function appWindow(){ try{ return !window.matchMedia("(display-mode: browser)").matches; }catch(e){ return true; } }
+function seenInApp(){ return !!(BILL.seen && appWindow()); }
+function onPlay(){ return !!(BILL.svc || seenInApp()); }   // inside the Android app from Google Play: only Google Play payments are offered there
 function webPaid(){ return WEB.until > subNow() && WEB.until < subNow() + 1830*DAY_MS && !!syncMeta.uid && WEB.uid === syncMeta.uid; }   // the server never grants more than a few years
 function webPriceText(){
   var c = WEB.cfg; if(!c || !c.amount) return WEB_PRICE_FALLBACK;
