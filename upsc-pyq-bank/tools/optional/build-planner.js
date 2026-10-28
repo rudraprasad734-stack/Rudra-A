@@ -439,3 +439,29 @@ ag.topics.forEach(function(t){
   fs.writeFileSync(PAGE, h17);
   console.log(NAME + " chapters:", Object.keys(mdLeaf).length, "| Paper I topics:", Object.keys(mdTree["Paper I"]).length, "| Paper II topics:", Object.keys(mdTree["Paper II"]).length);
 }
+// ---------------------------------------------------------------- Philosophy (one chapter per syllabus sub-topic)
+{
+  const NAME = "Philosophy";
+  let h18 = fs.readFileSync(PAGE, "utf8");
+  const m18 = h18.match(/<script type="application\/json" id="d-philosophy">(.*?)<\/script>/s);
+  if(!m18) throw new Error("build-planner: d-philosophy not found (run medical-science/build-philosophy.js first), nothing written");
+  const phm = JSON.parse(m18[1]);
+  const phTree = {"Paper I":{}, "Paper II":{}}, phLeaf = {}, per18 = {};
+  phm.topics.forEach(function(t){
+    const it = phm.items.filter(function(x){ return x.id === t.s; })[0], grp = it.pp === 1 ? "Paper I" : "Paper II";
+    per18[it.id] = (per18[it.id] || 0) + 1;
+    const topic = it.id + "  " + it.t, unit = it.id + "." + per18[it.id] + "  " + t.t;
+    (phTree[grp][topic] = phTree[grp][topic] || []).push(unit);
+    phLeaf[topic + "|" + unit] = [t.id];
+  });
+  { const ph = h18.indexOf('CURR_OPT["Philosophy"] = CT({'); if(ph >= 0){ const pe = h18.indexOf('\n});\n', ph); if(pe < 0) throw new Error('build-planner: old Philosophy placeholder not closed, nothing written'); h18 = h18.slice(0, ph) + h18.slice(pe + 5); } }
+  const cur18 = '  "' + NAME + '": ' + JSON.stringify(phTree, null, 2).replace(/\n/g, "\n  ") + ',\n';
+  const a18 = h18.indexOf('  "' + NAME + '": {\n    "Paper I"');
+  if(a18 >= 0){ const re = /\n  "[A-Z]/g; re.lastIndex = a18 + 20; const m = re.exec(h18); if(!m) throw new Error("build-planner: end of Philosophy block not found, nothing written"); h18 = h18.slice(0, a18) + cur18 + h18.slice(m.index + 1); }
+  else { const so5 = h18.indexOf('  "Sociology": CT({'); if(so5 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h18 = h18.slice(0, so5) + cur18 + h18.slice(so5); }
+  const la18 = h18.indexOf("var PHIL_LEAF = {"), leafTxt18 = "var PHIL_LEAF = " + JSON.stringify(phLeaf, null, 1) + ";";
+  if(la18 >= 0){ const e18 = h18.indexOf("\n};", la18); if(e18 < 0) throw new Error("build-planner: PHIL_LEAF block not closed, nothing written"); h18 = h18.slice(0, la18) + leafTxt18 + h18.slice(h18.indexOf("\n", e18 + 1)); }
+  else { const lb18 = h18.indexOf("\n// Optional subjects that have a question analysis"); if(lb18 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h18 = h18.slice(0, lb18) + "\n" + leafTxt18 + h18.slice(lb18); }
+  fs.writeFileSync(PAGE, h18);
+  console.log(NAME + " chapters:", Object.keys(phLeaf).length, "| Paper I topics:", Object.keys(phTree["Paper I"]).length, "| Paper II topics:", Object.keys(phTree["Paper II"]).length);
+}
