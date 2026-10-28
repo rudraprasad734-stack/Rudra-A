@@ -542,3 +542,29 @@ ag.topics.forEach(function(t){
   fs.writeFileSync(PAGE, h21);
   console.log(NAME + " chapters:", Object.keys(psyLeaf).length, "| Paper I topics:", Object.keys(psyTree["Paper I"]).length, "| Paper II topics:", Object.keys(psyTree["Paper II"]).length);
 }
+// ---------------------------------------------------------------- Public Administration (one chapter per syllabus sub-topic)
+{
+  const NAME = "Public Administration";
+  let h22 = fs.readFileSync(PAGE, "utf8");
+  const m22 = h22.match(/<script type="application\/json" id="d-public-admin">(.*?)<\/script>/s);
+  if(!m22) throw new Error("build-planner: d-public-admin not found (run psychology/build-public-admin.js first), nothing written");
+  const pam = JSON.parse(m22[1]);
+  const paTree = {"Paper I":{}, "Paper II":{}}, paLeaf = {}, per22 = {};
+  pam.topics.forEach(function(t){
+    const it = pam.items.filter(function(x){ return x.id === t.s; })[0], grp = it.pp === 1 ? "Paper I" : "Paper II";
+    per22[it.id] = (per22[it.id] || 0) + 1;
+    const topic = it.id + "  " + it.t, unit = it.id + "." + per22[it.id] + "  " + t.t;
+    (paTree[grp][topic] = paTree[grp][topic] || []).push(unit);
+    paLeaf[topic + "|" + unit] = [t.id];
+  });
+  { const pq = h22.indexOf('  "Public Administration": CT({'); if(pq >= 0){ const pe = h22.indexOf('\n  }),\n', pq); if(pe < 0) throw new Error('build-planner: old Public Administration placeholder not closed, nothing written'); h22 = h22.slice(0, pq) + h22.slice(pe + 7); } }
+  const cur22 = '  "' + NAME + '": ' + JSON.stringify(paTree, null, 2).replace(/\n/g, "\n  ") + ',\n';
+  const a22 = h22.indexOf('  "' + NAME + '": {\n    "Paper I"');
+  if(a22 >= 0){ const re = /\n  "[A-Z]/g; re.lastIndex = a22 + 20; const m = re.exec(h22); if(!m) throw new Error("build-planner: end of Public Administration block not found, nothing written"); h22 = h22.slice(0, a22) + cur22 + h22.slice(m.index + 1); }
+  else { const so9 = h22.indexOf('  "Sociology": CT({'); if(so9 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h22 = h22.slice(0, so9) + cur22 + h22.slice(so9); }
+  const la22 = h22.indexOf("var PA_LEAF = {"), leafTxt22 = "var PA_LEAF = " + JSON.stringify(paLeaf, null, 1) + ";";
+  if(la22 >= 0){ const e22 = h22.indexOf("\n};", la22); if(e22 < 0) throw new Error("build-planner: PA_LEAF block not closed, nothing written"); h22 = h22.slice(0, la22) + leafTxt22 + h22.slice(h22.indexOf("\n", e22 + 1)); }
+  else { const lb22 = h22.indexOf("\n// Optional subjects that have a question analysis"); if(lb22 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h22 = h22.slice(0, lb22) + "\n" + leafTxt22 + h22.slice(lb22); }
+  fs.writeFileSync(PAGE, h22);
+  console.log(NAME + " chapters:", Object.keys(paLeaf).length, "| Paper I topics:", Object.keys(paTree["Paper I"]).length, "| Paper II topics:", Object.keys(paTree["Paper II"]).length);
+}
