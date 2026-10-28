@@ -465,3 +465,28 @@ ag.topics.forEach(function(t){
   fs.writeFileSync(PAGE, h18);
   console.log(NAME + " chapters:", Object.keys(phLeaf).length, "| Paper I topics:", Object.keys(phTree["Paper I"]).length, "| Paper II topics:", Object.keys(phTree["Paper II"]).length);
 }
+// ---------------------------------------------------------------- Physics (one chapter per syllabus sub-topic)
+{
+  const NAME = "Physics";
+  let h19 = fs.readFileSync(PAGE, "utf8");
+  const m19 = h19.match(/<script type="application\/json" id="d-physics">(.*?)<\/script>/s);
+  if(!m19) throw new Error("build-planner: d-physics not found (run medical-science/build-physics.js first), nothing written");
+  const pym = JSON.parse(m19[1]);
+  const pyTree = {"Paper I":{}, "Paper II":{}}, pyLeaf = {}, per19 = {};
+  pym.topics.forEach(function(t){
+    const it = pym.items.filter(function(x){ return x.id === t.s; })[0], grp = it.pp === 1 ? "Paper I" : "Paper II";
+    per19[it.id] = (per19[it.id] || 0) + 1;
+    const topic = it.id + "  " + it.t, unit = it.id + "." + per19[it.id] + "  " + t.t;
+    (pyTree[grp][topic] = pyTree[grp][topic] || []).push(unit);
+    pyLeaf[topic + "|" + unit] = [t.id];
+  });
+  const cur19 = '  "' + NAME + '": ' + JSON.stringify(pyTree, null, 2).replace(/\n/g, "\n  ") + ',\n';
+  const a19 = h19.indexOf('  "' + NAME + '": {\n    "Paper I"');
+  if(a19 >= 0){ const re = /\n  "[A-Z]/g; re.lastIndex = a19 + 20; const m = re.exec(h19); if(!m) throw new Error("build-planner: end of Physics block not found, nothing written"); h19 = h19.slice(0, a19) + cur19 + h19.slice(m.index + 1); }
+  else { const so6 = h19.indexOf('  "Sociology": CT({'); if(so6 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h19 = h19.slice(0, so6) + cur19 + h19.slice(so6); }
+  const la19 = h19.indexOf("var PHYS_LEAF = {"), leafTxt19 = "var PHYS_LEAF = " + JSON.stringify(pyLeaf, null, 1) + ";";
+  if(la19 >= 0){ const e19 = h19.indexOf("\n};", la19); if(e19 < 0) throw new Error("build-planner: PHYS_LEAF block not closed, nothing written"); h19 = h19.slice(0, la19) + leafTxt19 + h19.slice(h19.indexOf("\n", e19 + 1)); }
+  else { const lb19 = h19.indexOf("\n// Optional subjects that have a question analysis"); if(lb19 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h19 = h19.slice(0, lb19) + "\n" + leafTxt19 + h19.slice(lb19); }
+  fs.writeFileSync(PAGE, h19);
+  console.log(NAME + " chapters:", Object.keys(pyLeaf).length, "| Paper I topics:", Object.keys(pyTree["Paper I"]).length, "| Paper II topics:", Object.keys(pyTree["Paper II"]).length);
+}

@@ -1,0 +1,23 @@
+# year|paper|qno|page|x0,y0,x1,y1 (fractions of the page, from the top left)|what it shows|kind (crop = cut from the paper)
+2016|1|2(a)|3|0.37,0.298,0.61,0.47|Four solid spheres A, B, C and D at the corners of a square of side b|crop
+2016|1|5(a)|5|0.34,0.44,0.62,0.545|Circuit: voltmeter V across a 400 Ω resistor in series with a 300 Ω resistor, supply 100 volts|crop
+2017|2|5(e)|6|0.26,0.045,0.68,0.15|Operational amplifier circuit: Input to the + terminal, R1 from the − input to ground, feedback resistor R2 from the output to the − input, output terminal|crop
+2017|2|8(a)|8|0.30,0.055,0.72,0.265|Common-emitter transistor amplifier: +9 V supply, 10 kΩ and 10 kΩ bias resistors, 1 kΩ in series with Vin, 2.5 kΩ collector resistor, 4.3 kΩ emitter resistor with bypass capacitor C, output Vout|crop
+2017|2|8(b)|8|0.30,0.435,0.66,0.625|Self-biased p-channel JFET circuit: −12 V supply, 2 kΩ drain resistor, 5 kΩ gate resistor to ground, 1 kΩ source resistor to ground|crop
+2018|1|1(b)|2|0.25,0.655,0.57,0.82|Axes x, y, z with a block of mass m sliding along x with velocity v, and point A at height l on the y-axis|crop
+2018|1|2(b)|4|0.25,0.43,0.55,0.57|Rod of length L along the x-axis from the end O, with axes x, y, z|crop
+2018|1|4(a)|6|0.27,0.37,0.56,0.505|Rod AB of length l₀ at angle θ₀ to the x′ axis in the primed frame, with the unprimed x and y axes|crop
+2020|1|5(a)|6|0.25,0.405,0.75,0.558|Vertical electric dipole (+q above −q, separation d) at height h above a grounded infinite horizontal conducting plate|crop
+2020|1|5(c)|7|0.22,0.52,0.72,0.82|Hysteresis loops (B against H) for soft iron (narrow tall loop) and steel (wide loop)|crop
+2020|1|8(a)|11|0.45,0.195,0.60,0.268|Cubic cavity of side L with a small hole on one face (black body model)|crop
+2020|2|5(a)|6|0.30,0.445,0.68,0.581|Step potential V(x): zero for x < 0 (region I) and V₀ for x > 0 (region II), V₀ marked by a vertical arrow, axes V(x) and x|crop
+2021|2|8(a)|7|0.33,0.715,0.63,0.905|Transistor circuit: +20 V supply Vcc, collector resistor Rc = 10 kΩ, base resistor RB from Vcc to the base, currents IC and IB, voltages VBE and VCE|crop
+2022|1|3(a)|4|0.30,0.665,0.64,0.88|Right triangular pyramid with edges a along x and y from origin O and height 3a/2 along z|crop
+2022|1|4(a)|5|0.28,0.44,0.74,0.556|Horizontal pipe carrying water flow Q with a constriction of area A₂ between two sections of area A₁ and two manometer tubes showing height difference h|crop
+2022|1|5(e)|7|0.28,0.19,0.68,0.31|R-L-C circuit: 4 V battery with switch K, 1 mH inductor in series with a 4 Ω resistor, in parallel with a 2 mF capacitor|crop
+2023|2|8(c)(i)|10|0.20,0.55,0.72,0.73|Non-inverting op-amp amplifier: Vin at the + input, output Vout, feedback resistor Rf = 220 kΩ from the output to the − input, Ri = 10 kΩ from the − input to ground|crop
+2024|1|7(c)|10|0.39,0.2,0.62,0.29|Conducting wire PQ sliding on horizontal parallel rails in a uniform magnetic field B (into the page, shown by crosses) with a resistance R connecting the rails outside the field|crop
+2025|1|6(b)|8|0.20,0.14,0.78,0.372|Series circuit: 200 V, 60 Hz source, capacitor XC = 30 Ω, resistor R₁ = 44 Ω, coil with XL = 90 Ω and R₂ = 36 Ω|crop
+2026|1|3(b)|5|0.2,0.635,0.62,0.73|Pion π at rest (before) and, after decay, the muon μ moving upward and the neutrino ν moving downward|crop
+2026|1|5(a)|7|0.25,0.75,0.74,0.895|Resistor network between A and B: 3 Ω in parallel with 6 Ω, then 18 Ω and 8 Ω in series, with a 5 Ω resistor in a loop across the 3 Ω–6 Ω pair and 18 Ω|crop
+2026|2|7(b)|13|0.13,0.563,0.97,0.885|Figure (I): sine wave input Vin between +5 V and −5 V against time t; Figure (II): comparator op-amp with Vin at the + input, the − input tied to the junction of R1 = 8.2 kΩ (from +15 V) and R2 = 1.0 kΩ (to ground), output Vout|crop
