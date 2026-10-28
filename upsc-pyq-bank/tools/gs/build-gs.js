@@ -388,6 +388,23 @@ syl[PYK] = {}; freq[PYK] = {};
   freq[PYK]["paper" + pn] = map;
 });
 console.log("physics items:", PY.items.filter(function(i){ return i.pp === 1; }).length, "+", PY.items.filter(function(i){ return i.pp === 2; }).length);
+// Political Science and International Relations: the syllabus items, with how often each was asked (from d-political-science)
+const PS = JSON.parse(html.match(/<script type="application\/json" id="d-political-science">(.*?)<\/script>/s)[1]), PSK = "political science and international relations";
+syl[PSK] = {}; freq[PSK] = {};
+[1, 2].forEach(function(pn){
+  const list = PS.items.filter(function(it){ return it.pp === pn; });
+  const refsBy = {}; PS.topics.forEach(function(t){ (refsBy[t.s] = refsBy[t.s] || {}); t.q.forEach(function(r){ refsBy[t.s][r] = 1; }); });
+  const counts = list.map(function(it){ return Object.keys(refsBy[it.id] || {}).length; }), tr = tiers(counts), map = {}, topics = [];
+  list.forEach(function(it, i){
+    const label = it.id + "  " + it.full, refs = Object.keys(refsBy[it.id] || {}), ys = {};
+    refs.forEach(function(r){ ys[r.split("|")[0]] = 1; });
+    const yl = Object.keys(ys).map(Number).sort();
+    topics.push(label); map[label] = {count:refs.length, years:yl, tier:tr[i], recent:yl.length ? yl[yl.length - 1] : 0};
+  });
+  syl[PSK]["paper" + pn] = {title:"Political Science and International Relations Optional \u2014 Paper " + (pn === 2 ? "II" : "I"), sections:[{heading:"Official syllabus (UPSC Examination Notice 2026)", topics:topics}]};
+  freq[PSK]["paper" + pn] = map;
+});
+console.log("political science items:", PS.items.filter(function(i){ return i.pp === 1; }).length, "+", PS.items.filter(function(i){ return i.pp === 2; }).length);
 console.log("animal husbandry items:", AH.items.filter(function(i){ return i.pp === 1; }).length, "+", AH.items.filter(function(i){ return i.pp === 2; }).length);
 console.log("agriculture items:", G.items.filter(function(i){ return i.pp === 1; }).length, "+", G.items.filter(function(i){ return i.pp === 2; }).length);
 console.log("anthropology items:", aItems[0].length, "+", aItems[1].length);
