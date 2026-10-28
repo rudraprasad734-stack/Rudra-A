@@ -490,3 +490,29 @@ ag.topics.forEach(function(t){
   fs.writeFileSync(PAGE, h19);
   console.log(NAME + " chapters:", Object.keys(pyLeaf).length, "| Paper I topics:", Object.keys(pyTree["Paper I"]).length, "| Paper II topics:", Object.keys(pyTree["Paper II"]).length);
 }
+// ---------------------------------------------------------------- Political Science and International Relations (one chapter per syllabus sub-topic)
+{
+  const NAME = "Political Science & IR";
+  let h20 = fs.readFileSync(PAGE, "utf8");
+  const m20 = h20.match(/<script type="application\/json" id="d-political-science">(.*?)<\/script>/s);
+  if(!m20) throw new Error("build-planner: d-political-science not found (run political-science/build-political-science.js first), nothing written");
+  const psm = JSON.parse(m20[1]);
+  const psTree = {"Paper I":{}, "Paper II":{}}, psLeaf = {}, per20 = {};
+  psm.topics.forEach(function(t){
+    const it = psm.items.filter(function(x){ return x.id === t.s; })[0], grp = it.pp === 1 ? "Paper I" : "Paper II";
+    per20[it.id] = (per20[it.id] || 0) + 1;
+    const topic = it.id + "  " + it.t, unit = it.id + "." + per20[it.id] + "  " + t.t;
+    (psTree[grp][topic] = psTree[grp][topic] || []).push(unit);
+    psLeaf[topic + "|" + unit] = [t.id];
+  });
+  { const ph = h20.indexOf('  "' + NAME + '": CT({'); if(ph >= 0){ const pe = h20.indexOf('\n  }),\n', ph); if(pe < 0) throw new Error("build-planner: old Political Science placeholder not closed, nothing written"); h20 = h20.slice(0, ph) + h20.slice(pe + 7); } }
+  const cur20 = '  "' + NAME + '": ' + JSON.stringify(psTree, null, 2).replace(/\n/g, "\n  ") + ',\n';
+  const a20 = h20.indexOf('  "' + NAME + '": {\n    "Paper I"');
+  if(a20 >= 0){ const re = /\n  "[A-Z]/g; re.lastIndex = a20 + 20; const m = re.exec(h20); if(!m) throw new Error("build-planner: end of Political Science block not found, nothing written"); h20 = h20.slice(0, a20) + cur20 + h20.slice(m.index + 1); }
+  else { const so7 = h20.indexOf('  "Sociology": CT({'); if(so7 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h20 = h20.slice(0, so7) + cur20 + h20.slice(so7); }
+  const la20 = h20.indexOf("var PSIR_LEAF = {"), leafTxt20 = "var PSIR_LEAF = " + JSON.stringify(psLeaf, null, 1) + ";";
+  if(la20 >= 0){ const e20 = h20.indexOf("\n};", la20); if(e20 < 0) throw new Error("build-planner: PSIR_LEAF block not closed, nothing written"); h20 = h20.slice(0, la20) + leafTxt20 + h20.slice(h20.indexOf("\n", e20 + 1)); }
+  else { const lb20 = h20.indexOf("\n// Optional subjects that have a question analysis"); if(lb20 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h20 = h20.slice(0, lb20) + "\n" + leafTxt20 + h20.slice(lb20); }
+  fs.writeFileSync(PAGE, h20);
+  console.log(NAME + " chapters:", Object.keys(psLeaf).length, "| Paper I topics:", Object.keys(psTree["Paper I"]).length, "| Paper II topics:", Object.keys(psTree["Paper II"]).length);
+}
