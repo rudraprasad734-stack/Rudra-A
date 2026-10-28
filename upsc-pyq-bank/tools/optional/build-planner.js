@@ -516,3 +516,29 @@ ag.topics.forEach(function(t){
   fs.writeFileSync(PAGE, h20);
   console.log(NAME + " chapters:", Object.keys(psLeaf).length, "| Paper I topics:", Object.keys(psTree["Paper I"]).length, "| Paper II topics:", Object.keys(psTree["Paper II"]).length);
 }
+// ---------------------------------------------------------------- Psychology (one chapter per syllabus sub-topic)
+{
+  const NAME = "Psychology";
+  let h21 = fs.readFileSync(PAGE, "utf8");
+  const m21 = h21.match(/<script type="application\/json" id="d-psychology">(.*?)<\/script>/s);
+  if(!m21) throw new Error("build-planner: d-psychology not found (run psychology/build-psychology.js first), nothing written");
+  const psym = JSON.parse(m21[1]);
+  const psyTree = {"Paper I":{}, "Paper II":{}}, psyLeaf = {}, per21 = {};
+  psym.topics.forEach(function(t){
+    const it = psym.items.filter(function(x){ return x.id === t.s; })[0], grp = it.pp === 1 ? "Paper I" : "Paper II";
+    per21[it.id] = (per21[it.id] || 0) + 1;
+    const topic = it.id + "  " + it.t, unit = it.id + "." + per21[it.id] + "  " + t.t;
+    (psyTree[grp][topic] = psyTree[grp][topic] || []).push(unit);
+    psyLeaf[topic + "|" + unit] = [t.id];
+  });
+  { const pq = h21.indexOf('CURR_OPT["Psychology"] = CT({'); if(pq >= 0){ const pe = h21.indexOf('\n});\n', pq); if(pe < 0) throw new Error('build-planner: old Psychology placeholder not closed, nothing written'); h21 = h21.slice(0, pq) + h21.slice(pe + 5); } }
+  const cur21 = '  "' + NAME + '": ' + JSON.stringify(psyTree, null, 2).replace(/\n/g, "\n  ") + ',\n';
+  const a21 = h21.indexOf('  "' + NAME + '": {\n    "Paper I"');
+  if(a21 >= 0){ const re = /\n  "[A-Z]/g; re.lastIndex = a21 + 20; const m = re.exec(h21); if(!m) throw new Error("build-planner: end of Psychology block not found, nothing written"); h21 = h21.slice(0, a21) + cur21 + h21.slice(m.index + 1); }
+  else { const so8 = h21.indexOf('  "Sociology": CT({'); if(so8 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h21 = h21.slice(0, so8) + cur21 + h21.slice(so8); }
+  const la21 = h21.indexOf("var PSY_LEAF = {"), leafTxt21 = "var PSY_LEAF = " + JSON.stringify(psyLeaf, null, 1) + ";";
+  if(la21 >= 0){ const e21 = h21.indexOf("\n};", la21); if(e21 < 0) throw new Error("build-planner: PSY_LEAF block not closed, nothing written"); h21 = h21.slice(0, la21) + leafTxt21 + h21.slice(h21.indexOf("\n", e21 + 1)); }
+  else { const lb21 = h21.indexOf("\n// Optional subjects that have a question analysis"); if(lb21 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h21 = h21.slice(0, lb21) + "\n" + leafTxt21 + h21.slice(lb21); }
+  fs.writeFileSync(PAGE, h21);
+  console.log(NAME + " chapters:", Object.keys(psyLeaf).length, "| Paper I topics:", Object.keys(psyTree["Paper I"]).length, "| Paper II topics:", Object.keys(psyTree["Paper II"]).length);
+}
