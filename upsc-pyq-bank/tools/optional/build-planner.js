@@ -568,3 +568,30 @@ ag.topics.forEach(function(t){
   fs.writeFileSync(PAGE, h22);
   console.log(NAME + " chapters:", Object.keys(paLeaf).length, "| Paper I topics:", Object.keys(paTree["Paper I"]).length, "| Paper II topics:", Object.keys(paTree["Paper II"]).length);
 }
+
+// ---------------------------------------------------------------- Sociology (one chapter per syllabus sub-topic)
+{
+  const NAME = "Sociology";
+  let h23 = fs.readFileSync(PAGE, "utf8");
+  const m23 = h23.match(/<script type="application\/json" id="d-sociology">(.*?)<\/script>/s);
+  if(!m23) throw new Error("build-planner: d-sociology not found (run psychology/build-sociology.js first), nothing written");
+  const som = JSON.parse(m23[1]);
+  const soTree = {"Paper I":{}, "Paper II":{}}, soLeaf = {}, per23 = {};
+  som.topics.forEach(function(t){
+    const it = som.items.filter(function(x){ return x.id === t.s; })[0], grp = it.pp === 1 ? "Paper I" : "Paper II";
+    per23[it.id] = (per23[it.id] || 0) + 1;
+    const topic = it.id + "  " + it.t, unit = it.id + "." + per23[it.id] + "  " + t.t;
+    (soTree[grp][topic] = soTree[grp][topic] || []).push(unit);
+    soLeaf[topic + "|" + unit] = [t.id];
+  });
+  { const sq = h23.indexOf('  "Sociology": CT({'); if(sq >= 0){ const se = h23.indexOf('\n  }),\n', sq); if(se < 0) throw new Error('build-planner: old Sociology placeholder not closed, nothing written'); h23 = h23.slice(0, sq) + h23.slice(se + 7); } }
+  const cur23 = '  "' + NAME + '": ' + JSON.stringify(soTree, null, 2).replace(/\n/g, "\n  ") + ',\n';
+  const a23 = h23.indexOf('  "' + NAME + '": {\n    "Paper I"');
+  if(a23 >= 0){ const re = /\n(  "[A-Z]|\};)/g; re.lastIndex = a23 + 20; const m = re.exec(h23); if(!m) throw new Error("build-planner: end of Sociology block not found, nothing written"); h23 = h23.slice(0, a23) + cur23 + h23.slice(m.index + 1); }
+  else { const so9 = h23.indexOf("\n};\n// Official UPSC list"); if(so9 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h23 = h23.slice(0, so9 + 1) + cur23 + h23.slice(so9 + 1); }
+  const la23 = h23.indexOf("var SOC_LEAF = {"), leafTxt23 = "var SOC_LEAF = " + JSON.stringify(soLeaf, null, 1) + ";";
+  if(la23 >= 0){ const e23 = h23.indexOf("\n};", la23); if(e23 < 0) throw new Error("build-planner: SOC_LEAF block not closed, nothing written"); h23 = h23.slice(0, la23) + leafTxt23 + h23.slice(h23.indexOf("\n", e23 + 1)); }
+  else { const lb23 = h23.indexOf("\n// Optional subjects that have a question analysis"); if(lb23 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h23 = h23.slice(0, lb23) + "\n" + leafTxt23 + h23.slice(lb23); }
+  fs.writeFileSync(PAGE, h23);
+  console.log(NAME + " chapters:", Object.keys(soLeaf).length, "| Paper I topics:", Object.keys(soTree["Paper I"]).length, "| Paper II topics:", Object.keys(soTree["Paper II"]).length);
+}
