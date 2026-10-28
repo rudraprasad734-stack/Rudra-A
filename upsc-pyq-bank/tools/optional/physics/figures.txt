@@ -21,3 +21,7 @@
 2026|1|3(b)|5|0.2,0.635,0.62,0.73|Pion π at rest (before) and, after decay, the muon μ moving upward and the neutrino ν moving downward|crop
 2026|1|5(a)|7|0.25,0.75,0.74,0.895|Resistor network between A and B: 3 Ω in parallel with 6 Ω, then 18 Ω and 8 Ω in series, with a 5 Ω resistor in a loop across the 3 Ω–6 Ω pair and 18 Ω|crop
 2026|2|7(b)|13|0.13,0.563,0.97,0.885|Figure (I): sine wave input Vin between +5 V and −5 V against time t; Figure (II): comparator op-amp with Vin at the + input, the − input tied to the junction of R1 = 8.2 kΩ (from +15 V) and R2 = 1.0 kΩ (to ground), output Vout|crop
+2021|1|1(e)|4|0.2,0.228,0.62,0.405|Mass m hung from the ceiling by two springs in series, k₁ above and k₂ below, with the mass m at the bottom|crop
+2021|1|5(e)|9|0.25,0.375,0.72,0.535|Two-branch parallel circuit: one branch has R_L in series with an inductor L, the other has R_C in series with a capacitor C|crop
+2021|1|6(b)|10|0.3,0.355,0.66,0.535|Circuit: a coil (L, R) in parallel with R₀, the pair connected in series with a switch S and a battery E|crop
+2023|1|7(b)|10|0.22,0.37,0.78,0.745|Piston–cylinder device: air (V₁ = 400 L, P₁ = 150 kPa, T₁ = 27°C) below a piston resting on a pair of stops, heat Q supplied from below|crop

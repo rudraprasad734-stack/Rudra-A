@@ -152,5 +152,33 @@
    "a": "Figure (I): sine wave input Vin between +5 V and \u22125 V against time t; Figure (II): comparator op-amp with Vin at the + input, the \u2212 input tied to the junction of R1 = 8.2 k\u03a9 (from +15 V) and R2 = 1.0 k\u03a9 (to ground), output Vout",
    "k": "crop"
   }
+ ],
+ "2021|1|1(e)": [
+  {
+   "u": "img/physics/2021-1-1e-1.webp",
+   "a": "Mass m hung from the ceiling by two springs in series, k\u2081 above and k\u2082 below, with the mass m at the bottom",
+   "k": "crop"
+  }
+ ],
+ "2021|1|5(e)": [
+  {
+   "u": "img/physics/2021-1-5e-1.webp",
+   "a": "Two-branch parallel circuit: one branch has R_L in series with an inductor L, the other has R_C in series with a capacitor C",
+   "k": "crop"
+  }
+ ],
+ "2021|1|6(b)": [
+  {
+   "u": "img/physics/2021-1-6b-1.webp",
+   "a": "Circuit: a coil (L, R) in parallel with R\u2080, the pair connected in series with a switch S and a battery E",
+   "k": "crop"
+  }
+ ],
+ "2023|1|7(b)": [
+  {
+   "u": "img/physics/2023-1-7b-1.webp",
+   "a": "Piston\u2013cylinder device: air (V\u2081 = 400 L, P\u2081 = 150 kPa, T\u2081 = 27\u00b0C) below a piston resting on a pair of stops, heat Q supplied from below",
+   "k": "crop"
+  }
  ]
 }
