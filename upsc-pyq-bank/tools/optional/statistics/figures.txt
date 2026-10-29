@@ -193,3 +193,38 @@
 2021|2|7(a)|7|0.08,0.398,0.97,0.727|Table, matrix or formulas printed with this question: If c(x, t) denote observed proportion of females in the age group (x, x + t) and f(x, t) is the obse|table
 2021|2|7(c)|8|0.08,0.365,0.97,0.550|Table, matrix or formulas printed with this question: Define instantaneous force of mortality (μ_x). Show that q_x = (1/l_x) ∫_0^1 μ_(x+t) l_(x+t) dx wher|table
 2021|2|8(b)|8|0.08,0.751,0.97,0.839|Table, matrix or formulas printed with this question: Check the identifiability of the following two-equation system : β_11 y_1t + β_12 y_2t + γ_11 x_1t +|table
+2022|1|1(a)|2|0.08,0.207,0.97,0.301|Table, matrix or formulas printed with this question: Let X and Y be independent random variables with exponential distribution having respective means 1/|table
+2022|1|1(b)|2|0.08,0.443,0.97,0.543|Table, matrix or formulas printed with this question: Using Central Limit Theorem, show that lim (n → ∞) e^(−n) Σ_(k=0)^(n) n^k / k! = 1/2.|table
+2022|1|1(c)|2|0.08,0.744,0.97,0.902|Table, matrix or formulas printed with this question: An unbiased six-sided die is thrown twice. Let X denote the smaller of the scores obtained. Then sho|table
+2022|1|1(d)|3|0.08,0.167,0.97,0.264|Table, matrix or formulas printed with this question: Let T_1 and T_2 be two unbiased estimators of θ with Var(T_1) = Var(T_2), then show that Corr(T_1, T|table
+2022|1|1(e)|3|0.08,0.450,0.97,0.623|Table, matrix or formulas printed with this question: An urn contains 5 marbles of which θ are white and the others black. In order to test null hypothesi|table
+2022|1|2(a)|3|0.08,0.778,0.97,0.923|Table, matrix or formulas printed with this question: Let a random variable X have exponential distribution with mean 1/θ, θ > 0. To test H_0 : θ = 3 agai|table
+2022|1|2(b)|4|0.08,0.332,0.97,0.570|Table, matrix or formulas printed with this question: Each Sunday a fisherman visits one of three possible locations near his home : he goes to the sea wi|table
+2022|1|2(c)|4|0.08,0.704,0.97,0.811|Table, matrix or formulas printed with this question: Let X_1 < X_2 < X_3 be the order statistics from uniform population having probability density funct|table
+2022|1|3(a)|5|0.08,0.318,0.97,0.494|Table, matrix or formulas printed with this question: (i) How large a sample must be taken in order that the probability will be at least 0·90 that the sa|table
+2022|1|3(b)|5|0.08,0.610,0.97,0.708|Table, matrix or formulas printed with this question: Theoretical probabilities in the four cells of a multinomial distribution are (2 + θ)/4, (1 − θ)/4, |table
+2022|1|3(c)|5|0.08,0.832,0.97,0.933|Table, matrix or formulas printed with this question: If X is a random variable with characteristic function φ(t) = 1 − /t/, /t/ ≤ 1, and 0 otherwise, the|table
+2022|1|4(a)|6|0.08,0.222,0.97,0.362|Table, matrix or formulas printed with this question: Consider Poisson distribution P_θ(X = j) = e^(−θ) θ^j / j! = p_j, j = 0, 1, 2, … . Let f_j be the fr|table
+2022|1|4(b)|6|0.08,0.672,0.97,0.926|Table, matrix or formulas printed with this question: (i) Let the joint probability density function of X and Y be f(x, y) = C · exp{−(4x^2 + 9y^2 − xy)},|table
+2022|1|4(c)|7|0.08,0.479,0.97,0.916|Table, matrix or formulas printed with this question: The following data present the time (in minutes), that a commuter had to wait to catch a bus to reac|table
+2022|1|5(a)|8|0.08,0.310,0.97,0.464|Table, matrix or formulas printed with this question: Define general linear model with usual assumptions. If y_1 = β_1 + u_1, y_2 = −β_1 + β_2 + u_2, y_3 |table
+2022|1|5(b)|8|0.08,0.660,0.97,0.814|Table, matrix or formulas printed with this question: Given X ~ N_3(μ, Σ), where μ = (2, 4, 3)' and Σ = [[8, 2, 3], [2, 4, 1], [3, 1, 3]], (i) find the re|table
+2022|1|5(d)|9|0.08,0.177,0.97,0.276|Table, matrix or formulas printed with this question: In a 2^6 – factorial experiment, the key block is given as : (1), ab, cd, ef, ace, abef, abcd, bce, |table
+2022|1|5(e)|9|0.08,0.378,0.97,0.463|Table, matrix or formulas printed with this question: If the coefficients of variation of x and y are equal and the correlation coefficient between x and |table
+2022|1|6(c)|10|0.08,0.338,0.97,0.600|Table, matrix or formulas printed with this question: (i) If X_1 = Y_1 + Y_2, X_2 = Y_2 + Y_3, X_3 = Y_3 + Y_1, where Y_1, Y_2 and Y_3 are uncorrelated ra|table
+2022|1|7(a)|11|0.08,0.064,0.97,0.247|Table, matrix or formulas printed with this question: Consider the following data given for a BIBD with v = b = 4, r = k = 3, λ = 2 and N = 12 : Treatment|table
+2022|1|7(b)|11|0.08,0.741,0.97,0.935|Table, matrix or formulas printed with this question: (i) The data matrix of a random sample of size n = 3 from a bivariate normal population BVN (μ_1, μ_|table
+2022|1|7(b)|12|0.08,0.062,0.97,0.322|Table, matrix or formulas printed with this question: (i) The data matrix of a random sample of size n = 3 from a bivariate normal population BVN (μ_1, μ_|table
+2022|1|7(c)|13|0.08,0.064,0.97,0.537|Table, matrix or formulas printed with this question: A sample of size n is drawn with equal probability and without replacement from a population with si|table
+2022|1|8(a)|13|0.08,0.774,0.97,0.926|Table, matrix or formulas printed with this question: (i) What are orthogonal polynomials ? How do you fit an orthogonal polynomial of degree 'p' ? (ii) F|table
+2022|2|1(b)|2|0.08,0.529,0.97,0.823|Table, matrix or formulas printed with this question: The management of ABC company is considering the question of marketing a new product. The fixed cost|table
+2022|2|2(a)|3|0.08,0.630,0.97,0.910|Table, matrix or formulas printed with this question: Samples of size n = 5 units are taken from a process every hour. The x̄ and R̄ values for a particul|table
+2022|2|3(a)|4|0.08,0.618,0.97,0.814|Table, matrix or formulas printed with this question: It is planned to raise a research team to a strength of 50 chemists, which is to be maintained. The |table
+2022|2|4(a)|5|0.08,0.525,0.97,0.674|Table, matrix or formulas printed with this question: Use penalty method to solve the following linear programming problem : Maximize Z = x_1 + 2x_2 + 3x_|table
+2022|2|4(b)|6|0.08,0.073,0.97,0.299|Table, matrix or formulas printed with this question: An airline that operates seven days a week has the time-table shown below. Crew must have a minimum |table
+2022|2|5(a)|6|0.08,0.628,0.97,0.800|Table, matrix or formulas printed with this question: Apply the method of link relatives to the following data and calculate the seasonal indices : Price |table
+2022|2|5(c)|7|0.08,0.140,0.97,0.197|Table, matrix or formulas printed with this question: Consider, in the usual notations, the equation y = Y_1 β + X_1 γ + u, where y is an (n × 1) vector, |table
+2022|2|5(d)|7|0.08,0.275,0.97,0.349|Table, matrix or formulas printed with this question: If the survivorship function l(x) in life table is linear between x and x + 1, and complete expectat|table
+2022|2|5(e)|7|0.08,0.460,0.97,0.570|Table, matrix or formulas printed with this question: Compute the T-scores corresponding to test score x for the following frequency distribution : x = 1,|table
+2022|2|7(b)|8|0.08,0.214,0.97,0.289|Table, matrix or formulas printed with this question: With usual notations, obtain logistic curve as given by P(t) = L / (1 + e^(r(β − t))); t > 0, β > 0,|table
+2022|2|8(c)|8|0.08,0.734,0.97,0.841|Table, matrix or formulas printed with this question: If e(x) is the average number of complete years of life lived by each of l(x) persons in life table |table

@@ -1334,5 +1334,248 @@
    "a": "Table, matrix or formulas printed with this question: Check the identifiability of the following two-equation system : \u03b2_11 y_1t + \u03b2_12 y_2t + \u03b3_11 x_1t +",
    "k": "table"
   }
+ ],
+ "2022|1|1(a)": [
+  {
+   "u": "img/statistics/2022-1-1a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X and Y be independent random variables with exponential distribution having respective means 1/",
+   "k": "table"
+  }
+ ],
+ "2022|1|1(b)": [
+  {
+   "u": "img/statistics/2022-1-1b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Using Central Limit Theorem, show that lim (n \u2192 \u221e) e^(\u2212n) \u03a3_(k=0)^(n) n^k / k! = 1/2.",
+   "k": "table"
+  }
+ ],
+ "2022|1|1(c)": [
+  {
+   "u": "img/statistics/2022-1-1c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: An unbiased six-sided die is thrown twice. Let X denote the smaller of the scores obtained. Then sho",
+   "k": "table"
+  }
+ ],
+ "2022|1|1(d)": [
+  {
+   "u": "img/statistics/2022-1-1d-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let T_1 and T_2 be two unbiased estimators of \u03b8 with Var(T_1) = Var(T_2), then show that Corr(T_1, T",
+   "k": "table"
+  }
+ ],
+ "2022|1|1(e)": [
+  {
+   "u": "img/statistics/2022-1-1e-1.webp",
+   "a": "Table, matrix or formulas printed with this question: An urn contains 5 marbles of which \u03b8 are white and the others black. In order to test null hypothesi",
+   "k": "table"
+  }
+ ],
+ "2022|1|2(a)": [
+  {
+   "u": "img/statistics/2022-1-2a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let a random variable X have exponential distribution with mean 1/\u03b8, \u03b8 > 0. To test H_0 : \u03b8 = 3 agai",
+   "k": "table"
+  }
+ ],
+ "2022|1|2(b)": [
+  {
+   "u": "img/statistics/2022-1-2b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Each Sunday a fisherman visits one of three possible locations near his home : he goes to the sea wi",
+   "k": "table"
+  }
+ ],
+ "2022|1|2(c)": [
+  {
+   "u": "img/statistics/2022-1-2c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X_1 < X_2 < X_3 be the order statistics from uniform population having probability density funct",
+   "k": "table"
+  }
+ ],
+ "2022|1|3(a)": [
+  {
+   "u": "img/statistics/2022-1-3a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) How large a sample must be taken in order that the probability will be at least 0\u00b790 that the sa",
+   "k": "table"
+  }
+ ],
+ "2022|1|3(b)": [
+  {
+   "u": "img/statistics/2022-1-3b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Theoretical probabilities in the four cells of a multinomial distribution are (2 + \u03b8)/4, (1 \u2212 \u03b8)/4,",
+   "k": "table"
+  }
+ ],
+ "2022|1|3(c)": [
+  {
+   "u": "img/statistics/2022-1-3c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: If X is a random variable with characteristic function \u03c6(t) = 1 \u2212 /t/, /t/ \u2264 1, and 0 otherwise, the",
+   "k": "table"
+  }
+ ],
+ "2022|1|4(a)": [
+  {
+   "u": "img/statistics/2022-1-4a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Consider Poisson distribution P_\u03b8(X = j) = e^(\u2212\u03b8) \u03b8^j / j! = p_j, j = 0, 1, 2, \u2026 . Let f_j be the fr",
+   "k": "table"
+  }
+ ],
+ "2022|1|4(b)": [
+  {
+   "u": "img/statistics/2022-1-4b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Let the joint probability density function of X and Y be f(x, y) = C \u00b7 exp{\u2212(4x^2 + 9y^2 \u2212 xy)},",
+   "k": "table"
+  }
+ ],
+ "2022|1|4(c)": [
+  {
+   "u": "img/statistics/2022-1-4c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: The following data present the time (in minutes), that a commuter had to wait to catch a bus to reac",
+   "k": "table"
+  }
+ ],
+ "2022|1|5(a)": [
+  {
+   "u": "img/statistics/2022-1-5a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Define general linear model with usual assumptions. If y_1 = \u03b2_1 + u_1, y_2 = \u2212\u03b2_1 + \u03b2_2 + u_2, y_3",
+   "k": "table"
+  }
+ ],
+ "2022|1|5(b)": [
+  {
+   "u": "img/statistics/2022-1-5b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Given X ~ N_3(\u03bc, \u03a3), where \u03bc = (2, 4, 3)' and \u03a3 = [[8, 2, 3], [2, 4, 1], [3, 1, 3]], (i) find the re",
+   "k": "table"
+  }
+ ],
+ "2022|1|5(d)": [
+  {
+   "u": "img/statistics/2022-1-5d-1.webp",
+   "a": "Table, matrix or formulas printed with this question: In a 2^6 \u2013 factorial experiment, the key block is given as : (1), ab, cd, ef, ace, abef, abcd, bce,",
+   "k": "table"
+  }
+ ],
+ "2022|1|5(e)": [
+  {
+   "u": "img/statistics/2022-1-5e-1.webp",
+   "a": "Table, matrix or formulas printed with this question: If the coefficients of variation of x and y are equal and the correlation coefficient between x and",
+   "k": "table"
+  }
+ ],
+ "2022|1|6(c)": [
+  {
+   "u": "img/statistics/2022-1-6c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) If X_1 = Y_1 + Y_2, X_2 = Y_2 + Y_3, X_3 = Y_3 + Y_1, where Y_1, Y_2 and Y_3 are uncorrelated ra",
+   "k": "table"
+  }
+ ],
+ "2022|1|7(a)": [
+  {
+   "u": "img/statistics/2022-1-7a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Consider the following data given for a BIBD with v = b = 4, r = k = 3, \u03bb = 2 and N = 12 : Treatment",
+   "k": "table"
+  }
+ ],
+ "2022|1|7(b)": [
+  {
+   "u": "img/statistics/2022-1-7b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) The data matrix of a random sample of size n = 3 from a bivariate normal population BVN (\u03bc_1, \u03bc_",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2022-1-7b-2.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) The data matrix of a random sample of size n = 3 from a bivariate normal population BVN (\u03bc_1, \u03bc_",
+   "k": "table"
+  }
+ ],
+ "2022|1|7(c)": [
+  {
+   "u": "img/statistics/2022-1-7c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: A sample of size n is drawn with equal probability and without replacement from a population with si",
+   "k": "table"
+  }
+ ],
+ "2022|1|8(a)": [
+  {
+   "u": "img/statistics/2022-1-8a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) What are orthogonal polynomials ? How do you fit an orthogonal polynomial of degree 'p' ? (ii) F",
+   "k": "table"
+  }
+ ],
+ "2022|2|1(b)": [
+  {
+   "u": "img/statistics/2022-2-1b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: The management of ABC company is considering the question of marketing a new product. The fixed cost",
+   "k": "table"
+  }
+ ],
+ "2022|2|2(a)": [
+  {
+   "u": "img/statistics/2022-2-2a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Samples of size n = 5 units are taken from a process every hour. The x\u0304 and R\u0304 values for a particul",
+   "k": "table"
+  }
+ ],
+ "2022|2|3(a)": [
+  {
+   "u": "img/statistics/2022-2-3a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: It is planned to raise a research team to a strength of 50 chemists, which is to be maintained. The",
+   "k": "table"
+  }
+ ],
+ "2022|2|4(a)": [
+  {
+   "u": "img/statistics/2022-2-4a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Use penalty method to solve the following linear programming problem : Maximize Z = x_1 + 2x_2 + 3x_",
+   "k": "table"
+  }
+ ],
+ "2022|2|4(b)": [
+  {
+   "u": "img/statistics/2022-2-4b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: An airline that operates seven days a week has the time-table shown below. Crew must have a minimum",
+   "k": "table"
+  }
+ ],
+ "2022|2|5(a)": [
+  {
+   "u": "img/statistics/2022-2-5a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Apply the method of link relatives to the following data and calculate the seasonal indices : Price",
+   "k": "table"
+  }
+ ],
+ "2022|2|5(c)": [
+  {
+   "u": "img/statistics/2022-2-5c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Consider, in the usual notations, the equation y = Y_1 \u03b2 + X_1 \u03b3 + u, where y is an (n \u00d7 1) vector,",
+   "k": "table"
+  }
+ ],
+ "2022|2|5(d)": [
+  {
+   "u": "img/statistics/2022-2-5d-1.webp",
+   "a": "Table, matrix or formulas printed with this question: If the survivorship function l(x) in life table is linear between x and x + 1, and complete expectat",
+   "k": "table"
+  }
+ ],
+ "2022|2|5(e)": [
+  {
+   "u": "img/statistics/2022-2-5e-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Compute the T-scores corresponding to test score x for the following frequency distribution : x = 1,",
+   "k": "table"
+  }
+ ],
+ "2022|2|7(b)": [
+  {
+   "u": "img/statistics/2022-2-7b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: With usual notations, obtain logistic curve as given by P(t) = L / (1 + e^(r(\u03b2 \u2212 t))); t > 0, \u03b2 > 0,",
+   "k": "table"
+  }
+ ],
+ "2022|2|8(c)": [
+  {
+   "u": "img/statistics/2022-2-8c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: If e(x) is the average number of complete years of life lived by each of l(x) persons in life table",
+   "k": "table"
+  }
  ]
 }
