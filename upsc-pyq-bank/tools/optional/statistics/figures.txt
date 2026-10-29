@@ -228,3 +228,25 @@
 2022|2|5(e)|7|0.08,0.460,0.97,0.570|Table, matrix or formulas printed with this question: Compute the T-scores corresponding to test score x for the following frequency distribution : x = 1,|table
 2022|2|7(b)|8|0.08,0.214,0.97,0.289|Table, matrix or formulas printed with this question: With usual notations, obtain logistic curve as given by P(t) = L / (1 + e^(r(β − t))); t > 0, β > 0,|table
 2022|2|8(c)|8|0.08,0.734,0.97,0.841|Table, matrix or formulas printed with this question: If e(x) is the average number of complete years of life lived by each of l(x) persons in life table |table
+2023|1|1(b)|2|0.08,0.667,0.97,0.913|Table, matrix or formulas printed with this question: Let X be a continuous random variable with probability density function : f(x) = x/2, 0 ≤ x < 1; 1/2|table
+2023|1|1(c)|3|0.08,0.215,0.97,0.337|Table, matrix or formulas printed with this question: Let {X_n, n ≥ 1} be a sequence of mutually independent random variables such that P(X_n = n^α) = P(X|table
+2023|1|1(d)|3|0.08,0.595,0.97,0.780|Table, matrix or formulas printed with this question: Apply Run Test to test the randomness of the following sequence of H and T at 5% level of significan|table
+2023|1|2(a)|4|0.08,0.328,0.97,0.578|Table, matrix or formulas printed with this question: Let X, Y, Z be three mutually independent standard exponential variates and W_1 = X + Y + Z, W_2 = (|table
+2023|1|2(b)|4|0.08,0.779,0.97,0.900|Table, matrix or formulas printed with this question: Give an example to prove or disapprove the following : P(lim sup A_n) = 0 ⇒ Σ_(k=1)^(∞) P(A_k) < ∞, |table
+2023|1|2(c)|5|0.08,0.129,0.97,0.200|Table, matrix or formulas printed with this question: Let {Y_n, n ≥ 1} be a sequence of random variables and Y be a degenerate random variable. Examine wh|table
+2023|1|3(a)|5|0.08,0.406,0.97,0.464|Table, matrix or formulas printed with this question: (i) If X is a random variable with finite variance, show that lim (n → ∞) n^2 P{/X/ > n} = 0. (10) (|table
+2023|1|3(b)|5|0.08,0.761,0.97,0.922|Table, matrix or formulas printed with this question: Determine whether the sequence of mutually independent random variables {X_n, n ≥ 1}, in which P(X_n|table
+2023|1|3(c)|6|0.08,0.206,0.97,0.334|Table, matrix or formulas printed with this question: Define Sequential Probability Ratio Test (SPRT) along with its operating characteristic function and|table
+2023|1|4(a)|6|0.08,0.485,0.97,0.570|Table, matrix or formulas printed with this question: What is the role of properties of completeness and sufficiency in Statistical Inference ? Explain. I|table
+2023|1|4(b)|7|0.08,0.056,0.97,0.273|Table, matrix or formulas printed with this question: A survey of 400 families with four children each have the following distribution : Number of boys 0,|table
+2023|1|4(c)|7|0.08,0.506,0.97,0.600|Table, matrix or formulas printed with this question: Define Likelihood Ratio Test. In N(θ, σ^2), where σ^2 is unknown, find out LR test for testing H_0 :|table
+2023|1|5(a)|8|0.08,0.281,0.97,0.448|Table, matrix or formulas printed with this question: (i) If X = (X_1 X_2 X_3)' is distributed as N_3(μ, Σ), find the distribution of [(X_1 − X_2) (X_2 − |table
+2023|1|5(c)|8|0.08,0.773,0.97,0.917|Table, matrix or formulas printed with this question: Let x_1, x_2, …, x_n be n given observations, and suppose that Y_i = β_0 + β_1 x_i + e_i; i = 1, 2, |table
+2023|1|5(d)|9|0.08,0.366,0.97,0.726|Table, matrix or formulas printed with this question: Complete the following analysis of variance table of a design and examine whether there is a signifi|table
+2023|1|5(e)|9|0.08,0.837,0.97,0.918|Table, matrix or formulas printed with this question: Define regression estimator used for the estimation of population mean. Obtain its bias and Mean Squ|table
+2023|1|6(a)|10|0.08,0.225,0.97,0.418|Table, matrix or formulas printed with this question: Let X = (X_1 X_2 X_3)' be distributed as N_3(μ, Σ), where μ = (2 −1 3)' and Σ = [[4, 1, 0], [1, 2, 1|table
+2023|1|6(b)|10|0.08,0.684,0.97,0.918|Table, matrix or formulas printed with this question: (i) Describe the complete analysis of two-way classified data with multiple (but equal) observations|table
+2023|1|6(c)|11|0.08,0.194,0.97,0.320|Table, matrix or formulas printed with this question: (i) State briefly three reasons why an analyst may wish to perform a principal component analysis. (|table
+2023|1|7(b)|12|0.08,0.049,0.97,0.340|Table, matrix or formulas printed with this question: The table given below gives the population and sample sizes, stratum means and variance of a stratif|table
+2023|1|8(a)|12|0.08,0.632,0.97,0.698|Table, matrix or formulas printed with this question: Differentiate between randomised block design and balanced incomplete block design. In usual notatio|table
+2023|1|8(b)|12|0.08,0.814,0.97,0.919|Table, matrix or formulas printed with this question: Explain the concept of confounding in design of experiment. In an experiment with three factors A, B|table

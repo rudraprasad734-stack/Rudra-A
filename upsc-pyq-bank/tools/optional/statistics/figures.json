@@ -1577,5 +1577,159 @@
    "a": "Table, matrix or formulas printed with this question: If e(x) is the average number of complete years of life lived by each of l(x) persons in life table",
    "k": "table"
   }
+ ],
+ "2023|1|1(b)": [
+  {
+   "u": "img/statistics/2023-1-1b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X be a continuous random variable with probability density function : f(x) = x/2, 0 \u2264 x < 1; 1/2",
+   "k": "table"
+  }
+ ],
+ "2023|1|1(c)": [
+  {
+   "u": "img/statistics/2023-1-1c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let {X_n, n \u2265 1} be a sequence of mutually independent random variables such that P(X_n = n^\u03b1) = P(X",
+   "k": "table"
+  }
+ ],
+ "2023|1|1(d)": [
+  {
+   "u": "img/statistics/2023-1-1d-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Apply Run Test to test the randomness of the following sequence of H and T at 5% level of significan",
+   "k": "table"
+  }
+ ],
+ "2023|1|2(a)": [
+  {
+   "u": "img/statistics/2023-1-2a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X, Y, Z be three mutually independent standard exponential variates and W_1 = X + Y + Z, W_2 = (",
+   "k": "table"
+  }
+ ],
+ "2023|1|2(b)": [
+  {
+   "u": "img/statistics/2023-1-2b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Give an example to prove or disapprove the following : P(lim sup A_n) = 0 \u21d2 \u03a3_(k=1)^(\u221e) P(A_k) < \u221e,",
+   "k": "table"
+  }
+ ],
+ "2023|1|2(c)": [
+  {
+   "u": "img/statistics/2023-1-2c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let {Y_n, n \u2265 1} be a sequence of random variables and Y be a degenerate random variable. Examine wh",
+   "k": "table"
+  }
+ ],
+ "2023|1|3(a)": [
+  {
+   "u": "img/statistics/2023-1-3a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) If X is a random variable with finite variance, show that lim (n \u2192 \u221e) n^2 P{/X/ > n} = 0. (10) (",
+   "k": "table"
+  }
+ ],
+ "2023|1|3(b)": [
+  {
+   "u": "img/statistics/2023-1-3b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Determine whether the sequence of mutually independent random variables {X_n, n \u2265 1}, in which P(X_n",
+   "k": "table"
+  }
+ ],
+ "2023|1|3(c)": [
+  {
+   "u": "img/statistics/2023-1-3c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Define Sequential Probability Ratio Test (SPRT) along with its operating characteristic function and",
+   "k": "table"
+  }
+ ],
+ "2023|1|4(a)": [
+  {
+   "u": "img/statistics/2023-1-4a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: What is the role of properties of completeness and sufficiency in Statistical Inference ? Explain. I",
+   "k": "table"
+  }
+ ],
+ "2023|1|4(b)": [
+  {
+   "u": "img/statistics/2023-1-4b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: A survey of 400 families with four children each have the following distribution : Number of boys 0,",
+   "k": "table"
+  }
+ ],
+ "2023|1|4(c)": [
+  {
+   "u": "img/statistics/2023-1-4c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Define Likelihood Ratio Test. In N(\u03b8, \u03c3^2), where \u03c3^2 is unknown, find out LR test for testing H_0 :",
+   "k": "table"
+  }
+ ],
+ "2023|1|5(a)": [
+  {
+   "u": "img/statistics/2023-1-5a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) If X = (X_1 X_2 X_3)' is distributed as N_3(\u03bc, \u03a3), find the distribution of [(X_1 \u2212 X_2) (X_2 \u2212",
+   "k": "table"
+  }
+ ],
+ "2023|1|5(c)": [
+  {
+   "u": "img/statistics/2023-1-5c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let x_1, x_2, \u2026, x_n be n given observations, and suppose that Y_i = \u03b2_0 + \u03b2_1 x_i + e_i; i = 1, 2,",
+   "k": "table"
+  }
+ ],
+ "2023|1|5(d)": [
+  {
+   "u": "img/statistics/2023-1-5d-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Complete the following analysis of variance table of a design and examine whether there is a signifi",
+   "k": "table"
+  }
+ ],
+ "2023|1|5(e)": [
+  {
+   "u": "img/statistics/2023-1-5e-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Define regression estimator used for the estimation of population mean. Obtain its bias and Mean Squ",
+   "k": "table"
+  }
+ ],
+ "2023|1|6(a)": [
+  {
+   "u": "img/statistics/2023-1-6a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X = (X_1 X_2 X_3)' be distributed as N_3(\u03bc, \u03a3), where \u03bc = (2 \u22121 3)' and \u03a3 = [[4, 1, 0], [1, 2, 1",
+   "k": "table"
+  }
+ ],
+ "2023|1|6(b)": [
+  {
+   "u": "img/statistics/2023-1-6b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Describe the complete analysis of two-way classified data with multiple (but equal) observations",
+   "k": "table"
+  }
+ ],
+ "2023|1|6(c)": [
+  {
+   "u": "img/statistics/2023-1-6c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) State briefly three reasons why an analyst may wish to perform a principal component analysis. (",
+   "k": "table"
+  }
+ ],
+ "2023|1|7(b)": [
+  {
+   "u": "img/statistics/2023-1-7b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: The table given below gives the population and sample sizes, stratum means and variance of a stratif",
+   "k": "table"
+  }
+ ],
+ "2023|1|8(a)": [
+  {
+   "u": "img/statistics/2023-1-8a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Differentiate between randomised block design and balanced incomplete block design. In usual notatio",
+   "k": "table"
+  }
+ ],
+ "2023|1|8(b)": [
+  {
+   "u": "img/statistics/2023-1-8b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Explain the concept of confounding in design of experiment. In an experiment with three factors A, B",
+   "k": "table"
+  }
  ]
 }
