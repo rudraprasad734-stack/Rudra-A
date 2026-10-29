@@ -1399,7 +1399,7 @@
   #view-dashboard .timer-card > .today-tg{position:absolute; right:16px; top:calc(64px + 38px + 40px + 12px + env(safe-area-inset-top,0px)); z-index:9; width:40px; height:40px; border-radius:50%; border:1px solid rgba(255,255,255,.25); background:rgba(0,0,0,.45); color:rgba(255,255,255,.85); display:grid; place-items:center; cursor:pointer; padding:0;}
   .today-tg.hide{display:none;} .today-tg svg{width:18px; height:18px; transition:transform .25s ease;} .today-tg.open{border-color:rgba(46,230,214,.7); color:#2ee6d6;} .today-tg.open svg{transform:rotate(180deg);}
   #view-dashboard .timer-card > .goal-strip{top:calc(64px + 38px + 40px + 12px + 40px + 10px + env(safe-area-inset-top,0px));}
-  .goal-strip{display:none;} .goal-strip.open{display:block;} #view-dashboard .timer-card > .goal-strip.open{z-index:12;} .goal-strip .gs-top, .goal-strip .gs-list{background:rgba(6,20,24,.96);} .goal-strip .gs-days{background:rgba(6,20,24,.96); margin:8px 0 0; padding:8px 0 4px; border-radius:16px; border:1px solid rgba(46,230,214,.2);}
+  .goal-strip{display:none;} .goal-strip.open{display:block;} #view-dashboard .timer-card > .goal-strip.open{z-index:12;} .goal-strip .gs-top, .goal-strip .gs-list{background:rgba(6,20,24,.4); -webkit-backdrop-filter:blur(5px); backdrop-filter:blur(5px); text-shadow:0 1px 3px rgba(0,0,0,.8),0 0 8px rgba(0,0,0,.6);} .goal-strip .gs-days{background:rgba(6,20,24,.4); -webkit-backdrop-filter:blur(5px); backdrop-filter:blur(5px); margin:8px 0 0; padding:8px 0 4px; border-radius:16px; border:1px solid rgba(46,230,214,.2);}
   .gs-top{cursor:default !important;}
   .gs-list{margin-top:8px; padding:10px 14px 8px; border-radius:18px; background:rgba(8,24,28,.78); border:1px solid rgba(46,230,214,.35); backdrop-filter:blur(10px);}
   .gs-body{max-height:clamp(60px, calc(100vh - 585px), 210px); overflow:auto; -webkit-overflow-scrolling:touch;}
@@ -1418,6 +1418,7 @@
   .td-sub ul{margin:0;padding-left:16px;opacity:.9;line-height:1.4} .td-more{list-style:none;margin-left:-16px}
   .td-up{padding:5px 0 0;border-top:1px solid rgba(255,255,255,.08)} .td-up .td-h{color:#ffc857}
   .td-u{display:flex;align-items:center;gap:6px;font-size:12px;padding:1px 0} .td-u small{opacity:.6}
+  .td-a .td-t b{font-weight:600} .td-ai{flex:none;font-size:14px} .td-dur{margin-left:auto;flex:none;opacity:.65;font-size:11.5px} .td-done{opacity:.55}
   .td-note{font-size:10.5px;opacity:.6;margin-top:1px} .td-none{font-size:12px;opacity:.7}
   .td-stu{margin-top:4px;padding-top:4px;border-top:1px solid rgba(255,255,255,.08);font-size:12px;opacity:.85}
   .gs-none{padding:8px 0 6px; font-size:13px; color:rgba(255,255,255,.7);} .gs-sum{display:flex; justify-content:space-between; margin-top:4px; padding-top:7px; border-top:1px solid rgba(255,255,255,.18); font-size:13px; font-weight:800;}
@@ -19858,7 +19859,7 @@ function todayTopicsHtml(td){
   states.forEach(function(s){ byName[s.name] = s; s.leaves.forEach(function(l){ leafById[l.id] = l; }); });
   var seen = {}, slots = [];
   sessionsOn(todayKey).forEach(function(x){
-    if(x.kind!=="study" || x.status==="skipped" || !byName[x.subject] || seen[x.startTime]) return;
+    if(x.status==="skipped" || (x.kind==="study" && !byName[x.subject]) || seen[x.startTime]) return;   // every planned session counts: study, revision, current affairs, tests, essay, PYQ practice
     seen[x.startTime] = 1; slots.push(x);
   });
   if(!slots.length) return "";
@@ -19870,6 +19871,7 @@ function todayTopicsHtml(td){
     return null;
   }
   var cards = slots.map(function(x, i){
+    if(x.kind!=="study") return {n:i+1, act:true, x:x};
     var st = byName[x.subject], cur = x.topicId && leafById[x.topicId] && leafStatus(x.topicId)!=="completed" && !used[x.topicId] ? leafById[x.topicId] : nextLeaf(st, "");
     if(cur) used[cur.id] = 1;
     return {n:i+1, st:st, cur:cur, x:x};
@@ -19878,24 +19880,35 @@ function todayTopicsHtml(td){
   while(queue.length<2 && more){
     more = false;
     cards.forEach(function(c){
-      if(queue.length>=2) return;
+      if(queue.length>=2 || c.act) return;
       var nx = nextLeaf(c.st, c.cur ? c.cur.id : "");
       if(nx){ used[nx.id] = 1; c.cur && (c.last = nx.id); queue.push({st:c.st, l:nx}); more = true; }
     });
   }
   function tierChip(l){ var t = tierRank(tierInfo(l)); return t>=1 && t<=4 ? '<span class="chip tier'+t+'">Tier '+t+'</span>' : ""; }
   function dots(l){ var t = tierRank(tierInfo(l)); return t>=1 && t<=4 ? '<i class="td-d td-t'+t+'" title="Importance: Tier '+t+'">'+TD_DOTS[t]+'</i>' : ""; }
+  var openN = 0;   // the first study session still to do is shown open; the rest fold to one line so every session fits
+  cards.forEach(function(c){ if(!openN && !c.act && c.x.status!=="completed") openN = c.n; });
+  var ACT_ICON = {ca:"\ud83d\udcf0", revision:"\ud83d\udd01", test:"\ud83e\uddea", essay:"\u270d\ufe0f", pyq:"\ud83d\udcdd"};
+  function slotHead(c, label){
+    var x = c.x, done = x.status==="completed", run = x.status==="in_progress";
+    return '<div class="td-h">S'+c.n+' \u00b7 '+esc(fmt12(x.startTime))+(x.endTime ? '\u2013'+esc(fmt12(x.endTime)) : '')+(done ? ' \u00b7 \u2713 Done' : (run ? ' \u00b7 Running' : ''))+' \u00b7 '+esc(label)+'</div>';
+  }
   var html = cards.map(function(c){
+    if(c.act){
+      var k = c.x.kind, ttl = k==="ca" ? "Current Affairs" : (k==="revision" ? (c.x.syllabusUnit || "Revision") : (k==="test" ? (c.x.topic || "Test") : ((KIND_META[k] || {}).label || c.x.topic || "Session")));
+      return '<div class="td-s td-a'+(c.x.status==="completed" ? ' td-done' : '')+'">'+slotHead(c, (KIND_META[k] || {}).label || "Session")+'<div class="td-t"><span class="td-ai" aria-hidden="true">'+(ACT_ICON[k] || "\u2022")+'</span><b>'+esc(ttl)+'</b><small class="td-dur">'+esc(fmtDurMin(c.x.duration || 0))+'</small></div></div>';
+    }
     var nm = c.st.name.replace(/ \(Optional\)$/, "");
-    if(!c.cur) return '<div class="td-s"><div class="td-h">SESSION '+c.n+' \u00b7 '+esc(nm)+'</div><div class="td-none">Every chapter of this subject is complete.</div></div>';
-    var subs = c.cur.subs || [], collapsed = c.n>2;
-    return '<div class="td-s"><div class="td-h">SESSION '+c.n+' \u00b7 '+esc(nm)+'</div>'+
+    if(!c.cur) return '<div class="td-s">'+slotHead(c, nm)+'<div class="td-none">Every chapter of this subject is complete.</div></div>';
+    var subs = c.cur.subs || [], collapsed = c.n!==openN;
+    return '<div class="td-s'+(c.x.status==="completed" ? ' td-done' : '')+'">'+slotHead(c, nm)+
       '<div class="td-t">'+tierChip(c.cur)+'<b>'+esc(c.cur.unit)+'</b>'+dots(c.cur)+'</div><div class="td-pm">'+(function(){ var sp = pyqSplit(c.cur); return pmBadge(sp.p, sp.m)+' <span class="muted">asked in past papers</span>'; })()+'</div>'+
       (subs.length ? '<details class="td-sub"'+(collapsed ? '' : ' open')+'><summary>'+(collapsed ? 'Show ' : '')+subs.length+' sub-topic'+(subs.length===1 ? '' : 's')+'</summary><ul>'+(function(){ var sp = pyqSplit(c.cur); return subs.slice(0,2).map(function(s, i){ return '<li>'+esc(s)+(sp.sp[i]+sp.sm[i] ? ' '+pmBadge(sp.sp[i], sp.sm[i]) : '')+'</li>'; }).join(""); })()+(subs.length>2 ? '<li class="td-more"><button type="button" class="link-btn" data-go="subjday" data-subj="'+esc(c.st.name)+'" data-leaf="'+esc(c.cur.id)+'">+ '+(subs.length-2)+' more &rsaquo;</button></li>' : "")+'</ul></details>' : "")+'</div>';
   }).join("");
   var up = queue.length ? '<div class="td-up"><div class="td-h">UP NEXT</div>'+queue.map(function(q){ return '<div class="td-u">'+tierChip(q.l)+'<span>'+esc(q.l.unit)+' <small>\u00b7 '+esc(q.st.name.replace(/ \(Optional\)$/, ""))+'</small></span></div>'; }).join("")+'<div class="td-note">More topics appear here as you finish these.</div></div>' : "";
   var stud = '<div class="td-stu">'+(td.total>0 ? 'Studied today <b>'+esc(fmtDurMin(td.total))+'</b>' : 'Nothing studied yet today.')+'</div>';
-  return '<div class="gs-list td-list"><h4>TODAY\'S TOPICS</h4>'+html+up+stud+'</div>';
+  return '<div class="gs-list td-list"><h4>TODAY\'S PLAN</h4>'+html+up+stud+'</div>';
 }
 function goalStripHtml(){
   var st = timerState; if(st.running || st.accMs>0 || st.studyMs>0 || st.pending>0) return "";
@@ -20677,7 +20690,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "253";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "255";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
