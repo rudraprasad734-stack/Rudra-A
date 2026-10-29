@@ -1,4 +1,30 @@
 # year|paper|qno|page|x0,y0,x1,y1 (fractions)|alt|table
+2016|1|1(c)|2|0.08,0.440,0.97,0.544|Table, matrix or formulas printed with this question: If Z_1 and Z_2 be two independent standard normal variables, show that the distribution of the ratio|table
+2016|1|1(d)|2|0.08,0.709,0.97,0.863|Table, matrix or formulas printed with this question: Consider the probability distribution p(x; θ), x = 2, 3, 4, 5 and θ = 1/4, 1/2, 3/4. A sample of siz|table
+2016|1|1(e)|3|0.08,0.267,0.97,0.377|Table, matrix or formulas printed with this question: Consider a random variable X with p.m.f. f(x; θ), x = 0, 1, …, 5; θ = 1/2, 3/4. The following table |table
+2016|1|3(a)|4|0.08,0.365,0.97,0.411|Table, matrix or formulas printed with this question: Given a random sample (X_1, X_2, …, X_n) from N(μ, σ^2) with all parameters unknown. Write down the |table
+2016|1|3(a)|4|0.08,0.443,0.97,0.542|Table, matrix or formulas printed with this question: Given a random sample (X_1, X_2, …, X_n) from N(μ, σ^2) with all parameters unknown. Write down the |table
+2016|1|3(b)|4|0.08,0.791,0.97,0.871|Table, matrix or formulas printed with this question: Test the hypothesis of no difference between the ages of 10 married couples using Mann-Whitney U-tes|table
+2016|1|5(e)|6|0.08,0.600,0.97,0.664|Table, matrix or formulas printed with this question: The data matrix for a random sample of size n = 3 from a bivariate normal population BVN(μ_1, μ_2, σ|table
+2016|1|6(c)|7|0.08,0.264,0.97,0.290|Table, matrix or formulas printed with this question: Consider four random variables Y_1, Y_2, Y_3 and Y_4 with means and variances as follows : E(Y_1) = |table
+2016|1|6(c)|7|0.08,0.322,0.97,0.344|Table, matrix or formulas printed with this question: Consider four random variables Y_1, Y_2, Y_3 and Y_4 with means and variances as follows : E(Y_1) = |table
+2016|1|7(a)|7|0.08,0.422,0.97,0.469|Table, matrix or formulas printed with this question: If X follows N_p(μ, Σ) and C is an m × p matrix with rank m, then show that CX ~ N_m(Cμ, CΣC').|table
+2016|1|7(c)|7|0.08,0.761,0.97,0.837|Table, matrix or formulas printed with this question: Let U = {1, 2, 3, 4, 5, 6} be a finite population of size 6. Let S_d = {s_1 = (1, 2), s_2 = (3, 4, 5|table
+2016|1|8(a)|8|0.08,0.228,0.97,0.291|Table, matrix or formulas printed with this question: Let X = (X_1, X_2, X_3)' has the following covariance matrix : Σ = [[1, −2, 0], [−2, 5, 0], [0, 0, 2|table
+2016|1|8(b)|8|0.08,0.532,0.97,0.566|Table, matrix or formulas printed with this question: If X_1 and X_2 be independent data matrices of order (n_1 × p) and (n_2 × p) respectively and if the|table
+2016|2|1(c)|2|0.08,0.526,0.97,0.616|Table, matrix or formulas printed with this question: Given the following Transition Probability Matrix of a Markov chain having three states 1, 2 and 3 w|table
+2016|2|1(e)|3|0.08,0.106,0.97,0.241|Table, matrix or formulas printed with this question: For the following linear programming problem write the dual problem and solve : Maximize W = 2X + 3Y|table
+2016|2|2(c)|4|0.08,0.113,0.97,0.360|Table, matrix or formulas printed with this question: There are five jobs to be assigned one each to five machines and the associated cost matrix is as fo|table
+2016|2|3(a)|4|0.08,0.813,0.97,0.888|Table, matrix or formulas printed with this question: What are the different control charts for attributes used in industrial inspection of manufactured u|table
+2016|2|3(b)|5|0.08,0.323,0.97,0.481|Table, matrix or formulas printed with this question: What is the dominance principle in game theory? Explain and use it to solve the following rectangula|table
+2016|2|4(a)|6|0.08,0.146,0.97,0.202|Table, matrix or formulas printed with this question: What do you mean by probabilistic inventory problems? Discuss the continuous case of a probabilistic|table
+2016|2|4(c)|6|0.08,0.706,0.97,0.827|Table, matrix or formulas printed with this question: What is the use of artificial variables in an LPP? Use the artificial variable technique to solve th|table
+2016|2|5(d)|7|0.08,0.761,0.97,0.899|Table, matrix or formulas printed with this question: For the k-variate general linear model Y = Xβ + U, establish the following relations : (i) β̂ = (X'X|table
+2016|2|5(e)|9|0.08,0.130,0.97,0.741|Table, matrix or formulas printed with this question: Why are moving averages calculated in analyzing a time series? State how you would determine the per|table
+2016|2|6(b)|10|0.08,0.352,0.97,0.487|Table, matrix or formulas printed with this question: What is the problem of identification? Deduce a necessary and sufficient condition for the identifia|table
+2016|2|7(a)|10|0.08,0.820,0.97,0.881|Table, matrix or formulas printed with this question: Discuss autocorrelation. For the model Y_t = βX_t + U_t; with U_t = ρU_{t−1} + ε_t where E(ε_t) = 0 |table
+2016|2|7(b)|11|0.08,0.311,0.97,0.337|Table, matrix or formulas printed with this question: (i) State the uses of different index numbers. What tests should a good index number satisfy? In the|table
+2016|2|8(a)|12|0.08,0.136,0.97,0.200|Table, matrix or formulas printed with this question: What is a life table? Stating the assumptions involved, explain the elements of a life table. Given |table
 2017|1|1(b)|2|0.08,0.441,0.97,0.561|Density f(x) = 2/x^2 for 1 < x < 2, 0 elsewhere; find the CDF and pdf of Y = X^2|table
 2017|1|1(c)|2|0.08,0.690,0.97,0.820|P[X = -n] = P[X = n] = 3/(pi^2 n^2), n = 1, 2, ...; strong and weak laws of large numbers|table
 2017|1|1(d)|3|0.08,0.163,0.97,0.322|Uniform observations on (theta - 1/2, theta + 1/2); the estimators (2Y1 + 4Yn - 1)/6 and (4Y1 + 2Yn + 1)/6|table
@@ -250,6 +276,21 @@
 2023|1|7(b)|12|0.08,0.049,0.97,0.340|Table, matrix or formulas printed with this question: The table given below gives the population and sample sizes, stratum means and variance of a stratif|table
 2023|1|8(a)|12|0.08,0.632,0.97,0.698|Table, matrix or formulas printed with this question: Differentiate between randomised block design and balanced incomplete block design. In usual notatio|table
 2023|1|8(b)|12|0.08,0.814,0.97,0.919|Table, matrix or formulas printed with this question: Explain the concept of confounding in design of experiment. In an experiment with three factors A, B|table
+2023|2|1(e)|3|0.08,0.416,0.97,0.552|Table, matrix or formulas printed with this question: Let X_t be the state of a flea at time t [figure: state-transition diagram of states 1, 2 and 3: 1→1|table
+2023|2|2(b)|4|0.08,0.125,0.97,0.265|Table, matrix or formulas printed with this question: Each day a sample of 50 items from the production process was examined. The number of defectives fou|table
+2023|2|2(c)|4|0.08,0.697,0.97,0.777|Table, matrix or formulas printed with this question: A factory has 1000 bulbs installed. Cost of individual replacement is US $3 while cost of that of gr|table
+2023|2|3(a)|5|0.08,0.086,0.97,0.190|Table, matrix or formulas printed with this question: Solve the following Linear Programming problem using Two Phase method : Maximize Z = 3x_1 − x_2 Subj|table
+2023|2|3(b)|5|0.08,0.264,0.97,0.393|Table, matrix or formulas printed with this question: (i) Solve the above assignment problem. Cell values represent cost of assigning job A, B, C and D to|table
+2023|2|3(b)|5|0.08,0.641,0.97,0.749|Table, matrix or formulas printed with this question: (i) Solve the above assignment problem. Cell values represent cost of assigning job A, B, C and D to|table
+2023|2|4(a)|6|0.08,0.667,0.97,0.862|Table, matrix or formulas printed with this question: A Company ships truckloads of grain from three silos to four mills. The supply (in truckloads) and t|table
+2023|2|4(c)|8|0.08,0.141,0.97,0.302|Table, matrix or formulas printed with this question: A departmental store operates with three checkout counters. To determine the number of counters in o|table
+2023|2|6(b)|10|0.08,0.512,0.97,0.612|Table, matrix or formulas printed with this question: Define stationary time series. How would you test the stationarity of the given time series? Write t|table
+2023|2|6(c)|11|0.08,0.473,0.97,0.535|Table, matrix or formulas printed with this question: State the different methods of detecting the presence of heteroscedasticity. Explain in brief the Go|table
+2023|2|6(c)|11|0.08,0.583,0.97,0.646|Table, matrix or formulas printed with this question: State the different methods of detecting the presence of heteroscedasticity. Explain in brief the Go|table
+2023|2|7(a)|12|0.08,0.383,0.97,0.494|Table, matrix or formulas printed with this question: Derive, by starting from a suitable functional form for l_x, the formula (i) L_x = (l_x + l_{x+1})/2|table
+2023|2|7(b)|13|0.08,0.127,0.97,0.163|Table, matrix or formulas printed with this question: (i) 400 students are given a test. The average is 60 and the standard deviation is 12. Obtain the Z-|table
+2023|2|7(c)|13|0.08,0.550,0.97,0.593|Table, matrix or formulas printed with this question: On the life table with l_x = (100 − x)/190, 5 ≤ x ≤ 100, Find (i) the chance that a child who has re|table
+2023|2|8(c)|15|0.08,0.151,0.97,0.235|Table, matrix or formulas printed with this question: State the order and rank conditions to check the identifiability of the given system of simultaneous|table
 2024|1|1(a)|2|0.08,0.196,0.97,0.297|Table, matrix or formulas printed with this question: Two events A and B are such that P(A) = 1/3, P(B) = 1/4 and P(A / B) + P(B / A) = 2/3. Evaluate the |table
 2024|1|1(b)|2|0.08,0.459,0.97,0.608|Table, matrix or formulas printed with this question: Suppose the joint probability function of two random variables X and Y is f(x, y) = x y^(x−1) / 3; x|table
 2024|1|1(c)|2|0.08,0.682,0.97,0.757|Table, matrix or formulas printed with this question: Let X_1, X_2, … is a sequence of independent and identically distributed random variables with mean |table

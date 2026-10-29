@@ -1,4 +1,182 @@
 {
+ "2016|1|1(c)": [
+  {
+   "u": "img/statistics/2016-1-1c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: If Z_1 and Z_2 be two independent standard normal variables, show that the distribution of the ratio",
+   "k": "table"
+  }
+ ],
+ "2016|1|1(d)": [
+  {
+   "u": "img/statistics/2016-1-1d-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Consider the probability distribution p(x; \u03b8), x = 2, 3, 4, 5 and \u03b8 = 1/4, 1/2, 3/4. A sample of siz",
+   "k": "table"
+  }
+ ],
+ "2016|1|1(e)": [
+  {
+   "u": "img/statistics/2016-1-1e-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Consider a random variable X with p.m.f. f(x; \u03b8), x = 0, 1, \u2026, 5; \u03b8 = 1/2, 3/4. The following table",
+   "k": "table"
+  }
+ ],
+ "2016|1|3(a)": [
+  {
+   "u": "img/statistics/2016-1-3a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Given a random sample (X_1, X_2, \u2026, X_n) from N(\u03bc, \u03c3^2) with all parameters unknown. Write down the",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2016-1-3a-2.webp",
+   "a": "Table, matrix or formulas printed with this question: Given a random sample (X_1, X_2, \u2026, X_n) from N(\u03bc, \u03c3^2) with all parameters unknown. Write down the",
+   "k": "table"
+  }
+ ],
+ "2016|1|3(b)": [
+  {
+   "u": "img/statistics/2016-1-3b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Test the hypothesis of no difference between the ages of 10 married couples using Mann-Whitney U-tes",
+   "k": "table"
+  }
+ ],
+ "2016|1|5(e)": [
+  {
+   "u": "img/statistics/2016-1-5e-1.webp",
+   "a": "Table, matrix or formulas printed with this question: The data matrix for a random sample of size n = 3 from a bivariate normal population BVN(\u03bc_1, \u03bc_2, \u03c3",
+   "k": "table"
+  }
+ ],
+ "2016|1|6(c)": [
+  {
+   "u": "img/statistics/2016-1-6c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Consider four random variables Y_1, Y_2, Y_3 and Y_4 with means and variances as follows : E(Y_1) =",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2016-1-6c-2.webp",
+   "a": "Table, matrix or formulas printed with this question: Consider four random variables Y_1, Y_2, Y_3 and Y_4 with means and variances as follows : E(Y_1) =",
+   "k": "table"
+  }
+ ],
+ "2016|1|7(a)": [
+  {
+   "u": "img/statistics/2016-1-7a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: If X follows N_p(\u03bc, \u03a3) and C is an m \u00d7 p matrix with rank m, then show that CX ~ N_m(C\u03bc, C\u03a3C').",
+   "k": "table"
+  }
+ ],
+ "2016|1|7(c)": [
+  {
+   "u": "img/statistics/2016-1-7c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let U = {1, 2, 3, 4, 5, 6} be a finite population of size 6. Let S_d = {s_1 = (1, 2), s_2 = (3, 4, 5",
+   "k": "table"
+  }
+ ],
+ "2016|1|8(a)": [
+  {
+   "u": "img/statistics/2016-1-8a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X = (X_1, X_2, X_3)' has the following covariance matrix : \u03a3 = [[1, \u22122, 0], [\u22122, 5, 0], [0, 0, 2",
+   "k": "table"
+  }
+ ],
+ "2016|1|8(b)": [
+  {
+   "u": "img/statistics/2016-1-8b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: If X_1 and X_2 be independent data matrices of order (n_1 \u00d7 p) and (n_2 \u00d7 p) respectively and if the",
+   "k": "table"
+  }
+ ],
+ "2016|2|1(c)": [
+  {
+   "u": "img/statistics/2016-2-1c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Given the following Transition Probability Matrix of a Markov chain having three states 1, 2 and 3 w",
+   "k": "table"
+  }
+ ],
+ "2016|2|1(e)": [
+  {
+   "u": "img/statistics/2016-2-1e-1.webp",
+   "a": "Table, matrix or formulas printed with this question: For the following linear programming problem write the dual problem and solve : Maximize W = 2X + 3Y",
+   "k": "table"
+  }
+ ],
+ "2016|2|2(c)": [
+  {
+   "u": "img/statistics/2016-2-2c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: There are five jobs to be assigned one each to five machines and the associated cost matrix is as fo",
+   "k": "table"
+  }
+ ],
+ "2016|2|3(a)": [
+  {
+   "u": "img/statistics/2016-2-3a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: What are the different control charts for attributes used in industrial inspection of manufactured u",
+   "k": "table"
+  }
+ ],
+ "2016|2|3(b)": [
+  {
+   "u": "img/statistics/2016-2-3b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: What is the dominance principle in game theory? Explain and use it to solve the following rectangula",
+   "k": "table"
+  }
+ ],
+ "2016|2|4(a)": [
+  {
+   "u": "img/statistics/2016-2-4a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: What do you mean by probabilistic inventory problems? Discuss the continuous case of a probabilistic",
+   "k": "table"
+  }
+ ],
+ "2016|2|4(c)": [
+  {
+   "u": "img/statistics/2016-2-4c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: What is the use of artificial variables in an LPP? Use the artificial variable technique to solve th",
+   "k": "table"
+  }
+ ],
+ "2016|2|5(d)": [
+  {
+   "u": "img/statistics/2016-2-5d-1.webp",
+   "a": "Table, matrix or formulas printed with this question: For the k-variate general linear model Y = X\u03b2 + U, establish the following relations : (i) \u03b2\u0302 = (X'X",
+   "k": "table"
+  }
+ ],
+ "2016|2|5(e)": [
+  {
+   "u": "img/statistics/2016-2-5e-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Why are moving averages calculated in analyzing a time series? State how you would determine the per",
+   "k": "table"
+  }
+ ],
+ "2016|2|6(b)": [
+  {
+   "u": "img/statistics/2016-2-6b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: What is the problem of identification? Deduce a necessary and sufficient condition for the identifia",
+   "k": "table"
+  }
+ ],
+ "2016|2|7(a)": [
+  {
+   "u": "img/statistics/2016-2-7a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Discuss autocorrelation. For the model Y_t = \u03b2X_t + U_t; with U_t = \u03c1U_{t\u22121} + \u03b5_t where E(\u03b5_t) = 0",
+   "k": "table"
+  }
+ ],
+ "2016|2|7(b)": [
+  {
+   "u": "img/statistics/2016-2-7b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) State the uses of different index numbers. What tests should a good index number satisfy? In the",
+   "k": "table"
+  }
+ ],
+ "2016|2|8(a)": [
+  {
+   "u": "img/statistics/2016-2-8a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: What is a life table? Stating the assumptions involved, explain the elements of a life table. Given",
+   "k": "table"
+  }
+ ],
  "2017|1|1(b)": [
   {
    "u": "img/statistics/2017-1-1b-1.webp",
@@ -1729,6 +1907,107 @@
   {
    "u": "img/statistics/2023-1-8b-1.webp",
    "a": "Table, matrix or formulas printed with this question: Explain the concept of confounding in design of experiment. In an experiment with three factors A, B",
+   "k": "table"
+  }
+ ],
+ "2023|2|1(e)": [
+  {
+   "u": "img/statistics/2023-2-1e-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X_t be the state of a flea at time t [figure: state-transition diagram of states 1, 2 and 3: 1\u21921",
+   "k": "table"
+  }
+ ],
+ "2023|2|2(b)": [
+  {
+   "u": "img/statistics/2023-2-2b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Each day a sample of 50 items from the production process was examined. The number of defectives fou",
+   "k": "table"
+  }
+ ],
+ "2023|2|2(c)": [
+  {
+   "u": "img/statistics/2023-2-2c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: A factory has 1000 bulbs installed. Cost of individual replacement is US $3 while cost of that of gr",
+   "k": "table"
+  }
+ ],
+ "2023|2|3(a)": [
+  {
+   "u": "img/statistics/2023-2-3a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Solve the following Linear Programming problem using Two Phase method : Maximize Z = 3x_1 \u2212 x_2 Subj",
+   "k": "table"
+  }
+ ],
+ "2023|2|3(b)": [
+  {
+   "u": "img/statistics/2023-2-3b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Solve the above assignment problem. Cell values represent cost of assigning job A, B, C and D to",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2023-2-3b-2.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Solve the above assignment problem. Cell values represent cost of assigning job A, B, C and D to",
+   "k": "table"
+  }
+ ],
+ "2023|2|4(a)": [
+  {
+   "u": "img/statistics/2023-2-4a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: A Company ships truckloads of grain from three silos to four mills. The supply (in truckloads) and t",
+   "k": "table"
+  }
+ ],
+ "2023|2|4(c)": [
+  {
+   "u": "img/statistics/2023-2-4c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: A departmental store operates with three checkout counters. To determine the number of counters in o",
+   "k": "table"
+  }
+ ],
+ "2023|2|6(b)": [
+  {
+   "u": "img/statistics/2023-2-6b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Define stationary time series. How would you test the stationarity of the given time series? Write t",
+   "k": "table"
+  }
+ ],
+ "2023|2|6(c)": [
+  {
+   "u": "img/statistics/2023-2-6c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: State the different methods of detecting the presence of heteroscedasticity. Explain in brief the Go",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2023-2-6c-2.webp",
+   "a": "Table, matrix or formulas printed with this question: State the different methods of detecting the presence of heteroscedasticity. Explain in brief the Go",
+   "k": "table"
+  }
+ ],
+ "2023|2|7(a)": [
+  {
+   "u": "img/statistics/2023-2-7a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Derive, by starting from a suitable functional form for l_x, the formula (i) L_x = (l_x + l_{x+1})/2",
+   "k": "table"
+  }
+ ],
+ "2023|2|7(b)": [
+  {
+   "u": "img/statistics/2023-2-7b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) 400 students are given a test. The average is 60 and the standard deviation is 12. Obtain the Z-",
+   "k": "table"
+  }
+ ],
+ "2023|2|7(c)": [
+  {
+   "u": "img/statistics/2023-2-7c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: On the life table with l_x = (100 \u2212 x)/190, 5 \u2264 x \u2264 100, Find (i) the chance that a child who has re",
+   "k": "table"
+  }
+ ],
+ "2023|2|8(c)": [
+  {
+   "u": "img/statistics/2023-2-8c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: State the order and rank conditions to check the identifiability of the given system of simultaneous",
    "k": "table"
   }
  ],

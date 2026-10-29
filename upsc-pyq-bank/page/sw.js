@@ -1,7 +1,7 @@
 // CSE Companion service worker: caches the app shell so the page loads and
 // runs with zero network connectivity after the first successful visit.
 // Bump CACHE_NAME on any deploy that changes cached files so clients refresh.
-const CACHE_NAME = "cse-companion-v239";
+const CACHE_NAME = "cse-companion-v240";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -19,6 +19,47 @@ const APP_SHELL = [
 // Figures printed with optional-subject questions (cropped from the papers). Kept one by one so a missing file cannot stop the install.
 // Regenerate the list when figures are added: ls page/img/*/
 const FIGURES = [
+  "./img/statistics/2016-1-1c-1.webp",
+  "./img/statistics/2016-1-1d-1.webp",
+  "./img/statistics/2016-1-1e-1.webp",
+  "./img/statistics/2016-1-3a-1.webp",
+  "./img/statistics/2016-1-3a-2.webp",
+  "./img/statistics/2016-1-3b-1.webp",
+  "./img/statistics/2016-1-5e-1.webp",
+  "./img/statistics/2016-1-6c-1.webp",
+  "./img/statistics/2016-1-6c-2.webp",
+  "./img/statistics/2016-1-7a-1.webp",
+  "./img/statistics/2016-1-7c-1.webp",
+  "./img/statistics/2016-1-8a-1.webp",
+  "./img/statistics/2016-1-8b-1.webp",
+  "./img/statistics/2016-2-1c-1.webp",
+  "./img/statistics/2016-2-1e-1.webp",
+  "./img/statistics/2016-2-2c-1.webp",
+  "./img/statistics/2016-2-3a-1.webp",
+  "./img/statistics/2016-2-3b-1.webp",
+  "./img/statistics/2016-2-4a-1.webp",
+  "./img/statistics/2016-2-4c-1.webp",
+  "./img/statistics/2016-2-5d-1.webp",
+  "./img/statistics/2016-2-5e-1.webp",
+  "./img/statistics/2016-2-6b-1.webp",
+  "./img/statistics/2016-2-7a-1.webp",
+  "./img/statistics/2016-2-7b-1.webp",
+  "./img/statistics/2016-2-8a-1.webp",
+  "./img/statistics/2023-2-1e-1.webp",
+  "./img/statistics/2023-2-2b-1.webp",
+  "./img/statistics/2023-2-2c-1.webp",
+  "./img/statistics/2023-2-3a-1.webp",
+  "./img/statistics/2023-2-3b-1.webp",
+  "./img/statistics/2023-2-3b-2.webp",
+  "./img/statistics/2023-2-4a-1.webp",
+  "./img/statistics/2023-2-4c-1.webp",
+  "./img/statistics/2023-2-6b-1.webp",
+  "./img/statistics/2023-2-6c-1.webp",
+  "./img/statistics/2023-2-6c-2.webp",
+  "./img/statistics/2023-2-7a-1.webp",
+  "./img/statistics/2023-2-7b-1.webp",
+  "./img/statistics/2023-2-7c-1.webp",
+  "./img/statistics/2023-2-8c-1.webp",
   "./img/statistics/2017-1-1b-1.webp",
   "./img/statistics/2017-1-1c-1.webp",
   "./img/statistics/2017-1-1d-1.webp",
