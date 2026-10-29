@@ -1414,7 +1414,7 @@
   .gs-top{cursor:default !important;}
   .gs-list{margin-top:8px; padding:10px 14px 8px; border-radius:18px; background:rgba(8,24,28,.78); border:1px solid rgba(46,230,214,.35); backdrop-filter:blur(10px);}
   .gs-body{max-height:clamp(60px, calc(100vh - 585px), 210px); overflow:auto; -webkit-overflow-scrolling:touch;}
-  @media (max-height:680px){ .goal-strip .gs-days{display:none;} .gs-body{max-height:clamp(60px, calc(100vh - 520px), 210px);} }
+  @media (max-height:680px){ .gs-body{max-height:clamp(60px, calc(100vh - 520px), 210px);} }
   .gs-list h4{margin:0 0 6px; font-size:10.5px; letter-spacing:.12em; font-weight:800; color:rgba(255,255,255,.6);}
   .gs-row{display:flex; justify-content:space-between; gap:10px; align-items:baseline; padding:6px 0; border-top:1px solid rgba(255,255,255,.08); font-size:13.5px;} .gs-row:first-of-type{border-top:0;}
   .gs-row span{min-width:0; overflow-wrap:anywhere;} .gs-row small{display:block; font-size:11.5px; color:rgba(255,255,255,.55);} .gs-row b{flex:none; font-weight:800; font-size:13.5px; color:#2ee6d6; white-space:nowrap;}
@@ -1445,7 +1445,9 @@
   .goal-strip .gs-list h4{color:rgba(242,251,250,.75)} .goal-strip .td-note, .goal-strip .td-stu{color:rgba(242,251,250,.8); opacity:1}
   .goal-strip.td-t1 .gs-days{padding:3px 0 1px !important} .goal-strip.td-t1 .gs-top{padding:6px 12px} .goal-strip.td-t1 .td-list{padding:6px 12px 4px} .goal-strip.td-t1 .td-s{padding:3px 0} .goal-strip.td-t1 .td-sub ul li:nth-child(n+2){display:none} .goal-strip.td-t1 .td-sub ul li.td-more{display:list-item}
   .goal-strip.td-t2 .td-note, .goal-strip.td-t2 .td-stu{display:none} .goal-strip.td-t2 .td-sub ul{display:none}
-  .goal-strip.td-t3 .td-up, .goal-strip.td-t3 .td-pm .muted, .goal-strip.td-t3 .gs-days{display:none}
+  .goal-strip.td-t3 .td-up, .goal-strip.td-t3 .td-pm .muted{display:none}
+  .goal-strip.td-t4 .td-sub, .goal-strip.td-t4 .gs-list h4{display:none} .goal-strip.td-t4 .td-s{padding:2px 0} .goal-strip.td-t4 .gs-top{padding:4px 12px}
+  .goal-strip.td-t5 .td-pm{display:none} .goal-strip.td-t5 .td-t{font-size:12.5px}
   .goal-strip.opening{animation:tdRollIn .5s cubic-bezier(.2,.85,.25,1) both} .goal-strip.closing{animation:tdRollOut .42s cubic-bezier(.55,0,.85,.45) both}
   /* transform only: an opacity or clip-path animation on the strip would stop its panels blurring the timer behind them until the roll finished */
   @keyframes tdRollIn{from{transform:perspective(900px) rotateX(-85deg) scaleY(.15)}to{transform:perspective(900px) rotateX(0) scaleY(1)}}
@@ -19871,7 +19873,8 @@ var GOAL_KEY = "dossier.goal.v1", WEEKLY_KEY = "dossier.weekly.v1";
 function todayGoal(){
   if(studyPlan){
     if(isRestDayKey(todayKey)) return {min:0, rest:true};
-    var tot = 0; planSessionsOn(todayKey).forEach(function(x){ if(x.kind==="study" || x.kind==="revision") tot += x.duration || 0; });
+    // the whole day's plan (study, revision, essay, tests, PYQ practice, current affairs), counted exactly as the Dashboard's "Planned" is
+    var tot = 0; planSessionsOn(todayKey).forEach(function(x){ tot += Math.max(0, x.duration || 0); });
     if(tot > 0) return {min:tot, rest:false};
   }
   return {min:120, rest:false};
@@ -19901,8 +19904,8 @@ function fitTodayStrip(gs){
   fillTodayTopics(gs);
   var list = gs.querySelector(".td-list"); if(!list) return;
   var lim = (window.innerHeight || 800) - 10;
-  ["td-t1", "td-t2", "td-t3"].forEach(function(c){ gs.classList.remove(c); });
-  for(var i = 1; i <= 3 && gs.getBoundingClientRect().bottom > lim; i++) gs.classList.add("td-t"+i);
+  ["td-t1", "td-t2", "td-t3", "td-t4", "td-t5"].forEach(function(c){ gs.classList.remove(c); });
+  for(var i = 1; i <= 5 && gs.getBoundingClientRect().bottom > lim; i++) gs.classList.add("td-t"+i);   // the weekly dots are never dropped
 }
 window.addEventListener("resize", function(){ fitTodayStrip(); });
 // what was studied today and for how long: each session you logged time against, plus any timer time not tied to a session
@@ -20820,7 +20823,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "265";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "266";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
