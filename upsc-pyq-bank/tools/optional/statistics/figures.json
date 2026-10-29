@@ -2241,5 +2241,332 @@
    "a": "Table, matrix or formulas printed with this question: The population growth of a city is modelled using logistic growth model with a carrying capacity of",
    "k": "table"
   }
+ ],
+ "2026|1|1(a)": [
+  {
+   "u": "img/statistics/2026-1-1a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Show that for n events A_1, A_2, \u2026, A_n, P(\u2229_(i=1)^(n) A_i) \u2265 \u03a3_(i=1)^(n) P(A_i) \u2212 (n \u2212 1) (7) (",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2026-1-1a-2.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Show that for n events A_1, A_2, \u2026, A_n, P(\u2229_(i=1)^(n) A_i) \u2265 \u03a3_(i=1)^(n) P(A_i) \u2212 (n \u2212 1) (7) (",
+   "k": "table"
+  }
+ ],
+ "2026|1|1(b)": [
+  {
+   "u": "img/statistics/2026-1-1b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let the joint probability mass function of X and Y be p(x, y) = (x^2 + 2y)/80, x = 0, 1, 2; y = 1, 2",
+   "k": "table"
+  }
+ ],
+ "2026|1|1(c)": [
+  {
+   "u": "img/statistics/2026-1-1c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: A random variable X has the probability density function f(x) = e^(\u2212x) x^\u03bb / \u03bb!; x > 0, where \u03bb is a",
+   "k": "table"
+  }
+ ],
+ "2026|1|1(d)": [
+  {
+   "u": "img/statistics/2026-1-1d-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Describe how Rao-Blackwell theorem enables one to find the UMVUE. (5) (ii) Let X_1, X_2, \u2026, X_n",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2026-1-1d-2.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Describe how Rao-Blackwell theorem enables one to find the UMVUE. (5) (ii) Let X_1, X_2, \u2026, X_n",
+   "k": "table"
+  }
+ ],
+ "2026|1|2(a)": [
+  {
+   "u": "img/statistics/2026-1-2a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Find the moment generating function (m.g.f.) of a random variable X with probability density fun",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2026-1-2a-2.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Find the moment generating function (m.g.f.) of a random variable X with probability density fun",
+   "k": "table"
+  }
+ ],
+ "2026|1|2(b)": [
+  {
+   "u": "img/statistics/2026-1-2b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) The time required, in hours, to repair a car at a garage is a random variable X with probability",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2026-1-2b-2.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) The time required, in hours, to repair a car at a garage is a random variable X with probability",
+   "k": "table"
+  }
+ ],
+ "2026|1|2(c)": [
+  {
+   "u": "img/statistics/2026-1-2c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Let X follow uniform distribution on (0, 1) and let Y = \u2212log_e(1 \u2212 X). Find the distribution of",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2026-1-2c-2.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Let X follow uniform distribution on (0, 1) and let Y = \u2212log_e(1 \u2212 X). Find the distribution of",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2026-1-2c-3.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Let X follow uniform distribution on (0, 1) and let Y = \u2212log_e(1 \u2212 X). Find the distribution of",
+   "k": "table"
+  }
+ ],
+ "2026|1|3(a)": [
+  {
+   "u": "img/statistics/2026-1-3a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let the joint probability density function of X and Y be f(x, y) = (3/4)(xy + x^2/2); 0 < x < 1, 0 <",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2026-1-3a-2.webp",
+   "a": "Table, matrix or formulas printed with this question: Let the joint probability density function of X and Y be f(x, y) = (3/4)(xy + x^2/2); 0 < x < 1, 0 <",
+   "k": "table"
+  }
+ ],
+ "2026|1|3(b)": [
+  {
+   "u": "img/statistics/2026-1-3b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: The lifetimes, in hours, of two brands of batteries are given below : Brand A : 40, 30, 40, 45, 55,",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2026-1-3b-2.webp",
+   "a": "Table, matrix or formulas printed with this question: The lifetimes, in hours, of two brands of batteries are given below : Brand A : 40, 30, 40, 45, 55,",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2026-1-3b-3.webp",
+   "a": "Table, matrix or formulas printed with this question: The lifetimes, in hours, of two brands of batteries are given below : Brand A : 40, 30, 40, 45, 55,",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2026-1-3b-4.webp",
+   "a": "Table, matrix or formulas printed with this question: The lifetimes, in hours, of two brands of batteries are given below : Brand A : 40, 30, 40, 45, 55,",
+   "k": "table"
+  }
+ ],
+ "2026|1|5(b)": [
+  {
+   "u": "img/statistics/2026-1-5b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Explain the problem of classification in discriminant analysis. In case of two known multivariate no",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2026-1-5b-2.webp",
+   "a": "Table, matrix or formulas printed with this question: Explain the problem of classification in discriminant analysis. In case of two known multivariate no",
+   "k": "table"
+  }
+ ],
+ "2026|1|5(c)": [
+  {
+   "u": "img/statistics/2026-1-5c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Discussing Gauss-Markov linear model Y = X\u03b2 + u (Y is n\u00d71, X is n\u00d7p, \u03b2 is p\u00d71, u is n\u00d71) with E(Y) =",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2026-1-5c-2.webp",
+   "a": "Table, matrix or formulas printed with this question: Discussing Gauss-Markov linear model Y = X\u03b2 + u (Y is n\u00d71, X is n\u00d7p, \u03b2 is p\u00d71, u is n\u00d71) with E(Y) =",
+   "k": "table"
+  }
+ ],
+ "2026|1|5(e)": [
+  {
+   "u": "img/statistics/2026-1-5e-1.webp",
+   "a": "Table, matrix or formulas printed with this question: A population is divided into three strata. The following data are taken from the population : Stratu",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2026-1-5e-2.webp",
+   "a": "Table, matrix or formulas printed with this question: A population is divided into three strata. The following data are taken from the population : Stratu",
+   "k": "table"
+  }
+ ],
+ "2026|1|6(b)": [
+  {
+   "u": "img/statistics/2026-1-6b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X_1, X_2, \u2026, X_N be a random sample from N_p(\u03bc, \u03a3). Show that Hotelling's T^2-statistic for test",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2026-1-6b-2.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X_1, X_2, \u2026, X_N be a random sample from N_p(\u03bc, \u03a3). Show that Hotelling's T^2-statistic for test",
+   "k": "table"
+  }
+ ],
+ "2026|1|7(b)": [
+  {
+   "u": "img/statistics/2026-1-7b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: The following data come from a two-factor random effect model : Factor A, Factor B: A_1: B_1 = 6, 8;",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2026-1-7b-2.webp",
+   "a": "Table, matrix or formulas printed with this question: The following data come from a two-factor random effect model : Factor A, Factor B: A_1: B_1 = 6, 8;",
+   "k": "table"
+  }
+ ],
+ "2026|1|8(a)": [
+  {
+   "u": "img/statistics/2026-1-8a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Define multivariate normal distribution and write down its important properties. Let X_1, X_2, X_3 a",
+   "k": "table"
+  }
+ ],
+ "2026|1|8(b)": [
+  {
+   "u": "img/statistics/2026-1-8b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: A population of N = 4 units has values y_1 = 10, y_2 = 20, y_3 = 30 and y_4 = 40. Consider a sample",
+   "k": "table"
+  }
+ ],
+ "2026|2|1(a)": [
+  {
+   "u": "img/statistics/2026-2-1a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Suppose that a given individual in a population has a survival time which is exponential with a haza",
+   "k": "table"
+  }
+ ],
+ "2026|2|1(d)": [
+  {
+   "u": "img/statistics/2026-2-1d-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Given a transition probability matrix with three states {1, 2, 3} as : P = [[0\u00b76, 0\u00b73, 0\u00b71], [0\u00b72, 0",
+   "k": "table"
+  }
+ ],
+ "2026|2|2(a)": [
+  {
+   "u": "img/statistics/2026-2-2a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Describe the construction of a CUSUM chart with Decision interval and Reference value. (10) (ii)",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2026-2-2a-2.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Describe the construction of a CUSUM chart with Decision interval and Reference value. (10) (ii)",
+   "k": "table"
+  }
+ ],
+ "2026|2|2(b)": [
+  {
+   "u": "img/statistics/2026-2-2b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: What is the minimax criterion with respect to a game ? Given below is the payoff matrix correspondin",
+   "k": "table"
+  }
+ ],
+ "2026|2|2(c)": [
+  {
+   "u": "img/statistics/2026-2-2c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) The PQR retail company has the following data available for one of its items : D = 10,000 units,",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2026-2-2c-2.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) The PQR retail company has the following data available for one of its items : D = 10,000 units,",
+   "k": "table"
+  }
+ ],
+ "2026|2|3(c)": [
+  {
+   "u": "img/statistics/2026-2-3c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Distinguish between slack variables and surplus variables. Discuss how they are used in a linear",
+   "k": "table"
+  }
+ ],
+ "2026|2|4(b)": [
+  {
+   "u": "img/statistics/2026-2-4b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) What is a Transportation problem ? Give a general mathematical model of a transportation problem",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2026-2-4b-2.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) What is a Transportation problem ? Give a general mathematical model of a transportation problem",
+   "k": "table"
+  }
+ ],
+ "2026|2|5(a)": [
+  {
+   "u": "img/statistics/2026-2-5a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Explain the 2-stage least squares (2SLS) method of estimation for the following simultaneous equatio",
+   "k": "table"
+  }
+ ],
+ "2026|2|5(c)": [
+  {
+   "u": "img/statistics/2026-2-5c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: For the General Linear Model Y = X\u03b2 + u where u ~ N(0, \u03c3^2 I_n), obtain the Maximum Likelihood Estim",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2026-2-5c-2.webp",
+   "a": "Table, matrix or formulas printed with this question: For the General Linear Model Y = X\u03b2 + u where u ~ N(0, \u03c3^2 I_n), obtain the Maximum Likelihood Estim",
+   "k": "table"
+  }
+ ],
+ "2026|2|5(e)": [
+  {
+   "u": "img/statistics/2026-2-5e-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Why is it considered desirable to convert raw scores to standard scores ? Below is given the distrib",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2026-2-5e-2.webp",
+   "a": "Table, matrix or formulas printed with this question: Why is it considered desirable to convert raw scores to standard scores ? Below is given the distrib",
+   "k": "table"
+  }
+ ],
+ "2026|2|6(b)": [
+  {
+   "u": "img/statistics/2026-2-6b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Explain the uses and limitations of Index Numbers. Calculate Laspeyres', Paasche's and Fisher's Indi",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2026-2-6b-2.webp",
+   "a": "Table, matrix or formulas printed with this question: Explain the uses and limitations of Index Numbers. Calculate Laspeyres', Paasche's and Fisher's Indi",
+   "k": "table"
+  }
+ ],
+ "2026|2|7(b)": [
+  {
+   "u": "img/statistics/2026-2-7b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Compute the Age-specific Fertility Rate, the Total Fertility Rate, and the Gross Reproduction Ra",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2026-2-7b-2.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Compute the Age-specific Fertility Rate, the Total Fertility Rate, and the Gross Reproduction Ra",
+   "k": "table"
+  }
+ ],
+ "2026|2|7(c)": [
+  {
+   "u": "img/statistics/2026-2-7c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: For the general linear model Y = X\u03b2 + u (Y is n\u00d71, X is n\u00d7k, \u03b2 is k\u00d71, u is n\u00d71) with E(u) = 0 and E",
+   "k": "table"
+  }
+ ],
+ "2026|2|8(a)": [
+  {
+   "u": "img/statistics/2026-2-8a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Consider the following structural equation model assuming Y's as endogenous and X's as pre-determine",
+   "k": "table"
+  }
+ ],
+ "2026|2|8(b)": [
+  {
+   "u": "img/statistics/2026-2-8b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Given l_91 = 871 and : x = 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101; d_x = 296, 209, 144, 93, 58",
+   "k": "table"
+  }
  ]
 }

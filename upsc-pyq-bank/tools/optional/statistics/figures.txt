@@ -324,3 +324,56 @@
 2025|2|6(c)|9|0.08,0.789,0.97,0.876|Table, matrix or formulas printed with this question: Prepare a life table for an age group from age 50 to age 60 of a specific population. Assume that th|table
 2025|2|7(a)|10|0.08,0.302,0.97,0.537|Table, matrix or formulas printed with this question: Explain the concept of index number. Calculate the Fisher's ideal index number from the following da|table
 2025|2|7(b)|10|0.08,0.731,0.97,0.857|Table, matrix or formulas printed with this question: The population growth of a city is modelled using logistic growth model with a carrying capacity of |table
+2026|1|1(a)|2|0.08,0.215,0.97,0.295|Table, matrix or formulas printed with this question: (i) Show that for n events A_1, A_2, …, A_n, P(∩_(i=1)^(n) A_i) ≥ Σ_(i=1)^(n) P(A_i) − (n − 1) (7) (|table
+2026|1|1(a)|2|0.08,0.418,0.97,0.489|Table, matrix or formulas printed with this question: (i) Show that for n events A_1, A_2, …, A_n, P(∩_(i=1)^(n) A_i) ≥ Σ_(i=1)^(n) P(A_i) − (n − 1) (7) (|table
+2026|1|1(b)|2|0.08,0.715,0.97,0.882|Table, matrix or formulas printed with this question: Let the joint probability mass function of X and Y be p(x, y) = (x^2 + 2y)/80, x = 0, 1, 2; y = 1, 2|table
+2026|1|1(c)|3|0.08,0.232,0.97,0.370|Table, matrix or formulas printed with this question: A random variable X has the probability density function f(x) = e^(−x) x^λ / λ!; x > 0, where λ is a|table
+2026|1|1(d)|3|0.08,0.476,0.97,0.493|Table, matrix or formulas printed with this question: (i) Describe how Rao-Blackwell theorem enables one to find the UMVUE. (5) (ii) Let X_1, X_2, …, X_n |table
+2026|1|1(d)|3|0.08,0.649,0.97,0.753|Table, matrix or formulas printed with this question: (i) Describe how Rao-Blackwell theorem enables one to find the UMVUE. (5) (ii) Let X_1, X_2, …, X_n |table
+2026|1|2(a)|4|0.08,0.224,0.97,0.361|Table, matrix or formulas printed with this question: (i) Find the moment generating function (m.g.f.) of a random variable X with probability density fun|table
+2026|1|2(a)|4|0.08,0.421,0.97,0.469|Table, matrix or formulas printed with this question: (i) Find the moment generating function (m.g.f.) of a random variable X with probability density fun|table
+2026|1|2(b)|4|0.08,0.698,0.97,0.884|Table, matrix or formulas printed with this question: (i) The time required, in hours, to repair a car at a garage is a random variable X with probability|table
+2026|1|2(b)|5|0.08,0.254,0.97,0.409|Table, matrix or formulas printed with this question: (i) The time required, in hours, to repair a car at a garage is a random variable X with probability|table
+2026|1|2(c)|5|0.08,0.485,0.97,0.520|Table, matrix or formulas printed with this question: (i) Let X follow uniform distribution on (0, 1) and let Y = −log_e(1 − X). Find the distribution of |table
+2026|1|2(c)|5|0.08,0.645,0.97,0.756|Table, matrix or formulas printed with this question: (i) Let X follow uniform distribution on (0, 1) and let Y = −log_e(1 − X). Find the distribution of |table
+2026|1|2(c)|5|0.08,0.827,0.97,0.887|Table, matrix or formulas printed with this question: (i) Let X follow uniform distribution on (0, 1) and let Y = −log_e(1 − X). Find the distribution of |table
+2026|1|3(a)|7|0.08,0.114,0.97,0.151|Table, matrix or formulas printed with this question: Let the joint probability density function of X and Y be f(x, y) = (3/4)(xy + x^2/2); 0 < x < 1, 0 <|table
+2026|1|3(a)|7|0.08,0.404,0.97,0.446|Table, matrix or formulas printed with this question: Let the joint probability density function of X and Y be f(x, y) = (3/4)(xy + x^2/2); 0 < x < 1, 0 <|table
+2026|1|3(b)|7|0.08,0.729,0.97,0.778|Table, matrix or formulas printed with this question: The lifetimes, in hours, of two brands of batteries are given below : Brand A : 40, 30, 40, 45, 55, |table
+2026|1|3(b)|7|0.08,0.846,0.97,0.884|Table, matrix or formulas printed with this question: The lifetimes, in hours, of two brands of batteries are given below : Brand A : 40, 30, 40, 45, 55, |table
+2026|1|3(b)|8|0.08,0.074,0.97,0.151|Table, matrix or formulas printed with this question: The lifetimes, in hours, of two brands of batteries are given below : Brand A : 40, 30, 40, 45, 55, |table
+2026|1|3(b)|8|0.08,0.211,0.97,0.249|Table, matrix or formulas printed with this question: The lifetimes, in hours, of two brands of batteries are given below : Brand A : 40, 30, 40, 45, 55, |table
+2026|1|5(b)|9|0.08,0.293,0.97,0.331|Table, matrix or formulas printed with this question: Explain the problem of classification in discriminant analysis. In case of two known multivariate no|table
+2026|1|5(b)|9|0.08,0.403,0.97,0.445|Table, matrix or formulas printed with this question: Explain the problem of classification in discriminant analysis. In case of two known multivariate no|table
+2026|1|5(c)|9|0.08,0.518,0.97,0.541|Table, matrix or formulas printed with this question: Discussing Gauss-Markov linear model Y = Xβ + u (Y is n×1, X is n×p, β is p×1, u is n×1) with E(Y) =|table
+2026|1|5(c)|9|0.08,0.604,0.97,0.629|Table, matrix or formulas printed with this question: Discussing Gauss-Markov linear model Y = Xβ + u (Y is n×1, X is n×p, β is p×1, u is n×1) with E(Y) =|table
+2026|1|5(e)|9|0.08,0.736,0.97,0.847|Table, matrix or formulas printed with this question: A population is divided into three strata. The following data are taken from the population : Stratu|table
+2026|1|5(e)|10|0.08,0.124,0.97,0.257|Table, matrix or formulas printed with this question: A population is divided into three strata. The following data are taken from the population : Stratu|table
+2026|1|6(b)|10|0.08,0.824,0.97,0.879|Table, matrix or formulas printed with this question: Let X_1, X_2, …, X_N be a random sample from N_p(μ, Σ). Show that Hotelling's T^2-statistic for test|table
+2026|1|6(b)|11|0.08,0.203,0.97,0.264|Table, matrix or formulas printed with this question: Let X_1, X_2, …, X_N be a random sample from N_p(μ, Σ). Show that Hotelling's T^2-statistic for test|table
+2026|1|7(b)|11|0.08,0.613,0.97,0.777|Table, matrix or formulas printed with this question: The following data come from a two-factor random effect model : Factor A, Factor B: A_1: B_1 = 6, 8;|table
+2026|1|7(b)|12|0.08,0.109,0.97,0.274|Table, matrix or formulas printed with this question: The following data come from a two-factor random effect model : Factor A, Factor B: A_1: B_1 = 6, 8;|table
+2026|1|8(a)|14|0.08,0.291,0.97,0.367|Table, matrix or formulas printed with this question: Define multivariate normal distribution and write down its important properties. Let X_1, X_2, X_3 a|table
+2026|1|8(b)|14|0.08,0.742,0.97,0.776|Table, matrix or formulas printed with this question: A population of N = 4 units has values y_1 = 10, y_2 = 20, y_3 = 30 and y_4 = 40. Consider a sample |table
+2026|2|1(a)|2|0.08,0.421,0.97,0.467|Table, matrix or formulas printed with this question: Suppose that a given individual in a population has a survival time which is exponential with a haza|table
+2026|2|1(d)|3|0.08,0.215,0.97,0.281|Table, matrix or formulas printed with this question: Given a transition probability matrix with three states {1, 2, 3} as : P = [[0·6, 0·3, 0·1], [0·2, 0|table
+2026|2|2(a)|3|0.08,0.520,0.97,0.742|Table, matrix or formulas printed with this question: (i) Describe the construction of a CUSUM chart with Decision interval and Reference value. (10) (ii)|table
+2026|2|2(a)|4|0.08,0.130,0.97,0.337|Table, matrix or formulas printed with this question: (i) Describe the construction of a CUSUM chart with Decision interval and Reference value. (10) (ii)|table
+2026|2|2(b)|4|0.08,0.762,0.97,0.894|Table, matrix or formulas printed with this question: What is the minimax criterion with respect to a game ? Given below is the payoff matrix correspondin|table
+2026|2|2(c)|5|0.08,0.291,0.97,0.461|Table, matrix or formulas printed with this question: (i) The PQR retail company has the following data available for one of its items : D = 10,000 units,|table
+2026|2|2(c)|5|0.08,0.667,0.97,0.887|Table, matrix or formulas printed with this question: (i) The PQR retail company has the following data available for one of its items : D = 10,000 units,|table
+2026|2|3(c)|6|0.08,0.774,0.97,0.915|Table, matrix or formulas printed with this question: (i) Distinguish between slack variables and surplus variables. Discuss how they are used in a linear|table
+2026|2|4(b)|7|0.08,0.482,0.97,0.655|Table, matrix or formulas printed with this question: (i) What is a Transportation problem ? Give a general mathematical model of a transportation problem|table
+2026|2|4(b)|7|0.08,0.753,0.97,0.916|Table, matrix or formulas printed with this question: (i) What is a Transportation problem ? Give a general mathematical model of a transportation problem|table
+2026|2|5(a)|9|0.08,0.384,0.97,0.435|Table, matrix or formulas printed with this question: Explain the 2-stage least squares (2SLS) method of estimation for the following simultaneous equatio|table
+2026|2|5(c)|9|0.08,0.743,0.97,0.791|Table, matrix or formulas printed with this question: For the General Linear Model Y = Xβ + u where u ~ N(0, σ^2 I_n), obtain the Maximum Likelihood Estim|table
+2026|2|5(c)|10|0.08,0.083,0.97,0.135|Table, matrix or formulas printed with this question: For the General Linear Model Y = Xβ + u where u ~ N(0, σ^2 I_n), obtain the Maximum Likelihood Estim|table
+2026|2|5(e)|10|0.08,0.478,0.97,0.549|Table, matrix or formulas printed with this question: Why is it considered desirable to convert raw scores to standard scores ? Below is given the distrib|table
+2026|2|5(e)|10|0.08,0.633,0.97,0.703|Table, matrix or formulas printed with this question: Why is it considered desirable to convert raw scores to standard scores ? Below is given the distrib|table
+2026|2|6(b)|11|0.08,0.096,0.97,0.238|Table, matrix or formulas printed with this question: Explain the uses and limitations of Index Numbers. Calculate Laspeyres', Paasche's and Fisher's Indi|table
+2026|2|6(b)|11|0.08,0.344,0.97,0.473|Table, matrix or formulas printed with this question: Explain the uses and limitations of Index Numbers. Calculate Laspeyres', Paasche's and Fisher's Indi|table
+2026|2|7(b)|12|0.08,0.093,0.97,0.352|Table, matrix or formulas printed with this question: (i) Compute the Age-specific Fertility Rate, the Total Fertility Rate, and the Gross Reproduction Ra|table
+2026|2|7(b)|12|0.08,0.538,0.97,0.847|Table, matrix or formulas printed with this question: (i) Compute the Age-specific Fertility Rate, the Total Fertility Rate, and the Gross Reproduction Ra|table
+2026|2|7(c)|13|0.08,0.191,0.97,0.260|Table, matrix or formulas printed with this question: For the general linear model Y = Xβ + u (Y is n×1, X is n×k, β is k×1, u is n×1) with E(u) = 0 and E|table
+2026|2|8(a)|13|0.08,0.737,0.97,0.863|Table, matrix or formulas printed with this question: Consider the following structural equation model assuming Y's as endogenous and X's as pre-determine|table
+2026|2|8(b)|14|0.08,0.544,0.97,0.599|Table, matrix or formulas printed with this question: Given l_91 = 871 and : x = 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101; d_x = 296, 209, 144, 93, 58|table
