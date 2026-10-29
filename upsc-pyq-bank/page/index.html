@@ -20735,7 +20735,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "258";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "259";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -21147,11 +21147,28 @@ function optionalCardHtml(){
 }
 function changeOptional(name){
   var w = wizFromPlan(studyPlan), prev = myOptional();
+  // Remember where the optional you leave sat: the session slots pinned to it and its place in the order.
+  // Without this, the slot you gave it ("Session 2 is my optional") is cleared and it never comes back when you choose it again.
+  var stash = JSON.parse(JSON.stringify(studyPlan.optStash || {}));
+  if(prev){
+    var oldLab = optLabel(prev), pins = [];
+    w.cap.sessions.forEach(function(sl, i){ if(sl.subject===oldLab) pins.push(i); });
+    stash[prev] = {pins:pins, at:w.order.indexOf(oldLab)};
+  }
   w.optionalOn = !!name; w.optional = name || ""; w.customText = "";
   delete w.init[optLabel(w.optional)]; delete w.init[""];
   wizSync(w);
+  if(name){
+    // the new optional takes back its own slots and place if it had them; otherwise it takes over the ones the old optional held
+    var lab = optLabel(name), sv = stash[name] || (prev ? stash[prev] : null);
+    if(sv){
+      (sv.pins || []).forEach(function(i){ var sl = w.cap.sessions[i]; if(sl && !sl.subject) sl.subject = lab; });
+      if(!w.orderAuto && sv.at >= 0){ var ix = w.order.indexOf(lab); if(ix >= 0){ w.order.splice(ix, 1); w.order.splice(Math.min(sv.at, w.order.length), 0, lab); } }
+    }
+  }
   var keepLeave = studyPlan.leave, keepCatch = studyPlan.catchup;
   studyPlan = compilePlan(w);
+  studyPlan.optStash = stash;
   if(keepLeave) studyPlan.leave = keepLeave;
   if(keepCatch) studyPlan.catchup = keepCatch.filter(function(d){ return d >= todayKey; });
   trackEvent("optional_changed", {from:prev || "none", to:name || "none"});
@@ -21179,6 +21196,31 @@ var SET_ICONS = {
   bolt:'<path d="M13 3L5 14h6l-1 7 8-11h-6z"/>', book:'<path d="M5 4h10a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3zM8 20a3 3 0 0 1-3-3"/>', chat:'<path d="M4 5h16v11H9l-5 4z"/>',
   info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7.5v.5"/>', star:'<path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/>'
 };
+// Slide the App theme row and the page takes on whichever theme sits in the middle; stop sliding and it is kept.
+function wireThemeSlide(row){
+  var tm = null, user = 0, shown = window.currentUiTheme();
+  function bump(){ user = Date.now() + 2500; row._prog = 0; }
+  ["touchstart", "touchmove", "touchend", "pointerdown", "wheel", "mousedown"].forEach(function(ev){ row.addEventListener(ev, bump, {passive:true}); });
+  row.addEventListener("scroll", function(){
+    if(Date.now() > user || Date.now() < (row._prog || 0)) return;   // only a finger or wheel counts, not the row settling by itself
+    var rr = row.getBoundingClientRect(), mid = rr.left + rr.width/2, best = null, bd = 1e9;
+    [].forEach.call(row.querySelectorAll(".ui-opt"), function(o){ var r = o.getBoundingClientRect(), d = Math.abs(r.left + r.width/2 - mid); if(d < bd){ bd = d; best = o; } });
+    if(!best) return;
+    var id = best.getAttribute("data-ui");
+    if(id !== shown){
+      shown = id; window.applyUiTheme(id, false);   // preview only: nothing is saved yet
+      [].forEach.call(row.querySelectorAll(".ui-opt"), function(o){
+        var on = o===best; o.classList.toggle("sel", on); o.setAttribute("aria-checked", on ? "true" : "false");
+        var sp = o.querySelector("span"); if(sp) sp.textContent = sp.textContent.replace(/\s*\u2713$/, "") + (on ? " \u2713" : "");
+      });
+    }
+    clearTimeout(tm);
+    tm = setTimeout(function(){
+      if(window.currentUiTheme()===id) return;
+      window.applyUiTheme(id, true); cloudTouched("dossier.uiTheme"); trackEvent("theme_changed", {kind:"app", theme:id});
+    }, 800);
+  }, {passive:true});
+}
 function setScreenHtml(S){
   var cur = S.filter(function(x){ return x.id===setSec; })[0];
   if(cur) return '<div class="set-detail"><button type="button" class="set-back" data-sec="" aria-label="Back to Settings">\u2039 Settings</button>'+cur.html+'</div>';
@@ -21237,11 +21279,13 @@ function renderSettings(){
     var cur = row.querySelector(".sel"), prevLeft = prevLefts[ix] == null ? -1 : prevLefts[ix];
     if(!cur) return;
     row.classList.add("pad-ctr");
+    row._prog = Date.now() + 1200;   // the row centres the chosen theme itself; that movement must not count as sliding
     if(prevLeft >= 0) row.scrollLeft = prevLeft;
     var rr = row.getBoundingClientRect(), cc = cur.getBoundingClientRect();
     var target = row.scrollLeft + (cc.left + cc.width/2) - (rr.left + rr.width/2);
     if(prevLeft >= 0 && row.scrollTo) row.scrollTo({left:target, behavior:"smooth"}); else row.scrollLeft = target;
   });
+  [].forEach.call(host.querySelectorAll(".th-row"), function(row){ if(row.querySelector(".ui-opt")) wireThemeSlide(row); });
   bindBackupCard(host);
   bindOptionalCard(host);
   subWire(host);
