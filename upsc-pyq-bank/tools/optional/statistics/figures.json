@@ -1930,5 +1930,316 @@
    "a": "Table, matrix or formulas printed with this question: To estimate the population mean \u0232 of a characteristic Y, a simple random sample of size 1000 was sel",
    "k": "table"
   }
+ ],
+ "2024|2|2(c)": [
+  {
+   "u": "img/statistics/2024-2-2c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Use simplex method to solve the following LPP : Maximize z = 5x_1 + 2x_2 subject to 6x_1 + x_2 \u2265 6;",
+   "k": "table"
+  }
+ ],
+ "2024|2|3(b)": [
+  {
+   "u": "img/statistics/2024-2-3b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Define a Transition Probability Matrix (TPM). When is it said to be Regular and Ergodic ? Check whet",
+   "k": "table"
+  }
+ ],
+ "2024|2|3(c)": [
+  {
+   "u": "img/statistics/2024-2-3c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: The reliability function R(t) of a cutting assembly is given by : R(t) = (1 \u2212 t/t_0)^2, 0 \u2264 t \u2264 t_0,",
+   "k": "table"
+  }
+ ],
+ "2024|2|4(a)": [
+  {
+   "u": "img/statistics/2024-2-4a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: A manually handled toll-booth has two tellers, who are each capable of handling an average of 60 veh",
+   "k": "table"
+  }
+ ],
+ "2024|2|4(b)": [
+  {
+   "u": "img/statistics/2024-2-4b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: PQR Electronics produces 300 transistors per day, which go into the inventory. It supplies 150 trans",
+   "k": "table"
+  }
+ ],
+ "2024|2|5(d)": [
+  {
+   "u": "img/statistics/2024-2-5d-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Determine the average age at death of those who die between ages x and x + n. (ii) If l(x) = 100",
+   "k": "table"
+  }
+ ],
+ "2024|2|6(b)": [
+  {
+   "u": "img/statistics/2024-2-6b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Explain Time Reversal Test, Factor Reversal Test and Circular Test in the Index Number Theory. Using",
+   "k": "table"
+  }
+ ],
+ "2024|2|7(a)": [
+  {
+   "u": "img/statistics/2024-2-7a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Explain the problem of identification with a suitable example. Also discuss the conditions of identi",
+   "k": "table"
+  }
+ ],
+ "2024|2|8(a)": [
+  {
+   "u": "img/statistics/2024-2-8a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Four items are to be constructed so that they are equispaced on the difficulty scale. If the easiest",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2024-2-8a-2.webp",
+   "a": "Table, matrix or formulas printed with this question: Four items are to be constructed so that they are equispaced on the difficulty scale. If the easiest",
+   "k": "table"
+  }
+ ],
+ "2025|1|1(a)": [
+  {
+   "u": "img/statistics/2025-1-1a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let E, F and G be three pairwise independent events such that P(E\u2229F) = 0\u00b71 and P(F\u2229G) = 0\u00b73. Prove t",
+   "k": "table"
+  }
+ ],
+ "2025|1|1(b)": [
+  {
+   "u": "img/statistics/2025-1-1b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: If X and Y are non-negative independent random variables and their joint moment generating function",
+   "k": "table"
+  }
+ ],
+ "2025|1|1(c)": [
+  {
+   "u": "img/statistics/2025-1-1c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: If X_1, X_2, \u2026 be a sequence of i.i.d. U(0, 1) random variables, then find the value of lim (n \u2192 \u221e)",
+   "k": "table"
+  }
+ ],
+ "2025|1|1(e)": [
+  {
+   "u": "img/statistics/2025-1-1e-1.webp",
+   "a": "Table, matrix or formulas printed with this question: A random variable X has the following distribution under H_0 and H_1 : x = 1, 2, 3, 4, 5, 6; f_0(x)",
+   "k": "table"
+  }
+ ],
+ "2025|1|2(a)": [
+  {
+   "u": "img/statistics/2025-1-2a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X be a continuous random variable having probability density function f(x) = (2/25)(x + 2), \u22122 \u2264",
+   "k": "table"
+  }
+ ],
+ "2025|1|2(b)": [
+  {
+   "u": "img/statistics/2025-1-2b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: The joint probability mass function of two random variables (X, Y) be P(X = x, Y = y) = C(x+1, y) C(",
+   "k": "table"
+  }
+ ],
+ "2025|1|2(c)": [
+  {
+   "u": "img/statistics/2025-1-2c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let the joint probability density function of (X, Y) be f(x, y) = 2e^(\u2212(x+y)), 0 < x < y < \u221e, and 0",
+   "k": "table"
+  }
+ ],
+ "2025|1|3(b)": [
+  {
+   "u": "img/statistics/2025-1-3b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Let {6, \u22128, 3, 2, 7, 5, 4, 9} be a random sample from a population with probability density func",
+   "k": "table"
+  }
+ ],
+ "2025|1|3(c)": [
+  {
+   "u": "img/statistics/2025-1-3c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X_1, X_2, \u2026, X_n be a random sample from beta distribution of first kind \u03b2_(1, \u03b8), \u03b8 > 0. Find c",
+   "k": "table"
+  }
+ ],
+ "2025|1|4(a)": [
+  {
+   "u": "img/statistics/2025-1-4a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X_1, X_2, \u2026 be a sequence of random variables from Bernoulli distribution with mean \u03b8, 0 < \u03b8 < 1",
+   "k": "table"
+  }
+ ],
+ "2025|1|4(b)": [
+  {
+   "u": "img/statistics/2025-1-4b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: A random sample of size n is taken from the exponential distribution with mean \u03b8 > 0. Given that n_1",
+   "k": "table"
+  }
+ ],
+ "2025|1|4(c)": [
+  {
+   "u": "img/statistics/2025-1-4c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: The life of 6 items of brand-A and 6 items of brand-B are given below : A : 40, 62, 55, 35, 48, 88;",
+   "k": "table"
+  }
+ ],
+ "2025|1|5(a)": [
+  {
+   "u": "img/statistics/2025-1-5a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: For a two variable linear regression model Y_i = a + bX_i + e_i, where E(e_i) = 0, Var(e_i) = \u03c3_e^2,",
+   "k": "table"
+  }
+ ],
+ "2025|1|5(b)": [
+  {
+   "u": "img/statistics/2025-1-5b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X = (X_1 X_2 X_3)' ~ N_3(\u03bc, \u03a3), where \u03bc = (1, 2, 1)' and \u03a3 = [[9, 2, 2], [2, 3, 0], [2, 0, 2]].",
+   "k": "table"
+  }
+ ],
+ "2025|1|5(c)": [
+  {
+   "u": "img/statistics/2025-1-5c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: If X_1, X_2, \u2026, X_n is a random sample from a standard normal population, then using quadratic forms",
+   "k": "table"
+  }
+ ],
+ "2025|1|6(a)": [
+  {
+   "u": "img/statistics/2025-1-6a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) If (X, Y) follows bivariate normal BN(\u03bc_1, \u03bc_2, \u03c3_1^2, \u03c3_2^2, \u03c1), then obtain (A) E(e^X) (B) E(e",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2025-1-6a-2.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) If (X, Y) follows bivariate normal BN(\u03bc_1, \u03bc_2, \u03c3_1^2, \u03c3_2^2, \u03c1), then obtain (A) E(e^X) (B) E(e",
+   "k": "table"
+  }
+ ],
+ "2025|1|6(b)": [
+  {
+   "u": "img/statistics/2025-1-6b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X = (X_1, X_2, X_3)' ~ N_3(\u03bc, \u03a3), in which \u03bc = (2, 1, 3)' and \u03a3 = [[9, 2, \u22122], [2, 2, \u22123], [\u22122,",
+   "k": "table"
+  }
+ ],
+ "2025|1|6(c)": [
+  {
+   "u": "img/statistics/2025-1-6c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Consider the model : Y = X\u03b8 + \u03b5 (Y is n\u00d71, X is n\u00d7k, \u03b8 is k\u00d71, \u03b5 is n\u00d71), where \u03b5 is an n\u00d71 vector o",
+   "k": "table"
+  }
+ ],
+ "2025|1|7(a)": [
+  {
+   "u": "img/statistics/2025-1-7a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Analyse and interpret the following data concerning output of wheat per field obtained as a result o",
+   "k": "table"
+  }
+ ],
+ "2025|1|7(b)": [
+  {
+   "u": "img/statistics/2025-1-7b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Explain the need of factorial experiments with an example from pharmaceutical study. (ii) Divide",
+   "k": "table"
+  }
+ ],
+ "2025|1|8(a)": [
+  {
+   "u": "img/statistics/2025-1-8a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) What are principal components ? Show that the principal components are un-correlated. (ii) Obtai",
+   "k": "table"
+  }
+ ],
+ "2025|1|8(b)": [
+  {
+   "u": "img/statistics/2025-1-8b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: For the given data, the yield of the treatment B in the second block is missing and is denoted as 'y",
+   "k": "table"
+  }
+ ],
+ "2025|2|1(a)": [
+  {
+   "u": "img/statistics/2025-2-1a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: State the significance of operating characteristic (OC) curves in control chart analysis. Obtain the",
+   "k": "table"
+  }
+ ],
+ "2025|2|3(a)": [
+  {
+   "u": "img/statistics/2025-2-3a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: A company manufactures 30 items per day. The sale of those items depends upon demand which has the f",
+   "k": "table"
+  }
+ ],
+ "2025|2|3(b)": [
+  {
+   "u": "img/statistics/2025-2-3b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: A company has four plants P_1, P_2, P_3 and P_4 from which it supplies to three markets M_1, M_2 and",
+   "k": "table"
+  }
+ ],
+ "2025|2|3(c)": [
+  {
+   "u": "img/statistics/2025-2-3c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: On January 1 (this year), brands A, B and C of a commodity had 40, 40 and 20 percent of the market s",
+   "k": "table"
+  }
+ ],
+ "2025|2|4(a)": [
+  {
+   "u": "img/statistics/2025-2-4a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Solve the game whose payoff matrix is [[\u22121, \u22122, 8], [7, 5, \u22121], [6, 0, 12]]",
+   "k": "table"
+  }
+ ],
+ "2025|2|4(b)": [
+  {
+   "u": "img/statistics/2025-2-4b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Use the penalty (Big M) method to solve the following linear programming problem : Minimize Z = 5x_1",
+   "k": "table"
+  }
+ ],
+ "2025|2|5(d)": [
+  {
+   "u": "img/statistics/2025-2-5d-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Discuss the problem of heteroscedasticity. Given that Y_i = \u03b1 + \u03b2X_i + U_i with E(U_i^2) = K^2 X_i^2",
+   "k": "table"
+  }
+ ],
+ "2025|2|6(a)": [
+  {
+   "u": "img/statistics/2025-2-6a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: On the basis of the figures given below, calculate the age-specific death rates (ASDRs) for all the",
+   "k": "table"
+  }
+ ],
+ "2025|2|6(b)": [
+  {
+   "u": "img/statistics/2025-2-6b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Discuss the problem of identification with an example. State the rank and order conditions of identi",
+   "k": "table"
+  }
+ ],
+ "2025|2|6(c)": [
+  {
+   "u": "img/statistics/2025-2-6c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Prepare a life table for an age group from age 50 to age 60 of a specific population. Assume that th",
+   "k": "table"
+  }
+ ],
+ "2025|2|7(a)": [
+  {
+   "u": "img/statistics/2025-2-7a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Explain the concept of index number. Calculate the Fisher's ideal index number from the following da",
+   "k": "table"
+  }
+ ],
+ "2025|2|7(b)": [
+  {
+   "u": "img/statistics/2025-2-7b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: The population growth of a city is modelled using logistic growth model with a carrying capacity of",
+   "k": "table"
+  }
  ]
 }
