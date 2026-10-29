@@ -1,69 +1,149 @@
 # year|paper|qno|page|x0,y0,x1,y1 (fractions)|alt|table
-2017|1|1(b)|2|0.08,0.441,0.97,0.562|Density f(x) = 2/x^2 for 1 < x < 2, 0 elsewhere; find the CDF and pdf of Y = X^2|table
-2017|1|1(c)|2|0.08,0.690,0.97,0.821|P[X = -n] = P[X = n] = 3/(pi^2 n^2), n = 1, 2, ...; strong and weak laws of large numbers|table
-2017|1|1(d)|3|0.08,0.163,0.97,0.323|Uniform observations on (theta - 1/2, theta + 1/2); the estimators (2Y1 + 4Yn - 1)/6 and (4Y1 + 2Yn + 1)/6|table
-2017|1|1(e)|3|0.08,0.373,0.97,0.429|M = Max(X1, ..., Xn) from a uniform population over (0, theta)|table
-2017|1|2(a)|3|0.08,0.633,0.97,0.811|Cramer-Rao inequality var(Y) >= 1 / (n E[(d/d theta log f(X))^2])|table
-2017|1|2(b)|4|0.08,0.124,0.97,0.204|Chebyshev's inequality; P[X <= lambda/2] <= 4/lambda and P[X >= 2 lambda] <= 1/lambda|table
-2017|1|2(c)|4|0.08,0.312,0.97,0.403|Community of (a + b) voters, a for and b (b < a) against, n (n < b) do not vote|table
-2017|1|3(a)|4|0.08,0.632,0.97,0.815|Joint density f(x1, x2) = e^(-x1), 0 <= x2 <= x1 < infinity; Y1 = X1 + X2, Y2 = X1 - X2|table
-2017|1|3(b)|5|0.08,0.180,0.97,0.330|Density f(x) = 3(1 - x)^2 for 0 < x < 1; Y = Min(X1, X2, X3, X4)|table
-2017|1|3(c)|5|0.08,0.434,0.97,0.558|Kolmogorov-Smirnov data 0.7, 5.5, 5.7, ... and D13 = 0.361, D14 = 0.349, D15 = 0.338|table
-2017|1|4(a)|5|0.08,0.695,0.97,0.825|Density f(x) = theta x^(theta - 1), 0 < x < 1, theta > 0; MLE and MVUE|table
-2017|1|4(b)|6|0.08,0.130,0.97,0.226|Y = (1 - Phi(X)) / phi(X) with X ~ N(mu, 1)|table
-2017|1|4(c)|6|0.08,0.325,0.97,0.410|UMP test for H0: mu = 5 against mu > 5 and mu < 5, n = 16, variance 25|table
-2017|1|5(a)|6|0.08,0.572,0.97,0.655|E(Y1) = E(Y3) = theta1 + theta3 + theta4, E(Y2) = E(Y4) = theta1 - theta2, V(Yi) = sigma^2|table
-2017|1|5(b)|7|0.08,0.037,0.97,0.195|Trivariate normal with mu' = [1, 1, 1] and Sigma = [1 1 1; 1 2 2; 1 2 3]|table
-2017|1|5(c)|7|0.08,0.357,0.97,0.507|One-way random effects model Y_ij = mu + a_i + e_ij; P[sigma_a^2 hat < 0] = P[F > 1 + n tau]|table
-2017|1|5(d)|8|0.08,0.035,0.97,0.383|Plantation data and table of 10 plots: actual count (Y) and aerial estimate (X)|table
-2017|1|6(a)|9|0.08,0.045,0.97,0.265|Partitioned 4 x 4 correlation matrix rho with entries 1, 1/2, 2/3|table
-2017|1|6(b)|9|0.08,0.394,0.97,0.502|Constrained estimator beta-hat_C = beta-hat - (X'X)^-1 C' [C (X'X)^-1 C']^-1 C beta-hat|table
-2017|1|7(b)|10|0.08,0.201,0.97,0.365|Mean vectors X1-bar = (-1, -1)', X2-bar = (2, 1)' and pooled covariance S = [7 -1; -1 5]|table
-2017|1|7(c)|10|0.08,0.431,0.97,0.498|y1 = b1 - b2 + e1, y2 = b3 + e2, y3 = b1 + b2 + e3; BLUE of 2 b1 - b2|table
-2017|1|8(a)|10|0.08,0.650,0.97,0.820|Table of the three sides measured by persons A to E|table
-2017|1|8(b)|11|0.08,0.196,0.97,0.366|Simple regression sums: sum(y - yhat)^2 = 3.267, sum y = 63.3, sum y^2 = 423.49, sum x = 139, sum x^2 = 2239|table
-2017|2|1(c)|2|0.08,0.543,0.97,0.595|Single sampling plan (N, n, c) = (50, 15, 1) with 2% defective lots|table
-2017|2|1(d)|3|0.08,0.047,0.97,0.257|Transition probability matrix of a Markov chain with three states and the requested p00^(2) and p12^(3)|table
-2017|2|1(e)|3|0.08,0.349,0.97,0.430|Hazard function h(t) = 3t^2, t >= 0|table
-2017|2|2(a)|3|0.08,0.637,0.97,0.847|Transportation problem cost matrix: origins O1 to O4, destinations D1 to D6, availabilities and demands|table
-2017|2|2(b)|4|0.08,0.145,0.97,0.227|Queueing model (M/M/C) : (infinity/FIFO) and (M/M/1) : (infinity/FIFO)|table
-2017|2|2(c)|4|0.08,0.438,0.97,0.631|Counting process, renewal function m(t) = 2t and inter-arrival times with P(X1 = 1) = P(X1 = 2) = 1/2|table
-2017|2|3(a)|4|0.08,0.742,0.97,0.847|X-bar control chart with centre line 100, LCL 96, UCL 104, samples of size 4|table
-2017|2|3(b)|5|0.08,0.190,0.97,0.315|Right censored life data t1 = 88, t2 = 105, t3 = 141, ... and t_i >= 1100 for i = 9 to 15|table
-2017|2|3(c)|5|0.08,0.485,0.97,0.647|Linear programming constraints and objective function Z = 3x1 + 2x2 + 6x3|table
-2017|2|4(a)|6|0.08,0.142,0.97,0.491|Capability study data table (8 days, 6 measurements each) with specification limits 23.75 +- 0.1|table
-2017|2|4(b)|6|0.08,0.581,0.97,0.651|n-step transition probability and the Chapman-Kolmogorov equation|table
-2017|2|4(c)|7|0.08,0.053,0.97,0.209|Demand density f(D) = 0.02 - 0.0002 D for 0 <= D <= 100; holding cost Rs 0.50 and shortage cost Rs 3.20|table
-2017|2|6(b)|8|0.08,0.232,0.97,0.695|Table of population and births by age group 15-19 to 45-49 with survival rates|table
-2017|2|7(a)|9|0.08,0.305,0.97,0.570|Average wages 2005-2010 and consumer price index table|table
-2017|2|7(b)|10|0.08,0.047,0.97,0.272|Quarterly prices 2005 to 2009 table|table
-2017|2|8(a)|10|0.08,0.497,0.97,0.660|Life table of insects with ages 0 to 8 and q_x values|table
-2018|1|1(a)|2|0.08,0.350,0.97,0.561|Bag of three coins with probabilities of heads 0.5, 0.6, 0.1 and the sequence HTT|table
-2018|1|1(b)|2|0.08,0.668,0.97,0.767|Density f(x given theta) = theta (theta + 1) x^(theta - 1) (1 - x), 0 < x < 1; method of moments|table
-2018|1|1(c)|2|0.08,0.863,0.97,0.920|Independent uniform U(0, 1) variables and U = X/Y|table
-2018|1|1(d)|3|0.08,0.229,0.97,0.393|Battery lifetimes (hours) of brands A and B and the median test|table
-2018|1|1(e)|3|0.08,0.493,0.97,0.590|Central limit theorem: limit of e^(-n) times the sum over k of n^k / k! equals 1/2|table
-2018|1|2(a)|3|0.08,0.699,0.97,0.789|Joint density f(x, y) = e^(-y), 0 <= x <= y < infinity|table
-2018|1|2(b)|3|0.08,0.865,0.97,0.917|Independent binomial (1, p) variables; UMVUE of p(1 - p)|table
-2018|1|2(c)|4|0.08,0.138,0.97,0.211|Random sample from N(0, theta); most powerful test of H0: theta = theta0 against H1: theta > theta0|table
-2018|1|3(a)|4|0.08,0.471,0.97,0.710|Shots at a target with density f_R(r; sigma^2) = (1/sigma^2) r e^(-r^2/(2 sigma^2)); MLE of sigma^2|table
-2018|1|3(b)|5|0.08,0.079,0.97,0.240|Sequence {X_n}, Y_n = (1/n) sum X_i and the weak law of large numbers condition E[Y_n^2 / (1 + Y_n^2)] -> 0|table
-2018|1|3(c)|5|0.08,0.362,0.97,0.460|Sum S_n of n tosses of a symmetric die; upper bound for P[givenS_n/n - 3.5given > epsilon]|table
-2018|1|3(c)|5|0.08,0.562,0.97,0.650|Density P[X_n = 1] = 1/n and P[X_n = 0] = 1 - 1/n|table
-2018|1|4(a)|5|0.08,0.722,0.97,0.920|Convergence in law and in probability: X_n + Y_n, X_n Y_n and X_n / Y_n|table
-2018|1|4(b)|6|0.08,0.248,0.97,0.447|X with densities f0 and f1 on x = 1 to 5; best critical region of size 2/5 and its power|table
-2018|1|4(c)|6|0.08,0.542,0.97,0.630|Sequential probability ratio test for H0: theta = theta0 against H1: theta = theta1|table
-2018|1|4(c)|6|0.08,0.732,0.97,0.810|Bernoulli observations; sequential probability ratio test for H0: p = p0 against H1: p = p1|table
-2018|1|5(a)|7|0.08,0.382,0.97,0.635|Pendulum period t = 2 pi sqrt(l/g); best linear estimator of beta = 2 pi / sqrt(g) and its variance|table
-2018|1|5(b)|7|0.08,0.787,0.97,0.920|Principal components and the covariance matrix Sigma = [1 4; 4 100]|table
-2018|1|5(c)|8|0.08,0.077,0.97,0.133|Total and partial confounding in a 2^k factorial experiment|table
-2018|1|5(c)|8|0.08,0.202,0.97,0.293|2^3 factorial experiment in blocks of size 4 with four replicates|table
-2018|1|5(d)|8|0.08,0.382,0.97,0.442|Population of seven units with 30, 10, 25, 5, 20, 6 and 4 fields; PPS sample of size 3|table
-2018|1|6(a)|8|0.08,0.727,0.97,0.920|Four treatments (1, 2, 3, 4) laid out in five blocks I to V|table
-2018|1|6(b)|9|0.08,0.102,0.97,0.210|X ~ N_p(0, Sigma); X' Sigma^-1 X is chi-square with p degrees of freedom|table
-2018|1|7(a)|9|0.08,0.572,0.97,0.917|Sample from N4(mu, Sigma): estimated mean vector (18, 15, 18, 14) and covariance matrix; conditional distribution and partial correlation|table
-2018|1|7(b)|10|0.08,0.180,0.97,0.310|2^5 experiment in blocks of size 8; key blocks of replicates 1 and 2|table
-2018|1|7(c)|10|0.08,0.615,0.97,0.923|Dentists' survey of decayed teeth in 200 children: table of number of decayed teeth and number of children|table
-2018|1|8(a)|11|0.08,0.382,0.97,0.680|Stratified sampling with two strata and r = n1/n2; fractional increase in variance ((r - 1)/(r + 1))^2|table
-2018|1|8(b)|11|0.08,0.742,0.97,0.907|Hotelling T^2 as a generalisation of Student's t|table
-2018|1|8(c)|12|0.08,0.232,0.97,0.410|Model Y_i = b0 + b1 X_i + e_i with X = -1, 0, 1 and the true quadratic model|table
+2017|1|1(b)|2|0.08,0.441,0.97,0.561|Density f(x) = 2/x^2 for 1 < x < 2, 0 elsewhere; find the CDF and pdf of Y = X^2|table
+2017|1|1(c)|2|0.08,0.690,0.97,0.820|P[X = -n] = P[X = n] = 3/(pi^2 n^2), n = 1, 2, ...; strong and weak laws of large numbers|table
+2017|1|1(d)|3|0.08,0.163,0.97,0.322|Uniform observations on (theta - 1/2, theta + 1/2); the estimators (2Y1 + 4Yn - 1)/6 and (4Y1 + 2Yn + 1)/6|table
+2017|1|1(e)|3|0.08,0.373,0.97,0.428|M = Max(X1, ..., Xn) from a uniform population over (0, theta)|table
+2017|1|2(a)|3|0.08,0.633,0.97,0.810|Cramer-Rao inequality var(Y) >= 1 / (n E[(d/d theta log f(X))^2])|table
+2017|1|2(b)|4|0.08,0.124,0.97,0.203|Chebyshev's inequality; P[X <= lambda/2] <= 4/lambda and P[X >= 2 lambda] <= 1/lambda|table
+2017|1|2(c)|4|0.08,0.312,0.97,0.402|Community of (a + b) voters, a for and b (b < a) against, n (n < b) do not vote|table
+2017|1|3(a)|4|0.08,0.632,0.97,0.814|Joint density f(x1, x2) = e^(-x1), 0 <= x2 <= x1 < infinity; Y1 = X1 + X2, Y2 = X1 - X2|table
+2017|1|3(b)|5|0.08,0.180,0.97,0.329|Density f(x) = 3(1 - x)^2 for 0 < x < 1; Y = Min(X1, X2, X3, X4)|table
+2017|1|3(c)|5|0.08,0.434,0.97,0.557|Kolmogorov-Smirnov data 0.7, 5.5, 5.7, ... and D13 = 0.361, D14 = 0.349, D15 = 0.338|table
+2017|1|4(a)|5|0.08,0.695,0.97,0.824|Density f(x) = theta x^(theta - 1), 0 < x < 1, theta > 0; MLE and MVUE|table
+2017|1|4(b)|6|0.08,0.130,0.97,0.225|Y = (1 - Phi(X)) / phi(X) with X ~ N(mu, 1)|table
+2017|1|4(c)|6|0.08,0.325,0.97,0.409|UMP test for H0: mu = 5 against mu > 5 and mu < 5, n = 16, variance 25|table
+2017|1|5(a)|6|0.08,0.572,0.97,0.654|E(Y1) = E(Y3) = theta1 + theta3 + theta4, E(Y2) = E(Y4) = theta1 - theta2, V(Yi) = sigma^2|table
+2017|1|5(b)|7|0.08,0.037,0.97,0.194|Trivariate normal with mu' = [1, 1, 1] and Sigma = [1 1 1; 1 2 2; 1 2 3]|table
+2017|1|5(c)|7|0.08,0.357,0.97,0.506|One-way random effects model Y_ij = mu + a_i + e_ij; P[sigma_a^2 hat < 0] = P[F > 1 + n tau]|table
+2017|1|5(d)|8|0.08,0.035,0.97,0.382|Plantation data and table of 10 plots: actual count (Y) and aerial estimate (X)|table
+2017|1|6(a)|9|0.08,0.045,0.97,0.264|Partitioned 4 x 4 correlation matrix rho with entries 1, 1/2, 2/3|table
+2017|1|6(b)|9|0.08,0.394,0.97,0.501|Constrained estimator beta-hat_C = beta-hat - (X'X)^-1 C' [C (X'X)^-1 C']^-1 C beta-hat|table
+2017|1|7(b)|10|0.08,0.201,0.97,0.364|Mean vectors X1-bar = (-1, -1)', X2-bar = (2, 1)' and pooled covariance S = [7 -1; -1 5]|table
+2017|1|7(c)|10|0.08,0.431,0.97,0.497|y1 = b1 - b2 + e1, y2 = b3 + e2, y3 = b1 + b2 + e3; BLUE of 2 b1 - b2|table
+2017|1|8(a)|10|0.08,0.650,0.97,0.819|Table of the three sides measured by persons A to E|table
+2017|1|8(b)|11|0.08,0.196,0.97,0.365|Simple regression sums: sum(y - yhat)^2 = 3.267, sum y = 63.3, sum y^2 = 423.49, sum x = 139, sum x^2 = 2239|table
+2017|2|1(c)|2|0.08,0.543,0.97,0.594|Single sampling plan (N, n, c) = (50, 15, 1) with 2% defective lots|table
+2017|2|1(d)|3|0.08,0.047,0.97,0.256|Transition probability matrix of a Markov chain with three states and the requested p00^(2) and p12^(3)|table
+2017|2|1(e)|3|0.08,0.349,0.97,0.429|Hazard function h(t) = 3t^2, t >= 0|table
+2017|2|2(a)|3|0.08,0.637,0.97,0.846|Transportation problem cost matrix: origins O1 to O4, destinations D1 to D6, availabilities and demands|table
+2017|2|2(b)|4|0.08,0.145,0.97,0.226|Queueing model (M/M/C) : (infinity/FIFO) and (M/M/1) : (infinity/FIFO)|table
+2017|2|2(c)|4|0.08,0.438,0.97,0.630|Counting process, renewal function m(t) = 2t and inter-arrival times with P(X1 = 1) = P(X1 = 2) = 1/2|table
+2017|2|3(a)|4|0.08,0.742,0.97,0.846|X-bar control chart with centre line 100, LCL 96, UCL 104, samples of size 4|table
+2017|2|3(b)|5|0.08,0.190,0.97,0.314|Right censored life data t1 = 88, t2 = 105, t3 = 141, ... and t_i >= 1100 for i = 9 to 15|table
+2017|2|3(c)|5|0.08,0.485,0.97,0.646|Linear programming constraints and objective function Z = 3x1 + 2x2 + 6x3|table
+2017|2|4(a)|6|0.08,0.142,0.97,0.490|Capability study data table (8 days, 6 measurements each) with specification limits 23.75 +- 0.1|table
+2017|2|4(b)|6|0.08,0.581,0.97,0.650|n-step transition probability and the Chapman-Kolmogorov equation|table
+2017|2|4(c)|7|0.08,0.053,0.97,0.208|Demand density f(D) = 0.02 - 0.0002 D for 0 <= D <= 100; holding cost Rs 0.50 and shortage cost Rs 3.20|table
+2017|2|6(b)|8|0.08,0.232,0.97,0.694|Table of population and births by age group 15-19 to 45-49 with survival rates|table
+2017|2|7(a)|9|0.08,0.305,0.97,0.569|Average wages 2005-2010 and consumer price index table|table
+2017|2|7(b)|10|0.08,0.047,0.97,0.271|Quarterly prices 2005 to 2009 table|table
+2017|2|8(a)|10|0.08,0.497,0.97,0.659|Life table of insects with ages 0 to 8 and q_x values|table
+2018|1|1(a)|2|0.08,0.353,0.97,0.558|Table, matrix or formulas printed with this question: We have a bag with 3 coins in it. One of them is a fair coin, but the others are biased trick coins.|table
+2018|1|1(b)|2|0.08,0.671,0.97,0.759|Table, matrix or formulas printed with this question: Let X_1, X_2, …, X_n be a sample from a distribution with density function f(x / θ) = θ(θ + 1) x^(θ−|table
+2018|1|1(c)|2|0.08,0.854,0.97,0.913|Table, matrix or formulas printed with this question: Consider two independent and identically distributed uniform U(0, 1) random variables. Derive the di|table
+2018|1|1(d)|3|0.08,0.232,0.97,0.384|Table, matrix or formulas printed with this question: The following data represents lifetime (hours) of batteries for two different brands : Brand A: 40, |table
+2018|1|1(e)|3|0.08,0.497,0.97,0.580|Table, matrix or formulas printed with this question: Using central limit theorem, show that lim (n → ∞) e^(−n) Σ_(k=0)^(n) n^k / k! = 1/2.|table
+2018|1|2(a)|3|0.08,0.705,0.97,0.806|Table, matrix or formulas printed with this question: The joint density of X, Y is f(x, y) = e^(−y), 0 ≤ x ≤ y < ∞. Find the marginal distributions of X, |table
+2018|1|2(b)|3|0.08,0.871,0.97,0.918|Table, matrix or formulas printed with this question: Let X_1, X_2, …, X_n be iid binomial (1, p) random variables. Find the UMVUE for p(1 − p), based on |table
+2018|1|2(c)|4|0.08,0.141,0.97,0.205|Table, matrix or formulas printed with this question: Let x_1, x_2, …, x_n be a random sample from N(0, θ). The variance θ is unknown. Derive the most pow|table
+2018|1|3(a)|4|0.08,0.474,0.97,0.701|Table, matrix or formulas printed with this question: Shots aimed at a target reach the plane of the target at a distance R from the centre, where R has t|table
+2018|1|3(b)|5|0.08,0.083,0.97,0.232|Table, matrix or formulas printed with this question: Let {X_n} be a sequence of random variables and Y_n = (1/n) Σ_(i=1)^(n) X_i. Prove that a necessary |table
+2018|1|3(c)|5|0.08,0.366,0.97,0.462|Table, matrix or formulas printed with this question: (i) Let S_n be equal to the total obtained in n tosses of a symmetric die. Estimate an upper bound f|table
+2018|1|3(c)|5|0.08,0.558,0.97,0.641|Table, matrix or formulas printed with this question: (i) Let S_n be equal to the total obtained in n tosses of a symmetric die. Estimate an upper bound f|table
+2018|1|4(a)|5|0.08,0.796,0.97,0.923|Table, matrix or formulas printed with this question: If X_n →(L) X, Y_n →(P) C, then show that (i) X_n + Y_n →(L) X + C (ii) X_n · Y_n →(L) CX (iii) X_n |table
+2018|1|4(b)|6|0.08,0.254,0.97,0.442|Table, matrix or formulas printed with this question: Let X ~ f_j, j = 0, 1, where x: 1, 2, 3, 4, 5; f_0: 1/5, 1/5, 1/5, 1/5, 1/5; f_1: 1/6, 1/4, 1/6, 1/4|table
+2018|1|4(c)|6|0.08,0.546,0.97,0.625|Table, matrix or formulas printed with this question: (i) For testing a simple hypothesis H_0 : θ = θ_0 against simple alternative H_1 : θ = θ_1, prove th|table
+2018|1|4(c)|6|0.08,0.723,0.97,0.800|Table, matrix or formulas printed with this question: (i) For testing a simple hypothesis H_0 : θ = θ_0 against simple alternative H_1 : θ = θ_1, prove th|table
+2018|1|5(a)|7|0.08,0.383,0.97,0.636|Table, matrix or formulas printed with this question: The period of oscillation, t of a pendulum is 2π√(l/g) where l is the length of the pendulum and g i|table
+2018|1|5(b)|7|0.08,0.797,0.97,0.915|Table, matrix or formulas printed with this question: Define principal components. Is the principal component affected by standardization? Establish your |table
+2018|1|5(c)|8|0.08,0.092,0.97,0.136|Table, matrix or formulas printed with this question: Distinguish between total and partial confounding in a 2^k factorial experiment. If a 2^3 factorial |table
+2018|1|5(c)|8|0.08,0.211,0.97,0.290|Table, matrix or formulas printed with this question: Distinguish between total and partial confounding in a 2^k factorial experiment. If a 2^3 factorial |table
+2018|1|5(d)|8|0.08,0.366,0.97,0.423|Table, matrix or formulas printed with this question: A population has seven units consisting of 30, 10, 25, 5, 20, 6 and 4 fields. Select a PPS sample of|table
+2018|1|6(a)|8|0.08,0.754,0.97,0.919|Table, matrix or formulas printed with this question: What do you understand by Balanced Design? Suppose four treatments (1, 2, 3, 4) are laid out in five|table
+2018|1|6(b)|9|0.08,0.121,0.97,0.194|Table, matrix or formulas printed with this question: If X is a p-component vector of random variables distributed as N_p(0, Σ), then show that X' Σ^(−1) |table
+2018|1|7(a)|9|0.08,0.581,0.97,0.750|Table, matrix or formulas printed with this question: For a random sample of size n from N_4(μ, Σ), we obtain μ̂ = (18, 15, 18, 14) and Σ̂ = [[9·5], [5·2,|table
+2018|1|7(a)|9|0.08,0.814,0.97,0.856|Table, matrix or formulas printed with this question: For a random sample of size n from N_4(μ, Σ), we obtain μ̂ = (18, 15, 18, 14) and Σ̂ = [[9·5], [5·2,|table
+2018|1|7(a)|9|0.08,0.894,0.97,0.917|Table, matrix or formulas printed with this question: For a random sample of size n from N_4(μ, Σ), we obtain μ̂ = (18, 15, 18, 14) and Σ̂ = [[9·5], [5·2,|table
+2018|1|7(b)|10|0.08,0.183,0.97,0.305|Table, matrix or formulas printed with this question: A 2^5 experiment involving factors A, B, C, D and E is conducted in the blocks of size 8. The key bl|table
+2018|1|7(c)|10|0.08,0.622,0.97,0.923|Table, matrix or formulas printed with this question: Two dentists A and B make a survey of the state of the teeth of 200 children in a village. Dr. A sel|table
+2018|1|8(a)|11|0.08,0.386,0.97,0.677|Table, matrix or formulas printed with this question: Explain stratified random sampling and give reasons for its preference to simple random sampling. Wi|table
+2018|1|8(b)|11|0.08,0.823,0.97,0.903|Table, matrix or formulas printed with this question: Show that Hotelling's T^2 is a generalization of the Student's t. Prove the invariance property of T|table
+2018|1|8(c)|12|0.08,0.241,0.97,0.400|Table, matrix or formulas printed with this question: For a model Y_i = β_0 + β_1 X_i + ε_i, i = 1, 2, 3 where X_1 = −1, X_2 = 0, X_3 = 1, find BLUE's of |table
+2018|2|1(b)|2|0.08,0.335,0.97,0.487|Table, matrix or formulas printed with this question: Let {X_n, n ≥ 0} be a Markov chain having a sample space S = {1, 2, 3, 4} and transition probability|table
+2018|2|1(e)|2|0.08,0.745,0.97,0.882|Table, matrix or formulas printed with this question: Find the range of values for p and q that will render the cell (2, 2) a saddle point in the game wit|table
+2018|2|2(a)|3|0.08,0.253,0.97,0.427|Table, matrix or formulas printed with this question: Define a series system and a parallel system. Compute the reliability of the following configuration|table
+2018|2|2(c)|4|0.08,0.055,0.97,0.332|Table, matrix or formulas printed with this question: Discuss a transportation problem (TP) and show that it can be formulated as a linear programming pro|table
+2018|2|3(c)|5|0.08,0.061,0.97,0.326|Table, matrix or formulas printed with this question: Control charts for x̄ and R are maintained for an important quality characteristic. The sample size |table
+2018|2|4(a)|5|0.08,0.501,0.97,0.636|Table, matrix or formulas printed with this question: The following figures give the number of defectives in 20 samples each containing 2000 items : 305, |table
+2018|2|4(b)|6|0.08,0.059,0.97,0.298|Table, matrix or formulas printed with this question: What is the importance of sensitivity analysis? Mention what type of problems can be resolved using |table
+2018|2|6(a)|7|0.08,0.155,0.97,0.260|Table, matrix or formulas printed with this question: Given the following demand-and-supply model Demand : Q_t = α_0 + α_1 P_t + α_2 I_t + u_1t; α_1 < 0, |table
+2018|2|6(b)|7|0.08,0.582,0.97,0.900|Table, matrix or formulas printed with this question: Distinguish between wholesale price index number and consumer price index number. How are they calcu|table
+2018|2|7(a)|8|0.08,0.481,0.97,0.747|Table, matrix or formulas printed with this question: Calculate (i) crude death rate and (ii) standardised death rates of Town A from the following data :|table
+2018|2|7(b)|8|0.08,0.760,0.97,0.900|Table, matrix or formulas printed with this question: Suppose there are four items A, B, C and D respectively passed by 90%, 80%, 70% and 60% of individua|table
+2018|2|7(b)|9|0.08,0.051,0.97,0.894|Table, matrix or formulas printed with this question: Suppose there are four items A, B, C and D respectively passed by 90%, 80%, 70% and 60% of individua|table
+2018|2|7(c)|10|0.08,0.175,0.97,0.288|Table, matrix or formulas printed with this question: Consider a two-variable regression model Y_t = β_1 + β_2 X_t + u_t. Suppose u_t is autocorrelated as|table
+2018|2|8(b)|10|0.08,0.547,0.97,0.686|Table, matrix or formulas printed with this question: What is a life table? Distinguish between a complete life table and an abridged life table. Complete|table
+2019|1|1(a)|2|0.08,0.195,0.97,0.259|Table, matrix or formulas printed with this question: Suppose a coin is tossed three times. If X denotes the number of heads on first toss and Y is the to|table
+2019|1|1(b)|2|0.08,0.344,0.97,0.402|Table, matrix or formulas printed with this question: Prove that X_n →(P) 0 if and only if X_n →(d) 0.|table
+2019|1|1(c)|2|0.08,0.573,0.97,0.698|Table, matrix or formulas printed with this question: Suppose X_1 and X_2 are independent and identically distributed (i.i.d) observations from the pdf gi|table
+2019|1|1(d)|2|0.08,0.820,0.97,0.923|Table, matrix or formulas printed with this question: The manufacturer of a spot remover claims that his product removes 90% of all spots. If, in a random|table
+2019|1|1(e)|3|0.08,0.267,0.97,0.386|Table, matrix or formulas printed with this question: Let X_1, X_2, X_3 be three independent random variables with common pdf f(x) = 2e^(−2x), x ≥ 0, and |table
+2019|1|2(a)|3|0.08,0.629,0.97,0.777|Table, matrix or formulas printed with this question: X_1, …, X_n is a random sample from probability density function f(x / θ) = θ x^(−2), 0 < θ ≤ x < ∞.|table
+2019|1|2(c)|4|0.08,0.315,0.97,0.518|Table, matrix or formulas printed with this question: Let X have the pdf f(x, θ) = (1/θ) e^(−x/θ), 0 < x < ∞, and 0 otherwise. To test H_0 : θ = 2 against|table
+2019|1|3(a)|4|0.08,0.753,0.97,0.921|Table, matrix or formulas printed with this question: Let X be one observation from the pdf f(x / θ) = (θ/2)^/x/ (1 − θ)^(1−/x/), x = −1, 0, 1, 0 ≤ θ ≤ 1.|table
+2019|1|3(b)|5|0.08,0.234,0.97,0.399|Table, matrix or formulas printed with this question: Let the joint probability density function of X and Y be f(x, y) = C · exp{−(x^2 − 4y^2 − xy)}, wher|table
+2019|1|3(c)|5|0.08,0.542,0.97,0.680|Table, matrix or formulas printed with this question: (i) An accounts manager in a company classifies 75% of customers as 'good credit' and the rest as 'r|table
+2019|1|3(c)|5|0.08,0.803,0.97,0.936|Table, matrix or formulas printed with this question: (i) An accounts manager in a company classifies 75% of customers as 'good credit' and the rest as 'r|table
+2019|1|4(a)|6|0.08,0.434,0.97,0.737|Table, matrix or formulas printed with this question: Suppose X_1, …, X_n are i.i.d beta (μ, 1) and Y_1, …, Y_m are i.i.d beta (θ, 1). X's are independent|table
+2019|1|4(b)|7|0.08,0.049,0.97,0.210|Table, matrix or formulas printed with this question: A random variable X has the following probability function : Value of X = x: −2, −1, 0, 1, 2, 3; f(x|table
+2019|1|4(c)|8|0.08,0.053,0.97,0.755|Table, matrix or formulas printed with this question: Weddell seals live in the Antarctic and feed on fish during long, deep dives in freezing water. The |table
+2019|1|5(a)|9|0.08,0.350,0.97,0.585|Table, matrix or formulas printed with this question: In order to estimate two parameters θ and φ, a number of independent measurements are taken, each ha|table
+2019|1|5(b)|10|0.08,0.059,0.97,0.398|Table, matrix or formulas printed with this question: Consider a standard linear model with design matrix X with rows (−2, −2), (−1, −1), (0, 0), (1, 1), |table
+2019|1|5(c)|10|0.08,0.565,0.97,0.699|Table, matrix or formulas printed with this question: In Simple Random Sampling with Replacement (SRSWR) (with usual notation), show that (i) E(ȳ) = Ȳ, an|table
+2019|1|5(d)|10|0.08,0.789,0.97,0.863|Table, matrix or formulas printed with this question: With usual notation, show that the ratio estimator R̂ is the best linear unbiased estimator of R men|table
+2019|1|6(a)|11|0.08,0.128,0.97,0.197|Table, matrix or formulas printed with this question: Show that the approximate variance of the regression estimator ȳ_r is Var(ȳ_r) = ((1 − f)/n) S_y^2 (|table
+2019|1|6(c)|12|0.08,0.057,0.97,0.469|Table, matrix or formulas printed with this question: Consider two independent i.i.d samples, each of size 10, from two bivariate normal populations. The |table
+2019|1|7(a)|13|0.08,0.055,0.97,0.359|Table, matrix or formulas printed with this question: Let X ~ N_3((1, 2, 3)', [[11, −6, 2], [−6, 10, −4], [2, −4, 6]]); Z_1 = X_2 − X_3; Z_2 = X_2 + X_3; |table
+2019|1|7(b)|13|0.08,0.598,0.97,0.801|Table, matrix or formulas printed with this question: Mentioning clearly about the notations, show that Horvitz-Thompson estimator of the population total|table
+2019|1|8(a)|14|0.08,0.222,0.97,0.379|Table, matrix or formulas printed with this question: For a population with linear trend and N = nk (N = population size, n = sample size, k = sampling in|table
+2019|1|8(b)|15|0.08,0.045,0.97,0.756|Table, matrix or formulas printed with this question: Consider two sons born first in n families. Let X_1 : head length of first son; X_2 : head breadth o|table
+2019|1|8(c)|16|0.08,0.488,0.97,0.929|Table, matrix or formulas printed with this question: Grain yields per plant (grams) of paddy of nine varieties in a Randomised Block Design are presented|table
+2019|2|1(a)|2|0.08,0.399,0.97,0.675|Table, matrix or formulas printed with this question: Define series system and parallel system. In a system, four independently and identically distribute|table
+2019|2|1(d)|3|0.08,0.367,0.97,0.697|Table, matrix or formulas printed with this question: Give the applications of linear programming problem. A firm produces three products A, B and C. It u|table
+2019|2|2(b)|4|0.08,0.837,0.97,0.893|Table, matrix or formulas printed with this question: Describe a CUSUM control chart. Compare this chart with a Shewhart chart with respect to performance|table
+2019|2|2(b)|5|0.08,0.059,0.97,0.301|Table, matrix or formulas printed with this question: Describe a CUSUM control chart. Compare this chart with a Shewhart chart with respect to performance|table
+2019|2|2(c)|5|0.08,0.477,0.97,0.613|Table, matrix or formulas printed with this question: Show that in an irreducible Markov chain, all the states are of the same type. Define the transition|table
+2019|2|3(b)|6|0.08,0.066,0.97,0.297|Table, matrix or formulas printed with this question: The following mortality rates have been observed for a special type of lightbulbs : Month 1, 2, 3, 4|table
+2019|2|4(a)|6|0.08,0.640,0.97,0.828|Table, matrix or formulas printed with this question: Obtain an optimum solution for the following transportation problem : Factory X: Warehouse A 20, B 4|table
+2019|2|4(c)|7|0.08,0.238,0.97,0.410|Table, matrix or formulas printed with this question: Draw OC curve and ASN curve for the following two sampling inspection plans. Assume large lot sizes |table
+2019|2|5(c)|7|0.08,0.768,0.97,0.891|Table, matrix or formulas printed with this question: Consider the following models : Model I : Y_i = β_1 + β_2 X_i + u_i; Model II : Y_i* = α_1 + α_2 X_i|table
+2019|2|5(e)|8|0.08,0.384,0.97,0.516|Table, matrix or formulas printed with this question: Define T-score. Write its applications. Find the T-scores corresponding to the test scores X for the|table
+2019|2|6(b)|9|0.08,0.061,0.97,0.286|Table, matrix or formulas printed with this question: What are economic barometers? Show their usefulness as well as their limitations in forecasting econ|table
+2019|2|7(a)|9|0.08,0.530,0.97,0.638|Table, matrix or formulas printed with this question: Consider the two-equation system : β_11 y_1t + β_12 y_2t + γ_11 x_1t + γ_12 x_2t = u_1t; β_21 y_1t +|table
+2019|2|8(c)|10|0.08,0.448,0.97,0.694|Table, matrix or formulas printed with this question: Explain different measures of fertility. From the following data, calculate the female gross reprodu|table
+2020|1|1(a)|2|0.08,0.251,0.97,0.383|Table, matrix or formulas printed with this question: An insurer offers a health plan to the employees of a large company. As part of this plan, individua|table
+2020|1|1(b)|2|0.08,0.468,0.97,0.510|Table, matrix or formulas printed with this question: Let X and Y be iid random variables with P(X = k) = 2^(−k), k = 1, 2, 3, … . Find P(X > Y).|table
+2020|1|1(c)|2|0.08,0.582,0.97,0.662|Table, matrix or formulas printed with this question: For a geometric distribution p(x) = 2^(−x); x = 1, 2, 3, …, show that Chebyshev's inequality gives P|table
+2020|1|1(d)|3|0.08,0.168,0.97,0.403|Table, matrix or formulas printed with this question: For a group of policies, losses follow the distribution function F(x) = 1 − θ/x, θ < x < ∞. A sample|table
+2020|1|1(e)|3|0.08,0.744,0.97,0.824|Table, matrix or formulas printed with this question: Let X_1 and X_2 be two iid random variables with normal N(θ, 1) distribution. Further, consider Bern|table
+2020|1|1(e)|4|0.08,0.057,0.97,0.260|Table, matrix or formulas printed with this question: Let X_1 and X_2 be two iid random variables with normal N(θ, 1) distribution. Further, consider Bern|table
+2020|1|2(a)|4|0.08,0.563,0.97,0.828|Table, matrix or formulas printed with this question: The lifetime in hours of each bulb manufactured by a particular company follows an independent expon|table
+2020|1|2(b)|5|0.08,0.132,0.97,0.192|Table, matrix or formulas printed with this question: The random variable X takes values on the interval [0, 2]. Given that P(X = 1) = 0·25, F(x / x < 1) |table
+2020|1|2(c)|5|0.08,0.366,0.97,0.536|Table, matrix or formulas printed with this question: Let θ > 0 be the unknown parameter and X_1, X_2, …, X_n be a random sample from the distribution wit|table
+2020|1|3(a)|5|0.08,0.690,0.97,0.824|Table, matrix or formulas printed with this question: Let X_1, X_2, …, X_n be a random sample from uniform distribution U(θ − 1/2, θ + 1/2). Show that Y =|table
+2020|1|3(b)|6|0.08,0.106,0.97,0.150|Table, matrix or formulas printed with this question: Let X ~ uniform U(0, 2θ), θ > 0 distribution. Define Y = max(X, 2θ − X). Find E(Y).|table
+2020|1|3(c)|6|0.08,0.327,0.97,0.420|Table, matrix or formulas printed with this question: State inversion theorem on characteristic function. Hence, find the density function corresponding t|table
+2020|1|4(a)|7|0.08,0.057,0.97,0.377|Table, matrix or formulas printed with this question: To test sequentially the hypothesis H_0 for which the distribution is given by P(X = −1) = P(X = 1) |table
+2020|1|4(b)|7|0.08,0.579,0.97,0.678|Table, matrix or formulas printed with this question: (i) Obtain characteristic function of uniform distribution U(0, 1). (ii) Let {X_n} be a sequence of |table
+2020|1|4(c)|8|0.08,0.306,0.97,0.641|Table, matrix or formulas printed with this question: A random sample of 14 male students from a rural Junior High School and an independent random sample|table
+2020|1|5(a)|9|0.08,0.320,0.97,0.503|Table, matrix or formulas printed with this question: A student fits the following linear regression model to a given data : y_i = α + β x_i + u_i, i = 1,|table
+2020|1|5(b)|9|0.08,0.626,0.97,0.723|Table, matrix or formulas printed with this question: Let X ~ N_2(μ, Σ) with probability distribution function (pdf), f(x) = C e^(−Q/2), where Q = 3x^2 + |table
+2020|1|5(c)|10|0.08,0.049,0.97,0.149|Table, matrix or formulas printed with this question: A population consists of 6 units with values 6, 3, 1, 4, 2 and 5. Write down all possible samples of|table
+2020|1|6(a)|10|0.08,0.495,0.97,0.638|Table, matrix or formulas printed with this question: What is systematic sampling? In usual notation, prove that V(ȳ_sys) = ((nk − 1)/(nk)) · (S^2/n) {1 +|table
+2020|1|6(b)|11|0.08,0.054,0.97,0.199|Table, matrix or formulas printed with this question: Let Y_1, Y_2, Y_3 be uncorrelated variables with common variance σ^2 such that E(Y_1) = β_1 + β_2, E|table
+2020|1|6(c)|11|0.08,0.421,0.97,0.616|Table, matrix or formulas printed with this question: Let n = 4, p = 2, X = (X_1, X_2)', where X_1 : weight (in kg), X_2 : height (in cm) of infant. Sampl|table
+2020|1|7(b)|11|0.08,0.776,0.97,0.824|Table, matrix or formulas printed with this question: Let R be the ratio of population totals of 'y' and 'x' and R̂ is the estimate of R. Obtain V(R̂). Al|table
+2020|1|8(a)|12|0.08,0.379,0.97,0.534|Table, matrix or formulas printed with this question: Discuss Simple Lattice Design. Let β_1., …, β_p. denote row block effects and β_.1, …, β_.p denote c|table
+2020|1|8(b)|13|0.08,0.049,0.97,0.296|Table, matrix or formulas printed with this question: Show that in pps sampling, with replacement, an unbiased estimator of the population mean Ȳ is ȳ_pps|table
+2020|1|8(c)|13|0.08,0.685,0.97,0.797|Table, matrix or formulas printed with this question: Two types of tests viz : written and oral were conducted for seeking admission to MBA course. The re|table
+2020|1|8(c)|14|0.08,0.064,0.97,0.335|Table, matrix or formulas printed with this question: Two types of tests viz : written and oral were conducted for seeking admission to MBA course. The re|table

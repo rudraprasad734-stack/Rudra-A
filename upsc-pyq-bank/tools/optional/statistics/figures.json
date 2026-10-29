@@ -275,197 +275,743 @@
  "2018|1|1(a)": [
   {
    "u": "img/statistics/2018-1-1a-1.webp",
-   "a": "Bag of three coins with probabilities of heads 0.5, 0.6, 0.1 and the sequence HTT",
+   "a": "Table, matrix or formulas printed with this question: We have a bag with 3 coins in it. One of them is a fair coin, but the others are biased trick coins.",
    "k": "table"
   }
  ],
  "2018|1|1(b)": [
   {
    "u": "img/statistics/2018-1-1b-1.webp",
-   "a": "Density f(x given theta) = theta (theta + 1) x^(theta - 1) (1 - x), 0 < x < 1; method of moments",
+   "a": "Table, matrix or formulas printed with this question: Let X_1, X_2, \u2026, X_n be a sample from a distribution with density function f(x / \u03b8) = \u03b8(\u03b8 + 1) x^(\u03b8\u2212",
    "k": "table"
   }
  ],
  "2018|1|1(c)": [
   {
    "u": "img/statistics/2018-1-1c-1.webp",
-   "a": "Independent uniform U(0, 1) variables and U = X/Y",
+   "a": "Table, matrix or formulas printed with this question: Consider two independent and identically distributed uniform U(0, 1) random variables. Derive the di",
    "k": "table"
   }
  ],
  "2018|1|1(d)": [
   {
    "u": "img/statistics/2018-1-1d-1.webp",
-   "a": "Battery lifetimes (hours) of brands A and B and the median test",
+   "a": "Table, matrix or formulas printed with this question: The following data represents lifetime (hours) of batteries for two different brands : Brand A: 40,",
    "k": "table"
   }
  ],
  "2018|1|1(e)": [
   {
    "u": "img/statistics/2018-1-1e-1.webp",
-   "a": "Central limit theorem: limit of e^(-n) times the sum over k of n^k / k! equals 1/2",
+   "a": "Table, matrix or formulas printed with this question: Using central limit theorem, show that lim (n \u2192 \u221e) e^(\u2212n) \u03a3_(k=0)^(n) n^k / k! = 1/2.",
    "k": "table"
   }
  ],
  "2018|1|2(a)": [
   {
    "u": "img/statistics/2018-1-2a-1.webp",
-   "a": "Joint density f(x, y) = e^(-y), 0 <= x <= y < infinity",
+   "a": "Table, matrix or formulas printed with this question: The joint density of X, Y is f(x, y) = e^(\u2212y), 0 \u2264 x \u2264 y < \u221e. Find the marginal distributions of X,",
    "k": "table"
   }
  ],
  "2018|1|2(b)": [
   {
    "u": "img/statistics/2018-1-2b-1.webp",
-   "a": "Independent binomial (1, p) variables; UMVUE of p(1 - p)",
+   "a": "Table, matrix or formulas printed with this question: Let X_1, X_2, \u2026, X_n be iid binomial (1, p) random variables. Find the UMVUE for p(1 \u2212 p), based on",
    "k": "table"
   }
  ],
  "2018|1|2(c)": [
   {
    "u": "img/statistics/2018-1-2c-1.webp",
-   "a": "Random sample from N(0, theta); most powerful test of H0: theta = theta0 against H1: theta > theta0",
+   "a": "Table, matrix or formulas printed with this question: Let x_1, x_2, \u2026, x_n be a random sample from N(0, \u03b8). The variance \u03b8 is unknown. Derive the most pow",
    "k": "table"
   }
  ],
  "2018|1|3(a)": [
   {
    "u": "img/statistics/2018-1-3a-1.webp",
-   "a": "Shots at a target with density f_R(r; sigma^2) = (1/sigma^2) r e^(-r^2/(2 sigma^2)); MLE of sigma^2",
+   "a": "Table, matrix or formulas printed with this question: Shots aimed at a target reach the plane of the target at a distance R from the centre, where R has t",
    "k": "table"
   }
  ],
  "2018|1|3(b)": [
   {
    "u": "img/statistics/2018-1-3b-1.webp",
-   "a": "Sequence {X_n}, Y_n = (1/n) sum X_i and the weak law of large numbers condition E[Y_n^2 / (1 + Y_n^2)] -> 0",
+   "a": "Table, matrix or formulas printed with this question: Let {X_n} be a sequence of random variables and Y_n = (1/n) \u03a3_(i=1)^(n) X_i. Prove that a necessary",
    "k": "table"
   }
  ],
  "2018|1|3(c)": [
   {
    "u": "img/statistics/2018-1-3c-1.webp",
-   "a": "Sum S_n of n tosses of a symmetric die; upper bound for P[givenS_n/n - 3.5given > epsilon]",
+   "a": "Table, matrix or formulas printed with this question: (i) Let S_n be equal to the total obtained in n tosses of a symmetric die. Estimate an upper bound f",
    "k": "table"
   },
   {
    "u": "img/statistics/2018-1-3c-2.webp",
-   "a": "Density P[X_n = 1] = 1/n and P[X_n = 0] = 1 - 1/n",
+   "a": "Table, matrix or formulas printed with this question: (i) Let S_n be equal to the total obtained in n tosses of a symmetric die. Estimate an upper bound f",
    "k": "table"
   }
  ],
  "2018|1|4(a)": [
   {
    "u": "img/statistics/2018-1-4a-1.webp",
-   "a": "Convergence in law and in probability: X_n + Y_n, X_n Y_n and X_n / Y_n",
+   "a": "Table, matrix or formulas printed with this question: If X_n \u2192(L) X, Y_n \u2192(P) C, then show that (i) X_n + Y_n \u2192(L) X + C (ii) X_n \u00b7 Y_n \u2192(L) CX (iii) X_n",
    "k": "table"
   }
  ],
  "2018|1|4(b)": [
   {
    "u": "img/statistics/2018-1-4b-1.webp",
-   "a": "X with densities f0 and f1 on x = 1 to 5; best critical region of size 2/5 and its power",
+   "a": "Table, matrix or formulas printed with this question: Let X ~ f_j, j = 0, 1, where x: 1, 2, 3, 4, 5; f_0: 1/5, 1/5, 1/5, 1/5, 1/5; f_1: 1/6, 1/4, 1/6, 1/4",
    "k": "table"
   }
  ],
  "2018|1|4(c)": [
   {
    "u": "img/statistics/2018-1-4c-1.webp",
-   "a": "Sequential probability ratio test for H0: theta = theta0 against H1: theta = theta1",
+   "a": "Table, matrix or formulas printed with this question: (i) For testing a simple hypothesis H_0 : \u03b8 = \u03b8_0 against simple alternative H_1 : \u03b8 = \u03b8_1, prove th",
    "k": "table"
   },
   {
    "u": "img/statistics/2018-1-4c-2.webp",
-   "a": "Bernoulli observations; sequential probability ratio test for H0: p = p0 against H1: p = p1",
+   "a": "Table, matrix or formulas printed with this question: (i) For testing a simple hypothesis H_0 : \u03b8 = \u03b8_0 against simple alternative H_1 : \u03b8 = \u03b8_1, prove th",
    "k": "table"
   }
  ],
  "2018|1|5(a)": [
   {
    "u": "img/statistics/2018-1-5a-1.webp",
-   "a": "Pendulum period t = 2 pi sqrt(l/g); best linear estimator of beta = 2 pi / sqrt(g) and its variance",
+   "a": "Table, matrix or formulas printed with this question: The period of oscillation, t of a pendulum is 2\u03c0\u221a(l/g) where l is the length of the pendulum and g i",
    "k": "table"
   }
  ],
  "2018|1|5(b)": [
   {
    "u": "img/statistics/2018-1-5b-1.webp",
-   "a": "Principal components and the covariance matrix Sigma = [1 4; 4 100]",
+   "a": "Table, matrix or formulas printed with this question: Define principal components. Is the principal component affected by standardization? Establish your",
    "k": "table"
   }
  ],
  "2018|1|5(c)": [
   {
    "u": "img/statistics/2018-1-5c-1.webp",
-   "a": "Total and partial confounding in a 2^k factorial experiment",
+   "a": "Table, matrix or formulas printed with this question: Distinguish between total and partial confounding in a 2^k factorial experiment. If a 2^3 factorial",
    "k": "table"
   },
   {
    "u": "img/statistics/2018-1-5c-2.webp",
-   "a": "2^3 factorial experiment in blocks of size 4 with four replicates",
+   "a": "Table, matrix or formulas printed with this question: Distinguish between total and partial confounding in a 2^k factorial experiment. If a 2^3 factorial",
    "k": "table"
   }
  ],
  "2018|1|5(d)": [
   {
    "u": "img/statistics/2018-1-5d-1.webp",
-   "a": "Population of seven units with 30, 10, 25, 5, 20, 6 and 4 fields; PPS sample of size 3",
+   "a": "Table, matrix or formulas printed with this question: A population has seven units consisting of 30, 10, 25, 5, 20, 6 and 4 fields. Select a PPS sample of",
    "k": "table"
   }
  ],
  "2018|1|6(a)": [
   {
    "u": "img/statistics/2018-1-6a-1.webp",
-   "a": "Four treatments (1, 2, 3, 4) laid out in five blocks I to V",
+   "a": "Table, matrix or formulas printed with this question: What do you understand by Balanced Design? Suppose four treatments (1, 2, 3, 4) are laid out in five",
    "k": "table"
   }
  ],
  "2018|1|6(b)": [
   {
    "u": "img/statistics/2018-1-6b-1.webp",
-   "a": "X ~ N_p(0, Sigma); X' Sigma^-1 X is chi-square with p degrees of freedom",
+   "a": "Table, matrix or formulas printed with this question: If X is a p-component vector of random variables distributed as N_p(0, \u03a3), then show that X' \u03a3^(\u22121)",
    "k": "table"
   }
  ],
  "2018|1|7(a)": [
   {
    "u": "img/statistics/2018-1-7a-1.webp",
-   "a": "Sample from N4(mu, Sigma): estimated mean vector (18, 15, 18, 14) and covariance matrix; conditional distribution and partial correlation",
+   "a": "Table, matrix or formulas printed with this question: For a random sample of size n from N_4(\u03bc, \u03a3), we obtain \u03bc\u0302 = (18, 15, 18, 14) and \u03a3\u0302 = [[9\u00b75], [5\u00b72,",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2018-1-7a-2.webp",
+   "a": "Table, matrix or formulas printed with this question: For a random sample of size n from N_4(\u03bc, \u03a3), we obtain \u03bc\u0302 = (18, 15, 18, 14) and \u03a3\u0302 = [[9\u00b75], [5\u00b72,",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2018-1-7a-3.webp",
+   "a": "Table, matrix or formulas printed with this question: For a random sample of size n from N_4(\u03bc, \u03a3), we obtain \u03bc\u0302 = (18, 15, 18, 14) and \u03a3\u0302 = [[9\u00b75], [5\u00b72,",
    "k": "table"
   }
  ],
  "2018|1|7(b)": [
   {
    "u": "img/statistics/2018-1-7b-1.webp",
-   "a": "2^5 experiment in blocks of size 8; key blocks of replicates 1 and 2",
+   "a": "Table, matrix or formulas printed with this question: A 2^5 experiment involving factors A, B, C, D and E is conducted in the blocks of size 8. The key bl",
    "k": "table"
   }
  ],
  "2018|1|7(c)": [
   {
    "u": "img/statistics/2018-1-7c-1.webp",
-   "a": "Dentists' survey of decayed teeth in 200 children: table of number of decayed teeth and number of children",
+   "a": "Table, matrix or formulas printed with this question: Two dentists A and B make a survey of the state of the teeth of 200 children in a village. Dr. A sel",
    "k": "table"
   }
  ],
  "2018|1|8(a)": [
   {
    "u": "img/statistics/2018-1-8a-1.webp",
-   "a": "Stratified sampling with two strata and r = n1/n2; fractional increase in variance ((r - 1)/(r + 1))^2",
+   "a": "Table, matrix or formulas printed with this question: Explain stratified random sampling and give reasons for its preference to simple random sampling. Wi",
    "k": "table"
   }
  ],
  "2018|1|8(b)": [
   {
    "u": "img/statistics/2018-1-8b-1.webp",
-   "a": "Hotelling T^2 as a generalisation of Student's t",
+   "a": "Table, matrix or formulas printed with this question: Show that Hotelling's T^2 is a generalization of the Student's t. Prove the invariance property of T",
    "k": "table"
   }
  ],
  "2018|1|8(c)": [
   {
    "u": "img/statistics/2018-1-8c-1.webp",
-   "a": "Model Y_i = b0 + b1 X_i + e_i with X = -1, 0, 1 and the true quadratic model",
+   "a": "Table, matrix or formulas printed with this question: For a model Y_i = \u03b2_0 + \u03b2_1 X_i + \u03b5_i, i = 1, 2, 3 where X_1 = \u22121, X_2 = 0, X_3 = 1, find BLUE's of",
+   "k": "table"
+  }
+ ],
+ "2018|2|1(b)": [
+  {
+   "u": "img/statistics/2018-2-1b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let {X_n, n \u2265 0} be a Markov chain having a sample space S = {1, 2, 3, 4} and transition probability",
+   "k": "table"
+  }
+ ],
+ "2018|2|1(e)": [
+  {
+   "u": "img/statistics/2018-2-1e-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Find the range of values for p and q that will render the cell (2, 2) a saddle point in the game wit",
+   "k": "table"
+  }
+ ],
+ "2018|2|2(a)": [
+  {
+   "u": "img/statistics/2018-2-2a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Define a series system and a parallel system. Compute the reliability of the following configuration",
+   "k": "table"
+  }
+ ],
+ "2018|2|2(c)": [
+  {
+   "u": "img/statistics/2018-2-2c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Discuss a transportation problem (TP) and show that it can be formulated as a linear programming pro",
+   "k": "table"
+  }
+ ],
+ "2018|2|3(c)": [
+  {
+   "u": "img/statistics/2018-2-3c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Control charts for x\u0304 and R are maintained for an important quality characteristic. The sample size",
+   "k": "table"
+  }
+ ],
+ "2018|2|4(a)": [
+  {
+   "u": "img/statistics/2018-2-4a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: The following figures give the number of defectives in 20 samples each containing 2000 items : 305,",
+   "k": "table"
+  }
+ ],
+ "2018|2|4(b)": [
+  {
+   "u": "img/statistics/2018-2-4b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: What is the importance of sensitivity analysis? Mention what type of problems can be resolved using",
+   "k": "table"
+  }
+ ],
+ "2018|2|6(a)": [
+  {
+   "u": "img/statistics/2018-2-6a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Given the following demand-and-supply model Demand : Q_t = \u03b1_0 + \u03b1_1 P_t + \u03b1_2 I_t + u_1t; \u03b1_1 < 0,",
+   "k": "table"
+  }
+ ],
+ "2018|2|6(b)": [
+  {
+   "u": "img/statistics/2018-2-6b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Distinguish between wholesale price index number and consumer price index number. How are they calcu",
+   "k": "table"
+  }
+ ],
+ "2018|2|7(a)": [
+  {
+   "u": "img/statistics/2018-2-7a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Calculate (i) crude death rate and (ii) standardised death rates of Town A from the following data :",
+   "k": "table"
+  }
+ ],
+ "2018|2|7(b)": [
+  {
+   "u": "img/statistics/2018-2-7b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Suppose there are four items A, B, C and D respectively passed by 90%, 80%, 70% and 60% of individua",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2018-2-7b-2.webp",
+   "a": "Table, matrix or formulas printed with this question: Suppose there are four items A, B, C and D respectively passed by 90%, 80%, 70% and 60% of individua",
+   "k": "table"
+  }
+ ],
+ "2018|2|7(c)": [
+  {
+   "u": "img/statistics/2018-2-7c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Consider a two-variable regression model Y_t = \u03b2_1 + \u03b2_2 X_t + u_t. Suppose u_t is autocorrelated as",
+   "k": "table"
+  }
+ ],
+ "2018|2|8(b)": [
+  {
+   "u": "img/statistics/2018-2-8b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: What is a life table? Distinguish between a complete life table and an abridged life table. Complete",
+   "k": "table"
+  }
+ ],
+ "2019|1|1(a)": [
+  {
+   "u": "img/statistics/2019-1-1a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Suppose a coin is tossed three times. If X denotes the number of heads on first toss and Y is the to",
+   "k": "table"
+  }
+ ],
+ "2019|1|1(b)": [
+  {
+   "u": "img/statistics/2019-1-1b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Prove that X_n \u2192(P) 0 if and only if X_n \u2192(d) 0.",
+   "k": "table"
+  }
+ ],
+ "2019|1|1(c)": [
+  {
+   "u": "img/statistics/2019-1-1c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Suppose X_1 and X_2 are independent and identically distributed (i.i.d) observations from the pdf gi",
+   "k": "table"
+  }
+ ],
+ "2019|1|1(d)": [
+  {
+   "u": "img/statistics/2019-1-1d-1.webp",
+   "a": "Table, matrix or formulas printed with this question: The manufacturer of a spot remover claims that his product removes 90% of all spots. If, in a random",
+   "k": "table"
+  }
+ ],
+ "2019|1|1(e)": [
+  {
+   "u": "img/statistics/2019-1-1e-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X_1, X_2, X_3 be three independent random variables with common pdf f(x) = 2e^(\u22122x), x \u2265 0, and",
+   "k": "table"
+  }
+ ],
+ "2019|1|2(a)": [
+  {
+   "u": "img/statistics/2019-1-2a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: X_1, \u2026, X_n is a random sample from probability density function f(x / \u03b8) = \u03b8 x^(\u22122), 0 < \u03b8 \u2264 x < \u221e.",
+   "k": "table"
+  }
+ ],
+ "2019|1|2(c)": [
+  {
+   "u": "img/statistics/2019-1-2c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X have the pdf f(x, \u03b8) = (1/\u03b8) e^(\u2212x/\u03b8), 0 < x < \u221e, and 0 otherwise. To test H_0 : \u03b8 = 2 against",
+   "k": "table"
+  }
+ ],
+ "2019|1|3(a)": [
+  {
+   "u": "img/statistics/2019-1-3a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X be one observation from the pdf f(x / \u03b8) = (\u03b8/2)^/x/ (1 \u2212 \u03b8)^(1\u2212/x/), x = \u22121, 0, 1, 0 \u2264 \u03b8 \u2264 1.",
+   "k": "table"
+  }
+ ],
+ "2019|1|3(b)": [
+  {
+   "u": "img/statistics/2019-1-3b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let the joint probability density function of X and Y be f(x, y) = C \u00b7 exp{\u2212(x^2 \u2212 4y^2 \u2212 xy)}, wher",
+   "k": "table"
+  }
+ ],
+ "2019|1|3(c)": [
+  {
+   "u": "img/statistics/2019-1-3c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) An accounts manager in a company classifies 75% of customers as 'good credit' and the rest as 'r",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2019-1-3c-2.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) An accounts manager in a company classifies 75% of customers as 'good credit' and the rest as 'r",
+   "k": "table"
+  }
+ ],
+ "2019|1|4(a)": [
+  {
+   "u": "img/statistics/2019-1-4a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Suppose X_1, \u2026, X_n are i.i.d beta (\u03bc, 1) and Y_1, \u2026, Y_m are i.i.d beta (\u03b8, 1). X's are independent",
+   "k": "table"
+  }
+ ],
+ "2019|1|4(b)": [
+  {
+   "u": "img/statistics/2019-1-4b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: A random variable X has the following probability function : Value of X = x: \u22122, \u22121, 0, 1, 2, 3; f(x",
+   "k": "table"
+  }
+ ],
+ "2019|1|4(c)": [
+  {
+   "u": "img/statistics/2019-1-4c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Weddell seals live in the Antarctic and feed on fish during long, deep dives in freezing water. The",
+   "k": "table"
+  }
+ ],
+ "2019|1|5(a)": [
+  {
+   "u": "img/statistics/2019-1-5a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: In order to estimate two parameters \u03b8 and \u03c6, a number of independent measurements are taken, each ha",
+   "k": "table"
+  }
+ ],
+ "2019|1|5(b)": [
+  {
+   "u": "img/statistics/2019-1-5b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Consider a standard linear model with design matrix X with rows (\u22122, \u22122), (\u22121, \u22121), (0, 0), (1, 1),",
+   "k": "table"
+  }
+ ],
+ "2019|1|5(c)": [
+  {
+   "u": "img/statistics/2019-1-5c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: In Simple Random Sampling with Replacement (SRSWR) (with usual notation), show that (i) E(\u0233) = \u0232, an",
+   "k": "table"
+  }
+ ],
+ "2019|1|5(d)": [
+  {
+   "u": "img/statistics/2019-1-5d-1.webp",
+   "a": "Table, matrix or formulas printed with this question: With usual notation, show that the ratio estimator R\u0302 is the best linear unbiased estimator of R men",
+   "k": "table"
+  }
+ ],
+ "2019|1|6(a)": [
+  {
+   "u": "img/statistics/2019-1-6a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Show that the approximate variance of the regression estimator \u0233_r is Var(\u0233_r) = ((1 \u2212 f)/n) S_y^2 (",
+   "k": "table"
+  }
+ ],
+ "2019|1|6(c)": [
+  {
+   "u": "img/statistics/2019-1-6c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Consider two independent i.i.d samples, each of size 10, from two bivariate normal populations. The",
+   "k": "table"
+  }
+ ],
+ "2019|1|7(a)": [
+  {
+   "u": "img/statistics/2019-1-7a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X ~ N_3((1, 2, 3)', [[11, \u22126, 2], [\u22126, 10, \u22124], [2, \u22124, 6]]); Z_1 = X_2 \u2212 X_3; Z_2 = X_2 + X_3;",
+   "k": "table"
+  }
+ ],
+ "2019|1|7(b)": [
+  {
+   "u": "img/statistics/2019-1-7b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Mentioning clearly about the notations, show that Horvitz-Thompson estimator of the population total",
+   "k": "table"
+  }
+ ],
+ "2019|1|8(a)": [
+  {
+   "u": "img/statistics/2019-1-8a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: For a population with linear trend and N = nk (N = population size, n = sample size, k = sampling in",
+   "k": "table"
+  }
+ ],
+ "2019|1|8(b)": [
+  {
+   "u": "img/statistics/2019-1-8b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Consider two sons born first in n families. Let X_1 : head length of first son; X_2 : head breadth o",
+   "k": "table"
+  }
+ ],
+ "2019|1|8(c)": [
+  {
+   "u": "img/statistics/2019-1-8c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Grain yields per plant (grams) of paddy of nine varieties in a Randomised Block Design are presented",
+   "k": "table"
+  }
+ ],
+ "2019|2|1(a)": [
+  {
+   "u": "img/statistics/2019-2-1a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Define series system and parallel system. In a system, four independently and identically distribute",
+   "k": "table"
+  }
+ ],
+ "2019|2|1(d)": [
+  {
+   "u": "img/statistics/2019-2-1d-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Give the applications of linear programming problem. A firm produces three products A, B and C. It u",
+   "k": "table"
+  }
+ ],
+ "2019|2|2(b)": [
+  {
+   "u": "img/statistics/2019-2-2b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Describe a CUSUM control chart. Compare this chart with a Shewhart chart with respect to performance",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2019-2-2b-2.webp",
+   "a": "Table, matrix or formulas printed with this question: Describe a CUSUM control chart. Compare this chart with a Shewhart chart with respect to performance",
+   "k": "table"
+  }
+ ],
+ "2019|2|2(c)": [
+  {
+   "u": "img/statistics/2019-2-2c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Show that in an irreducible Markov chain, all the states are of the same type. Define the transition",
+   "k": "table"
+  }
+ ],
+ "2019|2|3(b)": [
+  {
+   "u": "img/statistics/2019-2-3b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: The following mortality rates have been observed for a special type of lightbulbs : Month 1, 2, 3, 4",
+   "k": "table"
+  }
+ ],
+ "2019|2|4(a)": [
+  {
+   "u": "img/statistics/2019-2-4a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Obtain an optimum solution for the following transportation problem : Factory X: Warehouse A 20, B 4",
+   "k": "table"
+  }
+ ],
+ "2019|2|4(c)": [
+  {
+   "u": "img/statistics/2019-2-4c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Draw OC curve and ASN curve for the following two sampling inspection plans. Assume large lot sizes",
+   "k": "table"
+  }
+ ],
+ "2019|2|5(c)": [
+  {
+   "u": "img/statistics/2019-2-5c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Consider the following models : Model I : Y_i = \u03b2_1 + \u03b2_2 X_i + u_i; Model II : Y_i* = \u03b1_1 + \u03b1_2 X_i",
+   "k": "table"
+  }
+ ],
+ "2019|2|5(e)": [
+  {
+   "u": "img/statistics/2019-2-5e-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Define T-score. Write its applications. Find the T-scores corresponding to the test scores X for the",
+   "k": "table"
+  }
+ ],
+ "2019|2|6(b)": [
+  {
+   "u": "img/statistics/2019-2-6b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: What are economic barometers? Show their usefulness as well as their limitations in forecasting econ",
+   "k": "table"
+  }
+ ],
+ "2019|2|7(a)": [
+  {
+   "u": "img/statistics/2019-2-7a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Consider the two-equation system : \u03b2_11 y_1t + \u03b2_12 y_2t + \u03b3_11 x_1t + \u03b3_12 x_2t = u_1t; \u03b2_21 y_1t +",
+   "k": "table"
+  }
+ ],
+ "2019|2|8(c)": [
+  {
+   "u": "img/statistics/2019-2-8c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Explain different measures of fertility. From the following data, calculate the female gross reprodu",
+   "k": "table"
+  }
+ ],
+ "2020|1|1(a)": [
+  {
+   "u": "img/statistics/2020-1-1a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: An insurer offers a health plan to the employees of a large company. As part of this plan, individua",
+   "k": "table"
+  }
+ ],
+ "2020|1|1(b)": [
+  {
+   "u": "img/statistics/2020-1-1b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X and Y be iid random variables with P(X = k) = 2^(\u2212k), k = 1, 2, 3, \u2026 . Find P(X > Y).",
+   "k": "table"
+  }
+ ],
+ "2020|1|1(c)": [
+  {
+   "u": "img/statistics/2020-1-1c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: For a geometric distribution p(x) = 2^(\u2212x); x = 1, 2, 3, \u2026, show that Chebyshev's inequality gives P",
+   "k": "table"
+  }
+ ],
+ "2020|1|1(d)": [
+  {
+   "u": "img/statistics/2020-1-1d-1.webp",
+   "a": "Table, matrix or formulas printed with this question: For a group of policies, losses follow the distribution function F(x) = 1 \u2212 \u03b8/x, \u03b8 < x < \u221e. A sample",
+   "k": "table"
+  }
+ ],
+ "2020|1|1(e)": [
+  {
+   "u": "img/statistics/2020-1-1e-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X_1 and X_2 be two iid random variables with normal N(\u03b8, 1) distribution. Further, consider Bern",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2020-1-1e-2.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X_1 and X_2 be two iid random variables with normal N(\u03b8, 1) distribution. Further, consider Bern",
+   "k": "table"
+  }
+ ],
+ "2020|1|2(a)": [
+  {
+   "u": "img/statistics/2020-1-2a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: The lifetime in hours of each bulb manufactured by a particular company follows an independent expon",
+   "k": "table"
+  }
+ ],
+ "2020|1|2(b)": [
+  {
+   "u": "img/statistics/2020-1-2b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: The random variable X takes values on the interval [0, 2]. Given that P(X = 1) = 0\u00b725, F(x / x < 1)",
+   "k": "table"
+  }
+ ],
+ "2020|1|2(c)": [
+  {
+   "u": "img/statistics/2020-1-2c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let \u03b8 > 0 be the unknown parameter and X_1, X_2, \u2026, X_n be a random sample from the distribution wit",
+   "k": "table"
+  }
+ ],
+ "2020|1|3(a)": [
+  {
+   "u": "img/statistics/2020-1-3a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X_1, X_2, \u2026, X_n be a random sample from uniform distribution U(\u03b8 \u2212 1/2, \u03b8 + 1/2). Show that Y =",
+   "k": "table"
+  }
+ ],
+ "2020|1|3(b)": [
+  {
+   "u": "img/statistics/2020-1-3b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X ~ uniform U(0, 2\u03b8), \u03b8 > 0 distribution. Define Y = max(X, 2\u03b8 \u2212 X). Find E(Y).",
+   "k": "table"
+  }
+ ],
+ "2020|1|3(c)": [
+  {
+   "u": "img/statistics/2020-1-3c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: State inversion theorem on characteristic function. Hence, find the density function corresponding t",
+   "k": "table"
+  }
+ ],
+ "2020|1|4(a)": [
+  {
+   "u": "img/statistics/2020-1-4a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: To test sequentially the hypothesis H_0 for which the distribution is given by P(X = \u22121) = P(X = 1)",
+   "k": "table"
+  }
+ ],
+ "2020|1|4(b)": [
+  {
+   "u": "img/statistics/2020-1-4b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Obtain characteristic function of uniform distribution U(0, 1). (ii) Let {X_n} be a sequence of",
+   "k": "table"
+  }
+ ],
+ "2020|1|4(c)": [
+  {
+   "u": "img/statistics/2020-1-4c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: A random sample of 14 male students from a rural Junior High School and an independent random sample",
+   "k": "table"
+  }
+ ],
+ "2020|1|5(a)": [
+  {
+   "u": "img/statistics/2020-1-5a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: A student fits the following linear regression model to a given data : y_i = \u03b1 + \u03b2 x_i + u_i, i = 1,",
+   "k": "table"
+  }
+ ],
+ "2020|1|5(b)": [
+  {
+   "u": "img/statistics/2020-1-5b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X ~ N_2(\u03bc, \u03a3) with probability distribution function (pdf), f(x) = C e^(\u2212Q/2), where Q = 3x^2 +",
+   "k": "table"
+  }
+ ],
+ "2020|1|5(c)": [
+  {
+   "u": "img/statistics/2020-1-5c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: A population consists of 6 units with values 6, 3, 1, 4, 2 and 5. Write down all possible samples of",
+   "k": "table"
+  }
+ ],
+ "2020|1|6(a)": [
+  {
+   "u": "img/statistics/2020-1-6a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: What is systematic sampling? In usual notation, prove that V(\u0233_sys) = ((nk \u2212 1)/(nk)) \u00b7 (S^2/n) {1 +",
+   "k": "table"
+  }
+ ],
+ "2020|1|6(b)": [
+  {
+   "u": "img/statistics/2020-1-6b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let Y_1, Y_2, Y_3 be uncorrelated variables with common variance \u03c3^2 such that E(Y_1) = \u03b2_1 + \u03b2_2, E",
+   "k": "table"
+  }
+ ],
+ "2020|1|6(c)": [
+  {
+   "u": "img/statistics/2020-1-6c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let n = 4, p = 2, X = (X_1, X_2)', where X_1 : weight (in kg), X_2 : height (in cm) of infant. Sampl",
+   "k": "table"
+  }
+ ],
+ "2020|1|7(b)": [
+  {
+   "u": "img/statistics/2020-1-7b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let R be the ratio of population totals of 'y' and 'x' and R\u0302 is the estimate of R. Obtain V(R\u0302). Al",
+   "k": "table"
+  }
+ ],
+ "2020|1|8(a)": [
+  {
+   "u": "img/statistics/2020-1-8a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Discuss Simple Lattice Design. Let \u03b2_1., \u2026, \u03b2_p. denote row block effects and \u03b2_.1, \u2026, \u03b2_.p denote c",
+   "k": "table"
+  }
+ ],
+ "2020|1|8(b)": [
+  {
+   "u": "img/statistics/2020-1-8b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Show that in pps sampling, with replacement, an unbiased estimator of the population mean \u0232 is \u0233_pps",
+   "k": "table"
+  }
+ ],
+ "2020|1|8(c)": [
+  {
+   "u": "img/statistics/2020-1-8c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Two types of tests viz : written and oral were conducted for seeking admission to MBA course. The re",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2020-1-8c-2.webp",
+   "a": "Table, matrix or formulas printed with this question: Two types of tests viz : written and oral were conducted for seeking admission to MBA course. The re",
    "k": "table"
   }
  ]

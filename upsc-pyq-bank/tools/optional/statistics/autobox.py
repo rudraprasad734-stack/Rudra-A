@@ -40,35 +40,35 @@ for (y,p),qs in sorted(rows_all.items()):
     def eng(ln):
         w=norm(ln['t']); return len(w)>=2 and sum(x in vocab for x in w)/len(w)>=0.5
     E=[(pg,j,ln) for pg,j,ln in flat if eng(ln)]
-    cur=0   # index into E: statements are printed in question order
+    # 1) start line of every question, in printed order  2) a question ends at the last English line before the next question starts
+    starts=[]; cur=0
     for q,t in qs:
-        t2=re.sub(r'\s+',' ',t); tk=norm(t2); kind=is_cand(t)
-        head=set(tk[:8]); tail=set(tk[-8:])
-        def score(ln,s): return len(set(norm(ln['t']))&s)
-        si=None
-        for i in range(cur,len(E)):
-            if score(E[i][2],head)>=min(4,max(2,len(head)//2)): si=i; break
-        if si is None:
-            if kind: bad.append((y,p,q,'no start line'))
-            continue
-        ei=None
-        for i in range(si,min(len(E),si+60)):
-            if score(E[i][2],tail)>=min(4,max(2,len(tail)//2)): ei=i; break
-        if ei is None:
-            if kind: bad.append((y,p,q,'no end line'))
-            cur=si+1; continue
-        cur=ei+1
+        tk=norm(re.sub(r'\s+',' ',t)); head=set(tk[:12]); si=None
+        for need in (4,3):
+            for i in range(cur,min(len(E),cur+30)):
+                lt=set(norm(E[i][2]['t']))
+                if len(lt&head)>=min(need,max(2,len(head)//2)): si=i; break
+            if si is not None: break
+        starts.append(si)
+        if si is not None: cur=si+1
+    for k,(q,t) in enumerate(qs):
+        kind=is_cand(t)
         if not kind: continue
+        si=starts[k]
+        if si is None: bad.append((y,p,q,'no start line')); continue
+        nxt=next((s for s in starts[k+1:] if s is not None),None)
+        ei=(nxt-1) if nxt is not None else len(E)-1
+        if ei<si: ei=si
         s_pg,s_j,_=E[si]; e_pg,e_j,_=E[ei]
         if s_pg==e_pg:
             res.append((y,p,q,s_pg,pages[s_pg-1][s_j]['y0'],pages[s_pg-1][e_j]['y1'],kind))
         else:
-            res.append((y,p,q,s_pg,pages[s_pg-1][s_j]['y0'],max(ln['y1'] for pg,j,ln in flat if pg==s_pg),kind))
+            res.append((y,p,q,s_pg,pages[s_pg-1][s_j]['y0'],max(ln['y1'] for pg,j,ln in E if pg==s_pg),kind))
             for pg in range(s_pg+1,e_pg+1):
                 js=[(j,ln) for g,j,ln in E if g==pg]
-                y0=js[0][1]['y0'] if pg!=e_pg or True else 0
-                y1=pages[pg-1][e_j]['y1'] if pg==e_pg else max(ln['y1'] for g,j,ln in flat if g==pg)
-                res.append((y,p,q,pg,y0,y1,kind))
+                if not js: continue
+                y1=pages[pg-1][e_j]['y1'] if pg==e_pg else max(ln['y1'] for g,j,ln in E if g==pg)
+                res.append((y,p,q,pg,js[0][1]['y0'],y1,kind))
 with open(os.path.join(here,'boxes_auto.txt'),'w',encoding='utf8') as f:
     f.write('# auto-detected: year|paper|qno|page|y0-y1|alt\n')
     for y,p,q,pg,y0,y1,kind in res: f.write(f'{y}|{p}|{q}|{pg}|{y0:.3f}-{y1:.3f}|Question {q} as printed ({"table or matrix" if kind=="T" else "formula"})\n')
