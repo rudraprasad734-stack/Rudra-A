@@ -147,3 +147,49 @@
 2020|1|8(b)|13|0.08,0.049,0.97,0.296|Table, matrix or formulas printed with this question: Show that in pps sampling, with replacement, an unbiased estimator of the population mean Ȳ is ȳ_pps|table
 2020|1|8(c)|13|0.08,0.685,0.97,0.797|Table, matrix or formulas printed with this question: Two types of tests viz : written and oral were conducted for seeking admission to MBA course. The re|table
 2020|1|8(c)|14|0.08,0.064,0.97,0.335|Table, matrix or formulas printed with this question: Two types of tests viz : written and oral were conducted for seeking admission to MBA course. The re|table
+2020|2|1(c)|2|0.08,0.448,0.97,0.623|Table, matrix or formulas printed with this question: Define the concept of duality in Linear Programming Problem (LPP). Write down the dual of the follow|table
+2020|2|1(d)|3|0.08,0.047,0.97,0.218|Table, matrix or formulas printed with this question: Discuss Markov chain and transition probability matrix with an example. For the following transition|table
+2020|2|2(c)|3|0.08,0.656,0.97,0.784|Table, matrix or formulas printed with this question: What are control charts for attributes? Discuss p and c charts. The following data refer to number o|table
+2020|2|3(a)|4|0.08,0.248,0.97,0.442|Table, matrix or formulas printed with this question: Discuss Assignment Problem. Consider the problem of assigning five jobs to five persons. The assignm|table
+2020|2|3(b)|4|0.08,0.638,0.97,0.781|Table, matrix or formulas printed with this question: Solve the following Transportation Problem by MODI method : Origin O_1: Destinations D_1 to D_4 = 1,|table
+2020|2|3(c)|5|0.08,0.208,0.97,0.359|Table, matrix or formulas printed with this question: Explain the general Linear Programming Problem. Solve the following LPP by Charnes' Big-M method : M|table
+2020|2|4(a)|5|0.08,0.550,0.97,0.712|Table, matrix or formulas printed with this question: Define two-person zero-sum game and saddle point of a payoff matrix. Solve the following game : Play|table
+2020|2|5(e)|7|0.08,0.048,0.97,0.312|Table, matrix or formulas printed with this question: Calculate gross and net reproduction rates from the following data considering sex ratio at birth to|table
+2021|1|1(c)|3|0.08,0.231,0.97,0.373|Table, matrix or formulas printed with this question: Let X and Y be independent and identically distributed exponential random variables with mean λ > 0.|table
+2021|1|1(d)|3|0.08,0.553,0.97,0.688|Table, matrix or formulas printed with this question: Let X_1, X_2, …, X_n be a random sample from f(x, θ) = (log θ/(θ − 1)) θ^x; 0 < x < 1, θ > 1. Is the|table
+2021|1|1(e)|4|0.08,0.050,0.97,0.220|Table, matrix or formulas printed with this question: Let f(x, θ) be the Cauchy pdf f(x, θ) = (θ/π) · 1/(θ^2 + x^2); −∞ < x < ∞, θ > 0. (i) Show that this|table
+2021|1|2(a)|4|0.08,0.357,0.97,0.474|Table, matrix or formulas printed with this question: Let Y_1, Y_2, Y_3, … be independent and identical Poisson random variables with parameter 1. Use cen|table
+2021|1|2(c)|4|0.08,0.772,0.97,0.909|Table, matrix or formulas printed with this question: (i) State the sufficient conditions for a function φ(t) to be a characteristic function. (ii) Invest|table
+2021|1|3(a)|5|0.08,0.284,0.97,0.535|Table, matrix or formulas printed with this question: Let X and Y be two independent random variables following exponential distribution with mean 1/λ and|table
+2021|1|3(b)|5|0.08,0.730,0.97,0.889|Table, matrix or formulas printed with this question: Let Y_i, i ≥ 1, be independent and identical U(−1, 1) random variables. Determine if the following s|table
+2021|1|3(c)|6|0.08,0.140,0.97,0.221|Table, matrix or formulas printed with this question: Let X_1, X_2, …, X_n be a random sample from uniform distribution U(−θ, θ), θ > 0. Find the complete|table
+2021|1|4(a)|6|0.08,0.483,0.97,0.712|Table, matrix or formulas printed with this question: Let X_1, X_2, …, X_n be a random sample from Poisson distribution with mean λ > 0. Define a statisti|table
+2021|1|4(b)|7|0.08,0.058,0.97,0.232|Table, matrix or formulas printed with this question: Let f(x, y) = e^(−yx^2/2) y^(3/2) e^(−y) / √(2π), −∞ < x < ∞, y > 0. (i) Obtain the marginal distrib|table
+2021|1|4(c)|7|0.08,0.494,0.97,0.742|Table, matrix or formulas printed with this question: A company's trainees are randomly assigned to groups which are through a certain industrial inspecti|table
+2021|1|5(a)|9|0.08,0.507,0.97,0.912|Table, matrix or formulas printed with this question: For a simple linear regression model Y = β_0 + β_1 X_i + ε_i, i = 1, …, n : (i) Derive the least squ|table
+2021|1|5(b)|10|0.08,0.171,0.97,0.282|Table, matrix or formulas printed with this question: In usual notations, if v, b, r, k and λ are the parameters of a Balanced Incomplete Block Design, th|table
+2021|1|5(c)|10|0.08,0.363,0.97,0.456|Table, matrix or formulas printed with this question: For the multiple linear regression model with two predictor variables X_1 and X_2, show that the est|table
+2021|1|5(d)|10|0.08,0.679,0.97,0.884|Table, matrix or formulas printed with this question: A sample of size n is drawn from a population having N units by simple random sampling without repla|table
+2021|1|6(a)|11|0.08,0.387,0.97,0.534|Table, matrix or formulas printed with this question: For a multiple linear regression model with three covariates X_1, X_2 and X_3, let r_ij denote the c|table
+2021|1|6(b)|11|0.08,0.752,0.97,0.890|Table, matrix or formulas printed with this question: In cluster sampling with equal size clusters, obtain the unbiased estimate of population mean. Also |table
+2021|1|6(c)|12|0.08,0.196,0.97,0.316|Table, matrix or formulas printed with this question: Let Z_(3×1) = (X_(1×1), Y_(2×1))' ~ N_3 ( (0, 0, 1)', [[1, 2, 1], [2, 5, 2], [1, 2, 2]] ). Show that|table
+2021|1|7(a)|12|0.08,0.652,0.97,0.901|Table, matrix or formulas printed with this question: (i) What is confounding in factorial experiments ? (ii) A 2^6 factorial experiment is conducted in b|table
+2021|1|7(b)|13|0.08,0.155,0.97,0.271|Table, matrix or formulas printed with this question: What are principal components ? Describe how to compute the principal components of the vectors X_1 |table
+2021|1|7(c)|13|0.08,0.354,0.97,0.440|Table, matrix or formulas printed with this question: Define Regression estimator. Show bias = − Cov(x̄, b). Under what conditions is bias negligible ? Fi|table
+2021|1|8(a)|14|0.08,0.054,0.97,0.123|Table, matrix or formulas printed with this question: (i) In stratified sampling under optimum allocation, how will you proceed to select units from diffe|table
+2021|1|8(a)|14|0.08,0.132,0.97,0.510|Table, matrix or formulas printed with this question: (i) In stratified sampling under optimum allocation, how will you proceed to select units from diffe|table
+2021|2|1(b)|2|0.08,0.202,0.97,0.406|Table, matrix or formulas printed with this question: Solve the following assignment problem : Town A: Depot I to V = 160, 130, 175, 190, 200; B: 135, 120|table
+2021|2|1(c)|2|0.08,0.414,0.97,0.603|Table, matrix or formulas printed with this question: Use algebraic method to solve the following game : Player A (A_1 to A_4) against Player B (B_1 to B_|table
+2021|2|1(d)|2|0.08,0.786,0.97,0.921|Table, matrix or formulas printed with this question: Consider the Markov Chain with transition probability matrix (states 0, 1, 2): row 0: (0, 1, 0); row|table
+2021|2|1(e)|3|0.08,0.166,0.97,0.257|Table, matrix or formulas printed with this question: State the importance of the hazard function. If the hazard rate of a component is given by h(t) = 0·|table
+2021|2|2(b)|3|0.08,0.430,0.97,0.755|Table, matrix or formulas printed with this question: The number of defects on 20 items were recorded as given : Item No. 1 to 20, number of defects: 2, 0|table
+2021|2|3(b)|4|0.08,0.126,0.97,0.335|Table, matrix or formulas printed with this question: Use MODI method to solve the following transportation problem : Factory A: Store I to IV = 4, 6, 8, |table
+2021|2|3(c)|4|0.08,0.481,0.97,0.613|Table, matrix or formulas printed with this question: Use two-phase method to solve : Maximize z = 2x_1 + x_2 + x_3 subject to the constraints 4x_1 + 6x_2|table
+2021|2|4(a)|4|0.08,0.779,0.97,0.937|Table, matrix or formulas printed with this question: Solve the following linear programming problem : Maximize z = 3x_1 + 5x_2 subject to the constraints|table
+2021|2|4(c)|5|0.08,0.460,0.97,0.646|Table, matrix or formulas printed with this question: A machine is set to deliver the packets of a given weight. Ten samples of size 5 each were examined |table
+2021|2|5(c)|5|0.08,0.871,0.97,0.927|Table, matrix or formulas printed with this question: Obtain the generalized least squares estimators in the two-variable model Y_i = β_1 + β_2 X_i + u_i |table
+2021|2|5(e)|6|0.08,0.238,0.97,0.407|Table, matrix or formulas printed with this question: Fill in blanks which are marked with a query in the above skeleton life table and explain the meanin|table
+2021|2|6(b)|6|0.08,0.553,0.97,0.816|Table, matrix or formulas printed with this question: Prepare the cost of living index for 2006 on the basis of 2005 from the data below by (i) aggregativ|table
+2021|2|7(a)|7|0.08,0.398,0.97,0.727|Table, matrix or formulas printed with this question: If c(x, t) denote observed proportion of females in the age group (x, x + t) and f(x, t) is the obse|table
+2021|2|7(c)|8|0.08,0.365,0.97,0.550|Table, matrix or formulas printed with this question: Define instantaneous force of mortality (μ_x). Show that q_x = (1/l_x) ∫_0^1 μ_(x+t) l_(x+t) dx wher|table
+2021|2|8(b)|8|0.08,0.751,0.97,0.839|Table, matrix or formulas printed with this question: Check the identifiability of the following two-equation system : β_11 y_1t + β_12 y_2t + γ_11 x_1t +|table
