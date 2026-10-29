@@ -1,5 +1,6 @@
 // Embeds tools/gs/linkmap.json as <script id="d-linkmap"> in page/index.html.
 //   node upsc-pyq-bank/tools/gs/build-linkmap.js
+// "__ca" is not a chapter: it lists current-affairs questions that fit no syllabus chapter (shown under the PYQ bank "Current affairs" filter).
 // linkmap.json: { leafId: { qmapKeyLong(question): "x" | "c" | "i,j" } }
 //   x = the keyword matcher put the question on this chapter wrongly (drop it)
 //   c = belongs to the chapter but no single sub-topic
