@@ -1432,6 +1432,7 @@
   .td-up{padding:5px 0 0;border-top:1px solid rgba(255,255,255,.08)} .td-up .td-h{color:#ffc857}
   .td-u{display:flex;align-items:center;gap:6px;font-size:12px;padding:1px 0} .td-u small{opacity:.6}
   .td-a .td-t b{font-weight:600} .td-ai{flex:none;font-size:14px} .td-dur{margin-left:auto;flex:none;opacity:.65;font-size:11.5px} .td-done{opacity:.55}
+  #dashFab{transition:opacity .25s ease, transform .25s ease} body.today-open #dashFab{opacity:0 !important; transform:translateX(-50%) scale(.7) !important; pointer-events:none !important; animation:none !important}
   .goal-strip{transform-origin:50% 0; color:#f2fbfa}
   .td-skel i{display:block; height:14px; border-radius:7px; margin:11px 0; background:linear-gradient(90deg,rgba(255,255,255,.08),rgba(255,255,255,.2),rgba(255,255,255,.08)); background-size:200% 100%; animation:tdShim 1.1s linear infinite} .td-skel i:nth-child(odd){width:78%} .td-skel i:nth-child(3){width:55%}
   @keyframes tdShim{to{background-position:-200% 0}} @media (prefers-reduced-motion:reduce){ .td-skel i{animation:none} }
@@ -10443,7 +10444,12 @@ function pyqWarm(onReady){
 }
 // The background counting of past questions per chapter. It runs in small slices so the screen stays smooth; when something is waiting
 // for it (the Today dropdown opened early) it takes bigger slices so the wait is short.
-var warmFast = false, chapterWarmDone = false, chapterWarmCbs = [];
+var warmFast = false, chapterWarmDone = false, chapterWarmCbs = [], appLoaded = false, appLoadCbs = [];
+function releaseApp(){
+  if(appLoaded) return; appLoaded = true;
+  if(window.__cseReady) window.__cseReady();
+  var cbs = appLoadCbs; appLoadCbs = []; cbs.forEach(function(f){ try{ f(); }catch(e){} });
+}
 function afterTierData(cb){
   if(chapterWarmDone){ cb(); return; }
   chapterWarmCbs.push(cb); warmFast = true; pyqWarm(); warmChapterMatches();
@@ -18766,6 +18772,7 @@ function renderTiersWhenReady(kind){
   afterTierData(function(){ if(activeTab===kind) renderChecklist(kind); });
 }
 function renderView(id){
+  setTimeout(syncTodayOpenClass, 0);
   if(id==="dashboard") renderDashboard();
   else if(id==="planner") renderPlanner();
   else if(id==="prelims" || id==="mains") renderTiersWhenReady(id);
@@ -19813,6 +19820,7 @@ function initBlackHoleScene(host){
 }
 // Start the animated background after the screen has been drawn (it is the heaviest single step of a launch).
 function startSceneLater(host){
+  if(!appLoaded){ appLoadCbs.push(function(){ startSceneLater(host); }); return; }   // the animated background starts once everything is loaded
   var go = function(){ if(host.isConnected){ try{ initBlackHoleScene(host); }catch(e){} } };
   if(window.requestIdleCallback) requestIdleCallback(go, {timeout: 600}); else setTimeout(go, 200);
 }
@@ -19902,8 +19910,10 @@ function todayOpen(){ return lsGet(TODAY_OPEN_KEY) === "1"; }
 var TODAY_STAY_MS = 15000, todayCloseTimer = null, todayOpenAt = 0;
 function armTodayClose(){ clearTimeout(todayCloseTimer); todayOpenAt = Date.now(); todayCloseTimer = setTimeout(closeToday, TODAY_STAY_MS); }
 function todayHeld(){ return todayOpen() && Date.now() - todayOpenAt < TODAY_STAY_MS; }
+// While the dropdown is open the round Dashboard button at the bottom is hidden: it sat on top of the list and covered its text.
+function syncTodayOpenClass(){ document.body.classList.toggle("today-open", todayOpen() && !!document.getElementById("goalStrip")); }
 function closeToday(){
-  clearTimeout(todayCloseTimer); lsSet(TODAY_OPEN_KEY, "0");
+  clearTimeout(todayCloseTimer); lsSet(TODAY_OPEN_KEY, "0"); document.body.classList.remove("today-open");
   var tg = document.getElementById("todayToggle"), gs = document.getElementById("goalStrip");
   if(tg){ tg.classList.remove("open"); tg.setAttribute("aria-expanded", "false"); tg.setAttribute("aria-label", "Show today\'s study"); }
   if(gs && gs.classList.contains("open")){ gs.classList.remove("opening"); gs.classList.add("closing"); setTimeout(function(){ gs.classList.remove("open", "closing"); }, 440); }
@@ -20075,7 +20085,7 @@ function goalStripHtml(){
   // Today's plan counts past questions for every chapter, which is the slowest thing the app does; it is built only when the dropdown is open
   // (a quiet placeholder stands in while it is closed), so the first screen no longer waits for it.
   var open = todayOpen(), td = todayStudied(), tdHtml = open ? todayTopicsSafe(td) : (todayHasPlan() ? '<div class="gs-list td-list td-lazy"></div>' : "");
-  if(open) setTimeout(fitTodayStrip, 0);
+  if(open) setTimeout(function(){ syncTodayOpenClass(); fitTodayStrip(); }, 0);
   return '<button type="button" class="today-tg'+(open ? " open" : "")+'" id="todayToggle" aria-expanded="'+(open ? "true" : "false")+'" aria-controls="goalStrip" aria-label="'+(open ? "Hide today\'s study" : "Show today\'s study")+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>'+
     '<div class="goal-strip'+(open ? " open" : "")+(tdHtml ? " has-td" : "")+'" id="goalStrip"><div class="gs-top">'+ringHtml+
     '<span class="gs-t"><b>'+esc(title)+'</b><small>'+esc(sub)+'</small></span><span class="gs-fl"><i aria-hidden="true">'+(ss.cur>0 ? "🔥" : "🌱")+'</i><b>'+ss.cur+' day'+(ss.cur===1 ? "" : "s")+'</b></span></div>'+
@@ -20187,7 +20197,7 @@ function bindGoal(host){
       if(todayOpen()){ closeToday(); setUiStage(2); return; }
       lsSet(TODAY_OPEN_KEY, "1"); tg.classList.add("open"); tg.setAttribute("aria-expanded", "true"); tg.setAttribute("aria-label", "Hide today\'s study");
       var gs = host.querySelector("#goalStrip"); if(gs){ gs.classList.remove("closing"); gs.classList.add("open"); fitTodayStrip(gs); gs.classList.add("opening"); setTimeout(function(){ gs.classList.remove("opening"); }, 520); }
-      armTodayClose(); setUiStage(2); return;
+      syncTodayOpenClass(); armTodayClose(); setUiStage(2); return;
     }
     var g = e.target.closest ? e.target.closest("[data-goal]") : null;
     if(g){ var a = g.getAttribute("data-goal"); if(a==="rev"){ dashMore = true; applyDashMode(); setTimeout(function(){ var r = host.querySelector(".dx-rev"); if(r) r.scrollIntoView({block:"center", behavior:"smooth"}); }, 250); } return; }
@@ -20839,7 +20849,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "267";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "268";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -22614,7 +22624,10 @@ function boot(){
     replan();
     // render once immediately with schedule data, before db resolves
     renderView(activeTab);
-    if(window.__cseReady) window.__cseReady();
+    // Load everything now, behind the splash: the question index and every chapter's counts, with full-speed slices and the animated timer
+    // background held back. The splash goes when it is all ready, so nothing is built step by step while the app is being used.
+    afterTierData(releaseApp);
+    setTimeout(releaseApp, 30000);   // never keep the splash up for more than 30 s, however slow the phone
     setTimeout(function(){ pyqWarm(function(){ refreshPyqCard(); setTimeout(warmChapterMatches, 300); }); }, 500);
     subInit();
     if(!profile) frNext();
