@@ -1537,9 +1537,12 @@ html.sp-on #app,html.sp-on #toast{visibility:hidden}
   // the clock starts at the first frame actually drawn, so a slow page load cannot eat the animation
   function tick(){ if(!s.parentNode) return; if(loaded && t0 && Date.now() - t0 >= min) done(); else setTimeout(tick, 60); }
   if(window.requestAnimationFrame) requestAnimationFrame(function(){ t0 = Date.now(); }); else t0 = Date.now();
-  if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", function(){ loaded = true; }); else loaded = true;
+  // keep the splash up until the app has drawn its first screen (boot() calls __cseReady): on a slow phone the 8 MB page can take
+  // longer than a fixed timer, and hiding the splash early left only the static footer on screen
+  window.__cseReady = function(){ loaded = true; };
+  window.addEventListener("error", function(){ setTimeout(function(){ loaded = true; }, 1500); });
   tick();
-  setTimeout(done, 6000);
+  setTimeout(done, 30000);
 })();
 </script>
 
@@ -20674,7 +20677,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "252";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "253";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -22348,6 +22351,7 @@ function boot(){
     replan();
     // render once immediately with schedule data, before db resolves
     renderView(activeTab);
+    if(window.__cseReady) window.__cseReady();
     setTimeout(function(){ pyqWarm(function(){ refreshPyqCard(); setTimeout(warmChapterMatches, 600); }); }, 900);
     subInit();
     if(!profile) frNext();
@@ -22366,6 +22370,7 @@ function boot(){
     });
   }).catch(function(err){
     document.getElementById("view-"+activeTab).innerHTML = '<div class="card empty">The study plan didn\'t load. Reload the page to try again.</div>';
+    if(window.__cseReady) window.__cseReady();
   });
 }
 
