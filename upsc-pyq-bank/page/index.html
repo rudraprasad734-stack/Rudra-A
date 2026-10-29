@@ -1419,6 +1419,11 @@
   .td-up{padding:5px 0 0;border-top:1px solid rgba(255,255,255,.08)} .td-up .td-h{color:#ffc857}
   .td-u{display:flex;align-items:center;gap:6px;font-size:12px;padding:1px 0} .td-u small{opacity:.6}
   .td-a .td-t b{font-weight:600} .td-ai{flex:none;font-size:14px} .td-dur{margin-left:auto;flex:none;opacity:.65;font-size:11.5px} .td-done{opacity:.55}
+  .goal-strip{transform-origin:50% 0}
+  .goal-strip.opening{animation:tdRollIn .5s cubic-bezier(.2,.85,.25,1) both} .goal-strip.closing{animation:tdRollOut .42s cubic-bezier(.55,0,.85,.45) both}
+  @keyframes tdRollIn{from{opacity:0;transform:perspective(900px) rotateX(-85deg) scaleY(.15)}to{opacity:1;transform:perspective(900px) rotateX(0) scaleY(1)}}
+  @keyframes tdRollOut{from{opacity:1;transform:perspective(900px) rotateX(0) scaleY(1)}to{opacity:0;transform:perspective(900px) rotateX(-85deg) scaleY(.15)}}
+  @media (prefers-reduced-motion:reduce){ .goal-strip.opening,.goal-strip.closing{animation-duration:.01s} }
   .td-note{font-size:10.5px;opacity:.6;margin-top:1px} .td-none{font-size:12px;opacity:.7}
   .td-stu{margin-top:4px;padding-top:4px;border-top:1px solid rgba(255,255,255,.08);font-size:12px;opacity:.85}
   .gs-none{padding:8px 0 6px; font-size:13px; color:rgba(255,255,255,.7);} .gs-sum{display:flex; justify-content:space-between; margin-top:4px; padding-top:7px; border-top:1px solid rgba(255,255,255,.18); font-size:13px; font-weight:800;}
@@ -18622,6 +18627,7 @@ function setUiStage(n, ms){
   uiStageTimer = setTimeout(function(){
     var a = document.activeElement;
     if(document.body.classList.contains("menu-open") || document.getElementById("modalHost") || (a && a.tagName==="SELECT")){ setUiStage(n, 2000); return; }
+    if(todayHeld()){ setUiStage(2, 1000); return; }   // the Today dropdown is open: keep everything showing until it closes
     setUiStage(0);
   }, ms || (n === 1 ? 4000 : 4500));
 }
@@ -19838,6 +19844,17 @@ function ringSvg(frac, size, stroke, inner){
 }
 var TODAY_OPEN_KEY = "dossier.todayOpen.v1";
 function todayOpen(){ return lsGet(TODAY_OPEN_KEY) === "1"; }
+// The dropdown stays up for 15 seconds after it is opened (a tap inside it starts the 15 seconds again), then rolls shut.
+var TODAY_STAY_MS = 15000, todayCloseTimer = null, todayOpenAt = 0;
+function armTodayClose(){ clearTimeout(todayCloseTimer); todayOpenAt = Date.now(); todayCloseTimer = setTimeout(closeToday, TODAY_STAY_MS); }
+function todayHeld(){ return todayOpen() && Date.now() - todayOpenAt < TODAY_STAY_MS; }
+function closeToday(){
+  clearTimeout(todayCloseTimer); lsSet(TODAY_OPEN_KEY, "0");
+  var tg = document.getElementById("todayToggle"), gs = document.getElementById("goalStrip");
+  if(tg){ tg.classList.remove("open"); tg.setAttribute("aria-expanded", "false"); tg.setAttribute("aria-label", "Show today\'s study"); }
+  if(gs && gs.classList.contains("open")){ gs.classList.remove("opening"); gs.classList.add("closing"); setTimeout(function(){ gs.classList.remove("open", "closing"); }, 440); }
+}
+document.addEventListener("pointerdown", function(e){ if(todayOpen() && e.target.closest && e.target.closest("#goalStrip")) armTodayClose(); }, true);
 // what was studied today and for how long: each session you logged time against, plus any timer time not tied to a session
 function todayStudied(){
   var rows = [], sum = 0;
@@ -20039,7 +20056,12 @@ function bindGoal(host){
   if(host._goal) return; host._goal = true;
   host.addEventListener("click", function(e){
     var tg = e.target.closest ? e.target.closest("#todayToggle") : null;
-    if(tg){ var on = !todayOpen(); lsSet(TODAY_OPEN_KEY, on ? "1" : "0"); tg.classList.toggle("open", on); tg.setAttribute("aria-expanded", on ? "true" : "false"); var gs = host.querySelector("#goalStrip"); if(gs) gs.classList.toggle("open", on); setUiStage(2); return; }
+    if(tg){
+      if(todayOpen()){ closeToday(); setUiStage(2); return; }
+      lsSet(TODAY_OPEN_KEY, "1"); tg.classList.add("open"); tg.setAttribute("aria-expanded", "true"); tg.setAttribute("aria-label", "Hide today\'s study");
+      var gs = host.querySelector("#goalStrip"); if(gs){ gs.classList.remove("closing"); gs.classList.add("open", "opening"); setTimeout(function(){ gs.classList.remove("opening"); }, 520); }
+      armTodayClose(); setUiStage(2); return;
+    }
     var g = e.target.closest ? e.target.closest("[data-goal]") : null;
     if(g){ var a = g.getAttribute("data-goal"); if(a==="rev"){ dashMore = true; applyDashMode(); setTimeout(function(){ var r = host.querySelector(".dx-rev"); if(r) r.scrollIntoView({block:"center", behavior:"smooth"}); }, 250); } return; }
     var w = e.target.closest ? e.target.closest("[data-wk]") : null;
@@ -20690,7 +20712,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "255";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "256";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -22310,6 +22332,7 @@ function updateTopbarDate(){
 function boot(){
   // The colour theme is applied in the page head (UI_THEMES) and chosen in Settings.
 
+  lsSet(TODAY_OPEN_KEY, "0");   // the Today dropdown rolls itself shut, so a new launch always starts with it closed
   renderGreeting();
   document.getElementById("profileBtn").addEventListener("click", function(){ setMenu(false); openProfileModal(!!profile); });
   document.getElementById("menuBtn").addEventListener("click", function(){ setMenu(true); });
