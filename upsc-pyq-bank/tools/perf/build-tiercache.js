@@ -16,18 +16,22 @@ const FILE = path.resolve(__dirname, "../../page/index.html");
   const p = await ctx.newPage();
   // load a copy without any shipped seed so the page computes the counts itself
   let html = fs.readFileSync(FILE, "utf8");
-  html = html.replace(/<script type="application\/json" id="d-tiercache">[\s\S]*?<\/script>\n?/, "");
+  html = html.replace(/<script type="application\/json" id="d-tiercache">[\s\S]*?<\/script>\n?/, "").replace(/<script type="application\/json" id="d-tdcache">[\s\S]*?<\/script>\n?/, "");
   const tmp = path.join(path.dirname(FILE), ".tiercache-build.html"); fs.writeFileSync(tmp, html);
   try {
     await p.goto("file://" + tmp);
     await p.waitForFunction(() => !!localStorage.getItem("dossier.tierCache.v1"), null, { timeout: 120000 });
     const tc = await p.evaluate(() => localStorage.getItem("dossier.tierCache.v1"));
     const obj = JSON.parse(tc); if (!obj.fp || !obj.c) throw new Error("unexpected cache shape");
-    const block = '<script type="application/json" id="d-tiercache">' + JSON.stringify(obj) + "</script>\n";
-    let out = fs.readFileSync(FILE, "utf8").replace(/<script type="application\/json" id="d-tiercache">[\s\S]*?<\/script>\n?/, "");
+    // the Today's-plan table (tier and Pre/Mains counts for every chapter), so the timer dropdown needs no live counting
+    const td = await p.evaluate(() => window.__tdBuild());
+    const block = '<script type="application/json" id="d-tiercache">' + JSON.stringify(obj) + "</script>\n" +
+      '<script type="application/json" id="d-tdcache">' + JSON.stringify(td) + "</script>\n";
+    let out = fs.readFileSync(FILE, "utf8").replace(/<script type="application\/json" id="d-tiercache">[\s\S]*?<\/script>\n?/, "").replace(/<script type="application\/json" id="d-tdcache">[\s\S]*?<\/script>\n?/, "");
     if (!out.includes('<script type="application/json" id="d-extra">')) throw new Error("anchor d-extra not found");
     out = out.replace('<script type="application/json" id="d-extra">', block + '<script type="application/json" id="d-extra">');
     fs.writeFileSync(FILE, out);
     console.log("tier cache written:", Object.keys(obj.c).length, "chapters,", tc.length, "bytes, fp =", obj.fp);
+    console.log("Today's-plan table written:", Object.keys(td.c).length, "chapters,", JSON.stringify(td).length, "bytes");
   } finally { try { fs.unlinkSync(tmp); } catch (e) {} await b.close(); }
 })().catch(e => { console.error(e); process.exit(1); });
