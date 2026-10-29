@@ -1414,7 +1414,9 @@
   .gs-list h4{margin:0 0 6px; font-size:10.5px; letter-spacing:.12em; font-weight:800; color:rgba(255,255,255,.6);}
   .gs-row{display:flex; justify-content:space-between; gap:10px; align-items:baseline; padding:6px 0; border-top:1px solid rgba(255,255,255,.08); font-size:13.5px;} .gs-row:first-of-type{border-top:0;}
   .gs-row span{min-width:0; overflow-wrap:anywhere;} .gs-row small{display:block; font-size:11.5px; color:rgba(255,255,255,.55);} .gs-row b{flex:none; font-weight:800; font-size:13.5px; color:#2ee6d6; white-space:nowrap;}
-  .td-list{overflow:hidden;padding:8px 12px 6px} .has-td .gs-days{display:none} .has-td .gs-list h4{margin-bottom:2px}
+  .td-list{overflow:hidden;padding:8px 12px 6px} .has-td .gs-list h4{margin-bottom:2px}
+  /* this week's dots sit between the goal and today's plan */
+  .has-td .gs-days{margin:6px 0 0 !important; padding:5px 0 3px !important; gap:5px} .has-td .gs-d{width:34px} .has-td .gs-d i{width:26px; height:26px; font-size:11px} .has-td .gs-d small{display:none} .has-td .gs-d i:empty::before{content:attr(data-l); opacity:.6; font-size:10px; font-weight:700}   /* the weekday letter sits inside the dot, so the row stays one line high */
   .has-td .gs-list{margin-top:6px}
   .td-s{padding:5px 0;border-top:1px solid rgba(255,255,255,.08)} .td-s:first-of-type{border-top:0}
   .td-h{font-size:10px;font-weight:800;letter-spacing:.08em;color:#b78cff;margin-bottom:3px}
@@ -1435,9 +1437,9 @@
   .goal-strip .pm-p{background:rgba(6,24,28,.78); color:#bde2ff} .goal-strip .pm-m{background:rgba(6,24,28,.78); color:#ffdf9a} .goal-strip .pm0{color:rgba(242,251,250,.8)}
   .goal-strip .td-h{color:#e0ccff} .goal-strip .td-up .td-h{color:#ffdb8e} .goal-strip .td-sub>summary, .goal-strip .link-btn{color:#64f2e0}
   .goal-strip .gs-list h4{color:rgba(242,251,250,.75)} .goal-strip .td-note, .goal-strip .td-stu{color:rgba(242,251,250,.8); opacity:1}
-  .goal-strip.td-t1 .gs-top{padding:6px 12px} .goal-strip.td-t1 .td-list{padding:6px 12px 4px} .goal-strip.td-t1 .td-s{padding:3px 0} .goal-strip.td-t1 .td-sub ul li:nth-child(n+2){display:none} .goal-strip.td-t1 .td-sub ul li.td-more{display:list-item}
+  .goal-strip.td-t1 .gs-days{padding:3px 0 1px !important} .goal-strip.td-t1 .gs-top{padding:6px 12px} .goal-strip.td-t1 .td-list{padding:6px 12px 4px} .goal-strip.td-t1 .td-s{padding:3px 0} .goal-strip.td-t1 .td-sub ul li:nth-child(n+2){display:none} .goal-strip.td-t1 .td-sub ul li.td-more{display:list-item}
   .goal-strip.td-t2 .td-note, .goal-strip.td-t2 .td-stu{display:none} .goal-strip.td-t2 .td-sub ul{display:none}
-  .goal-strip.td-t3 .td-up, .goal-strip.td-t3 .td-pm .muted{display:none}
+  .goal-strip.td-t3 .td-up, .goal-strip.td-t3 .td-pm .muted, .goal-strip.td-t3 .gs-days{display:none}
   .goal-strip.opening{animation:tdRollIn .5s cubic-bezier(.2,.85,.25,1) both} .goal-strip.closing{animation:tdRollOut .42s cubic-bezier(.55,0,.85,.45) both}
   /* transform only: an opacity or clip-path animation on the strip would stop its panels blurring the timer behind them until the roll finished */
   @keyframes tdRollIn{from{transform:perspective(900px) rotateX(-85deg) scaleY(.15)}to{transform:perspective(900px) rotateX(0) scaleY(1)}}
@@ -19973,7 +19975,7 @@ function goalStripHtml(){
     else if(k > todayKey) cls = "fut";
     else if(isRestDayKey(k)){ cls = "rest"; ch = "☾"; }
     else cls = "miss";
-    dots += '<span class="gs-d"><i class="'+cls+'">'+ch+'</i><small>'+"MTWTFSS".charAt(i)+'</small></span>';
+    dots += '<span class="gs-d"><i class="'+cls+'" data-l="'+"MTWTFSS".charAt(i)+'">'+ch+'</i><small>'+"MTWTFSS".charAt(i)+'</small></span>';
   }
   var rv = revisionsDue().length;
   var open = todayOpen(), td = todayStudied(), tdHtml = todayTopicsHtml(td);
@@ -20744,7 +20746,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "260";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "261";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
