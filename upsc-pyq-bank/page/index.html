@@ -391,6 +391,9 @@
   .tv-pm button.on{background:rgba(47,227,208,.16);box-shadow:inset 0 -3px 0 #2fe3d0}
   .prio-sd{margin:-2px 0 6px 22px;font-size:12px}.prio-sd>summary{cursor:pointer;color:#2fe3d0;font-size:12px}.prio-sd ul{margin:4px 0 0;padding-left:16px;opacity:.85}
   .tv-subj{margin:2px 0 8px}
+  .pm{display:inline-block;font-size:10px;font-weight:700;border-radius:8px;padding:1px 6px;margin-left:4px;white-space:nowrap}
+  .pm-p{background:rgba(124,196,255,.18);color:#7cc4ff}.pm-m{background:rgba(255,200,87,.18);color:#ffc857}.pm0{background:rgba(255,255,255,.08);color:inherit;opacity:.65;font-weight:600}
+  .pm-line{margin-top:2px}.pm-line .pm:first-child{margin-left:0}.td-pm{margin:1px 0 2px;font-size:11px}.td-pm .pm:first-child{margin-left:0}
   .tv-next{border-color:rgba(47,227,208,.55)}
   .tv-nl{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#ffc857;margin-bottom:4px}
   .tv-nt{font-weight:700;margin-bottom:2px}
@@ -17438,6 +17441,23 @@ var tierPM = "all";   // all | p | m: which exam's topics the tier list shows
 var tierFilter = 0;   // 0 = every tier; 1-4 = only that tier (set by tapping a ring)
 var TIER_RING_COL = {1:"#2fe3d0", 2:"#ffc857", 3:"#7cc4ff", 4:"#d5a6ff"};
 function tierPMOf(l){ var c = chapterTiers().byId[l.id]; return c && c.x ? c.x : ""; }
+// questions asked per chapter and per sub-topic, split Pre (Prelims) / Mains
+function leafLookup(){ var m = {}; if(studyPlan) subjectStates(studyPlan).forEach(function(s){ s.leaves.forEach(function(l){ m[l.id] = l; }); }); return m; }
+function pyqSplit(l){
+  var r = {p:0, m:0, sp:[], sm:[]}; (l.subs || []).forEach(function(){ r.sp.push(0); r.sm.push(0); });
+  pyqForLeaf(l).forEach(function(q){
+    var pre = q.exam==="prelims"; if(pre) r.p++; else r.m++;
+    (q.subs || []).forEach(function(i){ if(i>=0 && i<r.sp.length){ if(pre) r.sp[i]++; else r.sm[i]++; } });
+  });
+  return r;
+}
+function pmBadge(p, m){
+  if(!p && !m) return '<span class="pm pm0">no questions</span>';
+  return (p ? '<span class="pm pm-p">Pre '+p+'</span>' : "")+(m ? '<span class="pm pm-m">Mains '+m+'</span>' : "");
+}
+function subListHtml(l, sp){
+  return (l.subs || []).map(function(x, i){ return '<li>'+esc(x)+(sp.sp[i]+sp.sm[i] ? ' '+pmBadge(sp.sp[i], sp.sm[i]) : '')+'</li>'; }).join("");
+}
 function tierRingsHtml(states){
   var tot = {1:0,2:0,3:0,4:0}, done = {1:0,2:0,3:0,4:0}, sub = {1:0,2:0,3:0,4:0}, pre = {1:0,2:0,3:0,4:0}, mn = {1:0,2:0,3:0,4:0}, anyPM = false;
   states.forEach(function(s){ s.leaves.forEach(function(l){
@@ -17489,7 +17509,7 @@ function priorityHtml(plan, states, inTiers){
     var pmSw = inTiers && tierFilter ? '<div class="tv-pm" role="tablist">'+[["all","All"],["p","Prelims"],["m","Mains"]].map(function(o){ return '<button type="button" role="tab" class="'+(tierPM===o[0] ? "on" : "")+'" aria-selected="'+(tierPM===o[0])+'" data-tpm="'+o[0]+'">'+o[1]+'</button>'; }).join("")+'</div>' : "";
     html += '<div class="prio-g"><div class="prio-h">'+esc(g[1])+' <span class="cnt">'+list.length+'</span></div>'+pmSw+(g[0]===9 ? '<div class="muted small">The previous-year question analysis does not cover these chapters, so they have no tier. They are still part of the syllabus; study them in the order your plan gives.</div>' : "")+list.map(function(r){
       var stt = leafStatus(r.l.id), n = pyqForLeaf(r.l).length;
-      return '<div class="prio-r st-'+stt+'" role="button" tabindex="0" data-go="subjday" data-subj="'+esc(name)+'" data-leaf="'+esc(r.l.id)+'"><span class="dot"></span><span class="pu">'+esc(r.l.unit)+(r.l.isNew ? ' <span class="chip newc">New</span>' : "")+'<small>'+esc(r.l.group)+(r.l.subs.length ? ' &middot; '+r.l.subs.length+' subtopics' : "")+'</small></span>'+(r.t ? '<span class="chip '+r.t.cls+'">'+esc(r.t.short)+'</span>' : "")+(function(){ var tr = trendFor(r.l); return tr ? '<span class="ld" title="Past Mains marks for &ldquo;'+esc(tr.k)+'&rdquo;: average marks a year">~'+Math.round(trendAvg(tr))+'m</span>' : ""; })()+'<button type="button" class="pyq-btn'+(n ? "" : " zero")+'" data-pyq="'+esc(r.l.id)+'" data-subj="'+esc(name)+'" aria-label="Show '+n+' previous year questions">'+n+' PYQ</button></div>'+(inTiers && tierFilter && r.l.subs.length ? '<details class="prio-sd"><summary>'+r.l.subs.length+' sub-topics</summary><ul>'+r.l.subs.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join("")+'</ul></details>' : "");
+      return '<div class="prio-r st-'+stt+'" role="button" tabindex="0" data-go="subjday" data-subj="'+esc(name)+'" data-leaf="'+esc(r.l.id)+'"><span class="dot"></span><span class="pu">'+esc(r.l.unit)+(r.l.isNew ? ' <span class="chip newc">New</span>' : "")+'<small>'+esc(r.l.group)+(r.l.subs.length ? ' &middot; '+r.l.subs.length+' subtopics' : "")+'</small><small class="pm-line">'+pmBadge(pyqSplit(r.l).p, pyqSplit(r.l).m)+'</small></span>'+(r.t ? '<span class="chip '+r.t.cls+'">'+esc(r.t.short)+'</span>' : "")+(function(){ var tr = trendFor(r.l); return tr ? '<span class="ld" title="Past Mains marks for &ldquo;'+esc(tr.k)+'&rdquo;: average marks a year">~'+Math.round(trendAvg(tr))+'m</span>' : ""; })()+'<button type="button" class="pyq-btn'+(n ? "" : " zero")+'" data-pyq="'+esc(r.l.id)+'" data-subj="'+esc(name)+'" aria-label="Show '+n+' previous year questions">'+n+' PYQ</button></div>'+(inTiers && tierFilter && r.l.subs.length ? '<details class="prio-sd"><summary>'+r.l.subs.length+' sub-topics</summary><ul>'+subListHtml(r.l, pyqSplit(r.l))+'</ul><div class="muted small">A count shows where past questions match that sub-topic by wording; the topic total above counts every question.</div></details>' : "");
     }).join("")+'</div>';
   });
   return html+(inTiers ? "" : '<button type="button" class="btn ghost sm" data-go="tiers">Open the full Tiers list</button> ')+'<button type="button" class="btn ghost sm" data-pa="audit">Run sync check</button><div id="auditOut">'+(auditCache ? syncAuditHtml(auditCache) : "")+'</div>';
@@ -19858,8 +19878,8 @@ function todayTopicsHtml(td){
     if(!c.cur) return '<div class="td-s"><div class="td-h">SESSION '+c.n+' \u00b7 '+esc(nm)+'</div><div class="td-none">Every chapter of this subject is complete.</div></div>';
     var subs = c.cur.subs || [], collapsed = c.n>2;
     return '<div class="td-s"><div class="td-h">SESSION '+c.n+' \u00b7 '+esc(nm)+'</div>'+
-      '<div class="td-t">'+tierChip(c.cur)+'<b>'+esc(c.cur.unit)+'</b>'+dots(c.cur)+'</div>'+
-      (subs.length ? '<details class="td-sub"'+(collapsed ? '' : ' open')+'><summary>'+(collapsed ? 'Show ' : '')+subs.length+' sub-topic'+(subs.length===1 ? '' : 's')+'</summary><ul>'+subs.slice(0,2).map(function(s){ return '<li>'+esc(s)+'</li>'; }).join("")+(subs.length>2 ? '<li class="td-more"><button type="button" class="link-btn" data-go="subjday" data-subj="'+esc(c.st.name)+'" data-leaf="'+esc(c.cur.id)+'">+ '+(subs.length-2)+' more &rsaquo;</button></li>' : "")+'</ul></details>' : "")+'</div>';
+      '<div class="td-t">'+tierChip(c.cur)+'<b>'+esc(c.cur.unit)+'</b>'+dots(c.cur)+'</div><div class="td-pm">'+(function(){ var sp = pyqSplit(c.cur); return pmBadge(sp.p, sp.m)+' <span class="muted">asked in past papers</span>'; })()+'</div>'+
+      (subs.length ? '<details class="td-sub"'+(collapsed ? '' : ' open')+'><summary>'+(collapsed ? 'Show ' : '')+subs.length+' sub-topic'+(subs.length===1 ? '' : 's')+'</summary><ul>'+(function(){ var sp = pyqSplit(c.cur); return subs.slice(0,2).map(function(s, i){ return '<li>'+esc(s)+(sp.sp[i]+sp.sm[i] ? ' '+pmBadge(sp.sp[i], sp.sm[i]) : '')+'</li>'; }).join(""); })()+(subs.length>2 ? '<li class="td-more"><button type="button" class="link-btn" data-go="subjday" data-subj="'+esc(c.st.name)+'" data-leaf="'+esc(c.cur.id)+'">+ '+(subs.length-2)+' more &rsaquo;</button></li>' : "")+'</ul></details>' : "")+'</div>';
   }).join("");
   var up = queue.length ? '<div class="td-up"><div class="td-h">UP NEXT</div>'+queue.map(function(q){ return '<div class="td-u">'+tierChip(q.l)+'<span>'+esc(q.l.unit)+' <small>\u00b7 '+esc(q.st.name.replace(/ \(Optional\)$/, ""))+'</small></span></div>'; }).join("")+'<div class="td-note">More topics appear here as you finish these.</div></div>' : "";
   var stud = '<div class="td-stu">'+(td.total>0 ? 'Studied today <b>'+esc(fmtDurMin(td.total))+'</b>' : 'Nothing studied yet today.')+'</div>';
@@ -20645,7 +20665,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "245";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "246";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -21289,7 +21309,7 @@ function tierRowStat(it, kind, label){
   var c = it.ch;
   if(!c) return pyqStatLine(it.pyq || tierPyq(it, kind, label));
   if(!c.n) return "No question in the bank matched this topic. Rarely or never asked, or worded differently.";
-  var parts = []; if(c.pre) parts.push(c.pre+" Prelims"); if(c.mains) parts.push(c.mains+" Mains");
+  var parts = []; if(c.pre) parts.push(c.pre+" Pre"); if(c.mains) parts.push(c.mains+" Mains");
   return "Asked in "+c.ys.length+" of "+chapterTiers().ny+" years \u00b7 "+c.n+" question"+(c.n===1 ? "" : "s")+" ("+parts.join(", ")+") \u00b7 last "+c.last;
 }
 function tierRowHtml(it, kind, label, CHIP){
@@ -21298,7 +21318,7 @@ function tierRowHtml(it, kind, label, CHIP){
   return '<div class="topic-row'+(ps.st==="done"?" done":"")+'" data-hay="'+esc(hay)+'" data-t="'+tierRank(it)+'">'+
     '<div class="t"><span class="chip '+tierClass(it.tier)+'" title="'+esc(it.tier)+'">'+esc(tierShort(it.tier))+'</span>'+(CHIP[ps.st] ? ' <span class="chip plst st-'+ps.st+'">'+CHIP[ps.st]+'</span>' : "")+'<br>'+esc(it.topic)+
     '<div class="pyq-line">'+esc(tierRowStat(it, kind, label))+'</div>'+
-    (subs.length ? '<details class="ol-subs"><summary>'+subs.length+' sub-topic'+(subs.length===1 ? "" : "s")+'</summary><ul>'+subs.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join("")+'</ul></details>' : "")+
+    (subs.length ? '<details class="ol-subs"><summary>'+subs.length+' sub-topic'+(subs.length===1 ? "" : "s")+'</summary><ul>'+(function(){ var lf = leafLookup()[it.id]; if(!lf || (lf.subs || []).length!==subs.length) return subs.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join(""); return subListHtml(lf, pyqSplit(lf)); })()+'</ul></details>' : "")+
     (ps.link ? '<button type="button" class="link-btn" data-go="subjday" data-subj="'+esc(ps.link.split("|")[0])+'" data-leaf="'+esc(ps.link)+'">Open in planner &rsaquo;</button>' : "")+'</div>'+
   '</div>';
 }
