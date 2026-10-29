@@ -456,6 +456,40 @@ syl[SOK] = {}; freq[SOK] = {};
   freq[SOK]["paper" + pn] = map;
 });
 console.log("sociology items:", SOD.items.filter(function(i){ return i.pp === 1; }).length, "+", SOD.items.filter(function(i){ return i.pp === 2; }).length);
+// Statistics: the syllabus items, with how often each was asked (from d-statistics)
+const STD = JSON.parse(html.match(/<script type="application\/json" id="d-statistics">(.*?)<\/script>/s)[1]), STK = "statistics";
+syl[STK] = {}; freq[STK] = {};
+[1, 2].forEach(function(pn){
+  const list = STD.items.filter(function(it){ return it.pp === pn; });
+  const refsBy = {}; STD.topics.forEach(function(t){ (refsBy[t.s] = refsBy[t.s] || {}); t.q.forEach(function(r){ refsBy[t.s][r] = 1; }); });
+  const counts = list.map(function(it){ return Object.keys(refsBy[it.id] || {}).length; }), tr = tiers(counts), map = {}, topics = [];
+  list.forEach(function(it, i){
+    const label = it.id + "  " + it.full, refs = Object.keys(refsBy[it.id] || {}), ys = {};
+    refs.forEach(function(r){ ys[r.split("|")[0]] = 1; });
+    const yl = Object.keys(ys).map(Number).sort();
+    topics.push(label); map[label] = {count:refs.length, years:yl, tier:tr[i], recent:yl.length ? yl[yl.length - 1] : 0};
+  });
+  syl[STK]["paper" + pn] = {title:"Statistics Optional \u2014 Paper " + (pn === 2 ? "II" : "I"), sections:[{heading:"Official syllabus (UPSC Examination Notice 2026)", topics:topics}]};
+  freq[STK]["paper" + pn] = map;
+});
+console.log("statistics items:", STD.items.filter(function(i){ return i.pp === 1; }).length, "+", STD.items.filter(function(i){ return i.pp === 2; }).length);
+// Zoology: the syllabus items, with how often each was asked (from d-zoology)
+const ZOD = JSON.parse(html.match(/<script type="application\/json" id="d-zoology">(.*?)<\/script>/s)[1]), ZOK = "zoology";
+syl[ZOK] = {}; freq[ZOK] = {};
+[1, 2].forEach(function(pn){
+  const list = ZOD.items.filter(function(it){ return it.pp === pn; });
+  const refsBy = {}; ZOD.topics.forEach(function(t){ (refsBy[t.s] = refsBy[t.s] || {}); t.q.forEach(function(r){ refsBy[t.s][r] = 1; }); });
+  const counts = list.map(function(it){ return Object.keys(refsBy[it.id] || {}).length; }), tr = tiers(counts), map = {}, topics = [];
+  list.forEach(function(it, i){
+    const label = it.id + "  " + it.full, refs = Object.keys(refsBy[it.id] || {}), ys = {};
+    refs.forEach(function(r){ ys[r.split("|")[0]] = 1; });
+    const yl = Object.keys(ys).map(Number).sort();
+    topics.push(label); map[label] = {count:refs.length, years:yl, tier:tr[i], recent:yl.length ? yl[yl.length - 1] : 0};
+  });
+  syl[ZOK]["paper" + pn] = {title:"Zoology Optional \u2014 Paper " + (pn === 2 ? "II" : "I"), sections:[{heading:"Official syllabus (UPSC Examination Notice 2026)", topics:topics}]};
+  freq[ZOK]["paper" + pn] = map;
+});
+console.log("zoology items:", ZOD.items.filter(function(i){ return i.pp === 1; }).length, "+", ZOD.items.filter(function(i){ return i.pp === 2; }).length);
 console.log("animal husbandry items:", AH.items.filter(function(i){ return i.pp === 1; }).length, "+", AH.items.filter(function(i){ return i.pp === 2; }).length);
 console.log("agriculture items:", G.items.filter(function(i){ return i.pp === 1; }).length, "+", G.items.filter(function(i){ return i.pp === 2; }).length);
 console.log("anthropology items:", aItems[0].length, "+", aItems[1].length);

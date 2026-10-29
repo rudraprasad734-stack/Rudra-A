@@ -595,3 +595,57 @@ ag.topics.forEach(function(t){
   fs.writeFileSync(PAGE, h23);
   console.log(NAME + " chapters:", Object.keys(soLeaf).length, "| Paper I topics:", Object.keys(soTree["Paper I"]).length, "| Paper II topics:", Object.keys(soTree["Paper II"]).length);
 }
+
+// ---------------------------------------------------------------- Statistics (one chapter per syllabus sub-topic)
+{
+  const NAME = "Statistics";
+  let h24 = fs.readFileSync(PAGE, "utf8");
+  const m24 = h24.match(/<script type="application\/json" id="d-statistics">(.*?)<\/script>/s);
+  if(!m24) throw new Error("build-planner: d-statistics not found (run psychology/build-statistics.js first), nothing written");
+  const stm = JSON.parse(m24[1]);
+  const stTree = {"Paper I":{}, "Paper II":{}}, stLeaf = {}, per24 = {};
+  stm.topics.forEach(function(t){
+    const it = stm.items.filter(function(x){ return x.id === t.s; })[0], grp = it.pp === 1 ? "Paper I" : "Paper II";
+    per24[it.id] = (per24[it.id] || 0) + 1;
+    const topic = it.id + "  " + it.t, unit = it.id + "." + per24[it.id] + "  " + t.t;
+    (stTree[grp][topic] = stTree[grp][topic] || []).push(unit);
+    stLeaf[topic + "|" + unit] = [t.id];
+  });
+  { const sq2 = h24.indexOf('  "Statistics": CT({'); if(sq2 >= 0){ const se = h24.indexOf('\n  }),\n', sq2); if(se < 0) throw new Error('build-planner: old Statistics placeholder not closed, nothing written'); h24 = h24.slice(0, sq2) + h24.slice(se + 7); } }
+  const cur24 = '  "' + NAME + '": ' + JSON.stringify(stTree, null, 2).replace(/\n/g, "\n  ") + ',\n';
+  const a24 = h24.indexOf('  "' + NAME + '": {\n    "Paper I"');
+  if(a24 >= 0){ const re = /\n(  "[A-Z]|\};)/g; re.lastIndex = a24 + 20; const m = re.exec(h24); if(!m) throw new Error("build-planner: end of Statistics block not found, nothing written"); h24 = h24.slice(0, a24) + cur24 + h24.slice(m.index + 1); }
+  else { const so10 = h24.indexOf("\n};\n// Official UPSC list"); if(so10 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h24 = h24.slice(0, so10 + 1) + cur24 + h24.slice(so10 + 1); }
+  const la24 = h24.indexOf("var STAT_LEAF = {"), leafTxt24 = "var STAT_LEAF = " + JSON.stringify(stLeaf, null, 1) + ";";
+  if(la24 >= 0){ const e24 = h24.indexOf("\n};", la24); if(e24 < 0) throw new Error("build-planner: STAT_LEAF block not closed, nothing written"); h24 = h24.slice(0, la24) + leafTxt24 + h24.slice(h24.indexOf("\n", e24 + 1)); }
+  else { const lb24 = h24.indexOf("\n// Optional subjects that have a question analysis"); if(lb24 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h24 = h24.slice(0, lb24) + "\n" + leafTxt24 + h24.slice(lb24); }
+  fs.writeFileSync(PAGE, h24);
+  console.log(NAME + " chapters:", Object.keys(stLeaf).length, "| Paper I topics:", Object.keys(stTree["Paper I"]).length, "| Paper II topics:", Object.keys(stTree["Paper II"]).length);
+}
+
+// ---------------------------------------------------------------- Zoology (one chapter per syllabus sub-topic)
+{
+  const NAME = "Zoology";
+  let h25 = fs.readFileSync(PAGE, "utf8");
+  const m25 = h25.match(/<script type="application\/json" id="d-zoology">(.*?)<\/script>/s);
+  if(!m25) throw new Error("build-planner: d-zoology not found (run psychology/build-zoology.js first), nothing written");
+  const zom = JSON.parse(m25[1]);
+  const zoTree = {"Paper I":{}, "Paper II":{}}, zoLeaf = {}, per25 = {};
+  zom.topics.forEach(function(t){
+    const it = zom.items.filter(function(x){ return x.id === t.s; })[0], grp = it.pp === 1 ? "Paper I" : "Paper II";
+    per25[it.id] = (per25[it.id] || 0) + 1;
+    const topic = it.id + "  " + it.t, unit = it.id + "." + per25[it.id] + "  " + t.t;
+    (zoTree[grp][topic] = zoTree[grp][topic] || []).push(unit);
+    zoLeaf[topic + "|" + unit] = [t.id];
+  });
+  { const sq3 = h25.indexOf('  "Zoology": CT({'); if(sq3 >= 0){ const se = h25.indexOf('\n  }),\n', sq3); if(se < 0) throw new Error('build-planner: old Zoology placeholder not closed, nothing written'); h25 = h25.slice(0, sq3) + h25.slice(se + 7); } }
+  const cur25 = '  "' + NAME + '": ' + JSON.stringify(zoTree, null, 2).replace(/\n/g, "\n  ") + ',\n';
+  const a25 = h25.indexOf('  "' + NAME + '": {\n    "Paper I"');
+  if(a25 >= 0){ const re = /\n(  "[A-Z]|\};)/g; re.lastIndex = a25 + 20; const m = re.exec(h25); if(!m) throw new Error("build-planner: end of Zoology block not found, nothing written"); h25 = h25.slice(0, a25) + cur25 + h25.slice(m.index + 1); }
+  else { const so11 = h25.indexOf("\n};\n// Official UPSC list"); if(so11 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h25 = h25.slice(0, so11 + 1) + cur25 + h25.slice(so11 + 1); }
+  const la25 = h25.indexOf("var ZOO_LEAF = {"), leafTxt25 = "var ZOO_LEAF = " + JSON.stringify(zoLeaf, null, 1) + ";";
+  if(la25 >= 0){ const e25 = h25.indexOf("\n};", la25); if(e25 < 0) throw new Error("build-planner: ZOO_LEAF block not closed, nothing written"); h25 = h25.slice(0, la25) + leafTxt25 + h25.slice(h25.indexOf("\n", e25 + 1)); }
+  else { const lb25 = h25.indexOf("\n// Optional subjects that have a question analysis"); if(lb25 < 0) throw new Error("build-planner: insertion point not found, nothing written"); h25 = h25.slice(0, lb25) + "\n" + leafTxt25 + h25.slice(lb25); }
+  fs.writeFileSync(PAGE, h25);
+  console.log(NAME + " chapters:", Object.keys(zoLeaf).length, "| Paper I topics:", Object.keys(zoTree["Paper I"]).length, "| Paper II topics:", Object.keys(zoTree["Paper II"]).length);
+}
