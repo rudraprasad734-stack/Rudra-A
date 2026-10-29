@@ -279,6 +279,10 @@
   .set-row:active{background:color-mix(in srgb, var(--tab-accent, #2ee6d6) 12%, transparent);}
   .set-ic{width:34px; height:34px; border-radius:10px; display:grid; place-items:center; flex:none; background:color-mix(in srgb, var(--tab-accent, #2ee6d6) 16%, transparent); color:var(--tab-accent, #2ee6d6);} .set-ic svg{width:19px; height:19px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round;}
   .set-t{flex:1; min-width:0; font-weight:600; font-size:15px;} .set-v{color:var(--ink-soft); font-size:13px; max-width:46%; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;} .set-chev{color:var(--ink-soft); font-size:20px; line-height:1;}
+  .set-search{margin:2px 0 4px;} .set-search input{width:100%; padding:11px 14px; border-radius:14px; border:1px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; font-size:15px;} .set-none{padding:24px 8px; text-align:center; color:var(--ink-soft);}
+  .set-row[hidden], .set-list[hidden], .set-grp[hidden], .set-none[hidden]{display:none !important;}
+  .set-row-sw{padding:0; cursor:default;} .set-main{display:flex; align-items:center; gap:12px; flex:1; min-width:0; padding:11px 0 11px 12px; background:none; border:0; color:var(--ink); font:inherit; text-align:left; cursor:pointer; min-height:52px;}
+  .set-sw{width:44px; height:26px; border-radius:99px; border:0; margin:0 12px 0 8px; background:color-mix(in srgb, var(--ink-soft) 40%, transparent); position:relative; flex:none; cursor:pointer;} .set-sw::after{content:""; position:absolute; left:3px; top:3px; width:20px; height:20px; border-radius:50%; background:#fff; transition:left .18s;} .set-sw.on{background:var(--tab-accent, #2ee6d6);} .set-sw.on::after{left:21px;}
   .set-back{background:none; border:0; color:var(--tab-accent, #2ee6d6); font:inherit; font-weight:700; font-size:15px; padding:6px 4px 10px; cursor:pointer;}
   .set-card{padding:14px 16px; margin:0 0 12px;} .set-card h3{font-size:15px; margin:0 0 6px;} .set-card .muted{font-size:13px;}
   .pth-scene{border-radius:18px; overflow:hidden; border:1px solid rgba(255,255,255,.12); background:#0d1a30; margin:2px 0 10px;}
@@ -20746,7 +20750,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "261";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "262";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -21232,18 +21236,33 @@ function wireThemeSlide(row){
     }, 800);
   }, {passive:true});
 }
+var setQuery = "";   // what is typed in the Settings search box
+var SET_KW = {cloud:"google sign in account sync devices", sub:"subscription plan pay trial renew price", opt:"optional subject change", backup:"download restore export import file save data",
+  stats:"privacy analytics usage statistics share", theme:"colour color dark light night app look", path:"learning path journey metro railway dashboard", scene:"background wallpaper picture rain snow aurora timer scene",
+  sound:"sound audio music volume rain noise white", perf:"animation smooth battery saver lag slow phone warm performance", guides:"tips help tutorial guide explain", feedback:"contact report bug idea write us support", about:"version update privacy terms refund licence"};
+function setFilter(host){
+  var q = setQuery.toLowerCase().trim(), any = false;
+  [].forEach.call(host.querySelectorAll(".set-row"), function(r){ var on = !q || (r.getAttribute("data-kw") || "").indexOf(q) >= 0; r.hidden = !on; if(on) any = true; });
+  [].forEach.call(host.querySelectorAll(".set-list"), function(l){ var on = !!l.querySelector(".set-row:not([hidden])"); l.hidden = !on; if(l.previousElementSibling) l.previousElementSibling.hidden = !on; });
+  var none = host.querySelector(".set-none"); if(none) none.hidden = any;
+}
 function setScreenHtml(S){
   var cur = S.filter(function(x){ return x.id===setSec; })[0];
   if(cur) return '<div class="set-detail"><button type="button" class="set-back" data-sec="" aria-label="Back to Settings">\u2039 Settings</button>'+cur.html+'</div>';
   setSec = "";
   var groups = ["Account & data", "Appearance", "Timer", "Help"];
-  return '<div class="set-menu">'+groups.map(function(g){
+  return '<div class="set-menu"><div class="set-search"><input type="search" id="setQ" placeholder="Search settings" aria-label="Search settings" autocomplete="off" value="'+esc(setQuery)+'"></div>'+groups.map(function(g){
     var rows = S.filter(function(x){ return x.grp===g; });
     if(!rows.length) return "";
     return '<div class="set-grp">'+esc(g)+'</div><div class="set-list">'+rows.map(function(x){
-      return '<button type="button" class="set-row" data-sec="'+x.id+'"><span class="set-ic" aria-hidden="true"><svg viewBox="0 0 24 24">'+SET_ICONS[x.ico]+'</svg></span><span class="set-t">'+esc(x.t)+'</span><span class="set-v">'+esc(x.v || "")+'</span><span class="set-chev" aria-hidden="true">\u203a</span></button>';
+      var ic = '<span class="set-ic" aria-hidden="true"><svg viewBox="0 0 24 24">'+SET_ICONS[x.ico]+'</svg></span>', kw = esc((x.t+" "+(x.v || "")+" "+(SET_KW[x.id] || "")).toLowerCase());
+      if(x.id==="stats"){   // a real switch, so it can be turned on or off without opening the page
+        var on = analyticsChoice()==="on";
+        return '<div class="set-row set-row-sw" data-kw="'+kw+'"><button type="button" class="set-main" data-sec="stats">'+ic+'<span class="set-t">'+esc(x.t)+'</span></button><button type="button" class="set-sw'+(on ? " on" : "")+'" role="switch" aria-checked="'+on+'" aria-label="'+esc(x.t)+'" data-sw="stats"></button></div>';
+      }
+      return '<button type="button" class="set-row" data-sec="'+x.id+'" data-kw="'+kw+'">'+ic+'<span class="set-t">'+esc(x.t)+'</span><span class="set-v">'+esc(x.v || "")+'</span><span class="set-chev" aria-hidden="true">\u203a</span></button>';
     }).join("")+'</div>';
-  }).join("")+'</div>';
+  }).join("")+'<div class="set-none" hidden>No setting matches your search.</div></div>';
 }
 function renderSettings(){
   var host = document.getElementById("view-settings"); if(!host) return;
@@ -21278,12 +21297,16 @@ function renderSettings(){
   add("about", "Help", "info", "About", "v"+APP_BUILD,
     '<div class="card set-card about-card"><h3>About</h3><div class="muted">CSE Companion works offline and keeps your data on this phone unless you sign in. <a href="privacy.html" target="_blank" rel="noopener">Privacy policy</a> &middot; <a href="terms.html" target="_blank" rel="noopener">Terms</a> &middot; <a href="refund.html" target="_blank" rel="noopener">Refunds</a> &middot; <a href="delete-account.html" target="_blank" rel="noopener">How to delete your data</a></div><div class="muted small" style="margin-top:6px">&copy; 2026 CSE Companion. All rights reserved.</div><div class="muted small about-ver">Version '+APP_BUILD+'</div><button type="button" class="btn ghost" data-upd="1" style="margin-top:10px">Check for updates</button></div>');
   host.innerHTML = setScreenHtml(S);
+  if(!setSec && setQuery) setFilter(host);
   if(!host._secWired){
     host._secWired = true;
     host.addEventListener("click", function(e){
+      var sw = e.target.closest ? e.target.closest("[data-sw=stats]") : null;
+      if(sw){ setAnalytics(analyticsChoice()!=="on"); renderSettings(); return; }
       var r = e.target.closest ? e.target.closest("[data-sec]") : null; if(!r) return;
       setSec = r.getAttribute("data-sec") || ""; renderSettings(); window.scrollTo(0, 0);
     });
+    host.addEventListener("input", function(e){ if(e.target && e.target.id==="setQ"){ setQuery = e.target.value; setFilter(host); } });
   }
   // keep each row where it was, then glide the chosen theme into the middle so you always know where you are
   [].forEach.call(host.querySelectorAll(".th-row"), function(row, ix){
