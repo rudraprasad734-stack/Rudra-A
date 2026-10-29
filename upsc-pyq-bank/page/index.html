@@ -19886,6 +19886,7 @@ function closeToday(){
 function fitTodayStrip(gs){
   gs = gs || document.getElementById("goalStrip");
   if(!gs || !gs.classList.contains("open") || gs.classList.contains("opening") || gs.classList.contains("closing")) return;
+  fillTodayTopics(gs);
   var list = gs.querySelector(".td-list"); if(!list) return;
   var lim = (window.innerHeight || 800) - 10;
   ["td-t1", "td-t2", "td-t3"].forEach(function(c){ gs.classList.remove(c); });
@@ -19964,6 +19965,22 @@ function todayTopicsHtml(td){
   var stud = '<div class="td-stu">'+(td.total>0 ? 'Studied today <b>'+esc(fmtDurMin(td.total))+'</b>' : 'Nothing studied yet today.')+'</div>';
   return '<div class="gs-list td-list"><h4>TODAY\'S PLAN</h4>'+html+up+stud+'</div>';
 }
+function studiedListHtml(td){
+  var list = td.rows.length
+    ? '<div class="gs-body">'+td.rows.map(function(r){ return '<div class="gs-row"><span>'+esc(r.t)+(r.s ? '<small>'+esc(r.s)+'</small>' : '')+'</span><b>'+esc(fmtDurMin(r.m))+'</b></div>'; }).join("")+'</div><div class="gs-sum"><span>Total today</span><span>'+esc(fmtDurMin(td.total))+'</span></div>'
+    : '<div class="gs-none">Nothing studied yet today. Start the timer and it will show here.</div>';
+  return '<div class="gs-list"><h4>STUDIED TODAY</h4>'+list+'</div>';
+}
+// a cheap guess at whether Today's plan will have anything to show (the real list is worked out when the dropdown opens)
+function todayHasPlan(){
+  if(!studyPlan) return false;
+  return sessionsOn(todayKey).some(function(x){ return x.status!=="skipped" && (x.kind!=="study" || studyPlan.priority.indexOf(x.subject) >= 0); });
+}
+function fillTodayTopics(gs){
+  var l = gs && gs.querySelector(".td-lazy"); if(!l) return;
+  var td = todayStudied(), html = todayTopicsHtml(td);
+  if(html) l.replaceWith(el(html)); else { l.replaceWith(el(studiedListHtml(td))); gs.classList.remove("has-td"); }
+}
 function goalStripHtml(){
   var st = timerState; if(st.running || st.accMs>0 || st.studyMs>0 || st.pending>0) return "";
   var g = todayGoal(), m = studyMinutesByDay(), done = m[todayKey] || 0, ss = streakStats(m);
@@ -19982,16 +19999,15 @@ function goalStripHtml(){
     dots += '<span class="gs-d"><i class="'+cls+'" data-l="'+"MTWTFSS".charAt(i)+'">'+ch+'</i><small>'+"MTWTFSS".charAt(i)+'</small></span>';
   }
   var rv = revisionsDue().length;
-  var open = todayOpen(), td = todayStudied(), tdHtml = todayTopicsHtml(td);
+  // Today's plan counts past questions for every chapter, which is the slowest thing the app does; it is built only when the dropdown is open
+  // (a quiet placeholder stands in while it is closed), so the first screen no longer waits for it.
+  var open = todayOpen(), td = todayStudied(), tdHtml = open ? todayTopicsHtml(td) : (todayHasPlan() ? '<div class="gs-list td-list td-lazy"></div>' : "");
   if(open) setTimeout(fitTodayStrip, 0);
-  var list = td.rows.length
-    ? '<div class="gs-body">'+td.rows.map(function(r){ return '<div class="gs-row"><span>'+esc(r.t)+(r.s ? '<small>'+esc(r.s)+'</small>' : '')+'</span><b>'+esc(fmtDurMin(r.m))+'</b></div>'; }).join("")+'</div><div class="gs-sum"><span>Total today</span><span>'+esc(fmtDurMin(td.total))+'</span></div>'
-    : '<div class="gs-none">Nothing studied yet today. Start the timer and it will show here.</div>';
   return '<button type="button" class="today-tg'+(open ? " open" : "")+'" id="todayToggle" aria-expanded="'+(open ? "true" : "false")+'" aria-controls="goalStrip" aria-label="'+(open ? "Hide today\'s study" : "Show today\'s study")+'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>'+
     '<div class="goal-strip'+(open ? " open" : "")+(tdHtml ? " has-td" : "")+'" id="goalStrip"><div class="gs-top">'+ringHtml+
     '<span class="gs-t"><b>'+esc(title)+'</b><small>'+esc(sub)+'</small></span><span class="gs-fl"><i aria-hidden="true">'+(ss.cur>0 ? "🔥" : "🌱")+'</i><b>'+ss.cur+' day'+(ss.cur===1 ? "" : "s")+'</b></span></div>'+
     '<div class="gs-days">'+dots+'</div>'+
-    (tdHtml || '<div class="gs-list"><h4>STUDIED TODAY</h4>'+list+'</div>')+
+    (tdHtml || studiedListHtml(td))+
     (rv ? '<button type="button" class="gs-rev" data-goal="rev">📚 '+rv+' chapter'+(rv===1 ? "" : "s")+' to revise today</button>' : '')+'</div>';
 }
 function weekStats(monKey){
@@ -20750,7 +20766,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "262";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "263";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
