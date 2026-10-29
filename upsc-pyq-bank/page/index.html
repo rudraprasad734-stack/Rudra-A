@@ -20518,7 +20518,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "241";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "242";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -20915,6 +20915,45 @@ function subInit(){
   setTimeout(function(){ BILL.sig = ""; subUi(); }, 7300);
 }
 
+// ---- Settings: change your optional subject (the only place it can be changed outside Edit plan) ----
+function optionalCardHtml(){
+  if(!studyPlan || !studyPlan.cfg) return "";
+  var mode = studyPlan.cfg.mode;
+  if(mode==="prelims") return '<div class="card set-card"><h3>Optional subject</h3><div class="muted">Your plan covers Prelims only, so it has no optional. Choose Mains in <b>Planner → Edit plan</b> to add one.</div></div>';
+  var cur = myOptional();
+  var list = ALL_OPTIONALS.filter(function(n){ return hasBundledSyllabus(n) || n===cur; });
+  function og(label, l){ return l.length ? '<optgroup label="'+label+'">'+l.map(function(n){ return '<option'+(n===cur?" selected":"")+'>'+esc(n)+'</option>'; }).join("")+'</optgroup>' : ""; }
+  return '<div class="card set-card" id="optCard"><h3>Optional subject</h3>'+
+    '<div class="muted">'+(cur ? 'Your optional is <b>'+esc(cur)+'</b>.' : 'You have not chosen an optional yet.')+' Changing it swaps the optional chapters in your plan and re-plans the days ahead. Your other subjects and your progress are kept; progress in the optional you leave is kept too and comes back if you choose it again.</div>'+
+    '<div class="cf"><label for="optSel">Your optional subject</label><select id="optSel"><option value="">'+(cur ? "None (no optional)" : "Select optional…")+'</option>'+og("Subjects", list.filter(function(n){ return !/ Literature$/.test(n); }))+og("Literature", list.filter(function(n){ return / Literature$/.test(n); }))+'</select></div>'+
+    '<div class="muted small">A subject with no bundled syllabus can still be added with your own chapter list in <b>Planner → Edit plan</b>.</div></div>';
+}
+function changeOptional(name){
+  var w = wizFromPlan(studyPlan), prev = myOptional();
+  w.optionalOn = !!name; w.optional = name || ""; w.customText = "";
+  delete w.init[optLabel(w.optional)]; delete w.init[""];
+  wizSync(w);
+  var keepLeave = studyPlan.leave, keepCatch = studyPlan.catchup;
+  studyPlan = compilePlan(w);
+  if(keepLeave) studyPlan.leave = keepLeave;
+  if(keepCatch) studyPlan.catchup = keepCatch.filter(function(d){ return d >= todayKey; });
+  trackEvent("optional_changed", {from:prev || "none", to:name || "none"});
+  savePlan(); saveProgress(); replan();
+  toast(name ? "Optional changed to "+name+". Your plan is updated." : "Optional removed from your plan.");
+  renderSettings();
+}
+function bindOptionalCard(host){
+  var sel = host.querySelector("#optSel"); if(!sel) return;
+  sel.addEventListener("change", function(){
+    var name = sel.value, prev = myOptional();
+    if(name===prev) return;
+    var m = showModal('<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="ocT"><h2 id="ocT">'+(name ? 'Change optional to '+esc(name)+'?' : 'Remove your optional?')+'</h2>'+
+      '<p>'+(prev ? esc(prev)+' chapters leave your plan and ' : '')+(name ? esc(name)+' chapters join it' : 'no optional chapters remain')+'. Days that are already finished stay as they are; the days ahead are planned again.</p>'+
+      '<div class="modal-actions"><button class="btn ghost" id="ocNo">Cancel</button><span class="grow"></span><button class="btn primary" id="ocYes">Change optional</button></div></div>', false);
+    m.querySelector("#ocNo").addEventListener("click", function(){ closeModal(); sel.value = prev; });
+    m.querySelector("#ocYes").addEventListener("click", function(){ closeModal(); changeOptional(name); });
+  });
+}
 function renderSettings(){
   var host = document.getElementById("view-settings"); if(!host) return;
   var th = pathThemeById(pathTheme), real = studyPlan ? pathCtx(subjectStates(studyPlan)) : null;
@@ -20924,6 +20963,7 @@ function renderSettings(){
     cloudCardHtml()+
     statsCardHtml()+
     backupCard()+
+    optionalCardHtml()+
     uiThemeCardHtml()+
     '<div class="card set-card"><h3>Learning path theme</h3>'+
       '<div class="muted">How your journey looks on the Dashboard. Every subject running in parallel gets its own lane, and each marker moves as you finish chapters.</div>'+
@@ -20950,6 +20990,7 @@ function renderSettings(){
     if(prevLeft >= 0 && row.scrollTo) row.scrollTo({left:target, behavior:"smooth"}); else row.scrollLeft = target;
   });
   bindBackupCard(host);
+  bindOptionalCard(host);
   subWire(host);
   bindCloud(host);
   bindStats(host);
@@ -21352,7 +21393,7 @@ function renderOptional(){
   var tierChips = '<button type="button" class="sub-chip'+(optUi.tier ? "" : " on")+'" data-otier="0">All <b>'+D.topics.length+'</b></button>'+[1,2,3,4].map(function(n){ return '<button type="button" class="sub-chip'+(optUi.tier===n ? " on" : "")+'" data-otier="'+n+'">Tier '+n+' <b>'+cnt[n]+'</b></button>'; }).join("");
   var paperChips = [[0,"Both papers"],[1,"Paper I"],[2,"Paper II"]].map(function(p){ return '<button type="button" class="sub-chip'+(optUi.paper===p[0] ? " on" : "")+'" data-opaper="'+p[0]+'">'+p[1]+'</button>'; }).join("");
   var subjChips = optAvailable().length>1 ? '<div class="sub-chips" role="group" aria-label="Optional subject">'+optAvailable().map(function(n){ return '<button type="button" class="sub-chip'+(n===D.name ? " on" : "")+'" data-osubj="'+esc(n)+'">'+esc(n)+'</button>'; }).join("")+'</div>' : "";
-  host.innerHTML = '<div class="section-title">'+esc(D.name)+' optional</div>'+(myOptional() ? '<div class="muted" style="margin:-4px 0 10px">This is your optional. To change it, open <b>Planner \u2192 Edit plan</b>.</div>' : "")+subjChips+tierModeHtml(0)+
+  host.innerHTML = '<div class="section-title">'+esc(D.name)+' optional</div>'+(myOptional() ? '<div class="muted" style="margin:-4px 0 10px">This is your optional. To change it, open <b>Settings</b>.</div>' : "")+subjChips+tierModeHtml(0)+
     '<div class="card note-card"><b>'+D.items.length+' official syllabus items, '+D.topics.length+' sub-topics, '+D.total+' past questions, '+D.years[0]+'–'+D.years[D.ny-1]+'.</b> '+
       'The headings are the official UPSC syllabus (Examination Notice 2026). Every question from Paper I and Paper II is filed under the sub-topic(s) it tests, so none is left out. Tap a sub-topic to read its questions.'+
       '<details class="ot-how"><summary>How tiers and trends are worked out</summary>'+
