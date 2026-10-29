@@ -369,6 +369,15 @@
   .chip.tier4{background:var(--tier4-soft); color:var(--tier4);}
   .chip.tag-exam{background:var(--brick-soft); color:var(--brick);}
   .chip.tag-off{background:var(--tier4-soft); color:var(--tier4);}
+  /* ---- Tiers: By syllabus / My priorities switch, Study next ---- */
+  .tv-sw{display:flex;border:1px solid var(--line, rgba(120,200,190,.35));border-radius:12px;overflow:hidden;margin:2px 0 8px}
+  .tv-sw button{flex:1;padding:10px 6px;font:inherit;font-weight:700;font-size:13px;background:transparent;color:inherit;border:0;cursor:pointer;min-height:44px}
+  .tv-sw button.on{background:rgba(47,227,208,.16);box-shadow:inset 0 -3px 0 #2fe3d0}
+  .tv-ex{margin:0 2px 10px}
+  .tv-next{border-color:rgba(47,227,208,.55)}
+  .tv-nl{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#ffc857;margin-bottom:4px}
+  .tv-nt{font-weight:700;margin-bottom:2px}
+  .tv-nb{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
   /* ---- Optional subject tiers ---- */
   .ot-g{font-size:12px; font-weight:700; color:var(--ink-soft); margin:14px 2px 6px;}
   .ot-card{padding:2px 12px; margin-bottom:6px;}
@@ -17395,7 +17404,27 @@ function openReschedule(){
 }
 
 // ---------- Priority (Tiers) inside the planner ----------
-function priorityHtml(plan, states){
+var tierView = lsGet("dossier.tierView") === "priority" ? "priority" : "syllabus";
+function tierSwitchHtml(){
+  return '<div class="tv-sw" role="tablist" aria-label="Tiers view"><button type="button" role="tab" class="'+(tierView==="syllabus" ? "on" : "")+'" aria-selected="'+(tierView==="syllabus")+'" data-tview="syllabus">By syllabus</button><button type="button" role="tab" class="'+(tierView==="priority" ? "on" : "")+'" aria-selected="'+(tierView==="priority")+'" data-tview="priority">My priorities</button></div>'+
+    '<div class="muted small tv-ex">'+(tierView==="syllabus" ? 'Every line of the official syllabus and how often it was asked, with your plan status.' : 'Only the chapters in your plan, ranked by how often they were asked. Tap one to see its day.')+'</div>';
+}
+// the unfinished chapter of your active subjects that was asked most often
+function studyNextHtml(states){
+  var best = null;
+  states.filter(function(x){ return x.state==="active"; }).forEach(function(s){
+    s.leaves.forEach(function(l){
+      if(leafStatus(l.id)==="done") return;
+      var t = tierRank(tierInfo(l)); if(t>=5) return;
+      var n = pyqForLeaf(l).length;
+      if(!best || t<best.t || (t===best.t && n>best.n)) best = {l:l, t:t, n:n, subj:s.name};
+    });
+  });
+  if(!best) return "";
+  return '<div class="card tv-next"><div class="tv-nl">Study next</div><div class="tv-nt"><span class="chip tier'+best.t+'">Tier '+best.t+'</span> '+esc(best.l.unit)+'</div><div class="muted small">'+esc(best.subj.replace(/ \(Optional\)$/, ""))+' \u00b7 '+esc(best.l.group)+'</div>'+
+    '<div class="tv-nb"><button type="button" class="btn primary sm" data-go="subjday" data-subj="'+esc(best.subj)+'" data-leaf="'+esc(best.l.id)+'">Open in planner</button>'+(best.n ? ' <button type="button" class="btn ghost sm pyq-btn" data-pyq="'+esc(best.l.id)+'" data-subj="'+esc(best.subj)+'">'+best.n+' PYQ</button>' : "")+'</div></div>';
+}
+function priorityHtml(plan, states, inTiers){
   var name = priSubject && states.some(function(x){ return x.name===priSubject; }) ? priSubject : (states.filter(function(x){ return x.state==="active"; })[0] || states[0] || {}).name;
   var st = states.filter(function(x){ return x.name===name; })[0];
   if(!st) return '<div class="card empty">No subjects in your plan yet.</div>';
@@ -17412,7 +17441,7 @@ function priorityHtml(plan, states){
       return '<div class="prio-r st-'+stt+'" role="button" tabindex="0" data-go="subjday" data-subj="'+esc(name)+'" data-leaf="'+esc(r.l.id)+'"><span class="dot"></span><span class="pu">'+esc(r.l.unit)+(r.l.isNew ? ' <span class="chip newc">New</span>' : "")+'<small>'+esc(r.l.group)+(r.l.subs.length ? ' &middot; '+r.l.subs.length+' subtopics' : "")+'</small></span>'+(r.t ? '<span class="chip '+r.t.cls+'">'+esc(r.t.short)+'</span>' : "")+(function(){ var tr = trendFor(r.l); return tr ? '<span class="ld" title="Past Mains marks for &ldquo;'+esc(tr.k)+'&rdquo;: average marks a year">~'+Math.round(trendAvg(tr))+'m</span>' : ""; })()+'<button type="button" class="pyq-btn'+(n ? "" : " zero")+'" data-pyq="'+esc(r.l.id)+'" data-subj="'+esc(name)+'" aria-label="Show '+n+' previous year questions">'+n+' PYQ</button></div>';
     }).join("")+'</div>';
   });
-  return html+'<button type="button" class="btn ghost sm" data-go="tiers">Open the full Tiers list</button> <button type="button" class="btn ghost sm" data-pa="audit">Run sync check</button><div id="auditOut">'+(auditCache ? syncAuditHtml(auditCache) : "")+'</div>';
+  return html+(inTiers ? "" : '<button type="button" class="btn ghost sm" data-go="tiers">Open the full Tiers list</button> ')+'<button type="button" class="btn ghost sm" data-pa="audit">Run sync check</button><div id="auditOut">'+(auditCache ? syncAuditHtml(auditCache) : "")+'</div>';
 }
 
 function progressHtml(plan, states){
@@ -17878,7 +17907,7 @@ function plannerAction(a, el, sure){
       studySessions = studySessions.filter(function(s){ return !(s.origin==="auto" && s.date>=todayKey && !isTouched(s)); });
       saveSessions(); break;
   }
-  if(activeTab==="priority") renderPriorityPage(); else renderPlanner();
+  if(activeTab==="priority") renderPriorityPage(); else if(activeTab==="prelims" || activeTab==="mains") renderChecklist(activeTab); else renderPlanner();
 }
 var plannerWired = false;
 function wirePlanner(host){
@@ -18440,7 +18469,6 @@ var TAB_GROUPS = [
     {id:"mains", label:"Mains"},
     {id:"optional", label:"Optional"},
   ]},
-  {id:"priority", label:"Priority", accent:"tiers"},
   {id:"mocks", label:"Mocks", accent:"mocks"},
   {id:"pyq", label:"PYQ Bank", accent:"pyq"},
   {id:"quotes", label:"Quotes", accent:"quotes"},
@@ -18578,6 +18606,7 @@ function renderSubTabs(){
   centerActive(host, ".subtab.active");
 }
 function setTab(id){
+  if(id==="priority"){ tierView = "priority"; lsSet("dossier.tierView", "priority"); id = "mains"; }   // Priority now lives inside Tiers as the "My priorities" view
   if(!VIEW_TO_GROUP[id]) id = "dashboard";
   if(id !== "dashboard"){ var ph = document.getElementById("planHint"); if(ph) ph.remove(); var qn = document.getElementById("quietNudge"); if(qn) qn.remove(); }
   if(id==="dashboard" && activeTab!=="dashboard") dashMore = false;
@@ -20518,7 +20547,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "242";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "243";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -21177,6 +21206,20 @@ function tierRowHtml(it, kind, label, CHIP){
 }
 function renderChecklist(kind){
   var host = document.getElementById("view-"+kind);
+  if(!host._tv){
+    host._tv = true;
+    host.addEventListener("click", function(e){
+      var b = e.target.closest ? e.target.closest("[data-tview]") : null; if(!b) return;
+      tierView = b.getAttribute("data-tview"); lsSet("dossier.tierView", tierView); renderChecklist(kind);
+    });
+  }
+  if(tierView==="priority"){
+    wirePlanner(host);
+    if(!studyPlan){ host.innerHTML = tierSwitchHtml()+'<div class="card empty">Build your preparation plan first, then your chapters ranked by tier show up here.<div style="margin-top:10px"><button type="button" class="btn primary" data-go="planner">Build my plan</button></div></div>'; var gb = host.querySelector("[data-go=planner]"); if(gb) gb.addEventListener("click", function(){ setTab("planner"); }); return; }
+    var sts = subjectStates(studyPlan);
+    host.innerHTML = tierSwitchHtml()+studyNextHtml(sts)+priorityHtml(studyPlan, sts, true);
+    return;
+  }
   var isOpt = function(p){ return /^Anthropology Optional/.test(p||""); };   // optional subjects have their own, finer tier list (Optional tab)
   var OL = officialLineGroups(kind);
   var groups, labelKey;
@@ -21194,7 +21237,7 @@ function renderChecklist(kind){
   var CHIP = {done:"Done", doing:"In progress", todo:"To do", out:"Not in your plan"};
   var ct = OL ? chapterTiers() : null;
 
-  var html = '<div class="section-title">'+(studyPlan ? esc(totalDone)+' of '+esc(planned.length)+' planned topics covered' : 'No plan yet')+'</div>'+
+  var html = tierSwitchHtml()+(studyPlan ? studyNextHtml(subjectStates(studyPlan)) : "")+'<div class="section-title">'+(studyPlan ? esc(totalDone)+' of '+esc(planned.length)+' planned topics covered' : 'No plan yet')+'</div>'+
     '<div class="card note-card">Progress here follows your Planner. Finish a chapter in the Planner and it shows as done on this page; there is nothing to tick here. '+(studyPlan ? '' : 'Build a plan to start tracking. ')+(OL ? 'Every Planner chapter is listed under the official syllabus line it belongs to. A chapter&rsquo;s tier follows how often it was asked; switch between years asked and number of questions below. Chapters in Tier 4 sit in a separate &ldquo;Rarely or never asked&rdquo; group under each line. ' : 'Tiers come from analysis of previous years&rsquo; questions. ')+'UPSC does not follow a fixed pattern, so a lower tier does not mean a topic will never be asked, and a higher tier does not mean it will be asked again.</div>';
   if(OL) html += tierModeHtml(ct.ny)+'<input type="search" id="tierQ" class="syl-search" placeholder="Search the syllabus or a topic, e.g. federal, monsoon, ethics" autocomplete="off" aria-label="Search the syllabus"><div class="muted small" id="tierQn"></div>'+
     '<div class="muted small ot-count">'+(kind==="prelims" ? 'The 7 lines of the official Prelims General Studies Paper I syllabus' : 'Every line of the official GS I&ndash;IV syllabus, in UPSC order')+', with '+all.length+' topics under them.</div>';
