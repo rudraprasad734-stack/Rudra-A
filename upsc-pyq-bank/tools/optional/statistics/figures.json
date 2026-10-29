@@ -1731,5 +1731,204 @@
    "a": "Table, matrix or formulas printed with this question: Explain the concept of confounding in design of experiment. In an experiment with three factors A, B",
    "k": "table"
   }
+ ],
+ "2024|1|1(a)": [
+  {
+   "u": "img/statistics/2024-1-1a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Two events A and B are such that P(A) = 1/3, P(B) = 1/4 and P(A / B) + P(B / A) = 2/3. Evaluate the",
+   "k": "table"
+  }
+ ],
+ "2024|1|1(b)": [
+  {
+   "u": "img/statistics/2024-1-1b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Suppose the joint probability function of two random variables X and Y is f(x, y) = x y^(x\u22121) / 3; x",
+   "k": "table"
+  }
+ ],
+ "2024|1|1(c)": [
+  {
+   "u": "img/statistics/2024-1-1c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X_1, X_2, \u2026 is a sequence of independent and identically distributed random variables with mean",
+   "k": "table"
+  }
+ ],
+ "2024|1|1(d)": [
+  {
+   "u": "img/statistics/2024-1-1d-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Write the criterion of a good estimator. Let X_1, X_2 be iid P(\u03bb) random variables, then show that T",
+   "k": "table"
+  }
+ ],
+ "2024|1|1(e)": [
+  {
+   "u": "img/statistics/2024-1-1e-1.webp",
+   "a": "Table, matrix or formulas printed with this question: For testing H_0 : \u03bc = 100 vs. H_1 : \u03bc \u2260 100, a random sample of size 50 is drawn from a normal popul",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2024-1-1e-2.webp",
+   "a": "Table, matrix or formulas printed with this question: For testing H_0 : \u03bc = 100 vs. H_1 : \u03bc \u2260 100, a random sample of size 50 is drawn from a normal popul",
+   "k": "table"
+  }
+ ],
+ "2024|1|2(a)": [
+  {
+   "u": "img/statistics/2024-1-2a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let the joint probability density function of two random variables X and Y be f(x, y) = x/3, 0 < 2x",
+   "k": "table"
+  }
+ ],
+ "2024|1|2(b)": [
+  {
+   "u": "img/statistics/2024-1-2b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Find the distribution function of random variable X, for which the characteristic function is \u03c6(t) =",
+   "k": "table"
+  }
+ ],
+ "2024|1|2(c)": [
+  {
+   "u": "img/statistics/2024-1-2c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let X_1, X_2, \u2026, X_2n be iid N(0, 1) variates. Find the limiting distribution of ( X_1/X_2 + X_3/X_4",
+   "k": "table"
+  }
+ ],
+ "2024|1|3(a)": [
+  {
+   "u": "img/statistics/2024-1-3a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let moment generating function of random variable X exist in the neighbourhood of zero and if E(X^n)",
+   "k": "table"
+  }
+ ],
+ "2024|1|3(b)": [
+  {
+   "u": "img/statistics/2024-1-3b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Write the importance of Cramer-Rao inequality and Rao-Blackwell theorem. (ii) Let X ~ B(1, \u03b8), t",
+   "k": "table"
+  }
+ ],
+ "2024|1|3(c)": [
+  {
+   "u": "img/statistics/2024-1-3c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Obtain the maximum likelihood estimates of \u03b1 and \u03b2 for a random sample from the exponential populati",
+   "k": "table"
+  }
+ ],
+ "2024|1|4(a)": [
+  {
+   "u": "img/statistics/2024-1-4a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Find the most powerful test of size \u03b1 (= 0\u00b705) for testing H_0 : \u03bc = 0 vs. H_1 : \u03bc = 1, given a rand",
+   "k": "table"
+  }
+ ],
+ "2024|1|4(b)": [
+  {
+   "u": "img/statistics/2024-1-4b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: A lot consists of some defective items. A random sample of 25 items has 6 defective items with proba",
+   "k": "table"
+  }
+ ],
+ "2024|1|4(c)": [
+  {
+   "u": "img/statistics/2024-1-4c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Differentiate between Mann-Whitney U-test and Wilcoxon sign test. The following data pertain to APGA",
+   "k": "table"
+  }
+ ],
+ "2024|1|5(a)": [
+  {
+   "u": "img/statistics/2024-1-5a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: How will you justify the usage of the principle of least squares in estimating the parameters of a l",
+   "k": "table"
+  }
+ ],
+ "2024|1|5(b)": [
+  {
+   "u": "img/statistics/2024-1-5b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) If X is distributed as N_3(\u03bc, \u03a3), find the distribution of [X_1 \u2212 X_2, X_2 \u2212 X_3]'. (ii) If X_1,",
+   "k": "table"
+  }
+ ],
+ "2024|1|5(c)": [
+  {
+   "u": "img/statistics/2024-1-5c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: X_1 and X_2 are independent data sets of order (n_1 \u00d7 p) and (n_2 \u00d7 p) respectively from N_p(\u03bc, \u03a3).",
+   "k": "table"
+  }
+ ],
+ "2024|1|5(d)": [
+  {
+   "u": "img/statistics/2024-1-5d-1.webp",
+   "a": "Table, matrix or formulas printed with this question: For the population U = {a, b, c, d, e}, consider the following sampling design : P({a, b, d}) = 1/6,",
+   "k": "table"
+  }
+ ],
+ "2024|1|5(e)": [
+  {
+   "u": "img/statistics/2024-1-5e-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Let the incidence matrix of a design be N = [[1, 1, 1, 0], [1, 1, 0, 1], [1, 0, 1, 1], [0, 1, 1, 1]]",
+   "k": "table"
+  }
+ ],
+ "2024|1|6(a)": [
+  {
+   "u": "img/statistics/2024-1-6a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (X, Y) has bivariate normal distribution BN(\u03bc_1, \u03bc_2, \u03c3_1^2, \u03c3_2^2, \u03c1). (i) Show that X and Y are in",
+   "k": "table"
+  }
+ ],
+ "2024|1|6(b)": [
+  {
+   "u": "img/statistics/2024-1-6b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: Define principal components and canonical correlation. How can one attain data reduction using princ",
+   "k": "table"
+  }
+ ],
+ "2024|1|6(c)": [
+  {
+   "u": "img/statistics/2024-1-6c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: For the simple linear regression model y = \u03b2_0 + \u03b2_1 x + \u03b5, where \u03b2_0 and \u03b2_1 are parameters and \u03b5 h",
+   "k": "table"
+  }
+ ],
+ "2024|1|7(a)": [
+  {
+   "u": "img/statistics/2024-1-7a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: A very big population is divided into two strata. The allocation of units of stratified random sampl",
+   "k": "table"
+  }
+ ],
+ "2024|1|7(b)": [
+  {
+   "u": "img/statistics/2024-1-7b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: A bank has 40000 clients in its computer files, divided into 4000 branches, each managing exactly 10",
+   "k": "table"
+  }
+ ],
+ "2024|1|7(c)": [
+  {
+   "u": "img/statistics/2024-1-7c-1.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Verify whether the following BIBD are possible : (1) v = b = 22, r = k = 7, \u03bb = 2 (2) v = 10, b",
+   "k": "table"
+  },
+  {
+   "u": "img/statistics/2024-1-7c-2.webp",
+   "a": "Table, matrix or formulas printed with this question: (i) Verify whether the following BIBD are possible : (1) v = b = 22, r = k = 7, \u03bb = 2 (2) v = 10, b",
+   "k": "table"
+  }
+ ],
+ "2024|1|8(a)": [
+  {
+   "u": "img/statistics/2024-1-8a-1.webp",
+   "a": "Table, matrix or formulas printed with this question: A 2^2-factorial design was used to develop the yield of a crop. Two factors A and B were used at two",
+   "k": "table"
+  }
+ ],
+ "2024|1|8(b)": [
+  {
+   "u": "img/statistics/2024-1-8b-1.webp",
+   "a": "Table, matrix or formulas printed with this question: To estimate the population mean \u0232 of a characteristic Y, a simple random sample of size 1000 was sel",
+   "k": "table"
+  }
  ]
 }

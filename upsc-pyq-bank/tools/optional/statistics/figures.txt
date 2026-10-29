@@ -234,7 +234,7 @@
 2023|1|2(a)|4|0.08,0.328,0.97,0.578|Table, matrix or formulas printed with this question: Let X, Y, Z be three mutually independent standard exponential variates and W_1 = X + Y + Z, W_2 = (|table
 2023|1|2(b)|4|0.08,0.779,0.97,0.900|Table, matrix or formulas printed with this question: Give an example to prove or disapprove the following : P(lim sup A_n) = 0 ⇒ Σ_(k=1)^(∞) P(A_k) < ∞, |table
 2023|1|2(c)|5|0.08,0.129,0.97,0.200|Table, matrix or formulas printed with this question: Let {Y_n, n ≥ 1} be a sequence of random variables and Y be a degenerate random variable. Examine wh|table
-2023|1|3(a)|5|0.08,0.406,0.97,0.464|Table, matrix or formulas printed with this question: (i) If X is a random variable with finite variance, show that lim (n → ∞) n^2 P{/X/ > n} = 0. (10) (|table
+2023|1|3(a)|5|0.08,0.406,0.97,0.612|Table, matrix or formulas printed with this question: (i) If X is a random variable with finite variance, show that lim (n → ∞) n^2 P{/X/ > n} = 0. (10) (|table
 2023|1|3(b)|5|0.08,0.761,0.97,0.922|Table, matrix or formulas printed with this question: Determine whether the sequence of mutually independent random variables {X_n, n ≥ 1}, in which P(X_n|table
 2023|1|3(c)|6|0.08,0.206,0.97,0.334|Table, matrix or formulas printed with this question: Define Sequential Probability Ratio Test (SPRT) along with its operating characteristic function and|table
 2023|1|4(a)|6|0.08,0.485,0.97,0.570|Table, matrix or formulas printed with this question: What is the role of properties of completeness and sufficiency in Statistical Inference ? Explain. I|table
@@ -250,3 +250,32 @@
 2023|1|7(b)|12|0.08,0.049,0.97,0.340|Table, matrix or formulas printed with this question: The table given below gives the population and sample sizes, stratum means and variance of a stratif|table
 2023|1|8(a)|12|0.08,0.632,0.97,0.698|Table, matrix or formulas printed with this question: Differentiate between randomised block design and balanced incomplete block design. In usual notatio|table
 2023|1|8(b)|12|0.08,0.814,0.97,0.919|Table, matrix or formulas printed with this question: Explain the concept of confounding in design of experiment. In an experiment with three factors A, B|table
+2024|1|1(a)|2|0.08,0.196,0.97,0.297|Table, matrix or formulas printed with this question: Two events A and B are such that P(A) = 1/3, P(B) = 1/4 and P(A / B) + P(B / A) = 2/3. Evaluate the |table
+2024|1|1(b)|2|0.08,0.459,0.97,0.608|Table, matrix or formulas printed with this question: Suppose the joint probability function of two random variables X and Y is f(x, y) = x y^(x−1) / 3; x|table
+2024|1|1(c)|2|0.08,0.682,0.97,0.757|Table, matrix or formulas printed with this question: Let X_1, X_2, … is a sequence of independent and identically distributed random variables with mean |table
+2024|1|1(d)|2|0.08,0.827,0.97,0.882|Table, matrix or formulas printed with this question: Write the criterion of a good estimator. Let X_1, X_2 be iid P(λ) random variables, then show that T|table
+2024|1|1(e)|3|0.08,0.107,0.97,0.176|Table, matrix or formulas printed with this question: For testing H_0 : μ = 100 vs. H_1 : μ ≠ 100, a random sample of size 50 is drawn from a normal popul|table
+2024|1|1(e)|3|0.08,0.193,0.97,0.876|Table, matrix or formulas printed with this question: For testing H_0 : μ = 100 vs. H_1 : μ ≠ 100, a random sample of size 50 is drawn from a normal popul|table
+2024|1|2(a)|4|0.08,0.240,0.97,0.411|Table, matrix or formulas printed with this question: Let the joint probability density function of two random variables X and Y be f(x, y) = x/3, 0 < 2x |table
+2024|1|2(b)|4|0.08,0.603,0.97,0.761|Table, matrix or formulas printed with this question: Find the distribution function of random variable X, for which the characteristic function is φ(t) =|table
+2024|1|2(c)|5|0.08,0.056,0.97,0.143|Table, matrix or formulas printed with this question: Let X_1, X_2, …, X_2n be iid N(0, 1) variates. Find the limiting distribution of ( X_1/X_2 + X_3/X_4|table
+2024|1|3(a)|5|0.08,0.355,0.97,0.547|Table, matrix or formulas printed with this question: Let moment generating function of random variable X exist in the neighbourhood of zero and if E(X^n)|table
+2024|1|3(b)|5|0.08,0.631,0.97,0.714|Table, matrix or formulas printed with this question: (i) Write the importance of Cramer-Rao inequality and Rao-Blackwell theorem. (ii) Let X ~ B(1, θ), t|table
+2024|1|3(c)|5|0.08,0.809,0.97,0.875|Table, matrix or formulas printed with this question: Obtain the maximum likelihood estimates of α and β for a random sample from the exponential populati|table
+2024|1|4(a)|6|0.08,0.106,0.97,0.144|Table, matrix or formulas printed with this question: Find the most powerful test of size α (= 0·05) for testing H_0 : μ = 0 vs. H_1 : μ = 1, given a rand|table
+2024|1|4(b)|6|0.08,0.275,0.97,0.393|Table, matrix or formulas printed with this question: A lot consists of some defective items. A random sample of 25 items has 6 defective items with proba|table
+2024|1|4(c)|6|0.08,0.528,0.97,0.666|Table, matrix or formulas printed with this question: Differentiate between Mann-Whitney U-test and Wilcoxon sign test. The following data pertain to APGA|table
+2024|1|5(a)|6|0.08,0.797,0.97,0.881|Table, matrix or formulas printed with this question: How will you justify the usage of the principle of least squares in estimating the parameters of a l|table
+2024|1|5(b)|7|0.08,0.154,0.97,0.261|Table, matrix or formulas printed with this question: (i) If X is distributed as N_3(μ, Σ), find the distribution of [X_1 − X_2, X_2 − X_3]'. (ii) If X_1,|table
+2024|1|5(c)|7|0.08,0.369,0.97,0.472|Table, matrix or formulas printed with this question: X_1 and X_2 are independent data sets of order (n_1 × p) and (n_2 × p) respectively from N_p(μ, Σ). |table
+2024|1|5(d)|7|0.08,0.692,0.97,0.885|Table, matrix or formulas printed with this question: For the population U = {a, b, c, d, e}, consider the following sampling design : P({a, b, d}) = 1/6,|table
+2024|1|5(e)|8|0.08,0.270,0.97,0.468|Table, matrix or formulas printed with this question: Let the incidence matrix of a design be N = [[1, 1, 1, 0], [1, 1, 0, 1], [1, 0, 1, 1], [0, 1, 1, 1]]|table
+2024|1|6(a)|8|0.08,0.700,0.97,0.886|Table, matrix or formulas printed with this question: (X, Y) has bivariate normal distribution BN(μ_1, μ_2, σ_1^2, σ_2^2, ρ). (i) Show that X and Y are in|table
+2024|1|6(b)|9|0.08,0.186,0.97,0.299|Table, matrix or formulas printed with this question: Define principal components and canonical correlation. How can one attain data reduction using princ|table
+2024|1|6(c)|9|0.08,0.396,0.97,0.469|Table, matrix or formulas printed with this question: For the simple linear regression model y = β_0 + β_1 x + ε, where β_0 and β_1 are parameters and ε h|table
+2024|1|7(a)|9|0.08,0.701,0.97,0.882|Table, matrix or formulas printed with this question: A very big population is divided into two strata. The allocation of units of stratified random sampl|table
+2024|1|7(b)|10|0.08,0.403,0.97,0.707|Table, matrix or formulas printed with this question: A bank has 40000 clients in its computer files, divided into 4000 branches, each managing exactly 10|table
+2024|1|7(c)|11|0.08,0.058,0.97,0.143|Table, matrix or formulas printed with this question: (i) Verify whether the following BIBD are possible : (1) v = b = 22, r = k = 7, λ = 2 (2) v = 10, b |table
+2024|1|7(c)|11|0.08,0.324,0.97,0.503|Table, matrix or formulas printed with this question: (i) Verify whether the following BIBD are possible : (1) v = b = 22, r = k = 7, λ = 2 (2) v = 10, b |table
+2024|1|8(a)|12|0.08,0.058,0.97,0.384|Table, matrix or formulas printed with this question: A 2^2-factorial design was used to develop the yield of a crop. Two factors A and B were used at two|table
+2024|1|8(b)|12|0.08,0.552,0.97,0.725|Table, matrix or formulas printed with this question: To estimate the population mean Ȳ of a characteristic Y, a simple random sample of size 1000 was sel|table
