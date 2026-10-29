@@ -1399,7 +1399,7 @@
   #view-dashboard .timer-card > .today-tg{position:absolute; right:16px; top:calc(64px + 38px + 40px + 12px + env(safe-area-inset-top,0px)); z-index:9; width:40px; height:40px; border-radius:50%; border:1px solid rgba(255,255,255,.25); background:rgba(0,0,0,.45); color:rgba(255,255,255,.85); display:grid; place-items:center; cursor:pointer; padding:0;}
   .today-tg.hide{display:none;} .today-tg svg{width:18px; height:18px; transition:transform .25s ease;} .today-tg.open{border-color:rgba(46,230,214,.7); color:#2ee6d6;} .today-tg.open svg{transform:rotate(180deg);}
   #view-dashboard .timer-card > .goal-strip{top:calc(64px + 38px + 40px + 12px + 40px + 10px + env(safe-area-inset-top,0px));}
-  .goal-strip{display:none;} .goal-strip.open{display:block;} #view-dashboard .timer-card > .goal-strip.open{z-index:12;} .goal-strip .gs-top, .goal-strip .gs-list{background:rgba(6,20,24,.96);} .goal-strip .gs-days{background:rgba(6,20,24,.96); margin:8px 0 0; padding:8px 0 4px; border-radius:16px; border:1px solid rgba(46,230,214,.2);}
+  .goal-strip{display:none;} .goal-strip.open{display:block;} #view-dashboard .timer-card > .goal-strip.open{z-index:12;} .goal-strip .gs-top, .goal-strip .gs-list{background:rgba(6,20,24,.4); -webkit-backdrop-filter:blur(5px); backdrop-filter:blur(5px); text-shadow:0 1px 3px rgba(0,0,0,.8),0 0 8px rgba(0,0,0,.6);} .goal-strip .gs-days{background:rgba(6,20,24,.4); -webkit-backdrop-filter:blur(5px); backdrop-filter:blur(5px); margin:8px 0 0; padding:8px 0 4px; border-radius:16px; border:1px solid rgba(46,230,214,.2);}
   .gs-top{cursor:default !important;}
   .gs-list{margin-top:8px; padding:10px 14px 8px; border-radius:18px; background:rgba(8,24,28,.78); border:1px solid rgba(46,230,214,.35); backdrop-filter:blur(10px);}
   .gs-body{max-height:clamp(60px, calc(100vh - 585px), 210px); overflow:auto; -webkit-overflow-scrolling:touch;}
@@ -20690,7 +20690,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "254";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "255";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
