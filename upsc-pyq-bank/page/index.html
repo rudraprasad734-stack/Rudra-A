@@ -1406,7 +1406,7 @@
   #view-dashboard .timer-card > .today-tg{position:absolute; right:16px; top:calc(64px + 38px + 40px + 12px + env(safe-area-inset-top,0px)); z-index:9; width:40px; height:40px; border-radius:50%; border:1px solid rgba(255,255,255,.25); background:rgba(0,0,0,.45); color:rgba(255,255,255,.85); display:grid; place-items:center; cursor:pointer; padding:0;}
   .today-tg.hide{display:none;} .today-tg svg{width:18px; height:18px; transition:transform .25s ease;} .today-tg.open{border-color:rgba(46,230,214,.7); color:#2ee6d6;} .today-tg.open svg{transform:rotate(180deg);}
   #view-dashboard .timer-card > .goal-strip{top:calc(64px + 38px + 40px + 12px + 40px + 2px + env(safe-area-inset-top,0px));}
-  .goal-strip{display:none;} .goal-strip.open{display:block;} #view-dashboard .timer-card > .goal-strip.open{z-index:12;} .goal-strip .gs-top, .goal-strip .gs-list{background:rgba(6,20,24,.4); -webkit-backdrop-filter:blur(5px); backdrop-filter:blur(5px); text-shadow:0 1px 3px rgba(0,0,0,.8),0 0 8px rgba(0,0,0,.6);} .goal-strip .gs-days{background:rgba(6,20,24,.4); -webkit-backdrop-filter:blur(5px); backdrop-filter:blur(5px); margin:8px 0 0; padding:8px 0 4px; border-radius:16px; border:1px solid rgba(46,230,214,.2);}
+  .goal-strip{display:none;} .goal-strip.open{display:block;} #view-dashboard .timer-card > .goal-strip.open{z-index:12;} .goal-strip .gs-top, .goal-strip .gs-list{background:rgba(5,16,20,.58); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); text-shadow:0 1px 3px rgba(0,0,0,.8),0 0 8px rgba(0,0,0,.6);} .goal-strip .gs-days{background:rgba(5,16,20,.58); -webkit-backdrop-filter:blur(12px); backdrop-filter:blur(12px); margin:8px 0 0; padding:8px 0 4px; border-radius:16px; border:1px solid rgba(46,230,214,.2);}
   .gs-top{cursor:default !important;}
   .gs-list{margin-top:8px; padding:10px 14px 8px; border-radius:18px; background:rgba(8,24,28,.78); border:1px solid rgba(46,230,214,.35); backdrop-filter:blur(10px);}
   .gs-body{max-height:clamp(60px, calc(100vh - 585px), 210px); overflow:auto; -webkit-overflow-scrolling:touch;}
@@ -1426,13 +1426,22 @@
   .td-up{padding:5px 0 0;border-top:1px solid rgba(255,255,255,.08)} .td-up .td-h{color:#ffc857}
   .td-u{display:flex;align-items:center;gap:6px;font-size:12px;padding:1px 0} .td-u small{opacity:.6}
   .td-a .td-t b{font-weight:600} .td-ai{flex:none;font-size:14px} .td-dur{margin-left:auto;flex:none;opacity:.65;font-size:11.5px} .td-done{opacity:.55}
-  .goal-strip{transform-origin:50% 0}
+  .goal-strip{transform-origin:50% 0; color:#f2fbfa}
+  /* the dropdown is always dark glass, so its text and chips use fixed light colours instead of the app theme's (which are tuned for the theme's own surface) */
+  .goal-strip .muted, .goal-strip .gs-t small{color:rgba(242,251,250,.78)}
+  .goal-strip .chip{border:1px solid transparent; font-weight:700} .goal-strip .chip.tier1{background:rgba(6,24,28,.78); color:#8ffaee; border-color:rgba(53,240,214,.7)}
+  .goal-strip .chip.tier2{background:rgba(6,24,28,.78); color:#ffdf9a; border-color:rgba(255,200,87,.7)} .goal-strip .chip.tier3{background:rgba(6,24,28,.78); color:#bde2ff; border-color:rgba(124,196,255,.7)}
+  .goal-strip .chip.tier4{background:rgba(6,24,28,.78); color:#ecd7ff; border-color:rgba(213,166,255,.7)}
+  .goal-strip .pm-p{background:rgba(6,24,28,.78); color:#bde2ff} .goal-strip .pm-m{background:rgba(6,24,28,.78); color:#ffdf9a} .goal-strip .pm0{color:rgba(242,251,250,.8)}
+  .goal-strip .td-h{color:#e0ccff} .goal-strip .td-up .td-h{color:#ffdb8e} .goal-strip .td-sub>summary, .goal-strip .link-btn{color:#64f2e0}
+  .goal-strip .gs-list h4{color:rgba(242,251,250,.75)} .goal-strip .td-note, .goal-strip .td-stu{color:rgba(242,251,250,.8); opacity:1}
   .goal-strip.td-t1 .gs-top{padding:6px 12px} .goal-strip.td-t1 .td-list{padding:6px 12px 4px} .goal-strip.td-t1 .td-s{padding:3px 0} .goal-strip.td-t1 .td-sub ul li:nth-child(n+2){display:none} .goal-strip.td-t1 .td-sub ul li.td-more{display:list-item}
   .goal-strip.td-t2 .td-note, .goal-strip.td-t2 .td-stu{display:none} .goal-strip.td-t2 .td-sub ul{display:none}
   .goal-strip.td-t3 .td-up, .goal-strip.td-t3 .td-pm .muted{display:none}
   .goal-strip.opening{animation:tdRollIn .5s cubic-bezier(.2,.85,.25,1) both} .goal-strip.closing{animation:tdRollOut .42s cubic-bezier(.55,0,.85,.45) both}
-  @keyframes tdRollIn{from{opacity:0;transform:perspective(900px) rotateX(-85deg) scaleY(.15)}to{opacity:1;transform:perspective(900px) rotateX(0) scaleY(1)}}
-  @keyframes tdRollOut{from{opacity:1;transform:perspective(900px) rotateX(0) scaleY(1)}to{opacity:0;transform:perspective(900px) rotateX(-85deg) scaleY(.15)}}
+  /* transform only: an opacity or clip-path animation on the strip would stop its panels blurring the timer behind them until the roll finished */
+  @keyframes tdRollIn{from{transform:perspective(900px) rotateX(-85deg) scaleY(.15)}to{transform:perspective(900px) rotateX(0) scaleY(1)}}
+  @keyframes tdRollOut{from{transform:perspective(900px) rotateX(0) scaleY(1)}to{transform:perspective(900px) rotateX(-85deg) scaleY(.15)}}
   @media (prefers-reduced-motion:reduce){ .goal-strip.opening,.goal-strip.closing{animation-duration:.01s} }
   .td-note{font-size:10.5px;opacity:.6;margin-top:1px} .td-none{font-size:12px;opacity:.7}
   .td-stu{margin-top:4px;padding-top:4px;border-top:1px solid rgba(255,255,255,.08);font-size:12px;opacity:.85}
@@ -20735,7 +20744,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "259";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "260";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
