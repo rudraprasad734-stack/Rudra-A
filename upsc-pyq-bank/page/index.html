@@ -174,7 +174,7 @@
   /* CA Quiz */
   /* Current Affairs Quizzes: a full-screen game that covers the app while it is open */
   body.caq-on{overflow:hidden;} body.caq-on .toast{z-index:300;}
-  #caqGame{position:fixed; inset:0; z-index:150; display:none; flex-direction:column; background:#06161b; color:#e8ffff; --ink:#e8ffff; --ink-soft:#9fd8d0; --surface:#0a262c; --surface-solid:#0a262c; --line:#1d5a60; --bg:#06161b; --tab-accent:#3dd6c0; --tab-accent-soft:#103a40; --tab-accent-ink:#022; --link:#7fe8dc;}
+  #caqGame{position:fixed; inset:0; height:100vh; height:100dvh; z-index:150; display:none; flex-direction:column; background:#06161b; color:#e8ffff; --ink:#e8ffff; --ink-soft:#9fd8d0; --surface:#0a262c; --surface-solid:#0a262c; --line:#1d5a60; --bg:#06161b; --tab-accent:#3dd6c0; --tab-accent-soft:#103a40; --tab-accent-ink:#022; --link:#7fe8dc;}
   #caqGame .btn.primary{background:linear-gradient(90deg,#2de0d0,#5bc8ff); color:#022; border:0; border-radius:14px; font-weight:800; padding:14px; box-shadow:0 5px 0 #1a7f8f;} #caqGame .btn.ghost{background:transparent; border:1px solid #2a8a8a; color:#e8ffff; border-radius:14px; padding:12px;}
   #caqGame .link-btn{color:#5ee9dd;} #caqGame .card{background:#0a262c; border:1px solid #1d5a60; border-radius:16px; margin-bottom:12px;} #caqGame .chip{background:#0f3a40; color:#e8ffff;}
   .cg-hud{flex:none; display:flex; align-items:center; gap:8px; padding:max(12px, env(safe-area-inset-top)) 12px 8px; background:linear-gradient(#06161b 70%, #06161b00); position:relative; z-index:8;}
@@ -182,6 +182,7 @@
   .cg-x{width:40px; height:40px; flex:none; border-radius:13px; background:#0a262ccc; border:1px solid #1d5a60; color:#cff; font-size:20px; display:grid; place-items:center; cursor:pointer;}
   .cg-pill{background:#0a262ccc; border:1px solid #1d5a60; border-radius:20px; padding:6px 10px; font-weight:700; font-size:13px; flex:none;}
   .cg-body{flex:1; overflow-y:auto; position:relative; padding:0 16px 28px; -webkit-overflow-scrolling:touch;} .cg-qbody,.cg-res{padding-top:4px;}
+  #caqGame[data-s="road"],#caqGame[data-s="map"]{background:#0f5a40;} .cg-hud.over{position:absolute; left:0; right:0; top:0; background:linear-gradient(rgba(6,22,27,.5) 0, rgba(6,22,27,.28) 60%, rgba(6,22,27,0) 100%); padding-bottom:18px; pointer-events:none;} .cg-hud.over > *{pointer-events:auto;} .cg-hud.over .cg-x,.cg-hud.over .cg-pill{background:rgba(6,22,27,.62); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);} .cg-hud.over .cg-c{text-shadow:0 1px 6px #000a; pointer-events:none;} .cg-sky .cg-top{padding-top:calc(max(12px, env(safe-area-inset-top)) + 56px);}
   .cg-sky{background:linear-gradient(#0b2d4a,#0d4a55 40%,#0f5a40);} .cg-top{padding-top:6px;} .cg-note{text-align:center; color:#9fd8d0; font-size:12px; opacity:.8; margin:0;}
   .cg-daily{display:block; width:100%; background:linear-gradient(135deg,#ffd27a,#ff9d5a); color:#331; border:0; border-radius:20px; padding:14px; text-align:center; box-shadow:0 8px 0 #a3571a; font:inherit; cursor:pointer;} .cg-daily small{display:block; opacity:.7; font-size:11px; letter-spacing:.1em;} .cg-daily b{display:block; font:800 26px Georgia,serif;} .cg-daily span{font-weight:700; font-size:13px;} .cg-daily[disabled]{opacity:.6; box-shadow:none;}
   .cg-cont{display:block; width:100%; margin-top:16px; background:#0a262ccc; border:1px solid #e8b24a; color:#ffd27a; border-radius:14px; padding:11px; font:inherit; font-weight:700; cursor:pointer; text-align:center;} .cg-cont.weak{border-color:#ff9d7a; color:#ffb39a; margin-top:8px;}
@@ -19041,12 +19042,12 @@ function caqHost(){
   return h;
 }
 function caqHide(){ var h = document.getElementById("caqGame"); if(h) h.style.display = "none"; document.body.classList.remove("caq-on"); }
-function caqHud(l, c, r){ return '<div class="cg-hud">'+l+'<div class="cg-c">'+c+'</div>'+(r || '<span class="cg-sp"></span>')+'</div>'; }
+function caqHud(l, c, r, over){ return '<div class="cg-hud'+(over ? " over" : "")+'">'+l+'<div class="cg-c">'+c+'</div>'+(r || '<span class="cg-sp"></span>')+'</div>'; }
 function caqBtn(a, label, txt, extra){ return '<button type="button" class="cg-x" data-caq="'+a+'" aria-label="'+label+'"'+(extra || "")+'>'+txt+'</button>'; }
 
 function caqMapHtml(){
   var all = caqAllIds(), un = caqUnanswered(all).length, stk = caqStreak(), v = caqRunLoad(), wk = caqWeak();
-  var h = caqHud(caqBtn("exit", "Close", "✕"), "Current Affairs Quizzes", '<span class="cg-pill">🔥 '+stk+'</span><span class="cg-pill">⭐ '+caqTotalStars()+'</span>')+'<div class="cg-body cg-sky" data-sk="map">';
+  var h = caqHud(caqBtn("exit", "Close", "✕"), "Current Affairs Quizzes", '<span class="cg-pill">🔥 '+stk+'</span><span class="cg-pill">⭐ '+caqTotalStars()+'</span>', true)+'<div class="cg-body cg-sky" data-sk="map">';
   h += '<div class="cg-top"><button type="button" class="cg-daily" data-caq="daily"'+(un ? "" : " disabled")+'><small>TODAY</small><b>Daily 10</b><span>'+(un ? "Mixed subjects · about 6 minutes · tap to play" : "You have done every question so far")+'</span></button>';
   if(v) h += '<button type="button" class="cg-cont" data-caq="resume">▶ Continue: '+esc(v.title || "Quiz")+' · question '+(Math.min(v.res.length, v.ids.length-1)+1)+'</button>';
   if(wk.length) h += '<button type="button" class="cg-cont weak" data-caq="weak">🎯 Practise weak topics: '+esc(wk.join(", "))+'</button>';
@@ -19078,7 +19079,7 @@ function caqRoadModel(si){
 }
 function caqRoadHtml(){
   var si = caq.ui.subj || 0, M = caqRoadModel(si), lk = CAQ_LOOK[M.subj] || ["", "#456"], st = 0; M.sets.forEach(function(x){ st += x.stars; });
-  var h = caqHud(caqBtn("mapback", "Back to the subject map", "‹"), esc(M.subj), '<span class="cg-pill">⭐ '+st+'</span>')+'<div class="cg-body cg-roadbody" id="cgSc" data-sk="road'+si+'"><div class="cg-world" style="height:'+M.H+'px">';
+  var h = caqHud(caqBtn("mapback", "Back to the subject map", "‹"), esc(M.subj), '<span class="cg-pill">⭐ '+st+'</span>', true)+'<div class="cg-body cg-roadbody" id="cgSc" data-sk="road'+si+'"><div class="cg-world" style="height:'+M.H+'px">';
   var cl = "", tr = "", k;
   for(k = 0; k*230 < M.H; k++) cl += '<div class="cg-cloud" style="left:'+((k*37+11)%70)+'%;top:'+(k*230+40)+'px;opacity:'+(0.5+(k%3)*0.15)+'"></div>';
   for(k = 0; k*150 < M.H; k++) tr += '<div class="cg-tree'+(k%3===0 ? " big" : "")+'" style="'+(k%2 ? "right" : "left")+':'+(2+(k%4)*2)+'px;top:'+(k*150+30)+'px">'+(k%2 ? "🌲" : "🌳")+'</div>';
@@ -19161,6 +19162,7 @@ function renderCaQuiz(){
     return;
   }
   var u = caq.ui, r = u.run, old = host.querySelector(".cg-body"), oldKey = old ? old.getAttribute("data-sk") : "", oldTop = old ? old.scrollTop : 0;
+  host.setAttribute("data-s", !r && u.screen==="road" ? "road" : (!r ? "map" : "quiz"));
   host.innerHTML = r ? (r.done ? caqResultHtml() : caqQuestionHtml()) : (u.screen==="road" ? caqRoadHtml() : caqMapHtml());
   var b = host.querySelector(".cg-body"), same = b && b.getAttribute("data-sk")===oldKey;
   if(u.screen==="road" && !r) caqRoadInit(host, !same, oldTop);
@@ -21417,7 +21419,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "284";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "286";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
