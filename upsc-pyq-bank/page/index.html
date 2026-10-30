@@ -19956,7 +19956,7 @@ function tdFp(){ var l = document.getElementById("d-linkmap"), q = document.getE
 function tdEntry(l){
   if(!TDC || !TDC.c) return null;
   if(TDC._ok===undefined) TDC._ok = TDC.fp===tdFp();
-  return TDC._ok ? (TDC.c[linkHash(l.id)] || null) : null;   // keyed by a short hash of the chapter id to keep the table small
+  return TDC._ok ? (TDC.c[linkHash(l.id || (l.subject+"|"+l.group+"|"+l.unit))] || null) : null;   // Planner rows pass subject/group/unit without an id   // keyed by a short hash of the chapter id to keep the table small
 }
 function tdTier(l){ var c = tdEntry(l); if(c) return c[0]; if(!chapterWarmDone) throw TD_WAIT; return tierRank(tierInfo(l)); }
 function tdSplit(l){
@@ -20974,7 +20974,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "271";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "272";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
