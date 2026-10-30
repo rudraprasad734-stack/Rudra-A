@@ -176,7 +176,7 @@
   .caq .caq-month .btn.ghost{width:auto; margin:0; padding:8px 16px; flex:none;} .caq h2{margin:2px 0 4px;}
   .caq-hero h2{margin:2px 0 4px; font-size:24px;} .caq-hero .btn{margin:12px 0 8px; width:100%;}
   .caq-bar{height:8px; border-radius:5px; background:color-mix(in srgb,var(--ink) 12%, transparent); overflow:hidden; flex:1;} .caq-bar i{display:block; height:100%; background:var(--tab-accent);}
-  .caq-month .caq-bar{margin-top:10px;} .caq-nav{display:flex; justify-content:space-between; gap:8px; margin:6px 0 4px;} .caq-nav .link-btn{padding:8px 4px; font-size:13px; min-height:36px;} .caq-nav .link-btn:disabled{opacity:.35;} .caq-resume .caq-r{margin-top:10px;} .caq-resume .btn{width:auto; flex:1;}
+  .caq-month .caq-bar{margin-top:10px;} .caq-nav{display:flex; justify-content:space-between; gap:8px; margin:6px 0 4px;} .caq-nav .link-btn{padding:8px 4px; font-size:13px; min-height:36px;} .caq-nav .link-btn:disabled{opacity:.35;} .caq-back{margin-top:10px; text-align:left;} .caq-back .link-btn{padding:8px 4px; font-size:14px; min-height:36px;} .caq-back .link-btn:disabled{opacity:.35;} .caq-resume .caq-r{margin-top:10px;} .caq-resume .btn{width:auto; flex:1;}
   .caq-prog{display:flex; align-items:center; gap:10px; font-size:13px; color:var(--ink-soft);}
   .caq-tags{margin:12px 0 4px;} .caq-tags .chip{margin:0 6px 6px 0;} .chip.pre{background:color-mix(in srgb,#2ee6d6 16%, transparent); color:var(--ink);} .chip.mains{background:color-mix(in srgb,#b896ff 20%, transparent); color:var(--ink);}
   .caq-q{font-family:var(--font-display); font-size:19px; line-height:1.42; margin:8px 0 14px;}
@@ -18979,7 +18979,7 @@ function caqSrcHtml(q){
 function caqQuestionHtml(){
   var r = caq.ui.run, q = caq.qs[r.ids[r.i]], L = "ABCDEF", reported = caqData.reports.some(function(x){ return x.id===q.id; });
   var h = '<div class="caq-prog"><span>'+(r.i+1)+' / '+r.ids.length+'</span><div class="caq-bar"><i style="width:'+Math.round(100*(r.i+(r.checked ? 1 : 0))/r.ids.length)+'%"></i></div></div>'+
-    '<div class="caq-nav"><button type="button" class="link-btn" data-caq="back"'+(r.i===0 ? " disabled" : "")+'>&lsaquo; Back</button><button type="button" class="link-btn" data-caq="restart">&#8635; Restart</button><button type="button" class="link-btn" data-caq="home">CA Quiz home</button></div>'+
+    '<div class="caq-nav"><button type="button" class="link-btn" data-caq="home">&lsaquo; CA Quiz home</button><button type="button" class="link-btn" data-caq="restart">&#8635; Restart</button></div>'+
     '<div class="caq-tags"><span class="chip '+(q.exam==="mains" ? "mains" : "pre")+'">'+(q.exam==="mains" ? "Mains" : "Prelims")+'</span><span class="chip">'+esc(q.subject)+(q.syllabus ? ' &middot; '+esc(q.syllabus) : "")+'</span></div>'+
     '<div class="caq-q">'+esc(q.q).replace(/\n/g, "<br>")+'</div>';
   h += q.opts.map(function(o, i){
@@ -18987,10 +18987,11 @@ function caqQuestionHtml(){
     if(r.checked){ if(i===q.ans) cls += " ok"; else if(i===r.pick) cls += " bad"; else cls += " dim"; } else if(i===r.pick) cls += " sel";
     return '<button type="button" class="'+cls+'" data-caq="opt" data-i="'+i+'"'+(r.checked ? " disabled" : "")+'><span class="l">'+(r.checked && i===q.ans ? "&#10003;" : (r.checked && i===r.pick ? "&#10005;" : L.charAt(i)))+'</span><span>'+esc(o)+'</span></button>';
   }).join("");
-  if(!r.checked) return h+'<button type="button" class="btn primary" data-caq="check"'+(r.pick<0 ? " disabled" : "")+'>Check answer</button>';
+  var back = '<div class="caq-back"><button type="button" class="link-btn" data-caq="back"'+(r.i===0 ? " disabled" : "")+'>&lsaquo; Back</button></div>';
+  if(!r.checked) return h+'<button type="button" class="btn primary" data-caq="check"'+(r.pick<0 ? " disabled" : "")+'>Check answer</button>'+back;
   h += (q.why ? '<div class="caq-why"><b>WHY</b>'+esc(q.why)+'</div>' : "")+(q.insight ? '<div class="caq-why ins"><b>INSIGHT</b>'+esc(q.insight)+'</div>' : "")+caqSrcHtml(q)+
     '<button type="button" class="btn primary" data-caq="next">'+(r.i+1 < r.ids.length ? "Next question" : "See my result")+'</button>'+
-    '<button type="button" class="caq-report" data-caq="report" data-id="'+esc(q.id)+'">'+(reported ? "&#9873; Reported. Thank you" : "&#9873; Report answer")+'</button>';
+    '<button type="button" class="caq-report" data-caq="report" data-id="'+esc(q.id)+'">'+(reported ? "&#9873; Reported. Thank you" : "&#9873; Report answer")+'</button>'+back;
   return h;
 }
 function caqResultHtml(){
@@ -21277,7 +21278,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "281";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "282";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
