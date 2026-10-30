@@ -463,6 +463,94 @@
     "date": "7 Sep 2026"
    },
    "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-022",
+   "subject": "IR",
+   "syllabus": "International organisations",
+   "exam": "pre",
+   "q": "The UN General Assembly adopted the 'Correct the Map' resolution on 4 September 2026 (164 in favour, 1 against). Which is correct?",
+   "opts": [
+    "It is legally binding on all member states",
+    "It encourages the use of the Equal Earth and other equal-area maps; it is non-binding and was led by Togo and the African Union",
+    "It bans the Mercator projection in all UN publications",
+    "It changes the recognised borders of African countries"
+   ],
+   "ans": 1,
+   "why": "The text asks governments, schools and companies to use equal-area maps when relative size matters. The EU said it has no bearing on borders or sovereignty.",
+   "insight": "The Mercator map stretches areas near the poles, which makes Africa look smaller than it is.",
+   "src": {
+    "name": "UN Press",
+    "url": "https://press.un.org/en/2026/ga12779.doc.htm",
+    "date": "4 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-023",
+   "subject": "Economy",
+   "syllabus": "Financial markets",
+   "exam": "pre",
+   "q": "In the Global Financial Centres Index 40 (September 2026), GIFT City ranked:",
+   "opts": [
+    "58th, down from 46th",
+    "1st in Asia",
+    "37th, up nine places from 46th",
+    "12th, up from 40th"
+   ],
+   "ans": 2,
+   "why": "GFCI 40 was published on 16 September 2026 and covers 117 centres in its main index.",
+   "insight": "GIFT City in Gujarat is India's first International Financial Services Centre, regulated by the IFSCA.",
+   "src": {
+    "name": "Long Finance, GFCI 40",
+    "url": "https://www.longfinance.net/publications/long-finance-reports/the-global-financial-centres-index-40/",
+    "date": "16 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-024",
+   "subject": "Polity & Governance",
+   "syllabus": "Health policy",
+   "exam": "pre",
+   "q": "India's nationwide HPV vaccination campaign, launched on 28 February 2026 from Ajmer, offers:",
+   "opts": [
+    "A vaccine for men only",
+    "A free single dose to 14-year-old girls at government facilities; over 80 lakh doses had been given by September 2026",
+    "A paid two-dose course to all women above 30",
+    "A free dose to all boys and girls at birth"
+   ],
+   "ans": 1,
+   "why": "Uttar Pradesh recorded the highest number of vaccinations, with more than 22 lakh girls covered. HPV vaccination continues in routine immunisation after the campaign.",
+   "insight": "Human papillomavirus causes most cases of cervical cancer, so vaccination before exposure is the best prevention.",
+   "src": {
+    "name": "PIB, Ministry of Health",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2309109&reg=48&lang=2",
+    "date": "11 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-025",
+   "subject": "Environment",
+   "syllabus": "Climate and agriculture",
+   "exam": "pre",
+   "q": "Consider India's first soil carbon payments to farmers (September 2026):\n1. They went to smallholders in Punjab and Haryana, with the first payments released at Punjab Agricultural University, Ludhiana.\n2. They were made by the Grow Indigo programme with ICAR's technical guidance, with credits issued under the Verra VM0042 methodology.\n3. They were paid from the Union Budget by the Ministry of Agriculture.\nWhich of the above are correct?",
+   "opts": [
+    "2 and 3 only",
+    "1 and 2 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The payments came from a private-led programme, not from the Union Budget. Farmers had adopted practices such as direct seeded rice, reduced tillage and crop residue management.",
+   "insight": "Soil carbon credits reward farming that stores more carbon in the soil or cuts emissions.",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2311218&lang=2&reg=48",
+    "date": "Sep 2026"
+   },
+   "checked": "30 Oct 2026"
   }
  ]
 }
