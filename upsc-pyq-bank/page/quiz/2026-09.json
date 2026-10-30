@@ -3895,6 +3895,754 @@
     "date": "Static"
    },
    "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-178",
+   "subject": "IR",
+   "syllabus": "UN",
+   "exam": "pre",
+   "q": "The 81st session of the UN General Assembly (September 2026) has the theme:",
+   "opts": [
+    "One Planet, One Future",
+    "Leaving No One Behind",
+    "Restoring Trust, Managing Transformation: A United Nations that Delivers for All",
+    "Peace Through Trade"
+   ],
+   "ans": 2,
+   "why": "Its General Debate in late September was where India's External Affairs Minister spoke on reform of the international order.",
+   "insight": "The UNGA has 193 member states, each with one vote.",
+   "src": {
+    "name": "UN, 81st General Assembly",
+    "url": "https://www.un.org/",
+    "date": "Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-179",
+   "subject": "IR",
+   "syllabus": "UN",
+   "exam": "pre",
+   "q": "At the UN, the G4 group that pushes for Security Council reform consists of:",
+   "opts": [
+    "Brazil, Russia, India and Japan",
+    "Germany, France, Italy and Japan",
+    "Brazil, Germany, India and Japan",
+    "India, China, Russia and USA"
+   ],
+   "ans": 2,
+   "why": "The G4 seek permanent seats for each other. The Uniting for Consensus group, led by Italy and Pakistan, opposes new permanent seats.",
+   "insight": "India says new permanent members must hold the same rights, including the veto, as the existing ones.",
+   "src": {
+    "name": "UN, Security Council reform",
+    "url": "https://www.un.org/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-180",
+   "subject": "IR",
+   "syllabus": "UN",
+   "exam": "pre",
+   "q": "Which of these is NOT a permanent member of the UN Security Council?",
+   "opts": [
+    "France",
+    "Russia",
+    "United Kingdom",
+    "Germany"
+   ],
+   "ans": 3,
+   "why": "The five permanent members (P5) are China, France, Russia, the UK and the US. There are also ten elected non-permanent members serving two-year terms.",
+   "insight": "A veto by any P5 member blocks a substantive resolution.",
+   "src": {
+    "name": "UN Security Council",
+    "url": "https://www.un.org/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-181",
+   "subject": "IR",
+   "syllabus": "UN",
+   "exam": "pre",
+   "q": "Non-permanent members of the UN Security Council are elected by the General Assembly for a term of:",
+   "opts": [
+    "Five years",
+    "Four years",
+    "Two years",
+    "One year"
+   ],
+   "ans": 2,
+   "why": "Five are elected each year, and a retiring member cannot be re-elected immediately.",
+   "insight": "India served its eighth term in 2021-22.",
+   "src": {
+    "name": "UN Security Council",
+    "url": "https://www.un.org/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-182",
+   "subject": "IR",
+   "syllabus": "Multilateral",
+   "exam": "pre",
+   "q": "The International Court of Justice (ICJ) has its seat in:",
+   "opts": [
+    "Vienna",
+    "The Hague",
+    "Geneva",
+    "New York"
+   ],
+   "ans": 1,
+   "why": "It is the principal judicial organ of the UN and has 15 judges elected for nine-year terms.",
+   "insight": "The International Criminal Court, also in The Hague, is not a UN organ.",
+   "src": {
+    "name": "UN, ICJ",
+    "url": "https://www.un.org/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-183",
+   "subject": "IR",
+   "syllabus": "Multilateral",
+   "exam": "pre",
+   "q": "The headquarters of the International Atomic Energy Agency (IAEA) is in:",
+   "opts": [
+    "Vienna",
+    "Paris",
+    "Geneva",
+    "Brussels"
+   ],
+   "ans": 0,
+   "why": "The IAEA verifies that nuclear material is used peacefully and administers safeguards.",
+   "insight": "The Nuclear Suppliers Group, which India has been seeking to join, decides on export of nuclear materials.",
+   "src": {
+    "name": "IAEA",
+    "url": "https://www.un.org/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-184",
+   "subject": "IR",
+   "syllabus": "Neighbourhood",
+   "exam": "pre",
+   "q": "The Gulf of Mannar and Palk Strait separate India from:",
+   "opts": [
+    "Bangladesh",
+    "Sri Lanka",
+    "Myanmar",
+    "Maldives"
+   ],
+   "ans": 1,
+   "why": "Adam's Bridge (Ram Setu) lies between Rameswaram and Mannar. Katchatheevu island lies in the Palk Strait.",
+   "insight": "The 1974 and 1976 agreements fixed the maritime boundary between India and Sri Lanka.",
+   "src": {
+    "name": "MEA, India-Sri Lanka",
+    "url": "https://www.mea.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-185",
+   "subject": "IR",
+   "syllabus": "Neighbourhood",
+   "exam": "pre",
+   "q": "The Kaladan Multi-Modal Transit Transport Project connects India with:",
+   "opts": [
+    "Bangladesh",
+    "Thailand",
+    "Nepal",
+    "Myanmar"
+   ],
+   "ans": 3,
+   "why": "It links Kolkata to Sittwe port in Myanmar and then to Mizoram by river and road, giving the Northeast another route.",
+   "insight": "The India–Myanmar–Thailand Trilateral Highway is a separate project.",
+   "src": {
+    "name": "MEA, Kaladan project",
+    "url": "https://www.mea.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-186",
+   "subject": "IR",
+   "syllabus": "Neighbourhood",
+   "exam": "pre",
+   "q": "The Durand Line is the boundary between:",
+   "opts": [
+    "India and Pakistan",
+    "Iran and Iraq",
+    "Afghanistan and Pakistan",
+    "India and China"
+   ],
+   "ans": 2,
+   "why": "It was drawn in 1893 between British India and Afghanistan. Afghanistan has not recognised it as an international border.",
+   "insight": "The McMahon Line concerns India and China, and the Radcliffe Line India and Pakistan.",
+   "src": {
+    "name": "MEA, neighbourhood",
+    "url": "https://www.mea.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-187",
+   "subject": "IR",
+   "syllabus": "Neighbourhood",
+   "exam": "pre",
+   "q": "Which Indian State does NOT share a border with Bangladesh?",
+   "opts": [
+    "Tripura",
+    "Manipur",
+    "Assam",
+    "Mizoram"
+   ],
+   "ans": 1,
+   "why": "The States bordering Bangladesh are West Bengal, Assam, Meghalaya, Tripura and Mizoram.",
+   "insight": "India–Bangladesh land boundary was settled by the 2015 Land Boundary Agreement.",
+   "src": {
+    "name": "MEA, India-Bangladesh",
+    "url": "https://www.mea.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-188",
+   "subject": "IR",
+   "syllabus": "Diaspora",
+   "exam": "pre",
+   "q": "The Pravasi Bharatiya Divas is celebrated every year on:",
+   "opts": [
+    "15 August",
+    "26 January",
+    "2 October",
+    "9 January"
+   ],
+   "ans": 3,
+   "why": "It marks Mahatma Gandhi's return to India from South Africa in 1915.",
+   "insight": "It is observed by the Ministry of External Affairs.",
+   "src": {
+    "name": "MEA, PBD",
+    "url": "https://www.mea.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-189",
+   "subject": "IR",
+   "syllabus": "Groupings",
+   "exam": "pre",
+   "q": "The Association of Southeast Asian Nations (ASEAN) has how many members?",
+   "opts": [
+    "Ten",
+    "Twelve",
+    "Nine",
+    "Eleven, after Timor-Leste joined in October 2025"
+   ],
+   "ans": 3,
+   "why": "Timor-Leste became the 11th member in 2025. The ASEAN Secretariat is in Jakarta.",
+   "insight": "India's Act East Policy is built on ASEAN centrality.",
+   "src": {
+    "name": "MEA, ASEAN",
+    "url": "https://www.mea.gov.in/",
+    "date": "2025"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-190",
+   "subject": "Economy",
+   "syllabus": "Inflation",
+   "exam": "pre",
+   "q": "India's Consumer Price Index now uses base year 2024=100. Combined retail inflation for August 2026 was:",
+   "opts": [
+    "12.4%",
+    "1.2%",
+    "8.9%",
+    "4.82% (provisional)"
+   ],
+   "ans": 3,
+   "why": "Food inflation on the Consumer Food Price Index was 5.95%. Onion inflation jumped to about 48%, while tomato prices fell by about 31%.",
+   "insight": "The RBI's inflation target is 4% with a band of 2% to 6%.",
+   "src": {
+    "name": "MoSPI, CPI Aug 2026",
+    "url": "https://www.mospi.gov.in/",
+    "date": "14 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-191",
+   "subject": "Economy",
+   "syllabus": "Inflation",
+   "exam": "pre",
+   "q": "The Consumer Price Index is compiled and released by:",
+   "opts": [
+    "The National Statistical Office under MoSPI",
+    "The RBI",
+    "NITI Aayog",
+    "The Ministry of Finance"
+   ],
+   "ans": 0,
+   "why": "The Wholesale Price Index, by contrast, is released by the Office of the Economic Adviser in the Ministry of Commerce and Industry.",
+   "insight": "The RBI uses CPI (Combined) for its inflation target.",
+   "src": {
+    "name": "MoSPI, CPI",
+    "url": "https://www.mospi.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-192",
+   "subject": "Economy",
+   "syllabus": "Growth",
+   "exam": "pre",
+   "q": "India's real GDP growth in Q1 of 2026-27 (April–June 2026) was estimated at:",
+   "opts": [
+    "5.2%",
+    "7.8%",
+    "3.1%",
+    "10.5%"
+   ],
+   "ans": 1,
+   "why": "The National Statistics Office released the figure on 1 September 2026. GDP is measured at constant (2011-12) prices unless a new base is announced.",
+   "insight": "Gross Value Added differs from GDP by net product taxes.",
+   "src": {
+    "name": "PIB, GDP Q1 2026-27",
+    "url": "https://www.pib.gov.in/",
+    "date": "1 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-193",
+   "subject": "Economy",
+   "syllabus": "Banking",
+   "exam": "pre",
+   "q": "Under the Insolvency and Bankruptcy Code, 2016, the Committee of Creditors needs what share of votes to approve a resolution plan?",
+   "opts": [
+    "51%",
+    "75%",
+    "90%",
+    "66% of voting share"
+   ],
+   "ans": 3,
+   "why": "The 2019 amendment lowered the threshold from 75% to 66%. The National Company Law Tribunal is the adjudicating authority for companies.",
+   "insight": "The IBBI regulates insolvency professionals.",
+   "src": {
+    "name": "India Code, IBC 2016",
+    "url": "https://www.indiacode.nic.in/",
+    "date": "2016"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-194",
+   "subject": "Economy",
+   "syllabus": "Markets",
+   "exam": "pre",
+   "q": "SEBI, the securities market regulator, was given statutory powers by:",
+   "opts": [
+    "The SEBI Act, 1992",
+    "The Companies Act, 2013",
+    "FEMA, 1999",
+    "The RBI Act, 1934"
+   ],
+   "ans": 0,
+   "why": "SEBI was set up administratively in 1988 and became a statutory body in 1992.",
+   "insight": "The Securities Appellate Tribunal hears appeals against SEBI orders.",
+   "src": {
+    "name": "SEBI",
+    "url": "https://www.sebi.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-195",
+   "subject": "Economy",
+   "syllabus": "Public finance",
+   "exam": "pre",
+   "q": "The Finance Commission is a constitutional body under which Article, and how often is it constituted?",
+   "opts": [
+    "Article 324, every five years",
+    "Article 148, every two years",
+    "Article 280, every five years",
+    "Article 112, every year"
+   ],
+   "ans": 2,
+   "why": "It recommends the share of States in central taxes. The 16th Finance Commission, headed by Arvind Panagariya, reports for 2026-27 to 2030-31.",
+   "insight": "Its recommendations are advisory, not binding.",
+   "src": {
+    "name": "Constitution of India",
+    "url": "https://www.legislative.gov.in/constitution-of-india/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-196",
+   "subject": "Economy",
+   "syllabus": "Banking",
+   "exam": "pre",
+   "q": "Priority sector lending by banks includes loans to:",
+   "opts": [
+    "Only government departments",
+    "Only foreign companies",
+    "Agriculture, MSMEs, education, housing and weaker sections",
+    "Only large corporates"
+   ],
+   "ans": 2,
+   "why": "The overall target is 40% of adjusted net bank credit for domestic banks.",
+   "insight": "Small finance banks have a higher target of 75%.",
+   "src": {
+    "name": "RBI, Priority Sector Lending",
+    "url": "https://www.rbi.org.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-197",
+   "subject": "Economy",
+   "syllabus": "Payments",
+   "exam": "pre",
+   "q": "The Unified Payments Interface (UPI) is operated by:",
+   "opts": [
+    "The SBI",
+    "The Ministry of Electronics and IT",
+    "The National Payments Corporation of India (NPCI)",
+    "The RBI directly"
+   ],
+   "ans": 2,
+   "why": "NPCI is an umbrella organisation for retail payments set up by the RBI and the Indian Banks' Association. It also runs RuPay.",
+   "insight": "The RBI regulates payment systems under the Payment and Settlement Systems Act, 2007.",
+   "src": {
+    "name": "NPCI",
+    "url": "https://www.npci.org.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-198",
+   "subject": "Economy",
+   "syllabus": "Agriculture",
+   "exam": "pre",
+   "q": "The 'Kisan Credit Card' scheme provides farmers with:",
+   "opts": [
+    "Crop insurance only",
+    "Land pattas",
+    "Short-term credit for crops and allied activities at concessional interest",
+    "Free tractors"
+   ],
+   "ans": 2,
+   "why": "The Interest Subvention Scheme reduces the effective interest rate for timely repayment.",
+   "insight": "NABARD refinances rural credit.",
+   "src": {
+    "name": "PIB / NABARD, KCC",
+    "url": "https://www.nabard.org/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-199",
+   "subject": "Economy",
+   "syllabus": "Trade",
+   "exam": "pre",
+   "q": "The World Trade Organization (WTO) replaced the GATT in:",
+   "opts": [
+    "1995",
+    "1947",
+    "2001",
+    "1991"
+   ],
+   "ans": 0,
+   "why": "WTO is headquartered in Geneva. Its Ministerial Conference is the highest decision-making body and meets at least every two years.",
+   "insight": "The WTO dispute settlement body's Appellate Body has been non-functional since 2019.",
+   "src": {
+    "name": "WTO",
+    "url": "https://www.wto.org/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-200",
+   "subject": "Economy",
+   "syllabus": "Public finance",
+   "exam": "pre",
+   "q": "Which of the following is a capital receipt in the Union Budget?",
+   "opts": [
+    "Corporation tax",
+    "Interest received on loans",
+    "Recovery of loans",
+    "GST revenue"
+   ],
+   "ans": 2,
+   "why": "Capital receipts create a liability or reduce an asset: borrowings, loan recoveries and disinvestment.",
+   "insight": "The fiscal deficit equals total expenditure minus total receipts excluding borrowings.",
+   "src": {
+    "name": "Union Budget",
+    "url": "https://www.indiabudget.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-201",
+   "subject": "IR",
+   "syllabus": "Groupings",
+   "exam": "pre",
+   "q": "The Shanghai Cooperation Organisation's Regional Anti-Terrorist Structure (RATS) is based in:",
+   "opts": [
+    "Moscow",
+    "Astana",
+    "Tashkent",
+    "Beijing"
+   ],
+   "ans": 2,
+   "why": "The SCO secretariat is in Beijing, while RATS works from Tashkent.",
+   "insight": "India joined the SCO as a full member in 2017.",
+   "src": {
+    "name": "MEA, SCO",
+    "url": "https://www.mea.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-202",
+   "subject": "Economy",
+   "syllabus": "Banking",
+   "exam": "pre",
+   "q": "Regional Rural Banks (RRBs) were set up under the Regional Rural Banks Act of:",
+   "opts": [
+    "1949",
+    "1991",
+    "2005",
+    "1976"
+   ],
+   "ans": 3,
+   "why": "They are owned jointly by the Centre (50%), the sponsor bank (35%) and the State (15%).",
+   "insight": "The Narasimham Working Group recommended them in 1975.",
+   "src": {
+    "name": "NABARD / RBI, RRBs",
+    "url": "https://www.nabard.org/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-203",
+   "subject": "Economy",
+   "syllabus": "Public finance",
+   "exam": "pre",
+   "q": "Zero-Based Budgeting means:",
+   "opts": [
+    "Every expense must be justified afresh each cycle, not carried over from the past",
+    "A budget with zero deficit",
+    "A budget without taxes",
+    "A budget with no expenditure on defence"
+   ],
+   "ans": 0,
+   "why": "It contrasts with incremental budgeting, which adds to the previous year's base.",
+   "insight": "Outcome budgeting links spending to measurable results.",
+   "src": {
+    "name": "Ministry of Finance",
+    "url": "https://www.indiabudget.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-204",
+   "subject": "Geography",
+   "syllabus": "Rivers",
+   "exam": "pre",
+   "q": "Which of these is a west-flowing river that drains into the Arabian Sea?",
+   "opts": [
+    "Krishna",
+    "Narmada",
+    "Mahanadi",
+    "Godavari"
+   ],
+   "ans": 1,
+   "why": "Narmada and Tapi flow west through rift valleys. Godavari, Krishna and Mahanadi flow east to the Bay of Bengal.",
+   "insight": "The Narmada originates at Amarkantak.",
+   "src": {
+    "name": "Survey of India / CWC",
+    "url": "https://cwc.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-205",
+   "subject": "Geography",
+   "syllabus": "Climate",
+   "exam": "pre",
+   "q": "The 'Loo' is:",
+   "opts": [
+    "A monsoon current",
+    "A hot, dry summer wind over the northern plains",
+    "A winter cyclone",
+    "A cold wave from the Himalayas"
+   ],
+   "ans": 1,
+   "why": "It blows in May-June in the afternoon from the Thar side.",
+   "insight": "Western disturbances bring winter rain to the north-west.",
+   "src": {
+    "name": "IMD",
+    "url": "https://mausam.imd.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-206",
+   "subject": "Geography",
+   "syllabus": "Physical",
+   "exam": "pre",
+   "q": "The Western Ghats are known officially as:",
+   "opts": [
+    "Sahyadri, a UNESCO World Heritage Site since 2012",
+    "Nilgiri only",
+    "Satpura",
+    "Aravalli"
+   ],
+   "ans": 0,
+   "why": "Anamudi (2,695 m) in Kerala is the highest peak in the range.",
+   "insight": "The Eastern Ghats are older and more broken.",
+   "src": {
+    "name": "UNESCO",
+    "url": "https://whc.unesco.org/",
+    "date": "2012"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-207",
+   "subject": "Geography",
+   "syllabus": "Agriculture",
+   "exam": "pre",
+   "q": "Black cotton soil (regur) is best suited for:",
+   "opts": [
+    "Cotton",
+    "Tea",
+    "Coffee",
+    "Rubber"
+   ],
+   "ans": 0,
+   "why": "It forms from basalt in the Deccan Plateau and holds moisture well.",
+   "insight": "Its clay content makes it swell and crack with moisture changes.",
+   "src": {
+    "name": "ICAR",
+    "url": "https://icar.org.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-208",
+   "subject": "History & Culture",
+   "syllabus": "Ancient",
+   "exam": "pre",
+   "q": "The Sanchi Stupa was built originally under:",
+   "opts": [
+    "Emperor Ashoka",
+    "Chandragupta Maurya",
+    "Kanishka",
+    "Harsha"
+   ],
+   "ans": 0,
+   "why": "It is in Madhya Pradesh and a UNESCO World Heritage Site since 1989.",
+   "insight": "The gateways (toranas) were added later in the Satavahana period.",
+   "src": {
+    "name": "ASI / UNESCO",
+    "url": "https://whc.unesco.org/",
+    "date": "1989"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-209",
+   "subject": "History & Culture",
+   "syllabus": "Medieval",
+   "exam": "pre",
+   "q": "The Battle of Plassey (1757) was fought between the British East India Company and:",
+   "opts": [
+    "Siraj-ud-Daulah, Nawab of Bengal",
+    "Tipu Sultan",
+    "The Marathas",
+    "Hyder Ali"
+   ],
+   "ans": 0,
+   "why": "Robert Clive led the Company; Mir Jafar's betrayal helped them win.",
+   "insight": "It started British political control in Bengal.",
+   "src": {
+    "name": "ASI / NCERT",
+    "url": "https://ncert.nic.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-210",
+   "subject": "Sci & Tech",
+   "syllabus": "Space",
+   "exam": "pre",
+   "q": "ISRO's Chandrayaan-3 achieved a soft landing near which part of the Moon in 2023?",
+   "opts": [
+    "The equator",
+    "The south polar region",
+    "The north pole",
+    "The far side"
+   ],
+   "ans": 1,
+   "why": "India became the first country to land near the lunar south pole, on 23 August 2023.",
+   "insight": "National Space Day is observed on 23 August.",
+   "src": {
+    "name": "ISRO",
+    "url": "https://www.isro.gov.in/",
+    "date": "23 Aug 2023"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-211",
+   "subject": "Sci & Tech",
+   "syllabus": "Technology",
+   "exam": "pre",
+   "q": "The Digital Personal Data Protection Act, 2023 requires data fiduciaries to:",
+   "opts": [
+    "Store all data abroad",
+    "Sell data freely",
+    "Process personal data with the consent of the person, with some exceptions",
+    "Share all data with the Government"
+   ],
+   "ans": 2,
+   "why": "The Data Protection Board of India hears complaints.",
+   "insight": "Individuals are called 'data principals'.",
+   "src": {
+    "name": "MeitY",
+    "url": "https://www.meity.gov.in/",
+    "date": "2023"
+   },
+   "checked": "30 Oct 2026"
   }
  ]
 }
