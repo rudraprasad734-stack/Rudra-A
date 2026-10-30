@@ -168,6 +168,17 @@
   body:not(.is-dash) #dashFab, body.menu-open #dashFab{display:none;}
   @keyframes fabBreathe{0%,100%{box-shadow:0 6px 20px rgba(2,8,20,.65), inset 0 1px 0 rgba(243,236,219,.18), 0 0 0 6px rgba(243,236,219,.07);}50%{box-shadow:0 6px 22px rgba(2,8,20,.7), inset 0 1px 0 rgba(243,236,219,.22), 0 0 0 10px rgba(243,236,219,.03);}}
   @media (prefers-reduced-motion: reduce){ #dashFab{animation:none;} }
+  /* the Dashboard button on the timer home: a faint glow ring and an occasional little shake so it is noticed; a one-time hint says what it is */
+  #dashFab::after{content:""; position:absolute; inset:-9px; border-radius:50%; pointer-events:none; opacity:0; box-shadow:0 0 16px 3px var(--tab-accent);}
+  body.dash-timer #dashFab::after{animation:fabGlow 3.6s ease-in-out infinite;}
+  body.dash-timer #dashFab{animation:fabBreathe 4s ease-in-out infinite, fabShake 7s ease-in-out 2.5s infinite;}
+  @keyframes fabGlow{0%,100%{opacity:0;}50%{opacity:.5;}}
+  @keyframes fabShake{0%,84%,100%{transform:translateX(-50%) rotate(0);}87%{transform:translateX(calc(-50% - 4px)) rotate(-7deg);}90%{transform:translateX(calc(-50% + 4px)) rotate(7deg);}93%{transform:translateX(calc(-50% - 3px)) rotate(-4deg);}96%{transform:translateX(calc(-50% + 2px)) rotate(3deg);}}
+  #fabHint{position:fixed; left:50%; bottom:calc(20px + env(safe-area-inset-bottom,0px) + 62px * var(--tb,1) + 16px); transform:translateX(-50%); z-index:61; max-width:90vw; white-space:nowrap; padding:9px 14px; border-radius:14px; background:var(--tab-accent); color:var(--tab-accent-ink,#04141a); font-size:14px; font-weight:700; text-align:center; box-shadow:0 8px 24px rgba(2,8,20,.5); animation:fabHintIn .35s ease-out both; cursor:pointer;}
+  #fabHint::after{content:""; position:absolute; left:50%; bottom:-6px; width:12px; height:12px; background:inherit; transform:translateX(-50%) rotate(45deg);}
+  body:not(.dash-timer) #fabHint, body.today-open #fabHint, body.ui-sleep #fabHint{display:none;}
+  @keyframes fabHintIn{from{opacity:0; transform:translateX(-50%) translateY(8px);}to{opacity:1; transform:translateX(-50%) translateY(0);}}
+  @media (prefers-reduced-motion: reduce){ body.dash-timer #dashFab{animation:none;} body.dash-timer #dashFab::after{animation:none; opacity:.3;} #fabHint{animation:none;} }
   body.is-dash:not(.dash-timer) main{padding-top:64px; padding-bottom:110px;}
   body.is-dash .toast{bottom:calc(100px + env(safe-area-inset-bottom,0px));}
   /* ---- Dashboard cards: every colour comes from the active app theme (see UI_THEMES in the page head) ---- */
@@ -1465,6 +1476,7 @@
   .wk-facts{display:flex; gap:6px; margin:14px 0;} .wk-facts span{flex:1; min-width:0; text-align:center; font-size:12px; color:var(--ink-soft);} .wk-facts b{display:block; font-size:21px; color:var(--ink);}
   .wk-tip.wk-quote{position:relative; padding:14px 16px 14px 40px; font-family:var(--font-display); font-size:15.5px; line-height:1.45; font-style:italic;} .wk-qm{position:absolute; left:12px; top:2px; font-size:40px; line-height:1; color:#ffb020; font-style:normal;}
   .wk-tip{padding:12px 14px; border-radius:14px; background:color-mix(in srgb,#ffb020 14%, transparent); border:1px solid color-mix(in srgb,#ffb020 45%, transparent); font-size:13.5px; line-height:1.4;} .wk-tip b{display:block; margin-bottom:3px;}
+  .pyq-about{margin-top:6px;} .pyq-about summary{cursor:pointer; color:var(--tab-accent); font-size:13px;} .pyq-about p{margin:8px 0 0; font-size:13px; line-height:1.45;}
   .wk-btns{margin-top:12px; display:flex; gap:10px;} .wk-btns .dx-btn2{flex:1; min-width:0; margin-top:0;} .dx-week .wk-num{margin-top:14px;} .wk-lab{font-size:13px; color:var(--ink-soft); padding-bottom:3px;} .wk-modal .modal-actions{margin-top:14px;}
   .fb-row{padding:10px 0; border-top:1px solid var(--line-soft);} .fb-h{display:flex; align-items:center; gap:8px;} .fb-h i{width:10px; height:10px; border-radius:50%; flex:none;} .fb-h b{flex:1; min-width:0; overflow-wrap:anywhere;} .fb-h span{font-weight:800; white-space:nowrap;}
   .fb-bar{height:8px; border-radius:99px; background:color-mix(in srgb,var(--ink) 10%, transparent); margin:8px 0 5px; overflow:hidden;} .fb-bar i{display:block; height:100%; border-radius:99px;} .fb-row small{color:var(--ink-soft); font-size:12px;}
@@ -3885,6 +3897,8 @@ function tierClass(tier){
   if(tier.indexOf("Tier 3")===0) return "tier3";
   return "tier4";
 }
+// one name for the bottom tier everywhere: some data lines say "Tier 4 / Low-yield", some just "Tier 4"
+function tierFull(tier){ return tier && /^Tier 4/.test(tier) ? "Tier 4 (low-yield)" : tier; }
 function tierShort(tier){
   if(!tier) return "";
   var m = tier.match(/Tier \d/);
@@ -8700,7 +8714,7 @@ function sessLogCard(s, states){
   var live = s.date===todayKey && s.status!=="completed" && s.status!=="skipped";
   var stTxt = {completed:"Completed ✓", in_progress:"In progress", missed:"Missed", skipped:"Skipped", not_started:"Not started"}[s.status] || "";
   var act = live ? '<button type="button" class="go" data-sact="start">&#9654; '+(s.status==="in_progress" ? "Continue" : "Start")+'</button>'
-    : (s.status==="completed" ? '<span class="go done">✓ Done</span>' : "");
+    : (s.status==="completed" ? '<span class="go done">✓ Done</span>' : (s.status==="missed" && s.date<todayKey && s.kind==="study" ? '<button type="button" class="go" data-sact="movetoday">Move to today</button>' : ""));
   return '<div class="sess-card ses st-'+esc(s.status)+(live && s.status==="in_progress" ? " next" : "")+'" style="--c:var('+sessColor(s, states)+')" data-sid="'+esc(s.id)+'">'+
     '<div class="ses-row"><div class="ic" aria-hidden="true">'+subjEmoji(s.subject, s.kind)+'</div>'+
       '<div class="ses-t"><div class="tm">S'+s.sessionNumber+' &middot; '+esc(fmt12(s.startTime))+' &ndash; '+esc(fmt12(s.endTime))+' &middot; '+esc(fmtDurMin(s.duration))+'</div>'+
@@ -8775,6 +8789,7 @@ function bindSessionCards(host){
         var a = b.getAttribute("data-sact"), s = sessionById(id);
         if(a==="edit") openSessionEditor(id);
         if(a==="start") openStartSheet(id);
+        if(a==="movetoday"){ var mv = moveToToday([id]); toast(mv.moved ? "Moved to today. It is on today's list now." : "Today is full. Free some time or edit the session."); refreshView(); return; }
         if(a==="same"){ updateSession(id, {actualStart:s.startTime, actualEnd:s.endTime, breakMin:0, pomoBreakMin:0, status:"completed"}); afterSessionChange(id); refreshView(); }
         if(a==="chapter"){
           if(leafStatus(s.topicId)==="completed") setLeaves([s.topicId], "not_started");
@@ -9102,14 +9117,20 @@ function blockNeeds(plan, states){
 }
 function simulate(plan, from, frozen, strict){
   var states = subjectStates(plan), needMap = blockNeeds(plan, states), need = Math.max(1, Math.round(plan.capacity.blocks||1));
-  var blocksDone = {}, revSeen = {};
+  var blocksDone = {}, revSeen = {}, held = {};
   studySessions.forEach(function(s){
     if(s.kind==="study" && s.topicId && s.status==="completed") blocksDone[s.topicId] = (blocksDone[s.topicId]||0)+1;
+    // a missed session moved back to today still counts toward its chapter, so the chapter is not given an extra one later
+    else if(s.kind==="study" && s.topicId && s.movedFrom && s.date>=from && (s.status==="not_started" || s.status==="in_progress")) held[s.topicId] = (held[s.topicId]||0)+1;
     if(s.kind==="revision" && s.topicId && s.revGap && s.status!=="missed") revSeen[s.topicId+"#"+s.revGap] = 1;
   });
   var queue = [];
   var actSt = states.filter(function(x){ return x.state==="active"; })[0];
-  states.forEach(function(st){ if(strict && st!==actSt && !st.pinned) return; st.leaves.forEach(function(l){ if(!isDone(l.id)) queue.push({leaf:l, st:st, need:needMap[l.id]||need, rem:Math.max(1, (needMap[l.id]||need)-(blocksDone[l.id]||0))}); }); });
+  states.forEach(function(st){ if(strict && st!==actSt && !st.pinned) return; st.leaves.forEach(function(l){
+    if(isDone(l.id)) return;
+    var nd = needMap[l.id]||need, hd = held[l.id]||0;
+    if(hd && (blocksDone[l.id]||0)+hd >= nd) return;
+    queue.push({leaf:l, st:st, need:nd, rem:Math.max(1, nd-(blocksDone[l.id]||0)-hd)}); }); });
   var rv = plan.activities.revision, autoRev = rv && rv.on && (rv.method==="auto" || rv.method==="both");
   var gaps = (rv && rv.gaps && rv.gaps.length) ? rv.gaps : [3,10,30];
   var due = [];
@@ -10251,7 +10272,7 @@ function monthlyHtml(plan, states){
     '<div class="section-title">Subjects and chapters this month</div>'+subj;
 }
 function weeklyHtml(plan, states){
-  var mon = plannerWeek ? parseKey(plannerWeek) : sundayOf(parseKey(todayKey));
+  var mon = plannerWeek ? parseKey(plannerWeek) : mondayOf(parseKey(todayKey));
   plannerWeek = toKey(mon);
   var days = [], per = {}, units = {};
   for(var i=0;i<7;i++) days.push(toKey(addDays(mon, i)));
@@ -17389,9 +17410,9 @@ function tierBadge(l){
   var c = tdEntry(l);
   if(c && c[0]===9) return "";   // no tier information for this chapter
   if(c && c[0]===5 && c[6]) return ' <span class="chip '+c[6][0]+'" title="'+esc(c[6][2]+" \u2014 from past-paper analysis")+'">'+esc(c[6][1])+'</span>';
-  if(c && c[0]>=1 && c[0]<=4){ var n = c[0], tt = c[5] ? "Tier 4 / Low-yield" : "Tier "+n; return ' <span class="chip tier'+n+'" title="'+esc(tt+" \u2014 from past-paper analysis")+'">Tier '+n+'</span>'; }
+  if(c && c[0]>=1 && c[0]<=4){ var n = c[0], tt = n===4 ? "Tier 4 (low-yield)" : "Tier "+n; return ' <span class="chip tier'+n+'" title="'+esc(tt+" \u2014 from past-paper analysis")+'">Tier '+n+'</span>'; }
   var t = tierInfo(l);
-  return t ? ' <span class="chip '+t.cls+'" title="'+esc(t.tier+" — from past-paper analysis")+'">'+esc(t.short)+'</span>' : "";
+  return t ? ' <span class="chip '+t.cls+'" title="'+esc(tierFull(t.tier)+" — from past-paper analysis")+'">'+esc(t.short)+'</span>' : "";
 }
 
 // ---------- tier rule: ONE rule, two ways to count (the reader picks) ----------
@@ -17411,8 +17432,8 @@ function tierFrom(ys, n, ny, mode){
 function tierModeNote(ny){
   var c = tierCuts(ny);
   return tierMode==="count"
-    ? "Tier 1: "+c[0]+" or more questions (about one a year). Tier 2: "+c[1]+"\u2013"+(c[0]-1)+". Tier 3: "+c[2]+"\u2013"+(c[1]-1)+". Tier 4: fewer."
-    : "Tier 1: asked in "+c[0]+" or more of the "+ny+" exam years. Tier 2: "+c[1]+"\u2013"+(c[0]-1)+" years. Tier 3: "+c[2]+"\u2013"+(c[1]-1)+" years. Tier 4: fewer.";
+    ? "Tier 1: "+c[0]+" or more questions (about one a year). Tier 2: "+c[1]+"\u2013"+(c[0]-1)+". Tier 3: "+c[2]+"\u2013"+(c[1]-1)+". Tier 4 (low-yield): fewer."
+    : "Tier 1: asked in "+c[0]+" or more of the "+ny+" exam years. Tier 2: "+c[1]+"\u2013"+(c[0]-1)+" years. Tier 3: "+c[2]+"\u2013"+(c[1]-1)+" years. Tier 4 (low-yield): fewer.";
 }
 function tierModeHtml(ny){
   return '<div class="tm" role="group" aria-label="How to rank by past questions"><span class="tm-l">Rank by</span>'+
@@ -17479,7 +17500,7 @@ function openReschedule(){
   var leave = studyPlan.leave || [];
   var m = showModal(
     '<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="rsTitle">'+
-      '<h2 id="rsTitle">Reschedule my plan</h2>'+
+      '<h2 id="rsTitle">Adjust my plan</h2>'+
       '<p class="muted">Past sessions you logged never change. Everything from today onward is rebuilt from your progress.</p>'+
       '<div class="rs-blk"><b>Take days off</b><div class="muted">Study and activities pause on these days and the plan shifts forward.</div>'+
         '<div class="tpair"><input type="date" id="rsFrom" value="'+esc(todayKey)+'"><span>to</span><input type="date" id="rsTo" value="'+esc(todayKey)+'"></div>'+
@@ -17528,17 +17549,22 @@ function pmBadge(p, m){
 function subListHtml(l, sp){
   return (l.subs || []).map(function(x, i){ return '<li>'+esc(x)+(sp.sp[i]+sp.sm[i] ? ' '+pmBadge(sp.sp[i], sp.sm[i]) : '')+'</li>'; }).join("");
 }
-function tierRingsHtml(states){
+// the chapters of the plan counted by tier: the one source for the rings and for the "chapters done" line, so the numbers always agree
+function tierCounts(states){
   var tot = {1:0,2:0,3:0,4:0}, done = {1:0,2:0,3:0,4:0}, sub = {1:0,2:0,3:0,4:0}, pre = {1:0,2:0,3:0,4:0}, mn = {1:0,2:0,3:0,4:0}, anyPM = false;
   states.forEach(function(s){ s.leaves.forEach(function(l){
     var t = tierRank(tierInfo(l)); if(t<1 || t>4) return;
     tot[t]++; sub[t] += (l.subs || []).length; if(isDone(l.id)) done[t]++;
     var x = tierPMOf(l); if(x){ anyPM = true; if(x.indexOf("p")>=0) pre[t]++; if(x.indexOf("m")>=0) mn[t]++; }
   }); });
+  return {tot:tot, done:done, sub:sub, pre:pre, mn:mn, anyPM:anyPM, all:tot[1]+tot[2]+tot[3]+tot[4], allDone:done[1]+done[2]+done[3]+done[4]};
+}
+function tierRingsHtml(states){
+  var tc = tierCounts(states), tot = tc.tot, done = tc.done, sub = tc.sub, pre = tc.pre, mn = tc.mn, anyPM = tc.anyPM;
   if(!(tot[1]+tot[2]+tot[3]+tot[4])) return "";
   return '<div class="tv-rings" role="group" aria-label="Filter by tier">'+[1,2,3,4].map(function(t){
     var pct = tot[t] ? Math.round(done[t]/tot[t]*100) : 0;
-    return '<button type="button" class="tv-ring'+(tierFilter===t ? " on" : "")+'" data-tfilter="'+t+'" aria-pressed="'+(tierFilter===t)+'"'+(tot[t] ? "" : " disabled")+'><span class="rg" style="background:conic-gradient('+TIER_RING_COL[t]+' '+pct+'%,rgba(120,200,190,.18) 0)"><i>'+tot[t]+'</i></span><b>Tier '+t+'</b><small>'+tot[t]+' topic'+(tot[t]===1 ? "" : "s")+'<br>'+sub[t]+' sub-topics'+(anyPM ? '<br>Pre '+pre[t]+' \u00b7 Mains '+mn[t] : "")+'<br>'+done[t]+' done</small></button>';
+    return '<button type="button" class="tv-ring'+(tierFilter===t ? " on" : "")+'" data-tfilter="'+t+'" aria-pressed="'+(tierFilter===t)+'"'+(tot[t] ? "" : " disabled")+'><span class="rg" style="background:conic-gradient('+TIER_RING_COL[t]+' '+pct+'%,rgba(120,200,190,.18) 0)"><i>'+tot[t]+'</i></span><b>Tier '+t+'</b><small>'+tot[t]+' chapter'+(tot[t]===1 ? "" : "s")+'<br>'+sub[t]+' sub-topics'+(anyPM ? '<br>Pre '+pre[t]+' \u00b7 Mains '+mn[t] : "")+'<br>'+done[t]+' done</small></button>';
   }).join("")+'</div>'+(tierFilter ? '<div class="muted small tv-ex">Showing Tier '+tierFilter+' only. <button type="button" class="link-btn" data-tfilter="0">Show all tiers</button></div>' : "");
 }
 var tierView = lsGet("dossier.tierView") === "priority" ? "priority" : "syllabus";
@@ -17641,10 +17667,32 @@ function catchFreeDays(n){
   return out;
 }
 // returns false when nothing was changed (so the caller keeps its dialog open)
+// "Move to today": a missed session goes back on today's list, after whatever is already there (or after now)
+function moveToToday(ids){
+  var t = todayKey, mins = function(m){ return pad2(Math.floor(m/60))+":"+pad2(m%60); }, now = new Date(), moved = 0, left = 0;
+  var cursor = Math.ceil((now.getHours()*60+now.getMinutes())/5)*5;
+  studySessions.forEach(function(x){ if(x.date===t && ids.indexOf(x.id)<0 && x.status!=="skipped") cursor = Math.max(cursor, toMin(x.endTime)); });
+  ids.forEach(function(id){
+    var s = sessionById(id); if(!s || s.date>=t) return;
+    var dur = Math.max(15, s.duration || (toMin(s.endTime)-toMin(s.startTime)) || 60), st = cursor;
+    if(st+dur > 23*60+30){ left++; return; }
+    updateSession(id, {date:t, startTime:mins(st), endTime:mins(st+dur), status:"not_started", origin:"manual", ack:false, movedFrom:s.date});
+    cursor = st+dur+10; moved++;
+  });
+  viewCache = null; replan(); viewCache = null;
+  return {moved:moved, left:left};
+}
 function catchApply(kind){
   var ml = missedLeaves(), n = missedSessions().length;
   if(!ml.length) return false;
   var msg;
+  if(kind==="today"){
+    var per0 = Math.max(1, studyPlan.capacity.sessions.length), pick = missedSessions().sort(function(a,b){ return a.date<b.date ? -1 : (a.date>b.date ? 1 : 0); }).slice(0, per0).map(function(x){ return x.id; });
+    var mv = moveToToday(pick);
+    if(!mv.moved){ toast("Today is full. Choose Shift everything or Squeeze into free time instead."); return false; }
+    toast(mv.moved+" missed session"+(mv.moved===1 ? "" : "s")+" moved to today."+(n-mv.moved>0 ? " "+(n-mv.moved)+" still missed." : ""));
+    catchState.promptedOn = todayKey; saveCatch(); savePlan(); return true;
+  }
   if(kind==="squeeze"){
     var per = Math.max(1, studyPlan.capacity.sessions.length), days = catchFreeDays(Math.ceil(n/per));
     if(!days.length){ toast("You have no free days in the next 4 weeks to squeeze these into. Choose Shift everything or Skip instead."); return false; }
@@ -17725,6 +17773,7 @@ function catchBannerHtml(){
 function catchOptionsHtml(){
   var per = Math.max(1, studyPlan.capacity.sessions.length), free = catchFreeDays(Math.ceil(missedSessions().length/per)).length;
   return '<div class="catch-opts">'+
+    '<div class="catch-o"><b>Move to today <span class="chip tier1">Suggested</span></b><div class="muted">Puts the oldest missed sessions back on today\'s list, as many as fit. Nothing else changes.</div><button type="button" class="btn primary sm" data-pa="catch" data-v="today">Move to today</button></div>'+
     '<div class="catch-o"><b>Shift everything</b><div class="muted">Missed chapters go back to the front of the queue and the whole plan moves later.</div><button type="button" class="btn ghost sm" data-pa="catch" data-v="shift">Shift everything</button></div>'+
     '<div class="catch-o"><b>Squeeze into free time</b><div class="muted">'+(free ? "Adds study sessions on your days off. The rest of the plan keeps its dates." : "You have no days off in the next 4 weeks, so this is not available.")+'</div><button type="button" class="btn ghost sm" data-pa="catch" data-v="squeeze"'+(free ? "" : " disabled")+'>Squeeze into days off</button></div>'+
     '<div class="catch-o"><b>Skip these topics</b><div class="muted">Remove them from your plan for now. Add them back any time from Edit plan.</div><button type="button" class="btn ghost sm" data-pa="catch" data-v="skip">Skip these topics</button></div>'+
@@ -17941,7 +17990,7 @@ function renderPlannerHome(host){
   if(tabNow==="plan") body = overviewHtml(plan, states)+fallingBehindHtml()+remindersHtml()+'<div class="section-title">Chapters</div>'+progressHtml(plan, states);
   var sub = tabNow==="schedule" ? '<div class="pl-sub" role="tablist">'+SCHED_VIEWS.map(function(t){ return '<button type="button" role="tab" class="'+(t[0]===plannerView?"on":"")+'" aria-selected="'+(t[0]===plannerView)+'" data-pa="view" data-v="'+t[0]+'">'+t[1]+'</button>'; }).join("")+'</div>' : "";
   host.innerHTML =
-    '<div class="card pl-title"><div><h2>Preparation Planner</h2><div class="muted">Complete a subject to unlock the next. The calendar follows your progress.</div>'+(subMode()==="trial" ? '<div class="trial-chip">Free trial · Day '+trialInfo().day+' of '+TRIAL_DAYS+' · '+esc(trialInfo().leftText)+'</div>' : "")+'</div><button type="button" class="btn ghost sm" data-go="reschedule">Reschedule</button></div>'+
+    '<div class="card pl-title"><div><h2>Preparation Planner</h2><div class="muted">Complete a subject to unlock the next. The calendar follows your progress, and changing the plan never erases it.</div>'+(subMode()==="trial" ? '<div class="trial-chip">Free trial · Day '+trialInfo().day+' of '+TRIAL_DAYS+' · '+esc(trialInfo().leftText)+'</div>' : "")+'</div><button type="button" class="btn ghost sm" data-go="reschedule">Adjust plan</button></div>'+
     '<div class="pl-tabs">'+PLANNER_TABS.map(function(t){ return '<button type="button" class="'+(t[0]===tabNow?"on":"")+'" data-pa="view" data-v="'+(t[0]==="plan" ? "overview" : (t[0]==="schedule" ? lastSched : "priority"))+'">'+t[1]+'</button>'; }).join("")+'</div>'+sub+catchBannerHtml()+body;
   centerActive(host.querySelector(".pl-tabs"), "button.on", false);
   if(plannerScrollTo){ var tgt = host.querySelector('[data-prog="'+plannerScrollTo.replace(/"/g, '\\"')+'"]'); plannerScrollTo = ""; if(tgt) setTimeout(function(){ tgt.scrollIntoView({block:"start"}); window.scrollBy(0, -70); }, 60); }
@@ -18000,8 +18049,8 @@ function plannerAction(a, el, sure){
     case "catchopen": openCatchup(); return;
     case "gapopen": openGapPrompt(); return;
     case "catch": if(catchApply(v)===false) return; break;
-    case "iPrev": insWeek = toKey(addDays(parseKey(insWeek || toKey(sundayOf(parseKey(todayKey)))), -7)); break;
-    case "iNext": insWeek = toKey(addDays(parseKey(insWeek || toKey(sundayOf(parseKey(todayKey)))), 7)); break;
+    case "iPrev": insWeek = toKey(addDays(parseKey(insWeek || toKey(mondayOf(parseKey(todayKey)))), -7)); break;
+    case "iNext": insWeek = toKey(addDays(parseKey(insWeek || toKey(mondayOf(parseKey(todayKey)))), 7)); break;
     case "iNow": insWeek = null; break;
     case "remon": remToggle(); return;
     case "nudgeon": nudge.off = !nudge.off; nudgeSave(); break;
@@ -18523,11 +18572,11 @@ function dxPlanHtml(){
   var pyq = pyqCardHtml(items);
   var path = pathHtml(states);
   // this week at a glance: the same ring and day bars as Planner > Insights
-  var wr = weekReview(sundayOf(parseKey(todayKey))), wcount = wr.done + wr.missed + wr.skipped, wrate = wcount ? Math.round(100*wr.done/wcount) : 0, week = "";
+  var wr = weekReview(mondayOf(parseKey(todayKey))), wcount = wr.done + wr.missed + wr.skipped, wrate = wcount ? Math.round(100*wr.done/wcount) : 0, week = "";
   if(wr.planned){
     var wv = weekViz(wr, wrate, fmtDurMin);
-    // the same Sunday-to-Saturday week as the ring and day bars, so every number on the card agrees
-    var wsk = toKey(sundayOf(parseKey(todayKey))), ws = weekStats(wsk);
+    // the same Monday-to-Sunday week as the ring and day bars, so every number on the card agrees
+    var wsk = toKey(mondayOf(parseKey(todayKey))), ws = weekStats(wsk);
     week = '<div class="dx-card dx-week"><div class="dx-k">THIS WEEK &middot; '+wr.done+' OF '+wr.planned+' SESSIONS DONE</div>'+wv.ring+wv.days+weekBodyHtml(ws, true)+'<div class="wk-btns"><button type="button" class="dx-btn2" data-go="insights">Open weekly review &rsaquo;</button><button type="button" class="dx-btn2" data-wk="share" data-wkstart="'+wsk+'">Share my week</button></div></div>';
   }
   var upc = '<div class="dx-card dx-up"><div class="dx-k">UPCOMING</div>'+upcomingHtml()+'<button type="button" class="dx-btn2" id="dashOpenPlanner">Open planner</button></div>';
@@ -18695,6 +18744,20 @@ document.addEventListener("click", function(e){
   if(uiStage === 0 && digitsHiddenWhenCalm()) setUiStage(1);   // first tap: show the running time
   else setUiStage(2);                                          // next tap (or time already visible): show everything
 }, true);
+// one-time hint that the round button opens the Dashboard (shown on the timer home, then never again)
+var FAB_HINT_KEY = "dossier.fabHint.v1", fabHintTimer = 0;
+function fabHintDone(){ clearTimeout(fabHintTimer); var h = document.getElementById("fabHint"); if(h) h.remove(); lsSet(FAB_HINT_KEY, "1"); }
+function fabHintMaybe(){
+  if(lsGet(FAB_HINT_KEY) || document.getElementById("fabHint")) return;
+  clearTimeout(fabHintTimer);
+  fabHintTimer = setTimeout(function(){
+    if(lsGet(FAB_HINT_KEY) || !document.body.classList.contains("dash-timer") || document.body.classList.contains("ui-sleep") || document.getElementById("modalHost") || document.getElementById("splash")){ if(!lsGet(FAB_HINT_KEY)) fabHintMaybe(); return; }
+    var h = document.createElement("div"); h.id = "fabHint"; h.setAttribute("role", "status"); h.textContent = "Tap here for your Dashboard";
+    h.addEventListener("click", function(){ fabHintDone(); document.getElementById("dashFab").click(); });
+    document.body.appendChild(h);
+    fabHintTimer = setTimeout(fabHintDone, 9000);
+  }, 2500);
+}
 function applyDashMode(){
   var dash = groupOf(activeTab)==="dashboard";
   document.body.classList.toggle("is-dash", dash);
@@ -18703,6 +18766,7 @@ function applyDashMode(){
   if(isTimer && !wasTimer) setUiStage(2, 1600); else if(!isTimer){ clearTimeout(uiStageTimer); document.body.classList.remove("ui-sleep", "time-hide"); }
   var f = document.getElementById("dashFab");
   if(f) f.setAttribute("aria-label", dashMore ? "Back to the timer" : "Open Dashboard");
+  if(isTimer){ if(appLoaded) fabHintMaybe(); else appLoadCbs.push(fabHintMaybe); } else { clearTimeout(fabHintTimer); var fh = document.getElementById("fabHint"); if(fh) fh.remove(); }
   scheduleGuide(1200);
 }
 function renderTabs(){
@@ -20899,12 +20963,12 @@ var GUIDES = {
   plansetup:{icon:"🗓", name:"Planner setup", title:"Build your plan", steps:[
     "Work through the steps. Each one starts with a sensible choice, so tap <b>Next</b> if you are unsure.",
     "<b>Priority</b> is the order you study subjects. When one reaches 100%, the next unlocks.",
-    "Nothing is final. Change anything later in the Planner with <b>Edit plan</b> or <b>Reschedule</b>. Your progress is kept."]},
+    "Nothing is final. Change anything later in the Planner with <b>Edit plan</b> or <b>Adjust plan</b>. Your progress is kept."]},
   planner:{icon:"🧭", name:"Planner", title:"Your Planner", steps:[
     "<b>Overview</b> shows the subjects running now. Tap <b>Mark current chapter complete</b> when you finish the chapter you are on.",
     "<b>Yearly, Monthly, Weekly</b> and <b>Daily</b> are the same plan at different zoom levels. <b>Daily</b> is where you log what you studied.",
     "<b>Progress</b> lists every chapter. <b>Priority</b> shows which topics matter most and how many past questions each has. <b>Insights</b> shows hours, reminders and catch-up.",
-    "Fell behind? Tap <b>Reschedule</b> and the plan moves forward. Finish a subject and the next one unlocks."]},
+    "Fell behind? Tap <b>Adjust plan</b> and the plan moves forward. Finish a subject and the next one unlocks."]},
   syllabus:{icon:"📚", name:"Syllabus", title:"Syllabus reference", steps:[
     "Read the official syllabus for Prelims and Mains, paper by paper. Tap a paper to open it.",
     "Use the <b>search box</b> to find a word anywhere in the syllabus, such as judiciary or biodiversity.",
@@ -20974,7 +21038,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "272";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "273";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -21500,7 +21564,7 @@ function renderSettings(){
   add("cloud", "Account & data", "cloud", "Cloud sync", cloud.user ? (cloud.user.name || cloud.user.email || "Signed in") : "Off", cloudCardHtml());
   add("sub", "Account & data", "star", "Subscription", sm==="active" ? "Active" : (sm==="trial" ? "Free trial" : "Expired"), subCardHtml());
   add("opt", "Account & data", "book", "Optional subject", myOptional() || "None", optionalCardHtml());
-  add("backup", "Account & data", "save", "Backup", bAge===null ? "Never" : (bAge===0 ? "Today" : (bAge===1 ? "Yesterday" : bAge+" days ago")), backupCard());
+  add("backup", "Account & data", "save", "Backup", bAge===null ? "\u26A0 Not backed up" : (bAge===0 ? "Today" : (bAge===1 ? "Yesterday" : (bAge>=7 ? "\u26A0 " : "")+bAge+" days ago")), backupCard());
   add("stats", "Account & data", "chart", "Anonymous statistics", analyticsChoice()==="on" ? "On" : "Off", statsCardHtml());
   add("theme", "Appearance", "pal", "App theme", uiCur ? uiCur.name : "", uiThemeCardHtml());
   add("path", "Appearance", "map", "Learning path theme", th.name || "",
@@ -21724,7 +21788,7 @@ function tierRowHtml(it, kind, label, CHIP){
   var ps = tierPlanStatus(it), subs = it.subs || [];
   var hay = (it.topic+" "+(it.group || "")+" "+subs.join(" ")).toLowerCase();
   return '<div class="topic-row'+(ps.st==="done"?" done":"")+'" data-hay="'+esc(hay)+'" data-t="'+tierRank(it)+'">'+
-    '<div class="t"><span class="chip '+tierClass(it.tier)+'" title="'+esc(it.tier)+'">'+esc(tierShort(it.tier))+'</span>'+(CHIP[ps.st] ? ' <span class="chip plst st-'+ps.st+'">'+CHIP[ps.st]+'</span>' : "")+'<br>'+esc(it.topic)+
+    '<div class="t"><span class="chip '+tierClass(it.tier)+'" title="'+esc(tierFull(it.tier))+'">'+esc(tierShort(it.tier))+'</span>'+(CHIP[ps.st] ? ' <span class="chip plst st-'+ps.st+'">'+CHIP[ps.st]+'</span>' : "")+'<br>'+esc(it.topic)+
     '<div class="pyq-line">'+esc(tierRowStat(it, kind, label))+'</div>'+
     (subs.length ? '<details class="ol-subs"><summary>'+subs.length+' sub-topic'+(subs.length===1 ? "" : "s")+'</summary><ul>'+(function(){ var lf = leafLookup()[it.id]; if(!lf || (lf.subs || []).length!==subs.length) return subs.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join(""); return subListHtml(lf, pyqSplit(lf)); })()+'</ul></details>' : "")+
     (ps.link ? '<button type="button" class="link-btn" data-go="subjday" data-subj="'+esc(ps.link.split("|")[0])+'" data-leaf="'+esc(ps.link)+'">Open in planner &rsaquo;</button>' : "")+'</div>'+
@@ -21768,10 +21832,10 @@ function renderChecklist(kind){
   var CHIP = {done:"Done", doing:"In progress", todo:"To do", out:"Not in your plan"};
   var ct = OL ? chapterTiers() : null;
 
-  var html = tierSwitchHtml()+(studyPlan ? studyNextHtml(subjectStates(studyPlan))+tierRingsHtml(subjectStates(studyPlan)) : "")+'<div class="section-title">'+(studyPlan ? esc(totalDone)+' of '+esc(planned.length)+' planned topics covered' : 'No plan yet')+'</div>'+
+  var html = tierSwitchHtml()+(studyPlan ? studyNextHtml(subjectStates(studyPlan))+tierRingsHtml(subjectStates(studyPlan)) : "")+'<div class="section-title">'+(studyPlan ? (function(tc){ return esc(tc.allDone)+' of '+esc(tc.all)+' chapters done &middot; Tier 1 to 4'; })(tierCounts(subjectStates(studyPlan))) : 'No plan yet')+'</div>'+
     '<details class="tv-note"><summary>\u24D8 How tiers and progress work</summary><div class="card note-card">Progress here follows your Planner. Finish a chapter in the Planner and it shows as done on this page; there is nothing to tick here. '+(studyPlan ? '' : 'Build a plan to start tracking. ')+(OL ? 'Every Planner chapter is listed under the official syllabus line it belongs to. A chapter&rsquo;s tier follows how often it was asked; switch between years asked and number of questions below. Chapters in Tier 4 sit in a separate &ldquo;Rarely or never asked&rdquo; group under each line. ' : 'Tiers come from analysis of previous years&rsquo; questions. ')+'UPSC does not follow a fixed pattern, so a lower tier does not mean a topic will never be asked, and a higher tier does not mean it will be asked again.</div></details>';
   if(OL) html += tierModeHtml(ct.ny)+'<input type="search" id="tierQ" class="syl-search" placeholder="Search the syllabus or a topic, e.g. federal, monsoon, ethics" autocomplete="off" aria-label="Search the syllabus"><div class="muted small" id="tierQn"></div>'+
-    '<div class="muted small ot-count">'+(kind==="prelims" ? 'The 7 lines of the official Prelims General Studies Paper I syllabus' : 'Every line of the official GS I&ndash;IV syllabus, in UPSC order')+', with '+all.length+' topics under them.</div>';
+    '<div class="muted small ot-count">'+(kind==="prelims" ? 'The 7 lines of the official Prelims General Studies Paper I syllabus' : 'Every line of the official GS I&ndash;IV syllabus, in UPSC order')+', with '+all.length+' syllabus topics under them. Each topic holds one or more Planner chapters.</div>';
   html += groups.map(function(g){
     var items = g.items, ol = g.ol;
     var inPlan = items.filter(function(it){ var t = tierPlanStatus(it).st; return t==="done" || t==="doing" || t==="todo"; });
@@ -21835,7 +21899,7 @@ function renderChecklist(kind){
 // d-anthro (built by tools/optional/build-optional.js) lists, for each syllabus topic, the past questions that belong to it.
 // Everything shown here (counts, tier, trend) is worked out from those lists, so adding papers and re-running the tool updates it.
 var optData = {}, optUi = {subject:"", q:"", paper:0, tier:0, sort:"syllabus", open:{}};
-var OPT_TIER_TXT = {1:"Tier 1 · Asked most often", 2:"Tier 2 · Asked often", 3:"Tier 3 · Asked sometimes", 4:"Tier 4 · Asked rarely"};
+var OPT_TIER_TXT = {1:"Tier 1 · Asked most often", 2:"Tier 2 · Asked often", 3:"Tier 3 · Asked sometimes", 4:"Tier 4 (low-yield) · Asked rarely"};
 function optLoad(name){
   if(optData[name]) return optData[name];
   var S = OPT_SUBJECTS[name]; if(!S) return null;
@@ -22015,6 +22079,8 @@ function mockTargetsFromPlan(){
   });
   return order.map(function(k){ return by[k]; });
 }
+// older entries were logged as "Prelims GS1" / "CSAT"; show them under the same names the PYQ Bank uses
+function mockTypeName(t){ return t==="Prelims GS1" ? "Prelims GS Paper I" : (t==="CSAT" ? "Prelims CSAT (GS Paper II)" : t); }
 function renderMocks(){
   var host = document.getElementById("view-mocks");
   var targets = mockTargetsFromPlan();
@@ -22027,12 +22093,12 @@ function renderMocks(){
       '<div class="window">'+esc(fmtDM(parseKey(t.first)))+' &rarr; '+esc(fmtDM(parseKey(t.last)))+(t.next ? ' &middot; next '+esc(fmtDM(parseKey(t.next))) : "")+'</div>'+
       '<div class="bar"><i style="width:'+pct+'%"></i></div>'+
     '</div>';
-  }).join("") : '<div class="card empty">'+(studyPlan ? 'Your plan has no tests scheduled. Switch on Tests under Activities and the Planner will place your mock tests on the calendar.' : 'Build a plan and the Planner will decide when your mock tests happen.')+
-    ' <button type="button" class="btn ghost sm" id="mockPlanBtn">'+(studyPlan ? 'Edit activities' : 'Open the Planner')+'</button></div>');
+  }).join("") : '<div class="card empty">'+(studyPlan ? 'Your plan has no mock tests yet. Turn on Tests and the Planner will place them on your calendar for you.' : 'Build a plan and the Planner will decide when your mock tests happen.')+
+    ' <button type="button" class="btn ghost sm" id="mockPlanBtn">'+(studyPlan ? 'Turn on tests' : 'Open the Planner')+'</button></div>');
 
   var typeList = targets.map(function(t){ return t.type; });
-  ["Prelims GS1","CSAT","Mains full paper","Essay","Optional paper"].forEach(function(x){ if(typeList.indexOf(x)<0) typeList.push(x); });
-  mockTests.forEach(function(m){ if(m.type && typeList.indexOf(m.type)<0) typeList.push(m.type); });
+  ["Prelims GS Paper I","Prelims CSAT (GS Paper II)","Mains full paper","Essay","Optional paper"].forEach(function(x){ if(typeList.indexOf(x)<0) typeList.push(x); });
+  mockTests.forEach(function(m){ var ty = mockTypeName(m.type); if(ty && typeList.indexOf(ty)<0) typeList.push(ty); });
   var typeOptions = typeList.map(function(t){ return '<option value="'+esc(t)+'">'+esc(t)+'</option>'; }).join("");
 
   var formHtml = '<div class="add-mock card">'+
@@ -22041,8 +22107,9 @@ function renderMocks(){
       '<div><label for="mockType">Type</label><select id="mockType">'+typeOptions+'</select></div>'+
       '<div class="row2">'+
         '<div><label for="mockDate">Date</label><input type="date" id="mockDate" value="'+todayKey+'"></div>'+
-        '<div><label for="mockScore">Score</label><input type="text" id="mockScore" placeholder="e.g. 112/200"></div>'+
+        '<div><label for="mockScore">Score</label><input type="text" inputmode="decimal" id="mockScore" placeholder="e.g. 112"></div>'+
       '</div>'+
+      '<div><label for="mockMax">Out of (maximum marks)</label><input type="text" inputmode="decimal" id="mockMax" placeholder="e.g. 200" value="200"></div>'+
       '<div><label for="mockNotes">Notes</label><input type="text" id="mockNotes" placeholder="Weak areas, timing issues…"></div>'+
       '<button id="mockAdd">Add to log</button>'+
     '</div>'+
@@ -22051,7 +22118,7 @@ function renderMocks(){
   var logHtml = '<div class="section-title">Recent tests</div><div class="card">'+
     (mockTests.length ? mockTests.map(function(m){
       return '<div class="log-entry" data-id="'+m.id+'">'+
-        '<div class="l"><div class="ty">'+esc(m.type)+'</div>'+
+        '<div class="l"><div class="ty">'+esc(mockTypeName(m.type))+'</div>'+
         '<div class="meta">'+esc(fmtDM(parseKey(m.date||todayKey)))+'</div>'+
         (m.notes?'<div class="notes">'+esc(m.notes)+'</div>':'')+'</div>'+
         '<div class="sc">'+esc(m.score||"")+'</div>'+
@@ -22070,7 +22137,13 @@ function renderMocks(){
   addBtn.addEventListener("click", function(){
     var type = document.getElementById("mockType").value;
     var date = document.getElementById("mockDate").value || todayKey;
-    var score = document.getElementById("mockScore").value.trim();
+    var score = document.getElementById("mockScore").value.trim(), maxIn = document.getElementById("mockMax").value.trim();
+    // "112" out of "200" is stored as "112/200", the same shape older entries already have; "112/200" typed in one box still works
+    if(score && score.indexOf("/")<0 && maxIn){
+      if(isNaN(parseFloat(score)) || isNaN(parseFloat(maxIn)) || parseFloat(maxIn) <= 0){ toast("Enter the score and the maximum marks as numbers."); return; }
+      if(parseFloat(score) > parseFloat(maxIn)){ toast("The score cannot be higher than the maximum marks."); return; }
+      score = score+"/"+maxIn;
+    }
     var notes = document.getElementById("mockNotes").value.trim();
     addBtn.disabled = true; addBtn.textContent = "Adding...";
     function commit(id){
@@ -22319,7 +22392,7 @@ function caseCard(c){
     '<button class="more-btn" data-reveal="'+c.id+'">Hide framework</button>'
   );
   return '<div class="quote-card case-card">'+
-    '<div class="case-head">'+srcTag+'<span class="chip '+tierClass(c.tier)+'">'+esc(c.tier)+'</span><span class="chip tier4">'+esc(c.themeTag)+'</span></div>'+
+    '<div class="case-head">'+srcTag+'<span class="chip '+tierClass(c.tier)+'" title="'+esc(tierFull(c.tier))+'">'+esc(/^Tier/.test(c.tier) ? tierShort(c.tier) : c.tier)+'</span><span class="chip tier4">'+esc(c.themeTag)+'</span></div>'+
     '<div class="quote-src" style="margin-top:6px;">'+esc(c.source)+'</div>'+
     '<p class="case-situation">'+esc(c.situation)+'</p>'+
     '<div class="case-block"><b>Practice questions</b><ul>'+c.practiceQuestions.map(function(s){return '<li>'+esc(s)+'</li>';}).join("")+'</ul></div>'+
@@ -22383,7 +22456,7 @@ function renderPyq(){
     return '<button class="pill'+(mode===m[0]?" active":"")+'" aria-pressed="'+(mode===m[0])+'" data-mode="'+m[0]+'">'+m[1]+'</button>';
   }).join("");
 
-  var html = '<div class="card pyq-note">Exact questions from previous papers, filed by year. Mains: GS I–IV and Essay (2014–2023), GS I–IV (2024–2026). '+(myOptional() ? 'Optional: only your optional, '+esc(myOptional())+', is shown here. ' : 'Optional: Anthropology Papers I and II, 2010–2026; Agriculture Papers I and II, 2014–2026; Animal Husbandry and Veterinary Science Papers I and II, 2014–2026; Botany Papers I and II, 2014–2026; Civil Engineering Papers I and II, 2016–2026 (all 22 papers); Chemistry Papers I and II, 2014–2026 (all 26 papers); Commerce and Accountancy Papers I and II, 2016–2026 (all 22 papers); Economics Papers I and II, 2016–2026 (all 22 papers); Electrical Engineering Papers I and II, 2016–2026 (all 22 papers); Geography Papers I and II, 2016–2026 (all 22 papers); Geology Papers I and II, 2016–2026 (all 22 papers); History Papers I and II, 2016–2026 (all 22 papers); Law Papers I and II, 2016–2026 (all 22 papers); Management Papers I and II, 2016–2026 (all 22 papers). ')+'Prelims GS I: 2014 to 2021, 2024 and 2025 (2016 to 2019 were read from scans by OCR, so a few words may be misread and some questions are missing), plus 2020 and 2021 CSAT. Prelims 2022, 2023 and 2026 are not in the bank yet.</div>'+
+  var html = '<div class="card pyq-note"><b>Exact questions from previous papers, filed by year.</b><details class="pyq-about"><summary>About this bank: years covered and accuracy</summary><p>Mains: GS I–IV and Essay (2014–2023), GS I–IV (2024–2026). '+(myOptional() ? 'Optional: only your optional, '+esc(myOptional())+', is shown here. ' : 'Optional: Anthropology Papers I and II, 2010–2026; Agriculture Papers I and II, 2014–2026; Animal Husbandry and Veterinary Science Papers I and II, 2014–2026; Botany Papers I and II, 2014–2026; Civil Engineering Papers I and II, 2016–2026 (all 22 papers); Chemistry Papers I and II, 2014–2026 (all 26 papers); Commerce and Accountancy Papers I and II, 2016–2026 (all 22 papers); Economics Papers I and II, 2016–2026 (all 22 papers); Electrical Engineering Papers I and II, 2016–2026 (all 22 papers); Geography Papers I and II, 2016–2026 (all 22 papers); Geology Papers I and II, 2016–2026 (all 22 papers); History Papers I and II, 2016–2026 (all 22 papers); Law Papers I and II, 2016–2026 (all 22 papers); Management Papers I and II, 2016–2026 (all 22 papers). ')+'Prelims GS I: 2014 to 2021, 2024 and 2025 (2016 to 2019 were read from scans by OCR, so a few words may be misread and some questions are missing), plus 2020 and 2021 CSAT. Prelims 2022, 2023 and 2026 are not in the bank yet.</p></details></div>'+
              '<div class="pill-row"><span class="pill-label">Exam</span>'+examPills+'</div>'+
              '<div class="pill-row"><span class="pill-label">View</span>'+modePills+'</div>';
 
@@ -22697,7 +22770,7 @@ function boot(){
   renderGreeting();
   document.getElementById("profileBtn").addEventListener("click", function(){ setMenu(false); openProfileModal(!!profile); });
   document.getElementById("menuBtn").addEventListener("click", function(){ setMenu(true); });
-  document.getElementById("dashFab").addEventListener("click", function(){ dashMore = !dashMore; applyDashMode(); window.scrollTo(0,0); });
+  document.getElementById("dashFab").addEventListener("click", function(){ fabHintDone(); dashMore = !dashMore; applyDashMode(); window.scrollTo(0,0); });
   document.getElementById("drawerDim").addEventListener("click", function(){ setMenu(false); });
   document.getElementById("pageClose").addEventListener("click", function(){ setTab("dashboard"); });
   document.addEventListener("keydown", function(e){ if(e.key==="Escape" && document.body.classList.contains("menu-open")) setMenu(false); });
