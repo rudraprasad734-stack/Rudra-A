@@ -1,0 +1,248 @@
+{
+ "month": "2026-10",
+ "updated": "30 Oct 2026",
+ "questions": [
+  {
+   "id": "caq-2026-10-001",
+   "subject": "Economy",
+   "syllabus": "Monetary policy",
+   "exam": "pre",
+   "q": "What did the RBI's Monetary Policy Committee decide at its 5 to 7 October 2026 meeting?",
+   "opts": [
+    "Raised the repo rate by 50 bps to 5.75% and withdrew accommodation",
+    "Raised the repo rate by 25 bps to 5.50% and moved to a calibrated tightening stance",
+    "Kept the repo rate at 5.25% with a neutral stance",
+    "Cut the repo rate by 25 bps to 5.00% with an accommodative stance"
+   ],
+   "ans": 1,
+   "why": "The MPC voted to raise the policy repo rate from 5.25% to 5.50% and changed the stance to calibrated tightening, citing inflation near 5.8%.",
+   "insight": "A higher repo rate makes bank loans costlier and cools demand and prices.",
+   "src": {
+    "name": "RBI, Monetary Policy",
+    "url": "https://www.rbi.org.in/scripts/annualpolicy.aspx",
+    "date": "7 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-002",
+   "subject": "Economy",
+   "syllabus": "Monetary policy",
+   "exam": "pre",
+   "q": "With the repo rate at 5.50%, the MSF rate and the Standing Deposit Facility (SDF) rate under the RBI's rate corridor are, respectively:",
+   "opts": [
+    "5.50% and 5.50%",
+    "6.00% and 5.00%",
+    "5.75% and 5.25%",
+    "5.25% and 5.75%"
+   ],
+   "ans": 2,
+   "why": "The corridor is repo plus 25 bps (MSF and Bank Rate) and repo minus 25 bps (SDF), so MSF is 5.75% and SDF is 5.25%.",
+   "insight": "SDF is the floor of the corridor: it lets the RBI absorb surplus liquidity without giving collateral.",
+   "src": {
+    "name": "RBI, Monetary Policy",
+    "url": "https://www.rbi.org.in/scripts/annualpolicy.aspx",
+    "date": "7 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-003",
+   "subject": "Sci & Tech",
+   "syllabus": "Biotechnology; recent awards",
+   "exam": "pre",
+   "q": "The 2026 Nobel Prize in Physiology or Medicine was awarded for work that led to which technique?",
+   "opts": [
+    "Optogenetics, controlling nerve cells with light",
+    "CRISPR genome editing",
+    "mRNA vaccine technology",
+    "Immune checkpoint cancer therapy"
+   ],
+   "ans": 0,
+   "why": "Karl Deisseroth, Peter Hegemann and Georg Nagel were honoured for light-gated ion channels. Hegemann and Nagel found channelrhodopsin in an alga, and Deisseroth used it to switch neurons on and off in living animals.",
+   "insight": "Channelrhodopsin is a light-sensitive protein, a common Prelims keyword for this topic.",
+   "src": {
+    "name": "NobelPrize.org",
+    "url": "https://www.nobelprize.org/prizes/medicine/2026/press-release/",
+    "date": "5 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-004",
+   "subject": "Economy",
+   "syllabus": "Economic thought; recent awards",
+   "exam": "pre",
+   "q": "The 2026 Nobel Prize in Economic Sciences (Robert E. Hall and Michael Woodford) was awarded for:",
+   "opts": [
+    "The study of how institutions shape prosperity",
+    "Research on auction theory and new auction formats",
+    "The analysis of labour markets and minimum wages",
+    "The microeconomic foundations of macroeconomic stabilisation"
+   ],
+   "ans": 3,
+   "why": "The Academy recognised their work building macroeconomic models on microeconomic foundations, now used by central banks and governments to counter shocks.",
+   "insight": "Link it to monetary policy questions: the policy tools are tested in such models.",
+   "src": {
+    "name": "NobelPrize.org",
+    "url": "https://www.nobelprize.org/prizes/economic-sciences/2026/press-release/",
+    "date": "12 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-005",
+   "subject": "Sci & Tech",
+   "syllabus": "Space and astrophysics; recent awards",
+   "exam": "pre",
+   "q": "The IceCube Neutrino Observatory, honoured in the 2026 Nobel Prize in Physics (Francis Halzen), is located at:",
+   "opts": [
+    "In a deep mine at Kamioka, Japan",
+    "The South Pole, in a cubic kilometre of ice",
+    "On the Mediterranean seabed off Sicily",
+    "Under Lake Baikal in Russia"
+   ],
+   "ans": 1,
+   "why": "IceCube is a detector of light sensors buried in a cubic kilometre of Antarctic ice that spots high-energy neutrinos from space.",
+   "insight": "India's own neutrino project, INO, has been proposed at Theni in Tamil Nadu.",
+   "src": {
+    "name": "NobelPrize.org",
+    "url": "https://www.nobelprize.org/prizes/physics/2026/press-release/",
+    "date": "6 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-006",
+   "subject": "Sci & Tech",
+   "syllabus": "Chemistry in everyday life; recent awards",
+   "exam": "pre",
+   "q": "The 2026 Nobel Prize in Chemistry (Henri B. Kagan and Kenso Soai) relates to which puzzle?",
+   "opts": [
+    "How to build lithium-ion batteries with longer life",
+    "How ozone is broken down in the stratosphere",
+    "How only one mirror-image form of a molecule, as in amino acids, can come to dominate (homochirality)",
+    "How proteins fold into their shapes"
+   ],
+   "ans": 2,
+   "why": "Their work on non-linear effects and autocatalysis in asymmetric synthesis showed how one mirror-image form can win out and be made on purpose.",
+   "insight": "Mirror-image forms of a drug can act very differently, so this matters for medicines.",
+   "src": {
+    "name": "NobelPrize.org",
+    "url": "https://www.nobelprize.org/prizes/chemistry/2026/press-release/",
+    "date": "7 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-007",
+   "subject": "IR",
+   "syllabus": "International indices",
+   "exam": "pre",
+   "q": "In the Global Hunger Index 2026, India's position and score were:",
+   "opts": [
+    "94th among 122 countries, score 18.9 (moderate)",
+    "108th among 122 countries, score 30.4 (alarming)",
+    "100th among 135 countries, score 24.1 (serious)",
+    "100th among 122 countries, score 24.1 (serious)"
+   ],
+   "ans": 3,
+   "why": "India ranks 100th of 122 with a score of 24.1, in the serious category. The South Asia score is 23.5 and the world score is 18.1.",
+   "insight": "Child wasting at 19.0% is the highest rate in South Asia, so a question on the weakest indicator is likely.",
+   "src": {
+    "name": "Global Hunger Index 2026, India",
+    "url": "https://www.globalhungerindex.org/india.html",
+    "date": "14 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-008",
+   "subject": "Society",
+   "syllabus": "Hunger and malnutrition",
+   "exam": "pre",
+   "q": "Which of the following is NOT one of the four indicators used to calculate the Global Hunger Index?",
+   "opts": [
+    "Adult literacy rate",
+    "Undernourishment",
+    "Child stunting",
+    "Child mortality"
+   ],
+   "ans": 0,
+   "why": "The four indicators are undernourishment, child stunting, child wasting and child mortality. Literacy is not included.",
+   "insight": "Remember GHI as a score out of 100: higher means worse hunger.",
+   "src": {
+    "name": "Global Hunger Index 2026, India",
+    "url": "https://www.globalhungerindex.org/india.html",
+    "date": "14 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-009",
+   "subject": "Society",
+   "syllabus": "Welfare schemes for vulnerable sections",
+   "exam": "pre",
+   "q": "Consider the National Social Assistance Programme (NSAP) decision of 14 October 2026:\n1. It was continued for five years, 2026-27 to 2030-31, and renamed Pradhan Mantri Samajik Sahayata Yojana.\n2. The disability benchmark for the disability pension was lowered from 80% to 40%.\n3. The minimum age for the disability pension was raised to 18 years.\nWhich of the above are correct?",
+   "opts": [
+    "2 and 3 only",
+    "1 and 2 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The programme was continued with about Rs 53,428 crore, and the disability benchmark was lowered to 40%. The age condition was removed, so eligibility starts from birth, not raised to 18.",
+   "insight": "NSAP gives effect to the Directive Principle in Article 41 (public assistance in old age, sickness and disablement).",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/PressReleasepage.aspx?PRID=2323264&reg=48&lang=1",
+    "date": "14 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-010",
+   "subject": "Economy",
+   "syllabus": "Banking and disinvestment",
+   "exam": "pre",
+   "q": "Consider the government's approval of the strategic restructuring (sale) of IDBI Bank on 14 October 2026:\n1. The sale covers 60.72% of the bank.\n2. The stake is split between the Government of India (30.48%) and LIC (30.24%).\n3. The buyer must still pass the RBI's fit-and-proper assessment.\nWhich of the above are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct per the PIB release. The government and LIC keep 15% and 19% respectively after the sale.",
+   "insight": "IDBI Bank was re-categorised as a private sector bank by the RBI in 2019 after LIC took a controlling stake.",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2323318&reg=48&lang=1",
+    "date": "14 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-011",
+   "subject": "Environment",
+   "syllabus": "Wetlands and conservation",
+   "exam": "pre",
+   "q": "As per the Government of India's October 2026 note, how many Ramsar Sites does India now have?",
+   "opts": [
+    "91",
+    "110",
+    "103",
+    "98"
+   ],
+   "ans": 2,
+   "why": "PIB's 25 October 2026 note says India has 103 Ramsar Sites, up from 26 in 2014.",
+   "insight": "Ramsar designation recognises international importance and 'wise use'; it does not by itself create a separate Indian law for the site.",
+   "src": {
+    "name": "PIB, Ramsar Sites in India",
+    "url": "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=160558&ModuleId=3&reg=3&lang=1",
+    "date": "25 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  }
+ ]
+}
