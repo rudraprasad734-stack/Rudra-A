@@ -1463,6 +1463,7 @@
   .wk-bars{display:flex; align-items:flex-end; gap:8px; height:98px;} .wk-bar{flex:1; min-width:0; text-align:center; display:flex; flex-direction:column; justify-content:flex-end;}
   .wk-bar i{display:block; border-radius:8px 8px 4px 4px; background:color-mix(in srgb,var(--tab-accent) 45%, transparent);} .wk-bar i.best{background:linear-gradient(var(--tab-accent),#5fd0ff);} .wk-bar i.fut,.wk-bar i.rest{opacity:.45;} .wk-bar small{font-size:11px; margin-top:5px; color:var(--ink-faint);}
   .wk-facts{display:flex; gap:6px; margin:14px 0;} .wk-facts span{flex:1; min-width:0; text-align:center; font-size:12px; color:var(--ink-soft);} .wk-facts b{display:block; font-size:21px; color:var(--ink);}
+  .wk-tip.wk-quote{position:relative; padding:14px 16px 14px 40px; font-family:var(--font-display); font-size:15.5px; line-height:1.45; font-style:italic;} .wk-qm{position:absolute; left:12px; top:2px; font-size:40px; line-height:1; color:#ffb020; font-style:normal;}
   .wk-tip{padding:12px 14px; border-radius:14px; background:color-mix(in srgb,#ffb020 14%, transparent); border:1px solid color-mix(in srgb,#ffb020 45%, transparent); font-size:13.5px; line-height:1.4;} .wk-tip b{display:block; margin-bottom:3px;}
   .wk-btns{margin-top:12px; display:flex; gap:10px;} .wk-btns .dx-btn2{flex:1; min-width:0; margin-top:0;} .dx-week .wk-num{margin-top:14px;} .wk-lab{font-size:13px; color:var(--ink-soft); padding-bottom:3px;} .wk-modal .modal-actions{margin-top:14px;}
   .fb-row{padding:10px 0; border-top:1px solid var(--line-soft);} .fb-h{display:flex; align-items:center; gap:8px;} .fb-h i{width:10px; height:10px; border-radius:50%; flex:none;} .fb-h b{flex:1; min-width:0; overflow-wrap:anywhere;} .fb-h span{font-weight:800; white-space:nowrap;}
@@ -20124,6 +20125,120 @@ function weekShareText(ws){
   var ss = streakStats(studyMinutesByDay()); if(ss.cur > 1) s += ", "+ss.cur+"-day streak";
   return s+". https://csecompanion.in";
 }
+var DAILY_QUOTES = [
+  "Small steps every day reach the biggest destinations.",
+  "Today's effort is tomorrow's rank.",
+  "Discipline is the bridge between your goal and your result.",
+  "The syllabus is finite. Your determination is not.",
+  "Every chapter you finish is a promise you kept to yourself.",
+  "Start where you are. Use what you have. Do what you can.",
+  "Consistency beats intensity, every single time.",
+  "You are one revision away from remembering what once felt impossible.",
+  "The uniform of an officer is stitched with hours of silent study.",
+  "Don't count the days. Make the days count.",
+  "A calm mind and a steady schedule can move mountains.",
+  "Your future self is watching what you do today. Make them proud.",
+  "Read one more page. Solve one more question. Rise one more rank.",
+  "Success is the sum of small efforts repeated day after day.",
+  "Fatigue is temporary. The regret of giving up lasts much longer.",
+  "Believe in the plan, trust the process, and keep turning pages.",
+  "Every topper was once a beginner who refused to quit.",
+  "Do today what others won't, so tomorrow you can do what others can't.",
+  "The exam tests knowledge, but the journey builds character.",
+  "Be so focused that distractions feel like background noise.",
+  "One focused hour is worth more than five scattered ones.",
+  "Dream big, plan smart, work steady.",
+  "You didn't come this far to only come this far.",
+  "A missed day is a lesson. A missed week is a choice. Return today.",
+  "Make your preparation so strong that luck has nothing left to decide.",
+  "Courage is opening the book on the days you don't feel like it.",
+  "The best time to start was yesterday. The next best time is now.",
+  "Every answer you write is built on questions you once got wrong.",
+  "Mistakes in practice are the price of confidence in the exam hall.",
+  "Your only competition is who you were yesterday.",
+  "Patience and persistence turn ordinary days into extraordinary results.",
+  "The mountain is climbed one step at a time. So is the syllabus.",
+  "Stay humble, stay hungry, stay on schedule.",
+  "You are building a life of service. Let that purpose carry you through tough hours.",
+  "Dedicate today so that tomorrow can be dedicated to the nation.",
+  "Energy flows where attention goes. Choose your focus wisely.",
+  "A strong foundation today is a tall building tomorrow.",
+  "Don't wait for motivation. Build the habit and motivation will follow.",
+  "It always seems impossible until it is done.",
+  "Trust your preparation. You have done more than you think.",
+  "Each revision cements what each reading began.",
+  "Great officers are made in quiet rooms, one chapter at a time.",
+  "Let your effort be so loud that doubt cannot be heard.",
+  "Your hands will hold the file, your mind will shape the district. Prepare it well.",
+  "Don't compare your chapter one with someone else's chapter twenty.",
+  "Focus on the next hour, not the whole year.",
+  "A tired body recovers. A wasted day does not.",
+  "The harder you work for something, the greater you'll feel when you achieve it.",
+  "Failure is feedback. Learn from it and go again.",
+  "Keep going. The finish line respects only those who stay.",
+  "Your attempt is not a gamble. It is a well-earned harvest.",
+  "Think like a leader long before you become one.",
+  "Today's hardest revision is tomorrow's easiest answer.",
+  "The path is long, but each day you walk it, it grows shorter.",
+  "Be stubborn about your goals and flexible about your methods.",
+  "Quiet effort builds loud success.",
+  "Push through the plateau. Growth is hiding on the other side.",
+  "Every sunrise is a fresh page. Fill it with focus.",
+  "An hour of study is an investment that never loses value.",
+  "Make peace with the process and the results will find you.",
+  "You are not behind. You are on your own timeline. Keep moving.",
+  "Winners are simply learners who didn't stop.",
+  "What you do every day matters more than what you do once in a while.",
+  "Work in silence. Let your rank make the noise.",
+  "Be the aspirant who keeps showing up when it is inconvenient.",
+  "Hope is not a strategy, but hope with a timetable is unstoppable.",
+  "Study with purpose and the hours will fly.",
+  "A single good day can restart a whole month. Make it today.",
+  "You are capable of more than you currently believe.",
+  "Curiosity turns study into discovery.",
+  "Don't stop when you're tired. Stop when you're done.",
+  "The more you sweat in preparation, the less you bleed in the exam.",
+  "Your dream deserves your best hours, not your leftover ones.",
+  "The best revision is the one you actually do today.",
+  "Courage doesn't roar. Sometimes it whispers: I will try again tomorrow.",
+  "Every expert was once a beginner who kept practising.",
+  "Own your morning, and the rest of the day follows.",
+  "Success loves those who prepare long before the bell rings.",
+  "Let your goals be larger than your fears.",
+  "One chapter at a time is still faster than none at all.",
+  "Turn your 'I wish' into an 'I will' and then into an 'I did'.",
+  "Strong people are not those who never fall, but those who rise every time.",
+  "You are writing your own story. Make the next page worth reading.",
+  "There are no shortcuts, but there are great routines.",
+  "Pressure builds diamonds. Trust the squeeze.",
+  "Be a student today so you can be a servant of the people tomorrow.",
+  "Today's notes are tomorrow's confidence.",
+  "Doubt kills more dreams than failure ever will. Keep believing.",
+  "The sacrifice is temporary. The reward is for life.",
+  "Balance your effort with rest and you can go the distance.",
+  "Every minute you study is a vote for the person you want to become.",
+  "Don't let one bad test define a whole journey.",
+  "Hold on to your why when the how gets heavy.",
+  "Your struggle today is the story you will tell with pride tomorrow.",
+  "Wake up with determination, sleep with satisfaction.",
+  "Make every session count, and the exam will count for you.",
+  "Fall in love with the process and the outcome will follow.",
+  "The only impossible journey is the one you never begin.",
+  "Bring the same energy on a Monday that you bring on a mock-test day.",
+  "Nothing worthwhile comes easy, and you are doing something worthwhile.",
+  "Your effort today plants a forest of opportunities.",
+  "Be unstoppable by being consistent.",
+  "When the going gets tough, the tough open their notes.",
+  "A great rank is the echo of countless quiet hours.",
+  "You've survived every hard day so far. This one is no different.",
+  "Keep your eyes on the goal and your hands on the book.",
+  "Rise, revise, repeat. The result will take care of itself.",
+  "Today is a good day to become a little better than yesterday."
+];   // 108 original lines, one per day (cycles by date)
+function dailyQuote(){
+  var d = parseKey(todayKey), n = Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())/86400000);
+  return DAILY_QUOTES[((n % DAILY_QUOTES.length) + DAILY_QUOTES.length) % DAILY_QUOTES.length];
+}
 function weekBodyHtml(ws, noBars){
   var mx = Math.max(60, ws.days.reduce(function(a, d){ return Math.max(a, d.v); }, 0)), diff = ws.total - ws.prev;
   var bars = ws.days.map(function(d, i){
@@ -20134,7 +20249,7 @@ function weekBodyHtml(ws, noBars){
   return '<div class="wk-num"><b>'+esc(fmtDurMin(ws.total))+'</b>'+(noBars ? '<span class="wk-lab">studied this week</span>' : '')+(ws.prev > 0 ? '<span class="wk-diff'+(diff<0 ? " dn" : "")+'">'+(diff>=0 ? "▲ " : "▼ ")+esc(fmtDurMin(Math.abs(diff)))+' vs last week</span>' : '')+'</div>'+
     (noBars ? '' : '<div class="wk-bars">'+bars+'</div>')+
     '<div class="wk-facts"><span><b>'+ws.chapters+'</b>chapter'+(ws.chapters===1 ? "" : "s")+' finished</span><span><b>'+(ws.best.k ? DOW_SHORT[dowOf(ws.best.k)] : "–")+'</b>best day</span><span><b>'+(ss.cur>0 ? "🔥 " : "")+ss.cur+'</b>day streak</span></div>'+
-    '<div class="wk-tip"><b>💡 For next week</b>'+esc(weekAdvice(ws))+'</div>';
+    '<div class="wk-tip wk-quote"><span class="wk-qm" aria-hidden="true">&ldquo;</span>'+esc(dailyQuote())+'</div>';
 }
 function dxWeekHtml(){
   var mon = toKey(mondayOf(parseKey(todayKey))), ws = weekStats(mon);
@@ -20851,7 +20966,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "269";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "270";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
