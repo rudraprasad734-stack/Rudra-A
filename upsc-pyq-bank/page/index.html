@@ -18870,7 +18870,7 @@ function renderTiersWhenReady(kind){
 // CA QUIZ: monthly current-affairs questions (quiz/*.json). Answers and reports stay on this device only: nothing is sent to any cloud store.
 // ============================================================================
 var CAQ_STORE = "dossier.caq.v1", CAQ_MAIL = "support@csecompanion.in";
-var CAQ_SUBJECTS = ["Polity", "Economy", "IR", "Sci & Tech", "Environment", "Culture", "Society", "Sports & Awards"];
+var CAQ_SUBJECTS = ["Polity & Governance", "Economy", "Environment", "Sci & Tech", "History & Culture", "Geography", "IR"];   // the Prelims subjects; the target is 30 questions each per month
 var CAQ_REASONS = ["The correct answer is wrong", "The explanation is wrong or unclear", "The fact is out of date", "The question is confusing or has two answers", "Not related to the UPSC syllabus"];
 var caq = {loaded:false, loading:false, err:"", months:[], qs:{}, ui:{subject:"All", run:null}};
 // device-only on purpose (plain localStorage, not lsSet): the cloud sync never sees these keys
@@ -18942,7 +18942,7 @@ function caqHomeHtml(){
       '<button type="button" class="btn ghost sm" data-caq="month" data-m="'+esc(m.id)+'"'+(left ? "" : " disabled")+'>'+(left ? (d ? "Continue" : "Open") : "Done &#10003;")+'</button></div>'+
       '<div class="caq-bar"><i style="width:'+Math.round(100*d/Math.max(1, m.ids.length))+'%"></i></div></div>';
   }).join("");
-  h += '<div class="section-title">By subject</div><div class="pill-row">'+["All"].concat(CAQ_SUBJECTS).map(function(s){ return '<button type="button" class="pill'+(caq.ui.subject===s ? " active" : "")+'" data-caq="subj" data-s="'+esc(s)+'">'+esc(s)+'</button>'; }).join("")+'</div>';
+  h += '<div class="section-title">By subject</div><div class="pill-row">'+["All"].concat(CAQ_SUBJECTS).map(function(s){ var n = s==="All" ? all.length : all.filter(function(id){ return caq.qs[id].subject===s; }).length; return '<button type="button" class="pill'+(caq.ui.subject===s ? " active" : "")+'" data-caq="subj" data-s="'+esc(s)+'">'+esc(s)+' <small>'+n+'</small></button>'; }).join("")+'</div>';
   if(wk.length) h += '<div class="card"><div class="dx-k">YOUR WEAK TOPICS</div><div class="muted small">Based on what you got wrong</div><div class="pill-row">'+wk.map(function(s){ return '<span class="chip">'+esc(s)+'</span>'; }).join("")+'</div><button type="button" class="btn ghost" data-caq="weak">Practise weak topics</button></div>';
   return h;
 }
@@ -21243,7 +21243,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "274";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "275";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
