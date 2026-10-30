@@ -1464,7 +1464,7 @@
   .wk-bar i{display:block; border-radius:8px 8px 4px 4px; background:color-mix(in srgb,var(--tab-accent) 45%, transparent);} .wk-bar i.best{background:linear-gradient(var(--tab-accent),#5fd0ff);} .wk-bar i.fut,.wk-bar i.rest{opacity:.45;} .wk-bar small{font-size:11px; margin-top:5px; color:var(--ink-faint);}
   .wk-facts{display:flex; gap:6px; margin:14px 0;} .wk-facts span{flex:1; min-width:0; text-align:center; font-size:12px; color:var(--ink-soft);} .wk-facts b{display:block; font-size:21px; color:var(--ink);}
   .wk-tip{padding:12px 14px; border-radius:14px; background:color-mix(in srgb,#ffb020 14%, transparent); border:1px solid color-mix(in srgb,#ffb020 45%, transparent); font-size:13.5px; line-height:1.4;} .wk-tip b{display:block; margin-bottom:3px;}
-  .wk-btns{margin-top:12px;} .wk-modal .modal-actions{margin-top:14px;}
+  .wk-btns{margin-top:12px; display:flex; gap:10px;} .wk-btns .dx-btn2{flex:1; min-width:0; margin-top:0;} .dx-week .wk-num{margin-top:14px;} .wk-lab{font-size:13px; color:var(--ink-soft); padding-bottom:3px;} .wk-modal .modal-actions{margin-top:14px;}
   .fb-row{padding:10px 0; border-top:1px solid var(--line-soft);} .fb-h{display:flex; align-items:center; gap:8px;} .fb-h i{width:10px; height:10px; border-radius:50%; flex:none;} .fb-h b{flex:1; min-width:0; overflow-wrap:anywhere;} .fb-h span{font-weight:800; white-space:nowrap;}
   .fb-bar{height:8px; border-radius:99px; background:color-mix(in srgb,var(--ink) 10%, transparent); margin:8px 0 5px; overflow:hidden;} .fb-bar i{display:block; height:100%; border-radius:99px;} .fb-row small{color:var(--ink-soft); font-size:12px;}
   .fb-ok{padding:10px 0; font-weight:700;} .fb-strong,.fb-mock{margin-top:8px; padding-top:8px; border-top:1px solid var(--line-soft); font-size:13px; color:var(--ink-soft);} .fb-card .btn{margin-top:10px;}
@@ -18525,11 +18525,13 @@ function dxPlanHtml(){
   var wr = weekReview(sundayOf(parseKey(todayKey))), wcount = wr.done + wr.missed + wr.skipped, wrate = wcount ? Math.round(100*wr.done/wcount) : 0, week = "";
   if(wr.planned){
     var wv = weekViz(wr, wrate, fmtDurMin);
-    week = '<div class="dx-card dx-week"><div class="dx-k">THIS WEEK &middot; '+wr.done+' OF '+wr.planned+' SESSIONS DONE</div>'+wv.ring+wv.days+'<button type="button" class="dx-btn2" data-go="insights">Open weekly review &rsaquo;</button></div>';
+    // the same Sunday-to-Saturday week as the ring and day bars, so every number on the card agrees
+    var wsk = toKey(sundayOf(parseKey(todayKey))), ws = weekStats(wsk);
+    week = '<div class="dx-card dx-week"><div class="dx-k">THIS WEEK &middot; '+wr.done+' OF '+wr.planned+' SESSIONS DONE</div>'+wv.ring+wv.days+weekBodyHtml(ws, true)+'<div class="wk-btns"><button type="button" class="dx-btn2" data-go="insights">Open weekly review &rsaquo;</button><button type="button" class="dx-btn2" data-wk="share" data-wkstart="'+wsk+'">Share my week</button></div></div>';
   }
   var upc = '<div class="dx-card dx-up"><div class="dx-k">UPCOMING</div>'+upcomingHtml()+'<button type="button" class="dx-btn2" id="dashOpenPlanner">Open planner</button></div>';
   // the cards are laid out one under another in renderDashboard, in the order the user chose
-  return {ring:ring, path:path, pace:pace, week:week, mods:mods, module:module, pyq:pyq, upc:upc};
+  return {ring:ring, path:path, pace:pace, week:week, hasWeek:!!week, mods:mods, module:module, pyq:pyq, upc:upc};
 }
 function bindDrum(host){
   var dr = host.querySelector("#dxDrum"); if(!dr) return;
@@ -20122,15 +20124,15 @@ function weekShareText(ws){
   var ss = streakStats(studyMinutesByDay()); if(ss.cur > 1) s += ", "+ss.cur+"-day streak";
   return s+". https://csecompanion.in";
 }
-function weekBodyHtml(ws){
+function weekBodyHtml(ws, noBars){
   var mx = Math.max(60, ws.days.reduce(function(a, d){ return Math.max(a, d.v); }, 0)), diff = ws.total - ws.prev;
   var bars = ws.days.map(function(d, i){
     var h = d.v > 0 ? Math.max(6, Math.round(78*d.v/mx)) : 4;
     return '<span class="wk-bar"><i class="'+(d.v>0 && d.k===ws.best.k ? "best" : (d.fut ? "fut" : (d.rest && !d.v ? "rest" : "")))+'" style="height:'+h+'px"></i><small>'+"MTWTFSS".charAt(i)+'</small></span>';
   }).join("");
   var ss = streakStats(studyMinutesByDay());
-  return '<div class="wk-num"><b>'+esc(fmtDurMin(ws.total))+'</b>'+(ws.prev > 0 ? '<span class="wk-diff'+(diff<0 ? " dn" : "")+'">'+(diff>=0 ? "▲ " : "▼ ")+esc(fmtDurMin(Math.abs(diff)))+' vs last week</span>' : '')+'</div>'+
-    '<div class="wk-bars">'+bars+'</div>'+
+  return '<div class="wk-num"><b>'+esc(fmtDurMin(ws.total))+'</b>'+(noBars ? '<span class="wk-lab">studied this week</span>' : '')+(ws.prev > 0 ? '<span class="wk-diff'+(diff<0 ? " dn" : "")+'">'+(diff>=0 ? "▲ " : "▼ ")+esc(fmtDurMin(Math.abs(diff)))+' vs last week</span>' : '')+'</div>'+
+    (noBars ? '' : '<div class="wk-bars">'+bars+'</div>')+
     '<div class="wk-facts"><span><b>'+ws.chapters+'</b>chapter'+(ws.chapters===1 ? "" : "s")+' finished</span><span><b>'+(ws.best.k ? DOW_SHORT[dowOf(ws.best.k)] : "–")+'</b>best day</span><span><b>'+(ss.cur>0 ? "🔥 " : "")+ss.cur+'</b>day streak</span></div>'+
     '<div class="wk-tip"><b>💡 For next week</b>'+esc(weekAdvice(ws))+'</div>';
 }
@@ -20202,7 +20204,7 @@ function bindGoal(host){
     var g = e.target.closest ? e.target.closest("[data-goal]") : null;
     if(g){ var a = g.getAttribute("data-goal"); if(a==="rev"){ dashMore = true; applyDashMode(); setTimeout(function(){ var r = host.querySelector(".dx-rev"); if(r) r.scrollIntoView({block:"center", behavior:"smooth"}); }, 250); } return; }
     var w = e.target.closest ? e.target.closest("[data-wk]") : null;
-    if(w && w.getAttribute("data-wk")==="share") shareWeek(weekStats(toKey(mondayOf(parseKey(todayKey)))));
+    if(w && w.getAttribute("data-wk")==="share") shareWeek(weekStats(w.getAttribute("data-wkstart") || toKey(mondayOf(parseKey(todayKey)))));
   });
 }
 
@@ -20849,7 +20851,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "268";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "269";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -20901,7 +20903,7 @@ function renderDashboard(){
     '<div class="dx">'+
       dxProfileHtml()+
       (P ? P.ring : plannerDashCard())+
-      dxWeekHtml()+
+      (P && P.hasWeek ? "" : dxWeekHtml())+
       dxStreakHtml()+
       (P ? P.path+P.pace+P.week : "")+
       dxRevisionHtml()+
