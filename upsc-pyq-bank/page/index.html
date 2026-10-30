@@ -172,6 +172,34 @@
   @keyframes fabBreathe{0%,100%{box-shadow:0 6px 20px rgba(2,8,20,.65), inset 0 1px 0 rgba(243,236,219,.18), 0 0 0 6px rgba(243,236,219,.07);}50%{box-shadow:0 6px 22px rgba(2,8,20,.7), inset 0 1px 0 rgba(243,236,219,.22), 0 0 0 10px rgba(243,236,219,.03);}}
   @media (prefers-reduced-motion: reduce){ #dashFab{animation:none;} }
   /* CA Quiz */
+  /* Current Affairs Quizzes: a full-screen game that covers the app while it is open */
+  body.caq-on{overflow:hidden;} body.caq-on .toast{z-index:300;}
+  #caqGame{position:fixed; inset:0; z-index:150; display:none; flex-direction:column; background:#06161b; color:#e8ffff; --ink:#e8ffff; --ink-soft:#9fd8d0; --surface:#0a262c; --surface-solid:#0a262c; --line:#1d5a60; --bg:#06161b; --tab-accent:#3dd6c0; --tab-accent-soft:#103a40; --tab-accent-ink:#022; --link:#7fe8dc;}
+  #caqGame .btn.primary{background:linear-gradient(90deg,#2de0d0,#5bc8ff); color:#022; border:0; border-radius:14px; font-weight:800; padding:14px; box-shadow:0 5px 0 #1a7f8f;} #caqGame .btn.ghost{background:transparent; border:1px solid #2a8a8a; color:#e8ffff; border-radius:14px; padding:12px;}
+  #caqGame .link-btn{color:#5ee9dd;} #caqGame .card{background:#0a262c; border:1px solid #1d5a60; border-radius:16px; margin-bottom:12px;} #caqGame .chip{background:#0f3a40; color:#e8ffff;}
+  .cg-hud{flex:none; display:flex; align-items:center; gap:8px; padding:max(12px, env(safe-area-inset-top)) 12px 8px; background:linear-gradient(#06161b 70%, #06161b00); position:relative; z-index:8;}
+  .cg-c{flex:1; display:flex; align-items:center; gap:10px; justify-content:center; font-weight:800; font-size:15px; min-width:0; text-align:center;} .cg-c .caq-bar{max-width:none;} .cg-n{font-size:13px; color:#9fd8d0; flex:none;} .cg-sp{width:38px;}
+  .cg-x{width:40px; height:40px; flex:none; border-radius:13px; background:#0a262ccc; border:1px solid #1d5a60; color:#cff; font-size:20px; display:grid; place-items:center; cursor:pointer;}
+  .cg-pill{background:#0a262ccc; border:1px solid #1d5a60; border-radius:20px; padding:6px 10px; font-weight:700; font-size:13px; flex:none;}
+  .cg-body{flex:1; overflow-y:auto; position:relative; padding:0 16px 28px; -webkit-overflow-scrolling:touch;} .cg-qbody,.cg-res{padding-top:4px;}
+  .cg-sky{background:linear-gradient(#0b2d4a,#0d4a55 40%,#0f5a40);} .cg-top{padding-top:6px;} .cg-note{text-align:center; color:#9fd8d0; font-size:12px; opacity:.8; margin:0;}
+  .cg-daily{display:block; width:100%; background:linear-gradient(135deg,#ffd27a,#ff9d5a); color:#331; border:0; border-radius:20px; padding:14px; text-align:center; box-shadow:0 8px 0 #a3571a; font:inherit; cursor:pointer;} .cg-daily small{display:block; opacity:.7; font-size:11px; letter-spacing:.1em;} .cg-daily b{display:block; font:800 26px Georgia,serif;} .cg-daily span{font-weight:700; font-size:13px;} .cg-daily[disabled]{opacity:.6; box-shadow:none;}
+  .cg-cont{display:block; width:100%; margin-top:16px; background:#0a262ccc; border:1px solid #e8b24a; color:#ffd27a; border-radius:14px; padding:11px; font:inherit; font-weight:700; cursor:pointer; text-align:center;} .cg-cont.weak{border-color:#ff9d7a; color:#ffb39a; margin-top:8px;}
+  .cg-map{position:relative; margin:14px -16px 0;} .cg-map svg{position:absolute; left:0; top:0; width:100%; height:100%;} .cg-map path{fill:none; stroke:#ffffff55; stroke-width:5; stroke-dasharray:2 12; stroke-linecap:round;}
+  .cg-isl{position:absolute; width:150px; text-align:center; background:none; border:0; color:#fff; font:inherit; cursor:pointer; padding:0;} .cg-isl .ball{position:relative; display:grid; place-items:center; width:104px; height:104px; margin:0 auto 6px; border-radius:50%; background:var(--c); font-size:44px; border:4px solid #ffffff55; box-shadow:0 10px 0 #0006, 0 0 26px var(--c);} .cg-isl:active .ball{transform:translateY(4px);}
+  .cg-isl b{display:block; font-size:14px;} .cg-isl small{color:#cfe; opacity:.85; font-size:12px;} .cg-isl .nd{position:absolute; top:-6px; right:-12px; background:#ff7a59; color:#fff; border-radius:12px; padding:2px 8px; font:800 11px system-ui; font-style:normal;}
+  .cg-roadbody{padding:0; background:#0c3a3e;} .cg-world{position:relative; overflow:hidden; background:linear-gradient(#0a2a35 0,#0c3a3e 35%,#0d4a3f 70%,#0f5a40 100%);} .cg-layer{position:absolute; left:0; right:0; top:0; height:100%; pointer-events:none; will-change:transform;}
+  .cg-cloud{position:absolute; width:90px; height:28px; border-radius:30px; background:rgba(207,238,238,.22);} .cg-cloud:before{content:""; position:absolute; left:16px; top:-14px; width:42px; height:34px; border-radius:50%; background:rgba(207,238,238,.22);} .cg-tree{position:absolute; font-size:34px;} .cg-tree.big{font-size:54px;}
+  .cg-road{position:absolute; left:0; top:0; width:100%; height:100%;} .cg-road path{fill:none; stroke-linecap:round;} .cg-road .a{stroke:#12373c; stroke-width:30;} .cg-road .b{stroke:#8fdcd0; stroke-width:3; stroke-dasharray:2 14;}
+  .cg-node{position:absolute; width:66px; height:66px; margin:-33px 0 0 -33px; border-radius:50%; display:grid; place-items:center; font:800 21px system-ui; color:#e8ffff; border:3px solid #1d7a7a; background:#0a262c; z-index:3; opacity:0; transition:transform .5s cubic-bezier(.2,.8,.2,1), opacity .5s; cursor:pointer; box-shadow:0 6px 0 #0007; padding:0;}
+  .cg-node.l{transform:translateX(-90px);} .cg-node.r{transform:translateX(90px);} .cg-node.in{opacity:1; transform:none;} .cg-node.done{background:#3dd6c0; color:#022; border-color:#aef;} .cg-node.part,.cg-node.cur{border-color:#ffd27a; color:#ffd27a;} .cg-node.cur{box-shadow:0 0 22px #ffd27a99, 0 6px 0 #0007;}
+  .cg-lab{position:absolute; z-index:3; font-size:11px; color:#bfe; width:120px; opacity:0; transition:opacity .6s .15s; pointer-events:none;} .cg-lab.in{opacity:1;} .cg-lab b{display:block; font-size:13px; color:#fff;} .cg-st{color:#ffd27a; letter-spacing:2px;}
+  .cg-sign{position:absolute; left:50%; transform:translateX(-50%) scale(.8); z-index:3; background:#ffd27a; color:#331; font-weight:800; font-size:13px; padding:8px 16px; border-radius:10px; border-bottom:4px solid #a37a1a; opacity:0; transition:.5s; white-space:nowrap;} .cg-sign.in{opacity:1; transform:translateX(-50%);} .cg-sign.grey{background:#365; color:#9ca; border-color:#243;}
+  .cg-empty{position:absolute; top:40%; left:20px; right:20px; text-align:center; color:#9fd8d0; z-index:3;}
+  .cg-back{position:absolute; inset:0; background:rgba(0,0,0,.45); z-index:20;} .cg-sheet{position:absolute; left:0; right:0; bottom:0; z-index:21; background:#0d2f36; border-top:2px solid #ffd27a; border-radius:24px 24px 0 0; padding:16px 16px calc(20px + env(safe-area-inset-bottom,0px)); animation:cgUp .3s ease-out;} @keyframes cgUp{from{transform:translateY(100%);}to{transform:none;}}
+  .cg-sheet small{color:#9fd8d0; font-size:11px; letter-spacing:.08em;} .cg-sh{display:flex; justify-content:space-between; align-items:center;} .cg-sh b{font:700 28px Georgia,serif;} .cg-meta{color:#9fd8d0; font-size:13px; margin:2px 0 14px;} .cg-sheet .btn{width:100%; margin-top:8px;} .cg-cancel{display:block; margin:12px auto 0; background:none; border:0; color:#9fd8d0; font:inherit; cursor:pointer;}
+  .cg-trophy{text-align:center; margin:16px 0 18px;} .cg-stars{font-size:48px; color:#ffd27a; letter-spacing:8px;} .cg-score{font:700 46px Georgia,serif;}
+  @media (prefers-reduced-motion: reduce){ .cg-node,.cg-sign,.cg-lab{transition:none;} .cg-sheet{animation:none;} }
   .caq .card{padding:14px; margin-bottom:12px;} .caq-r{display:flex; align-items:center; gap:10px;} .caq .grow{flex:1; min-width:0;} .caq .pill-row{margin-bottom:10px;}
   .caq .caq-month .btn.ghost{width:auto; margin:0; padding:8px 16px; flex:none;} .caq h2{margin:2px 0 4px;}
   .caq-hero h2{margin:2px 0 4px; font-size:24px;} .caq-hero .btn{margin:12px 0 8px; width:100%;}
@@ -18848,6 +18876,7 @@ function setTab(id){
   if(id==="settings" && activeTab!=="settings") setSec = "";   // opening Settings always starts at the list
   if(id !== "dashboard"){ var ph = document.getElementById("planHint"); if(ph) ph.remove(); var qn = document.getElementById("quietNudge"); if(qn) qn.remove(); }
   if(id==="dashboard" && activeTab!=="dashboard") dashMore = false;
+  if(id!=="caquiz") caqHide();
   activeTab = id;
   renderTabs();
   lsSet("dossier.tab", id);
@@ -18927,12 +18956,13 @@ function caqSubjStats(){
 }
 function caqWeak(){ var st = caqSubjStats(); return Object.keys(st).filter(function(s){ return st[s].n >= 3 && st[s].ok/st[s].n < 0.6; }); }
 var CAQ_RUN = "dossier.caq.run.v1";   // the quiz in progress, kept on this phone only (never synced)
-function caqRunSave(){ var r = caq.ui.run; if(!r || r.done) return; try{ localStorage.setItem(CAQ_RUN, JSON.stringify({ids:r.ids, i:r.i, res:r.res, title:r.title, el:Date.now()-r.t0, at:Date.now()})); }catch(e){} }
+function caqRunSave(){ var r = caq.ui.run; if(!r || r.done) return; try{ localStorage.setItem(CAQ_RUN, JSON.stringify({ids:r.ids, i:r.i, res:r.res, title:r.title, el:Date.now()-r.t0, at:Date.now(), key:r.key || ""})); }catch(e){} }
 function caqRunClear(){ try{ localStorage.removeItem(CAQ_RUN); }catch(e){} }
 function caqRunLoad(){
   try{
     var v = JSON.parse(localStorage.getItem(CAQ_RUN) || "null");
     if(!v || !Array.isArray(v.ids) || !Array.isArray(v.res)) return null;
+    v.key = typeof v.key=="string" ? v.key : "";
     v.ids = v.ids.filter(function(id){ return caq.qs[id]; });
     if(!v.ids.length || v.res.length > v.ids.length) return null;
     v.res = v.res.filter(function(x, k){ return x && v.ids[k]===x.id; });
@@ -18949,72 +18979,13 @@ function caqStart(ids, title){
 }
 function caqResume(){
   var v = caqRunLoad(); if(!v){ caqRunClear(); renderCaQuiz(); return; }
-  caq.ui.run = {ids:v.ids, i:0, pick:-1, checked:false, res:v.res, t0:Date.now()-(+v.el || 0), title:v.title};
+  caq.ui.run = {ids:v.ids, i:0, pick:-1, checked:false, res:v.res, t0:Date.now()-(+v.el || 0), title:v.title, key:v.key};
+  if(v.key){ caq.ui.subj = caqSubjIndex(v.key); caq.ui.screen = "road"; }
   caqSetPos(Math.min(v.res.length, v.ids.length-1)); renderCaQuiz(); window.scrollTo(0, 0);
-}
-function caqResumeHtml(){
-  var v = caqRunLoad(); if(!v) return "";
-  return '<div class="card caq-resume"><div class="dx-k">UNFINISHED QUIZ</div><b>'+esc(v.title || "Quiz")+'</b><div class="muted small">You stopped at question '+(Math.min(v.res.length, v.ids.length-1)+1)+' of '+v.ids.length+'. Your answers so far are saved on this phone.</div><div class="caq-r"><button type="button" class="btn primary" data-caq="resume">Continue</button><button type="button" class="btn ghost" data-caq="startover">Start over</button></div></div>';
-}
-function caqHomeHtml(){
-  var all = caqAllIds(), wk = caqWeak(), daily = caqUnanswered(all).length, doneAll = all.filter(function(id){ return caqData.ans[id]; }).length, stk = caqStreak();
-  var h = caqResumeHtml()+'<div class="card caq-hero"><div class="dx-k">TODAY</div><h2>Daily 10</h2><div class="muted">Ten current-affairs questions, mixed across subjects. About 6 minutes.</div>'+
-    '<button type="button" class="btn primary" data-caq="daily"'+(daily ? "" : " disabled")+'>'+(daily ? "Start today&rsquo;s 10" : "You have done every question so far")+'</button>'+
-    (stk ? '<div class="muted small">&#128293; '+stk+'-day quiz streak &middot; '+doneAll+' of '+all.length+' answered</div>' : (all.length ? '<div class="muted small">'+doneAll+' of '+all.length+' answered</div>' : ""))+'</div>';
-  if(!all.length){ h += '<div class="card empty">'+esc(caq.err || "No quizzes yet. The first month is on its way.")+'</div>'; return h; }
-  h += '<div class="section-title">Browse by month</div>'+caq.months.map(function(m){
-    var d = m.ids.filter(function(id){ return caqData.ans[id]; }).length, left = caqUnanswered(m.ids).length;
-    return '<div class="card caq-month"><div class="caq-r"><div class="grow"><b>'+esc(m.title)+'</b><div class="muted small">'+m.ids.length+' questions &middot; '+d+' done</div></div>'+
-      '<button type="button" class="btn ghost sm" data-caq="month" data-m="'+esc(m.id)+'"'+(left ? "" : " disabled")+'>'+(left ? (d ? "Continue" : "Open") : "Done &#10003;")+'</button></div>'+
-      '<div class="caq-bar"><i style="width:'+Math.round(100*d/Math.max(1, m.ids.length))+'%"></i></div></div>';
-  }).join("");
-  h += '<div class="section-title">By subject</div><div class="pill-row">'+["All"].concat(CAQ_SUBJECTS).map(function(s){ var n = s==="All" ? all.length : all.filter(function(id){ return caq.qs[id].subject===s; }).length; return '<button type="button" class="pill'+(caq.ui.subject===s ? " active" : "")+'" data-caq="subj" data-s="'+esc(s)+'">'+esc(s)+' <small>'+n+'</small></button>'; }).join("")+'</div>';
-  if(wk.length) h += '<div class="card"><div class="dx-k">YOUR WEAK TOPICS</div><div class="muted small">Based on what you got wrong</div><div class="pill-row">'+wk.map(function(s){ return '<span class="chip">'+esc(s)+'</span>'; }).join("")+'</div><button type="button" class="btn ghost" data-caq="weak">Practise weak topics</button></div>';
-  return h;
 }
 function caqSrcHtml(q){
   var s = q.src || {}, t = esc((s.name || "Source")+(s.date ? " · "+s.date : "")), link = s.url && /^https:\/\//.test(s.url) ? '<a href="'+esc(s.url)+'" target="_blank" rel="noopener">'+t+'</a>' : t;
   return '<div class="caq-src">Source: '+link+(q.checked ? ' &middot; checked '+esc(q.checked) : "")+'</div>';
-}
-function caqQuestionHtml(){
-  var r = caq.ui.run, q = caq.qs[r.ids[r.i]], L = "ABCDEF", reported = caqData.reports.some(function(x){ return x.id===q.id; });
-  var h = '<div class="caq-prog"><span>'+(r.i+1)+' / '+r.ids.length+'</span><div class="caq-bar"><i style="width:'+Math.round(100*(r.i+(r.checked ? 1 : 0))/r.ids.length)+'%"></i></div></div>'+
-    '<div class="caq-nav"><button type="button" class="link-btn" data-caq="home">&lsaquo; Current Affairs Quizzes</button><button type="button" class="link-btn" data-caq="restart">&#8635; Restart</button></div>'+
-    '<div class="caq-tags"><span class="chip '+(q.exam==="mains" ? "mains" : "pre")+'">'+(q.exam==="mains" ? "Mains" : "Prelims")+'</span><span class="chip">'+esc(q.subject)+(q.syllabus ? ' &middot; '+esc(q.syllabus) : "")+'</span></div>'+
-    '<div class="caq-q">'+esc(q.q).replace(/\n/g, "<br>")+'</div>';
-  h += q.opts.map(function(o, i){
-    var cls = "caq-opt";
-    if(r.checked){ if(i===q.ans) cls += " ok"; else if(i===r.pick) cls += " bad"; else cls += " dim"; } else if(i===r.pick) cls += " sel";
-    return '<button type="button" class="'+cls+'" data-caq="opt" data-i="'+i+'"'+(r.checked ? " disabled" : "")+'><span class="l">'+(r.checked && i===q.ans ? "&#10003;" : (r.checked && i===r.pick ? "&#10005;" : L.charAt(i)))+'</span><span>'+esc(o)+'</span></button>';
-  }).join("");
-  var back = '<div class="caq-back"><button type="button" class="link-btn" data-caq="back"'+(r.i===0 ? " disabled" : "")+'>&lsaquo; Back</button></div>';
-  if(!r.checked) return h+'<button type="button" class="btn primary" data-caq="check"'+(r.pick<0 ? " disabled" : "")+'>Check answer</button>'+back;
-  h += (q.why ? '<div class="caq-why"><b>WHY</b>'+esc(q.why)+'</div>' : "")+(q.insight ? '<div class="caq-why ins"><b>INSIGHT</b>'+esc(q.insight)+'</div>' : "")+caqSrcHtml(q)+
-    '<button type="button" class="btn primary" data-caq="next">'+(r.i+1 < r.ids.length ? "Next question" : "See my result")+'</button>'+
-    '<button type="button" class="caq-report" data-caq="report" data-id="'+esc(q.id)+'">'+(reported ? "&#9873; Reported. Thank you" : "&#9873; Report answer")+'</button>'+back;
-  return h;
-}
-function caqResultHtml(){
-  var r = caq.ui.run, ok = r.res.filter(function(x){ return x.ok; }).length, n = r.res.length, pct = n ? Math.round(100*ok/n) : 0, secs = Math.round((Date.now()-r.t0)/1000);
-  var by = {}; r.res.forEach(function(x){ var s = caq.qs[x.id].subject; (by[s] || (by[s] = {n:0, ok:0})); by[s].n++; if(x.ok) by[s].ok++; });
-  var wrong = r.res.filter(function(x){ return !x.ok; });
-  var worst = Object.keys(by).filter(function(s){ return by[s].ok < by[s].n; }).sort(function(a, b){ return by[a].ok/by[a].n - by[b].ok/by[b].n; })[0];
-  return '<div class="card"><div class="caq-r"><div class="caq-ring" style="background:conic-gradient(#34c98a 0 '+pct+'%,#ef6a58 0)"><i>'+ok+'/'+n+'</i></div><div><h2>'+(pct>=80 ? "Excellent" : (pct>=60 ? "Good going" : "Keep at it"))+'</h2><div class="muted small">'+wrong.length+' wrong &middot; '+Math.floor(secs/60)+' min '+(secs%60)+' s</div>'+(caqStreak() ? '<div class="muted small">&#128293; '+caqStreak()+'-day quiz streak</div>' : "")+'</div></div></div>'+
-    '<div class="card"><div class="dx-k">BY SUBJECT</div>'+Object.keys(by).map(function(s){ return '<div class="caq-sub"><span>'+esc(s)+'</span><div class="caq-bar"><i style="width:'+Math.round(100*by[s].ok/by[s].n)+'%"></i></div><b>'+by[s].ok+'/'+by[s].n+'</b></div>'; }).join("")+'</div>'+
-    (wrong.length ? '<button type="button" class="btn primary" data-caq="review">Review my '+wrong.length+' wrong answer'+(wrong.length===1 ? "" : "s")+'</button>' : "")+
-    (worst ? '<button type="button" class="btn ghost" data-caq="again" data-s="'+esc(worst)+'">Practise '+esc(worst)+' again</button>' : "")+
-    '<button type="button" class="btn ghost" data-caq="share">Share my score</button><button type="button" class="btn ghost" data-caq="home">Back to Current Affairs Quizzes</button>';
-}
-function renderCaQuiz(){
-  var host = document.getElementById("view-caquiz");
-  if(!host) return;
-  if(!caq.loaded){
-    host.innerHTML = '<div class="card empty" role="status">'+(caq.err ? esc(caq.err) : "Loading the quizzes&hellip;")+'</div>';
-    if(!caq.loading) caqLoad(function(){ if(activeTab==="caquiz") renderCaQuiz(); });
-    return;
-  }
-  var r = caq.ui.run;
-  host.innerHTML = '<div class="caq">'+(!r ? caqHomeHtml() : (r.done ? caqResultHtml() : caqQuestionHtml()))+'</div>';
 }
 function caqReportSheet(id){
   var q = caq.qs[id]; if(!q) return;
@@ -19034,16 +19005,182 @@ function caqReportSheet(id){
     renderCaQuiz();
   });
 }
+
+// ---- Game-style screens: a full-screen overlay with a subject map, a road of sets for each subject, and the quiz itself
+var CAQ_LOOK = {"Polity & Governance":["⚖️","#3b55c8"], "Economy":["₹","#b07a10"], "Environment":["🌿","#1f8a4a"], "Sci & Tech":["🔬","#8a3ab0"], "History & Culture":["🏛️","#b0543a"], "Geography":["🗺️","#2a8aa0"], "IR":["🌐","#b03a6a"]};
+function caqStars(ok, n){ var r = n ? ok/n : 0; return r>=0.9 ? 3 : (r>=0.7 ? 2 : (r>=0.5 ? 1 : 0)); }
+function caqStarsHtml(k){ return "★★★".slice(0, k)+"☆☆☆".slice(0, 3-k); }
+// the sets of 10 for one subject, oldest month first, so the road starts at the first month and the newest month sits at the top
+function caqSets(subj){
+  var out = [];
+  caq.months.slice().sort(function(a, b){ return a.id < b.id ? -1 : 1; }).forEach(function(m){
+    var ids = m.ids.filter(function(id){ return caq.qs[id].subject===subj; });
+    for(var k = 0; k < ids.length; k += 10) out.push({key:m.id+"|"+subj+"|"+(k/10+1), month:m, n:k/10+1, subj:subj, ids:ids.slice(k, k+10)});
+  });
+  out.forEach(function(x){
+    var a = x.ids.filter(function(id){ return caqData.ans[id]; });
+    x.answered = a.length; x.ok = a.filter(function(id){ return caqData.ans[id].ok; }).length;
+    x.done = a.length===x.ids.length; x.stars = x.done ? caqStars(x.ok, x.ids.length) : 0;
+    x.at = 0; while(x.at < x.ids.length && caqData.ans[x.ids[x.at]]) x.at++;   // first unanswered question
+  });
+  return out;
+}
+function caqSetByKey(key){ var p = String(key || "").split("|"), all = caqSets(p[1]); return all.filter(function(x){ return x.key===key; })[0] || null; }
+function caqSubjIndex(key){ return Math.max(0, CAQ_SUBJECTS.indexOf(String(key || "").split("|")[1])); }
+function caqTotalStars(){ var n = 0; CAQ_SUBJECTS.forEach(function(s){ caqSets(s).forEach(function(x){ n += x.stars; }); }); return n; }
+function caqStartSet(set, fresh){
+  var res = [];
+  if(!fresh){ for(var k = 0; k < set.ids.length; k++){ var a = caqData.ans[set.ids[k]]; if(!a) break; res.push({id:set.ids[k], ok:a.ok, p:a.p}); } if(res.length >= set.ids.length) res = []; }
+  caq.ui.run = {ids:set.ids.slice(), i:0, pick:-1, checked:false, res:res, t0:Date.now(), title:set.subj+" · "+set.month.title+" · Set "+set.n, key:set.key};
+  caqSetPos(Math.min(res.length, set.ids.length-1)); caq.ui.sheet = null; caq.ui.subj = caqSubjIndex(set.key);
+  caqRunSave(); renderCaQuiz();
+}
+function caqHost(){
+  var h = document.getElementById("caqGame");
+  if(!h){ h = document.createElement("div"); h.id = "caqGame"; h.className = "caq"; h.setAttribute("role", "region"); h.setAttribute("aria-label", "Current Affairs Quizzes"); document.body.appendChild(h); }
+  return h;
+}
+function caqHide(){ var h = document.getElementById("caqGame"); if(h) h.style.display = "none"; document.body.classList.remove("caq-on"); }
+function caqHud(l, c, r){ return '<div class="cg-hud">'+l+'<div class="cg-c">'+c+'</div>'+(r || '<span class="cg-sp"></span>')+'</div>'; }
+function caqBtn(a, label, txt, extra){ return '<button type="button" class="cg-x" data-caq="'+a+'" aria-label="'+label+'"'+(extra || "")+'>'+txt+'</button>'; }
+
+function caqMapHtml(){
+  var all = caqAllIds(), un = caqUnanswered(all).length, stk = caqStreak(), v = caqRunLoad(), wk = caqWeak();
+  var h = caqHud(caqBtn("exit", "Close", "✕"), "Current Affairs Quizzes", '<span class="cg-pill">🔥 '+stk+'</span><span class="cg-pill">⭐ '+caqTotalStars()+'</span>')+'<div class="cg-body cg-sky" data-sk="map">';
+  h += '<div class="cg-top"><button type="button" class="cg-daily" data-caq="daily"'+(un ? "" : " disabled")+'><small>TODAY</small><b>Daily 10</b><span>'+(un ? "Mixed subjects · about 6 minutes · tap to play" : "You have done every question so far")+'</span></button>';
+  if(v) h += '<button type="button" class="cg-cont" data-caq="resume">▶ Continue: '+esc(v.title || "Quiz")+' · question '+(Math.min(v.res.length, v.ids.length-1)+1)+'</button>';
+  if(wk.length) h += '<button type="button" class="cg-cont weak" data-caq="weak">🎯 Practise weak topics: '+esc(wk.join(", "))+'</button>';
+  h += '</div><div class="cg-map" style="height:'+(CAQ_SUBJECTS.length*150+90)+'px"><svg viewBox="0 0 100 '+(CAQ_SUBJECTS.length*150+90)+'" preserveAspectRatio="none" aria-hidden="true"><path d="'+caqTrail()+'" vector-effect="non-scaling-stroke"/></svg>';
+  CAQ_SUBJECTS.forEach(function(s, i){
+    var sets = caqSets(s), d = sets.filter(function(x){ return x.done; }).length, nw = caqUnanswered(all.filter(function(id){ return caq.qs[id].subject===s; })).length, lk = CAQ_LOOK[s] || ["❓", "#456"];
+    var side = i%2===0 ? "left:calc(25% - 75px)" : "left:calc(75% - 75px)"; if(i===CAQ_SUBJECTS.length-1) side = "left:calc(50% - 75px)";
+    h += '<button type="button" class="cg-isl" data-caq="island" data-i="'+i+'" style="'+side+';top:'+(20+i*150)+'px;--c:'+lk[1]+'"><span class="ball">'+lk[0]+(nw ? '<i class="nd">'+nw+' new</i>' : "")+'</span><b>'+esc(s)+'</b><small>'+d+' of '+sets.length+' sets done</small></button>';
+  });
+  return h+'</div><p class="cg-note">Slide up to travel through the subjects</p></div>';
+}
+function caqTrail(){
+  var pts = CAQ_SUBJECTS.map(function(s, i){ return [i===CAQ_SUBJECTS.length-1 ? 50 : (i%2===0 ? 25 : 75), 20+i*150+52]; }), d = "M"+pts[0][0]+" "+pts[0][1];
+  for(var i = 1; i < pts.length; i++){ var my = (pts[i-1][1]+pts[i][1])/2; d += " C"+pts[i-1][0]+" "+my+" "+pts[i][0]+" "+my+" "+pts[i][0]+" "+pts[i][1]; }
+  return d;
+}
+
+function caqRoadModel(si){
+  var subj = CAQ_SUBJECTS[si], sets = caqSets(subj), ent = [], last = "", cur = null;
+  sets.forEach(function(x){ if(!cur && !x.done) cur = x; });
+  sets.forEach(function(x){ if(x.month.id!==last){ ent.push({t:"sign", txt: ent.length ? "★ "+x.month.title.toUpperCase()+" ★" : x.month.title.toUpperCase()+" · START"}); last = x.month.id; } ent.push({t:"set", set:x, cur:cur && cur.key===x.key}); });
+  if(sets.length) ent.push({t:"sign", txt:"NEW MONTH · SOON", grey:true});
+  var step = 122, H = ent.length*step + 330;
+  ent.forEach(function(e, k){ e.y = H - 150 - k*step; e.x = e.t==="sign" ? 195 : (k%2===1 ? 105 : 285); });
+  var pts = [[195, H-40]].concat(ent.map(function(e){ return [e.x, e.y]; })); pts.push([195, ent.length ? ent[ent.length-1].y-110 : 100]);
+  var d = "M"+pts[0][0]+" "+pts[0][1];
+  for(var i = 1; i < pts.length; i++){ var my = (pts[i-1][1]+pts[i][1])/2; d += " C"+pts[i-1][0]+" "+my+" "+pts[i][0]+" "+my+" "+pts[i][0]+" "+pts[i][1]; }
+  return {subj:subj, sets:sets, ent:ent, H:H, d:d, cur:cur};
+}
+function caqRoadHtml(){
+  var si = caq.ui.subj || 0, M = caqRoadModel(si), lk = CAQ_LOOK[M.subj] || ["", "#456"], st = 0; M.sets.forEach(function(x){ st += x.stars; });
+  var h = caqHud(caqBtn("mapback", "Back to the subject map", "‹"), esc(M.subj), '<span class="cg-pill">⭐ '+st+'</span>')+'<div class="cg-body cg-roadbody" id="cgSc" data-sk="road'+si+'"><div class="cg-world" style="height:'+M.H+'px">';
+  var cl = "", tr = "", k;
+  for(k = 0; k*230 < M.H; k++) cl += '<div class="cg-cloud" style="left:'+((k*37+11)%70)+'%;top:'+(k*230+40)+'px;opacity:'+(0.5+(k%3)*0.15)+'"></div>';
+  for(k = 0; k*150 < M.H; k++) tr += '<div class="cg-tree'+(k%3===0 ? " big" : "")+'" style="'+(k%2 ? "right" : "left")+':'+(2+(k%4)*2)+'px;top:'+(k*150+30)+'px">'+(k%2 ? "🌲" : "🌳")+'</div>';
+  h += '<div class="cg-layer" data-k="0.75">'+cl+'</div><div class="cg-layer" data-k="-0.35">'+tr+'</div>';
+  h += '<svg class="cg-road" viewBox="0 0 390 '+M.H+'" preserveAspectRatio="none" aria-hidden="true"><path class="a" d="'+M.d+'" vector-effect="non-scaling-stroke"/><path class="b" d="'+M.d+'" vector-effect="non-scaling-stroke"/></svg>';
+  if(!M.sets.length) h += '<div class="cg-empty">No questions in this subject yet. New ones arrive every month.</div>';
+  M.ent.forEach(function(e){
+    var pc = (e.x/390*100).toFixed(2);
+    if(e.t==="sign"){ h += '<div class="cg-sign'+(e.grey ? " grey" : "")+'" style="top:'+(e.y-18)+'px">'+esc(e.txt)+'</div>'; return; }
+    var x = e.set, left = e.x < 195, cls = "cg-node "+(left ? "l" : "r")+(x.done ? " done" : "")+(e.cur ? " cur" : "")+(!x.done && x.answered ? " part" : "");
+    var info = x.done ? '<span class="cg-st">'+caqStarsHtml(x.stars)+'</span> '+x.ok+'/'+x.ids.length : (x.answered ? (x.answered+' of '+x.ids.length+' · continue') : "new");
+    h += '<button type="button" class="'+cls+'" data-caq="setopen" data-k="'+esc(x.key)+'" style="left:'+pc+'%;top:'+e.y+'px" aria-label="Set '+x.n+', '+esc(x.month.title)+'">'+(x.done ? "✓" : x.n)+'</button>'+
+      '<div class="cg-lab" style="top:'+(e.y-24)+'px;'+(left ? "left:calc("+pc+"% + 46px);text-align:left" : "right:calc("+(100-pc).toFixed(2)+"% + 46px);text-align:right")+'"><b>Set '+x.n+'</b>'+info+'</div>';
+  });
+  h += '</div></div>';
+  if(caq.ui.sheet){ var set = caqSetByKey(caq.ui.sheet); if(set) h += caqSheetHtml(set); }
+  return h;
+}
+function caqSheetHtml(x){
+  var wrong = x.answered - x.ok, mins = Math.max(1, Math.round(x.ids.length/2));
+  var meta = x.ids.length+' questions · about '+mins+' minutes'+(x.done ? ' · you got '+x.ok+' right' : (x.answered ? ' · you are on question '+Math.min(x.at+1, x.ids.length) : ""));
+  return '<div class="cg-back" data-caq="sheetx"></div><div class="cg-sheet" role="dialog" aria-label="Set '+x.n+'"><small>'+esc(x.subj.toUpperCase())+' · '+esc(x.month.title.toUpperCase())+'</small><div class="cg-sh"><b>Set '+x.n+'</b>'+(x.done ? '<span class="cg-st">'+caqStarsHtml(x.stars)+'</span>' : "")+'</div><div class="cg-meta">'+meta+'</div>'+
+    '<button type="button" class="btn primary" data-caq="setgo" data-k="'+esc(x.key)+'" data-fresh="'+(x.done ? "1" : "0")+'">'+(x.done ? "Play again" : (x.answered ? "Continue from question "+Math.min(x.at+1, x.ids.length) : "Start set"))+'</button>'+
+    (!x.done && x.answered ? '<button type="button" class="btn ghost" data-caq="setgo" data-k="'+esc(x.key)+'" data-fresh="1">Start this set over</button>' : "")+
+    (x.done && wrong > 0 ? '<button type="button" class="btn ghost" data-caq="setwrong" data-k="'+esc(x.key)+'">Review my '+wrong+' wrong answer'+(wrong===1 ? "" : "s")+'</button>' : "")+
+    '<button type="button" class="cg-cancel" data-caq="sheetx">Cancel</button></div>';
+}
+
+function caqQuestionHtml(){
+  var r = caq.ui.run, q = caq.qs[r.ids[r.i]], L = "ABCDEF", reported = caqData.reports.some(function(x){ return x.id===q.id; });
+  var h = caqHud(caqBtn("home", r.key ? "Back to the road" : "Back to the map", "‹"), '<span class="cg-n">'+(r.i+1)+' / '+r.ids.length+'</span><div class="caq-bar"><i style="width:'+Math.round(100*(r.i+(r.checked ? 1 : 0))/r.ids.length)+'%"></i></div>', caqBtn("restart", "Restart this quiz", "↻"))+
+    '<div class="cg-body cg-qbody" data-sk="q'+r.i+'"><div class="caq-tags"><span class="chip '+(q.exam==="mains" ? "mains" : "pre")+'">'+(q.exam==="mains" ? "Mains" : "Prelims")+'</span><span class="chip">'+esc(q.subject)+(q.syllabus ? ' &middot; '+esc(q.syllabus) : "")+'</span></div>'+
+    '<div class="caq-q">'+esc(q.q).replace(/\n/g, "<br>")+'</div>';
+  h += q.opts.map(function(o, i){
+    var cls = "caq-opt";
+    if(r.checked){ if(i===q.ans) cls += " ok"; else if(i===r.pick) cls += " bad"; else cls += " dim"; } else if(i===r.pick) cls += " sel";
+    return '<button type="button" class="'+cls+'" data-caq="opt" data-i="'+i+'"'+(r.checked ? " disabled" : "")+'><span class="l">'+(r.checked && i===q.ans ? "&#10003;" : (r.checked && i===r.pick ? "&#10005;" : L.charAt(i)))+'</span><span>'+esc(o)+'</span></button>';
+  }).join("");
+  var back = '<div class="caq-back"><button type="button" class="link-btn" data-caq="back"'+(r.i===0 ? " disabled" : "")+'>&lsaquo; Back</button></div>';
+  if(!r.checked) return h+'<button type="button" class="btn primary" data-caq="check"'+(r.pick<0 ? " disabled" : "")+'>Check answer</button>'+back+'</div>';
+  h += (q.why ? '<div class="caq-why"><b>WHY</b>'+esc(q.why)+'</div>' : "")+(q.insight ? '<div class="caq-why ins"><b>INSIGHT</b>'+esc(q.insight)+'</div>' : "")+caqSrcHtml(q)+
+    '<button type="button" class="btn primary" data-caq="next">'+(r.i+1 < r.ids.length ? "Next question" : "See my result")+'</button>'+
+    '<button type="button" class="caq-report" data-caq="report" data-id="'+esc(q.id)+'">'+(reported ? "&#9873; Reported. Thank you" : "&#9873; Report answer")+'</button>'+back;
+  return h+'</div>';
+}
+function caqResultHtml(){
+  var r = caq.ui.run, ok = r.res.filter(function(x){ return x.ok; }).length, n = r.res.length, pct = n ? Math.round(100*ok/n) : 0, secs = Math.round((Date.now()-r.t0)/1000), k = caqStars(ok, n);
+  var by = {}, topicBy = r.key ? "syllabus" : "subject";
+  r.res.forEach(function(x){ var q = caq.qs[x.id], s = (topicBy==="syllabus" ? q.syllabus : q.subject) || q.subject; (by[s] || (by[s] = {n:0, ok:0})); by[s].n++; if(x.ok) by[s].ok++; });
+  var wrong = r.res.filter(function(x){ return !x.ok; }), next = null;
+  if(r.key){ var all = caqSets(r.key.split("|")[1]), at = -1; all.forEach(function(x, i){ if(x.key===r.key) at = i; }); next = at >= 0 ? all[at+1] || null : null; }
+  var h = caqHud(caqBtn("home", "Back", "‹"), r.key ? "Set complete" : "Quiz complete")+'<div class="cg-body cg-res" data-sk="res"><div class="cg-trophy"><div class="cg-stars">'+(r.key ? caqStarsHtml(k) : (pct>=80 ? "🏆" : "💪"))+'</div><div class="cg-score">'+ok+' / '+n+'</div><div class="cg-meta">'+(pct>=80 ? "Excellent" : (pct>=60 ? "Good going" : "Keep at it"))+' · '+Math.floor(secs/60)+' min '+(secs%60)+' s'+(caqStreak() ? ' · 🔥 '+caqStreak()+'-day streak' : "")+'</div></div>'+
+    '<div class="card"><div class="dx-k">BY '+(topicBy==="syllabus" ? "TOPIC" : "SUBJECT")+'</div>'+Object.keys(by).map(function(s){ return '<div class="caq-sub"><span>'+esc(s)+'</span><div class="caq-bar"><i style="width:'+Math.round(100*by[s].ok/by[s].n)+'%"></i></div><b>'+by[s].ok+'/'+by[s].n+'</b></div>'; }).join("")+'</div>';
+  if(next) h += '<button type="button" class="btn primary" data-caq="nextset" data-k="'+esc(next.key)+'">Next: '+(next.month.id!==r.key.split("|")[0] ? esc(next.month.title)+" · " : "")+'Set '+next.n+'</button>';
+  if(wrong.length) h += '<button type="button" class="btn '+(next ? "ghost" : "primary")+'" data-caq="review">Review my '+wrong.length+' wrong answer'+(wrong.length===1 ? "" : "s")+'</button>';
+  h += '<button type="button" class="btn ghost" data-caq="share">Share my score</button><button type="button" class="btn ghost" data-caq="home">'+(r.key ? "Back to the road" : "Back to the map")+'</button></div>';
+  return h;
+}
+
+function caqRoadInit(host, fresh, keepTop){
+  var sc = host.querySelector("#cgSc"); if(!sc) return;
+  var layers = [].slice.call(sc.querySelectorAll(".cg-layer")), items = [].slice.call(sc.querySelectorAll(".cg-node,.cg-lab,.cg-sign")), calm = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+  function par(){
+    var y = sc.scrollTop, vh = sc.clientHeight;
+    if(!calm) layers.forEach(function(l){ l.style.transform = "translateY("+(y*parseFloat(l.getAttribute("data-k")))+"px)"; });
+    items.forEach(function(n){ if(n.classList.contains("in")) return; var t = n.offsetTop - y; if(calm || (t < vh*0.92 && t > -140)) n.classList.add("in"); });
+  }
+  sc.addEventListener("scroll", par, {passive:true});
+  if(fresh){
+    var M = caqRoadModel(caq.ui.subj || 0), cur = M.ent.filter(function(e){ return e.cur; })[0];
+    sc.scrollTop = cur ? Math.max(0, cur.y - sc.clientHeight*0.6) : 0;
+  } else sc.scrollTop = keepTop;
+  par();
+}
+function renderCaQuiz(){
+  var host = caqHost(); host.style.display = "flex"; document.body.classList.add("caq-on");
+  if(!caq.loaded){
+    host.innerHTML = caqHud(caqBtn("exit", "Close", "✕"), "Current Affairs Quizzes")+'<div class="cg-body"><div class="card empty" role="status">'+(caq.err ? esc(caq.err) : "Loading the quizzes&hellip;")+'</div></div>';
+    if(!caq.loading) caqLoad(function(){ if(activeTab==="caquiz") renderCaQuiz(); });
+    return;
+  }
+  var u = caq.ui, r = u.run, old = host.querySelector(".cg-body"), oldKey = old ? old.getAttribute("data-sk") : "", oldTop = old ? old.scrollTop : 0;
+  host.innerHTML = r ? (r.done ? caqResultHtml() : caqQuestionHtml()) : (u.screen==="road" ? caqRoadHtml() : caqMapHtml());
+  var b = host.querySelector(".cg-body"), same = b && b.getAttribute("data-sk")===oldKey;
+  if(u.screen==="road" && !r) caqRoadInit(host, !same, oldTop);
+  else if(b && same) b.scrollTop = oldTop;
+}
 function caqNext(){
   var r = caq.ui.run;
   if(r.i+1 < r.ids.length){ caqSetPos(r.i+1); caqRunSave(); } else { r.done = true; caqRunClear(); }
-  renderCaQuiz(); window.scrollTo(0, 0);
+  renderCaQuiz();
 }
 function caqAction(b){
   var a = b.getAttribute("data-caq"), r = caq.ui.run;
-  if(a==="daily") caqStart(caqMix(caqUnanswered(caqAllIds()), 10), "Daily 10");
-  else if(a==="month"){ var m = caq.months.filter(function(x){ return x.id===b.getAttribute("data-m"); })[0]; if(m) caqStart(caqMix(caqUnanswered(m.ids), 10), m.title); }
-  else if(a==="subj"){ caq.ui.subject = b.getAttribute("data-s"); renderCaQuiz(); }
+  if(a==="exit"){ caq.ui.run = r && !r.done ? (caqRunSave(), null) : null; setTab("dashboard"); }
+  else if(a==="daily") caqStart(caqMix(caqUnanswered(caqAllIds()), 10), "Daily 10");
+  else if(a==="island"){ caq.ui.subj = +b.getAttribute("data-i"); caq.ui.screen = "road"; caq.ui.sheet = null; renderCaQuiz(); }
+  else if(a==="mapback"){ caq.ui.screen = "map"; caq.ui.sheet = null; renderCaQuiz(); }
+  else if(a==="setopen"){ caq.ui.sheet = b.getAttribute("data-k"); renderCaQuiz(); }
+  else if(a==="sheetx"){ caq.ui.sheet = null; renderCaQuiz(); }
+  else if(a==="setgo" || a==="nextset"){ var st = caqSetByKey(b.getAttribute("data-k")); if(st) caqStartSet(st, b.getAttribute("data-fresh")==="1"); }
+  else if(a==="setwrong"){ var s2 = caqSetByKey(b.getAttribute("data-k")); if(s2){ caq.ui.sheet = null; caq.ui.screen = "road"; caqStart(s2.ids.filter(function(id){ return caqData.ans[id] && !caqData.ans[id].ok; }), "Review"); } }
   else if(a==="weak"){
     var wk = caqWeak(), ids = caqAllIds().filter(function(id){ return wk.indexOf(caq.qs[id].subject)>=0; }), wrong = ids.filter(function(id){ return caqData.ans[id] && !caqData.ans[id].ok; }), fresh = ids.filter(function(id){ return !caqData.ans[id]; });
     caqStart(wrong.concat(fresh).slice(0, 10), "Weak topics");
@@ -19058,25 +19195,27 @@ function caqAction(b){
     renderCaQuiz();
   }
   else if(a==="next" && r) caqNext();
-  else if(a==="back" && r && r.i>0){ caqSetPos(r.i-1); caqRunSave(); renderCaQuiz(); window.scrollTo(0, 0); }
+  else if(a==="back" && r && r.i>0){ caqSetPos(r.i-1); caqRunSave(); renderCaQuiz(); }
   else if(a==="restart" && r && !r.done){
     if(r.res.length && !confirm("Start this quiz again from question 1?")) return;
-    r.res = []; r.t0 = Date.now(); caqSetPos(0); caqRunSave(); renderCaQuiz(); window.scrollTo(0, 0);
+    r.res = []; r.t0 = Date.now(); caqSetPos(0); caqRunSave(); renderCaQuiz();
   }
   else if(a==="resume") caqResume();
-  else if(a==="startover"){ var v = caqRunLoad(); if(v) caqStart(v.ids, v.title); else { caqRunClear(); renderCaQuiz(); } }
-  else if(a==="quit"){ caq.ui.run = r && r.res.length ? Object.assign(r, {done:true}) : null; caqRunClear(); renderCaQuiz(); }
   else if(a==="report") caqReportSheet(b.getAttribute("data-id"));
-  else if(a==="review" && r){ caqStart(r.res.filter(function(x){ return !x.ok; }).map(function(x){ return x.id; }), "Review"); }
-  else if(a==="again"){ var s = b.getAttribute("data-s"), ids2 = caqAllIds().filter(function(id){ return caq.qs[id].subject===s; }), wr = ids2.filter(function(id){ return caqData.ans[id] && !caqData.ans[id].ok; }), fr = ids2.filter(function(id){ return !caqData.ans[id]; }); caqStart(wr.concat(fr).slice(0, 10), s); }
+  else if(a==="review" && r){ var key = r.key; caqStart(r.res.filter(function(x){ return !x.ok; }).map(function(x){ return x.id; }), "Review"); if(key) caq.ui.screen = "road"; }
   else if(a==="share" && r){
     var ok2 = r.res.filter(function(x){ return x.ok; }).length, text = "I scored "+ok2+"/"+r.res.length+" on today's Current Affairs Quiz in CSE Companion. https://csecompanion.in";
     if(navigator.share){ navigator.share({text:text}).catch(function(){}); }
     else { try{ navigator.clipboard.writeText(text).then(function(){ toast("Copied. Paste it anywhere to share."); }, function(){ toast(text); }); }catch(e){ toast(text); } }
   }
-  else if(a==="home"){ if(r && r.done) caqRunClear(); else caqRunSave(); caq.ui.run = null; renderCaQuiz(); window.scrollTo(0, 0); }
+  else if(a==="home"){
+    if(r && r.done) caqRunClear(); else if(r) caqRunSave();
+    caq.ui.screen = r && r.key ? "road" : "map"; if(r && r.key) caq.ui.subj = caqSubjIndex(r.key);
+    caq.ui.run = null; renderCaQuiz();
+  }
 }
 document.addEventListener("click", function(e){ var b = e.target.closest ? e.target.closest("[data-caq]") : null; if(b && !b.disabled) caqAction(b); });
+
 function renderView(id){
   setTimeout(syncTodayOpenClass, 0);
   if(id==="dashboard") renderDashboard();
@@ -21278,7 +21417,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "283";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "284";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
