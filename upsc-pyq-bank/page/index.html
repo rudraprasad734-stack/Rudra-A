@@ -40,6 +40,7 @@
     --tab-mocks:#FF3B30; --tab-mocks-ink:#FFFFFF; --tab-mocks-soft:#FFCCCB;
     --tab-pyq:#34C759; --tab-pyq-ink:#FFFFFF; --tab-pyq-soft:#D1F4D7;
     --tab-quotes:#5856D6; --tab-quotes-ink:#FFFFFF; --tab-quotes-soft:#E8E5FF;
+    --tab-caquiz:#E8590C; --tab-caquiz-ink:#FFFFFF; --tab-caquiz-soft:#FFE8D9;
     --tab-scheduler:#0A84A6; --tab-scheduler-ink:#FFFFFF; --tab-scheduler-soft:#DDF3F8;
     --tab-planner:#6D4AFF; --tab-planner-ink:#FFFFFF; --tab-planner-soft:#E9E3FF;
     --tab-accent: var(--tab-dashboard); --tab-accent-ink: var(--tab-dashboard-ink); --tab-accent-soft: var(--tab-dashboard-soft);
@@ -71,6 +72,7 @@
       --tab-mocks:#E38C9B; --tab-mocks-ink:#331A1F; --tab-mocks-soft:#3A2429;
       --tab-pyq:#9CC46E; --tab-pyq-ink:#1B2A12; --tab-pyq-soft:#26361B;
       --tab-quotes:#9CAAD9; --tab-quotes-ink:#181E33; --tab-quotes-soft:#242B45;
+      --tab-caquiz:#FFA264; --tab-caquiz-ink:#2B1405; --tab-caquiz-soft:#3A2414;
       --tab-scheduler:#5CC8E0; --tab-scheduler-ink:#0B2530; --tab-scheduler-soft:#1B3540;
       --tab-planner:#A78BFF; --tab-planner-ink:#1E1240; --tab-planner-soft:#2C2452;
       --tab-accent: var(--tab-dashboard); --tab-accent-ink: var(--tab-dashboard-ink); --tab-accent-soft: var(--tab-dashboard-soft);
@@ -98,6 +100,7 @@
     --tab-mocks:#E38C9B; --tab-mocks-ink:#331A1F; --tab-mocks-soft:#3A2429;
     --tab-pyq:#9CC46E; --tab-pyq-ink:#1B2A12; --tab-pyq-soft:#26361B;
     --tab-quotes:#9CAAD9; --tab-quotes-ink:#181E33; --tab-quotes-soft:#242B45;
+    --tab-caquiz:#FFA264; --tab-caquiz-ink:#2B1405; --tab-caquiz-soft:#3A2414;
       --tab-scheduler:#5CC8E0; --tab-scheduler-ink:#0B2530; --tab-scheduler-soft:#1B3540;
       --tab-planner:#A78BFF; --tab-planner-ink:#1E1240; --tab-planner-soft:#2C2452;
     --tab-accent: var(--tab-dashboard); --tab-accent-ink: var(--tab-dashboard-ink); --tab-accent-soft: var(--tab-dashboard-soft);
@@ -168,6 +171,27 @@
   body:not(.is-dash) #dashFab, body.menu-open #dashFab{display:none;}
   @keyframes fabBreathe{0%,100%{box-shadow:0 6px 20px rgba(2,8,20,.65), inset 0 1px 0 rgba(243,236,219,.18), 0 0 0 6px rgba(243,236,219,.07);}50%{box-shadow:0 6px 22px rgba(2,8,20,.7), inset 0 1px 0 rgba(243,236,219,.22), 0 0 0 10px rgba(243,236,219,.03);}}
   @media (prefers-reduced-motion: reduce){ #dashFab{animation:none;} }
+  /* CA Quiz */
+  .caq .card{padding:14px; margin-bottom:12px;} .caq-r{display:flex; align-items:center; gap:10px;} .caq .grow{flex:1; min-width:0;} .caq .pill-row{margin-bottom:10px;}
+  .caq .caq-month .btn.ghost{width:auto; margin:0; padding:8px 16px; flex:none;} .caq h2{margin:2px 0 4px;}
+  .caq-hero h2{margin:2px 0 4px; font-size:24px;} .caq-hero .btn{margin:12px 0 8px; width:100%;}
+  .caq-bar{height:8px; border-radius:5px; background:color-mix(in srgb,var(--ink) 12%, transparent); overflow:hidden; flex:1;} .caq-bar i{display:block; height:100%; background:var(--tab-accent);}
+  .caq-month .caq-bar{margin-top:10px;} .caq-prog{display:flex; align-items:center; gap:10px; font-size:13px; color:var(--ink-soft);}
+  .caq-tags{margin:12px 0 4px;} .caq-tags .chip{margin:0 6px 6px 0;} .chip.pre{background:color-mix(in srgb,#2ee6d6 16%, transparent); color:var(--ink);} .chip.mains{background:color-mix(in srgb,#b896ff 20%, transparent); color:var(--ink);}
+  .caq-q{font-family:var(--font-display); font-size:19px; line-height:1.42; margin:8px 0 14px;}
+  .caq-opt{display:flex; gap:10px; align-items:flex-start; width:100%; text-align:left; padding:12px; margin-bottom:9px; border-radius:14px; background:var(--surface); border:1.5px solid var(--line); color:var(--ink); font:inherit; font-size:15px; cursor:pointer;}
+  .caq-opt .l{flex:none; width:26px; height:26px; border-radius:50%; display:grid; place-items:center; font-weight:800; font-size:13px; background:color-mix(in srgb,var(--ink) 12%, transparent);}
+  .caq-opt.sel{border-color:var(--tab-accent); background:var(--tab-accent-soft);} .caq-opt.sel .l{background:var(--tab-accent); color:var(--tab-accent-ink);}
+  .caq-opt.ok{border-color:#34c98a; background:color-mix(in srgb,#34c98a 18%, transparent);} .caq-opt.ok .l{background:#34c98a; color:#022;}
+  .caq-opt.bad{border-color:#ef6a58; background:color-mix(in srgb,#ef6a58 18%, transparent);} .caq-opt.bad .l{background:#ef6a58; color:#fff;} .caq-opt.dim{opacity:.6;}
+  .caq .btn.primary{width:100%; margin-top:6px;} .caq .btn.ghost{width:100%; margin-top:8px;} .caq .btn[disabled]{opacity:.5;}
+  .caq-why{border-radius:14px; padding:12px; background:var(--surface); border-left:4px solid #34c98a; margin-top:4px; font-size:14.5px; line-height:1.45;} .caq-why.ins{border-left-color:var(--tab-accent); margin-top:8px;}
+  .caq-why b{display:block; font-size:11px; letter-spacing:.12em; color:var(--ink-soft); margin-bottom:3px;}
+  .caq-src{font-size:12.5px; color:var(--ink-soft); margin:10px 2px 6px;} .caq-src a{color:var(--link, var(--tab-accent));}
+  .caq-report{display:block; margin:10px auto 0; background:none; border:0; color:var(--ink-soft); font:inherit; font-size:13.5px; text-decoration:underline; cursor:pointer;}
+  .caq-ring{width:96px; height:96px; border-radius:50%; display:grid; place-items:center; flex:none; margin-right:12px;} .caq-ring i{width:70px; height:70px; border-radius:50%; background:var(--surface-solid, var(--surface)); display:grid; place-items:center; font-style:normal; font-weight:800; font-size:22px;}
+  .caq-sub{display:flex; align-items:center; gap:8px; margin:8px 0; font-size:13.5px;} .caq-sub span{width:96px; color:var(--ink-soft);} .caq-sub b{width:34px; text-align:right;}
+  .caq-rad{display:flex; gap:10px; align-items:center; padding:10px 12px; border-radius:12px; background:var(--surface); margin-bottom:8px; font-size:14.5px;} .caq-rep textarea{width:100%; margin:8px 0; padding:10px; border-radius:12px; border:1px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; font-size:14px;}
   /* the Dashboard button on the timer home: a faint glow ring and an occasional little shake so it is noticed; a one-time hint says what it is */
   #dashFab::after{content:""; position:absolute; inset:-9px; border-radius:50%; pointer-events:none; opacity:0; box-shadow:0 0 16px 3px var(--tab-accent);}
   body.dash-timer #dashFab::after{animation:fabGlow 3.6s ease-in-out infinite;}
@@ -1512,7 +1536,7 @@
   var DEFAULT_UI = "cyber";
   function themeById(id){ for(var i=0;i<UI_THEMES.length;i++) if(UI_THEMES[i].id===id) return UI_THEMES[i]; return UI_THEMES[0]; }
   function themeCss(t){
-    var A = [t.acc, t.a2, t.a3, t.a4], map = {dashboard:0, planner:0, syllabus:1, tiers:2, mocks:3, pyq:1, quotes:2, scheduler:3, logs:1}, v = "";
+    var A = [t.acc, t.a2, t.a3, t.a4], map = {dashboard:0, planner:0, syllabus:1, tiers:2, mocks:3, pyq:1, quotes:2, caquiz:3, scheduler:3, logs:1}, v = "";
     v += "--tm-bg:"+(t.tm || "color-mix(in srgb,"+t.acc+" 26%,#050810)")+";--tm-brk:"+(t.tmBrk || "color-mix(in srgb,"+t.a2+" 26%,#050810)")+";--tm-line:color-mix(in srgb,"+t.acc+" 58%,transparent);--tm-line-brk:color-mix(in srgb,"+t.a2+" 58%,transparent);";
     v += "--link:"+(t.link || t.acc)+";--on-accent:"+t.accInk+";";
     if(t.mode==="light") v += "--gold:#9a4f08;--gold-soft:#f8e3c8;--gold-ink:#fff;--sage:#1d7448;--sage-soft:#d3ecdc;--sage-ink:#fff;--brick:#8f1f1a;--brick-soft:#f6d6d3;--brick-ink:#fff;--freq1:#8f1f1a;--freq1-soft:#f6d6d3;--freq2:#9a4f08;--freq2-soft:#f8e3c8;--freq3:#7a5f00;--freq3-soft:#f4e8b8;--freq4:#1d7448;--freq4-soft:#d3ecdc;--tier4:#5b2fc4;--tier4-soft:#e6defa;";
@@ -1621,6 +1645,7 @@ html.sp-on #app,html.sp-on #toast{visibility:hidden}
     <section class="view" id="view-mocks"></section>
     <section class="view" id="view-syllabus"></section>
     <section class="view" id="view-pyq"></section>
+    <section class="view" id="view-caquiz"></section>
     <section class="view" id="view-quotes"></section>
     <section class="view" id="view-papers"></section>
     <section class="view" id="view-settings"></section>
@@ -4338,7 +4363,8 @@ function collectBackupData(){
     studyProgress: studyProgress,
     catchState: catchState,
     reminders: remState,
-    revDone: revDone
+    revDone: revDone,
+    caQuiz: caqData
   };
 }
 setTimeout(function(){
@@ -4418,6 +4444,7 @@ function applyBackupData(data){
   else if(data.studyPlan === null && studyPlan){ studyPlan = null; savePlan(); }   // the backup was taken before any plan: "replace everything" means no plan here either
   if(data.catchState && typeof data.catchState==='object'){ catchState = Object.assign({promptedOn:"", doneOn:""}, data.catchState); saveCatch(); }
   if(data.revDone && typeof data.revDone==="object"){ revDone = data.revDone; revSave(); }
+  if(data.caQuiz && typeof data.caQuiz==="object" && data.caQuiz.ans && typeof data.caQuiz.ans==="object"){ caqData = {ans:data.caQuiz.ans, reports:Array.isArray(data.caQuiz.reports) ? data.caQuiz.reports : [], days:Array.isArray(data.caQuiz.days) ? data.caQuiz.days : []}; caqSave(); }
   if(data.reminders && typeof data.reminders==='object'){ remState = Object.assign({}, remState, data.reminders, {on:false, sent:{}}); remSave(); }
   if(data.studyProgress && data.studyProgress.topics){ studyProgress = data.studyProgress; saveProgress(); }
   try{ migrateOptionalSeparation(); migrateAnthroOfficial(); }catch(e){}
@@ -18663,6 +18690,7 @@ var TAB_GROUPS = [
   ]},
   {id:"mocks", label:"Mocks", accent:"mocks"},
   {id:"pyq", label:"PYQ Bank", accent:"pyq"},
+  {id:"caquiz", label:"CA Quiz", accent:"caquiz"},
   {id:"quotes", label:"Quotes", accent:"quotes"},
   {id:"settings", label:"Settings", accent:"scheduler"},
 ];
@@ -18692,7 +18720,7 @@ function applyAccent(groupId){
   root.setProperty("--tab-accent-soft", "var(--tab-"+g.accent+"-soft)");
 }
 
-var TAB_DOT = {settings:"--tab-scheduler", dashboard:"--tab-dashboard", planner:"--tab-planner", syllabus:"--tab-syllabus", tiers:"--tab-tiers", priority:"--tab-tiers", mocks:"--tab-mocks", pyq:"--tab-pyq", quotes:"--tab-quotes"};
+var TAB_DOT = {settings:"--tab-scheduler", dashboard:"--tab-dashboard", planner:"--tab-planner", syllabus:"--tab-syllabus", tiers:"--tab-tiers", priority:"--tab-tiers", mocks:"--tab-mocks", pyq:"--tab-pyq", quotes:"--tab-quotes", caquiz:"--tab-caquiz"};
 function setMenu(open){
   document.body.classList.toggle("menu-open", !!open);
   var d = document.getElementById("drawer"); if(d) d.setAttribute("aria-hidden", open ? "false" : "true");
@@ -18838,6 +18866,182 @@ function renderTiersWhenReady(kind){
   if(host) host.innerHTML = '<div class="card empty" role="status"><div class="td-skel" aria-hidden="true"><i></i><i></i><i></i></div>Preparing your tier list\u2026</div>';
   afterTierData(function(){ if(activeTab===kind) renderChecklist(kind); });
 }
+// ============================================================================
+// CA QUIZ: monthly current-affairs questions (quiz/*.json). Answers and reports stay on this device only: nothing is sent to any cloud store.
+// ============================================================================
+var CAQ_STORE = "dossier.caq.v1", CAQ_MAIL = "support@csecompanion.in";
+var CAQ_SUBJECTS = ["Polity & Governance", "Economy", "Environment", "Sci & Tech", "History & Culture", "Geography", "IR"];   // the Prelims subjects; the target is 30 questions each per month
+var CAQ_REASONS = ["The correct answer is wrong", "The explanation is wrong or unclear", "The fact is out of date", "The question is confusing or has two answers", "Not related to the UPSC syllabus"];
+var caq = {loaded:false, loading:false, err:"", months:[], qs:{}, ui:{subject:"All", run:null}};
+// device-only on purpose (plain localStorage, not lsSet): the cloud sync never sees these keys
+function caqLoadData(){ try{ var v = JSON.parse(localStorage.getItem(CAQ_STORE) || "null"); if(v && typeof v==="object" && v.ans && typeof v.ans==="object") return {ans:v.ans, reports:Array.isArray(v.reports) ? v.reports : [], days:Array.isArray(v.days) ? v.days : []}; }catch(e){} return {ans:{}, reports:[], days:[]}; }
+var caqData = caqLoadData();
+function caqSave(){ try{ localStorage.setItem(CAQ_STORE, JSON.stringify(caqData)); }catch(e){} }
+function caqPersist(){ try{ if(navigator.storage && navigator.storage.persist) navigator.storage.persist(); }catch(e){} }   // asks the browser not to clear this data when it is short of space
+function caqFetch(url){ return fetch(url, {cache:"no-cache"}).then(function(r){ if(!r.ok) throw new Error(url+" "+r.status); return r.json(); }); }
+function caqLoad(done){
+  if(caq.loaded){ done(); return; }
+  if(caq.loading) return;
+  caq.loading = true;
+  caqFetch("quiz/index.json").then(function(ix){
+    var ms = (ix && Array.isArray(ix.months)) ? ix.months : [];
+    return Promise.all(ms.map(function(m){ return caqFetch("quiz/"+m.file).then(function(f){ return {m:m, f:f}; }).catch(function(){ return null; }); }));
+  }).then(function(list){
+    caq.months = []; caq.qs = {};
+    list.forEach(function(x){
+      if(!x || !x.f || !Array.isArray(x.f.questions)) return;
+      var ids = [];
+      x.f.questions.forEach(function(q){
+        if(!q || !q.id || !q.q || !Array.isArray(q.opts) || q.opts.length<2 || typeof q.ans!=="number" || q.ans<0 || q.ans>=q.opts.length) return;
+        q.month = x.m.id; caq.qs[q.id] = q; ids.push(q.id);
+      });
+      caq.months.push({id:x.m.id, title:x.m.title || x.m.id, ids:ids});
+    });
+    caq.months.sort(function(a,b){ return a.id < b.id ? 1 : -1; });
+    caq.loaded = true; caq.loading = false; caq.err = "";
+    done();
+  }).catch(function(){ caq.loading = false; caq.err = "Quizzes could not load. Connect once to download them, then they work offline."; done(); });
+}
+function caqStreak(){
+  var d = caqData.days, set = {}, n = 0, k = todayKey;
+  d.forEach(function(x){ set[x] = 1; });
+  if(!set[k]) k = toKey(addDays(parseKey(k), -1));
+  while(set[k]){ n++; k = toKey(addDays(parseKey(k), -1)); }
+  return n;
+}
+function caqSubjOk(q){ return caq.ui.subject==="All" || q.subject===caq.ui.subject; }
+function caqUnanswered(ids){ return ids.filter(function(id){ return !caqData.ans[id] && caqSubjOk(caq.qs[id]); }); }
+// 10 questions mixed across subjects, a different subject each turn
+function caqMix(ids, n){
+  var by = {}, order = [], out = [];
+  ids.forEach(function(id){ var s = caq.qs[id].subject; if(!by[s]){ by[s] = []; order.push(s); } by[s].push(id); });
+  while(out.length < n && order.some(function(s){ return by[s].length; })){ order.forEach(function(s){ if(out.length < n && by[s].length) out.push(by[s].shift()); }); }
+  return out;
+}
+function caqAllIds(){ var o = []; caq.months.forEach(function(m){ o = o.concat(m.ids); }); return o; }
+function caqSubjStats(){
+  var st = {};
+  Object.keys(caqData.ans).forEach(function(id){ var q = caq.qs[id]; if(!q) return; var s = st[q.subject] || (st[q.subject] = {n:0, ok:0}); s.n++; if(caqData.ans[id].ok) s.ok++; });
+  return st;
+}
+function caqWeak(){ var st = caqSubjStats(); return Object.keys(st).filter(function(s){ return st[s].n >= 3 && st[s].ok/st[s].n < 0.6; }); }
+function caqStart(ids, title){
+  if(!ids.length){ toast("No new questions here yet. Check back after the next update."); return; }
+  caq.ui.run = {ids:ids, i:0, pick:-1, checked:false, res:[], t0:Date.now(), title:title};
+  renderCaQuiz(); window.scrollTo(0, 0);
+}
+function caqHomeHtml(){
+  var all = caqAllIds(), wk = caqWeak(), daily = caqUnanswered(all).length, doneAll = all.filter(function(id){ return caqData.ans[id]; }).length, stk = caqStreak();
+  var h = '<div class="card caq-hero"><div class="dx-k">TODAY</div><h2>Daily 10</h2><div class="muted">Ten current-affairs questions, mixed across subjects. About 6 minutes.</div>'+
+    '<button type="button" class="btn primary" data-caq="daily"'+(daily ? "" : " disabled")+'>'+(daily ? "Start today&rsquo;s 10" : "You have done every question so far")+'</button>'+
+    (stk ? '<div class="muted small">&#128293; '+stk+'-day quiz streak &middot; '+doneAll+' of '+all.length+' answered</div>' : (all.length ? '<div class="muted small">'+doneAll+' of '+all.length+' answered</div>' : ""))+'</div>';
+  if(!all.length){ h += '<div class="card empty">'+esc(caq.err || "No quizzes yet. The first month is on its way.")+'</div>'; return h; }
+  h += '<div class="section-title">Browse by month</div>'+caq.months.map(function(m){
+    var d = m.ids.filter(function(id){ return caqData.ans[id]; }).length, left = caqUnanswered(m.ids).length;
+    return '<div class="card caq-month"><div class="caq-r"><div class="grow"><b>'+esc(m.title)+'</b><div class="muted small">'+m.ids.length+' questions &middot; '+d+' done</div></div>'+
+      '<button type="button" class="btn ghost sm" data-caq="month" data-m="'+esc(m.id)+'"'+(left ? "" : " disabled")+'>'+(left ? (d ? "Continue" : "Open") : "Done &#10003;")+'</button></div>'+
+      '<div class="caq-bar"><i style="width:'+Math.round(100*d/Math.max(1, m.ids.length))+'%"></i></div></div>';
+  }).join("");
+  h += '<div class="section-title">By subject</div><div class="pill-row">'+["All"].concat(CAQ_SUBJECTS).map(function(s){ var n = s==="All" ? all.length : all.filter(function(id){ return caq.qs[id].subject===s; }).length; return '<button type="button" class="pill'+(caq.ui.subject===s ? " active" : "")+'" data-caq="subj" data-s="'+esc(s)+'">'+esc(s)+' <small>'+n+'</small></button>'; }).join("")+'</div>';
+  if(wk.length) h += '<div class="card"><div class="dx-k">YOUR WEAK TOPICS</div><div class="muted small">Based on what you got wrong</div><div class="pill-row">'+wk.map(function(s){ return '<span class="chip">'+esc(s)+'</span>'; }).join("")+'</div><button type="button" class="btn ghost" data-caq="weak">Practise weak topics</button></div>';
+  return h;
+}
+function caqSrcHtml(q){
+  var s = q.src || {}, t = esc((s.name || "Source")+(s.date ? " · "+s.date : "")), link = s.url && /^https:\/\//.test(s.url) ? '<a href="'+esc(s.url)+'" target="_blank" rel="noopener">'+t+'</a>' : t;
+  return '<div class="caq-src">Source: '+link+(q.checked ? ' &middot; checked '+esc(q.checked) : "")+'</div>';
+}
+function caqQuestionHtml(){
+  var r = caq.ui.run, q = caq.qs[r.ids[r.i]], L = "ABCDEF", reported = caqData.reports.some(function(x){ return x.id===q.id; });
+  var h = '<div class="caq-prog"><span>'+(r.i+1)+' / '+r.ids.length+'</span><div class="caq-bar"><i style="width:'+Math.round(100*(r.i+(r.checked ? 1 : 0))/r.ids.length)+'%"></i></div><button type="button" class="link-btn" data-caq="quit">Stop</button></div>'+
+    '<div class="caq-tags"><span class="chip '+(q.exam==="mains" ? "mains" : "pre")+'">'+(q.exam==="mains" ? "Mains" : "Prelims")+'</span><span class="chip">'+esc(q.subject)+(q.syllabus ? ' &middot; '+esc(q.syllabus) : "")+'</span></div>'+
+    '<div class="caq-q">'+esc(q.q).replace(/\n/g, "<br>")+'</div>';
+  h += q.opts.map(function(o, i){
+    var cls = "caq-opt";
+    if(r.checked){ if(i===q.ans) cls += " ok"; else if(i===r.pick) cls += " bad"; else cls += " dim"; } else if(i===r.pick) cls += " sel";
+    return '<button type="button" class="'+cls+'" data-caq="opt" data-i="'+i+'"'+(r.checked ? " disabled" : "")+'><span class="l">'+(r.checked && i===q.ans ? "&#10003;" : (r.checked && i===r.pick ? "&#10005;" : L.charAt(i)))+'</span><span>'+esc(o)+'</span></button>';
+  }).join("");
+  if(!r.checked) return h+'<button type="button" class="btn primary" data-caq="check"'+(r.pick<0 ? " disabled" : "")+'>Check answer</button>';
+  h += (q.why ? '<div class="caq-why"><b>WHY</b>'+esc(q.why)+'</div>' : "")+(q.insight ? '<div class="caq-why ins"><b>INSIGHT</b>'+esc(q.insight)+'</div>' : "")+caqSrcHtml(q)+
+    '<button type="button" class="btn primary" data-caq="next">'+(r.i+1 < r.ids.length ? "Next question" : "See my result")+'</button>'+
+    '<button type="button" class="caq-report" data-caq="report" data-id="'+esc(q.id)+'">'+(reported ? "&#9873; Reported. Thank you" : "&#9873; Report answer")+'</button>';
+  return h;
+}
+function caqResultHtml(){
+  var r = caq.ui.run, ok = r.res.filter(function(x){ return x.ok; }).length, n = r.res.length, pct = n ? Math.round(100*ok/n) : 0, secs = Math.round((Date.now()-r.t0)/1000);
+  var by = {}; r.res.forEach(function(x){ var s = caq.qs[x.id].subject; (by[s] || (by[s] = {n:0, ok:0})); by[s].n++; if(x.ok) by[s].ok++; });
+  var wrong = r.res.filter(function(x){ return !x.ok; });
+  var worst = Object.keys(by).filter(function(s){ return by[s].ok < by[s].n; }).sort(function(a, b){ return by[a].ok/by[a].n - by[b].ok/by[b].n; })[0];
+  return '<div class="card"><div class="caq-r"><div class="caq-ring" style="background:conic-gradient(#34c98a 0 '+pct+'%,#ef6a58 0)"><i>'+ok+'/'+n+'</i></div><div><h2>'+(pct>=80 ? "Excellent" : (pct>=60 ? "Good going" : "Keep at it"))+'</h2><div class="muted small">'+wrong.length+' wrong &middot; '+Math.floor(secs/60)+' min '+(secs%60)+' s</div>'+(caqStreak() ? '<div class="muted small">&#128293; '+caqStreak()+'-day quiz streak</div>' : "")+'</div></div></div>'+
+    '<div class="card"><div class="dx-k">BY SUBJECT</div>'+Object.keys(by).map(function(s){ return '<div class="caq-sub"><span>'+esc(s)+'</span><div class="caq-bar"><i style="width:'+Math.round(100*by[s].ok/by[s].n)+'%"></i></div><b>'+by[s].ok+'/'+by[s].n+'</b></div>'; }).join("")+'</div>'+
+    (wrong.length ? '<button type="button" class="btn primary" data-caq="review">Review my '+wrong.length+' wrong answer'+(wrong.length===1 ? "" : "s")+'</button>' : "")+
+    (worst ? '<button type="button" class="btn ghost" data-caq="again" data-s="'+esc(worst)+'">Practise '+esc(worst)+' again</button>' : "")+
+    '<button type="button" class="btn ghost" data-caq="share">Share my score</button><button type="button" class="btn ghost" data-caq="home">Back to CA Quiz</button>';
+}
+function renderCaQuiz(){
+  var host = document.getElementById("view-caquiz");
+  if(!host) return;
+  if(!caq.loaded){
+    host.innerHTML = '<div class="card empty" role="status">'+(caq.err ? esc(caq.err) : "Loading the quizzes&hellip;")+'</div>';
+    if(!caq.loading) caqLoad(function(){ if(activeTab==="caquiz") renderCaQuiz(); });
+    return;
+  }
+  var r = caq.ui.run;
+  host.innerHTML = '<div class="caq">'+(!r ? caqHomeHtml() : (r.done ? caqResultHtml() : caqQuestionHtml()))+'</div>';
+}
+function caqReportSheet(id){
+  var q = caq.qs[id]; if(!q) return;
+  var m = showModal('<div class="modal card caq-rep" role="dialog" aria-modal="true" aria-labelledby="caqRT"><h2 id="caqRT">Report this answer</h2><p class="muted">Tell us what looks wrong. We check every report against the source.</p>'+
+    CAQ_REASONS.map(function(t, i){ return '<label class="caq-rad"><input type="radio" name="caqr" value="'+i+'"'+(i===0 ? " checked" : "")+'><span>'+esc(t)+'</span></label>'; }).join("")+
+    '<textarea id="caqNote" rows="3" maxlength="400" placeholder="Add a note or a link to the correct source (optional)"></textarea>'+
+    '<div class="modal-actions"><button type="button" class="btn ghost" id="caqRNo">Cancel</button><button type="button" class="btn primary" id="caqRYes">Send report</button></div>'+
+    '<p class="muted small">Opens your own email app with the question number and your note. Nothing is stored online, and no personal details are added.</p></div>', true);
+  m.querySelector("#caqRNo").addEventListener("click", closeModal);
+  m.querySelector("#caqRYes").addEventListener("click", function(){
+    var ri = +(m.querySelector('input[name="caqr"]:checked') || {value:0}).value, note = (m.querySelector("#caqNote").value || "").trim();
+    caqData.reports.push({id:id, reason:CAQ_REASONS[ri], note:note, at:new Date().toISOString()}); caqSave();
+    var body = "Question: "+id+"\nIssue: "+CAQ_REASONS[ri]+"\nNote: "+(note || "-")+"\n\nQ: "+q.q.slice(0, 160)+"\nApp build: "+APP_BUILD;
+    closeModal();
+    try{ var a = document.createElement("a"); a.href = "mailto:"+CAQ_MAIL+"?subject="+encodeURIComponent("CA Quiz report "+id)+"&body="+encodeURIComponent(body); document.body.appendChild(a); a.click(); a.remove(); }catch(e){}
+    toast("Opening your email app. Thank you for the report.");
+    renderCaQuiz();
+  });
+}
+function caqNext(){
+  var r = caq.ui.run;
+  if(r.i+1 < r.ids.length){ r.i++; r.pick = -1; r.checked = false; } else r.done = true;
+  renderCaQuiz(); window.scrollTo(0, 0);
+}
+function caqAction(b){
+  var a = b.getAttribute("data-caq"), r = caq.ui.run;
+  if(a==="daily") caqStart(caqMix(caqUnanswered(caqAllIds()), 10), "Daily 10");
+  else if(a==="month"){ var m = caq.months.filter(function(x){ return x.id===b.getAttribute("data-m"); })[0]; if(m) caqStart(caqMix(caqUnanswered(m.ids), 10), m.title); }
+  else if(a==="subj"){ caq.ui.subject = b.getAttribute("data-s"); renderCaQuiz(); }
+  else if(a==="weak"){
+    var wk = caqWeak(), ids = caqAllIds().filter(function(id){ return wk.indexOf(caq.qs[id].subject)>=0; }), wrong = ids.filter(function(id){ return caqData.ans[id] && !caqData.ans[id].ok; }), fresh = ids.filter(function(id){ return !caqData.ans[id]; });
+    caqStart(wrong.concat(fresh).slice(0, 10), "Weak topics");
+  }
+  else if(a==="opt" && r && !r.checked){ r.pick = +b.getAttribute("data-i"); renderCaQuiz(); }
+  else if(a==="check" && r && !r.checked && r.pick>=0){
+    var q = caq.qs[r.ids[r.i]], ok = r.pick===q.ans;
+    r.checked = true; r.res.push({id:q.id, ok:ok});
+    caqData.ans[q.id] = {p:r.pick, ok:ok, d:todayKey};
+    if(caqData.days.indexOf(todayKey)<0) caqData.days.push(todayKey);
+    caqSave(); caqPersist();
+    renderCaQuiz();
+  }
+  else if(a==="next" && r) caqNext();
+  else if(a==="quit"){ caq.ui.run = r && r.res.length ? Object.assign(r, {done:true}) : null; renderCaQuiz(); }
+  else if(a==="report") caqReportSheet(b.getAttribute("data-id"));
+  else if(a==="review" && r){ caqStart(r.res.filter(function(x){ return !x.ok; }).map(function(x){ return x.id; }), "Review"); }
+  else if(a==="again"){ var s = b.getAttribute("data-s"), ids2 = caqAllIds().filter(function(id){ return caq.qs[id].subject===s; }), wr = ids2.filter(function(id){ return caqData.ans[id] && !caqData.ans[id].ok; }), fr = ids2.filter(function(id){ return !caqData.ans[id]; }); caqStart(wr.concat(fr).slice(0, 10), s); }
+  else if(a==="share" && r){
+    var ok2 = r.res.filter(function(x){ return x.ok; }).length, text = "I scored "+ok2+"/"+r.res.length+" on today's CA Quiz in CSE Companion. https://csecompanion.in";
+    if(navigator.share){ navigator.share({text:text}).catch(function(){}); }
+    else { try{ navigator.clipboard.writeText(text).then(function(){ toast("Copied. Paste it anywhere to share."); }, function(){ toast(text); }); }catch(e){ toast(text); } }
+  }
+  else if(a==="home"){ caq.ui.run = null; renderCaQuiz(); }
+}
+document.addEventListener("click", function(e){ var b = e.target.closest ? e.target.closest("[data-caq]") : null; if(b && !b.disabled) caqAction(b); });
 function renderView(id){
   setTimeout(syncTodayOpenClass, 0);
   if(id==="dashboard") renderDashboard();
@@ -18849,6 +19053,7 @@ function renderView(id){
   else if(id==="syllabus") renderSyllabus();
   else if(id==="pyq") renderPyq();
   else if(id==="quotes") renderQuotes();
+  else if(id==="caquiz") renderCaQuiz();
   else if(id==="papers") renderPapers();
   else if(id==="settings") renderSettings();
 }
@@ -21038,7 +21243,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "273";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "280";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+

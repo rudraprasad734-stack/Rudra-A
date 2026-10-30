@@ -1,0 +1,1128 @@
+{
+ "month": "2026-10",
+ "updated": "30 Oct 2026",
+ "questions": [
+  {
+   "id": "caq-2026-10-001",
+   "subject": "Economy",
+   "syllabus": "Monetary policy",
+   "exam": "pre",
+   "q": "What did the RBI's Monetary Policy Committee decide at its 5 to 7 October 2026 meeting?",
+   "opts": [
+    "Raised the repo rate by 50 bps to 5.75% and withdrew accommodation",
+    "Raised the repo rate by 25 bps to 5.50% and moved to a calibrated tightening stance",
+    "Kept the repo rate at 5.25% with a neutral stance",
+    "Cut the repo rate by 25 bps to 5.00% with an accommodative stance"
+   ],
+   "ans": 1,
+   "why": "The MPC voted to raise the policy repo rate from 5.25% to 5.50% and changed the stance to calibrated tightening, citing inflation near 5.8%.",
+   "insight": "A higher repo rate makes bank loans costlier and cools demand and prices.",
+   "src": {
+    "name": "RBI, Monetary Policy",
+    "url": "https://www.rbi.org.in/scripts/annualpolicy.aspx",
+    "date": "7 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-002",
+   "subject": "Economy",
+   "syllabus": "Monetary policy",
+   "exam": "pre",
+   "q": "With the repo rate at 5.50%, the MSF rate and the Standing Deposit Facility (SDF) rate under the RBI's rate corridor are, respectively:",
+   "opts": [
+    "5.50% and 5.50%",
+    "6.00% and 5.00%",
+    "5.75% and 5.25%",
+    "5.25% and 5.75%"
+   ],
+   "ans": 2,
+   "why": "The corridor is repo plus 25 bps (MSF and Bank Rate) and repo minus 25 bps (SDF), so MSF is 5.75% and SDF is 5.25%.",
+   "insight": "SDF is the floor of the corridor: it lets the RBI absorb surplus liquidity without giving collateral.",
+   "src": {
+    "name": "RBI, Monetary Policy",
+    "url": "https://www.rbi.org.in/scripts/annualpolicy.aspx",
+    "date": "7 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-003",
+   "subject": "Sci & Tech",
+   "syllabus": "Biotechnology; recent awards",
+   "exam": "pre",
+   "q": "The 2026 Nobel Prize in Physiology or Medicine was awarded for work that led to which technique?",
+   "opts": [
+    "Optogenetics, controlling nerve cells with light",
+    "CRISPR genome editing",
+    "mRNA vaccine technology",
+    "Immune checkpoint cancer therapy"
+   ],
+   "ans": 0,
+   "why": "Karl Deisseroth, Peter Hegemann and Georg Nagel were honoured for light-gated ion channels. Hegemann and Nagel found channelrhodopsin in an alga, and Deisseroth used it to switch neurons on and off in living animals.",
+   "insight": "Channelrhodopsin is a light-sensitive protein, a common Prelims keyword for this topic.",
+   "src": {
+    "name": "NobelPrize.org",
+    "url": "https://www.nobelprize.org/prizes/medicine/2026/press-release/",
+    "date": "5 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-004",
+   "subject": "Economy",
+   "syllabus": "Economic thought; recent awards",
+   "exam": "pre",
+   "q": "The 2026 Nobel Prize in Economic Sciences (Robert E. Hall and Michael Woodford) was awarded for:",
+   "opts": [
+    "The study of how institutions shape prosperity",
+    "Research on auction theory and new auction formats",
+    "The analysis of labour markets and minimum wages",
+    "The microeconomic foundations of macroeconomic stabilisation"
+   ],
+   "ans": 3,
+   "why": "The Academy recognised their work building macroeconomic models on microeconomic foundations, now used by central banks and governments to counter shocks.",
+   "insight": "Link it to monetary policy questions: the policy tools are tested in such models.",
+   "src": {
+    "name": "NobelPrize.org",
+    "url": "https://www.nobelprize.org/prizes/economic-sciences/2026/press-release/",
+    "date": "12 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-005",
+   "subject": "Sci & Tech",
+   "syllabus": "Space and astrophysics; recent awards",
+   "exam": "pre",
+   "q": "The IceCube Neutrino Observatory, honoured in the 2026 Nobel Prize in Physics (Francis Halzen), is located at:",
+   "opts": [
+    "In a deep mine at Kamioka, Japan",
+    "The South Pole, in a cubic kilometre of ice",
+    "On the Mediterranean seabed off Sicily",
+    "Under Lake Baikal in Russia"
+   ],
+   "ans": 1,
+   "why": "IceCube is a detector of light sensors buried in a cubic kilometre of Antarctic ice that spots high-energy neutrinos from space.",
+   "insight": "India's own neutrino project, INO, has been proposed at Theni in Tamil Nadu.",
+   "src": {
+    "name": "NobelPrize.org",
+    "url": "https://www.nobelprize.org/prizes/physics/2026/press-release/",
+    "date": "6 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-006",
+   "subject": "Sci & Tech",
+   "syllabus": "Chemistry in everyday life; recent awards",
+   "exam": "pre",
+   "q": "The 2026 Nobel Prize in Chemistry (Henri B. Kagan and Kenso Soai) relates to which puzzle?",
+   "opts": [
+    "How to build lithium-ion batteries with longer life",
+    "How ozone is broken down in the stratosphere",
+    "How only one mirror-image form of a molecule, as in amino acids, can come to dominate (homochirality)",
+    "How proteins fold into their shapes"
+   ],
+   "ans": 2,
+   "why": "Their work on non-linear effects and autocatalysis in asymmetric synthesis showed how one mirror-image form can win out and be made on purpose.",
+   "insight": "Mirror-image forms of a drug can act very differently, so this matters for medicines.",
+   "src": {
+    "name": "NobelPrize.org",
+    "url": "https://www.nobelprize.org/prizes/chemistry/2026/press-release/",
+    "date": "7 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-007",
+   "subject": "IR",
+   "syllabus": "International indices",
+   "exam": "pre",
+   "q": "In the Global Hunger Index 2026, India's position and score were:",
+   "opts": [
+    "94th among 122 countries, score 18.9 (moderate)",
+    "108th among 122 countries, score 30.4 (alarming)",
+    "100th among 135 countries, score 24.1 (serious)",
+    "100th among 122 countries, score 24.1 (serious)"
+   ],
+   "ans": 3,
+   "why": "India ranks 100th of 122 with a score of 24.1, in the serious category. The South Asia score is 23.5 and the world score is 18.1.",
+   "insight": "Child wasting at 19.0% is the highest rate in South Asia, so a question on the weakest indicator is likely.",
+   "src": {
+    "name": "Global Hunger Index 2026, India",
+    "url": "https://www.globalhungerindex.org/india.html",
+    "date": "14 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-008",
+   "subject": "IR",
+   "syllabus": "Hunger and malnutrition",
+   "exam": "pre",
+   "q": "Which of the following is NOT one of the four indicators used to calculate the Global Hunger Index?",
+   "opts": [
+    "Adult literacy rate",
+    "Undernourishment",
+    "Child stunting",
+    "Child mortality"
+   ],
+   "ans": 0,
+   "why": "The four indicators are undernourishment, child stunting, child wasting and child mortality. Literacy is not included.",
+   "insight": "Remember GHI as a score out of 100: higher means worse hunger.",
+   "src": {
+    "name": "Global Hunger Index 2026, India",
+    "url": "https://www.globalhungerindex.org/india.html",
+    "date": "14 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-009",
+   "subject": "Polity & Governance",
+   "syllabus": "Welfare schemes",
+   "exam": "pre",
+   "q": "Consider the National Social Assistance Programme (NSAP) decision of 14 October 2026:\n1. It was continued for five years, 2026-27 to 2030-31, and renamed Pradhan Mantri Samajik Sahayata Yojana.\n2. The disability benchmark for the disability pension was lowered from 80% to 40%.\n3. The minimum age for the disability pension was raised to 18 years.\nWhich of the above are correct?",
+   "opts": [
+    "2 and 3 only",
+    "1 and 2 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The programme was continued with about Rs 53,428 crore, and the disability benchmark was lowered to 40%. The age condition was removed, so eligibility starts from birth, not raised to 18.",
+   "insight": "NSAP gives effect to the Directive Principle in Article 41 (public assistance in old age, sickness and disablement).",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/PressReleasepage.aspx?PRID=2323264&reg=48&lang=1",
+    "date": "14 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-010",
+   "subject": "Economy",
+   "syllabus": "Banking and disinvestment",
+   "exam": "pre",
+   "q": "Consider the government's approval of the strategic restructuring (sale) of IDBI Bank on 14 October 2026:\n1. The sale covers 60.72% of the bank.\n2. The stake is split between the Government of India (30.48%) and LIC (30.24%).\n3. The buyer must still pass the RBI's fit-and-proper assessment.\nWhich of the above are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct per the PIB release. The government and LIC keep 15% and 19% respectively after the sale.",
+   "insight": "IDBI Bank was re-categorised as a private sector bank by the RBI in 2019 after LIC took a controlling stake.",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2323318&reg=48&lang=1",
+    "date": "14 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-011",
+   "subject": "Environment",
+   "syllabus": "Wetlands and conservation",
+   "exam": "pre",
+   "q": "As per the Government of India's October 2026 note, how many Ramsar Sites does India now have?",
+   "opts": [
+    "91",
+    "110",
+    "103",
+    "98"
+   ],
+   "ans": 2,
+   "why": "PIB's 25 October 2026 note says India has 103 Ramsar Sites, up from 26 in 2014.",
+   "insight": "Ramsar designation recognises international importance and 'wise use'; it does not by itself create a separate Indian law for the site.",
+   "src": {
+    "name": "PIB, Ramsar Sites in India",
+    "url": "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=160558&ModuleId=3&reg=3&lang=1",
+    "date": "25 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-012",
+   "subject": "Polity & Governance",
+   "syllabus": "Local self-government",
+   "exam": "pre",
+   "q": "The Pradhan Mantri Viksit Gram Swaraj Yojana, approved by the Cabinet on 28 October 2026, is:",
+   "opts": [
+    "A Centrally Sponsored Scheme for 2026-27 to 2030-31 to strengthen Panchayats and traditional local bodies",
+    "A Central Sector Scheme to build urban local bodies",
+    "A constitutional amendment to add new subjects to the Eleventh Schedule",
+    "A scheme to set up Gram Nyayalayas in every district"
+   ],
+   "ans": 0,
+   "why": "It is a Centrally Sponsored Scheme with an outlay of about Rs 7,395.55 crore, of which the Centre bears about Rs 4,869.48 crore and the States about Rs 2,526.07 crore. It covers over 2.55 lakh Panchayats and traditional local bodies.",
+   "insight": "Panchayats come under Part IX of the Constitution (Articles 243 to 243O), added by the 73rd Amendment.",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2329692&reg=48&lang=2",
+    "date": "28 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-013",
+   "subject": "Polity & Governance",
+   "syllabus": "Local self-government",
+   "exam": "pre",
+   "q": "Consider the Pradhan Mantri Viksit Gram Swaraj Yojana (approved 28 October 2026):\n1. Its cost is shared between the Centre and the States.\n2. It also covers traditional rural local institutions in areas where Part IX does not apply.\n3. It is a Central Sector Scheme funded entirely by the Centre.\nWhich of the above are correct?",
+   "opts": [
+    "2 and 3 only",
+    "1 and 2 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The scheme is Centrally Sponsored, so costs are shared (Centre about Rs 4,869 crore, States about Rs 2,526 crore). Statement 3 is wrong.",
+   "insight": "Part IX does not apply to Scheduled Areas and tribal areas (Article 243M); PESA 1996 extends Panchayats there.",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2329692&reg=48&lang=2",
+    "date": "28 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-014",
+   "subject": "Polity & Governance",
+   "syllabus": "Public finance and services",
+   "exam": "pre",
+   "q": "The Cabinet's decision of 28 October 2026 on Dearness Allowance (DA) and Dearness Relief (DR) approved:",
+   "opts": [
+    "A merger of DA with basic pay as per the 8th Pay Commission",
+    "A 3 percentage point rise but only for serving employees, not pensioners",
+    "A 3 percentage point rise over the existing 60%, effective 1 July 2026, costing about Rs 10,016 crore a year",
+    "A 5 percentage point rise over the existing 55%, effective 1 January 2027"
+   ],
+   "ans": 2,
+   "why": "DA for central employees and DR for pensioners rises by 3 points over 60%, effective 1 July 2026, benefiting about 48.54 lakh employees and 68.71 lakh pensioners.",
+   "insight": "DA offsets inflation for serving employees; Dearness Relief is the same relief for pensioners.",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2329485&reg=48&lang=1",
+    "date": "28 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-015",
+   "subject": "Polity & Governance",
+   "syllabus": "Constitutional offices",
+   "exam": "pre",
+   "q": "A reshuffle of several State Governors was announced on 12 October 2026. Under the Constitution, a Governor is appointed by:",
+   "opts": [
+    "The Parliament, by a resolution of both Houses",
+    "The President, by a warrant under hand and seal (Article 155)",
+    "The Chief Minister of the State, with the Chief Justice of the High Court",
+    "The Prime Minister on the advice of the Election Commission"
+   ],
+   "ans": 1,
+   "why": "Article 155 says the Governor is appointed by the President by warrant under hand and seal. He holds office during the pleasure of the President (Article 156).",
+   "insight": "The normal term is five years, but the Governor continues until a successor takes charge.",
+   "src": {
+    "name": "President of India, press communique",
+    "url": "https://www.presidentofindia.gov.in/press_releases/press-communique-38",
+    "date": "12 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-016",
+   "subject": "Polity & Governance",
+   "syllabus": "Elections",
+   "exam": "pre",
+   "q": "The Election Commission has completed the Special Intensive Revision (SIR) of electoral rolls in 20 States/UTs including Bihar and West Bengal. Which Article gives the Commission superintendence, direction and control of the preparation of electoral rolls?",
+   "opts": [
+    "Article 324",
+    "Article 326",
+    "Article 327",
+    "Article 329"
+   ],
+   "ans": 0,
+   "why": "Article 324 vests superintendence, direction and control of preparing electoral rolls and conducting elections in the Election Commission.",
+   "insight": "Article 326 gives universal adult suffrage (18 years); Article 329 bars courts from interfering in electoral matters.",
+   "src": {
+    "name": "PIB, ECI decisions",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2315309&reg=3&lang=1",
+    "date": "26 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-017",
+   "subject": "Polity & Governance",
+   "syllabus": "Elections",
+   "exam": "pre",
+   "q": "A by-election to the Nagaon Lok Sabha seat in Assam was held on 6 October 2026, with counting on 9 October. A casual vacancy in Parliament or a State Legislature must normally be filled within:",
+   "opts": [
+    "Six months of the vacancy (Section 151A, Representation of the People Act, 1951)",
+    "Three months of the vacancy",
+    "One year of the vacancy",
+    "The vacancy can stay open until the next general election"
+   ],
+   "ans": 0,
+   "why": "Section 151A of the RP Act 1951 requires a by-election within six months, unless the remainder of the term is under one year.",
+   "insight": "The Election Commission, not the Government, decides the date of by-elections.",
+   "src": {
+    "name": "PIB, ECI schedule",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2253728&reg=3&lang=1",
+    "date": "6 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-018",
+   "subject": "Polity & Governance",
+   "syllabus": "Parliament",
+   "exam": "pre",
+   "q": "The 12th BRICS Parliamentary Forum in New Delhi (26-27 October 2026) was opened by the Lok Sabha Speaker. The Speaker of the Lok Sabha is:",
+   "opts": [
+    "Elected by the members of the Lok Sabha from among themselves (Article 93)",
+    "Appointed by the President on the advice of the Prime Minister",
+    "Nominated by the Chief Justice of India",
+    "Elected jointly by both Houses of Parliament"
+   ],
+   "ans": 0,
+   "why": "Article 93 says the Lok Sabha chooses two of its members as Speaker and Deputy Speaker.",
+   "insight": "The Speaker presides over joint sittings and decides whether a bill is a Money Bill.",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/PressReleaseDetail.aspx?PRID=2329065&reg=3&lang=1",
+    "date": "27 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-019",
+   "subject": "Economy",
+   "syllabus": "Inflation",
+   "exam": "pre",
+   "q": "Provisional CPI inflation for September 2026 (base 2024=100), released by MoSPI on 12 October 2026, was about:",
+   "opts": [
+    "3.2%",
+    "7.9%",
+    "4.0%",
+    "5.54%"
+   ],
+   "ans": 3,
+   "why": "All-India CPI inflation was 5.54%, with rural at 6.08% and urban at 4.88%. Food inflation (CFPI) was 7.74%.",
+   "insight": "CPI is compiled by the National Statistics Office under MoSPI. The new series uses 2024 as the base year.",
+   "src": {
+    "name": "MoSPI, CPI press release",
+    "url": "https://www.mospi.gov.in/uploads/latestreleasesfiles/1791801549227-Press%20Release%20for%20the%20month%20of%20September,%202026.pdf",
+    "date": "12 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-020",
+   "subject": "Economy",
+   "syllabus": "Monetary policy",
+   "exam": "pre",
+   "q": "With CPI inflation near 5.5%, how does it sit against the RBI's flexible inflation targeting framework?",
+   "opts": [
+    "The framework has no numerical band",
+    "Inside the 2% to 6% tolerance band around the 4% target",
+    "Below the lower limit of the band",
+    "Above the upper limit of the band"
+   ],
+   "ans": 1,
+   "why": "The target is 4% with a tolerance band of plus or minus 2 points (2% to 6%). 5.54% is inside the band but above the target.",
+   "insight": "The MPC has six members; the RBI Governor has a casting vote in a tie.",
+   "src": {
+    "name": "MoSPI, CPI press release",
+    "url": "https://www.mospi.gov.in/uploads/latestreleasesfiles/1791801549227-Press%20Release%20for%20the%20month%20of%20September,%202026.pdf",
+    "date": "12 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-021",
+   "subject": "Economy",
+   "syllabus": "Agriculture pricing",
+   "exam": "pre",
+   "q": "In the rabi MSPs for the 2027-28 marketing season (approved 30 September 2026), the wheat MSP was fixed at:",
+   "opts": [
+    "Rs 2,610 per quintal, up Rs 25",
+    "Rs 2,785 per quintal, up Rs 200",
+    "Rs 2,585 per quintal, unchanged",
+    "Rs 2,450 per quintal, down Rs 135"
+   ],
+   "ans": 0,
+   "why": "Wheat rose by Rs 25 to Rs 2,610 per quintal. Safflower got the largest rise (Rs 675), then rapeseed and mustard (Rs 413).",
+   "insight": "Production cost and expected margin: the Government cites a margin of about 106% over cost for wheat.",
+   "src": {
+    "name": "PIB, Cabinet",
+    "url": "https://www.pib.gov.in/PressReleasepage.aspx?PRID=2316941&reg=48&lang=1",
+    "date": "30 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-022",
+   "subject": "Economy",
+   "syllabus": "Agriculture pricing",
+   "exam": "pre",
+   "q": "Minimum Support Prices are announced by the Union Government on the recommendation of:",
+   "opts": [
+    "The Commission for Agricultural Costs and Prices (CACP)",
+    "The NITI Aayog",
+    "The Food Corporation of India",
+    "The Reserve Bank of India"
+   ],
+   "ans": 0,
+   "why": "CACP recommends MSPs; the Cabinet Committee on Economic Affairs approves them. They cover 22 mandated crops.",
+   "insight": "Sugarcane has a Fair and Remunerative Price (FRP), not an MSP.",
+   "src": {
+    "name": "PIB, Cabinet",
+    "url": "https://www.pib.gov.in/PressReleasepage.aspx?PRID=2316941&reg=48&lang=1",
+    "date": "30 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-023",
+   "subject": "Economy",
+   "syllabus": "Industry and MSMEs",
+   "exam": "pre",
+   "q": "The Cabinet approved a Government commitment of Rs 10,000 crore towards the SME Growth Fund in October 2026. It is meant for:",
+   "opts": [
+    "Direct equity investment in growth-stage Small and Medium Enterprises through an Alternative Investment Fund",
+    "Interest-free loans to micro enterprises in rural areas",
+    "Subsidising export freight for textiles",
+    "Credit guarantees for street vendors"
+   ],
+   "ans": 0,
+   "why": "The fund addresses a gap in long-term equity for growth-stage SMEs, with focus on manufacturing and industrial clusters in Tier II and III cities.",
+   "insight": "AIFs are regulated by SEBI; SME Growth Fund money is meant as risk capital, not loans.",
+   "src": {
+    "name": "PIB, Cabinet",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2319534&reg=3&lang=1",
+    "date": "6 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-024",
+   "subject": "Economy",
+   "syllabus": "Industry and infrastructure",
+   "exam": "pre",
+   "q": "The Container Manufacturing Promotion Scheme (CMPS), approved on 28 October 2026 with an outlay of Rs 10,000 crore up to FY 2039-40, aims to:",
+   "opts": [
+    "Promote domestic manufacturing of shipping containers, through interest subvention and operational cost support",
+    "Build inland container depots in every district",
+    "Subsidise container shipping rates for farmers",
+    "Replace railway wagons with containers"
+   ],
+   "ans": 0,
+   "why": "CMPS supports Indian container manufacturers with interest subvention, operating expenditure assistance (about Rs 8,891 crore) and testing support.",
+   "insight": "Interest subvention means the Government pays part of the interest so the borrower pays less.",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2329601&reg=48&lang=2",
+    "date": "28 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-025",
+   "subject": "Economy",
+   "syllabus": "Industry and sports",
+   "exam": "pre",
+   "q": "The Khelo India Sports Goods Manufacturing Scheme (approved 28 October 2026) has an outlay of about:",
+   "opts": [
+    "Rs 100 crore as a one-time grant",
+    "Rs 1,856.67 crore for FY 2026-27 to FY 2033-34",
+    "Rs 500 crore for one year only",
+    "Rs 12,000 crore for FY 2026-27 to FY 2030-31"
+   ],
+   "ans": 1,
+   "why": "The scheme builds a competitive sports goods manufacturing base, with about Rs 1,130 crore for attracting investment and Rs 105 crore for international federation certification.",
+   "insight": "The Union Budget 2026-27 had earmarked Rs 500 crore for sports goods manufacturing.",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2329701&reg=48&lang=2",
+    "date": "28 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-026",
+   "subject": "Environment",
+   "syllabus": "Biodiversity conventions",
+   "exam": "pre",
+   "q": "The 17th Conference of the Parties (COP17) to the Convention on Biological Diversity was held from 19 to 30 October 2026 in:",
+   "opts": [
+    "Montreal, Canada",
+    "Kunming, China",
+    "Yerevan, Armenia",
+    "Nairobi, Kenya"
+   ],
+   "ans": 2,
+   "why": "CBD COP17 took place in Yerevan, Armenia. COP15 (Kunming-Montreal) adopted the Global Biodiversity Framework.",
+   "insight": "The Framework's '30 by 30' target aims to protect 30% of land and sea by 2030.",
+   "src": {
+    "name": "CMS, CBD COP17",
+    "url": "https://www.cms.int/eventcalendar/cms-un-biodiversity-conference-cbd-cop17",
+    "date": "Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-027",
+   "subject": "Environment",
+   "syllabus": "Climate change",
+   "exam": "pre",
+   "q": "The UN Climate Change Conference COP31 is scheduled for 9 to 20 November 2026 in Antalya. Which is correct?",
+   "opts": [
+    "Egypt hosts it, with the UAE as President",
+    "Azerbaijan hosts it, with Türkiye as President",
+    "Türkiye hosts it, and Australia leads the negotiations as President of Negotiations",
+    "India hosts it, with Brazil as President"
+   ],
+   "ans": 2,
+   "why": "Türkiye is the host with Murat Kurum as COP31 President, while Australia's Chris Bowen is President of Negotiations.",
+   "insight": "COP30 was held in Belem, Brazil, in 2025.",
+   "src": {
+    "name": "UNFCCC, COP31",
+    "url": "https://unfccc.int/cop31/about",
+    "date": "Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-028",
+   "subject": "Environment",
+   "syllabus": "Renewable energy",
+   "exam": "pre",
+   "q": "The Green Energy Corridor Phase-III, approved on 30 September 2026 with an outlay of Rs 1,86,405 crore, focuses on:",
+   "opts": [
+    "Pumped hydro storage only in the Himalayas",
+    "Intra-State transmission for renewable power along with 50 GWh of battery energy storage",
+    "Building new inter-country power lines to neighbours",
+    "Rooftop solar for 1 crore households"
+   ],
+   "ans": 1,
+   "why": "It strengthens State grids to carry up to 135 GW of renewable power and adds 50 GWh of battery storage. State Transmission Utilities implement it.",
+   "insight": "Battery storage helps manage the intermittency of solar and wind.",
+   "src": {
+    "name": "PIB, Cabinet",
+    "url": "https://www.pib.gov.in/PressReleasepage.aspx?PRID=2316948&reg=48&lang=1",
+    "date": "30 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-029",
+   "subject": "Environment",
+   "syllabus": "Renewable energy",
+   "exam": "pre",
+   "q": "As per PIB, India's installed solar capacity as of 31 July 2026 was about:",
+   "opts": [
+    "90.22 GW",
+    "215.4 GW",
+    "52.1 GW",
+    "164.59 GW"
+   ],
+   "ans": 3,
+   "why": "Solar stood at 164.59 GW, and non-fossil capacity at 300.50 GW (over 54% of total installed capacity).",
+   "insight": "India ranks third globally in renewable capacity according to IRENA statistics.",
+   "src": {
+    "name": "PIB, India's Energy Journey",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2298869&reg=48&lang=1",
+    "date": "Jul 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-030",
+   "subject": "Environment",
+   "syllabus": "Bioenergy",
+   "exam": "pre",
+   "q": "The GOBARdhan Scheme launched on 1 October 2026 is a Central Sector Scheme to develop the sector of:",
+   "opts": [
+    "Offshore wind",
+    "Coal gasification",
+    "Compressed Biogas (CBG)",
+    "Green hydrogen"
+   ],
+   "ans": 2,
+   "why": "It has an outlay of Rs 23,731 crore for FY 2026-27 to 2035-36 and offers assured offtake, a pricing framework and capital assistance.",
+   "insight": "GOBARdhan stands for Galvanizing Organic Bio-Agro Resources Dhan.",
+   "src": {
+    "name": "PIB, GOBARdhan",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2317937&reg=48&lang=2",
+    "date": "1 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-031",
+   "subject": "Environment",
+   "syllabus": "Bioenergy",
+   "exam": "pre",
+   "q": "Which scheme, launched on 1 October 2018, created a market for Compressed Biogas as an alternative green transport fuel?",
+   "opts": [
+    "UJALA",
+    "FAME India",
+    "SATAT (Sustainable Alternative Towards Affordable Transportation)",
+    "PM-KUSUM"
+   ],
+   "ans": 2,
+   "why": "SATAT set up CBG plants and a market for them. The new GOBARdhan scheme builds on it with guaranteed offtake and pricing.",
+   "insight": "CBG is a purified form of biogas, mainly methane, that can replace CNG.",
+   "src": {
+    "name": "PIB, GOBARdhan",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2317937&reg=48&lang=2",
+    "date": "1 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-032",
+   "subject": "Environment",
+   "syllabus": "Protected areas",
+   "exam": "pre",
+   "q": "According to India's Seventh National Report to the Convention on Biological Diversity (2026), India has how many Tiger Reserves?",
+   "opts": [
+    "49",
+    "58",
+    "53",
+    "66"
+   ],
+   "ans": 1,
+   "why": "India has 58 Tiger Reserves, 33 Elephant Reserves, 18 Biosphere Reserves, 106 National Parks and 574 Wildlife Sanctuaries.",
+   "insight": "The 2022 tiger estimate was 3,682, up from 2,967 in 2018. Tiger reserves are notified by States on NTCA advice.",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2240576&reg=3&lang=2",
+    "date": "16 Mar 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-033",
+   "subject": "Sci & Tech",
+   "syllabus": "Defence technology",
+   "exam": "pre",
+   "q": "DRDO flew a High-Altitude Platform (HAPS) in October 2026, which reached about 21 km and hovered near 20 km for over 30 minutes. This altitude lies in the:",
+   "opts": [
+    "Exosphere",
+    "Stratosphere",
+    "Troposphere",
+    "Mesosphere"
+   ],
+   "ans": 1,
+   "why": "The stratosphere lies from about 12 to 50 km. HAPS fly there for long endurance surveillance and communication.",
+   "insight": "Because they sit between aircraft and satellites, such platforms are called pseudo-satellites.",
+   "src": {
+    "name": "PIB, DRDO",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2319551&reg=3&lang=1",
+    "date": "6 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-034",
+   "subject": "Sci & Tech",
+   "syllabus": "Electronics and semiconductors",
+   "exam": "pre",
+   "q": "SEMICON India 2026 (17 to 19 September 2026) announced Semicon 2.0, which raises the India Semiconductor Mission's budget from USD 8 billion to about:",
+   "opts": [
+    "USD 10 billion",
+    "USD 5 billion",
+    "USD 13.5 billion",
+    "USD 20 billion"
+   ],
+   "ans": 2,
+   "why": "The Prime Minister inaugurated the event and unveiled the roadmap for Semicon 2.0 with wider support for design, manufacturing, packaging, R&D and talent.",
+   "insight": "The India Semiconductor Mission works under MeitY.",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2311726&lang=1&reg=3",
+    "date": "Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-035",
+   "subject": "Sci & Tech",
+   "syllabus": "Artificial intelligence",
+   "exam": "pre",
+   "q": "The IndiaAI Mission was approved by the Union Cabinet in March 2024 with an outlay of about:",
+   "opts": [
+    "Rs 3,000 crore over three years",
+    "Rs 10,372 crore over five years",
+    "Rs 1,000 crore over one year",
+    "Rs 50,000 crore over ten years"
+   ],
+   "ans": 1,
+   "why": "The IndiaAI Mission has an outlay of Rs 10,371.92 crore. At the AI Impact Summit 2026, the Government said it would add 20,000 GPUs to the 38,000 already available.",
+   "insight": "A GPU is a graphics processing unit, the chip type used to train AI models.",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2229171&reg=1&lang=1",
+    "date": "Feb 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-036",
+   "subject": "History & Culture",
+   "syllabus": "World heritage",
+   "exam": "pre",
+   "q": "The Ancient Buddhist Site of Sarnath was inscribed in 2026 on the UNESCO World Heritage List. It is India's:",
+   "opts": [
+    "45th World Heritage property",
+    "39th World Heritage property",
+    "44th World Heritage property",
+    "52nd World Heritage property"
+   ],
+   "ans": 0,
+   "why": "Sarnath became the 45th property in July 2026 at the World Heritage Committee in Busan. The Maratha Military Landscapes was the 44th (2025).",
+   "insight": "At Sarnath the Buddha gave his first sermon, the Dhammachakkapravartana.",
+   "src": {
+    "name": "PIB, Ministry of Culture",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2289399&reg=48&lang=2",
+    "date": "25 Jul 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-037",
+   "subject": "History & Culture",
+   "syllabus": "Indian history",
+   "exam": "pre",
+   "q": "Rashtriya Ekta Diwas, observed on 31 October, marks the birth anniversary of:",
+   "opts": [
+    "Jawaharlal Nehru",
+    "Subhas Chandra Bose",
+    "Lal Bahadur Shastri",
+    "Sardar Vallabhbhai Patel"
+   ],
+   "ans": 3,
+   "why": "Sardar Patel was born on 31 October 1875 and is remembered for integrating the princely states. The Statue of Unity stands at Ekta Nagar, Gujarat.",
+   "insight": "He was India's first Deputy Prime Minister and Home Minister.",
+   "src": {
+    "name": "PIB, Ministry of Home Affairs",
+    "url": "https://www.pib.gov.in/allrelease.aspx?reg=3&lang=1",
+    "date": "21 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-038",
+   "subject": "History & Culture",
+   "syllabus": "Manuscripts and culture",
+   "exam": "pre",
+   "q": "The Ministry of Culture signed an MoU with the Bibliotheque nationale de France on 26 October 2026 under the Gyan Bharatam Mission. Its purpose is:",
+   "opts": [
+    "Restoring monuments of the Gupta period",
+    "Returning stolen antiquities to India",
+    "Creating a joint museum of Indian art in Paris",
+    "Digitisation and conservation of India's manuscript heritage"
+   ],
+   "ans": 3,
+   "why": "The Gyan Bharatam Mission works to survey, conserve and digitise Indic manuscripts, and the MoU covers Indic-origin manuscripts held in France.",
+   "insight": "Digital access is a key way of preserving fragile palm-leaf and paper manuscripts.",
+   "src": {
+    "name": "PIB, Ministry of Culture",
+    "url": "https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2329163&reg=1&lang=1",
+    "date": "27 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-039",
+   "subject": "History & Culture",
+   "syllabus": "Performing arts",
+   "exam": "pre",
+   "q": "The Ustad Bismillah Khan Yuva Puraskar, in the news in October 2026, is given by:",
+   "opts": [
+    "Sahitya Akademi",
+    "Lalit Kala Akademi",
+    "National School of Drama",
+    "Sangeet Natak Akademi"
+   ],
+   "ans": 3,
+   "why": "It is given by the Sangeet Natak Akademi, the national academy of music, dance and drama, to young artists.",
+   "insight": "Bismillah Khan was a shehnai maestro and a Bharat Ratna awardee.",
+   "src": {
+    "name": "PIB, Ministry of Culture",
+    "url": "https://www.pib.gov.in/allmediainvitation.aspx?reg=3&lang=1",
+    "date": "19 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-040",
+   "subject": "History & Culture",
+   "syllabus": "Performing arts",
+   "exam": "pre",
+   "q": "The BRICS Theatre Festival 2026 (12 to 14 October, New Delhi), held under India's BRICS presidency, had which body as its nodal agency?",
+   "opts": [
+    "Indian Council for Cultural Relations",
+    "Lalit Kala Akademi",
+    "National School of Drama",
+    "Sangeet Natak Akademi"
+   ],
+   "ans": 2,
+   "why": "The Ministry of Culture organised it, with the National School of Drama as the nodal agency, bringing together over 100 theatre practitioners.",
+   "insight": "India holds the BRICS chair in 2026.",
+   "src": {
+    "name": "PIB, Ministry of Culture",
+    "url": "https://pib.gov.in/PressReleseDetailm.aspx?PRID=2314468&lang=2&reg=48",
+    "date": "Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-041",
+   "subject": "Geography",
+   "syllabus": "Indian climate",
+   "exam": "pre",
+   "q": "IMD declared the southwest monsoon fully withdrawn from the country on 15 October 2026. On the same day, the northeast monsoon set in over:",
+   "opts": [
+    "Tamil Nadu, Puducherry, coastal Andhra Pradesh and Kerala",
+    "Punjab, Haryana and Delhi",
+    "Assam and Meghalaya",
+    "Gujarat and Rajasthan"
+   ],
+   "ans": 0,
+   "why": "IMD announced the withdrawal and the start of the northeast monsoon over the south-eastern coast.",
+   "insight": "Tamil Nadu gets most of its rain from the northeast (retreating) monsoon, from October to December.",
+   "src": {
+    "name": "IMD press release",
+    "url": "https://internal.imd.gov.in/press_release/20261015_pr_5405.pdf",
+    "date": "15 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-042",
+   "subject": "Geography",
+   "syllabus": "Indian climate",
+   "exam": "pre",
+   "q": "Why does Tamil Nadu receive most of its annual rainfall in October to December?",
+   "opts": [
+    "Western disturbances bring winter rain",
+    "The Himalayas block the monsoon winds",
+    "Winds picking up moisture from the Bay of Bengal as the monsoon retreats, along with cyclonic systems",
+    "The southwest monsoon is strongest there"
+   ],
+   "ans": 2,
+   "why": "In the retreating or northeast monsoon season, moist winds over the Bay of Bengal and cyclonic systems bring heavy rain to the Coromandel Coast.",
+   "insight": "Western disturbances bring winter rain to the north-west, not to Tamil Nadu.",
+   "src": {
+    "name": "IMD press release",
+    "url": "https://internal.imd.gov.in/press_release/20261015_pr_5405.pdf",
+    "date": "15 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-043",
+   "subject": "Geography",
+   "syllabus": "Climatology",
+   "exam": "pre",
+   "q": "IMD reported a low-pressure area in the Arabian Sea on 18 October 2026 and another expected over the Bay of Bengal near 23 October. In the North Indian Ocean, cyclones are most frequent in:",
+   "opts": [
+    "The pre-monsoon (April to June) and post-monsoon (October to December) seasons",
+    "Only during the southwest monsoon",
+    "Only in January and February",
+    "Only during the peak summer of May"
+   ],
+   "ans": 0,
+   "why": "The North Indian Ocean has two cyclone seasons, April to June and October to December, with the Bay of Bengal more active.",
+   "insight": "During the southwest monsoon, strong vertical wind shear discourages cyclone formation.",
+   "src": {
+    "name": "IMD, extended range outlook",
+    "url": "https://mausam.imd.gov.in/Forecast/marquee_data/ERF%2008.10.26.pdf",
+    "date": "Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-044",
+   "subject": "Geography",
+   "syllabus": "Indian wetlands",
+   "exam": "pre",
+   "q": "Sukhna Wetland, one of the newer entries in India's Ramsar list (103 sites as of October 2026), lies near which city?",
+   "opts": [
+    "Chandigarh",
+    "Bhopal",
+    "Srinagar",
+    "Udaipur"
+   ],
+   "ans": 0,
+   "why": "Sukhna is a reservoir at the foot of the Shivalik hills near Chandigarh, fed by seasonal streams.",
+   "insight": "Sauj Jheel, also added, is in Uttar Pradesh.",
+   "src": {
+    "name": "Ramsar",
+    "url": "https://www.ramsar.org/news/india-adds-two-more-wetlands-international-importance-list",
+    "date": "2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-045",
+   "subject": "Geography",
+   "syllabus": "World geography",
+   "exam": "pre",
+   "q": "The 2026 Nobel Prize in Physics honoured the IceCube observatory at the South Pole. The South Pole lies on which continent?",
+   "opts": [
+    "Australia",
+    "Africa",
+    "South America",
+    "Antarctica"
+   ],
+   "ans": 3,
+   "why": "The geographic South Pole is on the Antarctic continent, under thick ice.",
+   "insight": "The Indian research stations in Antarctica are Maitri and Bharati.",
+   "src": {
+    "name": "NobelPrize.org",
+    "url": "https://www.nobelprize.org/prizes/physics/2026/press-release/",
+    "date": "6 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-046",
+   "subject": "Geography",
+   "syllabus": "World geography",
+   "exam": "pre",
+   "q": "The CBD COP17 host country, Armenia, is:",
+   "opts": [
+    "A Central Asian country on the Caspian Sea",
+    "A landlocked country in the South Caucasus",
+    "A Mediterranean island nation",
+    "A Baltic coastal country"
+   ],
+   "ans": 1,
+   "why": "Armenia is landlocked, in the South Caucasus, bordering Georgia, Azerbaijan, Iran and Turkiye.",
+   "insight": "Its capital, Yerevan, hosted COP17 from 19 to 30 October 2026.",
+   "src": {
+    "name": "CMS, CBD COP17",
+    "url": "https://www.cms.int/eventcalendar/cms-un-biodiversity-conference-cbd-cop17",
+    "date": "Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-047",
+   "subject": "IR",
+   "syllabus": "Bilateral relations",
+   "exam": "pre",
+   "q": "In the India-Poland joint statement during the visit of the Polish Prime Minister (21 to 23 October 2026), the two sides set a target of:",
+   "opts": [
+    "Tripling defence exports by 2028",
+    "A free trade agreement by 2027",
+    "Zero tariffs on agriculture by 2030",
+    "Doubling bilateral trade by 2030"
+   ],
+   "ans": 3,
+   "why": "They also agreed to joint research on AI, semiconductors and quantum, and expected a classified-information protection agreement to be signed soon.",
+   "insight": "India and Poland set up a Strategic Partnership in 2024 with an Action Plan for 2024 to 2028.",
+   "src": {
+    "name": "PIB, India-Poland joint statement",
+    "url": "https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2326568&reg=3&lang=1",
+    "date": "22 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-048",
+   "subject": "IR",
+   "syllabus": "Groupings and initiatives",
+   "exam": "pre",
+   "q": "India invited Poland to join the Indo-Pacific Oceans Initiative (IPOI). IPOI was announced by India's Prime Minister at the:",
+   "opts": [
+    "UN General Assembly in 2015",
+    "BRICS Summit in Johannesburg, 2023",
+    "East Asia Summit in Bangkok, 2019",
+    "G20 Summit in Osaka, 2019"
+   ],
+   "ans": 2,
+   "why": "India announced IPOI at the East Asia Summit in November 2019 as an open, global initiative for a safe and secure maritime domain.",
+   "insight": "Poland also said it would join the Coalition for Disaster Resilient Infrastructure (CDRI).",
+   "src": {
+    "name": "PIB, India-Poland joint statement",
+    "url": "https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2326568&reg=3&lang=1",
+    "date": "22 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-049",
+   "subject": "IR",
+   "syllabus": "Groupings and initiatives",
+   "exam": "pre",
+   "q": "Poland announced it will join the Coalition for Disaster Resilient Infrastructure (CDRI). CDRI was launched by India at the:",
+   "opts": [
+    "Rio+20 Summit, 2012",
+    "G7 Summit in Hiroshima, 2023",
+    "UN Climate Action Summit, 2019",
+    "COP21 in Paris, 2015"
+   ],
+   "ans": 2,
+   "why": "India launched CDRI at the UN Climate Action Summit in 2019. Its secretariat is in New Delhi.",
+   "insight": "CDRI promotes resilient infrastructure, helping countries cope with disasters and climate risks.",
+   "src": {
+    "name": "PIB, India-Poland joint statement",
+    "url": "https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2326568&reg=3&lang=1",
+    "date": "22 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-050",
+   "subject": "IR",
+   "syllabus": "Groupings and initiatives",
+   "exam": "pre",
+   "q": "India holds the chair of which grouping in 2026, hosting the 12th Parliamentary Forum in October?",
+   "opts": [
+    "Quad",
+    "BRICS",
+    "G7",
+    "SCO"
+   ],
+   "ans": 1,
+   "why": "India holds the 2026 BRICS presidency, and the Parliamentary Forum and Theatre Festival were part of its programme.",
+   "insight": "BRICS originally stood for Brazil, Russia, India and China, with South Africa joining in 2010.",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/PressReleaseDetail.aspx?PRID=2329065&reg=3&lang=1",
+    "date": "27 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-10-051",
+   "subject": "IR",
+   "syllabus": "Groupings and initiatives",
+   "exam": "pre",
+   "q": "The Crown Prince of Liechtenstein made a State Visit to India on 27 October 2026. Which of these is NOT a member of the European Free Trade Association (EFTA) along with Liechtenstein?",
+   "opts": [
+    "Switzerland",
+    "Norway",
+    "Iceland",
+    "Poland"
+   ],
+   "ans": 3,
+   "why": "EFTA has four members: Iceland, Liechtenstein, Norway and Switzerland. Poland is in the European Union.",
+   "insight": "India signed a trade and economic partnership agreement with EFTA, so these visits matter for investment.",
+   "src": {
+    "name": "MEA",
+    "url": "https://www.mea.gov.in/",
+    "date": "27 Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  }
+ ]
+}

@@ -1,0 +1,4648 @@
+{
+ "month": "2026-09",
+ "updated": "30 Oct 2026",
+ "questions": [
+  {
+   "id": "caq-2026-09-001",
+   "subject": "Polity & Governance",
+   "syllabus": "Land governance",
+   "exam": "pre",
+   "q": "Consider the Digital India Land Records Modernisation Programme (DILRMP) 3.0 (2026 to 2031, outlay about Rs 565.50 crore):\n1. It is a Central Sector Scheme implemented by the Department of Land Resources.\n2. It gives every land parcel a 14-digit Unique Land Parcel Identification Number (ULPIN), also called Bhu-Aadhaar.\n3. It is implemented by the Ministry of Housing and Urban Affairs.\nWhich of the above are correct?",
+   "opts": [
+    "2 and 3 only",
+    "1 and 2 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "DILRMP is run by the Department of Land Resources (Ministry of Rural Development), not the Housing Ministry. The new phase also plans paperless registration and upgrades 75 Sub-Registrar Offices.",
+   "insight": "Land is a State subject (List II), so States build the land records and the Centre funds and standardises them.",
+   "src": {
+    "name": "PIB, Department of Land Resources",
+    "url": "https://www.pib.gov.in/",
+    "date": "9 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-002",
+   "subject": "Polity & Governance",
+   "syllabus": "Statutory and non-statutory bodies",
+   "exam": "pre",
+   "q": "In September 2026 a new Chairperson (Bhagwat Prasad Makwana) was appointed to the National Commission for Safai Karamcharis (NCSK). Which is correct about NCSK?",
+   "opts": [
+    "It is a body under the Ministry of Labour and Employment",
+    "It is a non-statutory body under the Ministry of Social Justice and Empowerment, working through periodic Government resolutions",
+    "It is a constitutional body under Article 338",
+    "It is a statutory body created by the Protection of Civil Rights Act, 1955"
+   ],
+   "ans": 1,
+   "why": "NCSK was set up under the NCSK Act, 1993, but the Act lapsed on 29 February 2004. The Commission has continued since then through extended resolutions. The new appointments run to 31 March 2028.",
+   "insight": "Article 338 is for the National Commission for Scheduled Castes; NCSK looks into the welfare of sanitation workers and manual scavengers.",
+   "src": {
+    "name": "PIB, Ministry of Social Justice and Empowerment",
+    "url": "https://www.pib.gov.in/",
+    "date": "9 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-003",
+   "subject": "Polity & Governance",
+   "syllabus": "Welfare schemes",
+   "exam": "pre",
+   "q": "Which is correct about the Pradhan Mantri Kisan Maandhan Yojana (PM-KMY), which completed seven years in 2026?",
+   "opts": [
+    "All farmers with any landholding get Rs 6,000 a year in three instalments",
+    "It is a free pension with no contribution from the farmer",
+    "It is open only to farmers above 60 years",
+    "Small and marginal farmers aged 18 to 40 contribute Rs 55 to Rs 200 a month and get a minimum pension of Rs 3,000 a month at 60"
+   ],
+   "ans": 3,
+   "why": "PM-KMY is voluntary and contributory, with the Centre matching the farmer's contribution. Landholding must be up to 2 hectares. The spouse gets a family pension of Rs 1,500 a month.",
+   "insight": "Do not mix it up with PM-KISAN, which gives Rs 6,000 a year as income support.",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/",
+    "date": "Feb 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-004",
+   "subject": "Polity & Governance",
+   "syllabus": "Democracy and rights",
+   "exam": "pre",
+   "q": "The International Day of Democracy is observed every year on:",
+   "opts": [
+    "10 December, to mark the Universal Declaration of Human Rights",
+    "26 January, to mark constitutional governance",
+    "15 September, established by a UN General Assembly resolution of 2007",
+    "15 August, to mark independence from colonial rule"
+   ],
+   "ans": 2,
+   "why": "The UN General Assembly passed the resolution in 2007, and the day was first observed in 2008.",
+   "insight": "In India, free and fair elections are part of the Constitution's basic structure.",
+   "src": {
+    "name": "United Nations",
+    "url": "https://www.un.org/en/observances/democracy-day",
+    "date": "15 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-005",
+   "subject": "Polity & Governance",
+   "syllabus": "Elections and political parties",
+   "exam": "pre",
+   "q": "Political parties in India are registered with the Election Commission under which provision, and donations above what amount in a year must be reported to the Commission?",
+   "opts": [
+    "Article 324 of the Constitution; above Rs 2 lakh",
+    "Section 29A of the Representation of the People Act, 1951; above Rs 2,000",
+    "The Tenth Schedule; above Rs 50,000",
+    "Section 29A of the Representation of the People Act, 1951; above Rs 20,000"
+   ],
+   "ans": 3,
+   "why": "Registration is under Section 29A. A party must report contributions above Rs 20,000 from a donor in a year (Section 29C).",
+   "insight": "A registered party that is neither national nor State party is a Registered Unrecognised Political Party (RUPP).",
+   "src": {
+    "name": "Representation of the People Act, 1951 (India Code)",
+    "url": "https://www.indiacode.nic.in/",
+    "date": "Static law"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-006",
+   "subject": "Polity & Governance",
+   "syllabus": "Education policy",
+   "exam": "pre",
+   "q": "As per the three-language formula in the National Education Policy (NEP) 2020:",
+   "opts": [
+    "Hindi is compulsory in all States",
+    "English must be one of the three languages in every school",
+    "Sanskrit is compulsory from Class 6",
+    "No language is imposed on any State, but at least two of the three languages must be Indian languages"
+   ],
+   "ans": 3,
+   "why": "NEP 2020 keeps the three-language formula but gives States, schools and students the choice. At least two languages must be Indian languages.",
+   "insight": "NEP 2020 also promotes teaching in the mother tongue or home language, at least up to Class 5.",
+   "src": {
+    "name": "Ministry of Education, NEP 2020",
+    "url": "https://www.education.gov.in/sites/upload_files/mhrd/files/NEP_Final_English_0.pdf",
+    "date": "2020"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-007",
+   "subject": "Economy",
+   "syllabus": "Labour and social security",
+   "exam": "pre",
+   "q": "The Cabinet approved raising the EPFO wage ceiling for mandatory coverage in September 2026. The ceiling changed from:",
+   "opts": [
+    "Rs 15,000 to Rs 25,000 a month",
+    "Rs 6,500 to Rs 15,000 a month",
+    "Rs 25,000 to Rs 40,000 a month",
+    "Rs 15,000 to Rs 21,000 a month"
+   ],
+   "ans": 0,
+   "why": "The ceiling rose from Rs 15,000 to Rs 25,000 (Cabinet 16 September, effective 17 September). It is the first revision since 2014 and brings over 51 lakh more employees under mandatory coverage.",
+   "insight": "Total government support for the pension scheme (EPS) rises to about Rs 11,339 crore a year.",
+   "src": {
+    "name": "PIB, Cabinet",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2310811&reg=48&lang=2",
+    "date": "16 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-008",
+   "subject": "Economy",
+   "syllabus": "National income",
+   "exam": "pre",
+   "q": "India's real GDP growth for the first quarter (April to June) of 2026-27 was estimated at:",
+   "opts": [
+    "5.4%, below the RBI's estimate",
+    "7.8%, above the RBI's estimate of 7.0%",
+    "6.9%, the same as a year earlier",
+    "9.2%, driven by agriculture"
+   ],
+   "ans": 1,
+   "why": "Real GDP grew 7.8% (nominal 10.3%) and real GVA grew 8.2%, the highest Q1 growth of the last four years.",
+   "insight": "GDP is estimated by the National Statistics Office (NSO) under MoSPI.",
+   "src": {
+    "name": "MoSPI / PIB",
+    "url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2026/sep/doc_9759_20260901_14422101.pdf",
+    "date": "31 Aug 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-009",
+   "subject": "Economy",
+   "syllabus": "National income",
+   "exam": "pre",
+   "q": "India's GDP series released in February 2026 uses which base year, replacing which earlier base?",
+   "opts": [
+    "2020-21, replacing 2004-05",
+    "2024-25, replacing 2015-16",
+    "2018-19, replacing 2011-12",
+    "2022-23, replacing 2011-12"
+   ],
+   "ans": 3,
+   "why": "MoSPI released the new series with base year 2022-23 on 27 February 2026, replacing the 2011-12 series. An updated series was released on 31 August 2026 with new price indices.",
+   "insight": "A base year is the benchmark year used to measure real changes without the effect of inflation.",
+   "src": {
+    "name": "MoSPI",
+    "url": "https://www.mospi.gov.in/uploads/latestReleases/latest_release_1772189865181_f040336d-bc57-4aed-b80f-586d9ccb279e_Press_Note_on_New_Series_of_GDP_Estimates_with_Base_Year_2022-23_27022026.pdf",
+    "date": "27 Feb 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-010",
+   "subject": "Economy",
+   "syllabus": "External sector",
+   "exam": "pre",
+   "q": "Japan Credit Rating Agency (JCR) upgraded India's long-term sovereign rating in September 2026. The new rating is:",
+   "opts": [
+    "A+ with a positive outlook, up from A",
+    "BBB with a stable outlook, up from BBB-",
+    "AA- with a stable outlook, up from A-",
+    "A- with a stable outlook, up from BBB+"
+   ],
+   "ans": 3,
+   "why": "JCR raised its rating one notch to A- and also raised India's country ceiling to A. It cited steady growth and a sounder financial system.",
+   "insight": "S&P (BBB) and Morningstar DBRS (BBB) raised India's rating in 2025 as well.",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2306033&reg=3&lang=1",
+    "date": "2 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-011",
+   "subject": "Economy",
+   "syllabus": "Credit and MSMEs",
+   "exam": "pre",
+   "q": "The Emergency Credit Line Guarantee Scheme (ECLGS) 5.0 is operational until:",
+   "opts": [
+    "31 March 2027, with a cap of Rs 25,000 crore",
+    "31 March 2027, or until guarantees worth Rs 2.55 lakh crore are issued, whichever is earlier",
+    "31 December 2026 only",
+    "31 March 2030, with no cap on guarantees"
+   ],
+   "ans": 1,
+   "why": "The Cabinet approved ECLGS 5.0 on 5 May 2026. Scheduled passenger airlines get a 90% guarantee, with additional credit up to Rs 1,500 crore per borrower.",
+   "insight": "ECLGS is run through the National Credit Guarantee Trustee Company (NCGTC) via lending institutions.",
+   "src": {
+    "name": "PIB, Cabinet",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2258114&reg=3&lang=1",
+    "date": "5 May 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-012",
+   "subject": "Economy",
+   "syllabus": "Monetary policy",
+   "exam": "pre",
+   "q": "The RBI ran Variable Rate Reverse Repo (VRRR) auctions in September 2026. VRRR is used to:",
+   "opts": [
+    "Raise the cash reserve ratio automatically",
+    "Buy foreign currency from banks",
+    "Absorb excess liquidity from the banking system",
+    "Inject liquidity against government securities"
+   ],
+   "ans": 2,
+   "why": "In a reverse repo the RBI borrows money from banks, taking surplus liquidity out of the system. In the VRRR the rate is set by auction, and the cut-off rate was 5.24% in September 2026.",
+   "insight": "The fixed-rate tools are the SDF (floor of the corridor) and the repo rate.",
+   "src": {
+    "name": "RBI",
+    "url": "https://rbidocs.rbi.org.in/rdocs/PressRelease/PDFs/PR115246DA30543B154488855F285E6B9378A8.PDF",
+    "date": "21 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-013",
+   "subject": "Economy",
+   "syllabus": "Trade policy",
+   "exam": "pre",
+   "q": "The Districts as Export Hubs (DEH) initiative, led by DGFT, is best described as:",
+   "opts": [
+    "A new scheme giving each district a fixed grant for exports",
+    "An initiative to set up special economic zones in every district",
+    "A WTO agreement on district-level trade",
+    "A convergence framework that draws on existing schemes, grown from One District One Product (ODOP)"
+   ],
+   "ans": 3,
+   "why": "DEH makes each district a unit of export planning. District Export Promotion Committees prepare action plans and act as a forum for exporters' grievances.",
+   "insight": "DGFT works under the Ministry of Commerce and Industry.",
+   "src": {
+    "name": "PIB, DGFT",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2244401&reg=3&lang=1",
+    "date": "24 Mar 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-014",
+   "subject": "IR",
+   "syllabus": "International indices",
+   "exam": "pre",
+   "q": "In the World Economic Forum's Global Gender Gap Index 2026, India's rank and score were:",
+   "opts": [
+    "131st among 145 economies, with 64.5% of the gap closed",
+    "99th among 145 economies, with 72.1% closed",
+    "131st among 120 economies, with 64.5% closed",
+    "145th among 145 economies, with 50% closed"
+   ],
+   "ans": 0,
+   "why": "India retained its 131st position with 64.5% parity. Iceland ranked first for the 17th year. The global gap is 69.2% closed.",
+   "insight": "The Index measures four areas: economic participation, educational attainment, health and survival, and political empowerment.",
+   "src": {
+    "name": "World Economic Forum",
+    "url": "https://www.weforum.org/publications/global-gender-gap-report-2026/digest/",
+    "date": "2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-015",
+   "subject": "IR",
+   "syllabus": "Groupings",
+   "exam": "pre",
+   "q": "The 18th BRICS Summit was hosted by India in New Delhi on 12 and 13 September 2026 under the theme:",
+   "opts": [
+    "Partnership for a Digital and Green Future",
+    "Building for Resilience, Innovation, Cooperation and Sustainability",
+    "Strengthening Global South Cooperation for Inclusive and Sustainable Governance",
+    "Peace, Security and Reformed Multilateralism"
+   ],
+   "ans": 1,
+   "why": "India holds the BRICS chair in 2026, and the summit adopted the New Delhi Declaration. India had earlier chaired BRICS in 2016 (Goa) and 2021 (virtual).",
+   "insight": "The previous summit's declaration (Rio de Janeiro, 2025) was titled on strengthening Global South cooperation.",
+   "src": {
+    "name": "PIB, BRICS New Delhi Declaration",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2309505&reg=48&lang=2",
+    "date": "13 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-016",
+   "subject": "IR",
+   "syllabus": "Groupings",
+   "exam": "pre",
+   "q": "The 26th Meeting of the Council of Heads of State of the Shanghai Cooperation Organisation (SCO), attended by India's Prime Minister, was held on 31 August and 1 September 2026 in:",
+   "opts": [
+    "New Delhi, India",
+    "Tianjin, China",
+    "Astana, Kazakhstan",
+    "Bishkek, Kyrgyzstan"
+   ],
+   "ans": 3,
+   "why": "The summit adopted the Bishkek Declaration. India backed proposals including making English an official SCO language. The chair for 2026-27 passes to Pakistan.",
+   "insight": "India chaired the SCO in 2022-23 and hosted a virtual summit in 2023.",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2305735&reg=48&lang=2",
+    "date": "1 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-017",
+   "subject": "IR",
+   "syllabus": "Treaties and disputes",
+   "exam": "pre",
+   "q": "In an award at the end of August 2026, the Court of Arbitration under the Permanent Court of Arbitration, in the Indus Waters Western Rivers case, held that:",
+   "opts": [
+    "The Treaty stands terminated since April 2025",
+    "Water sharing under the Treaty has been suspended until a new agreement",
+    "Only the World Bank can decide Treaty disputes",
+    "The Indus Waters Treaty remains in force and cannot be placed in abeyance unilaterally"
+   ],
+   "ans": 3,
+   "why": "The Court said the Treaty has not been terminated or suspended and that India's decision on abeyance is not permissible under the Treaty or international law.",
+   "insight": "The Indus Waters Treaty was signed in 1960 between India and Pakistan, with the World Bank as a signatory. India placed it in abeyance in April 2025.",
+   "src": {
+    "name": "Permanent Court of Arbitration",
+    "url": "https://docs.pca-cpa.org/2026/08/3c1dbc21-2023-01-20260831-pca-press-release.pdf",
+    "date": "Aug 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-018",
+   "subject": "IR",
+   "syllabus": "International law and sanctions",
+   "exam": "pre",
+   "q": "The 'Lindsey O. Graham Sanctioning Russia and Iran Act of 2026' became US law on 18 September 2026. Which is correct?",
+   "opts": [
+    "It lifts sanctions on Russian energy exports",
+    "It applies only to Iranian oil and not to Russia",
+    "It lets the President impose tariffs, up to 100%, on goods from the top five importers of Russian oil or gas, and extends the Iran Sanctions Act to 2031",
+    "It bans all trade between the United States and India"
+   ],
+   "ans": 2,
+   "why": "The Act was passed by the Senate 86-11 in August and became Public Law 119-111. The tariff power is discretionary, not automatic.",
+   "insight": "It matters to India because India buys Russian crude oil, though the sources do not name India directly.",
+   "src": {
+    "name": "Congress.gov, H.R. 5334",
+    "url": "https://www.congress.gov/bill/119th-congress/house-bill/5334/all-info",
+    "date": "18 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-019",
+   "subject": "Sci & Tech",
+   "syllabus": "Space technology",
+   "exam": "pre",
+   "q": "The GSLV-F17 mission launched on 4 September 2026 from Sriharikota carried EOS-05, described by ISRO as:",
+   "opts": [
+    "India's first satellite to orbit the Moon",
+    "A navigation satellite of the NavIC constellation",
+    "A crewed Gaganyaan test capsule",
+    "India's first imaging satellite from geosynchronous orbit"
+   ],
+   "ans": 3,
+   "why": "GSLV-F17 was the 19th GSLV flight. After a series of orbit-raising burns, EOS-05 is to be placed in the geostationary orbit at 85.5 degrees East.",
+   "insight": "A geostationary satellite stays above one point of the equator because its orbit takes 24 hours.",
+   "src": {
+    "name": "ISRO",
+    "url": "https://www.isro.gov.in/Mission_GSLVF17.html",
+    "date": "4 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-020",
+   "subject": "Sci & Tech",
+   "syllabus": "Measurement and standards",
+   "exam": "pre",
+   "q": "The Legal Metrology (Indian Standard Time) Rules, 2026, notified in August 2026, are meant to:",
+   "opts": [
+    "Move India to two time zones",
+    "Introduce daylight saving time",
+    "Make GPS the only legal time source",
+    "Set one legal, traceable Indian Standard Time across the country, with CSIR-NPL as the scientific basis"
+   ],
+   "ans": 3,
+   "why": "The Rules cover the generation, maintenance and spread of IST and take effect 180 days after publication. IST is distributed through regional laboratories and ISRO's NavIC.",
+   "insight": "CSIR-National Physical Laboratory in New Delhi maintains India's national time standard.",
+   "src": {
+    "name": "PIB, Department of Consumer Affairs",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2306171&reg=48&lang=2",
+    "date": "29 Aug 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-021",
+   "subject": "Environment",
+   "syllabus": "Air pollution",
+   "exam": "pre",
+   "q": "The Swachh Vayu Sarvekshan Awards, held in September 2026 on Swachh Vayu Diwas, rank cities on:",
+   "opts": [
+    "The number of vehicles registered",
+    "Actions taken under their clean air plans, not measured air quality",
+    "Their measured annual average PM2.5 levels",
+    "The size of their population"
+   ],
+   "ans": 1,
+   "why": "The ranking is based on reported implementation of city action plans under the National Clean Air Programme (NCAP), not on pollution readings. Ward-level surveys covered over 7,400 wards.",
+   "insight": "7 September is the International Day of Clean Air for Blue Skies.",
+   "src": {
+    "name": "PIB, Ministry of Environment",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2307388&reg=48&lang=2",
+    "date": "7 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-022",
+   "subject": "IR",
+   "syllabus": "International organisations",
+   "exam": "pre",
+   "q": "The UN General Assembly adopted the 'Correct the Map' resolution on 4 September 2026 (164 in favour, 1 against). Which is correct?",
+   "opts": [
+    "It is legally binding on all member states",
+    "It encourages the use of the Equal Earth and other equal-area maps; it is non-binding and was led by Togo and the African Union",
+    "It bans the Mercator projection in all UN publications",
+    "It changes the recognised borders of African countries"
+   ],
+   "ans": 1,
+   "why": "The text asks governments, schools and companies to use equal-area maps when relative size matters. The EU said it has no bearing on borders or sovereignty.",
+   "insight": "The Mercator map stretches areas near the poles, which makes Africa look smaller than it is.",
+   "src": {
+    "name": "UN Press",
+    "url": "https://press.un.org/en/2026/ga12779.doc.htm",
+    "date": "4 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-023",
+   "subject": "Economy",
+   "syllabus": "Financial markets",
+   "exam": "pre",
+   "q": "In the Global Financial Centres Index 40 (September 2026), GIFT City ranked:",
+   "opts": [
+    "58th, down from 46th",
+    "1st in Asia",
+    "37th, up nine places from 46th",
+    "12th, up from 40th"
+   ],
+   "ans": 2,
+   "why": "GFCI 40 was published on 16 September 2026 and covers 117 centres in its main index.",
+   "insight": "GIFT City in Gujarat is India's first International Financial Services Centre, regulated by the IFSCA.",
+   "src": {
+    "name": "Long Finance, GFCI 40",
+    "url": "https://www.longfinance.net/publications/long-finance-reports/the-global-financial-centres-index-40/",
+    "date": "16 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-024",
+   "subject": "Polity & Governance",
+   "syllabus": "Health policy",
+   "exam": "pre",
+   "q": "India's nationwide HPV vaccination campaign, launched on 28 February 2026 from Ajmer, offers:",
+   "opts": [
+    "A vaccine for men only",
+    "A free single dose to 14-year-old girls at government facilities; over 80 lakh doses had been given by September 2026",
+    "A paid two-dose course to all women above 30",
+    "A free dose to all boys and girls at birth"
+   ],
+   "ans": 1,
+   "why": "Uttar Pradesh recorded the highest number of vaccinations, with more than 22 lakh girls covered. HPV vaccination continues in routine immunisation after the campaign.",
+   "insight": "Human papillomavirus causes most cases of cervical cancer, so vaccination before exposure is the best prevention.",
+   "src": {
+    "name": "PIB, Ministry of Health",
+    "url": "https://www.pib.gov.in/",
+    "date": "11 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-025",
+   "subject": "Environment",
+   "syllabus": "Climate and agriculture",
+   "exam": "pre",
+   "q": "Consider India's first soil carbon payments to farmers (September 2026):\n1. They went to smallholders in Punjab and Haryana, with the first payments released at Punjab Agricultural University, Ludhiana.\n2. They were made by the Grow Indigo programme with ICAR's technical guidance, with credits issued under the Verra VM0042 methodology.\n3. They were paid from the Union Budget by the Ministry of Agriculture.\nWhich of the above are correct?",
+   "opts": [
+    "2 and 3 only",
+    "1 and 2 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The payments came from a private-led programme, not from the Union Budget. Farmers had adopted practices such as direct seeded rice, reduced tillage and crop residue management.",
+   "insight": "Soil carbon credits reward farming that stores more carbon in the soil or cuts emissions.",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2311218&lang=2&reg=48",
+    "date": "Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-026",
+   "subject": "Geography",
+   "syllabus": "World geography",
+   "exam": "pre",
+   "q": "Nauru informed the United Nations in 2026 that it is now officially the Republic of Naoero. The country lies in:",
+   "opts": [
+    "The Mediterranean Sea, near Malta",
+    "The south-western Pacific (Micronesia), about 40 km south of the Equator",
+    "The Caribbean Sea, near Cuba",
+    "The Indian Ocean, west of the Maldives"
+   ],
+   "ans": 1,
+   "why": "Naoero is a raised coral island in Micronesia, about 1,300 km north-east of the Solomon Islands. It has no official capital; government offices are in Yaren.",
+   "insight": "Its old name Nauru is replaced in the UN list, and its international code changes from NRU to NRO.",
+   "src": {
+    "name": "United Nations, Naoero",
+    "url": "https://www.un.org/en/about-us/member-states/naoero",
+    "date": "26 Jun 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-027",
+   "subject": "Geography",
+   "syllabus": "World geography",
+   "exam": "pre",
+   "q": "Naoero (formerly Nauru) is described as:",
+   "opts": [
+    "An archipelago of over 1,000 islands",
+    "The world's smallest independent republic, covering about 21 sq km",
+    "The largest island nation in the Pacific",
+    "A landlocked country in Africa"
+   ],
+   "ans": 1,
+   "why": "With about 12,000 people on 21 sq km, it is the smallest republic and the third-smallest country after Vatican City and Monaco.",
+   "insight": "It has no rivers; its limited fresh water and phosphate mining shaped the island's economy and landscape.",
+   "src": {
+    "name": "United Nations, Naoero",
+    "url": "https://www.un.org/en/about-us/member-states/naoero",
+    "date": "26 Jun 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-028",
+   "subject": "Geography",
+   "syllabus": "World geography",
+   "exam": "pre",
+   "q": "Which of the following does NOT share a border with Kosovo?",
+   "opts": [
+    "Albania",
+    "Bulgaria",
+    "Serbia",
+    "North Macedonia"
+   ],
+   "ans": 1,
+   "why": "Kosovo is a landlocked country in the central Balkans, bordered by Serbia, North Macedonia, Albania and Montenegro. Its capital is Pristina.",
+   "insight": "Kosovo declared independence from Serbia on 17 February 2008. India does not recognise it as an independent country.",
+   "src": {
+    "name": "Kosovo Specialist Chambers (case notes)",
+    "url": "https://www.scp-ks.org/en/cases/hashim-thaci-et-al",
+    "date": "16 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-029",
+   "subject": "Geography",
+   "syllabus": "Indian and world rivers",
+   "exam": "pre",
+   "q": "China has approved a large hydropower project in the lower reaches of the Yarlung Tsangpo, and India has asked it to protect downstream interests. This river is known in India as the:",
+   "opts": [
+    "Ganga in Uttar Pradesh",
+    "Indus in Ladakh",
+    "Siang or Dihang in Arunachal Pradesh, later the Brahmaputra",
+    "Sutlej in Himachal Pradesh"
+   ],
+   "ans": 2,
+   "why": "The Yarlung Tsangpo flows east across Tibet, turns sharply south and enters India in Arunachal Pradesh as the Siang. It becomes the Brahmaputra in Assam and the Jamuna in Bangladesh.",
+   "insight": "India is a lower riparian state, so upstream dams raise questions about flow data and downstream impact.",
+   "src": {
+    "name": "MEA, Rajya Sabha reply",
+    "url": "https://www.mea.gov.in/",
+    "date": "2025"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-030",
+   "subject": "Geography",
+   "syllabus": "Indian and world rivers",
+   "exam": "pre",
+   "q": "The Yarlung Tsangpo makes a sharp U-turn, called the Great Bend, around which Himalayan peak?",
+   "opts": [
+    "Namcha Barwa",
+    "Nanda Devi",
+    "Kangchenjunga",
+    "Dhaulagiri"
+   ],
+   "ans": 0,
+   "why": "The river wraps around Namcha Barwa in south-eastern Tibet before flowing into India.",
+   "insight": "The Great Bend gorge is one of the deepest in the world, which is why it is considered for hydropower.",
+   "src": {
+    "name": "NCERT, Geography textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-031",
+   "subject": "Geography",
+   "syllabus": "Mountain passes",
+   "exam": "pre",
+   "q": "The Lipulekh Pass, in the news for border trade and the Kailash Mansarovar Yatra, lies in:",
+   "opts": [
+    "Himachal Pradesh, near Kinnaur",
+    "Ladakh, near the Zojila",
+    "Uttarakhand, at the India-China-Nepal tri-junction",
+    "Sikkim, on the India-China border"
+   ],
+   "ans": 2,
+   "why": "Lipulekh is in Pithoragarh district, Uttarakhand. The Kailash Mansarovar Yatra has used this route since 1954, and Nepal claims the area.",
+   "insight": "Lipulekh, Kalapani and Limpiyadhura are the territory Nepal claims.",
+   "src": {
+    "name": "MEA weekly briefing",
+    "url": "https://mea.gov.in/media-briefings.htm?dtl%2F41113%2FTranscript+of+Weekly+Media+Briefing+by+the+Official+Spokesperson+May+07+2026=",
+    "date": "7 May 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-032",
+   "subject": "Geography",
+   "syllabus": "Mountain passes",
+   "exam": "pre",
+   "q": "Which of the following mountain passes is correctly matched with its State or Union Territory?",
+   "opts": [
+    "Zoji La: Arunachal Pradesh",
+    "Nathu La: Sikkim",
+    "Shipki La: Uttarakhand",
+    "Bomdi La: Himachal Pradesh"
+   ],
+   "ans": 1,
+   "why": "Nathu La is in Sikkim, Shipki La is in Himachal Pradesh, Bomdi La is in Arunachal Pradesh and Zoji La is in Ladakh/Jammu and Kashmir.",
+   "insight": "Border trade and Kailash Mansarovar Yatra batches have used Nathu La and Lipulekh.",
+   "src": {
+    "name": "MEA, Rajya Sabha reply on border trade",
+    "url": "https://www.mea.gov.in/",
+    "date": "Dec 2025"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-033",
+   "subject": "Geography",
+   "syllabus": "Seas and straits",
+   "exam": "pre",
+   "q": "The Strait of Hormuz, where disruptions in 2026 have affected trade, links:",
+   "opts": [
+    "The Black Sea and the Aegean Sea",
+    "The Persian Gulf and the Gulf of Oman",
+    "The Red Sea and the Gulf of Aden",
+    "The Mediterranean Sea and the Red Sea"
+   ],
+   "ans": 1,
+   "why": "The strait lies between Oman and Iran and is the only sea route from the Persian Gulf to the open ocean.",
+   "insight": "Because much of the world's oil passes through it, ports outside it, such as Sohar, gain importance.",
+   "src": {
+    "name": "PIB, India-Oman CEPA",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2268595&reg=3&lang=1",
+    "date": "1 Jun 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-034",
+   "subject": "Geography",
+   "syllabus": "Seas and straits",
+   "exam": "pre",
+   "q": "Sohar Port, highlighted as a gateway that avoids the Strait of Hormuz under the India-Oman CEPA, is located on the:",
+   "opts": [
+    "Red Sea, near Jeddah",
+    "Mediterranean Sea, near Alexandria",
+    "Gulf of Oman, outside the Strait of Hormuz",
+    "Persian Gulf, inside the Strait of Hormuz"
+   ],
+   "ans": 2,
+   "why": "Sohar is on the Gulf of Oman in northern Oman, between Muscat and Dubai. It gives access to sea lanes without entering the Persian Gulf.",
+   "insight": "The India-Oman CEPA came into force on 1 June 2026.",
+   "src": {
+    "name": "PIB, India-Oman CEPA",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2268595&reg=3&lang=1",
+    "date": "1 Jun 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-035",
+   "subject": "Geography",
+   "syllabus": "Seas and straits",
+   "exam": "pre",
+   "q": "Which of these countries does NOT border the Gulf of Oman?",
+   "opts": [
+    "Pakistan",
+    "Saudi Arabia",
+    "Oman",
+    "Iran"
+   ],
+   "ans": 1,
+   "why": "The Gulf of Oman is bordered by Oman, Iran, Pakistan and the United Arab Emirates.",
+   "insight": "It is the north-western arm of the Arabian Sea.",
+   "src": {
+    "name": "NCERT, Geography textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-036",
+   "subject": "Geography",
+   "syllabus": "Climatology",
+   "exam": "pre",
+   "q": "NOAA kept an El Niño Advisory in September 2026 and said the event may become very strong. El Niño is:",
+   "opts": [
+    "An unusual warming of the central and eastern equatorial Pacific Ocean",
+    "An unusual cooling of the central equatorial Pacific",
+    "A cyclone that forms over the Bay of Bengal",
+    "A warm current in the North Atlantic"
+   ],
+   "ans": 0,
+   "why": "The warm phase of the El Niño Southern Oscillation weakens the trade winds and shifts rain away from the western Pacific.",
+   "insight": "The opposite, cooler phase is called La Niña.",
+   "src": {
+    "name": "NOAA Climate Prediction Center, ENSO Diagnostic Discussion",
+    "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+    "date": "10 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-037",
+   "subject": "Geography",
+   "syllabus": "Climatology",
+   "exam": "pre",
+   "q": "El Niño years are generally associated with which impact on the Indian southwest monsoon?",
+   "opts": [
+    "An earlier withdrawal of the monsoon only",
+    "Weaker monsoon rainfall and a higher risk of drought",
+    "Heavier monsoon rainfall and floods every time",
+    "No relation to the monsoon"
+   ],
+   "ans": 1,
+   "why": "El Niño often reduces monsoon rainfall over India, though a positive Indian Ocean Dipole can offset some of the effect.",
+   "insight": "The link is a tendency, not a rule: some El Niño years have normal rainfall.",
+   "src": {
+    "name": "NOAA Climate Prediction Center, ENSO Diagnostic Discussion",
+    "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+    "date": "10 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-038",
+   "subject": "Geography",
+   "syllabus": "Climatology",
+   "exam": "pre",
+   "q": "The Niño 3.4 region, used to monitor El Niño, lies in:",
+   "opts": [
+    "The western Atlantic near Brazil",
+    "The Arctic Ocean",
+    "The central equatorial Pacific, roughly 5°N to 5°S and 170°W to 120°W",
+    "The Indian Ocean off Sri Lanka"
+   ],
+   "ans": 2,
+   "why": "The Niño 3.4 sea-surface temperature anomaly is the main index; NOAA reported it at about +2.1°C in October 2026.",
+   "insight": "An anomaly above +0.5°C for several months signals El Niño conditions.",
+   "src": {
+    "name": "NOAA Climate Prediction Center, ENSO Diagnostic Discussion",
+    "url": "https://www.cpc.ncep.noaa.gov/products/analysis_monitoring/enso_advisory/ensodisc.shtml",
+    "date": "10 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-039",
+   "subject": "Geography",
+   "syllabus": "Climatology",
+   "exam": "pre",
+   "q": "IMD recorded extremely heavy rain over Uttar Pradesh in late September 2026. In IMD's classification, 'extremely heavy' rainfall in 24 hours means:",
+   "opts": [
+    "Less than 64.5 mm",
+    "204.5 mm or more (about 20 cm or more)",
+    "64.5 to 115.5 mm",
+    "115.6 to 204.4 mm"
+   ],
+   "ans": 1,
+   "why": "IMD classes 64.5 to 115.5 mm as heavy, 115.6 to 204.4 mm as very heavy and 204.5 mm or more as extremely heavy.",
+   "insight": "Terai districts flood easily because the land is flat and rivers block drainage.",
+   "src": {
+    "name": "IMD, press release",
+    "url": "https://internal.imd.gov.in/press_release/20260926_pr_5345.pdf",
+    "date": "26 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-040",
+   "subject": "Geography",
+   "syllabus": "Climatology",
+   "exam": "pre",
+   "q": "Which of the following is correct about a Western Disturbance (WD)?",
+   "opts": [
+    "It is a summer wind that blows from the Thar desert",
+    "It originates in the Pacific Ocean",
+    "It is an eastward-moving extratropical system that brings winter rain to north-west India, drawing moisture mainly from the Mediterranean",
+    "It is a tropical cyclone from the Bay of Bengal"
+   ],
+   "ans": 2,
+   "why": "WDs travel on the subtropical westerly jet stream and bring rain and snow to the western Himalayas and the north-western plains.",
+   "insight": "When a WD meets a tropical system such as a depression, rain can become very heavy.",
+   "src": {
+    "name": "NCERT, Geography textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-041",
+   "subject": "Geography",
+   "syllabus": "Climatology",
+   "exam": "pre",
+   "q": "In the IMD classification, a system with sustained winds of 28 to 33 knots is called a:",
+   "opts": [
+    "Depression",
+    "Cyclonic storm",
+    "Severe cyclonic storm",
+    "Deep depression"
+   ],
+   "ans": 3,
+   "why": "A depression has winds of 17 to 27 knots, a deep depression 28 to 33 knots, a cyclonic storm 34 to 47 knots, and a severe cyclonic storm 48 to 63 knots.",
+   "insight": "IMD tracked a deep depression over the Bay of Bengal in late September 2026.",
+   "src": {
+    "name": "IMD",
+    "url": "https://mausam.imd.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-042",
+   "subject": "Geography",
+   "syllabus": "Physiography",
+   "exam": "pre",
+   "q": "The Terai region, which is prone to floods in Uttar Pradesh and Bihar, is:",
+   "opts": [
+    "A dry desert belt in Rajasthan",
+    "A coral reef region in the Bay of Bengal",
+    "A low-lying marshy belt south of the Bhabar, along the Himalayan foothills",
+    "A high plateau in central India"
+   ],
+   "ans": 2,
+   "why": "Streams that sink in the porous Bhabar belt re-emerge in the Terai, making it damp and flat.",
+   "insight": "Flat terrain and a high water table make waterlogging common after heavy rain.",
+   "src": {
+    "name": "NCERT, Geography textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-043",
+   "subject": "Geography",
+   "syllabus": "Cartography",
+   "exam": "pre",
+   "q": "The UN resolution of 4 September 2026 encourages the use of the Equal Earth map. The Mercator projection, in contrast:",
+   "opts": [
+    "Shows all areas in true proportion",
+    "Is a conical projection used for the tropics",
+    "Is the same as the Equal Earth projection",
+    "Preserves local shapes but exaggerates areas near the poles"
+   ],
+   "ans": 3,
+   "why": "Mercator is a cylindrical, conformal projection: angles are preserved but areas near the poles are stretched, so Africa looks smaller than it is.",
+   "insight": "Equal Earth (2018) is an equal-area projection that keeps relative sizes correct.",
+   "src": {
+    "name": "UN Press",
+    "url": "https://press.un.org/en/2026/ga12779.doc.htm",
+    "date": "4 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-044",
+   "subject": "Geography",
+   "syllabus": "Cartography",
+   "exam": "pre",
+   "q": "On a true-area basis, Africa is about how many times larger than Greenland, which looks similar in size on a Mercator map?",
+   "opts": [
+    "About 4 times",
+    "About the same size",
+    "About 14 times",
+    "About 2 times"
+   ],
+   "ans": 2,
+   "why": "Africa covers about 30.4 million sq km, while Greenland covers about 2.2 million sq km.",
+   "insight": "Mercator makes high-latitude landmasses look much larger.",
+   "src": {
+    "name": "UN News",
+    "url": "https://news.un.org/en/story/2026/09/1168284",
+    "date": "Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-045",
+   "subject": "Geography",
+   "syllabus": "Seas and straits",
+   "exam": "pre",
+   "q": "The Mayun (Perim) Island lies in which strait, linking the Red Sea and the Gulf of Aden?",
+   "opts": [
+    "Strait of Malacca",
+    "Palk Strait",
+    "Strait of Gibraltar",
+    "Bab-el-Mandeb"
+   ],
+   "ans": 3,
+   "why": "Perim sits in the Bab-el-Mandeb strait between Yemen and Djibouti and belongs to Yemen. It guards a key route for Suez Canal traffic.",
+   "insight": "The Suez Canal joins the Mediterranean Sea to the Red Sea.",
+   "src": {
+    "name": "NCERT, Geography textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-046",
+   "subject": "Geography",
+   "syllabus": "Seas and straits",
+   "exam": "pre",
+   "q": "The Suez Canal links:",
+   "opts": [
+    "The Mediterranean Sea and the Red Sea",
+    "The Black Sea and the Caspian Sea",
+    "The Atlantic and the Pacific Oceans",
+    "The Baltic Sea and the North Sea"
+   ],
+   "ans": 0,
+   "why": "It shortens the sea route between Europe and Asia, avoiding the long trip around Africa.",
+   "insight": "The Panama Canal links the Atlantic and Pacific.",
+   "src": {
+    "name": "NCERT, Geography textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-047",
+   "subject": "Geography",
+   "syllabus": "Indian climate",
+   "exam": "pre",
+   "q": "The retreat (withdrawal) of the southwest monsoon from India normally begins from:",
+   "opts": [
+    "Assam, in late June",
+    "Tamil Nadu, in October",
+    "North-west India (west Rajasthan), around mid-September",
+    "Kerala, in early August"
+   ],
+   "ans": 2,
+   "why": "The monsoon advances from the south-east and retreats from the north-west, with withdrawal usually starting in September.",
+   "insight": "Tamil Nadu receives its main rain from the retreating (north-east) monsoon from October.",
+   "src": {
+    "name": "IMD",
+    "url": "https://mausam.imd.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-048",
+   "subject": "Geography",
+   "syllabus": "Indian rivers",
+   "exam": "pre",
+   "q": "The Sone (Son) river, which joins the Ganga near Patna in Bihar, is a:",
+   "opts": [
+    "A right-bank tributary of the Ganga",
+    "A tributary of the Brahmaputra",
+    "A tributary of the Godavari",
+    "A tributary of the Yamuna"
+   ],
+   "ans": 0,
+   "why": "The Son rises near Amarkantak and joins the Ganga near Patna, entering from the right (south) bank.",
+   "insight": "Left-bank tributaries of the Ganga include the Ghaghara, Gandak and Kosi.",
+   "src": {
+    "name": "NCERT, Geography textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-049",
+   "subject": "Geography",
+   "syllabus": "Atmosphere",
+   "exam": "pre",
+   "q": "The subtropical westerly jet stream, which carries Western Disturbances to India, is a:",
+   "opts": [
+    "Warm surface ocean current",
+    "Wind that blows only in summer from the south-west",
+    "A cold air mass over the Arctic",
+    "Fast, narrow band of upper-air winds blowing west to east"
+   ],
+   "ans": 3,
+   "why": "The jet stream is found in the upper troposphere. In winter it lies south of the Himalayas, steering disturbances towards north India.",
+   "insight": "In summer it shifts north of the Himalayas, which helps the monsoon set in.",
+   "src": {
+    "name": "NCERT, Geography textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-050",
+   "subject": "Geography",
+   "syllabus": "Physiography",
+   "exam": "pre",
+   "q": "A 'hanging glacier' is best described as:",
+   "opts": [
+    "A glacier that has fully melted",
+    "A tributary glacier that ends abruptly above the main valley glacier or on a cliff",
+    "A glacier that flows into the sea",
+    "A glacier formed only in the Antarctic"
+   ],
+   "ans": 1,
+   "why": "Hanging glaciers sit high on steep slopes, so ice can break off and fall, which is a hazard in the Himalayas.",
+   "insight": "Rapid warming can destabilise them and trigger avalanches and glacial floods.",
+   "src": {
+    "name": "NCERT, Geography textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-051",
+   "subject": "Geography",
+   "syllabus": "Physiography",
+   "exam": "pre",
+   "q": "In the Himalayas, which belt of porous pebbly deposits lies at the foot of the Shiwaliks and absorbs the streams that come down?",
+   "opts": [
+    "Bhangar",
+    "Bhabar",
+    "Terai",
+    "Khadar"
+   ],
+   "ans": 1,
+   "why": "Streams sink into the coarse Bhabar and re-emerge in the Terai. Bhangar and Khadar are old and new alluvium of the plains.",
+   "insight": "Bhabar is not good for farming but is important for groundwater recharge.",
+   "src": {
+    "name": "NCERT, Geography textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-052",
+   "subject": "History & Culture",
+   "syllabus": "World heritage",
+   "exam": "pre",
+   "q": "India submitted 'The Painted Haveli Towns of Shekhawati' to UNESCO on 1 June 2026. This places it on:",
+   "opts": [
+    "The List of World Heritage in Danger",
+    "The Intangible Cultural Heritage list",
+    "India's Tentative List for World Heritage nomination",
+    "The World Heritage List of inscribed sites"
+   ],
+   "ans": 2,
+   "why": "A Tentative List is a country's inventory of sites it intends to nominate; being on it is a required step before a full nomination. The serial entry covers 14 towns in Jhunjhunu, Churu and Sikar in Rajasthan.",
+   "insight": "It was submitted under cultural criteria (iii), (iv) and (v).",
+   "src": {
+    "name": "UNESCO World Heritage Centre, Tentative Lists",
+    "url": "https://whc.unesco.org/en/tentativelists/7028/",
+    "date": "1 Jun 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-053",
+   "subject": "History & Culture",
+   "syllabus": "Art and architecture",
+   "exam": "pre",
+   "q": "The painted havelis of Shekhawati in Rajasthan are known for:",
+   "opts": [
+    "Rock-cut Buddhist caves",
+    "Stepwells of the Chalukya period",
+    "Wooden temples of the Himalayas",
+    "Frescoes on the walls of merchants' mansions, built mainly from the mid-19th century to the 1930s"
+   ],
+   "ans": 3,
+   "why": "Marwari merchants who earned wealth in colonial cities built richly painted havelis in their home towns such as Mandawa, Nawalgarh and Fatehpur.",
+   "insight": "The region is often called an open-air art gallery.",
+   "src": {
+    "name": "UNESCO World Heritage Centre, Tentative Lists",
+    "url": "https://whc.unesco.org/en/tentativelists/7028/",
+    "date": "1 Jun 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-054",
+   "subject": "History & Culture",
+   "syllabus": "World heritage",
+   "exam": "pre",
+   "q": "Which of the following is a criterion used by UNESCO to judge a cultural site such as the Shekhawati towns?",
+   "opts": [
+    "Criterion (vii): superlative natural phenomena only",
+    "A site must be more than 5,000 years old",
+    "Criterion (iv): an outstanding example of a type of building or architectural ensemble",
+    "Criterion (x): significant natural habitats for biodiversity"
+   ],
+   "ans": 2,
+   "why": "Criteria (i) to (vi) are cultural and (vii) to (x) are natural. Shekhawati was proposed under (iii), (iv) and (v).",
+   "insight": "A site needs to show 'Outstanding Universal Value' to be inscribed.",
+   "src": {
+    "name": "UNESCO World Heritage Centre, Tentative Lists",
+    "url": "https://whc.unesco.org/en/tentativelists/7028/",
+    "date": "1 Jun 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-055",
+   "subject": "History & Culture",
+   "syllabus": "Language and the Constitution",
+   "exam": "pre",
+   "q": "Hindi Diwas, observed on 14 September (with the 6th All India Official Language Conference in 2026), marks the day in 1949 when:",
+   "opts": [
+    "The Eighth Schedule was added to the Constitution",
+    "Hindi became the national language by a court order",
+    "The Constituent Assembly adopted Hindi in the Devanagari script as the Union's official language",
+    "The Official Languages Act was passed by Parliament"
+   ],
+   "ans": 2,
+   "why": "The Constituent Assembly adopted the decision on 14 September 1949. Article 343 declares Hindi in Devanagari as the Union's official language.",
+   "insight": "India has no 'national language' in the Constitution; Hindi is the official language of the Union.",
+   "src": {
+    "name": "PIB, Ministry of Home Affairs",
+    "url": "https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2310119&reg=48&lang=2",
+    "date": "14 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-056",
+   "subject": "History & Culture",
+   "syllabus": "Language and the Constitution",
+   "exam": "pre",
+   "q": "Which Article of the Constitution directs the Union to promote the spread of the Hindi language?",
+   "opts": [
+    "Article 343",
+    "Article 348",
+    "Article 120",
+    "Article 351"
+   ],
+   "ans": 3,
+   "why": "Article 351 is a directive for the Union to promote Hindi. Article 343 deals with the official language itself and Article 348 with the language of the courts.",
+   "insight": "The Eighth Schedule lists 22 recognised languages.",
+   "src": {
+    "name": "PIB, Ministry of Home Affairs",
+    "url": "https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2310119&reg=48&lang=2",
+    "date": "14 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-057",
+   "subject": "History & Culture",
+   "syllabus": "Language and the Constitution",
+   "exam": "pre",
+   "q": "The Constituent Assembly's compromise on the official language, called the Munshi-Ayyangar formula, provided for:",
+   "opts": [
+    "Hindi in Devanagari as the official language, with English continuing for 15 years",
+    "English only, forever",
+    "Hindi in Roman script from 1950",
+    "Sanskrit as the official language"
+   ],
+   "ans": 0,
+   "why": "The compromise settled a long debate between supporters of Hindi and those wanting English or regional languages to continue.",
+   "insight": "The Official Languages Act, 1963 later allowed English to continue even beyond 1965.",
+   "src": {
+    "name": "NCERT, History textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-058",
+   "subject": "History & Culture",
+   "syllabus": "Constitutional history",
+   "exam": "pre",
+   "q": "The Cabinet Mission (1946) proposed which of the following?",
+   "opts": [
+    "Direct election of the Constituent Assembly by all adults",
+    "A three-tier federation with provincial groups, instead of a separate Pakistan",
+    "Immediate partition of India",
+    "Dominion status within one month"
+   ],
+   "ans": 1,
+   "why": "The Mission rejected the demand for a separate Pakistan. It proposed a weak Centre, provinces in Groups A, B and C, and a Constituent Assembly elected by provincial legislatures.",
+   "insight": "Its members were Pethick-Lawrence, Stafford Cripps and A.V. Alexander.",
+   "src": {
+    "name": "NCERT, History textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-059",
+   "subject": "History & Culture",
+   "syllabus": "Language and the Constitution",
+   "exam": "pre",
+   "q": "The Eighth Schedule of the Constitution:",
+   "opts": [
+    "Lists the Union, State and Concurrent subjects",
+    "Gives the allocation of Rajya Sabha seats",
+    "Lists the tribal areas of the Northeast",
+    "Lists the languages recognised by the Constitution; it has 22 languages today"
+   ],
+   "ans": 3,
+   "why": "Dogri, Bodo, Maithili and Santhali were added in 2003 by the 92nd Amendment.",
+   "insight": "Tulu is a major language that is not yet in the Eighth Schedule.",
+   "src": {
+    "name": "NCERT, History textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-060",
+   "subject": "History & Culture",
+   "syllabus": "Language and the Constitution",
+   "exam": "pre",
+   "q": "The Tulu language is spoken mainly in:",
+   "opts": [
+    "Konkan region of Maharashtra",
+    "Coastal Odisha",
+    "The Malabar coast of Tamil Nadu",
+    "Coastal Karnataka (Dakshina Kannada and Udupi) and northern Kerala (Kasaragod)"
+   ],
+   "ans": 3,
+   "why": "Tulu is a Dravidian language with its own old script (Tigalari), and it has a long tradition of the Bhuta Kola ritual.",
+   "insight": "People have long demanded its inclusion in the Eighth Schedule.",
+   "src": {
+    "name": "NCERT, History textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-061",
+   "subject": "History & Culture",
+   "syllabus": "Language and the Constitution",
+   "exam": "pre",
+   "q": "Dogri, whose traditional script is called Dogra Akkhar, was added to the Eighth Schedule by the:",
+   "opts": [
+    "92nd Constitutional Amendment Act, 2003",
+    "42nd Amendment Act, 1976",
+    "1st Amendment Act, 1951",
+    "44th Amendment Act, 1978"
+   ],
+   "ans": 0,
+   "why": "The 2003 amendment added Bodo, Dogri, Maithili and Santhali. Dogri is spoken mainly in the Jammu region.",
+   "insight": "The 21st Amendment (1967) added Sindhi; the 71st (1992) added Konkani, Manipuri and Nepali.",
+   "src": {
+    "name": "NCERT, History textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-062",
+   "subject": "History & Culture",
+   "syllabus": "Freedom struggle",
+   "exam": "pre",
+   "q": "Rani Avantibai Lodhi, a heroine of the Revolt of 1857, was the queen of:",
+   "opts": [
+    "Awadh",
+    "Kittur",
+    "Ramgarh (in present-day Madhya Pradesh)",
+    "Jhansi"
+   ],
+   "ans": 2,
+   "why": "She took charge of Ramgarh after her husband's ill health, rejected the British Court of Wards and led local rulers and peasants in 1857.",
+   "insight": "She defeated the British in the Battle of Kheri in November 1857 and died in March 1858 rather than surrender.",
+   "src": {
+    "name": "PIB, Ministry of Home Affairs",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2242847&reg=3&lang=2",
+    "date": "20 Mar 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-063",
+   "subject": "History & Culture",
+   "syllabus": "Freedom struggle",
+   "exam": "pre",
+   "q": "The 'Court of Wards' policy, used against rulers such as Rani Avantibai's Ramgarh, meant that:",
+   "opts": [
+    "The British paid a pension to the ruler",
+    "The British took over the administration of an estate whose ruler was seen as unfit or a minor",
+    "The ruler was made the head of a court",
+    "The estate was given to the Nizam"
+   ],
+   "ans": 1,
+   "why": "It allowed the British to manage estates of minors or incapable rulers, and it often led to annexation or resentment.",
+   "insight": "The Doctrine of Lapse (Dalhousie) was a related annexation tool.",
+   "src": {
+    "name": "NCERT, History textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-064",
+   "subject": "History & Culture",
+   "syllabus": "Freedom struggle",
+   "exam": "pre",
+   "q": "Vinoba Bhave, whose birth anniversary falls on 11 September, started the Bhoodan Movement in 1951 at:",
+   "opts": [
+    "Sevagram, near Wardha",
+    "Champaran, in Bihar",
+    "Dandi, in Gujarat",
+    "Pochampally, in present-day Telangana"
+   ],
+   "ans": 3,
+   "why": "Bhoodan asked landowners to donate land for the landless. Vinoba was chosen by Gandhi as the first individual satyagrahi in 1940.",
+   "insight": "He received the Ramon Magsaysay Award in 1958 and the Bharat Ratna in 1983.",
+   "src": {
+    "name": "NCERT, History textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-065",
+   "subject": "History & Culture",
+   "syllabus": "Freedom struggle",
+   "exam": "pre",
+   "q": "Vinoba Bhave's movement that followed Bhoodan, in which villages were given up for common ownership, was called:",
+   "opts": [
+    "Khilafat",
+    "Gramdan",
+    "Satyagraha",
+    "Swadeshi"
+   ],
+   "ans": 1,
+   "why": "Gramdan villages were meant to hold land in common, and the Sarvodaya movement worked for the welfare of all.",
+   "insight": "Bhoodan began in 1951 and Gramdan became its main form from the late 1950s.",
+   "src": {
+    "name": "NCERT, History textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-066",
+   "subject": "History & Culture",
+   "syllabus": "Literature",
+   "exam": "pre",
+   "q": "Sarat Chandra Chattopadhyay, whose 150th birth anniversary falls in September 2026 (born 15 September 1876), is best known as a:",
+   "opts": [
+    "Urdu satirist",
+    "Bengali novelist, author of Devdas and Parineeta",
+    "Hindi poet of the Chhayavad school",
+    "Tamil playwright"
+   ],
+   "ans": 1,
+   "why": "He wrote Devdas (1917), Parineeta and Srikanta. His novel Pather Dabi was banned by the British government in 1927.",
+   "insight": "Pather Dabi is about a revolutionary secret society.",
+   "src": {
+    "name": "NCERT / Sahitya Akademi reference",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-067",
+   "subject": "History & Culture",
+   "syllabus": "Social reform",
+   "exam": "pre",
+   "q": "E.V. Ramasamy (Periyar), born on 17 September 1879, founded the:",
+   "opts": [
+    "Self-Respect Movement in 1925",
+    "Brahmo Samaj in 1828",
+    "Arya Samaj in 1875",
+    "Satyashodhak Samaj in 1873"
+   ],
+   "ans": 0,
+   "why": "He later led the Dravidar Kazhagam (1944). He took part in the Vaikom Satyagraha of 1924 against caste restrictions on temple roads.",
+   "insight": "His journal Kudi Arasu (1925) spread the movement's ideas.",
+   "src": {
+    "name": "NCERT, History textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-068",
+   "subject": "History & Culture",
+   "syllabus": "Social reform",
+   "exam": "pre",
+   "q": "The Vaikom Satyagraha (1924-25), in which Periyar took part, was a protest for:",
+   "opts": [
+    "The right of lower castes to use roads near the Vaikom temple in Kerala",
+    "Salt tax removal",
+    "Land rights of indigo farmers",
+    "Wages of mill workers in Ahmedabad"
+   ],
+   "ans": 0,
+   "why": "It was one of the first campaigns against untouchability and caste restrictions on public roads. Gandhi supported it.",
+   "insight": "The Temple Entry Proclamation in Travancore followed in 1936.",
+   "src": {
+    "name": "NCERT, History textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-069",
+   "subject": "History & Culture",
+   "syllabus": "Social reform",
+   "exam": "pre",
+   "q": "Which party was formed in 1944 from the Justice Party under Periyar's leadership?",
+   "opts": [
+    "Forward Bloc",
+    "Dravidar Kazhagam",
+    "Swaraj Party",
+    "Hindustan Socialist Republican Association"
+   ],
+   "ans": 1,
+   "why": "The Justice Party, formed in 1916 to represent non-Brahmins in Madras Presidency, was renamed Dravidar Kazhagam in 1944.",
+   "insight": "Later, the DMK split off from it in 1949 under C.N. Annadurai.",
+   "src": {
+    "name": "NCERT, History textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-070",
+   "subject": "History & Culture",
+   "syllabus": "Freedom struggle",
+   "exam": "pre",
+   "q": "Bhagat Singh, born on 28 September 1907, was a leader of which revolutionary organisation formed in 1928?",
+   "opts": [
+    "Indian National Army",
+    "Hindustan Socialist Republican Association",
+    "Anushilan Samiti",
+    "Ghadar Party"
+   ],
+   "ans": 1,
+   "why": "He worked with Chandrashekhar Azad and others. He and B.K. Dutt threw bombs in the Central Legislative Assembly on 8 April 1929.",
+   "insight": "He was executed on 23 March 1931, observed as Shaheed Diwas.",
+   "src": {
+    "name": "PIB, Prime Minister's tribute on Shaheed Diwas",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2243643&reg=3&lang=1",
+    "date": "23 Mar 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-071",
+   "subject": "History & Culture",
+   "syllabus": "Freedom struggle",
+   "exam": "pre",
+   "q": "'Inquilab Zindabad', made popular by Bhagat Singh, was first raised by:",
+   "opts": [
+    "Bal Gangadhar Tilak",
+    "Bankim Chandra Chattopadhyay",
+    "Hasrat Mohani",
+    "Sardar Patel"
+   ],
+   "ans": 2,
+   "why": "The Urdu poet and freedom fighter Hasrat Mohani coined it in 1921. Bhagat Singh and his comrades used it widely.",
+   "insight": "Bhagat Singh and B.K. Dutt shouted it after the Assembly bomb on 8 April 1929.",
+   "src": {
+    "name": "NCERT, History textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-072",
+   "subject": "History & Culture",
+   "syllabus": "Freedom struggle",
+   "exam": "pre",
+   "q": "Bhagat Singh's Naujawan Bharat Sabha was formed in 1926 mainly in which city?",
+   "opts": [
+    "Lahore",
+    "Kolkata",
+    "Pune",
+    "Chennai"
+   ],
+   "ans": 0,
+   "why": "It encouraged young people to join the freedom struggle with a socialist and secular outlook.",
+   "insight": "The Lahore Conspiracy Case trial followed the killing of the police officer Saunders in December 1928.",
+   "src": {
+    "name": "NCERT, History textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-073",
+   "subject": "History & Culture",
+   "syllabus": "Freedom struggle",
+   "exam": "pre",
+   "q": "V.O. Chidambaram Pillai (born 5 September 1872) started which swadeshi venture in 1906?",
+   "opts": [
+    "The Bengal Chemical works",
+    "The Tata Iron and Steel Company",
+    "The Swadeshi Steam Navigation Company, between Tuticorin and Colombo",
+    "A textile mill in Ahmedabad"
+   ],
+   "ans": 2,
+   "why": "He challenged the British shipping monopoly and was called 'Kappalottiya Tamizhan' (the Tamil helmsman).",
+   "insight": "He was jailed in 1908 for sedition after supporting a strike in Tuticorin.",
+   "src": {
+    "name": "NCERT, History textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-074",
+   "subject": "History & Culture",
+   "syllabus": "National symbols",
+   "exam": "pre",
+   "q": "'Vande Mataram', whose 150 years of composition are being commemorated, was composed by Bankim Chandra Chattopadhyay in:",
+   "opts": [
+    "1905, during the Swadeshi movement",
+    "1947, at independence",
+    "1920, during non-cooperation",
+    "1875, and later included in his novel Anandamath"
+   ],
+   "ans": 3,
+   "why": "It was first sung at the Congress session in 1896 by Rabindranath Tagore and was adopted as the national song on 24 January 1950.",
+   "insight": "The Government is holding a year-long commemoration.",
+   "src": {
+    "name": "PIB, Ministry of Culture",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2244781&reg=3&lang=2",
+    "date": "2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-075",
+   "subject": "History & Culture",
+   "syllabus": "Awards",
+   "exam": "pre",
+   "q": "The Dadasaheb Phalke Award, given at the National Film Awards (the 72nd were presented on 22 September 2026), is:",
+   "opts": [
+    "A sports award",
+    "The highest gallantry award",
+    "India's highest award in cinema, first given in 1969",
+    "An award for literature"
+   ],
+   "ans": 2,
+   "why": "The 2024 Dadasaheb Phalke Award went to actor Anant Nag. The first recipient in 1969 was Devika Rani.",
+   "insight": "The awards are run by the Directorate of Film Festivals under the Ministry of Information and Broadcasting.",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2310989&reg=48&lang=2",
+    "date": "2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-076",
+   "subject": "History & Culture",
+   "syllabus": "Art and architecture",
+   "exam": "pre",
+   "q": "Kathakali, a classical dance-drama, belongs to which State?",
+   "opts": [
+    "Manipur",
+    "Andhra Pradesh",
+    "Kerala",
+    "Odisha"
+   ],
+   "ans": 2,
+   "why": "Kathakali tells stories from the epics through elaborate makeup, costumes and hand gestures (mudras), with music and drums.",
+   "insight": "Odissi is from Odisha, Manipuri from Manipur and Kuchipudi from Andhra Pradesh.",
+   "src": {
+    "name": "Sangeet Natak Akademi",
+    "url": "https://sangeetnatak.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-077",
+   "subject": "History & Culture",
+   "syllabus": "Ancient history",
+   "exam": "pre",
+   "q": "Which of the following was a major port of ancient India for trade with the Roman world, on the Malabar coast?",
+   "opts": [
+    "Tamralipti",
+    "Lothal",
+    "Broach (Bharuch)",
+    "Muziris"
+   ],
+   "ans": 3,
+   "why": "Muziris (near Kodungallur, Kerala) traded spices and pepper for Roman gold. The Periplus of the Erythraean Sea describes the trade.",
+   "insight": "Lothal was a Harappan dockyard in Gujarat, and Tamralipti was a port on the Bengal coast.",
+   "src": {
+    "name": "NCERT, History textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-078",
+   "subject": "History & Culture",
+   "syllabus": "Ancient history",
+   "exam": "pre",
+   "q": "The Harappan dockyard at Lothal, a sign of India's ancient maritime trade, is in:",
+   "opts": [
+    "Rajasthan",
+    "Haryana",
+    "Gujarat",
+    "Punjab"
+   ],
+   "ans": 2,
+   "why": "Lothal is near the Gulf of Khambhat in Gujarat, and had a dockyard and warehouses.",
+   "insight": "Harappans traded with Mesopotamia through the Persian Gulf.",
+   "src": {
+    "name": "NCERT, History textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-079",
+   "subject": "History & Culture",
+   "syllabus": "Ancient history",
+   "exam": "pre",
+   "q": "The 'Periplus of the Erythraean Sea' is:",
+   "opts": [
+    "A Buddhist text from Sri Lanka",
+    "An inscription of Ashoka",
+    "A Tamil Sangam poem",
+    "A first-century CE Greek guide to sea trade routes, ports and goods of the Red Sea, Arabia and India"
+   ],
+   "ans": 3,
+   "why": "It lists ports and trade goods, including those of the Indian coasts.",
+   "insight": "It is a key source for Indo-Roman trade.",
+   "src": {
+    "name": "NCERT, History textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-080",
+   "subject": "Sci & Tech",
+   "syllabus": "Space science",
+   "exam": "pre",
+   "q": "NASA's Nancy Grace Roman Space Telescope launched on 30 August 2026. Which is correct?",
+   "opts": [
+    "It is a radio telescope placed on the far side of the Moon",
+    "It launched on a SpaceX Falcon Heavy from Kennedy Space Center and is heading to the Sun-Earth L2 point",
+    "It launched on an ISRO GSLV from Sriharikota to orbit the Moon",
+    "It was placed in low Earth orbit by the Space Shuttle"
+   ],
+   "ans": 1,
+   "why": "Roman flew from Launch Complex 39A in Florida and is travelling to an orbit around the second Sun-Earth Lagrange point, about 1.5 million km from Earth.",
+   "insight": "NASA said first images are expected by early 2027.",
+   "src": {
+    "name": "NASA, Roman Space Telescope",
+    "url": "https://science.nasa.gov/mission/roman-space-telescope/roman-launch/",
+    "date": "30 Aug 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-081",
+   "subject": "Sci & Tech",
+   "syllabus": "Space science",
+   "exam": "pre",
+   "q": "The Sun-Earth L2 point, where the Roman telescope is headed, is:",
+   "opts": [
+    "On the surface of the Moon",
+    "In low Earth orbit at 400 km",
+    "About 1.5 million km from Earth, on the side away from the Sun",
+    "Between the Earth and the Sun, about 1.5 million km from Earth"
+   ],
+   "ans": 2,
+   "why": "At L2 the Sun, Earth and Moon are all on the same side, which makes shielding and cooling easier for infrared telescopes.",
+   "insight": "The James Webb Space Telescope is also at L2, and India's Aditya-L1 is at the Sun-Earth L1 point.",
+   "src": {
+    "name": "NASA, Roman Space Telescope",
+    "url": "https://science.nasa.gov/mission/roman-space-telescope/roman-launch/",
+    "date": "30 Aug 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-082",
+   "subject": "Sci & Tech",
+   "syllabus": "Space science",
+   "exam": "pre",
+   "q": "The Nancy Grace Roman Space Telescope is mainly designed to:",
+   "opts": [
+    "Study dark energy, find exoplanets and survey the sky in infrared over a wide field",
+    "Photograph the Sun's surface only",
+    "Detect gravitational waves from the ground",
+    "Carry astronauts to Mars"
+   ],
+   "ans": 0,
+   "why": "It has a mirror about the same size as Hubble's but a much wider field of view.",
+   "insight": "It is named after NASA's first Chief of Astronomy, Nancy Grace Roman, called the 'Mother of Hubble'.",
+   "src": {
+    "name": "NASA, Roman Space Telescope",
+    "url": "https://science.nasa.gov/mission/roman-space-telescope/roman-launch/",
+    "date": "30 Aug 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-083",
+   "subject": "Sci & Tech",
+   "syllabus": "Space science",
+   "exam": "pre",
+   "q": "Aditya-L1, India's solar mission, is placed near which point?",
+   "opts": [
+    "The Sun-Earth L2 point",
+    "The Earth-Moon L2 point",
+    "A geostationary orbit",
+    "The Sun-Earth L1 point"
+   ],
+   "ans": 3,
+   "why": "L1 lies between the Sun and Earth about 1.5 million km from Earth, and gives an uninterrupted view of the Sun.",
+   "insight": "L2, on the far side, suits deep-space telescopes.",
+   "src": {
+    "name": "ISRO, Aditya-L1",
+    "url": "https://www.isro.gov.in/Aditya_L1.html",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-084",
+   "subject": "Sci & Tech",
+   "syllabus": "Defence technology",
+   "exam": "pre",
+   "q": "DRDO signed its first high-value deep-tech agreement under the Technology Development Fund (TDF) in September 2026. The project is to develop:",
+   "opts": [
+    "An unmanned stealth fighter",
+    "An indigenous 20 mK dilution refrigerator for quantum applications",
+    "A hypersonic cruise missile",
+    "A satellite navigation chip"
+   ],
+   "ans": 1,
+   "why": "It was signed with a start-up, Zero mK India Pvt Ltd (Alwar, Rajasthan), under the Rs 500 crore deep-tech corpus.",
+   "insight": "TDF is a Ministry of Defence programme run by DRDO to involve start-ups, MSMEs and industry.",
+   "src": {
+    "name": "PIB, DRDO",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2314536&reg=48&lang=2",
+    "date": "24 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-085",
+   "subject": "Sci & Tech",
+   "syllabus": "Quantum technology",
+   "exam": "pre",
+   "q": "A dilution refrigerator is needed for quantum computers because:",
+   "opts": [
+    "It cools the room for engineers",
+    "It stores the data of the computer",
+    "It supplies electricity to the processors",
+    "Qubits need extremely low temperatures, close to absolute zero, to keep their quantum states"
+   ],
+   "ans": 3,
+   "why": "Heat disturbs fragile quantum states, so superconducting qubits are kept at millikelvin temperatures.",
+   "insight": "Absolute zero is 0 K, which is -273.15 degrees Celsius.",
+   "src": {
+    "name": "PIB, DRDO",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2314536&reg=48&lang=2",
+    "date": "24 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-086",
+   "subject": "Sci & Tech",
+   "syllabus": "Quantum technology",
+   "exam": "pre",
+   "q": "A temperature of 20 millikelvin is closest to:",
+   "opts": [
+    "-27 degrees Celsius",
+    "-273.13 degrees Celsius",
+    "-173 degrees Celsius",
+    "0 degrees Celsius"
+   ],
+   "ans": 1,
+   "why": "20 mK is 0.02 K above absolute zero (-273.15 degrees Celsius), so it is about -273.13 degrees Celsius.",
+   "insight": "Kelvin has no negative values; zero kelvin is absolute zero.",
+   "src": {
+    "name": "PIB, DRDO",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2314536&reg=48&lang=2",
+    "date": "24 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-087",
+   "subject": "Sci & Tech",
+   "syllabus": "Quantum technology",
+   "exam": "pre",
+   "q": "The National Quantum Mission, approved by the Cabinet in April 2023, has an outlay of about:",
+   "opts": [
+    "Rs 6,003 crore run by ISRO",
+    "Rs 6,003.65 crore for 2023-24 to 2030-31, run by the Department of Science and Technology",
+    "Rs 600 crore for 2023-24 only",
+    "Rs 60,000 crore for 2023 to 2035"
+   ],
+   "ans": 1,
+   "why": "It supports four Thematic Hubs: IISc Bengaluru (computing), IIT Madras with C-DoT (communication), IIT Bombay (sensing and metrology) and IIT Delhi (materials and devices).",
+   "insight": "The goal is to build intermediate-scale quantum computers with 50 to 1,000 physical qubits.",
+   "src": {
+    "name": "DST, Cabinet approves National Quantum Mission",
+    "url": "https://dst.gov.in/cabinet-approves-national-quantum-mission-scale-scientific-industrial-rd-quantum-technologies",
+    "date": "19 Apr 2023"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-088",
+   "subject": "Sci & Tech",
+   "syllabus": "Quantum technology",
+   "exam": "pre",
+   "q": "Quantum Key Distribution (QKD) is considered secure because:",
+   "opts": [
+    "Any attempt to eavesdrop disturbs the quantum states and can be detected",
+    "It uses very long passwords",
+    "It sends data faster than light",
+    "It needs no key at all"
+   ],
+   "ans": 0,
+   "why": "QKD uses quantum properties of light particles to share a secret key, and spying alters the signal.",
+   "insight": "India's National Quantum Mission includes quantum communication as one of its four verticals.",
+   "src": {
+    "name": "NCERT, Science textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-089",
+   "subject": "Sci & Tech",
+   "syllabus": "Health and biotechnology",
+   "exam": "pre",
+   "q": "The Government approved the Biovigilance Programme of India in 2026. It is meant to:",
+   "opts": [
+    "Monitor adverse events linked to organ and tissue transplantation, led by the Indian Pharmacopoeia Commission",
+    "Track diseases in cattle",
+    "Certify the safety of genetically modified crops",
+    "Monitor air pollution"
+   ],
+   "ans": 0,
+   "why": "It joins the Pharmacovigilance Programme (medicines) and the Materiovigilance Programme (medical devices) to widen India's patient-safety net.",
+   "insight": "The Indian Pharmacopoeia Commission, at Ghaziabad, publishes the Indian Pharmacopoeia.",
+   "src": {
+    "name": "PIB, Ministry of Health",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2312930&reg=48&lang=2",
+    "date": "Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-090",
+   "subject": "Sci & Tech",
+   "syllabus": "Health and biotechnology",
+   "exam": "pre",
+   "q": "Pharmacovigilance is the science of:",
+   "opts": [
+    "Counting migratory birds",
+    "Detecting and preventing adverse effects of medicines",
+    "Studying plants",
+    "Testing new satellites"
+   ],
+   "ans": 1,
+   "why": "The Pharmacovigilance Programme of India (PvPI), coordinated by the Indian Pharmacopoeia Commission, records adverse drug reactions.",
+   "insight": "Materiovigilance does the same for medical devices.",
+   "src": {
+    "name": "PIB, Ministry of Health",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2312930&reg=48&lang=2",
+    "date": "Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-091",
+   "subject": "Sci & Tech",
+   "syllabus": "Nuclear energy",
+   "exam": "pre",
+   "q": "The 500 MWe Prototype Fast Breeder Reactor (PFBR) at Kalpakkam, built by BHAVINI, attained first criticality on 6 April 2026. A fast breeder reactor:",
+   "opts": [
+    "Uses thorium as the primary fuel from the start",
+    "Produces more fissile material than it consumes, using plutonium and a fertile blanket",
+    "Uses only natural uranium and heavy water",
+    "Runs on coal-fired steam"
+   ],
+   "ans": 1,
+   "why": "PFBR is the second stage of India's three-stage programme. Its blanket is designed to hold thorium-232, which turns into uranium-233.",
+   "insight": "Kalpakkam is in Tamil Nadu.",
+   "src": {
+    "name": "DAE, Prototype Fast Breeder Reactor",
+    "url": "https://dae.gov.in/prototype-fast-breeder-reactor-at-kalpakkam-tamil-nadu-attains-first-criticality/",
+    "date": "6 Apr 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-092",
+   "subject": "Sci & Tech",
+   "syllabus": "Nuclear energy",
+   "exam": "pre",
+   "q": "In India's three-stage nuclear power programme, the third stage is meant to use:",
+   "opts": [
+    "Fusion reactors",
+    "Natural uranium in pressurised heavy water reactors",
+    "Thorium-based reactors with uranium-233",
+    "Light water reactors with enriched uranium only"
+   ],
+   "ans": 2,
+   "why": "Stage one uses PHWRs on natural uranium, stage two uses fast breeders to make plutonium and U-233, and stage three uses thorium-U-233 cycles.",
+   "insight": "India has large thorium reserves in monazite sands.",
+   "src": {
+    "name": "PIB, Nuclear Energy Technology in India",
+    "url": "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=159731&ModuleId=3&reg=3&lang=1",
+    "date": "28 Aug 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-093",
+   "subject": "Sci & Tech",
+   "syllabus": "Nuclear energy",
+   "exam": "pre",
+   "q": "Thorium-232 itself is not fissile. It becomes useful as fuel because it is:",
+   "opts": [
+    "A moderator like heavy water",
+    "A coolant for sodium reactors",
+    "Fertile: when it absorbs a neutron it changes into fissile uranium-233",
+    "A radioactive gas"
+   ],
+   "ans": 2,
+   "why": "Fertile materials breed new fuel, while fissile materials such as U-233, U-235 and Pu-239 sustain the chain reaction.",
+   "insight": "India follows a closed fuel cycle, reprocessing spent fuel to reuse materials.",
+   "src": {
+    "name": "PIB, Nuclear Energy Technology in India",
+    "url": "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=159731&ModuleId=3&reg=3&lang=1",
+    "date": "28 Aug 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-094",
+   "subject": "Sci & Tech",
+   "syllabus": "Space programme",
+   "exam": "pre",
+   "q": "National Space Day is observed on 23 August because on that day in 2023:",
+   "opts": [
+    "Gaganyaan returned to Earth",
+    "Chandrayaan-3 landed near the Moon's south pole, making India the fourth country to land on the Moon",
+    "India launched its first satellite, Aryabhata",
+    "The Mangalyaan mission entered Mars orbit"
+   ],
+   "ans": 1,
+   "why": "The 3rd National Space Day in 2026 was held at Ahmedabad with the theme 'Towards Viksit Bharat: Innovating, Collaborating and Aspiring to Global Space Leadership'.",
+   "insight": "India was the first country to land near the lunar south pole.",
+   "src": {
+    "name": "ISRO, National Space Day 2026",
+    "url": "https://www.isro.gov.in/3rd_National_Space_Day_2026.html",
+    "date": "23 Aug 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-095",
+   "subject": "Sci & Tech",
+   "syllabus": "Space programme",
+   "exam": "pre",
+   "q": "The landing spot of Chandrayaan-3's Vikram lander on the Moon was named:",
+   "opts": [
+    "Aryabhata Point",
+    "Shiv Shakti Point",
+    "Tiranga Point",
+    "Jawahar Point"
+   ],
+   "ans": 1,
+   "why": "The name was announced on 26 August 2023. The Chandrayaan-2 impact site is called Tiranga Point.",
+   "insight": "The Pragyan rover explored the area around Shiv Shakti Point.",
+   "src": {
+    "name": "ISRO, National Space Day 2026",
+    "url": "https://www.isro.gov.in/3rd_National_Space_Day_2026.html",
+    "date": "23 Aug 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-096",
+   "subject": "Sci & Tech",
+   "syllabus": "Space programme",
+   "exam": "pre",
+   "q": "India's GSLV, used for the EOS-05 launch on 4 September 2026, differs from the PSLV in that it:",
+   "opts": [
+    "Uses an indigenous cryogenic upper stage to put heavier satellites in higher orbits",
+    "Uses only solid fuel in all stages",
+    "Is a reusable launch vehicle",
+    "Can launch only from outside India"
+   ],
+   "ans": 0,
+   "why": "GSLV is a three-stage vehicle with a cryogenic third stage, suited to geosynchronous transfer orbits.",
+   "insight": "PSLV is mainly used for polar and sun-synchronous orbits.",
+   "src": {
+    "name": "ISRO, GSLV-F17 / EOS-05",
+    "url": "https://www.isro.gov.in/Mission_GSLVF17.html",
+    "date": "4 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-097",
+   "subject": "Sci & Tech",
+   "syllabus": "Space programme",
+   "exam": "pre",
+   "q": "NavIC, whose signals help distribute Indian Standard Time, stands for:",
+   "opts": [
+    "Navigation with Indian Constellation, India's regional satellite navigation system",
+    "National Aerospace Verified Integrated Circuit",
+    "Naval Intelligence Command",
+    "Network for Indian Cellular communication"
+   ],
+   "ans": 0,
+   "why": "NavIC covers India and about 1,500 km around it. ISRO's satellites carry atomic clocks.",
+   "insight": "The Legal Metrology (Indian Standard Time) Rules, 2026 use NavIC and CSIR-NPL for traceable time.",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2306171&reg=48&lang=2",
+    "date": "29 Aug 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-098",
+   "subject": "Sci & Tech",
+   "syllabus": "Energy technology",
+   "exam": "pre",
+   "q": "India's first hydrogen train was flagged off on 17 July 2026 between Jind and Sonipat (Haryana). It is powered by:",
+   "opts": [
+    "Overhead electric lines only",
+    "Solar panels on the roof",
+    "Hydrogen fuel cells, emitting only water vapour",
+    "Diesel engines with LNG"
+   ],
+   "ans": 2,
+   "why": "A fuel cell combines hydrogen and oxygen to make electricity, with water as the by-product. Jind has a hydrogen facility storing about 3,000 kg.",
+   "insight": "The route is about 89 km, with an operating speed of 75 km/h.",
+   "src": {
+    "name": "PIB, India's first hydrogen train",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2289319&reg=3&lang=1",
+    "date": "17 Jul 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-099",
+   "subject": "Sci & Tech",
+   "syllabus": "Energy technology",
+   "exam": "pre",
+   "q": "The National Green Hydrogen Mission, approved in January 2023, aims for a production capacity of:",
+   "opts": [
+    "50 million tonnes a year by 2030",
+    "500 tonnes a year by 2025",
+    "Hydrogen only from natural gas",
+    "At least 5 million tonnes of green hydrogen a year by 2030"
+   ],
+   "ans": 3,
+   "why": "Green hydrogen is made by splitting water with renewable electricity, so it produces no carbon dioxide.",
+   "insight": "Grey hydrogen comes from natural gas, and blue hydrogen captures its carbon.",
+   "src": {
+    "name": "PIB, National Green Hydrogen Mission",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=1888547&reg=48&lang=2",
+    "date": "Jan 2023"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-100",
+   "subject": "Sci & Tech",
+   "syllabus": "Critical minerals",
+   "exam": "pre",
+   "q": "The Rs 7,280 crore scheme for sintered Rare Earth Permanent Magnets (REPM) aims to:",
+   "opts": [
+    "Ban exports of magnets",
+    "Set up a nuclear reactor",
+    "Build 6,000 tonnes a year of integrated magnet capacity in India, through five beneficiaries chosen by global bidding",
+    "Mine rare earths from the seabed"
+   ],
+   "ans": 2,
+   "why": "It has sales-linked incentives of Rs 6,450 crore and a capital subsidy of Rs 750 crore. India imports all its sintered NdFeB magnets now.",
+   "insight": "The Ministry of Heavy Industries extended the bid timeline in July 2026.",
+   "src": {
+    "name": "PIB, REPM scheme",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2194684&reg=48&lang=2",
+    "date": "26 Nov 2025"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-101",
+   "subject": "Sci & Tech",
+   "syllabus": "Critical minerals",
+   "exam": "pre",
+   "q": "Rare earth permanent magnets (NdFeB) are important mainly because they are used in:",
+   "opts": [
+    "Fertiliser production",
+    "Textile dyes",
+    "Electric vehicle motors, wind turbines and electronics",
+    "Cement manufacturing"
+   ],
+   "ans": 2,
+   "why": "NdFeB magnets are among the strongest magnets, so they make motors lighter and more efficient.",
+   "insight": "'Rare earths' are 17 elements: the 15 lanthanides plus scandium and yttrium.",
+   "src": {
+    "name": "PIB, REPM scheme",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2194684&reg=48&lang=2",
+    "date": "26 Nov 2025"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-102",
+   "subject": "Sci & Tech",
+   "syllabus": "Digital and telecom",
+   "exam": "pre",
+   "q": "The International Mobile Equipment Identity (IMEI) number on a mobile phone is:",
+   "opts": [
+    "A 10-digit number identifying the SIM card",
+    "The phone's price code",
+    "The number of the mobile tower",
+    "A unique 15-digit number that identifies the handset"
+   ],
+   "ans": 3,
+   "why": "The Government's Sanchar Saathi portal and the CEIR use the IMEI to block lost or stolen phones. Tampering with IMEIs is prohibited under the 2025 Telecom Cyber Security Rules.",
+   "insight": "Dialling *#06# usually shows the IMEI.",
+   "src": {
+    "name": "PIB, Department of Telecommunications",
+    "url": "https://www.pib.gov.in/",
+    "date": "2025"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-103",
+   "subject": "Sci & Tech",
+   "syllabus": "Biotechnology",
+   "exam": "pre",
+   "q": "The BioE3 policy (Biotechnology for Economy, Environment and Employment), approved in 2024, supports biomanufacturing of items such as:",
+   "opts": [
+    "Only space satellites",
+    "Bio-based chemicals, enzymes and biopolymers such as PLA and PHA",
+    "Only vaccines",
+    "Only nuclear fuel"
+   ],
+   "ans": 1,
+   "why": "The Department of Biotechnology and BIRAC implement it. Parliament was told that projects aim to make PLA and PHA as import substitutes.",
+   "insight": "Polylactic acid (PLA) is made from plant sugars, for instance from corn or sugarcane, and is biodegradable under industrial composting.",
+   "src": {
+    "name": "PIB, Cabinet approves BioE3 Policy",
+    "url": "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=2048569",
+    "date": "Aug 2024"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-104",
+   "subject": "Sci & Tech",
+   "syllabus": "Automobiles",
+   "exam": "pre",
+   "q": "A plug-in hybrid electric vehicle (PHEV) is a vehicle that:",
+   "opts": [
+    "Has both a petrol or diesel engine and a battery that can be charged from an external plug",
+    "Runs only on a battery with no engine",
+    "Runs only on hydrogen",
+    "Uses solar power only"
+   ],
+   "ans": 0,
+   "why": "A PHEV can run for a short distance on its battery and switch to the engine for longer trips.",
+   "insight": "A battery electric vehicle (BEV) has no engine, and a strong hybrid cannot be plugged in.",
+   "src": {
+    "name": "NCERT, Science textbooks",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-105",
+   "subject": "Sci & Tech",
+   "syllabus": "Health",
+   "exam": "pre",
+   "q": "Antifungal resistance is a growing concern. The yeast Candida auris is notable because it:",
+   "opts": [
+    "Is a harmless gut bacterium",
+    "Is a virus",
+    "Causes only seasonal flu",
+    "Resists many antifungal drugs and spreads in hospitals"
+   ],
+   "ans": 3,
+   "why": "The World Health Organization lists C. auris in its critical priority group of fungal pathogens.",
+   "insight": "Overuse of antifungals in agriculture and medicine is a driver of resistance.",
+   "src": {
+    "name": "WHO, Fungal priority pathogens list",
+    "url": "https://www.who.int/publications/i/item/9789240060241",
+    "date": "2022"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-106",
+   "subject": "Environment",
+   "syllabus": "Climate policy",
+   "exam": "pre",
+   "q": "The EU's Carbon Border Adjustment Mechanism (CBAM), for which India is preparing, entered its definitive phase on:",
+   "opts": [
+    "1 April 2024",
+    "1 January 2026",
+    "1 January 2023",
+    "1 January 2030"
+   ],
+   "ans": 1,
+   "why": "The transitional (reporting-only) phase ran from 2023 to 2025. From 2026 importers must account for the carbon embedded in covered goods, with the payment obligation phased in up to 2034.",
+   "insight": "EU certificate sales for CBAM begin in 2027.",
+   "src": {
+    "name": "European Commission, CBAM",
+    "url": "https://taxation-customs.ec.europa.eu/news/reminder-cbam-goes-live-1-january-2026-2025-12-23_en",
+    "date": "23 Dec 2025"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-107",
+   "subject": "Environment",
+   "syllabus": "Climate policy",
+   "exam": "pre",
+   "q": "Which of the following goods are covered by the EU's CBAM?",
+   "opts": [
+    "Cement, iron and steel, aluminium, fertilisers, electricity and hydrogen",
+    "Only textiles and leather",
+    "Only agricultural products",
+    "Only petroleum products"
+   ],
+   "ans": 0,
+   "why": "CBAM prices the carbon embedded in carbon-intensive imports to prevent 'carbon leakage'. Importers of more than 50 tonnes of covered goods need authorisation.",
+   "insight": "India's steel and aluminium exports to the EU are most exposed.",
+   "src": {
+    "name": "European Commission, CBAM",
+    "url": "https://taxation-customs.ec.europa.eu/news/reminder-cbam-goes-live-1-january-2026-2025-12-23_en",
+    "date": "23 Dec 2025"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-108",
+   "subject": "Environment",
+   "syllabus": "Climate policy",
+   "exam": "pre",
+   "q": "'Carbon leakage', the problem CBAM tries to address, means:",
+   "opts": [
+    "Leakage of carbon dioxide from storage tanks",
+    "Carbon stored in forests escaping in fires",
+    "The loss of carbon credits by accounting error",
+    "Industries moving to countries with weaker carbon rules, shifting emissions rather than cutting them"
+   ],
+   "ans": 3,
+   "why": "If producers move to places with no carbon price, global emissions may not fall. A border tax puts imports on equal terms.",
+   "insight": "Critics call CBAM a trade barrier and say it conflicts with the principle of 'common but differentiated responsibilities'.",
+   "src": {
+    "name": "European Commission, CBAM",
+    "url": "https://taxation-customs.ec.europa.eu/news/reminder-cbam-goes-live-1-january-2026-2025-12-23_en",
+    "date": "23 Dec 2025"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-109",
+   "subject": "Environment",
+   "syllabus": "Climate policy",
+   "exam": "pre",
+   "q": "India's domestic carbon market, the Carbon Credit Trading Scheme (CCTS), is set up under which law?",
+   "opts": [
+    "The Energy Conservation Act, 2001 (as amended in 2022)",
+    "The Environment (Protection) Act, 1986 only",
+    "The Wildlife Protection Act, 1972",
+    "The Water Act, 1974"
+   ],
+   "ans": 0,
+   "why": "The Bureau of Energy Efficiency runs the scheme, which sets emission-intensity targets for energy-intensive sectors.",
+   "insight": "A domestic carbon price may help Indian exporters show they already pay for carbon.",
+   "src": {
+    "name": "Bureau of Energy Efficiency",
+    "url": "https://beeindia.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-110",
+   "subject": "Environment",
+   "syllabus": "Climate policy",
+   "exam": "pre",
+   "q": "India launched a Net Zero Portal and an NAPCC Dashboard on World Ozone Day 2026. The National Action Plan on Climate Change (NAPCC), launched in 2008, originally had:",
+   "opts": [
+    "Eight national missions, including solar energy, water and sustainable agriculture",
+    "Three missions only",
+    "Fifty missions, one for each State",
+    "No missions, only guidelines"
+   ],
+   "ans": 0,
+   "why": "The original eight missions are solar energy, enhanced energy efficiency, sustainable habitat, water, Himalayan ecosystem, Green India, sustainable agriculture and strategic knowledge.",
+   "insight": "The dashboard tracks progress of the missions across States and Union Territories.",
+   "src": {
+    "name": "MoEFCC, NAPCC Dashboard",
+    "url": "https://napccindia.moef.gov.in/",
+    "date": "16 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-111",
+   "subject": "Environment",
+   "syllabus": "International conventions",
+   "exam": "pre",
+   "q": "World Ozone Day, observed on 16 September, commemorates:",
+   "opts": [
+    "The Kyoto Protocol of 1997",
+    "The signing of the Montreal Protocol in 1987",
+    "The adoption of the Paris Agreement",
+    "The Rio Earth Summit of 1992"
+   ],
+   "ans": 1,
+   "why": "The Montreal Protocol phases out substances that deplete the ozone layer. The Kigali Amendment (2016) extended it to HFCs, which are powerful greenhouse gases.",
+   "insight": "India ratified the Kigali Amendment in 2021.",
+   "src": {
+    "name": "UNEP, Ozone Secretariat",
+    "url": "https://ozone.unep.org/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-112",
+   "subject": "Environment",
+   "syllabus": "Wildlife conservation",
+   "exam": "pre",
+   "q": "As per a May 2026 Government update, India's cheetah population under Project Cheetah stood at about:",
+   "opts": [
+    "120 cheetahs in five national parks",
+    "Zero, as the project has ended",
+    "53 cheetahs, of which 33 are Indian-born",
+    "8 cheetahs, all from Namibia"
+   ],
+   "ans": 2,
+   "why": "Kuno National Park in Madhya Pradesh is the primary site, and Gandhi Sagar Wildlife Sanctuary is being prepared as additional habitat. Nine cheetahs arrived from Botswana in February 2026.",
+   "insight": "The first recorded birth in the wild took place in April 2026.",
+   "src": {
+    "name": "PIB, Project Cheetah",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2262834&reg=48&lang=2",
+    "date": "May 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-113",
+   "subject": "Environment",
+   "syllabus": "Wildlife conservation",
+   "exam": "pre",
+   "q": "Project Cheetah reintroduced cheetahs to India from Namibia in September 2022. The cheetah was declared extinct in India in:",
+   "opts": [
+    "1912",
+    "1952",
+    "1972",
+    "1992"
+   ],
+   "ans": 1,
+   "why": "The Asiatic cheetah vanished from India by the mid-20th century. The animals brought in belong to the African subspecies.",
+   "insight": "The Asiatic cheetah survives today only in Iran.",
+   "src": {
+    "name": "PIB, Project Cheetah",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2262834&reg=48&lang=2",
+    "date": "May 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-114",
+   "subject": "Environment",
+   "syllabus": "Wildlife conservation",
+   "exam": "pre",
+   "q": "Kuno National Park, the main site of Project Cheetah, is located in:",
+   "opts": [
+    "Jaisalmer district, Rajasthan",
+    "Kutch, Gujarat",
+    "Chittoor, Andhra Pradesh",
+    "Sheopur district, Madhya Pradesh"
+   ],
+   "ans": 3,
+   "why": "The Government plans to widen the project to Gandhi Sagar (Madhya Pradesh), Nauradehi (Madhya Pradesh) and the Banni grasslands (Gujarat).",
+   "insight": "Grassland and savanna ecosystems need protection, since they are often overlooked.",
+   "src": {
+    "name": "PIB, Project Cheetah",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2262834&reg=48&lang=2",
+    "date": "May 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-115",
+   "subject": "Environment",
+   "syllabus": "Wildlife conservation",
+   "exam": "pre",
+   "q": "Which of the following is an area being considered for expanding Project Cheetah beyond Kuno?",
+   "opts": [
+    "The Nilgiri Biosphere Reserve",
+    "The Thar desert dunes of Jaisalmer only",
+    "The Banni grasslands in Gujarat",
+    "The Sundarbans delta"
+   ],
+   "ans": 2,
+   "why": "A May 2026 Government release names Banni, along with Gandhi Sagar and Nauradehi, as part of the next phase.",
+   "insight": "Banni is Asia's largest tropical grassland.",
+   "src": {
+    "name": "PIB, Project Cheetah",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2262834&reg=48&lang=2",
+    "date": "May 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-116",
+   "subject": "Environment",
+   "syllabus": "Ecosystems",
+   "exam": "pre",
+   "q": "Pichavaram, one of India's largest mangrove forests, is in which State?",
+   "opts": [
+    "West Bengal",
+    "Odisha",
+    "Andhra Pradesh",
+    "Tamil Nadu (Cuddalore district)"
+   ],
+   "ans": 3,
+   "why": "Pichavaram was designated a Ramsar site in 2022, together with Karikili Bird Sanctuary and Pallikaranai Marsh.",
+   "insight": "The Sundarbans in West Bengal is India's largest mangrove area.",
+   "src": {
+    "name": "PIB, MoEFCC mangroves",
+    "url": "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=160558&ModuleId=3&reg=3&lang=1",
+    "date": "2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-117",
+   "subject": "Environment",
+   "syllabus": "Ecosystems",
+   "exam": "pre",
+   "q": "India's mangrove cover, as per the India State of Forest Report 2023, was about:",
+   "opts": [
+    "12,000 sq km, about 0.4%",
+    "4,992 sq km, about 0.15% of the country's area",
+    "50,000 sq km, about 1.5%",
+    "499 sq km, about 0.015%"
+   ],
+   "ans": 1,
+   "why": "Mangrove cover rose by about 17 sq km from the 2019 assessment. Mangroves protect coasts and are important nurseries for fish.",
+   "insight": "The Forest Survey of India, Dehradun, publishes the report every two years.",
+   "src": {
+    "name": "PIB, India State of Forest Report 2023",
+    "url": "https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2086742&lang=1&reg=3",
+    "date": "2024"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-118",
+   "subject": "Environment",
+   "syllabus": "Ecosystems",
+   "exam": "pre",
+   "q": "The MISHTI scheme (Mangrove Initiative for Shoreline Habitats and Tangible Incomes) aims to:",
+   "opts": [
+    "Protect coral reefs",
+    "Reduce plastic in rivers",
+    "Restore and plant mangroves along the coast over 2023-24 to 2027-28",
+    "Build seawalls only"
+   ],
+   "ans": 2,
+   "why": "It targets about 540 sq km in nine coastal States and four Union Territories.",
+   "insight": "Blue carbon ecosystems such as mangroves store large amounts of carbon.",
+   "src": {
+    "name": "PIB, MISHTI",
+    "url": "https://www.pib.gov.in/PressReleaseIframePage.aspx?PRID=1939369",
+    "date": "2023"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-119",
+   "subject": "Environment",
+   "syllabus": "Climate change",
+   "exam": "pre",
+   "q": "Copernicus reported that September 2026 was about 1.63°C above the pre-industrial average. The pre-industrial baseline used is:",
+   "opts": [
+    "1950-1980",
+    "1990-2000",
+    "2000-2010",
+    "1850-1900"
+   ],
+   "ans": 3,
+   "why": "It was the first time since November 2025 that two consecutive months were above 1.5°C. A strong El Niño is adding to the warmth.",
+   "insight": "The Paris Agreement aims to hold warming well below 2°C and pursue 1.5°C.",
+   "src": {
+    "name": "Copernicus Climate Change Service",
+    "url": "https://climate.copernicus.eu/copernicus-second-warmest-september-global-temperatures-stay-above-15degc",
+    "date": "Oct 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-120",
+   "subject": "Environment",
+   "syllabus": "Climate change",
+   "exam": "pre",
+   "q": "The WMO's decadal outlook says there is a high chance that at least one year between 2026 and 2030 will temporarily exceed 1.5°C. This does not by itself mean the Paris goal has failed because:",
+   "opts": [
+    "1.5°C is measured only in the ocean",
+    "Temperatures are measured only in winter",
+    "The Paris goal refers to long-term average warming over decades, not a single year",
+    "The goal has already been dropped"
+   ],
+   "ans": 2,
+   "why": "WMO estimates a 91% chance that at least one year in 2026-2030 will exceed 1.5°C above 1850-1900.",
+   "insight": "The 2024 calendar year was the first to exceed 1.5°C.",
+   "src": {
+    "name": "WMO",
+    "url": "https://wmo.int/news/media-centre/new-report-suggests-more-global-temperature-records-ahead",
+    "date": "May 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-121",
+   "subject": "Environment",
+   "syllabus": "Climate change",
+   "exam": "pre",
+   "q": "The Paris Agreement, adopted in 2015, aims to limit global warming to:",
+   "opts": [
+    "Well below 2°C above pre-industrial levels, with efforts to limit it to 1.5°C",
+    "Exactly 3°C",
+    "4°C by 2030",
+    "0.5°C in cities only"
+   ],
+   "ans": 0,
+   "why": "Countries submit Nationally Determined Contributions (NDCs) to meet it.",
+   "insight": "COP31 in Antalya (9 to 20 November 2026) begins the second global stocktake cycle.",
+   "src": {
+    "name": "UNFCCC",
+    "url": "https://unfccc.int/process-and-meetings/the-paris-agreement",
+    "date": "2015"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-122",
+   "subject": "Environment",
+   "syllabus": "Himalayan ecology",
+   "exam": "pre",
+   "q": "An ICIMOD report in 2026 found that glaciers in the Hindu Kush Himalaya are:",
+   "opts": [
+    "Melting only in the Karakoram",
+    "Losing ice at about double the rate since 2000, with some nearing tipping points",
+    "Growing across the whole region",
+    "Unchanged since 1990"
+   ],
+   "ans": 1,
+   "why": "Glacier area fell about 12% between 1990 and 2020. The report warned that parts of the Himalayan cryosphere may be nearing irreversible retreat.",
+   "insight": "Melting raises the risk of glacial lake outburst floods.",
+   "src": {
+    "name": "ICIMOD",
+    "url": "https://www.icimod.org/press-releases/hindu-kush-himalaya-glaciers-losing-ice-at-double-the-rate-since-2000-new-icimod-report-confirm/",
+    "date": "21 Mar 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-123",
+   "subject": "Environment",
+   "syllabus": "Himalayan ecology",
+   "exam": "pre",
+   "q": "ICIMOD's HKH Snow Update 2026 reported that snow persistence in the region was:",
+   "opts": [
+    "Not measured",
+    "About 27.8% below the long-term average, the fourth straight year of decline",
+    "10% above the average",
+    "At a record high"
+   ],
+   "ans": 1,
+   "why": "Snowmelt supplies about a quarter of the region's river water, so repeated shortfalls raise the risk of water shortages.",
+   "insight": "Consecutive dry years also reduce groundwater and soil moisture.",
+   "src": {
+    "name": "ICIMOD",
+    "url": "https://www.icimod.org/press-release/hindu-kush-himalaya-snowpack-crashes-to-record-low-for-fourth-straight-year-water-shortages-imminent/",
+    "date": "Apr 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-124",
+   "subject": "Environment",
+   "syllabus": "Himalayan ecology",
+   "exam": "pre",
+   "q": "ICIMOD, the intergovernmental body that tracks the Hindu Kush Himalaya, has its headquarters in:",
+   "opts": [
+    "Kathmandu, Nepal",
+    "New Delhi, India",
+    "Thimphu, Bhutan",
+    "Dhaka, Bangladesh"
+   ],
+   "ans": 0,
+   "why": "ICIMOD's eight member countries are Afghanistan, Bangladesh, Bhutan, China, India, Myanmar, Nepal and Pakistan.",
+   "insight": "The Hindu Kush Himalaya is often called the 'Third Pole' because of its ice.",
+   "src": {
+    "name": "ICIMOD",
+    "url": "https://www.icimod.org/press-releases/hindu-kush-himalaya-glaciers-losing-ice-at-double-the-rate-since-2000-new-icimod-report-confirm/",
+    "date": "21 Mar 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-125",
+   "subject": "Environment",
+   "syllabus": "Wildlife conservation",
+   "exam": "pre",
+   "q": "World Rhino Day is observed on 22 September. The greater one-horned rhino, found in Assam's Kaziranga, is listed by the IUCN as:",
+   "opts": [
+    "Least Concern",
+    "Vulnerable",
+    "Critically Endangered",
+    "Extinct in the Wild"
+   ],
+   "ans": 1,
+   "why": "Its numbers recovered from about 1,500 in the 1980s to over 4,000, mostly in Assam. Kaziranga had about 2,613 in the 2022 count.",
+   "insight": "India's other rhino areas include Pobitora (Assam), Jaldapara and Gorumara (West Bengal) and Dudhwa (Uttar Pradesh).",
+   "src": {
+    "name": "PIB, Assam's role in protecting rhinos",
+    "url": "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=152174&ModuleId=3&reg=3&lang=1",
+    "date": "2024"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-126",
+   "subject": "Environment",
+   "syllabus": "Wildlife conservation",
+   "exam": "pre",
+   "q": "How many of the world's five rhino species are found in India?",
+   "opts": [
+    "Five",
+    "One: the greater one-horned rhino",
+    "Two",
+    "Three"
+   ],
+   "ans": 1,
+   "why": "The five species are the Indian (greater one-horned), Javan, Sumatran, white and black rhinos. Javan rhinos once lived in India but are now only in Indonesia.",
+   "insight": "India holds the largest population of the greater one-horned rhino; Nepal has the second largest.",
+   "src": {
+    "name": "NCERT / MoEFCC, standard references",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-127",
+   "subject": "Environment",
+   "syllabus": "International conventions",
+   "exam": "pre",
+   "q": "Access and Benefit Sharing (ABS) is a principle of the Convention on Biological Diversity under which:",
+   "opts": [
+    "Companies keep all profits from nature",
+    "Only developed countries gain rights",
+    "Benefits from using biological resources and traditional knowledge are shared fairly with the countries and communities that provide them",
+    "Nations must ban all use of genetic resources"
+   ],
+   "ans": 2,
+   "why": "The Nagoya Protocol (2010) set out ABS rules. In India, the Biological Diversity Act, 2002 and the National Biodiversity Authority (Chennai) regulate it.",
+   "insight": "CBD COP17 in Yerevan (19 to 30 October 2026) took up biodiversity decisions.",
+   "src": {
+    "name": "CBD, Nagoya Protocol",
+    "url": "https://www.cbd.int/abs/",
+    "date": "2010"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-128",
+   "subject": "Environment",
+   "syllabus": "International conventions",
+   "exam": "pre",
+   "q": "The Green Climate Fund (GCF), whose 46th Board meeting was held on 26 to 29 October 2026, is headquartered in:",
+   "opts": [
+    "New York, USA",
+    "Songdo, Incheon, South Korea",
+    "Geneva, Switzerland",
+    "Nairobi, Kenya"
+   ],
+   "ans": 1,
+   "why": "The GCF was set up under the UNFCCC to channel climate finance to developing countries. In March 2026 its Board approved USD 960.3 million for 18 new projects.",
+   "insight": "It is the largest dedicated climate fund for developing countries.",
+   "src": {
+    "name": "Green Climate Fund",
+    "url": "https://www.greenclimate.fund/boardroom/meetings",
+    "date": "2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-129",
+   "subject": "Environment",
+   "syllabus": "Pollution",
+   "exam": "pre",
+   "q": "India's National Clean Air Programme (NCAP), whose city ranking Swachh Vayu Sarvekshan was released in September 2026, was launched in:",
+   "opts": [
+    "2015",
+    "2019",
+    "1986",
+    "2005"
+   ],
+   "ans": 1,
+   "why": "NCAP was launched in January 2019 to cut PM10 and PM2.5 levels in non-attainment cities; the target was later raised to a 40% cut by 2025-26.",
+   "insight": "7 September is the International Day of Clean Air for Blue Skies.",
+   "src": {
+    "name": "PIB, Ministry of Environment",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2307388&reg=48&lang=2",
+    "date": "7 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-130",
+   "subject": "Environment",
+   "syllabus": "Biodiversity",
+   "exam": "pre",
+   "q": "The Himalayan Monal, a colourful pheasant, is the State bird of:",
+   "opts": [
+    "Himachal Pradesh",
+    "Assam",
+    "Arunachal Pradesh",
+    "Uttarakhand"
+   ],
+   "ans": 3,
+   "why": "It lives in high-altitude forests of the Himalaya and is also called the Impeyan pheasant. Himachal's State bird is the Western tragopan.",
+   "insight": "Both are Schedule I species under the Wildlife (Protection) Act, 1972.",
+   "src": {
+    "name": "NCERT / MoEFCC, standard references",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-131",
+   "subject": "Environment",
+   "syllabus": "Conservation policy",
+   "exam": "pre",
+   "q": "The Kasturirangan Committee (2013) on the Western Ghats recommended that:",
+   "opts": [
+    "About 37% of the Western Ghats (roughly 60,000 sq km) be declared Ecologically Sensitive Area",
+    "The whole Western Ghats be opened for mining",
+    "No area be protected",
+    "Only the Nilgiris be protected"
+   ],
+   "ans": 0,
+   "why": "It was a softened version of the Gadgil Committee (2011), which proposed declaring the entire Ghats as ecologically sensitive.",
+   "insight": "Six States share the Western Ghats: Gujarat, Maharashtra, Goa, Karnataka, Kerala and Tamil Nadu.",
+   "src": {
+    "name": "MoEFCC, Western Ghats Ecology Expert Panel",
+    "url": "https://moef.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-132",
+   "subject": "Environment",
+   "syllabus": "Forests",
+   "exam": "pre",
+   "q": "The Khair tree (Acacia catechu) is economically important because it yields:",
+   "opts": [
+    "Natural rubber",
+    "Cinchona bark for quinine",
+    "Sandalwood oil",
+    "Katha (catechu) used with betel leaf, and hard timber"
+   ],
+   "ans": 3,
+   "why": "Khair grows in dry deciduous forests and along riverbanks in the sub-Himalayan tract.",
+   "insight": "Rubber comes from the Hevea tree and quinine from cinchona.",
+   "src": {
+    "name": "NCERT / MoEFCC, standard references",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-133",
+   "subject": "Environment",
+   "syllabus": "Energy and environment",
+   "exam": "pre",
+   "q": "Under India's National Green Hydrogen Mission, which port has been identified as a green hydrogen hub in Gujarat?",
+   "opts": [
+    "Deendayal (Kandla) Port",
+    "Mundra Port only",
+    "Kolkata Port",
+    "Chennai Port"
+   ],
+   "ans": 0,
+   "why": "Kandla, Paradip (Odisha) and Tuticorin (Tamil Nadu) were named as green hydrogen hubs.",
+   "insight": "Deendayal Port is the old Kandla Port.",
+   "src": {
+    "name": "PIB, Three major ports recognised as Green Hydrogen hubs",
+    "url": "https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2177591&reg=48&lang=2",
+    "date": "Oct 2025"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-134",
+   "subject": "Environment",
+   "syllabus": "Climate science",
+   "exam": "pre",
+   "q": "Permafrost is ground that stays at or below 0°C for:",
+   "opts": [
+    "Exactly ten years",
+    "Never; it is just snow",
+    "At least two consecutive years",
+    "Only one winter"
+   ],
+   "ans": 2,
+   "why": "Thawing permafrost releases carbon dioxide and methane, which speeds up warming.",
+   "insight": "Permafrost is found in the Arctic and in high mountains such as parts of the Himalaya.",
+   "src": {
+    "name": "NCERT / MoEFCC, standard references",
+    "url": "https://ncert.nic.in/textbook.php",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-135",
+   "subject": "Polity & Governance",
+   "syllabus": "Census",
+   "exam": "pre",
+   "q": "Census of India 2027 is being held in two phases. Which is correct?",
+   "opts": [
+    "Houselisting by post in 2025",
+    "Houselisting from 1 April to 30 September 2026 (a 30-day window in each State), and population enumeration in February 2027",
+    "Population enumeration in 2026 and houselisting in 2028",
+    "Both phases in a single week in March 2027"
+   ],
+   "ans": 1,
+   "why": "The reference date for population enumeration is 00:00 hours on 1 March 2027. Snow-bound areas such as Ladakh were to be counted in September 2026.",
+   "insight": "Castes will be enumerated in the second phase.",
+   "src": {
+    "name": "PIB, Registrar General of India, Census 2027",
+    "url": "https://www.pib.gov.in/",
+    "date": "2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-136",
+   "subject": "Polity & Governance",
+   "syllabus": "Census",
+   "exam": "pre",
+   "q": "What is new about Census 2027 compared with earlier censuses?",
+   "opts": [
+    "It is the first census to count caste after 1881",
+    "It will be run by the Election Commission",
+    "It is India's first digital census, with mobile apps and a self-enumeration option",
+    "It is held without any field staff"
+   ],
+   "ans": 2,
+   "why": "More than 30 lakh enumerators and supervisors use a mobile app, and households can self-enumerate for 15 days before the door-to-door visit.",
+   "insight": "The Registrar General and Census Commissioner, under the Ministry of Home Affairs, runs the census.",
+   "src": {
+    "name": "PIB, Registrar General of India, Census 2027",
+    "url": "https://www.pib.gov.in/",
+    "date": "2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-137",
+   "subject": "Polity & Governance",
+   "syllabus": "Census",
+   "exam": "pre",
+   "q": "A 'Census Town' is a settlement that remains administratively rural but is classified as urban for Census purposes. Under the 1981 criteria, it needs:",
+   "opts": [
+    "Population of at least 5,000, at least 75% of male main workers in non-agricultural work, and density of at least 400 per sq km",
+    "Population of at least 1 lakh and a municipal corporation",
+    "A railway station and a market",
+    "A cantonment board"
+   ],
+   "ans": 0,
+   "why": "A 'Statutory Town' has a municipality or similar body by law. A census town does not, though it meets the three criteria.",
+   "insight": "Many census towns lack urban local bodies, which limits their funds and services.",
+   "src": {
+    "name": "Census of India, concepts and definitions",
+    "url": "https://censusindia.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-138",
+   "subject": "Polity & Governance",
+   "syllabus": "Ease of doing business",
+   "exam": "pre",
+   "q": "The National Single Window System (NSWS), which completed five years in September 2026, is run by:",
+   "opts": [
+    "DPIIT, the Department for Promotion of Industry and Internal Trade",
+    "The Reserve Bank of India",
+    "The Election Commission",
+    "NITI Aayog"
+   ],
+   "ans": 0,
+   "why": "It was launched on 22 September 2021 to give investors one portal for Central and State approvals and clearances.",
+   "insight": "Industrial licence and entrepreneur memorandum processes have moved fully onto NSWS.",
+   "src": {
+    "name": "PIB, National Single Window System",
+    "url": "https://www.pib.gov.in/",
+    "date": "Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-139",
+   "subject": "Polity & Governance",
+   "syllabus": "Welfare delivery",
+   "exam": "pre",
+   "q": "From 1 October 2026, domestic LPG consumers must complete Biometric Aadhaar Authentication to book refills at the subsidised rate. Those who do not:",
+   "opts": [
+    "Lose their gas connection",
+    "Pay a fine",
+    "Get a double subsidy",
+    "Can still buy LPG, but at the market price without subsidy"
+   ],
+   "ans": 3,
+   "why": "On 19 September 2026, 27.43 crore consumers (89.9%) had already completed it. Options include the delivery visit, the distributor's showroom and OMC apps.",
+   "insight": "LPG subsidy is paid by Direct Benefit Transfer under the PAHAL scheme.",
+   "src": {
+    "name": "PIB, Ministry of Petroleum and Natural Gas",
+    "url": "https://www.pib.gov.in/",
+    "date": "19 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-140",
+   "subject": "Polity & Governance",
+   "syllabus": "Welfare delivery",
+   "exam": "pre",
+   "q": "Aadhaar-based biometric authentication for government benefits is backed by which law?",
+   "opts": [
+    "The National Food Security Act, 2013 only",
+    "The Aadhaar (Targeted Delivery of Financial and Other Subsidies, Benefits and Services) Act, 2016",
+    "The Right to Information Act, 2005",
+    "The Information Technology Act, 2000 only"
+   ],
+   "ans": 1,
+   "why": "Section 7 of the Aadhaar Act allows Aadhaar to be required for subsidies and benefits funded from the Consolidated Fund of India.",
+   "insight": "In the Puttaswamy case (2018) the Supreme Court upheld Aadhaar for welfare but limited its use for private services.",
+   "src": {
+    "name": "PIB, Ministry of Petroleum and Natural Gas",
+    "url": "https://www.pib.gov.in/",
+    "date": "19 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-141",
+   "subject": "Polity & Governance",
+   "syllabus": "Skill development",
+   "exam": "pre",
+   "q": "The DDU-GKY 2.0 guidelines of the Ministry of Rural Development, notified in 2025, set which key rule?",
+   "opts": [
+    "A minimum placement period of six months (up from three), with 12 months of post-placement tracking",
+    "A fixed salary of Rs 50,000 for all trainees",
+    "Training only for urban youth",
+    "No placement requirement"
+   ],
+   "ans": 0,
+   "why": "The scheme targets rural youth aged 15 to 35 and keeps a minimum 576-hour training course. The Budget 2026-27 gave it Rs 750 crore.",
+   "insight": "DDU-GKY began in 2014 and is observed on Antyodaya Diwas.",
+   "src": {
+    "name": "PIB, DDU-GKY 2.0",
+    "url": "https://www.pib.gov.in/",
+    "date": "2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-142",
+   "subject": "Polity & Governance",
+   "syllabus": "Health and AYUSH",
+   "exam": "pre",
+   "q": "Ayurveda Day is now observed on a fixed date each year, which is:",
+   "opts": [
+    "1 January",
+    "15 August",
+    "23 September",
+    "Dhanteras, which changes every year"
+   ],
+   "ans": 2,
+   "why": "The Government fixed 23 September (around the autumnal equinox) as the permanent date, replacing Dhanteras and Dhanwantari Jayanti. The Ministry of Ayush leads the day.",
+   "insight": "The first Ayurveda Day was observed in 2016.",
+   "src": {
+    "name": "PIB, Ministry of Ayush",
+    "url": "https://www.pib.gov.in/",
+    "date": "Sep 2025"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-143",
+   "subject": "Polity & Governance",
+   "syllabus": "Union executive",
+   "exam": "pre",
+   "q": "The Attorney General for India, appointed under Article 76, is a person who:",
+   "opts": [
+    "Cannot appear in any court",
+    "Is qualified to be a Supreme Court judge and holds office during the pleasure of the President",
+    "Is elected by Parliament for five years",
+    "Must be a sitting High Court judge"
+   ],
+   "ans": 1,
+   "why": "The Attorney General is the Government's chief legal adviser and has the right to speak in Parliament (Article 88) but cannot vote.",
+   "insight": "The Solicitor General and Additional Solicitors General assist the Attorney General.",
+   "src": {
+    "name": "Constitution of India (Legislative Department)",
+    "url": "https://www.legislative.gov.in/constitution-of-india/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-144",
+   "subject": "Polity & Governance",
+   "syllabus": "Constitutional bodies",
+   "exam": "pre",
+   "q": "The Chief Election Commissioner can be removed from office:",
+   "opts": [
+    "By the Chief Justice of India alone",
+    "By a simple majority in the Lok Sabha",
+    "In the same manner and on the same grounds as a Supreme Court judge (Article 324(5))",
+    "By the Prime Minister alone"
+   ],
+   "ans": 2,
+   "why": "Removal needs a special majority in both Houses on grounds of proved misbehaviour or incapacity. Other Election Commissioners can be removed only on the CEC's recommendation.",
+   "insight": "This protects the Commission's independence.",
+   "src": {
+    "name": "Constitution of India (Legislative Department)",
+    "url": "https://www.legislative.gov.in/constitution-of-india/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-145",
+   "subject": "Polity & Governance",
+   "syllabus": "Constitutional bodies",
+   "exam": "pre",
+   "q": "Under the Chief Election Commissioner and Other Election Commissioners (Appointment, Conditions of Service and Term of Office) Act, 2023, appointments are recommended by a committee of:",
+   "opts": [
+    "The Prime Minister and the Home Minister only",
+    "The Prime Minister, a Union Cabinet Minister nominated by the PM, and the Leader of the Opposition in the Lok Sabha",
+    "The Chief Justice of India, the Prime Minister and the President",
+    "The Speaker, the Vice-President and the Chief Justice"
+   ],
+   "ans": 1,
+   "why": "The 2023 Act replaced the Chief Justice of India, who the Supreme Court had put on the panel in 2023, with a Union Cabinet Minister.",
+   "insight": "The President appoints on the committee's recommendation.",
+   "src": {
+    "name": "India Code, 2023 Act",
+    "url": "https://www.indiacode.nic.in/",
+    "date": "2023"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-146",
+   "subject": "Polity & Governance",
+   "syllabus": "Judiciary",
+   "exam": "pre",
+   "q": "Under Article 124(3), which of the following can be appointed a Supreme Court judge?",
+   "opts": [
+    "Only a sitting High Court Chief Justice",
+    "Any retired civil servant",
+    "A distinguished jurist in the President's opinion, among other categories",
+    "Any citizen over 40"
+   ],
+   "ans": 2,
+   "why": "The other categories are a judge of a High Court for at least five years and an advocate of a High Court for at least ten years.",
+   "insight": "Appointments follow the Collegium system laid down in the Second and Third Judges cases.",
+   "src": {
+    "name": "Constitution of India (Legislative Department)",
+    "url": "https://www.legislative.gov.in/constitution-of-india/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-147",
+   "subject": "Polity & Governance",
+   "syllabus": "Judiciary",
+   "exam": "pre",
+   "q": "The 99th Constitutional Amendment (2014), which created the National Judicial Appointments Commission (NJAC), was:",
+   "opts": [
+    "Repealed by the Rajya Sabha alone",
+    "Struck down by the Supreme Court in 2015, restoring the Collegium system",
+    "Upheld, and the NJAC now works",
+    "Never passed by Parliament"
+   ],
+   "ans": 1,
+   "why": "In the Fourth Judges Case (2015) the Court held the NJAC violated judicial independence, a part of the basic structure.",
+   "insight": "The Collegium for the Supreme Court includes the CJI and four senior-most judges.",
+   "src": {
+    "name": "Constitution of India (Legislative Department)",
+    "url": "https://www.legislative.gov.in/constitution-of-india/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-148",
+   "subject": "Polity & Governance",
+   "syllabus": "Women and law",
+   "exam": "pre",
+   "q": "Under the Sexual Harassment of Women at Workplace (Prevention, Prohibition and Redressal) Act, 2013, an Internal Committee must be set up where there are:",
+   "opts": [
+    "Only in government offices",
+    "No threshold; a court handles all complaints",
+    "10 or more employees; smaller workplaces use a Local Committee at the district level",
+    "Only 1,000 or more employees"
+   ],
+   "ans": 2,
+   "why": "The Act gives statutory form to the Vishaka Guidelines (1997).",
+   "insight": "The Vishaka case is Vishaka v. State of Rajasthan.",
+   "src": {
+    "name": "India Code, POSH Act 2013",
+    "url": "https://www.indiacode.nic.in/",
+    "date": "2013"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-149",
+   "subject": "Polity & Governance",
+   "syllabus": "Fundamental rights",
+   "exam": "pre",
+   "q": "Article 22(1) of the Constitution gives a person who is arrested the right to:",
+   "opts": [
+    "Be informed of the grounds of arrest and to consult a lawyer of their choice",
+    "Free bail in all cases",
+    "Be tried within 24 hours",
+    "Remain silent only before a magistrate"
+   ],
+   "ans": 0,
+   "why": "Article 22(2) also requires the person to be produced before a magistrate within 24 hours. The Supreme Court has held that the grounds should be given in writing in a language the person understands.",
+   "insight": "Article 22 also lays down safeguards for preventive detention, with an Advisory Board for detention beyond three months.",
+   "src": {
+    "name": "Constitution of India (Legislative Department)",
+    "url": "https://www.legislative.gov.in/constitution-of-india/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-150",
+   "subject": "Polity & Governance",
+   "syllabus": "Elections",
+   "exam": "pre",
+   "q": "In the 2002 case Indian National Congress (I) v. Institute of Social Welfare, the Supreme Court held that the Election Commission:",
+   "opts": [
+    "Can ban a party for one election at will",
+    "Must register every party",
+    "Has no general power to deregister a political party, except in cases such as fraud or a party being declared unlawful",
+    "Can deregister any party that loses elections"
+   ],
+   "ans": 2,
+   "why": "This is why inactive Registered Unrecognised Political Parties can only be delisted in limited cases, and reforms such as deregistration after ten years without contesting have been proposed.",
+   "insight": "The ECI registers parties under Section 29A of the RP Act, 1951.",
+   "src": {
+    "name": "Supreme Court of India",
+    "url": "https://www.sci.gov.in/",
+    "date": "2002"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-151",
+   "subject": "Polity & Governance",
+   "syllabus": "Tribals and forests",
+   "exam": "pre",
+   "q": "Under the Forest Rights Act, 2006, the authority to initiate the process of determining and verifying forest rights is the:",
+   "opts": [
+    "State Forest Minister",
+    "Gram Sabha",
+    "Forest Range Officer",
+    "District Collector alone"
+   ],
+   "ans": 1,
+   "why": "The Act recognises individual and community rights, including minor forest produce, and its nodal ministry is the Ministry of Tribal Affairs.",
+   "insight": "The Forest (Conservation) Act, 1980 was renamed the Van (Sanrakshan Evam Samvardhan) Adhiniyam in 2023.",
+   "src": {
+    "name": "Ministry of Tribal Affairs, FRA 2006",
+    "url": "https://tribal.nic.in/",
+    "date": "2006"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-152",
+   "subject": "Polity & Governance",
+   "syllabus": "Local government",
+   "exam": "pre",
+   "q": "Article 243A of the Constitution says the Gram Sabha:",
+   "opts": [
+    "Appoints the District Magistrate",
+    "Has no role in a Panchayat",
+    "May exercise powers and perform functions at the village level as the State legislature decides",
+    "Is a court of law at the village level"
+   ],
+   "ans": 2,
+   "why": "Part IX, added by the 73rd Amendment (1992), makes the Gram Sabha the base of the three-tier Panchayati Raj system.",
+   "insight": "The Panchayati Raj Ministry's Gram Panchayat Development Plans are approved in the Gram Sabha.",
+   "src": {
+    "name": "Constitution of India (Legislative Department)",
+    "url": "https://www.legislative.gov.in/constitution-of-india/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-153",
+   "subject": "Polity & Governance",
+   "syllabus": "Welfare schemes",
+   "exam": "pre",
+   "q": "The Pradhan Mantri Anusuchit Jaati Abhyuday Yojana (PM-AJAY) merged which earlier schemes for Scheduled Castes?",
+   "opts": [
+    "Pradhan Mantri Adarsh Gram Yojana, Special Central Assistance to the SC Sub-Plan, and Babu Jagjivan Ram Chhatrawas Yojana",
+    "MGNREGA and PM-KISAN",
+    "Samagra Shiksha and Mid-Day Meal",
+    "Jan Dhan and Mudra"
+   ],
+   "ans": 0,
+   "why": "The merged scheme, from 2021-22, covers SC-majority village development, income schemes and hostels.",
+   "insight": "The Ministry of Social Justice and Empowerment runs it.",
+   "src": {
+    "name": "PIB, PM-AJAY",
+    "url": "https://socialjustice.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-154",
+   "subject": "Polity & Governance",
+   "syllabus": "Internal security",
+   "exam": "pre",
+   "q": "The Armed Forces (Special Powers) Act, 1958 (AFSPA) can be applied in an area only after it is declared:",
+   "opts": [
+    "A tourist zone",
+    "A Union Territory",
+    "A 'disturbed area' by the Central Government or the Governor of the State",
+    "Free of crime"
+   ],
+   "ans": 2,
+   "why": "Section 3 allows the declaration, and the Act gives the armed forces special powers such as arrest without warrant and use of force.",
+   "insight": "AFSPA has been withdrawn from several areas, such as Tripura (2015) and Meghalaya (2018).",
+   "src": {
+    "name": "MHA, AFSPA",
+    "url": "https://www.mha.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-155",
+   "subject": "Polity & Governance",
+   "syllabus": "Internal security",
+   "exam": "pre",
+   "q": "COBRA (Commando Battalion for Resolute Action) is a specialised unit of which force?",
+   "opts": [
+    "CRPF, raised to fight Left-Wing Extremism",
+    "Border Security Force",
+    "Indian Army",
+    "Assam Rifles"
+   ],
+   "ans": 0,
+   "why": "COBRA battalions were set up in 2008-09 for jungle warfare against Maoists.",
+   "insight": "Left-Wing Extremism is concentrated in the 'Red Corridor'.",
+   "src": {
+    "name": "MHA / CRPF",
+    "url": "https://crpf.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-156",
+   "subject": "Polity & Governance",
+   "syllabus": "Internal security",
+   "exam": "pre",
+   "q": "The Jhiram Ghati attack, in which Maoists killed 27 people including Congress leaders in Bastar, took place on:",
+   "opts": [
+    "6 April 2010",
+    "26 November 2008",
+    "14 February 2019",
+    "25 May 2013"
+   ],
+   "ans": 3,
+   "why": "The ambush hit a convoy returning from a 'Parivartan Rally' on 25 May 2013.",
+   "insight": "The NIA, set up under the NIA Act, 2008 after 26/11, investigated the attack.",
+   "src": {
+    "name": "NIA, Jhiram Ghati case",
+    "url": "https://www.nia.gov.in/",
+    "date": "2013"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-157",
+   "subject": "Polity & Governance",
+   "syllabus": "Defence and diplomacy",
+   "exam": "pre",
+   "q": "The Defence Minister released the 'RAKSHA' document on 3 September 2026. It is:",
+   "opts": [
+    "A ten-year roadmap for India's defence diplomacy and global defence partnerships",
+    "A budget for army pay",
+    "A treaty with Sri Lanka",
+    "A list of new fighter jets"
+   ],
+   "ans": 0,
+   "why": "Its pillars are strategic partnerships, capacity building through exercises and training, defence exports under Make in India, and a larger maritime role as a net security provider in the Indian Ocean Region.",
+   "insight": "It complements the MAHASAGAR vision, which stands for Mutual and Holistic Advancement for Security and Growth Across Regions.",
+   "src": {
+    "name": "PIB, Ministry of Defence",
+    "url": "https://www.pib.gov.in/",
+    "date": "3 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-158",
+   "subject": "IR",
+   "syllabus": "Bilateral",
+   "exam": "pre",
+   "q": "In May 2026, India and Vietnam raised their relationship to which level?",
+   "opts": [
+    "Special Strategic Partnership",
+    "Free Trade Partnership",
+    "Alliance",
+    "Enhanced Comprehensive Strategic Partnership"
+   ],
+   "ans": 3,
+   "why": "Vietnam's General Secretary and President To Lam visited India from 5 to 7 May 2026. Outcomes included an IREL rare earths MoU and an RBI–State Bank of Vietnam payments MoU.",
+   "insight": "Vietnam is a key partner in India's Act East Policy and Indo-Pacific vision.",
+   "src": {
+    "name": "PIB, India-Vietnam Joint Statement",
+    "url": "https://www.pib.gov.in/",
+    "date": "May 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-159",
+   "subject": "IR",
+   "syllabus": "Trade",
+   "exam": "pre",
+   "q": "The India–EU Free Trade Agreement, whose negotiations were concluded on 27 January 2026, gives Indian exporters:",
+   "opts": [
+    "No market access",
+    "Access only for services",
+    "Preferential access for over 99% of exports by trade value to the EU",
+    "Duty-free access only for textiles"
+   ],
+   "ans": 2,
+   "why": "The EU also made commitments across 144 services subsectors. India protected sensitive sectors such as dairy, cereals and poultry.",
+   "insight": "Negotiations were relaunched in 2022 after a pause since 2013.",
+   "src": {
+    "name": "PIB, Ministry of Commerce, India-EU FTA",
+    "url": "https://www.pib.gov.in/",
+    "date": "27 Jan 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-160",
+   "subject": "IR",
+   "syllabus": "Trade",
+   "exam": "pre",
+   "q": "On 14 September 2026, India and MERCOSUR launched negotiations to:",
+   "opts": [
+    "Set up a joint space agency",
+    "Expand their existing Preferential Trade Agreement",
+    "Sign a defence pact",
+    "Create a common currency"
+   ],
+   "ans": 1,
+   "why": "MERCOSUR's pro tempore president for the period was Uruguay. The Terms of Reference were being finalised.",
+   "insight": "MERCOSUR's full members are Argentina, Brazil, Paraguay and Uruguay (Venezuela is suspended; Bolivia is acceding).",
+   "src": {
+    "name": "PIB, India-MERCOSUR PTA expansion",
+    "url": "https://www.pib.gov.in/",
+    "date": "14 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-161",
+   "subject": "IR",
+   "syllabus": "Groupings",
+   "exam": "pre",
+   "q": "Which of these is NOT a full member of MERCOSUR?",
+   "opts": [
+    "Chile",
+    "Brazil",
+    "Argentina",
+    "Uruguay"
+   ],
+   "ans": 0,
+   "why": "Chile is an associate state, not a full member.",
+   "insight": "MERCOSUR was founded by the Treaty of Asunción (1991).",
+   "src": {
+    "name": "MEA, MERCOSUR brief",
+    "url": "https://www.mea.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-162",
+   "subject": "IR",
+   "syllabus": "Groupings",
+   "exam": "pre",
+   "q": "Which statement about the SCO is correct?",
+   "opts": [
+    "Its headquarters is in New Delhi",
+    "It has no mutual security focus",
+    "India became a full member in 2017 along with Pakistan",
+    "It was founded in 2017"
+   ],
+   "ans": 2,
+   "why": "The SCO secretariat is in Beijing and its Regional Anti-Terrorist Structure (RATS) is in Tashkent. The 26th summit was in Bishkek on 31 August–1 September 2026.",
+   "insight": "Founding members were China, Russia, Kazakhstan, Kyrgyzstan, Tajikistan and (from 2001) Uzbekistan.",
+   "src": {
+    "name": "MEA, SCO",
+    "url": "https://www.mea.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-163",
+   "subject": "IR",
+   "syllabus": "Groupings",
+   "exam": "pre",
+   "q": "The BRICS grouping, whose 18th summit was held on 12–13 September 2026, originally took shape with which countries?",
+   "opts": [
+    "Brazil, Russia, India, China and Iran",
+    "Brazil, Russia, India and China (South Africa joined in 2010)",
+    "India, Iran, Egypt and Turkey",
+    "USA, UK, Japan and Germany"
+   ],
+   "ans": 1,
+   "why": "'BRIC' was coined by economist Jim O'Neill in 2001. The first leaders' summit was in 2009.",
+   "insight": "India chaired BRICS in 2026.",
+   "src": {
+    "name": "MEA, BRICS",
+    "url": "https://www.mea.gov.in/",
+    "date": "12-13 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-164",
+   "subject": "IR",
+   "syllabus": "International law",
+   "exam": "pre",
+   "q": "The United Nations Convention on the Law of the Sea (UNCLOS, 1982) gives a coastal state an Exclusive Economic Zone (EEZ) of up to:",
+   "opts": [
+    "350 nautical miles",
+    "200 nautical miles from the baseline",
+    "12 nautical miles",
+    "24 nautical miles"
+   ],
+   "ans": 1,
+   "why": "The territorial sea is 12 nm, the contiguous zone 24 nm. The continental shelf can extend to 350 nm under conditions.",
+   "insight": "India ratified UNCLOS in 1995.",
+   "src": {
+    "name": "UN, UNCLOS",
+    "url": "https://www.un.org/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-165",
+   "subject": "IR",
+   "syllabus": "International law",
+   "exam": "pre",
+   "q": "The principle of 'innocent passage' under UNCLOS applies in which maritime zone?",
+   "opts": [
+    "The high seas only",
+    "Inland waters",
+    "The EEZ only",
+    "The territorial sea"
+   ],
+   "ans": 3,
+   "why": "Foreign ships may pass through the territorial sea if they do not harm the peace, order or security of the coastal state.",
+   "insight": "Ships have the freedom of navigation in the EEZ and on the high seas.",
+   "src": {
+    "name": "UN, UNCLOS",
+    "url": "https://www.un.org/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-166",
+   "subject": "IR",
+   "syllabus": "Water",
+   "exam": "pre",
+   "q": "The Indus Waters Treaty (1960) was signed between India and Pakistan with the mediation of:",
+   "opts": [
+    "The International Court of Justice",
+    "The World Bank",
+    "The United Nations Security Council",
+    "The Commonwealth"
+   ],
+   "ans": 1,
+   "why": "The treaty gives India the three eastern rivers (Ravi, Beas, Sutlej) and Pakistan the three western rivers (Indus, Jhelum, Chenab), with limited Indian use of the western rivers.",
+   "insight": "A Court of Arbitration issued an award in August 2026 on the treaty's provisions.",
+   "src": {
+    "name": "MEA, Indus Waters Treaty",
+    "url": "https://www.mea.gov.in/",
+    "date": "1960"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-167",
+   "subject": "IR",
+   "syllabus": "Defence cooperation",
+   "exam": "pre",
+   "q": "India and the US co-develop and co-produce defence items such as the Javelin anti-tank missile under which initiative?",
+   "opts": [
+    "Defence Technology and Trade Initiative (DTTI)",
+    "Quad Charter",
+    "AUKUS",
+    "IPEF Pillar II"
+   ],
+   "ans": 0,
+   "why": "DTTI was launched in 2012 to co-produce and co-develop defence items.",
+   "insight": "COMCASA, LEMOA, BECA and GSOMIA are India–US foundational agreements; India has signed the first three.",
+   "src": {
+    "name": "MEA, India-US relations",
+    "url": "https://www.mea.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-168",
+   "subject": "IR",
+   "syllabus": "Groupings",
+   "exam": "pre",
+   "q": "The Quad groups India with which three countries?",
+   "opts": [
+    "United States, UK and Australia",
+    "Japan, South Korea and Australia",
+    "United States, Japan and France",
+    "United States, Japan and Australia"
+   ],
+   "ans": 3,
+   "why": "It focuses on a free and open Indo-Pacific, with working groups on health, technology and maritime domain awareness.",
+   "insight": "AUKUS is a different arrangement: Australia, UK and US.",
+   "src": {
+    "name": "MEA, Quad",
+    "url": "https://www.mea.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-169",
+   "subject": "Economy",
+   "syllabus": "Banking",
+   "exam": "pre",
+   "q": "India's current account deficit in Q1 2026-27 was:",
+   "opts": [
+    "US$4.2 billion, or 0.5% of GDP",
+    "US$40 billion, or 5% of GDP",
+    "A surplus of US$10 billion",
+    "US$25 billion, or 3% of GDP"
+   ],
+   "ans": 0,
+   "why": "The merchandise trade deficit was around US$86 billion, but remittances (US$42.9 billion) and services receipts kept the gap small.",
+   "insight": "India is the world's largest recipient of remittances.",
+   "src": {
+    "name": "RBI, BoP press release",
+    "url": "https://www.rbi.org.in/",
+    "date": "1 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-170",
+   "subject": "Economy",
+   "syllabus": "Taxation",
+   "exam": "pre",
+   "q": "Gross GST collections in April–September 2026 were about:",
+   "opts": [
+    "Rs 2 lakh crore",
+    "Rs 50 lakh crore",
+    "Down 11.6% year on year",
+    "Rs 12.46 lakh crore, up 11.6% year on year"
+   ],
+   "ans": 3,
+   "why": "Registered GST taxpayers reached about 1.70 crore, up from around 60 lakh in 2017.",
+   "insight": "GST has been in force since 1 July 2017 under the 101st Constitutional Amendment.",
+   "src": {
+    "name": "PIB, Next-Gen GST Process Reforms",
+    "url": "https://www.pib.gov.in/",
+    "date": "Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-171",
+   "subject": "Economy",
+   "syllabus": "Taxation",
+   "exam": "pre",
+   "q": "The GST Council is a constitutional body under which Article?",
+   "opts": [
+    "Article 279A",
+    "Article 280",
+    "Article 112",
+    "Article 265"
+   ],
+   "ans": 0,
+   "why": "It is chaired by the Union Finance Minister, and the Centre has one-third of the voting weight and States two-thirds. Decisions need three-fourths of the weighted votes.",
+   "insight": "Article 246A gives both Parliament and State legislatures the power to make GST laws.",
+   "src": {
+    "name": "Constitution of India",
+    "url": "https://www.legislative.gov.in/constitution-of-india/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-172",
+   "subject": "Economy",
+   "syllabus": "Monetary policy",
+   "exam": "pre",
+   "q": "The Monetary Policy Committee (MPC) has how many members, and who has the casting vote?",
+   "opts": [
+    "Six; the Deputy Governor",
+    "Six; the RBI Governor has a casting vote in case of a tie",
+    "Five; the Finance Minister",
+    "Nine; the Prime Minister"
+   ],
+   "ans": 1,
+   "why": "Three members are from the RBI and three are external members appointed by the Government.",
+   "insight": "The MPC targets CPI inflation of 4% with a tolerance band of plus or minus 2%.",
+   "src": {
+    "name": "RBI, MPC",
+    "url": "https://www.rbi.org.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-173",
+   "subject": "Economy",
+   "syllabus": "Monetary policy",
+   "exam": "pre",
+   "q": "In June 2026 the MPC kept the repo rate at 5.25%. Which one tool changes the rate at which banks borrow from the RBI against government securities?",
+   "opts": [
+    "The bank rate for term loans",
+    "The reverse repo only",
+    "The repo rate",
+    "The CRR"
+   ],
+   "ans": 2,
+   "why": "The standing deposit facility (SDF) rate sits 25 basis points below the repo and the MSF rate 25 basis points above it.",
+   "insight": "The RBI raised the repo rate to 5.50% in October 2026.",
+   "src": {
+    "name": "RBI, Monetary Policy Statement",
+    "url": "https://www.rbi.org.in/",
+    "date": "Jun 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-174",
+   "subject": "Economy",
+   "syllabus": "Banking",
+   "exam": "pre",
+   "q": "Under the Banking Regulation Act, 1949 as amended, the Statutory Liquidity Ratio (SLR) requires banks to hold:",
+   "opts": [
+    "All deposits in gold",
+    "No reserves",
+    "A share of their deposits in liquid assets such as government securities, gold and cash",
+    "A share of deposits with the RBI in cash only"
+   ],
+   "ans": 2,
+   "why": "CRR is held with the RBI; SLR is held by the banks themselves.",
+   "insight": "The statutory SLR ceiling is 40% of net demand and time liabilities.",
+   "src": {
+    "name": "RBI, SLR and CRR",
+    "url": "https://www.rbi.org.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-175",
+   "subject": "Economy",
+   "syllabus": "Investment",
+   "exam": "pre",
+   "q": "The Foreign Exchange Management Act (FEMA), 1999 replaced:",
+   "opts": [
+    "The Banking Act, 1949",
+    "The SEBI Act, 1992",
+    "FERA, 1973",
+    "The Companies Act, 1956"
+   ],
+   "ans": 2,
+   "why": "FEMA made foreign exchange violations civil rather than criminal matters. The RBI and the Directorate of Enforcement play key roles.",
+   "insight": "FEMA is administered by the Ministry of Finance.",
+   "src": {
+    "name": "India Code, FEMA 1999",
+    "url": "https://www.indiacode.nic.in/",
+    "date": "1999"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-176",
+   "subject": "Economy",
+   "syllabus": "Public finance",
+   "exam": "pre",
+   "q": "The Fiscal Responsibility and Budget Management (FRBM) Act, 2003 seeks to:",
+   "opts": [
+    "Set monetary policy",
+    "Fix MSPs",
+    "Regulate the stock market",
+    "Bring in fiscal discipline by setting targets for the fiscal deficit and debt"
+   ],
+   "ans": 3,
+   "why": "The N.K. Singh Committee (2017) recommended a debt-to-GDP target of 60% for the General Government, with the Centre at 40%.",
+   "insight": "Escape clauses allow deviations for reasons such as war, national calamity or severe slowdown.",
+   "src": {
+    "name": "India Code, FRBM Act 2003",
+    "url": "https://www.indiacode.nic.in/",
+    "date": "2003"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-177",
+   "subject": "Economy",
+   "syllabus": "Agriculture",
+   "exam": "pre",
+   "q": "The Minimum Support Price (MSP) is recommended by:",
+   "opts": [
+    "The Finance Commission",
+    "The Food Corporation of India",
+    "The Commission for Agricultural Costs and Prices (CACP)",
+    "NITI Aayog"
+   ],
+   "ans": 2,
+   "why": "The Cabinet Committee on Economic Affairs approves it. The CACP recommends MSP for 22 mandated crops and Fair and Remunerative Price for sugarcane.",
+   "insight": "FCI procures foodgrains at MSP for the buffer stock.",
+   "src": {
+    "name": "CACP",
+    "url": "https://cacp.dacnet.nic.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-178",
+   "subject": "IR",
+   "syllabus": "UN",
+   "exam": "pre",
+   "q": "The 81st session of the UN General Assembly (September 2026) has the theme:",
+   "opts": [
+    "One Planet, One Future",
+    "Leaving No One Behind",
+    "Restoring Trust, Managing Transformation: A United Nations that Delivers for All",
+    "Peace Through Trade"
+   ],
+   "ans": 2,
+   "why": "Its General Debate in late September was where India's External Affairs Minister spoke on reform of the international order.",
+   "insight": "The UNGA has 193 member states, each with one vote.",
+   "src": {
+    "name": "UN, 81st General Assembly",
+    "url": "https://www.un.org/",
+    "date": "Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-179",
+   "subject": "IR",
+   "syllabus": "UN",
+   "exam": "pre",
+   "q": "At the UN, the G4 group that pushes for Security Council reform consists of:",
+   "opts": [
+    "Brazil, Russia, India and Japan",
+    "Germany, France, Italy and Japan",
+    "Brazil, Germany, India and Japan",
+    "India, China, Russia and USA"
+   ],
+   "ans": 2,
+   "why": "The G4 seek permanent seats for each other. The Uniting for Consensus group, led by Italy and Pakistan, opposes new permanent seats.",
+   "insight": "India says new permanent members must hold the same rights, including the veto, as the existing ones.",
+   "src": {
+    "name": "UN, Security Council reform",
+    "url": "https://www.un.org/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-180",
+   "subject": "IR",
+   "syllabus": "UN",
+   "exam": "pre",
+   "q": "Which of these is NOT a permanent member of the UN Security Council?",
+   "opts": [
+    "France",
+    "Russia",
+    "United Kingdom",
+    "Germany"
+   ],
+   "ans": 3,
+   "why": "The five permanent members (P5) are China, France, Russia, the UK and the US. There are also ten elected non-permanent members serving two-year terms.",
+   "insight": "A veto by any P5 member blocks a substantive resolution.",
+   "src": {
+    "name": "UN Security Council",
+    "url": "https://www.un.org/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-181",
+   "subject": "IR",
+   "syllabus": "UN",
+   "exam": "pre",
+   "q": "Non-permanent members of the UN Security Council are elected by the General Assembly for a term of:",
+   "opts": [
+    "Five years",
+    "Four years",
+    "Two years",
+    "One year"
+   ],
+   "ans": 2,
+   "why": "Five are elected each year, and a retiring member cannot be re-elected immediately.",
+   "insight": "India served its eighth term in 2021-22.",
+   "src": {
+    "name": "UN Security Council",
+    "url": "https://www.un.org/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-182",
+   "subject": "IR",
+   "syllabus": "Multilateral",
+   "exam": "pre",
+   "q": "The International Court of Justice (ICJ) has its seat in:",
+   "opts": [
+    "Vienna",
+    "The Hague",
+    "Geneva",
+    "New York"
+   ],
+   "ans": 1,
+   "why": "It is the principal judicial organ of the UN and has 15 judges elected for nine-year terms.",
+   "insight": "The International Criminal Court, also in The Hague, is not a UN organ.",
+   "src": {
+    "name": "UN, ICJ",
+    "url": "https://www.un.org/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-183",
+   "subject": "IR",
+   "syllabus": "Multilateral",
+   "exam": "pre",
+   "q": "The headquarters of the International Atomic Energy Agency (IAEA) is in:",
+   "opts": [
+    "Vienna",
+    "Paris",
+    "Geneva",
+    "Brussels"
+   ],
+   "ans": 0,
+   "why": "The IAEA verifies that nuclear material is used peacefully and administers safeguards.",
+   "insight": "The Nuclear Suppliers Group, which India has been seeking to join, decides on export of nuclear materials.",
+   "src": {
+    "name": "IAEA",
+    "url": "https://www.un.org/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-184",
+   "subject": "IR",
+   "syllabus": "Neighbourhood",
+   "exam": "pre",
+   "q": "The Gulf of Mannar and Palk Strait separate India from:",
+   "opts": [
+    "Bangladesh",
+    "Sri Lanka",
+    "Myanmar",
+    "Maldives"
+   ],
+   "ans": 1,
+   "why": "Adam's Bridge (Ram Setu) lies between Rameswaram and Mannar. Katchatheevu island lies in the Palk Strait.",
+   "insight": "The 1974 and 1976 agreements fixed the maritime boundary between India and Sri Lanka.",
+   "src": {
+    "name": "MEA, India-Sri Lanka",
+    "url": "https://www.mea.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-185",
+   "subject": "IR",
+   "syllabus": "Neighbourhood",
+   "exam": "pre",
+   "q": "The Kaladan Multi-Modal Transit Transport Project connects India with:",
+   "opts": [
+    "Bangladesh",
+    "Thailand",
+    "Nepal",
+    "Myanmar"
+   ],
+   "ans": 3,
+   "why": "It links Kolkata to Sittwe port in Myanmar and then to Mizoram by river and road, giving the Northeast another route.",
+   "insight": "The India–Myanmar–Thailand Trilateral Highway is a separate project.",
+   "src": {
+    "name": "MEA, Kaladan project",
+    "url": "https://www.mea.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-186",
+   "subject": "IR",
+   "syllabus": "Neighbourhood",
+   "exam": "pre",
+   "q": "The Durand Line is the boundary between:",
+   "opts": [
+    "India and Pakistan",
+    "Iran and Iraq",
+    "Afghanistan and Pakistan",
+    "India and China"
+   ],
+   "ans": 2,
+   "why": "It was drawn in 1893 between British India and Afghanistan. Afghanistan has not recognised it as an international border.",
+   "insight": "The McMahon Line concerns India and China, and the Radcliffe Line India and Pakistan.",
+   "src": {
+    "name": "MEA, neighbourhood",
+    "url": "https://www.mea.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-187",
+   "subject": "IR",
+   "syllabus": "Neighbourhood",
+   "exam": "pre",
+   "q": "Which Indian State does NOT share a border with Bangladesh?",
+   "opts": [
+    "Tripura",
+    "Manipur",
+    "Assam",
+    "Mizoram"
+   ],
+   "ans": 1,
+   "why": "The States bordering Bangladesh are West Bengal, Assam, Meghalaya, Tripura and Mizoram.",
+   "insight": "India–Bangladesh land boundary was settled by the 2015 Land Boundary Agreement.",
+   "src": {
+    "name": "MEA, India-Bangladesh",
+    "url": "https://www.mea.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-188",
+   "subject": "IR",
+   "syllabus": "Diaspora",
+   "exam": "pre",
+   "q": "The Pravasi Bharatiya Divas is celebrated every year on:",
+   "opts": [
+    "15 August",
+    "26 January",
+    "2 October",
+    "9 January"
+   ],
+   "ans": 3,
+   "why": "It marks Mahatma Gandhi's return to India from South Africa in 1915.",
+   "insight": "It is observed by the Ministry of External Affairs.",
+   "src": {
+    "name": "MEA, PBD",
+    "url": "https://www.mea.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-189",
+   "subject": "IR",
+   "syllabus": "Groupings",
+   "exam": "pre",
+   "q": "The Association of Southeast Asian Nations (ASEAN) has how many members?",
+   "opts": [
+    "Ten",
+    "Twelve",
+    "Nine",
+    "Eleven, after Timor-Leste joined in October 2025"
+   ],
+   "ans": 3,
+   "why": "Timor-Leste became the 11th member in 2025. The ASEAN Secretariat is in Jakarta.",
+   "insight": "India's Act East Policy is built on ASEAN centrality.",
+   "src": {
+    "name": "MEA, ASEAN",
+    "url": "https://www.mea.gov.in/",
+    "date": "2025"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-190",
+   "subject": "Economy",
+   "syllabus": "Inflation",
+   "exam": "pre",
+   "q": "India's Consumer Price Index now uses base year 2024=100. Combined retail inflation for August 2026 was:",
+   "opts": [
+    "12.4%",
+    "1.2%",
+    "8.9%",
+    "4.82% (provisional)"
+   ],
+   "ans": 3,
+   "why": "Food inflation on the Consumer Food Price Index was 5.95%. Onion inflation jumped to about 48%, while tomato prices fell by about 31%.",
+   "insight": "The RBI's inflation target is 4% with a band of 2% to 6%.",
+   "src": {
+    "name": "MoSPI, CPI Aug 2026",
+    "url": "https://www.mospi.gov.in/",
+    "date": "14 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-191",
+   "subject": "Economy",
+   "syllabus": "Inflation",
+   "exam": "pre",
+   "q": "The Consumer Price Index is compiled and released by:",
+   "opts": [
+    "The National Statistical Office under MoSPI",
+    "The RBI",
+    "NITI Aayog",
+    "The Ministry of Finance"
+   ],
+   "ans": 0,
+   "why": "The Wholesale Price Index, by contrast, is released by the Office of the Economic Adviser in the Ministry of Commerce and Industry.",
+   "insight": "The RBI uses CPI (Combined) for its inflation target.",
+   "src": {
+    "name": "MoSPI, CPI",
+    "url": "https://www.mospi.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-192",
+   "subject": "Economy",
+   "syllabus": "Growth",
+   "exam": "pre",
+   "q": "India's real GDP growth in Q1 of 2026-27 (April–June 2026) was estimated at:",
+   "opts": [
+    "5.2%",
+    "7.8%",
+    "3.1%",
+    "10.5%"
+   ],
+   "ans": 1,
+   "why": "The National Statistics Office released the figure on 1 September 2026. GDP is measured at constant (2011-12) prices unless a new base is announced.",
+   "insight": "Gross Value Added differs from GDP by net product taxes.",
+   "src": {
+    "name": "PIB, GDP Q1 2026-27",
+    "url": "https://www.pib.gov.in/",
+    "date": "1 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-193",
+   "subject": "Economy",
+   "syllabus": "Banking",
+   "exam": "pre",
+   "q": "Under the Insolvency and Bankruptcy Code, 2016, the Committee of Creditors needs what share of votes to approve a resolution plan?",
+   "opts": [
+    "51%",
+    "75%",
+    "90%",
+    "66% of voting share"
+   ],
+   "ans": 3,
+   "why": "The 2019 amendment lowered the threshold from 75% to 66%. The National Company Law Tribunal is the adjudicating authority for companies.",
+   "insight": "The IBBI regulates insolvency professionals.",
+   "src": {
+    "name": "India Code, IBC 2016",
+    "url": "https://www.indiacode.nic.in/",
+    "date": "2016"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-194",
+   "subject": "Economy",
+   "syllabus": "Markets",
+   "exam": "pre",
+   "q": "SEBI, the securities market regulator, was given statutory powers by:",
+   "opts": [
+    "The SEBI Act, 1992",
+    "The Companies Act, 2013",
+    "FEMA, 1999",
+    "The RBI Act, 1934"
+   ],
+   "ans": 0,
+   "why": "SEBI was set up administratively in 1988 and became a statutory body in 1992.",
+   "insight": "The Securities Appellate Tribunal hears appeals against SEBI orders.",
+   "src": {
+    "name": "SEBI",
+    "url": "https://www.sebi.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-195",
+   "subject": "Economy",
+   "syllabus": "Public finance",
+   "exam": "pre",
+   "q": "The Finance Commission is a constitutional body under which Article, and how often is it constituted?",
+   "opts": [
+    "Article 324, every five years",
+    "Article 148, every two years",
+    "Article 280, every five years",
+    "Article 112, every year"
+   ],
+   "ans": 2,
+   "why": "It recommends the share of States in central taxes. The 16th Finance Commission, headed by Arvind Panagariya, reports for 2026-27 to 2030-31.",
+   "insight": "Its recommendations are advisory, not binding.",
+   "src": {
+    "name": "Constitution of India",
+    "url": "https://www.legislative.gov.in/constitution-of-india/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-196",
+   "subject": "Economy",
+   "syllabus": "Banking",
+   "exam": "pre",
+   "q": "Priority sector lending by banks includes loans to:",
+   "opts": [
+    "Only government departments",
+    "Only foreign companies",
+    "Agriculture, MSMEs, education, housing and weaker sections",
+    "Only large corporates"
+   ],
+   "ans": 2,
+   "why": "The overall target is 40% of adjusted net bank credit for domestic banks.",
+   "insight": "Small finance banks have a higher target of 75%.",
+   "src": {
+    "name": "RBI, Priority Sector Lending",
+    "url": "https://www.rbi.org.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-197",
+   "subject": "Economy",
+   "syllabus": "Payments",
+   "exam": "pre",
+   "q": "The Unified Payments Interface (UPI) is operated by:",
+   "opts": [
+    "The SBI",
+    "The Ministry of Electronics and IT",
+    "The National Payments Corporation of India (NPCI)",
+    "The RBI directly"
+   ],
+   "ans": 2,
+   "why": "NPCI is an umbrella organisation for retail payments set up by the RBI and the Indian Banks' Association. It also runs RuPay.",
+   "insight": "The RBI regulates payment systems under the Payment and Settlement Systems Act, 2007.",
+   "src": {
+    "name": "NPCI",
+    "url": "https://www.npci.org.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-198",
+   "subject": "Economy",
+   "syllabus": "Agriculture",
+   "exam": "pre",
+   "q": "The 'Kisan Credit Card' scheme provides farmers with:",
+   "opts": [
+    "Crop insurance only",
+    "Land pattas",
+    "Short-term credit for crops and allied activities at concessional interest",
+    "Free tractors"
+   ],
+   "ans": 2,
+   "why": "The Interest Subvention Scheme reduces the effective interest rate for timely repayment.",
+   "insight": "NABARD refinances rural credit.",
+   "src": {
+    "name": "PIB / NABARD, KCC",
+    "url": "https://www.nabard.org/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-199",
+   "subject": "Economy",
+   "syllabus": "Trade",
+   "exam": "pre",
+   "q": "The World Trade Organization (WTO) replaced the GATT in:",
+   "opts": [
+    "1995",
+    "1947",
+    "2001",
+    "1991"
+   ],
+   "ans": 0,
+   "why": "WTO is headquartered in Geneva. Its Ministerial Conference is the highest decision-making body and meets at least every two years.",
+   "insight": "The WTO dispute settlement body's Appellate Body has been non-functional since 2019.",
+   "src": {
+    "name": "WTO",
+    "url": "https://www.wto.org/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-200",
+   "subject": "Economy",
+   "syllabus": "Public finance",
+   "exam": "pre",
+   "q": "Which of the following is a capital receipt in the Union Budget?",
+   "opts": [
+    "Corporation tax",
+    "Interest received on loans",
+    "Recovery of loans",
+    "GST revenue"
+   ],
+   "ans": 2,
+   "why": "Capital receipts create a liability or reduce an asset: borrowings, loan recoveries and disinvestment.",
+   "insight": "The fiscal deficit equals total expenditure minus total receipts excluding borrowings.",
+   "src": {
+    "name": "Union Budget",
+    "url": "https://www.indiabudget.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-201",
+   "subject": "IR",
+   "syllabus": "Groupings",
+   "exam": "pre",
+   "q": "The Shanghai Cooperation Organisation's Regional Anti-Terrorist Structure (RATS) is based in:",
+   "opts": [
+    "Moscow",
+    "Astana",
+    "Tashkent",
+    "Beijing"
+   ],
+   "ans": 2,
+   "why": "The SCO secretariat is in Beijing, while RATS works from Tashkent.",
+   "insight": "India joined the SCO as a full member in 2017.",
+   "src": {
+    "name": "MEA, SCO",
+    "url": "https://www.mea.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-202",
+   "subject": "Economy",
+   "syllabus": "Banking",
+   "exam": "pre",
+   "q": "Regional Rural Banks (RRBs) were set up under the Regional Rural Banks Act of:",
+   "opts": [
+    "1949",
+    "1991",
+    "2005",
+    "1976"
+   ],
+   "ans": 3,
+   "why": "They are owned jointly by the Centre (50%), the sponsor bank (35%) and the State (15%).",
+   "insight": "The Narasimham Working Group recommended them in 1975.",
+   "src": {
+    "name": "NABARD / RBI, RRBs",
+    "url": "https://www.nabard.org/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-203",
+   "subject": "Economy",
+   "syllabus": "Public finance",
+   "exam": "pre",
+   "q": "Zero-Based Budgeting means:",
+   "opts": [
+    "Every expense must be justified afresh each cycle, not carried over from the past",
+    "A budget with zero deficit",
+    "A budget without taxes",
+    "A budget with no expenditure on defence"
+   ],
+   "ans": 0,
+   "why": "It contrasts with incremental budgeting, which adds to the previous year's base.",
+   "insight": "Outcome budgeting links spending to measurable results.",
+   "src": {
+    "name": "Ministry of Finance",
+    "url": "https://www.indiabudget.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-204",
+   "subject": "Geography",
+   "syllabus": "Rivers",
+   "exam": "pre",
+   "q": "Which of these is a west-flowing river that drains into the Arabian Sea?",
+   "opts": [
+    "Krishna",
+    "Narmada",
+    "Mahanadi",
+    "Godavari"
+   ],
+   "ans": 1,
+   "why": "Narmada and Tapi flow west through rift valleys. Godavari, Krishna and Mahanadi flow east to the Bay of Bengal.",
+   "insight": "The Narmada originates at Amarkantak.",
+   "src": {
+    "name": "Survey of India / CWC",
+    "url": "https://cwc.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-205",
+   "subject": "Geography",
+   "syllabus": "Climate",
+   "exam": "pre",
+   "q": "The 'Loo' is:",
+   "opts": [
+    "A monsoon current",
+    "A hot, dry summer wind over the northern plains",
+    "A winter cyclone",
+    "A cold wave from the Himalayas"
+   ],
+   "ans": 1,
+   "why": "It blows in May-June in the afternoon from the Thar side.",
+   "insight": "Western disturbances bring winter rain to the north-west.",
+   "src": {
+    "name": "IMD",
+    "url": "https://mausam.imd.gov.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-206",
+   "subject": "Geography",
+   "syllabus": "Physical",
+   "exam": "pre",
+   "q": "The Western Ghats are known officially as:",
+   "opts": [
+    "Sahyadri, a UNESCO World Heritage Site since 2012",
+    "Nilgiri only",
+    "Satpura",
+    "Aravalli"
+   ],
+   "ans": 0,
+   "why": "Anamudi (2,695 m) in Kerala is the highest peak in the range.",
+   "insight": "The Eastern Ghats are older and more broken.",
+   "src": {
+    "name": "UNESCO",
+    "url": "https://whc.unesco.org/",
+    "date": "2012"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-207",
+   "subject": "Geography",
+   "syllabus": "Agriculture",
+   "exam": "pre",
+   "q": "Black cotton soil (regur) is best suited for:",
+   "opts": [
+    "Cotton",
+    "Tea",
+    "Coffee",
+    "Rubber"
+   ],
+   "ans": 0,
+   "why": "It forms from basalt in the Deccan Plateau and holds moisture well.",
+   "insight": "Its clay content makes it swell and crack with moisture changes.",
+   "src": {
+    "name": "ICAR",
+    "url": "https://icar.org.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-208",
+   "subject": "History & Culture",
+   "syllabus": "Ancient",
+   "exam": "pre",
+   "q": "The Sanchi Stupa was built originally under:",
+   "opts": [
+    "Emperor Ashoka",
+    "Chandragupta Maurya",
+    "Kanishka",
+    "Harsha"
+   ],
+   "ans": 0,
+   "why": "It is in Madhya Pradesh and a UNESCO World Heritage Site since 1989.",
+   "insight": "The gateways (toranas) were added later in the Satavahana period.",
+   "src": {
+    "name": "ASI / UNESCO",
+    "url": "https://whc.unesco.org/",
+    "date": "1989"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-209",
+   "subject": "History & Culture",
+   "syllabus": "Medieval",
+   "exam": "pre",
+   "q": "The Battle of Plassey (1757) was fought between the British East India Company and:",
+   "opts": [
+    "Siraj-ud-Daulah, Nawab of Bengal",
+    "Tipu Sultan",
+    "The Marathas",
+    "Hyder Ali"
+   ],
+   "ans": 0,
+   "why": "Robert Clive led the Company; Mir Jafar's betrayal helped them win.",
+   "insight": "It started British political control in Bengal.",
+   "src": {
+    "name": "ASI / NCERT",
+    "url": "https://ncert.nic.in/",
+    "date": "Static"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-210",
+   "subject": "Sci & Tech",
+   "syllabus": "Space",
+   "exam": "pre",
+   "q": "ISRO's Chandrayaan-3 achieved a soft landing near which part of the Moon in 2023?",
+   "opts": [
+    "The equator",
+    "The south polar region",
+    "The north pole",
+    "The far side"
+   ],
+   "ans": 1,
+   "why": "India became the first country to land near the lunar south pole, on 23 August 2023.",
+   "insight": "National Space Day is observed on 23 August.",
+   "src": {
+    "name": "ISRO",
+    "url": "https://www.isro.gov.in/",
+    "date": "23 Aug 2023"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-211",
+   "subject": "Sci & Tech",
+   "syllabus": "Technology",
+   "exam": "pre",
+   "q": "The Digital Personal Data Protection Act, 2023 requires data fiduciaries to:",
+   "opts": [
+    "Store all data abroad",
+    "Sell data freely",
+    "Process personal data with the consent of the person, with some exceptions",
+    "Share all data with the Government"
+   ],
+   "ans": 2,
+   "why": "The Data Protection Board of India hears complaints.",
+   "insight": "Individuals are called 'data principals'.",
+   "src": {
+    "name": "MeitY",
+    "url": "https://www.meity.gov.in/",
+    "date": "2023"
+   },
+   "checked": "30 Oct 2026"
+  }
+ ]
+}

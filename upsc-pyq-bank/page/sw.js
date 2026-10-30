@@ -1,7 +1,7 @@
 // CSE Companion service worker: caches the app shell so the page loads and
 // runs with zero network connectivity after the first successful visit.
 // Bump CACHE_NAME on any deploy that changes cached files so clients refresh.
-const CACHE_NAME = "cse-companion-v273";
+const CACHE_NAME = "cse-companion-v280";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -10,6 +10,9 @@ const APP_SHELL = [
   "./terms.html",
   "./refund.html",
   "./contact.html",
+  "./quiz/index.json",
+  "./quiz/2026-10.json",
+  "./quiz/2026-09.json",
   "./delete-account.html",
   "./icon-192.png",
   "./icon-512.png",
@@ -1567,6 +1570,17 @@ self.addEventListener("fetch", (event) => {
   if (new URL(req.url).pathname.indexOf("/__time") >= 0) return;
   // "Check for updates" asks the network which build is live: never answer that from (or store it in) the cache
   if (/\/sw\.js$/.test(new URL(req.url).pathname) && new URL(req.url).searchParams.has("c")) return;
+
+  // monthly quizzes: ask the network first so a new month shows up straight away, fall back to the saved copy offline
+  if (new URL(req.url).pathname.indexOf("/quiz/") >= 0) {
+    event.respondWith(
+      fetch(req).then((res) => {
+        if (cacheable(req, res)) { const copy = res.clone(); caches.open(CACHE_NAME).then((c) => c.put(req, copy)); }
+        return res;
+      }).catch(() => caches.match(req))
+    );
+    return;
+  }
 
   event.respondWith(
     caches.match(req).then((cached) => {
