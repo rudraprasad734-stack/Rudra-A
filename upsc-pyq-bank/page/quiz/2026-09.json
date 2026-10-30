@@ -309,6 +309,160 @@
     "date": "2026"
    },
    "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-015",
+   "subject": "IR",
+   "syllabus": "Groupings",
+   "exam": "pre",
+   "q": "The 18th BRICS Summit was hosted by India in New Delhi on 12 and 13 September 2026 under the theme:",
+   "opts": [
+    "Partnership for a Digital and Green Future",
+    "Building for Resilience, Innovation, Cooperation and Sustainability",
+    "Strengthening Global South Cooperation for Inclusive and Sustainable Governance",
+    "Peace, Security and Reformed Multilateralism"
+   ],
+   "ans": 1,
+   "why": "India holds the BRICS chair in 2026, and the summit adopted the New Delhi Declaration. India had earlier chaired BRICS in 2016 (Goa) and 2021 (virtual).",
+   "insight": "The previous summit's declaration (Rio de Janeiro, 2025) was titled on strengthening Global South cooperation.",
+   "src": {
+    "name": "PIB, BRICS New Delhi Declaration",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2309505&reg=48&lang=2",
+    "date": "13 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-016",
+   "subject": "IR",
+   "syllabus": "Groupings",
+   "exam": "pre",
+   "q": "The 26th Meeting of the Council of Heads of State of the Shanghai Cooperation Organisation (SCO), attended by India's Prime Minister, was held on 31 August and 1 September 2026 in:",
+   "opts": [
+    "New Delhi, India",
+    "Tianjin, China",
+    "Astana, Kazakhstan",
+    "Bishkek, Kyrgyzstan"
+   ],
+   "ans": 3,
+   "why": "The summit adopted the Bishkek Declaration. India backed proposals including making English an official SCO language. The chair for 2026-27 passes to Pakistan.",
+   "insight": "India chaired the SCO in 2022-23 and hosted a virtual summit in 2023.",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2305735&reg=48&lang=2",
+    "date": "1 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-017",
+   "subject": "IR",
+   "syllabus": "Treaties and disputes",
+   "exam": "pre",
+   "q": "In an award at the end of August 2026, the Court of Arbitration under the Permanent Court of Arbitration, in the Indus Waters Western Rivers case, held that:",
+   "opts": [
+    "The Treaty stands terminated since April 2025",
+    "Water sharing under the Treaty has been suspended until a new agreement",
+    "Only the World Bank can decide Treaty disputes",
+    "The Indus Waters Treaty remains in force and cannot be placed in abeyance unilaterally"
+   ],
+   "ans": 3,
+   "why": "The Court said the Treaty has not been terminated or suspended and that India's decision on abeyance is not permissible under the Treaty or international law.",
+   "insight": "The Indus Waters Treaty was signed in 1960 between India and Pakistan, with the World Bank as a signatory. India placed it in abeyance in April 2025.",
+   "src": {
+    "name": "Permanent Court of Arbitration",
+    "url": "https://docs.pca-cpa.org/2026/08/3c1dbc21-2023-01-20260831-pca-press-release.pdf",
+    "date": "Aug 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-018",
+   "subject": "IR",
+   "syllabus": "International law and sanctions",
+   "exam": "pre",
+   "q": "The 'Lindsey O. Graham Sanctioning Russia and Iran Act of 2026' became US law on 18 September 2026. Which is correct?",
+   "opts": [
+    "It lifts sanctions on Russian energy exports",
+    "It applies only to Iranian oil and not to Russia",
+    "It lets the President impose tariffs, up to 100%, on goods from the top five importers of Russian oil or gas, and extends the Iran Sanctions Act to 2031",
+    "It bans all trade between the United States and India"
+   ],
+   "ans": 2,
+   "why": "The Act was passed by the Senate 86-11 in August and became Public Law 119-111. The tariff power is discretionary, not automatic.",
+   "insight": "It matters to India because India buys Russian crude oil, though the sources do not name India directly.",
+   "src": {
+    "name": "Congress.gov, H.R. 5334",
+    "url": "https://www.congress.gov/bill/119th-congress/house-bill/5334/all-info",
+    "date": "18 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-019",
+   "subject": "Sci & Tech",
+   "syllabus": "Space technology",
+   "exam": "pre",
+   "q": "The GSLV-F17 mission launched on 4 September 2026 from Sriharikota carried EOS-05, described by ISRO as:",
+   "opts": [
+    "India's first satellite to orbit the Moon",
+    "A navigation satellite of the NavIC constellation",
+    "A crewed Gaganyaan test capsule",
+    "India's first imaging satellite from geosynchronous orbit"
+   ],
+   "ans": 3,
+   "why": "GSLV-F17 was the 19th GSLV flight. After a series of orbit-raising burns, EOS-05 is to be placed in the geostationary orbit at 85.5 degrees East.",
+   "insight": "A geostationary satellite stays above one point of the equator because its orbit takes 24 hours.",
+   "src": {
+    "name": "ISRO",
+    "url": "https://www.isro.gov.in/Mission_GSLVF17.html",
+    "date": "4 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-020",
+   "subject": "Sci & Tech",
+   "syllabus": "Measurement and standards",
+   "exam": "pre",
+   "q": "The Legal Metrology (Indian Standard Time) Rules, 2026, notified in August 2026, are meant to:",
+   "opts": [
+    "Move India to two time zones",
+    "Introduce daylight saving time",
+    "Make GPS the only legal time source",
+    "Set one legal, traceable Indian Standard Time across the country, with CSIR-NPL as the scientific basis"
+   ],
+   "ans": 3,
+   "why": "The Rules cover the generation, maintenance and spread of IST and take effect 180 days after publication. IST is distributed through regional laboratories and ISRO's NavIC.",
+   "insight": "CSIR-National Physical Laboratory in New Delhi maintains India's national time standard.",
+   "src": {
+    "name": "PIB, Department of Consumer Affairs",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2306171&reg=48&lang=2",
+    "date": "29 Aug 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-021",
+   "subject": "Environment",
+   "syllabus": "Air pollution",
+   "exam": "pre",
+   "q": "The Swachh Vayu Sarvekshan Awards, held in September 2026 on Swachh Vayu Diwas, rank cities on:",
+   "opts": [
+    "The number of vehicles registered",
+    "Actions taken under their clean air plans, not measured air quality",
+    "Their measured annual average PM2.5 levels",
+    "The size of their population"
+   ],
+   "ans": 1,
+   "why": "The ranking is based on reported implementation of city action plans under the National Clean Air Programme (NCAP), not on pollution readings. Ward-level surveys covered over 7,400 wards.",
+   "insight": "7 September is the International Day of Clean Air for Blue Skies.",
+   "src": {
+    "name": "PIB, Ministry of Environment",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2307388&reg=48&lang=2",
+    "date": "7 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
   }
  ]
 }
