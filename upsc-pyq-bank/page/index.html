@@ -20234,10 +20234,18 @@ var DAILY_QUOTES = [
   "Keep your eyes on the goal and your hands on the book.",
   "Rise, revise, repeat. The result will take care of itself.",
   "Today is a good day to become a little better than yesterday."
-];   // 108 original lines, one per day (cycles by date)
+];   // 108 original lines, a new one each time the app is opened
+var QUOTE_IX = -1;   // picked once per app open, so re-drawing the card never swaps the line
 function dailyQuote(){
-  var d = parseKey(todayKey), n = Math.floor(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())/86400000);
-  return DAILY_QUOTES[((n % DAILY_QUOTES.length) + DAILY_QUOTES.length) % DAILY_QUOTES.length];
+  if(QUOTE_IX < 0){
+    var n = DAILY_QUOTES.length, last = -1, ix;
+    try{ last = parseInt(lsGet("dossier.quoteIx.v1"), 10); }catch(e){}
+    ix = Math.floor(Math.random()*n);
+    if(ix === last) ix = (ix + 1 + Math.floor(Math.random()*(n-1))) % n;   // never the same line twice in a row
+    QUOTE_IX = ix;
+    try{ lsSet("dossier.quoteIx.v1", String(ix)); }catch(e){}
+  }
+  return DAILY_QUOTES[QUOTE_IX];
 }
 function weekBodyHtml(ws, noBars){
   var mx = Math.max(60, ws.days.reduce(function(a, d){ return Math.max(a, d.v); }, 0)), diff = ws.total - ws.prev;
@@ -20966,7 +20974,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "270";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "271";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
