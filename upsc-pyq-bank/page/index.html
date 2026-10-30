@@ -182,7 +182,7 @@
   .cg-x{width:40px; height:40px; flex:none; border-radius:13px; background:#0a262ccc; border:1px solid #1d5a60; color:#cff; font-size:20px; display:grid; place-items:center; cursor:pointer;}
   .cg-pill{background:#0a262ccc; border:1px solid #1d5a60; border-radius:20px; padding:6px 10px; font-weight:700; font-size:13px; flex:none;}
   .cg-body{flex:1; overflow-y:auto; position:relative; padding:0 16px 28px; -webkit-overflow-scrolling:touch;} .cg-qbody,.cg-res{padding-top:4px;}
-  #caqGame[data-s="road"],#caqGame[data-s="map"]{background:#0f5a40;} .cg-hud.over{position:absolute; left:0; right:0; top:0; background:none; pointer-events:none;} .cg-hud.over > *{pointer-events:auto;} .cg-hud.over .cg-x,.cg-hud.over .cg-pill{background:rgba(6,22,27,.62); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);} .cg-hud.over .cg-c{text-shadow:0 1px 6px #000a; pointer-events:none;} .cg-sky .cg-top{padding-top:calc(max(12px, env(safe-area-inset-top)) + 56px);}
+  #caqGame[data-s="road"],#caqGame[data-s="map"]{background:#0f5a40;} .cg-hud.over{position:absolute; left:0; right:0; top:0; background:linear-gradient(rgba(6,22,27,.5) 0, rgba(6,22,27,.28) 60%, rgba(6,22,27,0) 100%); padding-bottom:18px; pointer-events:none;} .cg-hud.over > *{pointer-events:auto;} .cg-hud.over .cg-x,.cg-hud.over .cg-pill{background:rgba(6,22,27,.62); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);} .cg-hud.over .cg-c{text-shadow:0 1px 6px #000a; pointer-events:none;} .cg-sky .cg-top{padding-top:calc(max(12px, env(safe-area-inset-top)) + 56px);}
   .cg-sky{background:linear-gradient(#0b2d4a,#0d4a55 40%,#0f5a40);} .cg-top{padding-top:6px;} .cg-note{text-align:center; color:#9fd8d0; font-size:12px; opacity:.8; margin:0;}
   .cg-daily{display:block; width:100%; background:linear-gradient(135deg,#ffd27a,#ff9d5a); color:#331; border:0; border-radius:20px; padding:14px; text-align:center; box-shadow:0 8px 0 #a3571a; font:inherit; cursor:pointer;} .cg-daily small{display:block; opacity:.7; font-size:11px; letter-spacing:.1em;} .cg-daily b{display:block; font:800 26px Georgia,serif;} .cg-daily span{font-weight:700; font-size:13px;} .cg-daily[disabled]{opacity:.6; box-shadow:none;}
   .cg-cont{display:block; width:100%; margin-top:16px; background:#0a262ccc; border:1px solid #e8b24a; color:#ffd27a; border-radius:14px; padding:11px; font:inherit; font-weight:700; cursor:pointer; text-align:center;} .cg-cont.weak{border-color:#ff9d7a; color:#ffb39a; margin-top:8px;}
@@ -21419,7 +21419,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "285";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "286";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
