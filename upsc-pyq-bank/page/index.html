@@ -18691,7 +18691,7 @@ var TAB_GROUPS = [
   ]},
   {id:"mocks", label:"Mocks", accent:"mocks"},
   {id:"pyq", label:"PYQ Bank", accent:"pyq"},
-  {id:"caquiz", label:"CA Quiz", accent:"caquiz"},
+  {id:"caquiz", label:"Current Affairs Quizzes", accent:"caquiz"},
   {id:"quotes", label:"Quotes", accent:"quotes"},
   {id:"settings", label:"Settings", accent:"scheduler"},
 ];
@@ -18979,7 +18979,7 @@ function caqSrcHtml(q){
 function caqQuestionHtml(){
   var r = caq.ui.run, q = caq.qs[r.ids[r.i]], L = "ABCDEF", reported = caqData.reports.some(function(x){ return x.id===q.id; });
   var h = '<div class="caq-prog"><span>'+(r.i+1)+' / '+r.ids.length+'</span><div class="caq-bar"><i style="width:'+Math.round(100*(r.i+(r.checked ? 1 : 0))/r.ids.length)+'%"></i></div></div>'+
-    '<div class="caq-nav"><button type="button" class="link-btn" data-caq="home">&lsaquo; CA Quiz home</button><button type="button" class="link-btn" data-caq="restart">&#8635; Restart</button></div>'+
+    '<div class="caq-nav"><button type="button" class="link-btn" data-caq="home">&lsaquo; Current Affairs Quizzes</button><button type="button" class="link-btn" data-caq="restart">&#8635; Restart</button></div>'+
     '<div class="caq-tags"><span class="chip '+(q.exam==="mains" ? "mains" : "pre")+'">'+(q.exam==="mains" ? "Mains" : "Prelims")+'</span><span class="chip">'+esc(q.subject)+(q.syllabus ? ' &middot; '+esc(q.syllabus) : "")+'</span></div>'+
     '<div class="caq-q">'+esc(q.q).replace(/\n/g, "<br>")+'</div>';
   h += q.opts.map(function(o, i){
@@ -19003,7 +19003,7 @@ function caqResultHtml(){
     '<div class="card"><div class="dx-k">BY SUBJECT</div>'+Object.keys(by).map(function(s){ return '<div class="caq-sub"><span>'+esc(s)+'</span><div class="caq-bar"><i style="width:'+Math.round(100*by[s].ok/by[s].n)+'%"></i></div><b>'+by[s].ok+'/'+by[s].n+'</b></div>'; }).join("")+'</div>'+
     (wrong.length ? '<button type="button" class="btn primary" data-caq="review">Review my '+wrong.length+' wrong answer'+(wrong.length===1 ? "" : "s")+'</button>' : "")+
     (worst ? '<button type="button" class="btn ghost" data-caq="again" data-s="'+esc(worst)+'">Practise '+esc(worst)+' again</button>' : "")+
-    '<button type="button" class="btn ghost" data-caq="share">Share my score</button><button type="button" class="btn ghost" data-caq="home">Back to CA Quiz</button>';
+    '<button type="button" class="btn ghost" data-caq="share">Share my score</button><button type="button" class="btn ghost" data-caq="home">Back to Current Affairs Quizzes</button>';
 }
 function renderCaQuiz(){
   var host = document.getElementById("view-caquiz");
@@ -19029,7 +19029,7 @@ function caqReportSheet(id){
     caqData.reports.push({id:id, reason:CAQ_REASONS[ri], note:note, at:new Date().toISOString()}); caqSave();
     var body = "Question: "+id+"\nIssue: "+CAQ_REASONS[ri]+"\nNote: "+(note || "-")+"\n\nQ: "+q.q.slice(0, 160)+"\nApp build: "+APP_BUILD;
     closeModal();
-    try{ var a = document.createElement("a"); a.href = "mailto:"+CAQ_MAIL+"?subject="+encodeURIComponent("CA Quiz report "+id)+"&body="+encodeURIComponent(body); document.body.appendChild(a); a.click(); a.remove(); }catch(e){}
+    try{ var a = document.createElement("a"); a.href = "mailto:"+CAQ_MAIL+"?subject="+encodeURIComponent("Current Affairs Quizzes report "+id)+"&body="+encodeURIComponent(body); document.body.appendChild(a); a.click(); a.remove(); }catch(e){}
     toast("Opening your email app. Thank you for the report.");
     renderCaQuiz();
   });
@@ -19070,7 +19070,7 @@ function caqAction(b){
   else if(a==="review" && r){ caqStart(r.res.filter(function(x){ return !x.ok; }).map(function(x){ return x.id; }), "Review"); }
   else if(a==="again"){ var s = b.getAttribute("data-s"), ids2 = caqAllIds().filter(function(id){ return caq.qs[id].subject===s; }), wr = ids2.filter(function(id){ return caqData.ans[id] && !caqData.ans[id].ok; }), fr = ids2.filter(function(id){ return !caqData.ans[id]; }); caqStart(wr.concat(fr).slice(0, 10), s); }
   else if(a==="share" && r){
-    var ok2 = r.res.filter(function(x){ return x.ok; }).length, text = "I scored "+ok2+"/"+r.res.length+" on today's CA Quiz in CSE Companion. https://csecompanion.in";
+    var ok2 = r.res.filter(function(x){ return x.ok; }).length, text = "I scored "+ok2+"/"+r.res.length+" on today's Current Affairs Quiz in CSE Companion. https://csecompanion.in";
     if(navigator.share){ navigator.share({text:text}).catch(function(){}); }
     else { try{ navigator.clipboard.writeText(text).then(function(){ toast("Copied. Paste it anywhere to share."); }, function(){ toast(text); }); }catch(e){ toast(text); } }
   }
@@ -21278,7 +21278,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "282";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "283";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
