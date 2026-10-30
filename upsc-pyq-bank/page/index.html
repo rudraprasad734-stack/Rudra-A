@@ -176,7 +176,8 @@
   .caq .caq-month .btn.ghost{width:auto; margin:0; padding:8px 16px; flex:none;} .caq h2{margin:2px 0 4px;}
   .caq-hero h2{margin:2px 0 4px; font-size:24px;} .caq-hero .btn{margin:12px 0 8px; width:100%;}
   .caq-bar{height:8px; border-radius:5px; background:color-mix(in srgb,var(--ink) 12%, transparent); overflow:hidden; flex:1;} .caq-bar i{display:block; height:100%; background:var(--tab-accent);}
-  .caq-month .caq-bar{margin-top:10px;} .caq-prog{display:flex; align-items:center; gap:10px; font-size:13px; color:var(--ink-soft);}
+  .caq-month .caq-bar{margin-top:10px;} .caq-nav{display:flex; justify-content:space-between; gap:8px; margin:6px 0 4px;} .caq-nav .link-btn{padding:8px 4px; font-size:13px; min-height:36px;} .caq-nav .link-btn:disabled{opacity:.35;} .caq-resume .caq-r{margin-top:10px;} .caq-resume .btn{width:auto; flex:1;}
+  .caq-prog{display:flex; align-items:center; gap:10px; font-size:13px; color:var(--ink-soft);}
   .caq-tags{margin:12px 0 4px;} .caq-tags .chip{margin:0 6px 6px 0;} .chip.pre{background:color-mix(in srgb,#2ee6d6 16%, transparent); color:var(--ink);} .chip.mains{background:color-mix(in srgb,#b896ff 20%, transparent); color:var(--ink);}
   .caq-q{font-family:var(--font-display); font-size:19px; line-height:1.42; margin:8px 0 14px;}
   .caq-opt{display:flex; gap:10px; align-items:flex-start; width:100%; text-align:left; padding:12px; margin-bottom:9px; border-radius:14px; background:var(--surface); border:1.5px solid var(--line); color:var(--ink); font:inherit; font-size:15px; cursor:pointer;}
@@ -18925,14 +18926,39 @@ function caqSubjStats(){
   return st;
 }
 function caqWeak(){ var st = caqSubjStats(); return Object.keys(st).filter(function(s){ return st[s].n >= 3 && st[s].ok/st[s].n < 0.6; }); }
+var CAQ_RUN = "dossier.caq.run.v1";   // the quiz in progress, kept on this phone only (never synced)
+function caqRunSave(){ var r = caq.ui.run; if(!r || r.done) return; try{ localStorage.setItem(CAQ_RUN, JSON.stringify({ids:r.ids, i:r.i, res:r.res, title:r.title, el:Date.now()-r.t0, at:Date.now()})); }catch(e){} }
+function caqRunClear(){ try{ localStorage.removeItem(CAQ_RUN); }catch(e){} }
+function caqRunLoad(){
+  try{
+    var v = JSON.parse(localStorage.getItem(CAQ_RUN) || "null");
+    if(!v || !Array.isArray(v.ids) || !Array.isArray(v.res)) return null;
+    v.ids = v.ids.filter(function(id){ return caq.qs[id]; });
+    if(!v.ids.length || v.res.length > v.ids.length) return null;
+    v.res = v.res.filter(function(x, k){ return x && v.ids[k]===x.id; });
+    v.i = Math.min(Math.max(+v.i || 0, 0), v.ids.length-1);
+    if(v.res.length >= v.ids.length) return null;
+    return v;
+  }catch(e){ return null; }
+}
+function caqSetPos(i){ var r = caq.ui.run, x = r.res[i]; r.i = i; if(x){ r.pick = x.p; r.checked = true; } else { r.pick = -1; r.checked = false; } }
 function caqStart(ids, title){
   if(!ids.length){ toast("No new questions here yet. Check back after the next update."); return; }
   caq.ui.run = {ids:ids, i:0, pick:-1, checked:false, res:[], t0:Date.now(), title:title};
-  renderCaQuiz(); window.scrollTo(0, 0);
+  caqRunSave(); renderCaQuiz(); window.scrollTo(0, 0);
+}
+function caqResume(){
+  var v = caqRunLoad(); if(!v){ caqRunClear(); renderCaQuiz(); return; }
+  caq.ui.run = {ids:v.ids, i:0, pick:-1, checked:false, res:v.res, t0:Date.now()-(+v.el || 0), title:v.title};
+  caqSetPos(Math.min(v.res.length, v.ids.length-1)); renderCaQuiz(); window.scrollTo(0, 0);
+}
+function caqResumeHtml(){
+  var v = caqRunLoad(); if(!v) return "";
+  return '<div class="card caq-resume"><div class="dx-k">UNFINISHED QUIZ</div><b>'+esc(v.title || "Quiz")+'</b><div class="muted small">You stopped at question '+(Math.min(v.res.length, v.ids.length-1)+1)+' of '+v.ids.length+'. Your answers so far are saved on this phone.</div><div class="caq-r"><button type="button" class="btn primary" data-caq="resume">Continue</button><button type="button" class="btn ghost" data-caq="startover">Start over</button></div></div>';
 }
 function caqHomeHtml(){
   var all = caqAllIds(), wk = caqWeak(), daily = caqUnanswered(all).length, doneAll = all.filter(function(id){ return caqData.ans[id]; }).length, stk = caqStreak();
-  var h = '<div class="card caq-hero"><div class="dx-k">TODAY</div><h2>Daily 10</h2><div class="muted">Ten current-affairs questions, mixed across subjects. About 6 minutes.</div>'+
+  var h = caqResumeHtml()+'<div class="card caq-hero"><div class="dx-k">TODAY</div><h2>Daily 10</h2><div class="muted">Ten current-affairs questions, mixed across subjects. About 6 minutes.</div>'+
     '<button type="button" class="btn primary" data-caq="daily"'+(daily ? "" : " disabled")+'>'+(daily ? "Start today&rsquo;s 10" : "You have done every question so far")+'</button>'+
     (stk ? '<div class="muted small">&#128293; '+stk+'-day quiz streak &middot; '+doneAll+' of '+all.length+' answered</div>' : (all.length ? '<div class="muted small">'+doneAll+' of '+all.length+' answered</div>' : ""))+'</div>';
   if(!all.length){ h += '<div class="card empty">'+esc(caq.err || "No quizzes yet. The first month is on its way.")+'</div>'; return h; }
@@ -18952,7 +18978,8 @@ function caqSrcHtml(q){
 }
 function caqQuestionHtml(){
   var r = caq.ui.run, q = caq.qs[r.ids[r.i]], L = "ABCDEF", reported = caqData.reports.some(function(x){ return x.id===q.id; });
-  var h = '<div class="caq-prog"><span>'+(r.i+1)+' / '+r.ids.length+'</span><div class="caq-bar"><i style="width:'+Math.round(100*(r.i+(r.checked ? 1 : 0))/r.ids.length)+'%"></i></div><button type="button" class="link-btn" data-caq="quit">Stop</button></div>'+
+  var h = '<div class="caq-prog"><span>'+(r.i+1)+' / '+r.ids.length+'</span><div class="caq-bar"><i style="width:'+Math.round(100*(r.i+(r.checked ? 1 : 0))/r.ids.length)+'%"></i></div></div>'+
+    '<div class="caq-nav"><button type="button" class="link-btn" data-caq="back"'+(r.i===0 ? " disabled" : "")+'>&lsaquo; Back</button><button type="button" class="link-btn" data-caq="restart">&#8635; Restart</button><button type="button" class="link-btn" data-caq="home">CA Quiz home</button></div>'+
     '<div class="caq-tags"><span class="chip '+(q.exam==="mains" ? "mains" : "pre")+'">'+(q.exam==="mains" ? "Mains" : "Prelims")+'</span><span class="chip">'+esc(q.subject)+(q.syllabus ? ' &middot; '+esc(q.syllabus) : "")+'</span></div>'+
     '<div class="caq-q">'+esc(q.q).replace(/\n/g, "<br>")+'</div>';
   h += q.opts.map(function(o, i){
@@ -19008,7 +19035,7 @@ function caqReportSheet(id){
 }
 function caqNext(){
   var r = caq.ui.run;
-  if(r.i+1 < r.ids.length){ r.i++; r.pick = -1; r.checked = false; } else r.done = true;
+  if(r.i+1 < r.ids.length){ caqSetPos(r.i+1); caqRunSave(); } else { r.done = true; caqRunClear(); }
   renderCaQuiz(); window.scrollTo(0, 0);
 }
 function caqAction(b){
@@ -19023,14 +19050,21 @@ function caqAction(b){
   else if(a==="opt" && r && !r.checked){ r.pick = +b.getAttribute("data-i"); renderCaQuiz(); }
   else if(a==="check" && r && !r.checked && r.pick>=0){
     var q = caq.qs[r.ids[r.i]], ok = r.pick===q.ans;
-    r.checked = true; r.res.push({id:q.id, ok:ok});
+    r.checked = true; r.res[r.i] = {id:q.id, ok:ok, p:r.pick};
     caqData.ans[q.id] = {p:r.pick, ok:ok, d:todayKey};
     if(caqData.days.indexOf(todayKey)<0) caqData.days.push(todayKey);
-    caqSave(); caqPersist();
+    caqSave(); caqPersist(); caqRunSave();
     renderCaQuiz();
   }
   else if(a==="next" && r) caqNext();
-  else if(a==="quit"){ caq.ui.run = r && r.res.length ? Object.assign(r, {done:true}) : null; renderCaQuiz(); }
+  else if(a==="back" && r && r.i>0){ caqSetPos(r.i-1); caqRunSave(); renderCaQuiz(); window.scrollTo(0, 0); }
+  else if(a==="restart" && r && !r.done){
+    if(r.res.length && !confirm("Start this quiz again from question 1?")) return;
+    r.res = []; r.t0 = Date.now(); caqSetPos(0); caqRunSave(); renderCaQuiz(); window.scrollTo(0, 0);
+  }
+  else if(a==="resume") caqResume();
+  else if(a==="startover"){ var v = caqRunLoad(); if(v) caqStart(v.ids, v.title); else { caqRunClear(); renderCaQuiz(); } }
+  else if(a==="quit"){ caq.ui.run = r && r.res.length ? Object.assign(r, {done:true}) : null; caqRunClear(); renderCaQuiz(); }
   else if(a==="report") caqReportSheet(b.getAttribute("data-id"));
   else if(a==="review" && r){ caqStart(r.res.filter(function(x){ return !x.ok; }).map(function(x){ return x.id; }), "Review"); }
   else if(a==="again"){ var s = b.getAttribute("data-s"), ids2 = caqAllIds().filter(function(id){ return caq.qs[id].subject===s; }), wr = ids2.filter(function(id){ return caqData.ans[id] && !caqData.ans[id].ok; }), fr = ids2.filter(function(id){ return !caqData.ans[id]; }); caqStart(wr.concat(fr).slice(0, 10), s); }
@@ -19039,7 +19073,7 @@ function caqAction(b){
     if(navigator.share){ navigator.share({text:text}).catch(function(){}); }
     else { try{ navigator.clipboard.writeText(text).then(function(){ toast("Copied. Paste it anywhere to share."); }, function(){ toast(text); }); }catch(e){ toast(text); } }
   }
-  else if(a==="home"){ caq.ui.run = null; renderCaQuiz(); }
+  else if(a==="home"){ if(r && r.done) caqRunClear(); else caqRunSave(); caq.ui.run = null; renderCaQuiz(); window.scrollTo(0, 0); }
 }
 document.addEventListener("click", function(e){ var b = e.target.closest ? e.target.closest("[data-caq]") : null; if(b && !b.disabled) caqAction(b); });
 function renderView(id){
@@ -21243,7 +21277,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "280";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "281";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
