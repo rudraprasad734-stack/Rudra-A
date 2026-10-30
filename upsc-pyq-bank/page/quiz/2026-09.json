@@ -1,0 +1,314 @@
+{
+ "month": "2026-09",
+ "updated": "30 Oct 2026",
+ "questions": [
+  {
+   "id": "caq-2026-09-001",
+   "subject": "Polity & Governance",
+   "syllabus": "Land governance",
+   "exam": "pre",
+   "q": "Consider the Digital India Land Records Modernisation Programme (DILRMP) 3.0 (2026 to 2031, outlay about Rs 565.50 crore):\n1. It is a Central Sector Scheme implemented by the Department of Land Resources.\n2. It gives every land parcel a 14-digit Unique Land Parcel Identification Number (ULPIN), also called Bhu-Aadhaar.\n3. It is implemented by the Ministry of Housing and Urban Affairs.\nWhich of the above are correct?",
+   "opts": [
+    "2 and 3 only",
+    "1 and 2 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "DILRMP is run by the Department of Land Resources (Ministry of Rural Development), not the Housing Ministry. The new phase also plans paperless registration and upgrades 75 Sub-Registrar Offices.",
+   "insight": "Land is a State subject (List II), so States build the land records and the Centre funds and standardises them.",
+   "src": {
+    "name": "PIB, Department of Land Resources",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2308504&reg=48&lang=2",
+    "date": "9 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-002",
+   "subject": "Polity & Governance",
+   "syllabus": "Statutory and non-statutory bodies",
+   "exam": "pre",
+   "q": "In September 2026 a new Chairperson (Bhagwat Prasad Makwana) was appointed to the National Commission for Safai Karamcharis (NCSK). Which is correct about NCSK?",
+   "opts": [
+    "It is a body under the Ministry of Labour and Employment",
+    "It is a non-statutory body under the Ministry of Social Justice and Empowerment, working through periodic Government resolutions",
+    "It is a constitutional body under Article 338",
+    "It is a statutory body created by the Protection of Civil Rights Act, 1955"
+   ],
+   "ans": 1,
+   "why": "NCSK was set up under the NCSK Act, 1993, but the Act lapsed on 29 February 2004. The Commission has continued since then through extended resolutions. The new appointments run to 31 March 2028.",
+   "insight": "Article 338 is for the National Commission for Scheduled Castes; NCSK looks into the welfare of sanitation workers and manual scavengers.",
+   "src": {
+    "name": "PIB, Ministry of Social Justice and Empowerment",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2308444&reg=48&lang=2",
+    "date": "9 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-003",
+   "subject": "Polity & Governance",
+   "syllabus": "Welfare schemes",
+   "exam": "pre",
+   "q": "Which is correct about the Pradhan Mantri Kisan Maandhan Yojana (PM-KMY), which completed seven years in 2026?",
+   "opts": [
+    "All farmers with any landholding get Rs 6,000 a year in three instalments",
+    "It is a free pension with no contribution from the farmer",
+    "It is open only to farmers above 60 years",
+    "Small and marginal farmers aged 18 to 40 contribute Rs 55 to Rs 200 a month and get a minimum pension of Rs 3,000 a month at 60"
+   ],
+   "ans": 3,
+   "why": "PM-KMY is voluntary and contributory, with the Centre matching the farmer's contribution. Landholding must be up to 2 hectares. The spouse gets a family pension of Rs 1,500 a month.",
+   "insight": "Do not mix it up with PM-KISAN, which gives Rs 6,000 a year as income support.",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=159959&ModuleId=3&reg=48&lang=2",
+    "date": "Feb 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-004",
+   "subject": "Polity & Governance",
+   "syllabus": "Democracy and rights",
+   "exam": "pre",
+   "q": "The International Day of Democracy is observed every year on:",
+   "opts": [
+    "10 December, to mark the Universal Declaration of Human Rights",
+    "26 January, to mark constitutional governance",
+    "15 September, established by a UN General Assembly resolution of 2007",
+    "15 August, to mark independence from colonial rule"
+   ],
+   "ans": 2,
+   "why": "The UN General Assembly passed the resolution in 2007, and the day was first observed in 2008.",
+   "insight": "In India, free and fair elections are part of the Constitution's basic structure.",
+   "src": {
+    "name": "United Nations",
+    "url": "https://www.un.org/en/observances/democracy-day",
+    "date": "15 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-005",
+   "subject": "Polity & Governance",
+   "syllabus": "Elections and political parties",
+   "exam": "pre",
+   "q": "Political parties in India are registered with the Election Commission under which provision, and donations above what amount in a year must be reported to the Commission?",
+   "opts": [
+    "Article 324 of the Constitution; above Rs 2 lakh",
+    "Section 29A of the Representation of the People Act, 1951; above Rs 2,000",
+    "The Tenth Schedule; above Rs 50,000",
+    "Section 29A of the Representation of the People Act, 1951; above Rs 20,000"
+   ],
+   "ans": 3,
+   "why": "Registration is under Section 29A. A party must report contributions above Rs 20,000 from a donor in a year (Section 29C).",
+   "insight": "A registered party that is neither national nor State party is a Registered Unrecognised Political Party (RUPP).",
+   "src": {
+    "name": "Representation of the People Act, 1951 (India Code)",
+    "url": "https://www.indiacode.nic.in/",
+    "date": "Static law"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-006",
+   "subject": "Polity & Governance",
+   "syllabus": "Education policy",
+   "exam": "pre",
+   "q": "As per the three-language formula in the National Education Policy (NEP) 2020:",
+   "opts": [
+    "Hindi is compulsory in all States",
+    "English must be one of the three languages in every school",
+    "Sanskrit is compulsory from Class 6",
+    "No language is imposed on any State, but at least two of the three languages must be Indian languages"
+   ],
+   "ans": 3,
+   "why": "NEP 2020 keeps the three-language formula but gives States, schools and students the choice. At least two languages must be Indian languages.",
+   "insight": "NEP 2020 also promotes teaching in the mother tongue or home language, at least up to Class 5.",
+   "src": {
+    "name": "Ministry of Education, NEP 2020",
+    "url": "https://www.education.gov.in/sites/upload_files/mhrd/files/NEP_Final_English_0.pdf",
+    "date": "2020"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-007",
+   "subject": "Economy",
+   "syllabus": "Labour and social security",
+   "exam": "pre",
+   "q": "The Cabinet approved raising the EPFO wage ceiling for mandatory coverage in September 2026. The ceiling changed from:",
+   "opts": [
+    "Rs 15,000 to Rs 25,000 a month",
+    "Rs 6,500 to Rs 15,000 a month",
+    "Rs 25,000 to Rs 40,000 a month",
+    "Rs 15,000 to Rs 21,000 a month"
+   ],
+   "ans": 0,
+   "why": "The ceiling rose from Rs 15,000 to Rs 25,000 (Cabinet 16 September, effective 17 September). It is the first revision since 2014 and brings over 51 lakh more employees under mandatory coverage.",
+   "insight": "Total government support for the pension scheme (EPS) rises to about Rs 11,339 crore a year.",
+   "src": {
+    "name": "PIB, Cabinet",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2310811&reg=48&lang=2",
+    "date": "16 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-008",
+   "subject": "Economy",
+   "syllabus": "National income",
+   "exam": "pre",
+   "q": "India's real GDP growth for the first quarter (April to June) of 2026-27 was estimated at:",
+   "opts": [
+    "5.4%, below the RBI's estimate",
+    "7.8%, above the RBI's estimate of 7.0%",
+    "6.9%, the same as a year earlier",
+    "9.2%, driven by agriculture"
+   ],
+   "ans": 1,
+   "why": "Real GDP grew 7.8% (nominal 10.3%) and real GVA grew 8.2%, the highest Q1 growth of the last four years.",
+   "insight": "GDP is estimated by the National Statistics Office (NSO) under MoSPI.",
+   "src": {
+    "name": "MoSPI / PIB",
+    "url": "https://static.pib.gov.in/WriteReadData/specificdocs/documents/2026/sep/doc_9759_20260901_14422101.pdf",
+    "date": "31 Aug 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-009",
+   "subject": "Economy",
+   "syllabus": "National income",
+   "exam": "pre",
+   "q": "India's GDP series released in February 2026 uses which base year, replacing which earlier base?",
+   "opts": [
+    "2020-21, replacing 2004-05",
+    "2024-25, replacing 2015-16",
+    "2018-19, replacing 2011-12",
+    "2022-23, replacing 2011-12"
+   ],
+   "ans": 3,
+   "why": "MoSPI released the new series with base year 2022-23 on 27 February 2026, replacing the 2011-12 series. An updated series was released on 31 August 2026 with new price indices.",
+   "insight": "A base year is the benchmark year used to measure real changes without the effect of inflation.",
+   "src": {
+    "name": "MoSPI",
+    "url": "https://www.mospi.gov.in/uploads/latestReleases/latest_release_1772189865181_f040336d-bc57-4aed-b80f-586d9ccb279e_Press_Note_on_New_Series_of_GDP_Estimates_with_Base_Year_2022-23_27022026.pdf",
+    "date": "27 Feb 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-010",
+   "subject": "Economy",
+   "syllabus": "External sector",
+   "exam": "pre",
+   "q": "Japan Credit Rating Agency (JCR) upgraded India's long-term sovereign rating in September 2026. The new rating is:",
+   "opts": [
+    "A+ with a positive outlook, up from A",
+    "BBB with a stable outlook, up from BBB-",
+    "AA- with a stable outlook, up from A-",
+    "A- with a stable outlook, up from BBB+"
+   ],
+   "ans": 3,
+   "why": "JCR raised its rating one notch to A- and also raised India's country ceiling to A. It cited steady growth and a sounder financial system.",
+   "insight": "S&P (BBB) and Morningstar DBRS (BBB) raised India's rating in 2025 as well.",
+   "src": {
+    "name": "PIB",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2306033&reg=3&lang=1",
+    "date": "2 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-011",
+   "subject": "Economy",
+   "syllabus": "Credit and MSMEs",
+   "exam": "pre",
+   "q": "The Emergency Credit Line Guarantee Scheme (ECLGS) 5.0 is operational until:",
+   "opts": [
+    "31 March 2027, with a cap of Rs 25,000 crore",
+    "31 March 2027, or until guarantees worth Rs 2.55 lakh crore are issued, whichever is earlier",
+    "31 December 2026 only",
+    "31 March 2030, with no cap on guarantees"
+   ],
+   "ans": 1,
+   "why": "The Cabinet approved ECLGS 5.0 on 5 May 2026. Scheduled passenger airlines get a 90% guarantee, with additional credit up to Rs 1,500 crore per borrower.",
+   "insight": "ECLGS is run through the National Credit Guarantee Trustee Company (NCGTC) via lending institutions.",
+   "src": {
+    "name": "PIB, Cabinet",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2258114&reg=3&lang=1",
+    "date": "5 May 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-012",
+   "subject": "Economy",
+   "syllabus": "Monetary policy",
+   "exam": "pre",
+   "q": "The RBI ran Variable Rate Reverse Repo (VRRR) auctions in September 2026. VRRR is used to:",
+   "opts": [
+    "Raise the cash reserve ratio automatically",
+    "Buy foreign currency from banks",
+    "Absorb excess liquidity from the banking system",
+    "Inject liquidity against government securities"
+   ],
+   "ans": 2,
+   "why": "In a reverse repo the RBI borrows money from banks, taking surplus liquidity out of the system. In the VRRR the rate is set by auction, and the cut-off rate was 5.24% in September 2026.",
+   "insight": "The fixed-rate tools are the SDF (floor of the corridor) and the repo rate.",
+   "src": {
+    "name": "RBI",
+    "url": "https://rbidocs.rbi.org.in/rdocs/PressRelease/PDFs/PR115246DA30543B154488855F285E6B9378A8.PDF",
+    "date": "21 Sep 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-013",
+   "subject": "Economy",
+   "syllabus": "Trade policy",
+   "exam": "pre",
+   "q": "The Districts as Export Hubs (DEH) initiative, led by DGFT, is best described as:",
+   "opts": [
+    "A new scheme giving each district a fixed grant for exports",
+    "An initiative to set up special economic zones in every district",
+    "A WTO agreement on district-level trade",
+    "A convergence framework that draws on existing schemes, grown from One District One Product (ODOP)"
+   ],
+   "ans": 3,
+   "why": "DEH makes each district a unit of export planning. District Export Promotion Committees prepare action plans and act as a forum for exporters' grievances.",
+   "insight": "DGFT works under the Ministry of Commerce and Industry.",
+   "src": {
+    "name": "PIB, DGFT",
+    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2244401&reg=3&lang=1",
+    "date": "24 Mar 2026"
+   },
+   "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-014",
+   "subject": "IR",
+   "syllabus": "International indices",
+   "exam": "pre",
+   "q": "In the World Economic Forum's Global Gender Gap Index 2026, India's rank and score were:",
+   "opts": [
+    "131st among 145 economies, with 64.5% of the gap closed",
+    "99th among 145 economies, with 72.1% closed",
+    "131st among 120 economies, with 64.5% closed",
+    "145th among 145 economies, with 50% closed"
+   ],
+   "ans": 0,
+   "why": "India retained its 131st position with 64.5% parity. Iceland ranked first for the 17th year. The global gap is 69.2% closed.",
+   "insight": "The Index measures four areas: economic participation, educational attainment, health and survival, and political empowerment.",
+   "src": {
+    "name": "World Economic Forum",
+    "url": "https://www.weforum.org/publications/global-gender-gap-report-2026/digest/",
+    "date": "2026"
+   },
+   "checked": "30 Oct 2026"
+  }
+ ]
+}
