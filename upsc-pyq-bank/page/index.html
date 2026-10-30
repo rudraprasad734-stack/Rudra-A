@@ -19041,7 +19041,25 @@ function caqHost(){
   if(!h){ h = document.createElement("div"); h.id = "caqGame"; h.className = "caq"; h.setAttribute("role", "region"); h.setAttribute("aria-label", "Current Affairs Quizzes"); document.body.appendChild(h); }
   return h;
 }
-function caqHide(){ var h = document.getElementById("caqGame"); if(h) h.style.display = "none"; document.body.classList.remove("caq-on"); }
+var caqHist = false;   // true while the phone's Back button has an entry that belongs to the quiz game
+function caqHide(){
+  var h = document.getElementById("caqGame"); if(h) h.style.display = "none"; document.body.classList.remove("caq-on");
+  if(caqHist){ caqHist = false; try{ history.back(); }catch(e){} }
+}
+// one step back inside the game: close a sheet, leave a quiz for its road, leave a road for the map. False when already on the map.
+function caqBackStep(){
+  var u = caq.ui, r = u.run;
+  if(document.querySelector(".modal-back")){ closeModal(); return true; }
+  if(u.sheet){ u.sheet = null; renderCaQuiz(); return true; }
+  if(r){ if(r.done) caqRunClear(); else caqRunSave(); u.screen = r.key ? "road" : "map"; if(r.key) u.subj = caqSubjIndex(r.key); u.run = null; renderCaQuiz(); return true; }
+  if(u.screen==="road"){ u.screen = "map"; renderCaQuiz(); return true; }
+  return false;
+}
+window.addEventListener("popstate", function(){
+  if(!caqHist) return;
+  caqHist = false;
+  if(caqBackStep()){ try{ history.pushState({caq:1}, ""); caqHist = true; }catch(e){} } else setTab("dashboard");
+});
 function caqHud(l, c, r, over){ return '<div class="cg-hud'+(over ? " over" : "")+'">'+l+'<div class="cg-c">'+c+'</div>'+(r || '<span class="cg-sp"></span>')+'</div>'; }
 function caqBtn(a, label, txt, extra){ return '<button type="button" class="cg-x" data-caq="'+a+'" aria-label="'+label+'"'+(extra || "")+'>'+txt+'</button>'; }
 
@@ -19156,6 +19174,7 @@ function caqRoadInit(host, fresh, keepTop){
 }
 function renderCaQuiz(){
   var host = caqHost(); host.style.display = "flex"; document.body.classList.add("caq-on");
+  if(!caqHist){ try{ history.pushState({caq:1}, ""); caqHist = true; }catch(e){} }
   if(!caq.loaded){
     host.innerHTML = caqHud(caqBtn("exit", "Close", "✕"), "Current Affairs Quizzes")+'<div class="cg-body"><div class="card empty" role="status">'+(caq.err ? esc(caq.err) : "Loading the quizzes&hellip;")+'</div></div>';
     if(!caq.loading) caqLoad(function(){ if(activeTab==="caquiz") renderCaQuiz(); });
@@ -21419,7 +21438,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "286";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "287";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
