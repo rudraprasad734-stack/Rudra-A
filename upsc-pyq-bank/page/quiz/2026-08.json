@@ -1,0 +1,358 @@
+{
+ "month": "2026-08",
+ "updated": "2026-10-31",
+ "questions": [
+  {
+   "id": "caq-2026-08-001",
+   "subject": "Polity & Governance",
+   "syllabus": "Governance",
+   "exam": "pre",
+   "q": "With reference to the Centralised Public Grievance Redress and Monitoring System (CPGRAMS), consider the following statements:\n1. It does not allow citizens to appeal or give feedback on how a grievance was disposed of.\n2. It is an online platform for citizens to lodge and track grievances against government organisations.\n3. The Department of Administrative Reforms and Public Grievances is its nodal department.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "It has an appeal mechanism and feedback and satisfaction monitoring, and each grievance gets a unique registration number for tracking. DARPG works under the Ministry of Personnel, Public Grievances and Pensions.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-08-002",
+   "subject": "Polity & Governance",
+   "syllabus": "Governance",
+   "exam": "pre",
+   "q": "The Department of Administrative Reforms and Public Grievances (DARPG) functions under which one of the following Ministries?",
+   "opts": [
+    "Ministry of Home Affairs, Department of Internal Security",
+    "Ministry of Personnel, Public Grievances and Pensions",
+    "Ministry of Law and Justice, Department of Legal Affairs",
+    "Ministry of Finance, Department of Expenditure and Revenue"
+   ],
+   "ans": 1,
+   "why": "DARPG is responsible for administrative reforms and public grievance redressal and is the nodal department for CPGRAMS.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-08-003",
+   "subject": "Economy",
+   "syllabus": "Energy",
+   "exam": "pre",
+   "q": "With reference to India's non-fossil fuel power capacity, consider the following statements:\n1. India has reached 300 GW of non-fossil fuel power capacity.\n2. Nuclear power is counted as a renewable source of energy.\n3. India's target is 500 GW of non-fossil capacity by 2030.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "Nuclear power is non-fossil but not renewable. India has also committed to 50% of cumulative installed electricity capacity from non-fossil sources by 2030 and to cutting the emissions intensity of GDP by 45% from 2005 levels.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-08-004",
+   "subject": "Economy",
+   "syllabus": "Energy",
+   "exam": "pre",
+   "q": "With reference to India's 2030 climate and energy commitments, consider the following:\n1. 500 GW of non-fossil fuel installed electricity capacity\n2. 50% of cumulative installed electricity capacity from non-fossil sources\n3. A 45% reduction in the emissions intensity of GDP from the 2005 level\n4. A 45% reduction in absolute carbon emissions from the 2005 level\nHow many of the above of the above are commitments of India for 2030?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 2,
+   "why": "India's target is on emissions intensity of GDP, not on absolute emissions.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-08-005",
+   "subject": "IR",
+   "syllabus": "Defence cooperation",
+   "exam": "pre",
+   "q": "The India-US Explosive Ordnance Disposal exercise of August 2026 was conducted at which one of the following places?",
+   "opts": [
+    "Southern Naval Command, Kochi",
+    "Eastern Naval Command, Visakhapatnam",
+    "Western Naval Command, Mumbai",
+    "Andaman and Nicobar Command, Port Blair"
+   ],
+   "ans": 0,
+   "why": "The exercise brings together EOD teams of the two navies to share procedures and improve interoperability. EOD covers detection, identification, neutralisation and disposal of explosive threats.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-08-006",
+   "subject": "Polity & Governance",
+   "syllabus": "Health policy",
+   "exam": "pre",
+   "q": "With reference to the regulation of medicine prices in India, consider the following statements:\n1. The Drugs (Prices Control) Order, 2013 is the main framework for price regulation.\n2. The NPPA fixes ceiling prices for scheduled formulations.\n3. For non-scheduled formulations, manufacturers can increase the MRP by up to 10% over the preceding 12 months.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The NPPA was set up in 1997 under the Department of Pharmaceuticals, and scheduled medicines are drawn from the National List of Essential Medicines.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-08-007",
+   "subject": "Polity & Governance",
+   "syllabus": "Health policy",
+   "exam": "pre",
+   "q": "The National Pharmaceutical Pricing Authority (NPPA) functions under which one of the following?",
+   "opts": [
+    "Department of Health and Family Welfare",
+    "Department of Consumer Affairs",
+    "Department of Pharmaceuticals",
+    "Department of Health Research"
+   ],
+   "ans": 2,
+   "why": "It was established in 1997, fixes and revises prices of medicines under the DPCO, and monitors prices in the market.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-08-008",
+   "subject": "Environment",
+   "syllabus": "Wildlife",
+   "exam": "pre",
+   "q": "With reference to the Asian elephant and Project Elephant, consider the following statements:\n1. The Asian elephant (Elephas maximus) is listed as Endangered on the IUCN Red List.\n2. Project Elephant was launched in 1992 as a Centrally Sponsored Scheme.\n3. World Elephant Day is observed on 12 August.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. India has the largest population of Asian elephants, and Project Elephant is a scheme of the Ministry of Environment, Forest and Climate Change that protects elephants, habitats and corridors.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-08-009",
+   "subject": "Environment",
+   "syllabus": "Wildlife",
+   "exam": "pre",
+   "q": "With reference to the threats to elephant populations in India, consider the following statements:\n1. Fragmentation of habitats and loss of traditional corridors is a major threat\n2. Electrocution and railway collisions are among the threats\n3. Poaching of elephants is one of the concerns noted for the species\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The conservation approach increasingly stresses landscape-level protection of corridors and wildlife passages in infrastructure projects.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-08-010",
+   "subject": "Polity & Governance",
+   "syllabus": "Women and child welfare",
+   "exam": "pre",
+   "q": "With reference to the Palna scheme and Anganwadi-cum-Creches, consider the following statements:\n1. Mission Shakti has the components Sambal for empowerment and Samarthya for safety.\n2. Palna is a component of Mission Shakti.\n3. Anganwadi-cum-Creches provide day-care for children of working women.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "Sambal is for the safety and security of women and Samarthya is for their empowerment. Anganwadi-cum-Creches use the existing Anganwadi centres, with care, nutrition and early stimulation.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-08-011",
+   "subject": "Economy",
+   "syllabus": "Industry",
+   "exam": "pre",
+   "q": "With reference to the electric vehicle ecosystem in India, consider the following statements:\n1. The Production Linked Incentive scheme supports domestic manufacturing of Advanced Chemistry Cell batteries.\n2. Battery swapping lets users exchange a discharged battery for a charged one.\n3. The PM e-Bus Sewa promotes electric buses for public transport.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The Ministry of Heavy Industries is the nodal ministry, and its schemes cover EV manufacturing, charging infrastructure and batteries.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-08-012",
+   "subject": "Economy",
+   "syllabus": "Industry",
+   "exam": "pre",
+   "q": "With reference to types of electric vehicles, consider the following:\n1. Battery Electric Vehicles\n2. Plug-in Hybrid Electric Vehicles\n3. Hybrid Electric Vehicles\n4. Fuel Cell Electric Vehicles\nHow many of the above of the above are categories of electric vehicles referred to in the policy discussion?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 3,
+   "why": "All four are used. BEVs are fully electric and FCEVs use fuel cells that run on hydrogen.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-08-013",
+   "subject": "Polity & Governance",
+   "syllabus": "Tribal rights",
+   "exam": "pre",
+   "q": "With reference to the Forest Rights Act, 2006, consider the following statements:\n1. It recognises the rights of forest-dwelling Scheduled Tribes and Other Traditional Forest Dwellers.\n2. Other Traditional Forest Dwellers must have lived in the forest for at least three generations (75 years) before 13 December 2005.\n3. The Gram Sabha has no role in the process of claims under the Act.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The Gram Sabha is the central authority that initiates the claims process. The Act recognises individual forest rights, community forest resource rights and rights over minor forest produce.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-08-014",
+   "subject": "Polity & Governance",
+   "syllabus": "Tribal rights",
+   "exam": "pre",
+   "q": "With reference to the rights recognised under the Forest Rights Act, 2006, consider the following statements:\n1. Community Forest Resource rights allow the Gram Sabha to manage and protect forest resources.\n2. The Act applies only to the Fifth Schedule areas.\n3. Rights over minor forest produce include ownership, collection, use and disposal.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "The Act applies across forest areas and is not limited to Fifth Schedule areas. PESA, 1996 separately empowers Gram Sabhas in Scheduled Areas.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-08-015",
+   "subject": "Sci & Tech",
+   "syllabus": "Space",
+   "exam": "pre",
+   "q": "With reference to the public-private partnership model for Earth observation satellite constellations, consider the following statements:\n1. The model relies only on a single government-owned large satellite.\n2. Multiple satellites in a constellation give a higher revisit frequency.\n3. IN-SPACe is expected to act as a facilitator of private participation.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The model encourages constellations rather than single satellites. Data can serve governance, agriculture, disaster management and forest monitoring.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-08-016",
+   "subject": "Economy",
+   "syllabus": "Agriculture",
+   "exam": "pre",
+   "q": "With reference to the Government's measures on sugar in August 2026, consider the following statements:\n1. A stock limit of 400 tonnes was imposed on dealers.\n2. Bulk consumers were restricted to stocks equal to 15 days of consumption.\n3. Duty-free import of 10 lakh metric tonnes of raw sugar was allowed.\n4. Ethanol diversion is stated to be the only cause of the price rise.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1, 2 and 3 only",
+    "1 and 3 only",
+    "2, 3 and 4 only",
+    "1, 2, 3 and 4"
+   ],
+   "ans": 0,
+   "why": "The price rise is attributed to lower domestic production, festive demand, crop damage and global supply tightening, so ethanol diversion is not the sole cause. The share of sugar diverted to ethanol fell from about 12% in 2022-23 to about 9%.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-08-017",
+   "subject": "Economy",
+   "syllabus": "Agriculture",
+   "exam": "pre",
+   "q": "With reference to sugar production in India, consider the following statements:\n1. Sugar production for the current season is estimated at 306 lakh metric tonnes, above the initial estimate.\n2. India normally produces about 320-340 lakh metric tonnes of sugar a year.\n3. Domestic consumption is about 280-290 lakh metric tonnes a year.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The estimate of 306 lakh metric tonnes is below the initial estimate of about 343 lakh metric tonnes. Early crushing from 15 October is expected to support production, and about 97% of sugarcane dues for 2025-26 had been paid by 20 August.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-08-018",
+   "subject": "IR",
+   "syllabus": "Multilateral lending",
+   "exam": "pre",
+   "q": "With reference to the Asian Development Bank project for Chennai, consider the following statements:\n1. It covers over 170 km of water-supply and sewer pipes.\n2. It includes 7 water pumping stations and 38 sewer stations.\n3. It uses a ring-main water supply system, which is a closed-loop network improving pressure balance.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The project is aligned with AMRUT 2.0 and the Urban Challenge Fund and is meant to make Chennai's water infrastructure climate-resilient.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-08-019",
+   "subject": "Polity & Governance",
+   "syllabus": "Statistics",
+   "exam": "pre",
+   "q": "With reference to the Periodic Labour Force Survey (PLFS), consider the following statements:\n1. It is conducted by the National Statistical Office under the Ministry of Statistics and Programme Implementation.\n2. It was introduced in 2017.\n3. It uses a rotational panel sampling approach in urban areas to improve the frequency of estimates.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. It reports indicators such as the Labour Force Participation Rate, Worker Population Ratio and Unemployment Rate, and replaced the quinquennial employment-unemployment surveys of the NSS.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-08-020",
+   "subject": "Polity & Governance",
+   "syllabus": "Statistics",
+   "exam": "pre",
+   "q": "With reference to the indicators reported by the Periodic Labour Force Survey, consider the following:\n1. Labour Force Participation Rate\n2. Worker Population Ratio\n3. Unemployment Rate\n4. Gross Domestic Product at market prices\nHow many of the above of the above are indicators reported by the PLFS?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 2,
+   "why": "GDP is estimated by the National Statistical Office from national accounts data and not by PLFS.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-08-021",
+   "subject": "Polity & Governance",
+   "syllabus": "Skilling",
+   "exam": "pre",
+   "q": "The scheme NAVYA, under which girls are trained, focuses on which one of the following age groups?",
+   "opts": [
+    "Girls aged 16 to 18 years",
+    "Girls aged 12 to 14 years",
+    "Girls aged 19 to 24 years",
+    "Women aged 25 to 35 years"
+   ],
+   "ans": 0,
+   "why": "It seeks to improve the employability of adolescent girls through skilling.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-08-022",
+   "subject": "Economy",
+   "syllabus": "Industry",
+   "exam": "pre",
+   "q": "The Indian Institutes of Handloom Technology (IIHTs) are mainly institutions for which one of the following?",
+   "opts": [
+    "Export promotion of cotton textiles and garments",
+    "Technical education and training in handloom",
+    "Credit support to weavers' cooperative societies",
+    "Marketing and retail of khadi products in India"
+   ],
+   "ans": 1,
+   "why": "IIHTs support research, design and technology in the handloom sector. IIHT SUTRA 2026 is a national conclave of these institutes.",
+   "insight": ""
+  }
+ ]
+}
