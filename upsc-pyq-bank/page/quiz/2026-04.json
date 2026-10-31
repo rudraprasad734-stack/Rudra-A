@@ -1,0 +1,2278 @@
+{
+ "month": "2026-04",
+ "updated": "2026-10-31",
+ "questions": [
+  {
+   "id": "caq-2026-04-001",
+   "subject": "Polity & Governance",
+   "syllabus": "Governance",
+   "exam": "pre",
+   "q": "With reference to the Jan Vishwas (Amendment of Provisions) Bill, 2026, consider the following statements:\n1. It proposes to amend 784 provisions of 79 Central Acts administered by 23 Ministries.\n2. It replaces imprisonment with civil penalties for over 1,000 minor offences.\n3. It provides that fines will be revised by 10% of the respective minimum amount every three years.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. The 2023 Act decriminalised 183 provisions across 42 Central laws, and the new Bill uses a graduated response of advisory, then warning, then civil penalty.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-002",
+   "subject": "Polity & Governance",
+   "syllabus": "Governance",
+   "exam": "pre",
+   "q": "With reference to trust-based governance, consider the following statements:\n1. India's regulatory framework has 1,536 laws with 69,233 compliances.\n2. Self-certification of documents instead of affidavits was introduced in 2014.\n3. The approach relies mainly on punitive enforcement to build compliance.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "It encourages cooperation and voluntary compliance rather than excessive control and coercion. Challenges include weak deterrence for serious violations and a digital divide where only 24% of rural households have internet access against 66% in cities.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-003",
+   "subject": "Polity & Governance",
+   "syllabus": "Census",
+   "exam": "pre",
+   "q": "With reference to Census 2027, consider the following statements:\n1. It will be India's first fully digital census.\n2. Phase I (Houselisting and Housing Census) runs from April to September 2026 and Phase II (Population Enumeration) is in February 2027.\n3. Comprehensive caste enumeration will take place in the second phase.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. It will be the 16th census in India's history and the 8th since independence, with self-enumeration in 16 languages.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-004",
+   "subject": "Polity & Governance",
+   "syllabus": "Census",
+   "exam": "pre",
+   "q": "With reference to the census in India, consider the following statements:\n1. Census is a subject in the State List.\n2. The first synchronous nationwide census was conducted in 1881.\n3. The census is conducted under the Census Act, 1948 and the Census Rules, 1990.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "Census is Entry 69 of the Union List. It is conducted by the Office of the Registrar General and Census Commissioner under the Ministry of Home Affairs, and caste has not been fully enumerated since 1931.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-005",
+   "subject": "Polity & Governance",
+   "syllabus": "Parliament",
+   "exam": "pre",
+   "q": "With reference to the Constitution (131st Amendment) Bill, 2026, consider the following statements:\n1. It proposed to raise the strength of the Lok Sabha from 543 to 850.\n2. It was passed by the Lok Sabha with the required special majority.\n3. It proposed to amend Article 334A to implement one-third women's reservation immediately after delimitation.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "It was defeated as it failed to secure the two-thirds majority needed, and the Delimitation Bill 2026 and the Union Territories Laws (Amendment) Bill 2026 were then withdrawn. It also sought to delete the third proviso of Article 82.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-006",
+   "subject": "Polity & Governance",
+   "syllabus": "Parliament",
+   "exam": "pre",
+   "q": "With reference to the Delimitation Bill, 2026, consider the following statements:\n1. It aimed to repeal and replace the Delimitation Act, 2002.\n2. The Delimitation Commission was to be chaired by a person who is or has been a Judge of the Supreme Court.\n3. It provided that delimitation would use the 2027 Census.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "It specified that delimitation would use the latest published census at the time of the Commission's formation, meaning the 2011 Census. Opponents feared reduced representation for southern and north-eastern States.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-007",
+   "subject": "Polity & Governance",
+   "syllabus": "Digital governance",
+   "exam": "pre",
+   "q": "With reference to the Promotion and Regulation of Online Gaming Rules, 2026, consider the following statements:\n1. Aggrieved users can appeal first to the service provider's internal grievance system and then to an Appellate Authority.\n2. The Online Gaming Authority of India is an attached office of MeitY with six members chaired by an Additional Secretary.\n3. Registration of online games is mandatory for all games.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "Registration is mandatory only for notified online games and for all e-sports offerings. The Appellate Authority is the Secretary, MeitY, and each level aims to resolve a matter within 30 days.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-008",
+   "subject": "Polity & Governance",
+   "syllabus": "Parliament",
+   "exam": "pre",
+   "q": "With reference to the Deputy Chairman of the Rajya Sabha, consider the following statements:\n1. Under Article 89 the Deputy Chairman is elected by the Rajya Sabha from among its members.\n2. The Deputy Chairman is appointed by the President.\n3. The Deputy Chairman performs the duties of the Chairman's office when it is vacant.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "The Deputy Chairman is elected by the House itself. A nominated member was elected to the post for the third consecutive term for the first time.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-009",
+   "subject": "Polity & Governance",
+   "syllabus": "Judiciary",
+   "exam": "pre",
+   "q": "With reference to the removal of judges, consider the following statements:\n1. Articles 124 and 218 provide for removal of Supreme Court and High Court judges respectively.\n2. A motion needs the signatures of 100 members in the Lok Sabha or 50 in the Rajya Sabha.\n3. If a three-member committee finds the judge guilty, the removal motion is passed by a simple majority.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Removal needs a special majority of both Houses, and the President then passes the order. The process is regulated by the Judges (Inquiry) Act, 1968, and no judge has been impeached so far.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-010",
+   "subject": "Polity & Governance",
+   "syllabus": "Judiciary",
+   "exam": "pre",
+   "q": "The recusal of judges in India is governed by which one of the following?",
+   "opts": [
+    "Rule against bias, not codified",
+    "The Judges (Inquiry) Act, 1968",
+    "Article 124 of the Constitution",
+    "A code framed by the Law Commission"
+   ],
+   "ans": 0,
+   "why": "It is a judge's withdrawal from a case due to a conflict of interest or perceived bias. Precedents include Ranjit Thakur v. Union of India (1987).",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-011",
+   "subject": "Polity & Governance",
+   "syllabus": "Parliament",
+   "exam": "pre",
+   "q": "With reference to the Commonwealth Parliamentary Association (CPA), consider the following statements:\n1. It was founded in 1911 and is headquartered in London.\n2. It has 180 national, state or provincial legislatures divided into 9 regions.\n3. Its key publication is The Parliamentarian.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. Its objective is the advancement of parliamentary democracy and good governance.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-012",
+   "subject": "Polity & Governance",
+   "syllabus": "Education",
+   "exam": "pre",
+   "q": "With reference to the NCERT, consider the following statements:\n1. It was set up in 1961 as an autonomous organisation under the Ministry of Education.\n2. The Government has declared it a deemed-to-be university.\n3. A deemed university is declared by the Central Government on the advice of the UGC.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. Under NEP 2020, NCERT is the nodal agency for the National Curriculum Frameworks for ECCE, school education and adult education.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-013",
+   "subject": "Sci & Tech",
+   "syllabus": "Artificial intelligence",
+   "exam": "pre",
+   "q": "With reference to the AI Governance and Economic Group (AIGEG), consider the following statements:\n1. It is a 10-member inter-ministerial body constituted by MeitY.\n2. The Minister of Electronics and IT is the Chairperson.\n3. It is supported by a Technology and Policy Expert Committee.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. India's AI Governance Guidelines have seven sutras: trust, people-centricity, responsible innovation, equity, accountability, understandability, and safety, resilience and sustainability.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-014",
+   "subject": "IR",
+   "syllabus": "Neighbourhood",
+   "exam": "pre",
+   "q": "With reference to India-Nepal relations, consider the following statements:\n1. The border is 1,751 km long and runs across 5 Indian States.\n2. India is Nepal's largest export destination.\n3. The Motihari-Amlekhgunj pipeline was the first cross-border petroleum pipeline in South Asia, completed in 2019.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The India-Nepal Treaty of Peace and Friendship was signed in 1950, and Nepal started accepting UPI payments in March 2024.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-015",
+   "subject": "IR",
+   "syllabus": "Neighbourhood",
+   "exam": "pre",
+   "q": "With reference to the issues in India-Nepal relations, consider the following statements:\n1. Nepal joined the Belt and Road Initiative in 2010.\n2. In 2020 Nepal released a new political map claiming Kalapani, Limpiyadhura and Lipulekh.\n3. Nepal bases its claim on the Treaty of Sugauli of 1816, citing the Mahakali River.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "Nepal joined China's BRI in 2017 after the 2015 trade blockade. Nepal suspended recruitment of Gorkhas under the Agnipath framework, and the Gorkha Regiment has about 32,000 Nepali soldiers.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-016",
+   "subject": "IR",
+   "syllabus": "Neighbourhood",
+   "exam": "pre",
+   "q": "With reference to cooperation between India and Nepal, consider the following statements:\n1. Under the power trade agreement of 2024 Nepal is to export 10,000 MW of hydroelectricity to India over 10 years.\n2. The Surya Kiran is a joint naval exercise.\n3. Jayanagar-Bijalpura-Bardibas is Nepal's first broad-gauge line.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "Surya Kiran is a joint military exercise of the armies. Integrated Check Posts are at Birgunj, Biratnagar, Nepalgunj and Bhairahawa, and agreements on the Kosi (1954) and Gandak (1959) rivers exist.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-017",
+   "subject": "IR",
+   "syllabus": "Indian Ocean",
+   "exam": "pre",
+   "q": "With reference to the Indian Ocean Conference (IOC), consider the following statements:\n1. It was started in 2016 by the India Foundation.\n2. The 9th conference in 2026 was held in Mauritius.\n3. Its 2026 theme was 'Collective Stewardship for Indian Ocean Governance'.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. The conference deliberates on cooperation for SAGAR.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-018",
+   "subject": "IR",
+   "syllabus": "Indian Ocean",
+   "exam": "pre",
+   "q": "With reference to the Indian Ocean Region (IOR), consider the following statements:\n1. It has about 36 countries and accounts for 35% of the global population.\n2. Nearly 95% of India's trade by volume and 68% by value moves by sea.\n3. India's Exclusive Economic Zone in the IOR is about 2.4 million sq. km.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The IOR carries about 30% of container traffic and 42% of crude oil, and undersea cables carry over 95% of global data.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-019",
+   "subject": "IR",
+   "syllabus": "Indian Ocean",
+   "exam": "pre",
+   "q": "With reference to India's approach in the Indian Ocean Region, consider the following statements:\n1. MAHASAGAR expands the scope of SAGAR to goals beyond the region.\n2. The Information Fusion Centre-Indian Ocean Region enables real-time maritime information sharing.\n3. Operation Sagarbandhu was an India-led relief effort in Sri Lanka after Cyclone Ditwah.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. AIKEYME means Africa India Key Maritime Engagement, and the Indian Navy's Maritime Security Strategy was released in April 2026.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-020",
+   "subject": "IR",
+   "syllabus": "Defence",
+   "exam": "pre",
+   "q": "With reference to the Reciprocal Exchange of Logistic Support (RELOS) pact, consider the following statements:\n1. It was signed between India and Russia and has become operational.\n2. It allows stationing of up to 3,000 troops, 5 warships and 10 aircraft in each other's territory for 5 years.\n3. It gives Russia exclusive access to Indian bases.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "It enables reciprocal use of military bases, ports and air facilities, including Arctic access for India. It covers logistics support, joint exercises, training and humanitarian missions.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-021",
+   "subject": "IR",
+   "syllabus": "Global South",
+   "exam": "pre",
+   "q": "With reference to the United Nations Development Partnership Fund (UNDPF), consider the following statements:\n1. It was launched in 2017 with USD 150 million led by India.\n2. It supports the Global South to achieve the SDGs.\n3. It is managed by the UN Office for South-South Cooperation.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. It focuses on Least Developed Countries and Small Island Developing States, and its projects are demand-driven and country-led.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-022",
+   "subject": "Geography",
+   "syllabus": "Seas and straits",
+   "exam": "pre",
+   "q": "With reference to the Red Sea, consider the following statements:\n1. Several large rivers drain into it.\n2. It is connected to the Gulf of Aden through the Bab-el-Mandeb Strait.\n3. It is connected to the Mediterranean Sea through the Suez Canal.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "It receives very little precipitation and no water enters from rivers. It is a fiord-type marginal sea.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-023",
+   "subject": "Geography",
+   "syllabus": "Seas and straits",
+   "exam": "pre",
+   "q": "With reference to places in the news, consider the following statements:\n1. Qeshm Island is the largest island in the Persian Gulf, near Bandar Abbas.\n2. The Scarborough Shoal is an atoll in the South China Sea claimed by China and the Philippines.\n3. The Ust-Luga port of Russia is located in the Gulf of Finland.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. Other disputed features in the South China Sea include the Paracel and Spratly islands.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-024",
+   "subject": "Geography",
+   "syllabus": "Seas and straits",
+   "exam": "pre",
+   "q": "With reference to the Strait of Malacca, consider the following statements:\n1. It connects the Andaman Sea and the South China Sea.\n2. It carries nearly 22% of the world's maritime trade.\n3. Its narrowest point is the Phillips Channel of the Singapore Strait.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. It is bounded by Indonesia, Thailand, Malaysia and Singapore and is the shortest sea route from East Asia to the Middle East and Europe.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-025",
+   "subject": "Geography",
+   "syllabus": "Islands",
+   "exam": "pre",
+   "q": "The Canary Islands, where INS Sudarshini made its first visit by an Indian naval ship, are an autonomous region of which one of the following?",
+   "opts": [
+    "Spain",
+    "Portugal",
+    "Morocco",
+    "France"
+   ],
+   "ans": 0,
+   "why": "The volcanic archipelago lies in the Atlantic Ocean about 100 km off the north-west coast of Africa, and Mount Teide is Spain's highest peak.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-026",
+   "subject": "Economy",
+   "syllabus": "Hydropower",
+   "exam": "pre",
+   "q": "With reference to the Punatsangchhu-II Hydroelectric Project, consider the following statements:\n1. It is a 1,020 MW run-of-the-river project in Bhutan.\n2. The Punatsangchhu is a tributary of the Ganga.\n3. India and Bhutan signed its tariff protocol.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "The Punatsangchhu is a tributary of the Brahmaputra. It forms from the confluence of the Phochhu and Mochhu rivers in Bhutan.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-027",
+   "subject": "IR",
+   "syllabus": "Maritime security",
+   "exam": "pre",
+   "q": "With reference to Operation Urja Suraksha and ASEAN, consider the following statements:\n1. Operation Urja Suraksha was launched by the Indian Navy to escort India-bound energy shipments through the Strait of Hormuz.\n2. Timor-Leste acceded to ASEAN in 2025.\n3. The Chiang Mai Initiative Multilateralisation is a safety net for ASEAN+3 economies.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. The Digital Economy Framework Agreement is an example of a coalition of smaller economies to speed digital transformation.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-028",
+   "subject": "Economy",
+   "syllabus": "Agriculture",
+   "exam": "pre",
+   "q": "With reference to Indian agriculture as highlighted in the news, consider the following statements:\n1. India recorded foodgrain output of 357.73 million tonnes in 2024-25.\n2. Agriculture and allied activities account for nearly one-fifth of India's gross value added at current prices.\n3. The budget allocation for the Department of Agriculture was cut in 2026-27.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The allocation rose substantially to Rs 1,30,561.38 crore in 2026-27. Government schemes include the Mission for Aatmanirbharta in Pulses (2025-31) and the National Mission on Edible Oils.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-029",
+   "subject": "Economy",
+   "syllabus": "Insolvency",
+   "exam": "pre",
+   "q": "With reference to the Insolvency and Bankruptcy Code (Amendment) Act, 2026, consider the following statements:\n1. It treats government dues like taxes as secured creditors for distribution priority.\n2. It introduces a Creditor-Initiated Insolvency Resolution Process as an out-of-court mechanism for select financial institutions.\n3. It provides an enabling framework for cross-border and group insolvency.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The Act clarifies that government dues are not treated as secured creditors for distribution priority. It also reinforces the clean-slate principle after approval of a resolution plan.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-030",
+   "subject": "Economy",
+   "syllabus": "Insolvency",
+   "exam": "pre",
+   "q": "With reference to the timelines in the IBC (Amendment) Act, 2026, consider the following statements:\n1. The NCLT must admit insolvency applications within 14 days of default.\n2. The NCLT must approve or reject resolution plans within 30 days.\n3. The NCLAT must dispose of appeals within 3 months.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The liquidation process must be completed within 180 days, extendable by a maximum of 90 days.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-031",
+   "subject": "Economy",
+   "syllabus": "Insolvency",
+   "exam": "pre",
+   "q": "With reference to the Insolvency and Bankruptcy Code, 2016 and its amendments, consider the following statements:\n1. It established the Insolvency and Bankruptcy Board of India.\n2. The 2020 Second Amendment permanently abolished the corporate insolvency process.\n3. The 2019 Amendment set a 330-day limit for completing the corporate insolvency resolution process.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "The 2020 Second Amendment temporarily suspended the initiation of CIRP during the pandemic. The IBC has resolved 1,376 companies with recovery of Rs 4.11 lakh crore, and PSB gross NPAs fell from about 14.58% in 2016 to 2.3% in 2025.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-032",
+   "subject": "Polity & Governance",
+   "syllabus": "Labour",
+   "exam": "pre",
+   "q": "With reference to the Telangana Platform-Based Gig Workers Act, 2026, consider the following statements:\n1. Telangana became the fifth State to adopt such legislation after Rajasthan, Karnataka, Jharkhand and Bihar.\n2. A Social Security and Welfare Fund is to be financed through a 1-2% levy on platform transaction values.\n3. Every aggregator platform with at least 100 workers must set up an internal dispute resolution committee.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. Every worker gets a unique identification number, and arbitrary rate cuts attract penalties.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-033",
+   "subject": "Polity & Governance",
+   "syllabus": "Labour",
+   "exam": "pre",
+   "q": "With reference to gig workers in India, consider the following statements:\n1. The Code on Social Security, 2020 defines a gig worker as a person working outside a traditional employer-employee relationship.\n2. Gig workers rose from 77 lakh in FY21 to 120 lakh in FY25.\n3. Gig workers account for more than 10% of the total workforce in FY25.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Their share of the workforce was just over 2% in FY25. Under the Code, benefits need 90 days on one platform or 120 days across several, and Rajasthan passed the first State Act in 2023.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-034",
+   "subject": "Polity & Governance",
+   "syllabus": "Labour",
+   "exam": "pre",
+   "q": "With reference to schemes covering gig workers in India, consider the following statements:\n1. The e-Shram portal is a national database of unorganised workers including gig workers.\n2. Under PMSBY accident insurance cover of Rs 2 lakh per year is available to eligible registered unorganised workers.\n3. Ayushman Bharat PM-JAY provides health cover up to Rs 5 lakh per family, extended to gig workers registered on e-Shram for at least 90 days.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. NITI Aayog recommended a Platform India Initiative on the lines of Startup India.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-035",
+   "subject": "Economy",
+   "syllabus": "Payments",
+   "exam": "pre",
+   "q": "With reference to the RBI's Payments Vision 2028, consider the following statements:\n1. It proposes a switch on and switch off facility for digital payment modes.\n2. It proposes shared responsibility for fraud, making both the customer's bank and the beneficiary's bank jointly liable.\n3. It proposes a single-window application for cross-border payment authorisations.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. It also aims at full interoperability across TReDS platforms for MSMEs.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-036",
+   "subject": "Economy",
+   "syllabus": "Payments",
+   "exam": "pre",
+   "q": "With reference to the Unified Payments Interface (UPI), consider the following statements:\n1. UPI 123PAY is for low-value transactions on smartphones.\n2. It was launched in April 2016 by NPCI.\n3. UPI transactions rose from about 2 crore in 2016-17 to 24,162 crore in 2025-26.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "UPI 123PAY is an instant payment system for feature phone users, and UPI Lite handles low-value transactions. Banks on UPI rose from 44 to 703.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-037",
+   "subject": "Economy",
+   "syllabus": "Payments",
+   "exam": "pre",
+   "q": "With reference to the National Payments Corporation of India (NPCI), consider the following statements:\n1. It is a not-for-profit company under Section 8 of the Companies Act, 2013.\n2. It is an initiative of the RBI and the Indian Banks' Association.\n3. NPCI International Payments Limited was incorporated in 2020 to deploy RuPay and UPI outside India.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. NPCI offers IMPS, NACH, RuPay and AePS, and the Payment and Settlement Systems Act, 2007 gives the RBI statutory power over payment systems.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-038",
+   "subject": "Economy",
+   "syllabus": "Payments",
+   "exam": "pre",
+   "q": "With reference to the RBI's discussion paper on digital payment frauds, consider the following statements:\n1. It suggests a one-hour delay for transfers above Rs 10,000 during which the payer can cancel.\n2. Cyber fraud cases fell from 2.6 lakh in 2021 to 28 lakh in 2025.\n3. It suggests approval from a trusted person for high-value payments by senior citizens.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "Cases rose from about 2.6 lakh in 2021 to around 28 lakh in 2025, amounting to Rs 22,931 crore. In authorised push-payment frauds the victim themselves initiates the transaction.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-039",
+   "subject": "Economy",
+   "syllabus": "Industry",
+   "exam": "pre",
+   "q": "With reference to the Production Linked Incentive (PLI) Scheme, consider the following statements:\n1. It was launched in 2020 to give incentives based on incremental sales.\n2. It covers 14 strategic sectors with a total outlay of Rs 1.97 lakh crore.\n3. Cumulative investment under the PLI Scheme for Food Processing Industry surpassed Rs 9,000 crore against an initial commitment of Rs 7,000 crore.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. Of 165 approved applications under PLISFPI, 69 are from MSMEs, and India ranks 44th on the Economic Complexity Index.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-040",
+   "subject": "Economy",
+   "syllabus": "Industry",
+   "exam": "pre",
+   "q": "With reference to the constraints of the PLI schemes, consider the following statements:\n1. High investment thresholds exclude many small and medium enterprises.\n2. Capital-intensive plants generate fewer direct jobs than projected.\n3. The export basket has already shifted to high-complexity goods.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The export basket remains concentrated in low and mid-complexity goods like refined petroleum, diamonds and rice. The Parliamentary Standing Committee recommended extending PLI to labour-intensive sectors.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-041",
+   "subject": "Economy",
+   "syllabus": "Labour",
+   "exam": "pre",
+   "q": "With reference to the PLFS Annual Report 2025, consider the following statements:\n1. It is the first comprehensive report on a calendar-year survey period (January to December 2025).\n2. The Labour Force Participation Rate in usual status for persons aged 15 and above was 59.3%.\n3. The unemployment rate was 3.1% overall, with 4.8% in urban areas and 2.4% in rural areas.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The Worker Population Ratio was 57.4%, and youth unemployment fell to 9.9% from 10.3%.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-042",
+   "subject": "Economy",
+   "syllabus": "Labour",
+   "exam": "pre",
+   "q": "With reference to employment patterns in the PLFS Annual Report 2025, consider the following statements:\n1. The share of self-employment rose from 56.2% to 57.5%.\n2. Agriculture's share of employment fell from 44.8% to 43.0%.\n3. The share of regular wage and salaried employment rose from 22.4% to 23.6%.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The share of self-employment fell from 57.5% in 2024 to 56.2% in 2025. The NEET share was 24.9% for ages 15-59.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-043",
+   "subject": "Economy",
+   "syllabus": "Labour",
+   "exam": "pre",
+   "q": "With reference to the definitions used in the PLFS, consider the following statements:\n1. Usual status is determined on a reference period of the last 365 days.\n2. Current Weekly Status is determined on a reference period of the last 7 days.\n3. Subsidiary status requires some economic activity for at least 30 days in the year.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. The PLFS originated in 2017 and is conducted by the National Statistics Office.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-044",
+   "subject": "Polity & Governance",
+   "syllabus": "Labour",
+   "exam": "pre",
+   "q": "With reference to the labour codes, consider the following statements:\n1. 29 labour laws were consolidated into four Labour Codes.\n2. The layoff approval threshold was reduced from 300 to 100 workers.\n3. The Industrial Relations Code offers Fixed Term Employment and recognises a union with 51% membership as the negotiating union.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "The threshold was raised from 100 to 300 workers, making layoffs easier. The framework also needs a 14-day notice before a legal strike, and labour is on the Concurrent List.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-045",
+   "subject": "Economy",
+   "syllabus": "Agriculture",
+   "exam": "pre",
+   "q": "With reference to edible oils in India, consider the following statements:\n1. India imports about 56% of its edible oil needs.\n2. Over 70% of oilseeds are grown under rainfed conditions.\n3. The Seed Replacement Rate in oilseeds already exceeds the target of 80-85%.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The Seed Replacement Rate ranges from 25% for groundnut to 62% for rapeseed-mustard, well below the target. The effective customs duty on crude edible oils was raised from 5.5% to 16.5%.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-046",
+   "subject": "Economy",
+   "syllabus": "Agriculture",
+   "exam": "pre",
+   "q": "With reference to schemes for oilseeds, consider the following statements:\n1. The Committee recommended reducing MSP procurement of oilseeds from 25% to 10%.\n2. NMEO-OS is the National Mission on Edible Oils for Oilseeds.\n3. PM-AASHA allows procurement of oilseeds at MSP through central nodal agencies such as NAFED.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The Committee recommended expanding MSP procurement under PM-AASHA to 100% of national oilseed production from 25%. It also recommended a 'Bharat Oil' brand and a safeguard duty on palm oil.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-047",
+   "subject": "Polity & Governance",
+   "syllabus": "Judiciary",
+   "exam": "pre",
+   "q": "With reference to the Supreme Court's guidelines in Re: Phalodi Accident, consider the following statements:\n1. The Court recognised the right to a safe commuting environment as part of Article 21.\n2. National Highways make up about 30% of India's road length and contribute 2% of road fatalities.\n3. The Court used Article 142 to issue nationwide directions.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "National Highways are about 2% of road length but contribute nearly 30% of road fatalities. The Court banned new dhabas and commercial structures within the Right of Way.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-048",
+   "subject": "Polity & Governance",
+   "syllabus": "Road safety",
+   "exam": "pre",
+   "q": "With reference to the directions on road safety by the Supreme Court, consider the following statements:\n1. NHAI must deploy Basic Life Support ambulances and recovery cranes at intervals not exceeding 75 km.\n2. Highway Surveillance Teams must supplement NHAI's patrolling vehicles at intervals not exceeding 50 km.\n3. District Highway Safety Task Forces are to integrate district administration, police and highway authorities.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. Advanced Traffic Management Systems are mandatory on all National Highways and heavy vehicle parking is restricted to designated areas.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-049",
+   "subject": "Polity & Governance",
+   "syllabus": "Road safety",
+   "exam": "pre",
+   "q": "With reference to road safety in India, consider the following statements:\n1. The 4Es strategy covers Education, Engineering, Enforcement and Emergency care.\n2. The Motor Vehicles (Amendment) Act, 2019 holds road contractors accountable for bad design.\n3. The National Road Safety Strategy covers the period 2018 to 2030.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. Only about 25% comply with seat belts and about 50% wear helmets.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-050",
+   "subject": "Economy",
+   "syllabus": "Statistics",
+   "exam": "pre",
+   "q": "With reference to the Annual Survey of Incorporated Services Sector Enterprises (ASISSE), consider the following statements:\n1. It is launched by the National Statistics Office under MoSPI.\n2. It covers incorporated service enterprises registered under the Companies Act or the LLP Act, 2008.\n3. It uses the GSTN database and complements the ASI and ASUSE.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. About 1.21 lakh enterprises are surveyed with reference to FY 2024-25.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-051",
+   "subject": "Economy",
+   "syllabus": "Taxation",
+   "exam": "pre",
+   "q": "With reference to the Income Tax Act, 2025, consider the following statements:\n1. It replaces the Income Tax Act, 1961.\n2. The Act merges the Financial Year and Assessment Year into a single 'Tax Year'.\n3. It has increased the number of sections from 536 to 819.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The Act condenses the sections from 819 to 536 and forms from 390 to 190. Tax rates and regimes remain unchanged, and virtual digital assets are included in undisclosed income.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-052",
+   "subject": "Economy",
+   "syllabus": "Taxation",
+   "exam": "pre",
+   "q": "With reference to MAT, AMT and GAAR, consider the following statements:\n1. The provisions of MAT apply only to corporate taxpayers.\n2. The Alternate Minimum Tax has similar provisions for non-corporate taxpayers.\n3. Investments made before 1 April 2017 are excluded from GAAR.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. Grandfathering lets earlier investments continue under the old tax rules.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-053",
+   "subject": "Economy",
+   "syllabus": "Banking",
+   "exam": "pre",
+   "q": "With reference to Payments Banks in India, consider the following statements:\n1. They can freely give large corporate loans.\n2. They were recommended by the Nachiket Mor Committee in 2014.\n3. They require minimum paid-up capital of Rs 100 crore.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "Payments banks operate with minimal credit risk and mainly serve unbanked and underbanked people. They hold 75% funds in SLR securities and 25% with banks.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-054",
+   "subject": "Economy",
+   "syllabus": "Banking",
+   "exam": "pre",
+   "q": "With reference to the RBI's recent measures, consider the following statements:\n1. The RBI has barred banks from rupee Non-Deliverable Derivative contracts.\n2. Net Open Position is the difference between a bank's total deposits and loans.\n3. The RBI has capped banks' Net Open Position in the rupee at $100 million at the end of each business day.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "Net Open Position is the difference between a bank's foreign currency assets and liabilities. NDD contracts settle the difference in cash, usually in US dollars, and trade offshore.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-055",
+   "subject": "Economy",
+   "syllabus": "Banking",
+   "exam": "pre",
+   "q": "With reference to AT-1 bonds, consider the following statements:\n1. They are perpetual debt instruments with no maturity date.\n2. They can be converted to equity in a financial distress situation.\n3. They offer lower interest rates than traditional bonds.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "They offer higher interest rates because of their risk profile. They are issued by banks to strengthen their capital base.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-056",
+   "subject": "Economy",
+   "syllabus": "Finance",
+   "exam": "pre",
+   "q": "With reference to Credit Default Swaps and Ind AS, consider the following statements:\n1. Ind AS is implemented by the Ministry of Finance.\n2. A credit default swap works like insurance on bonds, where the buyer pays premiums and the seller pays on default.\n3. IRDAI introduced an Ind AS-based financial reporting framework for the insurance sector.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "Ind AS is implemented by the Ministry of Corporate Affairs and harmonises local practices with IFRS. The RBI notified FY 2026-27 limits for FPI investment in credit default swaps.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-057",
+   "subject": "Economy",
+   "syllabus": "Trade",
+   "exam": "pre",
+   "q": "With reference to the US duty on patented pharmaceuticals, consider the following statements:\n1. The US announced a 100% ad valorem duty on imports of patented pharmaceuticals.\n2. Generic drugs are not covered at present.\n3. The US accounts for almost 40% of India's pharmaceutical exports.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. An ad valorem duty is a percentage of the value of the goods, unlike a fixed duty based on weight or quantity.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-058",
+   "subject": "Economy",
+   "syllabus": "Startups",
+   "exam": "pre",
+   "q": "With reference to the Startup India Fund of Funds 2.0, consider the following statements:\n1. It has a total corpus of Rs 10,000 crore.\n2. SIDBI is its implementing agency.\n3. The Empowered Committee is chaired by the Secretary, DPIIT.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. It contributes to SEBI-registered AIFs, with segments for deep tech, micro VCs and tech-driven manufacturing startups.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-059",
+   "subject": "Economy",
+   "syllabus": "Infrastructure",
+   "exam": "pre",
+   "q": "With reference to the Dedicated Freight Corridors, consider the following statements:\n1. The Western DFC runs for 1,506 km from Dadri to JNPT.\n2. DFCCIL was established in 2016.\n3. The Eastern DFC runs from Ludhiana to Sonnagar for 1,337 km.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "DFCCIL was established in 2006 as an SPV under the Ministry of Railways. The DFCs were approved in 2008 and are fully electrified for trains of up to 100 km/h.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-060",
+   "subject": "Economy",
+   "syllabus": "Urban development",
+   "exam": "pre",
+   "q": "With reference to the Urban Challenge Fund (UCF), consider the following statements:\n1. It is a Centrally Sponsored Scheme with a fund of Rs 1 lakh crore to facilitate Rs 4 lakh crore of investment.\n2. 25% of project cost is from the fund and at least 50% is to be mobilised from market sources.\n3. Projects already funded under AMRUT 2.0 are eligible.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Projects already funded under AMRUT 2.0, SBM 2.0 or other CSS are not eligible. The Credit Repayment Guarantee Sub-Scheme gives a central guarantee of up to Rs 7 crore or 70% of the loan for first-time loans.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-061",
+   "subject": "Economy",
+   "syllabus": "Rural development",
+   "exam": "pre",
+   "q": "With reference to the Pradhan Mantri Gram Sadak Yojana (PMGSY), consider the following statements:\n1. It was launched on 25 December 2000.\n2. PMGSY-III has been extended up to March 2028.\n3. Phase IV aims to connect 25,000 previously unconnected habitations with 62,500 km of roads.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. Eligible habitations have 500 or more people in plains and 250 or more in special category regions.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-062",
+   "subject": "Economy",
+   "syllabus": "Reports",
+   "exam": "pre",
+   "q": "With reference to the World Inequality Lab report on land inequality in India, consider the following statements:\n1. Kerala has the lowest land inequality.\n2. The top 10% of rural households own 44% of the land area.\n3. Nearly 46% of rural households are landless.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "Kerala has the highest land Gini coefficient at 90, and Karnataka and Rajasthan the lowest (below 65). Areas formerly under the British zamindari system show higher inequality than princely states.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-063",
+   "subject": "IR",
+   "syllabus": "Global finance",
+   "exam": "pre",
+   "q": "With reference to the Borrowers' Platform launched at the IMF-World Bank Spring Meetings 2026, consider the following statements:\n1. It has 30 founding members including India.\n2. It is a forum for debt restructuring negotiations.\n3. Its secretariat is UNCTAD.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "It is not a debt restructuring forum, but a forum for peer learning, debt management and strengthening borrower voices. Egypt chairs it.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-064",
+   "subject": "IR",
+   "syllabus": "Global trade",
+   "exam": "pre",
+   "q": "With reference to the 14th WTO Ministerial Conference (MC14), consider the following statements:\n1. It concluded in Yaounde, Cameroon.\n2. India opposed an extension of the e-commerce moratorium on customs duties on electronic transmissions.\n3. India supported incorporating the Investment Facilitation for Development agreement into the WTO as an Annex 4 agreement.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "India opposed incorporating the IFD agreement as it may erode the WTO's consensus-based functioning. Ministers agreed to continue negotiations on fisheries subsidies to the MC15.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-065",
+   "subject": "IR",
+   "syllabus": "Global economy",
+   "exam": "pre",
+   "q": "With reference to economic reports in April 2026, consider the following statements:\n1. In the WEO, India is the fifth largest economy in nominal terms.\n2. UN ESCAP projects India to grow at 6.4% this year and 6.6% in 2027.\n3. The IMF's latest WEO upgraded India's FY27 growth forecast to 6.5%.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "India slipped to 6th place in nominal GDP, behind the USA, China, Germany, Japan and the UK. UN ESCAP is headquartered in Bangkok and was set up in 1947 as ECAFE.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-066",
+   "subject": "Economy",
+   "syllabus": "Prices",
+   "exam": "pre",
+   "q": "With reference to the FAO Food Price Index, consider the following statements:\n1. It tracks monthly changes in international prices of a basket of food commodities.\n2. Its base year is 2014-16.\n3. It includes cereals, vegetable oils, dairy, meat and sugar.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. It rose to 128.5 points in March 2026, driven by higher energy costs.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-067",
+   "subject": "Economy",
+   "syllabus": "Minerals",
+   "exam": "pre",
+   "q": "With reference to Khanij Bidesh India Ltd (KABIL), consider the following statements:\n1. It was established in 2019 as a joint venture of NALCO, Hindustan Copper and MECL.\n2. It has secured clearance for deep exploration of lithium blocks in Chile.\n3. It works under the Ministry of Mines.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "The clearance is for five lithium blocks in Argentina. Argentina, Bolivia and Chile, the Lithium Triangle, hold more than 75% of the world's lithium supply.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-068",
+   "subject": "Economy",
+   "syllabus": "Federal finance",
+   "exam": "pre",
+   "q": "With reference to the Scheme for Special Assistance to States for Capital Investment (SASCI), consider the following statements:\n1. It is a Central Sector scheme of the Ministry of Finance.\n2. It gives States a 50-year interest-free loan for capital expenditure.\n3. The Mines Ministry instituted a Rs 5,000 crore incentive under it for FY 2026-27.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The incentive covers mining reforms, mine operationalisation and the State Mining Readiness Index.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-069",
+   "subject": "Economy",
+   "syllabus": "Textiles",
+   "exam": "pre",
+   "q": "With reference to textile export schemes, consider the following statements:\n1. RoSCTL was launched in 2019 by the Ministry of Textiles and extended up to 30 September 2026.\n2. It rebates embedded State and Central taxes through duty credit scrips.\n3. Vishwa Sutra is a scheme of the Ministry of Commerce for jute exports.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Vishwa Sutra was launched by the Ministry of Textiles with NIFT to present Indian handlooms in a contemporary global design framework. RELIEF has also been expanded and is run by ECGC.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-070",
+   "subject": "Sci & Tech",
+   "syllabus": "Telecom",
+   "exam": "pre",
+   "q": "With reference to the Technology Development and Investment Promotion (TDIP) Scheme, consider the following statements:\n1. Revised guidelines for 2026-31 expand the scope to startups, MSMEs, academia and research institutions.\n2. It aims at 5G Advanced and 6G technologies.\n3. Its implementing agencies include TSDSI, TCoE India and TCIL.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. The guidelines were released by the Union Minister of Communications.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-071",
+   "subject": "IR",
+   "syllabus": "Defence",
+   "exam": "pre",
+   "q": "With reference to India's defence exports and production, consider the following statements:\n1. The private sector contributes the larger share of defence production, about 77%.\n2. Defence exports touched an all-time high of Rs 38,424 crore in 2025-26.\n3. Defence production in 2024-25 was a record Rs 1.54 lakh crore.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "DPSUs contributed 77% of production and the private sector 23%. The MoD aims at Rs 50,000 crore annual exports by 2029, and BrahMos is supplied to the Philippines.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-072",
+   "subject": "IR",
+   "syllabus": "Defence",
+   "exam": "pre",
+   "q": "With reference to measures behind the rise in India's defence exports, consider the following statements:\n1. The Draft Defence Acquisition Procedure 2026 raises indigenous content from 50% to 60% for prioritised categories.\n2. FDI up to 100% in defence is allowed under the automatic route for all categories.\n3. Positive Indigenisation Lists ban the import of over 5,000 items.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "FDI is allowed up to 74% under the automatic route and up to 100% with government approval for advanced technologies. 41 ordnance factories were corporatised into seven DPSUs.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-073",
+   "subject": "IR",
+   "syllabus": "Defence",
+   "exam": "pre",
+   "q": "With reference to defence innovation schemes, consider the following statements:\n1. iDEX provides funding for startups and MSMEs.\n2. The Technology Development Fund offers grants up to Rs 50 crore for advanced capabilities.\n3. The SRIJAN portal was launched in 2020 to indigenise previously imported defence items.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. 25% of the defence R&D budget is reserved for the private sector and academia, and Defence Industrial Corridors are in Uttar Pradesh and Tamil Nadu.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-074",
+   "subject": "Polity & Governance",
+   "syllabus": "Internal security",
+   "exam": "pre",
+   "q": "With reference to AI in India's internal security architecture, consider the following statements:\n1. The NCRB is upgrading CCTNS to CCTNS 2.0 to use AI to predict Acts and Sections from FIRs.\n2. I4C uses AI such as Mulehunter.ai to assign suspect scores to financial transactions.\n3. The National Cybercrime Threat Analytics Unit under I4C tracks dark web activities.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. A Proactive Monitoring Tool by CDAC Mumbai screens cyber tiplines for child sexual abuse material, and SURAKSHINI is a hash-bank initiative.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-075",
+   "subject": "Polity & Governance",
+   "syllabus": "Internal security",
+   "exam": "pre",
+   "q": "With reference to the use of AI in administration, consider the following statements:\n1. The 'black box' problem makes AI decisions difficult to trace, explain or appeal.\n2. AI can replicate historical biases present in training data.\n3. The text states that AI can be used as the sole source for administrative decisions.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "It recommends a hybrid model with human-in-the-loop oversight, algorithmic audits and the DPDP Act. About 45% of citizens lack stable internet access.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-076",
+   "subject": "Sci & Tech",
+   "syllabus": "Cyber security",
+   "exam": "pre",
+   "q": "With reference to risks from advanced AI cyber models, consider the following statements:\n1. CERT-In is under the Ministry of Home Affairs.\n2. The Government formed a panel under the SBI Chairman to assess the risks of the AI platform Mythos.\n3. Access to the model is limited to roughly 40 organisations globally under Project Glasswing.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "CERT-In is the nodal cyber security incident response agency under MeitY. NCIIPC protects Critical Information Infrastructure, and banks must report suspicious incidents to CERT-In immediately.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-077",
+   "subject": "IR",
+   "syllabus": "Defence",
+   "exam": "pre",
+   "q": "With reference to INS Aridaman, consider the following statements:\n1. It is the third nuclear-powered ballistic missile submarine of India after INS Arihant and INS Arighaat.\n2. It belongs to the Arihant class.\n3. It makes India one of the countries able to launch nuclear weapons from land, air and sea, completing the triad.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The ATV programme was initiated over three decades ago with help from Russia, and the submarine supports a credible second-strike capability under the No First Use policy.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-078",
+   "subject": "IR",
+   "syllabus": "Defence",
+   "exam": "pre",
+   "q": "With reference to warships received by the Indian Navy, consider the following statements:\n1. Malwan is the second Anti-Submarine Warfare Shallow Water Craft built by Cochin Shipyard.\n2. Sanshodhak is an aircraft carrier.\n3. Dunagiri is the fifth ship of the Nilgiri Class (Project 17A) built by GRSE.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "Sanshodhak is the fourth Survey Vessel (Large) for hydrographic surveys. Agray is the fourth of eight ASW shallow water craft.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-079",
+   "subject": "IR",
+   "syllabus": "Defence",
+   "exam": "pre",
+   "q": "With reference to the Tunguska Air Defence Missile System and the RPSA programme, consider the following statements:\n1. The Tunguska is a Soviet-origin tracked air defence system with surface-to-air missiles and twin 30 mm autocannons.\n2. The Remotely Piloted Strike Aircraft programme aims to develop the Ghatak UCAV.\n3. Ghatak is a manned fighter with a delta-wing configuration.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Ghatak is a stealth-capable unmanned combat aerial vehicle with a flying-wing configuration for deep-strike missions. The Tunguska engages targets up to 8-10 km and 3,500 metres.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-080",
+   "subject": "IR",
+   "syllabus": "Defence exercises",
+   "exam": "pre",
+   "q": "With reference to exercises and groupings in the news, consider the following statements:\n1. Exercise Cyclone-IV is a bilateral India-Egypt Special Forces exercise.\n2. Exercise Dustlik is an annual India-Uzbekistan exercise.\n3. India assumed chairmanship of IONS in 2026, and the Chair rotates every two years.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. IONS has 25 members and the IONS Maritime Exercise Table Top Exercise 2026 was hosted in Kochi.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-081",
+   "subject": "Environment",
+   "syllabus": "Renewable energy",
+   "exam": "pre",
+   "q": "With reference to renewable energy in India as per the IRENA Renewable Capacity Statistics 2026, consider the following statements:\n1. India is ahead of China in installed renewable capacity.\n2. India became the third-largest renewable energy producer with 250.52 GW installed capacity.\n3. Global installed renewable capacity reached about 5,150 GW, led by China and the USA.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "China leads with about 2,260 GW and the USA has about 470 GW. India is ahead of Brazil (228 GW), and renewables overtook coal for the first time in global electricity generation.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-082",
+   "subject": "Environment",
+   "syllabus": "Renewable energy",
+   "exam": "pre",
+   "q": "With reference to the status of renewables in India in 2025-26, consider the following statements:\n1. India added 55.3 GW of non-fossil capacity.\n2. A record 45 GW of solar capacity was added, with Rajasthan, Gujarat and Tamil Nadu leading.\n3. India reached 50% non-fossil installed capacity in June 2025.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. Non-fossil sources contributed 538.97 billion units, or 29.2%, of the 1,845.921 billion units generated.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-083",
+   "subject": "Environment",
+   "syllabus": "Renewable energy",
+   "exam": "pre",
+   "q": "With reference to the challenges of renewable energy in India, consider the following statements:\n1. India imported about 35 million solar modules worth USD 1.6 billion in FY 2025, mostly from China.\n2. Transmission bottlenecks are absent in renewable-rich States.\n3. China controls nearly 90% of global rare earth processing.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "Grid infrastructure remains inadequate in some renewable-rich States like Tamil Nadu, causing evacuation constraints. India needs over USD 10 trillion by 2070 for Net Zero.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-084",
+   "subject": "Environment",
+   "syllabus": "Water",
+   "exam": "pre",
+   "q": "With reference to the concept of global water bankruptcy, consider the following statements:\n1. The report was released by the UN University Institute for Water, Environment and Health.\n2. Water bankruptcy is a persistent condition where long-term use exceeds renewable inflows and degradation is irreversible.\n3. Water stress is an irreversible condition.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Water stress is a condition of high demand relative to supply whose impacts are largely reversible. Water crisis is an acute, time-bound disruption from a shock such as drought.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-085",
+   "subject": "Environment",
+   "syllabus": "Water",
+   "exam": "pre",
+   "q": "With reference to causes and indicators of water bankruptcy, consider the following statements:\n1. About 70% of the world's major aquifers show long-term declining trends.\n2. Over 170 million hectares of irrigated cropland are under high or very high water stress.\n3. The world has lost over 30% of its glacier mass since 1970 in multiple locations.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. UNU-INWEH was established in 1996 and is headquartered in Richmond Hill, Ontario.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-086",
+   "subject": "Geography",
+   "syllabus": "Water resources",
+   "exam": "pre",
+   "q": "With reference to water availability in India, consider the following statements:\n1. India has 18% of the world's population but only 4% of its freshwater resources.\n2. Under the Falkenmark Index, a region with per capita water below 1,700 cubic metres is water stressed.\n3. Below 1,000 cubic metres it is considered chronic water scarcity.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. Per capita availability is expected to fall to 1,140 cubic metres by 2050, and about 70% of India's surface water is polluted.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-087",
+   "subject": "Environment",
+   "syllabus": "Biodiversity law",
+   "exam": "pre",
+   "q": "With reference to the new Access and Benefit Sharing framework of the National Biodiversity Authority, consider the following statements:\n1. For intermediaries and traders, ABS funds are paid to the traders.\n2. For identifiable sources, 25-40% of ABS funds go to the institutions or repositories.\n3. The remaining 60-75% is shared with local communities through State Biodiversity Boards.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "Where resources come from intermediaries or traders, the ABS funds are used directly for biodiversity conservation and management. The ABS Regulations were framed in 2025.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-088",
+   "subject": "Environment",
+   "syllabus": "Marine biodiversity",
+   "exam": "pre",
+   "q": "With reference to the National Repository for Deep-Sea Fauna, consider the following statements:\n1. The Referral Centre 'Bhavasagara' at CMLRE, Kochi houses over 3,500 voucher specimens.\n2. It has been notified under the Wildlife (Protection) Act, 1972.\n3. The Agharkar Research Institute, Pune, was also notified.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "It has been notified under the Biological Diversity Act, 2002. The deep sea is defined as ocean regions below 200 metres.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-089",
+   "subject": "Environment",
+   "syllabus": "Wetlands",
+   "exam": "pre",
+   "q": "With reference to Shekha Jheel Bird Sanctuary, consider the following statements:\n1. It became India's 99th Ramsar site.\n2. It is located in Aligarh in Uttar Pradesh.\n3. It was formed after the Upper Ganges Canal came up in 1852.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. It is an Important Bird and Biodiversity Area noted for the Indian river tern and the sarus crane.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-090",
+   "subject": "Environment",
+   "syllabus": "Wetlands",
+   "exam": "pre",
+   "q": "The Ramsar Convention, under which wetlands of international importance are listed, was adopted in which one of the following years?",
+   "opts": [
+    "1971",
+    "1985",
+    "1992",
+    "2002"
+   ],
+   "ans": 0,
+   "why": "Shekha Jheel became India's 99th Ramsar site.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-091",
+   "subject": "Economy",
+   "syllabus": "Water resources",
+   "exam": "pre",
+   "q": "With reference to the River Basin Management (RBM) Scheme, consider the following statements:\n1. It was launched in 2014 as a Central Sector Scheme.\n2. It will continue during 2026-27 to 2030-31 with an estimated cost of Rs 2,183 crore.\n3. It prioritises the North Eastern Region and the Indus Basin in Jammu and Kashmir and Ladakh.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The Brahmaputra Board and the Investigation of Water Resources Development Scheme, implemented by CWC and NWDA, are its components.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-092",
+   "subject": "Environment",
+   "syllabus": "Pollution",
+   "exam": "pre",
+   "q": "With reference to the Plastic Waste Management (Amendment) Rules, 2026, consider the following statements:\n1. Producers must use progressively higher recycled content, from 30% in 2025-26 to 60% from 2028-29 for Category I.\n2. Recycled packaging must conform to IS 14534:2023.\n3. The rules were notified under the Wild Life (Protection) Act.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The Rules amend the Plastic Waste Management Rules, 2016 and are notified under the Environment (Protection) Act, 1986. Since 1 July 2025 plastic packaging must carry a barcode or QR code.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-093",
+   "subject": "Environment",
+   "syllabus": "Climate",
+   "exam": "pre",
+   "q": "With reference to hydrofluorocarbons (HFCs), consider the following statements:\n1. The Kigali Amendment (2016) to the Montreal Protocol phases down HFCs.\n2. HFCs do not deplete the ozone layer but have high Global Warming Potential.\n3. India will start its HFC phase-down in 2032 and complete 85% cuts by 2047.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. India's phased cuts are 10% in 2032, 20% in 2037, 30% in 2042 and 85% in 2047, and the Montreal Protocol was adopted in 1987 under the Vienna Convention of 1985.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-094",
+   "subject": "Environment",
+   "syllabus": "Energy",
+   "exam": "pre",
+   "q": "With reference to Sustainable Aviation Fuel (SAF), consider the following statements:\n1. It can be made from waste oil and fats, municipal waste and non-food crops.\n2. It can cut CO2 emissions by up to 80%.\n3. India targets blending 1% SAF in jet fuel for international flights by 2027.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The target rises to 2% by 2028, and SAF can be blended at levels between 10% and 50% depending on the feedstock.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-095",
+   "subject": "Geography",
+   "syllabus": "Hydropower",
+   "exam": "pre",
+   "q": "With reference to hydroelectric projects in Arunachal Pradesh in the news, consider the following statements:\n1. Kalai-II HEP is located on the Lohit River.\n2. The Lohit is a major tributary of the Brahmaputra.\n3. Kamala HEP is located on the Kamla River, a tributary of the Subansiri.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. The Lohit originates in eastern Tibet and flows through Arunachal Pradesh into Assam.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-096",
+   "subject": "Environment",
+   "syllabus": "Energy",
+   "exam": "pre",
+   "q": "With reference to Sustainable Aviation Fuel targets and flex fuel vehicles, consider the following statements:\n1. Flex Fuel Vehicles can run on pure ethanol (E100) only and never on gasoline.\n2. India targets 1% SAF blending for international flights by 2027, 2% by 2028 and 5% by 2030, in line with CORSIA.\n3. CORSIA is led by the International Civil Aviation Organization.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "Flex Fuel Vehicles can operate on gasoline or any blend of gasoline and ethanol, up to E83 at present, and newer designs support E100. No targets have been set for domestic flights.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-097",
+   "subject": "Environment",
+   "syllabus": "Pollution",
+   "exam": "pre",
+   "q": "With reference to the draft Tar-balls Management Rules, 2026, consider the following statements:\n1. They cover the lifecycle of tar balls from generation to disposal.\n2. Tar balls are treated as non-hazardous waste.\n3. They apply the 'polluter pays' principle to oil operators.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "Tar balls are classified as hazardous waste. They are sticky lumps formed by weathering of oil after spills, and severe cases may be declared a State disaster.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-098",
+   "subject": "Environment",
+   "syllabus": "Species",
+   "exam": "pre",
+   "q": "With reference to the IUCN Red List updates on Antarctic species, consider the following statements:\n1. The emperor penguin is now Endangered, earlier Near Threatened.\n2. The Antarctic fur seal is now Endangered, earlier Least Concern.\n3. The southern elephant seal is now Vulnerable due to bird flu.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The emperor penguin is the largest of the 18 penguin species, and the southern elephant seal is the largest seal.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-099",
+   "subject": "Environment",
+   "syllabus": "Biodiversity",
+   "exam": "pre",
+   "q": "With reference to the Global Initiative on the Taking of Migratory Species (GTI), consider the following statements:\n1. It was launched at the COP15 of the Convention on the Conservation of Migratory Species of Wild Animals held in Brazil in March 2026.\n2. It addresses illegal and unsustainable taking of migratory species.\n3. The 2024 report found that taking threatens about 70% of the 1,200 species listed under the Convention.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. The initiative has four focus areas including data and monitoring, legal frameworks, community engagement and awareness.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-100",
+   "subject": "IR",
+   "syllabus": "Global development",
+   "exam": "pre",
+   "q": "With reference to the Sevilla Commitment, consider the following statements:\n1. It was adopted at the Fourth International Conference on Financing for Development held in Sevilla in 2025.\n2. It aims to close an annual SDG financing gap of about USD 4 trillion in developing countries.\n3. It contains 280 actions.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The Sevilla Platform for Action was launched as a voluntary multi-stakeholder mechanism, and the Financing for Sustainable Development Report 2026 is released by UN DESA.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-101",
+   "subject": "Environment",
+   "syllabus": "Species",
+   "exam": "pre",
+   "q": "With reference to bats in India, consider the following statements:\n1. India has about 135 bat species, of which 16 are endemic.\n2. Bats are the only mammals capable of true powered flight.\n3. Most bats use ultrasound echolocation to navigate and hunt in the dark.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. The 'State of India's Bats' report notes seven species as threatened, and highlights roles in pollination, pest control and seed dispersal.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-102",
+   "subject": "Environment",
+   "syllabus": "Species",
+   "exam": "pre",
+   "q": "With reference to recent discoveries in Arunachal Pradesh and the Shivaliks, consider the following statements:\n1. Limnonectes motijheel is a fanged frog that builds a mud nest beneath leaf litter.\n2. The gourami fossils from Saharanpur are the first record in India and the second globally.\n3. The gourami fossils date back about 5 million years to the Pliocene.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The first gourami fossil was from Sumatra, and this is the first discovery of aquatic fossils in a region earlier known only for terrestrial remains.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-103",
+   "subject": "Geography",
+   "syllabus": "Ocean currents",
+   "exam": "pre",
+   "q": "With reference to the Atlantic Meridional Overturning Circulation (AMOC), consider the following statements:\n1. It is driven by differences in temperature and salinity that create density differences.\n2. It keeps western Europe milder than Canada or Russia at similar latitudes.\n3. Freshwater from the melting Greenland ice sheet strengthens the AMOC by increasing salinity.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Freshwater reduces salinity and density, which slows sinking of water and weakens the AMOC. A collapse could shift the tropical rain belt southward and disrupt Indian monsoons.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-104",
+   "subject": "Geography",
+   "syllabus": "Ocean currents",
+   "exam": "pre",
+   "q": "The thermohaline circulation of the AMOC is driven mainly by which one of the following?",
+   "opts": [
+    "Trade winds blowing over the Pacific",
+    "Temperature and salinity contrasts",
+    "Tidal pull of the Moon",
+    "Earth's magnetic field"
+   ],
+   "ans": 1,
+   "why": "These differences create variations in water density. The dense water cools and sinks, moves south on the seafloor and rises again through upwelling.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-105",
+   "subject": "Polity & Governance",
+   "syllabus": "Social issues",
+   "exam": "pre",
+   "q": "With reference to middle-class vulnerability in India, consider the following statements:\n1. The middle class is eligible for most welfare safety nets.\n2. Unemployment rate for graduates stands at 29.1%.\n3. Middle-income households saw income growth of just 0.4% CAGR.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The middle class contributes 53% of income tax filings but remains largely ineligible for welfare safety nets. Net household financial savings fell to about 5% of GDP.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-106",
+   "subject": "Polity & Governance",
+   "syllabus": "Social issues",
+   "exam": "pre",
+   "q": "With reference to definitions of the middle class and poverty lines, consider the following statements:\n1. The OECD considers those earning USD 10 to USD 100 a day in PPP terms as middle-income.\n2. PRICE defines a middle-class household as one with annual income of Rs 5 lakh to Rs 30 lakh at 2020-21 prices.\n3. The international poverty line has been revised from USD 2.15 to USD 3.00.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. The lower-middle and upper-middle income lines were revised from USD 3.65 to 4.20 and from 6.85 to 8.30.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-107",
+   "subject": "Polity & Governance",
+   "syllabus": "Social issues",
+   "exam": "pre",
+   "q": "With reference to government initiatives for the middle class, consider the following statements:\n1. Individuals earning up to Rs 12 lakh a year are effectively exempted from income tax under Budget 2025-26.\n2. Ayushman Bharat PM-JAY health cover is extended to all senior citizens aged 70 and above.\n3. PMAY-Urban 2.0 supports construction, purchase or rent of affordable housing.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The SWAMIH Fund helps stalled housing projects, and RERA protects homebuyers.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-108",
+   "subject": "Sci & Tech",
+   "syllabus": "Space",
+   "exam": "pre",
+   "q": "With reference to the Artemis II mission, consider the following statements:\n1. It was a crewed lunar flyby mission launched on 1 April 2026.\n2. It used the Space Launch System and the Orion spacecraft.\n3. It lasted about 10 days.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. Orion was built by NASA and Lockheed Martin, and the mission tested systems and emergency operations needed for a crewed lunar campaign.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-109",
+   "subject": "Sci & Tech",
+   "syllabus": "Space",
+   "exam": "pre",
+   "q": "With reference to the Artemis programme, consider the following statements:\n1. Artemis I in 2022 was an uncrewed test mission of the SLS and Orion.\n2. Artemis III will land on the Moon as originally planned.\n3. Artemis II is the first crewed mission of the programme, a lunar flyby with a four-person crew.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "Artemis III will now send a crew to low Earth orbit to test docking procedures for future landings. Artemis IV, planned for 2028, aims to land two astronauts near the lunar south pole using Starship.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-110",
+   "subject": "Sci & Tech",
+   "syllabus": "Space",
+   "exam": "pre",
+   "q": "With reference to the significance of the Artemis II mission, consider the following statements:\n1. It was the first crewed mission to the Moon in 50 years since Apollo 17 in 1972.\n2. The crew included the first woman, the first person of colour and the first non-American to travel to the Moon's vicinity.\n3. The crew travelled closer than any humans have before to the Moon's near side only.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The trajectory took the crew farther into deep space and beyond the far side of the Moon than any humans have travelled. The crew were Christina Koch, Victor Glover and Jeremy Hansen of the Canadian Space Agency, among others.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-111",
+   "subject": "Sci & Tech",
+   "syllabus": "Space",
+   "exam": "pre",
+   "q": "With reference to the Artemis Accords, consider the following statements:\n1. India is not a signatory.\n2. They were established in 2020 by NASA and the US State Department.\n3. They reaffirm commitment to the Outer Space Treaty and the Rescue and Return Agreement.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "India is a member, among 67 signatories. The programme is named after the Greek goddess of the hunt, the twin sister of Apollo.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-112",
+   "subject": "Sci & Tech",
+   "syllabus": "Nuclear energy",
+   "exam": "pre",
+   "q": "With reference to the Prototype Fast Breeder Reactor (PFBR) at Kalpakkam, consider the following statements:\n1. It is a 500 MW indigenously designed reactor that has attained criticality.\n2. It advances the third stage of India's three-stage nuclear programme.\n3. It is operated by BHAVINI, a public company under the Department of Atomic Energy.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "It advances the second stage. Once operational India will be the second country after Russia with a commercial fast breeder reactor, and it leads to the third stage using thorium.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-113",
+   "subject": "Sci & Tech",
+   "syllabus": "Nuclear energy",
+   "exam": "pre",
+   "q": "With reference to nuclear fuels, consider the following statements:\n1. Uranium-235 is the only fissile isotope of uranium found in nature.\n2. Thorium-232 and Uranium-238 are fertile materials that must be converted into fissile material.\n3. India has the largest share of the world's thorium reserves, with a commercial thorium reactor already operating.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "India has about 25% of thorium reserves, but no commercial reactor currently runs on thorium. U-235 is only about 0.7% of natural uranium, and Pu-238 is used in deep-space missions.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-114",
+   "subject": "Sci & Tech",
+   "syllabus": "Nuclear energy",
+   "exam": "pre",
+   "q": "With reference to India's nuclear energy programme, consider the following statements:\n1. Nuclear energy contributes about 30% of India's electricity generation.\n2. The three-stage programme was conceived by Homi J. Bhabha.\n3. The Nuclear Energy Mission of Budget 2025 targets 100 GW of nuclear capacity by 2047.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "Nuclear energy has consistently contributed about 3% of electricity generation, with installed capacity of 8.78 GW in 2024-25. At least five indigenous SMRs are to be operational by 2033.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-115",
+   "subject": "Sci & Tech",
+   "syllabus": "Nuclear energy",
+   "exam": "pre",
+   "q": "With reference to the Mahi Banswara Atomic Power Project and the AERB, consider the following statements:\n1. The project has four 700 MWe indigenous PHWRs near the Mahi Dam in Rajasthan.\n2. It is part of the 'fleet mode' initiative of 10 identical 700 MW reactors.\n3. The AERB was set up in 1983 under the Atomic Energy Act, 1962 and reports to the Atomic Energy Commission.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The project is developed by Anushakti Vidhyut Nigam (ASHVINI), a joint venture of NPCIL and NTPC.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-116",
+   "subject": "Polity & Governance",
+   "syllabus": "Nuclear law",
+   "exam": "pre",
+   "q": "With reference to challenges for nuclear energy in India, consider the following statements:\n1. India is a member of neither the Nuclear Suppliers Group nor the NPT, which creates hurdles in assured supply.\n2. The Civil Liability for Nuclear Damage Act, 2010 allows liability to be channelled from operator to supplier.\n3. India imports most of its uranium, with Kazakhstan the largest supplier.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. In 2024 India produced only about 500 tonnes of uranium, less than 1% of global output, and the SHANTI Act, 2025 allows limited private participation.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-117",
+   "subject": "Sci & Tech",
+   "syllabus": "Health",
+   "exam": "pre",
+   "q": "With reference to the One Health approach, consider the following statements:\n1. It recognises the interconnection between the health of people, animals, plants and the environment.\n2. About 60% of emerging infectious diseases in humans originate from animals.\n3. The Quadripartite partners are FAO, UNEP, WHO and WOAH.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. A global One Health summit was held in Lyon, France, and WHO announced a push to eliminate rabies by 2030.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-118",
+   "subject": "Sci & Tech",
+   "syllabus": "Health",
+   "exam": "pre",
+   "q": "With reference to the National One Health Mission of India, consider the following statements:\n1. It was approved by PM-STIAC in 2022.\n2. It is anchored by the ICMR under the Office of the Principal Scientific Adviser.\n3. The anchor institution is the National Institute of One Health in Nagpur.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. The Centre for One Health at NCDC runs programmes on rabies, zoonoses, leptospirosis and snakebite.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-119",
+   "subject": "Sci & Tech",
+   "syllabus": "Biotechnology",
+   "exam": "pre",
+   "q": "With reference to the Genome India Project (GIP), consider the following statements:\n1. It was launched in 2020 by the Department of Biotechnology.\n2. Tribal populations show greater genetic mixing than non-tribal populations.\n3. It collected samples from 10,000 healthy and unrelated individuals representing 83 population groups.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "Non-tribal populations show greater genetic mixing, while tribal populations show low effective population size, high genetic drift and founder effects. Over 129 million variants were identified.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-120",
+   "subject": "Sci & Tech",
+   "syllabus": "Biotechnology",
+   "exam": "pre",
+   "q": "With reference to gene therapy, consider the following statements:\n1. Otarmeni is a first-ever gene therapy for hearing loss caused by OTOF gene mutations.\n2. The OTOF gene codes for otoferlin, needed to translate vibrations into signals.\n3. In gene therapy a vector is a carrier that delivers the therapeutic gene into target cells.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. Gene therapy corrects a gene defect by inserting genes into a person's cells and tissues.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-121",
+   "subject": "Sci & Tech",
+   "syllabus": "Cyber security",
+   "exam": "pre",
+   "q": "With reference to post-quantum cryptography, consider the following statements:\n1. The DST released a national roadmap for Post-Quantum Cryptography migration.\n2. Quantum computers can break public-key algorithms like RSA and ECC.\n3. 'Harvest Now, Decrypt Later' means data collected today may be decrypted in the future.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. Cryptography secure against quantum attacks is needed for banking, communications and national security.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-122",
+   "subject": "Sci & Tech",
+   "syllabus": "Space",
+   "exam": "pre",
+   "q": "With reference to satellite internet and Starlink, consider the following statements:\n1. Meghalaya became the third State, after Maharashtra and Gujarat, to partner formally with Starlink.\n2. LEO and MEO constellations are non-geostationary orbits.\n3. Satellite internet requires wires to transmit data like fibre.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Satellite internet does not rely on wires and can be deployed quickly. The DoT licenses it, TRAI recommends spectrum terms and IN-SPACe authorises private space activity.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-123",
+   "subject": "Sci & Tech",
+   "syllabus": "Space",
+   "exam": "pre",
+   "q": "With reference to Mission MITRA and Project Maven, consider the following statements:\n1. Project Maven is an Indian AI programme for crop monitoring.\n2. Mission MITRA is an ISRO behavioural study on Gaganyaan crew with the IAF's Institute of Aerospace Medicine.\n3. It was conducted at Leh, simulating hypoxia, low temperature and isolation.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "Project Maven is a US AI programme that automates detection of objects in drone imagery using machine learning and computer vision. MITRA stands for Mapping of Interoperable Traits and Response Assessment.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-124",
+   "subject": "Sci & Tech",
+   "syllabus": "Astronomy",
+   "exam": "pre",
+   "q": "The new mineral Cerium-Magnesium Changesite was discovered in which one of the following?",
+   "opts": [
+    "A lunar meteorite found in China",
+    "A Martian meteorite found in Antarctica",
+    "Lunar soil samples of Chandrayaan-3",
+    "Asteroid samples of Bennu"
+   ],
+   "ans": 0,
+   "why": "It is a rare earth-bearing phosphate mineral that glows under UV light and raises the known lunar minerals to 11.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-125",
+   "subject": "History",
+   "syllabus": "Ancient India",
+   "exam": "pre",
+   "q": "With reference to Amaravati and its Buddhist heritage, consider the following statements:\n1. Amaravati was the capital of the Satavahana dynasty and has a legacy dating back to the 3rd century BCE.\n2. Early phases of the Amaravati art showed the Buddha only in human form.\n3. The Amaravati Stupa, also called the Mahachaitya, was constructed around the 2nd century BCE.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "Early phases represented the Buddha symbolically, and anthropomorphic images appeared from the 1st century CE. The stupa is regarded as one of the oldest Buddhist monuments in India.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-126",
+   "subject": "Art & Culture",
+   "syllabus": "Art and architecture",
+   "exam": "pre",
+   "q": "With reference to the Amaravati School of Art, consider the following statements:\n1. It developed in the Krishna-Godavari valley under the Satavahanas and Ikshvakus.\n2. Its main centres included Nagarjunakonda, Amaravati, Goli, Ghantasala and Jaggayyapeta.\n3. It is one of the three major schools of Buddhist art along with Gandhara and Mathura.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. It is known for dynamic narrative art depicting Jataka tales and scenes from the Buddha's life.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-127",
+   "subject": "History",
+   "syllabus": "Ancient India",
+   "exam": "pre",
+   "q": "With reference to Buddhist philosophy associated with Amaravati, consider the following statements:\n1. Acharya Nagarjuna is believed to have propounded the Madhyamika philosophy in the Amaravati region.\n2. The Madhyamaka Marga advocates a middle way between eternalism and annihilationism.\n3. Xuanzang visited Amaravati in the 7th century CE to collect Buddhist manuscripts.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. Kalachakra, meaning 'Wheel of Time', is a Vajrayana tradition believed to have been taught at Amaravati.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-128",
+   "subject": "Art & Culture",
+   "syllabus": "Art and architecture",
+   "exam": "pre",
+   "q": "The ancient name of Amaravati, given because of the many Audumber trees, was which one of the following?",
+   "opts": [
+    "Dharanikota",
+    "Udumbaravati",
+    "Kusumapura",
+    "Vijayapuri"
+   ],
+   "ans": 1,
+   "why": "Amaravati means 'abode of immortals' and lies on the banks of the Krishna in Guntur district. The Lok Sabha cleared a Bill making it the sole capital of Andhra Pradesh.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-129",
+   "subject": "History",
+   "syllabus": "Social reform",
+   "exam": "pre",
+   "q": "With reference to Mahatma Jyotiba Phule, consider the following statements:\n1. He was born on 11 April 1827 in a Mali family.\n2. He was given the title 'Mahatma' in 1888 by the people.\n3. Dr B.R. Ambedkar regarded him as his Guru.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. He was inspired by Thomas Paine's Rights of Man and is called the Father of the Indian Social Revolution.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-130",
+   "subject": "History",
+   "syllabus": "Social reform",
+   "exam": "pre",
+   "q": "With reference to the publications of Jyotiba Phule, consider the following statements:\n1. Gulamgiri (1873) gave a historical account of slavery and exploitation of lower castes.\n2. Shetkaryacha Aasud (1883) analysed the exploitation of peasants.\n3. Sarvajanik Satyadharma Pustak (1891) expounded a 'True Religion for All'.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. Brahmananche Kasab (1869) exposed the practices of Brahmin priests, and Tritiya Ratna was published in 1855.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-131",
+   "subject": "History",
+   "syllabus": "Social reform",
+   "exam": "pre",
+   "q": "With reference to the contributions of Jyotiba Phule and Savitribai Phule, consider the following statements:\n1. In 1848 they opened a school in Pune for lower-caste boys and girls, with Savitribai as the first Indian woman teacher.\n2. Satyashodhak Samaj was founded on 24 September 1873.\n3. Phule urged lower castes to join the Indian National Congress as it represented the masses.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Phule advised lower castes to stay away from the Congress, warning that it represented elite high castes. He submitted a memorandum to the Hunter Commission in 1882 for free and compulsory primary education.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-132",
+   "subject": "History",
+   "syllabus": "Social reform",
+   "exam": "pre",
+   "q": "With reference to the social reforms of Jyotiba Phule, consider the following statements:\n1. Satyashodhak marriages were conducted without Brahmin priests and dowry.\n2. He established a Home for prevention of infanticide in 1863.\n3. They opened their personal well to untouchables in 1868.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. He also supported widow remarriage in 1860 and served as a member of the Poona Municipality from 1876 to 1882.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-133",
+   "subject": "History",
+   "syllabus": "Social reform",
+   "exam": "pre",
+   "q": "With reference to Savitribai Phule, consider the following statements:\n1. She was born on 3 January 1831 at Naigaon.\n2. She founded the Mahila Seva Mandal in 1852.\n3. She introduced stipends to prevent dropouts and parent-teacher meetings.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. She led the Satyashodhak Samaj after Jyotirao's death in 1890, wrote Kavyaphule (1854), and died of plague in 1897 serving patients.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-134",
+   "subject": "History",
+   "syllabus": "Ancient India",
+   "exam": "pre",
+   "q": "With reference to Emperor Samprati, consider the following statements:\n1. He was a Mauryan emperor and grandson of Ashoka.\n2. He is called the 'Jain Ashoka' for spreading Jainism and ahimsa.\n3. The Samrat Samprati Museum was inaugurated at Koba, Gandhinagar on Mahavir Jayanti.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. His life is described in Jain texts like Sampratikatha, Parishishtaparvan and Prabhavakacharita.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-135",
+   "subject": "Art & Culture",
+   "syllabus": "Rock art",
+   "exam": "pre",
+   "q": "With reference to petroglyphs, consider the following statements:\n1. Petroglyphs are images or carvings etched or engraved on rock surfaces.\n2. The foundation of India's first Petroglyph Conservation Park was laid on the banks of the Indus in Ladakh.\n3. Bhimbetka in Madhya Pradesh is among the major petroglyph sites.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. Petroglyphs record trade routes, migration, belief systems and ecological history from the Palaeolithic Age onward.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-136",
+   "subject": "Art & Culture",
+   "syllabus": "Tribes",
+   "exam": "pre",
+   "q": "With reference to the Konyak tribe, consider the following statements:\n1. They are the largest of all Naga tribes.\n2. They are governed by hereditary chiefs called 'Anghs'.\n3. Their key festival is Aoleang Monyu.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. Nagaland University researchers found a five-plant polyherbal formulation of the tribe with anti-cancer potential that targets VEGFR2.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-137",
+   "subject": "Polity & Governance",
+   "syllabus": "Rural housing",
+   "exam": "pre",
+   "q": "With reference to the Pradhan Mantri Awaas Yojana-Grameen (PMAY-G), consider the following statements:\n1. It was launched in 2016 as a restructuring of the Indira Awas Yojana started in 1996.\n2. It is a Centrally Sponsored Scheme of the Ministry of Rural Development.\n3. The minimum house size is fixed at 25 sq. m.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. Assistance is Rs 1.2 lakh in plains and Rs 1.3 lakh in hilly States, North-Eastern States and difficult areas.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-138",
+   "subject": "Polity & Governance",
+   "syllabus": "Rural housing",
+   "exam": "pre",
+   "q": "With reference to beneficiary selection under PMAY-G, consider the following statements:\n1. Households living in houses with more than 2 rooms are eligible.\n2. Selection is based on Socio Economic and Caste Census 2011 housing deprivation data, verified by the Gram Sabha.\n3. Manual scavengers and legally released bonded labourers are automatically included.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "Households with pucca roof or wall and those in houses with more than 2 rooms are filtered out. At least 60% of targets are for SC/ST households, and 15% of funds for minorities.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-139",
+   "subject": "Polity & Governance",
+   "syllabus": "Rural housing",
+   "exam": "pre",
+   "q": "With reference to funding and support under PMAY-G, consider the following statements:\n1. Cost is shared between the Centre and States in the ratio 60:40 for most States and 90:10 for North-Eastern and Himalayan States.\n2. The beneficiary gets 90-95 person-days of unskilled labour under MGNREGA.\n3. The scheme pays Rs 12,000 from the Swachh Bharat Mission-Grameen for toilets.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. Payments are by DBT, grievances are addressed within 15 days through CPGRAMS, and 2.99 crore houses had been completed by March 2026.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-140",
+   "subject": "Polity & Governance",
+   "syllabus": "Rural housing",
+   "exam": "pre",
+   "q": "With reference to targets and progress under PMAY-G, consider the following statements:\n1. The original target was 2.95 crore houses for FY 2016-17 to FY 2023-24.\n2. By March 2026 all 4.95 crore targeted houses had been completed.\n3. The continuation for FY 2024-25 to 2028-29 has an additional target of 2 crore houses.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "As of March 2026 about 4.15 crore houses were allocated, 3.90 crore sanctioned and 2.99 crore completed, against a target of 4.95 crore by 2029.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-141",
+   "subject": "Polity & Governance",
+   "syllabus": "Ethics",
+   "exam": "pre",
+   "q": "With reference to ethics in politics, consider the following statements:\n1. The ADR 2025 report found that 45% of Indian MLAs face criminal cases.\n2. The Supreme Court scrapped anonymous Electoral Bonds in 2024.\n3. The Vohra Committee dealt with the nexus between criminals and politicians.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. The ECI seized a record Rs 8,889 crore during the 2024 general election.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-04-142",
+   "subject": "Polity & Governance",
+   "syllabus": "Ethics",
+   "exam": "pre",
+   "q": "With reference to ethical theories applied to political ethics, consider the following statements:\n1. Virtue ethics is associated with Aristotle.\n2. Deontology is associated with Kant.\n3. Justice as fairness with the 'veil of ignorance' is associated with Rousseau.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The 'veil of ignorance' is associated with John Rawls. Rousseau is linked to the social contract, and Mill to consequentialism.",
+   "insight": ""
+  }
+ ]
+}
