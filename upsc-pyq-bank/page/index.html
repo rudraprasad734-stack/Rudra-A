@@ -18909,11 +18909,13 @@ function caqLoadData(){ try{ var v = JSON.parse(localStorage.getItem(CAQ_STORE) 
 var caqData = caqLoadData();
 function caqSave(){ try{ localStorage.setItem(CAQ_STORE, JSON.stringify(caqData)); }catch(e){} }
 function caqPersist(){ try{ if(navigator.storage && navigator.storage.persist) navigator.storage.persist(); }catch(e){} }   // asks the browser not to clear this data when it is short of space
-function caqFetch(url){ return fetch(url, {cache:"no-cache"}).then(function(r){ if(!r.ok) throw new Error(url+" "+r.status); return r.json(); }); }
+function caqFetch(url){ return fetch(url).then(function(r){ if(!r.ok) throw new Error(url+" "+r.status); return r.json(); }); }
 function caqLoad(done){
   if(caq.loaded){ done(); return; }
+  (caq.cbs = caq.cbs || []).push(done);   // the quizzes may already be loading in the background: wait for that one load instead of starting another
   if(caq.loading) return;
   caq.loading = true;
+  var finish = function(){ var cbs = caq.cbs || []; caq.cbs = []; cbs.forEach(function(f){ try{ f(); }catch(e){} }); };
   caqFetch("quiz/index.json").then(function(ix){
     var ms = (ix && Array.isArray(ix.months)) ? ix.months : [];
     return Promise.all(ms.map(function(m){ return caqFetch("quiz/"+m.file).then(function(f){ return {m:m, f:f}; }).catch(function(){ return null; }); }));
@@ -18930,9 +18932,11 @@ function caqLoad(done){
     });
     caq.months.sort(function(a,b){ return a.id < b.id ? 1 : -1; });
     caq.loaded = true; caq.loading = false; caq.err = "";
-    done();
-  }).catch(function(){ caq.loading = false; caq.err = "Quizzes could not load. Connect once to download them, then they work offline."; done(); });
+    finish();
+  }).catch(function(){ caq.loading = false; caq.err = "Quizzes could not load. Connect once to download them, then they work offline."; finish(); });
 }
+// Load the quizzes quietly once the app is up, so they are ready by the time the tab is opened.
+appLoadCbs.push(function(){ var go = function(){ caqLoad(function(){}); }; if(window.requestIdleCallback) requestIdleCallback(go, {timeout: 4000}); else setTimeout(go, 1500); });
 function caqStreak(){
   var d = caqData.days, set = {}, n = 0, k = todayKey;
   d.forEach(function(x){ set[x] = 1; });
@@ -19178,7 +19182,7 @@ function renderCaQuiz(){
   if(!caqHist){ try{ history.pushState({caq:1}, ""); caqHist = true; }catch(e){} }
   if(!caq.loaded){
     host.innerHTML = caqHud(caqBtn("exit", "Close", "✕"), "Current Affairs Quizzes")+'<div class="cg-body"><div class="card empty" role="status">'+(caq.err ? esc(caq.err) : "Loading the quizzes&hellip;")+'</div></div>';
-    if(!caq.loading) caqLoad(function(){ if(activeTab==="caquiz") renderCaQuiz(); });
+    if(!caq.waiting){ caq.waiting = true; caqLoad(function(){ caq.waiting = false; if(activeTab==="caquiz") renderCaQuiz(); }); }
     return;
   }
   var u = caq.ui, r = u.run, old = host.querySelector(".cg-body"), oldKey = old ? old.getAttribute("data-sk") : "", oldTop = old ? old.scrollTop : 0;
@@ -21439,7 +21443,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "292";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "293";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
