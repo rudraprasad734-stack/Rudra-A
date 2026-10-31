@@ -4337,6 +4337,166 @@
    "ans": 1,
    "why": "He was the 10th Speaker of the Lok Sabha. He later served as Union Home Minister from 2004 to 2008 and resigned after the 26/11 attacks.",
    "insight": ""
+  },
+  {
+   "id": "caq-2026-01-272",
+   "subject": "Polity & Governance",
+   "syllabus": "Social justice",
+   "exam": "pre",
+   "q": "With reference to the MoU between the Ministry of Social Justice and the Ministry of Rural Development for De-Notified, Nomadic and Semi-Nomadic Tribes (DNTs), consider the following statements:\n1. It brings DNT self-help groups into the DAY-NRLM framework.\n2. A dedicated cadre called DNT Sakhi will support about 30 families organised in three SHGs.\n3. More than 5,000 DNT SHGs formed under the Development and Welfare Board will be taken into the framework over three years.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The Board is the DWBDNC under the Ministry of Social Justice, and the MoU also aims for credit linkages and diversified livelihoods.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-01-273",
+   "subject": "Sci & Tech",
+   "syllabus": "Defence production",
+   "exam": "pre",
+   "q": "With reference to the joint venture agreement between BEL and Safran Electronics & Defence for HAMMER, consider the following statements:\n1. BEL will do only the design while all production stays in France.\n2. HAMMER is a smart precision guided air-to-ground weapon.\n3. The joint venture company will have 50:50 shareholding.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "Production transfer will be gradual with BEL responsible for final assembly, testing and quality assurance, and the target is 60% indigenisation of key components. HAMMER suits platforms such as Rafale and Tejas.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-01-274",
+   "subject": "Sci & Tech",
+   "syllabus": "Telecom",
+   "exam": "pre",
+   "q": "With reference to the C-DOT Centre of Excellence at IIT Roorkee, consider the following statements:\n1. C-DOT is an R&D centre of the Department of Telecommunications.\n2. It will focus only on legacy 2G network equipment.\n3. The centre will focus on wireless communication, quantum technologies, cyber security and AI applications.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "It aims at 5G/6G, RF sub-THz integrated circuits, mmWave beamforming and V2X communication, and at academia-industry synergy.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-01-275",
+   "subject": "Economy",
+   "syllabus": "Multilateral lending",
+   "exam": "pre",
+   "q": "With reference to the loan agreements signed by India with the Asian Development Bank worth over USD 800 million, consider the following statements:\n1. They include a loan for a skills programme in Rajasthan.\n2. They include USD 500 million for the Maharashtra Power Distribution Enhancement Programme for Agricultural Solarization.\n3. They include a loan for the Indore Metro Rail Project in Madhya Pradesh.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The skills programme is the Gujarat Skills Development Programme of USD 109.97 million. A technical assistance grant of USD 1 million was also given for the SWIFT wetland and fisheries project in Assam.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-01-276",
+   "subject": "Polity & Governance",
+   "syllabus": "Infrastructure",
+   "exam": "pre",
+   "q": "With reference to the MoU between NHAI and Reliance Jio on a telecom-based safety alert system, consider the following statements:\n1. Travellers will get advance warnings on their phones near accident-prone stretches and fog-affected areas.\n2. The system will be integrated with the Rajmargyatra app and the helpline 1033.\n3. It needs new roadside hardware to be installed along the highways.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "It uses existing telecom towers and Jio's 4G and 5G network, so it can be deployed quickly without additional roadside hardware. Alerts are sent by SMS, WhatsApp and high-priority calls.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-01-277",
+   "subject": "Environment",
+   "syllabus": "Energy",
+   "exam": "pre",
+   "q": "With reference to the Global Energy Leaders' Summit 2025 held in Puri, consider the following statements:\n1. It was organised by the Government of Odisha.\n2. It concluded with a Draft Puri Declaration and four MoUs.\n3. One MoU set up a Green Hydrogen Centre of Excellence in Odisha.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The theme was 'Powering India: Sufficiency, Balance, Innovation', and the talks covered small modular reactors, green hydrogen and digital grid security.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-01-278",
+   "subject": "Polity & Governance",
+   "syllabus": "Skilling",
+   "exam": "pre",
+   "q": "With reference to the MoUs signed by the Ministry of Labour and Employment with Microsoft and by the Ministry of MSME with Amazon, consider the following statements:\n1. Microsoft will encourage over 15,000 employers to join the National Career Service platform.\n2. The Amazon MoU supports artisans under the PM Vishwakarma Scheme.\n3. The PM Vishwakarma Scheme was launched on 17 September 2023.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The scheme provides skill training, toolkits, credit and support for the guru-shishya parampara, and Amazon's Karigar initiative will showcase handmade products.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-01-279",
+   "subject": "Sci & Tech",
+   "syllabus": "Defence production",
+   "exam": "pre",
+   "q": "With reference to the C-130J maintenance facility to be set up by Tata Advanced Systems and Lockheed Martin, consider the following statements:\n1. It is a Maintenance, Repair and Overhaul facility for the IAF's C-130J fleet.\n2. The IAF operates a fleet of 30 C-130J aircraft.\n3. The groundbreaking ceremony took place in Bengaluru.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "The IAF operates 12 C-130J aircraft. Construction is due to finish by the end of 2026 and MRO operations to begin in early 2027.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-01-280",
+   "subject": "IR",
+   "syllabus": "Multilateral forums",
+   "exam": "pre",
+   "q": "With reference to the United Nations Alliance of Civilizations (UNAOC), consider the following statements:\n1. It was launched by the UN in 2005 on the initiative of Spain and Turkey.\n2. It aims at intercultural dialogue to counter polarisation and terrorism.\n3. Its 11th Global Forum was held in Riyadh in December 2025.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. India's delegation was led by the Secretary (East) of the MEA and stressed 'Vasudhaiva Kutumbakam' and 'Sarva Dharma Samabhav'.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-01-281",
+   "subject": "Economy",
+   "syllabus": "Maritime sector",
+   "exam": "pre",
+   "q": "The Sagarmala Finance Corporation Limited, with which BEML signed an MoU, is described as which one of the following?",
+   "opts": [
+    "A public sector bank that lends to ports only",
+    "A development finance institution for shipping",
+    "First NBFC focused on the maritime sector",
+    "A guarantee fund for inland waterways"
+   ],
+   "ans": 2,
+   "why": "BEML signed it for financial support to maritime manufacturing. BEML also signed a tripartite MoU with HD Korea Shipbuilding & Offshore Engineering and HD Hyundai Samho Heavy Industries for port cranes.",
+   "insight": ""
   }
  ]
 }

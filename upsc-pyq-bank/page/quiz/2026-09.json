@@ -4643,6 +4643,358 @@
     "date": "2023"
    },
    "checked": "30 Oct 2026"
+  },
+  {
+   "id": "caq-2026-09-212",
+   "subject": "History",
+   "syllabus": "Modern India",
+   "exam": "pre",
+   "q": "With reference to Swami Vivekananda, consider the following statements:\n1. He delivered his address at the World's Parliament of Religions in Chicago on 11 September 1893.\n2. He founded the Ramakrishna Mission in 1897 and Belur Math in 1899.\n3. He was born as Narendra Nath Datta in Kolkata in 1863.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. He adopted the name Vivekananda in 1893, and his birth anniversary of 12 January is observed as National Youth Day.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-09-213",
+   "subject": "History",
+   "syllabus": "Modern India",
+   "exam": "pre",
+   "q": "With reference to the integration of Hyderabad State with India, consider the following statements:\n1. The Razakars were led by Sardar Vallabhbhai Patel.\n2. India and Hyderabad signed a Standstill Agreement in 1947.\n3. The Indian Army launched Operation Polo on 13 September 1948.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The Razakars were a militia led by Qasim Razvi who opposed accession to India. Hyderabad surrendered within three days of the operation, and 17 September is commemorated as Hyderabad Liberation Day.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-09-214",
+   "subject": "History",
+   "syllabus": "Modern India",
+   "exam": "pre",
+   "q": "The Standstill Agreement of 1947 was signed between India and which one of the following princely states?",
+   "opts": [
+    "Junagadh",
+    "Travancore",
+    "Jammu and Kashmir",
+    "Hyderabad"
+   ],
+   "ans": 3,
+   "why": "The agreement maintained existing relations after the British withdrawal. The Nizam, Mir Osman Ali Khan, still sought independence, which led to Operation Polo in 1948.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-09-215",
+   "subject": "History",
+   "syllabus": "Constitution making",
+   "exam": "pre",
+   "q": "With reference to the language provisions in the Constitution of India, consider the following statements:\n1. Article 343 makes Hindi in the Devanagari script the official language of the Union.\n2. Article 350A requires every State to teach all subjects in Hindi at the primary stage.\n3. Article 348 requires the Supreme Court and High Courts to use English, unless the law provides otherwise.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "Article 350A says States should provide instruction in the mother tongue at the primary stage to children of linguistic minorities. Article 351 directs the Union to promote the spread of Hindi.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-09-216",
+   "subject": "History",
+   "syllabus": "Constitution making",
+   "exam": "pre",
+   "q": "With reference to the Munshi-Ayyangar formula on the official language, consider the following:\n1. Hindi in Devanagari script was adopted as the official language of the Union.\n2. English was allowed to continue for 15 years.\n3. The international form of Indian numerals was adopted for official purposes.\n4. Hindi was declared the national language.\nHow many of the above of the above statements are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 2,
+   "why": "Hindi was made the official language and not the national language. The formula was drafted by K M Munshi and N Gopalaswami Ayyangar, and the Official Languages Act, 1963 later continued English.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-09-217",
+   "subject": "History",
+   "syllabus": "Constitution making",
+   "exam": "pre",
+   "q": "Consider the following statements:\nStatement-I: Hindi Diwas is observed on 14 September every year.\nStatement-II: The Constituent Assembly adopted Hindi in Devanagari script as the official language of the Union on 14 September 1949.\nWhich one of the following is correct in respect of the above statements?",
+   "opts": [
+    "Both Statement-I and Statement-II are correct and Statement-II explains Statement-I",
+    "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I",
+    "Statement-I is correct, but Statement-II is incorrect",
+    "Statement-I is incorrect, but Statement-II is correct"
+   ],
+   "ans": 0,
+   "why": "Both are correct and the 1949 decision is the reason for the observance. World Hindi Day on 10 January is different and marks the First World Hindi Conference at Nagpur in 1975.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-09-218",
+   "subject": "History",
+   "syllabus": "Constitution making",
+   "exam": "pre",
+   "q": "Which one of the following is true of the Eighth Schedule to the Constitution?",
+   "opts": [
+    "It has 22 languages and omits English",
+    "It lists 14 languages and includes English",
+    "It lists 22 languages and includes English",
+    "It lists 18 languages and excludes Hindi"
+   ],
+   "ans": 0,
+   "why": "It initially had 14 languages and Hindi was among them. English continues as an associate official language through the Official Languages Act, 1963.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-09-219",
+   "subject": "History",
+   "syllabus": "Freedom struggle",
+   "exam": "pre",
+   "q": "With reference to the Interim Government formed in 1946, consider the following statements:\n1. It functioned under a new Constitution that replaced the Government of India Act, 1919.\n2. It was formed on 2 September 1946 under Jawaharlal Nehru as Vice-President of the Viceroy's Executive Council.\n3. The Muslim League joined it on 26 October 1946.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "It functioned under the existing Government of India Act, 1919 with the Viceroy as head of the Council. Liaquat Ali Khan became the Finance Member.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-09-220",
+   "subject": "History",
+   "syllabus": "Freedom struggle",
+   "exam": "pre",
+   "q": "With reference to the members of the Interim Government of 1946, consider the following:\n1. Sardar Vallabhbhai Patel held the Home portfolio.\n2. Dr Rajendra Prasad held Food and Agriculture.\n3. Liaquat Ali Khan held Finance.\n4. C Rajagopalachari held Defence.\nHow many of the above of the above pairs are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 2,
+   "why": "C Rajagopalachari held Education and Arts, and Sardar Baldev Singh held Defence. Jagjivan Ram held Labour.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-09-221",
+   "subject": "History",
+   "syllabus": "Freedom struggle",
+   "exam": "pre",
+   "q": "Consider the following statements:\nStatement-I: The Muslim League launched Direct Action Day on 16 August 1946.\nStatement-II: The Muslim League withdrew its acceptance of the Cabinet Mission Plan before it launched Direct Action Day.\nWhich one of the following is correct in respect of the above statements?",
+   "opts": [
+    "Both Statement-I and Statement-II are correct and Statement-II explains Statement-I",
+    "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I",
+    "Statement-I is correct, but Statement-II is incorrect",
+    "Statement-I is incorrect, but Statement-II is correct"
+   ],
+   "ans": 0,
+   "why": "Both are correct. After the League withdrew its acceptance of the plan, it launched Direct Action Day, which led to riots including the Great Calcutta Killings.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-09-222",
+   "subject": "History",
+   "syllabus": "Ancient India",
+   "exam": "pre",
+   "q": "With reference to ancient maritime trade of India, consider the following statements:\n1. Poompuhar was an early Chola port at the mouth of the Cauvery River.\n2. The Arthashastra mentions the Navadhyaksha as the official in charge of waterways and shipping.\n3. Korkai, known for its pearl fisheries, was a Satavahana port.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Korkai was a Pandya port known for its pearl fisheries in the Gulf of Mannar. The Satavahanas used ports like Bharuch, Sopara and Kalyan.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-09-223",
+   "subject": "Art & Culture",
+   "syllabus": "Languages",
+   "exam": "pre",
+   "q": "Namey Dogra Akhar, which has been revived on public signboards, is the traditional script of which one of the following languages?",
+   "opts": [
+    "Dogri",
+    "Kashmiri",
+    "Pahari",
+    "Punjabi"
+   ],
+   "ans": 0,
+   "why": "The script is derived from Takri and was standardised during the reign of Maharaja Ranbir Singh. Dogri was included in the Eighth Schedule by the 92nd Amendment in 2003.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-09-224",
+   "subject": "Art & Culture",
+   "syllabus": "Languages",
+   "exam": "pre",
+   "q": "With reference to the Dogri language, consider the following statements:\n1. It belongs to the Western Pahari group of the Indo-Aryan language family.\n2. It was included in the Eighth Schedule through the 92nd Constitutional Amendment Act, 2003.\n3. It became an official language of Jammu and Kashmir under a law of 2020.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The Jammu and Kashmir Official Languages Act, 2020 made it an official language along with Urdu, Kashmiri, Hindi and English.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-09-225",
+   "subject": "Art & Culture",
+   "syllabus": "Dance",
+   "exam": "pre",
+   "q": "With reference to Kathakali, consider the following statements:\n1. It evolved in Kerala in the 16th-17th centuries.\n2. The accompaniment uses the Carnatic violin and mridangam as its main instruments.\n3. It uses 24 root hand gestures called mudras.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "The accompaniment uses the Chenda, Maddalam, Chengila and Ilathalam in the Sopana tradition. It tells stories from the epics and Puranas through Attakatha literature.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-09-226",
+   "subject": "Art & Culture",
+   "syllabus": "Dance",
+   "exam": "pre",
+   "q": "The word 'Kathakali' is derived from which one of the following pairs of Malayalam words?",
+   "opts": [
+    "Katha meaning song and Kali meaning dance",
+    "Katha meaning story and Kali meaning play",
+    "Katha meaning dance and Kali meaning drama",
+    "Katha meaning legend and Kali meaning mask"
+   ],
+   "ans": 1,
+   "why": "It is a dance-drama that grew out of Kutiyattam, Krishnanattam and Ramanattam. Its make-up includes the Pacha, Kathi, Tadi, Kari and Minukku types of Vesham.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-09-227",
+   "subject": "Art & Culture",
+   "syllabus": "Awards",
+   "exam": "pre",
+   "q": "With reference to the National Film Awards, consider the following statements:\n1. They were instituted in 1954.\n2. They are conferred by the President of India.\n3. The NFDC has administered them since 2022.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The Directorate of Film Festivals administered them from 1974 to 2022, and the 72nd edition was to be presented at Ekta Nagar, Gujarat.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-09-228",
+   "subject": "Art & Culture",
+   "syllabus": "Cinema",
+   "exam": "pre",
+   "q": "With reference to the film 'Angh', which won the Platform Prize at the 2026 Toronto International Film Festival, consider the following statements:\n1. It is a contemporary thriller set in a metropolitan city.\n2. It is a debut feature of the Nagaland filmmaker Theja Rio.\n3. It is shot mainly in the Konyak language with local non-professional actors.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "It is a historical period drama set in the early 1960s in a Konyak Naga village near the India-Myanmar border. It is the first film from Nagaland to receive the honour.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-09-229",
+   "subject": "Art & Culture",
+   "syllabus": "Tribal culture",
+   "exam": "pre",
+   "q": "The title 'Angh', which gave its name to an award-winning film, refers to which one of the following?",
+   "opts": [
+    "Sacred morung dormitory of the Ao tribe",
+    "Harvest festival of the Angami tribe",
+    "Ceremonial headgear of the Naga warriors",
+    "Hereditary chief of a Konyak village"
+   ],
+   "ans": 3,
+   "why": "The Konyak are the largest Naga tribe and live in Nagaland's Mon district and the adjoining parts of Myanmar. The film follows a village chief as animist traditions meet Christianity.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-09-230",
+   "subject": "Art & Culture",
+   "syllabus": "Awards",
+   "exam": "pre",
+   "q": "With reference to the Kalinga Ratna Award, consider the following statements:\n1. It is a national honour of the Government of India given to artists across India.\n2. It was instituted in 2007 by the Sarala Sahitya Sansad of Cuttack.\n3. It includes a silver idol of Goddess Saraswati and a citation.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "It is a state-level civilian honour for eminent personalities from Odisha. The Sarala Sahitya Sansad was set up in 1982 to promote Odia language and honour Sarala Das, the Adi Kabi of Odisha.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-09-231",
+   "subject": "Art & Culture",
+   "syllabus": "Cinema",
+   "exam": "pre",
+   "q": "With reference to the National Film Awards, consider the following statements:\n1. The first Best Actor and Best Actress awards were given in 1968 to Uttam Kumar and Nargis.\n2. The awards were first called the Padma Film Awards.\n3. The Dadasaheb Phalke Award is presented under the same framework.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "They were initially called the State Awards. The early awards were 2 President's Gold Medals, 2 Certificates of Merit and 12 Silver Medals for regional films.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-09-232",
+   "subject": "IR",
+   "syllabus": "Awards",
+   "exam": "pre",
+   "q": "With reference to the Ramon Magsaysay Award, consider the following statements:\n1. Since 2009 it has been given in six fixed categories every year.\n2. It was set up in 1957 by the Rockefeller Brothers Fund with the Government of the Philippines.\n3. It is often called Asia's Nobel Prize.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "Since 2009 it has dropped fixed categories except Emergent Leadership for leaders aged 40 or below. The 2026 awardees are Tommy Koh of Singapore, Runa Khan of Bangladesh and Bo Kyi of Myanmar.",
+   "insight": ""
+  },
+  {
+   "id": "caq-2026-09-233",
+   "subject": "IR",
+   "syllabus": "Law of the sea",
+   "exam": "pre",
+   "q": "Tommy Koh, a Ramon Magsaysay Award 2026 awardee, chaired the conference that adopted which one of the following?",
+   "opts": [
+    "Agreement on Biodiversity Beyond National Jurisdiction",
+    "Convention on Biological Diversity",
+    "United Nations Convention on the Law of the Sea",
+    "Antarctic Treaty System"
+   ],
+   "ans": 2,
+   "why": "The conference ran in 1982 and the UNCLOS is called the Constitution for the Oceans.",
+   "insight": ""
   }
  ]
 }
