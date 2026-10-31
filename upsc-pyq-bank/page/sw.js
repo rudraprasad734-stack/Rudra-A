@@ -1,7 +1,7 @@
 // CSE Companion service worker: caches the app shell so the page loads and
 // runs with zero network connectivity after the first successful visit.
 // Bump CACHE_NAME on any deploy that changes cached files so clients refresh.
-const CACHE_NAME = "cse-companion-v291";
+const CACHE_NAME = "cse-companion-v292";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -13,6 +13,7 @@ const APP_SHELL = [
   "./quiz/index.json",
   "./quiz/2026-10.json",
   "./quiz/2026-09.json",
+  "./quiz/2026-08.json",
   "./quiz/2026-01.json",
   "./delete-account.html",
   "./icon-192.png",
