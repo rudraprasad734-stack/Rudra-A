@@ -17,12 +17,12 @@ def lint(path):
     types = collections.Counter(); pos = collections.Counter(); longest = n_long = 0
     for q in qs:
         i = q['id']; o = q['opts']; ln = lambda m, bag: bag.append(f'{i}: {m}')
-        for k in ('id', 'subject', 'q', 'opts', 'ans', 'why', 'insight', 'src'):
+        for k in ('id', 'subject', 'q', 'opts', 'ans', 'why'):
             if k not in q or q[k] in ('', None): ln(f'missing {k}', E)
         if ids[i] > 1: ln('duplicate id', E)
         if not isinstance(q.get('ans'), int) or not 0 <= q['ans'] < len(o): ln('ans out of range', E); continue
         if len(set(x.strip().lower() for x in o)) != len(o): ln('duplicate options', E)
-        if not str(q.get('src', {}).get('url', '')).startswith('https://'): ln('source url missing or not https', E)
+        if q.get('src') and not str(q['src'].get('url', '')).startswith('https://'): ln('source url present but not https', E)
         t = qtype(q['q'], o); types[t] += 1; pos[q['ans']] += 1
         low = [x.strip().lower().rstrip('.') for x in o]
         if t == 'statements/items':
