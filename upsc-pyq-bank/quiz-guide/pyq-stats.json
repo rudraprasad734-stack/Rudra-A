@@ -1,0 +1,102 @@
+{
+ "papers": [
+  2014,
+  2015,
+  2020,
+  2021,
+  2024,
+  2025
+ ],
+ "questions": 595,
+ "mix_by_year": {
+  "2014": {
+   "statements/items": 52,
+   "single-answer": 33,
+   "pairs": 14,
+   "sequence": 1
+  },
+  "2015": {
+   "single-answer": 53,
+   "statements/items": 44,
+   "pairs": 3
+  },
+  "2020": {
+   "statements/items": 59,
+   "single-answer": 36,
+   "pairs": 5
+  },
+  "2021": {
+   "statements/items": 54,
+   "single-answer": 38,
+   "pairs": 1,
+   "sequence": 1,
+   "assertion-reason": 1
+  },
+  "2024": {
+   "how-many": 18,
+   "statements/items": 44,
+   "single-answer": 25,
+   "assertion-reason": 13
+  },
+  "2025": {
+   "how-many": 27,
+   "statements/items": 42,
+   "assertion-reason": 14,
+   "single-answer": 17
+  }
+ },
+ "mix_2024_2025_percent": {
+  "how-many": 22,
+  "statements/items": 43,
+  "single-answer": 21,
+  "assertion-reason": 14
+ },
+ "items_per_statement_question_2024_2025": {
+  "2": 25,
+  "3": 45,
+  "4": 14,
+  "5": 2
+ },
+ "top_option_sets_statements_2024_2025": [
+  [
+   "I and II only | II and III only | I and III only | I, II and III",
+   14
+  ],
+  [
+   "1 only | 2 only | Both 1 and 2 | Neither 1 nor 2",
+   12
+  ],
+  [
+   "I only | II only | Both I and II | Neither I nor II",
+   12
+  ],
+  [
+   "1 and 2 only | 2 and 3 only | 1 and 3 only | 1, 2 and 3",
+   9
+  ],
+  [
+   "1, 2 and 3 | 1 and 2 only | 2 and 3 only | 1 and 3 only",
+   2
+  ],
+  [
+   "1 only | 1 and 2 only | 2 and 3 only | 1, 2 and 3",
+   2
+  ]
+ ],
+ "avg_stem_words": 40.1,
+ "avg_stem_words_by_year": {
+  "2014": 35,
+  "2015": 31,
+  "2020": 43,
+  "2021": 39,
+  "2024": 40,
+  "2025": 51
+ },
+ "avg_option_words_single_answer": 5.5,
+ "answer_positions_2024": {
+  "D": 29,
+  "A": 25,
+  "B": 22,
+  "C": 24
+ }
+}
