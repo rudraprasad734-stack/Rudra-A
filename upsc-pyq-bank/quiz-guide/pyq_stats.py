@@ -9,7 +9,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 def qtype(t, o):
     tl = t.lower()
     if re.search(r'statement[- ]?(i|1)\b', tl) and re.search(r'statement[- ]?(ii|2)\b', tl): return 'assertion-reason'
-    if re.search(r'how many', tl): return 'how-many'
+    if re.search(r'how many (of the|of these|pairs|statements|items)', tl): return 'how-many'
     if re.search(r'\bpairs?\b', tl): return 'pairs'
     if re.search(r'(?m)^\s*(1|I)\.\s', t) or re.search(r'consider the following statements', tl): return 'statements/items'
     if re.search(r'chronolog|correct sequence|arrange', tl): return 'sequence'
