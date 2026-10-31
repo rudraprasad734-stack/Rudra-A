@@ -18901,7 +18901,7 @@ function renderTiersWhenReady(kind){
 // CA QUIZ: monthly current-affairs questions (quiz/*.json). Answers and reports stay on this device only: nothing is sent to any cloud store.
 // ============================================================================
 var CAQ_STORE = "dossier.caq.v1", CAQ_MAIL = "support@csecompanion.in";
-var CAQ_SUBJECTS = ["Polity & Governance", "Economy", "Environment", "Sci & Tech", "History & Culture", "Geography", "IR"];   // the Prelims subjects; the target is 30 questions each per month
+var CAQ_SUBJECTS = ["Polity & Governance", "Economy", "Environment", "Sci & Tech", "History", "Art & Culture", "Geography", "IR"];   // the Prelims subjects; the target is 30 questions each per month
 var CAQ_REASONS = ["The correct answer is wrong", "The explanation is wrong or unclear", "The fact is out of date", "The question is confusing or has two answers", "Not related to the UPSC syllabus"];
 var caq = {loaded:false, loading:false, err:"", months:[], qs:{}, ui:{subject:"All", run:null}};
 // device-only on purpose (plain localStorage, not lsSet): the cloud sync never sees these keys
@@ -19009,7 +19009,7 @@ function caqReportSheet(id){
 }
 
 // ---- Game-style screens: a full-screen overlay with a subject map, a road of sets for each subject, and the quiz itself
-var CAQ_LOOK = {"Polity & Governance":["⚖️","#3b55c8"], "Economy":["₹","#b07a10"], "Environment":["🌿","#1f8a4a"], "Sci & Tech":["🔬","#8a3ab0"], "History & Culture":["🏛️","#b0543a"], "Geography":["🗺️","#2a8aa0"], "IR":["🌐","#b03a6a"]};
+var CAQ_LOOK = {"Polity & Governance":["⚖️","#3b55c8"], "Economy":["₹","#b07a10"], "Environment":["🌿","#1f8a4a"], "Sci & Tech":["🔬","#8a3ab0"], "History":["🏛️","#b0543a"], "Art & Culture":["🎭","#c27a1a"], "Geography":["🗺️","#2a8aa0"], "IR":["🌐","#b03a6a"]};
 function caqStars(ok, n){ var r = n ? ok/n : 0; return r>=0.9 ? 3 : (r>=0.7 ? 2 : (r>=0.5 ? 1 : 0)); }
 function caqStarsHtml(k){ return "★★★".slice(0, k)+"☆☆☆".slice(0, 3-k); }
 // the sets of 10 for one subject, oldest month first, so the road starts at the first month and the newest month sits at the top
@@ -21439,7 +21439,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "289";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "290";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
