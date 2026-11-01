@@ -1,7 +1,7 @@
 // CSE Companion service worker: caches the app shell so the page loads and
 // runs with zero network connectivity after the first successful visit.
 // Bump CACHE_NAME on any deploy that changes cached files so clients refresh.
-const CACHE_NAME = "cse-companion-v295";
+const CACHE_NAME = "cse-companion-v296";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -19,6 +19,13 @@ const APP_SHELL = [
   "./quiz/2026-04.json",
   "./quiz/2026-03.json",
   "./quiz/2026-02.json",
+  "./crux/index.json",
+  "./crux/2026-06.json",
+  "./crux/2026-05.json",
+  "./crux/2026-04.json",
+  "./crux/2026-03.json",
+  "./crux/2026-02.json",
+  "./crux/2026-01.json",
   "./quiz/2026-01.json",
   "./delete-account.html",
   "./icon-192.png",
@@ -1579,7 +1586,7 @@ self.addEventListener("fetch", (event) => {
   if (/\/sw\.js$/.test(new URL(req.url).pathname) && new URL(req.url).searchParams.has("c")) return;
 
   // monthly quizzes: show the saved copy at once and refresh it in the background, so the tab opens fast (a new month appears on the next open)
-  if (new URL(req.url).pathname.indexOf("/quiz/") >= 0) {
+  if (/\/(quiz|crux)\//.test(new URL(req.url).pathname)) {
     event.respondWith(
       caches.match(req).then((cached) => {
         const net = fetch(req).then((res) => {

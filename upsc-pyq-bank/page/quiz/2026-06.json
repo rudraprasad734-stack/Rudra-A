@@ -16,7 +16,12 @@
    ],
    "ans": 0,
    "why": "No river board has ever been constituted under the River Boards Act, 1956. The Inter-State River Water Disputes Act, 1956 provides for ad-hoc tribunals.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-001",
+    2,
+    3
+   ]
   },
   {
    "id": "caq-2026-06-002",
@@ -32,7 +37,12 @@
    ],
    "ans": 1,
    "why": "The Supreme Court has used Article 136 to hear appeals and modify awards, as in the Cauvery dispute in 2018. Article 131 covers original jurisdiction in disputes between States.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-001",
+    3,
+    4
+   ]
   },
   {
    "id": "caq-2026-06-003",
@@ -48,7 +58,12 @@
    ],
    "ans": 2,
    "why": "All three are correct. The ancient name of the river is Pampa and the Tungabhadra Board oversees water regulation. The Centre plans a high-level committee for the Telangana, Andhra Pradesh and Karnataka dispute.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-001",
+    0,
+    3
+   ]
   },
   {
    "id": "caq-2026-06-004",
@@ -64,7 +79,11 @@
    ],
    "ans": 2,
    "why": "The Mullaperiyar dam is on the Periyar river in Kerala and operated by Tamil Nadu.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-001",
+    4
+   ]
   },
   {
    "id": "caq-2026-06-005",
@@ -80,7 +99,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. Australia's Murray-Darling Basin Authority is cited as an integrated basin model.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-001",
+    6
+   ]
   },
   {
    "id": "caq-2026-06-006",
@@ -96,7 +119,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. In India courts can strike down unconstitutional laws through judicial review, which UK courts cannot do for Acts of Parliament.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-002",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-007",
@@ -112,7 +139,13 @@
    ],
    "ans": 3,
    "why": "All three are correct. VIDHI-Sanjeevani is a new centralised digital platform, and Nyaya Bandhu promotes pro bono legal services.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-004",
+    0,
+    1,
+    2
+   ]
   },
   {
    "id": "caq-2026-06-008",
@@ -128,7 +161,12 @@
    ],
    "ans": 0,
    "why": "The right to walk flows from Article 19(1)(d) freedom of movement and Article 21. De-indexing of names in court records cannot be used in cases against women, children or breach of public trust.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-005",
+    2,
+    3
+   ]
   },
   {
    "id": "caq-2026-06-009",
@@ -144,7 +182,12 @@
    ],
    "ans": 1,
    "why": "The electoral roll creates a presumption but is not conclusive, as held in Lal Babu Hussein v. Electoral Registration Officer (1995). Section 20 of the Passports Act allows passports to non-citizens in public interest.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-006",
+    0,
+    1
+   ]
   },
   {
    "id": "caq-2026-06-010",
@@ -160,7 +203,11 @@
    ],
    "ans": 2,
    "why": "The designated account is with the State Bank of India, New Delhi main branch. The newly proposed rules include activity-based and geography-based regulation of NGOs.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-006",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-011",
@@ -176,7 +223,12 @@
    ],
    "ans": 0,
    "why": "The UNCRPD is a legally binding human rights treaty that came into force in 2008. COSP19 marked its 20th anniversary.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-007",
+    1,
+    2
+   ]
   },
   {
    "id": "caq-2026-06-012",
@@ -192,7 +244,13 @@
    ],
    "ans": 1,
    "why": "It covers State, UT, city and Central Ministry portals for G2C and G2B services.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-003",
+    0,
+    1,
+    3
+   ]
   },
   {
    "id": "caq-2026-06-013",
@@ -208,7 +266,13 @@
    ],
    "ans": 1,
    "why": "Article 131 is original jurisdiction, 136 is special leave, and 263 provides for the Inter-State Council.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-001",
+    2,
+    4,
+    6
+   ]
   },
   {
    "id": "caq-2026-06-014",
@@ -224,7 +288,11 @@
    ],
    "ans": 2,
    "why": "Quad is an informal strategic grouping without a permanent secretariat, treaty obligations or dedicated funding. Exercise Malabar involves the navies of all four members but is not formally a Quad exercise.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-008",
+    3
+   ]
   },
   {
    "id": "caq-2026-06-015",
@@ -240,7 +308,12 @@
    ],
    "ans": 0,
    "why": "The Coast Guard-led Quad-at-Sea Ship Observer Mission is to be hosted by India, after the first mission from Palau to Guam. Cooperation on 6G standards was also announced.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-008",
+    1,
+    2
+   ]
   },
   {
    "id": "caq-2026-06-016",
@@ -256,7 +329,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. Implementation of the Quad Partnership for Cable Connectivity and Resilience has been limited to a subsea cable in Palau.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-008",
+    5
+   ]
   },
   {
    "id": "caq-2026-06-017",
@@ -272,7 +349,11 @@
    ],
    "ans": 1,
    "why": "BRICS has no permanent secretariat. The Fortaleza Declaration also created the Contingent Reserve Arrangement of 100 billion dollars. NDB is headquartered in Shanghai.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-009",
+    4
+   ]
   },
   {
    "id": "caq-2026-06-018",
@@ -288,7 +369,11 @@
    ],
    "ans": 2,
    "why": "Saudi Arabia has not yet taken a formal decision on membership. Partner countries include Belarus, Bolivia, Kazakhstan, Cuba, Malaysia, Nigeria, Thailand, Uganda, Uzbekistan and Vietnam.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-009",
+    4
+   ]
   },
   {
    "id": "caq-2026-06-019",
@@ -304,7 +389,12 @@
    ],
    "ans": 3,
    "why": "All three are correct. BRICS AGRIN covers agro-inputs and genetic resources, and a BRICS Network on Digital Agriculture is coordinated initially by IIT Delhi.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-009",
+    0,
+    2
+   ]
   },
   {
    "id": "caq-2026-06-020",
@@ -320,7 +410,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. India's third GIAHS site is Koraput traditional agriculture in Odisha.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-009",
+    3
+   ]
   },
   {
    "id": "caq-2026-06-021",
@@ -336,7 +430,12 @@
    ],
    "ans": 0,
    "why": "India seeks to ensure BRICS remains non-western and not anti-western. The deputy foreign ministers' and foreign ministers' meetings in April and May 2026 failed to build consensus.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-009",
+    4,
+    5
+   ]
   },
   {
    "id": "caq-2026-06-022",
@@ -352,7 +451,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. Pillars cover trusted AI, academic mobility, technological sovereignty and health data; the Kanpur aeronautics campus is planned with MSDE.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-010",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-023",
@@ -368,7 +471,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. The InnoXchange Bridge provides a startup corridor for reciprocal access to laboratories and investors.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-010",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-024",
@@ -384,7 +491,11 @@
    ],
    "ans": 1,
    "why": "India is not a G7 member; it was invited as a partner country. The summit discussed the IMF-World Bank 3-Pillar Approach for debt and liquidity challenges.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-011",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-025",
@@ -400,7 +511,11 @@
    ],
    "ans": 0,
    "why": "AGRIN stands for Agro-Inputs, Genetic Resources and Information Network.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-009",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-026",
@@ -416,7 +531,11 @@
    ],
    "ans": 2,
    "why": "China controls about 90% of rare earth processing and refining, produces 69% of rare earths and has 49% of reserves. The India-US framework aims to reduce dependence on China.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-011",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-027",
@@ -432,7 +551,12 @@
    ],
    "ans": 3,
    "why": "All three are correct. The observatory is a data-driven platform to monitor global critical mineral supply chains.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-011",
+    1,
+    2
+   ]
   },
   {
    "id": "caq-2026-06-028",
@@ -448,7 +572,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. Myanmar lies at the confluence of Neighbourhood First, Act East and MAHASAGAR policies.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-011",
+    3
+   ]
   },
   {
    "id": "caq-2026-06-029",
@@ -464,7 +592,11 @@
    ],
    "ans": 0,
    "why": "Oman is India's second-largest trading partner in the Gulf with about 11 billion dollars of trade. Its ports at Sohar, Duqm and Salalah offer access to GCC and East African markets.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-011",
+    4
+   ]
   },
   {
    "id": "caq-2026-06-030",
@@ -480,7 +612,11 @@
    ],
    "ans": 1,
    "why": "India imports crude oil, mineral waxes, iron and steel, aluminium and other metals from Venezuela, while pharmaceuticals and cotton are among India's exports.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-011",
+    5
+   ]
   },
   {
    "id": "caq-2026-06-031",
@@ -496,7 +632,11 @@
    ],
    "ans": 2,
    "why": "It was announced at the 2023 G20 in India. Signatories are India, the US, Saudi Arabia, the UAE, France, Germany, Italy and the EU; it is estimated to cut time by 40% and logistics cost by 30%.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-012",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-032",
@@ -512,7 +652,11 @@
    ],
    "ans": 0,
    "why": "India opposes CPEC because it passes through parts of Jammu and Kashmir under illegal occupation, violating India's sovereignty and territorial integrity.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-012",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-033",
@@ -528,7 +672,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. Its guiding principles are Imagine, Dialogue and Act.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-012",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-034",
@@ -544,7 +692,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. Iceland ranked first for the 19th consecutive year and Russia ranked last.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-012",
+    3
+   ]
   },
   {
    "id": "caq-2026-06-035",
@@ -560,7 +712,12 @@
    ],
    "ans": 3,
    "why": "All three are correct. Bangladesh has approved construction of the Padma barrage in Rajbari district.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-012",
+    4,
+    5
+   ]
   },
   {
    "id": "caq-2026-06-036",
@@ -576,7 +733,11 @@
    ],
    "ans": 1,
    "why": "The World Inequality Report 2026 says the richest 10% hold about 65% of national wealth and the top 1% about 40%. Household debt rose to 45.5% of GDP by March 2026.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-013",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-037",
@@ -592,7 +753,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. The Unified Pension Scheme is effective since 2025, and over 86.51 lakh senior citizens aged 70 and above hold Ayushman Vay Vandana Cards.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-013",
+    3
+   ]
   },
   {
    "id": "caq-2026-06-038",
@@ -608,7 +773,11 @@
    ],
    "ans": 2,
    "why": "State Governments issue only dated securities known as State Development Loans. Cash Management Bills were introduced in 2010 for maturities under 91 days.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-014",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-039",
@@ -624,7 +793,11 @@
    ],
    "ans": 0,
    "why": "G-Secs carry practically no default risk and are called risk-free gilt-edged instruments. They are issued through RBI auctions on the E-Kuber platform.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-014",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-040",
@@ -640,7 +813,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. The overall limit for non-resident individuals in listed equity was proposed to rise from 10% to 24%.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-014",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-041",
@@ -656,7 +833,11 @@
    ],
    "ans": 1,
    "why": "Pre-packaged insolvency is a hybrid framework for MSMEs to be completed in 120 days. The mandated CIRP limit is 330 days but actual resolution takes about 744 days.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-015",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-042",
@@ -672,7 +853,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. It also provides an enabling framework for cross-border and group insolvency, and strengthens the clean-slate principle.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-015",
+    4
+   ]
   },
   {
    "id": "caq-2026-06-043",
@@ -688,7 +873,12 @@
    ],
    "ans": 3,
    "why": "All three are correct. IBBI is the statutory regulator with a Chairperson, three ex-officio Central Government members, one ex-officio RBI member and five other members.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-015",
+    2,
+    3
+   ]
   },
   {
    "id": "caq-2026-06-044",
@@ -704,7 +894,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. There are 27 ARCs registered with the RBI in 2026 and NARCL was announced in the 2021-22 Budget.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-016",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-045",
@@ -720,7 +914,11 @@
    ],
    "ans": 2,
    "why": "ARCs are prohibited from raising deposits. ARCs must hold at least 15% of the issued Security Receipts and resolve assets in 5 years, extendable up to 8 years.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-016",
+    3
+   ]
   },
   {
    "id": "caq-2026-06-046",
@@ -736,7 +934,13 @@
    ],
    "ans": 0,
    "why": "About 80% of recoveries have come through debt enforcement or liquidation, not revival. The Sudarshan Sen Committee (2021) recommended that ARCs sponsor SEBI-registered AIFs.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-016",
+    2,
+    4,
+    5
+   ]
   },
   {
    "id": "caq-2026-06-047",
@@ -752,7 +956,11 @@
    ],
    "ans": 2,
    "why": "It is registered with the RBI as an ARC under the SARFAESI Act, with Canara Bank as sponsor.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-016",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-048",
@@ -768,7 +976,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. Paradip topped dry bulk and Sikka Port and Terminals topped liquid bulk.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-017",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-049",
@@ -784,7 +996,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. India's share of global ship recycling rose from 30.1% in 2024 to 35.4% in 2025, and a ship recycling credit note of 40% of scrap value is offered.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-017",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-050",
@@ -800,7 +1016,11 @@
    ],
    "ans": 1,
    "why": "India holds about 0.06% of the global shipbuilding market; China, Korea and Japan hold more than 90%. The Shipbuilding Development Scheme targets 4.5 million GT capacity.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-017",
+    4
+   ]
   },
   {
    "id": "caq-2026-06-051",
@@ -816,7 +1036,12 @@
    ],
    "ans": 2,
    "why": "About 75% of India's transhipment cargo is handled at ports outside India. The Sagarmala programme was launched in 2015.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-017",
+    2,
+    3
+   ]
   },
   {
    "id": "caq-2026-06-052",
@@ -832,7 +1057,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. The e-Navik platform supports India's commitment to the Maritime Labour Convention, 2006.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-017",
+    4
+   ]
   },
   {
    "id": "caq-2026-06-053",
@@ -848,7 +1077,11 @@
    ],
    "ans": 0,
    "why": "The scheme earmarks 75% of physical targets and financial allocations to NSDC and 25% to State Skill Development Missions. NSDC is a PPP with 49% government and 51% private shareholding.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-018",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-054",
@@ -864,7 +1097,11 @@
    ],
    "ans": 1,
    "why": "AEBAS was not implemented under the RPL component. Against the outlay of Rs 14,449 crore, Rs 10,194 crore was released and Rs 9,261 crore utilised.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-018",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-055",
@@ -880,7 +1117,11 @@
    ],
    "ans": 2,
    "why": "India accounts for less than 1.5% of global international tourist arrivals. It aims for 100 million inbound tourists and a 3 trillion dollar tourism economy by 2047.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-019",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-056",
@@ -896,7 +1137,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. SASCI gives Rs 3,295.76 crore with 100% central funding for 40 iconic tourist centres.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-019",
+    3
+   ]
   },
   {
    "id": "caq-2026-06-057",
@@ -912,7 +1157,11 @@
    ],
    "ans": 0,
    "why": "Hotels may require about 50 approvals and F&B establishments about 30 licences. The report proposes self-declaration for hotel classification and Entity Locker.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-019",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-058",
@@ -928,7 +1177,11 @@
    ],
    "ans": 1,
    "why": "It takes effect 12 months after at least two member states ratify it.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-020",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-059",
@@ -944,7 +1197,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. India has ratified six of the eight core ILO conventions and has not ratified the Freedom of Association and Right to Organise Convention.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-020",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-060",
@@ -960,7 +1217,11 @@
    ],
    "ans": 2,
    "why": "Workers must receive timely pay and, if considered employees, at least the minimum wage. Platforms must be transparent about automated monitoring systems.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-020",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-061",
@@ -976,7 +1237,11 @@
    ],
    "ans": 0,
    "why": "Revenue expenditure formed 83.41% of total expenditure and capital expenditure only 16.59%. The share of States in Union taxes rose from 27.73% to 31.76%.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-020",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-062",
@@ -992,7 +1257,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. The first Output PPI, a trial Input PPI and a Service PPI for seven services were also released.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-021",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-063",
@@ -1008,7 +1277,11 @@
    ],
    "ans": 1,
    "why": "The guidelines use 2022-23 as the base year. Approaches are income originating and income accruing.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-021",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-064",
@@ -1024,7 +1297,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. South Asia growth may moderate from 7.0% to 6.3% in 2026.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-021",
+    3
+   ]
   },
   {
    "id": "caq-2026-06-065",
@@ -1040,7 +1317,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. Funds depend on adequate macroeconomic policy, satisfactory reform implementation and critical policy actions.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-021",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-066",
@@ -1056,7 +1337,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. The number of unicorns reached a record 1,603.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-021",
+    4
+   ]
   },
   {
    "id": "caq-2026-06-067",
@@ -1072,7 +1357,11 @@
    ],
    "ans": 2,
    "why": "AAY households get 35 kg per family per month; Priority Households get 5 kg per person per month under the NFSA.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-022",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-068",
@@ -1088,7 +1377,11 @@
    ],
    "ans": 0,
    "why": "FCI is deploying it in 150 more warehouses; CWC warehouses are the first 215. About 60-70% of food grains are stored at household level.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-022",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-069",
@@ -1104,7 +1397,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. The Antheraea assamensis silkworm feeds on Som and Soalu leaves, and Mission Senehjori targets 5 reeling units and 30 FPOs by 2028.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-022",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-070",
@@ -1120,7 +1417,11 @@
    ],
    "ans": 1,
    "why": "The pineapple is botanically a multiple or composite fruit. Pineapple was declared the State Fruit of Tripura and Mission Queen Pineapple promotes the GI-tagged Queen variety.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-022",
+    3
+   ]
   },
   {
    "id": "caq-2026-06-071",
@@ -1136,7 +1437,11 @@
    ],
    "ans": 2,
    "why": "India is the second-largest aquaculture producer, with 12% of global output. Sustainable fish stocks declined from 64.5% to 62.4%.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-022",
+    4
+   ]
   },
   {
    "id": "caq-2026-06-072",
@@ -1152,7 +1457,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. FCNR(B) deposits are held in designated foreign currencies, protecting depositors from exchange rate risk.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-023",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-073",
@@ -1168,7 +1477,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. REITs may be equity, mortgage or hybrid.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-023",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-074",
@@ -1184,7 +1497,11 @@
    ],
    "ans": 0,
    "why": "Spending on ZCZP is capped at 10% of a company's total CSR expenditure in that financial year. It is regulated by SEBI.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-023",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-075",
@@ -1200,7 +1517,11 @@
    ],
    "ans": 1,
    "why": "CGSMFI-2.0 gives 80% of default amount for small, 75% for medium and 70% for large NBFC-MFIs. It is sponsored by the Department of Financial Services.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-023",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-076",
@@ -1216,7 +1537,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. NPCI was initiated by the RBI and the Indian Banks' Association under the Payment and Settlement Systems Act, 2007.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-023",
+    3
+   ]
   },
   {
    "id": "caq-2026-06-077",
@@ -1232,7 +1557,12 @@
    ],
    "ans": 2,
    "why": "All three are correct. The fund has a corpus of up to Rs 10,000 crore for 36 months; ATF accounts for nearly 40% of airline operating costs. Sagarmala Finance Corporation will launch India's first blue bonds.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-023",
+    4,
+    5
+   ]
   },
   {
    "id": "caq-2026-06-078",
@@ -1248,7 +1578,12 @@
    ],
    "ans": 3,
    "why": "All three are correct. In June 2026 India completed Phase-II testing with AD-1 and AD-2 interceptors for 5,000 km-class threats.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-024",
+    1,
+    2
+   ]
   },
   {
    "id": "caq-2026-06-079",
@@ -1264,7 +1599,12 @@
    ],
    "ans": 2,
    "why": "Agni-V is classified as an intercontinental ballistic missile with range of 5,500-8,000 km. Agni-IV is intermediate-range with about 4,000 km.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-024",
+    1,
+    3
+   ]
   },
   {
    "id": "caq-2026-06-080",
@@ -1280,7 +1620,11 @@
    ],
    "ans": 0,
    "why": "It was developed by the DRDO. It has pinpoint navigation and high terminal accuracy.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-024",
+    4
+   ]
   },
   {
    "id": "caq-2026-06-081",
@@ -1296,7 +1640,11 @@
    ],
    "ans": 1,
    "why": "The Defence Space Agency coordinates military space operations; the Defence Cyber Agency leads cyber defence. The Defence AI Council and Defence AI Project Agency lead AI efforts.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-025",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-082",
@@ -1312,7 +1660,11 @@
    ],
    "ans": 2,
    "why": "Members include the Census Commissioner and three others. The committee studies unnatural demographic change due to illegal immigration.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-026",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-083",
@@ -1328,7 +1680,11 @@
    ],
    "ans": 0,
    "why": "The 2025 Act does not explicitly distinguish between refugees and illegal immigrants. It penalises illegal entry with up to 5 years' imprisonment, Rs 5 lakh fine, or both.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-026",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-084",
@@ -1344,7 +1700,12 @@
    ],
    "ans": 2,
    "why": "All three are correct. The Citizenship Amendment Act 2019 exempts six communities from Pakistan, Afghanistan and Bangladesh who entered before 31 December 2014.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-026",
+    1,
+    3
+   ]
   },
   {
    "id": "caq-2026-06-085",
@@ -1360,7 +1721,11 @@
    ],
    "ans": 1,
    "why": "India is the second-largest arms importer with about 8% share, after Ukraine. Global military expenditure reached a record 2.9 trillion dollars in 2025.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-027",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-086",
@@ -1376,7 +1741,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. BrahMos has stealth capability and a range of 290 km.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-027",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-087",
@@ -1392,7 +1761,11 @@
    ],
    "ans": 2,
    "why": "Netra was developed by DRDO's Centre for Airborne Systems; IOC was given in 2015 and it was inducted into the IAF in 2017. Final Operational Clearance was achieved now.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-027",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-088",
@@ -1408,7 +1781,11 @@
    ],
    "ans": 0,
    "why": "Su-57 is a Russian fifth-generation stealth aircraft offered by Russia. LRLACM's nodal laboratory is the Aeronautical Development Establishment, Bengaluru.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-027",
+    3
+   ]
   },
   {
    "id": "caq-2026-06-089",
@@ -1424,7 +1801,11 @@
    ],
    "ans": 1,
    "why": "Khaan Quest is held in Mongolia.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-027",
+    4
+   ]
   },
   {
    "id": "caq-2026-06-090",
@@ -1440,7 +1821,12 @@
    ],
    "ans": 2,
    "why": "All three are correct. The Cali Fund aims at benefit sharing from Digital Sequence Information on genetic resources.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-028",
+    1,
+    2
+   ]
   },
   {
    "id": "caq-2026-06-091",
@@ -1456,7 +1842,12 @@
    ],
    "ans": 2,
    "why": "The 2025 Regulations replaced the 2014 rules and brought in Digital Sequence Information and benefit-sharing quanta based on annual turnover. ABS mobilised more than Rs 266 crore.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-028",
+    0,
+    3
+   ]
   },
   {
    "id": "caq-2026-06-092",
@@ -1472,7 +1863,11 @@
    ],
    "ans": 0,
    "why": "The Divya Pharmacy judgment affirmed domestic companies' benefit-sharing obligations and strengthened State Biodiversity Boards.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-028",
+    4
+   ]
   },
   {
    "id": "caq-2026-06-093",
@@ -1488,7 +1883,11 @@
    ],
    "ans": 1,
    "why": "The Treaty prevents recipients from claiming intellectual property rights. The Benefit Sharing Fund was set up in 2009 as its operational mechanism.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-028",
+    5
+   ]
   },
   {
    "id": "caq-2026-06-094",
@@ -1504,7 +1903,11 @@
    ],
    "ans": 2,
    "why": "India ratified in 2006 using the opt-out clause, so new POPs do not automatically bind it. Aldrin, chlordane and DDT are examples.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-029",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-095",
@@ -1520,7 +1923,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. India is a party. PlanetGOLD is a GEF-supported programme for mercury-free gold extraction.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-029",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-096",
@@ -1536,7 +1943,11 @@
    ],
    "ans": 0,
    "why": "GEF serves six conventions, including CBD, UNFCCC, Stockholm, Minamata, UNCCD and the BBNJ Agreement. It also administers the LDCF and SCCF.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-029",
+    3
+   ]
   },
   {
    "id": "caq-2026-06-097",
@@ -1552,7 +1963,12 @@
    ],
    "ans": 2,
    "why": "All three are correct. The programme is a 23.5 million dollar GEF initiative with 50 million dollars co-financing.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-029",
+    0,
+    3
+   ]
   },
   {
    "id": "caq-2026-06-098",
@@ -1568,7 +1984,11 @@
    ],
    "ans": 1,
    "why": "The UNFCCC is headquartered in Bonn, Germany. New 2035 goals include raising electricity's share of final energy demand to 35%.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-030",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-099",
@@ -1584,7 +2004,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. JCM is an initiative of Japan, with credited contributions counted toward both countries' NDCs.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-030",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-100",
@@ -1600,7 +2024,11 @@
    ],
    "ans": 2,
    "why": "The report is issued annually by the WMO.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-030",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-101",
@@ -1616,7 +2044,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. Sweden, Finland and Denmark are top three. The Index uses 43 indicators on system performance and transition readiness.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-030",
+    4
+   ]
   },
   {
    "id": "caq-2026-06-102",
@@ -1632,7 +2064,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. Madhya Pradesh and Karnataka follow Maharashtra, and the total assessed solar potential is 3,445 GWp.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-031",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-103",
@@ -1648,7 +2084,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. The project will produce 2,000 tonnes per day of ammonium nitrate, and India has a pilot underground coal gasification project in Jharkhand.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-031",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-104",
@@ -1664,7 +2104,11 @@
    ],
    "ans": 2,
    "why": "India is not a signatory to the Global Methane Pledge, which was launched in 2021 by the US and the EU. Methane is about 80 times more potent than CO2 over 20 years.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-030",
+    5
+   ]
   },
   {
    "id": "caq-2026-06-105",
@@ -1680,7 +2124,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. Also known as Surha Tal, it spans about 3,432 hectares, expanding to about 25,000 hectares in the monsoon.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-032",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-106",
@@ -1696,7 +2144,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. The Tapanuli orangutan lives in the Batang Toru ecosystem and a 2025 cyclone killed about 7% of its population.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-032",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-107",
@@ -1712,7 +2164,11 @@
    ],
    "ans": 0,
    "why": "Corals thrive in warm, clear shallow waters generally less than 50 metres deep, at 23-29 degrees Celsius. The ZSI identified four sites for coral translocation in Great Nicobar.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-032",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-108",
@@ -1728,7 +2184,12 @@
    ],
    "ans": 1,
    "why": "The reef developed by Tvasta with ICAR-CMFRI uses no iron reinforcement and is highly porous.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-032",
+    2,
+    3
+   ]
   },
   {
    "id": "caq-2026-06-109",
@@ -1744,7 +2205,11 @@
    ],
    "ans": 2,
    "why": "In a typical sequence the larger quake is followed by smaller aftershocks. The western Venezuela doublet had magnitudes 7.2 and 7.5.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-032",
+    4
+   ]
   },
   {
    "id": "caq-2026-06-110",
@@ -1760,7 +2225,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. The Kirthai-II project is the third hydroelectric project on the Chenab to get approvals after the suspension of the Indus Water Treaty.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-032",
+    4
+   ]
   },
   {
    "id": "caq-2026-06-111",
@@ -1776,7 +2245,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. Other protests cited include Bangladesh 2024 and Nepal 2025, and global youth unemployment stands at 13.0% as per ILO.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-033",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-112",
@@ -1792,7 +2265,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. Second ARC recommendations on grievance redressal and CPGRAMS are cited as building blocks.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-033",
+    4
+   ]
   },
   {
    "id": "caq-2026-06-113",
@@ -1808,7 +2285,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. Over 90 crore ABHA accounts and over 100 crore linked health records have been created.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-034",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-114",
@@ -1824,7 +2305,11 @@
    ],
    "ans": 0,
    "why": "The Telemedicine Practice Guidelines were issued in 2020. PM-ABHIM has an outlay of Rs 64,180 crore.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-034",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-115",
@@ -1840,7 +2325,11 @@
    ],
    "ans": 1,
    "why": "TFR in both NFHS-5 and NFHS-6 is 2.0, below the replacement level. New indicators include digital literacy, DBT and SHG coverage.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-035",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-116",
@@ -1856,7 +2345,11 @@
    ],
    "ans": 2,
    "why": "C-section deliveries rose from 21.5% to 27.2%, a public health concern. Full immunisation coverage rose from 83.8% to 87.1%.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-035",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-117",
@@ -1872,7 +2365,11 @@
    ],
    "ans": 0,
    "why": "Underweight children moved only marginally from 32.1% to 31.8%. Rotavirus vaccine coverage rose from 36.4% to 85.4%.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-035",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-118",
@@ -1888,7 +2385,11 @@
    ],
    "ans": 1,
    "why": "Spousal violence declined from 29.2% to 22.3%. Women married before 18 declined from 23.3% to 20.1%.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-035",
+    3
+   ]
   },
   {
    "id": "caq-2026-06-119",
@@ -1904,7 +2405,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. Overweight men rose from 22.9% to 27.3%.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-035",
+    4
+   ]
   },
   {
    "id": "caq-2026-06-120",
@@ -1920,7 +2425,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. The scheme completed 10 years and private participants are honoured through the 'IPledgeFor9' awards.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-036",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-121",
@@ -1936,7 +2445,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. These states include Kerala, Maharashtra, Telangana, Andhra Pradesh, Tamil Nadu, Jharkhand, Gujarat and Karnataka.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-036",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-122",
@@ -1952,7 +2465,11 @@
    ],
    "ans": 1,
    "why": "The fixed-day approach provides specialist-led antenatal care at public facilities.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-036",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-123",
@@ -1968,7 +2485,11 @@
    ],
    "ans": 2,
    "why": "Student suicides comprised 7.6% of total suicides in India (NCRB 2022). The Ministry of Health's Suicide Prevention Strategy (2022) was found to lack clear implementation guidelines.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-037",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-124",
@@ -1984,7 +2505,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. Social security expenditure on health rose from 6% to 9.9%.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-037",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-125",
@@ -2000,7 +2525,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. The Committee's 380th Report also asked for filling faculty vacancies and integrating Anganwadi workers into teacher training.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-037",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-126",
@@ -2016,7 +2545,11 @@
    ],
    "ans": 0,
    "why": "Three years of AISHE reports remain unpublished. The Committee also recommended a National Commission for Indian Knowledge Systems.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-037",
+    3
+   ]
   },
   {
    "id": "caq-2026-06-127",
@@ -2032,7 +2565,12 @@
    ],
    "ans": 2,
    "why": "All three are correct. Section 143 of the BNS defines trafficking and the BNSS makes it a cognizable and non-bailable offence.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-038",
+    0,
+    1
+   ]
   },
   {
    "id": "caq-2026-06-128",
@@ -2048,7 +2586,11 @@
    ],
    "ans": 1,
    "why": "India hosted 22,700 stateless Rohingya. India is not a party to the 1951 Convention or the 1967 Protocol.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-038",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-129",
@@ -2064,7 +2606,11 @@
    ],
    "ans": 2,
    "why": "UNHCR is financed primarily through voluntary contributions from governments and private donors. It received Nobel Peace Prizes in 1954 and 1981.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-038",
+    3
+   ]
   },
   {
    "id": "caq-2026-06-130",
@@ -2080,7 +2626,11 @@
    ],
    "ans": 0,
    "why": "The Global Compact on Refugees is a non-binding framework for responsibility-sharing. The 50 by 35 Initiative aims to halve refugee aid dependency by 2035.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-038",
+    3
+   ]
   },
   {
    "id": "caq-2026-06-131",
@@ -2096,7 +2646,11 @@
    ],
    "ans": 1,
    "why": "Ethanol has lower energy density than petrol, so vehicles on high blends have lower mileage. India recently gave legal recognition to E100 fuel.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-031",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-132",
@@ -2112,7 +2666,11 @@
    ],
    "ans": 2,
    "why": "Isobutanol blends uniformly with diesel without additives and has a higher energy content than ethanol. Brazil has an 80% flex-fuel fleet.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-031",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-133",
@@ -2128,7 +2686,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. Vanadium redox flow and zinc-bromine batteries are examples of flow batteries.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-031",
+    3
+   ]
   },
   {
    "id": "caq-2026-06-134",
@@ -2144,7 +2706,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. The Energy Storage Obligation by the Ministry of Power mandates a share of energy from storage. The Khavda project in Gujarat is 3.37 GWh.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-031",
+    3
+   ]
   },
   {
    "id": "caq-2026-06-135",
@@ -2160,7 +2726,11 @@
    ],
    "ans": 0,
    "why": "Green hydrogen is hydrogen with total emissions not exceeding 2 kg CO2 equivalent per kg of H2, averaged over 12 months. The mission is implemented by MNRE.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-031",
+    4
+   ]
   },
   {
    "id": "caq-2026-06-136",
@@ -2176,7 +2746,13 @@
    ],
    "ans": 3,
    "why": "All three are correct. It is highly flammable and needs compression or cryogenic cooling because of low volumetric energy density.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-031",
+    2,
+    3,
+    4
+   ]
   },
   {
    "id": "caq-2026-06-137",
@@ -2192,7 +2768,12 @@
    ],
    "ans": 2,
    "why": "All three are correct. Lithium iron phosphate batteries supplement the fuel cell during acceleration and are recharged during braking.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-031",
+    1,
+    4
+   ]
   },
   {
    "id": "caq-2026-06-138",
@@ -2208,7 +2789,12 @@
    ],
    "ans": 1,
    "why": "It has five pillars: Pioneering, Policy and Investment, Production, People and Partnership. It seeks 135-180 billion dollars investment over the decade.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-039",
+    0,
+    1
+   ]
   },
   {
    "id": "caq-2026-06-139",
@@ -2224,7 +2810,12 @@
    ],
    "ans": 3,
    "why": "All three are correct. SPECS offers a 25% incentive on capital expenditure, and Gujarat's policy offers up to 30% capex subsidy.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-039",
+    2,
+    4
+   ]
   },
   {
    "id": "caq-2026-06-140",
@@ -2240,7 +2831,11 @@
    ],
    "ans": 2,
    "why": "Fab units typically need four to five years before production. Semiconductor manufacturing is also energy- and water-intensive.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-039",
+    3
+   ]
   },
   {
    "id": "caq-2026-06-141",
@@ -2256,7 +2851,11 @@
    ],
    "ans": 0,
    "why": "It facilitates certification under the Green Hydrogen Certification Scheme of India and SIGHT.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-031",
+    4
+   ]
   },
   {
    "id": "caq-2026-06-142",
@@ -2272,7 +2871,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. Concerns include biosafety, biosecurity, affordability and cyber-biosecurity.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-040",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-143",
@@ -2288,7 +2891,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. India imported about 16 million tonnes of edible oil worth nearly Rs 1.6 lakh crore in 2024-25.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-040",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-144",
@@ -2304,7 +2911,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. SkyCast integrates a Radar Wind Profiler, SODAR, Microwave Radiometer, fog aerosol spectrometer and a CL61 lidar ceilometer under Mission Mausam.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-040",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-145",
@@ -2320,7 +2931,11 @@
    ],
    "ans": 0,
    "why": "It is an international partnership of NASA, ESA and CSA, launched aboard an Ariane rocket from French Guiana. It detected methane on the interstellar comet 3I/ATLAS.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-040",
+    3
+   ]
   },
   {
    "id": "caq-2026-06-146",
@@ -2336,7 +2951,11 @@
    ],
    "ans": 1,
    "why": "The brainstem connects the cerebrum to the spinal cord and the cerebellum. It regulates breathing, heart rate, consciousness and sleep.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-040",
+    3
+   ]
   },
   {
    "id": "caq-2026-06-147",
@@ -2352,7 +2971,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. Fibre optics work on total internal reflection.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-040",
+    4
+   ]
   },
   {
    "id": "caq-2026-06-148",
@@ -2368,7 +2991,11 @@
    ],
    "ans": 2,
    "why": "It prioritises halting mother-to-child transmission, ending paediatric AIDS and dismantling stigma.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-040",
+    4
+   ]
   },
   {
    "id": "caq-2026-06-149",
@@ -2384,7 +3011,13 @@
    ],
    "ans": 0,
    "why": "Harappans worked copper and made bronze by mixing tin; iron was not used extensively. The Priest-King sculpture is made of steatite.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-041",
+    1,
+    2,
+    3
+   ]
   },
   {
    "id": "caq-2026-06-150",
@@ -2400,7 +3033,11 @@
    ],
    "ans": 1,
    "why": "The Pashupati seal was found at Mohenjo-daro and shows a three-faced deity surrounded by animals. A game board was found at Dholavira.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-041",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-151",
@@ -2416,7 +3053,12 @@
    ],
    "ans": 2,
    "why": "It is a Central Sector Scheme. Kriti Sampada is the digital repository and Manus Granthavali is the software for uniform documentation.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-042",
+    0,
+    1
+   ]
   },
   {
    "id": "caq-2026-06-152",
@@ -2432,7 +3074,12 @@
    ],
    "ans": 2,
    "why": "All three are correct. UNESCO Memory of the World entries include the Rigveda manuscripts (2007) and the Natyashastra and Bhagavad Gita manuscripts (2025).",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-042",
+    2,
+    3
+   ]
   },
   {
    "id": "caq-2026-06-153",
@@ -2448,7 +3095,11 @@
    ],
    "ans": 0,
    "why": "The baobab is native to Africa. It is a drought-resistant keystone species with a water-storing trunk.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-043",
+    0
+   ]
   },
   {
    "id": "caq-2026-06-154",
@@ -2464,7 +3115,11 @@
    ],
    "ans": 1,
    "why": "He was a monk of the Tang period who travelled to India for 16 years between 629 and 645 CE. India and China are discussing joint UNESCO nomination of his travelogue.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-043",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-155",
@@ -2480,7 +3135,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. It was edited by Pandit Jugal Kishore Shukla and the name means 'the rising sun'.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-043",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-156",
@@ -2496,7 +3155,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. It is the apex national body for music, dance and drama, and its Chairman is appointed by the President.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-043",
+    3
+   ]
   },
   {
    "id": "caq-2026-06-157",
@@ -2512,7 +3175,11 @@
    ],
    "ans": 2,
    "why": "Wartime awards were instituted on 26 January 1950 and peacetime awards on 4 January 1952, both with effect from 15 August 1947. Peacetime awards were renamed in 1967.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-043",
+    4
+   ]
   },
   {
    "id": "caq-2026-06-158",
@@ -2528,7 +3195,11 @@
    ],
    "ans": 0,
    "why": "The cover is up to Rs 5 lakh per family per year. Senior citizens aged 70 and above get universal coverage via the Ayushman Vay Vandana Card.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-044",
+    1
+   ]
   },
   {
    "id": "caq-2026-06-159",
@@ -2544,7 +3215,12 @@
    ],
    "ans": 1,
    "why": "Pre-existing diseases are covered from Day One. West Bengal joining brought nationwide coverage, and 1,961 packages across 27 specialities are covered.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-044",
+    1,
+    2
+   ]
   },
   {
    "id": "caq-2026-06-160",
@@ -2560,7 +3236,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. These are the other three pillars alongside PM-JAY.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-044",
+    4
+   ]
   },
   {
    "id": "caq-2026-06-161",
@@ -2576,7 +3256,11 @@
    ],
    "ans": 3,
    "why": "It marks the first publication of Udant Martand in 1826.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-043",
+    2
+   ]
   },
   {
    "id": "caq-2026-06-162",
@@ -2592,7 +3276,11 @@
    ],
    "ans": 0,
    "why": "JWST observes in the infrared; the detection was reported in this magazine.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-06-040",
+    3
+   ]
   }
  ]
 }
