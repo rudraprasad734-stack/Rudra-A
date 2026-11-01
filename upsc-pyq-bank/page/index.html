@@ -183,6 +183,9 @@
   .cg-pill{background:#0a262ccc; border:1px solid #1d5a60; border-radius:20px; padding:6px 10px; font-weight:700; font-size:13px; flex:none;}
   .cg-body{flex:1; overflow-y:auto; position:relative; padding:0 16px 28px; -webkit-overflow-scrolling:touch;} .cg-qbody,.cg-res{padding-top:4px;}
   #caqGame[data-s="road"],#caqGame[data-s="map"]{background:#0f5a40;} .cg-hud.over{position:absolute; left:0; right:0; top:0; background:linear-gradient(rgba(6,22,27,.5) 0, rgba(6,22,27,.28) 60%, rgba(6,22,27,0) 100%); padding-bottom:18px; pointer-events:none;} .cg-hud.over > *{pointer-events:auto;} .cg-hud.over .cg-x,.cg-hud.over .cg-pill{background:rgba(6,22,27,.62); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);} .cg-hud.over .cg-c{text-shadow:0 1px 6px #000a; pointer-events:none;} .cg-sky .cg-top{padding-top:calc(max(12px, env(safe-area-inset-top)) + 56px);}
+  #caqGame[data-s="crux"]{background:#0d2f36;} .cx-month{display:flex; gap:8px; overflow-x:auto; padding:4px 0 12px;} .cx-month button{flex:none; background:#0a262c; border:1px solid #1d5a60; color:#cfe; border-radius:20px; padding:7px 14px; font:inherit; font-weight:700; cursor:pointer;} .cx-month button.on{background:#ffd27a; color:#2b1b00; border-color:#ffd27a;}
+  .cx-sec{color:#ffd27a; font-size:12px; letter-spacing:.08em; text-transform:uppercase; margin:18px 2px 8px;} .cx-t{background:#0a262c; border:1px solid #1d5a60; border-radius:14px; margin-bottom:8px; overflow:hidden;} .cx-h{display:flex; justify-content:space-between; align-items:center; gap:10px; width:100%; background:none; border:0; color:#fff; font:inherit; font-weight:700; text-align:left; padding:13px 14px; cursor:pointer;} .cx-h i{font-style:normal; color:#ffd27a; transition:transform .15s; flex:none;} .cx-t.open .cx-h i{transform:rotate(90deg);}
+  .cx-p{margin:0; padding:0 14px 14px 32px; color:#d9efe9; font-size:14.5px; line-height:1.55;} .cx-p li{margin-bottom:7px;} .cx-intro{color:#9fd8d0; font-size:13px; margin:0 2px 8px;}
   .cg-sky{background:linear-gradient(#0b2d4a,#0d4a55 40%,#0f5a40);} .cg-top{padding-top:6px;} .cg-note{text-align:center; color:#9fd8d0; font-size:12px; opacity:.8; margin:0;}
   .cg-daily{display:block; width:100%; background:linear-gradient(135deg,#ffd27a,#ff9d5a); color:#331; border:0; border-radius:20px; padding:14px; text-align:center; box-shadow:0 8px 0 #a3571a; font:inherit; cursor:pointer;} .cg-daily small{display:block; opacity:.7; font-size:11px; letter-spacing:.1em;} .cg-daily b{display:block; font:800 26px Georgia,serif;} .cg-daily span{font-weight:700; font-size:13px;} .cg-daily[disabled]{opacity:.6; box-shadow:none;}
   .cg-cont{display:block; width:100%; margin-top:16px; background:#0a262ccc; border:1px solid #e8b24a; color:#ffd27a; border-radius:14px; padding:11px; font:inherit; font-weight:700; cursor:pointer; text-align:center;} .cg-cont.weak{border-color:#ff9d7a; color:#ffb39a; margin-top:8px;}
@@ -19057,7 +19060,7 @@ function caqBackStep(){
   if(document.querySelector(".modal-back")){ closeModal(); return true; }
   if(u.sheet){ u.sheet = null; renderCaQuiz(); return true; }
   if(r){ if(r.done) caqRunClear(); else caqRunSave(); u.screen = r.key ? "road" : "map"; if(r.key) u.subj = caqSubjIndex(r.key); u.run = null; renderCaQuiz(); return true; }
-  if(u.screen==="road"){ u.screen = "map"; renderCaQuiz(); return true; }
+  if(u.screen==="road" || u.screen==="crux"){ u.screen = "map"; renderCaQuiz(); return true; }
   return false;
 }
 window.addEventListener("popstate", function(){
@@ -19072,6 +19075,7 @@ function caqMapHtml(){
   var all = caqAllIds(), un = caqUnanswered(all).length, stk = caqStreak(), v = caqRunLoad(), wk = caqWeak();
   var h = caqHud(caqBtn("exit", "Close", "✕"), "Current Affairs Quizzes", '<span class="cg-pill">🔥 '+stk+'</span><span class="cg-pill">⭐ '+caqTotalStars()+'</span>', true)+'<div class="cg-body cg-sky" data-sk="map">';
   h += '<div class="cg-top"><button type="button" class="cg-daily" data-caq="daily"'+(un ? "" : " disabled")+'><small>TODAY</small><b>Daily 10</b><span>'+(un ? "Mixed subjects · about 6 minutes · tap to play" : "You have done every question so far")+'</span></button>';
+  h += '<button type="button" class="cg-cont cx-btn" data-caq="crux">📝 Crux notes: quick revision, topic by topic</button>';
   if(v) h += '<button type="button" class="cg-cont" data-caq="resume">▶ Continue: '+esc(v.title || "Quiz")+' · question '+(Math.min(v.res.length, v.ids.length-1)+1)+'</button>';
   if(wk.length) h += '<button type="button" class="cg-cont weak" data-caq="weak">🎯 Practise weak topics: '+esc(wk.join(", "))+'</button>';
   h += '</div><div class="cg-map" style="height:'+(CAQ_SUBJECTS.length*150+90)+'px"><svg viewBox="0 0 100 '+(CAQ_SUBJECTS.length*150+90)+'" preserveAspectRatio="none" aria-hidden="true"><path d="'+caqTrail()+'" vector-effect="non-scaling-stroke"/></svg>';
@@ -19081,6 +19085,35 @@ function caqMapHtml(){
     h += '<button type="button" class="cg-isl" data-caq="island" data-i="'+i+'" style="'+side+';top:'+(20+i*150)+'px;--c:'+lk[1]+'"><span class="ball">'+lk[0]+(nw ? '<i class="nd">'+nw+' new</i>' : "")+'</span><b>'+esc(s)+'</b><small>'+d+' of '+sets.length+' sets done</small></button>';
   });
   return h+'</div><p class="cg-note">Slide up to travel through the subjects</p></div>';
+}
+
+// CRUX NOTES: short own-words revision notes per topic (crux/*.json). Read-only, nothing is stored.
+function caqCruxLoad(done){
+  var c = caq.crux = caq.crux || {loaded:false, months:[], err:""};
+  if(c.loaded){ done(); return; }
+  caqFetch("crux/index.json").then(function(ix){
+    var ms = (ix && Array.isArray(ix.months)) ? ix.months : [];
+    return Promise.all(ms.map(function(m){ return caqFetch("crux/"+m.file).then(function(f){ return {m:m, f:f}; }).catch(function(){ return null; }); }));
+  }).then(function(list){
+    c.months = list.filter(function(x){ return x && x.f && Array.isArray(x.f.topics); }).map(function(x){ return {id:x.m.id, title:x.m.title || x.m.id, topics:x.f.topics}; });
+    c.months.sort(function(a, b){ return a.id < b.id ? 1 : -1; });
+    c.loaded = true; c.err = ""; done();
+  }).catch(function(){ c.err = "Could not load the notes. Check your connection and try again."; done(); });
+}
+function caqCruxHtml(){
+  var c = caq.crux || {months:[]}, u = caq.ui, h = caqHud(caqBtn("mapback", "Back to the subject map", "‹"), "Crux notes")+'<div class="cg-body" data-sk="crux'+esc(u.cxm || "")+'">';
+  if(!c.loaded) return h+'<div class="card empty" role="status">'+(c.err ? esc(c.err) : "Loading the notes&hellip;")+'</div></div>';
+  if(!c.months.length) return h+'<div class="card empty">No notes yet.</div></div>';
+  var m = c.months.filter(function(x){ return x.id===u.cxm; })[0] || c.months[0];
+  if(c.months.length>1) h += '<div class="cx-month">'+c.months.map(function(x){ return '<button type="button" data-caq="cxm" data-id="'+esc(x.id)+'"'+(x.id===m.id ? ' class="on"' : "")+'>'+esc(x.title)+'</button>'; }).join("")+'</div>';
+  h += '<p class="cx-intro">'+m.topics.length+' topics from '+esc(m.title)+'. Tap a topic to read its crux.</p>';
+  var last = "";
+  m.topics.forEach(function(t){
+    if(t.sec!==last){ h += '<div class="cx-sec">'+esc(t.sec)+'</div>'; last = t.sec; }
+    var o = u.cxt===t.id;
+    h += '<div class="cx-t'+(o ? " open" : "")+'"><button type="button" class="cx-h" data-caq="cxt" data-id="'+esc(t.id)+'" aria-expanded="'+(o ? "true" : "false")+'"><span>'+esc(t.t)+'</span><i>›</i></button>'+(o ? '<ul class="cx-p">'+t.p.map(function(p){ return '<li>'+esc(p)+'</li>'; }).join("")+'</ul>' : "")+'</div>';
+  });
+  return h+'</div>';
 }
 function caqTrail(){
   var pts = CAQ_SUBJECTS.map(function(s, i){ return [i===CAQ_SUBJECTS.length-1 ? 50 : (i%2===0 ? 25 : 75), 20+i*150+52]; }), d = "M"+pts[0][0]+" "+pts[0][1];
@@ -19186,8 +19219,8 @@ function renderCaQuiz(){
     return;
   }
   var u = caq.ui, r = u.run, old = host.querySelector(".cg-body"), oldKey = old ? old.getAttribute("data-sk") : "", oldTop = old ? old.scrollTop : 0;
-  host.setAttribute("data-s", !r && u.screen==="road" ? "road" : (!r ? "map" : "quiz"));
-  host.innerHTML = r ? (r.done ? caqResultHtml() : caqQuestionHtml()) : (u.screen==="road" ? caqRoadHtml() : caqMapHtml());
+  host.setAttribute("data-s", !r && u.screen==="road" ? "road" : (!r && u.screen==="crux" ? "crux" : (!r ? "map" : "quiz")));
+  host.innerHTML = r ? (r.done ? caqResultHtml() : caqQuestionHtml()) : (u.screen==="road" ? caqRoadHtml() : (u.screen==="crux" ? caqCruxHtml() : caqMapHtml()));
   var b = host.querySelector(".cg-body"), same = b && b.getAttribute("data-sk")===oldKey;
   if(u.screen==="road" && !r) caqRoadInit(host, !same, oldTop);
   else if(b && same) b.scrollTop = oldTop;
@@ -19202,6 +19235,9 @@ function caqAction(b){
   if(a==="exit"){ caq.ui.run = r && !r.done ? (caqRunSave(), null) : null; setTab("dashboard"); }
   else if(a==="daily") caqStart(caqMix(caqUnanswered(caqAllIds()), 10), "Daily 10");
   else if(a==="island"){ caq.ui.subj = +b.getAttribute("data-i"); caq.ui.screen = "road"; caq.ui.sheet = null; renderCaQuiz(); }
+  else if(a==="crux"){ caq.ui.screen = "crux"; caq.ui.cxt = null; renderCaQuiz(); caqCruxLoad(function(){ if(caq.ui.screen==="crux") renderCaQuiz(); }); }
+  else if(a==="cxm"){ caq.ui.cxm = b.getAttribute("data-id"); caq.ui.cxt = null; renderCaQuiz(); }
+  else if(a==="cxt"){ var id = b.getAttribute("data-id"); caq.ui.cxt = caq.ui.cxt===id ? null : id; renderCaQuiz(); }
   else if(a==="mapback"){ caq.ui.screen = "map"; caq.ui.sheet = null; renderCaQuiz(); }
   else if(a==="setopen"){ caq.ui.sheet = b.getAttribute("data-k"); renderCaQuiz(); }
   else if(a==="sheetx"){ caq.ui.sheet = null; renderCaQuiz(); }
@@ -21443,7 +21479,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "295";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "296";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
