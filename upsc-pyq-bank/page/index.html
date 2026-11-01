@@ -219,6 +219,7 @@
   .caq-opt.bad{border-color:#ef6a58; background:color-mix(in srgb,#ef6a58 18%, transparent);} .caq-opt.bad .l{background:#ef6a58; color:#fff;} .caq-opt.dim{opacity:.6;}
   .caq .btn.primary{width:100%; margin-top:6px;} .caq .btn.ghost{width:100%; margin-top:8px;} .caq .btn[disabled]{opacity:.5;}
   .caq-why{border-radius:14px; padding:12px; background:var(--surface); border-left:4px solid #34c98a; margin-top:4px; font-size:14.5px; line-height:1.45;} .caq-why.ins{border-left-color:var(--tab-accent); margin-top:8px;}
+  .caq-why.rev{border-left-color:#ffb74d;} .caq-why.rev ul{margin:4px 0 6px 18px; padding:0;} .caq-why.rev li{margin-bottom:5px;} .caq-why.rev .rt{font-weight:700; margin-bottom:2px;} .caq-why.rev .link-btn{padding:4px 0; font-weight:700;}
   .caq-why b{display:block; font-size:11px; letter-spacing:.12em; color:var(--ink-soft); margin-bottom:3px;}
   .caq-src{font-size:12.5px; color:var(--ink-soft); margin:10px 2px 6px;} .caq-src a{color:var(--link, var(--tab-accent));}
   .caq-report{display:block; margin:10px auto 0; background:none; border:0; color:var(--ink-soft); font:inherit; font-size:13.5px; text-decoration:underline; cursor:pointer;}
@@ -19115,6 +19116,18 @@ function caqCruxHtml(){
   });
   return h+'</div>';
 }
+function caqCruxTopic(id){
+  var c = caq.crux; if(!c || !c.loaded) return null;
+  for(var i = 0; i < c.months.length; i++){ for(var j = 0; j < c.months[i].topics.length; j++){ if(c.months[i].topics[j].id===id) return c.months[i].topics[j]; } }
+  return null;
+}
+function caqReviseHtml(q){
+  if(!Array.isArray(q.cx) || !q.cx.length) return "";
+  var t = caqCruxTopic(q.cx[0]); if(!t) return "";
+  var pts = q.cx.slice(1).filter(function(i){ return typeof i==="number" && t.p[i]; });
+  if(!pts.length) pts = [0];
+  return '<div class="caq-why rev"><b>REVISE THE CRUX</b><div class="rt">'+esc(t.t)+'</div><ul>'+pts.map(function(i){ return '<li>'+esc(t.p[i])+'</li>'; }).join("")+'</ul><button type="button" class="link-btn" data-caq="cxopen" data-id="'+esc(t.id)+'">Read the full topic &rsaquo;</button></div>';
+}
 function caqTrail(){
   var pts = CAQ_SUBJECTS.map(function(s, i){ return [i===CAQ_SUBJECTS.length-1 ? 50 : (i%2===0 ? 25 : 75), 20+i*150+52]; }), d = "M"+pts[0][0]+" "+pts[0][1];
   for(var i = 1; i < pts.length; i++){ var my = (pts[i-1][1]+pts[i][1])/2; d += " C"+pts[i-1][0]+" "+my+" "+pts[i][0]+" "+my+" "+pts[i][0]+" "+pts[i][1]; }
@@ -19176,7 +19189,7 @@ function caqQuestionHtml(){
   }).join("");
   var back = '<div class="caq-back"><button type="button" class="link-btn" data-caq="back"'+(r.i===0 ? " disabled" : "")+'>&lsaquo; Back</button></div>';
   if(!r.checked) return h+'<button type="button" class="btn primary" data-caq="check"'+(r.pick<0 ? " disabled" : "")+'>Check answer</button>'+back+'</div>';
-  h += (q.why ? '<div class="caq-why"><b>WHY</b>'+esc(q.why)+'</div>' : "")+(q.insight ? '<div class="caq-why ins"><b>INSIGHT</b>'+esc(q.insight)+'</div>' : "")+caqSrcHtml(q)+
+  h += (q.why ? '<div class="caq-why"><b>WHY</b>'+esc(q.why)+'</div>' : "")+caqReviseHtml(q)+(q.insight ? '<div class="caq-why ins"><b>INSIGHT</b>'+esc(q.insight)+'</div>' : "")+caqSrcHtml(q)+
     '<button type="button" class="btn primary" data-caq="next">'+(r.i+1 < r.ids.length ? "Next question" : "See my result")+'</button>'+
     '<button type="button" class="caq-report" data-caq="report" data-id="'+esc(q.id)+'">'+(reported ? "&#9873; Reported. Thank you" : "&#9873; Report answer")+'</button>'+back;
   return h+'</div>';
@@ -19255,6 +19268,13 @@ function caqAction(b){
     if(caqData.days.indexOf(todayKey)<0) caqData.days.push(todayKey);
     caqSave(); caqPersist(); caqRunSave();
     renderCaQuiz();
+    if(!(caq.crux && caq.crux.loaded)) caqCruxLoad(function(){ var rr = caq.ui.run; if(rr && rr.checked && rr.ids[rr.i]===q.id) renderCaQuiz(); });
+  }
+  else if(a==="cxopen" && r){
+    var tid = b.getAttribute("data-id"), mm = (tid.match(/^cx-(\d{4}-\d{2})-/) || [])[1];
+    if(r.done) caqRunClear(); else caqRunSave();
+    caq.ui.run = null; caq.ui.screen = "crux"; caq.ui.cxm = mm; caq.ui.cxt = tid; renderCaQuiz();
+    var op = document.querySelector("#caqGame .cx-t.open"); if(op && op.scrollIntoView) op.scrollIntoView({block:"start"});
   }
   else if(a==="next" && r) caqNext();
   else if(a==="back" && r && r.i>0){ caqSetPos(r.i-1); caqRunSave(); renderCaQuiz(); }

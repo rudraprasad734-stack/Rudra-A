@@ -16,7 +16,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. The members are T Rabi Sankar, Annie George Mathew, Manoj Panda and Soumya Kanti Ghosh.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-001",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-002",
@@ -32,7 +36,12 @@
    ],
    "ans": 3,
    "why": "All three are correct. The divisible pool excludes cesses, surcharges, taxes accruing to Union Territories and the cost of collection.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-001",
+    0,
+    1
+   ]
   },
   {
    "id": "caq-2026-02-003",
@@ -48,7 +57,11 @@
    ],
    "ans": 3,
    "why": "It is unchanged from the 15th Finance Commission, which had reduced it from the 42 per cent recommended by the 14th Commission. Cesses and surcharges remain outside the pool.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-001",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-004",
@@ -64,7 +77,11 @@
    ],
    "ans": 0,
    "why": "The tax effort criterion was replaced by Contribution to GDP, worked out from the square root of a State's GSDP. Income distance is measured against the average of the top three large States, and population is based on the 2011 Census.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-001",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-005",
@@ -80,7 +97,11 @@
    ],
    "ans": 2,
    "why": "It replaced the Total Fertility Rate change used by the 15th Commission and rewards States with lower population growth, such as the southern States.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-001",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-006",
@@ -96,7 +117,11 @@
    ],
    "ans": 0,
    "why": "Revenue deficit, sector-specific and State-specific grants are discontinued. The urban share rose from 36% under the 15th Commission to 45%.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-001",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-007",
@@ -112,7 +137,11 @@
    ],
    "ans": 0,
    "why": "Performance grants are 100% untied. Funds are conditional on properly constituted local bodies, published audited accounts and timely State Finance Commissions.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-001",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-008",
@@ -128,7 +157,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. It also recommends upgrading the NDMIS into a comprehensive disaster management system for the Union and States.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-001",
+    3
+   ]
   },
   {
    "id": "caq-2026-02-009",
@@ -144,7 +177,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. It also asks States to stop off-budget borrowings, to set up SPVs for DISCOM debt, and to pursue privatisation of electricity DISCOMs.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-001",
+    3
+   ]
   },
   {
    "id": "caq-2026-02-010",
@@ -160,7 +197,11 @@
    ],
    "ans": 0,
    "why": "The review decides whether to close it, privatise it or continue it for strategic reasons.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-001",
+    3
+   ]
   },
   {
    "id": "caq-2026-02-011",
@@ -176,7 +217,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. Towns administratively classified as statutory towns are also counted as urban.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-002",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-012",
@@ -192,7 +237,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. Funding is through a 'Challenge Mode', and the Urban Challenge Fund of Rs 1 lakh crore supports reform-driven urban projects.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-002",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-013",
@@ -208,7 +257,11 @@
    ],
    "ans": 0,
    "why": "Both are correct. Census figures miss functional urban settlements outside municipal limits, for example Kerala is 47.7% urban by Census 2011 but about 80.8% by the DEGURBA method.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-002",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-014",
@@ -224,7 +277,12 @@
    ],
    "ans": 3,
    "why": "Its 2023 report suggests India may be far more urban than the Census indicates.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-030",
+    0,
+    1
+   ]
   },
   {
    "id": "caq-2026-02-015",
@@ -240,7 +298,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. Segregation and processing of waste still lag, and cities lack a single chief executive with strong mayoral authority.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-002",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-016",
@@ -256,7 +318,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. Elections are conducted by the State Election Commission and one-third of seats are reserved for women.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-003",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-017",
@@ -272,7 +338,11 @@
    ],
    "ans": 2,
    "why": "Part IX does not apply to Fifth Schedule areas directly, and was extended to them by the PESA Act, 1996.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-003",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-018",
@@ -288,7 +358,11 @@
    ],
    "ans": 0,
    "why": "The Asoka Mehta Committee suggested a two-tier system of Zila Parishad and Mandal Panchayat.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-003",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-019",
@@ -304,7 +378,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. The Rashtriya Gram Swaraj Abhiyan is a revamped Centrally Sponsored Scheme implemented since 2022-23.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-003",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-020",
@@ -320,7 +398,11 @@
    ],
    "ans": 0,
    "why": "As per the RBI, own-source revenue of Panchayats is only 1.1% of their total revenue. The share of devolution rose from 39.9% in 2013-14 to 43.9% in 2021-22 on the Devolution Index.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-003",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-021",
@@ -336,7 +418,11 @@
    ],
    "ans": 0,
    "why": "The earlier ceiling was 100 days, which this law raises to 125 days.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-015",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-022",
@@ -352,7 +438,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. The Court said indiscriminate largesse funded by taxpayers could undermine fiscal discipline.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-004",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-023",
@@ -368,7 +458,11 @@
    ],
    "ans": 0,
    "why": "Nearly half of such States are expected to face revenue deficits. The Survey contrasts 'Shreya', the enduring good such as capital expenditure, with 'Preya', the fleeting comfort.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-004",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-024",
@@ -384,7 +478,11 @@
    ],
    "ans": 0,
    "why": "The Court upheld the distribution of items such as colour TVs and laptops as consistent with the DPSPs, but said States should open avenues for employment instead of non-merit freebies.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-004",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-025",
@@ -400,7 +498,11 @@
    ],
    "ans": 1,
    "why": "Freebies and unconditional transfers are among the factors strained by State finances.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-004",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-026",
@@ -416,7 +518,11 @@
    ],
    "ans": 0,
    "why": "It applies to victims on any category of road. Stabilisation treatment is up to 24 hours for non-life-threatening injuries and up to 48 hours for life-threatening ones.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-004",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-027",
@@ -432,7 +538,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. Uninsured and hit-and-run cases are paid from the Government of India's budget, and the scheme is linked with the 112 emergency number.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-004",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-028",
@@ -448,7 +558,11 @@
    ],
    "ans": 0,
    "why": "Accident victims or Good Samaritans can call 112 to reach the nearest hospital and ambulance support.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-004",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-029",
@@ -464,7 +578,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. CPI scores run from 0 (highly corrupt) to 100 (very clean). Venezuela scored 10 and Somalia and South Sudan scored 9.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-005",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-030",
@@ -480,7 +598,11 @@
    ],
    "ans": 2,
    "why": "All three are excluded. The CPI is a composite of at least 3 and up to 13 surveys and assessments on perceived public sector corruption.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-005",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-031",
@@ -496,7 +618,11 @@
    ],
    "ans": 0,
    "why": "The doctrine says resources cannot be sold for private exploitation. Article 21, Article 51A(g) and Article 48A are linked to environmental protection.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-005",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-032",
@@ -512,7 +638,11 @@
    ],
    "ans": 3,
    "why": "All three are correct as stated in the discussion. It argues these trends contradict Article 21 and the Public Trust Doctrine.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-005",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-033",
@@ -528,7 +658,11 @@
    ],
    "ans": 0,
    "why": "Part A covers schemes with 100% provision for women, and Part B covers schemes with at least 30%. The Gender Budgeting Scheme is under the Samarthya sub-scheme of Mission Shakti.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-005",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-034",
@@ -544,7 +678,11 @@
    ],
    "ans": 1,
    "why": "Article 87(1) says the President addresses both Houses at the first session after a general election and at the first session of each year. Opposition members may move amendments expressing regret.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-005",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-035",
@@ -560,7 +698,11 @@
    ],
    "ans": 0,
    "why": "Even if NOTA gets the highest votes, the candidate with the next highest votes is declared the winner. The State Election Commissions of Maharashtra and Haryana treat NOTA as a fictional candidate and order re-elections if it secures a majority.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-005",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-036",
@@ -576,7 +718,11 @@
    ],
    "ans": 0,
    "why": "Article 368 is not needed, and a simple majority is enough. The President must refer the bill to the State Legislature for its views, but is not bound by them. The Union Cabinet approved the change from Kerala to Keralam.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-005",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-037",
@@ -592,7 +738,11 @@
    ],
    "ans": 0,
    "why": "FNTA does not affect Article 371(A). The agreement was signed between the Government of India, Nagaland and the Eastern Nagaland Peoples' Organisation, an apex body of eight Naga tribes.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-005",
+    3
+   ]
   },
   {
    "id": "caq-2026-02-038",
@@ -608,7 +758,12 @@
    ],
    "ans": 3,
    "why": "They are the Konyak, Sangtam, Chang, Khiamniungan, Yimkhiung, Tikhir, Phom and Sumi.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-031",
+    0,
+    1
+   ]
   },
   {
    "id": "caq-2026-02-039",
@@ -624,7 +779,11 @@
    ],
    "ans": 0,
    "why": "The WTO works on the consensus rule, which lets any single member block a decision. Reform proposals include moving to qualified majority voting for appointing Appellate Body members.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-006",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-040",
@@ -640,7 +799,11 @@
    ],
    "ans": 0,
    "why": "Near-shoring means moving to geographically nearby countries, while friend-shoring means moving to allies.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-006",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-041",
@@ -656,7 +819,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. Relations began in 1947, became a Strategic Partnership in 1998, and the Horizon 2047 roadmap was adopted in 2023.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-006",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-042",
@@ -672,7 +839,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. A Joint Advanced Technology Development Group was also formed for military technology supply chains.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-006",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-043",
@@ -688,7 +859,11 @@
    ],
    "ans": 0,
    "why": "France is India's 3rd largest trading partner in the EU after the Netherlands and Germany, with trade of Euro 12.67 billion in 2024-25. Exercises include Varuna (Navy) and FRINJEX (Army).",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-006",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-044",
@@ -704,7 +879,11 @@
    ],
    "ans": 2,
    "why": "France is a key stakeholder in IMEC.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-032",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-045",
@@ -720,7 +899,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. In August 2025 the US had imposed up to 50% tariff comprising 25% reciprocal and an additional 25% duty.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-007",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-046",
@@ -736,7 +919,11 @@
    ],
    "ans": 0,
    "why": "Crude oil, LNG, aircraft and parts and defence equipment are key US exports to India. India exports pharmaceuticals, engineering goods, electronics and gems and jewellery.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-007",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-047",
@@ -752,7 +939,11 @@
    ],
    "ans": 0,
    "why": "The six members are the UAE, Bahrain, Saudi Arabia, Oman, Qatar and Kuwait. India-GCC trade was USD 178.56 billion in 2024-25, about 15.42% of India's global trade.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-007",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-048",
@@ -768,7 +959,11 @@
    ],
    "ans": 0,
    "why": "The terms of reference for the India-GCC Free Trade Agreement have now been finalised. GCC countries have a GDP market of US$ 2.3 trillion.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-007",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-049",
@@ -784,7 +979,11 @@
    ],
    "ans": 0,
    "why": "The initiative is led by the National Security Advisors and covers AI, cybersecurity, semiconductors, quantum computing, biotechnology and space. An India-Israel Innovation Centre for Agriculture is also planned.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-007",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-050",
@@ -800,7 +999,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. Malaysia also reaffirmed its commitment as a reliable palm oil supplier.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-007",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-051",
@@ -816,7 +1019,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. The Colombo Security Conclave comprises India, Sri Lanka, Mauritius, Maldives and Bangladesh, and Seychelles will also recognise the Indian Pharmacopoeia.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-007",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-052",
@@ -832,7 +1039,12 @@
    ],
    "ans": 3,
    "why": "Seychelles is a pillar of SAGAR and Vision MAHASAGAR and lies near the Mozambique Channel. India also deployed a Coastal Surveillance Radar System there.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-033",
+    0,
+    1
+   ]
   },
   {
    "id": "caq-2026-02-053",
@@ -848,7 +1060,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. In 2025 bilateral trade grew by over 25% to USD 15.21 billion, and Brazil ratified the ISA Agreement in 2022.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-007",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-054",
@@ -864,7 +1080,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. It was cited in the Economic Survey 2025-26 and covers eight thematic measures such as military capability, economic capability and diplomatic influence.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-007",
+    3
+   ]
   },
   {
    "id": "caq-2026-02-055",
@@ -880,7 +1100,11 @@
    ],
    "ans": 0,
    "why": "The CMF is a voluntary multinational partnership, a coalition of the willing, to uphold the rules-based international order. CTF-154 is a multinational training task force.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-008",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-056",
@@ -896,7 +1120,11 @@
    ],
    "ans": 0,
    "why": "Project Vault is an independently governed public-private partnership that will buy and store critical minerals and rare earth elements as the U.S. Strategic Critical Minerals Reserve.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-008",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-057",
@@ -912,7 +1140,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. It also limits ICBMs, SLBMs and heavy bombers, and its expiry removes the last legal restraint on the two largest arsenals.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-008",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-058",
@@ -928,7 +1160,11 @@
    ],
    "ans": 1,
    "why": "Both are correct. ALARA says radiation exposure should be kept as low as reasonably achievable, and its removal risks higher worker exposure.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-034",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-059",
@@ -944,7 +1180,11 @@
    ],
    "ans": 0,
    "why": "Joint Force Command Norfolk serves as a bridge between North America and Europe for NATO.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-008",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-060",
@@ -960,7 +1200,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. The UK signed an agreement in 2025 to return Chagos to Mauritius while keeping Diego Garcia on a 99-year lease, following a 2019 ICJ ruling.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-008",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-061",
@@ -976,7 +1220,13 @@
    ],
    "ans": 3,
    "why": "All three are correct. Kordofan, with El Obeid as its capital, and the Blue Nile state are other regions affected.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-035",
+    0,
+    2,
+    3
+   ]
   },
   {
    "id": "caq-2026-02-062",
@@ -992,7 +1242,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. India ranked 63 in the World Bank's Doing Business Report 2019, an improvement of 79 ranks in five years.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-009",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-063",
@@ -1008,7 +1262,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. The National Single Window System facilitates clearances and approvals and PM GatiShakti NMP uses spatial planning data to reduce logistics costs.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-009",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-064",
@@ -1024,7 +1282,11 @@
    ],
    "ans": 0,
    "why": "Land is a complex State subject with a lack of clear, digitised titles. Dispute resolution takes about 1,400 days against a global average of 400 days.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-009",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-065",
@@ -1040,7 +1302,12 @@
    ],
    "ans": 0,
    "why": "It is meant to create dispute-free digital titles and de-risk industrial land acquisition. The District Business Reform Action Plan (D-BRAP) shifts reforms to municipalities.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-009",
+    0,
+    1
+   ]
   },
   {
    "id": "caq-2026-02-066",
@@ -1056,7 +1323,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. Three plug-and-play chemical parks and a new Construction and Infrastructure Equipment scheme are also announced.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-010",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-067",
@@ -1072,7 +1343,12 @@
    ],
    "ans": 3,
    "why": "All three are correct. A Rs 2,000 crore top-up is also given to the Self-Reliant India Fund set up in 2021 for micro enterprises.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-010",
+    0,
+    1
+   ]
   },
   {
    "id": "caq-2026-02-068",
@@ -1088,7 +1364,11 @@
    ],
    "ans": 0,
    "why": "The Budget exempts basic customs duty on specified parts for making microwave ovens and aircraft components. A single digital window streamlines multi-agency cargo clearance.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-010",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-069",
@@ -1104,7 +1384,11 @@
    ],
    "ans": 0,
    "why": "Both are correct. The text also notes that the smiling curve shows higher value in upstream activities like R&D and design and downstream activities like branding, while assembly in the middle earns less.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-036",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-070",
@@ -1120,7 +1404,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. It also proposes strengthening the CDSCO with a dedicated scientific review cadre. SHAKTI stands for Strategy for Healthcare Advancement through Knowledge, Technology and Innovation.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-011",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-071",
@@ -1136,7 +1424,11 @@
    ],
    "ans": 0,
    "why": "Biosimilars are highly similar to the reference biologic with no clinically meaningful differences.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-011",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-072",
@@ -1152,7 +1444,11 @@
    ],
    "ans": 0,
    "why": "BioIndustrial is the largest at 47%, followed by BioPharma at 35%, Bioresearch at 9% and BioAgri at 8%. The target is USD 300 billion by 2030.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-011",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-073",
@@ -1168,7 +1464,11 @@
    ],
    "ans": 0,
    "why": "100% automatic FDI is for greenfield pharmaceutical projects, while brownfield projects are allowed up to 74% automatic. The PRIP scheme was launched in 2023.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-011",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-074",
@@ -1184,7 +1484,11 @@
    ],
    "ans": 1,
    "why": "Companies make minor, non-essential changes to brand-name drugs nearing expiry, which leads to costly patent battles.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-011",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-075",
@@ -1200,7 +1504,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. A credit guarantee support through CGTMSE will cover invoice discounting on TReDS, and Corporate Mitras will help MSMEs with compliance.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-012",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-076",
@@ -1216,7 +1524,11 @@
    ],
    "ans": 2,
    "why": "ICAI, ICSI and ICMAI will design short modular courses to train them, especially in Tier-II and Tier-III towns.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-012",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-077",
@@ -1232,7 +1544,11 @@
    ],
    "ans": 0,
    "why": "It was set up by the Reserve Bank of India in 2018. Buyers can be corporates, Government Departments and PSUs, and financiers include banks and NBFC-Factors.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-012",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-078",
@@ -1248,7 +1564,11 @@
    ],
    "ans": 1,
    "why": "MSMEs are the second-largest employer after agriculture. They number over 7.47 crore and employ more than 32.82 crore people.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-012",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-079",
@@ -1264,7 +1584,11 @@
    ],
    "ans": 3,
    "why": "All four are as reported by the Survey. Only about 1.1% of Udyam-registered MSMEs are actually engaged in exports.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-012",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-080",
@@ -1280,7 +1604,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. This is the 'missing middle' phenomenon, where firms stay small and informal to remain under the regulatory radar.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-012",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-081",
@@ -1296,7 +1624,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. RAMP is a World Bank-supported Central Sector Scheme and PM VISHWAKARMA covers artisans of 18 trades.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-012",
+    3
+   ]
   },
   {
    "id": "caq-2026-02-082",
@@ -1312,7 +1644,12 @@
    ],
    "ans": 3,
    "why": "The innovative component covers incubation, design and IPR.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-037",
+    0,
+    1
+   ]
   },
   {
    "id": "caq-2026-02-083",
@@ -1328,7 +1665,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. The DPIIT is the recognising authority, and an entity formed by splitting up or reconstruction of an existing business is not eligible.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-013",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-084",
@@ -1344,7 +1685,11 @@
    ],
    "ans": 1,
    "why": "A high percentage of expenditure on R&D relative to revenue is one of the criteria. They own or create significant novel IP and face long development timelines.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-013",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-085",
@@ -1360,7 +1705,11 @@
    ],
    "ans": 0,
    "why": "It aims at deep tech and tech-driven manufacturing, early-growth founders and high-risk capital gaps.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-010",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-086",
@@ -1376,7 +1725,11 @@
    ],
    "ans": 2,
    "why": "It includes AVGC, filmmaking, music, performing arts, architecture, design, fashion, crafts, software and R&D. Orange was chosen as it is linked to culture and creativity.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-013",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-087",
@@ -1392,7 +1745,11 @@
    ],
    "ans": 1,
    "why": "India currently has seven NIDs, all institutes of national importance. The AVGC sector is projected to need 2 million professionals by 2030.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-013",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-088",
@@ -1408,7 +1765,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. India offers a 40 to 60% cost advantage in animation and VFX services.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-013",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-089",
@@ -1424,7 +1785,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. The IICT was unveiled in Mumbai in 2024 as the National Centre of Excellence for AVGC-XR, and WAVES is a convergence platform for the media and entertainment sectors.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-013",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-090",
@@ -1440,7 +1805,11 @@
    ],
    "ans": 0,
    "why": "It lists retrospective scrutiny as a barrier because good-faith decisions get examined later through audits, vigilance and judicial review. The 2G spectrum case is cited as an example of policy paralysis.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-014",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-091",
@@ -1456,7 +1825,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. The text points to Japan's model of 'fair accountability' and South Korea's bounded safe spaces for experimentation.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-014",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-092",
@@ -1472,7 +1845,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. NMP 1.0 was introduced in 2021 and covered 13 sectors, and highways, railways, power, pipelines and telecom were 72% of its target.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-014",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-093",
@@ -1488,7 +1865,11 @@
    ],
    "ans": 2,
    "why": "It focuses on brownfield assets, which are existing assets. NMP 2.0 also considers core assets, and non-core assets only when further development is planned.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-014",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-094",
@@ -1504,7 +1885,11 @@
    ],
    "ans": 3,
    "why": "All four are used. TOT gives investors a 15 to 30 year right in exchange for a lump sum, and InvITs and REITs are structured financing models.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-014",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-095",
@@ -1520,7 +1905,11 @@
    ],
    "ans": 1,
    "why": "This was cited as asymmetrical performance across sectors. In railways, train operations are still carried out by Indian Railways.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-014",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-096",
@@ -1536,7 +1925,11 @@
    ],
    "ans": 1,
    "why": "The U-curve says participation drops during early industrialisation when women leave agriculture and rises again only when education crosses a threshold and service jobs expand. She won the Nobel Prize in 2023.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-015",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-097",
@@ -1552,7 +1945,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. A World Bank study of 2021 found 31% of women cited commuting as a barrier to working.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-015",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-098",
@@ -1568,7 +1965,11 @@
    ],
    "ans": 1,
    "why": "Night work for women is permitted in factories in around 22 States and UTs and in commercial establishments in 33. 17 States and UTs have removed bans on women in hazardous industries.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-015",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-099",
@@ -1584,7 +1985,11 @@
    ],
    "ans": 0,
    "why": "It is an initiative of the Ministry of Women and Child Development. The SHE-Mart initiative of Budget 2026-27 gives better markets to products of self-help groups and rural women.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-015",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-100",
@@ -1600,7 +2005,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. A Lakhpati Didi is an SHG woman with sustainable annual household income above Rs 1 lakh, an average of at least Rs 10,000 a month over four agricultural seasons or business cycles.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-015",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-101",
@@ -1616,7 +2025,11 @@
    ],
    "ans": 2,
    "why": "The Revolving Fund gives Rs 20,000 to Rs 30,000 per eligible SHG, and the Community Investment Fund gives up to Rs 2.5 lakh per SHG. Bank linkage gives collateral-free loans of up to Rs 20 lakh per SHG.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-015",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-102",
@@ -1632,7 +2045,11 @@
    ],
    "ans": 2,
    "why": "BC Sakhis provide doorstep banking and improved credit access for SHGs. Project eShakti of NABARD promotes technology in SHG operations.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-015",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-103",
@@ -1648,7 +2065,12 @@
    ],
    "ans": 1,
    "why": "It offers a turnover-linked incentive for 6 years with one optional gestation year, a capex incentive for 5 years and a hybrid incentive. Targets include display modules, camera modules and printed circuit board assemblies.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-010",
+    0,
+    2
+   ]
   },
   {
    "id": "caq-2026-02-104",
@@ -1664,7 +2086,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. India's own share of e-waste is expected to rise to about 5 million tonnes.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-010",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-105",
@@ -1680,7 +2106,11 @@
    ],
    "ans": 0,
    "why": "100% FDI is allowed under the automatic route and has attracted over USD 4 billion since FY2020-21. PLI covers 14 sectors, and the Semicon India Programme began in 2021.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-010",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-106",
@@ -1696,7 +2126,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. The market size is USD 92 billion and the production is USD 32 billion, and R&D investment of 0.9% of GDP is below the policy target of 2.8%.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-016",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-107",
@@ -1712,7 +2146,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. The 2016 policy could not achieve its objective. The Mahalanobis Model, the basis of the Second Five-Year Plan, prioritised heavy and basic industries.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-016",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-108",
@@ -1728,7 +2166,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. A new CIE scheme will promote advanced equipment such as lifts, fire-fighting gear and tunnel borers.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-016",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-109",
@@ -1744,7 +2186,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. It is the second-largest employment generator and about 80% of the industry's capacity is with MSMEs.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-016",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-110",
@@ -1760,7 +2206,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. It also has a National Handloom and Handicraft Programme, a Tex-Eco Initiative and the Samarth 2.0 skilling programme.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-016",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-111",
@@ -1776,7 +2226,11 @@
    ],
    "ans": 3,
    "why": "The extension gives greater flexibility to exporters.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-038",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-112",
@@ -1792,7 +2246,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. The India-EU FTA is expected to give zero-duty access to major markets.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-016",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-113",
@@ -1808,7 +2266,11 @@
    ],
    "ans": 2,
    "why": "Around 60-70% of food grain produced is stored at household level in traditional structures. FCI procures at MSP and builds buffer stocks.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-017",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-114",
@@ -1824,7 +2286,11 @@
    ],
    "ans": 1,
    "why": "The plan develops storage at the PACS level through convergence of schemes such as AIF and AMI. PACS-based decentralised storage was also recommended by the Ashok Dalwai Committee.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-017",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-115",
@@ -1840,7 +2306,12 @@
    ],
    "ans": 1,
    "why": "The Committee of 2014 also suggested converting FCI's conventional storage into silos with private participation. The CAG audit of 2023 urged phasing out CAP (Covered and Plinth) storage.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-039",
+    0,
+    1
+   ]
   },
   {
    "id": "caq-2026-02-116",
@@ -1856,7 +2327,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. An APA is a pre-emptive arrangement between a taxpayer and tax authorities fixing the transfer pricing method in advance.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-017",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-117",
@@ -1872,7 +2347,11 @@
    ],
    "ans": 3,
    "why": "All three are correct as stated. The FRBM Act, 2003 guides fiscal policy towards a sustainable path.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-017",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-118",
@@ -1888,7 +2367,11 @@
    ],
    "ans": 1,
    "why": "It is not available to corporates, partnership firms, HUFs and trusts. Gambling, lottery, trading and speculation are prohibited, and Budget 2026-27 cut the TCS rate for education and medical expenses.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-017",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-119",
@@ -1904,7 +2387,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. A common ERP-based national software is used for computerisation, and the National Cooperation Policy 2025 promotes membership for women and weaker sections.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-017",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-120",
@@ -1920,7 +2407,11 @@
    ],
    "ans": 2,
    "why": "Cooperative societies are a State subject at Entry 32 of the State List, and multi-State societies are in the Union List at Entry 44.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-017",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-121",
@@ -1936,7 +2427,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. IFS is capital-intensive, needs technical skills and is labour-intensive, and the AICRP on IFS operates in 25 States.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-017",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-122",
@@ -1952,7 +2447,11 @@
    ],
    "ans": 1,
    "why": "It differs from a metro in serving longer distances with fewer stops at higher speed, and from conventional trains in giving high-frequency point-to-point regional travel. The Delhi-Meerut RRTS cuts travel time from 3 hours to 60 minutes.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-040",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-123",
@@ -1968,7 +2467,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. REPM demand is expected to double by 2030, and the National Critical Minerals Mission builds the supply chain.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-017",
+    3
+   ]
   },
   {
    "id": "caq-2026-02-124",
@@ -1984,7 +2487,11 @@
    ],
    "ans": 0,
    "why": "India is the 6th largest chemical producer globally and 3rd largest in Asia. R&D investment is only 0.7% against a global average of 2.3%.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-017",
+    3
+   ]
   },
   {
    "id": "caq-2026-02-125",
@@ -2000,7 +2507,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. The Multi Agency Centre and the Joint Task Force on Intelligence in the IB are the central platforms for intelligence sharing.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-018",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-126",
@@ -2016,7 +2527,11 @@
    ],
    "ans": 2,
    "why": "Local police are the first responders, assisted by specialised State and Central anti-terror forces. Recovery and resilience follows a whole-of-society approach.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-018",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-127",
@@ -2032,7 +2547,11 @@
    ],
    "ans": 0,
    "why": "It assists State forces in responding to major terror attacks. The BPR&D and the NSG also lead specialised training.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-018",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-128",
@@ -2048,7 +2567,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. Drone incursions, tunnels, unfenced terrain and cyber attacks are listed among the challenges. Israel's Smart Fence and the US's Integrated Fixed Towers are given as examples.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-018",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-129",
@@ -2064,7 +2587,11 @@
    ],
    "ans": 1,
    "why": "Vayu Shakti is the Indian Air Force's flagship firepower demonstration exercise. Dharma Guardian is held with the Japan Ground Self-Defence Force.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-019",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-130",
@@ -2080,7 +2607,11 @@
    ],
    "ans": 1,
    "why": "VVP-II covers other international land borders and not the northern border already covered by VVP-I. The scheme saturates villages with all-weather roads, telecom, television connectivity and electrification.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-019",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-131",
@@ -2096,7 +2627,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. It is named after Anjadip Island off Karwar and is meant for the littoral combat environment as a 'Dolphin Hunter'.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-019",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-132",
@@ -2112,7 +2647,11 @@
    ],
    "ans": 2,
    "why": "CCUS is described as the only known technology for decarbonising hard-to-abate sectors like steel, cement, petrochemicals and fertilisers. It enables blue hydrogen using coal gasification with CCUS.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-020",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-133",
@@ -2128,7 +2667,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. The costs of direct air capture are estimated at USD 400-800 per tonne, and storage data on pore space in India is limited.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-020",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-134",
@@ -2144,7 +2687,11 @@
    ],
    "ans": 1,
    "why": "India could use hub and cluster models in the Krishna-Godavari Basin and Rajasthan, and the National Centre of Excellence in Carbon Capture and Utilization is at IIT Bombay.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-020",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-135",
@@ -2160,7 +2707,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. The Court had begun the suo motu proceedings in 2021.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-021",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-136",
@@ -2176,7 +2727,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. The reports are the CPCB's 'Polluted River Stretches for Restoration of Water Quality - 2025' and the CWC's 'Status of Trace and Toxic Metals in Rivers of India, 2024'.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-021",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-137",
@@ -2192,7 +2747,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. Leather tanneries in Kanpur and factories along the Yamuna are cited as examples of weak enforcement.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-021",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-138",
@@ -2208,7 +2767,11 @@
    ],
    "ans": 1,
    "why": "The Environment Protection Act, 1986 empowers the Government to set pollution standards and regulate hazardous waste. The National River Conservation Plan is a Centrally Sponsored Scheme, and Namami Gange began in 2014 after the Ganga Action Plan of 1986.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-021",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-139",
@@ -2224,7 +2787,11 @@
    ],
    "ans": 0,
    "why": "State Pollution Control Boards in States and Pollution Control Committees in UTs take part. The EU Water Framework Directive is cited as a basin-wide approach.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-021",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-140",
@@ -2240,7 +2807,11 @@
    ],
    "ans": 0,
    "why": "Article 6.8 provides opportunities for non-market-based cooperation. The first credits under the Article 6.4 mechanism were approved for a project in Myanmar coordinated with the Republic of Korea.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-022",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-141",
@@ -2256,7 +2827,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. Concerns include the Shompen, a Particularly Vulnerable Tribal Group, and the use of single-season data in the EIA.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-022",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-142",
@@ -2272,7 +2847,11 @@
    ],
    "ans": 1,
    "why": "About 40% of the world's trade and most of China's energy imports pass through it. About 75% of India's transshipment cargo is handled at foreign ports.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-022",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-143",
@@ -2288,7 +2867,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. The report notes that oceans are a carbon sink and that the solubility pump carries CO2 dissolved in cold waters to the deep ocean.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-022",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-144",
@@ -2304,7 +2887,11 @@
    ],
    "ans": 2,
    "why": "The seams are thin, which makes rat-hole mining more economically viable than opencast mining. The methods are side-cutting and box-cutting.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-022",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-145",
@@ -2320,7 +2907,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. It is a nocturnal hunter of fish, frogs, crustaceans and snakes found in wetlands and mangroves, and Kaziranga is now identified as a stronghold.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-022",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-146",
@@ -2336,7 +2927,12 @@
    ],
    "ans": 1,
    "why": "Only female bees have stingers, which are modified ovipositors. About a third of the world's food production depends on bees.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-041",
+    1,
+    2
+   ]
   },
   {
    "id": "caq-2026-02-147",
@@ -2352,7 +2948,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. Lake Mai Ndombe and Tumba in the Democratic Republic of Congo are releasing carbon locked away for thousands of years.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-022",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-148",
@@ -2368,7 +2968,12 @@
    ],
    "ans": 1,
    "why": "Dowry-related crimes rose by 14% in 2023 with over 15,000 cases and over 6,100 deaths. Uttar Pradesh recorded the most cases, followed by Bihar and Karnataka.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-023",
+    0,
+    1
+   ]
   },
   {
    "id": "caq-2026-02-149",
@@ -2384,7 +2989,11 @@
    ],
    "ans": 2,
    "why": "Arnesh Kumar directed that police should not arrest automatically in 498-A cases and must record reasons for the arrest. Sections 80 and 85 of the BNS, 2023 now deal with dowry death and cruelty.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-023",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-150",
@@ -2400,7 +3009,12 @@
    ],
    "ans": 2,
    "why": "It treats dowry as a socio-economic institution rooted in patriarchy and marriage markets and not merely a legal problem.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-042",
+    0,
+    1
+   ]
   },
   {
    "id": "caq-2026-02-151",
@@ -2416,7 +3030,11 @@
    ],
    "ans": 1,
    "why": "The rate was 47.9% among females against 10.7% among males.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-023",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-152",
@@ -2432,7 +3050,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. Earlier summits were the Bletchley Park AI Safety Summit 2023, the AI Seoul Summit 2024 and the AI Action Summit 2025 in Paris.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-024",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-153",
@@ -2448,7 +3070,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. M stands for Moral and Ethical system and the second A for Accessible and Inclusive AI. The IT Rules amendment of 2026 regulate synthetically generated content.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-024",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-154",
@@ -2464,7 +3090,12 @@
    ],
    "ans": 0,
    "why": "It emphasises fairness, transparency and human oversight as non-negotiable principles in AI design.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-043",
+    0,
+    1
+   ]
   },
   {
    "id": "caq-2026-02-155",
@@ -2480,7 +3111,11 @@
    ],
    "ans": 0,
    "why": "Phase 3 stresses strategic autonomy in securing advanced computing hardware, and educational reform around foundational cognitive and socioemotional skills. Red teaming is a simulated, non-destructive cyberattack by ethical hackers.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-024",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-156",
@@ -2496,7 +3131,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. The Declaration is guided by 'Sarvajan Hitaya, Sarvajan Sukhaya'. The models include Sarvam AI's LLMs, Gnani.ai's Vachana text-to-speech model across 12 Indian languages and BharatGen's Param2 17B.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-024",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-157",
@@ -2512,7 +3151,11 @@
    ],
    "ans": 1,
    "why": "BharatGen's Param2 17B is a Mixture-of-Experts multilingual foundational model, and Sarvam AI launched two large language models.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-024",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-158",
@@ -2528,7 +3171,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. The Health Ministry has a Strategy for AI in Healthcare for India (SAHI), and Centres of Excellence for AI exist at AIIMS Delhi and PGIMER Chandigarh.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-024",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-159",
@@ -2544,7 +3191,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. The Ayush Grid was recognised by WHO as a global model for integrating AI with traditional knowledge.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-024",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-160",
@@ -2560,7 +3211,12 @@
    ],
    "ans": 3,
    "why": "All three are correct. The Digital Agriculture Mission was launched in 2024, and agriculture contributes about 18% of GDP.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-024",
+    0,
+    2
+   ]
   },
   {
    "id": "caq-2026-02-161",
@@ -2576,7 +3232,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. They support the Pradhan Mantri Fasal Bima Yojana, and the Nationwide Soil Resource Mapping is done by SLUSI.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-024",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-162",
@@ -2592,7 +3252,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. IBM, TCS and L&T are the industry partners.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-025",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-163",
@@ -2608,7 +3272,11 @@
    ],
    "ans": 2,
    "why": "IIT Bombay leads sensing and metrology and IIT Delhi leads materials and devices. The hubs follow the Hub-Spoke-Spike model.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-025",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-164",
@@ -2624,7 +3292,11 @@
    ],
    "ans": 2,
    "why": "It is led by IIT Madras. In 2022 DRDO and IIT Delhi demonstrated a QKD link of 100 km between Prayagraj and Vindhyachal.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-025",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-165",
@@ -2640,7 +3312,11 @@
    ],
    "ans": 1,
    "why": "Quantum is a dual-use technology and falls under the Wassenaar Arrangement. NITI Aayog estimates quantum technology can unlock USD 1-2 trillion by 2035.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-025",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-166",
@@ -2656,7 +3332,11 @@
    ],
    "ans": 1,
    "why": "India's GERD is about 0.7% of GDP against a global benchmark of around 2%. India aims to be among the top three quantum economies by 2035.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-025",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-167",
@@ -2672,7 +3352,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. LIGO-India will be built in Hingoli district of Maharashtra by L&T under a Department of Atomic Energy contract.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-025",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-168",
@@ -2688,7 +3372,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. Other detectors in the global network are Virgo in Italy, KAGRA in Japan and GEO600 in Germany.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-025",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-169",
@@ -2704,7 +3392,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. The aim is to improve the detection accuracy and localisation of gravitational-wave sources through a globally distributed detector network.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-025",
+    2
+   ]
   },
   {
    "id": "caq-2026-02-170",
@@ -2720,7 +3412,11 @@
    ],
    "ans": 2,
    "why": "The demonstration was from the Integrated Test Range at Chandipur, Odisha.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-026",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-171",
@@ -2736,7 +3432,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. Mons Mouton, informally Leibnitz Beta, is flat-topped, spans almost 100 km and rises about 6,000 metres. It is named after the NASA mathematician Melba Roy Mouton.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-026",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-172",
@@ -2752,7 +3452,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. Kodaikanal was established in 1899 and Udaipur in 1975.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-026",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-173",
@@ -2768,7 +3472,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. India's National Action Plan on AMR 2.0 runs from 2025 to 2029, and about 6 lakh lives are lost each year in India due to resistant infections.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-026",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-174",
@@ -2784,7 +3492,11 @@
    ],
    "ans": 2,
    "why": "It is supported by the Unified Coalition for AMR Response and aims at sustainable financing to save more than 100 million lives by 2050. The UN General Assembly meeting of 2024 aimed to reduce AMR deaths by 10% by 2030.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-026",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-175",
@@ -2800,7 +3512,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. Its GRAS (Generally Recognized as Safe) status suits food and pharmaceutical applications.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-026",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-176",
@@ -2816,7 +3532,11 @@
    ],
    "ans": 1,
    "why": "NOTTO is the apex national body for coordination, networking and the registry of organ and tissue donation. About 18% of transplants involve organs from deceased donors.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-026",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-177",
@@ -2832,7 +3552,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. It aims at international recognition, premium positioning and market access for artisans and farmers.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-027",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-178",
@@ -2848,7 +3572,11 @@
    ],
    "ans": 0,
    "why": "Tamil Brahmi is a variant of Brahmi used between about 300 BC and 100 AD. The find sheds light on ancient trade links, and Korran is also mentioned in Sangam literature.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-027",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-179",
@@ -2864,7 +3592,11 @@
    ],
    "ans": 2,
    "why": "Santhali belongs to the Austroasiatic family and was included in the Eighth Schedule by the 92nd Amendment in 2003. Before Ol Chiki it was written in Roman, Bengali, Odia and Devanagari scripts.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-027",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-180",
@@ -2880,7 +3612,11 @@
    ],
    "ans": 3,
    "why": "It moved Santhali from an oral to a written tradition. The President inaugurated the centenary celebrations.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-027",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-181",
@@ -2896,7 +3632,11 @@
    ],
    "ans": 1,
    "why": "Jus in bello governs how war is fought, such as discrimination between combatants and civilians and proportionality. Jus post bellum concerns responsibilities after war, such as fair peace settlements and accountability.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-028",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-182",
@@ -2912,7 +3652,12 @@
    ],
    "ans": 0,
    "why": "It is cited to explain rivalry between a rising China and the established US.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-044",
+    0,
+    1
+   ]
   },
   {
    "id": "caq-2026-02-183",
@@ -2928,7 +3673,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. The Hague Conventions of 1899 and 1907 regulate the means and methods of warfare.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-028",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-184",
@@ -2944,7 +3693,11 @@
    ],
    "ans": 1,
    "why": "The BWC and CWC regulate biological and chemical weapons. The NPT and TPNW address nuclear non-proliferation and prohibition.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-028",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-185",
@@ -2960,7 +3713,12 @@
    ],
    "ans": 1,
    "why": "They were displaced by persecution, conflict, violence or human rights violations. The Global Peace Index 2025 says global peacefulness has deteriorated every year since 2014.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-045",
+    0,
+    1
+   ]
   },
   {
    "id": "caq-2026-02-186",
@@ -2976,7 +3734,11 @@
    ],
    "ans": 2,
    "why": "Humans are not permitted to take part but can observe from outside. More than 2 million AI bots take part, and it raised cybersecurity and ethical concerns about AI autonomy.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-028",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-187",
@@ -2992,7 +3754,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. Accountability is hard to assign when AI systems communicate autonomously, and reliance on them may erode human agency.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-028",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-188",
@@ -3008,7 +3774,11 @@
    ],
    "ans": 0,
    "why": "It helps reduce the black box problem. 'Ethics by design' embeds fairness, accountability, privacy and safety at the design stage.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-043",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-189",
@@ -3024,7 +3794,11 @@
    ],
    "ans": 2,
    "why": "All three are correct. The Global Partnership on AI, of which India is a member, works on responsible AI deployment.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-028",
+    1
+   ]
   },
   {
    "id": "caq-2026-02-190",
@@ -3040,7 +3814,11 @@
    ],
    "ans": 3,
    "why": "All three are correct. The text recommends a national AI authority in India like TRAI, risk-based regulation and human-in-the-loop oversight for critical decisions.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-024",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-191",
@@ -3056,7 +3834,11 @@
    ],
    "ans": 1,
    "why": "The subsidy varies with consumption: Rs 30,000 to Rs 60,000 for 1-2 kW, Rs 60,000 to Rs 78,000 for 2-3 kW and Rs 78,000 above 3 kW. Around 30 lakh households have rooftop solar under it.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-029",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-192",
@@ -3072,7 +3854,11 @@
    ],
    "ans": 0,
    "why": "A household must not have availed any other subsidy for rooftop solar. The scheme also trains more than 3 lakh skilled workers and has a payment security mechanism for RESCO models.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-029",
+    0
+   ]
   },
   {
    "id": "caq-2026-02-193",
@@ -3088,7 +3874,11 @@
    ],
    "ans": 1,
    "why": "The Central Financial Assistance depends on the household's average monthly electricity consumption and the suitable rooftop capacity.",
-   "insight": ""
+   "insight": "",
+   "cx": [
+    "cx-2026-02-029",
+    1
+   ]
   }
  ]
 }
