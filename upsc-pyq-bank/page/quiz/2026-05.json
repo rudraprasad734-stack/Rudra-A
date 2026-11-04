@@ -3481,6 +3481,90 @@
     "cx-2026-05-037",
     0
    ]
+  },
+  {
+   "id": "caq-2026-05-174",
+   "subject": "Economy",
+   "syllabus": "Payments",
+   "exam": "pre",
+   "q": "With reference to UPI, consider the following statements:\n1. Zero merchant discount rate makes the model hard to sustain.\n2. A few third-party apps dominate UPI transactions.\n3. UPI is live in over 8 countries.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. UPI grew from 2 crore transactions in 2016-17 to 24,162 crore in 2025-26.",
+   "insight": "",
+   "cx": [
+    "cx-2026-05-013",
+    0,
+    2
+   ]
+  },
+  {
+   "id": "caq-2026-05-175",
+   "subject": "Polity & Governance",
+   "syllabus": "Education",
+   "exam": "pre",
+   "q": "With reference to learning outcomes in India's school education, consider the following statements:\n1. Under 55% of Grade 3 students can handle basic money transactions or spatial measurement.\n2. Under 30% of Grade 6 students showed competency in fractions.\n3. These findings come from the PARAKH 2024 survey.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct per the NITI Aayog report on a decade of school education.",
+   "insight": "",
+   "cx": [
+    "cx-2026-05-026",
+    2
+   ]
+  },
+  {
+   "id": "caq-2026-05-176",
+   "subject": "Environment",
+   "syllabus": "Wildlife",
+   "exam": "pre",
+   "q": "With reference to pangolins, consider the following statements:\n1. They are the only mammals completely covered in protective keratin scales.\n2. The Indian pangolin and the Chinese pangolin occur in India.\n3. India has all eight pangolin species.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Of the eight pangolin species in the world, two occur in India.",
+   "insight": "",
+   "cx": [
+    "cx-2026-05-040",
+    3,
+    4
+   ]
+  },
+  {
+   "id": "caq-2026-05-177",
+   "subject": "Geography",
+   "syllabus": "Climate",
+   "exam": "pre",
+   "q": "A heat dome is best described as which of the following?",
+   "opts": [
+    "A low-pressure cyclone forming over warm seas",
+    "A cold-air pool settling over mountain ranges",
+    "A jet stream bending sharply toward the poles",
+    "A high-pressure system that traps heat"
+   ],
+   "ans": 3,
+   "why": "Descending air is compressed and heated and high pressure prevents cloud formation.",
+   "insight": "",
+   "cx": [
+    "cx-2026-05-039",
+    0,
+    1,
+    2
+   ]
   }
  ]
 }

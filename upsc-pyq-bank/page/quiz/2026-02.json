@@ -3879,6 +3879,86 @@
     "cx-2026-02-029",
     1
    ]
+  },
+  {
+   "id": "caq-2026-02-194",
+   "subject": "IR",
+   "syllabus": "Bilateral relations",
+   "exam": "pre",
+   "q": "With reference to France's role in India's connectivity and security initiatives, consider the following statements:\n1. France is a key stakeholder in the India-Middle East-Europe Economic Corridor.\n2. France and India are co-presidents of the International Solar Alliance.\n3. France is India's largest defence supplier.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "France is India's second largest supplier of defence equipment.",
+   "insight": "",
+   "cx": [
+    "cx-2026-02-032",
+    0
+   ]
+  },
+  {
+   "id": "caq-2026-02-195",
+   "subject": "IR",
+   "syllabus": "Conflict areas",
+   "exam": "pre",
+   "q": "In which part of Sudan does the Darfur region lie?",
+   "opts": [
+    "The east",
+    "The north",
+    "The west",
+    "The south"
+   ],
+   "ans": 2,
+   "why": "El-Fasher was under siege; the Masalit, Zaghawa and Fur communities were among those affected.",
+   "insight": "",
+   "cx": [
+    "cx-2026-02-035",
+    2
+   ]
+  },
+  {
+   "id": "caq-2026-02-196",
+   "subject": "Economy",
+   "syllabus": "Infrastructure",
+   "exam": "pre",
+   "q": "The Namo Bharat Regional Rapid Transit System is implemented by which agency?",
+   "opts": [
+    "The NCRTC",
+    "Delhi Metro Rail Corporation",
+    "Indian Railways Construction Limited",
+    "Rail Vikas Nigam Limited"
+   ],
+   "ans": 0,
+   "why": "It is a semi-high-speed commuter system of up to 180 km per hour with fewer stops than a metro.",
+   "insight": "",
+   "cx": [
+    "cx-2026-02-040",
+    0
+   ]
+  },
+  {
+   "id": "caq-2026-02-197",
+   "subject": "Environment",
+   "syllabus": "Biodiversity",
+   "exam": "pre",
+   "q": "BeeCorridors have been announced along which kind of infrastructure by NHAI?",
+   "opts": [
+    "Railway lines",
+    "Canals and rivers",
+    "International borders",
+    "National Highways"
+   ],
+   "ans": 3,
+   "why": "They are continuous bee-friendly stretches providing nectar and pollen round the year.",
+   "insight": "",
+   "cx": [
+    "cx-2026-02-041",
+    1
+   ]
   }
  ]
 }

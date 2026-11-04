@@ -3281,6 +3281,575 @@
     "cx-2026-06-040",
     3
    ]
+  },
+  {
+   "id": "caq-2026-06-163",
+   "subject": "Polity & Governance",
+   "syllabus": "Federalism",
+   "exam": "pre",
+   "q": "With reference to the Tungabhadra water dispute, consider the following statements:\n1. Karnataka's Upper Bhadra project lies upstream of the Tungabhadra Dam.\n2. Telangana says silt and structural problems stop it getting its share through the Rajolibanda Diversion Scheme.\n3. Tribunal awards in India come with their own contempt and enforcement powers.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Tribunal awards are binding but lack contempt or enforcement powers, which is why courts keep getting involved.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-001",
+    1
+   ]
+  },
+  {
+   "id": "caq-2026-06-164",
+   "subject": "Polity & Governance",
+   "syllabus": "Comparative polity",
+   "exam": "pre",
+   "q": "With reference to the UK and Indian parliamentary systems, consider the following statements:\n1. Both have a nominal head of state and a real executive led by the Prime Minister.\n2. The UK Constitution is unwritten, while India's is written and supreme.\n3. The UK has an anti-defection law like India's.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The UK has no anti-defection legislation. In India a minister can serve six months without being an MP.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-002",
+    0,
+    1,
+    3
+   ]
+  },
+  {
+   "id": "caq-2026-06-165",
+   "subject": "Polity & Governance",
+   "syllabus": "Governance",
+   "exam": "pre",
+   "q": "The NeSDA 2025 assessment by DARPG measures which of the following?",
+   "opts": [
+    "Only the number of government portals launched in a year",
+    "Average internet speed in government offices",
+    "Maturity of online services",
+    "Staff strength of State IT departments"
+   ],
+   "ans": 2,
+   "why": "It is based on the Online Service Index of the UN e-Government Survey and covers G2C and G2B services.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-003",
+    0,
+    1,
+    2,
+    3
+   ]
+  },
+  {
+   "id": "caq-2026-06-166",
+   "subject": "Polity & Governance",
+   "syllabus": "Governance",
+   "exam": "pre",
+   "q": "With reference to DISHA 2.0, consider the following statements:\n1. VIDHI-Sanjeevani is a new digital platform to monitor the programme with data.\n2. Legal literacy work is done in partnership with ministries and civil society.\n3. It is a Centrally Sponsored Scheme run by State legal services authorities.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "DISHA 2.0 is a Central Sector Scheme of the Department of Justice (2026-31).",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-004",
+    0,
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "id": "caq-2026-06-167",
+   "subject": "Polity & Governance",
+   "syllabus": "Fundamental rights",
+   "exam": "pre",
+   "q": "With reference to the right to trauma care, consider the following statements:\n1. The Supreme Court in SaveLIFE Foundation read it into Article 21.\n2. The Court asked for integration of emergency helplines into the number 112.\n3. Nearly half of road-crash deaths cannot be prevented even with timely care.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The Law Commission found nearly half of road deaths could be avoided with timely medical help. India records about 4.67 lakh accidental deaths a year.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-005",
+    0,
+    1
+   ]
+  },
+  {
+   "id": "caq-2026-06-168",
+   "subject": "Polity & Governance",
+   "syllabus": "Governance",
+   "exam": "pre",
+   "q": "With reference to the proposed FCRA rules, consider the following statements:\n1. Foreign funds would be limited to approved activities.\n2. NGOs could operate only in declared States or UTs.\n3. Religious activity including conversion work would be permitted.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Religious activity is allowed but proselytisation is explicitly barred. NGOs must also disclose social media accounts and key functionaries.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-006",
+    3
+   ]
+  },
+  {
+   "id": "caq-2026-06-169",
+   "subject": "Polity & Governance",
+   "syllabus": "Rights",
+   "exam": "pre",
+   "q": "Which body monitors the implementation of the UN Convention on the Rights of Persons with Disabilities?",
+   "opts": [
+    "The CRPD Committee",
+    "The UN Human Rights Council in Geneva",
+    "The International Labour Organization",
+    "The UN Development Programme"
+   ],
+   "ans": 0,
+   "why": "An Optional Protocol lets individuals complain; COSP19 marked 20 years of the Convention.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-007",
+    0,
+    1,
+    3
+   ]
+  },
+  {
+   "id": "caq-2026-06-170",
+   "subject": "IR",
+   "syllabus": "Groupings",
+   "exam": "pre",
+   "q": "With reference to the 11th Quad Foreign Ministers' meeting, consider the following statements:\n1. It was held in New Delhi.\n2. It announced a Critical Minerals Initiative Framework worth 20 billion dollars.\n3. It created a permanent Quad secretariat in Tokyo.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The Quad remains an informal grouping without a permanent secretariat, treaty obligations or its own funding.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-008",
+    0,
+    1,
+    3,
+    5
+   ]
+  },
+  {
+   "id": "caq-2026-06-171",
+   "subject": "IR",
+   "syllabus": "Groupings",
+   "exam": "pre",
+   "q": "With reference to the BRICS Indore Declaration, consider the following statements:\n1. It covers food security, farmer welfare and climate-resilient farming.\n2. It covers agricultural trade and digital agriculture.\n3. It was adopted by majority vote, with some members dissenting.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The declaration was unanimously adopted at the 16th Agriculture Ministers' Meeting, the first to include partner countries.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-009",
+    0,
+    1
+   ]
+  },
+  {
+   "id": "caq-2026-06-172",
+   "subject": "IR",
+   "syllabus": "Bilateral",
+   "exam": "pre",
+   "q": "With reference to the India-France Innovation Roadmap 2030, consider the following statements:\n1. It was adopted on 14 June 2026 during the PM's visit to Nice.\n2. It aims to move from buyer-seller ties to co-design and co-production.\n3. It removes all differences between India's non-alignment and France's NATO ties.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Differences over NATO alignment versus India's non-alignment and EU regulations remain hurdles.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-010",
+    0,
+    1,
+    3
+   ]
+  },
+  {
+   "id": "caq-2026-06-173",
+   "subject": "Economy",
+   "syllabus": "Middle class",
+   "exam": "pre",
+   "q": "With reference to India's growing middle class, consider the following statements:\n1. The WEF expects the middle class and affluent to account for 93% of spending by 2036.\n2. Private consumption is projected to reach 61.5% of GDP, the highest since FY12.\n3. Most urban consumer growth is expected within the top five cities.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "About 93% of urban consumer growth is expected outside the top five cities.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-013",
+    1
+   ]
+  },
+  {
+   "id": "caq-2026-06-174",
+   "subject": "Economy",
+   "syllabus": "Financial markets",
+   "exam": "pre",
+   "q": "With reference to Government Securities and foreign investment, consider the following statements:\n1. Market risk, reinvestment risk and liquidity risk affect holders of G-Secs.\n2. FPI is generally passive and short-term, while FDI brings management control and is long-term.\n3. FPI investors take part in the management of the companies they invest in.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "FPIs are passive investors and do not take part in management or decision-making.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-014",
+    4
+   ]
+  },
+  {
+   "id": "caq-2026-06-175",
+   "subject": "Economy",
+   "syllabus": "Insolvency",
+   "exam": "pre",
+   "q": "With reference to the Insolvency and Bankruptcy Code, consider the following statements:\n1. It followed the recommendations of the T.K. Viswanathan committee.\n2. It shifted insolvency from 'debtor in possession' to a time-bound creditor-in-control model.\n3. The IBC Amendment Act 2026 reverses the clean-slate principle.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The 2026 Act reinforces the clean-slate principle: prior claims are extinguished once a resolution plan is approved.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-015",
+    0
+   ]
+  },
+  {
+   "id": "caq-2026-06-176",
+   "subject": "Economy",
+   "syllabus": "Banking",
+   "exam": "pre",
+   "q": "Which of the following did the Supreme Court say cannot be used to justify reckless waiver of loans using public money?",
+   "opts": [
+    "Priority sector lending targets",
+    "The Security Receipt mechanism",
+    "The SARFAESI timelines",
+    "Commercial wisdom of banks"
+   ],
+   "ans": 3,
+   "why": "The Court criticised a nexus between banks, asset reconstruction companies and borrowers.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-016",
+    0
+   ]
+  },
+  {
+   "id": "caq-2026-06-177",
+   "subject": "Economy",
+   "syllabus": "Shipping",
+   "exam": "pre",
+   "q": "With reference to the digital tools launched by the Directorate General of Shipping, consider the following statements:\n1. e-Navik is a 24x7 grievance system for seafarers.\n2. A doctor module aims to reduce fraudulent seafarer medical certificates.\n3. Ship registration was moved offline to reduce delays.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Vessel registration was made digital on the e-Samudra platform. A unified portal also serves the ship recycling credit scheme.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-017",
+    1
+   ]
+  },
+  {
+   "id": "caq-2026-06-178",
+   "subject": "Economy",
+   "syllabus": "Skilling",
+   "exam": "pre",
+   "q": "With reference to the Public Accounts Committee's findings on PMKVY, consider the following statements:\n1. Most participants analysed had invalid or missing bank details.\n2. Training was concentrated in sectors with low employment demand.\n3. The PAC said the scheme had a long-term National Skill Development Plan in place.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The PAC noted the absence of a long-term strategy and a National Skill Development Plan.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-018",
+    2,
+    3,
+    4
+   ]
+  },
+  {
+   "id": "caq-2026-06-179",
+   "subject": "Economy",
+   "syllabus": "Tourism",
+   "exam": "pre",
+   "q": "With reference to the NITI Aayog report on tourism and hospitality, consider the following statements:\n1. It suggests moving toward a 90-day multiple-entry tourist visa on arrival for selected countries.\n2. It suggests self-declaration for hotel classification.\n3. It suggests more approvals per hotel to improve quality.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The report wants simpler regulation: a hotel today may need about 50 approvals.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-019",
+    0,
+    4
+   ]
+  },
+  {
+   "id": "caq-2026-06-180",
+   "subject": "Economy",
+   "syllabus": "Public finance",
+   "exam": "pre",
+   "q": "Subsidies of all States combined stayed mainly within which share of revenue expenditure from 2015-16 to 2024-25?",
+   "opts": [
+    "2 to 4 per cent",
+    "8 to 10 per cent",
+    "15 to 20 per cent",
+    "30 to 35 per cent"
+   ],
+   "ans": 1,
+   "why": "They go mainly to energy utilities and agriculture-related activities, as per the CAG State Finances report.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-020",
+    2,
+    3
+   ]
+  },
+  {
+   "id": "caq-2026-06-181",
+   "subject": "Polity & Governance",
+   "syllabus": "Defence",
+   "exam": "pre",
+   "q": "With reference to ballistic missile defence in India, consider the following statements:\n1. DRDO showed multi-layer defence against long-range ballistic missiles.\n2. A BMD system helps preserve second-strike capability.\n3. BMD systems can only counter short-range missiles.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Phase II of India's BMD can handle threats of about 5,000 km range; Phase III targets hypersonic glide vehicles.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-024",
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "id": "caq-2026-06-182",
+   "subject": "Polity & Governance",
+   "syllabus": "Defence",
+   "exam": "pre",
+   "q": "With reference to technology-driven warfare, consider the following statements:\n1. Minister Jitendra Singh said AI, quantum, biotech and space are reshaping national security.\n2. Dependence on foreign platforms and embedded malware risk are listed as gaps.\n3. The Battlefield Management System is cited as a project that has moved ahead smoothly.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "It is cited among the key modernisation projects cancelled because of high costs.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-025",
+    0,
+    2
+   ]
+  },
+  {
+   "id": "caq-2026-06-183",
+   "subject": "Polity & Governance",
+   "syllabus": "Internal security",
+   "exam": "pre",
+   "q": "With reference to illegal immigration into India, consider the following statements:\n1. About a quarter of the Bangladesh border is riverine or difficult terrain and cannot be fenced fully.\n2. India is not a party to the 1951 Refugee Convention.\n3. India has a dedicated central deportation authority.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "India lacks an enforceable deportation protocol or centralised authority, one of the institutional gaps noted.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-026",
+    2
+   ]
+  },
+  {
+   "id": "caq-2026-06-184",
+   "subject": "Environment",
+   "syllabus": "Climate",
+   "exam": "pre",
+   "q": "The Turquoise Nexus Initiative unveiled by the COP31 Presidency and FAO integrates which approach into national climate plans?",
+   "opts": [
+    "Food-water-climate linkages",
+    "Energy-trade-finance linkages",
+    "Land-forest-carbon accounting",
+    "Health-air-urban planning"
+   ],
+   "ans": 0,
+   "why": "It sits under FAO's FAST Partnership launched at COP27.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-030",
+    3
+   ]
+  },
+  {
+   "id": "caq-2026-06-185",
+   "subject": "Polity & Governance",
+   "syllabus": "Youth",
+   "exam": "pre",
+   "q": "With reference to the global wave of youth protests, consider the following statements:\n1. The world has about 2.4 billion young people aged 10 to 29.\n2. Fear of AI replacing entry-level jobs is cited as a driver.\n3. India's Gen Z protests demanded a change of regime like in Nepal.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "India's protests focused on specific administrative accountability and relied on civil-resistance tactics such as fasting.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-033",
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "id": "caq-2026-06-186",
+   "subject": "Polity & Governance",
+   "syllabus": "Digital health",
+   "exam": "pre",
+   "q": "With reference to digital health in India, consider the following statements:\n1. eSanjeevani and the Health Facility Registry are among its tools.\n2. Weak rural internet and failed Aadhaar authentication can exclude people.\n3. IHIP is a tool for school health education.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "IHIP is the Integrated Health Information Platform for disease surveillance.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-034",
+    1,
+    3
+   ]
+  },
+  {
+   "id": "caq-2026-06-187",
+   "subject": "Polity & Governance",
+   "syllabus": "Health",
+   "exam": "pre",
+   "q": "With reference to the Pradhan Mantri Surakshit Matritva Abhiyan, consider the following statements:\n1. Shortage of obstetricians and sonologists limits it in rural areas.\n2. Postnatal care gets relatively less attention.\n3. It provides services on the 15th of every month.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "It provides specialist antenatal care on the 9th of every month.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-036",
+    0,
+    2
+   ]
+  },
+  {
+   "id": "caq-2026-06-188",
+   "subject": "Art & Culture",
+   "syllabus": "Harappan art",
+   "exam": "pre",
+   "q": "Which Harappan artefact's picture in an NCERT Class 9 textbook was modified and then restored?",
+   "opts": [
+    "The steatite Priest-King",
+    "The Pashupati seal",
+    "The bronze Dancing Girl",
+    "The bronze bull figurine"
+   ],
+   "ans": 2,
+   "why": "The Dancing Girl comes from Mohenjo-daro and dates to about 2600-1900 BCE; it is in the National Museum, Delhi.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-041",
+    0,
+    1
+   ]
+  },
+  {
+   "id": "caq-2026-06-189",
+   "subject": "Polity & Governance",
+   "syllabus": "Health schemes",
+   "exam": "pre",
+   "q": "With reference to Ayushman Bharat PM-JAY, consider the following statements:\n1. West Bengal's joining gave the scheme nationwide coverage.\n2. Over 43 crore Ayushman cards had been issued by February 2026.\n3. It runs only through public hospitals.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Both public (19,483) and private (16,746) hospitals are empanelled, 36,229 in all.",
+   "insight": "",
+   "cx": [
+    "cx-2026-06-044",
+    3
+   ]
   }
  ]
 }
