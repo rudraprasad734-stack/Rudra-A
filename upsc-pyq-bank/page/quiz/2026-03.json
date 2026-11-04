@@ -2932,6 +2932,193 @@
     "cx-2026-03-039",
     3
    ]
+  },
+  {
+   "id": "caq-2026-03-146",
+   "subject": "Polity & Governance",
+   "syllabus": "Civil code",
+   "exam": "pre",
+   "q": "With reference to the Uniform Civil Code, consider the following statements:\n1. Goa follows a common civil code that dates back to the Portuguese Civil Code of 1867.\n2. Article 44, a Directive Principle, asks the State to try to secure a UCC.\n3. The Special Marriage Act, 1954 applies only to Hindus.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The Special Marriage Act, 1954 allows civil marriage irrespective of religion.",
+   "insight": "",
+   "cx": [
+    "cx-2026-03-001",
+    0,
+    2,
+    4
+   ]
+  },
+  {
+   "id": "caq-2026-03-147",
+   "subject": "Polity & Governance",
+   "syllabus": "Elections",
+   "exam": "pre",
+   "q": "With reference to postal voting in India, consider the following statements:\n1. It is governed by the Conduct of Election Rules, 1961 and the Representation of the People Act, 1951.\n2. It has been extended to electors above 85 years and persons with disabilities.\n3. It is available only to the President and Governors.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Service voters, absentee voters and special voters such as the President and Governors are all covered.",
+   "insight": "",
+   "cx": [
+    "cx-2026-03-004",
+    0,
+    1
+   ]
+  },
+  {
+   "id": "caq-2026-03-148",
+   "subject": "Economy",
+   "syllabus": "Energy",
+   "exam": "pre",
+   "q": "With reference to India's role in global energy groupings, consider the following statements:\n1. India leads the Global Biofuel Alliance together with the G20.\n2. India also leads the International Solar Alliance.\n3. India is the Secretary-General seat holder of OPEC.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "India is not an OPEC member. It imports over 85% of its crude oil.",
+   "insight": "",
+   "cx": [
+    "cx-2026-03-007",
+    3
+   ]
+  },
+  {
+   "id": "caq-2026-03-149",
+   "subject": "Economy",
+   "syllabus": "Industry",
+   "exam": "pre",
+   "q": "Which agency, under DPIIT, implements the BHAVYA scheme for plug-and-play industrial parks?",
+   "opts": [
+    "The NICDC",
+    "The Airports Authority of India Limited",
+    "The National Highways Authority of India",
+    "The Small Industries Development Bank of India"
+   ],
+   "ans": 0,
+   "why": "A State or Central PSU is the sponsor and an SPV develops each park.",
+   "insight": "",
+   "cx": [
+    "cx-2026-03-011",
+    1
+   ]
+  },
+  {
+   "id": "caq-2026-03-150",
+   "subject": "Economy",
+   "syllabus": "Digital Public Infrastructure",
+   "exam": "pre",
+   "q": "With reference to Digital Public Infrastructure, consider the following statements:\n1. India put DPI at the centre of the G20 development agenda during its 2023 presidency.\n2. India has signed DPI MoUs with 24 countries as of February 2026.\n3. Digital Public Goods are the broad digital infrastructures themselves.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Digital Public Goods are building blocks, such as open-source software and standards, that help operationalise DPI.",
+   "insight": "",
+   "cx": [
+    "cx-2026-03-012",
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "id": "caq-2026-03-151",
+   "subject": "Economy",
+   "syllabus": "Semiconductors",
+   "exam": "pre",
+   "q": "With reference to the global semiconductor industry, consider the following statements:\n1. Taiwan accounts for over 60% of global semiconductor manufacturing.\n2. Taiwan produces nearly 90% of the most advanced chips.\n3. India meets over half of its own chip demand domestically.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "India meets only about 10% of its chip demand at home.",
+   "insight": "",
+   "cx": [
+    "cx-2026-03-014",
+    3
+   ]
+  },
+  {
+   "id": "caq-2026-03-152",
+   "subject": "Economy",
+   "syllabus": "Microfinance",
+   "exam": "pre",
+   "q": "How are the Mutual Credit Guarantee Scheme for MSMEs and the MFI credit guarantee both backed?",
+   "opts": [
+    "By the Reserve Bank of India directly through its lending window",
+    "By the NCGTC",
+    "By the Small Industries Development Bank acting alone",
+    "By the Deposit Insurance and Credit Guarantee Corporation"
+   ],
+   "ans": 1,
+   "why": "NCGTC gives lenders cover so they can lend to borrowers without collateral.",
+   "insight": "",
+   "cx": [
+    "cx-2026-03-016",
+    0,
+    1,
+    2
+   ]
+  },
+  {
+   "id": "caq-2026-03-153",
+   "subject": "Environment",
+   "syllabus": "Climate",
+   "exam": "pre",
+   "q": "With reference to India's energy mix, consider the following statements:\n1. Non-fossil sources make up over half of installed capacity (52.57% in Feb 2026).\n2. Non-fossil sources supply under 30% of electricity generated.\n3. Coal supplies about 15% of electricity.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Coal still supplies about 55% of electricity generation.",
+   "insight": "",
+   "cx": [
+    "cx-2026-03-022",
+    1
+   ]
+  },
+  {
+   "id": "caq-2026-03-154",
+   "subject": "Sci & Tech",
+   "syllabus": "Nutrition",
+   "exam": "pre",
+   "q": "With reference to food fortification in India, consider the following statements:\n1. A rice fortification scheme was paused after an IIT Kharagpur study on nutrient stability.\n2. Fortified rice kernels are mixed with regular rice at a 1:100 ratio.\n3. Fortification has no concerns about shelf life or bioavailability.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Lower bioavailability and shelf-life degradation are among the concerns.",
+   "insight": "",
+   "cx": [
+    "cx-2026-03-033",
+    2
+   ]
   }
  ]
 }
