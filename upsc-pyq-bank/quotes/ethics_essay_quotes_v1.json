@@ -1,5 +1,5 @@
 {
- "note": "Phase 1 starter set. Every quote below was checked against a primary or clearly documented secondary source before inclusion — nothing here was generated because it 'sounded right'. Coverage is intentionally partial: only concepts/themes with quotes I could verify are included. More will be added in later passes rather than padded out now.",
+ "note": "Phase 1 starter set. Every quote below was checked against a primary or clearly documented secondary source before inclusion — nothing here was generated because it 'sounded right'. Coverage is intentionally partial: only concepts/themes with quotes I could verify are included. More will be added in later passes rather than padded out now. Newer short quotes were added from memory and have NOT been re-checked online. Those with no tag name a dated book, speech or journal; those tagged 'Widely cited' are commonly attributed without a firm primary source. Check any quote before using it in an exam answer.",
  "ethics": [
   {
    "concept": "Constitutional Morality",
@@ -217,6 +217,28 @@
      "position": [
       "body"
      ]
+    },
+    {
+     "quote": "In the happiness of his subjects lies the king's happiness.",
+     "author": "Kautilya",
+     "source": "Arthashastra 1.19.34",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Honesty is the best policy.",
+     "author": "Miguel de Cervantes",
+     "source": "Don Quixote (1605)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
     }
    ]
   },
@@ -328,6 +350,61 @@
       "intro",
       "body"
      ]
+    },
+    {
+     "quote": "Recall the face of the poorest and the weakest man you have seen.",
+     "author": "Mahatma Gandhi",
+     "source": "Talisman note, 1948",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "I slept and dreamt that life was joy. I awoke and saw that life was service.",
+     "author": "Rabindranath Tagore",
+     "source": "Widely attributed",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Not all of us can do great things. But we can do small things with great love.",
+     "author": "Mother Teresa",
+     "source": "Widely attributed",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "If you want others to be happy, practise compassion.",
+     "author": "The Dalai Lama",
+     "source": "The Art of Happiness (1998), widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "The best way to find yourself is to lose yourself in the service of others.",
+     "author": "Mahatma Gandhi",
+     "source": "Widely attributed",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
     }
    ]
   },
@@ -440,6 +517,72 @@
       "body",
       "conclusion"
      ]
+    },
+    {
+     "quote": "Cowardice is impotence worse than violence.",
+     "author": "Mahatma Gandhi",
+     "source": "Young India, 11 August 1920",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Courage is not the absence of fear, but the triumph over it.",
+     "author": "Nelson Mandela",
+     "source": "Long Walk to Freedom (1994)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Fortune favours the brave.",
+     "author": "Virgil",
+     "source": "Aeneid, Book X",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Victory attained by violence is tantamount to a defeat, for it is momentary.",
+     "author": "Mahatma Gandhi",
+     "source": "Satyagraha Leaflet No. 13, 3 May 1919",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "In matters of conscience, the law of majority has no place.",
+     "author": "Mahatma Gandhi",
+     "source": "Young India, 4 August 1920",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Courage is rightly esteemed the first of human qualities.",
+     "author": "Winston Churchill",
+     "source": "Great Contemporaries (1937)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
     }
    ]
   },
@@ -550,6 +693,28 @@
       "intro",
       "body"
      ]
+    },
+    {
+     "quote": "There is nothing reserved and nothing secret in it.",
+     "author": "Mahatma Gandhi",
+     "source": "A Word of Explanation, Young India, January 1921",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Who will guard the guards themselves?",
+     "author": "Juvenal",
+     "source": "Satires, VI",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
     }
    ]
   },
@@ -659,6 +824,50 @@
      "position": [
       "body"
      ]
+    },
+    {
+     "quote": "He who knows only his own side of the case knows little of that.",
+     "author": "John Stuart Mill",
+     "source": "On Liberty (1859)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Facts are stubborn things.",
+     "author": "John Adams",
+     "source": "Defence of the British soldiers, 1770",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Truth emerges more readily from error than from confusion.",
+     "author": "Francis Bacon",
+     "source": "Novum Organum (1620)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "What we have tested and found true on the anvil of experience, we dare not change.",
+     "author": "Mahatma Gandhi",
+     "source": "Hind Swaraj (1909), Sect. 13",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
     }
    ]
   },
@@ -768,6 +977,50 @@
      "position": [
       "body"
      ]
+    },
+    {
+     "quote": "You never really understand a person until you consider things from his point of view.",
+     "author": "Harper Lee",
+     "source": "To Kill a Mockingbird (1960)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Empathy is seeing with the eyes of another, listening with the ears of another.",
+     "author": "Alfred Adler",
+     "source": "Widely attributed",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "We but mirror the world.",
+     "author": "Mahatma Gandhi",
+     "source": "Indian Opinion, 9 August 1913",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Recall the face of the poorest and the weakest man.",
+     "author": "Mahatma Gandhi",
+     "source": "Talisman note, 1948",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
     }
    ]
   },
@@ -989,6 +1242,39 @@
      "position": [
       "intro"
      ]
+    },
+    {
+     "quote": "We who seek justice will have to do justice to others.",
+     "author": "Mahatma Gandhi",
+     "source": "Hind Swaraj (1909), Sect. 1",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Justice is the first virtue of social institutions.",
+     "author": "John Rawls",
+     "source": "A Theory of Justice (1971)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Political democracy cannot last unless there lies at its base social democracy.",
+     "author": "B. R. Ambedkar",
+     "source": "Constituent Assembly, 25 November 1949",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
     }
    ]
   },
@@ -1096,6 +1382,17 @@
      "position": [
       "intro"
      ]
+    },
+    {
+     "quote": "I have learnt through bitter experience the one supreme lesson to conserve my anger.",
+     "author": "Mahatma Gandhi",
+     "source": "Young India, 15 September 1920",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
     }
    ]
   },
@@ -1208,6 +1505,61 @@
       "intro",
       "conclusion"
      ]
+    },
+    {
+     "quote": "Civilization is that mode of conduct which points out to man the path of duty.",
+     "author": "Mahatma Gandhi",
+     "source": "Hind Swaraj (1909), Sect. 13",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Our duty is very simple and plain.",
+     "author": "Mahatma Gandhi",
+     "source": "Indian Opinion, 1 October 1903",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The price of greatness is responsibility.",
+     "author": "Winston Churchill",
+     "source": "Harvard speech, 6 September 1943",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Performance of duty and observance of morality are convertible terms.",
+     "author": "Mahatma Gandhi",
+     "source": "Hind Swaraj (1909), Sect. 13",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Do your duty and leave the rest.",
+     "author": "Bhagavad Gita",
+     "source": "Gita teaching on nishkama karma",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
     }
    ]
   }
@@ -1316,6 +1668,402 @@
      "position": [
       "body"
      ]
+    },
+    {
+     "quote": "Any sufficiently advanced technology is indistinguishable from magic.",
+     "author": "Arthur C. Clarke",
+     "source": "Profiles of the Future (1962/1973)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Technology is a useful servant but a dangerous master.",
+     "author": "Christian Lous Lange",
+     "source": "Nobel Peace Prize lecture, 1921",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The real problem is not whether machines think but whether men do.",
+     "author": "B. F. Skinner",
+     "source": "Contingencies of Reinforcement (1969)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Men have become the tools of their tools.",
+     "author": "Henry David Thoreau",
+     "source": "Walden (1854)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Our inventions are wont to be pretty toys, which distract our attention from serious things.",
+     "author": "Henry David Thoreau",
+     "source": "Walden (1854)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Things are in the saddle, and ride mankind.",
+     "author": "Ralph Waldo Emerson",
+     "source": "Ode, Inscribed to W. H. Channing (1847)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The medium is the message.",
+     "author": "Marshall McLuhan",
+     "source": "Understanding Media (1964)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "We shape our tools, and thereafter our tools shape us.",
+     "author": "John Culkin (on McLuhan)",
+     "source": "Saturday Review, 1967",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Technology is neither good nor bad; nor is it neutral.",
+     "author": "Melvin Kranzberg",
+     "source": "First law of technology, 1985",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Science without conscience is but the ruin of the soul.",
+     "author": "François Rabelais",
+     "source": "Pantagruel (1532)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The most profound technologies are those that disappear.",
+     "author": "Mark Weiser",
+     "source": "Scientific American, 1991",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "We expect more from technology and less from each other.",
+     "author": "Sherry Turkle",
+     "source": "Alone Together (2011)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Technology is only an amplifier of human intent and capacity.",
+     "author": "Kentaro Toyama",
+     "source": "Geek Heresy (2015)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The Analytical Engine has no pretensions whatever to originate anything.",
+     "author": "Ada Lovelace",
+     "source": "Notes on the Analytical Engine, 1843",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The future cannot be predicted, but futures can be invented.",
+     "author": "Dennis Gabor",
+     "source": "Inventing the Future (1963)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The best way to predict the future is to invent it.",
+     "author": "Alan Kay",
+     "source": "Attributed, Xerox PARC, 1971",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "We can only see a short distance ahead, but we can see plenty there that needs to be done.",
+     "author": "Alan Turing",
+     "source": "Computing Machinery and Intelligence (1950)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": false,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Nature cannot be fooled.",
+     "author": "Richard Feynman",
+     "source": "Rogers Commission report on Challenger, 1986",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The development of full artificial intelligence could spell the end of the human race.",
+     "author": "Stephen Hawking",
+     "source": "BBC interview, 2014",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "We had better be quite sure that the purpose put into the machine is the purpose we really desire.",
+     "author": "Norbert Wiener",
+     "source": "Science, 1960",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": false,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The saddest aspect of life is that science gathers knowledge faster than society gathers wisdom.",
+     "author": "Isaac Asimov",
+     "source": "Widely cited from Asimov's essays",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Computers are useless. They can only give you answers.",
+     "author": "Pablo Picasso",
+     "source": "Paris Review interview, 1964",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "What I object to is the craze for machinery, not machinery as such.",
+     "author": "Mahatma Gandhi",
+     "source": "Young India, 13 November 1924",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Dams are the temples of modern India.",
+     "author": "Jawaharlal Nehru",
+     "source": "Bhakra-Nangal address, 1954",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The future belongs to science and to those who make friends with science.",
+     "author": "Jawaharlal Nehru",
+     "source": "Widely cited from his speeches on science",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Arguing that you have nothing to hide is like saying you have nothing to say.",
+     "author": "Edward Snowden",
+     "source": "Reddit AMA, 2015",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Privacy is a fundamental human right.",
+     "author": "Tim Cook",
+     "source": "Speech at ICDPPC, Brussels, 2018",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Man is a tool-using animal.",
+     "author": "Thomas Carlyle",
+     "source": "Sartor Resartus (1836)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "We are drowning in information but starved for knowledge.",
+     "author": "John Naisbitt",
+     "source": "Megatrends (1982)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "To err is human, but to really foul things up you need a computer.",
+     "author": "Paul R. Ehrlich",
+     "source": "Attributed, 1969",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Software is eating the world.",
+     "author": "Marc Andreessen",
+     "source": "Wall Street Journal essay, 2011",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Data is the new oil.",
+     "author": "Clive Humby",
+     "source": "Widely cited since 2006",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Artificial intelligence is the new electricity.",
+     "author": "Andrew Ng",
+     "source": "Widely cited from his talks, 2017",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "I think we should be very careful about artificial intelligence.",
+     "author": "Elon Musk",
+     "source": "MIT AeroAstro symposium, 2014",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Intelligence is the ability to adapt to change.",
+     "author": "Stephen Hawking",
+     "source": "Widely cited from interviews",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Innovation distinguishes between a leader and a follower.",
+     "author": "Steve Jobs",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
     }
    ]
   },
@@ -1425,6 +2173,314 @@
       "intro",
       "body"
      ]
+    },
+    {
+     "quote": "The earth provides enough to satisfy every man's need, but not every man's greed.",
+     "author": "Mahatma Gandhi",
+     "source": "Attributed, E. F. Schumacher cites it; widely used",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "In nature nothing exists alone.",
+     "author": "Rachel Carson",
+     "source": "Silent Spring (1962)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "In every walk with nature one receives far more than he seeks.",
+     "author": "John Muir",
+     "source": "Steep Trails (1918)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "When one tugs at a single thing in nature, he finds it attached to the rest of the world.",
+     "author": "John Muir",
+     "source": "My First Summer in the Sierra (1911)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": false,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The clearest way into the Universe is through a forest wilderness.",
+     "author": "John Muir",
+     "source": "John of the Mountains (1938)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Poverty is the worst form of pollution.",
+     "author": "Indira Gandhi",
+     "source": "Stockholm Conference, 1972",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Think globally, act locally.",
+     "author": "René Dubos",
+     "source": "UN Conference on the Human Environment advisor, 1972",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "The environment is where we all meet; where all have a mutual interest.",
+     "author": "Lady Bird Johnson",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "The greatest threat to our planet is the belief that someone else will save it.",
+     "author": "Robert Swan",
+     "source": "Widely cited from his talks",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Sustainable development meets the needs of the present without compromising future generations.",
+     "author": "Gro Harlem Brundtland",
+     "source": "Our Common Future, 1987",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The Earth is what we all have in common.",
+     "author": "Wendell Berry",
+     "source": "The Unsettling of America (1977)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "To plant a garden is to believe in tomorrow.",
+     "author": "Audrey Hepburn",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Conservation is a state of harmony between men and land.",
+     "author": "Aldo Leopold",
+     "source": "A Sand County Almanac (1949)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "A thing is right when it tends to preserve the integrity, stability and beauty of the biotic community.",
+     "author": "Aldo Leopold",
+     "source": "A Sand County Almanac (1949)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The nation that destroys its soil destroys itself.",
+     "author": "Franklin D. Roosevelt",
+     "source": "Letter to state governors, 1937",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Forests are the lungs of our land.",
+     "author": "Franklin D. Roosevelt",
+     "source": "Widely cited from his conservation speeches",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Climate change is the defining issue of our time.",
+     "author": "Ban Ki-moon",
+     "source": "Widely cited, UN, 2007-2016",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Water is the driving force of all nature.",
+     "author": "Leonardo da Vinci",
+     "source": "Attributed, Codex Atlanticus",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Thousands have lived without love, not one without water.",
+     "author": "W. H. Auden",
+     "source": "First Things First (1956)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "When the well is dry, we know the worth of water.",
+     "author": "Benjamin Franklin",
+     "source": "Poor Richard's Almanack (1746)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The environment and the economy are really both two sides of the same coin.",
+     "author": "Wangari Maathai",
+     "source": "Nobel Peace Prize lecture, 2004",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "When we plant trees, we plant the seeds of peace and hope.",
+     "author": "Wangari Maathai",
+     "source": "Widely cited from her speeches",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Forests precede civilisations and deserts follow them.",
+     "author": "François-René de Chateaubriand",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "What is the use of a house if you haven't got a tolerable planet to put it on?",
+     "author": "Henry David Thoreau",
+     "source": "Letter to H. G. O. Blake, 1862",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "In wildness is the preservation of the world.",
+     "author": "Henry David Thoreau",
+     "source": "Walking (1862)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Look deep into nature, and then you will understand everything better.",
+     "author": "Albert Einstein",
+     "source": "Widely cited from a letter, 1951",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Ecology is permanent economy.",
+     "author": "Sundarlal Bahuguna",
+     "source": "Chipko slogan, widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "What do forests bear? Soil, water and pure air.",
+     "author": "Chipko movement",
+     "source": "Chipko slogan, 1970s",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
     }
    ]
   },
@@ -1534,6 +2590,303 @@
       "intro",
       "conclusion"
      ]
+    },
+    {
+     "quote": "Education is the manifestation of the perfection already in man.",
+     "author": "Swami Vivekananda",
+     "source": "Widely cited, Complete Works",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "The goal of education is the advancement of knowledge and the dissemination of truth.",
+     "author": "John F. Kennedy",
+     "source": "Address, 1963",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "The aim of education should be to teach us how to think, not what to think.",
+     "author": "John Dewey",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Education is what remains after one has forgotten what one has learned in school.",
+     "author": "Albert Einstein",
+     "source": "Out of My Later Years (1950)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The function of education is to teach one to think intensively and to think critically.",
+     "author": "Martin Luther King Jr.",
+     "source": "The Purpose of Education, 1947",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Intelligence plus character: that is the goal of true education.",
+     "author": "Martin Luther King Jr.",
+     "source": "The Purpose of Education, 1947",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Education is the key to unlock the golden door of freedom.",
+     "author": "George Washington Carver",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "An investment in knowledge pays the best interest.",
+     "author": "Benjamin Franklin",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Educate, agitate, organise.",
+     "author": "B. R. Ambedkar",
+     "source": "Widely cited from his speeches, 1942-1956",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Where the mind is without fear and the head is held high.",
+     "author": "Rabindranath Tagore",
+     "source": "Gitanjali (1910)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Real education consists in drawing the best out of yourself.",
+     "author": "Mahatma Gandhi",
+     "source": "Harijan, 1937",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "By education I mean an all-round drawing out of the best in child and man: body, mind and spirit.",
+     "author": "Mahatma Gandhi",
+     "source": "Harijan, 31 July 1937",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": false,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Literacy is not the end of education, nor even the beginning.",
+     "author": "Mahatma Gandhi",
+     "source": "Harijan, 1937",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "One child, one teacher, one book, one pen can change the world.",
+     "author": "Malala Yousafzai",
+     "source": "UN Youth Assembly speech, 2013",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Let us pick up our books and our pens. They are our most powerful weapons.",
+     "author": "Malala Yousafzai",
+     "source": "UN Youth Assembly speech, 2013",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The roots of education are bitter, but the fruit is sweet.",
+     "author": "Aristotle",
+     "source": "Attributed by Diogenes Laërtius",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Educating the mind without educating the heart is no education at all.",
+     "author": "Aristotle",
+     "source": "Widely attributed",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Give me a child until he is seven and I will show you the man.",
+     "author": "Jesuit maxim",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "The only person who is educated is the one who has learned how to learn and change.",
+     "author": "Carl Rogers",
+     "source": "Freedom to Learn (1969)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Education is the passport to the future, for tomorrow belongs to those who prepare for it today.",
+     "author": "Malcolm X",
+     "source": "Widely attributed, 1964",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "The whole purpose of education is to turn mirrors into windows.",
+     "author": "Sydney J. Harris",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Education is not the filling of a pail, but the lighting of a fire.",
+     "author": "W. B. Yeats",
+     "source": "Widely attributed, paraphrase of Plutarch",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "If you think education is expensive, try ignorance.",
+     "author": "Derek Bok",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "To educate a man is to educate an individual; to educate a woman is to educate a family.",
+     "author": "Dr. Charles McIver",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Knowledge is power.",
+     "author": "Francis Bacon",
+     "source": "Meditationes Sacrae (1597)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Education makes a people easy to lead, but difficult to drive; easy to govern, but impossible to enslave.",
+     "author": "Henry Brougham",
+     "source": "Speech, House of Commons, 1828",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Who opens a school door closes a prison.",
+     "author": "Victor Hugo",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
     }
    ]
   },
@@ -1645,6 +2998,292 @@
       "body",
       "conclusion"
      ]
+    },
+    {
+     "quote": "Government of the people, by the people, for the people, shall not perish from the earth.",
+     "author": "Abraham Lincoln",
+     "source": "Gettysburg Address, 1863",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The best government is that which governs least.",
+     "author": "Henry David Thoreau",
+     "source": "Civil Disobedience (1849)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Power tends to corrupt, and absolute power corrupts absolutely.",
+     "author": "Lord Acton",
+     "source": "Letter to Bishop Creighton, 1887",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Eternal vigilance is the price of liberty.",
+     "author": "Wendell Phillips",
+     "source": "Speech, 1852",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Where there is no vision, the people perish.",
+     "author": "The Bible",
+     "source": "Proverbs 29:18",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Democracy is the worst form of government, except for all the others.",
+     "author": "Winston Churchill",
+     "source": "House of Commons, 11 November 1947",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Sunlight is said to be the best of disinfectants.",
+     "author": "Louis Brandeis",
+     "source": "Other People's Money (1914)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The price of apathy towards public affairs is to be ruled by evil men.",
+     "author": "Plato",
+     "source": "Widely attributed paraphrase of The Republic",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "In a gentle way, you can shake the world.",
+     "author": "Mahatma Gandhi",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Constitutional morality is not a natural sentiment. It has to be cultivated.",
+     "author": "B. R. Ambedkar",
+     "source": "Constituent Assembly, 4 November 1948",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "However good a Constitution may be, if those who work it are not good, it will prove bad.",
+     "author": "B. R. Ambedkar",
+     "source": "Constituent Assembly, 25 November 1949",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "On 26 January 1950 we are going to enter into a life of contradictions.",
+     "author": "B. R. Ambedkar",
+     "source": "Constituent Assembly, 25 November 1949",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "A nation's culture resides in the hearts and in the soul of its people.",
+     "author": "Mahatma Gandhi",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "I will give you a talisman: recall the face of the poorest and the weakest man.",
+     "author": "Mahatma Gandhi",
+     "source": "Note left in 1948",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Freedom is not worth having if it does not include the freedom to make mistakes.",
+     "author": "Mahatma Gandhi",
+     "source": "Widely attributed",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Africa doesn't need strong men, it needs strong institutions.",
+     "author": "Barack Obama",
+     "source": "Accra, Ghana, 2009",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Jai Jawan, Jai Kisan.",
+     "author": "Lal Bahadur Shastri",
+     "source": "Ramlila Maidan, 1965",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Transparency is the best disinfectant.",
+     "author": "Louis Brandeis",
+     "source": "Other People's Money (1914)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The art of government is to prevent men from busying themselves with affairs that do not concern them.",
+     "author": "Paul Valéry",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Democracy is not merely a form of government. It is primarily a mode of associated living.",
+     "author": "B. R. Ambedkar",
+     "source": "Annihilation of Caste (1936)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Justice delayed is justice denied.",
+     "author": "William E. Gladstone",
+     "source": "Widely attributed, 19th century",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Where law ends, tyranny begins.",
+     "author": "William Pitt the Elder",
+     "source": "Speech, House of Lords, 1770",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "A government that robs Peter to pay Paul can always depend on the support of Paul.",
+     "author": "George Bernard Shaw",
+     "source": "Everybody's Political What's What? (1944)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Minimum government, maximum governance.",
+     "author": "Narendra Modi",
+     "source": "Slogan, 2014",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Sabka Saath, Sabka Vikas.",
+     "author": "Narendra Modi",
+     "source": "Slogan, 2014",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Good government is no substitute for self-government.",
+     "author": "Henry Campbell-Bannerman",
+     "source": "Speech, 1905",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
     }
    ]
   },
@@ -1755,6 +3394,336 @@
      "position": [
       "body"
      ]
+    },
+    {
+     "quote": "Arise, awake, and stop not till the goal is reached.",
+     "author": "Swami Vivekananda",
+     "source": "Adapted from the Katha Upanishad; widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Each nation has a mission to fulfil, a message to deliver, a destiny to reach.",
+     "author": "Swami Vivekananda",
+     "source": "Widely cited, Complete Works",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Unity in diversity.",
+     "author": "Jawaharlal Nehru",
+     "source": "The Discovery of India (1946), theme",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "India is a geographical expression.",
+     "author": "Winston Churchill",
+     "source": "Speech, 1931 (as reported)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Culture is the widening of the mind and of the spirit.",
+     "author": "Jawaharlal Nehru",
+     "source": "The Discovery of India (1946)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Where the world has not been broken up into fragments by narrow domestic walls.",
+     "author": "Rabindranath Tagore",
+     "source": "Gitanjali (1910)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Patriotism cannot be our final spiritual shelter; my refuge is humanity.",
+     "author": "Rabindranath Tagore",
+     "source": "Letter to Abala Bose, 1908",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Swaraj is my birthright and I shall have it.",
+     "author": "Bal Gangadhar Tilak",
+     "source": "Speech, Belgaum, 1916",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Give me blood and I shall give you freedom.",
+     "author": "Subhas Chandra Bose",
+     "source": "Speech, Burma, 1944",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Delhi Chalo.",
+     "author": "Subhas Chandra Bose",
+     "source": "INA call, 1943",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Inquilab Zindabad.",
+     "author": "Bhagat Singh",
+     "source": "Slogan, 1929",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "They may kill me, but they cannot kill my ideas.",
+     "author": "Bhagat Singh",
+     "source": "Widely attributed",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "A nation is a soul, a spiritual principle.",
+     "author": "Ernest Renan",
+     "source": "What Is a Nation? (1882)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "A nation is a daily plebiscite.",
+     "author": "Ernest Renan",
+     "source": "What Is a Nation? (1882)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Culture is what remains when all else is forgotten.",
+     "author": "Édouard Herriot",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "A people without the knowledge of their past history, origin and culture is like a tree without roots.",
+     "author": "Marcus Garvey",
+     "source": "Widely attributed",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Patriotism is the last refuge of a scoundrel.",
+     "author": "Samuel Johnson",
+     "source": "Boswell's Life of Johnson, 1775",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The love of one's country is a natural affection.",
+     "author": "Edmund Burke",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "India lives in her villages.",
+     "author": "Mahatma Gandhi",
+     "source": "Harijan, widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "The soul of India lives in its villages.",
+     "author": "Mahatma Gandhi",
+     "source": "Harijan, 1936",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Civilisation is the encouragement of differences.",
+     "author": "Mahatma Gandhi",
+     "source": "Widely attributed",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "A nation is great not by wealth but by its character.",
+     "author": "Sardar Vallabhbhai Patel",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Manpower without unity is not a strength unless it is harmonised and united properly.",
+     "author": "Sardar Vallabhbhai Patel",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "India will be free, and will remain a land of many faiths.",
+     "author": "Maulana Abul Kalam Azad",
+     "source": "Presidential address, Ramgarh, 1940",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Freedom is not given, it is taken.",
+     "author": "Subhas Chandra Bose",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "We hold these truths to be self-evident, that all men are created equal.",
+     "author": "Thomas Jefferson",
+     "source": "Declaration of Independence, 1776",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "At the stroke of the midnight hour, when the world sleeps, India will awake to life and freedom.",
+     "author": "Jawaharlal Nehru",
+     "source": "Tryst with Destiny, 14 August 1947",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "We shall always keep the flag of freedom flying high.",
+     "author": "Jawaharlal Nehru",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "A tradition is not worship of ashes; it is preservation of fire.",
+     "author": "Gustav Mahler",
+     "source": "Widely attributed",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Cultural heritage is the legacy of physical artifacts and intangible attributes of a society.",
+     "author": "UNESCO",
+     "source": "UNESCO definition, 1972 Convention",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
     }
    ]
   },
@@ -1863,6 +3832,237 @@
      "position": [
       "intro"
      ]
+    },
+    {
+     "quote": "You can tell the condition of a nation by looking at the status of its women.",
+     "author": "Jawaharlal Nehru",
+     "source": "Widely attributed",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "To call woman the weaker sex is a libel; it is man's injustice to woman.",
+     "author": "Mahatma Gandhi",
+     "source": "Young India, 1930",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "I measure the progress of a community by the degree of progress which women have achieved.",
+     "author": "B. R. Ambedkar",
+     "source": "Widely cited, 1942 speech",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "There is no chance of the welfare of the world unless the condition of women is improved.",
+     "author": "Swami Vivekananda",
+     "source": "Letter to Mary Hale, 1894",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "It is impossible for a bird to fly on one wing.",
+     "author": "Swami Vivekananda",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Women hold up half the sky.",
+     "author": "Mao Zedong",
+     "source": "Widely attributed, 1950s",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Women's rights are human rights.",
+     "author": "Hillary Clinton",
+     "source": "UN Fourth World Conference on Women, Beijing, 1995",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "We hold these truths to be self-evident: that all men and women are created equal.",
+     "author": "Seneca Falls Declaration",
+     "source": "1848",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "If you educate a man, you educate an individual; if you educate a woman, you educate a nation.",
+     "author": "Brigham Young",
+     "source": "Widely attributed",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "No tool for development is more effective than the empowerment of women.",
+     "author": "Kofi Annan",
+     "source": "Widely cited, UN, 2000s",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "A woman is the full circle.",
+     "author": "Diane Mariechild",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "When women move forward, families, communities and nations move forward.",
+     "author": "Michelle Obama",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Ladies and gentlemen, you cannot be what you cannot see.",
+     "author": "Marian Wright Edelman",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "The most common way people give up their power is by thinking they don't have any.",
+     "author": "Alice Walker",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Liberty cannot be preserved without general knowledge among the people.",
+     "author": "John Adams",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Savitribai Phule's call: Rise and learn, you who are oppressed.",
+     "author": "Savitribai Phule",
+     "source": "Poem, Kavyaphule, widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Get education, get an education.",
+     "author": "Savitribai Phule",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Ignorance has made us poor, ignorance has made us slaves.",
+     "author": "Savitribai Phule",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "The women of India have never lacked courage.",
+     "author": "Sarojini Naidu",
+     "source": "Widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "We want deeds, not words.",
+     "author": "Emmeline Pankhurst",
+     "source": "Suffragette slogan, widely cited",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Dissent is the highest form of patriotism.",
+     "author": "Howard Zinn",
+     "source": "Widely attributed",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
     }
    ]
   },
@@ -1971,6 +4171,204 @@
      "position": [
       "body"
      ]
+    },
+    {
+     "quote": "The liberty of the press is essential to the security of freedom in a state.",
+     "author": "William Blackstone",
+     "source": "Commentaries on the Laws of England (1769)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "If liberty means anything at all, it means the right to tell people what they do not want to hear.",
+     "author": "George Orwell",
+     "source": "Preface to Animal Farm (proposed), 1945",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": false,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "In a time of universal deceit, telling the truth is a revolutionary act.",
+     "author": "George Orwell",
+     "source": "Widely attributed; not found in his writings",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Freedom of the press is not an end in itself but a means to the end of a free society.",
+     "author": "Felix Frankfurter",
+     "source": "Pennekamp v. Florida, 1946",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": false,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The right to be let alone is the most comprehensive of rights.",
+     "author": "Louis Brandeis",
+     "source": "Olmstead v. United States, 1928 (dissent)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The right to privacy is a part of the right to life under Article 21.",
+     "author": "K. S. Puttaswamy v. Union of India",
+     "source": "Supreme Court of India, 2017",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Democracy dies in darkness.",
+     "author": "The Washington Post",
+     "source": "Newspaper slogan, 2017",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The press is the fourth estate.",
+     "author": "Edmund Burke",
+     "source": "Attributed by Thomas Carlyle, 1840",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Facts are sacred, comment is free.",
+     "author": "C. P. Scott",
+     "source": "The Manchester Guardian, 1921",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The business of the press is to afflict the comfortable and comfort the afflicted.",
+     "author": "Finley Peter Dunne",
+     "source": "Mr. Dooley, 1902 (about newspapers)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "A lie can travel halfway around the world while the truth is putting on its shoes.",
+     "author": "Attributed to Mark Twain",
+     "source": "Widely cited; origin disputed",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Whoever controls the media, controls the mind.",
+     "author": "Jim Morrison",
+     "source": "Widely attributed",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Freedom of speech is the matrix, the indispensable condition, of nearly every other form of freedom.",
+     "author": "Benjamin Cardozo",
+     "source": "Palko v. Connecticut, 1937",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "If all mankind minus one were of one opinion, mankind would be no more justified in silencing that one person.",
+     "author": "John Stuart Mill",
+     "source": "On Liberty (1859)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": false,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "I disapprove of what you say, but I will defend to the death your right to say it.",
+     "author": "S. G. Tallentyre (Evelyn Beatrice Hall)",
+     "source": "The Friends of Voltaire (1906)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Congress shall make no law abridging the freedom of speech, or of the press.",
+     "author": "US Constitution",
+     "source": "First Amendment, 1791",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Freedom of the press is the ark of the covenant of liberty.",
+     "author": "Mahatma Gandhi",
+     "source": "Widely attributed paraphrase",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Liberty of the press is the palladium of all the civil, political and religious rights.",
+     "author": "Junius",
+     "source": "Letters of Junius, 1769",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
     }
    ]
   },
@@ -2081,6 +4479,182 @@
       "intro",
       "body"
      ]
+    },
+    {
+     "quote": "Poverty is the worst form of violence.",
+     "author": "Mahatma Gandhi",
+     "source": "Widely attributed",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "I will give you a talisman: recall the face of the poorest and the weakest man you have seen.",
+     "author": "Mahatma Gandhi",
+     "source": "Note, 1948",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": false,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Development as freedom.",
+     "author": "Amartya Sen",
+     "source": "Development as Freedom (1999), title and theme",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Poverty is not just lack of income but deprivation of capabilities.",
+     "author": "Amartya Sen",
+     "source": "Development as Freedom (1999)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "No man is an island.",
+     "author": "John Donne",
+     "source": "Devotions upon Emergent Occasions (1624)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "It is not from the benevolence of the butcher, the brewer, or the baker that we expect our dinner.",
+     "author": "Adam Smith",
+     "source": "The Wealth of Nations (1776)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": false,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The ideas of economists and political philosophers are more powerful than is commonly understood.",
+     "author": "John Maynard Keynes",
+     "source": "The General Theory (1936)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "In the long run we are all dead.",
+     "author": "John Maynard Keynes",
+     "source": "A Tract on Monetary Reform (1923)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Where wealth accumulates, men decay.",
+     "author": "Oliver Goldsmith",
+     "source": "The Deserted Village (1770)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "A rising tide lifts all boats.",
+     "author": "John F. Kennedy",
+     "source": "Speech, Heber Springs, Arkansas, 1963",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The test of our progress is not whether we add more to the abundance of those who have much.",
+     "author": "Franklin D. Roosevelt",
+     "source": "Second Inaugural Address, 1937",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": false,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "It is whether we provide enough for those who have too little.",
+     "author": "Franklin D. Roosevelt",
+     "source": "Second Inaugural Address, 1937",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Social justice cannot be attained without economic justice.",
+     "author": "B. R. Ambedkar",
+     "source": "Widely cited from his writings",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Political democracy cannot last unless there lies at the base of it social democracy.",
+     "author": "B. R. Ambedkar",
+     "source": "Constituent Assembly, 25 November 1949",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "An empty stomach is not a good political adviser.",
+     "author": "Albert Einstein",
+     "source": "Widely attributed",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Man is born free; and everywhere he is in chains.",
+     "author": "Jean-Jacques Rousseau",
+     "source": "The Social Contract (1762)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
     }
    ]
   },
@@ -2193,6 +4767,303 @@
       "intro",
       "conclusion"
      ]
+    },
+    {
+     "quote": "I know that I know nothing.",
+     "author": "Socrates",
+     "source": "Plato, Apology (paraphrase)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "The only thing we have to fear is fear itself.",
+     "author": "Franklin D. Roosevelt",
+     "source": "First Inaugural Address, 1933",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The journey of a thousand miles begins with a single step.",
+     "author": "Lao Tzu",
+     "source": "Tao Te Ching, ch. 64",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Know thyself.",
+     "author": "Delphic maxim",
+     "source": "Temple of Apollo at Delphi",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "We are what we repeatedly do. Excellence, then, is not an act but a habit.",
+     "author": "Will Durant",
+     "source": "The Story of Philosophy (1926), on Aristotle",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Happiness depends upon ourselves.",
+     "author": "Aristotle",
+     "source": "Nicomachean Ethics",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Man is the measure of all things.",
+     "author": "Protagoras",
+     "source": "Fragment, 5th century BCE",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "I think, therefore I am.",
+     "author": "René Descartes",
+     "source": "Discourse on Method (1637)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Hell is other people.",
+     "author": "Jean-Paul Sartre",
+     "source": "No Exit (1944)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Existence precedes essence.",
+     "author": "Jean-Paul Sartre",
+     "source": "Existentialism Is a Humanism (1946)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "He who has a why to live can bear almost any how.",
+     "author": "Friedrich Nietzsche",
+     "source": "Twilight of the Idols (1889)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The only true wisdom is in knowing you know nothing.",
+     "author": "Socrates",
+     "source": "Attributed paraphrase",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Man is condemned to be free.",
+     "author": "Jean-Paul Sartre",
+     "source": "Being and Nothingness (1943)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Dare to know.",
+     "author": "Immanuel Kant",
+     "source": "What Is Enlightenment? (1784)",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The mind is not a vessel to be filled but a fire to be kindled.",
+     "author": "Plutarch",
+     "source": "Attributed in On Listening to Lectures",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Life must be understood backward, but it must be lived forward.",
+     "author": "Søren Kierkegaard",
+     "source": "Journals, 1843",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The way to see by faith is to shut the eye of reason.",
+     "author": "Benjamin Franklin",
+     "source": "Poor Richard's Almanack",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "Truth is one; sages call it by various names.",
+     "author": "Rigveda",
+     "source": "Rigveda 1.164.46",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The whole world is one family.",
+     "author": "Maha Upanishad",
+     "source": "Vasudhaiva Kutumbakam, Maha Upanishad 6.71",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Truth alone triumphs.",
+     "author": "Mundaka Upanishad",
+     "source": "Satyameva Jayate, Mundaka Upanishad 3.1.6",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "You have the right to work, but never to the fruit of work.",
+     "author": "Bhagavad Gita",
+     "source": "Chapter 2, verse 47",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "It is the mind that makes us free or bound.",
+     "author": "Swami Vivekananda",
+     "source": "Widely cited, Complete Works",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "All that we are is the result of what we have thought.",
+     "author": "The Buddha",
+     "source": "Dhammapada, verse 1",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Hatred does not cease by hatred; hatred ceases by love.",
+     "author": "The Buddha",
+     "source": "Dhammapada, verse 5",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "The mind is everything. What you think you become.",
+     "author": "The Buddha",
+     "source": "Widely attributed",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
+    },
+    {
+     "quote": "What you do not want done to yourself, do not do to others.",
+     "author": "Confucius",
+     "source": "Analects 15.24",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "doc",
+     "new": true
+    },
+    {
+     "quote": "Real knowledge is to know the extent of one's ignorance.",
+     "author": "Confucius",
+     "source": "Widely attributed",
+     "meaning": "",
+     "usage": "",
+     "position": [],
+     "short": true,
+     "lvl": "cited",
+     "new": true
     }
    ]
   }
