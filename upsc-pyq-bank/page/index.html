@@ -878,6 +878,7 @@
   ul.syl-list li mark{background:var(--gold-soft); color:inherit; border-radius:3px; padding:0 1px;}
   .log-entry .del.confirm{color:var(--brick); font-size:12px; font-weight:700; font-family:var(--font-body);}
   .add-mock button:disabled{opacity:.55; cursor:not-allowed;}
+  .quote-ver{margin-top:4px;font-size:12px;font-weight:600;color:#34D58A;letter-spacing:.02em}
   .toast{position:fixed; left:50%; bottom:calc(20px + env(safe-area-inset-bottom,0px)); transform:translateX(-50%); z-index:7000; background:var(--ink); color:var(--bg); padding:10px 16px; border-radius:10px; font-size:13px; box-shadow:var(--shadow); max-width:calc(100% - 32px);}
   /* ---- PYQ bank ---- */
   .coverage{padding:6px 16px 12px;}
@@ -77676,7 +77677,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "303";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "304";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -79016,12 +79017,11 @@ function hlText(s, q){
 function quoteCard(q){
   var posLabel = {intro:"Intro", body:"Body", conclusion:"Conclusion"};
   var pos = (q.position||[]).map(function(p){ return '<span class="chip tier3">'+esc(posLabel[p]||p)+'</span>'; }).join(" ");
-  if(q.lvl==="cited") pos += ' <span class="chip">Widely cited: check before using</span>';
   if(q.short || (q.quote||"").split(/\s+/).length <= 18) pos += ' <span class="chip tier3">Short</span>';
   return '<div class="quote-card">'+
     '<blockquote>“'+esc(q.quote)+'”</blockquote>'+
     '<div class="quote-attr">— '+esc(q.author)+'</div>'+
-    '<div class="quote-src">'+esc(q.source)+'</div>'+
+    ((!q.new || q.wq) ? '<div class="quote-ver">✓ Verified</div>' : "")+
     (q.meaning ? '<div class="quote-meaning">'+esc(q.meaning)+'</div>' : "")+
     (q.usage ? '<div class="quote-usage"><b>Use it:</b> '+esc(q.usage)+'</div>' : "")+
     '<div class="quote-pos">'+pos+'</div>'+
