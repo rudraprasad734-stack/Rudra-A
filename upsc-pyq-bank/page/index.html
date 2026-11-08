@@ -77677,7 +77677,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "304";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "305";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -79014,17 +79014,21 @@ function hlText(s, q){
 // ============================================================================
 // ETHICS / ESSAY QUOTE BANK
 // ============================================================================
-function quoteCard(q){
+function quoteUse(q, label, kind){   // one short line saying where to use the quote
+  if(q.usage) return q.usage;
+  var l = (label||"").toLowerCase().replace(/\bai\b/g,"AI").replace(/\s*\/\s*/g,", ").replace(/\s*&\s*/g," and ").replace(/\bgs4\b/g,"GS4");
+  if(kind==="ethics") return "GS4 answers on "+l+".";
+  if(/philosoph/.test(l)) return "Opening or closing line for any essay.";
+  return "Essays on "+l+".";
+}
+function quoteCard(q, label, kind){
   var posLabel = {intro:"Intro", body:"Body", conclusion:"Conclusion"};
   var pos = (q.position||[]).map(function(p){ return '<span class="chip tier3">'+esc(posLabel[p]||p)+'</span>'; }).join(" ");
-  if(q.short || (q.quote||"").split(/\s+/).length <= 18) pos += ' <span class="chip tier3">Short</span>';
   return '<div class="quote-card">'+
     '<blockquote>“'+esc(q.quote)+'”</blockquote>'+
     '<div class="quote-attr">— '+esc(q.author)+'</div>'+
-    ((!q.new || q.wq) ? '<div class="quote-ver">✓ Verified</div>' : "")+
-    (q.meaning ? '<div class="quote-meaning">'+esc(q.meaning)+'</div>' : "")+
-    (q.usage ? '<div class="quote-usage"><b>Use it:</b> '+esc(q.usage)+'</div>' : "")+
-    '<div class="quote-pos">'+pos+'</div>'+
+    '<div class="quote-usage"><b>Use it:</b> '+esc(quoteUse(q, label, kind))+'</div>'+
+    (pos ? '<div class="quote-pos">'+pos+'</div>' : "")+
   '</div>';
 }
 function caseCard(c){
@@ -79079,7 +79083,7 @@ function renderQuotes(){
         if(!qs.length) return "";
         return '<div class="subject-card card open"><div class="subject-head" data-toggle><div class="l">'+esc(g[labelKey])+'</div>'+
           '<div class="r">'+qs.length+' quote'+(qs.length===1?"":"s")+' <span class="chevron">&rsaquo;</span></div></div>'+
-          '<div class="subject-body">'+qs.map(quoteCard).join("")+'</div>'+
+          '<div class="subject-body">'+qs.map(function(q){ return quoteCard(q, g[labelKey], quotesTab); }).join("")+'</div>'+
         '</div>';
       }).join("");
   }
