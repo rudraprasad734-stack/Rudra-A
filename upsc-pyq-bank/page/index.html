@@ -1200,6 +1200,20 @@
   .sess-more{margin-top:8px;} .sess-more summary{font-size:12.5px; font-weight:700; color:var(--tab-accent); cursor:pointer; list-style:none;} .sess-more summary::-webkit-details-marker{display:none;}
   .sess-ctl input[type=time], .sess-ctl select{max-width:100%; min-width:0; box-sizing:border-box;}
   /* iPhone Safari sizes time boxes by their hidden clock text and lets them spill out of the card: pin them to the card width */
+  .rm-opt .rdot{width:20px; height:20px; border-radius:50%; border:2px solid var(--ink-faint); flex:none; margin-top:2px;} .rm-opt.on .rdot{border-color:#46C8B9; background:radial-gradient(#46C8B9 45%,transparent 50%);} button.rm-opt{width:100%; text-align:left; font:inherit; background:transparent;}
+  .opt-sel{width:100%; min-height:44px; padding:9px 11px; border:1px solid var(--line); border-radius:10px; background:var(--surface); color:var(--ink); font-size:14px;}
+  .opt-card{padding:14px;} button.rm-opt{margin-bottom:8px;} .rm-opt + .cf{margin:0 0 8px;}
+  .opt-card h3{margin:0 0 4px;} .opt-start{margin:10px 0 12px; padding:12px; border:1.5px solid #46C8B9; border-radius:14px; background:rgba(70,200,185,.10); font-size:13.5px; color:var(--ink);} .opt-start b{display:block; font-size:11px; letter-spacing:.1em; color:#34D58A; margin-bottom:2px;} .opt-start small{display:block; margin-top:4px; color:var(--ink-soft); font-size:12px;}
+  .opt-sec{font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-faint); margin:14px 0 6px; font-weight:700;}
+  .opt-u{border:1px solid var(--line); border-radius:12px; margin-bottom:7px; background:var(--surface); overflow:hidden;} .opt-u.first{border-color:#46C8B9; background:rgba(70,200,185,.10);} .opt-u.done{opacity:.6;}
+  .opt-row{display:flex; align-items:center; gap:6px; padding:6px 8px 6px 4px;} .opt-main{flex:1; min-width:0; display:flex; align-items:center; gap:10px; text-align:left; background:transparent; border:0; color:var(--ink); font:inherit; padding:6px;}
+  .opt-n{width:26px; height:26px; border-radius:50%; display:grid; place-items:center; background:var(--surface-2); font-size:12px; font-weight:700; flex:none;} .opt-t{flex:1; min-width:0; font-size:14px; line-height:1.3;} .opt-t small{display:block; color:var(--ink-soft); font-size:11.5px; margin-top:2px;} .opt-chev{color:var(--ink-soft); font-size:14px;}
+  .opt-arrows{display:flex; gap:4px; flex:none;} .opt-arrows button{width:32px; height:32px; border-radius:8px; border:1px solid var(--line); background:transparent; color:var(--ink); font-size:14px;} .opt-arrows button:disabled{opacity:.3;}
+  .opt-ch{border-top:1px solid var(--line); padding:4px 8px 8px 20px;} .opt-c{display:flex; align-items:center; gap:8px; padding:7px 0; border-bottom:1px solid var(--line);} .opt-c:last-child{border-bottom:0;} .opt-c.done{opacity:.55;}
+  .opt-cn{min-width:34px; text-align:center; padding:3px 6px; border-radius:8px; background:var(--surface-2); font-size:12px; font-weight:700; flex:none;} .opt-ct{flex:1; min-width:0; font-size:13px; line-height:1.35;} .opt-tick{color:#34D58A; font-weight:700;}
+  .opt-go{font-size:11px; font-weight:700; padding:6px 9px; border-radius:99px; border:1px solid #46C8B9; color:#46C8B9; background:transparent; white-space:nowrap;} .opt-go.on{background:#46C8B9; color:#05221f;}
+  .opt-c{flex-wrap:wrap;} .opt-ct{flex:1 1 calc(100% - 50px);} .opt-c .opt-go, .opt-c .opt-tick{margin-left:auto;}
+  .opt-foot{display:flex; align-items:center; gap:10px; margin-top:12px; font-size:12px;}
   .fresh-box{display:flex; flex-direction:column; gap:6px; margin-top:12px; padding:12px; border:1.5px dashed var(--line); border-radius:14px; font-size:13px; color:var(--ink-soft);} .fresh-box b{color:var(--ink); font-size:14px;} .fresh-box.on{border-style:solid; border-color:#46C8B9; background:rgba(70,200,185,.10);} .fresh-box .btn{align-self:flex-start;}
   /* iPhone Safari sizes date and time boxes by their hidden text and lets them spill out of the card: keep them inside */
   .cf input[type=date], .cf input[type=time], .cf input[type=month], .sf input[type=date], .sf input[type=time], .date-row input[type=date], .date-row input[type=time]{width:100% !important; max-width:100% !important; min-width:0 !important; box-sizing:border-box; -webkit-appearance:none; appearance:none; display:block; overflow:hidden;}
@@ -70166,6 +70180,10 @@ function subjectStates(plan){
     var e = cat.map[name]; if(!e) return;
     var leaves = catalogLeaves(e).filter(function(l){ return plan.sel[l.id]; });
     if(!leaves.length) return;
+    if(e.purpose==="Optional" && plan.optOrder && plan.optOrder.length){   // the student's own order of the optional's units and chapters
+      var oix = {}; plan.optOrder.forEach(function(id, k){ oix[id] = k; });
+      leaves = leaves.map(function(l, k){ return {l:l, k:k, o:(oix[l.id]!=null ? oix[l.id] : 1e6+k)}; }).sort(function(a, b){ return a.o-b.o || a.k-b.k; }).map(function(x){ return x.l; });
+    }
     var done = leaves.filter(function(l){ return isDone(l.id); }).length;
     states.push({name:name, entry:e, leaves:leaves, total:leaves.length, done:done, pct:Math.round(100*done/leaves.length), state:"locked", color:BRICK_COLORS[i % BRICK_COLORS.length]});
   });
@@ -70449,7 +70467,7 @@ var ACT_INFO = {
 function wizDefaults(){
   return {step:0, qs:qsNew(), err:[], open:{}, init:{}, durMode:"months", months:12, target:"", start:todayKey, startView:"auto",
     mode:"mains", gs1:true, csat:true, gs:[1,2,3,4], essay:true, optionalOn:true, optional:"", customText:"",
-    order:[], sel:{},
+    order:[], sel:{}, optStart:"syllabus", optFirst:"", optOrder:null,
     cap:{days:[1,2,3,4,5,6], sessions:[{start:"06:00",end:"08:00",subject:""},{start:"10:00",end:"12:00",subject:""},{start:"16:00",end:"17:00",subject:""}], perDay:{}, breakMin:15, blocks:"auto"},
     acts:{
       essay:{on:false, mode:"weekly", days:[5], interval:1, count:2, dates:[], start:"19:00", end:"21:00"},
@@ -70633,7 +70651,8 @@ function compilePlan(w){
   cap.perDay = pd; cap.blocks = auto ? 1 : (+cap.blocks || 1); cap.auto = auto;
   var plan = {v:1, createdAt:new Date().toISOString(), cfg:wizSnapshot(w), window:{start:w.start, end:st.end}, catCfg:wizCatCfg(w),
     priority:w.order.slice(), sel:Object.assign({}, w.sel), capacity:cap, activities:JSON.parse(JSON.stringify(w.acts)),
-    startView:(w.startView==="auto" ? recommendedView(w) : w.startView), extraV:(EXTRA ? EXTRA.v : 0)};
+    startView:(w.startView==="auto" ? recommendedView(w) : w.startView), extraV:(EXTRA ? EXTRA.v : 0),
+    optOrder:((w.optStart!=="syllabus" && w.optOrder && w.optOrder.length) ? w.optOrder.slice() : null)};
   if(auto) plan.capacity.blocks = estimateBlocks(plan);
   return plan;
 }
@@ -70826,6 +70845,25 @@ function wzPrep(w){
         (w.optionalOn ? optionalSelectHtml(w) : "")+
         (w.essay ? '<div class="hint">Essay is a practice activity. You can set when you write it later, under Activities in the app.</div>' : "")+'</div>' : "");
 }
+function optStartHtml(w, cat){   // where the optional begins: syllabus start, a chosen unit or chapter, or the student's own order
+  var name = w.optional && w.optionalOn ? optLabel(w.optional) : "", e = name && cat.map[name];
+  if(!e || w.order.indexOf(name)<0) return "";
+  var mode = w.optStart || (w.optOrder && w.optOrder.length ? "custom" : "syllabus"), units = optUnitsOf(catalogLeaves(e)), first = units[0] ? units[0].leaves[0] : null;
+  function opt(v, title, text, extra){
+    return '<button type="button" class="rm-opt'+(mode===v?" on":"")+'" data-wa="optStart" data-v="'+v+'"><span class="rdot"></span><span><b>'+title+'</b><small>'+text+'</small></span></button>'+(mode===v && extra ? extra : "");
+  }
+  var sel = '<select data-w="optFirst" data-after="optfirst" class="opt-sel"><option value="">Choose a unit or chapter&hellip;</option>'+units.map(function(u){
+    var m = optUnitMeta(u), lab = (m.paper ? m.paper+" \u203a " : "")+(m.no ? m.no.replace(/^[IV]+\./, "")+" " : "")+m.title;
+    var o = '<option value="u:'+esc(u.key)+'"'+(w.optFirst==="u:"+u.key?" selected":"")+'>'+esc(lab)+(u.leaves.length>1 ? " (whole unit)" : "")+'</option>';
+    if(u.leaves.length>1) o += u.leaves.map(function(l){ var c = optChapterParts(l.unit); return '<option value="'+esc(l.id)+'"'+(w.optFirst===l.id?" selected":"")+'>\u00A0\u00A0\u00A0'+esc(c.num+" "+c.text.slice(0,70))+'</option>'; }).join("");
+    return o;
+  }).join("")+'</select>';
+  return '<h4 class="mt">'+esc(w.optional)+': where should it begin?</h4>'+
+    opt("syllabus","From the start of the syllabus", first ? esc((units[0] && optUnitMeta(units[0]).paper ? optUnitMeta(units[0]).paper+" \u00B7 " : "")+optChapterParts(first.unit).num+" "+optChapterParts(first.unit).text.slice(0,70)) : "In syllabus order.")+
+    opt("choose","I choose where to start","Pick a unit or a single chapter; the rest follow in syllabus order.", '<div class="cf">'+sel+'</div>')+
+    opt("custom","I arrange every unit myself","Opens the Optional tab after setup, where you set the order of units and chapters.")+
+    '<div class="hint">You can change this any time in <b>Planner \u203a Optional</b>.</div>';
+}
 function wzPriority(w){
   var cat = wizCatalog(w), avail = cat.order;
   return '<h3>Which subject first?</h3>'+
@@ -70842,7 +70880,8 @@ function wzPriority(w){
           var e = cat.map[n], col = BRICK_COLORS[i % BRICK_COLORS.length];
           return '<li draggable="true" data-drag="'+i+'" style="--bc:var('+col+')"><span class="grip" title="Drag to reorder">☰</span><b class="pn">'+(i+1)+'</b><span class="pname">'+esc(n)+'<small>'+esc(e.purpose+" · "+e.paper)+'</small></span><span class="pacts"><button type="button" data-wa="up" data-v="'+i+'" aria-label="Move '+esc(n)+' up"'+(i===0?" disabled":"")+'>▲</button><button type="button" data-wa="down" data-v="'+i+'" aria-label="Move '+esc(n)+' down"'+(i===w.order.length-1?" disabled":"")+'>▼</button><button type="button" data-wa="rmSubject" data-v="'+i+'" aria-label="Remove '+esc(n)+'">✕</button></span></li>';
         }).join("")+'</ol><div class="hint">Drag the handle, or use the arrows, to reorder. Nothing is sorted or shuffled for you.</div>'
-      : '<div class="muted">No subjects yet. Tap subjects above in the order you want to study them.</div>');
+      : '<div class="muted">No subjects yet. Tap subjects above in the order you want to study them.</div>')+
+    optStartHtml(w, cat);
 }
 function wzTopics(w){
   var cat = wizCatalog(w);
@@ -71169,6 +71208,7 @@ function wizAction(a, b){
     case "allSubjects": w.order = wizCatalog(w).order.slice(); w.orderAuto = true; w.seen = {}; w.order.forEach(function(n){ w.seen[n] = 1; }); wizSync(w); break;
     case "clearSubjects": w.order = []; w.orderAuto = false; wizSync(w); break;
     case "scopeAll": case "scopeNone": var cat = wizCatalog(w); catalogLeaves(cat.map[v]).forEach(function(l){ if(a==="scopeAll") w.sel[l.id]=1; else delete w.sel[l.id]; }); break;
+    case "optStart": w.optStart = v; if(v==="syllabus"){ w.optOrder = null; w.optFirst = ""; } else if(v==="choose"){ w.optOrder = w.optFirst ? optOrderFromFirst(w, w.optFirst) : null; } break;
     case "caFreq": var ca = w.acts.ca; ca.freq = v; ca.mode = "weekly"; ca.interval = 1; if(v==="daily") ca.days = [0,1,2,3,4,5,6]; else if(v==="days"){ if(!ca.days.length || ca.days.length>=7) ca.days = [1,2,3,4,5,6]; } else { ca.days = [ca.days.length ? ca.days[0] : 0]; } break;
     case "caDay": w.acts.ca.freq = "weekly"; w.acts.ca.mode = "weekly"; w.acts.ca.interval = 1; w.acts.ca.days = [+v]; break;
     case "freshStart": w.start = todayKey; w.fresh = true; break;
@@ -71194,8 +71234,9 @@ function wizAction(a, b){
 }
 function wizAfter(kind){
   var w = wiz;
-  if(kind==="optional"){ w.customText = ""; delete w.init[optLabel(w.optional)]; delete w.init[""]; wizSync(w); }
-  if(kind==="custom"){ delete w.init[optLabel(w.optional)]; wizSync(w); }
+  if(kind==="optional"){ w.customText = ""; w.optStart = "syllabus"; w.optFirst = ""; w.optOrder = null; delete w.init[optLabel(w.optional)]; delete w.init[""]; wizSync(w); }
+  if(kind==="custom"){ w.optStart = "syllabus"; w.optFirst = ""; w.optOrder = null; delete w.init[optLabel(w.optional)]; wizSync(w); }
+  if(kind==="optfirst"){ w.optOrder = w.optFirst ? optOrderFromFirst(w, w.optFirst) : null; }
   if(kind==="sessLen"){ var ln = +w.cap.sessLen; delete w.cap.sessLen; if(ln > 0) setSessLen(w, ln); }
   if(kind==="sessCount"){
     var n = +w.cap.count, cur = w.cap.sessions;
@@ -71208,7 +71249,7 @@ function wizGenerate(){
   var errs = [];
   for(var s=0; s<7; s++) errs = errs.concat(wizValidate(wiz, s));
   if(errs.length){ wiz.err = errs; wizRender(); return; }
-  var wasEditing = !!studyPlan, fresh = !!wiz.fresh;
+  var wasEditing = !!studyPlan, fresh = !!wiz.fresh, openOpt = wiz.optStart==="custom" && !(studyPlan && studyPlan.optOrder && studyPlan.optOrder.length);
   var keepLeave = studyPlan && studyPlan.leave, keepCatch = studyPlan && studyPlan.catchup;
   if(fresh){
     // restart everything new from today: keep a backup, clear ticks, revision marks and planned (unlogged) sessions
@@ -71230,6 +71271,7 @@ function wizGenerate(){
   plannerEditing = false; wiz = null; clearWizDraft();
   plannerView = wasEditing ? plannerView : "overview";
   plannerLanding = wasEditing ? null : v;
+  if(openOpt){ plannerView = "optional"; plannerLanding = null; }
   setTab("planner");
   scrollPlannerTop();
   if(wasEditing){ toast("Plan updated. Yearly, monthly, weekly and daily plans are ready."); return; }
@@ -71251,9 +71293,9 @@ function planReadyModal(){
 // ============================================================================
 var plannerScrollTo = "", progOpen = {}, plannerView = "overview", plannerLanding = null, plannerMonth = null, plannerWeek = null, plannerDay = null;
 // two tabs: Plan (the subjects, pace, chapters, reminders) and Schedule (Day, Week, Month, Year, each opening with a progress ring)
-var PLANNER_TABS = [["plan","Plan"],["schedule","Schedule"]];
+var PLANNER_TABS = [["plan","Plan"],["schedule","Schedule"],["optional","Optional"]];
 var SCHED_VIEWS = [["daily","Day"],["weekly","Week"],["monthly","Month"],["yearly","Year"]];
-function plannerTabOf(v){ return v==="overview"||v==="progress" ? "plan" : (v==="priority" ? "priority" : "schedule"); }
+function plannerTabOf(v){ return v==="overview"||v==="progress" ? "plan" : (v==="priority" ? "priority" : (v==="optional" ? "optional" : "schedule")); }
 var lastSched = "daily";
 function kindMeta(s){ return KIND_META[s.kind] || {label:s.purpose, color:"--tab-scheduler"}; }
 function fmtMonthKey(mk){ return (DF_MK = DF_MK || new Intl.DateTimeFormat(undefined, {month:"long", year:"numeric"})).format(new Date(+mk.slice(0,4), +mk.slice(5,7)-1, 1)); }
@@ -79191,6 +79233,110 @@ setTimeout(nudgeShow, 3500);
 document.addEventListener("visibilitychange", function(){ if(document.visibilityState==="visible") setTimeout(nudgeShow, 800); });
 
 
+// ---------- the student's own order inside the optional ----------
+var optFilter = "all", optOpen = {};
+function optNameOf(plan){ var c = plan && plan.catCfg; return c && c.optionalOn && c.optional ? c.optional : ""; }
+function optStateOf(plan, states){ for(var i=0;i<states.length;i++) if(states[i].entry && states[i].entry.purpose==="Optional") return states[i]; return null; }
+function optUnitsOf(leaves){   // the chapters grouped into the syllabus units, in the order they are studied
+  var u = [], ix = {};
+  leaves.forEach(function(l){ if(ix[l.group]==null){ ix[l.group] = u.length; u.push({key:l.group, leaves:[]}); } u[ix[l.group]].leaves.push(l); });
+  return u;
+}
+function optUnitMeta(u){
+  var m = /^(Paper [IV]+)\s*\u203a\s*(.*)$/.exec(u.key), paper = m ? m[1] : "", title = m ? m[2] : u.key;
+  var n = /^(\d+)/.exec(u.leaves[0].unit), roman = paper ? paper.replace("Paper ", "") : "";
+  var a = optChapterParts(u.leaves[0].unit), b = optChapterParts(u.leaves[u.leaves.length-1].unit);
+  return {paper:paper, title:title, no:n ? (roman ? roman+"."+n[1] : n[1]) : "", range:(a.num && b.num && u.leaves.length>1) ? a.num+" to "+b.num : (a.num || "")};
+}
+function optChapterParts(unit){ var m = /^(\d+(?:\.\d+)*)\s+(.*)$/.exec(unit); return m ? {num:m[1], text:m[2]} : {num:"", text:unit}; }
+function optOrderFromFirst(w, first){   // a syllabus-order list with the chosen unit (or chapter) moved to the front
+  var cat = wizCatalog(w), e = cat.map[optLabel(w.optional)]; if(!e) return null;
+  var units = optUnitsOf(catalogLeaves(e)), ids = [];
+  var key = first.indexOf("u:")===0 ? first.slice(2) : "", chap = key ? "" : first;
+  var ui = -1;
+  units.forEach(function(u, i){ if(u.key===key || u.leaves.some(function(l){ return l.id===chap; })) ui = i; });
+  if(ui < 0) return null;
+  var lead = units.splice(ui, 1)[0];
+  if(chap){ var ci = -1; lead.leaves.forEach(function(l, i){ if(l.id===chap) ci = i; }); if(ci > 0) lead.leaves.unshift(lead.leaves.splice(ci, 1)[0]); }
+  units.unshift(lead);
+  units.forEach(function(u){ u.leaves.forEach(function(l){ ids.push(l.id); }); });
+  return ids;
+}
+function optSave(units){
+  var ids = []; units.forEach(function(u){ u.leaves.forEach(function(l){ ids.push(l.id); }); });
+  studyPlan.optOrder = ids;
+  if(studyPlan.cfg){ studyPlan.cfg.optOrder = ids.slice(); studyPlan.cfg.optStart = "custom"; }
+  savePlan(); replan();
+}
+function optAction(a, v){
+  var st = optStateOf(studyPlan, subjectStates(studyPlan)); if(!st) return;
+  var units = optUnitsOf(st.leaves), i, j;
+  if(a==="optreset"){ studyPlan.optOrder = null; if(studyPlan.cfg){ studyPlan.cfg.optOrder = null; studyPlan.cfg.optStart = "syllabus"; } savePlan(); replan(); toast("Back to the syllabus order."); return; }
+  if(a==="optopen"){ optOpen[v] = !optOpen[v]; return; }
+  if(a==="optfilter"){ optFilter = v; return; }
+  if(a==="optup" || a==="optdown"){
+    for(i=0;i<units.length;i++) if(units[i].key===v) break;
+    if(i>=units.length) return;
+    var dir = a==="optup" ? -1 : 1;
+    j = i+dir;
+    while(j>=0 && j<units.length && optFilter!=="all" && optUnitMeta(units[j]).paper!==optFilter) j += dir;   // skip units hidden by the paper filter
+    if(j<0 || j>=units.length) return;
+    var t = units[i]; units[i] = units[j]; units[j] = t;
+    optSave(units); return;
+  }
+  var ui = -1, ci = -1;
+  units.forEach(function(u, x){ u.leaves.forEach(function(l, y){ if(l.id===v){ ui = x; ci = y; } }); });
+  if(ui < 0) return;
+  if(a==="chup" || a==="chdown"){
+    var d2 = a==="chup" ? -1 : 1, arr = units[ui].leaves;
+    if(ci+d2 < 0 || ci+d2 >= arr.length) return;
+    var tmp = arr[ci]; arr[ci] = arr[ci+d2]; arr[ci+d2] = tmp; optSave(units); return;
+  }
+  if(a==="starthere"){
+    var lead = units.splice(ui, 1)[0];
+    if(ci > 0) lead.leaves.unshift(lead.leaves.splice(ci, 1)[0]);
+    units.unshift(lead); optSave(units);
+    toast("Starts with "+optChapterParts(lead.leaves[0].unit).text+".");
+  }
+}
+function optionalHtml(plan, states){
+  var name = optNameOf(plan), st = optStateOf(plan, states);
+  if(!name || !st){
+    return '<div class="card opt-card"><h3>Your optional</h3><p class="muted">You have not chosen an optional subject yet. Choose it in the plan setup and its syllabus shows here, where you can set the order you study it in.</p>'+
+      '<button type="button" class="btn primary" data-pa="optpick">Choose my optional</button></div>';
+  }
+  var units = optUnitsOf(st.leaves), papers = [];
+  units.forEach(function(u){ var p = optUnitMeta(u).paper; if(p && papers.indexOf(p)<0) papers.push(p); });
+  papers.sort();
+  var next = nextLeaf(st), nxt = next ? optChapterParts(next.unit) : null, nm = next ? optUnitMeta({key:next.group, leaves:[next]}) : null;
+  var shown = units.filter(function(u){ return optFilter==="all" || optUnitMeta(u).paper===optFilter; });
+  var custom = studyPlan && studyPlan.optOrder && studyPlan.optOrder.length;
+  var html = '<div class="card opt-card"><h3>'+esc(name)+' optional</h3>'+
+    '<div class="muted">'+st.total+' chapters in '+units.length+' units, in the numbering of the UPSC syllabus &middot; '+st.done+' done</div>'+
+    (next ? '<div class="opt-start"><b>'+(st.done ? "STUDIED NEXT" : "STARTS FIRST")+'</b>'+(nm.paper ? esc(nm.paper)+' &middot; ' : '')+(nxt.num ? esc(nxt.num)+' ' : '')+esc(nxt.text)+'<small>Your optional follows this order, one unit after the next. Change it below and your plan rebuilds from today; nothing you logged is lost.</small></div>'
+          : '<div class="opt-start"><b>ALL DONE</b>Every chapter of your optional is complete.</div>')+
+    (papers.length>1 ? '<div class="pill-row"><button type="button" class="pill'+(optFilter==="all"?" on":"")+'" data-pa="optfilter" data-v="all">Both papers</button>'+papers.map(function(p){ return '<button type="button" class="pill'+(optFilter===p?" on":"")+'" data-pa="optfilter" data-v="'+esc(p)+'">'+esc(p)+'</button>'; }).join("")+'</div>' : "")+
+    '<div class="opt-sec">'+shown.length+' unit'+(shown.length===1?"":"s")+' &middot; use the arrows, or &ldquo;Start here&rdquo; on a chapter</div>';
+  units.forEach(function(u, pos){
+    if(optFilter!=="all" && optUnitMeta(u).paper!==optFilter) return;
+    var m = optUnitMeta(u), done = u.leaves.filter(function(l){ return isDone(l.id); }).length, open = !!optOpen[u.key], first = pos===0 && !!next && u.leaves.indexOf(next)>=0;
+    html += '<div class="opt-u'+(first ? " first" : "")+(done===u.leaves.length ? " done" : "")+'">'+
+      '<div class="opt-row"><button type="button" class="opt-main" data-pa="optopen" data-v="'+esc(u.key)+'" aria-expanded="'+open+'"><span class="opt-n">'+(pos+1)+'</span><span class="opt-t">'+(m.no ? '<b>'+esc(m.no)+'</b> ' : '')+esc(m.title)+
+        '<small>'+(m.paper ? esc(m.paper)+' &middot; ' : '')+(m.range ? esc(m.range)+' &middot; ' : '')+u.leaves.length+' chapter'+(u.leaves.length===1?"":"s")+(done ? ' &middot; '+done+' done' : '')+'</small></span><span class="opt-chev">'+(open ? "&#9652;" : "&#9662;")+'</span></button>'+
+        '<span class="opt-arrows"><button type="button" aria-label="Move unit up" data-pa="optup" data-v="'+esc(u.key)+'"'+(pos===0?" disabled":"")+'>&uarr;</button><button type="button" aria-label="Move unit down" data-pa="optdown" data-v="'+esc(u.key)+'"'+(pos===units.length-1?" disabled":"")+'>&darr;</button></span></div>';
+    if(open){
+      html += '<div class="opt-ch">'+u.leaves.map(function(l, ci){
+        var c = optChapterParts(l.unit), isNext = next && next.id===l.id, ld = isDone(l.id);
+        return '<div class="opt-c'+(ld?" done":"")+'"><span class="opt-cn">'+esc(c.num || String(ci+1))+'</span><span class="opt-ct">'+esc(c.text)+'</span>'+
+          (ld ? '<span class="opt-tick">&#10003;</span>' : '<button type="button" class="opt-go'+(isNext?" on":"")+'" data-pa="starthere" data-v="'+esc(l.id)+'">'+(isNext ? "Starts here" : "Start here")+'</button>')+
+          '<span class="opt-arrows"><button type="button" aria-label="Move chapter up" data-pa="chup" data-v="'+esc(l.id)+'"'+(ci===0?" disabled":"")+'>&uarr;</button><button type="button" aria-label="Move chapter down" data-pa="chdown" data-v="'+esc(l.id)+'"'+(ci===u.leaves.length-1?" disabled":"")+'>&darr;</button></span></div>';
+      }).join("")+'</div>';
+    }
+    html += '</div>';
+  });
+  html += '<div class="opt-foot"><button type="button" class="btn ghost sm" data-pa="optreset"'+(custom?"":" disabled")+'>Back to syllabus order</button><span class="muted">'+(custom ? "You have set your own order." : "Syllabus order.")+'</span></div></div>';
+  return html;
+}
 function renderPlannerHome(host){
   var plan = studyPlan, states = subjectStates(plan), body;
   if(plannerView==="insights") plannerView = "weekly";
@@ -79200,6 +79346,7 @@ function renderPlannerHome(host){
   else if(plannerView==="daily") body = dailyHtml(plan);
   else if(plannerView==="progress") body = progressHtml(plan, states);
   else if(plannerView==="priority") body = priorityHtml(plan, states);
+  else if(plannerView==="optional") body = optionalHtml(plan, states);
   else body = overviewHtml(plan, states);
   var tabNow = plannerTabOf(plannerView);
   if(tabNow==="schedule") lastSched = plannerView;
@@ -79207,7 +79354,7 @@ function renderPlannerHome(host){
   var sub = tabNow==="schedule" ? '<div class="pl-sub" role="tablist">'+SCHED_VIEWS.map(function(t){ return '<button type="button" role="tab" class="'+(t[0]===plannerView?"on":"")+'" aria-selected="'+(t[0]===plannerView)+'" data-pa="view" data-v="'+t[0]+'">'+t[1]+'</button>'; }).join("")+'</div>' : "";
   host.innerHTML =
     '<div class="card pl-title"><div><h2>Preparation Planner</h2><div class="muted">Complete a subject to unlock the next. The calendar follows your progress, and changing the plan never erases it.</div>'+(subMode()==="trial" ? '<div class="trial-chip">Free trial · Day '+trialInfo().day+' of '+TRIAL_DAYS+' · '+esc(trialInfo().leftText)+'</div>' : "")+'</div><button type="button" class="btn ghost sm" data-go="reschedule">Adjust plan</button></div>'+
-    '<div class="pl-tabs">'+PLANNER_TABS.map(function(t){ return '<button type="button" class="'+(t[0]===tabNow?"on":"")+'" data-pa="view" data-v="'+(t[0]==="plan" ? "overview" : (t[0]==="schedule" ? lastSched : "priority"))+'">'+t[1]+'</button>'; }).join("")+'</div>'+sub+catchBannerHtml()+body;
+    '<div class="pl-tabs">'+PLANNER_TABS.map(function(t){ return '<button type="button" class="'+(t[0]===tabNow?"on":"")+'" data-pa="view" data-v="'+(t[0]==="plan" ? "overview" : (t[0]==="schedule" ? lastSched : "optional"))+'">'+t[1]+'</button>'; }).join("")+'</div>'+sub+catchBannerHtml()+body;
   centerActive(host.querySelector(".pl-tabs"), "button.on", false);
   if(plannerScrollTo){ var tgt = host.querySelector('[data-prog="'+plannerScrollTo.replace(/"/g, '\\"')+'"]'); plannerScrollTo = ""; if(tgt) setTimeout(function(){ tgt.scrollIntoView({block:"start"}); window.scrollBy(0, -70); }, 60); }
   if(plannerView==="daily") bindPlannerDaily(host);
@@ -79260,6 +79407,8 @@ function plannerAction(a, el, sure){
   var v = el.getAttribute("data-v");
   switch(a){
     case "view": plannerView = v; break;
+    case "optup": case "optdown": case "chup": case "chdown": case "starthere": case "optreset": case "optopen": case "optfilter": optAction(a, v); break;
+    case "optpick": plannerEditing = true; wiz = wizFromPlan(studyPlan); wiz.step = 2; break;
     case "startSess": openStartSheet(v); return;
     case "prisubj": priSubject = el.value; break;
     case "catchopen": openCatchup(); return;
@@ -82687,7 +82836,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "311";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "312";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
