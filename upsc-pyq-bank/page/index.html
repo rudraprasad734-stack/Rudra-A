@@ -1294,6 +1294,13 @@
   .grp{border-top:1px solid var(--line-soft); padding:8px 0;}
   .gh, .gh2{display:flex; align-items:center; gap:8px; flex-wrap:wrap;} .gh2 .btn{margin-left:auto;}
   .leafs{display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:4px 12px; margin:6px 0 2px 22px;}
+  .tp-edit{margin:6px 0 4px;}
+  .tp-form{border:1px dashed var(--line,#4a6a85); border-radius:12px; padding:10px 12px; margin-top:6px;}
+  .tp-form .cf input[type=text], .tp-form .cf select{width:100%; max-width:100%; min-width:0; box-sizing:border-box;}
+  .tp-form [hidden]{display:none !important;}
+  .tp-row{display:flex; gap:8px; flex-wrap:wrap; margin:8px 0;}
+  .tp-mine{margin-top:8px; font-size:13.5px;} .tp-it{display:flex; justify-content:space-between; align-items:center; gap:8px; padding:4px 0; border-top:1px solid rgba(128,128,128,.2);}
+  .tp-it small{opacity:.7;}
   .lf{display:flex; gap:8px; align-items:flex-start; font-size:13.5px; line-height:1.35; padding:3px 0;}
   #view-planner input[type=checkbox], .modal input[type=checkbox]{width:18px; height:18px; accent-color:#6d4aff; flex:0 0 auto;}
   .cap-sess{display:grid; gap:10px; margin:10px 0;}
@@ -70103,6 +70110,12 @@ function buildCatalog(c){
     if(arr.indexOf(it.u) < 0){ arr.push(it.u); e.newu[key] = 1; }
     e.subs[key] = it.sub;
   });
+  // chapters the student added by hand (Topics step): they join the subject like any other chapter
+  (c.custom || []).forEach(function(x){
+    var e = map[x.s]; if(!e || !x.g || !x.u) return;
+    var arr = e.topics[x.g] || (e.topics[x.g] = []);
+    if(arr.indexOf(x.u) < 0) arr.push(x.u);
+  });
   return {map:map, order:order};
 }
 function catalogLeaves(entry){
@@ -70478,8 +70491,8 @@ function wizDefaults(){
     }};
 }
 function wizFromPlan(p){ var w = JSON.parse(JSON.stringify(p.cfg)); delete w.fresh; if(w.acts && w.acts.revision && w.acts.revision.method=="both") w.acts.revision.method = "auto"; w.step = 0; w.err = []; w.open = {}; if(!w.seen){ w.seen = {}; wizCatalog(w).order.forEach(function(n){ w.seen[n] = 1; }); } return w; }
-function wizSnapshot(w){ var c = JSON.parse(JSON.stringify(w)); delete c.step; delete c.err; delete c.open; delete c.qs; return c; }
-function wizCatCfg(w){ return {prelims:w.mode!=="mains", mains:w.mode!=="prelims", gs1:!!w.gs1, csat:!!w.csat, gs:w.gs.slice(), optionalOn:!!w.optionalOn, optional:w.optional, customText:w.customText}; }
+function wizSnapshot(w){ var c = JSON.parse(JSON.stringify(w)); delete c.step; delete c.err; delete c.open; delete c.qs; delete c.addFor; delete c.addGroup; return c; }
+function wizCatCfg(w){ return {prelims:w.mode!=="mains", mains:w.mode!=="prelims", gs1:!!w.gs1, csat:!!w.csat, gs:w.gs.slice(), optionalOn:!!w.optionalOn, optional:w.optional, customText:w.customText, custom:(w.custom || []).slice()}; }
 function wizCatalog(w){ return buildCatalog(wizCatCfg(w)); }
 function wizSync(w){
   if(!(+w.cap.breakMin >= 5)) w.cap.breakMin = 5;
@@ -70896,8 +70909,24 @@ function wzTopics(w){
           var gl = e.topics[g].map(function(u){ return n+"|"+g+"|"+u; }), gon = gl.filter(function(id){ return w.sel[id]; }).length;
           return '<div class="grp"><label class="gh"><input type="checkbox" data-selgroup="'+esc(n)+'" data-g="'+esc(g)+'"'+(gon===gl.length?" checked":"")+'> <b>'+esc(g)+'</b> <span class="cnt">'+gon+'/'+gl.length+'</span></label><div class="leafs">'+
             e.topics[g].map(function(u){ var id = n+"|"+g+"|"+u; return '<label class="lf"><input type="checkbox" data-selleaf="'+esc(id)+'"'+(w.sel[id]?" checked":"")+'> '+esc(u)+'</label>'; }).join("")+'</div></div>';
-        }).join("")+'</details>';
+        }).join("")+topicEditHtml(w, n, e)+'</details>';
     }).join("");
+}
+// Add a chapter that is missing from a subject, or remove one you added. Built-in chapters are taken out by unticking them.
+document.addEventListener("change", function(ev){ var t = ev.target; if(t && t.id==="tpGroup"){ var wr = document.getElementById("tpNewWrap"); if(wr) wr.hidden = t.value!=="__new"; } });
+function topicEditHtml(w, n, e){
+  var mine = (w.custom || []).filter(function(x){ return x.s===n; }), open = w.addFor===n;
+  var groups = Object.keys(e.topics);
+  var form = '';
+  if(open){
+    form = '<div class="tp-form"><div class="cf"><label>Section</label><select id="tpGroup" data-tpgroup="1">'+groups.map(function(g){ return '<option value="'+esc(g)+'"'+(g===w.addGroup ? " selected" : "")+'>'+esc(g)+'</option>'; }).join("")+'<option value="__new">+ A new section&hellip;</option></select></div>'+
+      '<div class="cf" id="tpNewWrap" hidden><label>New section name</label><input type="text" id="tpNewGroup" maxlength="80" placeholder="e.g. Ethics case studies"></div>'+
+      '<div class="cf"><label>Chapter or topic name</label><input type="text" id="tpName" maxlength="120" placeholder="e.g. Lokpal and Lokayuktas"></div>'+
+      '<div class="tp-row"><button type="button" class="btn sm" data-wa="topicAdd" data-v="'+esc(n)+'">Add topic</button><button type="button" class="btn ghost sm" data-wa="topicForm" data-v="">Close</button></div>'+
+      (mine.length ? '<div class="tp-mine"><b>Topics you added</b>'+mine.map(function(x){ return '<div class="tp-it"><span>'+esc(x.u)+' <small>in '+esc(x.g)+'</small></span><button type="button" class="btn ghost sm" data-wa="topicDel" data-v="'+esc(x.s+"|"+x.g+"|"+x.u)+'" aria-label="Remove '+esc(x.u)+'">Remove</button></div>'; }).join("")+'</div>' : '')+
+      '<div class="hint">It joins your plan straight away and shows everywhere this subject\u2019s chapters are listed. It has no past-question links.</div></div>';
+  }
+  return '<div class="tp-edit">'+(open ? '' : '<button type="button" class="btn ghost sm" data-wa="topicForm" data-v="'+esc(n)+'">+ Add or remove a topic'+(mine.length ? ' ('+mine.length+' added)' : '')+'</button>')+form+'</div>';
 }
 function fitLineHtml(w){
   var f = null; try{ f = fitCalc(w); }catch(e){}
@@ -71208,6 +71237,21 @@ function wizAction(a, b){
     case "allSubjects": w.order = wizCatalog(w).order.slice(); w.orderAuto = true; w.seen = {}; w.order.forEach(function(n){ w.seen[n] = 1; }); wizSync(w); break;
     case "clearSubjects": w.order = []; w.orderAuto = false; wizSync(w); break;
     case "scopeAll": case "scopeNone": var cat = wizCatalog(w); catalogLeaves(cat.map[v]).forEach(function(l){ if(a==="scopeAll") w.sel[l.id]=1; else delete w.sel[l.id]; }); break;
+    case "topicForm": w.addFor = v || ""; w.open[v] = true; break;
+    case "topicAdd":
+      var gSel = document.getElementById("tpGroup"), nmEl = document.getElementById("tpName"), ngEl = document.getElementById("tpNewGroup");
+      var gv = gSel ? gSel.value : "", cleanT = function(t){ return String(t||"").replace(/[|\n\r]+/g, " ").replace(/\s+/g, " ").trim(); };
+      if(gv==="__new") gv = cleanT(ngEl && ngEl.value); else gv = cleanT(gv);
+      var nm = cleanT(nmEl && nmEl.value);
+      if(!nm){ toast("Type the topic name first."); break; }
+      if(!gv){ toast("Type the new section name first."); break; }
+      w.custom = w.custom || [];
+      var ce = wizCatalog(w).map[v];
+      if(ce && ce.topics[gv] && ce.topics[gv].indexOf(nm) >= 0){ toast("That topic is already in this subject."); break; }
+      w.custom.push({s:v, g:gv, u:nm}); w.addGroup = gv; wizSync(w); w.sel[v+"|"+gv+"|"+nm] = 1; toast("Added \u201C"+nm+"\u201D to "+v+".");
+      break;
+    case "topicDel":
+      w.custom = (w.custom || []).filter(function(x){ return (x.s+"|"+x.g+"|"+x.u)!==v; }); delete w.sel[v]; wizSync(w); break;
     case "optStart": w.optStart = v; if(v==="syllabus"){ w.optOrder = null; w.optFirst = ""; } else if(v==="choose"){ w.optOrder = w.optFirst ? optOrderFromFirst(w, w.optFirst) : null; } break;
     case "caFreq": var ca = w.acts.ca; ca.freq = v; ca.mode = "weekly"; ca.interval = 1; if(v==="daily") ca.days = [0,1,2,3,4,5,6]; else if(v==="days"){ if(!ca.days.length || ca.days.length>=7) ca.days = [1,2,3,4,5,6]; } else { ca.days = [ca.days.length ? ca.days[0] : 0]; } break;
     case "caDay": w.acts.ca.freq = "weekly"; w.acts.ca.mode = "weekly"; w.acts.ca.interval = 1; w.acts.ca.days = [+v]; break;
@@ -82836,7 +82880,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "313";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "314";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
