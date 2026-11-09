@@ -1319,7 +1319,7 @@
   .ses-list{display:flex; flex-direction:column; gap:10px; margin:10px 0;}
   .ses-r{display:grid; grid-template-columns:30px minmax(0,1fr) auto; grid-template-areas:"n t x" "n s d"; gap:6px 10px; align-items:center; padding:10px 12px; border:1px solid var(--line-soft); border-radius:14px; background:var(--surface-2);}
   .ses-r .ses-n{grid-area:n; width:28px; height:28px; border-radius:50%; display:grid; place-items:center; background:var(--navy); color:var(--navy-ink); font-size:13px;} .ses-r .ses-t{grid-area:t; display:flex; align-items:center; gap:6px; flex-wrap:nowrap; min-width:0;}
-  .ses-r select{grid-area:s; width:100% !important; min-width:0; min-height:40px;} .ses-r .ses-x{grid-area:x; background:none; border:0; color:var(--ink-soft); font-size:18px; padding:6px 8px; cursor:pointer;}
+  .ses-r select{grid-area:s; width:100% !important; min-width:0; min-height:40px;} .ses-r .ses-x{grid-area:x; width:40px; height:40px; border-radius:50%; background:transparent; border:1px solid var(--brick); color:var(--brick); font-size:16px; line-height:1; display:grid; place-items:center; cursor:pointer;}
   .ses-r .tm{min-height:40px; padding:6px 10px; font-size:14.5px; white-space:nowrap; border-radius:12px; border:1px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; font-weight:700; cursor:pointer;} .ses-r .arr{color:var(--ink-soft);} .ses-r .dur{grid-area:d; font-size:13px; font-weight:700; color:var(--ink-soft); white-space:nowrap;}
   .tp-edit{margin:6px 0 4px;}
   .tp-form{border:1px dashed var(--line,#4a6a85); border-radius:12px; padding:10px 12px; margin-top:6px;}
@@ -71015,7 +71015,7 @@ function wzCapacity(w){
     return '<div class="ses-r" data-tplabel="Session '+(i+1)+'"><b class="ses-n">'+(i+1)+'</b>'+
       '<div class="ses-t">'+timeChip("cap.sessions."+i+".start", sl.start)+'<span class="arr" aria-hidden="true">\u2192</span>'+timeChip("cap.sessions."+i+".end", sl.end)+'</div>'+
       '<span class="dur">'+(d > 0 ? esc(fmtHM(d)) : "check times")+'</span><select data-w="cap.sessions.'+i+'.subject" aria-label="Subject for session '+(i+1)+'"><option value="">Any subject</option>'+w.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(sl.subject===nm?" selected":"")+'>'+esc(nm)+'</option>'; }).join("")+'</select>'+
-      (n > 1 ? '<button type="button" class="ses-x" data-wa="sesDel" data-v="'+i+'" aria-label="Remove session '+(i+1)+'">\u2715</button>' : "")+'</div>';
+      (n > 1 ? '<button type="button" class="ses-x" data-wa="sesDel" data-v="'+i+'" title="Remove this session" aria-label="Remove session '+(i+1)+'">\u2715</button>' : "")+'</div>';
   }).join("")+'</div>'+(n < 6 ? '<button type="button" class="btn ghost sm" data-wa="sesAdd">+ Add a session</button>' : "");
   return '<h3>How much can you study?</h3>'+
     '<div class="cf"><label>Study days</label>'+dayChips("cap.days", c.days)+'</div>'+
@@ -82939,7 +82939,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "320";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "321";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
