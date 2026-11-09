@@ -1198,6 +1198,11 @@
   .ses.st-completed{opacity:.62;} .ses.st-missed{border-color:#e5675a;} .ses.st-skipped{opacity:.6;}
   .sess-more{margin-top:8px;} .sess-more summary{font-size:12.5px; font-weight:700; color:var(--tab-accent); cursor:pointer; list-style:none;} .sess-more summary::-webkit-details-marker{display:none;}
   .sess-ctl input[type=time], .sess-ctl select{max-width:100%; min-width:0; box-sizing:border-box;}
+  /* iPhone Safari sizes time boxes by their hidden clock text and lets them spill out of the card: pin them to the card width */
+  .sess-ctl label{min-width:0; max-width:100%;}
+  .sess-ctl input[type=time]{width:100% !important; min-width:0 !important; max-width:100% !important; box-sizing:border-box; -webkit-appearance:none; appearance:none; display:block; margin-left:0; margin-right:0; overflow:hidden; min-height:46px;}
+  .sess-ctl input[type=time]::-webkit-date-and-time-value{text-align:left; min-height:1.2em;}
+  .sess-ctl input[type=time]::-webkit-datetime-edit{padding:0; max-width:100%;}
   #modalHost:has(.start-sheet){align-items:flex-end; padding-bottom:0;} .start-sheet{border-radius:26px 26px 0 0 !important; margin:0 auto !important; max-width:560px; padding-bottom:calc(20px + env(safe-area-inset-bottom,0px));}
   .ss-head{display:flex; align-items:center; gap:12px;} .ss-head h2{margin:0; font-size:17px;} .ss-ic{width:46px; height:46px; border-radius:14px; background:var(--c); display:grid; place-items:center; font-size:22px; flex:none; color:#fff;}
   .pl-tabs button.on{background:linear-gradient(135deg,var(--tab-accent),color-mix(in srgb,var(--tab-accent) 55%,#27b9ff)) !important; box-shadow:0 6px 16px -8px var(--tab-accent);}
@@ -82580,7 +82585,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "306";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "307";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
