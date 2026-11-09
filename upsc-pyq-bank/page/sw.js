@@ -1,7 +1,7 @@
 // CSE Companion service worker: caches the app shell so the page loads and
 // runs with zero network connectivity after the first successful visit.
 // Bump CACHE_NAME on any deploy that changes cached files so clients refresh.
-const CACHE_NAME = "cse-companion-v317";
+const CACHE_NAME = "cse-companion-v318";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -1557,11 +1557,26 @@ function cacheable(req, res) {
   try { return res.type === "opaque" && /(^|\.)fonts\.(googleapis|gstatic)\.com$/.test(new URL(req.url).hostname); } catch (e) { return false; }
 }
 
+
+// A page that was cut off part-way (the app closed while it was downloading) must never be saved: it would open as a blank screen every time.
+// HTML is read in full and kept only if it ends with its closing tag.
+function putComplete(cache, req, res) {
+  if (!res) return Promise.resolve();
+  if (res.type === "opaque") return cache.put(req, res);
+  if (!res.ok) return Promise.resolve();
+  if (!/text\/html/i.test(res.headers.get("content-type") || "")) return cache.put(req, res);
+  return res.arrayBuffer().then((buf) => {
+    const tail = new TextDecoder().decode(new Uint8Array(buf, Math.max(0, buf.byteLength - 400)));
+    if (tail.indexOf("</html>") < 0) throw new Error("incomplete page");
+    const h = new Headers(res.headers); h.delete("content-encoding"); h.delete("content-length");
+    return cache.put(req, new Response(buf, { status: res.status, statusText: res.statusText, headers: h }));
+  });
+}
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME)
       // fetch each file past the browser's own HTTP cache ("reload"), or a new version installed within minutes of a deploy could store the old files
-      .then((cache) => Promise.all(APP_SHELL.map((u) => fetch(new Request(u, { cache: "reload" })).then((res) => { if (!res.ok) throw new Error(u + " " + res.status); return cache.put(u, res); })))
+      .then((cache) => Promise.all(APP_SHELL.map((u) => fetch(new Request(u, { cache: "reload" })).then((res) => { if (!res.ok) throw new Error(u + " " + res.status); return putComplete(cache, u, res); })))
         .then(() => Promise.all(FIGURES.map((u) => cache.add(u).catch(() => {})))))
       .then(() => self.skipWaiting())
   );
@@ -1606,13 +1621,13 @@ self.addEventListener("fetch", (event) => {
         // Serve the cached copy immediately, but refresh it in the background
         // so the next offline visit has whatever changed, without blocking this one.
         fetch(req).then((res) => {
-          if (cacheable(req, res)) caches.open(CACHE_NAME).then((c) => c.put(req, res.clone()));
+          if (cacheable(req, res)) caches.open(CACHE_NAME).then((c) => putComplete(c, req, res.clone())).catch(() => {});
         }).catch(() => {});
         return cached;
       }
       return fetch(req)
         .then((res) => {
-          if (cacheable(req, res)) caches.open(CACHE_NAME).then((c) => c.put(req, res.clone()));
+          if (cacheable(req, res)) caches.open(CACHE_NAME).then((c) => putComplete(c, req, res.clone())).catch(() => {});
           return res;
         })
         .catch(() => {

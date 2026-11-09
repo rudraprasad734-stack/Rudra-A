@@ -1684,6 +1684,38 @@ html.sp-on #app,html.sp-on #toast{visibility:hidden}
 @keyframes spIc{0%{transform:scale(1);opacity:1;box-shadow:0 0 0 0 rgba(70,200,185,0)}40%{transform:scale(1);opacity:1;box-shadow:0 0 0 0 rgba(70,200,185,0)}58%{transform:scale(1.07);box-shadow:0 0 28px 6px rgba(70,200,185,.45)}100%{transform:scale(1.07);box-shadow:0 0 28px 6px rgba(70,200,185,.45)}}
 @media (prefers-reduced-motion:reduce){#splash .sp-r{display:none}#splash .sp-ic{animation:none}}
 </style>
+<script>
+// Safety net. If the app never starts (a half-downloaded copy of the page, an old saved copy, or a script error) the saved app files are
+// cleared and a fresh copy is loaded. Your study data lives somewhere else and is never touched.
+(function(){
+  var KEY = "cse.repair";
+  function tries(){ try{ return +sessionStorage.getItem(KEY) || 0; }catch(e){ return 0; } }
+  function card(msg){
+    if(document.getElementById("cseRepair") || !document.body) return;
+    var d = document.createElement("div"); d.id = "cseRepair";
+    d.setAttribute("style", "position:fixed;left:0;right:0;top:0;bottom:0;z-index:2147483600;background:#04161d;color:#e6fbf8;display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;font:16px/1.45 -apple-system,system-ui,sans-serif");
+    d.innerHTML = '<div style="max-width:420px"><div style="font:600 24px Georgia,serif;margin-bottom:8px">The app did not start</div><div style="opacity:.85;margin-bottom:18px">'+msg+'</div>'+
+      '<button type="button" id="cseRepairBtn" style="padding:14px 22px;border:0;border-radius:14px;font:700 16px -apple-system,system-ui,sans-serif;background:#2de6d6;color:#04262c">Repair and reload</button></div>';
+    document.body.appendChild(d);
+    document.getElementById("cseRepairBtn").addEventListener("click", function(){ repair(true); });
+  }
+  function repair(manual){
+    var n = tries();
+    if(!manual && n >= 2){ card("Reloading did not help. Your study data is safe. Tap the button to clear the saved app files and try once more."); return; }
+    try{ sessionStorage.setItem(KEY, String(n+1)); }catch(e){}
+    if(navigator.onLine === false){ card("You are offline. Connect to the internet once, then tap the button. Your study data is safe."); return; }
+    var jobs = [];
+    try{ if(window.caches) jobs.push(caches.keys().then(function(ks){ return Promise.all(ks.filter(function(k){ return k.indexOf("cse-companion")===0; }).map(function(k){ return caches.delete(k); })); })); }catch(e){}
+    try{ if(navigator.serviceWorker && navigator.serviceWorker.getRegistrations) jobs.push(navigator.serviceWorker.getRegistrations().then(function(rs){ return Promise.all(rs.map(function(r){ return r.unregister(); })); })); }catch(e){}
+    var go = function(){ location.replace(location.pathname + "?fresh=" + Date.now()); };
+    Promise.all(jobs).then(go, go); setTimeout(go, 4000);
+  }
+  window.__cseRepair = repair;
+  document.addEventListener("DOMContentLoaded", function(){ setTimeout(function(){ if(!window.__cseLoaded) repair(false); }, 2000); });
+  window.addEventListener("error", function(){ setTimeout(function(){ if(!window.__cseReadyAt) repair(false); }, 12000); });
+  setTimeout(function(){ if(!window.__cseReadyAt) repair(false); }, 40000);
+})();
+</script>
 <div id="splash" aria-hidden="true"><div class="sp-stage"><i class="sp-r"></i><i class="sp-r"></i><i class="sp-r"></i><img class="sp-ic" src="./icon-512.png" width="148" height="148" alt=""></div></div>
 <script>
 (function(){
@@ -65063,6 +65095,7 @@ html.sp-on #app,html.sp-on #toast{visibility:hidden}
 <script>
 (function(){
 "use strict";
+window.__cseLoaded = 1;
 
 // ============================================================================
 // UTILITIES
@@ -71860,6 +71893,7 @@ function pyqWarm(onReady){
 var warmFast = false, chapterWarmDone = false, chapterWarmCbs = [], appLoaded = false, appLoadCbs = [];
 function releaseApp(){
   if(appLoaded) return; appLoaded = true;
+  window.__cseReadyAt = Date.now(); try{ sessionStorage.removeItem("cse.repair"); }catch(e){}
   if(window.__cseReady) window.__cseReady();
   var cbs = appLoadCbs; appLoadCbs = []; cbs.forEach(function(f){ try{ f(); }catch(e){} });
 }
@@ -82963,7 +82997,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "317";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "318";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
