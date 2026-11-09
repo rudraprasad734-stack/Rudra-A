@@ -1316,6 +1316,9 @@
   .tp-sheet.dial{padding-bottom:18px;} .tp-sheet.dial .grab{width:44px; height:5px; border-radius:3px; background:var(--line); margin:0 auto 10px;}
   .tp-sheet.dial .wheel{margin:8px 0 4px;} .tp-sheet.dial .wheel::before{left:6%; right:6%;} .wheel .col.w84{width:84px;} .wheel .colon{position:absolute; z-index:2; top:76px; left:calc(50% - 64px); font-weight:700; font-size:24px; color:var(--ink-soft); pointer-events:none;}
   .tchip input[hidden], .ses-r input[hidden]{display:none !important;}
+  .day-ring{display:grid; place-items:center; margin:6px 0 2px;} .day-ring svg{width:min(300px,100%); height:auto;}
+  .day-ring .rg-bg{stroke:var(--surface-2);} .day-ring .rg-arc{stroke:url(#rgG);} .day-ring .rg-n{fill:#04262c; font-size:12px; font-weight:800;}
+  .day-ring .rg-t{fill:var(--ink-soft); font-size:11px;} .day-ring .rg-v{fill:var(--ink); font-size:34px; font-weight:700; font-family:var(--font-display);} .day-ring .rg-s{fill:var(--ink-soft); font-size:13px;}
   .ses-list{display:flex; flex-direction:column; gap:10px; margin:10px 0;}
   .ses-r{display:grid; grid-template-columns:30px minmax(0,1fr) auto; grid-template-areas:"n t x" "n s d"; gap:6px 10px; align-items:center; padding:10px 12px; border:1px solid var(--line-soft); border-radius:14px; background:var(--surface-2);}
   .ses-r .ses-n{grid-area:n; width:28px; height:28px; border-radius:50%; display:grid; place-items:center; background:var(--navy); color:var(--navy-ink); font-size:13px;} .ses-r .ses-t{grid-area:t; display:flex; align-items:center; gap:6px; flex-wrap:nowrap; min-width:0;}
@@ -71008,6 +71011,25 @@ function topicEditHtml(w, n, e){
   }
   return '<div class="tp-edit">'+(open ? '' : '<button type="button" class="btn ghost sm" data-wa="topicForm" data-v="'+esc(n)+'">+ Add or remove a topic'+(mine.length ? ' ('+mine.length+' added)' : '')+'</button>')+form+'</div>';
 }
+// Your study day as a 24-hour clock face: each session is an arc, the total sits in the middle.
+function dayRingHtml(sessions){
+  var R = 92, C = 2*Math.PI*R, cx = 140, cy = 140, arcs = "", nums = "", total = 0, cnt = 0;
+  sessions.forEach(function(sl, i){
+    var a = toMin(sl.start), b = toMin(sl.end); if(!(b > a)) return;
+    total += b-a; cnt++;
+    var L = Math.max(2, (b-a)/1440*C);
+    arcs += '<circle class="rg-arc" cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="none" stroke-width="22" stroke-linecap="round" stroke-dasharray="'+L.toFixed(1)+' '+(C-L).toFixed(1)+'" transform="rotate('+(a/1440*360-90).toFixed(2)+' '+cx+' '+cy+')"/>';
+    var mid = ((a+b)/2)/1440*2*Math.PI - Math.PI/2;
+    nums += '<text class="rg-n" x="'+(cx+R*Math.cos(mid)).toFixed(1)+'" y="'+(cy+R*Math.sin(mid)+4).toFixed(1)+'" text-anchor="middle">'+(i+1)+'</text>';
+  });
+  var marks = [[0,"12 AM"],[6,"6 AM"],[12,"12 PM"],[18,"6 PM"]].map(function(m){
+    var a = m[0]/24*2*Math.PI - Math.PI/2;
+    return '<text class="rg-t" x="'+(cx+(R+32)*Math.cos(a)).toFixed(1)+'" y="'+(cy+(R+32)*Math.sin(a)+4).toFixed(1)+'" text-anchor="middle">'+m[1]+'</text>';
+  }).join("");
+  return '<div class="day-ring"><svg viewBox="0 0 280 280" role="img" aria-label="Your study day: '+esc(fmtHM(total))+' in '+cnt+' session'+(cnt===1 ? "" : "s")+'"><defs><linearGradient id="rgG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2de6d6"/><stop offset="1" stop-color="#5ac8ff"/></linearGradient></defs>'+
+    '<circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="none" class="rg-bg" stroke-width="22"/>'+arcs+nums+marks+
+    '<text class="rg-v" x="'+cx+'" y="'+(cy-2)+'" text-anchor="middle">'+esc(fmtHM(total))+'</text><text class="rg-s" x="'+cx+'" y="'+(cy+20)+'" text-anchor="middle">a day · '+cnt+' session'+(cnt===1 ? "" : "s")+'</text></svg></div>';
+}
 function wzCapacity(w){
   var c = w.cap, n = c.sessions.length;
   var list = '<div class="ses-list">'+c.sessions.map(function(sl, i){
@@ -71019,6 +71041,7 @@ function wzCapacity(w){
   }).join("")+'</div>'+(n < 6 ? '<button type="button" class="btn ghost sm" data-wa="sesAdd">+ Add a session</button>' : "");
   return '<h3>How much can you study?</h3>'+
     '<div class="cf"><label>Study days</label>'+dayChips("cap.days", c.days)+'</div>'+
+    dayRingHtml(c.sessions)+
     '<div class="cf"><label>Sessions on a study day</label>'+list+'</div>'+
     fitLineHtml(w);
 }
@@ -82939,7 +82962,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "321";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "322";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
