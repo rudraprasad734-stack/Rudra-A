@@ -1313,6 +1313,17 @@
   .cap-r em{font-style:normal; font-weight:700; padding:6px 12px; border-radius:12px; background:var(--surface-2); border:1px solid var(--line);} .cap-r em.hl{background:var(--navy); color:var(--navy-ink); border-color:transparent;}
   .fit-tips{margin:6px 0 0; padding-left:18px;}
   .ts-sheet{background:var(--surface);} .ts-sheet .grab{width:44px; height:5px; border-radius:3px; background:var(--line); margin:0 auto 12px;} .ts-sum{text-align:center; font-weight:600; margin:6px 0 4px;}
+  .tp-sheet.dial{padding-bottom:18px;} .tp-sheet.dial .grab{width:44px; height:5px; border-radius:3px; background:var(--line); margin:0 auto 10px;}
+  .tp-sheet.dial .wheel{margin:8px 0 4px;} .tp-sheet.dial .wheel::before{left:6%; right:6%;} .wheel .col.w84{width:84px;} .wheel .colon{position:absolute; z-index:2; top:76px; left:calc(50% - 64px); font-weight:700; font-size:24px; color:var(--ink-soft); pointer-events:none;}
+  .tchip input[hidden], .ses-r input[hidden]{display:none !important;}
+  .day-ring{display:grid; place-items:center; margin:6px 0 2px;} .day-ring svg{width:min(300px,100%); height:auto;}
+  .day-ring .rg-bg{stroke:var(--surface-2);} .day-ring .rg-arc{stroke:url(#rgG);} .day-ring .rg-n{fill:#04262c; font-size:12px; font-weight:800;}
+  .day-ring .rg-t{fill:var(--ink-soft); font-size:11px;} .day-ring .rg-v{fill:var(--ink); font-size:34px; font-weight:700; font-family:var(--font-display);} .day-ring .rg-s{fill:var(--ink-soft); font-size:13px;}
+  .ses-list{display:flex; flex-direction:column; gap:10px; margin:10px 0;}
+  .ses-r{display:grid; grid-template-columns:30px minmax(0,1fr) auto; grid-template-areas:"n t x" "n s d"; gap:6px 10px; align-items:center; padding:10px 12px; border:1px solid var(--line-soft); border-radius:14px; background:var(--surface-2);}
+  .ses-r .ses-n{grid-area:n; width:28px; height:28px; border-radius:50%; display:grid; place-items:center; background:var(--navy); color:var(--navy-ink); font-size:13px;} .ses-r .ses-t{grid-area:t; display:flex; align-items:center; gap:6px; flex-wrap:nowrap; min-width:0;}
+  .ses-r select{grid-area:s; width:100% !important; min-width:0; min-height:40px;} .ses-r .ses-x{grid-area:x; width:40px; height:40px; border-radius:50%; background:transparent; border:1px solid var(--brick); color:var(--brick); font-size:16px; line-height:1; display:grid; place-items:center; cursor:pointer;}
+  .ses-r .tm{min-height:40px; padding:6px 10px; font-size:14.5px; white-space:nowrap; border-radius:12px; border:1px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; font-weight:700; cursor:pointer;} .ses-r .arr{color:var(--ink-soft);} .ses-r .dur{grid-area:d; font-size:13px; font-weight:700; color:var(--ink-soft); white-space:nowrap;}
   .tp-edit{margin:6px 0 4px;}
   .tp-form{border:1px dashed var(--line,#4a6a85); border-radius:12px; padding:10px 12px; margin-top:6px;}
   .tp-form .cf input[type=text], .tp-form .cf select{width:100%; max-width:100%; min-width:0; box-sizing:border-box;}
@@ -65769,39 +65780,42 @@ document.addEventListener("keydown", function(e){ if(e.key==="Escape" && modalDi
 function openTimePicker(inp){
   if(document.getElementById("tpBack")) return;
   var v = /^(\d{1,2}):(\d{2})/.exec(inp.value || ""), H = v ? (+v[1]) % 24 : 6, M = v ? Math.min(59, +v[2]) : 0;
-  var st = {h:(H % 12) || 12, m:M, pm:H >= 12}, back = document.createElement("div");
+  M = Math.min(55, Math.round(M/5)*5);
+  var h12 = (H % 12) || 12, pm = H >= 12, back = document.createElement("div");
   back.id = "tpBack"; back.className = "tp-back";
+  var lab = inp.closest && inp.closest("[data-tplabel]") ? inp.closest("[data-tplabel]").getAttribute("data-tplabel") : (inp.getAttribute("aria-label") || "Set time");
+  var hs = "", ms = "", i;
+  for(i=1;i<=12;i++) hs += '<div class="it'+(i===h12 ? " sel" : "")+'" data-v="'+i+'">'+i+'</div>';
+  for(i=0;i<60;i+=5) ms += '<div class="it'+(i===M ? " sel" : "")+'" data-v="'+i+'">'+pad2(i)+'</div>';
+  var ap = '<div class="it'+(!pm ? " sel" : "")+'" data-v="0">AM</div><div class="it'+(pm ? " sel" : "")+'" data-v="1">PM</div>';
+  back.innerHTML = '<div class="tp-sheet dial" role="dialog" aria-modal="true" aria-label="Set time"><div class="grab"></div>'+
+    '<div class="tp-top"><span class="tp-lab">'+esc(lab)+'</span><div class="tp-disp"><b id="dialShow"></b></div></div>'+
+    '<div class="wheel" data-wheel="time"><div class="col w84" data-k="h" tabindex="0" aria-label="Hour">'+hs+'</div><span class="colon" aria-hidden="true">:</span><div class="col w84" data-k="m" tabindex="0" aria-label="Minute">'+ms+'</div><div class="col w84" data-k="a" tabindex="0" aria-label="AM or PM">'+ap+'</div></div>'+
+    '<div class="tp-act"><button type="button" class="tp-x" data-tp="clear">Clear</button><span></span><button type="button" class="tp-x" data-tp="cancel">Cancel</button><button type="button" class="tp-ok" data-tp="ok">OK</button></div></div>';
   document.body.appendChild(back);
-  var label = inp.closest && inp.closest("label") ? (inp.closest("label").firstChild && inp.closest("label").firstChild.nodeType===3 ? inp.closest("label").firstChild.nodeValue.trim() : "") : "";
-  function val(){ var h24 = (st.h % 12) + (st.pm ? 12 : 0); return pad2(h24)+":"+pad2(st.m); }
-  function draw(){
-    var hrs = "", mins = "", i;
-    for(i=1;i<=12;i++) hrs += '<button type="button" class="tp-c'+(st.h===i ? " on" : "")+'" data-tp="h" data-v="'+i+'">'+i+'</button>';
-    for(i=0;i<60;i+=5) mins += '<button type="button" class="tp-c'+(st.m===i ? " on" : "")+'" data-tp="m" data-v="'+i+'">'+pad2(i)+'</button>';
-    back.innerHTML = '<div class="tp-sheet" role="dialog" aria-modal="true" aria-label="Set time">'+
-      '<div class="tp-top"><span class="tp-lab">'+esc(label || "Set time")+'</span><div class="tp-disp"><b>'+st.h+':'+pad2(st.m)+'</b><div class="tp-ap"><button type="button" class="'+(!st.pm ? "on" : "")+'" data-tp="ap" data-v="0">AM</button><button type="button" class="'+(st.pm ? "on" : "")+'" data-tp="ap" data-v="1">PM</button></div></div></div>'+
-      '<div class="tp-h">Hour</div><div class="tp-g">'+hrs+'</div>'+
-      '<div class="tp-h">Minute</div><div class="tp-g">'+mins+'</div>'+
-      '<div class="tp-fine"><button type="button" data-tp="mm" aria-label="One minute earlier">− 1 min</button><button type="button" data-tp="mp" aria-label="One minute later">+ 1 min</button></div>'+
-      '<div class="tp-act"><button type="button" class="tp-x" data-tp="clear">Clear</button><span></span><button type="button" class="tp-x" data-tp="cancel">Cancel</button><button type="button" class="tp-ok" data-tp="ok">OK</button></div></div>';
+  var wh = back.querySelector(".wheel");
+  function read(){
+    var o = {h:h12, m:M, p:pm};
+    [].forEach.call(wh.querySelectorAll(".col"), function(c){ var k = Math.max(0, Math.min(c.children.length-1, Math.round(c.scrollTop/44))), x = +c.children[k].getAttribute("data-v"); if(c.getAttribute("data-k")==="h") o.h = x; else if(c.getAttribute("data-k")==="m") o.m = x; else o.p = x===1; });
+    return o;
   }
+  function show(){ var o = read(); back.querySelector("#dialShow").textContent = o.h+":"+pad2(o.m)+" "+(o.p ? "PM" : "AM"); }
+  wh._onChange = show; bindWheels(back); show();
   function close(){ back.remove(); try{ inp.blur(); }catch(e){} }
   function fire(){ inp.dispatchEvent(new Event("input", {bubbles:true})); inp.dispatchEvent(new Event("change", {bubbles:true})); }
   back.addEventListener("click", function(e){
     if(e.target===back){ close(); return; }
     var b = e.target.closest ? e.target.closest("[data-tp]") : null; if(!b) return;
-    var a = b.getAttribute("data-tp"), x = +b.getAttribute("data-v");
-    if(a==="h") st.h = x; else if(a==="m") st.m = x; else if(a==="ap") st.pm = x===1;
-    else if(a==="mp") st.m = (st.m + 1) % 60; else if(a==="mm") st.m = (st.m + 59) % 60;
-    else if(a==="cancel"){ close(); return; }
-    else if(a==="clear"){ inp.value = ""; close(); fire(); return; }
-    else if(a==="ok"){ inp.value = val(); close(); fire(); return; }
-    draw();
+    var a = b.getAttribute("data-tp");
+    if(a==="cancel"){ close(); return; }
+    if(a==="clear"){ inp.value = ""; close(); fire(); return; }
+    if(a==="ok"){ var o = read(); inp.value = pad2((o.h % 12) + (o.p ? 12 : 0))+":"+pad2(o.m); close(); fire(); }
   });
-  draw();
   var ok = back.querySelector('[data-tp="ok"]'); if(ok) ok.focus();
 }
 document.addEventListener("click", function(e){
+  var tb = e.target.closest ? e.target.closest("[data-tpopen]") : null;
+  if(tb){ var hi = tb.parentNode.querySelector('input[type="time"]'); if(hi){ e.preventDefault(); openTimePicker(hi); } return; }
   var t = e.target.closest ? e.target.closest('input[type="time"][data-tp]') : null;
   if(!t) return;
   e.preventDefault(); openTimePicker(t);
@@ -70530,7 +70544,7 @@ function wizDefaults(){
   return {step:0, qs:qsNew(), err:[], open:{}, init:{}, durMode:"months", months:12, target:"", start:todayKey, startView:"auto",
     mode:"mains", gs1:true, csat:true, gs:[1,2,3,4], essay:true, optionalOn:true, optional:"", customText:"",
     order:[], sel:{}, optStart:"syllabus", optFirst:"", optOrder:null,
-    cap:{days:[1,2,3,4,5,6], sessions:[{start:"06:00",end:"08:00",subject:""},{start:"10:00",end:"12:00",subject:""},{start:"16:00",end:"17:00",subject:""}], perDay:{}, breakMin:15, blocks:"auto", hours:{def:2, by:{}}, layout:"auto", limitMin:0, dayStart:"06:00"},
+    cap:{days:[1,2,3,4,5,6], sessions:[{start:"06:00",end:"08:00",subject:""},{start:"10:00",end:"12:00",subject:""},{start:"16:00",end:"17:00",subject:""}], perDay:{}, breakMin:15, blocks:"auto", hours:{def:2, by:{}, auto:true}, layout:"manual", limitMin:0, dayStart:"06:00"},
     acts:{
       essay:{on:false, mode:"weekly", days:[5], interval:1, count:2, dates:[], start:"19:00", end:"21:00"},
       pyq:{on:false, mode:"weekly", days:[2], interval:1, count:3, dates:[], start:"16:00", end:"17:00"},
@@ -70539,14 +70553,16 @@ function wizDefaults(){
       ca:{on:false, mode:"weekly", days:[0,1,2,3,4,5,6], interval:1, count:8, dates:[], start:"21:00", end:"21:30"}
     }};
 }
-function wizFromPlan(p){ var w = JSON.parse(JSON.stringify(p.cfg)); delete w.fresh; if(w.acts && w.acts.revision && w.acts.revision.method=="both") w.acts.revision.method = "auto"; w.step = 0; w.err = []; w.open = {}; if(!w.seen){ w.seen = {}; wizCatalog(w).order.forEach(function(n){ w.seen[n] = 1; }); } return w; }
+function wizFromPlan(p){ var w = JSON.parse(JSON.stringify(p.cfg)); delete w.fresh;
+  if(p.capacity && p.capacity.layout==="auto" && p.capacity.sessions && p.capacity.sessions.length){ w.cap.sessions = JSON.parse(JSON.stringify(p.capacity.sessions)); w.cap.count = w.cap.sessions.length; w.cap.perDay = {}; }   // a day the app planned becomes your own sessions
+  w.cap.layout = "manual"; w.cap.hours = {def:(p.capacity && p.capacity.hours ? p.capacity.hours.def : 2), by:{}, auto:true}; if(w.acts && w.acts.revision && w.acts.revision.method=="both") w.acts.revision.method = "auto"; w.step = 0; w.err = []; w.open = {}; if(!w.seen){ w.seen = {}; wizCatalog(w).order.forEach(function(n){ w.seen[n] = 1; }); } return w; }
 function wizSnapshot(w){ var c = JSON.parse(JSON.stringify(w)); delete c.step; delete c.err; delete c.open; delete c.qs; delete c.addFor; delete c.addGroup; return c; }
 function wizCatCfg(w){ return {prelims:w.mode!=="mains", mains:w.mode!=="prelims", gs1:!!w.gs1, csat:!!w.csat, gs:w.gs.slice(), optionalOn:!!w.optionalOn, optional:w.optional, customText:w.customText, custom:(w.custom || []).slice()}; }
 function wizCatalog(w){ return buildCatalog(wizCatCfg(w)); }
 function wizSync(w){
   if(!(+w.cap.breakMin >= 5)) w.cap.breakMin = 5;
   if(!w.cap.hours) w.cap.hours = {def:2, by:{}}; if(!w.cap.hours.by) w.cap.hours.by = {};
-  if(!w.cap.layout) w.cap.layout = "auto"; if(w.cap.limitMin==null) w.cap.limitMin = 0; if(!w.cap.dayStart) w.cap.dayStart = "06:00";
+  w.cap.layout = "manual"; w.cap.hours.auto = true; w.cap.hours.by = {}; if(w.cap.limitMin==null) w.cap.limitMin = 0; if(!w.cap.dayStart) w.cap.dayStart = "06:00";
   var cat = wizCatalog(w), valid = {}, init = {};
   // a subject that has just become available (an optional, another paper) joins the end of the order; one you took out by hand stays out
   if(w.orderAuto) w.order = cat.order.slice();   // an order nobody touched follows the recommended order for whatever is chosen
@@ -70677,7 +70693,8 @@ function fitLineHtml(w){
   var f = null; try{ f = fitInfo(w); }catch(e){ window.__fitErr = e && e.stack; }
   if(!f) return '<div class="muted mt">Set your duration first, then this shows whether your hours are enough.</div>';
   var spare = f.have - f.need;
-  if(f.fits) return '<div class="fit-v ok"><b>✓ Everything fits.</b> '+(spare >= 60 ? 'About '+esc(fmtHM(spare))+' to spare before '+esc(fmtShort(parseKey(f.end)))+'.' : 'It is a tight fit, so a few missed days will push the end date.')+'</div>';
+  var ct = f.hours && f.hours.def ? ' Each chapter gets about '+esc(fmtHM(Math.round(f.hours.def*60)))+'.' : "";
+  if(f.fits) return '<div class="fit-v ok"><b>✓ Everything fits.</b>'+ct+' '+(spare >= 60 ? 'About '+esc(fmtHM(spare))+' to spare before '+esc(fmtShort(parseKey(f.end)))+'.' : 'It is a tight fit, so a few missed days will push the end date.')+'</div>';
   var short = Math.max(0, f.need - f.have), over = Math.max(60, f.leftMin);
   var tips = [];
   if(f.limit) tips.push('Raise your daily limit (now '+esc(fmtHM(f.limit))+')');
@@ -70685,19 +70702,7 @@ function fitLineHtml(w){
   tips.push('Add a study day or move your end date later');
   return '<div class="fit-v bad"><b>✗ It does not fit yet.</b> The chapters need about '+esc(fmtHM(f.need))+' and you have '+esc(fmtHM(f.have))+', about '+esc(fmtHM(Math.max(short, over)))+' short.<ul class="fit-tips">'+tips.map(function(t){ return '<li>'+t+'</li>'; }).join("")+'</ul></div>';
 }
-// ---- the rolling time wheel (hours and minutes) ----
-function wheelHtml(kind, name, mins){
-  var H = Math.floor(mins/60), M = mins%60, hs = "", ms = "", i;
-  for(i=0;i<=8;i++) hs += '<div class="it'+(i===H ? " sel" : "")+'" data-v="'+i+'">'+i+'</div>';
-  [0,15,30,45].forEach(function(m){ ms += '<div class="it'+(m===M ? " sel" : "")+'" data-v="'+m+'">'+pad2(m)+'</div>'; });
-  return '<div class="wheel" data-wheel="'+kind+'" data-name="'+esc(name||"")+'" role="group" aria-label="Time per chapter"><div class="col" data-k="h" tabindex="0" aria-label="Hours">'+hs+'</div><span class="unit uh" aria-hidden="true">h</span>'+
-    '<div class="col" data-k="m" tabindex="0" aria-label="Minutes">'+ms+'</div><span class="unit um" aria-hidden="true">min</span></div>';
-}
-function wheelMins(el){
-  var h = 0, m = 0;
-  [].forEach.call(el.querySelectorAll(".col"), function(c){ var i = Math.max(0, Math.min(c.children.length-1, Math.round(c.scrollTop/44))); var v = +c.children[i].getAttribute("data-v"); if(c.getAttribute("data-k")==="h") h = v; else m = v; });
-  return Math.max(15, h*60+m);
-}
+// ---- the rolling dial used by the time picker ----
 function bindWheels(root){
   [].forEach.call((root || document).querySelectorAll(".wheel"), function(el){
     if(el._bound) return; el._bound = true;
@@ -70709,23 +70714,12 @@ function bindWheels(root){
         var j = Math.max(0, Math.min(c.children.length-1, Math.round(c.scrollTop/44)));
         [].forEach.call(c.children, function(x, k){ x.classList.toggle("sel", k===j); });
         if(boot) return;
-        clearTimeout(timer); timer = setTimeout(function(){ wheelCommit(el); }, 220);
+        if(el._onChange){ el._onChange(el); return; }
+        clearTimeout(timer);
       });
       c.addEventListener("click", function(e){ var it = e.target.closest(".it"); if(it) c.scrollTo({top:[].indexOf.call(c.children, it)*44, behavior:"smooth"}); });
     });
   });
-}
-function wheelCommit(el){
-  if(!wiz) return;
-  var mins = wheelMins(el), kind = el.getAttribute("data-wheel"), name = el.getAttribute("data-name"), H = wiz.cap.hours || (wiz.cap.hours = {def:2, by:{}});
-  if(!H.by) H.by = {};
-  var hrs = mins/60;
-  if(kind==="def"){ if(H.def===hrs && !H.auto) return; H.def = hrs; H.auto = false; }
-  else { var cur = H.by[name]!=null ? H.by[name] : H.def; if(cur===hrs) return; if(hrs===H.def) delete H.by[name]; else H.by[name] = hrs; }
-  if(kind==="subj"){
-    var s = document.getElementById("tsSum"); if(s){ var n = +s.getAttribute("data-n"); s.textContent = n+" chapters × "+fmtHM(mins)+" = "+fmtHM(n*mins); }
-  }
-  var y = window.scrollY; wizSave(); renderWizard(document.getElementById("view-planner")); window.scrollTo(0, y);
 }
 function wizSave(){ try{ saveWizDraft(); }catch(e){} }
 
@@ -70748,8 +70742,7 @@ function compilePlan(w){
   cap.perDay = pd; cap.blocks = 1; cap.auto = false;
   var H0 = cap.hours || {def:2, by:{}};
   cap.hours = {def:(+H0.def >= 0.25 ? +H0.def : 2), by:Object.assign({}, H0.by || {}), auto:!!H0.auto};
-  cap.layout = cap.layout==="manual" ? "manual" : "auto"; cap.limitMin = +cap.limitMin || 0; cap.dayStart = cap.dayStart || "06:00";
-  if(cap.layout==="auto") cap.hours.auto = false;
+  cap.layout = "manual"; cap.limitMin = 0; cap.dayStart = cap.dayStart || "06:00"; cap.hours.by = {}; cap.hours.auto = true;   // your own sessions; the time per chapter is fitted to them
   var plan = {v:1, createdAt:new Date().toISOString(), cfg:wizSnapshot(w), window:{start:w.start, end:st.end}, catCfg:wizCatCfg(w),
     priority:w.order.slice(), sel:Object.assign({}, w.sel), capacity:cap, activities:JSON.parse(JSON.stringify(w.acts)),
     startView:(w.startView==="auto" ? recommendedView(w) : w.startView), extraV:(EXTRA ? EXTRA.v : 0),
@@ -70898,6 +70891,7 @@ function dayChips(path, arr){
   return '<div class="pill-row days">'+DOW_ORDER.map(function(d){ return '<button type="button" class="pill'+(arr.indexOf(d)>=0?" on":"")+'" data-wa="toggleArr" data-path="'+path+'" data-v="'+d+'">'+DOW_SHORT[d]+'</button>'; }).join("")+'</div>';
 }
 function optsNum(from, to, cur, fmt){ var o = ""; for(var i=from;i<=to;i++) o += '<option value="'+i+'"'+(+cur===i?" selected":"")+'>'+(fmt ? fmt(i) : i)+'</option>'; return o; }
+function timeChip(path, val){ return '<span class="tchip"><button type="button" class="tm" data-tpopen="1" aria-label="Change time, now '+esc(val ? fmt12(val) : "not set")+'">'+esc(val ? fmt12(val) : "Set")+'</button><input type="time" hidden data-tp="1" data-w="'+path+'" value="'+esc(val)+'"></span>'; }
 function timePair(pathS, pathE, s, e){ return '<div class="tpair"><input type="time" readonly data-tp="1" data-w="'+pathS+'" value="'+esc(s)+'"><span>to</span><input type="time" readonly data-tp="1" data-w="'+pathE+'" value="'+esc(e)+'"></div>'; }
 
 // ---------- steps ----------
@@ -71017,66 +71011,39 @@ function topicEditHtml(w, n, e){
   }
   return '<div class="tp-edit">'+(open ? '' : '<button type="button" class="btn ghost sm" data-wa="topicForm" data-v="'+esc(n)+'">+ Add or remove a topic'+(mine.length ? ' ('+mine.length+' added)' : '')+'</button>')+form+'</div>';
 }
-function wzCapacity(w){
-  var c = w.cap, H = c.hours || (c.hours = {def:2, by:{}}), mins = Math.round((+H.def || 2)*60), f = null;
-  try{ f = fitInfo(w); }catch(e){}
-  if(H.auto && f) mins = Math.round(f.plan.capacity.hours.def*60);   // the time the app worked out to fit the day you set
-  var cat = wizCatalog(w), subs = w.order.map(function(n){
-    var e = cat.map[n], cnt = catalogLeaves(e).filter(function(l){ return w.sel[l.id]; }).length, own = H.by && H.by[n]!=null;
-    return {n:n, cnt:cnt, own:own, m:Math.round((own ? H.by[n] : H.def)*60)};
+// Your study day as a 24-hour clock face: each session is an arc, the total sits in the middle.
+function dayRingHtml(sessions){
+  var R = 92, C = 2*Math.PI*R, cx = 140, cy = 140, arcs = "", nums = "", total = 0, cnt = 0;
+  sessions.forEach(function(sl, i){
+    var a = toMin(sl.start), b = toMin(sl.end); if(!(b > a)) return;
+    total += b-a; cnt++;
+    var L = Math.max(2, (b-a)/1440*C);
+    arcs += '<circle class="rg-arc" cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="none" stroke-width="22" stroke-linecap="round" stroke-dasharray="'+L.toFixed(1)+' '+(C-L).toFixed(1)+'" transform="rotate('+(a/1440*360-90).toFixed(2)+' '+cx+' '+cy+')"/>';
+    var mid = ((a+b)/2)/1440*2*Math.PI - Math.PI/2;
+    nums += '<text class="rg-n" x="'+(cx+R*Math.cos(mid)).toFixed(1)+'" y="'+(cy+R*Math.sin(mid)+4).toFixed(1)+'" text-anchor="middle">'+(i+1)+'</text>';
   });
-  var diff = subs.filter(function(x){ return x.own; }).length, manual = c.layout==="manual";
-  var tooMuch = f && !f.fits && !manual && f.limit > 0;
-  // one summary: the day it works out to, whether it fits, and the numbers behind it (no second box repeating them)
-  var res = '';
-  if(f){
-    var spare = f.have - f.need, tips = [];
-    if(!f.fits){ if(f.limit) tips.push('Raise your daily limit (now '+esc(fmtHM(f.limit))+')'); tips.push('Give chapters a little less time'); tips.push('Add a study day or move your end date later'); }
-    res = '<div class="cap-res '+(f.fits ? "ok" : "bad")+'"><div class="v">'+(tooMuch ? 'needs about '+esc(fmtHM(f.perDay)) : 'about '+esc(fmtHM(f.layoutMin)))+' a day</div>'+
-      '<div class="st">'+(f.fits ? '\u2713 Everything fits'+(spare >= 60 ? ' \u00B7 '+esc(fmtHM(spare))+' to spare' : ' \u00B7 a tight fit') : '\u2717 Does not fit yet \u00B7 about '+esc(fmtHM(Math.max(f.need-f.have, f.leftMin, 60)))+' short')+'</div>'+
-      '<div class="m">'+f.chapters+' chapters \u00B7 '+esc(fmtHM(f.need))+' in all \u00B7 '+f.studyDays+' study days to '+esc(fmtShort(parseKey(f.end)))+(manual ? ' \u00B7 your own sessions' : "")+'</div>'+
-      (tips.length ? '<ul class="fit-tips">'+tips.map(function(t){ return '<li>'+t+'</li>'; }).join("")+'</ul>' : "")+'</div>';
-  }
-  var rows = subs.map(function(x){
-    return '<button type="button" class="cap-r" data-wa="subjTime" data-v="'+esc(x.n)+'"><span>'+esc(x.n)+'<small>'+x.cnt+' chapters · '+esc(fmtHM(x.cnt*x.m))+'</small></span><em class="'+(x.own ? "hl" : "")+'">'+esc(fmtHM(x.m))+'</em></button>';
+  var marks = [[0,"12 AM"],[6,"6 AM"],[12,"12 PM"],[18,"6 PM"]].map(function(m){
+    var a = m[0]/24*2*Math.PI - Math.PI/2;
+    return '<text class="rg-t" x="'+(cx+(R+32)*Math.cos(a)).toFixed(1)+'" y="'+(cy+(R+32)*Math.sin(a)+4).toFixed(1)+'" text-anchor="middle">'+m[1]+'</text>';
   }).join("");
-  var limits = [0,120,180,240,300,360,420,480,600,720].map(function(m){ return '<option value="'+m+'"'+(+c.limitMin===m ? " selected" : "")+'>'+(m ? 'At most '+fmtHM(m)+' a day' : 'No limit')+'</option>'; }).join("");
-  var starts = ["05:00","06:00","07:00","08:00","09:00","10:00","12:00","14:00","16:00","18:00"].map(function(t){ return '<option value="'+t+'"'+(c.dayStart===t ? " selected" : "")+'>'+esc(fmt12(t))+'</option>'; }).join("");
-  var own = '';
-  if(manual){
-    var n = c.sessions.length;
-    own = '<div class="two"><div class="cf"><label>Sessions per day</label><select data-w="cap.count" data-t="n" data-after="sessCount">'+optsNum(1,6,n)+'</select></div>'+
-      '<div class="cf"><label>Length of one session</label><select data-w="cap.sessLen" data-t="n" data-after="sessLen">'+(sessLenNow(w) ? "" : '<option value="0" selected>Different (set below)</option>')+lensWith(sessLenNow(w)).map(function(m){ return '<option value="'+m+'"'+(sessLenNow(w)===m ? " selected" : "")+'>'+esc(fmtDurMin(m))+'</option>'; }).join("")+'</select></div></div>'+
-      '<div class="cap-sess">'+c.sessions.map(function(s, i){ return '<div class="slot"><div class="slot-h"><b>Session '+(i+1)+'</b><span class="dur">'+esc(toMin(s.end)>toMin(s.start)?fmtDurMin(toMin(s.end)-toMin(s.start)):"invalid")+'</span></div>'+
-        '<div class="cf"><label>Subject</label><select data-w="cap.sessions.'+i+'.subject"><option value="">Auto — current active subject</option>'+w.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(s.subject===nm?" selected":"")+'>'+esc(nm)+'</option>'; }).join("")+'</select></div>'+
-        '<div class="cf"><label>Time (from – to)</label>'+timePair("cap.sessions."+i+".start","cap.sessions."+i+".end",s.start,s.end)+'</div></div>'; }).join("")+'</div>'+
-      '<div class="cf"><label>Sessions on each study day</label><div class="perday">'+c.days.slice().sort(function(a,b){ return DOW_ORDER.indexOf(a)-DOW_ORDER.indexOf(b); }).map(function(d){
-        var pd = c.perDay[d], cur = (pd!=null && pd!=="") ? +pd : n;
-        return '<label>'+DOW_SHORT[d]+'<select data-w="cap.perDay.'+d+'" data-t="n">'+optsNum(0,n,cur)+'</select></label>';
-      }).join("")+'</div><div class="hint">Use the first N sessions on that day.</div></div>'+
-      '<div class="cf"><label>Minimum break between sessions</label><select data-w="cap.breakMin" data-t="n">'+[5,10,15,20,30,45,60].map(function(m){ return '<option value="'+m+'"'+(+c.breakMin===m?" selected":"")+'>'+m+' min</option>'; }).join("")+'</select></div>'+
-      '<div class="hint">Essay, PYQ, Test and Revision take over any study session they overlap on their day. A chapter can use part of a session; the next one starts where it ends.</div>'+weekMapHtml(w);
-  }
-  return '<h3>How long per chapter?</h3>'+
-    wheelHtml("def", "", mins)+res+
-    '<div class="cf"><label>Study days</label>'+dayChips("cap.days", c.days)+'</div>'+
-    '<details class="info-card cap-adv" data-wopen="capSubj"'+(w.open.capSubj ? " open" : "")+'><summary>Different time for some subjects'+(diff ? ' <span class="cnt">'+diff+' set</span>' : "")+'</summary><div class="cap-rows">'+rows+'</div></details>'+
-    '<details class="info-card cap-adv" data-wopen="capAdv"'+(w.open.capAdv ? " open" : "")+'><summary>Daily limit and exact times <span class="cnt">optional</span></summary>'+
-      '<div class="two"><div class="cf"><label>Daily limit</label><select data-w="cap.limitMin" data-t="n">'+limits+'</select></div>'+
-      (manual ? '' : '<div class="cf"><label>My day starts at</label><select data-w="cap.dayStart">'+starts+'</select></div>')+'</div>'+
-      (H.auto ? '<div class="hint">Your chapter time is set automatically to fit the day you chose. Roll the wheel above to choose your own.</div>' : '')+
-      '<div class="pill-row"><button type="button" class="pill'+(manual ? "" : " on")+'" data-wa="layout" data-v="auto">The app plans my day</button><button type="button" class="pill'+(manual ? " on" : "")+'" data-wa="layout" data-v="manual">I set my own sessions</button></div>'+own+
-    '</details>';
+  return '<div class="day-ring"><svg viewBox="0 0 280 280" role="img" aria-label="Your study day: '+esc(fmtHM(total))+' in '+cnt+' session'+(cnt===1 ? "" : "s")+'"><defs><linearGradient id="rgG" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2de6d6"/><stop offset="1" stop-color="#5ac8ff"/></linearGradient></defs>'+
+    '<circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="none" class="rg-bg" stroke-width="22"/>'+arcs+nums+marks+
+    '<text class="rg-v" x="'+cx+'" y="'+(cy-2)+'" text-anchor="middle">'+esc(fmtHM(total))+'</text><text class="rg-s" x="'+cx+'" y="'+(cy+20)+'" text-anchor="middle">a day · '+cnt+' session'+(cnt===1 ? "" : "s")+'</text></svg></div>';
 }
-function openTimeSheet(name){
-  var w = wiz, H = w.cap.hours, cur = Math.round(((H.by && H.by[name]!=null) ? H.by[name] : H.def)*60);
-  var cat = wizCatalog(w), n = catalogLeaves(cat.map[name]).filter(function(l){ return w.sel[l.id]; }).length;
-  var m = showModal('<div class="fr-sheet ts-sheet" role="dialog" aria-label="Time per chapter for '+esc(name)+'"><div class="grab"></div><h2>'+esc(name)+'</h2><p class="hint">Time for each chapter in this subject.</p>'+wheelHtml("subj", name, cur)+
-    '<div class="ts-sum" id="tsSum" data-n="'+n+'">'+n+' chapters × '+esc(fmtHM(cur))+' = '+esc(fmtHM(n*cur))+'</div>'+
-    '<div class="modal-actions"><button type="button" class="btn ghost" id="tsReset">Same as the rest</button><span class="grow"></span><button type="button" class="btn primary" id="tsDone">Done</button></div></div>', true);
-  m.classList.add("fr-b"); bindWheels(m);
-  m.querySelector("#tsDone").addEventListener("click", function(){ closeModal(); wizRender(); });
-  m.querySelector("#tsReset").addEventListener("click", function(){ if(H.by) delete H.by[name]; closeModal(); wizRender(); });
+function wzCapacity(w){
+  var c = w.cap, n = c.sessions.length;
+  var list = '<div class="ses-list">'+c.sessions.map(function(sl, i){
+    var d = toMin(sl.end)-toMin(sl.start);
+    return '<div class="ses-r" data-tplabel="Session '+(i+1)+'"><b class="ses-n">'+(i+1)+'</b>'+
+      '<div class="ses-t">'+timeChip("cap.sessions."+i+".start", sl.start)+'<span class="arr" aria-hidden="true">\u2192</span>'+timeChip("cap.sessions."+i+".end", sl.end)+'</div>'+
+      '<span class="dur">'+(d > 0 ? esc(fmtHM(d)) : "check times")+'</span><select data-w="cap.sessions.'+i+'.subject" aria-label="Subject for session '+(i+1)+'"><option value="">Any subject</option>'+w.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(sl.subject===nm?" selected":"")+'>'+esc(nm)+'</option>'; }).join("")+'</select>'+
+      (n > 1 ? '<button type="button" class="ses-x" data-wa="sesDel" data-v="'+i+'" title="Remove this session" aria-label="Remove session '+(i+1)+'">\u2715</button>' : "")+'</div>';
+  }).join("")+'</div>'+(n < 6 ? '<button type="button" class="btn ghost sm" data-wa="sesAdd">+ Add a session</button>' : "");
+  return '<h3>How much can you study?</h3>'+
+    '<div class="cf"><label>Study days</label>'+dayChips("cap.days", c.days)+'</div>'+
+    dayRingHtml(c.sessions)+
+    '<div class="cf"><label>Sessions on a study day</label>'+list+'</div>'+
+    fitLineHtml(w);
 }
 function caFreqOf(a){   // how often Current Affairs repeats: daily, specific days, or weekly (one day)
   if(a.freq==="daily" || a.freq==="days" || a.freq==="weekly") return a.freq;
@@ -71387,11 +71354,9 @@ function wizAction(a, b){
       if(w.qs.screen==="week") qsApply(w);
       scrollPlannerTop(); break;
     case "qsBack": var bl = qsList(w.qs), bi = bl.indexOf(w.qs.screen); w.err = []; w.qs.screen = bl[Math.max(0, bi-1)]; scrollPlannerTop(); break;
-    case "qsFull": qsApply(w); w.cap.layout = "auto"; w.cap.hours = {def:2, by:{}}; w.cap.limitMin = 0; w.qs = null; w.step = 0; w.err = []; scrollPlannerTop(); break;
-    case "subjTime": openTimeSheet(v); return;
-    case "layout":
-      if(v==="manual" && w.cap.layout!=="manual"){ var fi = null; try{ fi = fitInfo(w); }catch(x){} if(fi){ w.cap.sessions = JSON.parse(JSON.stringify(fi.plan.capacity.sessions)); w.cap.count = w.cap.sessions.length; w.cap.perDay = {}; } }
-      w.cap.layout = v; if(v==="manual") w.cap.hours.auto = false; break;
+    case "qsFull": qsApply(w); w.qs = null; w.step = 0; w.err = []; scrollPlannerTop(); break;
+    case "sesAdd": var ls = w.cap.sessions, last = ls[ls.length-1], gp = Math.max(5, +w.cap.breakMin || 5), st0 = last ? Math.min(1380-60, toMin(last.end)+gp) : 1080; ls.push({start:hmStr(st0), end:hmStr(st0+60), subject:""}); w.cap.count = ls.length; break;
+    case "sesDel": if(w.cap.sessions.length > 1){ w.cap.sessions.splice(+v, 1); w.cap.count = w.cap.sessions.length; Object.keys(w.cap.perDay).forEach(function(k){ if(+w.cap.perDay[k] > w.cap.sessions.length) w.cap.perDay[k] = w.cap.sessions.length; }); } break;
     case "cancelEdit": plannerEditing = false; wiz = null; renderPlanner(); return;
     case "gen": wizGenerate(); return;
   }
@@ -71590,7 +71555,7 @@ function nextUpHtml(){
 function overviewHtml(plan, states){
   var st = windowStats(plan.cfg), op = overallProgress(plan), sim = viewIndex().sim, left = sim ? sim.remaining : 0;
   return planTimelineHtml(plan, states)+
-    '<div class="card pace"><div><b>Time per chapter</b><div class="muted">'+(function(){ var H = plan.capacity.hours || {def:2, by:{}}, by = Object.keys(H.by || {}).length; return 'Each chapter gets <b>'+esc(fmtHM(Math.round(H.def*60)))+'</b>'+(by ? ' ('+by+' subject'+(by===1 ? "" : "s")+' differ)' : "")+'. Your day works out to about <b>'+esc(fmtHM(plan.capacity.sessions.reduce(function(t, x){ return t + Math.max(0, toMin(x.end)-toMin(x.start)); }, 0)))+'</b>'+(plan.capacity.layout==="auto" ? " (the app plans it for you)" : "")+'.'; })()+'</div></div><button type="button" class="btn ghost sm" data-pa="hours">Change</button></div>'+
+    '<div class="card pace"><div><b>Time per chapter</b><div class="muted">'+(function(){ var H = plan.capacity.hours || {def:2}; return 'Each chapter gets about <b>'+esc(fmtHM(Math.round(H.def*60)))+'</b>, worked out from your sessions ('+esc(fmtHM(plan.capacity.sessions.reduce(function(t, x){ return t + Math.max(0, toMin(x.end)-toMin(x.start)); }, 0)))+' a day).'; })()+'</div></div><button type="button" class="btn ghost sm" data-pa="hours">Change</button></div>'+
     (left ? hoursReportHtml(plan) : "")+
     '<div class="card ov-win"><div class="muted">Window '+esc(fmtShort(parseKey(plan.window.start)))+' &rarr; '+esc(fmtShort(parseKey(plan.window.end)))+' &middot; '+(st.ok ? st.days+" days &middot; "+st.hours+" study hours" : "")+'</div><div class="ov-btns"><button type="button" class="btn ghost sm" data-pa="edit">Edit plan</button><button type="button" class="btn danger sm" data-pa="reset">Reset plan</button></div></div>';
 }
@@ -82997,7 +82962,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "318";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "322";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
