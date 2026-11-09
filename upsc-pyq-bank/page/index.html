@@ -1305,7 +1305,8 @@
   .wheel .unit{position:absolute; z-index:2; top:78px; font-weight:700; font-size:15px; color:var(--ink-soft); pointer-events:none;}
   .wheel .uh{left:calc(50% - 40px);} .wheel .um{left:calc(50% + 88px);}
   .cap-res{margin:10px 0 4px; padding:14px; border-radius:16px; background:var(--surface-2); border:1px solid var(--line-soft); text-align:center;}
-  .cap-res .v{font-family:var(--font-display); font-weight:700; font-size:26px;} .cap-res .m{color:var(--ink-soft); font-size:14px; margin-top:2px;}
+  .cap-res .v{font-family:var(--font-display); font-weight:700; font-size:26px;} .cap-res .m{color:var(--ink-soft); font-size:13.5px; margin-top:4px;}
+  .cap-res .st{display:inline-block; margin-top:6px; padding:3px 12px; border-radius:20px; font-weight:700; font-size:13.5px;} .cap-res.ok .st{background:#22c55e26;} .cap-res.bad .st{background:#e5675a30;} .cap-res .fit-tips{text-align:left; display:inline-block; margin-top:8px; font-size:14px;}
   .cap-rows{border:1px solid var(--line-soft); border-radius:14px; overflow:hidden; margin-top:8px;}
   .cap-r{display:flex; align-items:center; gap:10px; width:100%; text-align:left; background:transparent; border:0; border-top:1px solid var(--line-soft); padding:11px 14px; color:inherit; font:inherit; cursor:pointer;}
   .cap-r:first-child{border-top:0;} .cap-r span{flex:1;} .cap-r small{display:block; color:var(--ink-soft); font-size:12px;}
@@ -70993,7 +70994,16 @@ function wzCapacity(w){
   });
   var diff = subs.filter(function(x){ return x.own; }).length, manual = c.layout==="manual";
   var tooMuch = f && !f.fits && !manual && f.limit > 0;
-  var res = f ? '<div class="cap-res"><div class="v">'+(tooMuch ? 'needs about '+esc(fmtHM(f.perDay))+' a day' : 'about '+esc(fmtHM(f.layoutMin))+' a day')+'</div><div class="m">'+f.chapters+' chapters · '+esc(fmtHM(f.need))+' of study in all · '+f.studyDays+' study days to '+esc(fmtShort(parseKey(f.end)))+(manual ? '. This is the day you set under Exact times.' : (tooMuch ? '. Your limit is '+esc(fmtHM(f.limit))+' a day.' : '. Worked out for you.'))+'</div></div>' : '';
+  // one summary: the day it works out to, whether it fits, and the numbers behind it (no second box repeating them)
+  var res = '';
+  if(f){
+    var spare = f.have - f.need, tips = [];
+    if(!f.fits){ if(f.limit) tips.push('Raise your daily limit (now '+esc(fmtHM(f.limit))+')'); tips.push('Give chapters a little less time'); tips.push('Add a study day or move your end date later'); }
+    res = '<div class="cap-res '+(f.fits ? "ok" : "bad")+'"><div class="v">'+(tooMuch ? 'needs about '+esc(fmtHM(f.perDay)) : 'about '+esc(fmtHM(f.layoutMin)))+' a day</div>'+
+      '<div class="st">'+(f.fits ? '\u2713 Everything fits'+(spare >= 60 ? ' \u00B7 '+esc(fmtHM(spare))+' to spare' : ' \u00B7 a tight fit') : '\u2717 Does not fit yet \u00B7 about '+esc(fmtHM(Math.max(f.need-f.have, f.leftMin, 60)))+' short')+'</div>'+
+      '<div class="m">'+f.chapters+' chapters \u00B7 '+esc(fmtHM(f.need))+' in all \u00B7 '+f.studyDays+' study days to '+esc(fmtShort(parseKey(f.end)))+(manual ? ' \u00B7 your own sessions' : "")+'</div>'+
+      (tips.length ? '<ul class="fit-tips">'+tips.map(function(t){ return '<li>'+t+'</li>'; }).join("")+'</ul>' : "")+'</div>';
+  }
   var rows = subs.map(function(x){
     return '<button type="button" class="cap-r" data-wa="subjTime" data-v="'+esc(x.n)+'"><span>'+esc(x.n)+'<small>'+x.cnt+' chapters · '+esc(fmtHM(x.cnt*x.m))+'</small></span><em class="'+(x.own ? "hl" : "")+'">'+esc(fmtHM(x.m))+'</em></button>';
   }).join("");
@@ -71014,18 +71024,16 @@ function wzCapacity(w){
       '<div class="cf"><label>Minimum break between sessions</label><select data-w="cap.breakMin" data-t="n">'+[5,10,15,20,30,45,60].map(function(m){ return '<option value="'+m+'"'+(+c.breakMin===m?" selected":"")+'>'+m+' min</option>'; }).join("")+'</select></div>'+
       '<div class="hint">Essay, PYQ, Test and Revision take over any study session they overlap on their day. A chapter can use part of a session; the next one starts where it ends.</div>'+weekMapHtml(w);
   }
-  return '<h3>How long per chapter?</h3><p class="hint">Roll to the time you want to give each chapter. The app works out your day.</p>'+
+  return '<h3>How long per chapter?</h3>'+
     wheelHtml("def", "", mins)+res+
     '<div class="cf"><label>Study days</label>'+dayChips("cap.days", c.days)+'</div>'+
-    fitLineHtml(w)+
-    '<details class="info-card cap-adv" data-wopen="capSubj"'+(w.open.capSubj ? " open" : "")+'><summary>Different time for some subjects'+(diff ? ' <span class="cnt">'+diff+' set</span>' : "")+'</summary><div class="hint">Tap a subject to roll its own time.</div><div class="cap-rows">'+rows+'</div></details>'+
-    '<details class="info-card cap-adv" data-wopen="capAdv"'+(w.open.capAdv ? " open" : "")+'><summary>Exact times and daily limit <span class="cnt">optional</span></summary>'+
+    '<details class="info-card cap-adv" data-wopen="capSubj"'+(w.open.capSubj ? " open" : "")+'><summary>Different time for some subjects'+(diff ? ' <span class="cnt">'+diff+' set</span>' : "")+'</summary><div class="cap-rows">'+rows+'</div></details>'+
+    '<details class="info-card cap-adv" data-wopen="capAdv"'+(w.open.capAdv ? " open" : "")+'><summary>Daily limit and exact times <span class="cnt">optional</span></summary>'+
       '<div class="two"><div class="cf"><label>Daily limit</label><select data-w="cap.limitMin" data-t="n">'+limits+'</select></div>'+
       (manual ? '' : '<div class="cf"><label>My day starts at</label><select data-w="cap.dayStart">'+starts+'</select></div>')+'</div>'+
-      '<div class="hint">'+(+c.limitMin ? 'The app will not plan more than '+esc(fmtHM(+c.limitMin))+' of study on a day.' : 'With no limit the app plans as many hours as it needs to finish by your end date.')+'</div>'+
-      (H.auto ? '<div class="hint">Your chapter time is set automatically to fit the day you chose. Roll the wheel above to choose your own.</div>' : '')+'<div class="pill-row"><button type="button" class="pill'+(manual ? "" : " on")+'" data-wa="layout" data-v="auto">The app plans my day</button><button type="button" class="pill'+(manual ? " on" : "")+'" data-wa="layout" data-v="manual">I set my own sessions</button></div>'+own+
-    '</details>'+
-    '<details class="info-card" data-wopen="capInfo"'+(w.open.capInfo ? " open" : "")+'><summary>How does this work?</summary><div class="muted">You choose how long a chapter takes. The app multiplies that by your chapters, divides it over your study days, and builds each day for you. A chapter can spread over more than one session or day. <b>Essay, PYQ, Test and Revision</b> keep the times you give them.</div></details>';
+      (H.auto ? '<div class="hint">Your chapter time is set automatically to fit the day you chose. Roll the wheel above to choose your own.</div>' : '')+
+      '<div class="pill-row"><button type="button" class="pill'+(manual ? "" : " on")+'" data-wa="layout" data-v="auto">The app plans my day</button><button type="button" class="pill'+(manual ? " on" : "")+'" data-wa="layout" data-v="manual">I set my own sessions</button></div>'+own+
+    '</details>';
 }
 function openTimeSheet(name){
   var w = wiz, H = w.cap.hours, cur = Math.round(((H.by && H.by[name]!=null) ? H.by[name] : H.def)*60);
@@ -82955,7 +82963,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "316";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "317";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
