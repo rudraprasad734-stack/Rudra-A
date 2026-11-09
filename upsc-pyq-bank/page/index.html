@@ -70793,7 +70793,7 @@ function wzDuration(w){
       '<div class="fresh-box"><b>Starting over?</b><span>Restart everything new from today: your start date becomes today and your ticked chapters are cleared.</span><button type="button" class="btn ghost sm" data-wa="freshStart">Restart everything from today</button></div>' : "")+
     (w.fresh ? '<div class="fresh-box on"><b>Restarting from today</b><span>Your start date is today. When you generate the plan, your ticked chapters and planned sessions are cleared. Sessions you logged stay, and Restore previous plan brings everything back for 30 days.</span><button type="button" class="btn ghost sm" data-wa="freshUndo">Keep my progress instead</button></div>' : "")+
     (st.ok
-      ? '<div class="win-sum"><div><b>'+(w.durMode==="months" && +w.months>0 ? +w.months : st.months)+'</b><span>months</span></div><div><b>'+st.weeks+'</b><span>weeks</span></div><div><b>'+st.days+'</b><span>days</span></div><div><b>'+st.studyDays+'</b><span>study days</span></div><div><b>'+st.hours+'</b><span>study hours</span></div></div><div class="muted">Ends '+esc(fmtLong(parseKey(st.end)))+'. Study days and hours follow your capacity settings (step 6).</div>'
+      ? '<div class="win-sum"><div><b>'+(w.durMode==="months" && +w.months>0 ? +w.months : st.months)+'</b><span>months</span></div><div><b>'+st.weeks+'</b><span>weeks</span></div><div><b>'+st.days+'</b><span>days</span></div><div><b>'+st.studyDays+'</b><span>study days</span></div><div><b>'+st.hours+'</b><span>study hours</span></div></div><div class="muted">Ends '+esc(fmtLong(parseKey(st.end)))+'. Study days and hours follow your capacity settings (step 5).</div>'
       : '<div class="muted mt">Enter a duration or target date to see your available time.</div>');
 }
 function wzStartView(w){
@@ -70977,7 +70977,8 @@ function renderWizard(host){
     return;
   }
   wizSync(w);
-  var stepper = '<div class="stepper">'+STEP_TITLES.map(function(t, i){ return '<button type="button" class="st'+(i===w.step?" cur":(i<w.step?" done":""))+'" data-wa="goto" data-v="'+i+'"><i>'+(i+1)+'</i><span>'+esc(t)+'</span></button>'; }).join("")+'</div>';
+  if(w.step===1) w.step = 2;   // the old Start view step no longer exists (a saved draft may still be on it)
+  var stepper = '<div class="stepper">'+STEP_TITLES.map(function(t, i){ if(i===1) return ""; return '<button type="button" class="st'+(i===w.step?" cur":(i<w.step?" done":""))+'" data-wa="goto" data-v="'+i+'"><i>'+(i>1 ? i : i+1)+'</i><span>'+esc(t)+'</span></button>'; }).join("")+'</div>';
   host.innerHTML =
     '<div class="card wz-head"><div><h2>'+(studyPlan ? "Edit your preparation plan" : "Build your preparation plan")+'</h2><div class="muted">Plan &rarr; study &rarr; complete &rarr; unlock the next subject &rarr; the calendar adapts.</div></div>'+(studyPlan ? '<button type="button" class="link-btn" data-wa="cancelEdit">Cancel</button>' : "")+'</div>'+
     (!studyPlan && planBackupInfo() ? '<div class="card restore-card"><div><b>You reset your plan</b><div class="muted">Your earlier plan and progress were kept. Restore them any time in the next 30 days.</div></div><button type="button" class="btn primary sm" data-pa="restorePlan">Restore previous plan</button></div>' : "")+
@@ -71155,8 +71156,8 @@ function scrollPlannerTop(){
 function wizAction(a, b){
   var w = wiz, v = b.getAttribute("data-v"), path = b.getAttribute("data-path"), step0 = w.step;
   switch(a){
-    case "next": var e = wizValidate(w, w.step); w.err = e; if(!e.length){ w.step = Math.min(7, w.step+1); } break;
-    case "back": w.err = []; w.step = Math.max(0, w.step-1); break;
+    case "next": var e = wizValidate(w, w.step); w.err = e; if(!e.length){ w.step = Math.min(7, w.step+1); if(w.step===1) w.step = 2; } break;
+    case "back": w.err = []; w.step = Math.max(0, w.step-1); if(w.step===1) w.step = 0; break;
     case "goto": var t = +v; if(t <= w.step){ w.err = []; w.step = t; } else { var ee = []; for(var s=w.step; s<t; s++) ee = ee.concat(wizValidate(w, s)); w.err = ee; if(!ee.length) w.step = t; } break;
     case "set": wset(path, b.getAttribute("data-n") ? +v : v); if(path==="mode"){ wizSync(w); } break;
     case "toggleBool": wset(path, !wget(path)); wizSync(w); break;
@@ -82686,7 +82687,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "310";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "311";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
