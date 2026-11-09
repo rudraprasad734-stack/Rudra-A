@@ -795,6 +795,7 @@
   .hm i.fut{background:transparent;} .hm i.l1, .hm-key i.l1{background:color-mix(in srgb, var(--tab-accent) 32%, var(--tab-accent-soft));} .hm i.l2, .hm-key i.l2{background:color-mix(in srgb, var(--tab-accent) 58%, var(--tab-accent-soft));} .hm i.l3, .hm-key i.l3{background:color-mix(in srgb, var(--tab-accent) 82%, transparent);} .hm i.l4, .hm-key i.l4{background:var(--tab-accent);}
   .hm i.now{outline:2px solid var(--ink-soft); outline-offset:1px;}
   .hm-key{display:flex; align-items:center; justify-content:flex-end; gap:3px; margin-top:8px; font-size:10.5px; color:var(--ink-soft);} .hm-key i{width:11px; height:11px; aspect-ratio:auto;} .hm-key span{margin:0 3px;}
+  .dx-rev .rv-done{color:#34D58A; font-weight:700; font-size:16px; padding:0 8px;}
   .dx-rev .rv-row{display:flex; align-items:center; gap:8px; padding:8px 0; border-top:1px solid var(--line);} .dx-rev .rv-row:first-of-type{border-top:none;}
   .rv-t{flex:1; min-width:0;} .rv-t b{display:block; font-size:14px; color:var(--ink); overflow-wrap:anywhere;} .rv-t small{display:block; color:var(--ink-soft); font-size:12px; margin-top:1px;}
   .rv-b{flex:0 0 auto; width:38px; height:38px; border-radius:50%; border:1px solid var(--line); background:var(--surface-2); color:var(--ink-soft); font-size:16px; cursor:pointer; display:grid; place-items:center; padding:0;} .rv-b.ok{background:var(--tab-accent); color:var(--tab-accent-ink); border-color:transparent;}
@@ -1198,6 +1199,17 @@
   .ses.st-completed{opacity:.62;} .ses.st-missed{border-color:#e5675a;} .ses.st-skipped{opacity:.6;}
   .sess-more{margin-top:8px;} .sess-more summary{font-size:12.5px; font-weight:700; color:var(--tab-accent); cursor:pointer; list-style:none;} .sess-more summary::-webkit-details-marker{display:none;}
   .sess-ctl input[type=time], .sess-ctl select{max-width:100%; min-width:0; box-sizing:border-box;}
+  /* iPhone Safari sizes time boxes by their hidden clock text and lets them spill out of the card: pin them to the card width */
+  .fresh-box{display:flex; flex-direction:column; gap:6px; margin-top:12px; padding:12px; border:1.5px dashed var(--line); border-radius:14px; font-size:13px; color:var(--ink-soft);} .fresh-box b{color:var(--ink); font-size:14px;} .fresh-box.on{border-style:solid; border-color:#46C8B9; background:rgba(70,200,185,.10);} .fresh-box .btn{align-self:flex-start;}
+  /* iPhone Safari sizes date and time boxes by their hidden text and lets them spill out of the card: keep them inside */
+  .cf input[type=date], .cf input[type=time], .cf input[type=month], .sf input[type=date], .sf input[type=time], .date-row input[type=date], .date-row input[type=time]{width:100% !important; max-width:100% !important; min-width:0 !important; box-sizing:border-box; -webkit-appearance:none; appearance:none; display:block; overflow:hidden;}
+  .cf input[type=date]::-webkit-date-and-time-value, .cf input[type=time]::-webkit-date-and-time-value{text-align:left; min-height:1.2em;}
+  .rev-method{display:flex; flex-direction:column; gap:8px;} .rm-opt{display:flex !important; flex-direction:row !important; align-items:flex-start; gap:10px; padding:11px 12px; border:1px solid var(--line,rgba(255,255,255,.18)); border-radius:14px; cursor:pointer; text-transform:none !important; letter-spacing:0 !important; font-size:14px !important; font-weight:400 !important; color:var(--ink) !important;}
+  .rm-opt.on{border-color:#46C8B9; background:rgba(70,200,185,.10);} .rm-opt input[type=radio]{width:20px !important; height:20px !important; min-width:20px !important; min-height:0 !important; padding:0 !important; margin:2px 0 0 !important; flex:none; accent-color:#46C8B9; -webkit-appearance:radio; appearance:auto; border-radius:50%;} .rm-opt span{display:flex; flex-direction:column; gap:3px; min-width:0;} .rm-opt b{font-size:15px;} .rm-opt em{font-style:normal; font-size:11px; font-weight:700; color:#34D58A; margin-left:6px;} .rm-opt small{color:var(--ink-soft); font-size:12.5px; line-height:1.45; font-weight:400;} .rm-or{text-align:center; font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-soft);}
+  .sess-ctl label{min-width:0; max-width:100%;}
+  .sess-ctl input[type=time]{width:100% !important; min-width:0 !important; max-width:100% !important; box-sizing:border-box; -webkit-appearance:none; appearance:none; display:block; margin-left:0; margin-right:0; overflow:hidden; min-height:46px;}
+  .sess-ctl input[type=time]::-webkit-date-and-time-value{text-align:left; min-height:1.2em;}
+  .sess-ctl input[type=time]::-webkit-datetime-edit{padding:0; max-width:100%;}
   #modalHost:has(.start-sheet){align-items:flex-end; padding-bottom:0;} .start-sheet{border-radius:26px 26px 0 0 !important; margin:0 auto !important; max-width:560px; padding-bottom:calc(20px + env(safe-area-inset-bottom,0px));}
   .ss-head{display:flex; align-items:center; gap:12px;} .ss-head h2{margin:0; font-size:17px;} .ss-ic{width:46px; height:46px; border-radius:14px; background:var(--c); display:grid; place-items:center; font-size:22px; flex:none; color:#fff;}
   .pl-tabs button.on{background:linear-gradient(135deg,var(--tab-accent),color-mix(in srgb,var(--tab-accent) 55%,#27b9ff)) !important; box-shadow:0 6px 16px -8px var(--tab-accent);}
@@ -70210,11 +70222,13 @@ function activityDates(plan, a, from, to){
   });
   return out;
 }
+var SPACED_GAPS = [1,3,7,14,30];   // spaced revision: days after a chapter is marked completed
 function activityCalendar(plan, from, to){
   var res = {};
   ACT_KINDS.forEach(function(kind){
     var a = plan.activities[kind];
     if(!a || !a.on) return;
+    if(kind==="revision" && a.method==="auto") return;   // spaced revision only: no fixed weekly slot
     activityDates(plan, a, from, to).forEach(function(d){ (res[d] = res[d] || []).push({kind:kind, start:a.start, end:a.end}); });
   });
   return res;
@@ -70264,7 +70278,7 @@ function simulate(plan, from, frozen, strict){
     if(s.kind==="study" && s.topicId && s.status==="completed") blocksDone[s.topicId] = (blocksDone[s.topicId]||0)+1;
     // a missed session moved back to today still counts toward its chapter, so the chapter is not given an extra one later
     else if(s.kind==="study" && s.topicId && s.movedFrom && s.date>=from && (s.status==="not_started" || s.status==="in_progress")) held[s.topicId] = (held[s.topicId]||0)+1;
-    if(s.kind==="revision" && s.topicId && s.revGap && s.status!=="missed") revSeen[s.topicId+"#"+s.revGap] = 1;
+    if(s.kind==="revision" && s.topicId && s.revGap && s.status!=="missed" && s.date >= ((studyProgress.topics[s.topicId]||{}).completedAt || "")) revSeen[s.topicId+"#"+s.revGap] = 1;
   });
   var queue = [];
   var actSt = states.filter(function(x){ return x.state==="active"; })[0];
@@ -70273,16 +70287,24 @@ function simulate(plan, from, frozen, strict){
     var nd = needMap[l.id]||need, hd = held[l.id]||0;
     if(hd && (blocksDone[l.id]||0)+hd >= nd) return;
     queue.push({leaf:l, st:st, need:nd, rem:Math.max(1, nd-(blocksDone[l.id]||0)-hd)}); }); });
-  var rv = plan.activities.revision, autoRev = rv && rv.on && (rv.method==="auto" || rv.method==="both");
-  var gaps = (rv && rv.gaps && rv.gaps.length) ? rv.gaps : [3,10,30];
+  var rv = plan.activities.revision, autoRev = false;   // spaced revision is shown as reminders (Dashboard and day view), not as full study sessions that would crowd out new chapters
+  var gaps = SPACED_GAPS;
   var due = [];
   if(autoRev){
     states.forEach(function(st){ st.leaves.forEach(function(l){
       var t = studyProgress.topics[l.id];
-      if(t && t.status==="completed" && t.completedAt) gaps.forEach(function(g){
-        var dk = toKey(addDays(parseKey(t.completedAt), g));
-        if(!revSeen[l.id+"#"+g]) due.push({date:maxKey(dk, from), leaf:l, st:st, gap:g});
-      });
+      if(t && t.status==="completed" && t.completedAt){
+        // a stage already done or planned counts for the earlier ones; of the stages already past only the latest is still worth doing
+        var seenIdx = -1, pastIdx = -1;
+        gaps.forEach(function(g, i){ if(revSeen[l.id+"#"+g]) seenIdx = i; });
+        gaps.forEach(function(g, i){ if(i > seenIdx && toKey(addDays(parseKey(t.completedAt), g)) < from) pastIdx = i; });
+        gaps.forEach(function(g, i){
+          if(i <= seenIdx) return;
+          var dk = toKey(addDays(parseKey(t.completedAt), g));
+          if(dk < from && (i !== pastIdx || diffDays(from, dk) > 60)) return;
+          due.push({date:maxKey(dk, from), leaf:l, st:st, gap:g});
+        });
+      }
     }); });
   }
   var out = [], spans = {}, frozenBy = {}, acts = activityCalendar(plan, from, plan.window.end), lastCtx = null;
@@ -70380,8 +70402,10 @@ function planSessionsOn(d){ return viewIndex().byDate[d] || []; }
 function setLeaves(ids, status, by){
   var before = activeSubject(studyPlan), beforeName = before ? before.name : "";
   ids.forEach(function(id){
+    var prevT = studyProgress.topics[id];
     if(status==="not_started") delete studyProgress.topics[id];
-    else studyProgress.topics[id] = {status:status, completedAt:(status==="completed" ? todayKey : ""), at:new Date().toISOString(), by:by||"manual"};
+    // marking a chapter that is already completed again must not restart its revision dates
+    else studyProgress.topics[id] = {status:status, completedAt:(status==="completed" ? ((prevT && prevT.status==="completed" && prevT.completedAt) ? prevT.completedAt : todayKey) : ""), at:new Date().toISOString(), by:by||"manual"};
     if(status==="completed") trackEvent("chapter_completed", {});
   });
   var after = activeSubject(studyPlan), afterName = after ? after.name : "";
@@ -70419,7 +70443,7 @@ var ACT_INFO = {
   essay:{title:"Essay", hint:"Essay writing practice", color:"--tab-logs"},
   pyq:{title:"PYQ Practice", hint:"Previous-year questions on the active subject", color:"--tab-tiers"},
   test:{title:"Tests", hint:"Sectional or full-length tests", color:"--tab-mocks"},
-  revision:{title:"Revision", hint:"Fixed days, or spaced revision after each finished chapter", color:"--tab-pyq"},
+  revision:{title:"Revision", hint:"Spaced revision after each finished chapter, or days you choose", color:"--tab-pyq"},
   ca:{title:"Current Affairs", hint:"Daily, specific days or weekly", color:"--tab-scheduler"}
 };
 function wizDefaults(){
@@ -70431,11 +70455,11 @@ function wizDefaults(){
       essay:{on:false, mode:"weekly", days:[5], interval:1, count:2, dates:[], start:"19:00", end:"21:00"},
       pyq:{on:false, mode:"weekly", days:[2], interval:1, count:3, dates:[], start:"16:00", end:"17:00"},
       test:{on:false, mode:"weekly", days:[0], interval:1, count:2, dates:[], start:"09:00", end:"11:00"},
-      revision:{on:false, mode:"weekly", days:[6], interval:1, count:2, dates:[], start:"18:00", end:"19:00", method:"fixed", gaps:[3,10,30]},
+      revision:{on:false, mode:"weekly", days:[6], interval:1, count:2, dates:[], start:"18:00", end:"19:00", method:"auto", gaps:[1,3,7,14,30]},
       ca:{on:false, mode:"weekly", days:[0,1,2,3,4,5,6], interval:1, count:8, dates:[], start:"21:00", end:"21:30"}
     }};
 }
-function wizFromPlan(p){ var w = JSON.parse(JSON.stringify(p.cfg)); w.step = 0; w.err = []; w.open = {}; if(!w.seen){ w.seen = {}; wizCatalog(w).order.forEach(function(n){ w.seen[n] = 1; }); } return w; }
+function wizFromPlan(p){ var w = JSON.parse(JSON.stringify(p.cfg)); delete w.fresh; w.step = 0; w.err = []; w.open = {}; if(!w.seen){ w.seen = {}; wizCatalog(w).order.forEach(function(n){ w.seen[n] = 1; }); } return w; }
 function wizSnapshot(w){ var c = JSON.parse(JSON.stringify(w)); delete c.step; delete c.err; delete c.open; delete c.qs; return c; }
 function wizCatCfg(w){ return {prelims:w.mode!=="mains", mains:w.mode!=="prelims", gs1:!!w.gs1, csat:!!w.csat, gs:w.gs.slice(), optionalOn:!!w.optionalOn, optional:w.optional, customText:w.customText}; }
 function wizCatalog(w){ return buildCatalog(wizCatCfg(w)); }
@@ -70498,8 +70522,8 @@ function fitCalc(w){
   var plan = compilePlan(w), from = maxKey(todayKey, plan.window.start), states = subjectStates(plan), needMap = blockNeeds(plan, states);
   var chapters = 0, need = 0;
   states.forEach(function(s){ s.leaves.forEach(function(l){ if(!isDone(l.id)){ chapters++; need += needMap[l.id]||1; } }); });
-  var rv = plan.activities && plan.activities.revision, autoRev = rv && rv.on && (rv.method==="auto" || rv.method==="both"), gaps = (rv && rv.gaps && rv.gaps.length) ? rv.gaps.length : 3;
-  var rev = autoRev ? chapters*gaps : 0;
+  var rv = plan.activities && plan.activities.revision, autoRev = false, gaps = SPACED_GAPS.length;
+  var rev = 0;
   var acts = activityCalendar(plan, from, plan.window.end), slots = 0, mins = 0, days = 0, studyDays = 0;
   eachDay(from, plan.window.end, function(d){
     days++;
@@ -70616,7 +70640,7 @@ function compilePlan(w){
 
 
 // ---------- time map: who owns which slot, and what is free ----------
-function actTimeOk(a){ return a.on && a.start && a.end && toMin(a.end) > toMin(a.start); }
+function actTimeOk(a){ return a.on && a.method!=="auto" && a.start && a.end && toMin(a.end) > toMin(a.start); }
 function activityConflicts(w){
   var st = windowStats(w); if(!st.ok) return [];
   var pl = {window:{start:w.start, end:st.end}}, on = ACT_KINDS.filter(function(k){ return actTimeOk(w.acts[k]); }), dts = {}, res = [];
@@ -70736,6 +70760,7 @@ function wizValidate(w, step){
   if(step===6){
     ACT_KINDS.forEach(function(k){
       var a = w.acts[k]; if(!a.on) return;
+      if(a.method==="auto") return;   // spaced revision needs no days or times
       var nm = ACT_INFO[k].title;
       if(!a.start || !a.end || toMin(a.end) <= toMin(a.start)) e.push(nm+": end time must be after start time.");
       if(a.mode==="weekly" && !a.days.length) e.push(nm+": choose at least one day.");
@@ -70764,7 +70789,9 @@ function wzDuration(w){
         '<div class="cf"><label>Months (custom)</label><input type="number" min="1" max="60" data-w="months" data-t="n" value="'+esc(w.months)+'"></div>'
       : '<div class="cf"><label>My target date</label><input type="date" data-w="target" value="'+esc(w.target)+'"></div>')+
     '<div class="cf"><label>Start date</label><input type="date" data-w="start" value="'+esc(w.start)+'"></div>'+
-    (/^\d{4}-\d{2}-\d{2}$/.test(w.start) && w.start < todayKey ? '<div class="hint">This start date is in the past. Your schedule begins today. The days before today are not planned and are not counted as missed.</div>' : "")+
+    (/^\d{4}-\d{2}-\d{2}$/.test(w.start) && w.start < todayKey && !w.fresh ? '<div class="hint">This start date is in the past. Your schedule begins today. The days before today are not planned and are not counted as missed.</div>'+
+      '<div class="fresh-box"><b>Starting over?</b><span>Restart everything new from today: your start date becomes today and your ticked chapters are cleared.</span><button type="button" class="btn ghost sm" data-wa="freshStart">Restart everything from today</button></div>' : "")+
+    (w.fresh ? '<div class="fresh-box on"><b>Restarting from today</b><span>Your start date is today. When you generate the plan, your ticked chapters and planned sessions are cleared. Sessions you logged stay, and Restore previous plan brings everything back for 30 days.</span><button type="button" class="btn ghost sm" data-wa="freshUndo">Keep my progress instead</button></div>' : "")+
     (st.ok
       ? '<div class="win-sum"><div><b>'+(w.durMode==="months" && +w.months>0 ? +w.months : st.months)+'</b><span>months</span></div><div><b>'+st.weeks+'</b><span>weeks</span></div><div><b>'+st.days+'</b><span>days</span></div><div><b>'+st.studyDays+'</b><span>study days</span></div><div><b>'+st.hours+'</b><span>study hours</span></div></div><div class="muted">Ends '+esc(fmtLong(parseKey(st.end)))+'. Study days and hours follow your capacity settings (step 6).</div>'
       : '<div class="muted mt">Enter a duration or target date to see your available time.</div>');
@@ -70865,20 +70892,34 @@ function wzCapacity(w){
     '<details class="info-card cap-adv" data-wopen="capAdv"'+(w.open.capAdv ? " open" : "")+'><summary>Fine-tune sessions and times</summary>'+adv+'</details>'+
     '<details class="info-card" data-wopen="capInfo"'+(w.open.capInfo ? " open" : "")+'><summary>What is a session?</summary><div class="muted">A <b>session</b> is one block of focused study on one chapter, and you decide how long it is. The planner counts in sessions: <b>what you need</b> (chapters \u00D7 sessions per chapter) against <b>what you have</b> (study days \u00D7 sessions a day). If you have at least what you need, everything fits.</div></details>';
 }
+function revMethodHtml(a){
+  var m = a.method || "fixed";
+  function opt(v, title, tag, text){
+    return '<label class="rm-opt'+(m===v?" on":"")+'"><input type="radio" name="revm" data-w="acts.revision.method" value="'+v+'"'+(m===v?" checked":"")+'><span><b>'+title+'</b>'+(tag ? ' <em>'+tag+'</em>' : '')+'<small>'+text+'</small></span></label>';
+  }
+  return '<div class="cf rev-method"><label>Revision method</label>'+
+    opt("auto","Spaced revision","Recommended","When you mark a chapter completed, the app brings it back for revision after 1, 3, 7, 14 and 30 days. It shows under &ldquo;Revise today&rdquo; on the Dashboard and on that day in the planner. Nothing else to set up.")+
+    '<div class="rm-or">Or</div>'+
+    opt("fixed","Choose how often","","Pick the weekdays and the time for a fixed revision slot.")+
+    opt("both","Both","","Spaced revision plus your own fixed days.")+
+  '</div>';
+}
 function actCard(w, k){
   var a = w.acts[k], info = ACT_INFO[k];
   var body = "";
   if(a.on){
-    body += '<div class="cf"><label>How often</label><select data-w="acts.'+k+'.mode">'+
-      '<option value="weekly"'+(a.mode==="weekly"?" selected":"")+'>Weekly, on chosen days</option>'+
-      '<option value="monthly"'+(a.mode==="monthly"?" selected":"")+'>A number of times per month</option>'+
-      '<option value="dates"'+(a.mode==="dates"?" selected":"")+'>Specific dates I pick</option></select></div>';
-    if(a.mode==="weekly") body += dayChips("acts."+k+".days", a.days)+'<div class="two"><div class="cf"><label>Repeat</label><select data-w="acts.'+k+'.interval" data-t="n">'+[1,2,3,4].map(function(m){ return '<option value="'+m+'"'+(+a.interval===m?" selected":"")+'>'+(m===1?"Every week":"Every "+m+" weeks")+'</option>'; }).join("")+'</select></div>'+
-      (k==="ca" ? '<div class="cf"><label>Shortcut</label><button type="button" class="btn ghost sm" data-wa="everyDay" data-v="'+k+'">Every day</button></div>' : '')+'</div>';
-    if(a.mode==="monthly") body += '<div class="cf"><label>Times per month</label><select data-w="acts.'+k+'.count" data-t="n">'+optsNum(1,12,a.count)+'</select></div><div class="cf"><label>On these weekdays (optional)</label>'+dayChips("acts."+k+".days", a.days)+'</div>';
-    if(a.mode==="dates") body += '<div class="cf"><label>Add a date</label><div class="tpair"><input type="date" id="actDate_'+k+'"><button type="button" class="btn ghost sm" data-wa="addDate" data-v="'+k+'">Add</button></div></div><div class="pill-row">'+a.dates.slice().sort().map(function(d){ return '<button type="button" class="pill on" data-wa="rmDate" data-v="'+k+'|'+d+'">'+esc(fmtShort(parseKey(d)))+' ✕</button>'; }).join("")+'</div>';
-    body += '<div class="cf"><label>Time (from &ndash; to)</label>'+timePair("acts."+k+".start","acts."+k+".end",a.start,a.end)+'</div>'+freeHint(w, k);
-    if(k==="revision") body += '<div class="cf"><label>Revision method</label><select data-w="acts.revision.method"><option value="fixed"'+(a.method==="fixed"?" selected":"")+'>Fixed days (chosen above)</option><option value="auto"'+(a.method==="auto"?" selected":"")+'>After each chapter (spaced: +3, +10, +30 days)</option><option value="both"'+(a.method==="both"?" selected":"")+'>Both</option></select></div>';
+    if(k==="revision") body += revMethodHtml(a);
+    if(k!=="revision" || a.method!=="auto"){
+      body += '<div class="cf"><label>'+(k==="revision" ? 'Your own days: how often' : 'How often')+'</label><select data-w="acts.'+k+'.mode">'+
+        '<option value="weekly"'+(a.mode==="weekly"?" selected":"")+'>Weekly, on chosen days</option>'+
+        '<option value="monthly"'+(a.mode==="monthly"?" selected":"")+'>A number of times per month</option>'+
+        '<option value="dates"'+(a.mode==="dates"?" selected":"")+'>Specific dates I pick</option></select></div>';
+      if(a.mode==="weekly") body += dayChips("acts."+k+".days", a.days)+'<div class="two"><div class="cf"><label>Repeat</label><select data-w="acts.'+k+'.interval" data-t="n">'+[1,2,3,4].map(function(m){ return '<option value="'+m+'"'+(+a.interval===m?" selected":"")+'>'+(m===1?"Every week":"Every "+m+" weeks")+'</option>'; }).join("")+'</select></div>'+
+        (k==="ca" ? '<div class="cf"><label>Shortcut</label><button type="button" class="btn ghost sm" data-wa="everyDay" data-v="'+k+'">Every day</button></div>' : '')+'</div>';
+      if(a.mode==="monthly") body += '<div class="cf"><label>Times per month</label><select data-w="acts.'+k+'.count" data-t="n">'+optsNum(1,12,a.count)+'</select></div><div class="cf"><label>On these weekdays (optional)</label>'+dayChips("acts."+k+".days", a.days)+'</div>';
+      if(a.mode==="dates") body += '<div class="cf"><label>Add a date</label><div class="tpair"><input type="date" id="actDate_'+k+'"><button type="button" class="btn ghost sm" data-wa="addDate" data-v="'+k+'">Add</button></div></div><div class="pill-row">'+a.dates.slice().sort().map(function(d){ return '<button type="button" class="pill on" data-wa="rmDate" data-v="'+k+'|'+d+'">'+esc(fmtShort(parseKey(d)))+' ✕</button>'; }).join("")+'</div>';
+      body += '<div class="cf"><label>Time (from &ndash; to)</label>'+timePair("acts."+k+".start","acts."+k+".end",a.start,a.end)+'</div>'+freeHint(w, k);
+    }
   }
   return '<div class="act-card'+(a.on?" on":"")+'" style="--bc:var('+info.color+')"><label class="tog"><input type="checkbox" data-w="acts.'+k+'.on"'+(a.on?" checked":"")+'> <b>'+esc(info.title)+'</b><small>'+esc(info.hint)+'</small></label>'+body+'</div>';
 }
@@ -71109,6 +71150,8 @@ function wizAction(a, b){
     case "allSubjects": w.order = wizCatalog(w).order.slice(); w.orderAuto = true; w.seen = {}; w.order.forEach(function(n){ w.seen[n] = 1; }); wizSync(w); break;
     case "clearSubjects": w.order = []; w.orderAuto = false; wizSync(w); break;
     case "scopeAll": case "scopeNone": var cat = wizCatalog(w); catalogLeaves(cat.map[v]).forEach(function(l){ if(a==="scopeAll") w.sel[l.id]=1; else delete w.sel[l.id]; }); break;
+    case "freshStart": w.start = todayKey; w.fresh = true; break;
+    case "freshUndo": w.fresh = false; break;
     case "everyDay": w.acts[v].days = [0,1,2,3,4,5,6]; w.acts[v].mode = "weekly"; break;
     case "addDate": var inp = document.getElementById("actDate_"+v); if(inp && inp.value && w.acts[v].dates.indexOf(inp.value)<0) w.acts[v].dates.push(inp.value); break;
     case "rmDate": var pr = v.split("|"), ds = w.acts[pr[0]].dates, di = ds.indexOf(pr[1]); if(di>=0) ds.splice(di,1); break;
@@ -71144,9 +71187,18 @@ function wizGenerate(){
   var errs = [];
   for(var s=0; s<7; s++) errs = errs.concat(wizValidate(wiz, s));
   if(errs.length){ wiz.err = errs; wizRender(); return; }
-  var wasEditing = !!studyPlan;
+  var wasEditing = !!studyPlan, fresh = !!wiz.fresh;
   var keepLeave = studyPlan && studyPlan.leave, keepCatch = studyPlan && studyPlan.catchup;
+  if(fresh){
+    // restart everything new from today: keep a backup, clear ticks, revision marks and planned (unlogged) sessions
+    if(studyPlan) planBackup();
+    studyProgress = {topics:{}, lastUnlock:null};
+    revDone = {}; revSave();
+    studySessions = studySessions.filter(function(s){ return !(s.origin==="auto" && !isTouched(s)); });
+    saveSessions();
+  }
   studyPlan = compilePlan(wiz);
+  if(studyPlan.cfg) delete studyPlan.cfg.fresh;
   trackEvent("plan_created", {edited:wasEditing ? "yes" : "no"});
   if(keepLeave) studyPlan.leave = keepLeave;
   if(keepCatch) studyPlan.catchup = keepCatch.filter(function(d){ return d >= todayKey; });
@@ -71476,7 +71528,7 @@ function dailyHtml(plan){
   var otherDay = d!==todayKey ? '<div class="card day-note"><div class="muted">You are looking at '+(d>todayKey ? "a later day" : "an earlier day")+'. Start works only on today&rsquo;s sessions.</div><button type="button" class="btn primary sm" data-pa="dToday">Go to today &rsaquo;</button></div>' : "";
   return otherDay+'<div class="navrow"><button type="button" class="btn ghost sm" data-pa="dPrev">&lsaquo;</button><b>'+esc(fmtLong(parseKey(d)))+'</b><button type="button" class="btn ghost sm" data-pa="dNext">&rsaquo;</button></div>'+
     '<div class="pill-row"><button type="button" class="btn ghost sm" data-pa="dToday">Today</button></div>'+
-    hero+todayExtra+bysub+'<div class="card sess-day"><div class="sess-day-head"><h3>Sessions</h3><span class="muted">'+(real.length ? done+"/"+real.length+" completed" : "none scheduled")+'</span></div>'+
+    hero+todayExtra+dayRevisionHtml(d)+bysub+'<div class="card sess-day"><div class="sess-day-head"><h3>Sessions</h3><span class="muted">'+(real.length ? done+"/"+real.length+" completed" : "none scheduled")+'</span></div>'+
       logHelpHtml()+
       (list.length ? list.map(function(s){ return s.projected ? planRow(s) : sessLogCard(s, states); }).join("") : '<div class="muted sess-empty">Nothing planned on this day.</div>')+'</div>'+
     '<div class="notes-card card"><h3>Notes</h3><textarea id="dayNotes" placeholder="How did today go? Anything to revise or flag for tomorrow...">'+esc(st.notes||"")+'</textarea><div class="save-hint" id="dayNotesHint">'+(db ? "Saves automatically as you type" : "Saved on this device")+'</div></div>'+
@@ -71485,6 +71537,7 @@ function dailyHtml(plan){
 }
 function bindPlannerDaily(host){
   bindSessionCards(host);
+  bindRevision(host);
   var hp = host.querySelector("#logHelp");
   if(hp) hp.addEventListener("toggle", function(){ lsSet("dossier.help.log", hp.open ? "open" : "closed"); });
   var ne = host.querySelector("#dayNotes"); if(!ne) return;
@@ -81937,11 +81990,17 @@ function bindGoal(host){
   });
 }
 
-var REV_KEY = "dossier.revdone.v1", REV_GAPS = [1,7,30], REV_MAX_LATE = 60;
+var REV_KEY = "dossier.revdone.v1", REV_GAPS = SPACED_GAPS, REV_MAX_LATE = 60;
 var revDone = lsGetJSON(REV_KEY, {}); if(!revDone || typeof revDone!=="object") revDone = {};
 function revSave(){ lsSetJSON(REV_KEY, revDone); }
+function revDoneFor(id, gap, completedAt){   // a mark counts only if it was made after the chapter was (last) completed
+  var v = revDone[id+"#"+gap]; if(!v) return false;
+  return String(v).replace("skip:","") >= (completedAt || "");
+}
 function revisionsDue(){
   if(!studyPlan) return [];
+  var rv0 = studyPlan.activities && studyPlan.activities.revision;
+  if(rv0 && rv0.on && rv0.method==="fixed") return [];   // the student chose manual days only
   var names = {}, subj = {};
   subjectStates(studyPlan).forEach(function(st){ st.leaves.forEach(function(l){ names[l.id] = l.unit || l.topic || l.id.split("|").pop(); subj[l.id] = st.name; }); });
   var viaSession = {};
@@ -81954,7 +82013,7 @@ function revisionsDue(){
     for(var i=0;i<REV_GAPS.length;i++){ if(diffDays(todayKey, toKey(addDays(parseKey(t.completedAt), REV_GAPS[i]))) >= 0) gi = i; }
     if(gi < 0) return;
     var g = REV_GAPS[gi], due = toKey(addDays(parseKey(t.completedAt), g)), late = diffDays(todayKey, due);
-    if(revDone[id+"#"+g] || late > REV_MAX_LATE) return;
+    if(revDoneFor(id, g, t.completedAt) || late > REV_MAX_LATE) return;
     if((viaSession[id]||[]).some(function(dt){ return dt >= due; })) return;
     out.push({id:id, gap:g, due:due, late:late, name:names[id], subject:subj[id]});
   });
@@ -81962,29 +82021,56 @@ function revisionsDue(){
   return out;
 }
 var revShowAll = false;
+var REV_TAGS = {1:"Day 1", 3:"Day 3", 7:"Week 1", 14:"Week 2", 30:"Month 1"};
+function revRowHtml(r, actions){
+  var tag = REV_TAGS[r.gap] || ("Day "+r.gap);
+  var late = r.done ? "done" : (r.late>0 ? r.late+" day"+(r.late===1 ? "" : "s")+" late" : (r.late===0 ? "due today" : "due in "+(-r.late)+" day"+(r.late===-1 ? "" : "s")));
+  return '<div class="rv-row"><div class="rv-t"><b>'+esc(r.name)+'</b><small>'+esc(r.subject)+' &middot; '+tag+' revision &middot; '+late+'</small></div>'+
+    (actions ? '<button type="button" class="rv-b ok" data-rev="done" data-id="'+esc(r.id)+'" data-gap="'+r.gap+'" aria-label="Mark revised">&#10003;</button>'+
+      '<button type="button" class="rv-b" data-rev="skip" data-id="'+esc(r.id)+'" data-gap="'+r.gap+'" aria-label="Skip this revision">&#10005;</button>' : (r.done ? '<span class="rv-done" aria-hidden="true">&#10003;</span>' : ""))+'</div>';
+}
+function revisionsOnDate(d){   // chapters whose 1, 3, 7, 14 or 30 day mark falls exactly on this day (days other than today)
+  if(!studyPlan) return [];
+  var rv0 = studyPlan.activities && studyPlan.activities.revision;
+  if(rv0 && rv0.on && rv0.method==="fixed") return [];
+  var names = {}, subj = {}, viaSession = {}, out = [];
+  subjectStates(studyPlan).forEach(function(st){ st.leaves.forEach(function(l){ names[l.id] = l.unit || l.topic || l.id.split("|").pop(); subj[l.id] = st.name; }); });
+  studySessions.forEach(function(x){ if(x.kind==="revision" && x.topicId && x.status==="completed") (viaSession[x.topicId] = viaSession[x.topicId] || []).push(x.date); });
+  Object.keys(studyProgress.topics||{}).forEach(function(id){
+    var t = studyProgress.topics[id]; if(!t || t.status!=="completed" || !t.completedAt || !names[id]) return;
+    REV_GAPS.forEach(function(g){
+      var due = toKey(addDays(parseKey(t.completedAt), g)); if(due !== d) return;
+      var done = revDoneFor(id, g, t.completedAt) || (viaSession[id]||[]).some(function(dt){ return dt >= due; });
+      out.push({id:id, gap:g, due:due, late:diffDays(todayKey, due), name:names[id], subject:subj[id], done:done});
+    });
+  });
+  out.sort(function(a,b){ return a.gap - b.gap || (a.name < b.name ? -1 : 1); });
+  return out;
+}
+function dayRevisionHtml(d){
+  var list = d===todayKey ? revisionsDue() : revisionsOnDate(d);
+  if(!list.length) return "";
+  return '<div class="dx-card dx-rev"><div class="dx-k">'+(d===todayKey ? "REVISE TODAY &middot; "+list.length+" DUE" : "REVISION ON THIS DAY &middot; "+list.length)+'</div>'+
+    list.map(function(r){ return revRowHtml(r, d===todayKey); }).join("")+
+    '<small class="rv-note">After you mark a chapter completed, it comes back after 1, 3, 7, 14 and 30 days.</small></div>';
+}
 function dxRevisionHtml(){
   var list = revisionsDue(); if(!list.length) return "";
   var shown = revShowAll ? list : list.slice(0,4);
   return '<div class="dx-card dx-rev"><div class="dx-k">REVISE TODAY &middot; '+list.length+' DUE</div>'+
-    shown.map(function(r){
-      var tag = r.gap===1 ? "Day 1" : r.gap===7 ? "Week 1" : "Month 1";
-      var late = r.late>0 ? r.late+" day"+(r.late===1 ? "" : "s")+" late" : "due today";
-      return '<div class="rv-row"><div class="rv-t"><b>'+esc(r.name)+'</b><small>'+esc(r.subject)+' &middot; '+tag+' revision &middot; '+late+'</small></div>'+
-        '<button type="button" class="rv-b ok" data-rev="done" data-id="'+esc(r.id)+'" data-gap="'+r.gap+'" aria-label="Mark revised">&#10003;</button>'+
-        '<button type="button" class="rv-b" data-rev="skip" data-id="'+esc(r.id)+'" data-gap="'+r.gap+'" aria-label="Skip this revision">&#10005;</button></div>';
-    }).join("")+
+    shown.map(function(r){ return revRowHtml(r, true); }).join("")+
     (list.length>4 ? '<button type="button" class="dx-btn2" data-rev="more">'+(revShowAll ? "Show fewer" : "Show all "+list.length)+'</button>' : '')+
-    '<small class="rv-note">Tick when you have revised it. The chapter returns after 1 day, 1 week and 1 month.</small></div>';
+    '<small class="rv-note">Tick when you have revised it. The chapter returns after 1, 3, 7, 14 and 30 days.</small></div>';
 }
 function bindRevision(host){
   if(host._rev) return; host._rev = true;
   host.addEventListener("click", function(e){
     var b = e.target.closest ? e.target.closest("[data-rev]") : null; if(!b) return;
     var a = b.getAttribute("data-rev");
-    if(a==="more"){ revShowAll = !revShowAll; renderDashboard(); return; }
+    if(a==="more"){ revShowAll = !revShowAll; refreshView(); return; }
     revDone[b.getAttribute("data-id")+"#"+b.getAttribute("data-gap")] = (a==="skip" ? "skip:" : "")+todayKey; revSave();
     if(a==="done"){ toast("Revision noted. See you again later."); trackEvent("revision_done", {}); }
-    renderDashboard();
+    refreshView();
   });
 }
 
@@ -82580,7 +82666,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "306";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "309";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
