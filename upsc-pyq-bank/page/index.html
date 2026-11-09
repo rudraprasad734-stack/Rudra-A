@@ -1324,6 +1324,15 @@
   .ses-r .ses-n{grid-area:n; width:28px; height:28px; border-radius:50%; display:grid; place-items:center; background:var(--navy); color:var(--navy-ink); font-size:13px;} .ses-r .ses-t{grid-area:t; display:flex; align-items:center; gap:6px; flex-wrap:nowrap; min-width:0;}
   .ses-r select{grid-area:s; width:100% !important; min-width:0; min-height:40px;} .ses-r .ses-x{grid-area:x; width:40px; height:40px; border-radius:50%; background:transparent; border:1px solid var(--brick); color:var(--brick); font-size:16px; line-height:1; display:grid; place-items:center; cursor:pointer;}
   .ses-r .tm{min-height:40px; padding:6px 10px; font-size:14.5px; white-space:nowrap; border-radius:12px; border:1px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; font-weight:700; cursor:pointer;} .ses-r .arr{color:var(--ink-soft);} .ses-r .dur{grid-area:d; font-size:13px; font-weight:700; color:var(--ink-soft); white-space:nowrap;}
+  .cap-subs{border:1px solid var(--line-soft); border-radius:14px; overflow:hidden;} .cap-sub{display:flex; align-items:center; gap:10px; padding:11px 12px; border-top:1px solid var(--line-soft);} .cap-sub:first-child{border-top:0;}
+  .cap-sub .dot{width:14px; height:14px; border-radius:50%; flex:none;} .cap-sub .nm{flex:1; font-weight:700; min-width:0;} .cap-sub .nm small{display:block; color:var(--ink-soft); font-weight:400; font-size:12.5px;}
+  .cap-sub .chip, .cap-quick .chip, .cap-pick .chip{padding:7px 14px; border:1px solid var(--line); border-radius:12px; background:var(--surface-2); color:var(--ink); font:inherit; font-weight:800; cursor:pointer;} .cap-quick .chip.on{background:var(--navy); color:var(--navy-ink); border-color:transparent;}
+  .ses-link{background:none; border:0; color:var(--link); font:inherit; font-weight:700; font-size:13px; cursor:pointer; padding:6px 4px;} .ses-link.center{display:block; margin:10px auto 0;}
+  .ses-x.sm{width:32px; height:32px; font-size:14px; border-radius:50%; background:transparent; border:1px solid var(--brick); color:var(--brick); cursor:pointer;}
+  .cap-pick{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;} .cap-acts{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;}
+  .cap-step{text-align:center;} .cap-stp{font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); font-weight:700;} .cap-prog{height:6px; border-radius:4px; background:var(--surface-2); margin:8px auto 14px; max-width:220px; overflow:hidden;} .cap-prog i{display:block; height:100%; background:var(--c); border-radius:4px;}
+  .cap-big{font-family:var(--font-display); font-size:26px; margin:0 0 2px;} .cap-sub2{color:var(--ink-soft); font-size:14px;} .cap-quick{display:flex; gap:8px; justify-content:center; margin-top:10px;}
+  .cap-share{margin-top:12px; padding:11px; border-radius:14px; background:var(--surface-2); font-size:14px;} .cap-nav{display:flex; justify-content:space-between; gap:10px; margin-top:16px;}
   .tp-edit{margin:6px 0 4px;}
   .tp-form{border:1px dashed var(--line,#4a6a85); border-radius:12px; padding:10px 12px; margin-top:6px;}
   .tp-form .cf input[type=text], .tp-form .cf select{width:100%; max-width:100%; min-width:0; box-sizing:border-box;}
@@ -70413,7 +70422,7 @@ function simulate(plan, from, frozen, strict){
     });
     if(plan.capacity.days.indexOf(dow) >= 0 || (plan.catchup && plan.catchup.indexOf(d) >= 0)){
       var cnt = (plan.capacity.perDay && plan.capacity.perDay[dow] != null) ? +plan.capacity.perDay[dow] : plan.capacity.sessions.length;
-      var revToday = 0;
+      var revToday = 0, bleft = queue[0] ? subjBudget(plan, queue[0].st.name) : Infinity;
       plan.capacity.sessions.slice(0, cnt).forEach(function(sl){
         if(blockers.some(function(b){ return overlapR(b, sl); })) return;
         if(autoRev && !revToday && !sl.subject){
@@ -70431,13 +70440,13 @@ function simulate(plan, from, frozen, strict){
           if(sl.subject){ for(q=0;q<queue.length;q++) if(queue[q].st.name===sl.subject){ qi = q; break; } }
           if(qi < 0){ for(q=0;q<queue.length;q++) if(!strict || queue[q].st===actSt){ qi = q; break; } }
           if(qi < 0) break;
-          var it = queue[qi], seg = Math.min(it.remM, endM-cur);
+          var it = queue[qi], seg = Math.min(it.remM, endM-cur, bleft);
           if(seg < 15) break;
           it.blk = it.parts+1; it.of = Math.max(it.blk, Math.ceil(it.need/slotAvg));
           dayNew.push(mkStudy(it, d, {start:hmStr(cur), end:hmStr(cur+seg), subject:sl.subject}));
           var sp = spans[it.st.name] || (spans[it.st.name] = {start:d, end:d}); sp.end = d;
           lastCtx = {subject:it.st.name, group:it.leaf.group, paper:it.st.entry.paper, entry:it.st.entry};
-          it.parts++; it.remM -= seg; cur += seg;
+          it.parts++; it.remM -= seg; cur += seg; bleft -= seg;
           if(it.remM < 15){
             queue.splice(qi, 1);
             if(autoRev) gaps.forEach(function(g){ due.push({date:toKey(addDays(parseKey(d), g)), leaf:it.leaf, st:it.st, gap:g}); });
@@ -70508,7 +70517,9 @@ function setLeaves(ids, status, by){
     var bi = beforeName ? order.indexOf(beforeName) : Infinity, ai = afterName ? order.indexOf(afterName) : Infinity;
     if(ai > bi){
       studyProgress.lastUnlock = {done:beforeName, next:afterName, at:new Date().toISOString()};
-      toast(afterName ? beforeName+" completed. "+afterName+" is now active." : "Every selected subject is complete.");
+      var willAsk = !!afterName && !(studyPlan.capacity && studyPlan.capacity.subjHours && studyPlan.capacity.subjHours[afterName]!=null);
+      if(!willAsk) toast(afterName ? beforeName+" completed. "+afterName+" is now active." : "Every selected subject is complete.");   // the question below says the same
+      else setTimeout(function(){ askSubjectHours(afterName, beforeName); }, 700);
     } else if(studyProgress.lastUnlock && studyProgress.lastUnlock.next !== afterName) studyProgress.lastUnlock = null;
   }
   saveProgress();
@@ -70544,7 +70555,7 @@ function wizDefaults(){
   return {step:0, qs:qsNew(), err:[], open:{}, init:{}, durMode:"months", months:12, target:"", start:todayKey, startView:"auto",
     mode:"mains", gs1:true, csat:true, gs:[1,2,3,4], essay:true, optionalOn:true, optional:"", customText:"",
     order:[], sel:{}, optStart:"syllabus", optFirst:"", optOrder:null,
-    cap:{days:[1,2,3,4,5,6], sessions:[{start:"06:00",end:"08:00",subject:""},{start:"10:00",end:"12:00",subject:""},{start:"16:00",end:"17:00",subject:""}], perDay:{}, breakMin:15, blocks:"auto", hours:{def:2, by:{}, auto:true}, layout:"manual", limitMin:0, dayStart:"06:00"},
+    cap:{days:[1,2,3,4,5,6], sessions:[{start:"06:00",end:"08:00",subject:""},{start:"10:00",end:"12:00",subject:""},{start:"16:00",end:"17:00",subject:""}], perDay:{}, breakMin:15, blocks:"auto", hours:{def:2, by:{}, auto:true}, layout:"manual", limitMin:0, dayStart:"06:00", dayHours:6, subjHours:{}, exact:false},
     acts:{
       essay:{on:false, mode:"weekly", days:[5], interval:1, count:2, dates:[], start:"19:00", end:"21:00"},
       pyq:{on:false, mode:"weekly", days:[2], interval:1, count:3, dates:[], start:"16:00", end:"17:00"},
@@ -70555,13 +70566,19 @@ function wizDefaults(){
 }
 function wizFromPlan(p){ var w = JSON.parse(JSON.stringify(p.cfg)); delete w.fresh;
   if(p.capacity && p.capacity.layout==="auto" && p.capacity.sessions && p.capacity.sessions.length){ w.cap.sessions = JSON.parse(JSON.stringify(p.capacity.sessions)); w.cap.count = w.cap.sessions.length; w.cap.perDay = {}; }   // a day the app planned becomes your own sessions
-  w.cap.layout = "manual"; w.cap.hours = {def:(p.capacity && p.capacity.hours ? p.capacity.hours.def : 2), by:{}, auto:true}; if(w.acts && w.acts.revision && w.acts.revision.method=="both") w.acts.revision.method = "auto"; w.step = 0; w.err = []; w.open = {}; if(!w.seen){ w.seen = {}; wizCatalog(w).order.forEach(function(n){ w.seen[n] = 1; }); } return w; }
-function wizSnapshot(w){ var c = JSON.parse(JSON.stringify(w)); delete c.step; delete c.err; delete c.open; delete c.qs; delete c.addFor; delete c.addGroup; return c; }
+  w.cap.layout = "manual"; w.cap.hours = {def:(p.capacity && p.capacity.hours ? p.capacity.hours.def : 2), by:{}, auto:true};
+  if(w.cap.dayHours==null){   // a plan made with its own sessions keeps them
+    var tm = ((p.capacity && p.capacity.sessions) || []).reduce(function(t, x){ return t + Math.max(0, toMin(x.end)-toMin(x.start)); }, 0);
+    w.cap.dayHours = Math.max(0.5, Math.round(tm/15)/4) || 6; w.cap.subjHours = {}; w.cap.exact = true;
+  } if(w.acts && w.acts.revision && w.acts.revision.method=="both") w.acts.revision.method = "auto"; w.step = 0; w.err = []; w.open = {}; if(!w.seen){ w.seen = {}; wizCatalog(w).order.forEach(function(n){ w.seen[n] = 1; }); } return w; }
+function wizSnapshot(w){ var c = JSON.parse(JSON.stringify(w)); delete c.step; delete c.err; delete c.open; delete c.qs; delete c.addFor; delete c.addGroup; delete c.capView; delete c.capIdx; delete c.capPick; return c; }
 function wizCatCfg(w){ return {prelims:w.mode!=="mains", mains:w.mode!=="prelims", gs1:!!w.gs1, csat:!!w.csat, gs:w.gs.slice(), optionalOn:!!w.optionalOn, optional:w.optional, customText:w.customText, custom:(w.custom || []).slice()}; }
 function wizCatalog(w){ return buildCatalog(wizCatCfg(w)); }
 function wizSync(w){
   if(!(+w.cap.breakMin >= 5)) w.cap.breakMin = 5;
   if(!w.cap.hours) w.cap.hours = {def:2, by:{}}; if(!w.cap.hours.by) w.cap.hours.by = {};
+  if(w.cap.dayHours==null) w.cap.dayHours = 6; if(!w.cap.subjHours) w.cap.subjHours = {}; if(w.cap.exact==null) w.cap.exact = false;
+  Object.keys(w.cap.subjHours).forEach(function(k){ if(w.order.indexOf(k) < 0) delete w.cap.subjHours[k]; });
   w.cap.layout = "manual"; w.cap.hours.auto = true; w.cap.hours.by = {}; if(w.cap.limitMin==null) w.cap.limitMin = 0; if(!w.cap.dayStart) w.cap.dayStart = "06:00";
   var cat = wizCatalog(w), valid = {}, init = {};
   // a subject that has just become available (an optional, another paper) joins the end of the order; one you took out by hand stays out
@@ -70616,6 +70633,19 @@ function setSessLen(w, mins){
 function capHours(plan, subject){
   var H = plan.capacity.hours, h = H && H.by && H.by[subject]!=null ? +H.by[subject] : (H ? +H.def : 2);
   return h >= 0.25 ? h : 2;
+}
+// Hours a day for the subject being studied: its own number if the student set one, else the plan's day (dayHours). No number: no limit.
+function subjBudget(plan, name){
+  var c = plan.capacity, h = c.subjHours && c.subjHours[name];
+  if(h==null) h = c.exact ? null : c.dayHours;
+  return (h!=null && +h > 0) ? Math.round(+h*60) : Infinity;
+}
+// The day's sessions follow the longest number of hours asked for (a subject's own, or the day's).
+function deriveLayout(plan){
+  var c = plan.capacity; if(c.exact) return;
+  var mx = +c.dayHours > 0 ? +c.dayHours : 6;
+  Object.keys(c.subjHours || {}).forEach(function(k){ if(+c.subjHours[k] > mx) mx = +c.subjHours[k]; });
+  c.sessions = layoutFromMin(Math.round(mx*60), c.dayStart ? toMin(c.dayStart) : 360); c.perDay = {};
 }
 function needMinMap(plan, states){
   var map = {};
@@ -70687,14 +70717,14 @@ function fitInfo(w){
   sim.sessions.forEach(function(s){ if(s.kind==="study" && s.date > last) last = s.date; });
   var layoutMin = plan.capacity.sessions.reduce(function(t, x){ return t + Math.max(0, toMin(x.end)-toMin(x.start)); }, 0);
   return {plan:plan, fits:!sim.remaining, left:sim.remaining, leftMin:sim.leftMin||0, need:need, have:have, studyDays:sd, days:days, chapters:chapters, layoutMin:layoutMin,
-    perDay:sd ? need/sd : 0, end:plan.window.end, finish:last, hours:plan.capacity.hours, limit:+plan.capacity.limitMin||0};
+    perDay:sd ? need/sd : 0, budgeted:Object.keys(plan.capacity.subjHours || {}).length > 0, end:plan.window.end, finish:last, hours:plan.capacity.hours, limit:+plan.capacity.limitMin||0};
 }
 function fitLineHtml(w){
   var f = null; try{ f = fitInfo(w); }catch(e){ window.__fitErr = e && e.stack; }
   if(!f) return '<div class="muted mt">Set your duration first, then this shows whether your hours are enough.</div>';
   var spare = f.have - f.need;
   var ct = f.hours && f.hours.def ? ' Each chapter gets about '+esc(fmtHM(Math.round(f.hours.def*60)))+'.' : "";
-  if(f.fits) return '<div class="fit-v ok"><b>✓ Everything fits.</b>'+ct+' '+(spare >= 60 ? 'About '+esc(fmtHM(spare))+' to spare before '+esc(fmtShort(parseKey(f.end)))+'.' : 'It is a tight fit, so a few missed days will push the end date.')+'</div>';
+  if(f.fits) return '<div class="fit-v ok"><b>✓ Everything fits.</b>'+ct+' '+(f.budgeted ? 'Finishes about '+esc(fmtShort(parseKey(f.finish || f.end)))+'.' : spare >= 60 ? 'About '+esc(fmtHM(spare))+' to spare before '+esc(fmtShort(parseKey(f.end)))+'.' : 'It is a tight fit, so a few missed days will push the end date.')+'</div>';
   var short = Math.max(0, f.need - f.have), over = Math.max(60, f.leftMin);
   var tips = [];
   if(f.limit) tips.push('Raise your daily limit (now '+esc(fmtHM(f.limit))+')');
@@ -70703,6 +70733,27 @@ function fitLineHtml(w){
   return '<div class="fit-v bad"><b>✗ It does not fit yet.</b> The chapters need about '+esc(fmtHM(f.need))+' and you have '+esc(fmtHM(f.have))+', about '+esc(fmtHM(Math.max(short, over)))+' short.<ul class="fit-tips">'+tips.map(function(t){ return '<li>'+t+'</li>'; }).join("")+'</ul></div>';
 }
 // ---- the rolling dial used by the time picker ----
+// ---- the hours-and-minutes wheel (hours a day for a subject) ----
+function durWheelHtml(kind, name, mins){
+  var H = Math.floor(mins/60), M = mins%60, hs = "", ms = "", i;
+  for(i=0;i<=10;i++) hs += '<div class="it'+(i===H ? " sel" : "")+'" data-v="'+i+'">'+i+'</div>';
+  [0,15,30,45].forEach(function(m){ ms += '<div class="it'+(m===M ? " sel" : "")+'" data-v="'+m+'">'+pad2(m)+'</div>'; });
+  return '<div class="wheel" data-wheel="'+kind+'" data-name="'+esc(name||"")+'" role="group" aria-label="Hours a day"><div class="col" data-k="h" tabindex="0" aria-label="Hours">'+hs+'</div><span class="unit uh" aria-hidden="true">h</span>'+
+    '<div class="col" data-k="m" tabindex="0" aria-label="Minutes">'+ms+'</div><span class="unit um" aria-hidden="true">min</span></div>';
+}
+function wheelMins(el){
+  var h = 0, m = 0;
+  [].forEach.call(el.querySelectorAll(".col"), function(c){ var i = Math.max(0, Math.min(c.children.length-1, Math.round(c.scrollTop/44))); var v = +c.children[i].getAttribute("data-v"); if(c.getAttribute("data-k")==="h") h = v; else m = v; });
+  return Math.max(15, h*60+m);
+}
+function wheelCommit(el){
+  var mins = wheelMins(el), kind = el.getAttribute("data-wheel"), name = el.getAttribute("data-name"), hrs = mins/60;
+  if(kind==="popup"){ var sm = document.getElementById("shSum"); if(sm) sm.textContent = fmtHM(mins)+" a day"; return; }
+  if(!wiz) return;
+  var C = wiz.cap; if(!C.subjHours) C.subjHours = {};
+  if(!name){ if(C.dayHours===hrs) return; C.dayHours = hrs; } else { if(C.subjHours[name]===hrs) return; C.subjHours[name] = hrs; }
+  var y = window.scrollY; try{ saveWizDraft(); }catch(e){} renderWizard(document.getElementById("view-planner")); window.scrollTo(0, y);
+}
 function bindWheels(root){
   [].forEach.call((root || document).querySelectorAll(".wheel"), function(el){
     if(el._bound) return; el._bound = true;
@@ -70715,7 +70766,7 @@ function bindWheels(root){
         [].forEach.call(c.children, function(x, k){ x.classList.toggle("sel", k===j); });
         if(boot) return;
         if(el._onChange){ el._onChange(el); return; }
-        clearTimeout(timer);
+        clearTimeout(timer); timer = setTimeout(function(){ wheelCommit(el); }, 220);
       });
       c.addEventListener("click", function(e){ var it = e.target.closest(".it"); if(it) c.scrollTo({top:[].indexOf.call(c.children, it)*44, behavior:"smooth"}); });
     });
@@ -70742,11 +70793,14 @@ function compilePlan(w){
   cap.perDay = pd; cap.blocks = 1; cap.auto = false;
   var H0 = cap.hours || {def:2, by:{}};
   cap.hours = {def:(+H0.def >= 0.25 ? +H0.def : 2), by:Object.assign({}, H0.by || {}), auto:!!H0.auto};
-  cap.layout = "manual"; cap.limitMin = 0; cap.dayStart = cap.dayStart || "06:00"; cap.hours.by = {}; cap.hours.auto = true;   // your own sessions; the time per chapter is fitted to them
+  cap.layout = "manual"; cap.limitMin = 0; cap.dayStart = cap.dayStart || "06:00"; cap.hours.by = {}; cap.hours.auto = true;   // the time per chapter is fitted to the day
+  cap.dayHours = +cap.dayHours > 0 ? +cap.dayHours : 6; cap.exact = !!cap.exact; cap.subjHours = {};
+  Object.keys(w.cap.subjHours || {}).forEach(function(k){ if(w.order.indexOf(k) >= 0 && +w.cap.subjHours[k] > 0) cap.subjHours[k] = +w.cap.subjHours[k]; });
   var plan = {v:1, createdAt:new Date().toISOString(), cfg:wizSnapshot(w), window:{start:w.start, end:st.end}, catCfg:wizCatCfg(w),
     priority:w.order.slice(), sel:Object.assign({}, w.sel), capacity:cap, activities:JSON.parse(JSON.stringify(w.acts)),
     startView:(w.startView==="auto" ? recommendedView(w) : w.startView), extraV:(EXTRA ? EXTRA.v : 0),
     optOrder:((w.optStart!=="syllabus" && w.optOrder && w.optOrder.length) ? w.optOrder.slice() : null)};
+  deriveLayout(plan);
   if(cap.layout==="auto") solveLayout(plan); else if(cap.hours.auto) solveHours(plan);
   return plan;
 }
@@ -70829,7 +70883,7 @@ function freeHint(w, k){
 function capacityErrors(w){
   var e = [], c = w.cap;
   if(!c.days.length) e.push("Pick at least one study day.");
-  if(c.layout!=="manual") return e;   // the app lays out the day itself
+  if(c.layout!=="manual" || !c.exact) return e;   // the app lays out the day itself
   if(!c.sessions.length) e.push("Add at least one session per day.");
   c.sessions.forEach(function(s, i){ if(!s.start || !s.end || toMin(s.end) <= toMin(s.start)) e.push("Session "+(i+1)+": end time must be after start time."); });
   var sorted = c.sessions.map(function(s, i){ return {start:s.start, end:s.end, label:"Session "+(i+1)}; });
@@ -71030,20 +71084,71 @@ function dayRingHtml(sessions){
     '<circle cx="'+cx+'" cy="'+cy+'" r="'+R+'" fill="none" class="rg-bg" stroke-width="22"/>'+arcs+nums+marks+
     '<text class="rg-v" x="'+cx+'" y="'+(cy-2)+'" text-anchor="middle">'+esc(fmtHM(total))+'</text><text class="rg-s" x="'+cx+'" y="'+(cy+20)+'" text-anchor="middle">a day · '+cnt+' session'+(cnt===1 ? "" : "s")+'</text></svg></div>';
 }
+function capHoursOf(w, name){ var C = w.cap; return (name && C.subjHours && C.subjHours[name]!=null) ? +C.subjHours[name] : +C.dayHours; }
+function capChapters(w, name){ var cat = wizCatalog(w), e = cat.map[name]; return e ? catalogLeaves(e).filter(function(l){ return w.sel[l.id]; }).length : 0; }
+var CAP_COL = ["#2de6d6","#9b8cff","#ffb020","#ff7a70","#5ac8ff","#7dffc0","#ff6fae","#c4a1ff"];
+function capColor(w, name){ var i = w.order.indexOf(name); return i < 0 ? "#6b8d96" : CAP_COL[i % CAP_COL.length]; }
 function wzCapacity(w){
-  var c = w.cap, n = c.sessions.length;
-  var list = '<div class="ses-list">'+c.sessions.map(function(sl, i){
-    var d = toMin(sl.end)-toMin(sl.start);
-    return '<div class="ses-r" data-tplabel="Session '+(i+1)+'"><b class="ses-n">'+(i+1)+'</b>'+
-      '<div class="ses-t">'+timeChip("cap.sessions."+i+".start", sl.start)+'<span class="arr" aria-hidden="true">\u2192</span>'+timeChip("cap.sessions."+i+".end", sl.end)+'</div>'+
-      '<span class="dur">'+(d > 0 ? esc(fmtHM(d)) : "check times")+'</span><select data-w="cap.sessions.'+i+'.subject" aria-label="Subject for session '+(i+1)+'"><option value="">Any subject</option>'+w.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(sl.subject===nm?" selected":"")+'>'+esc(nm)+'</option>'; }).join("")+'</select>'+
-      (n > 1 ? '<button type="button" class="ses-x" data-wa="sesDel" data-v="'+i+'" title="Remove this session" aria-label="Remove session '+(i+1)+'">\u2715</button>' : "")+'</div>';
-  }).join("")+'</div>'+(n < 6 ? '<button type="button" class="btn ghost sm" data-wa="sesAdd">+ Add a session</button>' : "");
+  if(w.capView==="step") return capStepHtml(w);
+  var c = w.cap, mine = w.order.filter(function(n){ return c.subjHours && c.subjHours[n]!=null; }), exact = !!c.exact;
+  var rows = '<div class="cap-sub"><span class="dot" style="background:#6b8d96"></span><span class="nm">All other subjects<small>'+(mine.length ? "every subject you have not set" : "every subject")+'</small></span><span class="chip">'+esc(fmtHM(Math.round(c.dayHours*60)))+'</span><button type="button" class="ses-link" data-wa="capOthers">Edit</button></div>'+
+    mine.map(function(n){
+      return '<div class="cap-sub"><span class="dot" style="background:'+capColor(w, n)+'"></span><span class="nm">'+esc(n)+'<small>'+capChapters(w, n)+' chapters</small></span><span class="chip">'+esc(fmtHM(Math.round(c.subjHours[n]*60)))+'</span><button type="button" class="ses-link" data-wa="capSubj" data-v="'+esc(n)+'">Edit</button><button type="button" class="ses-x sm" data-wa="capDel" data-v="'+esc(n)+'" title="Use the default for this subject" aria-label="Remove the hours for '+esc(n)+'">✕</button></div>';
+    }).join("");
+  var rest = w.order.filter(function(n){ return mine.indexOf(n) < 0; });
+  var pick = w.capPick ? '<div class="cap-pick">'+rest.map(function(n){ return '<button type="button" class="chip" data-wa="capSubj" data-v="'+esc(n)+'">'+esc(n)+'</button>'; }).join("")+'</div>' : "";
+  var exactBox = '';
+  if(exact){
+    var n = c.sessions.length;
+    var list = '<div class="ses-list">'+c.sessions.map(function(sl, i){
+      var d = toMin(sl.end)-toMin(sl.start);
+      return '<div class="ses-r" data-tplabel="Session '+(i+1)+'"><b class="ses-n">'+(i+1)+'</b>'+
+        '<div class="ses-t">'+timeChip("cap.sessions."+i+".start", sl.start)+'<span class="arr" aria-hidden="true">→</span>'+timeChip("cap.sessions."+i+".end", sl.end)+'</div>'+
+        '<span class="dur">'+(d > 0 ? esc(fmtHM(d)) : "check times")+'</span><select data-w="cap.sessions.'+i+'.subject" aria-label="Subject for session '+(i+1)+'"><option value="">Any subject</option>'+w.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(sl.subject===nm?" selected":"")+'>'+esc(nm)+'</option>'; }).join("")+'</select>'+
+        (n > 1 ? '<button type="button" class="ses-x" data-wa="sesDel" data-v="'+i+'" title="Remove this session" aria-label="Remove session '+(i+1)+'">✕</button>' : "")+'</div>';
+    }).join("")+'</div>'+(n < 6 ? '<button type="button" class="btn ghost sm" data-wa="sesAdd">+ Add a session</button>' : "");
+    exactBox = dayRingHtml(c.sessions)+list+'<button type="button" class="btn ghost sm" data-wa="capAuto">Let the app set the times</button>';
+  } else {
+    exactBox = '<div class="hint">The app lays out your day from these hours, starting at '+esc(fmt12(c.dayStart || "06:00"))+'. To choose clock times yourself, set them here.</div><button type="button" class="btn ghost sm" data-wa="capExact">Set exact session times</button>';
+  }
   return '<h3>How much can you study?</h3>'+
     '<div class="cf"><label>Study days</label>'+dayChips("cap.days", c.days)+'</div>'+
-    dayRingHtml(c.sessions)+
-    '<div class="cf"><label>Sessions on a study day</label>'+list+'</div>'+
-    fitLineHtml(w);
+    '<div class="cf"><label>Hours a day</label><div class="cap-subs">'+rows+'</div>'+pick+
+      '<div class="cap-acts"><button type="button" class="btn ghost sm" data-wa="capPick">'+(w.capPick ? "Close the list" : "+ Add a subject")+'</button><button type="button" class="btn ghost sm" data-wa="capSubj" data-v="'+esc(w.order[0] || "")+'">Set subject by subject</button></div></div>'+
+    fitLineHtml(w)+
+    '<details class="info-card cap-adv" data-wopen="capEx"'+(w.open.capEx ? " open" : "")+'><summary>Exact session times <span class="cnt">optional</span></summary>'+exactBox+'</details>';
+}
+// One subject at a time: roll its hours a day with the dial.
+function capStepHtml(w){
+  var N = w.order.length, idx = w.capIdx, others = idx < 0, name = others ? "" : w.order[idx], hrs = others ? +w.cap.dayHours : capHoursOf(w, name), mins = Math.round(hrs*60);
+  var total = Math.max(+w.cap.dayHours, hrs), pct = Math.round(hrs/total*100), col = others ? "#6b8d96" : capColor(w, name);
+  var last = others || idx >= N-1;
+  return '<div class="cap-step" style="--c:'+col+'"><div class="cap-stp">'+(others ? "Every other subject" : "Subject "+(idx+1)+" of "+N)+'</div>'+
+    '<div class="cap-prog"><i style="width:'+(others ? 100 : Math.round((idx+1)/N*100))+'%"></i></div>'+
+    '<h3 class="cap-big">'+esc(others ? "All other subjects" : name)+'</h3><div class="cap-sub2">'+(others ? "the hours a day for every subject you have not set" : capChapters(w, name)+' chapters · how long each study day?')+'</div>'+
+    durWheelHtml("subj", name, mins)+
+    '<div class="cap-quick">'+[1,2,3,4].map(function(h){ return '<button type="button" class="chip'+(hrs===h ? " on" : "")+'" data-wa="capQuick" data-v="'+h+'">'+h+'h</button>'; }).join("")+'</div>'+
+    '<div class="cap-share">That is <b>'+esc(fmtHM(mins))+'</b> a day'+(others ? "" : ', '+pct+'% of your '+esc(fmtHM(Math.round(total*60)))+' day')+'</div>'+
+    (others ? "" : '<button type="button" class="ses-link center" data-wa="capSkip">Skip, use the default ('+esc(fmtHM(Math.round(w.cap.dayHours*60)))+')</button>')+
+    '<div class="cap-nav"><button type="button" class="btn ghost" data-wa="capPrev">'+(idx <= 0 ? "Back to list" : "Back")+'</button><button type="button" class="btn primary" data-wa="capNext">'+(last ? "Done" : "Next subject →")+'</button></div>'+(last ? "" : '<button type="button" class="ses-link center" data-wa="capList">Done, back to the list</button>')+'</div>';
+}
+// The popup that asks, when the next subject starts, how many hours a day it should get.
+function askSubjectHours(name, prev, tries){
+  if(!studyPlan || !studyPlan.capacity) return;
+  var cap = studyPlan.capacity;
+  if(cap.subjHours && cap.subjHours[name]!=null) return;
+  if(document.getElementById("modalHost")){ if((tries||0) < 6) setTimeout(function(){ askSubjectHours(name, prev, (tries||0)+1); }, 1500); return; }
+  var cur = Math.round(((+cap.dayHours > 0 ? +cap.dayHours : 6))*60);
+  var m = showModal('<div class="fr-sheet ts-sheet" role="dialog" aria-label="Hours a day for '+esc(name)+'"><div class="grab"></div><h2>'+esc(name)+' starts now</h2><p class="hint">'+(prev ? esc(prev)+' is complete. ' : "")+'How many hours a day do you want to give '+esc(name)+'?</p>'+durWheelHtml("popup", name, cur)+
+    '<div class="ts-sum" id="shSum">'+esc(fmtHM(cur))+' a day</div><div class="modal-actions"><button type="button" class="btn ghost" id="shKeep">Keep '+esc(fmtHM(cur))+'</button><span class="grow"></span><button type="button" class="btn primary" id="shSet">Set hours</button></div></div>', true);
+  m.classList.add("fr-b"); bindWheels(m);
+  function mark(){ cap.hoursAsked = cap.hoursAsked || {}; cap.hoursAsked[name] = 1; }
+  m.querySelector("#shKeep").addEventListener("click", function(){ mark(); savePlan(); closeModal(); });
+  m.querySelector("#shSet").addEventListener("click", function(){
+    var mins = wheelMins(m.querySelector(".wheel")); cap.subjHours = cap.subjHours || {}; cap.subjHours[name] = mins/60; mark();
+    if(studyPlan.cfg && studyPlan.cfg.cap){ studyPlan.cfg.cap.subjHours = JSON.parse(JSON.stringify(cap.subjHours)); }
+    deriveLayout(studyPlan); solveHours(studyPlan); savePlan(); replan(); closeModal(); toast(name+": "+fmtHM(mins)+" a day."); try{ refreshView(); }catch(e){}
+  });
 }
 function caFreqOf(a){   // how often Current Affairs repeats: daily, specific days, or weekly (one day)
   if(a.freq==="daily" || a.freq==="days" || a.freq==="weekly") return a.freq;
@@ -71138,7 +71243,7 @@ function renderWizard(host){
     (w.qs && !studyPlan ? "" : stepper)+
     '<div class="card wz-card">'+(w.qs && !studyPlan ? "" : WZ_STEPS[w.step](w))+'</div>'+
     (w.err.length ? '<div class="form-err" role="alert"><b>Please fix:</b><br>'+w.err.map(esc).join("<br>")+'</div>' : "")+
-    (w.qs && !studyPlan ? "" : w.step < 7 ? '<div class="wz-nav">'+(w.step>0 ? '<button type="button" class="btn ghost" data-wa="back">Back</button>' : '<span></span>')+'<button type="button" class="btn primary" data-wa="next">Next &rarr;</button></div>' : '<div class="wz-nav"><button type="button" class="btn ghost" data-wa="back">Back</button><span></span></div>');
+    (w.qs && !studyPlan || (w.step===5 && w.capView==="step") ? "" : w.step < 7 ? '<div class="wz-nav">'+(w.step>0 ? '<button type="button" class="btn ghost" data-wa="back">Back</button>' : '<span></span>')+'<button type="button" class="btn primary" data-wa="next">Next &rarr;</button></div>' : '<div class="wz-nav"><button type="button" class="btn ghost" data-wa="back">Back</button><span></span></div>');
   centerActive(host.querySelector(".stepper"), ".st.cur", false);
   bindWheels(host);
 }
@@ -71159,7 +71264,7 @@ function qsApply(w){
   var ord = wizCatalog(w).order.slice();
   if(q.start==="optional" && w.optionalOn){ var on = optLabel(w.optional), ix = ord.indexOf(on); if(ix > 0){ ord.splice(ix, 1); ord.unshift(on); } }
   w.order = ord; w.orderAuto = !(q.start==="optional" && w.optionalOn); w.init = {}; wizSync(w);
-  w.cap.days = q.days.slice(); w.cap.perDay = {}; w.cap.breakMin = 15; w.cap.layout = "manual"; w.cap.hours = {def:2, by:{}, auto:true};
+  w.cap.days = q.days.slice(); w.cap.perDay = {}; w.cap.breakMin = 15; w.cap.layout = "manual"; w.cap.hours = {def:2, by:{}, auto:true}; w.cap.dayHours = q.hours; w.cap.subjHours = {}; w.cap.exact = false;
   w.cap.count = hp[0]; w.cap.sessions = []; wizAfter("sessCount"); setSessLen(w, hp[1]);
   w.seen = {}; wizCatalog(w).order.forEach(function(n){ w.seen[n] = 1; });
 }
@@ -71309,6 +71414,7 @@ function scrollPlannerTop(){
 }
 function wizAction(a, b){
   var w = wiz, v = b.getAttribute("data-v"), path = b.getAttribute("data-path"), step0 = w.step;
+  if(a==="next" || a==="back" || a==="goto") w.capView = "list";
   switch(a){
     case "next": var e = wizValidate(w, w.step); w.err = e; if(!e.length){ w.step = Math.min(7, w.step+1); if(w.step===1) w.step = 2; } break;
     case "back": w.err = []; w.step = Math.max(0, w.step-1); if(w.step===1) w.step = 0; break;
@@ -71355,6 +71461,17 @@ function wizAction(a, b){
       scrollPlannerTop(); break;
     case "qsBack": var bl = qsList(w.qs), bi = bl.indexOf(w.qs.screen); w.err = []; w.qs.screen = bl[Math.max(0, bi-1)]; scrollPlannerTop(); break;
     case "qsFull": qsApply(w); w.qs = null; w.step = 0; w.err = []; scrollPlannerTop(); break;
+    case "capSubj": w.capView = "step"; w.capPick = false; w.capIdx = Math.max(0, w.order.indexOf(v)); break;
+    case "capList": w.capView = "list"; break;
+    case "capOthers": w.capView = "step"; w.capIdx = -1; break;
+    case "capPick": w.capPick = !w.capPick; break;
+    case "capDel": delete w.cap.subjHours[v]; break;
+    case "capQuick": if(w.capIdx < 0) w.cap.dayHours = +v; else w.cap.subjHours[w.order[w.capIdx]] = +v; break;
+    case "capSkip": if(w.capIdx >= 0){ delete w.cap.subjHours[w.order[w.capIdx]]; if(w.capIdx < w.order.length-1) w.capIdx++; else w.capView = "list"; } break;
+    case "capPrev": if(w.capIdx <= 0) w.capView = "list"; else w.capIdx--; break;
+    case "capNext": if(w.capIdx < 0 || w.capIdx >= w.order.length-1) w.capView = "list"; else w.capIdx++; break;
+    case "capExact": var fx = null; try{ fx = fitInfo(w); }catch(x){} if(fx){ w.cap.sessions = JSON.parse(JSON.stringify(fx.plan.capacity.sessions)); w.cap.count = w.cap.sessions.length; w.cap.perDay = {}; } w.cap.exact = true; w.open.capEx = true; break;
+    case "capAuto": w.cap.exact = false; break;
     case "sesAdd": var ls = w.cap.sessions, last = ls[ls.length-1], gp = Math.max(5, +w.cap.breakMin || 5), st0 = last ? Math.min(1380-60, toMin(last.end)+gp) : 1080; ls.push({start:hmStr(st0), end:hmStr(st0+60), subject:""}); w.cap.count = ls.length; break;
     case "sesDel": if(w.cap.sessions.length > 1){ w.cap.sessions.splice(+v, 1); w.cap.count = w.cap.sessions.length; Object.keys(w.cap.perDay).forEach(function(k){ if(+w.cap.perDay[k] > w.cap.sessions.length) w.cap.perDay[k] = w.cap.sessions.length; }); } break;
     case "cancelEdit": plannerEditing = false; wiz = null; renderPlanner(); return;
@@ -71555,7 +71672,7 @@ function nextUpHtml(){
 function overviewHtml(plan, states){
   var st = windowStats(plan.cfg), op = overallProgress(plan), sim = viewIndex().sim, left = sim ? sim.remaining : 0;
   return planTimelineHtml(plan, states)+
-    '<div class="card pace"><div><b>Time per chapter</b><div class="muted">'+(function(){ var H = plan.capacity.hours || {def:2}; return 'Each chapter gets about <b>'+esc(fmtHM(Math.round(H.def*60)))+'</b>, worked out from your sessions ('+esc(fmtHM(plan.capacity.sessions.reduce(function(t, x){ return t + Math.max(0, toMin(x.end)-toMin(x.start)); }, 0)))+' a day).'; })()+'</div></div><button type="button" class="btn ghost sm" data-pa="hours">Change</button></div>'+
+    '<div class="card pace"><div><b>Hours a day</b><div class="muted">'+(function(){ var c = plan.capacity, mine = Object.keys(c.subjHours || {}), dh = c.dayHours > 0 ? fmtHM(Math.round(c.dayHours*60)) : fmtHM(c.sessions.reduce(function(t, x){ return t + Math.max(0, toMin(x.end)-toMin(x.start)); }, 0)); return esc(dh)+' a day'+(mine.length ? '; '+mine.map(function(n){ return esc(n)+' '+esc(fmtHM(Math.round(c.subjHours[n]*60))); }).join(", ") : "")+'. Each chapter gets about <b>'+esc(fmtHM(Math.round((c.hours ? c.hours.def : 2)*60)))+'</b>.'; })()+'</div></div><button type="button" class="btn ghost sm" data-pa="hours">Change</button></div>'+
     (left ? hoursReportHtml(plan) : "")+
     '<div class="card ov-win"><div class="muted">Window '+esc(fmtShort(parseKey(plan.window.start)))+' &rarr; '+esc(fmtShort(parseKey(plan.window.end)))+' &middot; '+(st.ok ? st.days+" days &middot; "+st.hours+" study hours" : "")+'</div><div class="ov-btns"><button type="button" class="btn ghost sm" data-pa="edit">Edit plan</button><button type="button" class="btn danger sm" data-pa="reset">Reset plan</button></div></div>';
 }
@@ -72096,6 +72213,7 @@ function chapterStats(){
   return out;
 }
 window.__chapterStats = chapterStats;
+window.__cseTest = {setLeaves:function(i, st){ return setLeaves(i, st, 'test'); }, askSubjectHours:function(n, p){ return askSubjectHours(n, p); }, plan:function(){ return studyPlan; }};   // used by the automated checks
 // ---------- ONE tier for every chapter, worked out from how many years had a question on it ----------
 // Cut-offs come from tierCuts(): by years asked or by number of questions, whichever the reader picked.
 var chapterTierMemo = null;
@@ -82962,7 +83080,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "322";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "323";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
