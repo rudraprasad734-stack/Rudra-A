@@ -1313,6 +1313,13 @@
   .cap-r em{font-style:normal; font-weight:700; padding:6px 12px; border-radius:12px; background:var(--surface-2); border:1px solid var(--line);} .cap-r em.hl{background:var(--navy); color:var(--navy-ink); border-color:transparent;}
   .fit-tips{margin:6px 0 0; padding-left:18px;}
   .ts-sheet{background:var(--surface);} .ts-sheet .grab{width:44px; height:5px; border-radius:3px; background:var(--line); margin:0 auto 12px;} .ts-sum{text-align:center; font-weight:600; margin:6px 0 4px;}
+  .tp-sheet.dial{padding-bottom:18px;} .tp-sheet.dial .grab{width:44px; height:5px; border-radius:3px; background:var(--line); margin:0 auto 10px;}
+  .tp-sheet.dial .wheel{margin:8px 0 4px;} .tp-sheet.dial .wheel::before{left:6%; right:6%;} .wheel .col.w84{width:84px;} .wheel .colon{position:absolute; z-index:2; top:76px; left:calc(50% - 64px); font-weight:700; font-size:24px; color:var(--ink-soft); pointer-events:none;}
+  .ses-list{display:flex; flex-direction:column; gap:10px; margin:10px 0;}
+  .ses-r{display:grid; grid-template-columns:30px minmax(0,1fr) auto; grid-template-areas:"n t x" "n s d"; gap:6px 10px; align-items:center; padding:10px 12px; border:1px solid var(--line-soft); border-radius:14px; background:var(--surface-2);}
+  .ses-r .ses-n{grid-area:n; width:28px; height:28px; border-radius:50%; display:grid; place-items:center; background:var(--navy); color:var(--navy-ink); font-size:13px;} .ses-r .ses-t{grid-area:t; display:flex; align-items:center; gap:6px; flex-wrap:nowrap; min-width:0;}
+  .ses-r select{grid-area:s; width:100% !important; min-width:0; min-height:40px;} .ses-r .ses-x{grid-area:x; background:none; border:0; color:var(--ink-soft); font-size:18px; padding:6px 8px; cursor:pointer;}
+  .ses-r .tm{min-height:40px; padding:6px 10px; font-size:14.5px; white-space:nowrap; border-radius:12px; border:1px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; font-weight:700; cursor:pointer;} .ses-r .arr{color:var(--ink-soft);} .ses-r .dur{grid-area:d; font-size:13px; font-weight:700; color:var(--ink-soft); white-space:nowrap;}
   .tp-edit{margin:6px 0 4px;}
   .tp-form{border:1px dashed var(--line,#4a6a85); border-radius:12px; padding:10px 12px; margin-top:6px;}
   .tp-form .cf input[type=text], .tp-form .cf select{width:100%; max-width:100%; min-width:0; box-sizing:border-box;}
@@ -65769,39 +65776,42 @@ document.addEventListener("keydown", function(e){ if(e.key==="Escape" && modalDi
 function openTimePicker(inp){
   if(document.getElementById("tpBack")) return;
   var v = /^(\d{1,2}):(\d{2})/.exec(inp.value || ""), H = v ? (+v[1]) % 24 : 6, M = v ? Math.min(59, +v[2]) : 0;
-  var st = {h:(H % 12) || 12, m:M, pm:H >= 12}, back = document.createElement("div");
+  M = Math.min(55, Math.round(M/5)*5);
+  var h12 = (H % 12) || 12, pm = H >= 12, back = document.createElement("div");
   back.id = "tpBack"; back.className = "tp-back";
+  var lab = inp.closest && inp.closest("[data-tplabel]") ? inp.closest("[data-tplabel]").getAttribute("data-tplabel") : (inp.getAttribute("aria-label") || "Set time");
+  var hs = "", ms = "", i;
+  for(i=1;i<=12;i++) hs += '<div class="it'+(i===h12 ? " sel" : "")+'" data-v="'+i+'">'+i+'</div>';
+  for(i=0;i<60;i+=5) ms += '<div class="it'+(i===M ? " sel" : "")+'" data-v="'+i+'">'+pad2(i)+'</div>';
+  var ap = '<div class="it'+(!pm ? " sel" : "")+'" data-v="0">AM</div><div class="it'+(pm ? " sel" : "")+'" data-v="1">PM</div>';
+  back.innerHTML = '<div class="tp-sheet dial" role="dialog" aria-modal="true" aria-label="Set time"><div class="grab"></div>'+
+    '<div class="tp-top"><span class="tp-lab">'+esc(lab)+'</span><div class="tp-disp"><b id="dialShow"></b></div></div>'+
+    '<div class="wheel" data-wheel="time"><div class="col w84" data-k="h" tabindex="0" aria-label="Hour">'+hs+'</div><span class="colon" aria-hidden="true">:</span><div class="col w84" data-k="m" tabindex="0" aria-label="Minute">'+ms+'</div><div class="col w84" data-k="a" tabindex="0" aria-label="AM or PM">'+ap+'</div></div>'+
+    '<div class="tp-act"><button type="button" class="tp-x" data-tp="clear">Clear</button><span></span><button type="button" class="tp-x" data-tp="cancel">Cancel</button><button type="button" class="tp-ok" data-tp="ok">OK</button></div></div>';
   document.body.appendChild(back);
-  var label = inp.closest && inp.closest("label") ? (inp.closest("label").firstChild && inp.closest("label").firstChild.nodeType===3 ? inp.closest("label").firstChild.nodeValue.trim() : "") : "";
-  function val(){ var h24 = (st.h % 12) + (st.pm ? 12 : 0); return pad2(h24)+":"+pad2(st.m); }
-  function draw(){
-    var hrs = "", mins = "", i;
-    for(i=1;i<=12;i++) hrs += '<button type="button" class="tp-c'+(st.h===i ? " on" : "")+'" data-tp="h" data-v="'+i+'">'+i+'</button>';
-    for(i=0;i<60;i+=5) mins += '<button type="button" class="tp-c'+(st.m===i ? " on" : "")+'" data-tp="m" data-v="'+i+'">'+pad2(i)+'</button>';
-    back.innerHTML = '<div class="tp-sheet" role="dialog" aria-modal="true" aria-label="Set time">'+
-      '<div class="tp-top"><span class="tp-lab">'+esc(label || "Set time")+'</span><div class="tp-disp"><b>'+st.h+':'+pad2(st.m)+'</b><div class="tp-ap"><button type="button" class="'+(!st.pm ? "on" : "")+'" data-tp="ap" data-v="0">AM</button><button type="button" class="'+(st.pm ? "on" : "")+'" data-tp="ap" data-v="1">PM</button></div></div></div>'+
-      '<div class="tp-h">Hour</div><div class="tp-g">'+hrs+'</div>'+
-      '<div class="tp-h">Minute</div><div class="tp-g">'+mins+'</div>'+
-      '<div class="tp-fine"><button type="button" data-tp="mm" aria-label="One minute earlier">− 1 min</button><button type="button" data-tp="mp" aria-label="One minute later">+ 1 min</button></div>'+
-      '<div class="tp-act"><button type="button" class="tp-x" data-tp="clear">Clear</button><span></span><button type="button" class="tp-x" data-tp="cancel">Cancel</button><button type="button" class="tp-ok" data-tp="ok">OK</button></div></div>';
+  var wh = back.querySelector(".wheel");
+  function read(){
+    var o = {h:h12, m:M, p:pm};
+    [].forEach.call(wh.querySelectorAll(".col"), function(c){ var k = Math.max(0, Math.min(c.children.length-1, Math.round(c.scrollTop/44))), x = +c.children[k].getAttribute("data-v"); if(c.getAttribute("data-k")==="h") o.h = x; else if(c.getAttribute("data-k")==="m") o.m = x; else o.p = x===1; });
+    return o;
   }
+  function show(){ var o = read(); back.querySelector("#dialShow").textContent = o.h+":"+pad2(o.m)+" "+(o.p ? "PM" : "AM"); }
+  wh._onChange = show; bindWheels(back); show();
   function close(){ back.remove(); try{ inp.blur(); }catch(e){} }
   function fire(){ inp.dispatchEvent(new Event("input", {bubbles:true})); inp.dispatchEvent(new Event("change", {bubbles:true})); }
   back.addEventListener("click", function(e){
     if(e.target===back){ close(); return; }
     var b = e.target.closest ? e.target.closest("[data-tp]") : null; if(!b) return;
-    var a = b.getAttribute("data-tp"), x = +b.getAttribute("data-v");
-    if(a==="h") st.h = x; else if(a==="m") st.m = x; else if(a==="ap") st.pm = x===1;
-    else if(a==="mp") st.m = (st.m + 1) % 60; else if(a==="mm") st.m = (st.m + 59) % 60;
-    else if(a==="cancel"){ close(); return; }
-    else if(a==="clear"){ inp.value = ""; close(); fire(); return; }
-    else if(a==="ok"){ inp.value = val(); close(); fire(); return; }
-    draw();
+    var a = b.getAttribute("data-tp");
+    if(a==="cancel"){ close(); return; }
+    if(a==="clear"){ inp.value = ""; close(); fire(); return; }
+    if(a==="ok"){ var o = read(); inp.value = pad2((o.h % 12) + (o.p ? 12 : 0))+":"+pad2(o.m); close(); fire(); }
   });
-  draw();
   var ok = back.querySelector('[data-tp="ok"]'); if(ok) ok.focus();
 }
 document.addEventListener("click", function(e){
+  var tb = e.target.closest ? e.target.closest("[data-tpopen]") : null;
+  if(tb){ var hi = tb.parentNode.querySelector('input[type="time"]'); if(hi){ e.preventDefault(); openTimePicker(hi); } return; }
   var t = e.target.closest ? e.target.closest('input[type="time"][data-tp]') : null;
   if(!t) return;
   e.preventDefault(); openTimePicker(t);
@@ -70709,6 +70719,7 @@ function bindWheels(root){
         var j = Math.max(0, Math.min(c.children.length-1, Math.round(c.scrollTop/44)));
         [].forEach.call(c.children, function(x, k){ x.classList.toggle("sel", k===j); });
         if(boot) return;
+        if(el._onChange){ el._onChange(el); return; }
         clearTimeout(timer); timer = setTimeout(function(){ wheelCommit(el); }, 220);
       });
       c.addEventListener("click", function(e){ var it = e.target.closest(".it"); if(it) c.scrollTo({top:[].indexOf.call(c.children, it)*44, behavior:"smooth"}); });
@@ -70898,6 +70909,7 @@ function dayChips(path, arr){
   return '<div class="pill-row days">'+DOW_ORDER.map(function(d){ return '<button type="button" class="pill'+(arr.indexOf(d)>=0?" on":"")+'" data-wa="toggleArr" data-path="'+path+'" data-v="'+d+'">'+DOW_SHORT[d]+'</button>'; }).join("")+'</div>';
 }
 function optsNum(from, to, cur, fmt){ var o = ""; for(var i=from;i<=to;i++) o += '<option value="'+i+'"'+(+cur===i?" selected":"")+'>'+(fmt ? fmt(i) : i)+'</option>'; return o; }
+function timeChip(path, val){ return '<span class="tchip"><button type="button" class="tm" data-tpopen="1" aria-label="Change time, now '+esc(val ? fmt12(val) : "not set")+'">'+esc(val ? fmt12(val) : "Set")+'</button><input type="time" hidden data-tp="1" data-w="'+path+'" value="'+esc(val)+'"></span>'; }
 function timePair(pathS, pathE, s, e){ return '<div class="tpair"><input type="time" readonly data-tp="1" data-w="'+pathS+'" value="'+esc(s)+'"><span>to</span><input type="time" readonly data-tp="1" data-w="'+pathE+'" value="'+esc(e)+'"></div>'; }
 
 // ---------- steps ----------
@@ -71044,28 +71056,21 @@ function wzCapacity(w){
   var starts = ["05:00","06:00","07:00","08:00","09:00","10:00","12:00","14:00","16:00","18:00"].map(function(t){ return '<option value="'+t+'"'+(c.dayStart===t ? " selected" : "")+'>'+esc(fmt12(t))+'</option>'; }).join("");
   var own = '';
   if(manual){
-    var n = c.sessions.length;
-    own = '<div class="two"><div class="cf"><label>Sessions per day</label><select data-w="cap.count" data-t="n" data-after="sessCount">'+optsNum(1,6,n)+'</select></div>'+
-      '<div class="cf"><label>Length of one session</label><select data-w="cap.sessLen" data-t="n" data-after="sessLen">'+(sessLenNow(w) ? "" : '<option value="0" selected>Different (set below)</option>')+lensWith(sessLenNow(w)).map(function(m){ return '<option value="'+m+'"'+(sessLenNow(w)===m ? " selected" : "")+'>'+esc(fmtDurMin(m))+'</option>'; }).join("")+'</select></div></div>'+
-      '<div class="cap-sess">'+c.sessions.map(function(s, i){ return '<div class="slot"><div class="slot-h"><b>Session '+(i+1)+'</b><span class="dur">'+esc(toMin(s.end)>toMin(s.start)?fmtDurMin(toMin(s.end)-toMin(s.start)):"invalid")+'</span></div>'+
-        '<div class="cf"><label>Subject</label><select data-w="cap.sessions.'+i+'.subject"><option value="">Auto — current active subject</option>'+w.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(s.subject===nm?" selected":"")+'>'+esc(nm)+'</option>'; }).join("")+'</select></div>'+
-        '<div class="cf"><label>Time (from – to)</label>'+timePair("cap.sessions."+i+".start","cap.sessions."+i+".end",s.start,s.end)+'</div></div>'; }).join("")+'</div>'+
-      '<div class="cf"><label>Sessions on each study day</label><div class="perday">'+c.days.slice().sort(function(a,b){ return DOW_ORDER.indexOf(a)-DOW_ORDER.indexOf(b); }).map(function(d){
-        var pd = c.perDay[d], cur = (pd!=null && pd!=="") ? +pd : n;
-        return '<label>'+DOW_SHORT[d]+'<select data-w="cap.perDay.'+d+'" data-t="n">'+optsNum(0,n,cur)+'</select></label>';
-      }).join("")+'</div><div class="hint">Use the first N sessions on that day.</div></div>'+
-      '<div class="cf"><label>Minimum break between sessions</label><select data-w="cap.breakMin" data-t="n">'+[5,10,15,20,30,45,60].map(function(m){ return '<option value="'+m+'"'+(+c.breakMin===m?" selected":"")+'>'+m+' min</option>'; }).join("")+'</select></div>'+
-      '<div class="hint">Essay, PYQ, Test and Revision take over any study session they overlap on their day. A chapter can use part of a session; the next one starts where it ends.</div>'+weekMapHtml(w);
+    own = '<div class="ses-list">'+c.sessions.map(function(sl, i){
+      var d = toMin(sl.end)-toMin(sl.start);
+      return '<div class="ses-r" data-tplabel="Session '+(i+1)+'"><b class="ses-n">'+(i+1)+'</b>'+
+        '<div class="ses-t">'+timeChip("cap.sessions."+i+".start", sl.start)+'<span class="arr" aria-hidden="true">\u2192</span>'+timeChip("cap.sessions."+i+".end", sl.end)+'</div>'+
+        '<span class="dur">'+(d > 0 ? esc(fmtHM(d)) : "check times")+'</span><select data-w="cap.sessions.'+i+'.subject" aria-label="Subject for session '+(i+1)+'"><option value="">Any subject</option>'+w.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(sl.subject===nm?" selected":"")+'>'+esc(nm)+'</option>'; }).join("")+'</select>'+
+        (c.sessions.length > 1 ? '<button type="button" class="ses-x" data-wa="sesDel" data-v="'+i+'" aria-label="Remove session '+(i+1)+'">\u2715</button>' : "")+'</div>';
+    }).join("")+'</div>'+(c.sessions.length < 6 ? '<button type="button" class="btn ghost sm" data-wa="sesAdd">+ Add a session</button>' : "");
   }
   return '<h3>How long per chapter?</h3>'+
     wheelHtml("def", "", mins)+res+
     '<div class="cf"><label>Study days</label>'+dayChips("cap.days", c.days)+'</div>'+
     '<details class="info-card cap-adv" data-wopen="capSubj"'+(w.open.capSubj ? " open" : "")+'><summary>Different time for some subjects'+(diff ? ' <span class="cnt">'+diff+' set</span>' : "")+'</summary><div class="cap-rows">'+rows+'</div></details>'+
     '<details class="info-card cap-adv" data-wopen="capAdv"'+(w.open.capAdv ? " open" : "")+'><summary>Daily limit and exact times <span class="cnt">optional</span></summary>'+
-      '<div class="two"><div class="cf"><label>Daily limit</label><select data-w="cap.limitMin" data-t="n">'+limits+'</select></div>'+
-      (manual ? '' : '<div class="cf"><label>My day starts at</label><select data-w="cap.dayStart">'+starts+'</select></div>')+'</div>'+
-      (H.auto ? '<div class="hint">Your chapter time is set automatically to fit the day you chose. Roll the wheel above to choose your own.</div>' : '')+
-      '<div class="pill-row"><button type="button" class="pill'+(manual ? "" : " on")+'" data-wa="layout" data-v="auto">The app plans my day</button><button type="button" class="pill'+(manual ? " on" : "")+'" data-wa="layout" data-v="manual">I set my own sessions</button></div>'+own+
+      '<div class="pill-row"><button type="button" class="pill'+(manual ? "" : " on")+'" data-wa="layout" data-v="auto">The app plans my day</button><button type="button" class="pill'+(manual ? " on" : "")+'" data-wa="layout" data-v="manual">I set my own sessions</button></div>'+
+      (manual ? own : '<div class="two"><div class="cf"><label>Daily limit</label><select data-w="cap.limitMin" data-t="n">'+limits+'</select></div><div class="cf"><label>My day starts at</label><select data-w="cap.dayStart">'+starts+'</select></div></div>'+(H.auto ? '<div class="hint">Your chapter time is set automatically to fit the day you chose. Roll the wheel above to choose your own.</div>' : ""))+
     '</details>';
 }
 function openTimeSheet(name){
@@ -71389,6 +71394,8 @@ function wizAction(a, b){
     case "qsBack": var bl = qsList(w.qs), bi = bl.indexOf(w.qs.screen); w.err = []; w.qs.screen = bl[Math.max(0, bi-1)]; scrollPlannerTop(); break;
     case "qsFull": qsApply(w); w.cap.layout = "auto"; w.cap.hours = {def:2, by:{}}; w.cap.limitMin = 0; w.qs = null; w.step = 0; w.err = []; scrollPlannerTop(); break;
     case "subjTime": openTimeSheet(v); return;
+    case "sesAdd": var ls = w.cap.sessions, last = ls[ls.length-1], gp = Math.max(5, +w.cap.breakMin || 5), st0 = last ? Math.min(1380-60, toMin(last.end)+gp) : 1080; ls.push({start:hmStr(st0), end:hmStr(st0+60), subject:""}); w.cap.count = ls.length; break;
+    case "sesDel": if(w.cap.sessions.length > 1){ w.cap.sessions.splice(+v, 1); w.cap.count = w.cap.sessions.length; Object.keys(w.cap.perDay).forEach(function(k){ if(+w.cap.perDay[k] > w.cap.sessions.length) w.cap.perDay[k] = w.cap.sessions.length; }); } break;
     case "layout":
       if(v==="manual" && w.cap.layout!=="manual"){ var fi = null; try{ fi = fitInfo(w); }catch(x){} if(fi){ w.cap.sessions = JSON.parse(JSON.stringify(fi.plan.capacity.sessions)); w.cap.count = w.cap.sessions.length; w.cap.perDay = {}; } }
       w.cap.layout = v; if(v==="manual") w.cap.hours.auto = false; break;
@@ -82997,7 +83004,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "318";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "319";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
