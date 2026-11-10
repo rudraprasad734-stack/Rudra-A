@@ -7593,13 +7593,14 @@ function weekMapHtml(w){
       if(x.t==="study" && items.some(function(y){ return y.t==="act" && overlapR(x, y); })) x.cls = " yield";
     });
     items.sort(function(a,b){ return toMin(a.start)-toMin(b.start); });
-    var chips = items.length ? items.map(function(x){ return '<span class="wm-chip'+(x.cls||"")+'" style="--bc:var('+x.color+')"><b>'+esc(fmt12(x.start))+' – '+esc(fmt12(x.end))+'</b> '+esc(x.label)+(x.cls===" yield" ? ' <em>replaced</em>' : "")+(x.cls===" clash" ? ' <em>clash</em>' : "")+'</span>'; }).join("") : '<span class="muted">Rest day</span>';
+    var chips = items.length ? items.map(function(x){ return '<span class="wm-chip'+(x.cls||"")+'" style="--bc:var('+x.color+')"><b>'+esc(fmt12(x.start))+' – '+esc(fmt12(x.end))+'</b> '+esc(x.label)+(x.cls===" yield" ? ' <em>moves to a later day</em>' : "")+(x.cls===" clash" ? ' <em>clash</em>' : "")+'</span>'; }).join("") : '<span class="muted">Rest day</span>';
     var free = freeGaps(items);
     return '<div class="wm-row"><b>'+DOW_SHORT[d]+'</b><div class="wm-items">'+chips+(items.length ? '<div class="wm-free">Free: '+(free.length ? esc(free.join(", ")) : "none")+'</div>' : "")+'</div></div>';
   }).join("");
   var msgs = conflictMessages(w);
   return '<div class="weekmap"><h4>Your week at a glance</h4>'+
-    (msgs.length ? '<div class="form-err" role="alert">'+msgs.map(esc).join("<br>")+'</div>' : '<div class="hint">Each time slot holds one thing. Anything marked <em>replaced</em> is a study session that gives way to an activity on that day; the time it frees is not double-booked.</div>')+
+    '<div class="hint"><b>Activities come first.</b> If a study session falls at the same time as an activity, the activity takes that slot and the topic moves to the next free study slot, on a later day. Nothing is dropped. One time slot holds only one thing.</div>'+
+    (msgs.length ? '<div class="form-err" role="alert">'+msgs.map(esc).join("<br>")+'</div>' : "")+
     rows+'</div>';
 }
 function freeHint(w, k){
@@ -19955,7 +19956,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "337";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "338";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
