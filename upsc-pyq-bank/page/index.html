@@ -8079,7 +8079,7 @@ function renderWizard(host){
 }
 // ---- quick setup: four questions and a look at the first week before anything is built ----
 var QS_SCREENS = ["exam","time","opt","start","week"], QS_COL = ["#8E7BFF","#2DE6D6","#FFB020","#34D58A","#FF6FAE","#5FD0FF"], QS_HOURS = [3,4,6,8,10];
-function qsNew(){ return {screen:"exam", exam:"both", hours:6, days:[1,2,3,4,5,6], opt:"", all:false, start:"foundation"}; }
+function qsNew(){ return {screen:"exam", exam:"both", hours:6, days:[1,2,3,4,5,6], opt:"", all:false, start:"pick"}; }
 function qsList(q){ return QS_SCREENS.filter(function(s){ return !(s==="opt" && q.exam==="prelims"); }); }
 // 6 h -> 3 sessions of 120 min. Lengths stay in whole quarter hours so the total is exactly the hours chosen (9 h -> 6 x 90, not 5 x 110).
 function qsHoursPlan(h){ var n = Math.max(1, Math.ceil(h/2)); while(n < 6 && (h*60/n) % 15) n++; return [n, Math.round(h*60/n/5)*5]; }
@@ -8166,9 +8166,9 @@ function qsHtml(w){
     if(q.start==="optional" && hasOpt && bo.indexOf(ol) > 0){ bo.splice(bo.indexOf(ol), 1); bo.unshift(ol); }
     var ord = bo.map(function(n){ return n.replace(/ \(Optional\)$/, ""); });
     title = "Start with?"; hint = "We line up the rest after it."; btn = "See my first week"; chips = [qsExamLabel(q.exam), q.hours+" h · "+q.days.length+" days"].concat(q.opt ? [q.opt] : []);
-    body = qsOpt("🧱", "Foundation first", esc(found.join(", ")), q.start==="foundation", "set", "qs.start", "foundation", "Recommended")+
+    body = qsOpt("✋", "I will pick", "Choose subjects and order", q.start==="pick", "set", "qs.start", "pick", "Recommended")+
+      qsOpt("🧱", "Foundation first", esc(found.join(", ")), q.start==="foundation", "set", "qs.start", "foundation")+
       (hasOpt ? qsOpt("🎓", "Optional first", esc(q.opt || "Your optional")+", then GS", q.start==="optional", "set", "qs.start", "optional") : "")+
-      qsOpt("✋", "I will pick", "Choose subjects and order", q.start==="pick", "set", "qs.start", "pick")+
       (q.start==="pick" ? "" : '<div class="qx-lab">Your order</div><div class="qx-order">'+ord.slice(0, 4).map(function(n, i){ return '<span><i style="background:'+QS_COL[i % QS_COL.length]+'">'+(i+1)+'</i>'+esc(n.split(" ")[0])+'</span>'; }).join("")+'</div>');
     if(q.start==="pick") btn = "Choose my subjects";
   } else {
@@ -20012,7 +20012,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "339";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "340";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
