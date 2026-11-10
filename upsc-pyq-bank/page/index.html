@@ -1352,6 +1352,7 @@
   .slot select{width:100%; min-height:44px; padding:8px; border:1px solid var(--line); border-radius:10px; background:var(--surface); color:var(--ink); font:inherit;}
   .ac-next[data-go], .brick[data-go], .tagc[data-go], .upc-i[data-go], .prio-r{cursor:pointer;}
   .ac-next .go{display:block; margin-top:4px; font-size:12px; font-weight:700; color:var(--tab-planner);}
+  .pill.taken{opacity:.35; text-decoration:line-through; cursor:not-allowed;} .pill.on.clash{background:#b3261e !important; border-color:#b3261e !important; color:#fff;} .clash-note{margin-top:8px; font-size:13px; font-weight:700; color:#ff8a80;} .taken-note{margin-top:6px; font-size:12px; color:var(--ink-soft);}
   .leaf-st{flex:none; align-self:center; padding:4px 12px; border-radius:14px; font-size:13px; font-weight:800; border:1px solid var(--line); color:var(--ink-soft); white-space:nowrap;} .leaf-st.st-in_progress{background:rgba(255,176,32,.14); border-color:transparent; color:#ffb020;} .leaf-st.st-completed{background:rgba(125,255,192,.14); border-color:transparent; color:#7dffc0;}
   .ac-keep{margin:8px 0; display:flex; align-items:center; gap:10px; flex-wrap:wrap;} .keep-chip{padding:4px 12px; border-radius:14px; background:rgba(45,230,214,.14); color:var(--accent, #2de6d6); font-weight:800; font-size:13px;}
   .keep-opt{border:1px solid var(--line); border-radius:14px; padding:11px 12px; margin-top:8px; cursor:pointer;} .keep-opt.on{border-color:var(--accent, #2de6d6); background:var(--surface-2);} .keep-opt b{display:block;} .keep-opt span{color:var(--ink-soft); font-size:13px;} .keep-days{margin:10px 0;} .keep-eff{margin-top:10px;}
@@ -7837,11 +7838,33 @@ function actSummary(w, k){
   var when = d.length>=7 ? "every day" : (d.length ? d.map(function(x){ return DOW_SHORT[x]; }).join(", ") : "pick a day");
   return fmt12(a.start)+" – "+fmt12(a.end)+" · "+when;
 }
+function actClashDays(w, k){
+  var a = w.acts[k], out = {};
+  if(!(a.start && a.end && toMin(a.end) > toMin(a.start))) return out;
+  ACT_KINDS.forEach(function(k2){
+    if(k2===k) return;
+    var b = w.acts[k2]; if(!actTimeOk(b) || !overlapR(a, b)) return;
+    (b.days || []).forEach(function(d){ if(!out[d]) out[d] = k2; });
+  });
+  return out;
+}
+function actDayPills(w, k){
+  var a = w.acts[k], days = a.days || [], clash = actClashDays(w, k), taken = [], bad = [];
+  var pills = DOW_ORDER.map(function(d){
+    var on = days.indexOf(d) >= 0, c = clash[d];
+    if(c && on){ bad.push(DOW_SHORT[d]+" with "+ACT_INFO[c].title); return '<button type="button" class="pill on clash" data-wa="toggleArr" data-path="acts.'+k+'.days" data-v="'+d+'" title="Clashes with '+esc(ACT_INFO[c].title)+'">'+DOW_SHORT[d]+'</button>'; }
+    if(c){ taken.push(DOW_SHORT[d]); return '<button type="button" class="pill taken" disabled aria-disabled="true" title="'+esc(ACT_INFO[c].title)+' is at this time">'+DOW_SHORT[d]+'</button>'; }
+    return '<button type="button" class="pill'+(on ? " on" : "")+'" data-wa="toggleArr" data-path="acts.'+k+'.days" data-v="'+d+'">'+DOW_SHORT[d]+'</button>';
+  }).join("");
+  return '<div class="pill-row days">'+pills+'</div>'+
+    (bad.length ? '<div class="clash-note" role="alert">Clash: '+esc(bad.join(", "))+' at this time. Untick the day or change the time.</div>' : "")+
+    (taken.length ? '<div class="taken-note">Greyed days ('+esc(taken.join(", "))+') are taken by another activity at this time.</div>' : "");
+}
 function actRowHtml(w, k){
   var a = w.acts[k], info = ACT_INFO[k], pin = k==="ca" && w.cap.exact && w.cap.sessions.some(function(x){ return x.subject==="@ca"; });
   var more = "";
   if(a.on && !pin && k!=="revision"){
-    more = '<div class="act-more" data-tplabel="'+esc(info.title)+'"><div class="act-tm">'+timeChip("acts."+k+".start", a.start)+'<span class="arr" aria-hidden="true">→</span>'+timeChip("acts."+k+".end", a.end)+'</div>'+dayChips("acts."+k+".days", a.days || [])+'</div>';
+    more = '<div class="act-more" data-tplabel="'+esc(info.title)+'"><div class="act-tm">'+timeChip("acts."+k+".start", a.start)+'<span class="arr" aria-hidden="true">→</span>'+timeChip("acts."+k+".end", a.end)+'</div>'+actDayPills(w, k)+'</div>';
   }
   return '<div class="cap-sub act-row'+(a.on ? " on" : "")+'"><div class="act-top"><span class="dot" style="background:var('+info.color+')"></span><span class="nm">'+esc(info.title)+'<small>'+esc(actSummary(w, k))+'</small></span>'+
     (pin ? '' : '<button type="button" class="sw'+(a.on ? " on" : "")+'" role="switch" aria-checked="'+(a.on ? "true" : "false")+'" aria-label="'+esc(info.title)+'" data-wa="actToggle" data-v="'+k+'"></button>')+'</div>'+more+'</div>';
@@ -8240,7 +8263,7 @@ function wizAction(a, b){
     case "capNext": if(w.capIdx >= w.order.length-1) w.capView = "list"; else w.capIdx++; break;
     case "capExact": var fx = null; try{ fx = fitInfo(w); }catch(x){} if(fx){ w.cap.sessions = JSON.parse(JSON.stringify(fx.plan.capacity.sessions)); w.cap.count = w.cap.sessions.length; w.cap.perDay = {}; } w.cap.exact = true; w.open.capEx = true; break;
     case "capAuto": w.cap.exact = false; break;
-    case "actToggle": var ta = w.acts[v]; ta.on = !ta.on; if(ta.on){ w.actsOk = true; ta.mode = "weekly"; ta.interval = 1; delete ta.freq; if(v==="ca"){ ta.start = "05:30"; ta.end = "06:00"; ta.days = [0,1,2,3,4,5,6]; } if(!ta.days || !ta.days.length) ta.days = [1,2,3,4,5,6]; } break;
+    case "actToggle": var ta = w.acts[v]; ta.on = !ta.on; if(ta.on){ w.actsOk = true; ta.mode = "weekly"; ta.interval = 1; delete ta.freq; if(v==="ca"){ ta.start = "05:30"; ta.end = "06:00"; ta.days = [0,1,2,3,4,5,6]; } if(!ta.days || !ta.days.length) ta.days = [1,2,3,4,5,6]; var cl = actClashDays(w, v); ta.days = ta.days.filter(function(d){ return !cl[d]; }); if(!ta.days.length) toast("Another activity already uses that time on those days. Pick a different time."); } break;
     case "actsDone": w.actsOk = true; break;
     case "capGoExact": var fq = null; try{ fq = fitInfo(w); }catch(x){} if(!w.cap.exact && fq){ w.cap.sessions = JSON.parse(JSON.stringify(fq.plan.capacity.sessions)); w.cap.count = w.cap.sessions.length; w.cap.perDay = {}; } w.cap.exact = true; w.open.capEx = true; w.step = 5; w.capView = "list"; scrollPlannerTop(); break;
     case "sesAdd": var ls = w.cap.sessions, last = ls[ls.length-1], gp = Math.max(5, +w.cap.breakMin || 5), st0 = last ? Math.min(1380-60, toMin(last.end)+gp) : 1080; ls.push({start:hmStr(st0), end:hmStr(st0+60), subject:""}); w.cap.count = ls.length; break;
@@ -19932,7 +19955,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "336";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "337";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
