@@ -18203,7 +18203,7 @@ function openTimerSave(){
   showModal('<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="tsTitle">'+
     '<h2 id="tsTitle">Save your study time</h2>'+
     (tooLong ? '<p>The timer ran for <b>'+esc(fmtDurMin(studyMin))+'</b>. It was probably left on by mistake. How long did you really study?</p><div class="cf"><label for="tsReal">Hours really studied (up to 16)</label><input id="tsReal" type="number" inputmode="decimal" min="0.25" max="16" step="0.25" placeholder="for example 3"></div>' : '')+
-    '<p'+(tooLong ? ' hidden' : '')+'>You studied for <b>'+esc(fmtDurMin(studyMin))+'</b> ('+esc(fmtTimer(ms))+').'+(win ? ' From <b>'+esc(fmt12(hmStr(win.s)))+'</b> to <b>'+esc(fmt12(hmStr(win.e)))+'</b>'+(brkMin ? ', with <b>'+esc(fmtDurMin(brkMin))+'</b> of breaks between rounds' : "")+'.' : '')+'</p>'+
+    '<p'+(tooLong ? ' hidden' : '')+'><span id="tsLine">You studied for <b>'+esc(studyMin+(studyMin===1 ? " minute" : " minutes"))+'</b>.</span>'+(win ? ' From <b>'+esc(fmt12(hmStr(win.s)))+'</b> to <b>'+esc(fmt12(hmStr(win.e)))+'</b>'+(brkMin ? ', with <b>'+esc(fmtDurMin(brkMin))+'</b> of breaks between rounds' : "")+'.' : '')+'</p>'+
     '<div class="cf"><label for="tsTarget">Record it against</label><select id="tsTarget">'+opts+'<option value=""'+(pick ? "" : " selected")+'>Only add to today&rsquo;s study time</option></select></div>'+
     (function(){ var sp = timerSplitDays(ms, info); if(!sp) return ""; return '<p class="muted small">This sitting went past midnight, so your study time is shared between the days: '+Object.keys(sp).map(function(k){ return esc(fmtLong(parseKey(k)).replace(/,? \d{4}$/, ""))+" "+esc(fmtDurMin(Math.round(sp[k]/60000))); }).join(", ")+'.</p>'; })()+
     '<p class="ts-split" id="tsPreview" hidden></p>'+
@@ -18237,10 +18237,15 @@ function openTimerSave(){
     try{ var r = keepImpact(x.topicId, x.subject, {mode:"until", extra:0, since:todayKey}), d = r.a.end && r.b.end ? diffDays(r.b.end, r.a.end) : 0; if(d > 0) kt.textContent = "Stays on your list until you finish it. "+x.subject+" ends about "+d+" day"+(d===1 ? "" : "s")+" later."; }catch(e){}
   }
   document.getElementById("tsOut").addEventListener("change", function(){ [].forEach.call(this.querySelectorAll(".rm-opt"), function(o){ o.classList.toggle("on", o.querySelector("input").checked); }); });
-  document.getElementById("tsTarget").addEventListener("change", function(){ refresh(); outcome(); });
-  outcome();
+  function line(){
+    var sid = document.getElementById("tsTarget").value, x = sid ? sessionById(sid) : null, el = document.getElementById("tsLine"); if(!el) return;
+    function mins(n){ return n+(n===1 ? " minute" : " minutes"); }
+    el.innerHTML = 'You studied for <b>'+esc(mins(studyMin))+'</b>'+(x && x.duration > 0 ? ' out of <b>'+esc(mins(x.duration))+'</b>' : "")+'.'+(x && x.actualDuration > 0 ? ' '+esc(mins(x.actualDuration))+' were already logged on this session.' : "");
+  }
+  document.getElementById("tsTarget").addEventListener("change", function(){ refresh(); outcome(); line(); });
+  outcome(); line();
   if(tooLong) document.getElementById("tsReal").addEventListener("input", function(){
-    var h = parseFloat(this.value); ms = (h > 0 ? Math.min(h, 16) : 0) * 3600000; studyMin = Math.max(1, Math.round(ms/60000)); brkMin = 0; win = null; info = null; refresh();
+    var h = parseFloat(this.value); ms = (h > 0 ? Math.min(h, 16) : 0) * 3600000; studyMin = Math.max(1, Math.round(ms/60000)); brkMin = 0; win = null; info = null; refresh(); line();
   });
   refresh();
   document.getElementById("tsDiscard").addEventListener("click", function(){ timerState.pending = 0; timerState.pendInfo = null; timerState.target = ""; timerSave(); closeModal(); timerUi(); renderView(activeTab); toast("Timer discarded."); });
@@ -19925,7 +19930,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "333";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "334";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
