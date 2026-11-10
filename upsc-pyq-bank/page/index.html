@@ -1355,6 +1355,7 @@
   .ac-next .go{display:block; margin-top:4px; font-size:12px; font-weight:700; color:var(--tab-planner);}
   .clash-ask{margin-top:10px; padding:12px; border:1px solid #b3261e; border-radius:14px; background:rgba(179,38,30,.12); display:flex; flex-direction:column; gap:8px;} .clash-ask b{color:#ff8a80;} .replaced-row{margin-top:8px; padding:10px 12px; border:1px dashed var(--line); border-radius:12px; font-size:13px; color:var(--ink-soft);} .replaced-row b{color:var(--ink);}
   .pill.taken{opacity:.35; text-decoration:line-through; cursor:not-allowed;} .pill.on.clash{background:#b3261e !important; border-color:#b3261e !important; color:#fff;} .clash-note{margin-top:8px; font-size:13px; font-weight:700; color:#ff8a80;} .taken-note{margin-top:6px; font-size:12px; color:var(--ink-soft);}
+  .ses-r{display:flex; flex-direction:column; align-items:stretch; gap:8px; position:relative; padding-left:46px;} .ses-r .ses-n{position:absolute; left:10px; top:12px;} .ses-h{display:flex; align-items:center; gap:10px;} .ses-h b{font-size:16px;} .ses-h .dur{margin-left:auto; color:var(--ink-soft); font-weight:700;} .ses-sub{display:flex; align-items:center; gap:10px;} .ses-sub span{font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); font-weight:700; flex:none;} .ses-sub select{flex:1; min-width:0;}
   .leaf-st{flex:none; align-self:center; padding:4px 12px; border-radius:14px; font-size:13px; font-weight:800; border:1px solid var(--line); color:var(--ink-soft); white-space:nowrap;} .leaf-st.st-in_progress{background:rgba(255,176,32,.14); border-color:transparent; color:#ffb020;} .leaf-st.st-completed{background:rgba(125,255,192,.14); border-color:transparent; color:#7dffc0;}
   .ac-keep{margin:8px 0; display:flex; align-items:center; gap:10px; flex-wrap:wrap;} .keep-chip{padding:4px 12px; border-radius:14px; background:rgba(45,230,214,.14); color:var(--accent, #2de6d6); font-weight:800; font-size:13px;}
   .keep-opt{border:1px solid var(--line); border-radius:14px; padding:11px 12px; margin-top:8px; cursor:pointer;} .keep-opt.on{border-color:var(--accent, #2de6d6); background:var(--surface-2);} .keep-opt b{display:block;} .keep-opt span{color:var(--ink-soft); font-size:13px;} .keep-days{margin:10px 0;} .keep-eff{margin-top:10px;}
@@ -7920,25 +7921,19 @@ function wzCapacity(w){
     var list = '<div class="ses-list">'+c.sessions.map(function(sl, i){
       var d = toMin(sl.end)-toMin(sl.start);
       return '<div class="ses-r" data-tplabel="Session '+(i+1)+'"><b class="ses-n">'+(i+1)+'</b>'+
+        '<div class="ses-h"><b>Session '+(i+1)+'</b><span class="dur">'+(d > 0 ? esc(fmtHM(d)) : "check times")+'</span>'+
+        (n > 1 ? '<button type="button" class="ses-x" data-wa="sesDel" data-v="'+i+'" title="Remove this session" aria-label="Remove session '+(i+1)+'">✕</button>' : "")+'</div>'+
         '<div class="ses-t">'+timeChip("cap.sessions."+i+".start", sl.start)+'<span class="arr" aria-hidden="true">→</span>'+timeChip("cap.sessions."+i+".end", sl.end)+'</div>'+
-        '<span class="dur">'+(d > 0 ? esc(fmtHM(d)) : "check times")+'</span>'+
-        (n > 1 ? '<button type="button" class="ses-x" data-wa="sesDel" data-v="'+i+'" title="Remove this session" aria-label="Remove session '+(i+1)+'">✕</button>' : "")+'</div>';
+        '<label class="ses-sub"><span>Subject</span><select data-w="cap.sessions.'+i+'.subject" aria-label="Subject for session '+(i+1)+'"><option value="">Any subject</option><optgroup label="Activity"><option value="@ca"'+(sl.subject==="@ca"?" selected":"")+'>Current Affairs (daily)</option></optgroup><optgroup label="Subjects">'+w.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(sl.subject===nm?" selected":"")+'>'+esc(nm)+'</option>'; }).join("")+'</optgroup></select></label></div>';
     }).join("")+'</div>'+(n < 6 ? '<button type="button" class="btn ghost sm" data-wa="sesAdd">+ Add a session</button>' : "");
-    var pins = '<details class="info-card" data-wopen="pinDet"'+(w.open.pinDet ? " open" : "")+'><summary>Pin a subject to a session</summary>'+c.sessions.map(function(sl, i){
-      return '<div class="cf"><label>Session '+(i+1)+' · '+esc(fmt12(sl.start))+'</label><select data-w="cap.sessions.'+i+'.subject" aria-label="Subject for session '+(i+1)+'"><option value="">Any subject</option><optgroup label="Activity"><option value="@ca"'+(sl.subject==="@ca"?" selected":"")+'>Current Affairs (daily)</option></optgroup><optgroup label="Subjects">'+w.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(sl.subject===nm?" selected":"")+'>'+esc(nm)+'</option>'; }).join("")+'</optgroup></select></div>';
-    }).join("")+'</details>';
-    exactBox = dayRingHtml(c.sessions)+list+pins;
+    exactBox = dayRingHtml(c.sessions)+list;
   }
   var anyAct = ACT_KINDS.some(function(k){ return w.acts[k].on; });
   var actOrder = ["ca","revision","essay","pyq","test"].filter(function(k){ return ACT_KINDS.indexOf(k) >= 0; });
   var scr = capScreenOf(w);
   if(scr==="days"){
-    var hrs = +c.dayHours > 0 ? +c.dayHours : 6, wk = hrs*c.days.length;
-    return '<div class="qx-big"><span id="qsHrs">'+esc(String(hrs))+'</span><small> h / day</small></div>'+
-      '<input type="range" class="qx-range" min="1" max="12" step="0.5" value="'+hrs+'" data-w="cap.dayHours" data-t="n" data-qsrange="1" aria-label="Hours a day">'+
-      '<div class="qx-chips">'+QS_HOURS.map(function(h){ return '<button type="button" class="qx-chip'+(hrs===h ? " on" : "")+'" data-wa="set" data-path="cap.dayHours" data-n="1" data-v="'+h+'">'+h+'h</button>'; }).join("")+'</div>'+
-      '<div class="qx-lab">Study days</div>'+dayChips("cap.days", c.days)+
-      '<div class="qx-sub">'+(c.days.length ? (exact ? "You chose your own session times, so the hours come from those." : "That is about <b>"+esc(String(wk))+" hours</b> a week") : "Pick at least one study day")+'</div>';
+    return '<div class="qx-lab">Study days</div>'+dayChips("cap.days", c.days)+
+      '<div class="qx-sub">'+(c.days.length ? '<b>'+c.days.length+' day'+(c.days.length===1 ? '' : 's')+'</b> a week. You set when you study on the Your sessions screen.' : 'Pick at least one study day')+'</div>';
   }
   if(scr==="acts"){
     return '<div class="cap-subs">'+actOrder.map(function(k){ return actRowHtml(w, k); }).join("")+'</div>'+
@@ -7946,7 +7941,11 @@ function wzCapacity(w){
       (anyAct ? weekMapHtml(w) : '<button type="button" class="qx-link" data-wa="next">No activities, continue</button>');
   }
   if(!exact){
-    return '<div class="qx-info"><b>The app plans your day</b><small>From '+esc(String(+c.dayHours > 0 ? +c.dayHours : 6))+' hours a day, starting at '+esc(fmt12(c.dayStart || "06:00"))+'.</small></div>'+
+    var hrs = +c.dayHours > 0 ? +c.dayHours : 6;
+    return '<div class="qx-info"><b>The app plans your day</b><small>Starting at '+esc(fmt12(c.dayStart || "06:00"))+'. How many hours a day?</small></div>'+
+      '<div class="qx-big"><span id="qsHrs">'+esc(String(hrs))+'</span><small> h / day</small></div>'+
+      '<input type="range" class="qx-range" min="1" max="12" step="0.5" value="'+hrs+'" data-w="cap.dayHours" data-t="n" data-qsrange="1" aria-label="Hours a day">'+
+      '<div class="qx-chips">'+QS_HOURS.map(function(h){ return '<button type="button" class="qx-chip'+(hrs===h ? " on" : "")+'" data-wa="set" data-path="cap.dayHours" data-n="1" data-v="'+h+'">'+h+'h</button>'; }).join("")+'</div>'+
       qsOpt("🕐", "Set my own session times", "Pick when each session starts and ends", false, "capExact", "", "", "Recommended")+
       fitLineHtml(w);
   }
@@ -8043,7 +8042,7 @@ var FS_SCREENS = [
   {id:"prep", step:2, title:"Preparing for?", hint:"Choose what goes into the plan."},
   {id:"pri",  step:3, title:"Study order", hint:"Tap subjects in the order you want to study them."},
   {id:"top",  step:4, title:"Skip anything?", hint:"Tap a subject to see or trim its chapters."},
-  {id:"days", step:5, cap:"days", title:"Study days and hours", hint:"Be honest. We plan around it."},
+  {id:"days", step:5, cap:"days", title:"Study days", hint:"Which days can you study?"},
   {id:"acts", step:5, cap:"acts", title:"Daily activities", hint:"Set these first. Each gets its own time and days."},
   {id:"subj", step:5, cap:"subj", title:"Your sessions", hint:"Choose when you study each day."},
   {id:"week", step:7, title:"Your first week", hint:"Looks good?"}
@@ -8073,7 +8072,7 @@ function renderWizard(host){
   var si = fsIndex(w), S = FS_SCREENS[si], last = si===FS_SCREENS.length-1, stt = windowStats(w), chips = [];
   if(si > 1) chips.push(w.mode==="prelims" ? "Prelims" : (w.mode==="mains" ? "Mains" : "Prelims + Mains"));
   if(si > 0 && stt.ok) chips.push((w.durMode==="months" && +w.months > 0 ? +w.months : stt.months)+" months");
-  if(si > 4) chips.push((+w.cap.dayHours > 0 ? +w.cap.dayHours : 6)+" h · "+w.cap.days.length+" days");
+  if(si > 4) chips.push(w.cap.days.length+" study days");
   if(si > 1 && w.optionalOn && w.optional && w.mode!=="prelims") chips.push(w.optional);
   host.innerHTML = restore+'<div class="card qx-card"><div class="qx">'+
     '<div class="qx-top">'+(si>0 ? '<button type="button" data-wa="back">‹ Back</button>' : '<span></span>')+(studyPlan ? '<button type="button" data-wa="cancelEdit">Cancel</button>' : '<span></span>')+'</div>'+
@@ -8152,19 +8151,13 @@ function qsHtml(w){
         ? '<div class="qx-info"><b>Date passed</b><small>The '+tn+' date is behind us, so your plan runs for '+fall+' months from today.</small></div>'
         : '<div class="qx-info"><b>'+tgt+' days</b><small>from today to '+tn+', about '+Math.round(tgt/7)+' weeks'+(q.exam==="both" && dp > 0 ? ". Mains is "+Math.max(0, dm)+" days away" : "")+(wt > 0 && wt < 45 ? ". That is very close, so your plan runs for "+fall+" months instead" : "")+'.</small></div>');
   } else if(q.screen==="time"){
-    var wk = q.hours*q.days.length;
-    title = "Hours a day?"; hint = "Be honest. We plan around it."; chips = [qsExamLabel(q.exam)];
-    var hp = qsHoursPlan(q.hours);
-    body = '<div class="qx-big"><span id="qsHrs">'+q.hours+'</span><small> h / day</small></div>'+
-      '<input type="range" class="qx-range" min="2" max="10" step="1" value="'+q.hours+'" data-w="qs.hours" data-t="n" data-qsrange="1" aria-label="Hours a day">'+
-      '<div class="qx-chips">'+QS_HOURS.map(function(h){ return '<button type="button" class="qx-chip'+(q.hours===h ? " on" : "")+'" data-wa="set" data-path="qs.hours" data-n="1" data-v="'+h+'">'+h+'h</button>'; }).join("")+'</div>'+
-      '<div class="qx-lab">Study days</div><div class="qx-days">'+[1,2,3,4,5,6,0].map(function(d, i){ return '<button type="button" class="'+(q.days.indexOf(d)>=0 ? "on" : "")+'" data-wa="toggleArr" data-path="qs.days" data-v="'+d+'" aria-label="'+DOW_LONG[d]+'" aria-pressed="'+(q.days.indexOf(d)>=0)+'">'+"MTWTFSS".charAt(i)+'</button>'; }).join("")+'</div>'+
-      '<div class="qx-sub">'+(q.days.length ? "That is about <b>"+wk+" hours</b> a week" : "Pick at least one study day")+'</div>'+
-      '<div class="qx-info"><small>A usual day</small><div class="qx-strip">'+Array.apply(null, Array(hp[0])).map(function(){ return '<i style="flex:1;background:'+QS_COL[0]+'"></i>'; }).join("")+'</div><small>'+hp[0]+' session'+(hp[0]===1 ? "" : "s")+' of '+esc(fmtDurMin(hp[1]))+'</small></div>';
+    title = "Study days?"; hint = "Which days can you study?"; chips = [qsExamLabel(q.exam)];
+    body = '<div class="qx-lab">Study days</div><div class="qx-days">'+[1,2,3,4,5,6,0].map(function(d, i){ return '<button type="button" class="'+(q.days.indexOf(d)>=0 ? "on" : "")+'" data-wa="toggleArr" data-path="qs.days" data-v="'+d+'" aria-label="'+DOW_LONG[d]+'" aria-pressed="'+(q.days.indexOf(d)>=0)+'">'+"MTWTFSS".charAt(i)+'</button>'; }).join("")+'</div>'+
+      '<div class="qx-sub">'+(q.days.length ? "<b>"+q.days.length+" day"+(q.days.length===1 ? "" : "s")+"</b> a week. You set your session times later." : "Pick at least one study day")+'</div>';
   } else if(q.screen==="opt"){
     var all = ALL_OPTIONALS.filter(function(n){ return hasBundledSyllabus(n); }), top = ["Anthropology","Sociology","Geography","History","Public Administration","Political Science and International Relations","Philosophy","Psychology"].filter(function(n){ return all.indexOf(n) >= 0; });
     var shown = q.all ? all : top.concat(q.opt && top.indexOf(q.opt)<0 ? [q.opt] : []);
-    title = "Your optional?"; hint = "Skip if you are not sure yet."; chips = [qsExamLabel(q.exam), q.hours+" h · "+q.days.length+" days"];
+    title = "Your optional?"; hint = "Skip if you are not sure yet."; chips = [qsExamLabel(q.exam), q.days.length+" study days"];
     body = '<input type="search" class="qx-search" placeholder="Search subjects" data-qsearch="1" aria-label="Search optional subjects">'+
       '<div class="qx-grid">'+shown.map(function(n){ return '<button type="button" class="qx-sq'+(q.opt===n ? " on" : "")+'" data-qsname="'+esc(n)+'" data-wa="set" data-path="qs.opt" data-v="'+(q.opt===n ? "" : esc(n))+'">'+esc(n)+'</button>'; }).join("")+'</div>'+
       (q.all ? "" : '<button type="button" class="qx-link" data-wa="set" data-path="qs.all" data-v="1">See all '+all.length+' optional subjects ›</button>');
@@ -8174,7 +8167,7 @@ function qsHtml(w){
     var found = bo.filter(function(n){ return n!==ol; }).slice(0, 4).map(function(n){ return n.replace(/ \(Optional\)$/, ""); });
     if(q.start==="optional" && hasOpt && bo.indexOf(ol) > 0){ bo.splice(bo.indexOf(ol), 1); bo.unshift(ol); }
     var ord = bo.map(function(n){ return n.replace(/ \(Optional\)$/, ""); });
-    title = "Start with?"; hint = "We line up the rest after it."; btn = "See my first week"; chips = [qsExamLabel(q.exam), q.hours+" h · "+q.days.length+" days"].concat(q.opt ? [q.opt] : []);
+    title = "Start with?"; hint = "We line up the rest after it."; btn = "See my first week"; chips = [qsExamLabel(q.exam), q.days.length+" study days"].concat(q.opt ? [q.opt] : []);
     body = qsOpt("✋", "I will pick", "Choose subjects and order", q.start==="pick", "set", "qs.start", "pick", "Recommended")+
       qsOpt("🧱", "Foundation first", esc(found.join(", ")), q.start==="foundation", "set", "qs.start", "foundation")+
       (hasOpt ? qsOpt("🎓", "Optional first", esc(q.opt || "Your optional")+", then GS", q.start==="optional", "set", "qs.start", "optional") : "")+
@@ -8184,7 +8177,7 @@ function qsHtml(w){
     var pvh = qsWeekHtml(w);
     title = "Your first week"; hint = (pvh.first ? esc(pvh.first.replace(/ \(Optional\)$/, ""))+" first. " : "")+"Looks good?"; btn = "Start my plan"; link = "Change something";
     body = pvh.html;
-    chips = [qsExamLabel(q.exam), q.hours+" h · "+q.days.length+" days"].concat(q.opt ? [q.opt] : []);
+    chips = [qsExamLabel(q.exam), q.days.length+" study days"].concat(q.opt ? [q.opt] : []);
   }
   var act = q.screen==="week" ? 'data-wa="gen"' : 'data-wa="qsNext"', linkAct = q.screen==="week" ? 'data-wa="qsFull"' : 'data-wa="qsNext"';
   return '<div class="qx">'+
@@ -20015,7 +20008,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "342";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "345";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
