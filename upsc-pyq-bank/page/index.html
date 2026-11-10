@@ -1352,6 +1352,8 @@
   .slot select{width:100%; min-height:44px; padding:8px; border:1px solid var(--line); border-radius:10px; background:var(--surface); color:var(--ink); font:inherit;}
   .ac-next[data-go], .brick[data-go], .tagc[data-go], .upc-i[data-go], .prio-r{cursor:pointer;}
   .ac-next .go{display:block; margin-top:4px; font-size:12px; font-weight:700; color:var(--tab-planner);}
+  .ac-keep{margin:8px 0; display:flex; align-items:center; gap:10px; flex-wrap:wrap;} .keep-chip{padding:4px 12px; border-radius:14px; background:rgba(45,230,214,.14); color:var(--accent, #2de6d6); font-weight:800; font-size:13px;}
+  .keep-opt{border:1px solid var(--line); border-radius:14px; padding:11px 12px; margin-top:8px; cursor:pointer;} .keep-opt.on{border-color:var(--accent, #2de6d6); background:var(--surface-2);} .keep-opt b{display:block;} .keep-opt span{color:var(--ink-soft); font-size:13px;} .keep-days{margin:10px 0;} .keep-eff{margin-top:10px;}
   .ac-links, .log-links{display:flex; flex-wrap:wrap; gap:6px 14px; margin:8px 0;}
   .prio-g{margin:12px 0;} .prio-h{font-weight:700; margin-bottom:4px;} .prio-h .cnt{font-weight:500; color:var(--ink-faint); margin-left:6px;}
   .prio-r{display:flex; align-items:center; gap:8px; padding:9px 10px; border:1px solid var(--line); border-radius:12px; margin-bottom:6px; background:var(--surface);}
@@ -7090,12 +7092,14 @@ function mkStudy(item, date, slot){
 function onLeave(plan, d){ return (plan.leave||[]).some(function(r){ return d>=r.from && d<=r.to; }); }
 function isTouched(s){ return s.origin!=="auto" || s.status!=="not_started" || !!s.actualStart || !!s.actualEnd || s.actualDuration>0; }
 function horizonEnd(){ return studyPlan ? minKey(studyPlan.window.end, toKey(addDays(parseKey(todayKey), HORIZON_DAYS))) : todayKey; }
+function keepPerDay(plan, name){ var b = subjBudget(plan, name); return isFinite(b) ? Math.min(b, 360) : 240; }
 function simulate(plan, from, frozen, strict){
   var states = subjectStates(plan), needMap = needMinMap(plan, states), slotAvg = avgSessMin(plan.capacity.sessions) || 120;
   var blocksDone = {}, revSeen = {}, held = {};
   studySessions.forEach(function(s){
     var dm = Math.max(0, toMin(s.endTime)-toMin(s.startTime));
     if(s.kind==="study" && s.topicId && s.status==="completed") blocksDone[s.topicId] = (blocksDone[s.topicId]||0)+dm;
+    else if(s.kind==="study" && s.topicId && s.status==="in_progress" && s.actualDuration > 0 && !s.movedFrom) blocksDone[s.topicId] = (blocksDone[s.topicId]||0)+Math.min(dm, s.actualDuration);
     // a missed session moved back to today still counts toward its chapter, so the chapter is not given an extra one later
     else if(s.kind==="study" && s.topicId && s.movedFrom && s.date>=from && (s.status==="not_started" || s.status==="in_progress")) held[s.topicId] = (held[s.topicId]||0)+dm;
     if(s.kind==="revision" && s.topicId && s.revGap && s.status!=="missed" && s.date >= ((studyProgress.topics[s.topicId]||{}).completedAt || "")) revSeen[s.topicId+"#"+s.revGap] = 1;
@@ -7104,9 +7108,11 @@ function simulate(plan, from, frozen, strict){
   var actSt = states.filter(function(x){ return x.state==="active"; })[0];
   states.forEach(function(st){ if(strict && st!==actSt && !st.pinned) return; st.leaves.forEach(function(l){
     if(isDone(l.id)) return;
-    var nd = needMap[l.id]||120, hd = held[l.id]||0;
+    var kp = plan.keep && plan.keep[l.id], nd = (needMap[l.id]||120) + (kp && kp.extra > 0 ? kp.extra : 0), hd = held[l.id]||0;
     if(hd && (blocksDone[l.id]||0)+hd >= nd-14) return;
-    queue.push({leaf:l, st:st, need:nd, remM:Math.max(15, nd-(blocksDone[l.id]||0)-hd), parts:0}); }); });
+    var rm = Math.max(15, nd-(blocksDone[l.id]||0)-hd);
+    if(kp && kp.mode==="until") rm = Math.max(rm, keepPerDay(plan, st.name));   // keeps a day's time until you mark it complete
+    queue.push({leaf:l, st:st, need:nd, remM:rm, parts:0}); }); });
   var rv = plan.activities.revision, autoRev = false;   // spaced revision is shown as reminders (Dashboard and day view), not as full study sessions that would crowd out new chapters
   var gaps = SPACED_GAPS;
   var due = [];
@@ -7259,7 +7265,7 @@ function afterSessionChange(id){
     var need = (needMinMap(studyPlan, subjectStates(studyPlan))[s.topicId] || 120) - 14;   // a few minutes short of the planned time still counts as done
     var n = studySessions.filter(function(x){ return x.topicId===s.topicId && x.kind==="study" && x.status==="completed"; }).reduce(function(t, x){ return t + Math.max(0, toMin(x.endTime)-toMin(x.startTime)); }, 0);
     var cur = studyProgress.topics[s.topicId];
-    if(n >= need && leafStatus(s.topicId)!=="completed") setLeaves([s.topicId], "completed", id);
+    if(n >= need && leafStatus(s.topicId)!=="completed" && !(studyPlan.keep && studyPlan.keep[s.topicId])) setLeaves([s.topicId], "completed", id);
     else if(n < need && cur && cur.status==="completed" && cur.by===id) setLeaves([s.topicId], n>0 ? "in_progress" : "not_started", "auto");
     else if(n > 0 && leafStatus(s.topicId)==="not_started") setLeaves([s.topicId], "in_progress", "auto");
     else replan();
@@ -8261,7 +8267,7 @@ function wizGenerate(){
   for(var s=0; s<7; s++) errs = errs.concat(wizValidate(wiz, s));
   if(errs.length){ wiz.err = errs; wizRender(); return; }
   var wasEditing = !!studyPlan, fresh = !!wiz.fresh, openOpt = wiz.optStart==="custom" && !(studyPlan && studyPlan.optOrder && studyPlan.optOrder.length);
-  var keepLeave = studyPlan && studyPlan.leave, keepCatch = studyPlan && studyPlan.catchup;
+  var keepLeave = studyPlan && studyPlan.leave, keepCatch = studyPlan && studyPlan.catchup, keepKeep = studyPlan && studyPlan.keep;
   if(fresh){
     // restart everything new from today: keep a backup, clear ticks, revision marks and planned (unlogged) sessions
     if(studyPlan) planBackup();
@@ -8275,6 +8281,7 @@ function wizGenerate(){
   trackEvent("plan_created", {edited:wasEditing ? "yes" : "no"});
   if(keepLeave) studyPlan.leave = keepLeave;
   if(keepCatch) studyPlan.catchup = keepCatch.filter(function(d){ return d >= todayKey; });
+  if(keepKeep && !fresh) studyPlan.keep = keepKeep;
   Object.keys(studyProgress.topics).forEach(function(id){ if(!studyPlan.sel[id]) delete studyProgress.topics[id]; });
   saveProgress(); savePlan();
   replan();
@@ -8388,6 +8395,52 @@ function activeCardHtml(states, forDash){
   if(!multi) return banner+one(running[0]);
   return banner+'<div class="ac-multi"><div class="ac-mk">RUNNING IN PARALLEL &middot; '+running.length+' SUBJECTS</div>'+running.map(one).join("")+
     (forDash ? "" : '<div class="ac-actions ac-shared"><button type="button" class="btn ghost sm" data-pa="undoLast">Undo last completion</button></div>')+'</div>';
+}
+// "Not finished, keep going": the one place to give the running chapter more time until it is done.
+function keepHtml(nl){
+  var kp = studyPlan.keep && studyPlan.keep[nl.id];
+  if(kp) return '<div class="ac-keep on"><span class="keep-chip">Still on · day '+(diffDays(todayKey, kp.since)+1)+' extra</span><button type="button" class="link-btn" data-go="keep" data-leaf="'+esc(nl.id)+'">Change</button></div>';
+  return '<div class="ac-keep"><button type="button" class="btn ghost sm" data-go="keep" data-leaf="'+esc(nl.id)+'">Not finished, keep going</button></div>';
+}
+function keepImpact(id, subj, entry){
+  var from = maxKey(todayKey, studyPlan.window.start), frozen = studySessions.filter(function(x){ return x.date >= from && isTouched(x); });
+  function endOf(){ var sim = simulate(studyPlan, from, frozen), sp = sim.spans[subj]; return {end: sp ? sp.end : "", left: sim.remaining}; }
+  studyPlan.keep = studyPlan.keep || {}; var old = studyPlan.keep[id];
+  delete studyPlan.keep[id]; var a = endOf();
+  if(entry) studyPlan.keep[id] = entry; var b = endOf();
+  if(old) studyPlan.keep[id] = old; else delete studyPlan.keep[id];
+  return {a:a, b:b};
+}
+function openKeepSheet(id){
+  var st = subjectStates(studyPlan).filter(function(x){ return x.leaves.some(function(l){ return l.id===id; }); })[0]; if(!st) return;
+  var leaf = st.leaves.filter(function(l){ return l.id===id; })[0], old = studyPlan.keep && studyPlan.keep[id];
+  var v = {mode: old ? old.mode : "until", days: old && old.days ? old.days : 2};
+  var m = showModal('<div class="fr-sheet ts-sheet" role="dialog" aria-label="Keep going"><div class="grab"></div><h2>Keep going on '+esc(leaf.unit)+'</h2><p class="hint">It stays on your list each study day until you mark it complete.</p>'+
+    '<div class="keep-opt" data-km="until"></div><div class="keep-opt" data-km="days"></div><div class="pill-row keep-days" style="justify-content:center">'+[1,2,3,5,7].map(function(n){ return '<button type="button" class="pill" data-kd="'+n+'">'+n+'</button>'; }).join("")+'</div>'+
+    '<div class="keep-eff hint ok" id="keepEff"></div>'+
+    '<div class="modal-actions">'+(old ? '<button type="button" class="btn ghost" id="keepStop">Stop</button>' : '<button type="button" class="btn ghost" id="keepCancel">Cancel</button>')+'<span class="grow"></span><button type="button" class="btn primary" id="keepSave">Keep going</button></div></div>', true);
+  m.classList.add("fr-b");
+  function entry(){ return v.mode==="until" ? {mode:"until", extra:0, since:(old && old.since) || todayKey} : {mode:"days", days:v.days, extra:v.days*keepPerDay(studyPlan, st.name), since:(old && old.since) || todayKey}; }
+  function draw(){
+    m.querySelector('[data-km="until"]').innerHTML = '<b>Until I finish it</b><span>No fixed number of days. It stays on Today.</span>';
+    m.querySelector('[data-km="days"]').innerHTML = '<b>For a set number of days</b><span>Choose how many days</span>';
+    [].forEach.call(m.querySelectorAll("[data-km]"), function(o){ o.classList.toggle("on", o.getAttribute("data-km")===v.mode); });
+    [].forEach.call(m.querySelectorAll("[data-kd]"), function(b){ b.classList.toggle("on", v.mode==="days" && +b.getAttribute("data-kd")===v.days); });
+    var r = keepImpact(id, st.name, entry()), d = r.a.end && r.b.end ? diffDays(r.b.end, r.a.end) : 0;
+    m.querySelector("#keepEff").innerHTML = '<b>'+esc(st.name)+(d > 0 ? ' ends '+d+' day'+(d===1 ? "" : "s")+' later' : ' keeps its end date')+'</b>'+(r.a.end && r.b.end && d > 0 ? ' ('+esc(fmtShort(parseKey(r.a.end)))+' → '+esc(fmtShort(parseKey(r.b.end)))+')' : "")+'. Your exam date is unchanged.'+(r.b.left > r.a.left ? ' '+(r.b.left-r.a.left)+' chapter'+(r.b.left-r.a.left===1 ? "" : "s")+' may no longer fit.' : "");
+  }
+  draw();
+  m.addEventListener("click", function(e){
+    var o = e.target.closest ? e.target.closest("[data-km],[data-kd]") : null; if(!o) return;
+    if(o.hasAttribute("data-km")) v.mode = o.getAttribute("data-km"); else { v.mode = "days"; v.days = +o.getAttribute("data-kd"); }
+    draw();
+  });
+  var c1 = m.querySelector("#keepCancel"); if(c1) c1.addEventListener("click", closeModal);
+  var c2 = m.querySelector("#keepStop"); if(c2) c2.addEventListener("click", function(){ delete studyPlan.keep[id]; savePlan(); replan(); closeModal(); refreshView(); toast("Back to the normal plan for "+leaf.unit+"."); });
+  m.querySelector("#keepSave").addEventListener("click", function(){
+    studyPlan.keep = studyPlan.keep || {}; studyPlan.keep[id] = entry(); savePlan(); replan(); viewCache = null; closeModal(); refreshView();
+    toast(leaf.unit+": we will keep it going"+(v.mode==="days" ? " for "+v.days+" more day"+(v.days===1 ? "" : "s") : " until you finish")+".");
+  });
 }
 function upcomingHtml(){
   return '<div class="upc">'+["essay","pyq","test","revision","ca"].map(function(k){
@@ -15759,6 +15812,7 @@ function goAction(el){
   else if(a==="subject") goPlanner("progress", {subject: subj});
   else if(a==="priority") goPlanner("priority", {subject: subj});
   else if(a==="insights"){ insWeek = null; plannerWeek = null; goPlanner("weekly", {}); }
+  else if(a==="keep") openKeepSheet(leaf);
   else if(a==="tiers") setTab("prelims");
   else if(a==="reschedule") openReschedule();
 }
@@ -16930,6 +16984,7 @@ function dxPlanHtml(){
     return '<div class="dx-card dx-mod" style="--bc:var('+m.color+')"><div class="dx-k">ACTIVE MODULE'+(tag ? ' <span class="dx-sess">'+esc(tag)+'</span>' : '')+'</div><svg class="dx-book" viewBox="0 0 64 64" aria-hidden="true"><path d="M8 14h20a6 6 0 016 6v32a5 5 0 00-5-5H8z"/><path d="M56 14H36a6 6 0 00-6 6v32a5 5 0 015-5h21z"/></svg>'+
       '<div class="dx-subj">'+esc(m.name)+'</div>'+(it && it.time ? '<div class="dm-time">'+esc(it.time)+'</div>' : '')+'<div class="dx-bar"><i style="width:'+m.pct+'%"></i></div><div class="dx-pc"><b>'+m.pct+'% COMPLETE</b><small>('+m.done+' of '+m.total+' chapters)</small></div>'+
       (n ? '<div class="dx-next" role="button" tabindex="0" data-go="subjday" data-subj="'+esc(m.name)+'" data-leaf="'+esc(n.id)+'">'+(it && it.over && isDone(n.id) ? "Done: " : "Currently running: ")+'<b>'+esc(n.unit)+'</b></div>' : '')+
+      (n && !isDone(n.id) ? keepHtml(n) : '')+
       '<button type="button" class="dx-btn" data-go="subjday" data-subj="'+esc(m.name)+'">Go to Planner</button>'+
       '<button type="button" class="dx-btn2" data-go="priority" data-subj="'+esc(m.name)+'">Topic Priority (Tiers) &rsaquo;</button></div>';
   }
@@ -18148,10 +18203,14 @@ function openTimerSave(){
   showModal('<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="tsTitle">'+
     '<h2 id="tsTitle">Save your study time</h2>'+
     (tooLong ? '<p>The timer ran for <b>'+esc(fmtDurMin(studyMin))+'</b>. It was probably left on by mistake. How long did you really study?</p><div class="cf"><label for="tsReal">Hours really studied (up to 16)</label><input id="tsReal" type="number" inputmode="decimal" min="0.25" max="16" step="0.25" placeholder="for example 3"></div>' : '')+
-    '<p'+(tooLong ? ' hidden' : '')+'>You studied for <b>'+esc(fmtDurMin(studyMin))+'</b> ('+esc(fmtTimer(ms))+').'+(win ? ' From <b>'+esc(fmt12(hmStr(win.s)))+'</b> to <b>'+esc(fmt12(hmStr(win.e)))+'</b>'+(brkMin ? ', with <b>'+esc(fmtDurMin(brkMin))+'</b> of breaks between rounds' : "")+'.' : '')+'</p>'+
+    '<p'+(tooLong ? ' hidden' : '')+'><span id="tsLine">You studied for <b>'+esc(studyMin+(studyMin===1 ? " minute" : " minutes"))+'</b>.</span>'+(win ? ' From <b>'+esc(fmt12(hmStr(win.s)))+'</b> to <b>'+esc(fmt12(hmStr(win.e)))+'</b>'+(brkMin ? ', with <b>'+esc(fmtDurMin(brkMin))+'</b> of breaks between rounds' : "")+'.' : '')+'</p>'+
     '<div class="cf"><label for="tsTarget">Record it against</label><select id="tsTarget">'+opts+'<option value=""'+(pick ? "" : " selected")+'>Only add to today&rsquo;s study time</option></select></div>'+
     (function(){ var sp = timerSplitDays(ms, info); if(!sp) return ""; return '<p class="muted small">This sitting went past midnight, so your study time is shared between the days: '+Object.keys(sp).map(function(k){ return esc(fmtLong(parseKey(k)).replace(/,? \d{4}$/, ""))+" "+esc(fmtDurMin(Math.round(sp[k]/60000))); }).join(", ")+'.</p>'; })()+
     '<p class="ts-split" id="tsPreview" hidden></p>'+
+    '<div class="cf ts-out" id="tsOut" hidden><label>How did the chapter go?</label>'+
+      '<label class="rm-opt"><input type="radio" name="tsOut" value="done"><span><b>Finished it</b><small id="tsOutDone">Marks the chapter complete. The next chapter starts.</small></span></label>'+
+      '<label class="rm-opt"><input type="radio" name="tsOut" value="keep"><span><b>Not finished, keep going</b><small id="tsOutKeep">The chapter stays on your list until you finish it.</small></span></label>'+
+      '<label class="rm-opt on"><input type="radio" name="tsOut" value="" checked><span><b>Just save the time</b><small>Nothing else changes.</small></span></label></div>'+
     '<p class="muted small">Today&rsquo;s study time always includes it. Only focus time counts as study. Breaks between Pomodoro rounds are not study time, but they do count toward finishing a session&rsquo;s planned length.</p>'+
     '<div class="modal-actions"><button class="btn ghost" id="tsDiscard">Discard</button><span class="grow"></span><button class="btn primary" id="tsSave">Save</button></div>'+
   '</div>', false);
@@ -18164,9 +18223,29 @@ function openTimerSave(){
     if(others.length < 2) pv.textContent = (room ? "This session only has "+fmtDurMin(room)+" left, " : "This session is already full, ")+"and there is no other unfinished "+(first.kind==="study" ? first.subject+" " : "")+"session today, so all "+fmtDurMin(studyMin)+" is saved here.";
     else pv.textContent = (room ? "This session only has "+fmtDurMin(room)+" left. " : "This session is already full. ")+"Your time is shared like this: "+others.map(function(q){ var x = sessionById(q.id); return "S"+x.sessionNumber+" "+fmtDurMin(q.study); }).join(", ")+".";
   }
-  document.getElementById("tsTarget").addEventListener("change", refresh);
+  // the chapter question only makes sense for a study session that has a chapter
+  function outcome(){
+    var sid = document.getElementById("tsTarget").value, x = sid ? sessionById(sid) : null, box = document.getElementById("tsOut");
+    var ok = !!(x && x.kind==="study" && x.topicId && studyPlan && !isDone(x.topicId));
+    box.hidden = !ok; if(!ok) return;
+    box.querySelector('input[value=""]').checked = true;
+    [].forEach.call(box.querySelectorAll(".rm-opt"), function(o){ o.classList.toggle("on", o.querySelector("input").checked); });
+    var kp = studyPlan.keep && studyPlan.keep[x.topicId];
+    box.querySelector('input[value="keep"]').parentNode.hidden = !!kp;
+    box.querySelector("#tsOutDone").textContent = "Marks "+x.syllabusUnit+" complete. The next chapter starts.";
+    var kt = box.querySelector("#tsOutKeep"); kt.textContent = "The chapter stays on your list until you finish it.";
+    try{ var r = keepImpact(x.topicId, x.subject, {mode:"until", extra:0, since:todayKey}), d = r.a.end && r.b.end ? diffDays(r.b.end, r.a.end) : 0; if(d > 0) kt.textContent = "Stays on your list until you finish it. "+x.subject+" ends about "+d+" day"+(d===1 ? "" : "s")+" later."; }catch(e){}
+  }
+  document.getElementById("tsOut").addEventListener("change", function(){ [].forEach.call(this.querySelectorAll(".rm-opt"), function(o){ o.classList.toggle("on", o.querySelector("input").checked); }); });
+  function line(){
+    var sid = document.getElementById("tsTarget").value, x = sid ? sessionById(sid) : null, el = document.getElementById("tsLine"); if(!el) return;
+    function mins(n){ return n+(n===1 ? " minute" : " minutes"); }
+    el.innerHTML = 'You studied for <b>'+esc(mins(studyMin))+'</b>'+(x && x.duration > 0 ? ' out of <b>'+esc(mins(x.duration))+'</b>' : "")+'.'+(x && x.actualDuration > 0 ? ' '+esc(mins(x.actualDuration))+' were already logged on this session.' : "");
+  }
+  document.getElementById("tsTarget").addEventListener("change", function(){ refresh(); outcome(); line(); });
+  outcome(); line();
   if(tooLong) document.getElementById("tsReal").addEventListener("input", function(){
-    var h = parseFloat(this.value); ms = (h > 0 ? Math.min(h, 16) : 0) * 3600000; studyMin = Math.max(1, Math.round(ms/60000)); brkMin = 0; win = null; info = null; refresh();
+    var h = parseFloat(this.value); ms = (h > 0 ? Math.min(h, 16) : 0) * 3600000; studyMin = Math.max(1, Math.round(ms/60000)); brkMin = 0; win = null; info = null; refresh(); line();
   });
   refresh();
   document.getElementById("tsDiscard").addEventListener("click", function(){ timerState.pending = 0; timerState.pendInfo = null; timerState.target = ""; timerSave(); closeModal(); timerUi(); renderView(activeTab); toast("Timer discarded."); });
@@ -18178,9 +18257,13 @@ function openTimerSave(){
       add = Math.round(hrs*3600000); info = null;
     }
     timerAddToToday(add, info);
+    var oc = document.getElementById("tsOut"), pick2 = oc && !oc.hidden ? (oc.querySelector('input[name="tsOut"]:checked') || {}).value : "", tgt = sid ? sessionById(sid) : null, tid = tgt && tgt.topicId;
+    if(pick2==="keep" && tid){ studyPlan.keep = studyPlan.keep || {}; studyPlan.keep[tid] = {mode:"until", extra:0, since:todayKey}; savePlan(); }   // before the time is saved, so the chapter is not completed for you
     if(sid) timerCommit(sid, add, info, true);
+    if(pick2==="done" && tid){ setLeaves([tid], "completed", "manual"); if(sessionById(sid) && sessionById(sid).status!=="completed") updateSession(sid, {status:"completed"}); replan(); }
+    if(pick2==="keep" && tid && leafStatus(tid)==="completed" && (studyProgress.topics[tid]||{}).by!=="manual") setLeaves([tid], "in_progress", "auto");
     timerState.pending = 0; timerState.pendInfo = null; timerState.target = ""; timerSave(); closeModal();
-    toast(sid ? "Time saved to your session and today's study time." : "Added to today's study time.");
+    toast(pick2==="done" ? "Time saved. Chapter marked complete." : (pick2==="keep" ? "Time saved. The chapter stays on your list until you finish it." : (sid ? "Time saved to your session and today's study time." : "Added to today's study time.")));
     renderView(activeTab);
   });
 }
@@ -19847,7 +19930,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "331";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "335";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -20293,11 +20376,12 @@ function changeOptional(name){
       if(!w.orderAuto && sv.at >= 0){ var ix = w.order.indexOf(lab); if(ix >= 0){ w.order.splice(ix, 1); w.order.splice(Math.min(sv.at, w.order.length), 0, lab); } }
     }
   }
-  var keepLeave = studyPlan.leave, keepCatch = studyPlan.catchup;
+  var keepLeave = studyPlan.leave, keepCatch = studyPlan.catchup, keepKeep = studyPlan.keep;
   studyPlan = compilePlan(w);
   studyPlan.optStash = stash;
   if(keepLeave) studyPlan.leave = keepLeave;
   if(keepCatch) studyPlan.catchup = keepCatch.filter(function(d){ return d >= todayKey; });
+  if(keepKeep) studyPlan.keep = keepKeep;
   trackEvent("optional_changed", {from:prev || "none", to:name || "none"});
   savePlan(); saveProgress(); replan();
   toast(name ? "Optional changed to "+name+". Your plan is updated." : "Optional removed from your plan.");
