@@ -18208,9 +18208,9 @@ function openTimerSave(){
     (function(){ var sp = timerSplitDays(ms, info); if(!sp) return ""; return '<p class="muted small">This sitting went past midnight, so your study time is shared between the days: '+Object.keys(sp).map(function(k){ return esc(fmtLong(parseKey(k)).replace(/,? \d{4}$/, ""))+" "+esc(fmtDurMin(Math.round(sp[k]/60000))); }).join(", ")+'.</p>'; })()+
     '<p class="ts-split" id="tsPreview" hidden></p>'+
     '<div class="cf ts-out" id="tsOut" hidden><label>How did the chapter go?</label>'+
-      '<label class="rm-opt on"><input type="radio" name="tsOut" value="" checked><span><b>Just save the time</b><small>Nothing else changes.</small></span></label>'+
       '<label class="rm-opt"><input type="radio" name="tsOut" value="done"><span><b>Finished it</b><small id="tsOutDone">Marks the chapter complete. The next chapter starts.</small></span></label>'+
-      '<label class="rm-opt"><input type="radio" name="tsOut" value="keep"><span><b>Not finished, keep going</b><small id="tsOutKeep">The chapter stays on your list until you finish it.</small></span></label></div>'+
+      '<label class="rm-opt"><input type="radio" name="tsOut" value="keep"><span><b>Not finished, keep going</b><small id="tsOutKeep">The chapter stays on your list until you finish it.</small></span></label>'+
+      '<label class="rm-opt on"><input type="radio" name="tsOut" value="" checked><span><b>Just save the time</b><small>Nothing else changes.</small></span></label></div>'+
     '<p class="muted small">Today&rsquo;s study time always includes it. Only focus time counts as study. Breaks between Pomodoro rounds are not study time, but they do count toward finishing a session&rsquo;s planned length.</p>'+
     '<div class="modal-actions"><button class="btn ghost" id="tsDiscard">Discard</button><span class="grow"></span><button class="btn primary" id="tsSave">Save</button></div>'+
   '</div>', false);
@@ -19930,7 +19930,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "334";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "335";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
