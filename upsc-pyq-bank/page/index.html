@@ -1319,6 +1319,7 @@
   .day-ring{display:grid; place-items:center; margin:6px 0 2px;} .day-ring svg{width:min(300px,100%); height:auto;}
   .day-ring .rg-bg{stroke:var(--surface-2);} .day-ring .rg-arc{stroke:url(#rgG);} .day-ring .rg-n{fill:#04262c; font-size:12px; font-weight:800;}
   .day-ring .rg-t{fill:var(--ink-soft); font-size:11px;} .day-ring .rg-v{fill:var(--ink); font-size:34px; font-weight:700; font-family:var(--font-display);} .day-ring .rg-s{fill:var(--ink-soft); font-size:13px;}
+  .ca-times{display:flex; align-items:center; justify-content:center; gap:10px; margin:10px 0 2px;} .ca-times .tm{min-height:44px; padding:8px 16px; border-radius:12px; border:1px solid var(--line); background:var(--surface-2); color:var(--ink); font:inherit; font-weight:800; cursor:pointer;} .ca-times .arr{color:var(--ink-soft);} .tchip input[hidden]{display:none !important;}
   .ses-list{display:flex; flex-direction:column; gap:10px; margin:10px 0;}
   .ses-r{display:grid; grid-template-columns:30px minmax(0,1fr) auto; grid-template-areas:"n t x" "n s d"; gap:6px 10px; align-items:center; padding:10px 12px; border:1px solid var(--line-soft); border-radius:14px; background:var(--surface-2);}
   .ses-r .ses-n{grid-area:n; width:28px; height:28px; border-radius:50%; display:grid; place-items:center; background:var(--navy); color:var(--navy-ink); font-size:13px;} .ses-r .ses-t{grid-area:t; display:flex; align-items:center; gap:6px; flex-wrap:nowrap; min-width:0;}
@@ -7368,7 +7369,9 @@ function deriveLayout(plan){
   var c = plan.capacity; if(c.exact) return;
   var mx = +c.dayHours > 0 ? +c.dayHours : 6;
   Object.keys(c.subjHours || {}).forEach(function(k){ if(+c.subjHours[k] > mx) mx = +c.subjHours[k]; });
-  c.sessions = layoutFromMin(Math.round(mx*60), c.dayStart ? toMin(c.dayStart) : 360); c.perDay = {};
+  var st = c.dayStart ? toMin(c.dayStart) : 360, ca = plan.activities && plan.activities.ca;
+  if(ca && ca.on && ca.start && ca.end && toMin(ca.start) < st+30 && toMin(ca.end) > st) st = toMin(ca.end)+15;   // the newspaper comes first, then the study day
+  c.sessions = layoutFromMin(Math.round(mx*60), st); c.perDay = {};
 }
 function needMinMap(plan, states){
   var map = {};
@@ -7811,6 +7814,22 @@ function capHoursOf(w, name){ var C = w.cap; return (name && C.subjHours && C.su
 function capChapters(w, name){ var cat = wizCatalog(w), e = cat.map[name]; return e ? catalogLeaves(e).filter(function(l){ return w.sel[l.id]; }).length : 0; }
 var CAP_COL = ["#2de6d6","#9b8cff","#ffb020","#ff7a70","#5ac8ff","#7dffc0","#ff6fae","#c4a1ff"];
 function capColor(w, name){ var i = w.order.indexOf(name); return i < 0 ? "#6b8d96" : CAP_COL[i % CAP_COL.length]; }
+// A small sheet to set the daily newspaper time without leaving the Capacity step.
+function openCaSheet(){
+  var w = wiz, a = w.acts.ca; if(!a.start || !a.end || a.end <= a.start || !a.on){ a.start = "05:30"; a.end = "06:00"; }
+  var m = showModal('<div class="fr-sheet ts-sheet" role="dialog" aria-label="Current Affairs time"><div class="grab"></div><h2>Current Affairs</h2><p class="hint">Your daily newspaper. Choose a time, even before your first study session.</p>'+
+    '<div class="ca-times"><span class="tchip"><button type="button" class="tm" data-tpopen="1" id="caS">'+esc(fmt12(a.start))+'</button><input type="time" hidden data-tp="1" data-k="start" value="'+esc(a.start)+'"></span><span class="arr" aria-hidden="true">→</span><span class="tchip"><button type="button" class="tm" data-tpopen="1" id="caE">'+esc(fmt12(a.end))+'</button><input type="time" hidden data-tp="1" data-k="end" value="'+esc(a.end)+'"></span></div>'+
+    '<div class="hint" style="text-align:center;margin-top:8px">Every day by default. Choose other days on the Activities step.</div>'+
+    '<div class="modal-actions"><button type="button" class="btn ghost" id="caCancel">Cancel</button><span class="grow"></span><button type="button" class="btn primary" id="caSave">Save</button></div></div>', true);
+  m.classList.add("fr-b");
+  var v = {start:a.start, end:a.end};
+  m.addEventListener("change", function(e){ var t = e.target; if(t && t.matches && t.matches('input[type="time"]')){ var k = t.getAttribute("data-k"); v[k] = t.value; var b = t.parentNode.querySelector("button.tm"); if(b) b.textContent = fmt12(t.value); } });
+  m.querySelector("#caCancel").addEventListener("click", closeModal);
+  m.querySelector("#caSave").addEventListener("click", function(){
+    if(!(v.start && v.end && toMin(v.end) > toMin(v.start))){ toast("Pick an end time after the start time."); return; }
+    a.on = true; a.start = v.start; a.end = v.end; closeModal(); wizRender(); toast("Current Affairs: "+fmt12(v.start)+" – "+fmt12(v.end)+".");
+  });
+}
 function wzCapacity(w){
   if(w.capView==="step") return capStepHtml(w);
   var c = w.cap, mine = w.order.filter(function(n){ return c.subjHours && c.subjHours[n]!=null; }), exact = !!c.exact;
@@ -7818,6 +7837,10 @@ function wzCapacity(w){
     mine.map(function(n){
       return '<div class="cap-sub"><span class="dot" style="background:'+capColor(w, n)+'"></span><span class="nm">'+esc(n)+'<small>'+capChapters(w, n)+' chapters</small></span><span class="chip">'+esc(fmtHM(Math.round(c.subjHours[n]*60)))+'</span><button type="button" class="ses-link" data-wa="capSubj" data-v="'+esc(n)+'">Edit</button><button type="button" class="ses-x sm" data-wa="capDel" data-v="'+esc(n)+'" title="Use the default for this subject" aria-label="Remove the hours for '+esc(n)+'">✕</button></div>';
     }).join("");
+  var caA = w.acts.ca || {}, caPin = w.cap.exact ? w.cap.sessions.filter(function(x){ return x.subject==="@ca"; })[0] : null;
+  var caTxt = caPin ? fmt12(caPin.start)+" \u2013 "+fmt12(caPin.end)+" \u00B7 in your session list" : (caA.on ? fmt12(caA.start)+" \u2013 "+fmt12(caA.end)+" \u00B7 "+(caFreqOf(caA)==="daily" ? "every day" : (caFreqOf(caA)==="weekly" ? "once a week" : "chosen days")) : "Off");
+  rows += '<div class="cap-sub"><span class="dot" style="background:#ffb020"></span><span class="nm">Current Affairs<small>the daily newspaper \u00B7 '+esc(caTxt)+'</small></span>'+
+    (caPin ? '' : '<button type="button" class="ses-link" data-wa="caSheet">'+(caA.on ? "Edit" : "Set a time")+'</button>')+(caA.on && !caPin ? '<button type="button" class="ses-x sm" data-wa="caOff" title="Turn Current Affairs off" aria-label="Turn Current Affairs off">\u2715</button>' : "")+'</div>';
   var rest = w.order.filter(function(n){ return mine.indexOf(n) < 0; });
   var pick = w.capPick ? '<div class="cap-pick">'+rest.map(function(n){ return '<button type="button" class="chip" data-wa="capSubj" data-v="'+esc(n)+'">'+esc(n)+'</button>'; }).join("")+'</div>' : "";
   var exactBox = '';
@@ -7830,7 +7853,7 @@ function wzCapacity(w){
         '<span class="dur">'+(d > 0 ? esc(fmtHM(d)) : "check times")+'</span><select data-w="cap.sessions.'+i+'.subject" aria-label="Subject for session '+(i+1)+'"><option value="">Any subject</option><optgroup label="Activity"><option value="@ca"'+(sl.subject==="@ca"?" selected":"")+'>Current Affairs (daily)</option></optgroup><optgroup label="Subjects">'+w.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(sl.subject===nm?" selected":"")+'>'+esc(nm)+'</option>'; }).join("")+'</optgroup></select>'+
         (n > 1 ? '<button type="button" class="ses-x" data-wa="sesDel" data-v="'+i+'" title="Remove this session" aria-label="Remove session '+(i+1)+'">✕</button>' : "")+'</div>';
     }).join("")+'</div>'+(n < 6 ? '<button type="button" class="btn ghost sm" data-wa="sesAdd">+ Add a session</button>' : "");
-    exactBox = dayRingHtml(c.sessions)+list+'<button type="button" class="btn ghost sm" data-wa="capAuto">Let the app set the times</button>';
+    exactBox = '<div class="hint">Tip: to read the newspaper in one of these sessions, pick <b>Current Affairs (daily)</b> in that session\u2019s subject list.</div>'+dayRingHtml(c.sessions)+list+'<button type="button" class="btn ghost sm" data-wa="capAuto">Let the app set the times</button>';
   } else {
     exactBox = '<div class="hint">The app lays out your day from these hours, starting at '+esc(fmt12(c.dayStart || "06:00"))+'. To choose clock times yourself, set them here.</div><button type="button" class="btn ghost sm" data-wa="capExact">Set exact session times</button>';
   }
@@ -7910,7 +7933,7 @@ function actCard(w, k){
       var cs = w.cap.sessions.filter(function(x){ return x.subject==="@ca"; })[0];
       body += '<div class="hint ok">Current Affairs runs every study day at <b>'+esc(fmt12(cs.start))+'\u2013'+esc(fmt12(cs.end))+'</b>, because one of your sessions is set to it. Change it under Capacity \u2192 Exact session times.</div>';
     } else if(k==="ca"){
-      body += caFreqHtml(a)+'<div class="cf"><label>Time (from &ndash; to)</label>'+timePair("acts.ca.start","acts.ca.end",a.start,a.end)+'</div>'+freeHint(w, k);
+      body += '<div class="hint">Want it at a fixed time inside your study day, like first thing in the morning? <button type="button" class="ses-link" data-wa="capGoExact">Set a session to Current Affairs</button></div>'+caFreqHtml(a)+'<div class="cf"><label>Time (from &ndash; to)</label>'+timePair("acts.ca.start","acts.ca.end",a.start,a.end)+'</div>'+freeHint(w, k);
     } else if(k!=="revision" || a.method!=="auto"){
       body += '<div class="cf"><label>'+(k==="revision" ? 'Your own days: how often' : 'How often')+'</label><select data-w="acts.'+k+'.mode">'+
         '<option value="weekly"'+(a.mode==="weekly"?" selected":"")+'>Weekly, on chosen days</option>'+
@@ -8198,6 +8221,9 @@ function wizAction(a, b){
     case "capNext": if(w.capIdx < 0 || w.capIdx >= w.order.length-1) w.capView = "list"; else w.capIdx++; break;
     case "capExact": var fx = null; try{ fx = fitInfo(w); }catch(x){} if(fx){ w.cap.sessions = JSON.parse(JSON.stringify(fx.plan.capacity.sessions)); w.cap.count = w.cap.sessions.length; w.cap.perDay = {}; } w.cap.exact = true; w.open.capEx = true; break;
     case "capAuto": w.cap.exact = false; break;
+    case "caSheet": openCaSheet(); return;
+    case "caOff": w.acts.ca.on = false; break;
+    case "capGoExact": var fq = null; try{ fq = fitInfo(w); }catch(x){} if(!w.cap.exact && fq){ w.cap.sessions = JSON.parse(JSON.stringify(fq.plan.capacity.sessions)); w.cap.count = w.cap.sessions.length; w.cap.perDay = {}; } w.cap.exact = true; w.open.capEx = true; w.step = 5; w.capView = "list"; scrollPlannerTop(); break;
     case "sesAdd": var ls = w.cap.sessions, last = ls[ls.length-1], gp = Math.max(5, +w.cap.breakMin || 5), st0 = last ? Math.min(1380-60, toMin(last.end)+gp) : 1080; ls.push({start:hmStr(st0), end:hmStr(st0+60), subject:""}); w.cap.count = ls.length; break;
     case "sesDel": if(w.cap.sessions.length > 1){ w.cap.sessions.splice(+v, 1); w.cap.count = w.cap.sessions.length; Object.keys(w.cap.perDay).forEach(function(k){ if(+w.cap.perDay[k] > w.cap.sessions.length) w.cap.perDay[k] = w.cap.sessions.length; }); } break;
     case "cancelEdit": plannerEditing = false; wiz = null; renderPlanner(); return;
@@ -19810,7 +19836,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "325";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "326";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
