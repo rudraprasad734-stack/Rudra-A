@@ -1355,6 +1355,7 @@
   .ac-next .go{display:block; margin-top:4px; font-size:12px; font-weight:700; color:var(--tab-planner);}
   .clash-ask{margin-top:10px; padding:12px; border:1px solid #b3261e; border-radius:14px; background:rgba(179,38,30,.12); display:flex; flex-direction:column; gap:8px;} .clash-ask b{color:#ff8a80;} .replaced-row{margin-top:8px; padding:10px 12px; border:1px dashed var(--line); border-radius:12px; font-size:13px; color:var(--ink-soft);} .replaced-row b{color:var(--ink);}
   .pill.taken{opacity:.35; text-decoration:line-through; cursor:not-allowed;} .pill.on.clash{background:#b3261e !important; border-color:#b3261e !important; color:#fff;} .clash-note{margin-top:8px; font-size:13px; font-weight:700; color:#ff8a80;} .taken-note{margin-top:6px; font-size:12px; color:var(--ink-soft);}
+  .ses-r{display:flex; flex-direction:column; align-items:stretch; gap:8px; position:relative; padding-left:46px;} .ses-r .ses-n{position:absolute; left:10px; top:12px;} .ses-h{display:flex; align-items:center; gap:10px;} .ses-h b{font-size:16px;} .ses-h .dur{margin-left:auto; color:var(--ink-soft); font-weight:700;} .ses-sub{display:flex; align-items:center; gap:10px;} .ses-sub span{font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--ink-soft); font-weight:700; flex:none;} .ses-sub select{flex:1; min-width:0;}
   .leaf-st{flex:none; align-self:center; padding:4px 12px; border-radius:14px; font-size:13px; font-weight:800; border:1px solid var(--line); color:var(--ink-soft); white-space:nowrap;} .leaf-st.st-in_progress{background:rgba(255,176,32,.14); border-color:transparent; color:#ffb020;} .leaf-st.st-completed{background:rgba(125,255,192,.14); border-color:transparent; color:#7dffc0;}
   .ac-keep{margin:8px 0; display:flex; align-items:center; gap:10px; flex-wrap:wrap;} .keep-chip{padding:4px 12px; border-radius:14px; background:rgba(45,230,214,.14); color:var(--accent, #2de6d6); font-weight:800; font-size:13px;}
   .keep-opt{border:1px solid var(--line); border-radius:14px; padding:11px 12px; margin-top:8px; cursor:pointer;} .keep-opt.on{border-color:var(--accent, #2de6d6); background:var(--surface-2);} .keep-opt b{display:block;} .keep-opt span{color:var(--ink-soft); font-size:13px;} .keep-days{margin:10px 0;} .keep-eff{margin-top:10px;}
@@ -7920,14 +7921,12 @@ function wzCapacity(w){
     var list = '<div class="ses-list">'+c.sessions.map(function(sl, i){
       var d = toMin(sl.end)-toMin(sl.start);
       return '<div class="ses-r" data-tplabel="Session '+(i+1)+'"><b class="ses-n">'+(i+1)+'</b>'+
+        '<div class="ses-h"><b>Session '+(i+1)+'</b><span class="dur">'+(d > 0 ? esc(fmtHM(d)) : "check times")+'</span>'+
+        (n > 1 ? '<button type="button" class="ses-x" data-wa="sesDel" data-v="'+i+'" title="Remove this session" aria-label="Remove session '+(i+1)+'">✕</button>' : "")+'</div>'+
         '<div class="ses-t">'+timeChip("cap.sessions."+i+".start", sl.start)+'<span class="arr" aria-hidden="true">→</span>'+timeChip("cap.sessions."+i+".end", sl.end)+'</div>'+
-        '<span class="dur">'+(d > 0 ? esc(fmtHM(d)) : "check times")+'</span>'+
-        (n > 1 ? '<button type="button" class="ses-x" data-wa="sesDel" data-v="'+i+'" title="Remove this session" aria-label="Remove session '+(i+1)+'">✕</button>' : "")+'</div>';
+        '<label class="ses-sub"><span>Subject</span><select data-w="cap.sessions.'+i+'.subject" aria-label="Subject for session '+(i+1)+'"><option value="">Any subject</option><optgroup label="Activity"><option value="@ca"'+(sl.subject==="@ca"?" selected":"")+'>Current Affairs (daily)</option></optgroup><optgroup label="Subjects">'+w.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(sl.subject===nm?" selected":"")+'>'+esc(nm)+'</option>'; }).join("")+'</optgroup></select></label></div>';
     }).join("")+'</div>'+(n < 6 ? '<button type="button" class="btn ghost sm" data-wa="sesAdd">+ Add a session</button>' : "");
-    var pins = '<details class="info-card" data-wopen="pinDet"'+(w.open.pinDet ? " open" : "")+'><summary>Pin a subject to a session</summary>'+c.sessions.map(function(sl, i){
-      return '<div class="cf"><label>Session '+(i+1)+' · '+esc(fmt12(sl.start))+'</label><select data-w="cap.sessions.'+i+'.subject" aria-label="Subject for session '+(i+1)+'"><option value="">Any subject</option><optgroup label="Activity"><option value="@ca"'+(sl.subject==="@ca"?" selected":"")+'>Current Affairs (daily)</option></optgroup><optgroup label="Subjects">'+w.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(sl.subject===nm?" selected":"")+'>'+esc(nm)+'</option>'; }).join("")+'</optgroup></select></div>';
-    }).join("")+'</details>';
-    exactBox = dayRingHtml(c.sessions)+list+pins;
+    exactBox = dayRingHtml(c.sessions)+list;
   }
   var anyAct = ACT_KINDS.some(function(k){ return w.acts[k].on; });
   var actOrder = ["ca","revision","essay","pyq","test"].filter(function(k){ return ACT_KINDS.indexOf(k) >= 0; });
@@ -20015,7 +20014,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "342";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "343";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
