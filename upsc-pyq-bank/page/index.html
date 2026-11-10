@@ -7932,12 +7932,8 @@ function wzCapacity(w){
   var actOrder = ["ca","revision","essay","pyq","test"].filter(function(k){ return ACT_KINDS.indexOf(k) >= 0; });
   var scr = capScreenOf(w);
   if(scr==="days"){
-    var hrs = +c.dayHours > 0 ? +c.dayHours : 6, wk = hrs*c.days.length;
-    return '<div class="qx-big"><span id="qsHrs">'+esc(String(hrs))+'</span><small> h / day</small></div>'+
-      '<input type="range" class="qx-range" min="1" max="12" step="0.5" value="'+hrs+'" data-w="cap.dayHours" data-t="n" data-qsrange="1" aria-label="Hours a day">'+
-      '<div class="qx-chips">'+QS_HOURS.map(function(h){ return '<button type="button" class="qx-chip'+(hrs===h ? " on" : "")+'" data-wa="set" data-path="cap.dayHours" data-n="1" data-v="'+h+'">'+h+'h</button>'; }).join("")+'</div>'+
-      '<div class="qx-lab">Study days</div>'+dayChips("cap.days", c.days)+
-      '<div class="qx-sub">'+(c.days.length ? (exact ? "You chose your own session times, so the hours come from those." : "That is about <b>"+esc(String(wk))+" hours</b> a week") : "Pick at least one study day")+'</div>';
+    return '<div class="qx-lab">Study days</div>'+dayChips("cap.days", c.days)+
+      '<div class="qx-sub">'+(c.days.length ? '<b>'+c.days.length+' day'+(c.days.length===1 ? '' : 's')+'</b> a week. You set when you study on the Your sessions screen.' : 'Pick at least one study day')+'</div>';
   }
   if(scr==="acts"){
     return '<div class="cap-subs">'+actOrder.map(function(k){ return actRowHtml(w, k); }).join("")+'</div>'+
@@ -7945,7 +7941,11 @@ function wzCapacity(w){
       (anyAct ? weekMapHtml(w) : '<button type="button" class="qx-link" data-wa="next">No activities, continue</button>');
   }
   if(!exact){
-    return '<div class="qx-info"><b>The app plans your day</b><small>From '+esc(String(+c.dayHours > 0 ? +c.dayHours : 6))+' hours a day, starting at '+esc(fmt12(c.dayStart || "06:00"))+'.</small></div>'+
+    var hrs = +c.dayHours > 0 ? +c.dayHours : 6;
+    return '<div class="qx-info"><b>The app plans your day</b><small>Starting at '+esc(fmt12(c.dayStart || "06:00"))+'. How many hours a day?</small></div>'+
+      '<div class="qx-big"><span id="qsHrs">'+esc(String(hrs))+'</span><small> h / day</small></div>'+
+      '<input type="range" class="qx-range" min="1" max="12" step="0.5" value="'+hrs+'" data-w="cap.dayHours" data-t="n" data-qsrange="1" aria-label="Hours a day">'+
+      '<div class="qx-chips">'+QS_HOURS.map(function(h){ return '<button type="button" class="qx-chip'+(hrs===h ? " on" : "")+'" data-wa="set" data-path="cap.dayHours" data-n="1" data-v="'+h+'">'+h+'h</button>'; }).join("")+'</div>'+
       qsOpt("🕐", "Set my own session times", "Pick when each session starts and ends", false, "capExact", "", "", "Recommended")+
       fitLineHtml(w);
   }
@@ -8042,7 +8042,7 @@ var FS_SCREENS = [
   {id:"prep", step:2, title:"Preparing for?", hint:"Choose what goes into the plan."},
   {id:"pri",  step:3, title:"Study order", hint:"Tap subjects in the order you want to study them."},
   {id:"top",  step:4, title:"Skip anything?", hint:"Tap a subject to see or trim its chapters."},
-  {id:"days", step:5, cap:"days", title:"Study days and hours", hint:"Be honest. We plan around it."},
+  {id:"days", step:5, cap:"days", title:"Study days", hint:"Which days can you study?"},
   {id:"acts", step:5, cap:"acts", title:"Daily activities", hint:"Set these first. Each gets its own time and days."},
   {id:"subj", step:5, cap:"subj", title:"Your sessions", hint:"Choose when you study each day."},
   {id:"week", step:7, title:"Your first week", hint:"Looks good?"}
@@ -8072,7 +8072,7 @@ function renderWizard(host){
   var si = fsIndex(w), S = FS_SCREENS[si], last = si===FS_SCREENS.length-1, stt = windowStats(w), chips = [];
   if(si > 1) chips.push(w.mode==="prelims" ? "Prelims" : (w.mode==="mains" ? "Mains" : "Prelims + Mains"));
   if(si > 0 && stt.ok) chips.push((w.durMode==="months" && +w.months > 0 ? +w.months : stt.months)+" months");
-  if(si > 4) chips.push((+w.cap.dayHours > 0 ? +w.cap.dayHours : 6)+" h · "+w.cap.days.length+" days");
+  if(si > 4) chips.push(w.cap.days.length+" study days");
   if(si > 1 && w.optionalOn && w.optional && w.mode!=="prelims") chips.push(w.optional);
   host.innerHTML = restore+'<div class="card qx-card"><div class="qx">'+
     '<div class="qx-top">'+(si>0 ? '<button type="button" data-wa="back">‹ Back</button>' : '<span></span>')+(studyPlan ? '<button type="button" data-wa="cancelEdit">Cancel</button>' : '<span></span>')+'</div>'+
@@ -20014,7 +20014,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "343";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "344";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
