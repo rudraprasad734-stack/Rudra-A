@@ -8151,19 +8151,13 @@ function qsHtml(w){
         ? '<div class="qx-info"><b>Date passed</b><small>The '+tn+' date is behind us, so your plan runs for '+fall+' months from today.</small></div>'
         : '<div class="qx-info"><b>'+tgt+' days</b><small>from today to '+tn+', about '+Math.round(tgt/7)+' weeks'+(q.exam==="both" && dp > 0 ? ". Mains is "+Math.max(0, dm)+" days away" : "")+(wt > 0 && wt < 45 ? ". That is very close, so your plan runs for "+fall+" months instead" : "")+'.</small></div>');
   } else if(q.screen==="time"){
-    var wk = q.hours*q.days.length;
-    title = "Hours a day?"; hint = "Be honest. We plan around it."; chips = [qsExamLabel(q.exam)];
-    var hp = qsHoursPlan(q.hours);
-    body = '<div class="qx-big"><span id="qsHrs">'+q.hours+'</span><small> h / day</small></div>'+
-      '<input type="range" class="qx-range" min="2" max="10" step="1" value="'+q.hours+'" data-w="qs.hours" data-t="n" data-qsrange="1" aria-label="Hours a day">'+
-      '<div class="qx-chips">'+QS_HOURS.map(function(h){ return '<button type="button" class="qx-chip'+(q.hours===h ? " on" : "")+'" data-wa="set" data-path="qs.hours" data-n="1" data-v="'+h+'">'+h+'h</button>'; }).join("")+'</div>'+
-      '<div class="qx-lab">Study days</div><div class="qx-days">'+[1,2,3,4,5,6,0].map(function(d, i){ return '<button type="button" class="'+(q.days.indexOf(d)>=0 ? "on" : "")+'" data-wa="toggleArr" data-path="qs.days" data-v="'+d+'" aria-label="'+DOW_LONG[d]+'" aria-pressed="'+(q.days.indexOf(d)>=0)+'">'+"MTWTFSS".charAt(i)+'</button>'; }).join("")+'</div>'+
-      '<div class="qx-sub">'+(q.days.length ? "That is about <b>"+wk+" hours</b> a week" : "Pick at least one study day")+'</div>'+
-      '<div class="qx-info"><small>A usual day</small><div class="qx-strip">'+Array.apply(null, Array(hp[0])).map(function(){ return '<i style="flex:1;background:'+QS_COL[0]+'"></i>'; }).join("")+'</div><small>'+hp[0]+' session'+(hp[0]===1 ? "" : "s")+' of '+esc(fmtDurMin(hp[1]))+'</small></div>';
+    title = "Study days?"; hint = "Which days can you study?"; chips = [qsExamLabel(q.exam)];
+    body = '<div class="qx-lab">Study days</div><div class="qx-days">'+[1,2,3,4,5,6,0].map(function(d, i){ return '<button type="button" class="'+(q.days.indexOf(d)>=0 ? "on" : "")+'" data-wa="toggleArr" data-path="qs.days" data-v="'+d+'" aria-label="'+DOW_LONG[d]+'" aria-pressed="'+(q.days.indexOf(d)>=0)+'">'+"MTWTFSS".charAt(i)+'</button>'; }).join("")+'</div>'+
+      '<div class="qx-sub">'+(q.days.length ? "<b>"+q.days.length+" day"+(q.days.length===1 ? "" : "s")+"</b> a week. You set your session times later." : "Pick at least one study day")+'</div>';
   } else if(q.screen==="opt"){
     var all = ALL_OPTIONALS.filter(function(n){ return hasBundledSyllabus(n); }), top = ["Anthropology","Sociology","Geography","History","Public Administration","Political Science and International Relations","Philosophy","Psychology"].filter(function(n){ return all.indexOf(n) >= 0; });
     var shown = q.all ? all : top.concat(q.opt && top.indexOf(q.opt)<0 ? [q.opt] : []);
-    title = "Your optional?"; hint = "Skip if you are not sure yet."; chips = [qsExamLabel(q.exam), q.hours+" h · "+q.days.length+" days"];
+    title = "Your optional?"; hint = "Skip if you are not sure yet."; chips = [qsExamLabel(q.exam), q.days.length+" study days"];
     body = '<input type="search" class="qx-search" placeholder="Search subjects" data-qsearch="1" aria-label="Search optional subjects">'+
       '<div class="qx-grid">'+shown.map(function(n){ return '<button type="button" class="qx-sq'+(q.opt===n ? " on" : "")+'" data-qsname="'+esc(n)+'" data-wa="set" data-path="qs.opt" data-v="'+(q.opt===n ? "" : esc(n))+'">'+esc(n)+'</button>'; }).join("")+'</div>'+
       (q.all ? "" : '<button type="button" class="qx-link" data-wa="set" data-path="qs.all" data-v="1">See all '+all.length+' optional subjects ›</button>');
@@ -8173,7 +8167,7 @@ function qsHtml(w){
     var found = bo.filter(function(n){ return n!==ol; }).slice(0, 4).map(function(n){ return n.replace(/ \(Optional\)$/, ""); });
     if(q.start==="optional" && hasOpt && bo.indexOf(ol) > 0){ bo.splice(bo.indexOf(ol), 1); bo.unshift(ol); }
     var ord = bo.map(function(n){ return n.replace(/ \(Optional\)$/, ""); });
-    title = "Start with?"; hint = "We line up the rest after it."; btn = "See my first week"; chips = [qsExamLabel(q.exam), q.hours+" h · "+q.days.length+" days"].concat(q.opt ? [q.opt] : []);
+    title = "Start with?"; hint = "We line up the rest after it."; btn = "See my first week"; chips = [qsExamLabel(q.exam), q.days.length+" study days"].concat(q.opt ? [q.opt] : []);
     body = qsOpt("✋", "I will pick", "Choose subjects and order", q.start==="pick", "set", "qs.start", "pick", "Recommended")+
       qsOpt("🧱", "Foundation first", esc(found.join(", ")), q.start==="foundation", "set", "qs.start", "foundation")+
       (hasOpt ? qsOpt("🎓", "Optional first", esc(q.opt || "Your optional")+", then GS", q.start==="optional", "set", "qs.start", "optional") : "")+
@@ -8183,7 +8177,7 @@ function qsHtml(w){
     var pvh = qsWeekHtml(w);
     title = "Your first week"; hint = (pvh.first ? esc(pvh.first.replace(/ \(Optional\)$/, ""))+" first. " : "")+"Looks good?"; btn = "Start my plan"; link = "Change something";
     body = pvh.html;
-    chips = [qsExamLabel(q.exam), q.hours+" h · "+q.days.length+" days"].concat(q.opt ? [q.opt] : []);
+    chips = [qsExamLabel(q.exam), q.days.length+" study days"].concat(q.opt ? [q.opt] : []);
   }
   var act = q.screen==="week" ? 'data-wa="gen"' : 'data-wa="qsNext"', linkAct = q.screen==="week" ? 'data-wa="qsFull"' : 'data-wa="qsNext"';
   return '<div class="qx">'+
@@ -20014,7 +20008,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "344";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "345";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
