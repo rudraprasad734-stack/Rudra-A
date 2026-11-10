@@ -7099,6 +7099,7 @@ function simulate(plan, from, frozen, strict){
   studySessions.forEach(function(s){
     var dm = Math.max(0, toMin(s.endTime)-toMin(s.startTime));
     if(s.kind==="study" && s.topicId && s.status==="completed") blocksDone[s.topicId] = (blocksDone[s.topicId]||0)+dm;
+    else if(s.kind==="study" && s.topicId && s.status==="in_progress" && s.actualDuration > 0 && !s.movedFrom) blocksDone[s.topicId] = (blocksDone[s.topicId]||0)+Math.min(dm, s.actualDuration);
     // a missed session moved back to today still counts toward its chapter, so the chapter is not given an extra one later
     else if(s.kind==="study" && s.topicId && s.movedFrom && s.date>=from && (s.status==="not_started" || s.status==="in_progress")) held[s.topicId] = (held[s.topicId]||0)+dm;
     if(s.kind==="revision" && s.topicId && s.revGap && s.status!=="missed" && s.date >= ((studyProgress.topics[s.topicId]||{}).completedAt || "")) revSeen[s.topicId+"#"+s.revGap] = 1;
@@ -7264,7 +7265,7 @@ function afterSessionChange(id){
     var need = (needMinMap(studyPlan, subjectStates(studyPlan))[s.topicId] || 120) - 14;   // a few minutes short of the planned time still counts as done
     var n = studySessions.filter(function(x){ return x.topicId===s.topicId && x.kind==="study" && x.status==="completed"; }).reduce(function(t, x){ return t + Math.max(0, toMin(x.endTime)-toMin(x.startTime)); }, 0);
     var cur = studyProgress.topics[s.topicId];
-    if(n >= need && leafStatus(s.topicId)!=="completed") setLeaves([s.topicId], "completed", id);
+    if(n >= need && leafStatus(s.topicId)!=="completed" && !(studyPlan.keep && studyPlan.keep[s.topicId])) setLeaves([s.topicId], "completed", id);
     else if(n < need && cur && cur.status==="completed" && cur.by===id) setLeaves([s.topicId], n>0 ? "in_progress" : "not_started", "auto");
     else if(n > 0 && leafStatus(s.topicId)==="not_started") setLeaves([s.topicId], "in_progress", "auto");
     else replan();
@@ -18206,6 +18207,10 @@ function openTimerSave(){
     '<div class="cf"><label for="tsTarget">Record it against</label><select id="tsTarget">'+opts+'<option value=""'+(pick ? "" : " selected")+'>Only add to today&rsquo;s study time</option></select></div>'+
     (function(){ var sp = timerSplitDays(ms, info); if(!sp) return ""; return '<p class="muted small">This sitting went past midnight, so your study time is shared between the days: '+Object.keys(sp).map(function(k){ return esc(fmtLong(parseKey(k)).replace(/,? \d{4}$/, ""))+" "+esc(fmtDurMin(Math.round(sp[k]/60000))); }).join(", ")+'.</p>'; })()+
     '<p class="ts-split" id="tsPreview" hidden></p>'+
+    '<div class="cf ts-out" id="tsOut" hidden><label>How did the chapter go?</label>'+
+      '<label class="rm-opt on"><input type="radio" name="tsOut" value="" checked><span><b>Just save the time</b><small>Nothing else changes.</small></span></label>'+
+      '<label class="rm-opt"><input type="radio" name="tsOut" value="done"><span><b>Finished it</b><small id="tsOutDone">Marks the chapter complete. The next chapter starts.</small></span></label>'+
+      '<label class="rm-opt"><input type="radio" name="tsOut" value="keep"><span><b>Not finished, keep going</b><small id="tsOutKeep">The chapter stays on your list until you finish it.</small></span></label></div>'+
     '<p class="muted small">Today&rsquo;s study time always includes it. Only focus time counts as study. Breaks between Pomodoro rounds are not study time, but they do count toward finishing a session&rsquo;s planned length.</p>'+
     '<div class="modal-actions"><button class="btn ghost" id="tsDiscard">Discard</button><span class="grow"></span><button class="btn primary" id="tsSave">Save</button></div>'+
   '</div>', false);
@@ -18218,7 +18223,22 @@ function openTimerSave(){
     if(others.length < 2) pv.textContent = (room ? "This session only has "+fmtDurMin(room)+" left, " : "This session is already full, ")+"and there is no other unfinished "+(first.kind==="study" ? first.subject+" " : "")+"session today, so all "+fmtDurMin(studyMin)+" is saved here.";
     else pv.textContent = (room ? "This session only has "+fmtDurMin(room)+" left. " : "This session is already full. ")+"Your time is shared like this: "+others.map(function(q){ var x = sessionById(q.id); return "S"+x.sessionNumber+" "+fmtDurMin(q.study); }).join(", ")+".";
   }
-  document.getElementById("tsTarget").addEventListener("change", refresh);
+  // the chapter question only makes sense for a study session that has a chapter
+  function outcome(){
+    var sid = document.getElementById("tsTarget").value, x = sid ? sessionById(sid) : null, box = document.getElementById("tsOut");
+    var ok = !!(x && x.kind==="study" && x.topicId && studyPlan && !isDone(x.topicId));
+    box.hidden = !ok; if(!ok) return;
+    box.querySelector('input[value=""]').checked = true;
+    [].forEach.call(box.querySelectorAll(".rm-opt"), function(o){ o.classList.toggle("on", o.querySelector("input").checked); });
+    var kp = studyPlan.keep && studyPlan.keep[x.topicId];
+    box.querySelector('input[value="keep"]').parentNode.hidden = !!kp;
+    box.querySelector("#tsOutDone").textContent = "Marks "+x.syllabusUnit+" complete. The next chapter starts.";
+    var kt = box.querySelector("#tsOutKeep"); kt.textContent = "The chapter stays on your list until you finish it.";
+    try{ var r = keepImpact(x.topicId, x.subject, {mode:"until", extra:0, since:todayKey}), d = r.a.end && r.b.end ? diffDays(r.b.end, r.a.end) : 0; if(d > 0) kt.textContent = "Stays on your list until you finish it. "+x.subject+" ends about "+d+" day"+(d===1 ? "" : "s")+" later."; }catch(e){}
+  }
+  document.getElementById("tsOut").addEventListener("change", function(){ [].forEach.call(this.querySelectorAll(".rm-opt"), function(o){ o.classList.toggle("on", o.querySelector("input").checked); }); });
+  document.getElementById("tsTarget").addEventListener("change", function(){ refresh(); outcome(); });
+  outcome();
   if(tooLong) document.getElementById("tsReal").addEventListener("input", function(){
     var h = parseFloat(this.value); ms = (h > 0 ? Math.min(h, 16) : 0) * 3600000; studyMin = Math.max(1, Math.round(ms/60000)); brkMin = 0; win = null; info = null; refresh();
   });
@@ -18232,9 +18252,13 @@ function openTimerSave(){
       add = Math.round(hrs*3600000); info = null;
     }
     timerAddToToday(add, info);
+    var oc = document.getElementById("tsOut"), pick2 = oc && !oc.hidden ? (oc.querySelector('input[name="tsOut"]:checked') || {}).value : "", tgt = sid ? sessionById(sid) : null, tid = tgt && tgt.topicId;
+    if(pick2==="keep" && tid){ studyPlan.keep = studyPlan.keep || {}; studyPlan.keep[tid] = {mode:"until", extra:0, since:todayKey}; savePlan(); }   // before the time is saved, so the chapter is not completed for you
     if(sid) timerCommit(sid, add, info, true);
+    if(pick2==="done" && tid){ setLeaves([tid], "completed", "manual"); if(sessionById(sid) && sessionById(sid).status!=="completed") updateSession(sid, {status:"completed"}); replan(); }
+    if(pick2==="keep" && tid && leafStatus(tid)==="completed" && (studyProgress.topics[tid]||{}).by!=="manual") setLeaves([tid], "in_progress", "auto");
     timerState.pending = 0; timerState.pendInfo = null; timerState.target = ""; timerSave(); closeModal();
-    toast(sid ? "Time saved to your session and today's study time." : "Added to today's study time.");
+    toast(pick2==="done" ? "Time saved. Chapter marked complete." : (pick2==="keep" ? "Time saved. The chapter stays on your list until you finish it." : (sid ? "Time saved to your session and today's study time." : "Added to today's study time.")));
     renderView(activeTab);
   });
 }
@@ -19901,7 +19925,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "332";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "333";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
