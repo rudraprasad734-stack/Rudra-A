@@ -7307,7 +7307,7 @@ function wizFromPlan(p){ var w = JSON.parse(JSON.stringify(p.cfg)); delete w.fre
   if(w.cap.dayHours==null){   // a plan made with its own sessions keeps them
     var tm = ((p.capacity && p.capacity.sessions) || []).reduce(function(t, x){ return t + Math.max(0, toMin(x.end)-toMin(x.start)); }, 0);
     w.cap.dayHours = Math.max(0.5, Math.round(tm/15)/4) || 6; w.cap.subjHours = {}; w.cap.exact = true;
-  } if(w.acts && w.acts.revision && w.acts.revision.method=="both") w.acts.revision.method = "auto"; w.step = 0; w.err = []; w.open = {}; if(!w.seen){ w.seen = {}; wizCatalog(w).order.forEach(function(n){ w.seen[n] = 1; }); } return w; }
+  } if(w.acts && w.acts.revision && w.acts.revision.method=="both") w.acts.revision.method = "auto"; w.step = 0; w.capScreen = "days"; w.capView = "list"; w.capPick = false; w.err = []; w.open = {}; if(!w.seen){ w.seen = {}; wizCatalog(w).order.forEach(function(n){ w.seen[n] = 1; }); } return w; }
 function wizSnapshot(w){ var c = JSON.parse(JSON.stringify(w)); delete c.step; delete c.err; delete c.open; delete c.qs; delete c.addFor; delete c.addGroup; delete c.capView; delete c.capIdx; delete c.capPick; return c; }
 function wizCatCfg(w){ return {prelims:w.mode!=="mains", mains:w.mode!=="prelims", gs1:!!w.gs1, csat:!!w.csat, gs:w.gs.slice(), optionalOn:!!w.optionalOn, optional:w.optional, customText:w.customText, custom:(w.custom || []).slice()}; }
 function wizCatalog(w){ return buildCatalog(wizCatCfg(w)); }
@@ -15929,9 +15929,9 @@ function openReschedule(){
   });
   Array.prototype.forEach.call(m.querySelectorAll("[data-rm]"), function(b){ b.addEventListener("click", function(){ studyPlan.leave.splice(+b.getAttribute("data-rm"), 1); after("Day off removed. Plan recalculated."); }); });
   m.querySelector("#rsRe").addEventListener("click", function(){ after("Plan recalculated from today."); });
-  function edit(step){ closeModal(); plannerEditing = true; wiz = wizFromPlan(studyPlan); wiz.step = step; setTab("planner"); }
-  m.querySelector("#rsCap").addEventListener("click", function(){ edit(5); });
-  m.querySelector("#rsAct").addEventListener("click", function(){ edit(6); });
+  function edit(step, cap){ closeModal(); plannerEditing = true; wiz = wizFromPlan(studyPlan); wiz.step = step; if(cap) wiz.capScreen = cap; setTab("planner"); }
+  m.querySelector("#rsCap").addEventListener("click", function(){ edit(5, "subj"); });   // Your sessions
+  m.querySelector("#rsAct").addEventListener("click", function(){ edit(5, "acts"); });   // Daily activities
 }
 
 // ---------- Priority (Tiers) inside the planner ----------
@@ -16557,7 +16557,7 @@ function plannerAction(a, el, sure){
   switch(a){
     case "view": plannerView = v; break;
     case "optup": case "optdown": case "chup": case "chdown": case "starthere": case "optreset": case "optopen": case "optfilter": optAction(a, v); break;
-    case "hours": plannerEditing = true; wiz = wizFromPlan(studyPlan); wiz.step = 5; break;
+    case "hours": plannerEditing = true; wiz = wizFromPlan(studyPlan); wiz.step = 5; wiz.capScreen = "subj"; break;
     case "autofit": studyPlan.capacity.layout = "auto"; studyPlan.capacity.limitMin = 0; if(studyPlan.cfg && studyPlan.cfg.cap){ studyPlan.cfg.cap.layout = "auto"; studyPlan.cfg.cap.limitMin = 0; } solveLayout(studyPlan); if(studyPlan.cfg && studyPlan.cfg.cap) studyPlan.cfg.cap.dayStart = studyPlan.capacity.dayStart; savePlan(); replan(); toast("Your day now has enough hours to fit every chapter."); break;
     case "optpick": plannerEditing = true; wiz = wizFromPlan(studyPlan); wiz.step = 2; break;
     case "startSess": openStartSheet(v); return;
@@ -17330,6 +17330,7 @@ function setTab(id){
   if(id !== "dashboard"){ var ph = document.getElementById("planHint"); if(ph) ph.remove(); var qn = document.getElementById("quietNudge"); if(qn) qn.remove(); }
   if(id==="dashboard" && activeTab!=="dashboard") dashMore = false;
   if(id!=="caquiz") caqHide();
+  if(activeTab==="planner" && id!=="planner" && plannerEditing && studyPlan){ plannerEditing = false; wiz = null; }   // leaving a half-finished edit ends it, so the Planner opens on your plan and Edit plan starts from the first screen
   activeTab = id;
   renderTabs();
   lsSet("dossier.tab", id);
@@ -20008,7 +20009,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "345";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "347";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
