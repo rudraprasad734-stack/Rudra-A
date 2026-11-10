@@ -7846,7 +7846,7 @@ function wzCapacity(w){
       return '<div class="cap-sub"><span class="dot" style="background:'+capColor(w, n)+'"></span><span class="nm">'+esc(n)+'<small>'+capChapters(w, n)+' chapters</small></span><span class="chip">'+esc(fmtHM(Math.round(c.subjHours[n]*60)))+'</span><button type="button" class="ses-link" data-wa="capSubj" data-v="'+esc(n)+'">Edit</button><button type="button" class="ses-x sm" data-wa="capDel" data-v="'+esc(n)+'" title="Use the default for this subject" aria-label="Remove the hours for '+esc(n)+'">✕</button></div>';
     }).join("");
   var rest = w.order.filter(function(n){ return mine.indexOf(n) < 0; });
-  var pick = w.capPick ? '<div class="cap-pick">'+rest.map(function(n){ return '<button type="button" class="chip" data-wa="capSubj" data-v="'+esc(n)+'">'+esc(n)+'</button>'; }).join("")+'</div>' : "";
+  var pick = w.capPick ? '<div class="cap-pick">'+w.order.map(function(n){ return '<button type="button" class="chip" data-wa="capSubj" data-v="'+esc(n)+'">'+esc(n)+(c.subjHours && c.subjHours[n]!=null ? ' \u00B7 '+esc(fmtHM(Math.round(c.subjHours[n]*60))) : "")+'</button>'; }).join("")+'</div>' : "";
   var exactBox = '';
   if(exact){
     var n = c.sessions.length;
@@ -7859,7 +7859,7 @@ function wzCapacity(w){
     }).join("")+'</div>'+(n < 6 ? '<button type="button" class="btn ghost sm" data-wa="sesAdd">+ Add a session</button>' : "");
     exactBox = '<div class="hint">Tip: to read the newspaper in one of these sessions, pick <b>Current Affairs (daily)</b> in that session\u2019s subject list.</div>'+dayRingHtml(c.sessions)+list+'<button type="button" class="btn ghost sm" data-wa="capAuto">Let the app set the times</button>';
   } else {
-    exactBox = '<div class="hint">The app lays out your day from these hours, starting at '+esc(fmt12(c.dayStart || "06:00"))+'. To choose clock times yourself, set them here.</div><button type="button" class="btn ghost sm" data-wa="capExact">Set exact session times</button>';
+    exactBox = '<div class="hint">The app lays out your day from these hours, starting at '+esc(fmt12(c.dayStart || "06:00"))+'. To choose clock times yourself, set them here.</div><button type="button" class="btn ghost sm" data-wa="capExact">Choose session times myself</button>';
   }
   var anyAct = ACT_KINDS.some(function(k){ return w.acts[k].on; }), locked = !studyPlan && !w.actsOk && !anyAct;
   var actOrder = ["ca","revision","essay","pyq","test"].filter(function(k){ return ACT_KINDS.indexOf(k) >= 0; });
@@ -7868,9 +7868,9 @@ function wzCapacity(w){
   return '<h3>How much can you study?</h3>'+
     '<div class="cf"><label>Study days</label>'+dayChips("cap.days", c.days)+'</div>'+
     actBox+
-    '<details class="info-card cap-adv" data-wopen="capEx"'+(w.open.capEx ? " open" : "")+'><summary>Exact session times <span class="cnt">optional</span></summary>'+exactBox+'</details>'+
-    '<div class="cf cap-hrs'+(locked ? " cap-lock" : "")+'"><label>Hours a day for subjects</label><div class="cap-subs">'+rows+'</div>'+pick+
-      '<div class="cap-acts"><button type="button" class="btn ghost sm" data-wa="capPick">'+(w.capPick ? "Close the list" : "+ Add a subject")+'</button><button type="button" class="btn ghost sm" data-wa="capSubj" data-v="'+esc(w.order[0] || "")+'">Set subject by subject</button></div></div>'+
+    '<details class="info-card cap-adv" data-wopen="capEx"'+(w.open.capEx ? " open" : "")+'><summary>Choose my own session times <span class="cnt">optional</span></summary>'+exactBox+'</details>'+
+    '<div class="cf cap-hrs'+(locked ? " cap-lock" : "")+'"><label>Subjects</label>'+pick+
+      '<div class="cap-acts"><button type="button" class="btn ghost sm" data-wa="capPick">'+(w.capPick ? "Close the list" : "+ Add a subject")+'</button><button type="button" class="btn ghost sm" data-wa="capOthers">Set subject by subject</button></div></div>'+
     fitLineHtml(w)+
     weekMapHtml(w);
 }
@@ -7878,7 +7878,7 @@ function wzCapacity(w){
 function capStepHtml(w){
   var N = w.order.length, idx = w.capIdx, others = idx < 0, name = others ? "" : w.order[idx], hrs = others ? +w.cap.dayHours : capHoursOf(w, name), mins = Math.round(hrs*60);
   var total = Math.max(+w.cap.dayHours, hrs), pct = Math.round(hrs/total*100), col = others ? "#6b8d96" : capColor(w, name);
-  var last = others || idx >= N-1;
+  var last = idx >= N-1;
   return '<div class="cap-step" style="--c:'+col+'"><div class="cap-stp">'+(others ? "Every other subject" : "Subject "+(idx+1)+" of "+N)+'</div>'+
     '<div class="cap-prog"><i style="width:'+(others ? 100 : Math.round((idx+1)/N*100))+'%"></i></div>'+
     '<h3 class="cap-big">'+esc(others ? "All other subjects" : name)+'</h3><div class="cap-sub2">'+(others ? "the hours a day for every subject you have not set" : capChapters(w, name)+' chapters · how long each study day?')+'</div>'+
@@ -7886,7 +7886,7 @@ function capStepHtml(w){
     '<div class="cap-quick">'+[1,2,3,4].map(function(h){ return '<button type="button" class="chip'+(hrs===h ? " on" : "")+'" data-wa="capQuick" data-v="'+h+'">'+h+'h</button>'; }).join("")+'</div>'+
     '<div class="cap-share">That is <b>'+esc(fmtHM(mins))+'</b> a day'+(others ? "" : ', '+pct+'% of your '+esc(fmtHM(Math.round(total*60)))+' day')+'</div>'+
     (others ? "" : '<button type="button" class="ses-link center" data-wa="capSkip">Skip, use the default ('+esc(fmtHM(Math.round(w.cap.dayHours*60)))+')</button>')+
-    '<div class="cap-nav"><button type="button" class="btn ghost" data-wa="capPrev">'+(idx <= 0 ? "Back to list" : "Back")+'</button><button type="button" class="btn primary" data-wa="capNext">'+(last ? "Done" : "Next subject →")+'</button></div>'+(last ? "" : '<button type="button" class="ses-link center" data-wa="capList">Done, back to the list</button>')+'</div>';
+    '<div class="cap-nav"><button type="button" class="btn ghost" data-wa="capPrev">'+(idx < 0 ? "Back to list" : "Back")+'</button><button type="button" class="btn primary" data-wa="capNext">'+(last ? "Done" : "Next subject →")+'</button></div>'+(last ? "" : '<button type="button" class="ses-link center" data-wa="capList">Done, back to the list</button>')+'</div>';
 }
 // The popup that asks, when the next subject starts, how many hours a day it should get.
 function askSubjectHours(name, prev, tries){
@@ -7941,7 +7941,7 @@ function actCard(w, k){
     if(k==="revision") body += revMethodHtml(a);
     if(k==="ca" && w.cap.sessions.some(function(x){ return x.subject==="@ca"; })){
       var cs = w.cap.sessions.filter(function(x){ return x.subject==="@ca"; })[0];
-      body += '<div class="hint ok">Current Affairs runs every study day at <b>'+esc(fmt12(cs.start))+'\u2013'+esc(fmt12(cs.end))+'</b>, because one of your sessions is set to it. Change it under Capacity \u2192 Exact session times.</div>';
+      body += '<div class="hint ok">Current Affairs runs every study day at <b>'+esc(fmt12(cs.start))+'\u2013'+esc(fmt12(cs.end))+'</b>, because one of your sessions is set to it. Change it under Capacity \u2192 Choose my own session times.</div>';
     } else if(k==="ca"){
       body += '<div class="hint">Want it at a fixed time inside your study day, like first thing in the morning? <button type="button" class="ses-link" data-wa="capGoExact">Set a session to Current Affairs</button></div>'+caFreqHtml(a)+'<div class="cf"><label>Time (from &ndash; to)</label>'+timePair("acts.ca.start","acts.ca.end",a.start,a.end)+'</div>'+freeHint(w, k);
     } else if(k!=="revision" || a.method!=="auto"){
@@ -8228,8 +8228,8 @@ function wizAction(a, b){
     case "capDel": delete w.cap.subjHours[v]; break;
     case "capQuick": if(w.capIdx < 0) w.cap.dayHours = +v; else w.cap.subjHours[w.order[w.capIdx]] = +v; break;
     case "capSkip": if(w.capIdx >= 0){ delete w.cap.subjHours[w.order[w.capIdx]]; if(w.capIdx < w.order.length-1) w.capIdx++; else w.capView = "list"; } break;
-    case "capPrev": if(w.capIdx <= 0) w.capView = "list"; else w.capIdx--; break;
-    case "capNext": if(w.capIdx < 0 || w.capIdx >= w.order.length-1) w.capView = "list"; else w.capIdx++; break;
+    case "capPrev": if(w.capIdx < 0) w.capView = "list"; else w.capIdx--; break;
+    case "capNext": if(w.capIdx >= w.order.length-1) w.capView = "list"; else w.capIdx++; break;
     case "capExact": var fx = null; try{ fx = fitInfo(w); }catch(x){} if(fx){ w.cap.sessions = JSON.parse(JSON.stringify(fx.plan.capacity.sessions)); w.cap.count = w.cap.sessions.length; w.cap.perDay = {}; } w.cap.exact = true; w.open.capEx = true; break;
     case "capAuto": w.cap.exact = false; break;
     case "actToggle": var ta = w.acts[v]; ta.on = !ta.on; if(ta.on){ w.actsOk = true; ta.mode = "weekly"; ta.interval = 1; delete ta.freq; if(v==="ca"){ ta.start = "05:30"; ta.end = "06:00"; ta.days = [0,1,2,3,4,5,6]; } if(!ta.days || !ta.days.length) ta.days = [1,2,3,4,5,6]; } break;
@@ -19847,7 +19847,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "329";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "330";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
