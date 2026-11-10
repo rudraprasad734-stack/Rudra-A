@@ -1352,6 +1352,7 @@
   .slot select{width:100%; min-height:44px; padding:8px; border:1px solid var(--line); border-radius:10px; background:var(--surface); color:var(--ink); font:inherit;}
   .ac-next[data-go], .brick[data-go], .tagc[data-go], .upc-i[data-go], .prio-r{cursor:pointer;}
   .ac-next .go{display:block; margin-top:4px; font-size:12px; font-weight:700; color:var(--tab-planner);}
+  .leaf-st{flex:none; align-self:center; padding:4px 12px; border-radius:14px; font-size:13px; font-weight:800; border:1px solid var(--line); color:var(--ink-soft); white-space:nowrap;} .leaf-st.st-in_progress{background:rgba(255,176,32,.14); border-color:transparent; color:#ffb020;} .leaf-st.st-completed{background:rgba(125,255,192,.14); border-color:transparent; color:#7dffc0;}
   .ac-keep{margin:8px 0; display:flex; align-items:center; gap:10px; flex-wrap:wrap;} .keep-chip{padding:4px 12px; border-radius:14px; background:rgba(45,230,214,.14); color:var(--accent, #2de6d6); font-weight:800; font-size:13px;}
   .keep-opt{border:1px solid var(--line); border-radius:14px; padding:11px 12px; margin-top:8px; cursor:pointer;} .keep-opt.on{border-color:var(--accent, #2de6d6); background:var(--surface-2);} .keep-opt b{display:block;} .keep-opt span{color:var(--ink-soft); font-size:13px;} .keep-days{margin:10px 0;} .keep-eff{margin-top:10px;}
   .ac-links, .log-links{display:flex; flex-wrap:wrap; gap:6px 14px; margin:8px 0;}
@@ -7110,6 +7111,7 @@ function simulate(plan, from, frozen, strict){
     if(isDone(l.id)) return;
     var kp = plan.keep && plan.keep[l.id], nd = (needMap[l.id]||120) + (kp && kp.extra > 0 ? kp.extra : 0), hd = held[l.id]||0;
     if(hd && (blocksDone[l.id]||0)+hd >= nd-14) return;
+    if(!kp && (blocksDone[l.id]||0) >= nd-14) return;   // its planned time is done; it stays In progress until you mark it finished
     var rm = Math.max(15, nd-(blocksDone[l.id]||0)-hd);
     if(kp && kp.mode==="until") rm = Math.max(rm, keepPerDay(plan, st.name));   // keeps a day's time until you mark it complete
     queue.push({leaf:l, st:st, need:nd, remM:rm, parts:0}); }); });
@@ -7265,9 +7267,9 @@ function afterSessionChange(id){
     var need = (needMinMap(studyPlan, subjectStates(studyPlan))[s.topicId] || 120) - 14;   // a few minutes short of the planned time still counts as done
     var n = studySessions.filter(function(x){ return x.topicId===s.topicId && x.kind==="study" && x.status==="completed"; }).reduce(function(t, x){ return t + Math.max(0, toMin(x.endTime)-toMin(x.startTime)); }, 0);
     var cur = studyProgress.topics[s.topicId];
-    if(n >= need && leafStatus(s.topicId)!=="completed" && !(studyPlan.keep && studyPlan.keep[s.topicId])) setLeaves([s.topicId], "completed", id);
-    else if(n < need && cur && cur.status==="completed" && cur.by===id) setLeaves([s.topicId], n>0 ? "in_progress" : "not_started", "auto");
-    else if(n > 0 && leafStatus(s.topicId)==="not_started") setLeaves([s.topicId], "in_progress", "auto");
+    var started = s.status==="in_progress" || s.status==="completed" || s.actualDuration > 0;   // any study on it counts as started
+    if(n < need && cur && cur.status==="completed" && cur.by===id) setLeaves([s.topicId], n>0 || started ? "in_progress" : "not_started", "auto");   // a chapter an older version completed from this session
+    else if(started && leafStatus(s.topicId)==="not_started") setLeaves([s.topicId], "in_progress", "auto");
     else replan();
   } else replan();
 }
@@ -15941,17 +15943,17 @@ function priorityHtml(plan, states, inTiers){
 }
 
 function progressHtml(plan, states){
-  return '<div class="hint">Mark chapters complete as you finish them. When every selected chapter of a subject is complete, the next subject unlocks and the plan recalculates.</div>'+
+  return '<div class="hint">A chapter turns <b>In progress</b> as soon as you start studying it, and stays that way until you finish it. Mark it finished from the session (Planner \u2192 Schedule \u2192 Day) or when you save your timer. When every chapter of a subject is complete, the next subject unlocks.</div>'+
     states.map(function(s){
       var e = s.entry, tag = s.state==="completed" ? "COMPLETED" : (s.state==="active" ? "ACTIVE" : (s.pinned ? "PARALLEL" : "LOCKED"));
       var groups = Object.keys(e.topics).map(function(g){
         var ls = s.leaves.filter(function(l){ return l.group===g; });
         if(!ls.length) return "";
         var gd = ls.filter(function(l){ return isDone(l.id); }).length, ids = ls.map(function(l){ return l.id; }).join("␟");
-        return '<div class="grp"><div class="gh2"><b>'+esc(g)+'</b><span class="cnt">'+gd+'/'+ls.length+'</span><button type="button" class="btn ghost sm" data-pa="groupDone" data-v="'+esc(ids)+'">'+(gd===ls.length ? "Undo group" : "Mark group complete")+'</button></div>'+
+        return '<div class="grp"><div class="gh2"><b>'+esc(g)+'</b><span class="cnt">'+gd+'/'+ls.length+'</span></div>'+
           ls.map(function(l){
             var stt = leafStatus(l.id);
-            return '<div class="leaf st-'+stt+'"><span>'+esc(l.unit)+tierBadge(l)+(l.isNew ? ' <span class="chip newc">New</span>' : "")+(l.subs.length ? '<details class="subd"><summary>'+l.subs.length+' subtopics</summary><ul>'+l.subs.map(function(sb){ return '<li>'+esc(sb)+'</li>'; }).join("")+'</ul></details>' : "")+'</span><select data-pa="leafsel" data-id="'+esc(l.id)+'" aria-label="Status of '+esc(l.unit)+'"><option value="not_started"'+(stt==="not_started"?" selected":"")+'>Not started</option><option value="in_progress"'+(stt==="in_progress"?" selected":"")+'>In progress</option><option value="completed"'+(stt==="completed"?" selected":"")+'>Completed</option></select></div>';
+            return '<div class="leaf st-'+stt+'"><span>'+esc(l.unit)+tierBadge(l)+(l.isNew ? ' <span class="chip newc">New</span>' : "")+(l.subs.length ? '<details class="subd"><summary>'+l.subs.length+' subtopics</summary><ul>'+l.subs.map(function(sb){ return '<li>'+esc(sb)+'</li>'; }).join("")+'</ul></details>' : "")+'</span><span class="leaf-st st-'+stt+'">'+(stt==="completed" ? "Completed" : (stt==="in_progress" ? "In progress" : "Not started"))+'</span></div>';
           }).join("")+'</div>';
       }).join("");
       return '<details class="scope progsub" data-prog="'+esc(s.name)+'" style="--bc:var('+s.color+')"'+((progOpen[s.name]!=null ? progOpen[s.name] : s.state==="active")?" open":"")+'><summary><b>'+esc(s.name)+'</b><span class="cnt">'+s.done+'/'+s.total+' &middot; '+s.pct+'%</span><span class="b-tag">'+tag+'</span></summary>'+groups+'</details>';
@@ -19930,7 +19932,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "335";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "336";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
