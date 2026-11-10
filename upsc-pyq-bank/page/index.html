@@ -7864,14 +7864,15 @@ function wzCapacity(w){
   var anyAct = ACT_KINDS.some(function(k){ return w.acts[k].on; }), locked = !studyPlan && !w.actsOk && !anyAct;
   var actOrder = ["ca","revision","essay","pyq","test"].filter(function(k){ return ACT_KINDS.indexOf(k) >= 0; });
   var actBox = '<div class="cf"><label>Activities <span class="cnt">set these first</span></label><div class="cap-subs">'+actOrder.map(function(k){ return actRowHtml(w, k); }).join("")+'</div>'+
-    (locked ? '<div class="hint">Switch on each activity you want, then choose its time and days. Then set your subject hours below.</div><button type="button" class="btn ghost sm" data-wa="actsDone">No activities, continue</button>' : (anyAct ? '<div class="hint">Switch an activity on to choose its time and days.</div>' : ""))+'</div>'+(anyAct ? weekMapHtml(w) : "");
+    (locked ? '<div class="hint">Switch on each activity you want, then choose its time and days. Then set your subject hours below.</div><button type="button" class="btn ghost sm" data-wa="actsDone">No activities, continue</button>' : (anyAct ? '<div class="hint">Switch an activity on to choose its time and days.</div>' : ""))+'</div>';
   return '<h3>How much can you study?</h3>'+
     '<div class="cf"><label>Study days</label>'+dayChips("cap.days", c.days)+'</div>'+
     actBox+
+    '<details class="info-card cap-adv" data-wopen="capEx"'+(w.open.capEx ? " open" : "")+'><summary>Exact session times <span class="cnt">optional</span></summary>'+exactBox+'</details>'+
     '<div class="cf cap-hrs'+(locked ? " cap-lock" : "")+'"><label>Hours a day for subjects</label><div class="cap-subs">'+rows+'</div>'+pick+
       '<div class="cap-acts"><button type="button" class="btn ghost sm" data-wa="capPick">'+(w.capPick ? "Close the list" : "+ Add a subject")+'</button><button type="button" class="btn ghost sm" data-wa="capSubj" data-v="'+esc(w.order[0] || "")+'">Set subject by subject</button></div></div>'+
     fitLineHtml(w)+
-    '<details class="info-card cap-adv" data-wopen="capEx"'+(w.open.capEx ? " open" : "")+'><summary>Exact session times <span class="cnt">optional</span></summary>'+exactBox+'</details>';
+    weekMapHtml(w);
 }
 // One subject at a time: roll its hours a day with the dial.
 function capStepHtml(w){
@@ -19846,7 +19847,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "328";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "329";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
