@@ -7868,7 +7868,7 @@ function wzCapacity(w){
   return '<h3>How much can you study?</h3>'+
     '<div class="cf"><label>Study days</label>'+dayChips("cap.days", c.days)+'</div>'+
     actBox+
-    '<details class="info-card cap-adv" data-wopen="capEx"'+(w.open.capEx ? " open" : "")+'><summary>Choose my own session times <span class="cnt">optional</span></summary>'+exactBox+'</details>'+
+    '<details class="info-card cap-adv" data-wopen="capEx"'+(w.open.capEx ? " open" : "")+'><summary>Choose my own session times</summary>'+exactBox+'</details>'+
     '<div class="cf cap-hrs'+(locked ? " cap-lock" : "")+'"><label>Subjects</label>'+pick+
       '<div class="cap-acts"><button type="button" class="btn ghost sm" data-wa="capPick">'+(w.capPick ? "Close the list" : "+ Add a subject")+'</button><button type="button" class="btn ghost sm" data-wa="capOthers">Set subject by subject</button></div></div>'+
     fitLineHtml(w)+
@@ -19847,7 +19847,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "330";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "331";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
