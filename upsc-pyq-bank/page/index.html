@@ -7053,6 +7053,7 @@ function activityCalendar(plan, from, to){
     var a = plan.activities[kind];
     if(!a || !a.on) return;
     if(kind==="revision" && a.method==="auto") return;   // spaced revision only: no fixed weekly slot
+    if(kind==="ca" && (plan.capacity.sessions || []).some(function(x){ return x.subject==="@ca"; })) return;   // Current Affairs already has a session of its own
     activityDates(plan, a, from, to).forEach(function(d){ (res[d] = res[d] || []).push({kind:kind, start:a.start, end:a.end}); });
   });
   return res;
@@ -7150,6 +7151,10 @@ function simulate(plan, from, frozen, strict){
             dayNew.push(mkAuto({kind:"revision", date:d, start:sl.start, end:sl.end, purpose:"Revision", paper:dv.st.entry.paper, optional:dv.st.entry.optional, subject:dv.st.name, topic:dv.leaf.group, unit:"Revise: "+dv.leaf.unit, topicId:dv.leaf.id, revGap:dv.gap}));
             revToday = 1; return;
           }
+        }
+        if(sl.subject==="@ca"){   // this session is the daily newspaper, not a chapter
+          dayNew.push(mkActivity("ca", d, sl.start, sl.end, ctx));
+          return;
         }
         // fill the slot with chapter time: a chapter that ends part-way leaves the rest of the slot to the next one
         var cur = toMin(sl.start), endM = toMin(sl.end);
@@ -7313,7 +7318,7 @@ function wizSync(w){
   });
   Object.keys(w.sel).forEach(function(id){ if(!valid[id]) delete w.sel[id]; });
   w.init = init; w.lseen = nextL;
-  w.cap.sessions.forEach(function(sl){ if(sl.subject && w.order.indexOf(sl.subject) < 0) sl.subject = ""; });
+  w.cap.sessions.forEach(function(sl){ if(sl.subject && sl.subject!=="@ca" && w.order.indexOf(sl.subject) < 0) sl.subject = ""; });
 }
 function windowStats(w){
   var end = w.durMode==="date" ? w.target : (/^\d{4}-\d{2}-\d{2}$/.test(w.start) && +w.months>0 ? addMonthsKey(w.start, +w.months) : "");
@@ -7429,7 +7434,7 @@ function fitInfo(w){
     days++; if(onLeave(plan, d)) return;
     var dow = dowOf(d); if(plan.capacity.days.indexOf(dow) < 0) return; sd++;
     var pd = plan.capacity.perDay && plan.capacity.perDay[dow], cnt = (pd!=null) ? +pd : plan.capacity.sessions.length;
-    plan.capacity.sessions.slice(0, cnt).forEach(function(sl){ if(!(acts[d]||[]).some(function(a){ return overlapR(a, sl); })) have += Math.max(0, toMin(sl.end)-toMin(sl.start)); });
+    plan.capacity.sessions.slice(0, cnt).forEach(function(sl){ if(sl.subject!=="@ca" && !(acts[d]||[]).some(function(a){ return overlapR(a, sl); })) have += Math.max(0, toMin(sl.end)-toMin(sl.start)); });
   });
   var sim = simulate(plan, from, [], false), last = "";
   sim.sessions.forEach(function(s){ if(s.kind==="study" && s.date > last) last = s.date; });
@@ -7822,7 +7827,7 @@ function wzCapacity(w){
       var d = toMin(sl.end)-toMin(sl.start);
       return '<div class="ses-r" data-tplabel="Session '+(i+1)+'"><b class="ses-n">'+(i+1)+'</b>'+
         '<div class="ses-t">'+timeChip("cap.sessions."+i+".start", sl.start)+'<span class="arr" aria-hidden="true">→</span>'+timeChip("cap.sessions."+i+".end", sl.end)+'</div>'+
-        '<span class="dur">'+(d > 0 ? esc(fmtHM(d)) : "check times")+'</span><select data-w="cap.sessions.'+i+'.subject" aria-label="Subject for session '+(i+1)+'"><option value="">Any subject</option>'+w.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(sl.subject===nm?" selected":"")+'>'+esc(nm)+'</option>'; }).join("")+'</select>'+
+        '<span class="dur">'+(d > 0 ? esc(fmtHM(d)) : "check times")+'</span><select data-w="cap.sessions.'+i+'.subject" aria-label="Subject for session '+(i+1)+'"><option value="">Any subject</option><optgroup label="Activity"><option value="@ca"'+(sl.subject==="@ca"?" selected":"")+'>Current Affairs (daily)</option></optgroup><optgroup label="Subjects">'+w.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(sl.subject===nm?" selected":"")+'>'+esc(nm)+'</option>'; }).join("")+'</optgroup></select>'+
         (n > 1 ? '<button type="button" class="ses-x" data-wa="sesDel" data-v="'+i+'" title="Remove this session" aria-label="Remove session '+(i+1)+'">✕</button>' : "")+'</div>';
     }).join("")+'</div>'+(n < 6 ? '<button type="button" class="btn ghost sm" data-wa="sesAdd">+ Add a session</button>' : "");
     exactBox = dayRingHtml(c.sessions)+list+'<button type="button" class="btn ghost sm" data-wa="capAuto">Let the app set the times</button>';
@@ -7901,7 +7906,10 @@ function actCard(w, k){
   var body = "";
   if(a.on){
     if(k==="revision") body += revMethodHtml(a);
-    if(k==="ca"){
+    if(k==="ca" && w.cap.sessions.some(function(x){ return x.subject==="@ca"; })){
+      var cs = w.cap.sessions.filter(function(x){ return x.subject==="@ca"; })[0];
+      body += '<div class="hint ok">Current Affairs runs every study day at <b>'+esc(fmt12(cs.start))+'\u2013'+esc(fmt12(cs.end))+'</b>, because one of your sessions is set to it. Change it under Capacity \u2192 Exact session times.</div>';
+    } else if(k==="ca"){
       body += caFreqHtml(a)+'<div class="cf"><label>Time (from &ndash; to)</label>'+timePair("acts.ca.start","acts.ca.end",a.start,a.end)+'</div>'+freeHint(w, k);
     } else if(k!=="revision" || a.method!=="auto"){
       body += '<div class="cf"><label>'+(k==="revision" ? 'Your own days: how often' : 'How often')+'</label><select data-w="acts.'+k+'.mode">'+
@@ -16447,7 +16455,7 @@ function wirePlanner(host){
       wset(path, val);
       var af = t.getAttribute("data-after"); if(af) wizAfter(af);
       wizRender();
-      if(pinM && val && val !== prevPin) pinCheck(+pinM[1], val, prevPin, path);
+      if(pinM && val && val !== "@ca" && val !== prevPin) pinCheck(+pinM[1], val, prevPin, path);
       return;
     }
     if(t.hasAttribute("data-selleaf") && wiz){
@@ -19802,7 +19810,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "324";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "325";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
