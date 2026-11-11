@@ -926,6 +926,7 @@
   .qz-seg button{border:0; background:none; color:var(--ink-soft); font:inherit; font-weight:700; padding:11px 6px; border-radius:12px; cursor:pointer;}
   .qz-seg button small{display:block; font-weight:500; font-size:11.5px; opacity:.85;}
   .qz-seg button.on{background:var(--gold); color:var(--gold-ink,#241d0b);}
+  .qz-yr.more{border-style:dashed; color:var(--tab-accent);} .qz-yr.more b{font-size:15px;}
   .qz-seg.sm{margin-top:-4px;} .qz-seg.sm button.on{background:var(--tab-accent); color:var(--tab-accent-ink,#04141a);}
   .qz-go.ghost{padding:9px 14px; font-size:15px;} .qz-go.ghost small{font-size:11.5px;}
   .qz-go.ghost{background:var(--surface); color:var(--ink); border:1.5px solid var(--tab-accent); box-shadow:0 6px 20px rgba(0,0,0,.35);}
@@ -20035,7 +20036,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "365";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "366";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -21582,6 +21583,16 @@ function renderPyq(){
   host.innerHTML = html + body;
   bindPyq(host);
 }
+var pyqYearsAll = false;   // year grid: false = latest 5 only, true = every year
+function pyqYearSlice(list, selYear){   // list newest first; keep the chosen year visible
+  var n = 5, idx = -1;
+  list.forEach(function(x, i){ if(String(x.year)===String(selYear)) idx = i; });
+  var open = pyqYearsAll || idx >= n;
+  return {shown: open ? list : list.slice(0, n), hidden: list.length > n, open: open};
+}
+function pyqMoreChip(sl){
+  return sl.hidden ? '<button type="button" class="qz-yr more" data-rd="more" aria-expanded="'+sl.open+'"><b>'+(sl.open?"▴":"▾")+'</b><small>'+(sl.open?"Fewer":"More")+'</small></button>' : '';
+}
 function pyqShort(k){ return k.replace(/ \(GS Paper II\)$/, ""); }
 // Prelims header shared by Read and Quiz: GS Paper I first, then CSAT; Read | Quiz; and (in Read) the year grid
 function pyqPrelimsHead(papers, mode){
@@ -21598,10 +21609,11 @@ function pyqPrelimsHead(papers, mode){
     var on = mode===m[0]; return '<button type="button" class="'+(on?"on":"")+'" aria-pressed="'+on+'" data-mode="'+m[0]+'">'+m[1]+'</button>';
   }).join("")+'</div>';
   if(mode==="quiz") return h;
-  h += '<div class="qz-lab">YEAR</div><div class="qz-years">'+cur.docs.map(function(d){
-    var on = String(f.year)===String(d.year), n = (d.questions||[]).length, part = d.complete===false;
+  var sl = pyqYearSlice(cur.docs.map(function(d){ return {year:d.year, d:d}; }), f.year);
+  h += '<div class="qz-lab">YEAR</div><div class="qz-years">'+sl.shown.map(function(o){
+    var d = o.d, on = String(f.year)===String(d.year), n = (d.questions||[]).length, part = d.complete===false;
     return '<button type="button" class="qz-yr'+(on?" on":"")+(part?" part":"")+'" aria-pressed="'+on+'" data-rd="year" data-paper="'+esc(d.paper)+'" data-year="'+d.year+'"><b>'+d.year+'</b><small>'+n+' Qs'+(part?" · part":"")+'</small></button>';
-  }).join("")+'<button type="button" class="qz-yr'+(f.year==="all"?" on":"")+'" aria-pressed="'+(f.year==="all")+'" data-rd="year" data-paper="'+esc(cur.paper)+'" data-year="all"><b>All</b><small>all years</small></button></div>';
+  }).join("")+'<button type="button" class="qz-yr'+(f.year==="all"?" on":"")+'" aria-pressed="'+(f.year==="all")+'" data-rd="year" data-paper="'+esc(cur.paper)+'" data-year="all"><b>All</b><small>all years</small></button>'+pyqMoreChip(sl)+'</div>';
   return h;
 }
 
@@ -21660,10 +21672,11 @@ function pyqQuizHtml(papers, hasHead){
     return '<button type="button" class="'+(on?"on":"")+'" aria-pressed="'+on+'" data-qz="kind" data-paper="'+esc(k)+'">'+esc(shortName(k))+'<small>'+byKind[k].length+' papers · '+qsOf(k).toLocaleString()+' Qs</small></button>';
   }).join("")+'</div>';
   // 2. which year
-  h += '<div class="qz-lab">YEAR</div><div class="qz-years">'+list.map(function(x){
-    var on = String(f.year)===String(x.d.year), tot = pyqDocTotal(x.d), part = x.d.complete===false && tot > x.n;
+  var slq = pyqYearSlice(list.map(function(x){ return {year:x.d.year, x:x}; }), f.year);
+  h += '<div class="qz-lab">YEAR</div><div class="qz-years">'+slq.shown.map(function(o){
+    var x = o.x, on = String(f.year)===String(x.d.year), tot = pyqDocTotal(x.d), part = x.d.complete===false && tot > x.n;
     return '<button type="button" class="qz-yr'+(on?" on":"")+(part?" part":"")+'" aria-pressed="'+on+'" data-qz="doc" data-paper="'+esc(x.d.paper)+'" data-year="'+x.d.year+'"><b>'+x.d.year+'</b><small>'+(part ? x.n+' of '+tot : x.n+' Qs')+'</small></button>';
-  }).join("")+'<button type="button" class="qz-yr'+(f.year==="all"?" on":"")+'" aria-pressed="'+(f.year==="all")+'" data-qz="doc" data-paper="'+esc(f.paper)+'" data-year="all"><b>All</b><small>'+qsOf(f.paper).toLocaleString()+' Qs</small></button></div>';
+  }).join("")+'<button type="button" class="qz-yr'+(f.year==="all"?" on":"")+'" aria-pressed="'+(f.year==="all")+'" data-qz="doc" data-paper="'+esc(f.paper)+'" data-year="all"><b>All</b><small>'+qsOf(f.paper).toLocaleString()+' Qs</small></button>'+pyqMoreChip(slq)+'</div>';
   var pool = pyqQuizPool();
   if(!pool.length) return h+'<div class="card empty">No questions with an answer key in this choice.</div></div>';
   // 3. summary of the choice
@@ -21774,6 +21787,7 @@ function bindPyq(host){
   });
   Array.prototype.forEach.call(host.querySelectorAll("[data-rd]"), function(b){
     b.addEventListener("click", function(){
+      if(b.getAttribute("data-rd")==="more"){ pyqYearsAll = !pyqYearsAll; renderPyq(); return; }
       var p = b.getAttribute("data-paper");
       if(b.getAttribute("data-rd")==="kind"){ var dd = (pyqPapersFor(f.exam).filter(function(x){ return x.paper===p; })[0]||{docs:[]}).docs; f.paper = p; f.year = dd.length ? String(dd[0].year) : "all"; }
       else { f.paper = p; f.year = b.getAttribute("data-year"); }
