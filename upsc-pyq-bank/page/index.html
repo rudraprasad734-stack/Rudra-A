@@ -20036,7 +20036,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "366";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "367";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -21601,6 +21601,7 @@ function pyqPrelimsHead(papers, mode){
   if(!papers.length) return "";
   var cur = papers.filter(function(p){ return p.paper===f.paper; })[0];
   if(!cur){ cur = papers[0]; f.paper = cur.paper; f.year = String(cur.docs[0].year); }
+  if(!cur.docs.some(function(d){ return String(d.year)===String(f.year); })) f.year = String(cur.docs[0].year);
   var h = '<div class="qz-seg" role="group" aria-label="Paper">'+papers.map(function(p){
     var n = p.docs.reduce(function(t, d){ return t + (d.questions||[]).length; }, 0), on = p.paper===f.paper;
     return '<button type="button" class="'+(on?"on":"")+'" aria-pressed="'+on+'" data-rd="kind" data-paper="'+esc(p.paper)+'">'+esc(pyqShort(p.paper))+'<small>'+p.docs.length+' papers · '+n.toLocaleString()+' Qs</small></button>';
@@ -21613,7 +21614,7 @@ function pyqPrelimsHead(papers, mode){
   h += '<div class="qz-lab">YEAR</div><div class="qz-years">'+sl.shown.map(function(o){
     var d = o.d, on = String(f.year)===String(d.year), n = (d.questions||[]).length, part = d.complete===false;
     return '<button type="button" class="qz-yr'+(on?" on":"")+(part?" part":"")+'" aria-pressed="'+on+'" data-rd="year" data-paper="'+esc(d.paper)+'" data-year="'+d.year+'"><b>'+d.year+'</b><small>'+n+' Qs'+(part?" · part":"")+'</small></button>';
-  }).join("")+'<button type="button" class="qz-yr'+(f.year==="all"?" on":"")+'" aria-pressed="'+(f.year==="all")+'" data-rd="year" data-paper="'+esc(cur.paper)+'" data-year="all"><b>All</b><small>all years</small></button>'+pyqMoreChip(sl)+'</div>';
+  }).join("")+''+pyqMoreChip(sl)+'</div>';
   return h;
 }
 
@@ -21663,7 +21664,7 @@ function pyqQuizHtml(papers, hasHead){
   kinds.sort(function(a, b){ return (/^GS Paper I$/.test(a) ? 0 : 1) - (/^GS Paper I$/.test(b) ? 0 : 1) || a.localeCompare(b); });
   if(!byKind[f.paper]) f.paper = kinds[0];
   var list = byKind[f.paper];                     // newest year first
-  var yearOk = f.year==="all" || list.some(function(x){ return String(x.d.year)===String(f.year); });
+  var yearOk = list.some(function(x){ return String(x.d.year)===String(f.year); });
   if(!yearOk) f.year = String(list[0].d.year);
   var shortName = function(k){ return k.replace(/ \(GS Paper II\)$/, ""); };
   var qsOf = function(k){ return byKind[k].reduce(function(t, x){ return t + x.n; }, 0); };
@@ -21676,7 +21677,7 @@ function pyqQuizHtml(papers, hasHead){
   h += '<div class="qz-lab">YEAR</div><div class="qz-years">'+slq.shown.map(function(o){
     var x = o.x, on = String(f.year)===String(x.d.year), tot = pyqDocTotal(x.d), part = x.d.complete===false && tot > x.n;
     return '<button type="button" class="qz-yr'+(on?" on":"")+(part?" part":"")+'" aria-pressed="'+on+'" data-qz="doc" data-paper="'+esc(x.d.paper)+'" data-year="'+x.d.year+'"><b>'+x.d.year+'</b><small>'+(part ? x.n+' of '+tot : x.n+' Qs')+'</small></button>';
-  }).join("")+'<button type="button" class="qz-yr'+(f.year==="all"?" on":"")+'" aria-pressed="'+(f.year==="all")+'" data-qz="doc" data-paper="'+esc(f.paper)+'" data-year="all"><b>All</b><small>'+qsOf(f.paper).toLocaleString()+' Qs</small></button>'+pyqMoreChip(slq)+'</div>';
+  }).join("")+''+pyqMoreChip(slq)+'</div>';
   var pool = pyqQuizPool();
   if(!pool.length) return h+'<div class="card empty">No questions with an answer key in this choice.</div></div>';
   // 3. summary of the choice
