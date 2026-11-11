@@ -1,7 +1,7 @@
 // CSE Companion service worker: caches the app shell so the page loads and
 // runs with zero network connectivity after the first successful visit.
 // Bump CACHE_NAME on any deploy that changes cached files so clients refresh.
-const CACHE_NAME = "cse-companion-v353";
+const CACHE_NAME = "cse-companion-v354";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -1584,7 +1584,22 @@ const FIGURES = [
   "./img/csat/2014-q43-2.webp",
   "./img/csat/2014-q44-1.webp",
   "./img/csat/2014-q45-1.webp",
-  "./img/csat/2014-q45-2.webp"
+  "./img/csat/2014-q45-2.webp",
+  "./img/csat/2013-q44-1.webp",
+  "./img/csat/2013-q44-2.webp",
+  "./img/csat/2013-q45-1.webp",
+  "./img/csat/2013-q45-2.webp",
+  "./img/csat/2013-q46-1.webp",
+  "./img/csat/2013-q46-2.webp",
+  "./img/csat/2013-q47-1.webp",
+  "./img/csat/2013-q48-1.webp",
+  "./img/csat/2013-q49-1.webp",
+  "./img/csat/2013-q50-1.webp",
+  "./img/csat/2013-q51-1.webp",
+  "./img/csat/2013-q52-1.webp",
+  "./img/csat/2013-q52-2.webp",
+  "./img/csat/2013-q57-1.webp",
+  "./img/csat/2013-q57-2.webp"
 ];
 
 // keep good responses, plus the font files (they come back "opaque" from another site) so the fonts also work offline
