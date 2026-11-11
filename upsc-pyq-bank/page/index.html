@@ -959,6 +959,9 @@
   .pq-grab{width:42px; height:5px; border-radius:9px; background:var(--line); margin:0 auto 12px;} .pq-bar{height:8px; border-radius:9px; background:rgba(127,127,127,.28); margin-top:10px; overflow:hidden;} .pq-bar i{display:block; height:100%; background:#34c98a;}
   .pq-two{display:flex; gap:8px; margin-top:14px;} .pq-two .btn{flex:1;} .pq-two .qz-go{flex:1; padding:11px;}
   .pq-readbar{display:flex; align-items:center; gap:10px; margin-bottom:8px;} .pq-readbar h2{margin:0; font-size:18px;} .pq-back{border:0; background:none; color:var(--tab-accent); font:inherit; font-weight:700; padding:6px 0; cursor:pointer;}
+  .pq-fab{position:fixed; right:0; bottom:calc(96px + env(safe-area-inset-bottom,0px)); z-index:40; display:flex; align-items:center; gap:8px; border:1.5px solid var(--tab-accent); border-right:0; border-radius:99px 0 0 99px; padding:11px 14px 11px 16px; background:var(--surface-solid,var(--bg)); color:var(--ink); font:inherit; font-weight:800; font-size:14.5px; box-shadow:0 6px 20px rgba(0,0,0,.4); cursor:pointer; transition:transform .45s ease;}
+  .pq-fab-i{display:none;} .pq-fab.tuck{transform:translateX(calc(100% - 46px)); padding-left:12px;} .pq-fab.tuck .pq-fab-t{display:none;} .pq-fab.tuck .pq-fab-i{display:inline;}
+  .src-more{margin:2px 0 8px;} .src-more summary{font-size:12px; color:var(--ink-soft); cursor:pointer; list-style:none;} .src-more summary::-webkit-details-marker{display:none;} .src-more summary::before{content:"ⓘ "; }
   .pr-tag{float:right; font-size:12px; color:var(--ink-soft);} .pr-tag.done{color:#34c98a; font-weight:700;}
   .qz-seg.sm{margin-top:-4px;} .qz-seg.sm button.on{background:var(--tab-accent); color:var(--tab-accent-ink,#04141a);}
   .qz-go.ghost{padding:9px 14px; font-size:15px;} .qz-go.ghost small{font-size:11.5px;}
@@ -20070,7 +20073,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "371";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "372";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -21516,7 +21519,7 @@ function renderPyq(){
   var f = pyqFilter;
   if(f.exam==="optional" && f.paper!=="all" && !optPaperOk(f.paper)){ f.paper = "all"; f.year = "all"; }
   var prelimsUi = f.exam==="prelims";
-  var mode = prelimsUi ? (pyqMode==="verified" ? "questions" : "hub") : (pyqMode==="quiz" ? "quiz" : "questions");
+  var mode = prelimsUi ? (pyqMode==="verified" ? "questions" : "hub") : "questions";   // Mains / Optional have no answer keys, so no quiz
   var examPills = PYQ_EXAMS.map(function(e){
     return '<button type="button" class="'+(f.exam===e.id?"on":"")+'" aria-pressed="'+(f.exam===e.id)+'" data-exam="'+e.id+'">'+e.label.replace(" (GS + Essay)","")+'</button>';
   }).join("");
@@ -21531,7 +21534,7 @@ function renderPyq(){
   if(prelimsUi && pyqQuiz){ host.innerHTML = pyqQuizHtml(papers, true); bindPyq(host); return; }   // a quiz is running: nothing else on screen
   if(prelimsUi && mode==="hub"){ host.innerHTML = html + pyqHub(papers); bindPyq(host); return; }
   if(prelimsUi) html += pyqReadHead(papers);
-  else html += '<div class="pill-row"><span class="pill-label">View</span>'+modePills+'</div>';
+
   if(mode==="quiz"){
     host.innerHTML = html + pyqQuizHtml(papers, false); bindPyq(host); return;
   }
@@ -21589,7 +21592,7 @@ function renderPyq(){
     var head = "";
     if(g!==lastGroup){
       head = (lastGroup?'</div>':'')+'<div class="section-title">'+esc(g)+(r.d.complete?'':' <span class="partial">partial</span>')+'</div>'+
-        '<div class="src-note">'+esc(r.d.source||"")+(r.d.answerNote?' '+esc(r.d.answerNote):'')+'</div><div class="card">';
+        '<details class="src-more"><summary>About this paper</summary><div class="src-note">'+esc(r.d.source||"")+(r.d.answerNote?' '+esc(r.d.answerNote):'')+'</div></details><div class="card">';
       lastGroup = g;
     }
     var q = r.q, meta = [];
@@ -21613,7 +21616,7 @@ function renderPyq(){
 
   if(prelimsUi && f.paper!=="all" && f.year!=="all"){
     var nq = rows.filter(function(r){ return r.q.answer && r.q.options && r.q.options.length===4; }).length;
-    if(nq) body += '<div class="qz-bar"><button type="button" class="qz-go ghost" data-rd="sheet" data-paper="'+esc(f.paper)+'" data-year="'+esc(f.year)+'">✏️ Quiz me on '+(f.year==="all" ? "all years" : esc(f.year))+' · '+esc(pyqShort(f.paper))+'<small>'+nq+' question'+(nq===1?"":"s")+' with answers</small></button></div>';
+    if(nq) body += '<button type="button" class="pq-fab" id="pyqFab" data-rd="sheet" data-paper="'+esc(f.paper)+'" data-year="'+esc(f.year)+'" aria-label="Quiz me on '+esc(f.year)+'"><span class="pq-fab-t">✏️ Quiz me on '+esc(f.year)+'</span><span class="pq-fab-i" aria-hidden="true">✏️</span></button>';
   }
   host.innerHTML = html + body;
   bindPyq(host);
@@ -21928,6 +21931,9 @@ function bindPyq(host){
       f.limit = 40; pyqRevealed = {}; f.reveal = false; pyqQuiz = null; pyqSheet = null; renderPyq();
     });
   });
+  clearTimeout(window.__pyqFabT);
+  var fab = document.getElementById("pyqFab");
+  if(fab) window.__pyqFabT = setTimeout(function(){ fab.classList.add("tuck"); }, 3000);   // slide to the edge so it stops covering questions
   var pqh = host.querySelector(".pq-head"), chrome = document.getElementById("chrome");
   if(pqh && chrome) pqh.style.top = (chrome.offsetHeight - 1)+"px";   // stick just under the app bar
   var strip = host.querySelector(".pq-strip"), onY = strip && strip.querySelector(".pq-y.on");
