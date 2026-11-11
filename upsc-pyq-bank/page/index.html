@@ -927,6 +927,8 @@
   .qz-seg button small{display:block; font-weight:500; font-size:11.5px; opacity:.85;}
   .qz-seg button.on{background:var(--gold); color:var(--gold-ink,#241d0b);}
   .qz-yr.more{border-style:dashed; color:var(--tab-accent);} .qz-yr.more b{font-size:15px;}
+  .exam-row{flex-wrap:nowrap; gap:6px;} .exam-row .pill-label{flex:none; margin-right:2px;}
+  .exam-row .pill{flex:1 1 0; min-width:0; padding:6px 8px; font-size:13px; min-height:0; white-space:nowrap; text-align:center;}
   .qz-seg.sm{margin-top:-4px;} .qz-seg.sm button.on{background:var(--tab-accent); color:var(--tab-accent-ink,#04141a);}
   .qz-go.ghost{padding:9px 14px; font-size:15px;} .qz-go.ghost small{font-size:11.5px;}
   .qz-go.ghost{background:var(--surface); color:var(--ink); border:1.5px solid var(--tab-accent); box-shadow:0 6px 20px rgba(0,0,0,.35);}
@@ -20036,7 +20038,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "367";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "368";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -21484,14 +21486,14 @@ function renderPyq(){
   var mode = pyqMode==="quiz" ? "quiz" : "questions";
 
   var examPills = PYQ_EXAMS.map(function(e){
-    return '<button class="pill'+(f.exam===e.id?" active":"")+'" aria-pressed="'+(f.exam===e.id)+'" data-exam="'+e.id+'">'+e.label+'</button>';
+    return '<button class="pill'+(f.exam===e.id?" active":"")+'" aria-pressed="'+(f.exam===e.id)+'" data-exam="'+e.id+'">'+e.label.replace(" (GS + Essay)","")+'</button>';
   }).join("");
   var modePills = [["questions","Questions"],["quiz","Quiz"]].map(function(m){
     return '<button class="pill'+(mode===m[0]?" active":"")+'" aria-pressed="'+(mode===m[0])+'" data-mode="'+m[0]+'">'+m[1]+'</button>';
   }).join("");
 
   var html = '<div class="card pyq-note"><b>Exact questions from previous papers, filed by year.</b><details class="pyq-about"><summary>About this bank: years covered and accuracy</summary><p>Mains: GS I–IV and Essay (2014–2023), GS I–IV (2024–2026). '+(myOptional() ? 'Optional: only your optional, '+esc(myOptional())+', is shown here. ' : 'Optional: Anthropology Papers I and II, 2010–2026; Agriculture Papers I and II, 2014–2026; Animal Husbandry and Veterinary Science Papers I and II, 2014–2026; Botany Papers I and II, 2014–2026; Civil Engineering Papers I and II, 2016–2026 (all 22 papers); Chemistry Papers I and II, 2014–2026 (all 26 papers); Commerce and Accountancy Papers I and II, 2016–2026 (all 22 papers); Economics Papers I and II, 2016–2026 (all 22 papers); Electrical Engineering Papers I and II, 2016–2026 (all 22 papers); Geography Papers I and II, 2016–2026 (all 22 papers); Geology Papers I and II, 2016–2026 (all 22 papers); History Papers I and II, 2016–2026 (all 22 papers); Law Papers I and II, 2016–2026 (all 22 papers); Management Papers I and II, 2016–2026 (all 22 papers). ')+'Prelims GS I: 2011 to 2026, with answer keys for every year (2016 to 2019 were read from scans by OCR, all 100 questions each, so a few words may be misread), plus CSAT 2013 to 2015, 2017 to 2026 (all with answer keys except 2021, which is partial). Prelims GS I 2012 to 2026 are all in the bank.</p></details></div>'+
-             '<div class="pill-row"><span class="pill-label">Exam</span>'+examPills+'</div>'+
+             '<div class="pill-row exam-row"><span class="pill-label">Exam</span>'+examPills+'</div>'+
              (f.exam==="prelims" ? '' : '<div class="pill-row"><span class="pill-label">View</span>'+modePills+'</div>');
   var prelimsUi = f.exam==="prelims";
 
