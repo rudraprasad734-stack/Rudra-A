@@ -920,6 +920,29 @@
   ol.opts li.right{color:var(--sage); font-weight:700;}
   .qitem .ans{margin-top:8px; font-size:13px; color:var(--sage);}
   .qitem .reveal{margin-top:4px; font-size:12.5px;}
+  .ans-tg{display:inline-flex; align-items:center; gap:8px; margin-top:6px; padding:8px 14px; border-radius:99px; border:1.5px solid var(--line); background:none; color:var(--tab-accent); font:inherit; font-size:13.5px; font-weight:700; cursor:pointer;}
+  .ans-tg .ar{font-size:10px;} .ans-tg.shown{border-color:#34c98a; color:#34c98a;} .qitem .ans + .ans-tg{margin-top:2px;}
+  .qz-seg{display:grid; grid-template-columns:1fr 1fr; gap:4px; padding:4px; margin:4px 0 12px; border:1.5px solid var(--line); border-radius:16px; background:var(--surface);}
+  .qz-seg button{border:0; background:none; color:var(--ink-soft); font:inherit; font-weight:700; padding:11px 6px; border-radius:12px; cursor:pointer;}
+  .qz-seg button small{display:block; font-weight:500; font-size:11.5px; opacity:.85;}
+  .qz-seg button.on{background:var(--gold); color:var(--gold-ink,#241d0b);}
+  .qz-lab{font-size:12px; letter-spacing:.12em; font-weight:700; color:var(--ink-soft); margin:16px 2px 8px;}
+  .qz-years{display:grid; grid-template-columns:repeat(4,1fr); gap:8px;}
+  .qz-yr{border:1.5px solid var(--line); background:var(--surface); color:var(--ink); border-radius:14px; padding:10px 0 8px; text-align:center; font:inherit; cursor:pointer;}
+  .qz-yr b{display:block; font-size:17px;} .qz-yr small{display:block; font-size:11px; color:var(--ink-soft);}
+  .qz-yr.on{border-color:var(--gold); background:color-mix(in srgb,var(--gold) 16%,var(--surface));} .qz-yr.part small{color:#d98a1c;}
+  .qz-sum h2{margin:0 0 2px; font-size:18px;} .qz-stats{display:flex; gap:8px; margin-top:10px;}
+  .qz-stats div{flex:1; background:var(--surface-2,var(--surface)); border:1px solid var(--line); border-radius:12px; padding:8px; text-align:center;} .qz-stats b{display:block; font-size:17px;} .qz-stats span{font-size:11px; color:var(--ink-soft);}
+  .qz-stats .amber b{color:#d98a1c;} .qz-note{font-size:12.5px; color:var(--ink-soft); margin:10px 0 0;} .qz-note.amber{color:#d98a1c;}
+  .qz-len{display:flex; gap:8px; flex-wrap:wrap;} .qz-len button{flex:1; min-width:64px; border:1.5px solid var(--line); background:var(--surface); color:var(--ink); border-radius:12px; padding:10px 0; font:inherit; font-weight:700; cursor:pointer;}
+  .qz-len button.on{border-color:var(--gold); background:color-mix(in srgb,var(--gold) 16%,var(--surface));}
+  .qz-row{display:flex; align-items:center; justify-content:space-between; margin-top:14px; font-size:15px; cursor:pointer;} .qz-row input{position:absolute; opacity:0; width:1px; height:1px;}
+  .qz-sw{width:46px; height:27px; border-radius:99px; background:var(--surface-2,var(--surface)); border:1.5px solid var(--line); position:relative; flex:none;}
+  .qz-sw::after{content:""; position:absolute; top:2px; left:2px; width:20px; height:20px; border-radius:50%; background:var(--ink-soft); transition:left .15s;}
+  .qz-row input:checked + .qz-sw{background:var(--gold); border-color:var(--gold);} .qz-row input:checked + .qz-sw::after{left:21px; background:var(--gold-ink,#241d0b);}
+  .qz-row input:focus-visible + .qz-sw{outline:2px solid var(--tab-accent); outline-offset:2px;}
+  .qz-bar{position:sticky; bottom:calc(96px + env(safe-area-inset-bottom,0px)); margin-top:16px; padding-top:26px; z-index:5; background:linear-gradient(transparent, var(--bg) 45%);}
+  .qz-go{display:block; width:100%; border:0; border-radius:16px; background:var(--gold); color:var(--gold-ink,#241d0b); font:inherit; font-weight:800; font-size:17px; padding:14px; cursor:pointer; box-shadow:0 6px 20px rgba(0,0,0,.35);} .qz-go small{display:block; font-weight:600; font-size:12px; opacity:.8;}
   .more-btn{display:block; width:100%; margin-top:12px; padding:11px; border:1px solid var(--line); border-radius:10px; background:var(--surface); font-weight:700; font-size:13px; color:var(--link); cursor:pointer;}
 
   /* ---- Papers ---- */
@@ -17756,7 +17779,7 @@ function renderView(id){
   else if(id==="priority") renderPriorityPage();
   else if(id==="mocks") renderMocks();
   else if(id==="syllabus") renderSyllabus();
-  else if(id==="pyq") renderPyq();
+  else if(id==="pyq"){ pyqRevealed = {}; pyqFilter.reveal = false; renderPyq(); }
   else if(id==="quotes") renderQuotes();
   else if(id==="caquiz") renderCaQuiz();
   else if(id==="papers") renderPapers();
@@ -20009,7 +20032,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "363";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "364";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -21550,7 +21573,7 @@ function renderPyq(){
       var letter = "ABCD"[i];
       return '<li class="'+(open && (q.answer===letter || q.answer2===letter)?"right":"")+'">'+hlText(o, f.q)+'</li>';
     }).join("")+'</ol>' : '';
-    var ans = q.answer ? (open ? '<div class="ans">Answer: <b>('+q.answer.toLowerCase()+')'+(q.answer2 ? ' or ('+q.answer2.toLowerCase()+')' : '')+'</b></div>' : '<button class="link-btn reveal" data-key="'+esc(r.key)+'">Show answer</button>') : '';
+    var ans = q.answer ? (open ? '<div class="ans">Answer: <b>('+q.answer.toLowerCase()+')'+(q.answer2 ? ' or ('+q.answer2.toLowerCase()+')' : '')+'</b></div>'+(f.reveal ? '' : '<button type="button" class="ans-tg reveal shown" data-key="'+esc(r.key)+'" aria-expanded="true"><span class="ar">▲</span> Hide answer</button>') : '<button type="button" class="ans-tg reveal" data-key="'+esc(r.key)+'" aria-expanded="false"><span class="ar">▼</span> Show answer</button>') : '';
     var psg = q.passage ? '<details class="psg"'+(f.q && q.passage.toLowerCase().indexOf(ql)>=0 ? ' open' : '')+'><summary>Read the passage</summary><div>'+hlText(q.passage, f.q)+'</div></details>' : '';
     return head + '<div class="qitem"><div class="meta">'+esc(meta.join(" · "))+'</div>'+psg+'<div class="qtext">'+hlText(q.text, f.q)+'</div>'+figHtml(q.figs)+opts+ans+'</div>';
   }).join("") + (lastGroup?'</div>':'');
@@ -21563,7 +21586,7 @@ function renderPyq(){
 
 // ---- Quiz inside the PYQ tab: any paper that has an answer key can be taken as a quiz ----
 var pyqQuiz = null;                           // the quiz in progress (kept in memory only)
-var pyqQzCfg = {len:0, shuffle:false};        // len 0 = every question in the chosen paper
+var pyqQzCfg = {len:20, shuffle:false};        // len 0 = every question in the chosen paper
 function pyqQuizPool(){
   var f = pyqFilter, out = [];
   (pyqDocs||[]).forEach(function(d){
@@ -21590,33 +21613,65 @@ function pyqQuizDocs(){   // papers of this exam that carry an answer key
   return out;
 }
 function pyqQzTitle(r){ return r.d.year+" · "+r.d.paper+(r.q.qno ? " · Q"+r.q.qno : ""); }
+function pyqDocTotal(d){   // questions the real paper has (a partly-added paper says how many are missing)
+  var have = (d.questions||[]).length, m = d.complete===false && /(\d+) questions? (?:are|is) not here/.exec(d.source||"");
+  return m ? have + (+m[1]) : (d.count || have);
+}
 function pyqQuizHtml(papers){
   var f = pyqFilter, z = pyqQuiz;
   if(z && z.done) return pyqQuizResult(z);
   if(z) return pyqQuizAsk(z);
-  var docs = pyqQuizDocs(), pool = pyqQuizPool();
-  var years = {};
-  papers.forEach(function(p){ if(f.paper==="all"||f.paper===p.paper) p.docs.forEach(function(d){ years[d.year]=1; }); });
-  var paperOpts = '<option value="all">All papers</option>'+papers.map(function(p){ return '<option'+(f.paper===p.paper?" selected":"")+'>'+esc(p.paper)+'</option>'; }).join("");
-  var yearOpts = '<option value="all">All years</option>'+Object.keys(years).sort(function(a,b){return b-a;}).map(function(y){ return '<option'+(String(f.year)===y?" selected":"")+'>'+y+'</option>'; }).join("");
+  var docs = pyqQuizDocs();
   var h = '<div class="caq pyqz" id="pyqQz">';
   if(!docs.length) return h+'<div class="card empty">No paper in this exam has an answer key yet, so there is nothing to quiz on. Try <b>Prelims</b>.</div></div>';
-  h += '<div class="card"><b>Take a paper as a quiz</b><p class="muted" style="margin:4px 0 10px">Pick a paper, answer one question at a time, and check each answer straight away. Only questions that have an answer key are used.</p>'+
-    '<div class="pill-row">'+docs.map(function(x){
-      var on = f.paper===x.d.paper && String(f.year)===String(x.d.year);
-      return '<button class="pill'+(on?" active":"")+'" aria-pressed="'+on+'" data-qz="doc" data-paper="'+esc(x.d.paper)+'" data-year="'+x.d.year+'">'+x.d.year+' · '+esc(x.d.paper.replace(" (GS Paper II)",""))+' · '+x.n+' Qs</button>';
-    }).join("")+'</div></div>';
-  h += '<div class="pyq-filters" style="margin-bottom:12px"><div class="row2"><select id="pyqPaper" aria-label="Paper">'+paperOpts+'</select><select id="pyqYear" aria-label="Year">'+yearOpts+'</select></div></div>';
-  if(!pool.length) return h+'<div class="card empty">No questions with an answer key in this choice. Pick one of the papers above.</div></div>';
-  var lens = [[10,"10"],[20,"20"],[0,"All "+pool.length]].filter(function(l){ return !l[0] || l[0] < pool.length; });
-  h += '<div class="card"><div class="pill-row"><span class="pill-label">Questions</span>'+lens.map(function(l){
-    return '<button class="pill'+(pyqQzCfg.len===l[0]?" active":"")+'" aria-pressed="'+(pyqQzCfg.len===l[0])+'" data-qz="len" data-v="'+l[0]+'">'+l[1]+'</button>';
+  // 1. which kind of paper (GS Paper I / CSAT ...)
+  var kinds = [], byKind = {};
+  docs.forEach(function(x){ var k = x.d.paper; if(!byKind[k]){ byKind[k] = []; kinds.push(k); } byKind[k].push(x); });
+  kinds.sort(function(a, b){ return (/^GS Paper I$/.test(a) ? 0 : 1) - (/^GS Paper I$/.test(b) ? 0 : 1) || a.localeCompare(b); });
+  if(!byKind[f.paper]) f.paper = kinds[0];
+  var list = byKind[f.paper];                     // newest year first
+  var yearOk = f.year==="all" || list.some(function(x){ return String(x.d.year)===String(f.year); });
+  if(!yearOk) f.year = String(list[0].d.year);
+  var shortName = function(k){ return k.replace(/ \(GS Paper II\)$/, ""); };
+  var qsOf = function(k){ return byKind[k].reduce(function(t, x){ return t + x.n; }, 0); };
+  h += '<div class="qz-seg" role="group" aria-label="Paper">'+kinds.map(function(k){
+    var on = k===f.paper;
+    return '<button type="button" class="'+(on?"on":"")+'" aria-pressed="'+on+'" data-qz="kind" data-paper="'+esc(k)+'">'+esc(shortName(k))+'<small>'+byKind[k].length+' papers · '+qsOf(k).toLocaleString()+' Qs</small></button>';
+  }).join("")+'</div>';
+  // 2. which year
+  h += '<div class="qz-lab">YEAR</div><div class="qz-years">'+list.map(function(x){
+    var on = String(f.year)===String(x.d.year), tot = pyqDocTotal(x.d), part = x.d.complete===false && tot > x.n;
+    return '<button type="button" class="qz-yr'+(on?" on":"")+(part?" part":"")+'" aria-pressed="'+on+'" data-qz="doc" data-paper="'+esc(x.d.paper)+'" data-year="'+x.d.year+'"><b>'+x.d.year+'</b><small>'+(part ? x.n+' of '+tot : x.n+' Qs')+'</small></button>';
+  }).join("")+'<button type="button" class="qz-yr'+(f.year==="all"?" on":"")+'" aria-pressed="'+(f.year==="all")+'" data-qz="doc" data-paper="'+esc(f.paper)+'" data-year="all"><b>All</b><small>'+qsOf(f.paper).toLocaleString()+' Qs</small></button></div>';
+  var pool = pyqQuizPool();
+  if(!pool.length) return h+'<div class="card empty">No questions with an answer key in this choice.</div></div>';
+  // 3. summary of the choice
+  var chosen = list.filter(function(x){ return f.year==="all" || String(x.d.year)===String(f.year); });
+  var notAdded = 0, noKey = 0, two = 0, notes = {};
+  chosen.forEach(function(x){
+    var have = (x.d.questions||[]).length, tot = pyqDocTotal(x.d);
+    notAdded += Math.max(0, tot - have); noKey += have - x.n;
+    (x.d.questions||[]).forEach(function(q){ if(q.answer2) two++; });
+    if(x.d.answerNote) notes[x.d.answerNote] = 1;
+  });
+  var nk = Object.keys(notes);
+  var title = (f.year==="all" ? "All years" : f.year)+' · '+shortName(f.paper);
+  h += '<div class="card qz-sum"><h2>'+title+'</h2><div class="muted">'+(nk.length ? esc(nk.join(" ")) : "UPSC answer key")+'</div><div class="qz-stats">'+
+    '<div><b>'+pool.length+'</b><span>Questions</span></div>'+
+    (notAdded ? '<div class="amber"><b>'+notAdded+'</b><span>Not added yet</span></div>' : '<div><b>'+noKey+'</b><span>No answer key</span></div>')+
+    (two ? '<div><b>'+two+'</b><span>Two answers</span></div>' : '')+'</div>'+
+    (notAdded ? '<p class="qz-note amber">Part of this paper is still missing, so the quiz uses the '+pool.length+' questions we have.</p>' : '')+'</div>';
+  // 4. how many, shuffle, start
+  var lens = [10,20,50].filter(function(n){ return n < pool.length; });
+  lens.push(0);
+  var cur = (pyqQzCfg.len && pyqQzCfg.len < pool.length) ? pyqQzCfg.len : 0, cnt = cur || pool.length;
+  h += '<div class="qz-lab">HOW MANY QUESTIONS</div><div class="qz-len">'+lens.map(function(n){
+    return '<button type="button" class="'+(cur===n?"on":"")+'" aria-pressed="'+(cur===n)+'" data-qz="len" data-v="'+n+'">'+(n || "All "+pool.length)+'</button>';
   }).join("")+'</div>'+
-    '<label class="ans-toggle"><input type="checkbox" id="pyqQzShuf" '+(pyqQzCfg.shuffle?"checked":"")+'> Shuffle the order</label>'+
-    '<button class="btn primary" data-qz="start">Start quiz · '+(pyqQzCfg.len && pyqQzCfg.len<pool.length ? pyqQzCfg.len : pool.length)+' questions</button>'+
-    (function(){ var notes = {}; pool.forEach(function(r){ if(r.d.answerNote) notes[r.d.answerNote]=1; }); var k = Object.keys(notes); return k.length ? '<p class="muted" style="margin:10px 0 0;font-size:12.5px">'+esc(k.join(" "))+'</p>' : ''; })()+
-  '</div></div>';
-  return h;
+    '<label class="qz-row"><span>Shuffle the order</span><input type="checkbox" role="switch" id="pyqQzShuf" '+(pyqQzCfg.shuffle?"checked":"")+'><i class="qz-sw" aria-hidden="true"></i></label>'+
+    (noKey && !notAdded ? '<p class="qz-note">Questions with no answer key are left out.</p>' : '')+
+    '<div class="qz-bar"><button type="button" class="qz-go" data-qz="start">Start quiz<small id="pyqQzGoSub">'+cnt+' question'+(cnt===1?"":"s")+' · '+(pyqQzCfg.shuffle?"shuffled":"in order")+'</small></button></div>';
+  return h+'</div>';
 }
 function pyqQuizAsk(z){
   var r = z.items[z.i], q = r.q, n = z.items.length, ans = q.answer, ans2 = q.answer2;
@@ -21666,7 +21721,8 @@ function pyqQuizStart(items){
 }
 function pyqQuizAct(act, b){
   var z = pyqQuiz, f = pyqFilter;
-  if(act==="doc"){ f.paper = b.getAttribute("data-paper"); f.year = b.getAttribute("data-year"); }
+  if(act==="kind"){ f.paper = b.getAttribute("data-paper"); f.year = "all"; }
+  else if(act==="doc"){ f.paper = b.getAttribute("data-paper"); f.year = b.getAttribute("data-year"); }
   else if(act==="len"){ pyqQzCfg.len = +b.getAttribute("data-v"); }
   else if(act==="start"){ var pool = pyqQuizPool(); if(pool.length) pyqQuizStart(pool); }
   else if(act==="pick" && z && !z.checked){ z.sel = b.getAttribute("data-v"); }
@@ -21675,17 +21731,17 @@ function pyqQuizAct(act, b){
   else if(act==="retry" && z){ var w = z.items.filter(function(r, i){ return z.res[i] && !z.res[i].ok; }); var keep = pyqQzCfg.len; pyqQzCfg.len = 0; pyqQuizStart(w); pyqQzCfg.len = keep; }
   else if(act==="end" || act==="again"){ pyqQuiz = null; }
   renderPyq();
-  var el = document.getElementById("pyqQz"); if(el && act!=="doc" && act!=="len") el.scrollIntoView({block:"start"});
+  var el = document.getElementById("pyqQz"); if(el && act!=="doc" && act!=="len" && act!=="kind") el.scrollIntoView({block:"start"});
 }
 function bindPyq(host){
   var f = pyqFilter;
   var tp = document.getElementById("toPapers");
   if(tp) tp.addEventListener("click", function(){ setTab("papers"); });
   Array.prototype.forEach.call(host.querySelectorAll("[data-exam]"), function(b){
-    b.addEventListener("click", function(){ f.exam = b.getAttribute("data-exam"); f.paper="all"; f.year="all"; f.limit=40; pyqQuiz = null; renderPyq(); });
+    b.addEventListener("click", function(){ f.exam = b.getAttribute("data-exam"); f.paper="all"; f.year="all"; f.limit=40; pyqQuiz = null; pyqRevealed = {}; f.reveal = false; renderPyq(); });
   });
   Array.prototype.forEach.call(host.querySelectorAll("[data-mode]"), function(b){
-    b.addEventListener("click", function(){ var m = b.getAttribute("data-mode"); pyqMode = m==="trends" ? "frequency" : (m==="quiz" ? "quiz" : "verified"); renderPyq(); });
+    b.addEventListener("click", function(){ var m = b.getAttribute("data-mode"); pyqMode = m==="trends" ? "frequency" : (m==="quiz" ? "quiz" : "verified"); pyqRevealed = {}; f.reveal = false; renderPyq(); });
   });
   Array.prototype.forEach.call(host.querySelectorAll(".cov-paper, .yr[data-year]"), function(b){
     b.addEventListener("click", function(){
@@ -21707,15 +21763,15 @@ function bindPyq(host){
   var ca = document.getElementById("pyqCA");
   if(ca) ca.addEventListener("change", function(){ f.ca = ca.checked; f.limit = 40; renderPyq(); });
   var rv = document.getElementById("pyqReveal");
-  if(rv) rv.addEventListener("change", function(){ f.reveal = rv.checked; renderPyq(); });
+  if(rv) rv.addEventListener("change", function(){ f.reveal = rv.checked; if(!rv.checked) pyqRevealed = {}; renderPyq(); });
   Array.prototype.forEach.call(host.querySelectorAll(".reveal"), function(b){
-    b.addEventListener("click", function(){ pyqRevealed[b.getAttribute("data-key")] = true; renderPyq(); });
+    b.addEventListener("click", function(){ var k = b.getAttribute("data-key"); if(pyqRevealed[k]) delete pyqRevealed[k]; else pyqRevealed[k] = true; var y = window.scrollY; renderPyq(); window.scrollTo(0, y); });
   });
   Array.prototype.forEach.call(host.querySelectorAll("[data-qz]"), function(b){
     b.addEventListener("click", function(){ pyqQuizAct(b.getAttribute("data-qz"), b); });
   });
   var qsh = document.getElementById("pyqQzShuf");
-  if(qsh) qsh.addEventListener("change", function(){ pyqQzCfg.shuffle = qsh.checked; });
+  if(qsh) qsh.addEventListener("change", function(){ pyqQzCfg.shuffle = qsh.checked; var sub = document.getElementById("pyqQzGoSub"); if(sub) sub.textContent = sub.textContent.replace(/(shuffled|in order)$/, qsh.checked ? "shuffled" : "in order"); });
   var more = document.getElementById("pyqMore");
   if(more) more.addEventListener("click", function(){ var y = window.scrollY; f.limit += 40; renderPyq(); window.scrollTo(0, y); });
 }
