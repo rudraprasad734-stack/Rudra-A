@@ -16143,8 +16143,8 @@ function openReschedule(){
   Array.prototype.forEach.call(m.querySelectorAll("[data-rm]"), function(b){ b.addEventListener("click", function(){ studyPlan.leave.splice(+b.getAttribute("data-rm"), 1); after("Day off removed. Plan recalculated."); }); });
   m.querySelector("#rsRe").addEventListener("click", function(){ after("Plan recalculated from today."); });
   function edit(step, cap){ closeModal(); plannerEditing = true; wiz = wizFromPlan(studyPlan); wiz.step = step; if(cap) wiz.capScreen = cap; setTab("planner"); }
-  m.querySelector("#rsCap").addEventListener("click", function(){ edit(5, "subj"); });   // Your sessions
-  m.querySelector("#rsAct").addEventListener("click", function(){ edit(5, "acts"); });   // Daily activities
+  m.querySelector("#rsCap").addEventListener("click", function(){ edit(0); });   // editing the plan always starts on its first card
+  m.querySelector("#rsAct").addEventListener("click", function(){ edit(0); });
 }
 
 // ---------- Priority (Tiers) inside the planner ----------
@@ -16771,7 +16771,7 @@ function plannerAction(a, el, sure){
     case "view": plannerView = v; break;
     case "subjall": plannerSubjAll = !plannerSubjAll; break;
     case "optup": case "optdown": case "chup": case "chdown": case "starthere": case "optreset": case "optopen": case "optfilter": optAction(a, v); break;
-    case "hours": plannerEditing = true; wiz = wizFromPlan(studyPlan); wiz.step = 5; wiz.capScreen = "subj"; break;
+    case "hours": plannerEditing = true; wiz = wizFromPlan(studyPlan); wiz.step = 0; break;
     case "autofit": studyPlan.capacity.layout = "auto"; studyPlan.capacity.limitMin = 0; if(studyPlan.cfg && studyPlan.cfg.cap){ studyPlan.cfg.cap.layout = "auto"; studyPlan.cfg.cap.limitMin = 0; } solveLayout(studyPlan); if(studyPlan.cfg && studyPlan.cfg.cap) studyPlan.cfg.cap.dayStart = studyPlan.capacity.dayStart; savePlan(); replan(); toast("Your day now has enough hours to fit every chapter."); break;
     case "optpick": plannerEditing = true; wiz = wizFromPlan(studyPlan); wiz.step = 2; break;
     case "startSess": openStartSheet(v); return;
@@ -20981,7 +20981,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "410";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "411";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
