@@ -1011,7 +1011,7 @@
   .rt-sk{aspect-ratio:1; border:0; border-radius:16px; display:grid; place-items:center; font-size:26px; cursor:pointer; background:linear-gradient(145deg,var(--c1),var(--c2)); box-shadow:0 4px 0 var(--c3),0 7px 9px rgba(0,0,0,.3),0 1px 0 rgba(255,255,255,.45) inset; position:relative;} .rt-sk.sel{outline:3px solid var(--gold); outline-offset:3px;}
   .rt-skw{display:flex; flex-direction:column; align-items:center; gap:6px; border:0; background:none; padding:0; color:var(--ink); font:inherit; cursor:pointer;} .rt-skw .rt-sk{width:100%; aspect-ratio:1;} .rt-skw small{font-size:11.5px; color:var(--ink-soft); text-align:center; line-height:1.15;} .rt-skw[hidden]{display:none;}
   .rt-link{display:block; margin:10px auto 0; border:0; background:none; color:var(--tab-accent); font:inherit; font-weight:700; cursor:pointer;}
-  .rt-when{display:flex; gap:10px;} .rt-when label{flex:1; font-size:12px; color:var(--ink-soft);} .rt-when input{display:block; width:100%; margin-top:4px; padding:11px 10px; border-radius:12px; border:1.5px solid var(--line); background:var(--surface-2,var(--surface)); color:var(--ink); font:inherit; font-size:17px; font-weight:700;}
+  .rt-when{display:flex; gap:10px;} .rt-when label{flex:1 1 0; min-width:0; font-size:12px; color:var(--ink-soft);} .rt-when input{display:block; width:100%; min-width:0; box-sizing:border-box; margin-top:4px; padding:11px 10px; border-radius:12px; border:1.5px solid var(--line); background:var(--surface-2,var(--surface)); color:var(--ink); font:inherit; font-size:17px; font-weight:700;}
   .rt-q{width:100%; margin-top:12px; padding:11px 14px; border-radius:14px; border:1.5px solid var(--line); background:var(--surface-2,var(--surface)); color:var(--ink); font:inherit;} .rt-cats{display:flex; gap:8px; overflow-x:auto; margin-top:10px; scrollbar-width:none;} .rt-cats .rt-chip{flex:none;}
   .pr-tag{float:right; font-size:12px; color:var(--ink-soft);} .pr-tag.done{color:#34c98a; font-weight:700;}
   .qz-seg.sm{margin-top:-4px;} .qz-seg.sm button.on{background:var(--tab-accent); color:var(--tab-accent-ink,#04141a);}
@@ -17952,6 +17952,20 @@ function rtTile(id, cls){
   var st = rtStk(id), c = RT_COL[st ? st[3] : "blue"];
   return '<span class="'+(cls||"rt-tile")+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'" aria-hidden="true">'+rtGlyph(st ? st[0] : "study")+'</span>';
 }
+// a new activity starts when the last one ends: Wake up 5:00 for 5 minutes, so the next one starts at 5:05
+function rtNextStart(){
+  var end = -1; rt.items.forEach(function(x){ var e = x.e ? toMin(x.e) : toMin(x.t) + (x.d || 0); if(e > end) end = e; });
+  if(end < 0) return "";
+  end = Math.min(end, 23*60 + 55);
+  return pad2(Math.floor(end/60))+":"+pad2(end%60);
+}
+// ---- no two activities share a time: a new start can move forward past a busy slot, never back into it ----
+function rtSpan(x){ var a = toMin(x.t), b = x.e ? toMin(x.e) : a + (x.d || 0); return [a, Math.max(b, a + 1)]; }
+function rtBusy(skipId, a, b){   // the first other activity whose time overlaps [a, b)
+  var hit = null; rt.items.forEach(function(x){ if(hit || x.id===skipId) return; var sp = rtSpan(x); if(a < sp[1] && sp[0] < b) hit = x; });
+  return hit;
+}
+function rtClock(m){ return fmt12(pad2(Math.floor(m/60))+":"+pad2(m%60)); }
 function rtDays(){ var d = rt.days.slice().sort(function(a, b){ return ((a+6)%7) - ((b+6)%7); }); return d; }
 function rtDaysText(){
   var d = rtDays(); if(!d.length) return "No days"; if(d.length===7) return "Every day";
@@ -18023,8 +18037,12 @@ function rtBind(host){
   });
 }
 function rtAct(a, b){
-  if(a==="preset"){ var p = RT_PRESETS[+b.getAttribute("data-i")]; rtOpenSheet({n:p.n, s:p.s, t:p.t, e:p.e || "", d:p.d || 30, k:p.k || ""}); return; }
-  if(a==="add"){ rtOpenSheet({n:"", s:"study", t:"06:00", e:"", d:30, k:""}); return; }
+  if(a==="preset"){
+    var p = RT_PRESETS[+b.getAttribute("data-i")], nx = rtNextStart(), st = nx || p.t, en = p.e || "", du = p.d || 30;
+    if(en && toMin(en) <= toMin(st)){ en = ""; du = 60; }   // "until 12:00" no longer fits after a late start: keep it as an hour
+    rtOpenSheet({n:p.n, s:p.s, t:st, e:en, d:du, k:p.k || ""}); return;
+  }
+  if(a==="add"){ rtOpenSheet({n:"", s:"study", t:rtNextStart() || "06:00", e:"", d:30, k:""}); return; }
   if(a==="edit"){ var id = b.getAttribute("data-id"), it = rt.items.filter(function(x){ return x.id===id; })[0]; if(it) rtOpenSheet(JSON.parse(JSON.stringify(it)), true); return; }
   if(a==="day"){ var d = +b.getAttribute("data-d"), i = rt.days.indexOf(d); if(i>=0) rt.days.splice(i, 1); else rt.days.push(d); rtSave(); renderRoutine(); return; }
   if(a==="create"){ if(b.disabled) return; rt.made = todayKey; rt.span = "week"; rtSave(); rtScreen = "card"; renderRoutine(); window.scrollTo(0, 0); return; }
@@ -18077,6 +18095,23 @@ function rtOpenSheet(ed, editing){
     else if(t.id==="rtE") rtEd.e = t.value || rtEd.e;
     else if(t.id==="rtQ"){ var q = t.value.trim().toLowerCase(); Array.prototype.forEach.call(m.querySelectorAll(".rt-lib .rt-skw"), function(b){ b.hidden = q && b.getAttribute("data-kw").indexOf(q)<0; }); }
   });
+  m.addEventListener("change", function(ev){
+    var t = ev.target, id = rtEd.id;
+    if(t.id==="rtT" && t.value){
+      var st = toMin(t.value), moved = null, guard = 0, hit;
+      while((hit = rtBusy(id, st, st + 1)) && guard++ < 50){ moved = hit; st = rtSpan(hit)[1]; }   // slide forward past each activity that is already there
+      if(st > 23*60 + 55){ toast("No free time is left today after that."); t.value = rtEd.t; return; }
+      if(moved){ toast(moved.n+" runs until "+rtClock(st)+", so this starts then."); }
+      rtEd.t = pad2(Math.floor(st/60))+":"+pad2(st%60); t.value = rtEd.t;
+      if(rtEd.e && toMin(rtEd.e) <= st){ rtEd.e = ""; rtEd.d = rtEd.d || 30; m.innerHTML = rtSheetHtml(); }
+    }
+    else if(t.id==="rtE" && t.value){
+      var s0 = toMin(rtEd.t), e0 = toMin(t.value), next = null;
+      rt.items.forEach(function(x){ if(x.id===id) return; var a = rtSpan(x)[0]; if(a > s0 && a < e0 && (next===null || a < next.a)) next = {a:a, n:x.n}; });
+      if(next){ toast(next.n+" starts at "+rtClock(next.a)+", so this ends then."); e0 = next.a; }
+      rtEd.e = pad2(Math.floor(e0/60))+":"+pad2(e0%60); t.value = rtEd.e;
+    }
+  });
   m.addEventListener("click", function(ev){
     var b = ev.target.closest ? ev.target.closest("[data-rs]") : null; if(!b) return;
     var a = b.getAttribute("data-rs"), redraw = function(){ m.innerHTML = rtSheetHtml(); };
@@ -18089,13 +18124,19 @@ function rtOpenSheet(ed, editing){
     else if(a==="lib"){ rtEdView = "lib"; redraw(); }
     else if(a==="form"){ rtEdView = "form"; redraw(); }
     else if(a==="cat"){ var g = b.getAttribute("data-g"); Array.prototype.forEach.call(m.querySelectorAll(".rt-cats .rt-chip"), function(c){ c.classList.toggle("on", c===b); }); Array.prototype.forEach.call(m.querySelectorAll(".rt-lib .rt-skw"), function(c){ c.hidden = !!g && c.getAttribute("data-g")!==g; }); }
-    else if(a==="dur"){ rtEd.e = ""; rtEd.d = +b.getAttribute("data-m"); redraw(); }
+    else if(a==="dur"){
+      var dm = +b.getAttribute("data-m"), s1 = toMin(rtEd.t), clash = rtBusy(rtEd.id, s1, s1 + dm);
+      if(clash){ toast("That would run into "+clash.n+" at "+rtClock(rtSpan(clash)[0])+". Choose a shorter time."); return; }
+      rtEd.e = ""; rtEd.d = dm; redraw();
+    }
     else if(a==="until"){ if(!rtEd.e){ var mm = toMin(rtEd.t) + 60; rtEd.e = pad2(Math.min(23, Math.floor(mm/60)))+":"+pad2(mm%60 > 59 ? 0 : mm%60); if(toMin(rtEd.e) <= toMin(rtEd.t)) rtEd.e = "23:59"; } redraw(); }
     else if(a==="del"){ rt.items = rt.items.filter(function(x){ return x.id!==rtEd.id; }); rtSave(); closeModal(); renderRoutine(); }
     else if(a==="save"){
       var n = (rtEd.n || "").trim();
       if(!n){ toast("Give it a name first."); return; }
       if(rtEd.e && toMin(rtEd.e) <= toMin(rtEd.t)){ toast("The end time must be after the start."); return; }
+      var sp = rtSpan({t:rtEd.t, e:rtEd.e, d:rtEd.d || 30}), clash2 = rtBusy(rtEd.id, sp[0], sp[1]);
+      if(clash2){ toast("That time is already taken by "+clash2.n+" ("+rtClock(rtSpan(clash2)[0])+" to "+rtClock(rtSpan(clash2)[1])+"). Pick a time after it."); return; }
       var rec = {id: rtEd.id || ("r"+Date.now().toString(36)+Math.floor(Math.random()*1000)), n:n, s:rtEd.s, t:rtEd.t, e:rtEd.e || "", d:rtEd.e ? 0 : (rtEd.d || 30), k:rtEd.k || (/study/i.test(n) ? "study" : "")};
       var i = rt.items.map(function(x){ return x.id; }).indexOf(rec.id);
       if(i>=0) rt.items[i] = rec; else rt.items.push(rec);
@@ -20424,7 +20465,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "379";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "381";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
