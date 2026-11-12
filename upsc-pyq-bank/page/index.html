@@ -18145,6 +18145,13 @@ function rtNowId(){
   rtSorted().forEach(function(it, i){ var a = toMin(it.t), l = rtDur(it); if(l<=0) return; if((n>=a && n<a+l) || (a+l>1440 && n < a+l-1440)) hit = i; });
   return hit;
 }
+// in a gap between two activities: where "you are" sits, as a position between the rows (null when the day has not started or the routine is off today)
+function rtGapPos(){
+  var d = new Date(); if(rt.days.indexOf(d.getDay())<0) return null;
+  var n = d.getHours()*60 + d.getMinutes(), last = -1;
+  rtSorted().forEach(function(it, i){ var l = rtDur(it); if(l > 0 && toMin(it.t) + l <= n) last = i; });
+  return last < 0 ? null : last + 0.5;
+}
 function rtMarkNow(){
   if(rtRun.on) return;   // the opening run is still moving the bulge
   var host = document.getElementById("view-routine"); if(!host) return;
@@ -18163,15 +18170,16 @@ function rtRunStop(host, at){
 }
 function rtRunBulge(){
   var host = document.getElementById("view-routine"); if(!host) return;
-  var at = rtNowId(), rows = Array.prototype.slice.call(host.querySelectorAll(".rt-r"));
+  var at = rtNowId(), gap = at < 0 ? rtGapPos() : null, rows = Array.prototype.slice.call(host.querySelectorAll(".rt-r"));
   var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if(at < 0 || !rows.length || calm){ rtRun.on = false; rtMarkNow(); return; }
+  if((at < 0 && gap===null) || !rows.length || calm){ rtRun.on = false; rtMarkNow(); return; }
+  var END = at >= 0 ? at : gap;   // the wave comes to rest on the running activity, or fades out in the free time between two activities
   var tok = ++rtRun.tok; rtRun.on = true;
   rows.forEach(function(r){ r.classList.remove("now"); });
   host.classList.add("rt-wave"); window.scrollTo(0, 0);
   var cut = function(){ if(rtRun.tok===tok) rtRunStop(host, at); };
   ["touchstart", "wheel", "mousedown", "keydown"].forEach(function(ev){ window.addEventListener(ev, cut, {once:true, passive:true}); });
-  var START = -0.9, DUR = Math.min(4200, 1500 + 150*at), TAIL = 700, t0 = 0, last = 0, pos = 0;
+  var START = -0.9, DUR = Math.min(4200, 1500 + 150*Math.ceil(END)), TAIL = 700, t0 = 0, last = 0, pos = 0;
   function rowY(p){   // where the wave is, on the page, so the scroll can follow it
     var a = Math.max(0, Math.min(rows.length-1, Math.floor(p))), c = Math.min(rows.length-1, a+1), f = Math.max(0, Math.min(1, p - a));
     var ra = rows[a].getBoundingClientRect(), rc = rows[c].getBoundingClientRect();
@@ -18181,8 +18189,8 @@ function rtRunBulge(){
     if(rtRun.tok!==tok) return;
     if(!t0){ t0 = ts; last = ts; pos = window.scrollY; }
     var u = Math.min(1, (ts - t0)/DUR), e = 0.5 - 0.5*Math.cos(Math.PI*u);   // starts gently, ends gently
-    var p = START + (at - START)*e, sig = 0.62 - 0.30*Math.max(0, (u - 0.8)/0.2);   // the wave narrows to one bulge as it comes to rest
-    for(var j = 0; j < rows.length; j++){ var d = j - p, w = Math.exp(-(d*d)/(2*sig*sig)); rows[j].style.setProperty("--w", w < 0.004 ? "0" : w.toFixed(3)); }
+    var p = START + (END - START)*e, sig = at >= 0 ? 0.62 - 0.30*Math.max(0, (u - 0.8)/0.2) : 0.62, amp = at >= 0 ? 1 : 1 - Math.pow(Math.max(0, (u - 0.7)/0.3), 1.5)*(3 - 2*Math.max(0, (u - 0.7)/0.3)) ;   // the wave narrows to one bulge as it comes to rest
+    for(var j = 0; j < rows.length; j++){ var d = j - p, w = amp*Math.exp(-(d*d)/(2*sig*sig)); rows[j].style.setProperty("--w", w < 0.004 ? "0" : w.toFixed(3)); }
     var dt = Math.min(64, ts - last); last = ts;
     pos += (Math.max(0, rowY(Math.max(0, p)) - window.innerHeight*0.45) - pos)*(1 - Math.exp(-dt/320));
     window.scrollTo(0, pos);
@@ -20710,7 +20718,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "395";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "396";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
