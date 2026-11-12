@@ -18063,8 +18063,7 @@ function rtCardImage(){
       c.fillText(t.length < it.n.length ? t.trim()+"…" : t, W-P-18, y+ch/2+14); c.textAlign = "left";
     });
     var fy = top + list.length*rowH + 8;
-    var st = rtStudyBlocks().reduce(function(t, x){ return t + rtDur(x); }, 0);
-    c.fillStyle = soft; c.font = "500 30px "+FF; c.fillText(rtDaysText(), P, fy+44); c.textAlign = "right"; c.fillText(st ? "Study "+fmtHM(st)+" a day" : list.length+" activities", W-P, fy+44); c.textAlign = "left";
+    c.fillStyle = soft; c.font = "500 30px "+FF; c.fillText(rtDaysText(), P, fy+44);
     // watermark pill
     var wg = c.createLinearGradient(0, fy+72, 0, fy+164); wg.addColorStop(0, sun ? "rgba(255,255,255,.7)" : "rgba(255,255,255,.2)"); wg.addColorStop(1, sun ? "rgba(255,255,255,.35)" : "rgba(255,255,255,.07)");
     rtSoft(c, P, fy+72, W-2*P, 92, 46, wg, 22, 10, shade);
@@ -18122,6 +18121,12 @@ function rtDaysText(){
   return run && d.length>2 ? RT_DAYN[d[0]]+" \u2013 "+RT_DAYN[d[d.length-1]] : d.map(function(x){ return RT_DAYN[x]; }).join(", ");
 }
 function rtStudyBlocks(){ return rtSorted().filter(function(x){ return x.k==="study" || /study/i.test(x.n); }); }
+function rtFullRange(it){   // "5:20 – 6:20 AM": always both ends, with AM/PM
+  var a = toMin(it.t), b = it.e ? toMin(it.e) : (a + (it.d||0)) % 1440;
+  function p(m){ var h = Math.floor(m/60); return [(h%12||12)+":"+pad2(m%60), h>=12 ? "PM" : "AM"]; }
+  var x = p(a), y = p(b);
+  return (x[1]===y[1] ? x[0] : x[0]+" "+x[1]) + " \u2013 " + y[0] + " " + y[1];
+}
 function rtRange(it){ var a = fmt12(it.t).replace(/ ?(AM|PM)$/, ""), b = it.e ? fmt12(it.e).replace(/ ?(AM|PM)$/, "") : ""; return it.e ? a+"\u2013"+b : a; }
 function rtDate(i){ var d = parseKey(rt.made); d.setDate(d.getDate()+i); return d; }
 function rtShortDate(d){ return d.toLocaleDateString(undefined, {day:"numeric", month:"short"}); }
@@ -18169,17 +18174,16 @@ function rtCardHtml(){
   h += '<div class="rt-wk">'+[0,1,2,3,4,5,6].map(function(i){ var d = rtDate(i), on = rt.days.indexOf(d.getDay())>=0, td = toKey(d)===todayKey; return '<div class="'+(td?"today":"")+'"'+(on ? "" : ' style="opacity:.45"')+'><b>'+d.getDate()+'</b>'+RT_DAYN[d.getDay()]+'</div>'; }).join("")+'</div><div class="rt-rows">';
   list.forEach(function(it){
     var c = RT_COL[(rtStk(it.s)||[0,0,0,"blue"])[3]], study = it.k==="study" || /study/i.test(it.n);
-    h += '<div class="rt-r'+(study ? " study" : "")+'" data-id="'+esc(it.id)+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'"><span class="rt-tile">'+rtGlyph(it.s)+'</span><span class="t">'+esc(fmt12(it.t))+'</span><span class="n">'+esc(it.n)+'</span><span class="d">'+(it.e ? '\u2192 '+esc(fmt12(it.e).replace(/ ?(AM|PM)$/, "")) : esc(fmtHM(rtDur(it)))) +'</span></div>';
+    h += '<div class="rt-r'+(study ? " study" : "")+'" data-id="'+esc(it.id)+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'"><span class="rt-tile">'+rtGlyph(it.s)+'</span><span class="t">'+esc(fmt12(it.t))+'</span><span class="n">'+esc(it.n)+'</span><span class="d">'+(it.e ? '\u2192 '+esc(fmt12(it.e)) : esc(fmtHM(rtDur(it)))) +'</span></div>';
   });
-  var st = rtStudyBlocks().reduce(function(t, x){ return t + rtDur(x); }, 0);
-  h += '</div><div class="rt-ft"><span>'+esc(rtDaysText())+'</span><span>'+(st ? 'Study '+esc(fmtHM(st))+' a day' : list.length+' activities')+'</span></div></div></div><div class="rt-shadow"></div>';
+  h += '</div><div class="rt-ft"><span>'+esc(rtDaysText())+'</span></div></div></div><div class="rt-shadow"></div>';
   h += '<div class="rt-chips rt-themes" role="group" aria-label="Card theme"><button type="button" class="rt-chip'+(sun ? "" : " on")+'" data-rt="theme" data-v="night">Night</button><button type="button" class="rt-chip'+(sun ? " on" : "")+'" data-rt="theme" data-v="sunrise">Sunrise</button></div>';
   h += '<div class="rt-two"><button type="button" class="rt-btn" data-rt="share">\u2197 Share as picture</button><button type="button" class="rt-btn" data-rt="edit-all">\u270E Edit</button></div>';
   if(rt.span!=="month") h += '<button type="button" class="rt-go sm" data-rt="month">Continue this for 1 month \u203A</button><div class="muted rt-note">Runs for 1 week now. Continue keeps it going for four weeks.</div>';
   var ended = toKey(rtDate(6)) < todayKey;
   if(ended && rt.span!=="month") h += '<button type="button" class="rt-btn wide" data-rt="renew">This week has ended. Start a new week</button>';
   var blocks = rtStudyBlocks();
-  h += '<div class="rt-next"><span class="rt-nx-i" aria-hidden="true">\uD83E\uDDED</span><div><b>Next: make your syllabus plan</b><span>Create your syllabus plan in the Syllabus planner according to this routine.'+(blocks.length ? ' Your study hours: '+esc(blocks.map(rtRange).join(" and "))+'.' : '')+'</span></div></div><button type="button" class="rt-btn wide" data-rt="planner">Open Syllabus planner \u203A</button></div>';
+  h += '<div class="rt-next"><span class="rt-nx-i" aria-hidden="true">\uD83E\uDDED</span><div><b>Next: make your syllabus plan</b><span>Create your syllabus plan in the Syllabus planner according to this routine.'+(blocks.length ? ' Your study hours: '+esc(blocks.map(rtFullRange).join(" and "))+'.' : '')+'</span></div></div><button type="button" class="rt-btn wide" data-rt="planner">Open Syllabus planner \u203A</button></div>';
   return h;
 }
 function rtMonthHtml(){
@@ -20655,7 +20659,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "389";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "391";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
