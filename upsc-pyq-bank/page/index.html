@@ -18048,7 +18048,8 @@ function rtLoad(){
 var rt = rtLoad(), rtScreen = "", rtEd = null, rtEdView = "form";
 function rtSave(){ lsSet(RT_KEY, JSON.stringify(rt)); clearTimeout(rtPlanTimer); rtPlanTimer = setTimeout(function(){ try{ rtPlannerCheck(); }catch(e){} }, 900); }   // lsSet also tells cloud sync, so the routine is kept on this device and in the account
 function rtSorted(){ return rt.items.slice().sort(function(a, b){ return toMin(a.t) - toMin(b.t); }); }
-function rtDur(it){ return it.e ? Math.max(0, toMin(it.e) - toMin(it.t)) : (it.d || 0); }
+function rtEndMin(it){ var a = toMin(it.t), e = toMin(it.e); return e > a ? e : (e < a ? e + 1440 : a); }   // an end earlier than the start is the next morning
+function rtDur(it){ return it.e ? Math.max(0, rtEndMin(it) - toMin(it.t)) : (it.d || 0); }
 function rtStk(id){ for(var i=0;i<RT_STICKERS.length;i++) if(RT_STICKERS[i][0]===id || RT_STICKERS[i][5]===id) return RT_STICKERS[i]; return null; }
 function rtTile(id, cls){
   var st = rtStk(id), c = RT_COL[st ? st[3] : "blue"];
@@ -18056,15 +18057,15 @@ function rtTile(id, cls){
 }
 // a new activity starts when the last one ends: Wake up 5:00 for 5 minutes, so the next one starts at 5:05
 function rtNextStart(){
-  var end = -1; rt.items.forEach(function(x){ var e = x.e ? toMin(x.e) : toMin(x.t) + (x.d || 0); if(e > end) end = e; });
+  var end = -1; rt.items.forEach(function(x){ var e = x.e ? Math.min(rtEndMin(x), 1440) : toMin(x.t) + (x.d || 0); if(e > end) end = e; });
   if(end < 0) return "";
   end = Math.min(end, 23*60 + 55);
   return pad2(Math.floor(end/60))+":"+pad2(end%60);
 }
 // ---- no two activities share a time: a new start can move forward past a busy slot, never back into it ----
-function rtSpan(x){ var a = toMin(x.t), b = x.e ? toMin(x.e) : a + (x.d || 0); return [a, Math.max(b, a + 1)]; }
+function rtSpan(x){ var a = toMin(x.t), b = x.e ? rtEndMin(x) : a + (x.d || 0); return [a, Math.max(b, a + 1)]; }
 function rtBusy(skipId, a, b){   // the first other activity whose time overlaps [a, b)
-  var hit = null; rt.items.forEach(function(x){ if(hit || x.id===skipId) return; var sp = rtSpan(x); if(a < sp[1] && sp[0] < b) hit = x; });
+  var hit = null; rt.items.forEach(function(x){ if(hit || x.id===skipId) return; var sp = rtSpan(x); if((a < sp[1] && sp[0] < b) || (a < sp[1]-1440 && sp[0]-1440 < b) || (a < sp[1]+1440 && sp[0]+1440 < b)) hit = x; });
   return hit;
 }
 // "5:00 \u2013 5:05 AM" for the list; both AM/PM are shown only when the range crosses noon
@@ -18178,7 +18179,7 @@ function rtMinutesText(m){ return rtLenText(Math.abs(m)); }
 function rtApplyShift(rec, plan){
   plan.fol.forEach(function(x){
     var a = toMin(x.t) + plan.delta; x.t = pad2(Math.floor(a/60))+":"+pad2(a%60);
-    if(x.e){ var b = toMin(x.e) + plan.delta; x.e = pad2(Math.floor(b/60))+":"+pad2(b%60); }
+    if(x.e){ var b = (((toMin(x.e) + plan.delta) % 1440) + 1440) % 1440; x.e = pad2(Math.floor(b/60))+":"+pad2(b%60); }
   });
   var i = rt.items.map(function(x){ return x.id; }).indexOf(rec.id); rt.items[i] = rec;
   rtSave();
@@ -18205,7 +18206,11 @@ function rtPlanWindows(){   // the study blocks of the routine as planner sessio
   return out.slice(0, 6).map(function(q){ return {start:hmStr(q[0]), end:hmStr(q[1]), subject:""}; });
 }
 function rtSameWindows(a, b){ return !!a && !!b && a.length===b.length && a.every(function(x, i){ return x.start===b[i].start && x.end===b[i].end; }); }
-function rtOtherSpans(){ return rtMade() ? rtSorted().filter(function(it){ return !rtIsStudy(it) && rtDur(it) > 0; }).map(function(it){ var q = rtSpan(it); return {n:it.n, a:q[0], b:q[1]}; }) : []; }
+function rtOtherSpans(){
+  var out = []; if(!rtMade()) return out;
+  rtSorted().forEach(function(it){ if(rtIsStudy(it) || rtDur(it) <= 0) return; var q = rtSpan(it); out.push({n:it.n, a:q[0], b:Math.min(q[1], 1440)}); if(q[1] > 1440) out.push({n:it.n, a:0, b:q[1]-1440}); });
+  return out;
+}
 function rtClashes(a, b, dow){   // the non-study routine activities that fall inside [a, b) on that weekday (dow: 0-6, or null for "any day the routine runs")
   if(!rtMade() || (dow!=null && rt.days.indexOf(dow) < 0)) return [];
   return rtOtherSpans().filter(function(x){ return x.a < b && a < x.b; });
@@ -18522,7 +18527,7 @@ function rtSheetHtml(){
   h += '<h2>'+(e.id ? "Change activity" : "Add an activity")+'</h2><div class="rt-prev">'+rtTile(e.s, "rt-tile big")+'<label class="rt-nm"><input type="text" id="rtN" maxlength="30" value="'+esc(e.n)+'" placeholder="Name, e.g. Cycling" aria-label="Activity name"><small>Tap the name to change it</small></label></div>'+
     '<div class="rt-lab">STICKER</div><div class="rt-row6">'+row.map(function(em){ var s2 = rtStk(em), c = RT_COL[s2 ? s2[3] : "blue"]; return '<button type="button" class="rt-sk'+(em===e.s ? " sel" : "")+'" data-rs="pick" data-s="'+em+'" aria-label="'+esc(s2 ? s2[1] : "Sticker")+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'">'+rtGlyph(em)+'</button>'; }).join("")+'</div><button type="button" class="rt-link" data-rs="lib">See all stickers \u203A</button>'+
     '<label class="gd-first rt-study"><span><b>Counts as study time</b><small>Your Syllabus planner studies in these hours</small></span><input type="checkbox" role="switch" id="rtStudy" '+(rtIsStudy(e) ? "checked" : "")+'><i class="qz-sw" aria-hidden="true"></i></label>'+
-    '<div class="rt-lab">WHEN</div><div class="rt-when"><label>Starts<input type="time" id="rtT" value="'+esc(e.t)+'"></label>'+(e.e ? '<label>Until<input type="time" id="rtE" value="'+esc(e.e)+'"></label>' : '')+'</div>'+
+    '<div class="rt-lab">WHEN</div><div class="rt-when"><label>Starts<input type="time" id="rtT" value="'+esc(e.t)+'"></label>'+(e.e ? '<label>Until<input type="time" id="rtE" value="'+esc(e.e)+'"></label>' : '')+'</div><small class="muted" id="rtNight"'+((e.e && toMin(e.e) < toMin(e.t)) ? '' : ' hidden')+'>Ends the next morning.</small>'+
     '<div class="rt-chips rt-durs" role="group" aria-label="How long">'+[5,10,15,30,45,60].map(function(m){ return '<button type="button" class="rt-chip'+(!e.e && e.d===m ? " on" : "")+'" data-rs="dur" data-m="'+m+'">'+(m===60 ? "1 h" : m+" min")+'</button>'; }).join("")+'<button type="button" class="rt-chip'+(e.e ? " on" : "")+'" data-rs="until">Until\u2026</button></div>'+
     '<button type="button" class="rt-go" data-rs="save">'+(e.id ? "Save" : "Add to my day")+'</button>'+(e.id ? '<button type="button" class="rt-btn wide bad" data-rs="del">Remove from my day</button>' : "")+'</div>';
   return h;
@@ -18567,13 +18572,21 @@ function rtOpenSheet(ed, editing){
       if(st > 23*60 + 55){ toast("No free time is left today after that."); t.value = rtEd.t; return; }
       if(moved){ toast(moved.n+" runs until "+rtClock(st)+", so this starts then."); }
       rtEd.t = pad2(Math.floor(st/60))+":"+pad2(st%60); t.value = rtEd.t;
-      if(rtEd.e && toMin(rtEd.e) <= st){ rtEd.e = ""; rtEd.d = rtEd.d || 30; m.innerHTML = rtSheetHtml(); }
+      if(rtEd.e && toMin(rtEd.e) === st){ rtEd.e = ""; rtEd.d = rtEd.d || 30; m.innerHTML = rtSheetHtml(); }
+      var nh = m.querySelector("#rtNight"); if(nh) nh.hidden = !(rtEd.e && toMin(rtEd.e) < st);
     }
     else if(t.id==="rtE" && t.value){
       var s0 = toMin(rtEd.t), e0 = toMin(t.value), next = null;
-      if(!id) rt.items.forEach(function(x){ var a = rtSpan(x)[0]; if(a > s0 && a < e0 && (next===null || a < next.a)) next = {a:a, n:x.n}; });
+      if(!id){
+        if(e0 > s0) rt.items.forEach(function(x){ var a = rtSpan(x)[0]; if(a > s0 && a < e0 && (next===null || a < next.a)) next = {a:a, n:x.n}; });
+        else{   // ends the next morning: it stops at whatever starts first after it begins tonight, or first thing next morning
+          rt.items.forEach(function(x){ var a = rtSpan(x)[0]; if(a > s0 && (next===null || a < next.a)) next = {a:a, n:x.n}; });
+          if(!next) rt.items.forEach(function(x){ var a = rtSpan(x)[0]; if(a < e0 && (next===null || a < next.a)) next = {a:a, n:x.n}; });
+        }
+      }
       if(next){ toast(next.n+" starts at "+rtClock(next.a)+", so this ends then."); e0 = next.a; }
       rtEd.e = pad2(Math.floor(e0/60))+":"+pad2(e0%60); t.value = rtEd.e;
+      var nh2 = m.querySelector("#rtNight"); if(nh2) nh2.hidden = !(e0 < s0);
     }
   });
   m.addEventListener("click", function(ev){
@@ -18598,7 +18611,7 @@ function rtOpenSheet(ed, editing){
     else if(a==="save"){
       var n = (rtEd.n || "").trim();
       if(!n){ toast("Give it a name first."); return; }
-      if(rtEd.e && toMin(rtEd.e) <= toMin(rtEd.t)){ toast("The end time must be after the start."); return; }
+      if(rtEd.e && toMin(rtEd.e) === toMin(rtEd.t)){ toast("The end time can\u2019t be the same as the start."); return; }
       var sp = rtSpan({t:rtEd.t, e:rtEd.e, d:rtEd.d || 30});
       var rec = {id: rtEd.id || ("r"+Date.now().toString(36)+Math.floor(Math.random()*1000)), n:n, s:rtEd.s, t:rtEd.t, e:rtEd.e || "", d:rtEd.e ? 0 : (rtEd.d || 30), k:rtEd.k || (/study/i.test(n) ? "study" : "")};
       var plan = rtEd.id ? rtShiftPlan(rec) : null;
@@ -18606,7 +18619,7 @@ function rtOpenSheet(ed, editing){
       if(clash2){ toast("That time is already taken by "+clash2.n+" ("+rtClock(rtSpan(clash2)[0])+" to "+rtClock(rtSpan(clash2)[1])+"). Pick a time after it."); return; }
       if(!plan){ rt.items.push(rec); rtSave(); closeModal(); renderRoutine(); return; }
       if(plan.delta===0 || !plan.fol.length){ rtApplyShift(rec, {fol:[], delta:0}); closeModal(); renderRoutine(); return; }
-      var late = plan.fol.filter(function(x){ return rtSpan(x)[1] + plan.delta > 24*60 || rtSpan(x)[0] + plan.delta < 0; })[0];
+      var late = plan.fol.filter(function(x){ var q = rtSpan(x); return q[0] + plan.delta > 1439 || q[0] + plan.delta < 0 || (q[1] <= 1440 && q[1] + plan.delta > 1440); })[0];
       if(late){ toast("That would push "+late.n+" past midnight. Choose a shorter time."); return; }
       rtShiftPopup(rec, plan);
     }
@@ -20968,7 +20981,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "409";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "410";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
