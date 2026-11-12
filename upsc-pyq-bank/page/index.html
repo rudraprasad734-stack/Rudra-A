@@ -1045,6 +1045,7 @@
   .qz-len{display:flex; gap:8px; flex-wrap:wrap;} .qz-len button{flex:1; min-width:64px; border:1.5px solid var(--line); background:var(--surface); color:var(--ink); border-radius:12px; padding:10px 0; font:inherit; font-weight:700; cursor:pointer;}
   .qz-len button.on{border-color:var(--gold); background:color-mix(in srgb,var(--gold) 16%,var(--surface));}
   .qz-row{display:flex; align-items:center; justify-content:space-between; margin-top:14px; font-size:15px; cursor:pointer;} .qz-row input{position:absolute; opacity:0; width:1px; height:1px;}
+  .rt-study{margin:14px 0 4px; padding:10px 12px; border:1.5px solid var(--line); border-radius:14px; display:flex; align-items:center; justify-content:space-between; gap:10px;} .rt-study span{display:flex; flex-direction:column; gap:2px;} .rt-study small{color:var(--ink-soft); font-size:12px;}
   .qz-sw{width:46px; height:27px; border-radius:99px; background:var(--surface-2,var(--surface)); border:1.5px solid var(--line); position:relative; flex:none;}
   .qz-sw::after{content:""; position:absolute; top:2px; left:2px; width:20px; height:20px; border-radius:50%; background:var(--ink-soft); transition:left .15s;}
   .qz-row input:checked + .qz-sw{background:var(--gold); border-color:var(--gold);} .qz-row input:checked + .qz-sw::after{left:21px; background:var(--gold-ink,#241d0b);}
@@ -18047,7 +18048,7 @@ function rtCardImage(){
   }
   return Promise.all(list.map(function(it){ return rtSvgImage(it.s, 112); })).then(function(imgs){
     list.forEach(function(it, i){
-      var y = top + i*rowH, ch = rowH-22, col = RT_COL[(rtStk(it.s)||[0,0,0,"blue"])[3]], study = it.k==="study" || /study/i.test(it.n);
+      var y = top + i*rowH, ch = rowH-22, col = RT_COL[(rtStk(it.s)||[0,0,0,"blue"])[3]], study = rtIsStudy(it);
       // the activity is a floating glass card
       var cg = c.createLinearGradient(0, y, 0, y+ch);
       if(study){ cg.addColorStop(0, sun ? "rgba(255,255,255,.85)" : "rgba(255,214,120,.34)"); cg.addColorStop(1, sun ? "rgba(255,255,255,.5)" : "rgba(255,214,120,.12)"); }
@@ -18124,7 +18125,10 @@ function rtDaysText(){
   var idx = d.map(function(x){ return (x+6)%7; }), run = idx.every(function(v, i){ return i===0 || v===idx[i-1]+1; });
   return run && d.length>2 ? RT_DAYN[d[0]]+" \u2013 "+RT_DAYN[d[d.length-1]] : d.map(function(x){ return RT_DAYN[x]; }).join(", ");
 }
-function rtStudyBlocks(){ return rtSorted().filter(function(x){ return x.k==="study" || /study/i.test(x.n); }); }
+// Study time comes from the sticker, not the name: a study sticker counts as study unless the person switched it off, and any other
+// sticker does not count unless the person switched it on. The name can be anything ("Polity", "Sing a song", "Cutting grass for cow").
+function rtIsStudy(it){ if(it.k==="study") return true; if(it.k==="off") return false; var st = rtStk(it.s); return !!st && st[4]==="Study"; }
+function rtStudyBlocks(){ return rtSorted().filter(rtIsStudy); }
 function rtFullRange(it){   // "5:20 – 6:20 AM": always both ends, with AM/PM
   var a = toMin(it.t), b = it.e ? toMin(it.e) : (a + (it.d||0)) % 1440;
   function p(m){ var h = Math.floor(m/60); return [(h%12||12)+":"+pad2(m%60), h>=12 ? "PM" : "AM"]; }
@@ -18234,7 +18238,7 @@ function rtCardHtml(){
   var h = '<div class="rt"><div class="rt-stage"><div class="rt-card'+(sun ? " sun2" : "")+'"><span class="rt-sun" aria-hidden="true">'+rtGlyph(list[0] ? list[0].s : "wake")+'</span><h2>My weekly routine</h2><div class="rt-sub">'+esc(rtWeekLabel())+(nm ? ' \u00B7 '+esc(nm) : '')+'</div>';
   h += '<div class="rt-wk">'+[0,1,2,3,4,5,6].map(function(i){ var d = rtDate(i), on = rt.days.indexOf(d.getDay())>=0, td = toKey(d)===todayKey; return '<div class="'+(td?"today":"")+'"'+(on ? "" : ' style="opacity:.45"')+'><b>'+d.getDate()+'</b>'+RT_DAYN[d.getDay()]+'</div>'; }).join("")+'</div><div class="rt-rows">';
   list.forEach(function(it){
-    var c = RT_COL[(rtStk(it.s)||[0,0,0,"blue"])[3]], study = it.k==="study" || /study/i.test(it.n);
+    var c = RT_COL[(rtStk(it.s)||[0,0,0,"blue"])[3]], study = rtIsStudy(it);
     h += '<div class="rt-r'+(study ? " study" : "")+'" data-id="'+esc(it.id)+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'"><span class="rt-tile">'+rtGlyph(it.s)+'</span><span class="t">'+esc(fmt12(it.t))+'</span><span class="n">'+esc(it.n)+'</span><span class="d">'+(it.e ? '\u2192 '+esc(fmt12(it.e)) : esc(fmtHM(rtDur(it)))) +'</span></div>';
   });
   h += '</div><div class="rt-ft"><span>'+esc(rtDaysText())+'</span></div></div></div><div class="rt-shadow"></div>';
@@ -18295,6 +18299,7 @@ function rtSheetHtml(){
   if(row.indexOf(e.s)<0) row.unshift(e.s);
   h += '<h2>'+(e.id ? "Change activity" : "Add an activity")+'</h2><div class="rt-prev">'+rtTile(e.s, "rt-tile big")+'<label class="rt-nm"><input type="text" id="rtN" maxlength="30" value="'+esc(e.n)+'" placeholder="Name, e.g. Cycling" aria-label="Activity name"><small>Tap the name to change it</small></label></div>'+
     '<div class="rt-lab">STICKER</div><div class="rt-row6">'+row.map(function(em){ var s2 = rtStk(em), c = RT_COL[s2 ? s2[3] : "blue"]; return '<button type="button" class="rt-sk'+(em===e.s ? " sel" : "")+'" data-rs="pick" data-s="'+em+'" aria-label="'+esc(s2 ? s2[1] : "Sticker")+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'">'+rtGlyph(em)+'</button>'; }).join("")+'</div><button type="button" class="rt-link" data-rs="lib">See all stickers \u203A</button>'+
+    '<label class="gd-first rt-study"><span><b>Counts as study time</b><small>Your Syllabus planner studies in these hours</small></span><input type="checkbox" role="switch" id="rtStudy" '+(rtIsStudy(e) ? "checked" : "")+'><i class="qz-sw" aria-hidden="true"></i></label>'+
     '<div class="rt-lab">WHEN</div><div class="rt-when"><label>Starts<input type="time" id="rtT" value="'+esc(e.t)+'"></label>'+(e.e ? '<label>Until<input type="time" id="rtE" value="'+esc(e.e)+'"></label>' : '')+'</div>'+
     '<div class="rt-chips rt-durs" role="group" aria-label="How long">'+[5,10,15,30,45,60].map(function(m){ return '<button type="button" class="rt-chip'+(!e.e && e.d===m ? " on" : "")+'" data-rs="dur" data-m="'+m+'">'+(m===60 ? "1 h" : m+" min")+'</button>'; }).join("")+'<button type="button" class="rt-chip'+(e.e ? " on" : "")+'" data-rs="until">Until\u2026</button></div>'+
     '<button type="button" class="rt-go" data-rs="save">'+(e.id ? "Save" : "Add to my day")+'</button>'+(e.id ? '<button type="button" class="rt-btn wide bad" data-rs="del">Remove from my day</button>' : "")+'</div>';
@@ -18324,7 +18329,7 @@ function rtOpenSheet(ed, editing){
       rtEd.n = t.value;
       if(!rtEd.picked){   // until a sticker is chosen by hand, follow the name: "Lunch" gets the lunch sticker
         var w = t.value.trim().toLowerCase(), hit = w ? RT_STICKERS.filter(function(x){ return x[1].toLowerCase()===w || (" "+x[2]+" ").indexOf(" "+w+" ")>=0; })[0] : null;
-        if(hit && hit[0]!==rtEd.s){ rtEd.s = hit[0]; rtEd.k = hit[4]==="Study" || /study/i.test(w) ? "study" : ""; var pv = m.querySelector(".rt-prev .rt-tile"); if(pv) pv.outerHTML = rtTile(rtEd.s, "rt-tile big"); }
+        if(hit && hit[0]!==rtEd.s){ rtEd.s = hit[0]; rtEd.k = ""; var stBox = m.querySelector("#rtStudy"); if(stBox) stBox.checked = rtIsStudy(rtEd); var pv = m.querySelector(".rt-prev .rt-tile"); if(pv) pv.outerHTML = rtTile(rtEd.s, "rt-tile big"); }
       }
     }
     else if(t.id==="rtT") rtEd.t = t.value || rtEd.t;
@@ -18333,6 +18338,7 @@ function rtOpenSheet(ed, editing){
   });
   m.addEventListener("change", function(ev){
     var t = ev.target, id = rtEd.id;
+    if(t.id==="rtStudy"){ var stk = rtStk(rtEd.s), byStk = !!stk && stk[4]==="Study"; rtEd.k = t.checked===byStk ? "" : (t.checked ? "study" : "off"); return; }
     if(t.id==="rtT" && t.value){
       var st = toMin(t.value), moved = null, guard = 0, hit;
       while((hit = rtBusy(id, st, st + 1)) && guard++ < 50){ moved = hit; st = rtSpan(hit)[1]; }   // slide forward past each activity that is already there
@@ -18354,7 +18360,7 @@ function rtOpenSheet(ed, editing){
     if(a==="pick"){
       var s = rtStk(b.getAttribute("data-s")); rtEd.s = b.getAttribute("data-s"); rtEd.picked = true;
       if(!rtEd.n.trim() && s) rtEd.n = s[1];
-      rtEd.k = s && s[4]==="Study" ? "study" : (rtEd.k==="study" && !/study/i.test(rtEd.n) ? "" : rtEd.k);
+      rtEd.k = "";   // a new sticker sets study time by itself; the switch can still override it
       rtEdView = "form"; redraw();
     }
     else if(a==="lib"){ rtEdView = "lib"; redraw(); }
@@ -20624,6 +20630,7 @@ var GUIDE_TIPS = {
     "Activities are sorted by time for you. Tap an activity to change or remove it.",
     "<b>Changing a length moves the rest.</b> Make an activity longer or shorter and everything after it moves with it. The app tells you first.",
     "<b>Removing an activity leaves free time.</b> Tap the free-time row to add something else there.",
+    "<b>Counts as study time</b> is decided by the sticker you pick: a study sticker counts, other stickers do not. You can switch it on or off for any activity, and the name can be anything.",
     "<b>Share as picture</b> makes an image of your weekly card with a CSE Companion watermark, ready to send."],
   planner:["<b>Subjects run one after another.</b> Complete a subject to unlock the next. The calendar follows your progress, and changing the plan never erases it.",
     "<b>Your subjects</b> list shows the subjects running now. Tap <b>Show all subjects</b> to see the ones that come later. A bar shows how much of a subject you have finished, and \uD83D\uDD12 means it starts after the one above.",
@@ -20718,7 +20725,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "396";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "397";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
