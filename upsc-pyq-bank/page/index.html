@@ -979,6 +979,7 @@
   .rt-list{display:flex; flex-direction:column; gap:8px; margin-top:10px;}
   .rt-item{display:flex; align-items:center; gap:12px; width:100%; text-align:left; background:var(--surface); border:1.5px solid var(--line); border-radius:16px; padding:10px 12px; color:var(--ink); font:inherit; cursor:pointer;}
   .rt-it{flex:1; min-width:0;} .rt-it b{display:block; font-size:15px;} .rt-it small,.rt-tm small{display:block; font-size:12px; color:var(--ink-soft); font-weight:500;} .rt-tm{flex:none; text-align:right; font-weight:800; font-size:14px;}
+  .rt-tr{flex:none; text-align:right;} .rt-rng{display:inline-flex; align-items:baseline; gap:3px; font-weight:800; font-size:13px; letter-spacing:.2px; background:color-mix(in srgb,var(--tab-accent) 14%,transparent); border:1px solid color-mix(in srgb,var(--tab-accent) 35%,transparent); border-radius:99px; padding:3px 10px; white-space:nowrap;} .rt-rng i{font-style:normal; color:var(--ink-soft); font-weight:600;} .rt-rng u{text-decoration:none; font-size:10.5px; color:var(--tab-accent); margin-left:1px;} .rt-tr small{display:block; margin-top:4px; font-size:12px; color:var(--ink-soft); font-weight:500;}
   .rt-tile{flex:none; width:40px; height:40px; border-radius:13px; display:grid; place-items:center; font-size:21px; background:linear-gradient(145deg,var(--c1),var(--c2)); box-shadow:0 4px 0 var(--c3),0 8px 10px rgba(0,0,0,.3),0 1px 0 rgba(255,255,255,.45) inset;} .rt-tile.big{width:54px; height:54px; font-size:28px; border-radius:16px;}
   .rt-chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;} .rt-chip{padding:8px 13px; border-radius:99px; border:1.5px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; font-size:14px; font-weight:700; cursor:pointer;} .rt-chip.on{background:var(--tab-accent); color:var(--tab-accent-ink,#04141a); border-color:var(--tab-accent);}
   .rt-add{display:block; width:100%; margin-top:14px; padding:13px; border:1.5px dashed var(--tab-accent); border-radius:16px; background:none; color:var(--tab-accent); font:inherit; font-weight:700; cursor:pointer;}
@@ -17965,6 +17966,19 @@ function rtBusy(skipId, a, b){   // the first other activity whose time overlaps
   var hit = null; rt.items.forEach(function(x){ if(hit || x.id===skipId) return; var sp = rtSpan(x); if(a < sp[1] && sp[0] < b) hit = x; });
   return hit;
 }
+// "5:00 \u2013 5:05 AM" for the list; both AM/PM are shown only when the range crosses noon
+function rtRangeHtml(it){
+  var a = toMin(it.t), b = (it.e ? toMin(it.e) : a + (it.d || 0)) % 1440;
+  function p(m){ var h = Math.floor(m/60), ap = h>=12 ? "PM" : "AM"; h = h%12 || 12; return [h+":"+pad2(m%60), ap]; }
+  var x = p(a), y = p(b);
+  return x[1]===y[1] ? esc(x[0])+'<i>\u2013</i>'+esc(y[0])+'<u>'+y[1]+'</u>' : esc(x[0])+'<u>'+x[1]+'</u><i>\u2013</i>'+esc(y[0])+'<u>'+y[1]+'</u>';
+}
+function rtLenText(m){
+  m = Math.max(0, Math.round(m||0)); var h = Math.floor(m/60), r = m%60;
+  if(!h) return m+(m===1 ? " minute" : " minutes");
+  if(!r) return h+(h===1 ? " hour" : " hours");
+  return h+" h "+r+" min";
+}
 function rtClock(m){ return fmt12(pad2(Math.floor(m/60))+":"+pad2(m%60)); }
 function rtDays(){ var d = rt.days.slice().sort(function(a, b){ return ((a+6)%7) - ((b+6)%7); }); return d; }
 function rtDaysText(){
@@ -17991,7 +18005,7 @@ function rtBuildHtml(){
   if(!list.length) h += '<div class="rt-empty"><div class="rt-big" aria-hidden="true">\uD83C\uDF1E</div><h2>Tell us about your day</h2><div class="muted">Add each thing you do and when. Your weekly card is made after you add them.</div></div>';
   else h += '<h2>Your day so far</h2><div class="muted">'+list.length+' activit'+(list.length===1 ? "y" : "ies")+' added. Tap one to change it.</div>';
   if(list.length) h += '<div class="rt-list">'+list.map(function(it){
-    return '<button type="button" class="rt-item" data-rt="edit" data-id="'+esc(it.id)+'">'+rtTile(it.s)+'<span class="rt-it"><b>'+esc(it.n)+'</b>'+(it.e ? '<small>Until '+esc(fmt12(it.e))+'</small>' : '')+'</span><span class="rt-tm">'+esc(fmt12(it.t))+'<small>'+esc(fmtHM(rtDur(it)))+'</small></span></button>';
+    return '<button type="button" class="rt-item" data-rt="edit" data-id="'+esc(it.id)+'">'+rtTile(it.s)+'<span class="rt-it"><b>'+esc(it.n)+'</b></span><span class="rt-tr"><span class="rt-rng">'+rtRangeHtml(it)+'</span><small>'+esc(rtLenText(rtDur(it)))+'</small></span></button>';
   }).join("")+'</div>';
   h += '<div class="rt-lab">TAP TO ADD</div><div class="rt-chips">'+RT_PRESETS.map(function(p, i){ return '<button type="button" class="rt-chip" data-rt="preset" data-i="'+i+'"><span class="rt-mini">'+rtGlyph(p.s)+'</span>'+esc(p.n)+'</button>'; }).join("")+'<button type="button" class="rt-chip" data-rt="add">\uFF0B My own</button></div>';
   h += '<button type="button" class="rt-add" data-rt="add">\uFF0B Add an activity</button>';
@@ -20465,7 +20479,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "381";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "382";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
