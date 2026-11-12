@@ -7000,7 +7000,7 @@ if(!studyProgress || typeof studyProgress!=="object" || !studyProgress.topics) s
 else if(typeof studyProgress.topics!=="object" || Array.isArray(studyProgress.topics)) studyProgress.topics = {};
 Object.keys(studyProgress.topics).forEach(function(id){ var t = studyProgress.topics[id]; if(!t || typeof t!=="object") delete studyProgress.topics[id]; });
 var viewCache = null;
-function savePlan(){ lsSetJSON(PLAN_KEY, studyPlan); viewCache = null; }
+function savePlan(){ lsSetJSON(PLAN_KEY, studyPlan); viewCache = null; try{ rtSyncFromPlan(); }catch(e){} }
 function saveProgress(){ lsSetJSON(PROG_KEY, studyProgress); viewCache = null; }
 
 var DOW_SHORT = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
@@ -18045,7 +18045,8 @@ function rtNormalize(v){
   try{
     if(v && typeof v==="object" && Array.isArray(v.items)){
       v.items = v.items.filter(function(x){ return x && typeof x.n==="string" && /^\d\d:\d\d$/.test(x.t||""); });
-      v.items.forEach(function(x){ var st = rtStk(x.s); x.s = st ? st[0] : "study"; });
+      v.items.forEach(function(x){ var st = rtStk(x.s); x.s = st ? st[0] : "study"; if(typeof x.u!=="string" || !x.u) delete x.u; if(!x.a) delete x.a; });
+      if(typeof v.psig!=="string") delete v.psig;
       v.days = Array.isArray(v.days) ? v.days.filter(function(d){ return d>=0 && d<=6; }) : [1,2,3,4,5,6];
       v.theme = v.theme==="sunrise" ? "sunrise" : "night"; v.span = v.span==="month" ? "month" : "week"; v.made = /^\d{4}-\d\d-\d\d$/.test(v.made||"") ? v.made : "";
       return v;
@@ -18059,7 +18060,7 @@ function rtLoad(){
   return v || rtDefault();
 }
 var rt = rtLoad(), rtScreen = "", rtEd = null, rtEdView = "form";
-function rtSave(){ lsSet(RT_KEY, JSON.stringify(rt)); clearTimeout(rtPlanTimer); rtPlanTimer = setTimeout(function(){ try{ rtPlannerCheck(); }catch(e){} }, 900); }   // lsSet also tells cloud sync, so the routine is kept on this device and in the account
+function rtSave(){ lsSet(RT_KEY, JSON.stringify(rt)); clearTimeout(rtPlanTimer); rtPlanTimer = setTimeout(function(){ try{ rtPlannerCheck(); }catch(e){} try{ rtPushSubjects(); }catch(e){} }, 900); }   // lsSet also tells cloud sync, so the routine is kept on this device and in the account
 function rtSorted(){ return rt.items.slice().sort(function(a, b){ return toMin(a.t) - toMin(b.t); }); }
 function rtEndMin(it){ var a = toMin(it.t), e = toMin(it.e); return e > a ? e : (e < a ? e + 1440 : a); }   // an end earlier than the start is the next morning
 function rtDur(it){ return it.e ? Math.max(0, rtEndMin(it) - toMin(it.t)) : (it.d || 0); }
@@ -18144,8 +18145,8 @@ function rtCardImage(){
       c.fillStyle = ink; c.font = "800 38px "+FF; c.fillText(rtCardRange(it), tx+ts+28, y+58);
       c.fillStyle = soft; c.font = "500 29px "+FF; c.fillText(rtLenText(rtDur(it)), tx+ts+28, y+98);
       c.textAlign = "right"; c.fillStyle = ink; c.font = "700 40px "+FF;
-      var t = it.n; while(c.measureText(t).width > 370 && t.length > 4) t = t.slice(0, -2);
-      c.fillText(t.length < it.n.length ? t.trim()+"…" : t, W-P-18, y+ch/2+14); c.textAlign = "left";
+      var tt = rtTitle(it), t = tt; while(c.measureText(t).width > 370 && t.length > 4) t = t.slice(0, -2);
+      c.fillText(t.length < tt.length ? t.trim()+"…" : t, W-P-18, y+ch/2+14); c.textAlign = "left";
     });
     var fy = top + list.length*rowH + 8;
     // watermark pill
@@ -18322,6 +18323,48 @@ function rtApplyToPlan(plan, acts){   // the planner studies in the routine's st
   return true;
 }
 var rtPlanTimer = 0;
+function rtTitle(it){ return it.u ? it.n+" · "+it.u : it.n; }   // "Study · History": the subject the planner gives that study time
+function rtSubjLabel(v){ return v==="@ca" ? "Current Affairs" : (v || ""); }
+function rtSubjValue(l){ return l==="Current Affairs" ? "@ca" : l; }
+function rtSyncFromPlan(){   // planner -> routine: study blocks show the planner's subject, and a planner session with no study block gets one
+  if(!studyPlan || !studyPlan.capacity || !rtMade()) return;
+  var ss = (studyPlan.capacity.sessions || []).filter(function(x){ return x && x.start && x.end && toMin(x.end) > toMin(x.start); });
+  var psig = ss.map(function(x){ return x.start+"-"+x.end+"-"+(x.subject || ""); }).join(","); if(!ss.length || rt.psig===psig) return;
+  var before = JSON.stringify(rt.items);
+  rt.items = rt.items.filter(function(it){ return !it.a || ss.some(function(x){ return x.start===it.t && x.end===it.e; }); });   // a block added from an earlier plan goes when the plan moves
+  rt.items.forEach(function(it){
+    if(!rtIsStudy(it)) return;
+    var q = rtSpan(it), seen = [];
+    ss.forEach(function(x){ var a = toMin(x.start), b = toMin(x.end), l = rtSubjLabel(x.subject); if(a < q[1] && q[0] < b && l && seen.indexOf(l) < 0) seen.push(l); });
+    if(seen.length) it.u = seen.join(", "); else delete it.u;
+  });
+  ss.forEach(function(x){
+    var a = toMin(x.start), b = toMin(x.end);
+    if(rt.items.some(function(it){ var q = rtSpan(it); return a < q[1] && q[0] < b; })) return;   // that time already belongs to something in the routine
+    var rec = {id:"r"+Date.now().toString(36)+Math.floor(Math.random()*1000), n:"Study", s:"study", t:x.start, e:x.end, d:0, k:"study", a:1}; if(x.subject) rec.u = rtSubjLabel(x.subject);
+    rt.items.push(rec);
+  });
+  rt.psig = psig;
+  if(JSON.stringify(rt.items)!==before){ lsSet(RT_KEY, JSON.stringify(rt)); if(activeTab==="routine"){ try{ renderRoutine(); }catch(e){} } toast("Your Routine now shows your planner's study times and subjects."); }
+  else lsSet(RT_KEY, JSON.stringify(rt));
+}
+function rtPushSubjects(){   // routine -> planner: a subject chosen on a study block goes to the planner sessions inside it
+  if(!studyPlan || !studyPlan.capacity) return;
+  var names = (studyPlan.cfg && studyPlan.cfg.order) || [], ch = 0;
+  [studyPlan.capacity, studyPlan.cfg && studyPlan.cfg.cap].forEach(function(c){
+    if(!c || !Array.isArray(c.sessions)) return;
+    c.sessions.forEach(function(sl){
+      var a = toMin(sl.start), b = toMin(sl.end);
+      rt.items.forEach(function(it){
+        if(!rtIsStudy(it) || !it.u) return;
+        var q = rtSpan(it), v = rtSubjValue(it.u); if(!(a < q[1] && q[0] < b)) return;
+        if(v!=="@ca" && names.indexOf(v) < 0) return;
+        if(sl.subject!==v){ sl.subject = v; ch++; }
+      });
+    });
+  });
+  if(ch){ rt.psig = ((studyPlan.capacity.sessions || []).map(function(x){ return x.start+"-"+x.end+"-"+(x.subject || ""); }).join(",")); lsSet(RT_KEY, JSON.stringify(rt)); lsSetJSON(PLAN_KEY, studyPlan); viewCache = null; try{ replan(); }catch(e){} toast("Your Syllabus planner follows the subject you chose."); }
+}
 function rtPlannerCheck(){   // after the routine changes: keep a routine-linked plan in step, or say when a plan clashes with the routine
   if(!studyPlan || !studyPlan.capacity || !rtMade()) return;
   var wins = rtPlanWindows(), cap = studyPlan.capacity; if(!wins.length || document.getElementById("modalHost")) return;
@@ -18459,7 +18502,7 @@ function rtBuildHtml(){
   else h += '<h2>Your day so far</h2><div class="muted">'+list.length+' activit'+(list.length===1 ? "y" : "ies")+' added. Tap one to change it.</div>';
   if(list.length) h += '<div class="rt-list">'+list.map(function(it, ix){
     var gp = ""; if(ix > 0){ var pe = rtSpan(list[ix-1])[1], ns = rtSpan(it)[0]; if(ns - pe >= 5) gp = '<button type="button" class="rt-gap" data-rt="gap" data-t="'+pad2(Math.floor(pe/60))+":"+pad2(pe%60)+'" data-m="'+(ns - pe)+'"><span>\uFF0B Free time \u00B7 '+esc(rtClock(pe))+' \u2013 '+esc(rtClock(ns))+'</span><small>'+esc(rtLenText(ns - pe))+' \u00B7 tap to add something</small></button>'; }
-    return gp+'<button type="button" class="rt-item" data-rt="edit" data-id="'+esc(it.id)+'">'+rtTile(it.s)+'<span class="rt-it"><b>'+esc(it.n)+'</b></span><span class="rt-tr"><span class="rt-rng">'+rtRangeHtml(it)+'</span><small>'+esc(rtLenText(rtDur(it)))+'</small></span></button>';
+    return gp+'<button type="button" class="rt-item" data-rt="edit" data-id="'+esc(it.id)+'">'+rtTile(it.s)+'<span class="rt-it"><b>'+esc(rtTitle(it))+'</b></span><span class="rt-tr"><span class="rt-rng">'+rtRangeHtml(it)+'</span><small>'+esc(rtLenText(rtDur(it)))+'</small></span></button>';
   }).join("")+'</div>';
   h += '<div class="rt-lab">TAP TO ADD</div><div class="rt-chips">'+RT_PRESETS.map(function(p, i){ return '<button type="button" class="rt-chip" data-rt="preset" data-i="'+i+'"><span class="rt-mini">'+rtGlyph(p.s)+'</span>'+esc(p.n)+'</button>'; }).join("")+'<button type="button" class="rt-chip" data-rt="add">\uFF0B My own</button></div>';
   h += '<button type="button" class="rt-add" data-rt="add">\uFF0B Add an activity</button>';
@@ -18474,7 +18517,7 @@ function rtCardHtml(){
   h += '<div class="rt-wk">'+[0,1,2,3,4,5,6].map(function(i){ var d = rtDate(i), on = rt.days.indexOf(d.getDay())>=0, td = toKey(d)===todayKey; return '<div class="'+(td?"today":"")+'"'+(on ? "" : ' style="opacity:.45"')+'><b>'+d.getDate()+'</b>'+RT_DAYN[d.getDay()]+'</div>'; }).join("")+'</div><div class="rt-rows">';
   list.forEach(function(it){
     var c = RT_COL[(rtStk(it.s)||[0,0,0,"blue"])[3]], study = rtIsStudy(it);
-    h += '<div class="rt-r'+(study ? " study" : "")+'" data-id="'+esc(it.id)+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'"><span class="rt-tile">'+rtGlyph(it.s)+'</span><span class="t">'+esc(fmt12(it.t))+'</span><span class="n">'+esc(it.n)+'</span><span class="d">'+(it.e ? '\u2192 '+esc(fmt12(it.e)) : esc(fmtHM(rtDur(it)))) +'</span></div>';
+    h += '<div class="rt-r'+(study ? " study" : "")+'" data-id="'+esc(it.id)+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'"><span class="rt-tile">'+rtGlyph(it.s)+'</span><span class="t">'+esc(fmt12(it.t))+'</span><span class="n">'+esc(rtTitle(it))+'</span><span class="d">'+(it.e ? '\u2192 '+esc(fmt12(it.e)) : esc(fmtHM(rtDur(it)))) +'</span></div>';
   });
   var ended = toKey(rtDate(6)) < todayKey, hasPlan = !!studyPlan;
   var acts = '<div class="rt-acts" role="toolbar" aria-label="Routine actions">'+
@@ -18541,6 +18584,7 @@ function rtSheetHtml(){
   h += '<h2>'+(e.id ? "Change activity" : "Add an activity")+'</h2><div class="rt-prev">'+rtTile(e.s, "rt-tile big")+'<label class="rt-nm"><input type="text" id="rtN" maxlength="30" value="'+esc(e.n)+'" placeholder="Name, e.g. Cycling" aria-label="Activity name"><small>Tap the name to change it</small></label></div>'+
     '<div class="rt-lab">STICKER</div><div class="rt-row6">'+row.map(function(em){ var s2 = rtStk(em), c = RT_COL[s2 ? s2[3] : "blue"]; return '<button type="button" class="rt-sk'+(em===e.s ? " sel" : "")+'" data-rs="pick" data-s="'+em+'" aria-label="'+esc(s2 ? s2[1] : "Sticker")+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'">'+rtGlyph(em)+'</button>'; }).join("")+'</div><button type="button" class="rt-link" data-rs="lib">See all stickers \u203A</button>'+
     '<label class="gd-first rt-study"><span><b>Counts as study time</b><small>Your Syllabus planner studies in these hours</small></span><input type="checkbox" role="switch" id="rtStudy" '+(rtIsStudy(e) ? "checked" : "")+'><i class="qz-sw" aria-hidden="true"></i></label>'+
+    (rtIsStudy(e) && studyPlan && studyPlan.cfg && studyPlan.cfg.order ? '<div class="rt-lab">SUBJECT</div><label class="rt-nm"><select id="rtU" aria-label="Subject for this study time"><option value="">Any subject</option><option value="Current Affairs"'+(e.u==="Current Affairs" ? " selected" : "")+'>Current Affairs (daily)</option>'+studyPlan.cfg.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(e.u===nm ? " selected" : "")+'>'+esc(nm)+'</option>'; }).join("")+'</select><small>Your Syllabus planner studies this subject here</small></label>' : '')+
     '<div class="rt-lab">WHEN</div><div class="rt-when"><label>Starts<input type="time" id="rtT" value="'+esc(e.t)+'"></label>'+(e.e ? '<label>Until<input type="time" id="rtE" value="'+esc(e.e)+'"></label>' : '')+'</div><small class="muted" id="rtNight"'+((e.e && toMin(e.e) < toMin(e.t)) ? '' : ' hidden')+'>Ends the next morning.</small>'+
     '<div class="rt-chips rt-durs" role="group" aria-label="How long">'+[5,10,15,30,45,60].map(function(m){ return '<button type="button" class="rt-chip'+(!e.e && e.d===m ? " on" : "")+'" data-rs="dur" data-m="'+m+'">'+(m===60 ? "1 h" : m+" min")+'</button>'; }).join("")+'<button type="button" class="rt-chip'+(e.e ? " on" : "")+'" data-rs="until">Until\u2026</button></div>'+
     '<button type="button" class="rt-go" data-rs="save">'+(e.id ? "Save" : "Add to my day")+'</button>'+(e.id ? '<button type="button" class="rt-btn wide bad" data-rs="del">Remove from my day</button>' : "")+'</div>';
@@ -18579,7 +18623,8 @@ function rtOpenSheet(ed, editing){
   });
   m.addEventListener("change", function(ev){
     var t = ev.target, id = rtEd.id;
-    if(t.id==="rtStudy"){ var stk = rtStk(rtEd.s), byStk = !!stk && stk[4]==="Study"; rtEd.k = t.checked===byStk ? "" : (t.checked ? "study" : "off"); return; }
+    if(t.id==="rtU"){ if(t.value) rtEd.u = t.value; else delete rtEd.u; return; }
+    if(t.id==="rtStudy"){ var stk = rtStk(rtEd.s), byStk = !!stk && stk[4]==="Study"; rtEd.k = t.checked===byStk ? "" : (t.checked ? "study" : "off"); m.innerHTML = rtSheetHtml(); return; }
     if(t.id==="rtT" && t.value){
       var st = toMin(t.value), moved = null, guard = 0, hit;
       while((hit = rtBusy(id, st, st + 1)) && guard++ < 50){ moved = hit; st = rtSpan(hit)[1]; }   // slide forward past each activity that is already there
@@ -18628,6 +18673,7 @@ function rtOpenSheet(ed, editing){
       if(rtEd.e && toMin(rtEd.e) === toMin(rtEd.t)){ toast("The end time can\u2019t be the same as the start."); return; }
       var sp = rtSpan({t:rtEd.t, e:rtEd.e, d:rtEd.d || 30});
       var rec = {id: rtEd.id || ("r"+Date.now().toString(36)+Math.floor(Math.random()*1000)), n:n, s:rtEd.s, t:rtEd.t, e:rtEd.e || "", d:rtEd.e ? 0 : (rtEd.d || 30), k:rtEd.k || (/study/i.test(n) ? "study" : "")};
+      if(rtEd.u && rtIsStudy(rec)) rec.u = rtEd.u;
       var plan = rtEd.id ? rtShiftPlan(rec) : null;
       var clash2 = plan ? (function(){ var h = null; plan.others.forEach(function(x){ var q = rtSpan(x); if(!h && sp[0] < q[1] && q[0] < sp[1]) h = x; }); return h; })() : rtBusy(rtEd.id, sp[0], sp[1]);
       if(clash2){ toast("That time is already taken by "+clash2.n+" ("+rtClock(rtSpan(clash2)[0])+" to "+rtClock(rtSpan(clash2)[1])+"). Pick a time after it."); return; }
@@ -20995,7 +21041,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "414";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "415";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
