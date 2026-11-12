@@ -1002,6 +1002,12 @@
   .rt-wk .today{background:linear-gradient(180deg,#ffd978,#e0a634); box-shadow:0 5px 0 #a8741a,0 10px 14px rgba(0,0,0,.4); color:#3a2a06; transform:translateY(-3px);} .rt-wk .today b{color:#2a1d03;}
   .rt-rows{position:relative; z-index:2;} .rt-r{display:flex; align-items:center; gap:10px; margin-top:8px;} .rt-r .t{flex:none; width:68px; font-weight:800; font-size:13px; text-shadow:0 2px 4px rgba(0,0,0,.4);} .rt-r .n{flex:1; min-width:0; font-size:14.5px; font-weight:600; text-shadow:0 2px 4px rgba(0,0,0,.35);} .rt-r .d{font-size:11.5px; color:#bff3ef;}
   .rt-r.study{background:linear-gradient(90deg,rgba(255,200,90,.24),rgba(255,200,90,.04)); border-radius:16px; margin:8px -6px 0; padding:5px 6px;}
+  .rt-r{transition:transform .5s ease, margin .5s ease, padding .5s ease, box-shadow .5s ease, background .5s ease;}
+  .rt-r.now{position:relative; transform:translateZ(46px) scale(1.07); margin:14px -10px 10px; padding:9px 10px; border-radius:22px; background:linear-gradient(100deg,rgba(255,255,255,.26),rgba(255,255,255,.08)); box-shadow:0 14px 26px rgba(0,0,0,.45),0 0 0 1.5px rgba(255,255,255,.28) inset,0 0 26px var(--c1);}
+  .rt-r.now .rt-tile{transform:scale(1.16); box-shadow:0 5px 0 var(--c3),0 14px 18px rgba(0,0,0,.4),0 0 22px var(--c1),0 1px 0 rgba(255,255,255,.55) inset;}
+  .rt-r.now .n{font-weight:800; font-size:15.5px;} .rt-r.now .t{font-size:14px;}
+  .rt-card.sun2 .rt-r.now{background:linear-gradient(100deg,rgba(255,255,255,.75),rgba(255,255,255,.35));}
+  @media (prefers-reduced-motion:reduce){ .rt-r{transition:none;} }
   .rt-ft{position:relative; z-index:2; display:flex; justify-content:space-between; margin-top:14px; padding-top:10px; border-top:1px solid rgba(255,255,255,.14); font-size:12px; color:#bff3ef;}
   .rt-shadow{height:22px; margin:-4px 34px 0; border-radius:50%; background:radial-gradient(ellipse,rgba(0,0,0,.5),transparent 70%);}
   .rt-card.sun2{background:linear-gradient(160deg,#ffd9a0 0%,#ff9f7a 40%,#8a5fd0 100%); border-color:rgba(255,255,255,.55); box-shadow:0 2px 0 rgba(255,255,255,.5) inset,0 -26px 40px rgba(60,20,90,.25) inset,18px 30px 50px rgba(0,0,0,.5),-4px 6px 0 #b0613f,-8px 12px 0 #8a4a30;} .rt-card.sun2:after{background:radial-gradient(circle,rgba(255,255,255,.7),transparent 62%);}
@@ -18121,13 +18127,26 @@ function rtDate(i){ var d = parseKey(rt.made); d.setDate(d.getDate()+i); return 
 function rtShortDate(d){ return d.toLocaleDateString(undefined, {day:"numeric", month:"short"}); }
 function rtWeekLabel(){ var a = rtDate(0), b = rtDate(6); return "Week of "+a.getDate()+" \u2013 "+b.getDate()+" "+b.toLocaleDateString(undefined, {month:"short"}); }
 
+// the activity that is happening on the phone's clock right now bulges out of the card (today's card only, on the days the routine runs)
+function rtNowId(){
+  var d = new Date(); if(rt.days.indexOf(d.getDay())<0) return -1;
+  var n = d.getHours()*60 + d.getMinutes(), hit = -1;
+  rtSorted().forEach(function(it, i){ var a = toMin(it.t), l = rtDur(it); if(l<=0) return; if((n>=a && n<a+l) || (a+l>1440 && n < a+l-1440)) hit = i; });
+  return hit;
+}
+function rtMarkNow(){
+  var host = document.getElementById("view-routine"); if(!host) return;
+  var at = rtScreen==="card" || (!rtScreen && rt.made) ? rtNowId() : -1;
+  Array.prototype.forEach.call(host.querySelectorAll(".rt-r"), function(r, i){ r.classList.toggle("now", i===at); });
+}
+setInterval(function(){ if(typeof rtMarkNow==="function" && document.visibilityState!=="hidden") rtMarkNow(); }, 20000);
 function renderRoutine(){
   var host = document.getElementById("view-routine");
   var made = !!rt.made && rt.items.length > 0;
   if(!rtScreen) rtScreen = made ? (rt.span==="month" ? "month" : "card") : "build";
   if(!made && rtScreen!=="build") rtScreen = "build";
   host.innerHTML = rtDefs()+(rtScreen==="build" ? rtBuildHtml() : (rtScreen==="month" ? rtMonthHtml() : rtCardHtml()));
-  rtBind(host);
+  rtBind(host); rtMarkNow();
 }
 function rtBuildHtml(){
   var list = rtSorted(), h = '<div class="rt">';
@@ -18150,7 +18169,7 @@ function rtCardHtml(){
   h += '<div class="rt-wk">'+[0,1,2,3,4,5,6].map(function(i){ var d = rtDate(i), on = rt.days.indexOf(d.getDay())>=0, td = toKey(d)===todayKey; return '<div class="'+(td?"today":"")+'"'+(on ? "" : ' style="opacity:.45"')+'><b>'+d.getDate()+'</b>'+RT_DAYN[d.getDay()]+'</div>'; }).join("")+'</div><div class="rt-rows">';
   list.forEach(function(it){
     var c = RT_COL[(rtStk(it.s)||[0,0,0,"blue"])[3]], study = it.k==="study" || /study/i.test(it.n);
-    h += '<div class="rt-r'+(study ? " study" : "")+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'"><span class="rt-tile">'+rtGlyph(it.s)+'</span><span class="t">'+esc(fmt12(it.t))+'</span><span class="n">'+esc(it.n)+'</span><span class="d">'+(it.e ? '\u2192 '+esc(fmt12(it.e).replace(/ ?(AM|PM)$/, "")) : esc(fmtHM(rtDur(it)))) +'</span></div>';
+    h += '<div class="rt-r'+(study ? " study" : "")+'" data-id="'+esc(it.id)+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'"><span class="rt-tile">'+rtGlyph(it.s)+'</span><span class="t">'+esc(fmt12(it.t))+'</span><span class="n">'+esc(it.n)+'</span><span class="d">'+(it.e ? '\u2192 '+esc(fmt12(it.e).replace(/ ?(AM|PM)$/, "")) : esc(fmtHM(rtDur(it)))) +'</span></div>';
   });
   var st = rtStudyBlocks().reduce(function(t, x){ return t + rtDur(x); }, 0);
   h += '</div><div class="rt-ft"><span>'+esc(rtDaysText())+'</span><span>'+(st ? 'Study '+esc(fmtHM(st))+' a day' : list.length+' activities')+'</span></div></div></div><div class="rt-shadow"></div>';
@@ -20636,7 +20655,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "388";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "389";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
