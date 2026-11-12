@@ -18369,7 +18369,11 @@ function rtAct(a, b){
   if(a==="card"){ rtScreen = "card"; renderRoutine(); window.scrollTo(0, 0); return; }
   if(a==="stop"){ if(window.confirm("Stop at one week? Your routine stays saved.")){ rt.span = "week"; rtSave(); rtScreen = "card"; renderRoutine(); } return; }
   if(a==="renew"){ rt.made = todayKey; rtSave(); renderRoutine(); return; }
-  if(a==="planner"){ setTab("planner"); return; }
+  if(a==="planner"){   // straight to step 1 of setting up or adjusting the plan, not the planner's home screen
+    if(studyPlan){ plannerEditing = true; wiz = wizFromPlan(studyPlan); wiz.step = 0; }
+    else { wiz = loadWizDraft() || wizDefaults(); wiz.step = 0; if(wiz.qs) wiz.qs.screen = QS_SCREENS[0]; wiz.err = []; }
+    setTab("planner"); window.scrollTo(0, 0); return;
+  }
   if(a==="share"){ rtShareImage(); return; }
 }
 // ---- the add / change sheet: form view and sticker library view ----
@@ -20813,7 +20817,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "398";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "399";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
