@@ -18003,53 +18003,70 @@ function rtSvgImage(id, px){
   return new Promise(function(res){ var im = new Image(); im.onload = function(){ res(im); }; im.onerror = function(){ res(null); }; im.src = "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svg); });
 }
 function rtRR(c, x, y, w, h, r){ c.beginPath(); c.moveTo(x+r, y); c.arcTo(x+w, y, x+w, y+h, r); c.arcTo(x+w, y+h, x, y+h, r); c.arcTo(x, y+h, x, y, r); c.arcTo(x, y, x+w, y, r); c.closePath(); }
+function rtSoft(c, x, y, w, h, r, fill, blur, dy, shade){   // a rounded shape that floats: soft blurred shadow, then the fill
+  c.save(); c.shadowColor = shade; c.shadowBlur = blur; c.shadowOffsetY = dy; c.fillStyle = fill; rtRR(c, x, y, w, h, r); c.fill(); c.restore();
+}
 function rtCardImage(){
-  var list = rtSorted(), sun = rt.theme==="sunrise", W = 1080, P = 64, rowH = 124, top = 372, H = top + list.length*rowH + 250;
+  var list = rtSorted(), sun = rt.theme==="sunrise", W = 1080, P = 64, rowH = 150, top = 392, H = top + list.length*rowH + 250;
   var cv = document.createElement("canvas"); cv.width = W; cv.height = H; var c = cv.getContext("2d");
-  var ink = sun ? "#2b1233" : "#e8fffc", soft = sun ? "#4a2a58" : "#bff3ef", FF = '-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
-  var g = c.createLinearGradient(0, 0, W, H);
-  if(sun){ g.addColorStop(0, "#ffd9a0"); g.addColorStop(.4, "#ff9f7a"); g.addColorStop(1, "#8a5fd0"); } else { g.addColorStop(0, "#1b6a78"); g.addColorStop(.42, "#0f3a47"); g.addColorStop(1, "#2c2750"); }
+  var ink = sun ? "#2b1233" : "#f2fffd", soft = sun ? "#5a3468" : "#c4f3ef", FF = '-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
+  var shade = sun ? "rgba(90,40,100,.38)" : "rgba(0,0,0,.5)";
+  var g = c.createLinearGradient(0, 0, W*.6, H);
+  if(sun){ g.addColorStop(0, "#ffe2b0"); g.addColorStop(.45, "#ffa98a"); g.addColorStop(1, "#9a6ad8"); } else { g.addColorStop(0, "#1e7482"); g.addColorStop(.45, "#10404e"); g.addColorStop(1, "#2f2a5c"); }
   c.fillStyle = g; c.fillRect(0, 0, W, H);
-  var glow = c.createRadialGradient(W-60, 40, 10, W-60, 40, 460); glow.addColorStop(0, sun ? "rgba(255,255,255,.7)" : "rgba(255,196,82,.5)"); glow.addColorStop(1, "rgba(255,196,82,0)"); c.fillStyle = glow; c.fillRect(0, 0, W, H);
-  c.fillStyle = ink; c.textBaseline = "alphabetic"; c.font = "800 66px "+FF; c.fillText("My weekly routine", P, 130);
+  // soft light orbs for depth
+  [[W-80, 60, 520, sun ? "255,255,255,.65" : "255,196,82,.45"], [40, H*.45, 420, sun ? "255,214,160,.45" : "70,200,220,.22"], [W-120, H*.82, 460, sun ? "190,150,255,.5" : "140,110,255,.28"]].forEach(function(o){
+    var r = c.createRadialGradient(o[0], o[1], 10, o[0], o[1], o[2]); r.addColorStop(0, "rgba("+o[3]+")"); r.addColorStop(1, "rgba(255,255,255,0)"); c.fillStyle = r; c.fillRect(0, 0, W, H);
+  });
+  c.fillStyle = ink; c.textBaseline = "alphabetic"; c.font = "800 70px "+FF;
+  c.save(); c.shadowColor = shade; c.shadowBlur = 14; c.shadowOffsetY = 6; c.fillText("My weekly routine", P, 134); c.restore();
   var nm = profile && profile.name ? " · "+profile.name : "";
-  c.fillStyle = soft; c.font = "500 34px "+FF; c.fillText(rtWeekLabel()+nm, P, 184);
-  // day strip
+  c.fillStyle = soft; c.font = "500 34px "+FF; c.fillText(rtWeekLabel()+nm, P, 190);
+  // day pills
   var dw = (W - 2*P - 6*14)/7;
   for(var i=0;i<7;i++){
-    var d = rtDate(i), on = rt.days.indexOf(d.getDay())>=0, td = toKey(d)===todayKey, x = P + i*(dw+14), y = 226;
+    var d = rtDate(i), on = rt.days.indexOf(d.getDay())>=0, td = toKey(d)===todayKey, x = P + i*(dw+14), y = 232, h = 118;
     c.globalAlpha = on ? 1 : .45;
-    var dg = c.createLinearGradient(0, y, 0, y+112);
-    if(td){ dg.addColorStop(0, "#ffd978"); dg.addColorStop(1, "#e0a634"); } else { dg.addColorStop(0, "rgba(255,255,255,"+(sun ? ".55" : ".2")+")"); dg.addColorStop(1, "rgba(255,255,255,"+(sun ? ".25" : ".07")+")"); }
-    c.fillStyle = "rgba(0,0,0,.25)"; rtRR(c, x, y+6, dw, 112, 24); c.fill();
-    c.fillStyle = dg; rtRR(c, x, y, dw, 112, 24); c.fill();
-    c.textAlign = "center"; c.fillStyle = td ? "#2a1d03" : ink; c.font = "800 38px "+FF; c.fillText(String(d.getDate()), x+dw/2, y+52);
-    c.fillStyle = td ? "#3a2a06" : soft; c.font = "500 24px "+FF; c.fillText(RT_DAYN[d.getDay()], x+dw/2, y+90);
+    var dg = c.createLinearGradient(0, y, 0, y+h);
+    if(td){ dg.addColorStop(0, "#ffe08a"); dg.addColorStop(1, "#e8a92f"); } else { dg.addColorStop(0, "rgba(255,255,255,"+(sun ? ".7" : ".28")+")"); dg.addColorStop(1, "rgba(255,255,255,"+(sun ? ".34" : ".08")+")"); }
+    rtSoft(c, x, y, dw, h, 40, dg, 22, 12, shade);
+    c.save(); rtRR(c, x, y, dw, h, 40); c.clip(); var sh = c.createLinearGradient(0, y, 0, y+h*.5); sh.addColorStop(0, "rgba(255,255,255,.55)"); sh.addColorStop(1, "rgba(255,255,255,0)"); c.fillStyle = sh; c.fillRect(x, y, dw, h*.5); c.restore();
+    c.textAlign = "center"; c.fillStyle = td ? "#2a1d03" : ink; c.font = "800 40px "+FF; c.fillText(String(d.getDate()), x+dw/2, y+55);
+    c.fillStyle = td ? "#4a3508" : soft; c.font = "500 24px "+FF; c.fillText(RT_DAYN[d.getDay()], x+dw/2, y+93);
     c.globalAlpha = 1; c.textAlign = "left";
   }
-  return Promise.all(list.map(function(it){ return rtSvgImage(it.s, 96); })).then(function(imgs){
+  return Promise.all(list.map(function(it){ return rtSvgImage(it.s, 112); })).then(function(imgs){
     list.forEach(function(it, i){
-      var y = top + i*rowH, col = RT_COL[(rtStk(it.s)||[0,0,0,"blue"])[3]], study = it.k==="study" || /study/i.test(it.n);
-      if(study){ var hg = c.createLinearGradient(P-12, 0, W-P, 0); hg.addColorStop(0, sun ? "rgba(255,255,255,.55)" : "rgba(255,200,90,.26)"); hg.addColorStop(1, "rgba(255,255,255,0)"); c.fillStyle = hg; rtRR(c, P-14, y-8, W-2*P+28, rowH-12, 32); c.fill(); }
-      c.fillStyle = col[2]; rtRR(c, P, y+8, 96, 96, 28); c.fill();
-      var tg = c.createLinearGradient(P, y, P+96, y+96); tg.addColorStop(0, col[0]); tg.addColorStop(1, col[1]); c.fillStyle = tg; rtRR(c, P, y, 96, 96, 28); c.fill();
-      if(imgs[i]) c.drawImage(imgs[i], P+5, y+5, 86, 86);
-      c.fillStyle = ink; c.font = "800 38px "+FF; c.fillText(rtCardRange(it), P+124, y+44);
-      c.fillStyle = soft; c.font = "500 30px "+FF; c.fillText(rtLenText(rtDur(it)), P+124, y+84);
+      var y = top + i*rowH, ch = rowH-22, col = RT_COL[(rtStk(it.s)||[0,0,0,"blue"])[3]], study = it.k==="study" || /study/i.test(it.n);
+      // the activity is a floating glass card
+      var cg = c.createLinearGradient(0, y, 0, y+ch);
+      if(study){ cg.addColorStop(0, sun ? "rgba(255,255,255,.85)" : "rgba(255,214,120,.34)"); cg.addColorStop(1, sun ? "rgba(255,255,255,.5)" : "rgba(255,214,120,.12)"); }
+      else { cg.addColorStop(0, sun ? "rgba(255,255,255,.6)" : "rgba(255,255,255,.17)"); cg.addColorStop(1, sun ? "rgba(255,255,255,.28)" : "rgba(255,255,255,.06)"); }
+      rtSoft(c, P-10, y, W-2*P+20, ch, 52, cg, 26, 12, shade);
+      c.save(); rtRR(c, P-10, y, W-2*P+20, ch, 52); c.clip(); var hl = c.createLinearGradient(0, y, 0, y+ch*.45); hl.addColorStop(0, "rgba(255,255,255,"+(sun ? ".5" : ".16")+")"); hl.addColorStop(1, "rgba(255,255,255,0)"); c.fillStyle = hl; c.fillRect(P-10, y, W-2*P+20, ch*.45); c.restore();
+      // glossy 3D tile
+      var tx = P+8, ty = y+ (ch-100)/2, ts = 100;
+      c.save(); c.shadowColor = col[2]; c.shadowBlur = 16; c.shadowOffsetY = 10; c.fillStyle = col[2]; rtRR(c, tx, ty+6, ts, ts, 34); c.fill(); c.restore();
+      var tg = c.createLinearGradient(tx, ty, tx+ts, ty+ts); tg.addColorStop(0, col[0]); tg.addColorStop(1, col[1]); c.fillStyle = tg; rtRR(c, tx, ty, ts, ts, 34); c.fill();
+      c.save(); rtRR(c, tx, ty, ts, ts, 34); c.clip(); var gl = c.createLinearGradient(0, ty, 0, ty+ts*.55); gl.addColorStop(0, "rgba(255,255,255,.55)"); gl.addColorStop(1, "rgba(255,255,255,0)"); c.fillStyle = gl; c.fillRect(tx, ty, ts, ts*.55); c.restore();
+      if(imgs[i]) c.drawImage(imgs[i], tx+7, ty+4, 86, 86);
+      c.fillStyle = ink; c.font = "800 38px "+FF; c.fillText(rtCardRange(it), tx+ts+28, y+58);
+      c.fillStyle = soft; c.font = "500 29px "+FF; c.fillText(rtLenText(rtDur(it)), tx+ts+28, y+98);
       c.textAlign = "right"; c.fillStyle = ink; c.font = "700 40px "+FF;
-      var nmax = W - P - (P+124) - 250, t = it.n; while(c.measureText(t).width > 360 && t.length > 4) t = t.slice(0, -2);
-      c.fillText(t.length < it.n.length ? t.trim()+"…" : t, W-P, y+60); c.textAlign = "left";
+      var t = it.n; while(c.measureText(t).width > 370 && t.length > 4) t = t.slice(0, -2);
+      c.fillText(t.length < it.n.length ? t.trim()+"…" : t, W-P-18, y+ch/2+14); c.textAlign = "left";
     });
-    var fy = top + list.length*rowH + 30;
-    c.strokeStyle = sun ? "rgba(43,18,51,.25)" : "rgba(255,255,255,.18)"; c.lineWidth = 2; c.beginPath(); c.moveTo(P, fy); c.lineTo(W-P, fy); c.stroke();
+    var fy = top + list.length*rowH + 8;
     var st = rtStudyBlocks().reduce(function(t, x){ return t + rtDur(x); }, 0);
-    c.fillStyle = soft; c.font = "500 30px "+FF; c.fillText(rtDaysText(), P, fy+54); c.textAlign = "right"; c.fillText(st ? "Study "+fmtHM(st)+" a day" : list.length+" activities", W-P, fy+54); c.textAlign = "left";
-    // watermark
-    c.fillStyle = sun ? "rgba(43,18,51,.12)" : "rgba(255,255,255,.1)"; rtRR(c, P, fy+84, W-2*P, 84, 42); c.fill();
-    c.fillStyle = "#e8b94c"; c.beginPath(); c.arc(P+42, fy+126, 20, 0, Math.PI*2); c.fill();
-    c.fillStyle = "#241d0b"; c.font = "800 26px "+FF; c.textAlign = "center"; c.fillText("C", P+42, fy+136); c.textAlign = "left";
-    c.fillStyle = ink; c.font = "800 38px "+FF; c.fillText("CSE Companion", P+82, fy+138);
-    c.textAlign = "right"; c.fillStyle = soft; c.font = "500 28px "+FF; c.fillText("Study planner & question bank", W-P-24, fy+136); c.textAlign = "left";
+    c.fillStyle = soft; c.font = "500 30px "+FF; c.fillText(rtDaysText(), P, fy+44); c.textAlign = "right"; c.fillText(st ? "Study "+fmtHM(st)+" a day" : list.length+" activities", W-P, fy+44); c.textAlign = "left";
+    // watermark pill
+    var wg = c.createLinearGradient(0, fy+72, 0, fy+164); wg.addColorStop(0, sun ? "rgba(255,255,255,.7)" : "rgba(255,255,255,.2)"); wg.addColorStop(1, sun ? "rgba(255,255,255,.35)" : "rgba(255,255,255,.07)");
+    rtSoft(c, P, fy+72, W-2*P, 92, 46, wg, 22, 10, shade);
+    var cx = P+56, cy = fy+118;
+    c.save(); c.shadowColor = "rgba(120,70,0,.5)"; c.shadowBlur = 10; c.shadowOffsetY = 5; var cg2 = c.createLinearGradient(0, cy-26, 0, cy+26); cg2.addColorStop(0, "#ffe08a"); cg2.addColorStop(1, "#e0a22c"); c.fillStyle = cg2; c.beginPath(); c.arc(cx, cy, 27, 0, Math.PI*2); c.fill(); c.restore();
+    c.fillStyle = "#3a2705"; c.font = "800 32px "+FF; c.textAlign = "center"; c.fillText("C", cx, cy+11); c.textAlign = "left";
+    c.fillStyle = ink; c.font = "800 40px "+FF; c.fillText("CSE Companion ©", P+104, cy+14);
+    c.textAlign = "right"; c.fillStyle = soft; c.font = "500 27px "+FF; c.fillText("Study planner & question bank", W-P-30, cy+10); c.textAlign = "left";
     return new Promise(function(res){ cv.toBlob(function(b){ res(b); }, "image/png"); });
   });
 }
@@ -20619,7 +20636,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "387";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "388";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
