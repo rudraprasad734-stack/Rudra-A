@@ -907,7 +907,10 @@
   .cov-row:first-child{border-top:none;}
   .cov-head{display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin-bottom:7px;}
   .cov-head .num{font-size:11.5px; color:var(--ink-faint);}
-  .cov-paper{background:none; border:none; padding:0; font-weight:700; font-size:13.5px; cursor:pointer; text-align:left;}
+  .cov-paper{background:none; border:none; padding:0; font-weight:700; font-size:13.5px; cursor:pointer; text-align:left; flex:1;}
+  .cov-tg{background:none; border:none; color:var(--ink-soft); font-size:15px; width:28px; height:28px; margin:-4px 2px -4px -6px; cursor:pointer; flex:none;}
+  .cov-head{align-items:center;} .cov-row.shut .cov-years{display:none;} .cov-row.shut .cov-head{margin-bottom:0;}
+  .cov-all{background:none; border:none; padding:0; color:inherit; font:inherit; letter-spacing:inherit; text-transform:inherit; cursor:pointer; display:inline-flex; align-items:center; gap:8px;} .cov-all i{font-style:normal; font-size:14px;}
   .cov-paper.on{color:var(--link); text-decoration:underline; text-underline-offset:3px;}
   .cov-years{display:flex; flex-wrap:wrap; gap:5px;}
   .yr{font-family:var(--font-mono); font-size:11.5px; font-variant-numeric:tabular-nums; padding:3px 7px; border-radius:6px; cursor:pointer; border:1px solid var(--line); background:var(--surface); color:var(--ink-soft);}
@@ -18312,7 +18315,8 @@ function rtApplyToPlan(plan, acts){   // the planner studies in the routine's st
     if(rt.days.length) c.days = rt.days.slice();
     var ss = rtPlanSessions(acts || plan.activities, c.days); if(!ss.length) ss = wins;
     var tot = ss.reduce(function(t, x){ return t + toMin(x.end) - toMin(x.start); }, 0);
-    c.sessions = JSON.parse(JSON.stringify(ss)); c.count = ss.length; c.perDay = {}; c.exact = true; c.layout = "manual"; c.fromRoutine = true; c.routineSig = rtSig(ss);
+    var keep = {}; (c.sessions || []).forEach(function(o){ if(o && o.subject) keep[o.start+"-"+o.end] = o.subject; });   // a subject you picked for a session stays when the sessions are rebuilt from the routine
+    c.sessions = JSON.parse(JSON.stringify(ss)); c.sessions.forEach(function(o){ if(keep[o.start+"-"+o.end]) o.subject = keep[o.start+"-"+o.end]; }); c.count = ss.length; c.perDay = {}; c.exact = true; c.layout = "manual"; c.fromRoutine = true; c.routineSig = rtSig(ss);
     c.dayHours = Math.max(0.5, Math.round(tot/15)/4);
   });
   return true;
@@ -20991,7 +20995,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "412";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "414";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -22456,17 +22460,18 @@ function renderPyq(){
     host.innerHTML = html + pyqQuizHtml(papers, false); bindPyq(host); return;
   }
   // Coverage: which papers and years are in the bank
-  if(!prelimsUi) html += '<div class="section-title">In the bank</div><div class="card coverage">'+
+  var cov = lsGetJSON("dossier.cov.v1", {}); if(!cov || typeof cov!=="object") cov = {};
+  if(!prelimsUi) html += '<div class="section-title"><button type="button" class="cov-all" data-cov="all" aria-expanded="'+(cov.all ? "false" : "true")+'">In the bank<i aria-hidden="true">'+(cov.all ? "\u25B8" : "\u25BE")+'</i></button></div>'+(cov.all ? '' : '<div class="card coverage">'+
     (papers.length ? papers.map(function(p){
-      var n = p.docs.reduce(function(s,d){ return s+(d.questions||[]).length; },0);
-      return '<div class="cov-row"><div class="cov-head"><button class="cov-paper'+(f.paper===p.paper?" on":"")+'" data-paper="'+esc(p.paper)+'">'+esc(p.paper)+'</button><span class="num">'+n+' Qs</span></div>'+
+      var n = p.docs.reduce(function(s,d){ return s+(d.questions||[]).length; },0), shut = !!(cov.p && cov.p[p.paper]);
+      return '<div class="cov-row'+(shut ? " shut" : "")+'"><div class="cov-head"><button type="button" class="cov-tg" data-cov="p" data-covp="'+esc(p.paper)+'" aria-expanded="'+(shut ? "false" : "true")+'" aria-label="'+(shut ? "Show" : "Hide")+' the years of '+esc(p.paper)+'">'+(shut ? "\u25B8" : "\u25BE")+'</button><button class="cov-paper'+(f.paper===p.paper?" on":"")+'" data-paper="'+esc(p.paper)+'">'+esc(p.paper)+'</button><span class="num">'+n+' Qs</span></div>'+
         '<div class="cov-years">'+p.docs.map(function(d){
           var on = f.paper===p.paper && String(f.year)===String(d.year);
           return '<button class="yr'+(d.complete?" full":" part")+(on?" on":"")+'" data-paper="'+esc(p.paper)+'" data-year="'+d.year+'" title="'+(d.complete?"Full paper":"Partial")+' · '+(d.questions||[]).length+' questions">'+d.year+'</button>';
         }).join("")+'</div></div>';
     }).join("") : '<div class="empty">No papers for this exam yet.</div>')+
     '<div class="cov-legend"><span><i class="yr full"></i>Full paper</span><span><i class="yr part"></i>Partial or topic-wise</span></div>'+
-  '</div>';
+  '</div>');
 
   // Filters
   var paperOpts = '<option value="all">All papers</option>'+papers.map(function(p){ return '<option'+(f.paper===p.paper?" selected":"")+'>'+esc(p.paper)+'</option>'; }).join("");
@@ -22813,6 +22818,14 @@ function bindPyq(host){
   });
   Array.prototype.forEach.call(host.querySelectorAll("[data-mode]"), function(b){
     b.addEventListener("click", function(){ var m = b.getAttribute("data-mode"); pyqMode = m==="quiz" ? "quiz" : "verified"; pyqRevealed = {}; f.reveal = false; renderPyq(); });
+  });
+  Array.prototype.forEach.call(host.querySelectorAll("[data-cov]"), function(b){   // fold the whole list, or one paper's years
+    b.addEventListener("click", function(){
+      var cv = lsGetJSON("dossier.cov.v1", {}); if(!cv || typeof cv!=="object") cv = {};
+      if(b.getAttribute("data-cov")==="all") cv.all = cv.all ? 0 : 1;
+      else { var pk = b.getAttribute("data-covp"); cv.p = cv.p || {}; cv.p[pk] = cv.p[pk] ? 0 : 1; }
+      lsSetJSON("dossier.cov.v1", cv); renderPyq();
+    });
   });
   Array.prototype.forEach.call(host.querySelectorAll(".cov-paper, .yr[data-year]"), function(b){
     b.addEventListener("click", function(){
