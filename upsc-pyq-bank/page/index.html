@@ -448,6 +448,11 @@
 
   main{padding:18px 16px 64px;}
   body.in-page main{padding-top:14px;}
+  /* Routine card and month page fill the screen: no top bar; a small close button (and the guide button) appear after a tap */
+  body.rt-full #pageBar{display:none;} body.rt-full main{padding-top:calc(env(safe-area-inset-top,0px) + 10px);}
+  #rtX,#rtI{position:fixed; top:calc(env(safe-area-inset-top,0px) + 8px); z-index:60; width:38px; height:38px; padding:0; border-radius:50%; border:1px solid var(--line); background:color-mix(in srgb, var(--surface-solid, #000) 78%, transparent); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); color:var(--ink); cursor:pointer; display:none; opacity:0; pointer-events:none; transition:opacity .35s ease;}
+  body.rt-full #rtX, body.rt-full #rtI{display:block;} #rtX.show, #rtI.show{opacity:1; pointer-events:auto;}
+  #rtX{left:10px; font-size:19px; line-height:1;} #rtI{right:10px; font:800 17px/1 Georgia,serif; font-style:italic;}
   .view{display:none;}
   .view.active{display:block;}
 
@@ -1909,6 +1914,7 @@ html.sp-on #app,html.sp-on #toast{visibility:hidden}
   <div id="chrome">
 
   <button type="button" id="menuBtn" aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><i></i><i></i><i></i></button>
+  <button type="button" id="rtX" aria-label="Close Routine and go to Dashboard">&#10005;</button><button type="button" id="rtI" aria-label="How Routine works">i</button>
   <button type="button" id="dashInfo" aria-label="How the Dashboard works">i</button>
   <div id="pageBar"><button type="button" id="pageClose" aria-label="Close and go to Dashboard">&#10005;</button><span id="pageTitle"></span><button type="button" id="pageInfo" aria-label="How this screen works" hidden>i</button></div>
   <nav id="subtabs" aria-label="Subsections"></nav>
@@ -18295,12 +18301,30 @@ setInterval(function(){
   if(card && card.classList.contains("sun2") !== rtIsDay() && !document.getElementById("modalHost")) renderRoutine();   // the sun has risen or set: change the card's colours
   else rtMarkNow();
 }, 20000);
+// full screen for the weekly card and the month page: the top bar goes, and a tap on the screen shows a small × (and ⓘ) for a few seconds
+var rtBtnTimer = 0;
+function rtFullSync(on){
+  document.body.classList.toggle("rt-full", !!on);
+  if(!on){ var a = document.getElementById("rtX"), b = document.getElementById("rtI"); if(a) a.classList.remove("show"); if(b) b.classList.remove("show"); }
+}
+function rtShowBtns(){
+  var a = document.getElementById("rtX"), b = document.getElementById("rtI"); if(!a || !b) return;
+  a.classList.add("show"); b.classList.add("show"); clearTimeout(rtBtnTimer);
+  rtBtnTimer = setTimeout(function(){ a.classList.remove("show"); b.classList.remove("show"); }, 3500);
+}
+document.addEventListener("click", function(e){
+  if(!document.body.classList.contains("rt-full") || e.target.closest("button, a, input, select, label, #modalHost, [data-rt]")) return;
+  rtShowBtns();
+});
+document.getElementById("rtX").addEventListener("click", function(){ setTab("dashboard"); });
+document.getElementById("rtI").addEventListener("click", function(){ openGuideSheet(); });
 function renderRoutine(){
   var host = document.getElementById("view-routine");
   var made = !!rt.made && rt.items.length > 0;
   if(!rtScreen) rtScreen = made ? "card" : "build";   // opening Routine always shows the weekly card, even when it continues for a month
   if(!made && rtScreen!=="build") rtScreen = "build";
   host.innerHTML = rtDefs()+(rtScreen==="build" ? rtBuildHtml() : (rtScreen==="month" ? rtMonthHtml() : rtCardHtml()));
+  rtFullSync(rtScreen==="card" || rtScreen==="month");
   rtBind(host);
   if(rtRunNext){ rtRunNext = false; rtRunBulge(); } else rtMarkNow();
 }
@@ -18484,6 +18508,7 @@ function rtOpenSheet(ed, editing){
 
 function renderView(id){
   setTimeout(syncTodayOpenClass, 0);
+  if(id!=="routine") rtFullSync(false);
   if(id==="dashboard") renderDashboard();
   else if(id==="planner") renderPlanner();
   else if(id==="routine"){ rtScreen = ""; rtRunNext = true; renderRoutine(); }
@@ -20818,7 +20843,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "401";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "402";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
