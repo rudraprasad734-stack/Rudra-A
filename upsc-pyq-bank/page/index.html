@@ -18315,7 +18315,8 @@ function rtApplyToPlan(plan, acts){   // the planner studies in the routine's st
     if(rt.days.length) c.days = rt.days.slice();
     var ss = rtPlanSessions(acts || plan.activities, c.days); if(!ss.length) ss = wins;
     var tot = ss.reduce(function(t, x){ return t + toMin(x.end) - toMin(x.start); }, 0);
-    c.sessions = JSON.parse(JSON.stringify(ss)); c.count = ss.length; c.perDay = {}; c.exact = true; c.layout = "manual"; c.fromRoutine = true; c.routineSig = rtSig(ss);
+    var keep = {}; (c.sessions || []).forEach(function(o){ if(o && o.subject) keep[o.start+"-"+o.end] = o.subject; });   // a subject you picked for a session stays when the sessions are rebuilt from the routine
+    c.sessions = JSON.parse(JSON.stringify(ss)); c.sessions.forEach(function(o){ if(keep[o.start+"-"+o.end]) o.subject = keep[o.start+"-"+o.end]; }); c.count = ss.length; c.perDay = {}; c.exact = true; c.layout = "manual"; c.fromRoutine = true; c.routineSig = rtSig(ss);
     c.dayHours = Math.max(0.5, Math.round(tot/15)/4);
   });
   return true;
@@ -20994,7 +20995,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "413";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "414";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
