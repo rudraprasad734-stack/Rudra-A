@@ -1002,6 +1002,7 @@
   .rt-card.sun2{background:linear-gradient(160deg,#ffd9a0 0%,#ff9f7a 40%,#8a5fd0 100%); border-color:rgba(255,255,255,.55); box-shadow:0 2px 0 rgba(255,255,255,.5) inset,0 -26px 40px rgba(60,20,90,.25) inset,18px 30px 50px rgba(0,0,0,.5),-4px 6px 0 #b0613f,-8px 12px 0 #8a4a30;} .rt-card.sun2:after{background:radial-gradient(circle,rgba(255,255,255,.7),transparent 62%);}
   .rt-card.sun2 h2,.rt-card.sun2 .rt-r .t,.rt-card.sun2 .rt-r .n{color:#2b1233; text-shadow:0 1px 0 rgba(255,255,255,.4);} .rt-card.sun2 .rt-sub,.rt-card.sun2 .rt-r .d,.rt-card.sun2 .rt-ft{color:#4a2a58;} .rt-card.sun2 .rt-wk div{background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,.25)); color:#4a2a58;} .rt-card.sun2 .rt-wk b{color:#2b1233;} .rt-card.sun2 .rt-r.study{background:linear-gradient(90deg,rgba(255,255,255,.5),rgba(255,255,255,.1));}
   .rt-ic{width:100%; height:100%; display:block; padding:6%; box-sizing:border-box;} .rt-tile .rt-ic{padding:6%;} .rt-sk .rt-ic{padding:6%;} .rt-sun .rt-ic{padding:0;} .rt-sun{width:62px; height:62px;} .rt-mini{display:inline-block; width:20px; height:20px; vertical-align:-5px; margin-right:6px;} .rt-mini .rt-ic{padding:0;}
+  .rt-remc{margin-top:14px; padding:12px 14px; border:1.5px solid var(--line); border-radius:18px; background:var(--surface);} .rt-rem{margin-top:0;} .rt-rem span{display:block;} .rt-rem b{display:block; font-size:15px;} .rt-rem small{display:block; font-size:12.5px; color:var(--ink-soft); font-weight:500;} .rt-leads{margin-top:10px;} .rt-warn{margin-top:10px; padding:9px 12px; border-radius:12px; background:rgba(239,106,88,.14); color:#ef6a58; font-size:13px;}
   .rt-themes{justify-content:center; margin-top:10px;}
   .rt-cal{display:grid; grid-template-columns:repeat(7,1fr); gap:6px; margin-top:10px;} .rt-cal div{aspect-ratio:1; border-radius:10px; display:grid; place-items:center; font-size:13px; font-weight:700; background:var(--surface); border:1.5px solid var(--line);} .rt-cal .h{background:none; border:0; aspect-ratio:auto; color:var(--ink-soft); font-size:11px;} .rt-cal .x{background:none; border:0;} .rt-cal .w{background:#12604a; border-color:#34c98a; color:#fff;} .rt-cal .t{background:var(--gold); color:var(--gold-ink,#241d0b); border-color:var(--gold);}
   .rt-wkrow{display:flex; justify-content:space-between; align-items:center; background:var(--surface); border:1.5px solid var(--line); border-radius:14px; padding:12px; margin-top:8px; font-size:14px;} .rt-wkrow b{color:#34c98a;} .rt-wkrow b.pl{color:var(--ink-soft); font-weight:500;}
@@ -17929,7 +17930,7 @@ var RT_PRESETS = [
   {n:"Lunch", s:"rice", t:"12:30", d:45}, {n:"Dinner", s:"plate", t:"20:00", d:40}, {n:"Sleep", s:"moon", t:"22:00", d:420}, {n:"Exercise", s:"run", t:"17:30", d:45}
 ];
 var RT_DAYN = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-function rtDefault(){ return {items:[], days:[1,2,3,4,5,6], theme:"night", made:"", span:"week"}; }
+function rtDefault(){ return {items:[], days:[1,2,3,4,5,6], theme:"night", made:"", span:"week", rem:{on:false, lead:5, sent:{}}}; }
 function rtLoad(){
   try{
     var v = JSON.parse(localStorage.getItem(RT_KEY) || "null");
@@ -17938,6 +17939,8 @@ function rtLoad(){
       v.items.forEach(function(x){ var st = rtStk(x.s); x.s = st ? st[0] : "study"; });
       v.days = Array.isArray(v.days) ? v.days.filter(function(d){ return d>=0 && d<=6; }) : [1,2,3,4,5,6];
       v.theme = v.theme==="sunrise" ? "sunrise" : "night"; v.span = v.span==="month" ? "month" : "week"; v.made = /^\d{4}-\d\d-\d\d$/.test(v.made||"") ? v.made : "";
+      var rm = v.rem && typeof v.rem==="object" ? v.rem : {};
+      v.rem = {on:!!rm.on, lead:[0,5,10,15].indexOf(+rm.lead)>=0 ? +rm.lead : 5, sent:rm.sent && typeof rm.sent==="object" ? rm.sent : {}};
       return v;
     }
   }catch(e){}
@@ -17997,6 +18000,11 @@ function rtCardHtml(){
   var st = rtStudyBlocks().reduce(function(t, x){ return t + rtDur(x); }, 0);
   h += '</div><div class="rt-ft"><span>'+esc(rtDaysText())+'</span><span>'+(st ? 'Study '+esc(fmtHM(st))+' a day' : list.length+' activities')+'</span></div></div></div><div class="rt-shadow"></div>';
   h += '<div class="rt-chips rt-themes" role="group" aria-label="Card theme"><button type="button" class="rt-chip'+(sun ? "" : " on")+'" data-rt="theme" data-v="night">Night</button><button type="button" class="rt-chip'+(sun ? " on" : "")+'" data-rt="theme" data-v="sunrise">Sunrise</button></div>';
+  var perm = "Notification" in window ? Notification.permission : "unsupported";
+  h += '<div class="rt-remc"><label class="qz-row rt-rem"><span><b>Reminders</b><small>One switch for every activity</small></span><input type="checkbox" role="switch" id="rtRem" '+(rt.rem.on ? "checked" : "")+'><i class="qz-sw" aria-hidden="true"></i></label>'+
+    (rt.rem.on ? '<div class="rt-chips rt-leads" role="group" aria-label="When to remind">'+[[0,"At the time"],[5,"5 min before"],[10,"10 min before"],[15,"15 min before"]].map(function(l){ return '<button type="button" class="rt-chip'+(rt.rem.lead===l[0] ? " on" : "")+'" data-rt="lead" data-v="'+l[0]+'">'+l[1]+'</button>'; }).join("")+'</div>' : "")+
+    (rt.rem.on && perm==="denied" ? '<div class="rt-warn">Notifications are blocked for this site in your browser settings. Allow them there to get reminders.</div>' : "")+
+    '<div class="muted rt-note" style="text-align:left">Reminders show on the days your routine runs. They appear while the app is open or running in the background; a fully closed browser cannot wake itself.</div></div>';
   h += '<div class="rt-two"><button type="button" class="rt-btn" data-rt="share">\u2197 Share</button><button type="button" class="rt-btn" data-rt="edit-all">\u270E Edit</button></div>';
   if(rt.span!=="month") h += '<button type="button" class="rt-go sm" data-rt="month">Continue this for 1 month \u203A</button><div class="muted rt-note">Runs for 1 week now. Continue keeps it going for four weeks.</div>';
   var ended = toKey(rtDate(6)) < todayKey;
@@ -18021,13 +18029,50 @@ function rtBind(host){
   Array.prototype.forEach.call(host.querySelectorAll("[data-rt]"), function(b){
     b.addEventListener("click", function(){ rtAct(b.getAttribute("data-rt"), b); });
   });
+  var sw = host.querySelector("#rtRem");
+  if(sw) sw.addEventListener("change", function(){ rtRemSet(sw.checked); });
 }
+// ---- reminders: one switch for every activity (uses the same notification path as the study reminders) ----
+function rtRemSet(on){
+  if(!on){ rt.rem.on = false; rtSave(); renderRoutine(); return; }
+  if(!("Notification" in window)){ toast("This browser does not support notifications."); rt.rem.on = false; rtSave(); renderRoutine(); return; }
+  function done(p){
+    if(p==="granted"){ rt.rem.on = true; toast("Reminders are on for every activity."); rtTick(); }
+    else{ rt.rem.on = false; toast("Notifications are not allowed. Turn them on in your browser settings to get reminders."); }
+    rtSave(); renderRoutine();
+  }
+  try{
+    var res = Notification.requestPermission(done);
+    if(res && typeof res.then==="function") res.then(done);
+  }catch(e){ done("denied"); }
+}
+function rtTick(){
+  if(!rt.rem.on || !rt.made || !rt.items.length || !("Notification" in window) || Notification.permission!=="granted") return;
+  var now = new Date(), t = toKey(now), mins = now.getHours()*60 + now.getMinutes(), idx = Math.round((parseKey(t) - parseKey(rt.made)) / 86400000), last = rt.span==="month" ? 27 : 6, changed = false;
+  if(idx < 0 || idx > last || rt.days.indexOf(now.getDay()) < 0) return;
+  rt.items.forEach(function(it){
+    var start = toMin(it.t), end = it.e ? toMin(it.e) : start + Math.max(rtDur(it), 15), key = t+"|"+it.id+"|"+it.t;
+    if(mins >= start - rt.rem.lead && mins < end && !rt.rem.sent[key]){
+      rt.rem.sent[key] = 1; changed = true;
+      var lead = start - mins;
+      remNotify(lead > 0 ? it.n+" in "+lead+" min" : it.n+" now", fmt12(it.t)+(it.e ? " \u2013 "+fmt12(it.e) : " \u00B7 "+fmtHM(rtDur(it))), "rt|"+key);
+    }
+  });
+  if(changed){
+    var cut = toKey(addDays(now, -3));
+    Object.keys(rt.rem.sent).forEach(function(k){ if(k.slice(0,10) < cut) delete rt.rem.sent[k]; });
+    rtSave();
+  }
+}
+setInterval(rtTick, 30000);
+document.addEventListener("visibilitychange", function(){ if(document.visibilityState==="visible") rtTick(); });
 function rtAct(a, b){
   if(a==="preset"){ var p = RT_PRESETS[+b.getAttribute("data-i")]; rtOpenSheet({n:p.n, s:p.s, t:p.t, e:p.e || "", d:p.d || 30, k:p.k || ""}); return; }
   if(a==="add"){ rtOpenSheet({n:"", s:"study", t:"06:00", e:"", d:30, k:""}); return; }
   if(a==="edit"){ var id = b.getAttribute("data-id"), it = rt.items.filter(function(x){ return x.id===id; })[0]; if(it) rtOpenSheet(JSON.parse(JSON.stringify(it)), true); return; }
   if(a==="day"){ var d = +b.getAttribute("data-d"), i = rt.days.indexOf(d); if(i>=0) rt.days.splice(i, 1); else rt.days.push(d); rtSave(); renderRoutine(); return; }
   if(a==="create"){ if(b.disabled) return; rt.made = todayKey; rt.span = "week"; rtSave(); rtScreen = "card"; renderRoutine(); window.scrollTo(0, 0); return; }
+  if(a==="lead"){ rt.rem.lead = +b.getAttribute("data-v"); rtSave(); renderRoutine(); return; }
   if(a==="theme"){ rt.theme = b.getAttribute("data-v"); rtSave(); renderRoutine(); return; }
   if(a==="edit-all"){ rtScreen = "build"; renderRoutine(); window.scrollTo(0, 0); return; }
   if(a==="month"){ rt.span = "month"; rtSave(); rtScreen = "month"; renderRoutine(); window.scrollTo(0, 0); toast("Your routine will keep going for four weeks."); return; }
@@ -20333,6 +20378,7 @@ var GUIDES = {
 var GUIDE_TIPS = {
   routine:["Your routine is saved on this device only. It is not sent to any cloud.",
     "Activities are sorted by time for you. Tap an activity to change or remove it.",
+    "The <b>Reminders</b> switch under your card turns reminders on or off for every activity at once. Pick how early you want to be reminded.",
     "<b>Share</b> sends your routine as text. A picture card to share is not available yet."],
   planner:["<b>Subjects run one after another.</b> Complete a subject to unlock the next. The calendar follows your progress, and changing the plan never erases it.",
     "<b>Your subjects</b> list shows the subjects running now. Tap <b>Show all subjects</b> to see the ones that come later. A bar shows how much of a subject you have finished, and \uD83D\uDD12 means it starts after the one above.",
@@ -20424,7 +20470,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "379";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "380";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
