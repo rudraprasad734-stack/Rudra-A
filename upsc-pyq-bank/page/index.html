@@ -971,6 +971,7 @@
   .pq-fab{position:fixed; right:0; bottom:calc(96px + env(safe-area-inset-bottom,0px)); z-index:40; display:flex; align-items:center; gap:8px; border:1.5px solid var(--tab-accent); border-right:0; border-radius:99px 0 0 99px; padding:11px 14px 11px 16px; background:var(--surface-solid,var(--bg)); color:var(--ink); font:inherit; font-weight:800; font-size:14.5px; box-shadow:0 6px 20px rgba(0,0,0,.4); cursor:pointer; transition:transform .45s ease;}
   .pq-fab-i{display:none;} .pq-fab.tuck{transform:translateX(calc(100% - 46px)); padding-left:12px;} .pq-fab.tuck .pq-fab-t{display:none;} .pq-fab.tuck .pq-fab-i{display:inline;}
   .src-more{margin:2px 0 8px;} .src-more summary{font-size:12px; color:var(--ink-soft); cursor:pointer; list-style:none;} .src-more summary::-webkit-details-marker{display:none;} .src-more summary::before{content:"ⓘ "; }
+  .tl-more{display:block; width:100%; margin-top:10px;}
   .pr-tag{float:right; font-size:12px; color:var(--ink-soft);} .pr-tag.done{color:#34c98a; font-weight:700;}
   .qz-seg.sm{margin-top:-4px;} .qz-seg.sm button.on{background:var(--tab-accent); color:var(--tab-accent-ink,#04141a);}
   .qz-go.ghost{padding:9px 14px; font-size:15px;} .qz-go.ghost small{font-size:11.5px;}
@@ -7535,7 +7536,7 @@ function fitLineHtml(w){
   var f = null; try{ f = fitInfo(w); }catch(e){ window.__fitErr = e && e.stack; }
   if(!f) return '<div class="muted mt">Set your duration first, then this shows whether your hours are enough.</div>';
   var spare = f.have - f.need;
-  var ct = f.hours && f.hours.def ? ' Each chapter gets about '+esc(fmtHM(Math.round(f.hours.def*60)))+'.' : "";
+  var ct = "";
   if(f.fits) return '<div class="fit-v ok"><b>✓ Everything fits.</b>'+ct+' '+(f.budgeted ? 'Finishes about '+esc(fmtShort(parseKey(f.finish || f.end)))+'.' : spare >= 60 ? 'About '+esc(fmtHM(spare))+' to spare before '+esc(fmtShort(parseKey(f.end)))+'.' : 'It is a tight fit, so a few missed days will push the end date.')+'</div>';
   var short = Math.max(0, f.need - f.have), over = Math.max(60, f.leftMin);
   var tips = [];
@@ -8097,7 +8098,7 @@ function wzReviewDetail(w){
       '<div><span>Window</span><b>'+esc(fmtShort(parseKey(w.start)))+' &rarr; '+esc(fmtShort(parseKey(st.end)))+'</b><small>'+(w.durMode==="months" && +w.months>0 ? +w.months : st.months)+' months &middot; '+st.days+' days</small></div>'+
       '<div><span>Preparing</span><b>'+({prelims:"Prelims",mains:"Mains",both:"Prelims + Mains"})[w.mode]+'</b><small>'+esc(w.optionalOn && w.mode!=="prelims" && w.optional ? "Optional: "+w.optional : "")+'</small></div>'+
       '<div><span>Chapters in scope</span><b>'+totalLeaves+'</b><small>'+states.length+' subjects</small></div>'+
-      '<div><span>Capacity</span><b>'+esc(fmtHM(plan.capacity.sessions.reduce(function(t, x){ return t + Math.max(0, toMin(x.end)-toMin(x.start)); }, 0)))+' a day</b><small>'+w.cap.days.length+' days/week &middot; '+st.hours+' h total</small></div>'+
+      '<div><span>Study days</span><b>'+w.cap.days.length+' days/week</b><small>'+st.hours+' h total</small></div>'+
     '</div>'+
     '<h4>Subject chain (projected finish)</h4><div class="chain-mini">'+states.map(function(s, i){
       var sp = sim.spans[s.name];
@@ -8444,6 +8445,7 @@ function planReadyModal(){
 // ============================================================================
 // PLANNER HOME: LEGO chain + Yearly / Monthly / Weekly / Daily + Progress
 // ============================================================================
+var plannerSubjAll = false;   // Plan tab: false = only the subjects running now
 var plannerScrollTo = "", progOpen = {}, plannerView = "overview", plannerLanding = null, plannerMonth = null, plannerWeek = null, plannerDay = null;
 // two tabs: Plan (the subjects, pace, chapters, reminders) and Schedule (Day, Week, Month, Year, each opening with a progress ring)
 var PLANNER_TABS = [["plan","Plan"],["schedule","Schedule"],["optional","Optional"]];
@@ -8601,7 +8603,9 @@ function planTimelineHtml(plan, states){
   var sim = viewIndex().sim, all = (sim ? sim.sessions : []).concat(studySessions), rng = {};
   all.forEach(function(x){ if(x.kind!=="study" || x.status==="skipped") return; var r = rng[x.subject] || (rng[x.subject] = {lo:x.date, hi:x.date}); if(x.date<r.lo) r.lo = x.date; if(x.date>r.hi) r.hi = x.date; });
   function dm(k){ var d = parseKey(k), o = {day:"numeric", month:"short"}; if(d.getFullYear() !== parseKey(todayKey).getFullYear()) o.year = "numeric"; return d.toLocaleDateString(undefined, o); }
-  var rows = states.map(function(st){
+  var running = states.filter(function(st){ return st.state!=="completed" && !(st.state==="locked" && !st.pinned); });
+  var hiddenN = states.length - running.length, shownStates = plannerSubjAll ? states : running;
+  var rows = shownStates.map(function(st){
     var r = rng[st.name], locked = st.state==="locked" && !st.pinned, nm = st.name.replace(/ \(Optional\)$/, ""), tag, when;
     if(st.state==="completed"){ tag = "Done"; when = ""; }
     else if(locked){ tag = "Later"; when = r ? "starts " + dm(r.lo) : ""; }
@@ -8610,7 +8614,8 @@ function planTimelineHtml(plan, states){
       +'<div class="tl2-h"><span class="tl2-n">'+(locked ? "🔒 " : subjEmoji(st.name)+" ")+esc(nm)+'</span><span class="tl2-w"><b>'+tag+'</b>'+(when ? " &middot; "+esc(when) : "")+'</span></div>'
       +'<div class="tl2-t"><i style="width:'+st.pct+'%"></i></div><div class="tl2-p">'+st.pct+'% done'+(function(){ var nl = st.state==="completed" || locked ? null : nextLeaf(st); return nl ? ' &middot; Running now: <b>'+esc(nl.unit)+'</b>' : ""; })()+'</div></div>';
   }).join("");
-  return '<div class="card tlc"><div class="k2">YOUR SUBJECTS, ONE AFTER ANOTHER</div>'+rows+'<div class="tl-key"><span>Bar = how much you have finished</span><span>🔒 starts after the one above</span></div></div>';
+  return '<div class="card tlc"><div class="k2">YOUR SUBJECTS, ONE AFTER ANOTHER</div>'+rows+
+    (hiddenN>0 || plannerSubjAll ? '<button type="button" class="btn ghost sm tl-more" data-pa="subjall" aria-expanded="'+plannerSubjAll+'">'+(plannerSubjAll ? "Show running subjects only \u25B4" : "Show all "+states.length+" subjects \u25BE")+'</button>' : "")+'</div>';
 }
 function nextUpHtml(){
   var list = planSessionsOn(todayKey).filter(function(x){ return !x.projected && x.status!=="completed" && x.status!=="skipped"; });
@@ -8623,7 +8628,7 @@ function nextUpHtml(){
 function overviewHtml(plan, states){
   var st = windowStats(plan.cfg), op = overallProgress(plan), sim = viewIndex().sim, left = sim ? sim.remaining : 0;
   return planTimelineHtml(plan, states)+
-    '<div class="card pace"><div><b>Hours a day</b><div class="muted">'+(function(){ var c = plan.capacity, mine = [], dh = c.dayHours > 0 ? fmtHM(Math.round(c.dayHours*60)) : fmtHM(c.sessions.reduce(function(t, x){ return t + Math.max(0, toMin(x.end)-toMin(x.start)); }, 0)); return esc(dh)+' a day'+(mine.length ? '; '+mine.map(function(n){ return esc(n)+' '+esc(fmtHM(Math.round(c.subjHours[n]*60))); }).join(", ") : "")+'. Each chapter gets about <b>'+esc(fmtHM(Math.round((c.hours ? c.hours.def : 2)*60)))+'</b>.'; })()+'</div></div><button type="button" class="btn ghost sm" data-pa="hours">Change</button></div>'+
+
     (left ? hoursReportHtml(plan) : "")+
     '<div class="card ov-win"><div class="muted">Window '+esc(fmtShort(parseKey(plan.window.start)))+' &rarr; '+esc(fmtShort(parseKey(plan.window.end)))+' &middot; '+(st.ok ? st.days+" days &middot; "+st.hours+" study hours" : "")+'</div><div class="ov-btns"><button type="button" class="btn ghost sm" data-pa="edit">Edit plan</button><button type="button" class="btn danger sm" data-pa="reset">Reset plan</button></div></div>';
 }
@@ -16576,7 +16581,7 @@ function renderPlannerHome(host){
   if(tabNow==="plan") body = overviewHtml(plan, states)+fallingBehindHtml()+remindersHtml()+'<div class="section-title">Chapters</div>'+progressHtml(plan, states);
   var sub = tabNow==="schedule" ? '<div class="pl-sub" role="tablist">'+SCHED_VIEWS.map(function(t){ return '<button type="button" role="tab" class="'+(t[0]===plannerView?"on":"")+'" aria-selected="'+(t[0]===plannerView)+'" data-pa="view" data-v="'+t[0]+'">'+t[1]+'</button>'; }).join("")+'</div>' : "";
   host.innerHTML =
-    '<div class="card pl-title"><div><h2>Preparation Planner</h2><div class="muted">Complete a subject to unlock the next. The calendar follows your progress, and changing the plan never erases it.</div>'+(subMode()==="trial" ? '<div class="trial-chip">Free trial · Day '+trialInfo().day+' of '+TRIAL_DAYS+' · '+esc(trialInfo().leftText)+'</div>' : "")+'</div><button type="button" class="btn ghost sm" data-go="reschedule">Adjust plan</button></div>'+
+    '<div class="card pl-title"><div><h2>Preparation Planner</h2>'+(subMode()==="trial" ? '<div class="trial-chip">Free trial · Day '+trialInfo().day+' of '+TRIAL_DAYS+' · '+esc(trialInfo().leftText)+'</div>' : "")+'</div><button type="button" class="btn ghost sm" data-go="reschedule">Adjust plan</button></div>'+
     '<div class="pl-tabs">'+PLANNER_TABS.map(function(t){ return '<button type="button" class="'+(t[0]===tabNow?"on":"")+'" data-pa="view" data-v="'+(t[0]==="plan" ? "overview" : (t[0]==="schedule" ? lastSched : "optional"))+'">'+t[1]+'</button>'; }).join("")+'</div>'+sub+catchBannerHtml()+body;
   centerActive(host.querySelector(".pl-tabs"), "button.on", false);
   if(plannerScrollTo){ var tgt = host.querySelector('[data-prog="'+plannerScrollTo.replace(/"/g, '\\"')+'"]'); plannerScrollTo = ""; if(tgt) setTimeout(function(){ tgt.scrollIntoView({block:"start"}); window.scrollBy(0, -70); }, 60); }
@@ -16630,6 +16635,7 @@ function plannerAction(a, el, sure){
   var v = el.getAttribute("data-v");
   switch(a){
     case "view": plannerView = v; break;
+    case "subjall": plannerSubjAll = !plannerSubjAll; break;
     case "optup": case "optdown": case "chup": case "chdown": case "starthere": case "optreset": case "optopen": case "optfilter": optAction(a, v); break;
     case "hours": plannerEditing = true; wiz = wizFromPlan(studyPlan); wiz.step = 5; wiz.capScreen = "subj"; break;
     case "autofit": studyPlan.capacity.layout = "auto"; studyPlan.capacity.limitMin = 0; if(studyPlan.cfg && studyPlan.cfg.cap){ studyPlan.cfg.cap.layout = "auto"; studyPlan.cfg.cap.limitMin = 0; } solveLayout(studyPlan); if(studyPlan.cfg && studyPlan.cfg.cap) studyPlan.cfg.cap.dayStart = studyPlan.capacity.dayStart; savePlan(); replan(); toast("Your day now has enough hours to fit every chapter."); break;
@@ -20043,7 +20049,9 @@ var GUIDES = {
     "<b>App guides</b> at the bottom lets you read any of these tips again."]}
 };
 var GUIDE_TIPS = {
-  planner:["<b>Activities come first.</b> If a study session falls at the same time as an activity, the activity takes that slot and the topic moves to the next free study slot, on a later day. Nothing is dropped. One time slot holds only one thing.",
+  planner:["<b>Subjects run one after another.</b> Complete a subject to unlock the next. The calendar follows your progress, and changing the plan never erases it.",
+    "<b>Your subjects</b> list shows the subjects running now. Tap <b>Show all subjects</b> to see the ones that come later. A bar shows how much of a subject you have finished, and \uD83D\uDD12 means it starts after the one above.",
+    "<b>Activities come first.</b> If a study session falls at the same time as an activity, the activity takes that slot and the topic moves to the next free study slot, on a later day. Nothing is dropped. One time slot holds only one thing.",
     "<b>Dates are a forecast.</b> Finish a subject early and the dates come sooner; fall behind and they slip later. Past months show what you actually did.",
     "<b>Daily:</b> set a session\u2019s status or actual time there. Your plan, progress and dashboard update automatically."],
   tiers:["Tiers show how often a topic appeared in past papers: Tier 1 most often. Tap a chapter to see the day it is planned, or tap its PYQ button to read the questions.",
@@ -20131,7 +20139,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "373";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "374";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
