@@ -1000,6 +1000,12 @@
   .rt-note{text-align:center; margin-top:8px;}
   .rt-next{display:flex; gap:12px; align-items:center; margin-top:16px; padding:12px 14px; border:1.5px solid var(--gold); border-radius:18px; background:var(--surface);} .rt-nx-i{flex:none; width:42px; height:42px; border-radius:13px; background:var(--gold); color:var(--gold-ink,#241d0b); display:grid; place-items:center; font-size:22px; box-shadow:0 4px 0 #a8741a;} .rt-next b{display:block; font-size:15px;} .rt-next span span{font-size:12.5px; color:var(--ink-soft);}
   .rt-stage{perspective:1100px; padding:16px 6px 44px;}
+  /* Routine card screen: the actions are one slim bar fixed to the bottom */
+  body.rt-full #view-routine{padding-bottom:78px;}
+  .rt-bar{position:fixed; left:0; right:0; bottom:0; z-index:40; display:flex; gap:8px; justify-content:center; padding:18px 10px calc(10px + env(safe-area-inset-bottom,0px)); background:linear-gradient(to top, var(--bg,#06161b) 55%, transparent); pointer-events:none;}
+  .rt-bar button{pointer-events:auto; flex:1; max-width:96px; display:flex; flex-direction:column; align-items:center; gap:1px; padding:7px 4px; border-radius:16px; border:1.5px solid var(--tab-accent,#e8b94c); background:color-mix(in srgb, var(--surface-solid,#06161b) 86%, transparent); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); color:var(--tab-accent,#e8b94c); font:inherit; cursor:pointer;}
+  .rt-bar button i{font-style:normal; font-size:16px; line-height:1.1;} .rt-bar button span{font-size:11.5px; font-weight:800;}
+  .rt-bar button.hl{background:var(--tab-accent,#e8b94c); color:#241d0b;}
   .rt-card{position:relative; transform:rotateX(7deg) rotateY(-9deg); transform-style:preserve-3d; border-radius:30px; padding:20px 18px 16px; color:#e8fffc; background:linear-gradient(155deg,#1b6a78 0%,#0f3a47 42%,#2c2750 100%); box-shadow:0 2px 0 rgba(255,255,255,.18) inset,0 -26px 40px rgba(0,0,0,.28) inset,18px 30px 50px rgba(0,0,0,.55),-4px 6px 0 #0a2a33,-8px 12px 0 #08222a; border:1.5px solid rgba(120,230,235,.35); overflow:hidden;}
   .rt-card:before{content:""; position:absolute; inset:0; background:linear-gradient(115deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,0) 32%); pointer-events:none;} .rt-card:after{content:""; position:absolute; right:-70px; top:-70px; width:230px; height:230px; border-radius:50%; background:radial-gradient(circle,rgba(255,196,82,.55),transparent 62%); pointer-events:none;}
   .rt-card h2{position:relative; z-index:2; font-size:24px; text-shadow:0 3px 8px rgba(0,0,0,.45); margin:0; color:inherit;} .rt-sub{position:relative; z-index:2; color:#bff3ef; font-size:13px;}
@@ -18453,13 +18459,15 @@ function rtCardHtml(){
     h += '<div class="rt-r'+(study ? " study" : "")+'" data-id="'+esc(it.id)+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'"><span class="rt-tile">'+rtGlyph(it.s)+'</span><span class="t">'+esc(fmt12(it.t))+'</span><span class="n">'+esc(it.n)+'</span><span class="d">'+(it.e ? '\u2192 '+esc(fmt12(it.e)) : esc(fmtHM(rtDur(it)))) +'</span></div>';
   });
   h += '</div><div class="rt-ft"><span>'+esc(rtDaysText())+'</span></div></div></div><div class="rt-shadow"></div>';
-  h += '<div class="rt-two"><button type="button" class="rt-btn" data-rt="share">\u2197 Share as picture</button><button type="button" class="rt-btn" data-rt="edit-all">\u270E Edit</button></div>';
-  if(rt.span==="month") h += '<button type="button" class="rt-btn wide" data-rt="monthview">See my month \u203A</button><div class="muted rt-note">Your routine continues for 1 month.</div>';
-  if(rt.span!=="month") h += '<button type="button" class="rt-go sm" data-rt="month">Continue this for 1 month \u203A</button><div class="muted rt-note">Runs for 1 week now. Continue keeps it going for four weeks.</div>';
-  var ended = toKey(rtDate(6)) < todayKey;
-  if(ended && rt.span!=="month") h += '<button type="button" class="rt-btn wide" data-rt="renew">This week has ended. Start a new week</button>';
-  var blocks = rtStudyBlocks();
-  h += '<div class="rt-next"><span class="rt-nx-i" aria-hidden="true">\uD83E\uDDED</span><div><b>Next: make your syllabus plan</b><span>Create your syllabus plan in the Syllabus planner according to this routine.'+(blocks.length ? ' Your study hours: '+esc(blocks.map(rtFullRange).join(" and "))+'.' : '')+'</span></div></div><button type="button" class="rt-btn wide" data-rt="planner">Open Syllabus planner \u203A</button></div>';
+  // one slim bar at the bottom of the screen instead of a stack of big buttons and boxes
+  var ended = toKey(rtDate(6)) < todayKey, hasPlan = !!studyPlan;
+  h += '<div class="rt-bar" role="toolbar" aria-label="Routine actions">'+
+    '<button type="button" data-rt="share"><i aria-hidden="true">\u2197</i><span>Share</span></button>'+
+    '<button type="button" data-rt="edit-all"><i aria-hidden="true">\u270E</i><span>Edit</span></button>'+
+    (rt.span==="month" ? '<button type="button" data-rt="monthview"><i aria-hidden="true">\uD83D\uDCC5</i><span>Month</span></button>' : '<button type="button" data-rt="month"><i aria-hidden="true">\uFF0B</i><span>1 month</span></button>')+
+    '<button type="button" data-rt="planner" class="'+(hasPlan ? "" : "hl")+'"><i aria-hidden="true">\uD83E\uDDED</i><span>Planner</span></button>'+
+    (ended && rt.span!=="month" ? '<button type="button" data-rt="renew" class="hl"><i aria-hidden="true">\u21BB</i><span>New week</span></button>' : '')+
+    '</div>';
   return h;
 }
 function rtMonthHtml(){
@@ -20962,7 +20970,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "407";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "408";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
