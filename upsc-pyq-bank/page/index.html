@@ -8101,6 +8101,7 @@ function wzClash(c, sl, i){   // under a session: your routine uses this time fo
   return '<div class="ses-clash" role="status"><span>Your routine uses this time for <b>'+esc(rtClashText(cl))+'</b>.</span>'+(fit ? '<button type="button" class="btn ghost sm" data-wa="sesFix" data-v="'+i+'">Use '+esc(rtClock(fit[0]))+' – '+esc(rtClock(fit[1]))+'</button>' : '')+'</div>';
 }
 function wzCapacity(w){
+  if(w.cap.routineSig && !w.cap.routineOff && rtSig(w.cap.sessions)===w.cap.routineSig && rtPlanWindows().length) rtApplyToPlan({capacity:w.cap}, w.acts);   // untouched routine sessions follow the daily activities, so the week preview matches
   var c = w.cap, exact = !!c.exact;
   var exactBox = '';
   if(exact){
