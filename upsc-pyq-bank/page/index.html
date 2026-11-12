@@ -1052,6 +1052,16 @@
   .qz-row{display:flex; align-items:center; justify-content:space-between; margin-top:14px; font-size:15px; cursor:pointer;} .qz-row input{position:absolute; opacity:0; width:1px; height:1px;}
   .rt-study{margin:14px 0 4px; padding:10px 12px; border:1.5px solid var(--line); border-radius:14px; display:flex; align-items:center; justify-content:space-between; gap:10px;} .rt-study span{display:flex; flex-direction:column; gap:2px;} .rt-study small{color:var(--ink-soft); font-size:12px;}
   .ses-clash{margin:8px 0 2px; padding:9px 11px; border-radius:12px; background:rgba(255,184,76,.14); border:1px solid rgba(255,184,76,.45); font-size:13px; display:flex; flex-direction:column; gap:8px; align-items:flex-start;} .rt-link{margin-bottom:10px;}
+  .rtd-day{border:1.5px solid var(--line); border-radius:16px; padding:12px; background:var(--surface); margin:0 0 12px;} .rtd-day b{display:block; font-size:15px;} .rtd-day small{color:var(--ink-soft);}
+  .rtd-strip{display:flex; height:26px; border-radius:9px; overflow:hidden; margin:10px 0 4px; border:1px solid var(--line);} .rtd-strip .s{background:linear-gradient(180deg,#3df0de,#1fb8aa);} .rtd-strip .b{background:repeating-linear-gradient(45deg,#3a4d57 0 5px,#2f414b 5px 10px);} .rtd-strip .f{background:transparent; box-shadow:inset 0 0 0 1px rgba(159,216,208,.45);}
+  .rtd-tk{position:relative; height:16px; font-size:11px; color:var(--ink-soft);} .rtd-tk span{position:absolute; transform:translateX(-50%); white-space:nowrap;} .rtd-tk span:first-child{transform:none;}
+  .rtd-lg{display:flex; gap:12px; flex-wrap:wrap; margin-top:6px; font-size:12px; color:var(--ink-soft);} .rtd-lg i{display:inline-block; width:12px; height:12px; border-radius:3px; margin-right:5px; vertical-align:-2px;} .rtd-lg .s{background:#2de6d6;} .rtd-lg .b{background:repeating-linear-gradient(45deg,#3a4d57 0 3px,#2f414b 3px 6px);} .rtd-lg .f{box-shadow:inset 0 0 0 1px #9fd8d0;}
+  .rtd-warn{margin:10px 0 2px; padding:10px 12px; border-radius:12px; background:rgba(255,184,76,.14); border:1px solid rgba(255,184,76,.5); font-size:13px;}
+  .rtd-lab{font-size:11px; letter-spacing:.12em; color:var(--ink-soft); margin:10px 0 6px;}
+  .rtd-opt{display:flex; width:100%; align-items:center; justify-content:space-between; gap:8px; text-align:left; border:1.5px solid var(--line); border-radius:13px; padding:9px 11px; margin-bottom:7px; background:var(--surface); color:var(--ink); font:inherit; cursor:pointer;} .rtd-opt b{font-size:14px;} .rtd-opt small{display:block; color:var(--ink-soft); font-size:12px;} .rtd-opt.on{border-color:#2de6d6; background:rgba(45,230,214,.12);}
+  .rtd-opt em{font-style:normal; font-size:11px; font-weight:800; padding:2px 8px; border-radius:99px; margin-left:6px;} .rtd-opt em.study{background:#123f3f; color:#5ef0e0;} .rtd-opt em.free{background:#2a3340; color:#bcd;}
+  .rtd-opt .tick{width:22px; height:22px; border-radius:50%; border:2px solid #2d6b70; flex:none; display:grid; place-items:center; font-weight:900; font-size:13px;} .rtd-opt.on .tick{background:#2de6d6; border-color:#2de6d6; color:#052;}
+  .rtd-ok{color:#5ef0e0; font-size:12.5px; margin-top:8px;}
   .qz-sw{width:46px; height:27px; border-radius:99px; background:var(--surface-2,var(--surface)); border:1.5px solid var(--line); position:relative; flex:none;}
   .qz-sw::after{content:""; position:absolute; top:2px; left:2px; width:20px; height:20px; border-radius:50%; background:var(--ink-soft); transition:left .15s;}
   .qz-row input:checked + .qz-sw{background:var(--gold); border-color:var(--gold);} .qz-row input:checked + .qz-sw::after{left:21px; background:var(--gold-ink,#241d0b);}
@@ -7007,6 +7017,16 @@ function sundayOf(d){ var r = new Date(d.getFullYear(), d.getMonth(), d.getDate(
 function mondayOf(d){ var r = new Date(d.getFullYear(), d.getMonth(), d.getDate()); r.setDate(r.getDate() - ((r.getDay()+6)%7)); return r; }
 function eachDay(from, to, fn){ for(var k = from; k <= to; k = toKey(addDays(parseKey(k), 1))) fn(k); }
 function addMonthsKey(startKey, n){ var d = parseKey(startKey), r = new Date(d.getFullYear(), d.getMonth()+n, d.getDate()); r.setDate(r.getDate()-1); return toKey(r); }
+// a session window with another activity inside it keeps the rest of the window (before and after), instead of being dropped for the day
+function slotPieces(sl, blockers){
+  var a = toMin(sl.start), b = toMin(sl.end), bl = blockers.filter(function(x){ return toMin(x.start) < b && a < toMin(x.end); });
+  if(!bl.length) return [sl];
+  bl.sort(function(x, y){ return toMin(x.start) - toMin(y.start); });
+  var out = [], cur = a;
+  bl.forEach(function(x){ var xs = toMin(x.start), xe = toMin(x.end); if(xs > cur && xs - cur >= 15) out.push({start:hmStr(cur), end:hmStr(xs), subject:sl.subject}); cur = Math.max(cur, xe); });
+  if(b - cur >= 15) out.push({start:hmStr(cur), end:hmStr(b), subject:sl.subject});
+  return out;
+}
 function overlapR(a, b){ return toMin(a.start) < toMin(b.end) && toMin(b.start) < toMin(a.end); }
 
 // ---------- catalog: subjects -> chapters (leaves) ----------
@@ -7317,8 +7337,7 @@ function simulate(plan, from, frozen, strict){
     if(plan.capacity.days.indexOf(dow) >= 0 || (plan.catchup && plan.catchup.indexOf(d) >= 0)){
       var cnt = (plan.capacity.perDay && plan.capacity.perDay[dow] != null) ? +plan.capacity.perDay[dow] : plan.capacity.sessions.length;
       var revToday = 0, bleft = queue[0] ? subjBudget(plan, queue[0].st.name) : Infinity;
-      plan.capacity.sessions.slice(0, cnt).forEach(function(sl){
-        if(blockers.some(function(b){ return overlapR(b, sl); })) return;
+      plan.capacity.sessions.slice(0, cnt).forEach(function(sl0){ slotPieces(sl0, blockers).forEach(function(sl){
         if(autoRev && !revToday && !sl.subject){
           var di = -1; for(var q=0;q<due.length;q++){ if(due[q].date<=d && (di<0 || due[q].date<due[di].date)) di = q; }
           if(di >= 0){
@@ -7350,7 +7369,7 @@ function simulate(plan, from, frozen, strict){
             if(autoRev) gaps.forEach(function(g){ due.push({date:toKey(addDays(parseKey(d), g)), leaf:it.leaf, st:it.st, gap:g}); });
           }
         }
-      });
+      }); });
     }
     var all = fz.map(function(s){ return {start:s.startTime, s:s}; }).concat(dayNew.map(function(s){ return {start:s.startTime, s:s}; }));
     all.sort(function(a,b){ return toMin(a.start)-toMin(b.start); });
@@ -7609,7 +7628,7 @@ function fitInfo(w){
     days++; if(onLeave(plan, d)) return;
     var dow = dowOf(d); if(plan.capacity.days.indexOf(dow) < 0) return; sd++;
     var pd = plan.capacity.perDay && plan.capacity.perDay[dow], cnt = (pd!=null) ? +pd : plan.capacity.sessions.length;
-    plan.capacity.sessions.slice(0, cnt).forEach(function(sl){ if(sl.subject!=="@ca" && !(acts[d]||[]).some(function(a){ return overlapR(a, sl); })) have += Math.max(0, toMin(sl.end)-toMin(sl.start)); });
+    plan.capacity.sessions.slice(0, cnt).forEach(function(sl){ if(sl.subject!=="@ca") slotPieces(sl, acts[d]||[]).forEach(function(p){ have += Math.max(0, toMin(p.end)-toMin(p.start)); }); });
   });
   var sim = simulate(plan, from, [], false), last = "";
   sim.sessions.forEach(function(s){ if(s.kind==="study" && s.date > last) last = s.date; });
@@ -7693,8 +7712,8 @@ function compilePlan(w){
   cap.hours = {def:(+H0.def >= 0.25 ? +H0.def : 2), by:Object.assign({}, H0.by || {}), auto:!!H0.auto};
   cap.layout = "manual"; cap.limitMin = 0; cap.dayStart = cap.dayStart || "06:00"; cap.hours.by = {}; cap.hours.auto = true;   // the time per chapter is fitted to the day
   cap.dayHours = +cap.dayHours > 0 ? +cap.dayHours : 6; cap.exact = !!cap.exact; cap.subjHours = {};
-  if(!cap.exact && !cap.routineOff && rtPlanWindows().length) rtApplyToPlan({capacity:cap});   // no own sessions chosen: the routine decides
-  cap.fromRoutine = !!cap.exact && !cap.routineOff && rtSameWindows(cap.sessions, rtPlanWindows());   // typing your own times unlinks it from the routine
+  if(!cap.exact && !cap.routineOff && rtPlanWindows().length) rtApplyToPlan({capacity:cap}, w.acts);   // no own sessions chosen: the routine decides
+  cap.fromRoutine = !!cap.exact && !cap.routineOff && rtSig(cap.sessions)===rtSig(rtPlanSessions(w.acts, cap.days));   // typing your own times unlinks it from the routine
   var plan = {v:1, createdAt:new Date().toISOString(), cfg:wizSnapshot(w), window:{start:w.start, end:st.end}, catCfg:wizCatCfg(w),
     priority:w.order.slice(), sel:Object.assign({}, w.sel), capacity:cap, activities:JSON.parse(JSON.stringify(w.acts)),
     startView:(w.startView==="auto" ? recommendedView(w) : w.startView), extraV:(EXTRA ? EXTRA.v : 0),
@@ -8069,7 +8088,7 @@ function actRowHtml(w, k){
   var a = w.acts[k], info = ACT_INFO[k], pin = k==="ca" && w.cap.exact && w.cap.sessions.some(function(x){ return x.subject==="@ca"; });
   var more = "";
   if(a.on && !pin && k!=="revision"){
-    more = '<div class="act-more" data-tplabel="'+esc(info.title)+'"><div class="act-tm">'+timeChip("acts."+k+".start", a.start)+'<span class="arr" aria-hidden="true">→</span>'+timeChip("acts."+k+".end", a.end)+'</div>'+actDayPills(w, k)+'</div>';
+    more = '<div class="act-more" data-tplabel="'+esc(info.title)+'"><div class="act-tm">'+timeChip("acts."+k+".start", a.start)+'<span class="arr" aria-hidden="true">→</span>'+timeChip("acts."+k+".end", a.end)+'</div>'+actDayPills(w, k)+wzActRoutine(w, k)+'</div>';
   }
   return '<div class="cap-sub act-row'+(a.on ? " on" : "")+'"><div class="act-top"><span class="dot" style="background:var('+info.color+')"></span><span class="nm">'+esc(info.title)+'<small>'+esc(actSummary(w, k))+'</small></span>'+
     (pin ? '' : '<button type="button" class="sw'+(a.on ? " on" : "")+'" role="switch" aria-checked="'+(a.on ? "true" : "false")+'" aria-label="'+esc(info.title)+'" data-wa="actToggle" data-v="'+k+'"></button>')+'</div>'+more+'</div>';
@@ -8094,9 +8113,10 @@ function wzCapacity(w){
         '<div class="ses-t">'+timeChip("cap.sessions."+i+".start", sl.start)+'<span class="arr" aria-hidden="true">→</span>'+timeChip("cap.sessions."+i+".end", sl.end)+'</div>'+
         wzClash(c, sl, i)+'<label class="ses-sub"><span>Subject</span><select data-w="cap.sessions.'+i+'.subject" aria-label="Subject for session '+(i+1)+'"><option value="">Any subject</option><optgroup label="Activity"><option value="@ca"'+(sl.subject==="@ca"?" selected":"")+'>Current Affairs (daily)</option></optgroup><optgroup label="Subjects">'+w.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(sl.subject===nm?" selected":"")+'>'+esc(nm)+'</option>'; }).join("")+'</optgroup></select></label></div>';
     }).join("")+'</div>'+(n < 6 ? '<button type="button" class="btn ghost sm" data-wa="sesAdd">+ Add a session</button>' : "");
-    var rw = rtPlanWindows(), linked = rtSameWindows(c.sessions, rw);
+    var rw = rtPlanSessions(w.acts, c.days), linked = rtSig(c.sessions)===rtSig(rw);
     var rcard = rw.length ? '<div class="qx-info rt-link"><b>'+(linked ? 'From your Routine' : 'Your Routine has study time')+'</b><small>'+esc(rw.map(function(x){ return fmt12(x.start)+" – "+fmt12(x.end); }).join(" and "))+'</small></div>'+(linked ? '' : '<button type="button" class="btn ghost sm" data-wa="capRoutine">Use my routine\'s study time</button>') : '';
-    exactBox = rcard+dayRingHtml(c.sessions)+list;
+    var wnd = rtPlanWindows(), asp = rw.length ? rtActSpans(w.acts, c.days).filter(function(x){ return wnd.some(function(q){ return toMin(q.start) < x.b && x.a < toMin(q.end); }); }) : [], anote = (asp.length && linked) ? '<div class="rtd-warn">Daily activities are taken out first: <b>'+esc(asp.map(function(x){ return ACT_INFO[x.k].title+" "+rtClock(x.a)+" \u2013 "+rtClock(x.b); }).join(", "))+'</b>. Sessions use the rest of your study time.</div>' : "";
+    exactBox = rcard+anote+dayRingHtml(c.sessions)+list;
   }
   var anyAct = ACT_KINDS.some(function(k){ return w.acts[k].on; });
   var actOrder = ["ca","revision","essay","pyq","test"].filter(function(k){ return ACT_KINDS.indexOf(k) >= 0; });
@@ -8106,7 +8126,7 @@ function wzCapacity(w){
       '<div class="qx-sub">'+(c.days.length ? '<b>'+c.days.length+' day'+(c.days.length===1 ? '' : 's')+'</b> a week. You set when you study on the Your sessions screen.' : 'Pick at least one study day')+'</div>';
   }
   if(scr==="acts"){
-    return '<div class="cap-subs">'+actOrder.map(function(k){ return actRowHtml(w, k); }).join("")+'</div>'+
+    return rtDayStrip(w)+'<div class="cap-subs">'+actOrder.map(function(k){ return actRowHtml(w, k); }).join("")+'</div>'+
       '<div class="qx-info"><small>Switch an activity on to choose its time and days. Greyed days are taken by another activity at that time.</small></div>'+
       (anyAct ? weekMapHtml(w) : '<button type="button" class="qx-link" data-wa="next">No activities, continue</button>');
   }
@@ -8225,7 +8245,8 @@ function fsIndex(w){
 function fsGo(w, i){
   i = Math.max(0, Math.min(FS_SCREENS.length-1, i)); var S = FS_SCREENS[i];
   w.step = S.step; if(S.cap) w.capScreen = S.cap; w.capView = "list"; w.capPick = false;
-  if(S.id==="subj" && !studyPlan && !w.cap.ownInit && rtPlanWindows().length){ w.cap.ownInit = true; rtApplyToPlan({capacity:w.cap}); }   // a routine decides when you study
+  if(S.id==="subj" && !studyPlan && !w.cap.ownInit && rtPlanWindows().length){ w.cap.ownInit = true; rtApplyToPlan({capacity:w.cap}, w.acts); }
+  else if(S.id==="subj" && w.cap.routineSig && !w.cap.routineOff && rtSig(w.cap.sessions)===w.cap.routineSig && rtPlanWindows().length) rtApplyToPlan({capacity:w.cap}, w.acts);   // untouched sessions follow the daily activities you just set   // a routine decides when you study
   if(S.id==="subj" && !studyPlan && !w.cap.ownInit){ w.cap.ownInit = true; if(!w.cap.exact){ var fx0 = null; try{ fx0 = fitInfo(w); }catch(x){} if(fx0){ w.cap.sessions = JSON.parse(JSON.stringify(fx0.plan.capacity.sessions)); w.cap.count = w.cap.sessions.length; w.cap.perDay = {}; } w.cap.exact = true; } }
 }
 function renderWizard(host){
@@ -8275,7 +8296,7 @@ function qsApply(w){
   w.order = ord; w.orderAuto = !(q.start==="optional" && w.optionalOn); w.init = {}; wizSync(w);
   w.cap.days = q.days.slice(); w.cap.perDay = {}; w.cap.breakMin = 15; w.cap.layout = "manual"; w.cap.hours = {def:2, by:{}, auto:true}; w.cap.dayHours = q.hours; w.cap.subjHours = {}; w.cap.exact = false;
   w.cap.count = hp[0]; w.cap.sessions = []; wizAfter("sessCount"); setSessLen(w, hp[1]);
-  if(rtPlanWindows().length){ w.cap.routineOff = false; rtApplyToPlan({capacity:w.cap}); }   // a routine decides the study days and times
+  if(rtPlanWindows().length){ w.cap.routineOff = false; rtApplyToPlan({capacity:w.cap}, w.acts); }   // a routine decides the study days and times
   w.seen = {}; wizCatalog(w).order.forEach(function(n){ w.seen[n] = 1; });
 }
 function qsKeyText(k){ return parseKey(k).toLocaleDateString(undefined, {day:"numeric", month:"short", year:"numeric"}); }
@@ -8472,7 +8493,8 @@ function wizAction(a, b){
     case "qsFull": qsApply(w); w.qs = null; w.step = 0; w.err = []; scrollPlannerTop(); break;
     case "capExact": var fx = null; try{ fx = fitInfo(w); }catch(x){} if(fx){ w.cap.sessions = JSON.parse(JSON.stringify(fx.plan.capacity.sessions)); w.cap.count = w.cap.sessions.length; w.cap.perDay = {}; } w.cap.exact = true; w.open.capEx = true; break;
     case "capAuto": w.cap.exact = false; w.cap.routineOff = true; break;
-    case "capRoutine": w.cap.routineOff = false; if(rtApplyToPlan({capacity:w.cap})){ w.open.capEx = true; toast("Your sessions now follow your routine's study time."); } break;
+    case "actSuggest": var sg = String(v).split(":"), sa = w.acts[sg[0]]; if(sa){ sa.start = sg[1]+":"+sg[2]; sa.end = sg[3]+":"+sg[4]; w.actsOk = true; } break;
+    case "capRoutine": w.cap.routineOff = false; if(rtApplyToPlan({capacity:w.cap}, w.acts)){ w.open.capEx = true; toast("Your sessions now follow your routine's study time."); } break;
     case "sesFix": var sf = w.cap.sessions[+v], ft = sf ? rtFreeFit(toMin(sf.start), toMin(sf.end)) : null; if(ft){ sf.start = hmStr(ft[0]); sf.end = hmStr(ft[1]); w.cap.fromRoutine = false; } break;
     case "actToggle": var ta = w.acts[v]; ta.on = !ta.on; if(ta.on){ w.actsOk = true; ta.mode = "weekly"; ta.interval = 1; delete ta.freq; if(v==="ca"){ ta.start = "05:30"; ta.end = "06:00"; ta.days = [0,1,2,3,4,5,6]; } if(!ta.days || !ta.days.length) ta.days = [1,2,3,4,5,6]; var cl = actClashDays(w, v); ta.days = ta.days.filter(function(d){ return !cl[d]; }); if(!ta.days.length) toast("Another activity already uses that time on those days. Pick a different time."); } break;
     case "actsDone": w.actsOk = true; break;
@@ -18185,14 +18207,87 @@ function rtFreeFit(a, b){   // the longest part of [a, b) that no other routine 
   return best;
 }
 function rtClashText(list){ return list.slice(0, 3).map(function(x){ return x.n+" ("+rtClock(x.a)+" \u2013 "+rtClock(x.b)+")"; }).join(", ")+(list.length > 3 ? " and more" : ""); }
-function rtApplyToPlan(plan){   // the planner studies in the routine's study blocks, on the routine's days
+function rtAllSpans(){   // every routine activity as [start, end, isStudy, name] within the day (a night that runs past midnight is cut at midnight and continues from 0)
+  var out = [];
+  if(!rtMade()) return out;
+  rtSorted().forEach(function(it){ var l = rtDur(it); if(l <= 0) return; var q = rtSpan(it), st = rtIsStudy(it); out.push([q[0], Math.min(q[1], 1440), st, it.n]); if(q[1] > 1440) out.push([0, q[1]-1440, st, it.n]); });
+  return out;
+}
+function rtFreeGaps(minLen){   // time between 5 AM and 10 PM that no routine activity uses
+  var sp = rtAllSpans().sort(function(a, b){ return a[0] - b[0]; }), cur = 300, out = [], lim = 1320;
+  sp.forEach(function(x){ if(x[1] <= cur) return; if(x[0] > cur){ var e = Math.min(x[0], lim); if(e - cur >= minLen) out.push([cur, e]); } cur = Math.max(cur, x[1]); });
+  if(lim - cur >= minLen) out.push([cur, lim]);
+  return out;
+}
+function rtActSuggest(w, k){   // up to three times for a daily activity: the start of a study window, or a free gap
+  var a = w.acts[k], len = (a && toMin(a.end) > toMin(a.start)) ? toMin(a.end) - toMin(a.start) : 30, cand = [], others = [];
+  ACT_KINDS.forEach(function(o){ if(o!==k && actTimeOk(w.acts[o])) others.push([toMin(w.acts[o].start), toMin(w.acts[o].end)]); });
+  var study = rtPlanWindows().filter(function(x){ return toMin(x.end) - toMin(x.start) >= len; }).map(function(x){ var s0 = toMin(x.start); return {a:s0, b:s0+len, kind:"study", note:"Start of your study time"}; });
+  var spans = rtAllSpans();
+  var free = rtFreeGaps(len).map(function(g){ var before = spans.filter(function(x){ return x[1]===g[0]; })[0]; return {a:g[0], b:g[0]+len, kind:"free", note:before ? "After "+before[3] : "Free time"}; });
+  (k==="ca" ? study.slice(0, 1).concat(free, study.slice(1)) : free.concat(study)).forEach(function(c){ if(cand.length < 3 && !others.some(function(o){ return o[0] < c.b && c.a < o[1]; })) cand.push(c); });
+  return cand;
+}
+function rtDayStrip(w){   // the day from the routine: study time, busy time, free time
+  var sp = rtAllSpans(); if(!sp.length) return "";
+  var lo = 300, hi = 1440, pts = [lo, hi];
+  sp.forEach(function(x){ [x[0], x[1]].forEach(function(p){ if(p > lo && p < hi) pts.push(p); }); });
+  pts.sort(function(a, b){ return a - b; }); pts = pts.filter(function(p, i){ return i===0 || p!==pts[i-1]; });
+  var seg = "";
+  for(var i = 0; i < pts.length - 1; i++){
+    var m = (pts[i] + pts[i+1]) / 2, cls = "f", on = sp.filter(function(x){ return x[0] <= m && m < x[1]; });
+    if(on.length) cls = on.some(function(x){ return !x[2]; }) ? "b" : "s";
+    seg += '<span class="'+cls+'" style="flex:'+(pts[i+1]-pts[i])+'"></span>';
+  }
+  var ticks = [5, 9, 13, 17, 21].map(function(h){ return '<span style="left:'+((h*60-lo)/(hi-lo)*100).toFixed(1)+'%">'+fmt12(pad2(h)+":00").replace(":00", "")+'</span>'; }).join("");
+  return '<div class="rtd-day"><b>Your day, from your Routine</b><small>Pick activity times in study time or free time.</small><div class="rtd-strip">'+seg+'</div><div class="rtd-tk">'+ticks+'</div>'+
+    '<div class="rtd-lg"><span><i class="s"></i>Study time</span><span><i class="b"></i>Busy</span><span><i class="f"></i>Free time</span></div></div>';
+}
+function wzActRoutine(w, k){   // under an activity's time: does it clash with the routine, and which times fit
+  var a = w.acts[k]; if(!rtMade() || !actTimeOk(a)) return "";
+  var x = toMin(a.start), y = toMin(a.end), cl = (a.days || []).some(function(d){ return rt.days.indexOf(d) >= 0; }) ? rtClashes(x, y, null) : [];
+  var sug = rtActSuggest(w, k), h = "";
+  if(cl.length) h += '<div class="rtd-warn" role="status">Your routine uses <b>'+esc(fmt12(a.start))+' \u2013 '+esc(fmt12(a.end))+'</b> for <b>'+esc(rtClashText(cl))+'</b>.</div>';
+  if(sug.length && (k==="ca" || cl.length)){
+    h += '<div class="rtd-lab">PICK A TIME ('+(y - x)+' MIN)</div>'+sug.map(function(c){
+      var on = c.a===x && c.b===y;
+      return '<button type="button" class="rtd-opt'+(on ? " on" : "")+'" data-wa="actSuggest" data-v="'+k+':'+hmStr(c.a)+':'+hmStr(c.b)+'"><span><b>'+esc(rtClock(c.a))+' \u2013 '+esc(rtClock(c.b))+' <em class="'+c.kind+'">'+(c.kind==="study" ? "Study time" : "Free time")+'</em></b><small>'+esc(c.note)+'</small></span><span class="tick">'+(on ? "\u2713" : "")+'</span></button>';
+    }).join("");
+  }
+  if(!cl.length){
+    var ins = rtPlanWindows().some(function(wn){ return toMin(wn.start) <= x && y <= toMin(wn.end); });
+    if(ins) h += '<div class="rtd-ok">\u2713 Inside your study time. This part of the window is taken out, and chapters use the rest.</div>';
+  }
+  return h;
+}
+function rtActSpans(acts, days){   // daily activities that happen on every study day: they come out of the study windows before sessions are made
+  var out = [];
+  ACT_KINDS.forEach(function(k){
+    var a = acts && acts[k]; if(!a || !a.on || !actTimeOk(a)) return;
+    var ad = a.mode==="dates" ? [] : (a.days || []); if(!(days || []).length || !days.every(function(d){ return ad.indexOf(d) >= 0; })) return;
+    var x = toMin(a.start), y = toMin(a.end); if(y > x) out.push({k:k, a:x, b:y});
+  });
+  return out;
+}
+function rtPlanSessions(acts, days){   // the routine's study windows, minus the daily activities, as the sessions of a day
+  var spans = rtActSpans(acts, days), out = [];
+  rtPlanWindows().forEach(function(w){
+    var a = toMin(w.start), b = toMin(w.end), cur = a;
+    spans.filter(function(x){ return x.a < b && a < x.b; }).sort(function(x, y){ return x.a - y.a; }).forEach(function(x){ if(x.a - cur >= 15) out.push([cur, x.a]); cur = Math.max(cur, x.b); });
+    if(b - cur >= 15) out.push([cur, b]);
+  });
+  return out.slice(0, 6).map(function(q){ return {start:hmStr(q[0]), end:hmStr(q[1]), subject:""}; });
+}
+function rtSig(list){ return (list || []).map(function(x){ return x.start+"-"+x.end; }).join(","); }
+function rtApplyToPlan(plan, acts){   // the planner studies in the routine's study time, on the routine's days, after the daily activities
   var wins = rtPlanWindows(); if(!plan || !wins.length) return false;
-  var tot = wins.reduce(function(t, x){ return t + toMin(x.end) - toMin(x.start); }, 0);
   [plan.capacity, plan.cfg && plan.cfg.cap].forEach(function(c){
     if(!c) return;
-    c.sessions = JSON.parse(JSON.stringify(wins)); c.count = wins.length; c.perDay = {}; c.exact = true; c.layout = "manual"; c.fromRoutine = true;
-    c.dayHours = Math.max(0.5, Math.round(tot/15)/4);
     if(rt.days.length) c.days = rt.days.slice();
+    var ss = rtPlanSessions(acts || plan.activities, c.days); if(!ss.length) ss = wins;
+    var tot = ss.reduce(function(t, x){ return t + toMin(x.end) - toMin(x.start); }, 0);
+    c.sessions = JSON.parse(JSON.stringify(ss)); c.count = ss.length; c.perDay = {}; c.exact = true; c.layout = "manual"; c.fromRoutine = true; c.routineSig = rtSig(ss);
+    c.dayHours = Math.max(0.5, Math.round(tot/15)/4);
   });
   return true;
 }
@@ -18202,7 +18297,7 @@ function rtPlannerCheck(){   // after the routine changes: keep a routine-linked
   var wins = rtPlanWindows(), cap = studyPlan.capacity; if(!wins.length || document.getElementById("modalHost")) return;
   if(cap.fromRoutine){
     var daysSame = !rt.days.length || (cap.days.length===rt.days.length && rt.days.every(function(d){ return cap.days.indexOf(d)>=0; }));
-    if(rtSameWindows(cap.sessions, wins) && daysSame) return;
+    if(rtSig(cap.sessions)===rtSig(rtPlanSessions(studyPlan.activities, rt.days.length ? rt.days : cap.days)) && daysSame) return;
     rtApplyToPlan(studyPlan); try{ reflow(studyPlan); }catch(e){} savePlan(); replan();
     if(activeTab==="planner"){ try{ refreshView(); }catch(e){} }
     toast("Your Syllabus planner now follows your routine's study time.");
@@ -20843,7 +20938,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "402";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "403";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
