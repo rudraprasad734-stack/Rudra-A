@@ -159,6 +159,9 @@
   /* ---- Side menu (Forest-style): tabs live in a drawer, pages open full-screen ---- */
   #menuBtn{position:absolute; top:calc(10px + env(safe-area-inset-top,0px)); left:10px; z-index:25; width:44px; height:44px; padding:0; border:1px solid var(--line); border-radius:50%; background:color-mix(in srgb, var(--surface-solid, #000) 82%, transparent); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); cursor:pointer; color:var(--ink);}
   body.in-page #menuBtn{display:none;}
+  #dashInfo{position:absolute; top:calc(10px + env(safe-area-inset-top,0px)); right:10px; z-index:25; width:44px; height:44px; padding:0; border:1px solid var(--line); border-radius:50%; background:color-mix(in srgb, var(--surface-solid, #000) 82%, transparent); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); cursor:pointer; color:var(--ink); font:800 20px/1 Georgia,serif; font-style:italic;}
+  body.in-page #dashInfo{display:none;}
+  #dashInfo.new::after{content:""; position:absolute; right:-2px; top:-2px; width:11px; height:11px; border-radius:50%; background:#ef4b3a; border:2px solid var(--bg,#fff);}
   .dr-brand{font-family:var(--font-display); font-size:22px; font-weight:600; letter-spacing:.2px; margin-bottom:2px;}
   .dr-date{font-family:var(--font-mono); font-size:11px; opacity:.7; margin-bottom:14px;}
   /* round Dashboard button, bottom centre; the home screen is the timer alone until it is pressed */
@@ -181,6 +184,7 @@
   .cg-hud{flex:none; display:flex; align-items:center; gap:8px; padding:max(12px, env(safe-area-inset-top)) 12px 8px; background:linear-gradient(#06161b 70%, #06161b00); position:relative; z-index:8;}
   .cg-c{flex:1; display:flex; align-items:center; gap:10px; justify-content:center; font-weight:800; font-size:15px; min-width:0; text-align:center;} .cg-c .caq-bar{max-width:none;} .cg-n{font-size:13px; color:#9fd8d0; flex:none;} .cg-sp{width:38px;}
   .cg-x{width:40px; height:40px; flex:none; border-radius:13px; background:#0a262ccc; border:1px solid #1d5a60; color:#cff; font-size:20px; display:grid; place-items:center; cursor:pointer;}
+  .cg-i{font:800 17px/1 Georgia,serif; font-style:italic; border:2px solid currentColor; border-radius:50%; width:32px; height:32px; margin-left:6px;}
   .cg-pill{background:#0a262ccc; border:1px solid #1d5a60; border-radius:20px; padding:6px 10px; font-weight:700; font-size:13px; flex:none;}
   .cg-body{flex:1; overflow-y:auto; position:relative; padding:0 16px 28px; -webkit-overflow-scrolling:touch;} .cg-qbody,.cg-res{padding-top:4px;}
   #caqGame[data-s="road"],#caqGame[data-s="map"]{background:#0f5a40;} .cg-hud.over{position:absolute; left:0; right:0; top:0; background:linear-gradient(rgba(6,22,27,.5) 0, rgba(6,22,27,.28) 60%, rgba(6,22,27,0) 100%); padding-bottom:18px; pointer-events:none;} .cg-hud.over > *{pointer-events:auto;} .cg-hud.over .cg-x,.cg-hud.over .cg-pill{background:rgba(6,22,27,.62); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px);} .cg-hud.over .cg-c{text-shadow:0 1px 6px #000a; pointer-events:none;} .cg-sky .cg-top{padding-top:calc(max(12px, env(safe-area-inset-top)) + 56px);}
@@ -383,9 +387,9 @@
   body.dash-timer .timer-card > .timer-set{top:calc(106px + env(safe-area-inset-top,0px)); pointer-events:none;}
   body.dash-timer .timer-card > .timer-set select{pointer-events:auto;}
   /* calm mode: controls fade away after a moment; a tap on the screen brings them back */
-  body.dash-timer #menuBtn, body.dash-timer #dashFab, body.dash-timer .timer-card > .timer-mode, body.dash-timer .timer-card > .timer-total,
+  body.dash-timer #menuBtn, body.dash-timer #dashInfo, body.dash-timer #dashFab, body.dash-timer .timer-card > .timer-mode, body.dash-timer .timer-card > .timer-total,
   body.dash-timer .timer-card > .timer-phase, body.dash-timer .timer-card > .timer-set, body.dash-timer .timer-card > .timer-btns, body.dash-timer .timer-card > .goal-strip, body.dash-timer .timer-card .timer-display{transition:opacity .7s ease;}
-  body.dash-timer.ui-sleep #menuBtn, body.dash-timer.ui-sleep #dashFab, body.dash-timer.ui-sleep .timer-card > .timer-mode, body.dash-timer.ui-sleep .timer-card > .timer-total,
+  body.dash-timer.ui-sleep #menuBtn, body.dash-timer.ui-sleep #dashInfo, body.dash-timer.ui-sleep #dashFab, body.dash-timer.ui-sleep .timer-card > .timer-mode, body.dash-timer.ui-sleep .timer-card > .timer-total,
   body.dash-timer.ui-sleep .timer-card > .timer-phase, body.dash-timer.ui-sleep .timer-card > .timer-set, body.dash-timer.ui-sleep .timer-card > .timer-brk, body.dash-timer.ui-sleep .timer-card > .goal-strip, body.dash-timer.ui-sleep .timer-card > .today-tg, body.dash-timer.ui-sleep .timer-card > .timer-btns{opacity:0 !important; pointer-events:none !important;}
   body.dash-timer #view-dashboard > *:not(.timer-card){display:none;}
   body.dash-timer #view-dashboard .timer-card{position:fixed; inset:0; z-index:5; height:auto; min-height:0; margin:0; border-radius:0; border:0;}
@@ -1012,6 +1016,7 @@
   .rt-sk{aspect-ratio:1; border:0; border-radius:16px; display:grid; place-items:center; font-size:26px; cursor:pointer; background:linear-gradient(145deg,var(--c1),var(--c2)); box-shadow:0 4px 0 var(--c3),0 7px 9px rgba(0,0,0,.3),0 1px 0 rgba(255,255,255,.45) inset; position:relative;} .rt-sk.sel{outline:3px solid var(--gold); outline-offset:3px;}
   .rt-skw{display:flex; flex-direction:column; align-items:center; gap:6px; border:0; background:none; padding:0; color:var(--ink); font:inherit; cursor:pointer;} .rt-skw .rt-sk{width:100%; aspect-ratio:1;} .rt-skw small{font-size:11.5px; color:var(--ink-soft); text-align:center; line-height:1.15;} .rt-skw[hidden]{display:none;}
   .rt-mv{display:flex; flex-direction:column; gap:6px; max-height:34vh; overflow-y:auto; margin:6px 0 14px;} .rt-mv-r{display:flex; justify-content:space-between; gap:10px; padding:9px 12px; border-radius:12px; background:var(--surface-2,var(--surface)); font-size:14px;} .rt-mv-r b{color:var(--tab-accent); white-space:nowrap;} .rt-sheet p{margin:8px 0;}
+  .rt-gap{display:block; width:100%; text-align:left; border:1.5px dashed var(--tab-accent); background:none; color:var(--tab-accent); border-radius:14px; padding:9px 14px; font:inherit; font-weight:700; font-size:14px; cursor:pointer;} .rt-gap small{display:block; color:var(--ink-soft); font-weight:500; font-size:12px; margin-top:1px;}
   .rt-link{display:block; margin:10px auto 0; border:0; background:none; color:var(--tab-accent); font:inherit; font-weight:700; cursor:pointer;}
   .rt-when{display:flex; gap:10px;} .rt-when label{flex:1 1 0; min-width:0; font-size:12px; color:var(--ink-soft);} .rt-when input{display:block; width:100%; min-width:0; box-sizing:border-box; margin-top:4px; padding:11px 10px; border-radius:12px; border:1.5px solid var(--line); background:var(--surface-2,var(--surface)); color:var(--ink); font:inherit; font-size:17px; font-weight:700;}
   .rt-q{width:100%; margin-top:12px; padding:11px 14px; border-radius:14px; border:1.5px solid var(--line); background:var(--surface-2,var(--surface)); color:var(--ink); font:inherit;} .rt-cats{display:flex; gap:8px; overflow-x:auto; margin-top:10px; scrollbar-width:none;} .rt-cats .rt-chip{flex:none;}
@@ -1620,6 +1625,7 @@
   body.dash-timer .timer-card > .timer-mode, body.dash-timer .timer-card > .timer-total{top:calc(64px * var(--tb,1) + env(safe-area-inset-top,0px));}
   #menuBtn{width:calc(44px * var(--tb,1)); height:calc(44px * var(--tb,1));}
   body.dash-timer #menuBtn{position:fixed; left:10px; top:calc(10px + env(safe-area-inset-top,0px));}
+  body.dash-timer #dashInfo{position:fixed; right:10px; top:calc(10px + env(safe-area-inset-top,0px));}
   body.dash-timer .timer-card > .timer-set, body.dash-timer .timer-card > .timer-brk{top:calc(112px * var(--tb,1) + env(safe-area-inset-top,0px));}
   #dashFab{width:calc(62px * var(--tb,1)); height:calc(62px * var(--tb,1));}
   #dashFab svg{width:calc(28px * var(--tb,1)); height:calc(28px * var(--tb,1));}
@@ -1891,6 +1897,7 @@ html.sp-on #app,html.sp-on #toast{visibility:hidden}
   <div id="chrome">
 
   <button type="button" id="menuBtn" aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><i></i><i></i><i></i></button>
+  <button type="button" id="dashInfo" aria-label="How the Dashboard works">i</button>
   <div id="pageBar"><button type="button" id="pageClose" aria-label="Close and go to Dashboard">&#10005;</button><span id="pageTitle"></span><button type="button" id="pageInfo" aria-label="How this screen works" hidden>i</button></div>
   <nav id="subtabs" aria-label="Subsections"></nav>
   </div>
@@ -2431,7 +2438,8 @@ function collectBackupData(){
     catchState: catchState,
     reminders: remState,
     revDone: revDone,
-    caQuiz: caqData
+    caQuiz: caqData,
+    routine: rt
   };
 }
 setTimeout(function(){
@@ -2493,6 +2501,7 @@ function applyBackupData(data){
   if(Array.isArray(data.studySessions)) data.studySessions = data.studySessions.filter(function(x){ return x && typeof x==="object"; });
   if(data.studyProgress) Object.keys(data.studyProgress.topics).forEach(function(id){ var t = data.studyProgress.topics[id]; if(!t || typeof t!=="object") delete data.studyProgress.topics[id]; });
   if(data.profile && data.profile.name && typeof data.profile.name!=="string") data.profile = null;
+  if(data.routine!=null) data.routine = rtNormalize(data.routine);
   prelimsState = data.prelimsState || {};
   mainsState = data.mainsState || {};
   monthsState = data.monthsState || {};
@@ -2512,6 +2521,10 @@ function applyBackupData(data){
   if(data.catchState && typeof data.catchState==='object'){ catchState = Object.assign({promptedOn:"", doneOn:""}, data.catchState); saveCatch(); }
   if(data.revDone && typeof data.revDone==="object"){ revDone = data.revDone; revSave(); }
   if(data.caQuiz && typeof data.caQuiz==="object" && data.caQuiz.ans && typeof data.caQuiz.ans==="object"){ caqData = {ans:data.caQuiz.ans, reports:Array.isArray(data.caQuiz.reports) ? data.caQuiz.reports : [], days:Array.isArray(data.caQuiz.days) ? data.caQuiz.days : []}; caqSave(); }
+  if(data.routine){
+    var rtNow = JSON.stringify(rt); rt = data.routine; rtSave();
+    if(JSON.stringify(rt) !== rtNow){ rtScreen = ""; rtEd = null; try{ var rv = document.getElementById("view-routine"); if(rv && rv.offsetParent) renderRoutine(); }catch(e){} }
+  }
   if(data.reminders && typeof data.reminders==='object'){ remState = Object.assign({}, remState, data.reminders, {on:false, sent:{}}); remSave(); }
   if(data.studyProgress && data.studyProgress.topics){ studyProgress = data.studyProgress; saveProgress(); }
   try{ migrateOptionalSeparation(); migrateAnthroOfficial(); }catch(e){}
@@ -17649,7 +17662,7 @@ function caqBtn(a, label, txt, extra){ return '<button type="button" class="cg-x
 
 function caqMapHtml(){
   var all = caqAllIds(), un = caqUnanswered(all).length, stk = caqStreak(), v = caqRunLoad(), wk = caqWeak();
-  var h = caqHud(caqBtn("exit", "Close", "✕"), "Current Affairs Quizzes", '<span class="cg-pill">🔥 '+stk+'</span><span class="cg-pill">⭐ '+caqTotalStars()+'</span>', true)+'<div class="cg-body cg-sky" data-sk="map">';
+  var h = caqHud(caqBtn("exit", "Close", "✕"), "Current Affairs Quizzes", '<span class="cg-pill">🔥 '+stk+'</span><span class="cg-pill">⭐ '+caqTotalStars()+'</span><button type="button" class="cg-x cg-i" data-caq="info" aria-label="How this screen works">i</button>', true)+'<div class="cg-body cg-sky" data-sk="map">';
   h += '<div class="cg-top"><button type="button" class="cg-daily" data-caq="daily"'+(un ? "" : " disabled")+'><small>TODAY</small><b>Daily 10</b><span>'+(un ? "Mixed subjects · about 6 minutes · tap to play" : "You have done every question so far")+'</span></button>';
   h += '<button type="button" class="cg-cont cx-btn" data-caq="crux">📝 Crux notes: quick revision, topic by topic</button>';
   if(v) h += '<button type="button" class="cg-cont" data-caq="resume">▶ Continue: '+esc(v.title || "Quiz")+' · question '+(Math.min(v.res.length, v.ids.length-1)+1)+'</button>';
@@ -17820,6 +17833,7 @@ function caqNext(){
 }
 function caqAction(b){
   var a = b.getAttribute("data-caq"), r = caq.ui.run;
+  if(a==="info"){ openGuideSheet(); return; }
   if(a==="exit"){ caq.ui.run = r && !r.done ? (caqRunSave(), null) : null; setTab("dashboard"); }
   else if(a==="daily") caqStart(caqMix(caqUnanswered(caqAllIds()), 10), "Daily 10");
   else if(a==="island"){ caq.ui.subj = +b.getAttribute("data-i"); caq.ui.screen = "road"; caq.ui.sheet = null; renderCaQuiz(); }
@@ -17932,14 +17946,14 @@ function rtGlyph(id){ return '<svg class="rt-ic" viewBox="0 0 48 48" aria-hidden
 var RT_GROUPS = ["Fitness","Morning","Study","Work","Food and rest"];
 var RT_PRESETS = [
   {n:"Wake up", s:"wake", t:"05:00", d:15}, {n:"Yoga", s:"yoga", t:"05:15", d:10}, {n:"Study", s:"study", t:"06:30", e:"12:00", k:"study"}, {n:"Breakfast", s:"egg", t:"07:00", d:30},
-  {n:"Lunch", s:"rice", t:"12:30", d:45}, {n:"Dinner", s:"plate", t:"20:00", d:40}, {n:"Sleep", s:"moon", t:"22:00", d:420}, {n:"Exercise", s:"run", t:"17:30", d:45}
+  {n:"Lunch", s:"rice", t:"12:30", d:45}, {n:"Dinner", s:"plate", t:"20:00", d:40}, {n:"Sleep", s:"moon", t:"22:00", d:420}, {n:"Exercise", s:"run", t:"17:30", d:45},
+  {n:"Job / Duty", s:"job", t:"09:00", e:"17:00"}, {n:"Freshen up", s:"fresh", t:"07:00", d:10}, {n:"Rejuvenate", s:"lotus", t:"15:00", d:15}
 ];
 var RT_DAYN = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 function rtDefault(){ return {items:[], days:[1,2,3,4,5,6], theme:"night", made:"", span:"week"}; }
-function rtLoad(){
+function rtNormalize(v){
   try{
-    var v = JSON.parse(localStorage.getItem(RT_KEY) || "null");
-    if(v && Array.isArray(v.items)){
+    if(v && typeof v==="object" && Array.isArray(v.items)){
       v.items = v.items.filter(function(x){ return x && typeof x.n==="string" && /^\d\d:\d\d$/.test(x.t||""); });
       v.items.forEach(function(x){ var st = rtStk(x.s); x.s = st ? st[0] : "study"; });
       v.days = Array.isArray(v.days) ? v.days.filter(function(d){ return d>=0 && d<=6; }) : [1,2,3,4,5,6];
@@ -17947,10 +17961,15 @@ function rtLoad(){
       return v;
     }
   }catch(e){}
-  return rtDefault();
+  return null;
+}
+function rtLoad(){
+  var v = null;
+  try{ v = rtNormalize(JSON.parse(localStorage.getItem(RT_KEY) || "null")); }catch(e){}
+  return v || rtDefault();
 }
 var rt = rtLoad(), rtScreen = "", rtEd = null, rtEdView = "form";
-function rtSave(){ try{ localStorage.setItem(RT_KEY, JSON.stringify(rt)); }catch(e){} }
+function rtSave(){ lsSet(RT_KEY, JSON.stringify(rt)); }   // lsSet also tells cloud sync, so the routine is kept on this device and in the account
 function rtSorted(){ return rt.items.slice().sort(function(a, b){ return toMin(a.t) - toMin(b.t); }); }
 function rtDur(it){ return it.e ? Math.max(0, toMin(it.e) - toMin(it.t)) : (it.d || 0); }
 function rtStk(id){ for(var i=0;i<RT_STICKERS.length;i++) if(RT_STICKERS[i][0]===id || RT_STICKERS[i][5]===id) return RT_STICKERS[i]; return null; }
@@ -17972,6 +17991,95 @@ function rtBusy(skipId, a, b){   // the first other activity whose time overlaps
   return hit;
 }
 // "5:00 \u2013 5:05 AM" for the list; both AM/PM are shown only when the range crosses noon
+// ---- share the weekly card as a picture, with a CSE Companion watermark burnt into it ----
+function rtCardRange(it){
+  if(!it.e) return fmt12(it.t);
+  var x = fmt12(it.t), y = fmt12(it.e), xa = x.slice(-2), ya = y.slice(-2);
+  return (xa===ya ? x.replace(/ ?(AM|PM)$/, "") : x) + " \u2013 " + y;
+}
+function rtSvgImage(id, px){
+  var defs = Object.keys(RT_GRAD).map(function(k){ return '<linearGradient id="g-'+k+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+RT_GRAD[k][0]+'"/><stop offset="1" stop-color="'+RT_GRAD[k][1]+'"/></linearGradient>'; }).join("");
+  var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="'+px+'" height="'+px+'" viewBox="0 0 48 48"><defs>'+defs+'</defs>'+(RT_SVG[id] || RT_SVG.study).replace(/"@(\w+)"/g, '"url(#g-$1)"')+'</svg>';
+  return new Promise(function(res){ var im = new Image(); im.onload = function(){ res(im); }; im.onerror = function(){ res(null); }; im.src = "data:image/svg+xml;charset=utf-8,"+encodeURIComponent(svg); });
+}
+function rtRR(c, x, y, w, h, r){ c.beginPath(); c.moveTo(x+r, y); c.arcTo(x+w, y, x+w, y+h, r); c.arcTo(x+w, y+h, x, y+h, r); c.arcTo(x, y+h, x, y, r); c.arcTo(x, y, x+w, y, r); c.closePath(); }
+function rtSoft(c, x, y, w, h, r, fill, blur, dy, shade){   // a rounded shape that floats: soft blurred shadow, then the fill
+  c.save(); c.shadowColor = shade; c.shadowBlur = blur; c.shadowOffsetY = dy; c.fillStyle = fill; rtRR(c, x, y, w, h, r); c.fill(); c.restore();
+}
+function rtCardImage(){
+  var list = rtSorted(), sun = rt.theme==="sunrise", W = 1080, P = 64, rowH = 150, top = 392, H = top + list.length*rowH + 250;
+  var cv = document.createElement("canvas"); cv.width = W; cv.height = H; var c = cv.getContext("2d");
+  var ink = sun ? "#2b1233" : "#f2fffd", soft = sun ? "#5a3468" : "#c4f3ef", FF = '-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
+  var shade = sun ? "rgba(90,40,100,.38)" : "rgba(0,0,0,.5)";
+  var g = c.createLinearGradient(0, 0, W*.6, H);
+  if(sun){ g.addColorStop(0, "#ffe2b0"); g.addColorStop(.45, "#ffa98a"); g.addColorStop(1, "#9a6ad8"); } else { g.addColorStop(0, "#1e7482"); g.addColorStop(.45, "#10404e"); g.addColorStop(1, "#2f2a5c"); }
+  c.fillStyle = g; c.fillRect(0, 0, W, H);
+  // soft light orbs for depth
+  [[W-80, 60, 520, sun ? "255,255,255,.65" : "255,196,82,.45"], [40, H*.45, 420, sun ? "255,214,160,.45" : "70,200,220,.22"], [W-120, H*.82, 460, sun ? "190,150,255,.5" : "140,110,255,.28"]].forEach(function(o){
+    var r = c.createRadialGradient(o[0], o[1], 10, o[0], o[1], o[2]); r.addColorStop(0, "rgba("+o[3]+")"); r.addColorStop(1, "rgba(255,255,255,0)"); c.fillStyle = r; c.fillRect(0, 0, W, H);
+  });
+  c.fillStyle = ink; c.textBaseline = "alphabetic"; c.font = "800 70px "+FF;
+  c.save(); c.shadowColor = shade; c.shadowBlur = 14; c.shadowOffsetY = 6; c.fillText("My weekly routine", P, 134); c.restore();
+  var nm = profile && profile.name ? " · "+profile.name : "";
+  c.fillStyle = soft; c.font = "500 34px "+FF; c.fillText(rtWeekLabel()+nm, P, 190);
+  // day pills
+  var dw = (W - 2*P - 6*14)/7;
+  for(var i=0;i<7;i++){
+    var d = rtDate(i), on = rt.days.indexOf(d.getDay())>=0, td = toKey(d)===todayKey, x = P + i*(dw+14), y = 232, h = 118;
+    c.globalAlpha = on ? 1 : .45;
+    var dg = c.createLinearGradient(0, y, 0, y+h);
+    if(td){ dg.addColorStop(0, "#ffe08a"); dg.addColorStop(1, "#e8a92f"); } else { dg.addColorStop(0, "rgba(255,255,255,"+(sun ? ".7" : ".28")+")"); dg.addColorStop(1, "rgba(255,255,255,"+(sun ? ".34" : ".08")+")"); }
+    rtSoft(c, x, y, dw, h, 40, dg, 22, 12, shade);
+    c.save(); rtRR(c, x, y, dw, h, 40); c.clip(); var sh = c.createLinearGradient(0, y, 0, y+h*.5); sh.addColorStop(0, "rgba(255,255,255,.55)"); sh.addColorStop(1, "rgba(255,255,255,0)"); c.fillStyle = sh; c.fillRect(x, y, dw, h*.5); c.restore();
+    c.textAlign = "center"; c.fillStyle = td ? "#2a1d03" : ink; c.font = "800 40px "+FF; c.fillText(String(d.getDate()), x+dw/2, y+55);
+    c.fillStyle = td ? "#4a3508" : soft; c.font = "500 24px "+FF; c.fillText(RT_DAYN[d.getDay()], x+dw/2, y+93);
+    c.globalAlpha = 1; c.textAlign = "left";
+  }
+  return Promise.all(list.map(function(it){ return rtSvgImage(it.s, 112); })).then(function(imgs){
+    list.forEach(function(it, i){
+      var y = top + i*rowH, ch = rowH-22, col = RT_COL[(rtStk(it.s)||[0,0,0,"blue"])[3]], study = it.k==="study" || /study/i.test(it.n);
+      // the activity is a floating glass card
+      var cg = c.createLinearGradient(0, y, 0, y+ch);
+      if(study){ cg.addColorStop(0, sun ? "rgba(255,255,255,.85)" : "rgba(255,214,120,.34)"); cg.addColorStop(1, sun ? "rgba(255,255,255,.5)" : "rgba(255,214,120,.12)"); }
+      else { cg.addColorStop(0, sun ? "rgba(255,255,255,.6)" : "rgba(255,255,255,.17)"); cg.addColorStop(1, sun ? "rgba(255,255,255,.28)" : "rgba(255,255,255,.06)"); }
+      rtSoft(c, P-10, y, W-2*P+20, ch, 52, cg, 26, 12, shade);
+      c.save(); rtRR(c, P-10, y, W-2*P+20, ch, 52); c.clip(); var hl = c.createLinearGradient(0, y, 0, y+ch*.45); hl.addColorStop(0, "rgba(255,255,255,"+(sun ? ".5" : ".16")+")"); hl.addColorStop(1, "rgba(255,255,255,0)"); c.fillStyle = hl; c.fillRect(P-10, y, W-2*P+20, ch*.45); c.restore();
+      // glossy 3D tile
+      var tx = P+8, ty = y+ (ch-100)/2, ts = 100;
+      c.save(); c.shadowColor = col[2]; c.shadowBlur = 16; c.shadowOffsetY = 10; c.fillStyle = col[2]; rtRR(c, tx, ty+6, ts, ts, 34); c.fill(); c.restore();
+      var tg = c.createLinearGradient(tx, ty, tx+ts, ty+ts); tg.addColorStop(0, col[0]); tg.addColorStop(1, col[1]); c.fillStyle = tg; rtRR(c, tx, ty, ts, ts, 34); c.fill();
+      c.save(); rtRR(c, tx, ty, ts, ts, 34); c.clip(); var gl = c.createLinearGradient(0, ty, 0, ty+ts*.55); gl.addColorStop(0, "rgba(255,255,255,.55)"); gl.addColorStop(1, "rgba(255,255,255,0)"); c.fillStyle = gl; c.fillRect(tx, ty, ts, ts*.55); c.restore();
+      if(imgs[i]) c.drawImage(imgs[i], tx+7, ty+4, 86, 86);
+      c.fillStyle = ink; c.font = "800 38px "+FF; c.fillText(rtCardRange(it), tx+ts+28, y+58);
+      c.fillStyle = soft; c.font = "500 29px "+FF; c.fillText(rtLenText(rtDur(it)), tx+ts+28, y+98);
+      c.textAlign = "right"; c.fillStyle = ink; c.font = "700 40px "+FF;
+      var t = it.n; while(c.measureText(t).width > 370 && t.length > 4) t = t.slice(0, -2);
+      c.fillText(t.length < it.n.length ? t.trim()+"…" : t, W-P-18, y+ch/2+14); c.textAlign = "left";
+    });
+    var fy = top + list.length*rowH + 8;
+    var st = rtStudyBlocks().reduce(function(t, x){ return t + rtDur(x); }, 0);
+    c.fillStyle = soft; c.font = "500 30px "+FF; c.fillText(rtDaysText(), P, fy+44); c.textAlign = "right"; c.fillText(st ? "Study "+fmtHM(st)+" a day" : list.length+" activities", W-P, fy+44); c.textAlign = "left";
+    // watermark pill
+    var wg = c.createLinearGradient(0, fy+72, 0, fy+164); wg.addColorStop(0, sun ? "rgba(255,255,255,.7)" : "rgba(255,255,255,.2)"); wg.addColorStop(1, sun ? "rgba(255,255,255,.35)" : "rgba(255,255,255,.07)");
+    rtSoft(c, P, fy+72, W-2*P, 92, 46, wg, 22, 10, shade);
+    var cx = P+56, cy = fy+118;
+    c.save(); c.shadowColor = "rgba(120,70,0,.5)"; c.shadowBlur = 10; c.shadowOffsetY = 5; var cg2 = c.createLinearGradient(0, cy-26, 0, cy+26); cg2.addColorStop(0, "#ffe08a"); cg2.addColorStop(1, "#e0a22c"); c.fillStyle = cg2; c.beginPath(); c.arc(cx, cy, 27, 0, Math.PI*2); c.fill(); c.restore();
+    c.fillStyle = "#3a2705"; c.font = "800 32px "+FF; c.textAlign = "center"; c.fillText("C", cx, cy+11); c.textAlign = "left";
+    c.fillStyle = ink; c.font = "800 40px "+FF; c.fillText("CSE Companion ©", P+104, cy+14);
+    c.textAlign = "right"; c.fillStyle = soft; c.font = "500 27px "+FF; c.fillText("Study planner & question bank", W-P-30, cy+10); c.textAlign = "left";
+    return new Promise(function(res){ cv.toBlob(function(b){ res(b); }, "image/png"); });
+  });
+}
+function rtShareImage(){
+  toast("Making your picture…");
+  rtCardImage().then(function(blob){
+    if(!blob){ toast("Could not make the picture on this device."); return; }
+    var file = null; try{ file = new File([blob], "my-weekly-routine.png", {type:"image/png"}); }catch(e){}
+    if(file && navigator.canShare && navigator.canShare({files:[file]}) && navigator.share){ navigator.share({files:[file], title:"My weekly routine"}).catch(function(){}); return; }
+    var url = URL.createObjectURL(blob), a = document.createElement("a"); a.href = url; a.download = "my-weekly-routine.png"; document.body.appendChild(a); a.click(); a.remove(); setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
+    toast("Picture saved. Share it from your downloads.");
+  }).catch(function(){ toast("Could not make the picture on this device."); });
+}
 function rtRangeHtml(it){
   var a = toMin(it.t), b = (it.e ? toMin(it.e) : a + (it.d || 0)) % 1440;
   function p(m){ var h = Math.floor(m/60), ap = h>=12 ? "PM" : "AM"; h = h%12 || 12; return [h+":"+pad2(m%60), ap]; }
@@ -18025,8 +18133,9 @@ function rtBuildHtml(){
   var list = rtSorted(), h = '<div class="rt">';
   if(!list.length) h += '<div class="rt-empty"><div class="rt-big" aria-hidden="true">\uD83C\uDF1E</div><h2>Tell us about your day</h2><div class="muted">Add each thing you do and when. Your weekly card is made after you add them.</div></div>';
   else h += '<h2>Your day so far</h2><div class="muted">'+list.length+' activit'+(list.length===1 ? "y" : "ies")+' added. Tap one to change it.</div>';
-  if(list.length) h += '<div class="rt-list">'+list.map(function(it){
-    return '<button type="button" class="rt-item" data-rt="edit" data-id="'+esc(it.id)+'">'+rtTile(it.s)+'<span class="rt-it"><b>'+esc(it.n)+'</b></span><span class="rt-tr"><span class="rt-rng">'+rtRangeHtml(it)+'</span><small>'+esc(rtLenText(rtDur(it)))+'</small></span></button>';
+  if(list.length) h += '<div class="rt-list">'+list.map(function(it, ix){
+    var gp = ""; if(ix > 0){ var pe = rtSpan(list[ix-1])[1], ns = rtSpan(it)[0]; if(ns - pe >= 5) gp = '<button type="button" class="rt-gap" data-rt="gap" data-t="'+pad2(Math.floor(pe/60))+":"+pad2(pe%60)+'" data-m="'+(ns - pe)+'"><span>\uFF0B Free time \u00B7 '+esc(rtClock(pe))+' \u2013 '+esc(rtClock(ns))+'</span><small>'+esc(rtLenText(ns - pe))+' \u00B7 tap to add something</small></button>'; }
+    return gp+'<button type="button" class="rt-item" data-rt="edit" data-id="'+esc(it.id)+'">'+rtTile(it.s)+'<span class="rt-it"><b>'+esc(it.n)+'</b></span><span class="rt-tr"><span class="rt-rng">'+rtRangeHtml(it)+'</span><small>'+esc(rtLenText(rtDur(it)))+'</small></span></button>';
   }).join("")+'</div>';
   h += '<div class="rt-lab">TAP TO ADD</div><div class="rt-chips">'+RT_PRESETS.map(function(p, i){ return '<button type="button" class="rt-chip" data-rt="preset" data-i="'+i+'"><span class="rt-mini">'+rtGlyph(p.s)+'</span>'+esc(p.n)+'</button>'; }).join("")+'<button type="button" class="rt-chip" data-rt="add">\uFF0B My own</button></div>';
   h += '<button type="button" class="rt-add" data-rt="add">\uFF0B Add an activity</button>';
@@ -18046,7 +18155,7 @@ function rtCardHtml(){
   var st = rtStudyBlocks().reduce(function(t, x){ return t + rtDur(x); }, 0);
   h += '</div><div class="rt-ft"><span>'+esc(rtDaysText())+'</span><span>'+(st ? 'Study '+esc(fmtHM(st))+' a day' : list.length+' activities')+'</span></div></div></div><div class="rt-shadow"></div>';
   h += '<div class="rt-chips rt-themes" role="group" aria-label="Card theme"><button type="button" class="rt-chip'+(sun ? "" : " on")+'" data-rt="theme" data-v="night">Night</button><button type="button" class="rt-chip'+(sun ? " on" : "")+'" data-rt="theme" data-v="sunrise">Sunrise</button></div>';
-  h += '<div class="rt-two"><button type="button" class="rt-btn" data-rt="share">\u2197 Share</button><button type="button" class="rt-btn" data-rt="edit-all">\u270E Edit</button></div>';
+  h += '<div class="rt-two"><button type="button" class="rt-btn" data-rt="share">\u2197 Share as picture</button><button type="button" class="rt-btn" data-rt="edit-all">\u270E Edit</button></div>';
   if(rt.span!=="month") h += '<button type="button" class="rt-go sm" data-rt="month">Continue this for 1 month \u203A</button><div class="muted rt-note">Runs for 1 week now. Continue keeps it going for four weeks.</div>';
   var ended = toKey(rtDate(6)) < todayKey;
   if(ended && rt.span!=="month") h += '<button type="button" class="rt-btn wide" data-rt="renew">This week has ended. Start a new week</button>';
@@ -18077,6 +18186,7 @@ function rtAct(a, b){
     if(en && toMin(en) <= toMin(st)){ en = ""; du = 60; }   // "until 12:00" no longer fits after a late start: keep it as an hour
     rtOpenSheet({n:p.n, s:p.s, t:st, e:en, d:du, k:p.k || ""}); return;
   }
+  if(a==="gap"){ var gm = +b.getAttribute("data-m"); rtOpenSheet({n:"", s:"study", t:b.getAttribute("data-t"), e:"", d:Math.min(30, gm), k:""}); return; }
   if(a==="add"){ rtOpenSheet({n:"", s:"study", t:rtNextStart() || "06:00", e:"", d:30, k:""}); return; }
   if(a==="edit"){ var id = b.getAttribute("data-id"), it = rt.items.filter(function(x){ return x.id===id; })[0]; if(it) rtOpenSheet(JSON.parse(JSON.stringify(it)), true); return; }
   if(a==="day"){ var d = +b.getAttribute("data-d"), i = rt.days.indexOf(d); if(i>=0) rt.days.splice(i, 1); else rt.days.push(d); rtSave(); renderRoutine(); return; }
@@ -18088,12 +18198,7 @@ function rtAct(a, b){
   if(a==="stop"){ if(window.confirm("Stop at one week? Your routine stays saved.")){ rt.span = "week"; rtSave(); rtScreen = "card"; renderRoutine(); } return; }
   if(a==="renew"){ rt.made = todayKey; rtSave(); renderRoutine(); return; }
   if(a==="planner"){ setTab("planner"); return; }
-  if(a==="share"){
-    var txt = "My weekly routine ("+rtDaysText()+")\n"+rtSorted().map(function(x){ return fmt12(x.t)+(x.e ? " \u2013 "+fmt12(x.e) : "")+"  "+x.n; }).join("\n");
-    if(navigator.share) navigator.share({title:"My weekly routine", text:txt}).catch(function(){});
-    else if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(function(){ toast("Routine copied."); }, function(){ toast("Could not copy."); });
-    else toast("Sharing is not available on this device.");
-  }
+  if(a==="share"){ rtShareImage(); return; }
 }
 // ---- the add / change sheet: form view and sticker library view ----
 function rtSheetHtml(){
@@ -18179,7 +18284,7 @@ function rtOpenSheet(ed, editing){
       rtEd.e = ""; rtEd.d = dm; redraw();
     }
     else if(a==="until"){ if(!rtEd.e){ var mm = toMin(rtEd.t) + 60; rtEd.e = pad2(Math.min(23, Math.floor(mm/60)))+":"+pad2(mm%60 > 59 ? 0 : mm%60); if(toMin(rtEd.e) <= toMin(rtEd.t)) rtEd.e = "23:59"; } redraw(); }
-    else if(a==="del"){ rt.items = rt.items.filter(function(x){ return x.id!==rtEd.id; }); rtSave(); closeModal(); renderRoutine(); }
+    else if(a==="del"){ var gone = rtEd; rt.items = rt.items.filter(function(x){ return x.id!==rtEd.id; }); rtSave(); closeModal(); renderRoutine(); toast((gone.n || "Activity")+" removed. Its time is free now: tap the free time to add something there."); }
     else if(a==="save"){
       var n = (rtEd.n || "").trim();
       if(!n){ toast("Give it a name first."); return; }
@@ -19894,7 +19999,7 @@ if(!syncMeta.tl) syncMeta.tl = (syncMeta.uid && syncMeta.hash && syncMeta.hash.t
 if(!syncMeta.pt) syncMeta.pt = {};
 function saveSyncMeta(){ lsSetJSON(SYNC_META_KEY, syncMeta); }
 function cloudConfigured(){ return !!(devHook("__cloudTestAdapter") || (FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.projectId)); }
-var CLOUD_KEY_RE = /^dossier\.(plan\.v1|progress\.v1|sessions\.v1|profile\.v1|state\.(prelims|mains|months|daily|mockTests)|timerLog|revdone\.v1|catchup\.v1|planConfig|pathTheme|uiTheme|timerScene|soundId|soundOn|soundVol|tierMode)$/;
+var CLOUD_KEY_RE = /^dossier\.(plan\.v1|progress\.v1|sessions\.v1|profile\.v1|state\.(prelims|mains|months|daily|mockTests)|timerLog|revdone\.v1|catchup\.v1|planConfig|pathTheme|uiTheme|timerScene|soundId|soundOn|soundVol|tierMode|routine\.v1)$/;
 // settings that follow the person from phone to phone (each one keeps its own change time, so the latest change on any device wins)
 var PREF_LS = {pathTheme:"dossier.pathTheme", uiTheme:"dossier.uiTheme", timerScene:"dossier.timerScene", soundId:"dossier.soundId", soundOn:"dossier.soundOn", soundVol:"dossier.soundVol", tierMode:"dossier.tierMode"};
 function prefKeyOf(lsKey){ for(var k in PREF_LS) if(PREF_LS[k]===lsKey) return k; return null; }
@@ -19986,6 +20091,7 @@ function localDocs(){
   var pv = {_t:{}}; Object.keys(PREF_LS).forEach(function(k){ var v = prefValue(k); if(v!=null && v!==""){ pv[k] = v; pv._t[k] = (syncMeta.pt && syncMeta.pt[k]) || 0; } });
   out.prefs = JSON.stringify(pv);
   if(sub.t0) out.sub = JSON.stringify({t0:sub.t0});
+  if(rt.items.length) out.routine = JSON.stringify(rt);
   return out;
 }
 // what an emptied document looks like (so a deletion on one phone reaches the others)
@@ -20051,6 +20157,7 @@ function applyRemoteDocs(take){
     else if(id==="timerlog") data.timerLog = v;
     else if(id==="revdone") data.revDone = v;
     else if(id==="catch") data.catchState = v;
+    else if(id==="routine") data.routine = v;
     else if(id==="planconfig" && JSON.stringify(v) !== JSON.stringify(curCfg)) data.planConfig = v;
   });
   if(sessM){ var all = []; Object.keys(sessM).sort().forEach(function(k){ all = all.concat(sessM[k]); }); data.studySessions = all; }
@@ -20389,9 +20496,15 @@ var GUIDES = {
     "Nothing is final. Change anything later in the Syllabus planner with <b>Edit plan</b> or <b>Adjust plan</b>. Your progress is kept."]},
   routine:{icon:"⏰", name:"Routine", title:"How Routine works", steps:[
     "Add each thing you do in a day: wake up, yoga, study, meals, sleep. Pick a time, how long it lasts (or <b>Until</b> a time), and a sticker.",
+    "New activities start when the last one ends. If the time is taken, the app moves it forward for you.",
     "Choose which days it runs, then tap <b>Create my weekly routine</b> to get your card.",
     "<b>Continue this for 1 month</b> keeps the same routine going for four weeks. Tap <b>Edit</b> any time to change it.",
     "When your routine is ready, build your syllabus plan in the <b>Syllabus planner</b> to match your study hours."]},
+  caquiz:{icon:"📰", name:"Current Affairs Quizzes", title:"Current Affairs Quizzes", steps:[
+    "Pick a <b>month</b>, then a <b>subject</b>, and answer the questions one by one. Each month has questions across the Prelims subjects.",
+    "Choose an option and tap <b>Check answer</b>. You then see the right option and a short explanation.",
+    "Spotted a mistake? Tap <b>Report</b> on that question and tell us what is wrong.",
+    "Your answers and reports stay on this device and in your backup file."]},
   planner:{icon:"🧭", name:"Syllabus planner", title:"Your Syllabus planner", steps:[
     "<b>Overview</b> shows the subjects running now. Tap <b>Mark current chapter complete</b> when you finish the chapter you are on.",
     "<b>Yearly, Monthly, Weekly</b> and <b>Daily</b> are the same plan at different zoom levels. <b>Daily</b> is where you log what you studied.",
@@ -20425,9 +20538,11 @@ var GUIDES = {
     "<b>App guides</b> at the bottom lets you read any of these tips again."]}
 };
 var GUIDE_TIPS = {
-  routine:["Your routine is saved on this device only. It is not sent to any cloud.",
+  routine:["Your routine is saved on this device. If you sign in for cloud sync, it is kept in your account too, and it is part of <b>Download backup</b>.",
     "Activities are sorted by time for you. Tap an activity to change or remove it.",
-    "<b>Share</b> sends your routine as text. A picture card to share is not available yet."],
+    "<b>Changing a length moves the rest.</b> Make an activity longer or shorter and everything after it moves with it. The app tells you first.",
+    "<b>Removing an activity leaves free time.</b> Tap the free-time row to add something else there.",
+    "<b>Share as picture</b> makes an image of your weekly card with a CSE Companion watermark, ready to send."],
   planner:["<b>Subjects run one after another.</b> Complete a subject to unlock the next. The calendar follows your progress, and changing the plan never erases it.",
     "<b>Your subjects</b> list shows the subjects running now. Tap <b>Show all subjects</b> to see the ones that come later. A bar shows how much of a subject you have finished, and \uD83D\uDD12 means it starts after the one above.",
     "<b>Activities come first.</b> If a study session falls at the same time as an activity, the activity takes that slot and the topic moves to the next free study slot, on a later day. Nothing is dropped. One time slot holds only one thing.",
@@ -20449,6 +20564,8 @@ function refreshPageInfo(){
   var id = pageGuideId();
   b.hidden = !id;
   b.classList.toggle("new", !!id && !guidesSeen[id] && guideOff());   // a dot only when the pop-ups are off and this guide is unread
+  var d = document.getElementById("dashInfo");
+  if(d){ d.hidden = !id; d.classList.toggle("new", !!id && !guidesSeen[id] && guideOff()); }
 }
 function guideSheetHtml(id){
   var g = GUIDES[id], tips = GUIDE_TIPS[id] || [];
@@ -20474,7 +20591,8 @@ function openGuideSheet(){
   trackEvent("screen_view", {screen:"info_"+id});
 }
 document.getElementById("pageInfo").addEventListener("click", openGuideSheet);
-var GUIDE_ORDER = ["home","dash","routine","plansetup","planner","syllabus","tiers","mocks","pyq","quotes","settings"];
+document.getElementById("dashInfo").addEventListener("click", openGuideSheet);
+var GUIDE_ORDER = ["home","dash","routine","plansetup","planner","syllabus","tiers","mocks","pyq","caquiz","quotes","settings"];
 function guideOff(){ return lsGet(GUIDE_OFF_KEY)==="1"; }
 function currentGuideId(){
   var t = activeTab;
@@ -20518,7 +20636,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "384";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "388";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
