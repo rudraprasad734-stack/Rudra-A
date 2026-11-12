@@ -1001,6 +1001,7 @@
   .rt-shadow{height:22px; margin:-4px 34px 0; border-radius:50%; background:radial-gradient(ellipse,rgba(0,0,0,.5),transparent 70%);}
   .rt-card.sun2{background:linear-gradient(160deg,#ffd9a0 0%,#ff9f7a 40%,#8a5fd0 100%); border-color:rgba(255,255,255,.55); box-shadow:0 2px 0 rgba(255,255,255,.5) inset,0 -26px 40px rgba(60,20,90,.25) inset,18px 30px 50px rgba(0,0,0,.5),-4px 6px 0 #b0613f,-8px 12px 0 #8a4a30;} .rt-card.sun2:after{background:radial-gradient(circle,rgba(255,255,255,.7),transparent 62%);}
   .rt-card.sun2 h2,.rt-card.sun2 .rt-r .t,.rt-card.sun2 .rt-r .n{color:#2b1233; text-shadow:0 1px 0 rgba(255,255,255,.4);} .rt-card.sun2 .rt-sub,.rt-card.sun2 .rt-r .d,.rt-card.sun2 .rt-ft{color:#4a2a58;} .rt-card.sun2 .rt-wk div{background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,.25)); color:#4a2a58;} .rt-card.sun2 .rt-wk b{color:#2b1233;} .rt-card.sun2 .rt-r.study{background:linear-gradient(90deg,rgba(255,255,255,.5),rgba(255,255,255,.1));}
+  .rt-ic{width:100%; height:100%; display:block; padding:12%; box-sizing:border-box;} .rt-tile .rt-ic{padding:10%;} .rt-sk .rt-ic{padding:12%;} .rt-sun .rt-ic{padding:0;} .rt-sun{width:62px; height:62px;} .rt-mini{display:inline-block; width:20px; height:20px; vertical-align:-5px; margin-right:6px;} .rt-mini .rt-ic{padding:0;}
   .rt-themes{justify-content:center; margin-top:10px;}
   .rt-cal{display:grid; grid-template-columns:repeat(7,1fr); gap:6px; margin-top:10px;} .rt-cal div{aspect-ratio:1; border-radius:10px; display:grid; place-items:center; font-size:13px; font-weight:700; background:var(--surface); border:1.5px solid var(--line);} .rt-cal .h{background:none; border:0; aspect-ratio:auto; color:var(--ink-soft); font-size:11px;} .rt-cal .x{background:none; border:0;} .rt-cal .w{background:#12604a; border-color:#34c98a; color:#fff;} .rt-cal .t{background:var(--gold); color:var(--gold-ink,#241d0b); border-color:var(--gold);}
   .rt-wkrow{display:flex; justify-content:space-between; align-items:center; background:var(--surface); border:1.5px solid var(--line); border-radius:14px; padding:12px; margin-top:8px; font-size:14px;} .rt-wkrow b{color:#34c98a;} .rt-wkrow b.pl{color:var(--ink-soft); font-weight:500;}
@@ -17874,19 +17875,53 @@ document.addEventListener("click", function(e){ var b = e.target.closest ? e.tar
 // ============================================================================
 var RT_KEY = "dossier.routine.v1";
 var RT_COL = {yellow:["#ffe08a","#f0a93a","#9a6410"], cyan:["#8ff0f4","#31b6c4","#1b6c78"], orange:["#ffc2a0","#ff8a5c","#a8472a"], blue:["#a9b8ff","#5a6ee0","#2e3a96"], violet:["#d2c8ff","#8c79e6","#4a3a9a"], green:["#a8f0c0","#34c98a","#1b7a52"], pink:["#ffb8d6","#f0609f","#9a2a64"], red:["#ffb0a8","#ef6a58","#9a2a1c"]};
-// [emoji, label, search words, colour, group]
+// [id, label, search words, colour, group, old emoji (only used to upgrade routines saved by an earlier build)]
 var RT_STICKERS = [
-  ["\uD83D\uDEB4","Cycling","cycle cycling bike ride","green","Fitness"], ["\uD83C\uDFC3","Running","run running jog","green","Fitness"], ["\uD83C\uDFCB\uFE0F","Gym","gym weights workout lift","red","Fitness"], ["\uD83C\uDFCA","Swimming","swim swimming pool","cyan","Fitness"], ["\u26BD","Football","football soccer sport play","green","Fitness"],
-  ["\uD83E\uDDD8","Yoga","yoga meditate meditation","cyan","Fitness"], ["\uD83D\uDEB6","Walk","walk walking stroll","green","Fitness"], ["\uD83C\uDFF8","Badminton","badminton sport play","yellow","Fitness"], ["\uD83E\uDD7E","Trek","trek hike hiking","orange","Fitness"], ["\uD83D\uDC83","Dance","dance dancing","pink","Fitness"],
-  ["\uD83C\uDF05","Wake up","wake up sunrise morning","yellow","Morning"], ["\uD83D\uDEBF","Shower","shower bath fresh refresh","cyan","Morning"], ["\uD83E\uDEA5","Brush","brush teeth","cyan","Morning"], ["\u2615","Tea","tea coffee chai","orange","Morning"], ["\uD83D\uDE4F","Prayer","prayer pray puja","yellow","Morning"],
-  ["\uD83D\uDCD6","Study","study read book reading","blue","Study"], ["\u270D\uFE0F","Writing","write writing answer practice","blue","Study"], ["\uD83D\uDCBB","Laptop","laptop computer online class","blue","Study"], ["\uD83D\uDCF0","Newspaper","newspaper news current affairs","blue","Study"], ["\uD83C\uDFA7","Lecture","lecture listen podcast audio","violet","Study"],
-  ["\uD83C\uDF73","Breakfast","breakfast eggs morning meal","orange","Food and rest"], ["\uD83C\uDF5B","Lunch","lunch meal rice","orange","Food and rest"], ["\uD83C\uDF7D","Dinner","dinner meal supper","orange","Food and rest"], ["\uD83E\uDD57","Snack","snack salad healthy","green","Food and rest"], ["\uD83C\uDF4E","Fruit","fruit apple","red","Food and rest"],
-  ["\uD83D\uDE34","Sleep","sleep nap rest night","violet","Food and rest"], ["\uD83D\uDECF","Bed","bed rest","violet","Food and rest"], ["\uD83E\uDDF9","Chores","chores clean cleaning house","cyan","Food and rest"], ["\uD83C\uDFA8","Hobby","hobby art draw paint","pink","Food and rest"], ["\uD83D\uDCDE","Call","call phone family friends","green","Food and rest"]
+  ["cycle","Cycling","cycle cycling bike ride","green","Fitness","\uD83D\uDEB4"], ["run","Running","run running jog","green","Fitness","\uD83C\uDFC3"], ["gym","Gym","gym weights workout lift","red","Fitness","\uD83C\uDFCB\uFE0F"], ["swim","Swimming","swim swimming pool","cyan","Fitness","\uD83C\uDFCA"], ["ball","Football","football soccer sport play","green","Fitness","\u26BD"],
+  ["yoga","Yoga","yoga meditate meditation","cyan","Fitness","\uD83E\uDDD8"], ["walk","Walk","walk walking stroll","green","Fitness","\uD83D\uDEB6"], ["shuttle","Badminton","badminton sport play","yellow","Fitness","\uD83C\uDFF8"], ["trek","Trek","trek hike hiking","orange","Fitness","\uD83E\uDD7E"], ["dance","Dance","dance dancing","pink","Fitness","\uD83D\uDC83"],
+  ["wake","Wake up","wake up sunrise morning","yellow","Morning","\uD83C\uDF05"], ["shower","Shower","shower bath fresh refresh","cyan","Morning","\uD83D\uDEBF"], ["brush","Brush","brush teeth","cyan","Morning","\uD83E\uDEA5"], ["tea","Tea","tea coffee chai","orange","Morning","\u2615"], ["pray","Prayer","prayer pray puja","yellow","Morning","\uD83D\uDE4F"],
+  ["study","Study","study read book reading","blue","Study","\uD83D\uDCD6"], ["write","Writing","write writing answer practice","blue","Study","\u270D\uFE0F"], ["laptop","Laptop","laptop computer online class","blue","Study","\uD83D\uDCBB"], ["news","Newspaper","newspaper news current affairs","blue","Study","\uD83D\uDCF0"], ["listen","Lecture","lecture listen podcast audio","violet","Study","\uD83C\uDFA7"],
+  ["egg","Breakfast","breakfast eggs morning meal","orange","Food and rest","\uD83C\uDF73"], ["rice","Lunch","lunch meal rice","orange","Food and rest","\uD83C\uDF5B"], ["plate","Dinner","dinner meal supper","orange","Food and rest","\uD83C\uDF7D"], ["salad","Snack","snack salad healthy","green","Food and rest","\uD83E\uDD57"], ["apple","Fruit","fruit apple","red","Food and rest","\uD83C\uDF4E"],
+  ["moon","Sleep","sleep nap rest night","violet","Food and rest","\uD83D\uDE34"], ["bed","Bed","bed rest","violet","Food and rest","\uD83D\uDECF"], ["broom","Chores","chores clean cleaning house","cyan","Food and rest","\uD83E\uDDF9"], ["palette","Hobby","hobby art draw paint","pink","Food and rest","\uD83C\uDFA8"], ["phone","Call","call phone family friends","green","Food and rest","\uD83D\uDCDE"]
 ];
+// Original drawings for every sticker, made for this app (no emoji font, no third-party art), so they look the same on every phone.
+var RT_SVG = {
+  cycle:'<circle cx="11" cy="33" r="7" fill="#fff"/><circle cx="37" cy="33" r="7" fill="#fff"/><path d="M11 33l10-14h11l5 14M21 19l7 14H11" fill="none"/><path d="M29 15h6" fill="none"/><circle cx="25" cy="8" r="4" fill="#ffd9b0"/><path d="M21 19l5-7" fill="none"/>',
+  run:'<circle cx="29" cy="8" r="4.5" fill="#ffd9b0"/><path d="M27 14l-4 10 8 5-2 11M23 24l-8 3M27 16l9 4M23 24l-6 12" fill="none"/>',
+  gym:'<path d="M9 24h30" fill="none"/><rect x="5" y="15" width="7" height="18" rx="2" fill="#ff7a59"/><rect x="36" y="15" width="7" height="18" rx="2" fill="#ff7a59"/><rect x="12" y="11" width="6" height="26" rx="2" fill="#ffd24d"/><rect x="30" y="11" width="6" height="26" rx="2" fill="#ffd24d"/>',
+  swim:'<circle cx="31" cy="14" r="4.5" fill="#ffd9b0"/><path d="M14 22l9-5 9 2M3 31q5-5 10 0t10 0t10 0t10 0M3 39q5-5 10 0t10 0t10 0t10 0" fill="none"/>',
+  ball:'<circle cx="24" cy="24" r="17" fill="#fff"/><path d="M24 15l8 6-3 9H19l-3-9z" fill="#1f2a37"/><path d="M24 15V8M32 21l7-3M29 30l5 7M19 30l-5 7M16 21l-7-3" fill="none"/>',
+  yoga:'<circle cx="24" cy="9" r="4.5" fill="#ffd9b0"/><path d="M24 14v13M24 18l-11 7M24 18l11 7M9 38q15-14 30 0M13 38h22" fill="none"/>',
+  walk:'<circle cx="27" cy="8" r="4.5" fill="#ffd9b0"/><path d="M26 14l-2 12M24 17l-7 8M25 17l8 6M24 26l-6 14M24 26l8 14" fill="none"/>',
+  shuttle:'<ellipse cx="19" cy="18" rx="10" ry="12" transform="rotate(-25 19 18)" fill="#fff"/><path d="M13 12l12 12M11 19l10 10M17 8l12 12M26 29l12 13" fill="none"/><circle cx="37" cy="10" r="3.5" fill="#fff"/><path d="M37 13l-4 7h8z" fill="#fff"/>',
+  trek:'<path d="M13 7h11v15l12 6v8H12z" fill="#c97b4a"/><path d="M11 36h27v5H11z" fill="#1f2a37"/><path d="M13 12h11M13 17h11" fill="none"/>',
+  dance:'<circle cx="24" cy="8" r="4.5" fill="#ffd9b0"/><path d="M24 14l-10 17h20z" fill="#ff7ab0"/><path d="M20 31l-2 10M28 31l2 10M24 17l11-8" fill="none"/>',
+  wake:'<path d="M7 34a17 17 0 0134 0z" fill="#ffd24d"/><path d="M24 7v6M9 17l4 4M39 17l-4 4M3 34h42M10 41h28" fill="none"/>',
+  shower:'<path d="M9 19a15 9 0 0130 0z" fill="#cfd8dc"/><path d="M24 10V6h10" fill="none"/><path d="M13 25v4M21 26v6M29 26v6M37 25v4M17 33v5M25 35v5M33 33v5" fill="none" stroke="#29a8e0"/>',
+  brush:'<path d="M8 41l17-17" fill="none" stroke="#1f2a37" stroke-width="9"/><path d="M8 41l17-17" fill="none" stroke="#29a8e0" stroke-width="5.4"/><rect x="24" y="9" width="9" height="19" rx="2.5" transform="rotate(45 28.5 18.5)" fill="#fff"/><path d="M31 8l-3-3M35 12l-3-3M38 16l-3-3" fill="none"/>',
+  tea:'<path d="M8 18h26v10a12 11 0 01-12 11h-2A12 11 0 018 28z" fill="#fff"/><path d="M34 21h3a4.5 4.5 0 010 9h-4" fill="none"/><path d="M15 6c-2 3 2 4 0 8M22 6c-2 3 2 4 0 8M29 6c-2 3 2 4 0 8M6 42h30" fill="none"/>',
+  pray:'<path d="M24 41L13 28C10 20 15 11 24 6c9 5 14 14 11 22z" fill="#ffd9b0"/><path d="M24 8v33M24 20l-7 7M24 20l7 7" fill="none"/>',
+  study:'<path d="M5 12q9-3 19 2 10-5 19-2v27q-9-3-19 2-10-5-19-2z" fill="#fff"/><path d="M24 14v27M10 19q6-1 10 1M10 26q6-1 10 1M28 20q5-2 10-1M28 27q5-2 10-1" fill="none"/>',
+  write:'<path d="M9 39l3-9 18-18 6 6-18 18z" fill="#ffd24d"/><path d="M9 39l3-9 6 6z" fill="#ffd9b0"/><path d="M30 12l4-4 6 6-4 4z" fill="#ff7a59"/><path d="M8 43h22" fill="none"/>',
+  laptop:'<rect x="9" y="10" width="30" height="21" rx="2" fill="#dfe9ff"/><path d="M3 34h42l-4 7H7z" fill="#cfd8dc"/><path d="M14 16h20M14 21h14M14 26h17" fill="none"/>',
+  news:'<rect x="7" y="9" width="34" height="30" rx="2" fill="#fff"/><path d="M12 15h24" fill="none" stroke-width="4"/><rect x="12" y="21" width="11" height="9" fill="#9db4ff"/><path d="M27 22h9M27 26h9M27 30h9M12 35h24" fill="none"/>',
+  listen:'<path d="M9 28v-5a15 15 0 0130 0v5" fill="none" stroke-width="3.2"/><rect x="6" y="27" width="9" height="13" rx="3" fill="#8c79e6"/><rect x="33" y="27" width="9" height="13" rx="3" fill="#8c79e6"/>',
+  egg:'<path d="M9 22C5 13 17 7 24 11c8-4 17 4 13 12 4 9-7 15-15 11-8 4-17-2-13-12z" fill="#fff"/><circle cx="24" cy="23" r="7" fill="#ffd24d"/>',
+  rice:'<path d="M5 25h38a19 16 0 01-38 0z" fill="#ff8a5c"/><path d="M9 25q15-16 30 0z" fill="#fff"/><path d="M29 5l9 15M36 4l7 13" fill="none"/>',
+  plate:'<circle cx="24" cy="24" r="14" fill="#fff"/><circle cx="24" cy="24" r="8" fill="#e8eef5"/><path d="M5 8v9M8.5 8v9M12 8v9M8.5 17v23M43 8c-4 4-4 12 0 16v16" fill="none"/>',
+  salad:'<circle cx="15" cy="19" r="6.5" fill="#7bd88f"/><circle cx="25" cy="15" r="7.5" fill="#5cc874"/><circle cx="34" cy="20" r="5.5" fill="#7bd88f"/><circle cx="21" cy="21" r="3" fill="#ef6a58"/><path d="M5 24h38a19 15 0 01-38 0z" fill="#34c98a"/>',
+  apple:'<path d="M24 14c-6-6-16-2-16 10 0 10 8 17 14 15l2-1 2 1c6 2 14-5 14-15 0-12-10-16-16-10z" fill="#ef6a58"/><path d="M24 14c0-4 2-7 5-8" fill="none"/><path d="M27 9q6-4 9 1-6 3-9-1z" fill="#5cc874"/>',
+  moon:'<path d="M31 5a19 19 0 1010 29A15 15 0 0131 5z" fill="#ffe08a"/><path d="M33 9h7l-7 9h7M20 4h4" fill="none"/>',
+  bed:'<path d="M4 17v24M44 30v11" fill="none" stroke-width="3.2"/><rect x="4" y="27" width="40" height="9" rx="2" fill="#fff"/><rect x="8" y="20" width="12" height="7" rx="3" fill="#ffd9b0"/><path d="M22 27v-3h18a4 4 0 014 4v-1" fill="none"/>',
+  broom:'<path d="M35 5L21 28" fill="none" stroke-width="3.4"/><path d="M12 27l15 7-9 12-11-7z" fill="#ffd24d"/><path d="M13 35l8-5M16 41l8-5" fill="none"/>',
+  palette:'<path d="M24 6C12 6 5 14 5 24s9 18 18 18c4 0 5-3 3-6s0-6 4-6h6c6 0 9-4 9-8C45 13 36 6 24 6z" fill="#ffe9c9"/><circle cx="15" cy="21" r="3.2" fill="#ef6a58"/><circle cx="22" cy="13" r="3.2" fill="#4fd8e0"/><circle cx="33" cy="15" r="3.2" fill="#34c98a"/><circle cx="14" cy="31" r="3.2" fill="#8c79e6"/>',
+  phone:'<rect x="13" y="5" width="22" height="38" rx="4" fill="#fff"/><rect x="17" y="10" width="14" height="22" rx="1" fill="#9db4ff"/><circle cx="24" cy="38" r="2" fill="#1f2a37"/>'
+};
+function rtGlyph(id){ return '<svg class="rt-ic" viewBox="0 0 48 48" fill="none" stroke="#1f2a37" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(RT_SVG[id] || RT_SVG.study)+'</svg>'; }
 var RT_GROUPS = ["Fitness","Morning","Study","Food and rest"];
 var RT_PRESETS = [
-  {n:"Wake up", s:"\uD83C\uDF05", t:"05:00", d:15}, {n:"Yoga", s:"\uD83E\uDDD8", t:"05:15", d:10}, {n:"Study", s:"\uD83D\uDCD6", t:"06:30", e:"12:00", k:"study"}, {n:"Breakfast", s:"\uD83C\uDF73", t:"07:00", d:30},
-  {n:"Lunch", s:"\uD83C\uDF5B", t:"12:30", d:45}, {n:"Dinner", s:"\uD83C\uDF7D", t:"20:00", d:40}, {n:"Sleep", s:"\uD83D\uDE34", t:"22:00", d:420}, {n:"Exercise", s:"\uD83C\uDFC3", t:"17:30", d:45}
+  {n:"Wake up", s:"wake", t:"05:00", d:15}, {n:"Yoga", s:"yoga", t:"05:15", d:10}, {n:"Study", s:"study", t:"06:30", e:"12:00", k:"study"}, {n:"Breakfast", s:"egg", t:"07:00", d:30},
+  {n:"Lunch", s:"rice", t:"12:30", d:45}, {n:"Dinner", s:"plate", t:"20:00", d:40}, {n:"Sleep", s:"moon", t:"22:00", d:420}, {n:"Exercise", s:"run", t:"17:30", d:45}
 ];
 var RT_DAYN = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
 function rtDefault(){ return {items:[], days:[1,2,3,4,5,6], theme:"night", made:"", span:"week"}; }
@@ -17895,6 +17930,7 @@ function rtLoad(){
     var v = JSON.parse(localStorage.getItem(RT_KEY) || "null");
     if(v && Array.isArray(v.items)){
       v.items = v.items.filter(function(x){ return x && typeof x.n==="string" && /^\d\d:\d\d$/.test(x.t||""); });
+      v.items.forEach(function(x){ var st = rtStk(x.s); x.s = st ? st[0] : "study"; });
       v.days = Array.isArray(v.days) ? v.days.filter(function(d){ return d>=0 && d<=6; }) : [1,2,3,4,5,6];
       v.theme = v.theme==="sunrise" ? "sunrise" : "night"; v.span = v.span==="month" ? "month" : "week"; v.made = /^\d{4}-\d\d-\d\d$/.test(v.made||"") ? v.made : "";
       return v;
@@ -17906,10 +17942,10 @@ var rt = rtLoad(), rtScreen = "", rtEd = null, rtEdView = "form";
 function rtSave(){ try{ localStorage.setItem(RT_KEY, JSON.stringify(rt)); }catch(e){} }
 function rtSorted(){ return rt.items.slice().sort(function(a, b){ return toMin(a.t) - toMin(b.t); }); }
 function rtDur(it){ return it.e ? Math.max(0, toMin(it.e) - toMin(it.t)) : (it.d || 0); }
-function rtStk(emoji){ for(var i=0;i<RT_STICKERS.length;i++) if(RT_STICKERS[i][0]===emoji) return RT_STICKERS[i]; return null; }
-function rtTile(emoji, cls){
-  var st = rtStk(emoji), c = RT_COL[st ? st[3] : "blue"];
-  return '<span class="'+(cls||"rt-tile")+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'" aria-hidden="true">'+emoji+'</span>';
+function rtStk(id){ for(var i=0;i<RT_STICKERS.length;i++) if(RT_STICKERS[i][0]===id || RT_STICKERS[i][5]===id) return RT_STICKERS[i]; return null; }
+function rtTile(id, cls){
+  var st = rtStk(id), c = RT_COL[st ? st[3] : "blue"];
+  return '<span class="'+(cls||"rt-tile")+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'" aria-hidden="true">'+rtGlyph(st ? st[0] : "study")+'</span>';
 }
 function rtDays(){ var d = rt.days.slice().sort(function(a, b){ return ((a+6)%7) - ((b+6)%7); }); return d; }
 function rtDaysText(){
@@ -17938,7 +17974,7 @@ function rtBuildHtml(){
   if(list.length) h += '<div class="rt-list">'+list.map(function(it){
     return '<button type="button" class="rt-item" data-rt="edit" data-id="'+esc(it.id)+'">'+rtTile(it.s)+'<span class="rt-it"><b>'+esc(it.n)+'</b>'+(it.e ? '<small>Until '+esc(fmt12(it.e))+'</small>' : '')+'</span><span class="rt-tm">'+esc(fmt12(it.t))+'<small>'+esc(fmtHM(rtDur(it)))+'</small></span></button>';
   }).join("")+'</div>';
-  h += '<div class="rt-lab">TAP TO ADD</div><div class="rt-chips">'+RT_PRESETS.map(function(p, i){ return '<button type="button" class="rt-chip" data-rt="preset" data-i="'+i+'">'+p.s+' '+esc(p.n)+'</button>'; }).join("")+'<button type="button" class="rt-chip" data-rt="add">\uFF0B My own</button></div>';
+  h += '<div class="rt-lab">TAP TO ADD</div><div class="rt-chips">'+RT_PRESETS.map(function(p, i){ return '<button type="button" class="rt-chip" data-rt="preset" data-i="'+i+'"><span class="rt-mini">'+rtGlyph(p.s)+'</span>'+esc(p.n)+'</button>'; }).join("")+'<button type="button" class="rt-chip" data-rt="add">\uFF0B My own</button></div>';
   h += '<button type="button" class="rt-add" data-rt="add">\uFF0B Add an activity</button>';
   h += '<div class="rt-lab">WHICH DAYS</div><div class="rt-days" role="group" aria-label="Days">'+[1,2,3,4,5,6,0].map(function(d){ var on = rt.days.indexOf(d)>=0; return '<button type="button" class="'+(on?"on":"")+'" aria-pressed="'+on+'" data-rt="day" data-d="'+d+'">'+RT_DAYN[d].charAt(0)+'</button>'; }).join("")+'</div>';
   var ok = list.length>0 && rt.days.length>0;
@@ -17947,11 +17983,11 @@ function rtBuildHtml(){
 }
 function rtCardHtml(){
   var list = rtSorted(), sun = rt.theme==="sunrise", nm = profile && profile.name ? profile.name : "";
-  var h = '<div class="rt"><div class="rt-stage"><div class="rt-card'+(sun ? " sun2" : "")+'"><span class="rt-sun" aria-hidden="true">'+(list[0] ? list[0].s : "\uD83C\uDF05")+'</span><h2>My weekly routine</h2><div class="rt-sub">'+esc(rtWeekLabel())+(nm ? ' \u00B7 '+esc(nm) : '')+'</div>';
+  var h = '<div class="rt"><div class="rt-stage"><div class="rt-card'+(sun ? " sun2" : "")+'"><span class="rt-sun" aria-hidden="true">'+rtGlyph(list[0] ? list[0].s : "wake")+'</span><h2>My weekly routine</h2><div class="rt-sub">'+esc(rtWeekLabel())+(nm ? ' \u00B7 '+esc(nm) : '')+'</div>';
   h += '<div class="rt-wk">'+[0,1,2,3,4,5,6].map(function(i){ var d = rtDate(i), on = rt.days.indexOf(d.getDay())>=0, td = toKey(d)===todayKey; return '<div class="'+(td?"today":"")+'"'+(on ? "" : ' style="opacity:.45"')+'><b>'+d.getDate()+'</b>'+RT_DAYN[d.getDay()]+'</div>'; }).join("")+'</div><div class="rt-rows">';
   list.forEach(function(it){
     var c = RT_COL[(rtStk(it.s)||[0,0,0,"blue"])[3]], study = it.k==="study" || /study/i.test(it.n);
-    h += '<div class="rt-r'+(study ? " study" : "")+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'"><span class="rt-tile">'+it.s+'</span><span class="t">'+esc(fmt12(it.t))+'</span><span class="n">'+esc(it.n)+'</span><span class="d">'+(it.e ? '\u2192 '+esc(fmt12(it.e).replace(/ ?(AM|PM)$/, "")) : esc(fmtHM(rtDur(it)))) +'</span></div>';
+    h += '<div class="rt-r'+(study ? " study" : "")+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'"><span class="rt-tile">'+rtGlyph(it.s)+'</span><span class="t">'+esc(fmt12(it.t))+'</span><span class="n">'+esc(it.n)+'</span><span class="d">'+(it.e ? '\u2192 '+esc(fmt12(it.e).replace(/ ?(AM|PM)$/, "")) : esc(fmtHM(rtDur(it)))) +'</span></div>';
   });
   var st = rtStudyBlocks().reduce(function(t, x){ return t + rtDur(x); }, 0);
   h += '</div><div class="rt-ft"><span>'+esc(rtDaysText())+'</span><span>'+(st ? 'Study '+esc(fmtHM(st))+' a day' : list.length+' activities')+'</span></div></div></div><div class="rt-shadow"></div>';
@@ -17983,7 +18019,7 @@ function rtBind(host){
 }
 function rtAct(a, b){
   if(a==="preset"){ var p = RT_PRESETS[+b.getAttribute("data-i")]; rtOpenSheet({n:p.n, s:p.s, t:p.t, e:p.e || "", d:p.d || 30, k:p.k || ""}); return; }
-  if(a==="add"){ rtOpenSheet({n:"", s:"\uD83D\uDCD6", t:"06:00", e:"", d:30, k:""}); return; }
+  if(a==="add"){ rtOpenSheet({n:"", s:"study", t:"06:00", e:"", d:30, k:""}); return; }
   if(a==="edit"){ var id = b.getAttribute("data-id"), it = rt.items.filter(function(x){ return x.id===id; })[0]; if(it) rtOpenSheet(JSON.parse(JSON.stringify(it)), true); return; }
   if(a==="day"){ var d = +b.getAttribute("data-d"), i = rt.days.indexOf(d); if(i>=0) rt.days.splice(i, 1); else rt.days.push(d); rtSave(); renderRoutine(); return; }
   if(a==="create"){ if(b.disabled) return; rt.made = todayKey; rt.span = "week"; rtSave(); rtScreen = "card"; renderRoutine(); window.scrollTo(0, 0); return; }
@@ -17995,7 +18031,7 @@ function rtAct(a, b){
   if(a==="renew"){ rt.made = todayKey; rtSave(); renderRoutine(); return; }
   if(a==="planner"){ setTab("planner"); return; }
   if(a==="share"){
-    var txt = "My weekly routine ("+rtDaysText()+")\n"+rtSorted().map(function(x){ return fmt12(x.t)+(x.e ? " \u2013 "+fmt12(x.e) : "")+"  "+x.s+" "+x.n; }).join("\n");
+    var txt = "My weekly routine ("+rtDaysText()+")\n"+rtSorted().map(function(x){ return fmt12(x.t)+(x.e ? " \u2013 "+fmt12(x.e) : "")+"  "+x.n; }).join("\n");
     if(navigator.share) navigator.share({title:"My weekly routine", text:txt}).catch(function(){});
     else if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(function(){ toast("Routine copied."); }, function(){ toast("Could not copy."); });
     else toast("Sharing is not available on this device.");
@@ -18007,13 +18043,13 @@ function rtSheetHtml(){
   if(rtEdView==="lib"){
     h += '<div class="rt-sh-h"><button type="button" class="rt-back" data-rs="form">\u2039 Back</button><h2>Choose a sticker</h2></div>'+
       '<input type="search" class="rt-q" id="rtQ" placeholder="Search: cycle, book, tea" aria-label="Search stickers"><div class="rt-cats" role="group" aria-label="Group"><button type="button" class="rt-chip on" data-rs="cat" data-g="">All</button>'+RT_GROUPS.map(function(g){ return '<button type="button" class="rt-chip" data-rs="cat" data-g="'+esc(g)+'">'+esc(g)+'</button>'; }).join("")+'</div><div class="rt-lib">'+
-      RT_STICKERS.map(function(s){ var c = RT_COL[s[3]]; return '<button type="button" class="rt-sk'+(s[0]===e.s ? " sel" : "")+'" data-rs="pick" data-s="'+s[0]+'" data-kw="'+esc((s[1]+" "+s[2]).toLowerCase())+'" data-g="'+esc(s[4])+'" aria-label="'+esc(s[1])+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'">'+s[0]+'</button>'; }).join("")+'</div>';
+      RT_STICKERS.map(function(s){ var c = RT_COL[s[3]]; return '<button type="button" class="rt-sk'+(s[0]===e.s ? " sel" : "")+'" data-rs="pick" data-s="'+s[0]+'" data-kw="'+esc((s[1]+" "+s[2]).toLowerCase())+'" data-g="'+esc(s[4])+'" aria-label="'+esc(s[1])+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'">'+rtGlyph(s[0])+'</button>'; }).join("")+'</div>';
     return h+'</div>';
   }
   var row = RT_STICKERS.slice(0, 11).map(function(s){ return s[0]; });
   if(row.indexOf(e.s)<0) row.unshift(e.s);
   h += '<h2>'+(e.id ? "Change activity" : "Add an activity")+'</h2><div class="rt-prev">'+rtTile(e.s, "rt-tile big")+'<label class="rt-nm"><input type="text" id="rtN" maxlength="30" value="'+esc(e.n)+'" placeholder="Name, e.g. Cycling" aria-label="Activity name"><small>Tap the name to change it</small></label></div>'+
-    '<div class="rt-lab">STICKER</div><div class="rt-row6">'+row.map(function(em){ var s2 = rtStk(em), c = RT_COL[s2 ? s2[3] : "blue"]; return '<button type="button" class="rt-sk'+(em===e.s ? " sel" : "")+'" data-rs="pick" data-s="'+em+'" aria-label="'+esc(s2 ? s2[1] : "Sticker")+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'">'+em+'</button>'; }).join("")+'</div><button type="button" class="rt-link" data-rs="lib">See all stickers \u203A</button>'+
+    '<div class="rt-lab">STICKER</div><div class="rt-row6">'+row.map(function(em){ var s2 = rtStk(em), c = RT_COL[s2 ? s2[3] : "blue"]; return '<button type="button" class="rt-sk'+(em===e.s ? " sel" : "")+'" data-rs="pick" data-s="'+em+'" aria-label="'+esc(s2 ? s2[1] : "Sticker")+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'">'+rtGlyph(em)+'</button>'; }).join("")+'</div><button type="button" class="rt-link" data-rs="lib">See all stickers \u203A</button>'+
     '<div class="rt-lab">WHEN</div><div class="rt-when"><label>Starts<input type="time" id="rtT" value="'+esc(e.t)+'"></label>'+(e.e ? '<label>Until<input type="time" id="rtE" value="'+esc(e.e)+'"></label>' : '')+'</div>'+
     '<div class="rt-chips rt-durs" role="group" aria-label="How long">'+[5,10,15,30,45,60].map(function(m){ return '<button type="button" class="rt-chip'+(!e.e && e.d===m ? " on" : "")+'" data-rs="dur" data-m="'+m+'">'+(m===60 ? "1 h" : m+" min")+'</button>'; }).join("")+'<button type="button" class="rt-chip'+(e.e ? " on" : "")+'" data-rs="until">Until\u2026</button></div>'+
     '<button type="button" class="rt-go" data-rs="save">'+(e.id ? "Save" : "Add to my day")+'</button>'+(e.id ? '<button type="button" class="rt-btn wide bad" data-rs="del">Remove from my day</button>' : "")+'</div>';
@@ -20383,7 +20419,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "376";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "377";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
