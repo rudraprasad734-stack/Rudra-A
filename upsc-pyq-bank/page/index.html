@@ -395,6 +395,15 @@
   #pageBar{display:none; align-items:center; justify-content:space-between; padding:calc(10px + env(safe-area-inset-top,0px)) 8px 10px; background:var(--tab-accent); color:var(--tab-accent-ink); font-size:19px; font-weight:600;}
   #pageBar button{border:none; background:none; color:inherit; font-size:26px; line-height:1; width:44px; height:40px; cursor:pointer;}
   #pageBar .pb-gap{width:44px;}
+  #pageBar #pageInfo{position:relative; width:34px; height:34px; margin:0 5px; border:2px solid currentColor; border-radius:50%; font:800 17px/1 Georgia,serif; font-style:italic; opacity:.9;} #pageBar #pageInfo[hidden]{display:block; visibility:hidden;}
+  #pageBar #pageInfo.new::after{content:""; position:absolute; right:-4px; top:-4px; width:11px; height:11px; border-radius:50%; background:#ef4b3a; border:2px solid var(--tab-accent);}
+  .gd-sheet{max-height:86vh; overflow-y:auto;} .gd-sheet h2{display:flex; align-items:center; gap:10px; font-size:19px;} .gd-i2{flex:none; width:26px; height:26px; border-radius:50%; background:var(--tab-accent); color:var(--tab-accent-ink,#04141a); display:grid; place-items:center; font:800 15px Georgia,serif; font-style:italic;}
+  .gd-lab{font-size:12px; letter-spacing:.12em; font-weight:700; color:var(--ink-soft); margin:18px 0 4px;} .gd-tip{background:var(--surface-2,var(--surface)); border-radius:12px; padding:10px 12px; margin-top:8px; font-size:14px; line-height:1.45;}
+  .gd-sheet .gd-s{margin:12px 0 0; padding-left:22px;} .gd-sheet .gd-s li{margin-bottom:8px;}
+  .gd-extra{margin-top:16px; font-size:14px;} .gd-extra h3{margin:0 0 6px; font-size:15px;} .gd-extra p,.gd-extra li{opacity:1; margin:0 0 8px;}
+  .gd-first input{position:absolute; opacity:0; width:1px; height:1px;} .gd-first input:checked + .qz-sw{background:var(--gold); border-color:var(--gold);} .gd-first input:checked + .qz-sw::after{left:21px; background:var(--gold-ink,#241d0b);} .gd-first input:focus-visible + .qz-sw{outline:2px solid var(--tab-accent); outline-offset:2px;}
+  .gd-first{display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:16px; font-size:15px; cursor:pointer;}
+
   body.in-page #topbar{display:none;}
   body.in-page #pageBar{display:flex;}
   #drawerDim{position:fixed; inset:0; z-index:70; background:rgba(0,0,0,.5); opacity:0; visibility:hidden; transition:opacity .25s, visibility 0s .25s;}
@@ -962,6 +971,7 @@
   .pq-fab{position:fixed; right:0; bottom:calc(96px + env(safe-area-inset-bottom,0px)); z-index:40; display:flex; align-items:center; gap:8px; border:1.5px solid var(--tab-accent); border-right:0; border-radius:99px 0 0 99px; padding:11px 14px 11px 16px; background:var(--surface-solid,var(--bg)); color:var(--ink); font:inherit; font-weight:800; font-size:14.5px; box-shadow:0 6px 20px rgba(0,0,0,.4); cursor:pointer; transition:transform .45s ease;}
   .pq-fab-i{display:none;} .pq-fab.tuck{transform:translateX(calc(100% - 46px)); padding-left:12px;} .pq-fab.tuck .pq-fab-t{display:none;} .pq-fab.tuck .pq-fab-i{display:inline;}
   .src-more{margin:2px 0 8px;} .src-more summary{font-size:12px; color:var(--ink-soft); cursor:pointer; list-style:none;} .src-more summary::-webkit-details-marker{display:none;} .src-more summary::before{content:"ⓘ "; }
+  .tl-more{display:block; width:100%; margin-top:10px;}
   .pr-tag{float:right; font-size:12px; color:var(--ink-soft);} .pr-tag.done{color:#34c98a; font-weight:700;}
   .qz-seg.sm{margin-top:-4px;} .qz-seg.sm button.on{background:var(--tab-accent); color:var(--tab-accent-ink,#04141a);}
   .qz-go.ghost{padding:9px 14px; font-size:15px;} .qz-go.ghost small{font-size:11.5px;}
@@ -1838,7 +1848,7 @@ html.sp-on #app,html.sp-on #toast{visibility:hidden}
   <div id="chrome">
 
   <button type="button" id="menuBtn" aria-label="Open menu" aria-controls="drawer" aria-expanded="false"><i></i><i></i><i></i></button>
-  <div id="pageBar"><button type="button" id="pageClose" aria-label="Close and go to Dashboard">&#10005;</button><span id="pageTitle"></span><span class="pb-gap"></span></div>
+  <div id="pageBar"><button type="button" id="pageClose" aria-label="Close and go to Dashboard">&#10005;</button><span id="pageTitle"></span><button type="button" id="pageInfo" aria-label="How this screen works" hidden>i</button></div>
   <nav id="subtabs" aria-label="Subsections"></nav>
   </div>
   <button type="button" id="dashFab" aria-label="Open Dashboard"><svg class="fab-dash" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 16.5a8 8 0 1115 0"/><path d="M12 16.5l3.6-5"/><circle cx="12" cy="16.5" r="1.4"/><path d="M6.5 19.5h11"/></svg><svg class="fab-timer" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13.5" r="7"/><path d="M12 9.8v4l2.6 1.6M9.5 3.5h5"/></svg></button>
@@ -7526,7 +7536,7 @@ function fitLineHtml(w){
   var f = null; try{ f = fitInfo(w); }catch(e){ window.__fitErr = e && e.stack; }
   if(!f) return '<div class="muted mt">Set your duration first, then this shows whether your hours are enough.</div>';
   var spare = f.have - f.need;
-  var ct = f.hours && f.hours.def ? ' Each chapter gets about '+esc(fmtHM(Math.round(f.hours.def*60)))+'.' : "";
+  var ct = "";
   if(f.fits) return '<div class="fit-v ok"><b>✓ Everything fits.</b>'+ct+' '+(f.budgeted ? 'Finishes about '+esc(fmtShort(parseKey(f.finish || f.end)))+'.' : spare >= 60 ? 'About '+esc(fmtHM(spare))+' to spare before '+esc(fmtShort(parseKey(f.end)))+'.' : 'It is a tight fit, so a few missed days will push the end date.')+'</div>';
   var short = Math.max(0, f.need - f.have), over = Math.max(60, f.leftMin);
   var tips = [];
@@ -7698,7 +7708,7 @@ function weekMapHtml(w){
   }).join("");
   var msgs = conflictMessages(w);
   return '<div class="weekmap"><h4>Your week at a glance</h4>'+
-    '<div class="hint"><b>Activities come first.</b> If a study session falls at the same time as an activity, the activity takes that slot and the topic moves to the next free study slot, on a later day. Nothing is dropped. One time slot holds only one thing.</div>'+
+    ''+
     activityConflicts(w).map(function(c){ return clashAskHtml(w, c); }).join("")+
     rows+'</div>';
 }
@@ -8088,7 +8098,7 @@ function wzReviewDetail(w){
       '<div><span>Window</span><b>'+esc(fmtShort(parseKey(w.start)))+' &rarr; '+esc(fmtShort(parseKey(st.end)))+'</b><small>'+(w.durMode==="months" && +w.months>0 ? +w.months : st.months)+' months &middot; '+st.days+' days</small></div>'+
       '<div><span>Preparing</span><b>'+({prelims:"Prelims",mains:"Mains",both:"Prelims + Mains"})[w.mode]+'</b><small>'+esc(w.optionalOn && w.mode!=="prelims" && w.optional ? "Optional: "+w.optional : "")+'</small></div>'+
       '<div><span>Chapters in scope</span><b>'+totalLeaves+'</b><small>'+states.length+' subjects</small></div>'+
-      '<div><span>Capacity</span><b>'+esc(fmtHM(plan.capacity.sessions.reduce(function(t, x){ return t + Math.max(0, toMin(x.end)-toMin(x.start)); }, 0)))+' a day</b><small>'+w.cap.days.length+' days/week &middot; '+st.hours+' h total</small></div>'+
+      '<div><span>Study days</span><b>'+w.cap.days.length+' days/week</b><small>'+st.hours+' h total</small></div>'+
     '</div>'+
     '<h4>Subject chain (projected finish)</h4><div class="chain-mini">'+states.map(function(s, i){
       var sp = sim.spans[s.name];
@@ -8435,6 +8445,7 @@ function planReadyModal(){
 // ============================================================================
 // PLANNER HOME: LEGO chain + Yearly / Monthly / Weekly / Daily + Progress
 // ============================================================================
+var plannerSubjAll = false;   // Plan tab: false = only the subjects running now
 var plannerScrollTo = "", progOpen = {}, plannerView = "overview", plannerLanding = null, plannerMonth = null, plannerWeek = null, plannerDay = null;
 // two tabs: Plan (the subjects, pace, chapters, reminders) and Schedule (Day, Week, Month, Year, each opening with a progress ring)
 var PLANNER_TABS = [["plan","Plan"],["schedule","Schedule"],["optional","Optional"]];
@@ -8592,7 +8603,9 @@ function planTimelineHtml(plan, states){
   var sim = viewIndex().sim, all = (sim ? sim.sessions : []).concat(studySessions), rng = {};
   all.forEach(function(x){ if(x.kind!=="study" || x.status==="skipped") return; var r = rng[x.subject] || (rng[x.subject] = {lo:x.date, hi:x.date}); if(x.date<r.lo) r.lo = x.date; if(x.date>r.hi) r.hi = x.date; });
   function dm(k){ var d = parseKey(k), o = {day:"numeric", month:"short"}; if(d.getFullYear() !== parseKey(todayKey).getFullYear()) o.year = "numeric"; return d.toLocaleDateString(undefined, o); }
-  var rows = states.map(function(st){
+  var running = states.filter(function(st){ return st.state!=="completed" && !(st.state==="locked" && !st.pinned); });
+  var hiddenN = states.length - running.length, shownStates = plannerSubjAll ? states : running;
+  var rows = shownStates.map(function(st){
     var r = rng[st.name], locked = st.state==="locked" && !st.pinned, nm = st.name.replace(/ \(Optional\)$/, ""), tag, when;
     if(st.state==="completed"){ tag = "Done"; when = ""; }
     else if(locked){ tag = "Later"; when = r ? "starts " + dm(r.lo) : ""; }
@@ -8601,7 +8614,8 @@ function planTimelineHtml(plan, states){
       +'<div class="tl2-h"><span class="tl2-n">'+(locked ? "🔒 " : subjEmoji(st.name)+" ")+esc(nm)+'</span><span class="tl2-w"><b>'+tag+'</b>'+(when ? " &middot; "+esc(when) : "")+'</span></div>'
       +'<div class="tl2-t"><i style="width:'+st.pct+'%"></i></div><div class="tl2-p">'+st.pct+'% done'+(function(){ var nl = st.state==="completed" || locked ? null : nextLeaf(st); return nl ? ' &middot; Running now: <b>'+esc(nl.unit)+'</b>' : ""; })()+'</div></div>';
   }).join("");
-  return '<div class="card tlc"><div class="k2">YOUR SUBJECTS, ONE AFTER ANOTHER</div>'+rows+'<div class="tl-key"><span>Bar = how much you have finished</span><span>🔒 starts after the one above</span></div></div>';
+  return '<div class="card tlc"><div class="k2">YOUR SUBJECTS, ONE AFTER ANOTHER</div>'+rows+
+    (hiddenN>0 || plannerSubjAll ? '<button type="button" class="btn ghost sm tl-more" data-pa="subjall" aria-expanded="'+plannerSubjAll+'">'+(plannerSubjAll ? "Show running subjects only \u25B4" : "Show all "+states.length+" subjects \u25BE")+'</button>' : "")+'</div>';
 }
 function nextUpHtml(){
   var list = planSessionsOn(todayKey).filter(function(x){ return !x.projected && x.status!=="completed" && x.status!=="skipped"; });
@@ -8614,7 +8628,7 @@ function nextUpHtml(){
 function overviewHtml(plan, states){
   var st = windowStats(plan.cfg), op = overallProgress(plan), sim = viewIndex().sim, left = sim ? sim.remaining : 0;
   return planTimelineHtml(plan, states)+
-    '<div class="card pace"><div><b>Hours a day</b><div class="muted">'+(function(){ var c = plan.capacity, mine = [], dh = c.dayHours > 0 ? fmtHM(Math.round(c.dayHours*60)) : fmtHM(c.sessions.reduce(function(t, x){ return t + Math.max(0, toMin(x.end)-toMin(x.start)); }, 0)); return esc(dh)+' a day'+(mine.length ? '; '+mine.map(function(n){ return esc(n)+' '+esc(fmtHM(Math.round(c.subjHours[n]*60))); }).join(", ") : "")+'. Each chapter gets about <b>'+esc(fmtHM(Math.round((c.hours ? c.hours.def : 2)*60)))+'</b>.'; })()+'</div></div><button type="button" class="btn ghost sm" data-pa="hours">Change</button></div>'+
+
     (left ? hoursReportHtml(plan) : "")+
     '<div class="card ov-win"><div class="muted">Window '+esc(fmtShort(parseKey(plan.window.start)))+' &rarr; '+esc(fmtShort(parseKey(plan.window.end)))+' &middot; '+(st.ok ? st.days+" days &middot; "+st.hours+" study hours" : "")+'</div><div class="ov-btns"><button type="button" class="btn ghost sm" data-pa="edit">Edit plan</button><button type="button" class="btn danger sm" data-pa="reset">Reset plan</button></div></div>';
 }
@@ -8680,7 +8694,7 @@ function yearlyHtml(plan, states){
   var shown = bars.length>12 ? bars.slice(Math.max(0, Math.min(ci-2, bars.length-12)), Math.max(0, Math.min(ci-2, bars.length-12))+12) : bars;
   var hero = saHero({p:H.op.pct/100, label:H.op.pct+"%", sub:"syllabus", kicker:"Your window ends "+esc(fmtShort(parseKey(plan.window.end))), big:daysLeft+" day"+(daysLeft===1 ? "" : "s")+" left", chip:[H.cls, H.title], lines:[H.op.done+" of "+H.op.total+" chapters done", H.line]});
   return hero+'<div class="card sa-card"><div class="sa-h">Sessions per month</div>'+saBars(shown, function(v){ return String(Math.round(v)); }, "Sessions planned and done per month", "This month")+'</div>'+
-    '<div class="hint">This is a forecast. Finish a subject early and the dates come sooner; fall behind and they slip later. Past months show what you actually did.</div>'+'<div class="section-title">Subject projection</div>'+proj+'<div class="section-title">Month by month</div><div class="yrlist">'+rows+'</div>';
+    ''+'<div class="section-title">Subject projection</div>'+proj+'<div class="section-title">Month by month</div><div class="yrlist">'+rows+'</div>';
 }
 function monthlyHtml(plan, states){
   var mk = plannerMonth || todayKey.slice(0,7), months = monthList(plan);
@@ -8746,8 +8760,8 @@ function weeklyHtml(plan, states){
     '<div class="section-title">Focus this week</div>'+focus+'<div class="section-title">Days</div>'+body;
 }
 // a short guide for aspirants, shown open the first time and remembered once they close it
-function logHelpHtml(){
-  return '<details class="help-card" id="logHelp"'+(lsGet("dossier.help.log")==="closed" ? "" : " open")+'><summary><span class="hc-i" aria-hidden="true">i</span> How to log your study time</summary>'+
+function logHelpBodyHtml(){
+  return '<div class="gd-extra"><h3>How to log your study time</h3>'+
     '<div class="hc-b">'+
       '<p><b>In one line:</b> each card below is one study slot planned for the day. Tell the app when you really studied, and your progress, streak and hours update by themselves.</p>'+
       '<ol>'+
@@ -8759,8 +8773,9 @@ function logHelpHtml(){
       '</ol>'+
       '<p><b>The Status updates itself.</b> Studied the full planned time: <i>Completed</i>. Studied part of it: <i>In progress</i>. A Missed or Skipped session comes back as soon as you enter time. You can still change the Status yourself.</p>'+
       '<p><b>Why it matters.</b> Completed sessions finish chapters and unlock the next subject. Your actual time feeds the Today bar, your study streak and the weekly hours in Insights.</p>'+
-    '</div></details>';
+    '</div></div>';
 }
+function logHelpHtml(){ return ""; }   // the log guide now lives in the Planner's "i" sheet
 // a study slot an activity took: say which activity, and that the topic moves to a later day
 function replacedSlotsHtml(plan, d, list){
   if(d < plan.window.start || d > plan.window.end || plan.capacity.days.indexOf(dowOf(d)) < 0 || (plan.leave && onLeave(plan, d))) return "";
@@ -8802,7 +8817,7 @@ function dailyHtml(plan){
       (list.length ? list.map(function(s){ return s.projected ? planRow(s) : sessLogCard(s, states); }).join("") : '<div class="muted sess-empty">Nothing planned on this day.</div>')+replacedSlotsHtml(plan, d, list)+'</div>'+
     '<div class="notes-card card"><h3>Notes</h3><textarea id="dayNotes" placeholder="How did today go? Anything to revise or flag for tomorrow...">'+esc(st.notes||"")+'</textarea><div class="save-hint" id="dayNotesHint">'+(db ? "Saves automatically as you type" : "Saved on this device")+'</div></div>'+
     (d===todayKey ? '<div class="section-title">Upcoming activities</div>'+upcomingHtml() : "")+
-    '<div class="hint">Set a session&rsquo;s status or actual time here. Your plan, progress and dashboard update automatically.</div>';
+    '';
 }
 function bindPlannerDaily(host){
   bindSessionCards(host);
@@ -16066,7 +16081,7 @@ function priorityHtml(plan, states, inTiers){
   var rows = st.leaves.map(function(l){ return {l:l, t:tierInfo(l)}; });
   if(inTiers && tierPM!=="all") rows = rows.filter(function(r){ var x = tierPMOf(r.l); return !x || x.indexOf(tierPM)>=0; });
   var groups = [[1,"Tier 1 · Asked most often"],[2,"Tier 2 · Asked often"],[3,"Tier 3 · Asked sometimes"],[4,"Tier 4 · Asked rarely"],[5,"Themes and clusters"],[9,"Not rated yet"]];
-  var html = '<div class="hint">Tiers show how often a topic appeared in past papers: Tier 1 most often. Tap a chapter to see the day it is planned, or tap its PYQ button to read the questions.</div>'+disclaimerHtml()+
+  var html = ''+disclaimerHtml()+
     tierModeHtml(chapterTiers().ny)+(inTiers ? "" : '<div class="cf"><label>Subject</label><select data-pa="prisubj">'+states.map(function(x){ return '<option value="'+esc(x.name)+'"'+(x.name===name?" selected":"")+'>'+esc(x.name)+'</option>'; }).join("")+'</select></div>')+loadBlockHtml(name);
   groups.forEach(function(g){
     if(inTiers && tierFilter && g[0]!==tierFilter) return;
@@ -16083,7 +16098,7 @@ function priorityHtml(plan, states, inTiers){
 }
 
 function progressHtml(plan, states){
-  return '<div class="hint">A chapter turns <b>In progress</b> as soon as you start studying it, and stays that way until you finish it. Mark it finished from the session (Planner \u2192 Schedule \u2192 Day) or when you save your timer. When every chapter of a subject is complete, the next subject unlocks.</div>'+
+  return ''+
     states.map(function(s){
       var e = s.entry, tag = s.state==="completed" ? "COMPLETED" : (s.state==="active" ? "ACTIVE" : (s.pinned ? "PARALLEL" : "LOCKED"));
       var groups = Object.keys(e.topics).map(function(g){
@@ -16566,7 +16581,7 @@ function renderPlannerHome(host){
   if(tabNow==="plan") body = overviewHtml(plan, states)+fallingBehindHtml()+remindersHtml()+'<div class="section-title">Chapters</div>'+progressHtml(plan, states);
   var sub = tabNow==="schedule" ? '<div class="pl-sub" role="tablist">'+SCHED_VIEWS.map(function(t){ return '<button type="button" role="tab" class="'+(t[0]===plannerView?"on":"")+'" aria-selected="'+(t[0]===plannerView)+'" data-pa="view" data-v="'+t[0]+'">'+t[1]+'</button>'; }).join("")+'</div>' : "";
   host.innerHTML =
-    '<div class="card pl-title"><div><h2>Preparation Planner</h2><div class="muted">Complete a subject to unlock the next. The calendar follows your progress, and changing the plan never erases it.</div>'+(subMode()==="trial" ? '<div class="trial-chip">Free trial · Day '+trialInfo().day+' of '+TRIAL_DAYS+' · '+esc(trialInfo().leftText)+'</div>' : "")+'</div><button type="button" class="btn ghost sm" data-go="reschedule">Adjust plan</button></div>'+
+    '<div class="card pl-title"><div><h2>Preparation Planner</h2>'+(subMode()==="trial" ? '<div class="trial-chip">Free trial · Day '+trialInfo().day+' of '+TRIAL_DAYS+' · '+esc(trialInfo().leftText)+'</div>' : "")+'</div><button type="button" class="btn ghost sm" data-go="reschedule">Adjust plan</button></div>'+
     '<div class="pl-tabs">'+PLANNER_TABS.map(function(t){ return '<button type="button" class="'+(t[0]===tabNow?"on":"")+'" data-pa="view" data-v="'+(t[0]==="plan" ? "overview" : (t[0]==="schedule" ? lastSched : "optional"))+'">'+t[1]+'</button>'; }).join("")+'</div>'+sub+catchBannerHtml()+body;
   centerActive(host.querySelector(".pl-tabs"), "button.on", false);
   if(plannerScrollTo){ var tgt = host.querySelector('[data-prog="'+plannerScrollTo.replace(/"/g, '\\"')+'"]'); plannerScrollTo = ""; if(tgt) setTimeout(function(){ tgt.scrollIntoView({block:"start"}); window.scrollBy(0, -70); }, 60); }
@@ -16620,6 +16635,7 @@ function plannerAction(a, el, sure){
   var v = el.getAttribute("data-v");
   switch(a){
     case "view": plannerView = v; break;
+    case "subjall": plannerSubjAll = !plannerSubjAll; break;
     case "optup": case "optdown": case "chup": case "chdown": case "starthere": case "optreset": case "optopen": case "optfilter": optAction(a, v); break;
     case "hours": plannerEditing = true; wiz = wizFromPlan(studyPlan); wiz.step = 5; wiz.capScreen = "subj"; break;
     case "autofit": studyPlan.capacity.layout = "auto"; studyPlan.capacity.limitMin = 0; if(studyPlan.cfg && studyPlan.cfg.cap){ studyPlan.cfg.cap.layout = "auto"; studyPlan.cfg.cap.limitMin = 0; } solveLayout(studyPlan); if(studyPlan.cfg && studyPlan.cfg.cap) studyPlan.cfg.cap.dayStart = studyPlan.capacity.dayStart; savePlan(); replan(); toast("Your day now has enough hours to fit every chapter."); break;
@@ -17373,6 +17389,7 @@ function renderTabs(){
   var g0 = groupById(activeGroup);
   document.getElementById("pageTitle").textContent = g0 ? g0.label : "";
   renderSubTabs();
+  if(typeof refreshPageInfo==="function") refreshPageInfo();
 }
 function renderSubTabs(){
   var host = document.getElementById("subtabs");
@@ -20016,9 +20033,10 @@ var GUIDES = {
     "The Planner decides when your mock tests happen. The cards at the top show how many you have done against the plan.",
     "After each test, log it here with its type, date and score.",
     "Your scores are kept together so you can see how you are improving."]},
-  pyq:{icon:"❓", name:"PYQ Bank", title:"Previous year questions", steps:[
-    "Pick an exam at the top, then browse the real questions year by year.",
-    "Switch to <b>Topic trends</b> to see which topics come up most often.",
+  pyq:{icon:"❓", name:"PYQ Bank", title:"How the PYQ Bank works", steps:[
+    "Pick <b>Prelims</b>, <b>Mains</b> or <b>Optional</b> at the top. Prelims opens the Practice hub: tap a year, then <b>Read paper</b> or <b>Start quiz</b>.",
+    "A question counts as <b>practised</b> when you answer it and tap <b>Check</b> in a quiz. <b>Continue practising</b> serves 20 you have not done yet.",
+    "On a question, <b>Show answer</b> and <b>Hide answer</b> reveal or hide it.",
     "From the Dashboard or Planner, <b>See more PYQs</b> opens every question for a chapter."]},
   quotes:{icon:"💬", name:"Quotes & cases", title:"Quotes and case studies", steps:[
     "Three tabs: <b>Ethics (GS4)</b> and <b>Essay</b> quotes you can use in answers, and <b>Ethics Cases</b> with real, checked case studies.",
@@ -20030,6 +20048,53 @@ var GUIDES = {
     "<b>Backup</b> saves everything to a file you keep, and restores it. Download one now and then.",
     "<b>App guides</b> at the bottom lets you read any of these tips again."]}
 };
+var GUIDE_TIPS = {
+  planner:["<b>Subjects run one after another.</b> Complete a subject to unlock the next. The calendar follows your progress, and changing the plan never erases it.",
+    "<b>Your subjects</b> list shows the subjects running now. Tap <b>Show all subjects</b> to see the ones that come later. A bar shows how much of a subject you have finished, and \uD83D\uDD12 means it starts after the one above.",
+    "<b>Activities come first.</b> If a study session falls at the same time as an activity, the activity takes that slot and the topic moves to the next free study slot, on a later day. Nothing is dropped. One time slot holds only one thing.",
+    "<b>Dates are a forecast.</b> Finish a subject early and the dates come sooner; fall behind and they slip later. Past months show what you actually did.",
+    "<b>Daily:</b> set a session\u2019s status or actual time there. Your plan, progress and dashboard update automatically."],
+  tiers:["Tiers show how often a topic appeared in past papers: Tier 1 most often. Tap a chapter to see the day it is planned, or tap its PYQ button to read the questions.",
+    "A chapter turns <b>In progress</b> as soon as you start studying it, and stays that way until you finish it. Mark it finished from the session (Planner \u2192 Schedule \u2192 Day) or when you save your timer. When every chapter of a subject is complete, the next subject unlocks."],
+  pyq:["Only questions with an answer key can be quizzed. Mains and Optional have no answer keys, so they are read-only.",
+    "<b>Only questions I haven\u2019t practised</b> in a year\u2019s sheet skips what you have already done. When a paper is 100% practised you can start over.",
+    "Your practice progress is saved on this device only."]
+};
+function pageGuideId(){
+  var id = currentGuideId();
+  if(!id && activeTab==="planner") id = studyPlan ? "planner" : "plansetup";
+  return GUIDES[id] ? id : "";
+}
+function refreshPageInfo(){
+  var b = document.getElementById("pageInfo"); if(!b) return;
+  var id = pageGuideId();
+  b.hidden = !id;
+  b.classList.toggle("new", !!id && !guidesSeen[id] && guideOff());   // a dot only when the pop-ups are off and this guide is unread
+}
+function guideSheetHtml(id){
+  var g = GUIDES[id], tips = GUIDE_TIPS[id] || [];
+  var tabsFor = {pyq:1};
+  return '<div class="fr-sheet gd-sheet" role="dialog" aria-modal="true" aria-label="'+esc(g.title)+'"><div class="grab"></div>'+
+    '<h2><span class="gd-i2" aria-hidden="true">i</span>'+esc(g.title)+'</h2>'+
+    '<ol class="gd-s">'+g.steps.map(function(x){ return '<li>'+x+'</li>'; }).join("")+'</ol>'+
+    (tips.length ? '<div class="gd-lab">TIPS ON THIS SCREEN</div>'+tips.map(function(t){ return '<div class="gd-tip">'+t+'</div>'; }).join("") : "")+
+    (id==="planner" ? logHelpBodyHtml() : "")+(id==="pyq" ? pyqAboutHtml() : "")+
+    '<label class="gd-first"><span>Show a guide the first time I open a screen</span><input type="checkbox" role="switch" id="gdFirst" '+(guideOff() ? "" : "checked")+'><i class="qz-sw" aria-hidden="true"></i></label>'+
+    '<div class="gd-lab">OTHER SCREENS</div><div class="gd-grid">'+GUIDE_ORDER.filter(function(x){ return x!==id; }).map(function(x){ return '<button type="button" class="gd-btn" data-guide2="'+x+'"><span aria-hidden="true">'+GUIDES[x].icon+'</span> '+esc(GUIDES[x].name)+'</button>'; }).join("")+'</div>'+
+    '<div class="modal-actions"><button type="button" class="btn primary" id="gdOk">Close</button></div></div>';
+}
+function openGuideSheet(){
+  var id = pageGuideId(); if(!id) return;
+  var m = showModal(guideSheetHtml(id), true); m.classList.add("fr-b");
+  guidesSeen[id] = 1; lsSetJSON(GUIDE_KEY, guidesSeen); refreshPageInfo();
+  m.querySelector("#gdOk").addEventListener("click", closeModal);
+  m.querySelector("#gdFirst").addEventListener("change", function(e){ lsSet(GUIDE_OFF_KEY, e.target.checked ? "0" : "1"); refreshPageInfo(); });
+  Array.prototype.forEach.call(m.querySelectorAll("[data-guide2]"), function(b){ b.addEventListener("click", function(){ showGuide(b.getAttribute("data-guide2"), true); }); });
+  var rs = m.querySelector("#gdPyqReset");
+  if(rs) rs.addEventListener("click", function(){ if(window.confirm("Reset your practice progress on this device?")){ pyqPracReset(); closeModal(); if(activeTab==="pyq") renderPyq(); toast("Practice progress reset."); } });
+  trackEvent("screen_view", {screen:"info_"+id});
+}
+document.getElementById("pageInfo").addEventListener("click", openGuideSheet);
 var GUIDE_ORDER = ["home","dash","plansetup","planner","syllabus","tiers","mocks","pyq","quotes","settings"];
 function guideOff(){ return lsGet(GUIDE_OFF_KEY)==="1"; }
 function currentGuideId(){
@@ -20060,6 +20125,7 @@ function scheduleGuide(ms){
   clearTimeout(guideTimer);
   guideTimer = setTimeout(function(){
     var id = currentGuideId();
+    refreshPageInfo();
     if(!id || guideOff() || guidesSeen[id] || !profile) return;
     if(document.getElementById("modalHost") || document.body.classList.contains("menu-open")) { guideTimer = setTimeout(function(){ scheduleGuide(0); }, 4000); return; }
     showGuide(id, false);
@@ -20073,7 +20139,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "372";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "374";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -21523,14 +21589,13 @@ function renderPyq(){
   var examPills = PYQ_EXAMS.map(function(e){
     return '<button type="button" class="'+(f.exam===e.id?"on":"")+'" aria-pressed="'+(f.exam===e.id)+'" data-exam="'+e.id+'">'+e.label.replace(" (GS + Essay)","")+'</button>';
   }).join("");
-  var topRow = '<div class="pq-r1"><div class="pq-ex" role="group" aria-label="Exam">'+examPills+'</div>'+pyqInfoBtn()+'</div>';
+  var topRow = '<div class="pq-r1"><div class="pq-ex" role="group" aria-label="Exam">'+examPills+'</div></div>';
   var modePills = [["questions","Questions"],["quiz","Quiz"]].map(function(m){
     return '<button class="pill'+(mode===m[0]?" active":"")+'" aria-pressed="'+(mode===m[0])+'" data-mode="'+m[0]+'">'+m[1]+'</button>';
   }).join("");
 
-  var infoHtml = (pyqInfoOpen ? '<div class="card pyq-note"><b>Exact questions from previous papers, filed by year.</b><details class="pyq-about" open><summary>About this bank: years covered and accuracy</summary><p>Mains: GS I–IV and Essay (2014–2023), GS I–IV (2024–2026). '+(myOptional() ? 'Optional: only your optional, '+esc(myOptional())+', is shown here. ' : 'Optional: Anthropology Papers I and II, 2010–2026; Agriculture Papers I and II, 2014–2026; Animal Husbandry and Veterinary Science Papers I and II, 2014–2026; Botany Papers I and II, 2014–2026; Civil Engineering Papers I and II, 2016–2026 (all 22 papers); Chemistry Papers I and II, 2014–2026 (all 26 papers); Commerce and Accountancy Papers I and II, 2016–2026 (all 22 papers); Economics Papers I and II, 2016–2026 (all 22 papers); Electrical Engineering Papers I and II, 2016–2026 (all 22 papers); Geography Papers I and II, 2016–2026 (all 22 papers); Geology Papers I and II, 2016–2026 (all 22 papers); History Papers I and II, 2016–2026 (all 22 papers); Law Papers I and II, 2016–2026 (all 22 papers); Management Papers I and II, 2016–2026 (all 22 papers). ')+'Prelims GS I: 2011 to 2026, with answer keys for every year (2016 to 2019 were read from scans by OCR, all 100 questions each, so a few words may be misread), plus CSAT 2013 to 2015, 2017 to 2026 (all with answer keys except 2021, which is partial). Prelims GS I 2012 to 2026 are all in the bank.</p></details><p class="muted" style="margin:10px 0 6px">Your practice progress is saved on this device only. A question counts as practised once you answer and check it in a quiz.</p><button type="button" class="btn ghost" data-rd="reset">Reset my practice progress</button></div>' : '');
   var papers = pyqPapersFor(f.exam);
-  var html = topRow+infoHtml;
+  var html = topRow;
   if(prelimsUi && pyqQuiz){ host.innerHTML = pyqQuizHtml(papers, true); bindPyq(host); return; }   // a quiz is running: nothing else on screen
   if(prelimsUi && mode==="hub"){ host.innerHTML = html + pyqHub(papers); bindPyq(host); return; }
   if(prelimsUi) html += pyqReadHead(papers);
@@ -21633,7 +21698,8 @@ function pyqMoreChip(sl){
 }
 function pyqShort(k){ return k.replace(/ \(GS Paper II\)$/, ""); }
 // ---- Practice progress: a question counts once you have answered and checked it in a quiz. Kept on this device only. ----
-var PYQ_PRAC_KEY = "dossier.pyq.practised.v1", pyqPrac = null, pyqInfoOpen = false;
+function pyqAboutHtml(){ return '<div class="card pyq-note"><b>Exact questions from previous papers, filed by year.</b><details class="pyq-about" open><summary>About this bank: years covered and accuracy</summary><p>Mains: GS I–IV and Essay (2014–2023), GS I–IV (2024–2026). '+(myOptional() ? 'Optional: only your optional, '+esc(myOptional())+', is shown here. ' : 'Optional: Anthropology Papers I and II, 2010–2026; Agriculture Papers I and II, 2014–2026; Animal Husbandry and Veterinary Science Papers I and II, 2014–2026; Botany Papers I and II, 2014–2026; Civil Engineering Papers I and II, 2016–2026 (all 22 papers); Chemistry Papers I and II, 2014–2026 (all 26 papers); Commerce and Accountancy Papers I and II, 2016–2026 (all 22 papers); Economics Papers I and II, 2016–2026 (all 22 papers); Electrical Engineering Papers I and II, 2016–2026 (all 22 papers); Geography Papers I and II, 2016–2026 (all 22 papers); Geology Papers I and II, 2016–2026 (all 22 papers); History Papers I and II, 2016–2026 (all 22 papers); Law Papers I and II, 2016–2026 (all 22 papers); Management Papers I and II, 2016–2026 (all 22 papers). ')+'Prelims GS I: 2011 to 2026, with answer keys for every year (2016 to 2019 were read from scans by OCR, all 100 questions each, so a few words may be misread), plus CSAT 2013 to 2015, 2017 to 2026 (all with answer keys except 2021, which is partial). Prelims GS I 2012 to 2026 are all in the bank.</p></details><p class="muted" style="margin:10px 0 6px">Your practice progress is saved on this device only. A question counts as practised once you answer and check it in a quiz.</p><button type="button" class="btn ghost" id="gdPyqReset">Reset my practice progress</button></div>'; }
+var PYQ_PRAC_KEY = "dossier.pyq.practised.v1", pyqPrac = null;
 function pyqPracGet(){
   if(!pyqPrac){ try{ pyqPrac = JSON.parse(localStorage.getItem(PYQ_PRAC_KEY) || "{}") || {}; }catch(e){ pyqPrac = {}; } }
   return pyqPrac;
@@ -21657,7 +21723,6 @@ function pyqPaperProg(docs){
   var n = 0, p = 0; docs.forEach(function(d){ var g = pyqDocProg(d); n += g.n; p += g.p; });
   return {n:n, p:p, pct: !n ? 0 : (p ? Math.max(1, Math.floor(p/n*100)) : 0)};
 }
-function pyqInfoBtn(){ return '<button type="button" class="pq-i" data-rd="info" aria-label="About this bank and progress" aria-expanded="'+pyqInfoOpen+'">i</button>'; }
 function pyqRing(pct, color){
   var r = 30, C = 2*Math.PI*r;
   return '<svg width="76" height="76" viewBox="0 0 76 76" aria-hidden="true"><circle cx="38" cy="38" r="'+r+'" fill="none" stroke="rgba(127,127,127,.28)" stroke-width="8"/><circle cx="38" cy="38" r="'+r+'" fill="none" stroke="'+color+'" stroke-width="8" stroke-linecap="round" stroke-dasharray="'+(C*pct/100)+' '+C+'" transform="rotate(-90 38 38)"/><text x="38" y="43" text-anchor="middle" fill="currentColor" font-size="16" font-weight="800">'+pct+'%</text></svg>';
@@ -21909,7 +21974,6 @@ function bindPyq(host){
     b.addEventListener("click", function(){
       var rd = b.getAttribute("data-rd");
       if(rd==="more"){ pyqYearsAll = !pyqYearsAll; renderPyq(); return; }
-      if(rd==="info"){ pyqInfoOpen = !pyqInfoOpen; renderPyq(); return; }
       if(rd==="sheet"){ f.paper = b.getAttribute("data-paper"); pyqSheet = b.getAttribute("data-year"); pyqMode = "hub"; renderPyq(); return; }
       if(rd==="closesheet"){ pyqSheet = null; renderPyq(); return; }
       if(rd==="back"){ pyqMode = "hub"; pyqSheet = null; renderPyq(); window.scrollTo(0, 0); return; }
