@@ -40,6 +40,7 @@
     --tab-mocks:#FF3B30; --tab-mocks-ink:#FFFFFF; --tab-mocks-soft:#FFCCCB;
     --tab-pyq:#34C759; --tab-pyq-ink:#FFFFFF; --tab-pyq-soft:#D1F4D7;
     --tab-quotes:#5856D6; --tab-quotes-ink:#FFFFFF; --tab-quotes-soft:#E8E5FF;
+    --tab-routine:#F59E0B; --tab-routine-ink:#2A1A00; --tab-routine-soft:#FDEBC8;
     --tab-caquiz:#E8590C; --tab-caquiz-ink:#FFFFFF; --tab-caquiz-soft:#FFE8D9;
     --tab-scheduler:#0A84A6; --tab-scheduler-ink:#FFFFFF; --tab-scheduler-soft:#DDF3F8;
     --tab-planner:#6D4AFF; --tab-planner-ink:#FFFFFF; --tab-planner-soft:#E9E3FF;
@@ -71,7 +72,7 @@
       --tab-tiers:#B79CE8; --tab-tiers-ink:#241B38; --tab-tiers-soft:#2E2748;
       --tab-mocks:#E38C9B; --tab-mocks-ink:#331A1F; --tab-mocks-soft:#3A2429;
       --tab-pyq:#9CC46E; --tab-pyq-ink:#1B2A12; --tab-pyq-soft:#26361B;
-      --tab-quotes:#9CAAD9; --tab-quotes-ink:#181E33; --tab-quotes-soft:#242B45;
+      --tab-quotes:#9CAAD9; --tab-quotes-ink:#181E33; --tab-quotes-soft:#242B45; --tab-routine:#E8B94C; --tab-routine-ink:#241D0B; --tab-routine-soft:#3A3320;
       --tab-caquiz:#FFA264; --tab-caquiz-ink:#2B1405; --tab-caquiz-soft:#3A2414;
       --tab-scheduler:#5CC8E0; --tab-scheduler-ink:#0B2530; --tab-scheduler-soft:#1B3540;
       --tab-planner:#A78BFF; --tab-planner-ink:#1E1240; --tab-planner-soft:#2C2452;
@@ -99,7 +100,7 @@
     --tab-tiers:#B79CE8; --tab-tiers-ink:#241B38; --tab-tiers-soft:#2E2748;
     --tab-mocks:#E38C9B; --tab-mocks-ink:#331A1F; --tab-mocks-soft:#3A2429;
     --tab-pyq:#9CC46E; --tab-pyq-ink:#1B2A12; --tab-pyq-soft:#26361B;
-    --tab-quotes:#9CAAD9; --tab-quotes-ink:#181E33; --tab-quotes-soft:#242B45;
+    --tab-quotes:#9CAAD9; --tab-quotes-ink:#181E33; --tab-quotes-soft:#242B45; --tab-routine:#E8B94C; --tab-routine-ink:#241D0B; --tab-routine-soft:#3A3320;
     --tab-caquiz:#FFA264; --tab-caquiz-ink:#2B1405; --tab-caquiz-soft:#3A2414;
       --tab-scheduler:#5CC8E0; --tab-scheduler-ink:#0B2530; --tab-scheduler-soft:#1B3540;
       --tab-planner:#A78BFF; --tab-planner-ink:#1E1240; --tab-planner-soft:#2C2452;
@@ -972,6 +973,46 @@
   .pq-fab-i{display:none;} .pq-fab.tuck{transform:translateX(calc(100% - 46px)); padding-left:12px;} .pq-fab.tuck .pq-fab-t{display:none;} .pq-fab.tuck .pq-fab-i{display:inline;}
   .src-more{margin:2px 0 8px;} .src-more summary{font-size:12px; color:var(--ink-soft); cursor:pointer; list-style:none;} .src-more summary::-webkit-details-marker{display:none;} .src-more summary::before{content:"ⓘ "; }
   .tl-more{display:block; width:100%; margin-top:10px;}
+  /* ---- Routine ---- */
+  .rt{padding-bottom:110px;} .rt h2{margin:0 0 4px; font-size:20px;} .rt-lab{font-size:12px; letter-spacing:.12em; font-weight:700; color:var(--ink-soft); margin:16px 2px 8px;}
+  .rt-empty{text-align:center; padding:18px 10px 4px;} .rt-big{font-size:54px;}
+  .rt-list{display:flex; flex-direction:column; gap:8px; margin-top:10px;}
+  .rt-item{display:flex; align-items:center; gap:12px; width:100%; text-align:left; background:var(--surface); border:1.5px solid var(--line); border-radius:16px; padding:10px 12px; color:var(--ink); font:inherit; cursor:pointer;}
+  .rt-it{flex:1; min-width:0;} .rt-it b{display:block; font-size:15px;} .rt-it small,.rt-tm small{display:block; font-size:12px; color:var(--ink-soft); font-weight:500;} .rt-tm{flex:none; text-align:right; font-weight:800; font-size:14px;}
+  .rt-tile{flex:none; width:40px; height:40px; border-radius:13px; display:grid; place-items:center; font-size:21px; background:linear-gradient(145deg,var(--c1),var(--c2)); box-shadow:0 4px 0 var(--c3),0 8px 10px rgba(0,0,0,.3),0 1px 0 rgba(255,255,255,.45) inset;} .rt-tile.big{width:54px; height:54px; font-size:28px; border-radius:16px;}
+  .rt-chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;} .rt-chip{padding:8px 13px; border-radius:99px; border:1.5px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; font-size:14px; font-weight:700; cursor:pointer;} .rt-chip.on{background:var(--tab-accent); color:var(--tab-accent-ink,#04141a); border-color:var(--tab-accent);}
+  .rt-add{display:block; width:100%; margin-top:14px; padding:13px; border:1.5px dashed var(--tab-accent); border-radius:16px; background:none; color:var(--tab-accent); font:inherit; font-weight:700; cursor:pointer;}
+  .rt-days{display:flex; gap:6px;} .rt-days button{flex:1; padding:10px 0; border-radius:12px; border:1.5px solid var(--line); background:var(--surface); color:var(--ink-soft); font:inherit; font-weight:700; cursor:pointer;} .rt-days button.on{background:var(--tab-accent); color:var(--tab-accent-ink,#04141a); border-color:var(--tab-accent);}
+  .rt-bar{position:sticky; bottom:calc(96px + env(safe-area-inset-bottom,0px)); margin-top:18px; padding-top:22px; z-index:5; background:linear-gradient(transparent, var(--bg) 45%);}
+  .rt-go{display:block; width:100%; border:0; border-radius:16px; background:var(--gold); color:var(--gold-ink,#241d0b); font:inherit; font-weight:800; font-size:17px; padding:14px; cursor:pointer; box-shadow:0 6px 20px rgba(0,0,0,.3);} .rt-go small{display:block; font-weight:600; font-size:12px; opacity:.8;} .rt-go[disabled]{opacity:.5; cursor:default;} .rt-go.sm{margin-top:12px; font-size:16px; padding:13px;}
+  .rt-btn{flex:1; padding:12px; border-radius:14px; border:1.5px solid var(--tab-accent); background:none; color:var(--tab-accent); font:inherit; font-weight:800; cursor:pointer;} .rt-btn.wide{display:block; width:100%; margin-top:10px;} .rt-btn.bad{color:#ef6a58; border-color:#ef6a58;} .rt-two{display:flex; gap:8px; margin-top:12px;}
+  .rt-note{text-align:center; margin-top:8px;}
+  .rt-next{display:flex; gap:12px; align-items:center; margin-top:16px; padding:12px 14px; border:1.5px solid var(--gold); border-radius:18px; background:var(--surface);} .rt-nx-i{flex:none; width:42px; height:42px; border-radius:13px; background:var(--gold); color:var(--gold-ink,#241d0b); display:grid; place-items:center; font-size:22px; box-shadow:0 4px 0 #a8741a;} .rt-next b{display:block; font-size:15px;} .rt-next span span{font-size:12.5px; color:var(--ink-soft);}
+  .rt-stage{perspective:1100px; padding:16px 6px 0;}
+  .rt-card{position:relative; transform:rotateX(7deg) rotateY(-9deg); transform-style:preserve-3d; border-radius:30px; padding:20px 18px 16px; color:#e8fffc; background:linear-gradient(155deg,#1b6a78 0%,#0f3a47 42%,#2c2750 100%); box-shadow:0 2px 0 rgba(255,255,255,.18) inset,0 -26px 40px rgba(0,0,0,.28) inset,18px 30px 50px rgba(0,0,0,.55),-4px 6px 0 #0a2a33,-8px 12px 0 #08222a; border:1.5px solid rgba(120,230,235,.35); overflow:hidden;}
+  .rt-card:before{content:""; position:absolute; inset:0; background:linear-gradient(115deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,0) 32%); pointer-events:none;} .rt-card:after{content:""; position:absolute; right:-70px; top:-70px; width:230px; height:230px; border-radius:50%; background:radial-gradient(circle,rgba(255,196,82,.55),transparent 62%); pointer-events:none;}
+  .rt-card h2{position:relative; z-index:2; font-size:24px; text-shadow:0 3px 8px rgba(0,0,0,.45); margin:0; color:inherit;} .rt-sub{position:relative; z-index:2; color:#bff3ef; font-size:13px;}
+  .rt-sun{position:absolute; right:16px; top:14px; z-index:2; font-size:44px; filter:drop-shadow(0 8px 10px rgba(0,0,0,.45));}
+  .rt-wk{display:flex; gap:6px; margin:14px 0 8px; position:relative; z-index:2;} .rt-wk div{flex:1; text-align:center; border-radius:13px; padding:7px 0; background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.05)); box-shadow:0 3px 0 rgba(0,0,0,.25),0 1px 0 rgba(255,255,255,.2) inset; font-size:11px; color:#bff3ef;} .rt-wk b{display:block; font-size:15px; color:#fff;}
+  .rt-wk .today{background:linear-gradient(180deg,#ffd978,#e0a634); box-shadow:0 5px 0 #a8741a,0 10px 14px rgba(0,0,0,.4); color:#3a2a06; transform:translateY(-3px);} .rt-wk .today b{color:#2a1d03;}
+  .rt-rows{position:relative; z-index:2;} .rt-r{display:flex; align-items:center; gap:10px; margin-top:8px;} .rt-r .t{flex:none; width:68px; font-weight:800; font-size:13px; text-shadow:0 2px 4px rgba(0,0,0,.4);} .rt-r .n{flex:1; min-width:0; font-size:14.5px; font-weight:600; text-shadow:0 2px 4px rgba(0,0,0,.35);} .rt-r .d{font-size:11.5px; color:#bff3ef;}
+  .rt-r.study{background:linear-gradient(90deg,rgba(255,200,90,.24),rgba(255,200,90,.04)); border-radius:16px; margin:8px -6px 0; padding:5px 6px;}
+  .rt-ft{position:relative; z-index:2; display:flex; justify-content:space-between; margin-top:14px; padding-top:10px; border-top:1px solid rgba(255,255,255,.14); font-size:12px; color:#bff3ef;}
+  .rt-shadow{height:22px; margin:-4px 34px 0; border-radius:50%; background:radial-gradient(ellipse,rgba(0,0,0,.5),transparent 70%);}
+  .rt-card.sun2{background:linear-gradient(160deg,#ffd9a0 0%,#ff9f7a 40%,#8a5fd0 100%); border-color:rgba(255,255,255,.55); box-shadow:0 2px 0 rgba(255,255,255,.5) inset,0 -26px 40px rgba(60,20,90,.25) inset,18px 30px 50px rgba(0,0,0,.5),-4px 6px 0 #b0613f,-8px 12px 0 #8a4a30;} .rt-card.sun2:after{background:radial-gradient(circle,rgba(255,255,255,.7),transparent 62%);}
+  .rt-card.sun2 h2,.rt-card.sun2 .rt-r .t,.rt-card.sun2 .rt-r .n{color:#2b1233; text-shadow:0 1px 0 rgba(255,255,255,.4);} .rt-card.sun2 .rt-sub,.rt-card.sun2 .rt-r .d,.rt-card.sun2 .rt-ft{color:#4a2a58;} .rt-card.sun2 .rt-wk div{background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,.25)); color:#4a2a58;} .rt-card.sun2 .rt-wk b{color:#2b1233;} .rt-card.sun2 .rt-r.study{background:linear-gradient(90deg,rgba(255,255,255,.5),rgba(255,255,255,.1));}
+  .rt-ic{width:100%; height:100%; display:block; padding:6%; box-sizing:border-box;} .rt-tile .rt-ic{padding:6%;} .rt-sk .rt-ic{padding:6%;} .rt-sun .rt-ic{padding:0;} .rt-sun{width:62px; height:62px;} .rt-mini{display:inline-block; width:20px; height:20px; vertical-align:-5px; margin-right:6px;} .rt-mini .rt-ic{padding:0;}
+  .rt-themes{justify-content:center; margin-top:10px;}
+  .rt-cal{display:grid; grid-template-columns:repeat(7,1fr); gap:6px; margin-top:10px;} .rt-cal div{aspect-ratio:1; border-radius:10px; display:grid; place-items:center; font-size:13px; font-weight:700; background:var(--surface); border:1.5px solid var(--line);} .rt-cal .h{background:none; border:0; aspect-ratio:auto; color:var(--ink-soft); font-size:11px;} .rt-cal .x{background:none; border:0;} .rt-cal .w{background:#12604a; border-color:#34c98a; color:#fff;} .rt-cal .t{background:var(--gold); color:var(--gold-ink,#241d0b); border-color:var(--gold);}
+  .rt-wkrow{display:flex; justify-content:space-between; align-items:center; background:var(--surface); border:1.5px solid var(--line); border-radius:14px; padding:12px; margin-top:8px; font-size:14px;} .rt-wkrow b{color:#34c98a;} .rt-wkrow b.pl{color:var(--ink-soft); font-weight:500;}
+  .rt-sheet{max-height:90vh; overflow-y:auto;} .rt-sh-h{display:flex; align-items:center; gap:10px;} .rt-sh-h h2{margin:0;} .rt-back{border:0; background:none; color:var(--tab-accent); font:inherit; font-weight:700; cursor:pointer;}
+  .rt-prev{display:flex; align-items:center; gap:12px; background:var(--surface-2,var(--surface)); border:1.5px solid var(--line); border-radius:16px; padding:10px 12px; margin-top:10px;} .rt-nm{flex:1; min-width:0;} .rt-nm input{width:100%; border:0; background:none; color:var(--ink); font:inherit; font-size:17px; font-weight:700; padding:2px 0; outline:0;} .rt-nm small{display:block; color:var(--ink-soft); font-size:12px;}
+  .rt-row6,.rt-lib{display:grid; grid-template-columns:repeat(6,1fr); gap:10px; margin-top:8px;} .rt-lib{grid-template-columns:repeat(5,1fr); gap:12px 10px; margin-top:12px;} .rt-lib [hidden]{display:none;}
+  .rt-sk{aspect-ratio:1; border:0; border-radius:16px; display:grid; place-items:center; font-size:26px; cursor:pointer; background:linear-gradient(145deg,var(--c1),var(--c2)); box-shadow:0 4px 0 var(--c3),0 7px 9px rgba(0,0,0,.3),0 1px 0 rgba(255,255,255,.45) inset; position:relative;} .rt-sk.sel{outline:3px solid var(--gold); outline-offset:3px;}
+  .rt-skw{display:flex; flex-direction:column; align-items:center; gap:6px; border:0; background:none; padding:0; color:var(--ink); font:inherit; cursor:pointer;} .rt-skw .rt-sk{width:100%; aspect-ratio:1;} .rt-skw small{font-size:11.5px; color:var(--ink-soft); text-align:center; line-height:1.15;} .rt-skw[hidden]{display:none;}
+  .rt-link{display:block; margin:10px auto 0; border:0; background:none; color:var(--tab-accent); font:inherit; font-weight:700; cursor:pointer;}
+  .rt-when{display:flex; gap:10px;} .rt-when label{flex:1; font-size:12px; color:var(--ink-soft);} .rt-when input{display:block; width:100%; margin-top:4px; padding:11px 10px; border-radius:12px; border:1.5px solid var(--line); background:var(--surface-2,var(--surface)); color:var(--ink); font:inherit; font-size:17px; font-weight:700;}
+  .rt-q{width:100%; margin-top:12px; padding:11px 14px; border-radius:14px; border:1.5px solid var(--line); background:var(--surface-2,var(--surface)); color:var(--ink); font:inherit;} .rt-cats{display:flex; gap:8px; overflow-x:auto; margin-top:10px; scrollbar-width:none;} .rt-cats .rt-chip{flex:none;}
   .pr-tag{float:right; font-size:12px; color:var(--ink-soft);} .pr-tag.done{color:#34c98a; font-weight:700;}
   .qz-seg.sm{margin-top:-4px;} .qz-seg.sm button.on{background:var(--tab-accent); color:var(--tab-accent-ink,#04141a);}
   .qz-go.ghost{padding:9px 14px; font-size:15px;} .qz-go.ghost small{font-size:11.5px;}
@@ -1861,6 +1902,7 @@ html.sp-on #app,html.sp-on #toast{visibility:hidden}
 
   <main>
     <section class="view" id="view-dashboard"><div class="card empty" role="status">Opening your plan…</div></section>
+    <section class="view" id="view-routine"></section>
     <section class="view" id="view-planner"></section>
     <section class="view" id="view-prelims"></section>
     <section class="view" id="view-mains"></section>
@@ -6582,7 +6624,7 @@ var CURR_OPT = {
 // Official UPSC list, in the official order (ALL_OPTIONALS). Syllabus trees are keyed by the short name where one exists.
 function optionalNames(){ return ALL_OPTIONALS.slice(); }
 // THUMB RULE: an optional subject and a General Studies subject of the same name (History, Geography, Agriculture) are never mixed.
-// The optional is always its own subject, named "<Subject> (Optional)", in the Planner, the plan, the Dashboard and the logs.
+// The optional is always its own subject, named "<Subject> (Optional)", in the Syllabus planner, the plan, the Dashboard and the logs.
 function optLabel(n){ return n+" (Optional)"; }
 function optBase(subject){ var m = /^(.*) \(Optional\)$/.exec(subject || ""); return m ? m[1] : ""; }   // "Agriculture (Optional)" -> "Agriculture"; "" for a General Studies subject
 function optKey(n){ return OPT_ALIAS[n] || n; }
@@ -7871,7 +7913,7 @@ function optStartHtml(w, cat){   // where the optional begins: syllabus start, a
     opt("syllabus","From the start of the syllabus", first ? esc((units[0] && optUnitMeta(units[0]).paper ? optUnitMeta(units[0]).paper+" \u00B7 " : "")+optChapterParts(first.unit).num+" "+optChapterParts(first.unit).text.slice(0,70)) : "In syllabus order.")+
     opt("choose","I choose where to start","Pick a unit or a single chapter; the rest follow in syllabus order.", '<div class="cf">'+sel+'</div>')+
     opt("custom","I arrange every unit myself","Opens the Optional tab after setup, where you set the order of units and chapters.")+
-    '<div class="hint">You can change this any time in <b>Planner \u203a Optional</b>.</div>';
+    '<div class="hint">You can change this any time in <b>Syllabus planner \u203a Optional</b>.</div>';
 }
 function wzPriority(w){
   var cat = wizCatalog(w), avail = cat.order;
@@ -8051,7 +8093,7 @@ function revMethodHtml(a){
     return '<label class="rm-opt'+(m===v?" on":"")+'"><input type="radio" name="revm" data-w="acts.revision.method" value="'+v+'"'+(m===v?" checked":"")+'><span><b>'+title+'</b>'+(tag ? ' <em>'+tag+'</em>' : '')+'<small>'+text+'</small></span></label>';
   }
   return '<div class="cf rev-method"><label>Revision method</label>'+
-    opt("auto","Spaced revision","Recommended","When you mark a chapter completed, the app brings it back for revision after 1, 3, 7, 14 and 30 days. It shows under &ldquo;Revise today&rdquo; on the Dashboard and on that day in the planner. Nothing else to set up.")+
+    opt("auto","Spaced revision","Recommended","When you mark a chapter completed, the app brings it back for revision after 1, 3, 7, 14 and 30 days. It shows under &ldquo;Revise today&rdquo; on the Dashboard and on that day in the Syllabus planner. Nothing else to set up.")+
     '<div class="rm-or">Or</div>'+
     opt("fixed","Choose how often","","Pick the weekdays and the time for a fixed revision slot.")+
   '</div>';
@@ -8435,9 +8477,9 @@ function wizGenerate(){
 function planReadyModal(){
   var m = showModal('<div class="modal card pl-done" role="dialog" aria-modal="true" aria-labelledby="pdTitle">'+
     '<div class="pd-mark" aria-hidden="true">\u2713</div>'+
-    '<h2 id="pdTitle">Congratulations! Your planner is ready</h2>'+
+    '<h2 id="pdTitle">Congratulations! Your Syllabus planner is ready</h2>'+
     '<p>Sit back, relax and just study. We take care of the rest of your preparation: what to study today, what comes next, and keeping your plan on track as you go.</p>'+
-    '<p class="muted">Want to change something? Open <b>Planner \u2192 Edit plan</b> any time. Your progress is kept.</p>'+
+    '<p class="muted">Want to change something? Open <b>Syllabus planner \u2192 Edit plan</b> any time. Your progress is kept.</p>'+
     '<div class="modal-actions"><button class="btn primary" id="pdGo">Start studying &rarr;</button></div></div>', false);
   m.querySelector("#pdGo").addEventListener("click", function(){ closeModal(); setTab("dashboard"); });
 }
@@ -8769,13 +8811,13 @@ function logHelpBodyHtml(){
         '<li><b>Studied exactly as planned?</b> Tap <i>Same as scheduled</i>. It fills in the planned times and marks the session Completed.</li>'+
         '<li><b>Studied at a different time, or without your phone?</b> Type the real <i>Actual start</i> and <i>Actual end</i>. Tap an empty time and the clock opens on the planned time: choose yours. The end must be after the start. It does not have to match the planned slot, and it can be longer.</li>'+
         '<li><b>Missed a session?</b> You can come back any time. Use the <b>&lsaquo; &rsaquo;</b> arrows above to open that day and enter what you studied.</li>'+
-        '<li><b>Finished the chapter?</b> Tap <i>Mark current chapter complete</i>. The planner then moves to the next chapter.</li>'+
+        '<li><b>Finished the chapter?</b> Tap <i>Mark current chapter complete</i>. The Syllabus planner then moves to the next chapter.</li>'+
       '</ol>'+
       '<p><b>The Status updates itself.</b> Studied the full planned time: <i>Completed</i>. Studied part of it: <i>In progress</i>. A Missed or Skipped session comes back as soon as you enter time. You can still change the Status yourself.</p>'+
       '<p><b>Why it matters.</b> Completed sessions finish chapters and unlock the next subject. Your actual time feeds the Today bar, your study streak and the weekly hours in Insights.</p>'+
     '</div></div>';
 }
-function logHelpHtml(){ return ""; }   // the log guide now lives in the Planner's "i" sheet
+function logHelpHtml(){ return ""; }   // the log guide now lives in the Syllabus planner's "i" sheet
 // a study slot an activity took: say which activity, and that the topic moves to a later day
 function replacedSlotsHtml(plan, d, list){
   if(d < plan.window.start || d > plan.window.end || plan.capacity.days.indexOf(dowOf(d)) < 0 || (plan.leave && onLeave(plan, d))) return "";
@@ -9271,7 +9313,7 @@ function loadBlockHtml(subject){
 }
 var tierCache = {};
 function tierWords(t){ return (t||"").toLowerCase().replace(/[^a-z0-9 ]+/g," ").split(/\s+/).filter(function(w){ return w.length>3; }); }
-// Planner chapters of the Anthropology syllabus -> the official syllabus items / sub-topics they cover.
+// Syllabus planner chapters of the Anthropology syllabus -> the official syllabus items / sub-topics they cover.
 // A spec that looks like "2.5" or "II-3.2" means every sub-topic under that official item; any other text is matched against sub-topic titles.
 // Between them the chapters reach every official item, so every past question can be read from some chapter.
 var ANTHRO_LEAF = {
@@ -15817,7 +15859,7 @@ var ZOO_LEAF = {
  ]
 };
 // Optional subjects that have a question analysis (tools/optional/): where their data block is, which papers of the question bank belong to them,
-// how the Planner chapters map to their topics, and the instruction lines printed above their questions.
+// how the Syllabus planner chapters map to their topics, and the instruction lines printed above their questions.
 var OPT_SUBJECTS = {
   "Anthropology":{el:"d-anthro", re:/^Anthropology/, leaf:ANTHRO_LEAF, hint:"kinship, Ramapithecus, PESA, dating", pre:/^(Write|Answer)( short)?( notes)?( on)? the following in (about )?\d+ words each\s*:\s*/i},
   "Agriculture":{el:"d-agri", re:/^Agriculture/, leaf:AGRI_LEAF, hint:"heterosis, drip, KVK, tungro, MSP", pre:/^(Answer|Describe) the following( questions)?( in (about|not more than) 150 words each)?\s*:\s*|^Discuss the followings in about 150 words each\s*:\s*|^Answer each of the following questions\s*:\s*|^Answer the following questions\s*:\s*|^Differentiate and elaborate the following\s*:\s*|^Write notes on (each of )?the following\s*:\s*|^Describe Q\. Nos\. [^:]*:\s*/i},
@@ -15890,7 +15932,7 @@ function tierInfo(l){
   return (tierCache[key] = res);
 }
 function tierBadge(l){
-  // ready-made tier from the table built into the page (see d-tdcache): the Planner lists every chapter, and counting them live took over a second.
+  // ready-made tier from the table built into the page (see d-tdcache): the Syllabus planner lists every chapter, and counting them live took over a second.
   // c[5] is set where the live wording is "Tier 4 / Low-yield" (it differs between chapters)
   var c = tdEntry(l);
   if(c && c[0]===9) return "";   // no tier information for this chapter
@@ -16071,7 +16113,7 @@ function studyNextHtml(states){
   });
   if(!best) return "";
   return '<div class="card tv-next"><div class="tv-nl">Study next</div><div class="tv-nt"><span class="chip tier'+best.t+'">Tier '+best.t+'</span> '+esc(best.l.unit)+'</div><div class="muted small">'+esc(best.subj.replace(/ \(Optional\)$/, ""))+' \u00b7 '+esc(best.l.group)+'</div>'+
-    '<div class="tv-nb"><button type="button" class="btn primary sm" data-go="subjday" data-subj="'+esc(best.subj)+'" data-leaf="'+esc(best.l.id)+'">Open in planner</button>'+(best.n ? ' <button type="button" class="btn ghost sm pyq-btn" data-pyq="'+esc(best.l.id)+'" data-subj="'+esc(best.subj)+'">'+best.n+' PYQ</button>' : "")+'</div></div>';
+    '<div class="tv-nb"><button type="button" class="btn primary sm" data-go="subjday" data-subj="'+esc(best.subj)+'" data-leaf="'+esc(best.l.id)+'">Open in Syllabus planner</button>'+(best.n ? ' <button type="button" class="btn ghost sm pyq-btn" data-pyq="'+esc(best.l.id)+'" data-subj="'+esc(best.subj)+'">'+best.n+' PYQ</button>' : "")+'</div></div>';
 }
 function priSubjName(states){ return priSubject && states.some(function(x){ return x.name===priSubject; }) ? priSubject : (states.filter(function(x){ return x.state==="active"; })[0] || states[0] || {}).name; }
 function priorityHtml(plan, states, inTiers){
@@ -16306,7 +16348,7 @@ function weekReview(mon){
   Object.keys(studyProgress.topics).forEach(function(id){ var t = studyProgress.topics[id], k = days.indexOf(t.completedAt); if(t.status==="completed" && k>=0) r.days[k].chapters++; });
   return r;
 }
-// the weekly review as pictures: an outcome ring, day-by-day bars and time bars (used by Planner > Insights and by the dashboard)
+// the weekly review as pictures: an outcome ring, day-by-day bars and time bars (used by Syllabus planner > Insights and by the dashboard)
 function weekViz(r, rate, hrs){
   // outcome ring: every session of the week is in exactly one slice
   var parts = [{n:r.done, c:"#34b27b", l:"Done"}, {n:r.missed, c:"#e5675a", l:"Missed"}, {n:r.skipped, c:"#9aa5b1", l:"Skipped"}, {n:r.left, c:"var(--ink-soft)", l:"Still to come", o:.35}];
@@ -16444,7 +16486,7 @@ function nudgeShow(){
   c.innerHTML = '<b>'+esc(n.title)+'</b><p>'+esc(n.text)+'</p><div class="row"><button type="button" class="no" id="qnLater">Not today</button><button type="button" class="go" id="qnGo">'+esc(n.go)+'</button></div><button type="button" class="qn-off" id="qnOff">Stop these reminders</button>';
   document.body.appendChild(c);
   c.querySelector("#qnLater").addEventListener("click", function(){ nudge.skipped++; nudgeSave(); c.remove(); });
-  c.querySelector("#qnOff").addEventListener("click", function(){ nudge.off = true; nudgeSave(); c.remove(); toast("Welcome-back reminders are off. You can turn them on again in Planner."); });
+  c.querySelector("#qnOff").addEventListener("click", function(){ nudge.off = true; nudgeSave(); c.remove(); toast("Welcome-back reminders are off. You can turn them on again in Syllabus planner."); });
   c.querySelector("#qnGo").addEventListener("click", function(){ nudge.skipped = 0; nudgeSave(); c.remove(); nudgeAct(n.act); });
 }
 function nudgeAct(a){
@@ -16581,7 +16623,7 @@ function renderPlannerHome(host){
   if(tabNow==="plan") body = overviewHtml(plan, states)+fallingBehindHtml()+remindersHtml()+'<div class="section-title">Chapters</div>'+progressHtml(plan, states);
   var sub = tabNow==="schedule" ? '<div class="pl-sub" role="tablist">'+SCHED_VIEWS.map(function(t){ return '<button type="button" role="tab" class="'+(t[0]===plannerView?"on":"")+'" aria-selected="'+(t[0]===plannerView)+'" data-pa="view" data-v="'+t[0]+'">'+t[1]+'</button>'; }).join("")+'</div>' : "";
   host.innerHTML =
-    '<div class="card pl-title"><div><h2>Preparation Planner</h2>'+(subMode()==="trial" ? '<div class="trial-chip">Free trial · Day '+trialInfo().day+' of '+TRIAL_DAYS+' · '+esc(trialInfo().leftText)+'</div>' : "")+'</div><button type="button" class="btn ghost sm" data-go="reschedule">Adjust plan</button></div>'+
+    '<div class="card pl-title"><div><h2>Syllabus planner</h2>'+(subMode()==="trial" ? '<div class="trial-chip">Free trial · Day '+trialInfo().day+' of '+TRIAL_DAYS+' · '+esc(trialInfo().leftText)+'</div>' : "")+'</div><button type="button" class="btn ghost sm" data-go="reschedule">Adjust plan</button></div>'+
     '<div class="pl-tabs">'+PLANNER_TABS.map(function(t){ return '<button type="button" class="'+(t[0]===tabNow?"on":"")+'" data-pa="view" data-v="'+(t[0]==="plan" ? "overview" : (t[0]==="schedule" ? lastSched : "optional"))+'">'+t[1]+'</button>'; }).join("")+'</div>'+sub+catchBannerHtml()+body;
   centerActive(host.querySelector(".pl-tabs"), "button.on", false);
   if(plannerScrollTo){ var tgt = host.querySelector('[data-prog="'+plannerScrollTo.replace(/"/g, '\\"')+'"]'); plannerScrollTo = ""; if(tgt) setTimeout(function(){ tgt.scrollIntoView({block:"start"}); window.scrollBy(0, -70); }, 60); }
@@ -16756,7 +16798,7 @@ function plannerDashCard(){
     activeCardHtml(states, "banner")+planTimelineHtml(studyPlan, states)+
     '<div class="mini-t">Today</div><div class="muted">Planned '+esc(fmtDurMin(tp))+' &middot; Actual '+esc(fmtDurMin(ta))+' &middot; '+today.length+' sessions</div>'+
     '<div class="mini-t">Upcoming</div>'+upcomingHtml()+
-    '<button type="button" class="btn ghost sm" id="dashOpenPlanner">Open planner</button></div>';
+    '<button type="button" class="btn ghost sm" id="dashOpenPlanner">Open Syllabus planner</button></div>';
 }
 
 
@@ -17143,7 +17185,7 @@ function dxPlanHtml(){
       '<div class="dx-subj">'+esc(m.name)+'</div>'+(it && it.time ? '<div class="dm-time">'+esc(it.time)+'</div>' : '')+'<div class="dx-bar"><i style="width:'+m.pct+'%"></i></div><div class="dx-pc"><b>'+m.pct+'% COMPLETE</b><small>('+m.done+' of '+m.total+' chapters)</small></div>'+
       (n ? '<div class="dx-next" role="button" tabindex="0" data-go="subjday" data-subj="'+esc(m.name)+'" data-leaf="'+esc(n.id)+'">'+(it && it.over && isDone(n.id) ? "Done: " : "Currently running: ")+'<b>'+esc(n.unit)+'</b></div>' : '')+
       (n && !isDone(n.id) ? keepHtml(n) : '')+
-      '<button type="button" class="dx-btn" data-go="subjday" data-subj="'+esc(m.name)+'">Go to Planner</button>'+
+      '<button type="button" class="dx-btn" data-go="subjday" data-subj="'+esc(m.name)+'">Go to Syllabus planner</button>'+
       '<button type="button" class="dx-btn2" data-go="priority" data-subj="'+esc(m.name)+'">Topic Priority (Tiers) &rsaquo;</button></div>';
   }
   // every subject running right now: the active one plus any pinned to a session slot
@@ -17154,13 +17196,13 @@ function dxPlanHtml(){
     : items.length ? modCard(items[0].m, items[0])
     : running.length
     ? modCard(running[0])
-    : '<div class="dx-card dx-mod"><div class="dx-k">ALL SUBJECTS COMPLETED</div><div class="dx-subj">Well done</div><button type="button" class="dx-btn" data-go="day">Open planner</button></div>';
+    : '<div class="dx-card dx-mod"><div class="dx-k">ALL SUBJECTS COMPLETED</div><div class="dx-subj">Well done</div><button type="button" class="dx-btn" data-go="day">Open Syllabus planner</button></div>';
   var mods = "";
   var pace = '<div class="dx-card dx-pace"><div class="dx-k">TODAY'+(tp ? ' &middot; '+tpct+'%' : '')+'</div>'+(tp ? dxPieHtml(pieGroups, pathCtx(states).lanes) : '<div class="dx-seg"><i style="flex:1"></i></div>')+
     '<small>'+(tp ? 'Planned '+esc(fmtDurMin(tp))+' &middot; Actual '+esc(fmtDurMin(ta))+(ta>tp ? ' (over plan)' : '') : 'Nothing planned today')+'</small>'+'</div>';
   var pyq = pyqCardHtml(items);
   var path = pathHtml(states);
-  // this week at a glance: the same ring and day bars as Planner > Insights
+  // this week at a glance: the same ring and day bars as Syllabus planner > Insights
   var wr = weekReview(mondayOf(parseKey(todayKey))), wcount = wr.done + wr.missed + wr.skipped, wrate = wcount ? Math.round(100*wr.done/wcount) : 0, week = "";
   if(wr.planned){
     var wv = weekViz(wr, wrate, fmtDurMin);
@@ -17168,7 +17210,7 @@ function dxPlanHtml(){
     var wsk = toKey(mondayOf(parseKey(todayKey))), ws = weekStats(wsk);
     week = '<div class="dx-card dx-week"><div class="dx-k">THIS WEEK &middot; '+wr.done+' OF '+wr.planned+' SESSIONS DONE</div>'+wv.ring+wv.days+weekBodyHtml(ws, true)+'<div class="wk-btns"><button type="button" class="dx-btn2" data-go="insights">Open weekly review &rsaquo;</button><button type="button" class="dx-btn2" data-wk="share" data-wkstart="'+wsk+'">Share my week</button></div></div>';
   }
-  var upc = '<div class="dx-card dx-up"><div class="dx-k">UPCOMING</div>'+upcomingHtml()+'<button type="button" class="dx-btn2" id="dashOpenPlanner">Open planner</button></div>';
+  var upc = '<div class="dx-card dx-up"><div class="dx-k">UPCOMING</div>'+upcomingHtml()+'<button type="button" class="dx-btn2" id="dashOpenPlanner">Open Syllabus planner</button></div>';
   // the cards are laid out one under another in renderDashboard, in the order the user chose
   return {ring:ring, path:path, pace:pace, week:week, hasWeek:!!week, mods:mods, module:module, pyq:pyq, upc:upc};
 }
@@ -17243,7 +17285,8 @@ function bindPlannerDash(host){
 // ============================================================================
 var TAB_GROUPS = [
   {id:"dashboard", label:"Dashboard", accent:"dashboard"},
-  {id:"planner", label:"Planner", accent:"planner"},
+  {id:"routine", label:"Routine", accent:"routine"},
+  {id:"planner", label:"Syllabus planner", accent:"planner"},
   {id:"syllabus", label:"Syllabus", accent:"syllabus"},
   {id:"tiers", label:"Tiers", accent:"tiers", children:[
     {id:"prelims", label:"Prelims"},
@@ -17411,7 +17454,7 @@ function setTab(id){
   if(id !== "dashboard"){ var ph = document.getElementById("planHint"); if(ph) ph.remove(); var qn = document.getElementById("quietNudge"); if(qn) qn.remove(); }
   if(id==="dashboard" && activeTab!=="dashboard") dashMore = false;
   if(id!=="caquiz") caqHide();
-  if(activeTab==="planner" && id!=="planner" && plannerEditing && studyPlan){ plannerEditing = false; wiz = null; }   // leaving a half-finished edit ends it, so the Planner opens on your plan and Edit plan starts from the first screen
+  if(activeTab==="planner" && id!=="planner" && plannerEditing && studyPlan){ plannerEditing = false; wiz = null; }   // leaving a half-finished edit ends it, so the Syllabus planner opens on your plan and Edit plan starts from the first screen
   activeTab = id;
   renderTabs();
   lsSet("dossier.tab", id);
@@ -17828,10 +17871,244 @@ function caqAction(b){
 }
 document.addEventListener("click", function(e){ var b = e.target.closest ? e.target.closest("[data-caq]") : null; if(b && !b.disabled) caqAction(b); });
 
+// ============================================================================
+// ROUTINE: your day as a card. Plain localStorage on this device only (never synced), cleared by "Delete my data".
+// ============================================================================
+var RT_KEY = "dossier.routine.v1";
+var RT_COL = {yellow:["#ffe08a","#f0a93a","#9a6410"], cyan:["#8ff0f4","#31b6c4","#1b6c78"], orange:["#ffc2a0","#ff8a5c","#a8472a"], blue:["#a9b8ff","#5a6ee0","#2e3a96"], violet:["#d2c8ff","#8c79e6","#4a3a9a"], green:["#a8f0c0","#34c98a","#1b7a52"], pink:["#ffb8d6","#f0609f","#9a2a64"], red:["#ffb0a8","#ef6a58","#9a2a1c"]};
+// [id, label, search words, colour, group, old emoji (only used to upgrade routines saved by an earlier build)]
+var RT_STICKERS = [
+  ["cycle","Cycling","cycle cycling bike ride","green","Fitness","\uD83D\uDEB4"], ["run","Running","run running jog","green","Fitness","\uD83C\uDFC3"], ["gym","Gym","gym weights workout lift","red","Fitness","\uD83C\uDFCB\uFE0F"], ["swim","Swimming","swim swimming pool","cyan","Fitness","\uD83C\uDFCA"], ["ball","Football","football soccer sport play","green","Fitness","\u26BD"],
+  ["yoga","Yoga","yoga meditate meditation","cyan","Fitness","\uD83E\uDDD8"], ["walk","Walk","walk walking stroll","green","Fitness","\uD83D\uDEB6"], ["shuttle","Badminton","badminton sport play","yellow","Fitness","\uD83C\uDFF8"], ["trek","Trek","trek hike hiking","orange","Fitness","\uD83E\uDD7E"], ["dance","Dance","dance dancing","pink","Fitness","\uD83D\uDC83"],
+  ["wake","Wake up","wake up sunrise morning","yellow","Morning","\uD83C\uDF05"], ["shower","Shower","shower bath fresh refresh","cyan","Morning","\uD83D\uDEBF"], ["brush","Brush","brush teeth","cyan","Morning","\uD83E\uDEA5"], ["tea","Tea","tea coffee chai","orange","Morning","\u2615"], ["pray","Prayer","prayer pray puja","yellow","Morning","\uD83D\uDE4F"],
+  ["study","Study","study read book reading","blue","Study","\uD83D\uDCD6"], ["write","Writing","write writing answer practice","blue","Study","\u270D\uFE0F"], ["laptop","Laptop","laptop computer online class","blue","Study","\uD83D\uDCBB"], ["news","Newspaper","newspaper news current affairs","blue","Study","\uD83D\uDCF0"], ["listen","Lecture","lecture listen podcast audio","violet","Study","\uD83C\uDFA7"],
+  ["egg","Breakfast","breakfast eggs morning meal","orange","Food and rest","\uD83C\uDF73"], ["rice","Lunch","lunch meal rice","orange","Food and rest","\uD83C\uDF5B"], ["plate","Dinner","dinner meal supper","orange","Food and rest","\uD83C\uDF7D"], ["salad","Snack","snack salad healthy","green","Food and rest","\uD83E\uDD57"], ["apple","Fruit","fruit apple","red","Food and rest","\uD83C\uDF4E"],
+  ["moon","Sleep","sleep nap rest night","violet","Food and rest","\uD83D\uDE34"], ["bed","Bed","bed rest","violet","Food and rest","\uD83D\uDECF"], ["broom","Chores","chores clean cleaning house","cyan","Food and rest","\uD83E\uDDF9"], ["palette","Hobby","hobby art draw paint","pink","Food and rest","\uD83C\uDFA8"], ["phone","Call","call phone family friends","green","Food and rest","\uD83D\uDCDE"]
+];
+// Original glossy 3D-style drawings for every sticker, made for this app (no emoji font, no third-party art), so they look the same on every phone.
+var RT_SVG = {
+  cycle:'<circle cx="11" cy="33" r="7.2" fill="none" stroke="@dark" stroke-width="3"/><circle cx="37" cy="33" r="7.2" fill="none" stroke="@dark" stroke-width="3"/><path d="M11 33l10-13h11l5 13M21 20l7 13H11" fill="none" stroke="@red" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M28 15h7" stroke="@dark" stroke-width="2.6" stroke-linecap="round"/><path d="M22 20l4-8" stroke="@blue" stroke-width="5.6" stroke-linecap="round"/><circle cx="26.5" cy="8.5" r="4.6" fill="@skin"/><path d="M21.8 8.4a4.7 4.7 0 019.4 0z" fill="@green"/><circle cx="25" cy="7" r="1.3" fill="#fff" opacity=".6"/>',
+  run:'<path d="M26 15l-3 10" stroke="@orange" stroke-width="6.6" stroke-linecap="round"/><path d="M24 24l8 5-2 11M24 24l-7 13" stroke="@blue" stroke-width="4.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/><path d="M25 17l-8 3M26 17l9 3" stroke="@skin" stroke-width="3.4" stroke-linecap="round"/><circle cx="29" cy="8" r="4.8" fill="@skin"/><path d="M24.3 7.6a4.8 4.8 0 019.2-1.6l-2.4 1.8z" fill="@dark"/><path d="M15 38h5M29 41h6" stroke="@red" stroke-width="3.6" stroke-linecap="round"/><circle cx="27.6" cy="6.6" r="1.2" fill="#fff" opacity=".6"/>',
+  gym:'<rect x="9" y="22" width="30" height="4" rx="2" fill="@steel"/><rect x="4" y="14" width="8" height="20" rx="3" fill="@red"/><rect x="36" y="14" width="8" height="20" rx="3" fill="@red"/><rect x="11" y="10" width="7" height="28" rx="3" fill="@gold"/><rect x="30" y="10" width="7" height="28" rx="3" fill="@gold"/><path d="M13 14v8M32 14v8M6 18v6M38 18v6" stroke="#fff" stroke-width="1.8" stroke-linecap="round" opacity=".6"/>',
+  swim:'<path d="M14 22l9-5 9 2" stroke="@skin" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="31" cy="14" r="5" fill="@skin"/><path d="M26 13.5a5 5 0 0110 0z" fill="@red"/><path d="M3 30q5-5 10 0t10 0t10 0t10 0v14H3z" fill="@cyan"/><path d="M3 37q5-5 10 0t10 0t10 0t10 0v7H3z" fill="@blue" opacity=".55"/><path d="M6 31q3-3 6 0" stroke="#fff" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".7"/>',
+  ball:'<ellipse cx="24" cy="43" rx="12" ry="2.6" fill="#000" opacity=".22"/><circle cx="24" cy="23" r="18" fill="@white"/><path d="M24 14l8 6-3 9H19l-3-9z" fill="@dark"/><path d="M24 14V6M32 20l8-3M29 29l5 8M19 29l-5 8M16 20l-8-3" stroke="@dark" stroke-width="2" stroke-linecap="round" fill="none"/><ellipse cx="17" cy="12" rx="6" ry="3.4" fill="#fff" opacity=".7" transform="rotate(-30 17 12)"/>',
+  yoga:'<ellipse cx="24" cy="41" rx="19" ry="3" fill="@green"/><path d="M8 37q16-12 32 0z" fill="@blue"/><path d="M24 15v13" stroke="@violet" stroke-width="9" stroke-linecap="round"/><path d="M24 18l-11 8M24 18l11 8" stroke="@skin" stroke-width="3.6" stroke-linecap="round"/><circle cx="24" cy="9" r="5" fill="@skin"/><path d="M19 8a5 5 0 0110 0l-2-1.6h-6z" fill="@dark"/><circle cx="22.4" cy="7.4" r="1.2" fill="#fff" opacity=".6"/>',
+  walk:'<path d="M26 15l-2 12" stroke="@green" stroke-width="6.6" stroke-linecap="round"/><path d="M24 26l-6 13M24 26l8 13" stroke="@blue" stroke-width="4.8" stroke-linecap="round" fill="none"/><path d="M24 17l-6 8M25 17l8 6" stroke="@skin" stroke-width="3.4" stroke-linecap="round"/><circle cx="27" cy="8" r="4.8" fill="@skin"/><path d="M22.3 7.6a4.8 4.8 0 019.2-1.6l-2.4 1.8z" fill="@dark"/><path d="M15 40h5M30 40h6" stroke="@brown" stroke-width="3.6" stroke-linecap="round"/>',
+  shuttle:'<path d="M26 28l12 13" stroke="@brown" stroke-width="3.6" stroke-linecap="round"/><ellipse cx="19" cy="18" rx="10" ry="12.5" transform="rotate(-25 19 18)" fill="#fff" fill-opacity=".25" stroke="@steel" stroke-width="3.2"/><path d="M12 12l13 13M10 19l11 11M17 7l13 13" stroke="#fff" stroke-width="1.2" opacity=".8"/><path d="M37 14l-4 8h8z" fill="@white"/><circle cx="37" cy="12" r="3.6" fill="@gold"/>',
+  trek:'<path d="M13 6h11v15l13 6v9H12z" fill="@brown"/><path d="M11 35h28v6H11z" fill="@dark"/><path d="M13 11h11M13 16h11" stroke="#f6e3c8" stroke-width="2" stroke-linecap="round"/><path d="M15 8v26" stroke="#fff" stroke-width="2" opacity=".28" stroke-linecap="round"/>',
+  dance:'<path d="M24 15l-11 18h22z" fill="@pink"/><path d="M13 33q11 4 22 0v3q-11 4-22 0z" fill="@red"/><path d="M20 36l-2 6M28 36l2 6" stroke="@skin" stroke-width="3.2" stroke-linecap="round"/><path d="M24 17l11-8" stroke="@skin" stroke-width="3.4" stroke-linecap="round"/><circle cx="24" cy="9" r="4.8" fill="@skin"/><path d="M19.2 8.6a4.8 4.8 0 019.6 0l-2-2h-5.6z" fill="@dark"/><circle cx="21" cy="21" r="1.4" fill="#fff" opacity=".5"/>',
+  wake:'<path d="M7 33a17 17 0 0134 0z" fill="@gold"/><path d="M24 8v6M9 17l4 4M39 17l-4 4M4 24h5M39 24h5" stroke="@gold" stroke-width="3" stroke-linecap="round"/><path d="M3 33h42v12H3z" fill="@cyan"/><path d="M8 38q4-3 8 0t8 0t8 0t8 0" stroke="#fff" stroke-width="1.8" fill="none" opacity=".7" stroke-linecap="round"/><ellipse cx="18" cy="26" rx="5" ry="2.6" fill="#fff" opacity=".5" transform="rotate(-25 18 26)"/>',
+  shower:'<path d="M24 11V7h10" stroke="@steel" stroke-width="3.2" stroke-linecap="round" fill="none"/><path d="M8 20a16 9 0 0132 0z" fill="@steel"/><ellipse cx="18" cy="16" rx="5" ry="2.2" fill="#fff" opacity=".6" transform="rotate(-18 18 16)"/><g fill="@blue"><path d="M13 25q2 3 0 5q-2-2 0-5z"/><path d="M21 26q2 4 0 6q-2-2 0-6z"/><path d="M29 26q2 4 0 6q-2-2 0-6z"/><path d="M36 25q2 3 0 5q-2-2 0-5z"/><path d="M17 34q2 3 0 5q-2-2 0-5z"/><path d="M25 35q2 4 0 6q-2-2 0-6z"/><path d="M33 33q2 3 0 5q-2-2 0-5z"/></g>',
+  brush:'<g transform="rotate(-28 24 26)"><rect x="2" y="27" width="29" height="8.5" rx="4.2" fill="@blue"/><path d="M7 29.8h15M7 32.8h15" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".5"/><path d="M29 29h5l1.5 2.4-1.5 2.4h-5z" fill="@blue"/><rect x="33" y="27.5" width="14" height="7.5" rx="3" fill="@white"/><g><rect x="34.6" y="19" width="2.6" height="9" rx="1.3" fill="@cyan"/><rect x="37.9" y="19" width="2.6" height="9" rx="1.3" fill="@white"/><rect x="41.2" y="19" width="2.6" height="9" rx="1.3" fill="@cyan"/><rect x="44.5" y="19" width="2.4" height="9" rx="1.2" fill="@white"/></g><path d="M33.5 17.5q3-5 6-1.6t6-1.4" stroke="@white" stroke-width="3.6" stroke-linecap="round" fill="none"/><path d="M34.5 16.4q2.5-3 5-.6t5-1" stroke="@green" stroke-width="1.6" stroke-linecap="round" fill="none"/></g>',
+  tea:'<ellipse cx="22" cy="41" rx="17" ry="3" fill="@steel"/><path d="M8 18h28v10a14 12 0 01-14 12h0A14 12 0 018 28z" fill="@white"/><ellipse cx="22" cy="18" rx="14" ry="3.6" fill="@brown"/><path d="M36 21h2.5a5 5 0 010 10H34" stroke="@white" stroke-width="3.4" fill="none" stroke-linecap="round"/><path d="M15 6c-2 3 2 4 0 8M22 5c-2 3 2 4 0 8M29 6c-2 3 2 4 0 8" stroke="#fff" stroke-width="2.2" stroke-linecap="round" fill="none" opacity=".85"/><path d="M12 22v6" stroke="#fff" stroke-width="2.4" stroke-linecap="round" opacity=".7"/>',
+  pray:'<path d="M24 42L12 29C9 20 14 11 24 5c10 6 15 15 12 24z" fill="@skin"/><path d="M24 7v34" stroke="#b9774a" stroke-width="1.6" stroke-linecap="round"/><path d="M16 15q-2 8 2 14" stroke="#fff" stroke-width="2.4" fill="none" stroke-linecap="round" opacity=".55"/>',
+  study:'<path d="M4 13q10-4 20 2 10-6 20-2v27q-10-3-20 2-10-5-20-2z" fill="@blue"/><path d="M6 12q9-3 18 2v27q-9-4-18-2z" fill="@white"/><path d="M24 14q9-5 18-2v27q-9-2-18 2z" fill="@white"/><path d="M24 14v27" stroke="#8a99b0" stroke-width="1.6"/><path d="M10 19q5-1 10 1M10 25q5-1 10 1M10 31q5-1 10 1M28 20q5-2 10-1M28 26q5-2 10-1M28 32q5-2 10-1" stroke="#9db0c8" stroke-width="1.8" stroke-linecap="round" fill="none"/>',
+  write:'<path d="M8 40l3-9 19-19 6 6-19 19z" fill="@gold"/><path d="M8 40l3-9 6 6z" fill="@skin"/><path d="M8 40l1.2-3.6 2.4 2.4z" fill="@dark"/><path d="M30 12l4-4 6 6-4 4z" fill="@red"/><path d="M28.4 13.6l5.6 5.6" stroke="@steel" stroke-width="2.6"/><path d="M14 33l16-16" stroke="#fff" stroke-width="1.8" opacity=".55" stroke-linecap="round"/><path d="M5 44h22" stroke="@steel" stroke-width="2" stroke-linecap="round"/>',
+  laptop:'<rect x="8" y="9" width="32" height="23" rx="3" fill="@dark"/><rect x="11" y="12" width="26" height="17" rx="1.5" fill="@cyan"/><path d="M13 16h12M13 20h18M13 24h9" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".85"/><path d="M3 34h42l-3 7H6z" fill="@steel"/><path d="M19 36h10" stroke="#8fa0b3" stroke-width="2" stroke-linecap="round"/>',
+  news:'<rect x="6" y="9" width="36" height="31" rx="3" fill="@white"/><path d="M11 15h26" stroke="@dark" stroke-width="3.6" stroke-linecap="round"/><rect x="11" y="21" width="12" height="9" rx="1.5" fill="@blue"/><path d="M27 22h10M27 26h10M27 30h10M11 35h26" stroke="#9aa9bd" stroke-width="2" stroke-linecap="round"/>',
+  listen:'<path d="M9 29v-5a15 15 0 0130 0v5" stroke="@dark" stroke-width="3.6" fill="none" stroke-linecap="round"/><rect x="5" y="26" width="10" height="15" rx="4.5" fill="@violet"/><rect x="33" y="26" width="10" height="15" rx="4.5" fill="@violet"/><path d="M8 30v7M36 30v7" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".55"/>',
+  egg:'<path d="M9 22C5 13 17 7 24 11c8-4 17 4 13 12 4 9-7 15-15 11-8 4-17-2-13-12z" fill="@white"/><circle cx="24" cy="23" r="7.4" fill="@gold"/><ellipse cx="21.6" cy="20.4" rx="2.4" ry="1.6" fill="#fff" opacity=".75"/>',
+  rice:'<path d="M29 4l9 16M36 3l7 14" stroke="@brown" stroke-width="2.4" stroke-linecap="round"/><path d="M8 24q16-17 32 0z" fill="@white"/><path d="M14 20l2-1M20 15l2-1M27 15l2 1M32 19l2 1" stroke="#cfd8e3" stroke-width="1.6" stroke-linecap="round"/><path d="M4 24h40a20 17 0 01-40 0z" fill="@red"/><path d="M10 29q4 6 11 7" stroke="#fff" stroke-width="2" fill="none" opacity=".5" stroke-linecap="round"/>',
+  plate:'<path d="M5 7v10M8.5 7v10M12 7v10M8.5 17v24" stroke="@steel" stroke-width="2.4" stroke-linecap="round"/><path d="M42 7c-4 5-4 11 0 16v18" stroke="@steel" stroke-width="2.6" stroke-linecap="round" fill="none"/><circle cx="25" cy="24" r="15" fill="@white"/><circle cx="25" cy="24" r="9.5" fill="#e3eaf1"/><ellipse cx="19" cy="15" rx="5" ry="2.4" fill="#fff" opacity=".8" transform="rotate(-30 19 15)"/>',
+  salad:'<circle cx="14" cy="19" r="7" fill="@green"/><circle cx="25" cy="14" r="8" fill="@green"/><circle cx="35" cy="19" r="6" fill="@green"/><circle cx="21" cy="21" r="3.6" fill="@red"/><circle cx="31" cy="23" r="2.6" fill="@gold"/><path d="M4 24h40a20 16 0 01-40 0z" fill="@white"/><path d="M10 28q4 6 11 7" stroke="#fff" stroke-width="2" fill="none" opacity=".8" stroke-linecap="round"/>',
+  apple:'<path d="M24 14c-6-6-17-2-17 10 0 10 8 17 14 15l3-1 3 1c6 2 14-5 14-15 0-12-11-16-17-10z" fill="@red"/><path d="M24 14c0-4 2-8 5-9" stroke="@brown" stroke-width="2.6" stroke-linecap="round" fill="none"/><path d="M27 9q7-5 10 1-7 3-10-1z" fill="@green"/><ellipse cx="14" cy="22" rx="3" ry="5.4" fill="#fff" opacity=".5" transform="rotate(14 14 22)"/>',
+  moon:'<path d="M31 4a20 20 0 1011 30A16 16 0 0131 4z" fill="@gold"/><ellipse cx="14" cy="22" rx="3" ry="6" fill="#fff" opacity=".45" transform="rotate(10 14 22)"/><path d="M33 9h7l-7 9h7" stroke="@white" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/><circle cx="40" cy="30" r="1.6" fill="#fff"/><circle cx="20" cy="5" r="1.4" fill="#fff"/>',
+  bed:'<path d="M5 15v27M43 31v11" stroke="@brown" stroke-width="3.6" stroke-linecap="round"/><rect x="5" y="27" width="38" height="10" rx="3" fill="@white"/><rect x="9" y="19" width="13" height="8" rx="4" fill="@skin"/><path d="M22 27h17a4 4 0 014 4v6H22z" fill="@blue"/><path d="M12 31h8" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".6"/>',
+  broom:'<path d="M36 4L21 28" stroke="@brown" stroke-width="3.6" stroke-linecap="round"/><path d="M11 27l16 8-9 11-12-8z" fill="@gold"/><path d="M12 36l9-6M16 42l9-6" stroke="#b9741a" stroke-width="2" stroke-linecap="round"/><path d="M13 29l9 4" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".5"/>',
+  palette:'<path d="M24 5C12 5 4 13 4 24s9 19 19 19c4 0 6-3 3-6s0-6 4-6h6c6 0 9-4 9-9C45 12 36 5 24 5z" fill="@skin"/><circle cx="14" cy="21" r="3.6" fill="@red"/><circle cx="22" cy="13" r="3.6" fill="@cyan"/><circle cx="33" cy="15" r="3.6" fill="@green"/><circle cx="13" cy="31" r="3.6" fill="@violet"/><circle cx="35" cy="30" r="2.6" fill="#a9712f" opacity=".5"/><ellipse cx="28" cy="9" rx="5" ry="2" fill="#fff" opacity=".6" transform="rotate(10 28 9)"/>',
+  phone:'<rect x="13" y="4" width="22" height="40" rx="5" fill="@dark"/><rect x="16" y="9" width="16" height="25" rx="2" fill="@cyan"/><path d="M18 14h9M18 19h12" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".8"/><circle cx="24" cy="39" r="2.2" fill="#8fa0b3"/><path d="M33 9l-14 25" stroke="#fff" stroke-width="2" opacity=".18"/>'
+};
+var RT_GRAD = {skin:["#ffe3c4","#e8a56c"], white:["#ffffff","#c9d3df"], gold:["#ffe27a","#f0a21a"], red:["#ff8f7c","#d93f2d"], blue:["#86a9ff","#3b5bd0"], green:["#8fe9ab","#2cab68"], orange:["#ffb27c","#e8631d"], brown:["#d89c64","#86501f"], dark:["#5e6e80","#223042"], cyan:["#92f1f5","#1ea3b6"], violet:["#c8bcff","#6a54d6"], pink:["#ff9ecc","#d63b88"], steel:["#e6edf4","#8c9db1"]};
+function rtDefs(){
+  return '<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs>'+Object.keys(RT_GRAD).map(function(k){ return '<linearGradient id="g-'+k+'" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="'+RT_GRAD[k][0]+'"/><stop offset="1" stop-color="'+RT_GRAD[k][1]+'"/></linearGradient>'; }).join("")+'</defs></svg>';
+}
+function rtGlyph(id){ return '<svg class="rt-ic" viewBox="0 0 48 48" aria-hidden="true">'+(RT_SVG[id] || RT_SVG.study).replace(/"@(\w+)"/g, '"url(#g-$1)"')+'</svg>'; }
+var RT_GROUPS = ["Fitness","Morning","Study","Food and rest"];
+var RT_PRESETS = [
+  {n:"Wake up", s:"wake", t:"05:00", d:15}, {n:"Yoga", s:"yoga", t:"05:15", d:10}, {n:"Study", s:"study", t:"06:30", e:"12:00", k:"study"}, {n:"Breakfast", s:"egg", t:"07:00", d:30},
+  {n:"Lunch", s:"rice", t:"12:30", d:45}, {n:"Dinner", s:"plate", t:"20:00", d:40}, {n:"Sleep", s:"moon", t:"22:00", d:420}, {n:"Exercise", s:"run", t:"17:30", d:45}
+];
+var RT_DAYN = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+function rtDefault(){ return {items:[], days:[1,2,3,4,5,6], theme:"night", made:"", span:"week"}; }
+function rtLoad(){
+  try{
+    var v = JSON.parse(localStorage.getItem(RT_KEY) || "null");
+    if(v && Array.isArray(v.items)){
+      v.items = v.items.filter(function(x){ return x && typeof x.n==="string" && /^\d\d:\d\d$/.test(x.t||""); });
+      v.items.forEach(function(x){ var st = rtStk(x.s); x.s = st ? st[0] : "study"; });
+      v.days = Array.isArray(v.days) ? v.days.filter(function(d){ return d>=0 && d<=6; }) : [1,2,3,4,5,6];
+      v.theme = v.theme==="sunrise" ? "sunrise" : "night"; v.span = v.span==="month" ? "month" : "week"; v.made = /^\d{4}-\d\d-\d\d$/.test(v.made||"") ? v.made : "";
+      return v;
+    }
+  }catch(e){}
+  return rtDefault();
+}
+var rt = rtLoad(), rtScreen = "", rtEd = null, rtEdView = "form";
+function rtSave(){ try{ localStorage.setItem(RT_KEY, JSON.stringify(rt)); }catch(e){} }
+function rtSorted(){ return rt.items.slice().sort(function(a, b){ return toMin(a.t) - toMin(b.t); }); }
+function rtDur(it){ return it.e ? Math.max(0, toMin(it.e) - toMin(it.t)) : (it.d || 0); }
+function rtStk(id){ for(var i=0;i<RT_STICKERS.length;i++) if(RT_STICKERS[i][0]===id || RT_STICKERS[i][5]===id) return RT_STICKERS[i]; return null; }
+function rtTile(id, cls){
+  var st = rtStk(id), c = RT_COL[st ? st[3] : "blue"];
+  return '<span class="'+(cls||"rt-tile")+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'" aria-hidden="true">'+rtGlyph(st ? st[0] : "study")+'</span>';
+}
+function rtDays(){ var d = rt.days.slice().sort(function(a, b){ return ((a+6)%7) - ((b+6)%7); }); return d; }
+function rtDaysText(){
+  var d = rtDays(); if(!d.length) return "No days"; if(d.length===7) return "Every day";
+  var idx = d.map(function(x){ return (x+6)%7; }), run = idx.every(function(v, i){ return i===0 || v===idx[i-1]+1; });
+  return run && d.length>2 ? RT_DAYN[d[0]]+" \u2013 "+RT_DAYN[d[d.length-1]] : d.map(function(x){ return RT_DAYN[x]; }).join(", ");
+}
+function rtStudyBlocks(){ return rtSorted().filter(function(x){ return x.k==="study" || /study/i.test(x.n); }); }
+function rtRange(it){ var a = fmt12(it.t).replace(/ ?(AM|PM)$/, ""), b = it.e ? fmt12(it.e).replace(/ ?(AM|PM)$/, "") : ""; return it.e ? a+"\u2013"+b : a; }
+function rtDate(i){ var d = parseKey(rt.made); d.setDate(d.getDate()+i); return d; }
+function rtShortDate(d){ return d.toLocaleDateString(undefined, {day:"numeric", month:"short"}); }
+function rtWeekLabel(){ var a = rtDate(0), b = rtDate(6); return "Week of "+a.getDate()+" \u2013 "+b.getDate()+" "+b.toLocaleDateString(undefined, {month:"short"}); }
+
+function renderRoutine(){
+  var host = document.getElementById("view-routine");
+  var made = !!rt.made && rt.items.length > 0;
+  if(!rtScreen) rtScreen = made ? (rt.span==="month" ? "month" : "card") : "build";
+  if(!made && rtScreen!=="build") rtScreen = "build";
+  host.innerHTML = rtDefs()+(rtScreen==="build" ? rtBuildHtml() : (rtScreen==="month" ? rtMonthHtml() : rtCardHtml()));
+  rtBind(host);
+}
+function rtBuildHtml(){
+  var list = rtSorted(), h = '<div class="rt">';
+  if(!list.length) h += '<div class="rt-empty"><div class="rt-big" aria-hidden="true">\uD83C\uDF1E</div><h2>Tell us about your day</h2><div class="muted">Add each thing you do and when. Your weekly card is made after you add them.</div></div>';
+  else h += '<h2>Your day so far</h2><div class="muted">'+list.length+' activit'+(list.length===1 ? "y" : "ies")+' added. Tap one to change it.</div>';
+  if(list.length) h += '<div class="rt-list">'+list.map(function(it){
+    return '<button type="button" class="rt-item" data-rt="edit" data-id="'+esc(it.id)+'">'+rtTile(it.s)+'<span class="rt-it"><b>'+esc(it.n)+'</b>'+(it.e ? '<small>Until '+esc(fmt12(it.e))+'</small>' : '')+'</span><span class="rt-tm">'+esc(fmt12(it.t))+'<small>'+esc(fmtHM(rtDur(it)))+'</small></span></button>';
+  }).join("")+'</div>';
+  h += '<div class="rt-lab">TAP TO ADD</div><div class="rt-chips">'+RT_PRESETS.map(function(p, i){ return '<button type="button" class="rt-chip" data-rt="preset" data-i="'+i+'"><span class="rt-mini">'+rtGlyph(p.s)+'</span>'+esc(p.n)+'</button>'; }).join("")+'<button type="button" class="rt-chip" data-rt="add">\uFF0B My own</button></div>';
+  h += '<button type="button" class="rt-add" data-rt="add">\uFF0B Add an activity</button>';
+  h += '<div class="rt-lab">WHICH DAYS</div><div class="rt-days" role="group" aria-label="Days">'+[1,2,3,4,5,6,0].map(function(d){ var on = rt.days.indexOf(d)>=0; return '<button type="button" class="'+(on?"on":"")+'" aria-pressed="'+on+'" data-rt="day" data-d="'+d+'">'+RT_DAYN[d].charAt(0)+'</button>'; }).join("")+'</div>';
+  var ok = list.length>0 && rt.days.length>0;
+  h += '<div class="rt-bar"><button type="button" class="rt-go" data-rt="create"'+(ok ? "" : " disabled")+'>Create my weekly routine<small>'+(ok ? list.length+' activit'+(list.length===1 ? "y" : "ies")+' \u00B7 '+esc(rtDaysText()) : (list.length ? "Pick at least one day" : "Add an activity first"))+'</small></button></div></div>';
+  return h;
+}
+function rtCardHtml(){
+  var list = rtSorted(), sun = rt.theme==="sunrise", nm = profile && profile.name ? profile.name : "";
+  var h = '<div class="rt"><div class="rt-stage"><div class="rt-card'+(sun ? " sun2" : "")+'"><span class="rt-sun" aria-hidden="true">'+rtGlyph(list[0] ? list[0].s : "wake")+'</span><h2>My weekly routine</h2><div class="rt-sub">'+esc(rtWeekLabel())+(nm ? ' \u00B7 '+esc(nm) : '')+'</div>';
+  h += '<div class="rt-wk">'+[0,1,2,3,4,5,6].map(function(i){ var d = rtDate(i), on = rt.days.indexOf(d.getDay())>=0, td = toKey(d)===todayKey; return '<div class="'+(td?"today":"")+'"'+(on ? "" : ' style="opacity:.45"')+'><b>'+d.getDate()+'</b>'+RT_DAYN[d.getDay()]+'</div>'; }).join("")+'</div><div class="rt-rows">';
+  list.forEach(function(it){
+    var c = RT_COL[(rtStk(it.s)||[0,0,0,"blue"])[3]], study = it.k==="study" || /study/i.test(it.n);
+    h += '<div class="rt-r'+(study ? " study" : "")+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'"><span class="rt-tile">'+rtGlyph(it.s)+'</span><span class="t">'+esc(fmt12(it.t))+'</span><span class="n">'+esc(it.n)+'</span><span class="d">'+(it.e ? '\u2192 '+esc(fmt12(it.e).replace(/ ?(AM|PM)$/, "")) : esc(fmtHM(rtDur(it)))) +'</span></div>';
+  });
+  var st = rtStudyBlocks().reduce(function(t, x){ return t + rtDur(x); }, 0);
+  h += '</div><div class="rt-ft"><span>'+esc(rtDaysText())+'</span><span>'+(st ? 'Study '+esc(fmtHM(st))+' a day' : list.length+' activities')+'</span></div></div></div><div class="rt-shadow"></div>';
+  h += '<div class="rt-chips rt-themes" role="group" aria-label="Card theme"><button type="button" class="rt-chip'+(sun ? "" : " on")+'" data-rt="theme" data-v="night">Night</button><button type="button" class="rt-chip'+(sun ? " on" : "")+'" data-rt="theme" data-v="sunrise">Sunrise</button></div>';
+  h += '<div class="rt-two"><button type="button" class="rt-btn" data-rt="share">\u2197 Share</button><button type="button" class="rt-btn" data-rt="edit-all">\u270E Edit</button></div>';
+  if(rt.span!=="month") h += '<button type="button" class="rt-go sm" data-rt="month">Continue this for 1 month \u203A</button><div class="muted rt-note">Runs for 1 week now. Continue keeps it going for four weeks.</div>';
+  var ended = toKey(rtDate(6)) < todayKey;
+  if(ended && rt.span!=="month") h += '<button type="button" class="rt-btn wide" data-rt="renew">This week has ended. Start a new week</button>';
+  var blocks = rtStudyBlocks();
+  h += '<div class="rt-next"><span class="rt-nx-i" aria-hidden="true">\uD83E\uDDED</span><div><b>Next: make your syllabus plan</b><span>Create your syllabus plan in the Syllabus planner according to this routine.'+(blocks.length ? ' Your study hours: '+esc(blocks.map(rtRange).join(" and "))+'.' : '')+'</span></div></div><button type="button" class="rt-btn wide" data-rt="planner">Open Syllabus planner \u203A</button></div>';
+  return h;
+}
+function rtMonthHtml(){
+  var made = rtDate(0), off = (made.getDay()+6)%7, cells = "";
+  ["M","T","W","T","F","S","S"].forEach(function(d){ cells += '<div class="h">'+d+'</div>'; });
+  for(var i=0;i<off;i++) cells += '<div class="x"></div>';
+  for(var k=0;k<28;k++){ var d = rtDate(k), on = rt.days.indexOf(d.getDay())>=0, td = toKey(d)===todayKey; cells += '<div class="'+(td ? "t" : (on ? "w" : ""))+'">'+d.getDate()+'</div>'; }
+  var wk = [0,1,2,3].map(function(n){
+    var a = rtDate(n*7), b = rtDate(n*7+6), st = toKey(b) < todayKey ? "Done" : (toKey(a) <= todayKey ? "This week" : "Planned");
+    return '<div class="rt-wkrow"><span>Week '+(n+1)+' \u00B7 '+esc(rtShortDate(a))+' \u2013 '+esc(rtShortDate(b))+'</span><b class="'+(st==="Planned" ? "pl" : "")+'">'+st+'</b></div>';
+  }).join("");
+  return '<div class="rt"><h2>Continuing for 1 month</h2><div class="muted">'+esc(rtShortDate(rtDate(0)))+' \u2192 '+esc(rtShortDate(rtDate(27)))+' \u00B7 same routine on '+esc(rtDaysText())+'.</div><div class="rt-cal">'+cells+'</div><div class="rt-lab">WEEK BY WEEK</div>'+wk+
+    '<div class="rt-two"><button type="button" class="rt-btn" data-rt="edit-all">Change routine</button><button type="button" class="rt-btn bad" data-rt="stop">Stop</button></div><button type="button" class="rt-go sm" data-rt="card">View my weekly card</button></div>';
+}
+function rtBind(host){
+  Array.prototype.forEach.call(host.querySelectorAll("[data-rt]"), function(b){
+    b.addEventListener("click", function(){ rtAct(b.getAttribute("data-rt"), b); });
+  });
+}
+function rtAct(a, b){
+  if(a==="preset"){ var p = RT_PRESETS[+b.getAttribute("data-i")]; rtOpenSheet({n:p.n, s:p.s, t:p.t, e:p.e || "", d:p.d || 30, k:p.k || ""}); return; }
+  if(a==="add"){ rtOpenSheet({n:"", s:"study", t:"06:00", e:"", d:30, k:""}); return; }
+  if(a==="edit"){ var id = b.getAttribute("data-id"), it = rt.items.filter(function(x){ return x.id===id; })[0]; if(it) rtOpenSheet(JSON.parse(JSON.stringify(it)), true); return; }
+  if(a==="day"){ var d = +b.getAttribute("data-d"), i = rt.days.indexOf(d); if(i>=0) rt.days.splice(i, 1); else rt.days.push(d); rtSave(); renderRoutine(); return; }
+  if(a==="create"){ if(b.disabled) return; rt.made = todayKey; rt.span = "week"; rtSave(); rtScreen = "card"; renderRoutine(); window.scrollTo(0, 0); return; }
+  if(a==="theme"){ rt.theme = b.getAttribute("data-v"); rtSave(); renderRoutine(); return; }
+  if(a==="edit-all"){ rtScreen = "build"; renderRoutine(); window.scrollTo(0, 0); return; }
+  if(a==="month"){ rt.span = "month"; rtSave(); rtScreen = "month"; renderRoutine(); window.scrollTo(0, 0); toast("Your routine will keep going for four weeks."); return; }
+  if(a==="card"){ rtScreen = "card"; renderRoutine(); window.scrollTo(0, 0); return; }
+  if(a==="stop"){ if(window.confirm("Stop at one week? Your routine stays saved.")){ rt.span = "week"; rtSave(); rtScreen = "card"; renderRoutine(); } return; }
+  if(a==="renew"){ rt.made = todayKey; rtSave(); renderRoutine(); return; }
+  if(a==="planner"){ setTab("planner"); return; }
+  if(a==="share"){
+    var txt = "My weekly routine ("+rtDaysText()+")\n"+rtSorted().map(function(x){ return fmt12(x.t)+(x.e ? " \u2013 "+fmt12(x.e) : "")+"  "+x.n; }).join("\n");
+    if(navigator.share) navigator.share({title:"My weekly routine", text:txt}).catch(function(){});
+    else if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(function(){ toast("Routine copied."); }, function(){ toast("Could not copy."); });
+    else toast("Sharing is not available on this device.");
+  }
+}
+// ---- the add / change sheet: form view and sticker library view ----
+function rtSheetHtml(){
+  var e = rtEd, st = rtStk(e.s), h = '<div class="fr-sheet rt-sheet" role="dialog" aria-modal="true" aria-label="'+(e.id ? "Change activity" : "Add an activity")+'"><div class="grab"></div>';
+  if(rtEdView==="lib"){
+    h += '<div class="rt-sh-h"><button type="button" class="rt-back" data-rs="form">\u2039 Back</button><h2>Choose a sticker</h2></div>'+
+      '<input type="search" class="rt-q" id="rtQ" placeholder="Search: cycle, book, tea" aria-label="Search stickers"><div class="rt-cats" role="group" aria-label="Group"><button type="button" class="rt-chip on" data-rs="cat" data-g="">All</button>'+RT_GROUPS.map(function(g){ return '<button type="button" class="rt-chip" data-rs="cat" data-g="'+esc(g)+'">'+esc(g)+'</button>'; }).join("")+'</div><div class="rt-lib">'+
+      RT_STICKERS.map(function(s){ var c = RT_COL[s[3]]; return '<button type="button" class="rt-skw" data-rs="pick" data-s="'+s[0]+'" data-kw="'+esc((s[1]+" "+s[2]).toLowerCase())+'" data-g="'+esc(s[4])+'" aria-label="'+esc(s[1])+'"><span class="rt-sk'+(s[0]===e.s ? " sel" : "")+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'">'+rtGlyph(s[0])+'</span><small>'+esc(s[1])+'</small></button>'; }).join("")+'</div>';
+    return h+'</div>';
+  }
+  var row = RT_STICKERS.slice(0, 11).map(function(s){ return s[0]; });
+  if(row.indexOf(e.s)<0) row.unshift(e.s);
+  h += '<h2>'+(e.id ? "Change activity" : "Add an activity")+'</h2><div class="rt-prev">'+rtTile(e.s, "rt-tile big")+'<label class="rt-nm"><input type="text" id="rtN" maxlength="30" value="'+esc(e.n)+'" placeholder="Name, e.g. Cycling" aria-label="Activity name"><small>Tap the name to change it</small></label></div>'+
+    '<div class="rt-lab">STICKER</div><div class="rt-row6">'+row.map(function(em){ var s2 = rtStk(em), c = RT_COL[s2 ? s2[3] : "blue"]; return '<button type="button" class="rt-sk'+(em===e.s ? " sel" : "")+'" data-rs="pick" data-s="'+em+'" aria-label="'+esc(s2 ? s2[1] : "Sticker")+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'">'+rtGlyph(em)+'</button>'; }).join("")+'</div><button type="button" class="rt-link" data-rs="lib">See all stickers \u203A</button>'+
+    '<div class="rt-lab">WHEN</div><div class="rt-when"><label>Starts<input type="time" id="rtT" value="'+esc(e.t)+'"></label>'+(e.e ? '<label>Until<input type="time" id="rtE" value="'+esc(e.e)+'"></label>' : '')+'</div>'+
+    '<div class="rt-chips rt-durs" role="group" aria-label="How long">'+[5,10,15,30,45,60].map(function(m){ return '<button type="button" class="rt-chip'+(!e.e && e.d===m ? " on" : "")+'" data-rs="dur" data-m="'+m+'">'+(m===60 ? "1 h" : m+" min")+'</button>'; }).join("")+'<button type="button" class="rt-chip'+(e.e ? " on" : "")+'" data-rs="until">Until\u2026</button></div>'+
+    '<button type="button" class="rt-go" data-rs="save">'+(e.id ? "Save" : "Add to my day")+'</button>'+(e.id ? '<button type="button" class="rt-btn wide bad" data-rs="del">Remove from my day</button>' : "")+'</div>';
+  return h;
+}
+function rtOpenSheet(ed, editing){
+  rtEd = ed; rtEdView = "form"; if(!editing) delete rtEd.id;
+  rtEd.picked = !!editing || !!ed.n;   // a preset or an existing activity already has its own sticker
+  var m = showModal(rtSheetHtml(), true); m.classList.add("fr-b");
+  m.addEventListener("input", function(ev){
+    var t = ev.target;
+    if(t.id==="rtN"){
+      rtEd.n = t.value;
+      if(!rtEd.picked){   // until a sticker is chosen by hand, follow the name: "Lunch" gets the lunch sticker
+        var w = t.value.trim().toLowerCase(), hit = w ? RT_STICKERS.filter(function(x){ return x[1].toLowerCase()===w || (" "+x[2]+" ").indexOf(" "+w+" ")>=0; })[0] : null;
+        if(hit && hit[0]!==rtEd.s){ rtEd.s = hit[0]; rtEd.k = hit[4]==="Study" || /study/i.test(w) ? "study" : ""; var pv = m.querySelector(".rt-prev .rt-tile"); if(pv) pv.outerHTML = rtTile(rtEd.s, "rt-tile big"); }
+      }
+    }
+    else if(t.id==="rtT") rtEd.t = t.value || rtEd.t;
+    else if(t.id==="rtE") rtEd.e = t.value || rtEd.e;
+    else if(t.id==="rtQ"){ var q = t.value.trim().toLowerCase(); Array.prototype.forEach.call(m.querySelectorAll(".rt-lib .rt-skw"), function(b){ b.hidden = q && b.getAttribute("data-kw").indexOf(q)<0; }); }
+  });
+  m.addEventListener("click", function(ev){
+    var b = ev.target.closest ? ev.target.closest("[data-rs]") : null; if(!b) return;
+    var a = b.getAttribute("data-rs"), redraw = function(){ m.innerHTML = rtSheetHtml(); };
+    if(a==="pick"){
+      var s = rtStk(b.getAttribute("data-s")); rtEd.s = b.getAttribute("data-s"); rtEd.picked = true;
+      if(!rtEd.n.trim() && s) rtEd.n = s[1];
+      rtEd.k = s && s[4]==="Study" ? "study" : (rtEd.k==="study" && !/study/i.test(rtEd.n) ? "" : rtEd.k);
+      rtEdView = "form"; redraw();
+    }
+    else if(a==="lib"){ rtEdView = "lib"; redraw(); }
+    else if(a==="form"){ rtEdView = "form"; redraw(); }
+    else if(a==="cat"){ var g = b.getAttribute("data-g"); Array.prototype.forEach.call(m.querySelectorAll(".rt-cats .rt-chip"), function(c){ c.classList.toggle("on", c===b); }); Array.prototype.forEach.call(m.querySelectorAll(".rt-lib .rt-skw"), function(c){ c.hidden = !!g && c.getAttribute("data-g")!==g; }); }
+    else if(a==="dur"){ rtEd.e = ""; rtEd.d = +b.getAttribute("data-m"); redraw(); }
+    else if(a==="until"){ if(!rtEd.e){ var mm = toMin(rtEd.t) + 60; rtEd.e = pad2(Math.min(23, Math.floor(mm/60)))+":"+pad2(mm%60 > 59 ? 0 : mm%60); if(toMin(rtEd.e) <= toMin(rtEd.t)) rtEd.e = "23:59"; } redraw(); }
+    else if(a==="del"){ rt.items = rt.items.filter(function(x){ return x.id!==rtEd.id; }); rtSave(); closeModal(); renderRoutine(); }
+    else if(a==="save"){
+      var n = (rtEd.n || "").trim();
+      if(!n){ toast("Give it a name first."); return; }
+      if(rtEd.e && toMin(rtEd.e) <= toMin(rtEd.t)){ toast("The end time must be after the start."); return; }
+      var rec = {id: rtEd.id || ("r"+Date.now().toString(36)+Math.floor(Math.random()*1000)), n:n, s:rtEd.s, t:rtEd.t, e:rtEd.e || "", d:rtEd.e ? 0 : (rtEd.d || 30), k:rtEd.k || (/study/i.test(n) ? "study" : "")};
+      var i = rt.items.map(function(x){ return x.id; }).indexOf(rec.id);
+      if(i>=0) rt.items[i] = rec; else rt.items.push(rec);
+      rtSave(); closeModal(); renderRoutine();
+    }
+  });
+}
+
 function renderView(id){
   setTimeout(syncTodayOpenClass, 0);
   if(id==="dashboard") renderDashboard();
   else if(id==="planner") renderPlanner();
+  else if(id==="routine"){ rtScreen = ""; renderRoutine(); }
   else if(id==="prelims" || id==="mains") renderTiersWhenReady(id);
   else if(id==="optional") renderOptional();
   else if(id==="priority") renderPriorityPage();
@@ -19039,7 +19316,7 @@ function tdFp(){ var l = document.getElementById("d-linkmap"), q = document.getE
 function tdEntry(l){
   if(!TDC || !TDC.c) return null;
   if(TDC._ok===undefined) TDC._ok = TDC.fp===tdFp();
-  return TDC._ok ? (TDC.c[linkHash(l.id || (l.subject+"|"+l.group+"|"+l.unit))] || null) : null;   // Planner rows pass subject/group/unit without an id   // keyed by a short hash of the chapter id to keep the table small
+  return TDC._ok ? (TDC.c[linkHash(l.id || (l.subject+"|"+l.group+"|"+l.unit))] || null) : null;   // Syllabus planner rows pass subject/group/unit without an id   // keyed by a short hash of the chapter id to keep the table small
 }
 function tdTier(l){ var c = tdEntry(l); if(c) return c[0]; if(!chapterWarmDone) throw TD_WAIT; return tierRank(tierInfo(l)); }
 function tdSplit(l){
@@ -19809,7 +20086,7 @@ function cloudSignIn(){
 }
 // removes this account's study data from the phone (the cloud copy is untouched) so the next person starts clean.
 // Device-level things stay: the free-trial start, store purchases, first-run flags and analytics choice.
-var WIPE_KEYS = {"dossier.lastBackup.v1":1, "dossier.prerestore.v1":1, "dossier.reminders.v1":1, "dossier.wizdraft.v1":1, "dossier.planBackup.v1":1, "dossier.timer.v2":1, "dossier.progressReset.v1":1, "dossier.noPlanAsk.v1":1, "dossier.planHint.v1":1, "dossier.bkpNudge.v1":1, "dossier.help.log":1, "dossier.nudge.v1":1, "dossier.goal.v1":1, "dossier.weekly.v1":1};
+var WIPE_KEYS = {"dossier.routine.v1":1, "dossier.lastBackup.v1":1, "dossier.prerestore.v1":1, "dossier.reminders.v1":1, "dossier.wizdraft.v1":1, "dossier.planBackup.v1":1, "dossier.timer.v2":1, "dossier.progressReset.v1":1, "dossier.noPlanAsk.v1":1, "dossier.planHint.v1":1, "dossier.bkpNudge.v1":1, "dossier.help.log":1, "dossier.nudge.v1":1, "dossier.goal.v1":1, "dossier.weekly.v1":1};
 function cloudWipeLocal(signedOut){
   cloudUnwatch(); clearTimeout(cloud.timer); cloud.user = null;   // nothing may sync while the phone is being cleared
   try{ Object.keys(localStorage).forEach(function(k){ if(CLOUD_KEY_RE.test(k) || WIPE_KEYS[k] || k.indexOf("dossier.damaged.")===0) localStorage.removeItem(k); }); }catch(e){}
@@ -20011,12 +20288,17 @@ var GUIDES = {
     "<b>Today</b> compares the time you planned with the time you studied, counting every session of the day.",
     "<b>Recent PYQ</b> gives one real exam question for each subject you are on. It follows the card above, and <b>See more PYQs</b> opens every question on the chapter.",
     "<b>Study streak</b> counts the days in a row you studied. <b>Revise today</b> lists chapters due for a quick recall: tap ✓ when done.",
-    "No plan yet? Build one in the Planner and these cards fill up. <b>Backup</b> is at the bottom."]},
-  plansetup:{icon:"🗓", name:"Planner setup", title:"Build your plan", steps:[
+    "No plan yet? Build one in the Syllabus planner and these cards fill up. <b>Backup</b> is at the bottom."]},
+  plansetup:{icon:"🗓", name:"Syllabus planner setup", title:"Build your plan", steps:[
     "Work through the steps. Each one starts with a sensible choice, so tap <b>Next</b> if you are unsure.",
     "<b>Priority</b> is the order you study subjects. When one reaches 100%, the next unlocks.",
-    "Nothing is final. Change anything later in the Planner with <b>Edit plan</b> or <b>Adjust plan</b>. Your progress is kept."]},
-  planner:{icon:"🧭", name:"Planner", title:"Your Planner", steps:[
+    "Nothing is final. Change anything later in the Syllabus planner with <b>Edit plan</b> or <b>Adjust plan</b>. Your progress is kept."]},
+  routine:{icon:"⏰", name:"Routine", title:"How Routine works", steps:[
+    "Add each thing you do in a day: wake up, yoga, study, meals, sleep. Pick a time, how long it lasts (or <b>Until</b> a time), and a sticker.",
+    "Choose which days it runs, then tap <b>Create my weekly routine</b> to get your card.",
+    "<b>Continue this for 1 month</b> keeps the same routine going for four weeks. Tap <b>Edit</b> any time to change it.",
+    "When your routine is ready, build your syllabus plan in the <b>Syllabus planner</b> to match your study hours."]},
+  planner:{icon:"🧭", name:"Syllabus planner", title:"Your Syllabus planner", steps:[
     "<b>Overview</b> shows the subjects running now. Tap <b>Mark current chapter complete</b> when you finish the chapter you are on.",
     "<b>Yearly, Monthly, Weekly</b> and <b>Daily</b> are the same plan at different zoom levels. <b>Daily</b> is where you log what you studied.",
     "<b>Progress</b> lists every chapter. <b>Priority</b> shows which topics matter most and how many past questions each has. <b>Insights</b> shows hours, reminders and catch-up.",
@@ -20024,20 +20306,20 @@ var GUIDES = {
   syllabus:{icon:"📚", name:"Syllabus", title:"Syllabus reference", steps:[
     "Read the official syllabus for Prelims and Mains, paper by paper. Tap a paper to open it.",
     "Use the <b>search box</b> to find a word anywhere in the syllabus, such as judiciary or biodiversity.",
-    "This page is for reading. Your tracking happens in the Planner."]},
+    "This page is for reading. Your tracking happens in the Syllabus planner."]},
   tiers:{icon:"🎯", name:"Tiers", title:"Topic tiers", steps:[
     "Topics are grouped by how often UPSC has asked them in past years (their <b>tier</b>), so you know what to study first.",
-    "There is nothing to tick here. Your progress follows the Planner: finish a chapter there and it shows as done here.",
+    "There is nothing to tick here. Your progress follows the Syllabus planner: finish a chapter there and it shows as done here.",
     "Tap a subject to open it. UPSC has no fixed pattern, so use tiers as a guide, not a guarantee."]},
   mocks:{icon:"📝", name:"Mock tests", title:"Mock tests", steps:[
-    "The Planner decides when your mock tests happen. The cards at the top show how many you have done against the plan.",
+    "The Syllabus planner decides when your mock tests happen. The cards at the top show how many you have done against the plan.",
     "After each test, log it here with its type, date and score.",
     "Your scores are kept together so you can see how you are improving."]},
   pyq:{icon:"❓", name:"PYQ Bank", title:"How the PYQ Bank works", steps:[
     "Pick <b>Prelims</b>, <b>Mains</b> or <b>Optional</b> at the top. Prelims opens the Practice hub: tap a year, then <b>Read paper</b> or <b>Start quiz</b>.",
     "A question counts as <b>practised</b> when you answer it and tap <b>Check</b> in a quiz. <b>Continue practising</b> serves 20 you have not done yet.",
     "On a question, <b>Show answer</b> and <b>Hide answer</b> reveal or hide it.",
-    "From the Dashboard or Planner, <b>See more PYQs</b> opens every question for a chapter."]},
+    "From the Dashboard or Syllabus planner, <b>See more PYQs</b> opens every question for a chapter."]},
   quotes:{icon:"💬", name:"Quotes & cases", title:"Quotes and case studies", steps:[
     "Three tabs: <b>Ethics (GS4)</b> and <b>Essay</b> quotes you can use in answers, and <b>Ethics Cases</b> with real, checked case studies.",
     "Pick a tab and read. Use a quote only where it fits your argument."]},
@@ -20049,13 +20331,16 @@ var GUIDES = {
     "<b>App guides</b> at the bottom lets you read any of these tips again."]}
 };
 var GUIDE_TIPS = {
+  routine:["Your routine is saved on this device only. It is not sent to any cloud.",
+    "Activities are sorted by time for you. Tap an activity to change or remove it.",
+    "<b>Share</b> sends your routine as text. A picture card to share is not available yet."],
   planner:["<b>Subjects run one after another.</b> Complete a subject to unlock the next. The calendar follows your progress, and changing the plan never erases it.",
     "<b>Your subjects</b> list shows the subjects running now. Tap <b>Show all subjects</b> to see the ones that come later. A bar shows how much of a subject you have finished, and \uD83D\uDD12 means it starts after the one above.",
     "<b>Activities come first.</b> If a study session falls at the same time as an activity, the activity takes that slot and the topic moves to the next free study slot, on a later day. Nothing is dropped. One time slot holds only one thing.",
     "<b>Dates are a forecast.</b> Finish a subject early and the dates come sooner; fall behind and they slip later. Past months show what you actually did.",
     "<b>Daily:</b> set a session\u2019s status or actual time there. Your plan, progress and dashboard update automatically."],
   tiers:["Tiers show how often a topic appeared in past papers: Tier 1 most often. Tap a chapter to see the day it is planned, or tap its PYQ button to read the questions.",
-    "A chapter turns <b>In progress</b> as soon as you start studying it, and stays that way until you finish it. Mark it finished from the session (Planner \u2192 Schedule \u2192 Day) or when you save your timer. When every chapter of a subject is complete, the next subject unlocks."],
+    "A chapter turns <b>In progress</b> as soon as you start studying it, and stays that way until you finish it. Mark it finished from the session (Syllabus planner \u2192 Schedule \u2192 Day) or when you save your timer. When every chapter of a subject is complete, the next subject unlocks."],
   pyq:["Only questions with an answer key can be quizzed. Mains and Optional have no answer keys, so they are read-only.",
     "<b>Only questions I haven\u2019t practised</b> in a year\u2019s sheet skips what you have already done. When a paper is 100% practised you can start over.",
     "Your practice progress is saved on this device only."]
@@ -20095,7 +20380,7 @@ function openGuideSheet(){
   trackEvent("screen_view", {screen:"info_"+id});
 }
 document.getElementById("pageInfo").addEventListener("click", openGuideSheet);
-var GUIDE_ORDER = ["home","dash","plansetup","planner","syllabus","tiers","mocks","pyq","quotes","settings"];
+var GUIDE_ORDER = ["home","dash","routine","plansetup","planner","syllabus","tiers","mocks","pyq","quotes","settings"];
 function guideOff(){ return lsGet(GUIDE_OFF_KEY)==="1"; }
 function currentGuideId(){
   var t = activeTab;
@@ -20139,7 +20424,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "374";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "379";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -20555,14 +20840,14 @@ function subInit(){
 function optionalCardHtml(){
   if(!studyPlan || !studyPlan.cfg) return "";
   var mode = studyPlan.cfg.mode;
-  if(mode==="prelims") return '<div class="card set-card"><h3>Optional subject</h3><div class="muted">Your plan covers Prelims only, so it has no optional. Choose Mains in <b>Planner → Edit plan</b> to add one.</div></div>';
+  if(mode==="prelims") return '<div class="card set-card"><h3>Optional subject</h3><div class="muted">Your plan covers Prelims only, so it has no optional. Choose Mains in <b>Syllabus planner → Edit plan</b> to add one.</div></div>';
   var cur = myOptional();
   var list = ALL_OPTIONALS.filter(function(n){ return hasBundledSyllabus(n) || n===cur; });
   function og(label, l){ return l.length ? '<optgroup label="'+label+'">'+l.map(function(n){ return '<option'+(n===cur?" selected":"")+'>'+esc(n)+'</option>'; }).join("")+'</optgroup>' : ""; }
   return '<div class="card set-card" id="optCard"><h3>Optional subject</h3>'+
     '<div class="muted">'+(cur ? 'Your optional is <b>'+esc(cur)+'</b>.' : 'You have not chosen an optional yet.')+' Changing it swaps the optional chapters in your plan and re-plans the days ahead. Your other subjects and your progress are kept; progress in the optional you leave is kept too and comes back if you choose it again.</div>'+
     '<div class="cf"><label for="optSel">Your optional subject</label><select id="optSel"><option value="">'+(cur ? "None (no optional)" : "Select optional…")+'</option>'+og("Subjects", list.filter(function(n){ return !/ Literature$/.test(n); }))+og("Literature", list.filter(function(n){ return / Literature$/.test(n); }))+'</select></div>'+
-    '<div class="muted small">A subject with no bundled syllabus can still be added with your own chapter list in <b>Planner → Edit plan</b>.</div></div>';
+    '<div class="muted small">A subject with no bundled syllabus can still be added with your own chapter list in <b>Syllabus planner → Edit plan</b>.</div></div>';
 }
 function changeOptional(name){
   var w = wizFromPlan(studyPlan), prev = myOptional();
@@ -20908,7 +21193,7 @@ function tierRowHtml(it, kind, label, CHIP){
     '<div class="t"><span class="chip '+tierClass(it.tier)+'" title="'+esc(tierFull(it.tier))+'">'+esc(tierShort(it.tier))+'</span>'+(CHIP[ps.st] ? ' <span class="chip plst st-'+ps.st+'">'+CHIP[ps.st]+'</span>' : "")+'<br>'+esc(it.topic)+
     '<div class="pyq-line">'+esc(tierRowStat(it, kind, label))+'</div>'+
     (subs.length ? '<details class="ol-subs"><summary>'+subs.length+' sub-topic'+(subs.length===1 ? "" : "s")+'</summary><ul>'+(function(){ var lf = leafLookup()[it.id]; if(!lf || (lf.subs || []).length!==subs.length) return subs.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join(""); return subListHtml(lf, pyqSplit(lf)); })()+'</ul></details>' : "")+
-    (ps.link ? '<button type="button" class="link-btn" data-go="subjday" data-subj="'+esc(ps.link.split("|")[0])+'" data-leaf="'+esc(ps.link)+'">Open in planner &rsaquo;</button>' : "")+'</div>'+
+    (ps.link ? '<button type="button" class="link-btn" data-go="subjday" data-subj="'+esc(ps.link.split("|")[0])+'" data-leaf="'+esc(ps.link)+'">Open in Syllabus planner &rsaquo;</button>' : "")+'</div>'+
   '</div>';
 }
 function renderChecklist(kind){
@@ -20950,9 +21235,9 @@ function renderChecklist(kind){
   var ct = OL ? chapterTiers() : null;
 
   var html = tierSwitchHtml()+(studyPlan ? studyNextHtml(subjectStates(studyPlan))+tierRingsHtml(subjectStates(studyPlan)) : "")+'<div class="section-title">'+(studyPlan ? (function(tc){ return esc(tc.allDone)+' of '+esc(tc.all)+' chapters done &middot; Tier 1 to 4'; })(tierCounts(subjectStates(studyPlan))) : 'No plan yet')+'</div>'+
-    '<details class="tv-note"><summary>\u24D8 How tiers and progress work</summary><div class="card note-card">Progress here follows your Planner. Finish a chapter in the Planner and it shows as done on this page; there is nothing to tick here. '+(studyPlan ? '' : 'Build a plan to start tracking. ')+(OL ? 'Every Planner chapter is listed under the official syllabus line it belongs to. A chapter&rsquo;s tier follows how often it was asked; switch between years asked and number of questions below. Chapters in Tier 4 sit in a separate &ldquo;Rarely or never asked&rdquo; group under each line. ' : 'Tiers come from analysis of previous years&rsquo; questions. ')+'UPSC does not follow a fixed pattern, so a lower tier does not mean a topic will never be asked, and a higher tier does not mean it will be asked again.</div></details>';
+    '<details class="tv-note"><summary>\u24D8 How tiers and progress work</summary><div class="card note-card">Progress here follows your Syllabus planner. Finish a chapter in the Syllabus planner and it shows as done on this page; there is nothing to tick here. '+(studyPlan ? '' : 'Build a plan to start tracking. ')+(OL ? 'Every Syllabus planner chapter is listed under the official syllabus line it belongs to. A chapter&rsquo;s tier follows how often it was asked; switch between years asked and number of questions below. Chapters in Tier 4 sit in a separate &ldquo;Rarely or never asked&rdquo; group under each line. ' : 'Tiers come from analysis of previous years&rsquo; questions. ')+'UPSC does not follow a fixed pattern, so a lower tier does not mean a topic will never be asked, and a higher tier does not mean it will be asked again.</div></details>';
   if(OL) html += tierModeHtml(ct.ny)+'<input type="search" id="tierQ" class="syl-search" placeholder="Search the syllabus or a topic, e.g. federal, monsoon, ethics" autocomplete="off" aria-label="Search the syllabus"><div class="muted small" id="tierQn"></div>'+
-    '<div class="muted small ot-count">'+(kind==="prelims" ? 'The 7 lines of the official Prelims General Studies Paper I syllabus' : 'Every line of the official GS I&ndash;IV syllabus, in UPSC order')+', with '+all.length+' syllabus topics under them. Each topic holds one or more Planner chapters.</div>';
+    '<div class="muted small ot-count">'+(kind==="prelims" ? 'The 7 lines of the official Prelims General Studies Paper I syllabus' : 'Every line of the official GS I&ndash;IV syllabus, in UPSC order')+', with '+all.length+' syllabus topics under them. Each topic holds one or more Syllabus planner chapters.</div>';
   html += groups.map(function(g){
     var items = g.items, ol = g.ol;
     var inPlan = items.filter(function(it){ var t = tierPlanStatus(it).st; return t==="done" || t==="doing" || t==="todo"; });
@@ -20972,7 +21257,7 @@ function renderChecklist(kind){
     }
     var main = items.filter(function(it){ return rare.indexOf(it)<0; });
     return '<div class="subject-card card'+(isOpen?" open":"")+'" data-group="'+esc(g[labelKey])+'" data-hay="'+esc(hay)+'" data-line="'+esc(((ol ? g[labelKey]+" "+ol.text : g[labelKey])).toLowerCase())+'">'+head+
-      '<div class="subject-body">'+(ol ? '<div class="ol-full muted small">'+esc(ol.text)+'</div>' : "")+(ol && !items.length ? '<div class="muted small ol-none">No Planner chapter is filed under this line yet.</div>' : "")+
+      '<div class="subject-body">'+(ol ? '<div class="ol-full muted small">'+esc(ol.text)+'</div>' : "")+(ol && !items.length ? '<div class="muted small ol-none">No Syllabus planner chapter is filed under this line yet.</div>' : "")+
       main.map(function(it){ return tierRowHtml(it, kind, lbl, CHIP); }).join("")+
       (rare.length ? '<div class="rare"><button type="button" class="rare-h" data-rare aria-expanded="false">Rarely or never asked ('+rare.length+') <span class="chevron">&rsaquo;</span></button><div class="rare-b">'+rare.map(function(it){ return tierRowHtml(it, kind, lbl, CHIP); }).join("")+'</div></div>' : "")+
       '</div></div>';
@@ -21149,7 +21434,7 @@ function optSubject(){
 }
 function renderOptional(){
   var host = document.getElementById("view-optional"), D = optSyncMode(optLoad(optSubject()));
-  if(!D){ var mo = myOptional(); host.innerHTML = '<div class="card empty">'+(mo ? 'There is no ready-made syllabus or past-question analysis for <b>'+esc(mo)+'</b> yet. The chapters you added for it are in your Planner.' : 'The optional-subject analysis is not available in this copy of the app.')+'</div>'; return; }
+  if(!D){ var mo = myOptional(); host.innerHTML = '<div class="card empty">'+(mo ? 'There is no ready-made syllabus or past-question analysis for <b>'+esc(mo)+'</b> yet. The chapters you added for it are in your Syllabus planner.' : 'The optional-subject analysis is not available in this copy of the app.')+'</div>'; return; }
   var cnt = [0,0,0,0,0]; D.topics.forEach(function(t){ cnt[t.tier]++; });
   var tierChips = '<button type="button" class="sub-chip'+(optUi.tier ? "" : " on")+'" data-otier="0">All <b>'+D.topics.length+'</b></button>'+[1,2,3,4].map(function(n){ return '<button type="button" class="sub-chip'+(optUi.tier===n ? " on" : "")+'" data-otier="'+n+'">Tier '+n+' <b>'+cnt[n]+'</b></button>'; }).join("");
   var paperChips = [[0,"Both papers"],[1,"Paper I"],[2,"Paper II"]].map(function(p){ return '<button type="button" class="sub-chip'+(optUi.paper===p[0] ? " on" : "")+'" data-opaper="'+p[0]+'">'+p[1]+'</button>'; }).join("");
@@ -21203,7 +21488,7 @@ function renderMocks(){
   var host = document.getElementById("view-mocks");
   var targets = mockTargetsFromPlan();
 
-  var targetsHtml = '<div class="section-title">Planned by your Planner</div>' + (targets.length ? targets.map(function(t){
+  var targetsHtml = '<div class="section-title">Planned by your Syllabus planner</div>' + (targets.length ? targets.map(function(t){
     var logged = mockTests.filter(function(m){ return m.type===t.type; }).length;
     var pct = Math.min(100, Math.round(100*logged/t.target));
     return '<div class="target-card card">'+
@@ -21211,8 +21496,8 @@ function renderMocks(){
       '<div class="window">'+esc(fmtDM(parseKey(t.first)))+' &rarr; '+esc(fmtDM(parseKey(t.last)))+(t.next ? ' &middot; next '+esc(fmtDM(parseKey(t.next))) : "")+'</div>'+
       '<div class="bar"><i style="width:'+pct+'%"></i></div>'+
     '</div>';
-  }).join("") : '<div class="card empty">'+(studyPlan ? 'Your plan has no mock tests yet. Turn on Tests and the Planner will place them on your calendar for you.' : 'Build a plan and the Planner will decide when your mock tests happen.')+
-    ' <button type="button" class="btn ghost sm" id="mockPlanBtn">'+(studyPlan ? 'Turn on tests' : 'Open the Planner')+'</button></div>');
+  }).join("") : '<div class="card empty">'+(studyPlan ? 'Your plan has no mock tests yet. Turn on Tests and the Syllabus planner will place them on your calendar for you.' : 'Build a plan and the Syllabus planner will decide when your mock tests happen.')+
+    ' <button type="button" class="btn ghost sm" id="mockPlanBtn">'+(studyPlan ? 'Turn on tests' : 'Open the Syllabus planner')+'</button></div>');
 
   var typeList = targets.map(function(t){ return t.type; });
   ["Prelims GS Paper I","Prelims CSAT (GS Paper II)","Mains full paper","Essay","Optional paper"].forEach(function(x){ if(typeList.indexOf(x)<0) typeList.push(x); });
