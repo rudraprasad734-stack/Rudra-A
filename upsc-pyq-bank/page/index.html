@@ -6582,7 +6582,7 @@ var CURR_OPT = {
 // Official UPSC list, in the official order (ALL_OPTIONALS). Syllabus trees are keyed by the short name where one exists.
 function optionalNames(){ return ALL_OPTIONALS.slice(); }
 // THUMB RULE: an optional subject and a General Studies subject of the same name (History, Geography, Agriculture) are never mixed.
-// The optional is always its own subject, named "<Subject> (Optional)", in the Planner, the plan, the Dashboard and the logs.
+// The optional is always its own subject, named "<Subject> (Optional)", in the Syllabus planner, the plan, the Dashboard and the logs.
 function optLabel(n){ return n+" (Optional)"; }
 function optBase(subject){ var m = /^(.*) \(Optional\)$/.exec(subject || ""); return m ? m[1] : ""; }   // "Agriculture (Optional)" -> "Agriculture"; "" for a General Studies subject
 function optKey(n){ return OPT_ALIAS[n] || n; }
@@ -7871,7 +7871,7 @@ function optStartHtml(w, cat){   // where the optional begins: syllabus start, a
     opt("syllabus","From the start of the syllabus", first ? esc((units[0] && optUnitMeta(units[0]).paper ? optUnitMeta(units[0]).paper+" \u00B7 " : "")+optChapterParts(first.unit).num+" "+optChapterParts(first.unit).text.slice(0,70)) : "In syllabus order.")+
     opt("choose","I choose where to start","Pick a unit or a single chapter; the rest follow in syllabus order.", '<div class="cf">'+sel+'</div>')+
     opt("custom","I arrange every unit myself","Opens the Optional tab after setup, where you set the order of units and chapters.")+
-    '<div class="hint">You can change this any time in <b>Planner \u203a Optional</b>.</div>';
+    '<div class="hint">You can change this any time in <b>Syllabus planner \u203a Optional</b>.</div>';
 }
 function wzPriority(w){
   var cat = wizCatalog(w), avail = cat.order;
@@ -8051,7 +8051,7 @@ function revMethodHtml(a){
     return '<label class="rm-opt'+(m===v?" on":"")+'"><input type="radio" name="revm" data-w="acts.revision.method" value="'+v+'"'+(m===v?" checked":"")+'><span><b>'+title+'</b>'+(tag ? ' <em>'+tag+'</em>' : '')+'<small>'+text+'</small></span></label>';
   }
   return '<div class="cf rev-method"><label>Revision method</label>'+
-    opt("auto","Spaced revision","Recommended","When you mark a chapter completed, the app brings it back for revision after 1, 3, 7, 14 and 30 days. It shows under &ldquo;Revise today&rdquo; on the Dashboard and on that day in the planner. Nothing else to set up.")+
+    opt("auto","Spaced revision","Recommended","When you mark a chapter completed, the app brings it back for revision after 1, 3, 7, 14 and 30 days. It shows under &ldquo;Revise today&rdquo; on the Dashboard and on that day in the Syllabus planner. Nothing else to set up.")+
     '<div class="rm-or">Or</div>'+
     opt("fixed","Choose how often","","Pick the weekdays and the time for a fixed revision slot.")+
   '</div>';
@@ -8435,9 +8435,9 @@ function wizGenerate(){
 function planReadyModal(){
   var m = showModal('<div class="modal card pl-done" role="dialog" aria-modal="true" aria-labelledby="pdTitle">'+
     '<div class="pd-mark" aria-hidden="true">\u2713</div>'+
-    '<h2 id="pdTitle">Congratulations! Your planner is ready</h2>'+
+    '<h2 id="pdTitle">Congratulations! Your Syllabus planner is ready</h2>'+
     '<p>Sit back, relax and just study. We take care of the rest of your preparation: what to study today, what comes next, and keeping your plan on track as you go.</p>'+
-    '<p class="muted">Want to change something? Open <b>Planner \u2192 Edit plan</b> any time. Your progress is kept.</p>'+
+    '<p class="muted">Want to change something? Open <b>Syllabus planner \u2192 Edit plan</b> any time. Your progress is kept.</p>'+
     '<div class="modal-actions"><button class="btn primary" id="pdGo">Start studying &rarr;</button></div></div>', false);
   m.querySelector("#pdGo").addEventListener("click", function(){ closeModal(); setTab("dashboard"); });
 }
@@ -8769,13 +8769,13 @@ function logHelpBodyHtml(){
         '<li><b>Studied exactly as planned?</b> Tap <i>Same as scheduled</i>. It fills in the planned times and marks the session Completed.</li>'+
         '<li><b>Studied at a different time, or without your phone?</b> Type the real <i>Actual start</i> and <i>Actual end</i>. Tap an empty time and the clock opens on the planned time: choose yours. The end must be after the start. It does not have to match the planned slot, and it can be longer.</li>'+
         '<li><b>Missed a session?</b> You can come back any time. Use the <b>&lsaquo; &rsaquo;</b> arrows above to open that day and enter what you studied.</li>'+
-        '<li><b>Finished the chapter?</b> Tap <i>Mark current chapter complete</i>. The planner then moves to the next chapter.</li>'+
+        '<li><b>Finished the chapter?</b> Tap <i>Mark current chapter complete</i>. The Syllabus planner then moves to the next chapter.</li>'+
       '</ol>'+
       '<p><b>The Status updates itself.</b> Studied the full planned time: <i>Completed</i>. Studied part of it: <i>In progress</i>. A Missed or Skipped session comes back as soon as you enter time. You can still change the Status yourself.</p>'+
       '<p><b>Why it matters.</b> Completed sessions finish chapters and unlock the next subject. Your actual time feeds the Today bar, your study streak and the weekly hours in Insights.</p>'+
     '</div></div>';
 }
-function logHelpHtml(){ return ""; }   // the log guide now lives in the Planner's "i" sheet
+function logHelpHtml(){ return ""; }   // the log guide now lives in the Syllabus planner's "i" sheet
 // a study slot an activity took: say which activity, and that the topic moves to a later day
 function replacedSlotsHtml(plan, d, list){
   if(d < plan.window.start || d > plan.window.end || plan.capacity.days.indexOf(dowOf(d)) < 0 || (plan.leave && onLeave(plan, d))) return "";
@@ -9271,7 +9271,7 @@ function loadBlockHtml(subject){
 }
 var tierCache = {};
 function tierWords(t){ return (t||"").toLowerCase().replace(/[^a-z0-9 ]+/g," ").split(/\s+/).filter(function(w){ return w.length>3; }); }
-// Planner chapters of the Anthropology syllabus -> the official syllabus items / sub-topics they cover.
+// Syllabus planner chapters of the Anthropology syllabus -> the official syllabus items / sub-topics they cover.
 // A spec that looks like "2.5" or "II-3.2" means every sub-topic under that official item; any other text is matched against sub-topic titles.
 // Between them the chapters reach every official item, so every past question can be read from some chapter.
 var ANTHRO_LEAF = {
@@ -15817,7 +15817,7 @@ var ZOO_LEAF = {
  ]
 };
 // Optional subjects that have a question analysis (tools/optional/): where their data block is, which papers of the question bank belong to them,
-// how the Planner chapters map to their topics, and the instruction lines printed above their questions.
+// how the Syllabus planner chapters map to their topics, and the instruction lines printed above their questions.
 var OPT_SUBJECTS = {
   "Anthropology":{el:"d-anthro", re:/^Anthropology/, leaf:ANTHRO_LEAF, hint:"kinship, Ramapithecus, PESA, dating", pre:/^(Write|Answer)( short)?( notes)?( on)? the following in (about )?\d+ words each\s*:\s*/i},
   "Agriculture":{el:"d-agri", re:/^Agriculture/, leaf:AGRI_LEAF, hint:"heterosis, drip, KVK, tungro, MSP", pre:/^(Answer|Describe) the following( questions)?( in (about|not more than) 150 words each)?\s*:\s*|^Discuss the followings in about 150 words each\s*:\s*|^Answer each of the following questions\s*:\s*|^Answer the following questions\s*:\s*|^Differentiate and elaborate the following\s*:\s*|^Write notes on (each of )?the following\s*:\s*|^Describe Q\. Nos\. [^:]*:\s*/i},
@@ -15890,7 +15890,7 @@ function tierInfo(l){
   return (tierCache[key] = res);
 }
 function tierBadge(l){
-  // ready-made tier from the table built into the page (see d-tdcache): the Planner lists every chapter, and counting them live took over a second.
+  // ready-made tier from the table built into the page (see d-tdcache): the Syllabus planner lists every chapter, and counting them live took over a second.
   // c[5] is set where the live wording is "Tier 4 / Low-yield" (it differs between chapters)
   var c = tdEntry(l);
   if(c && c[0]===9) return "";   // no tier information for this chapter
@@ -16071,7 +16071,7 @@ function studyNextHtml(states){
   });
   if(!best) return "";
   return '<div class="card tv-next"><div class="tv-nl">Study next</div><div class="tv-nt"><span class="chip tier'+best.t+'">Tier '+best.t+'</span> '+esc(best.l.unit)+'</div><div class="muted small">'+esc(best.subj.replace(/ \(Optional\)$/, ""))+' \u00b7 '+esc(best.l.group)+'</div>'+
-    '<div class="tv-nb"><button type="button" class="btn primary sm" data-go="subjday" data-subj="'+esc(best.subj)+'" data-leaf="'+esc(best.l.id)+'">Open in planner</button>'+(best.n ? ' <button type="button" class="btn ghost sm pyq-btn" data-pyq="'+esc(best.l.id)+'" data-subj="'+esc(best.subj)+'">'+best.n+' PYQ</button>' : "")+'</div></div>';
+    '<div class="tv-nb"><button type="button" class="btn primary sm" data-go="subjday" data-subj="'+esc(best.subj)+'" data-leaf="'+esc(best.l.id)+'">Open in Syllabus planner</button>'+(best.n ? ' <button type="button" class="btn ghost sm pyq-btn" data-pyq="'+esc(best.l.id)+'" data-subj="'+esc(best.subj)+'">'+best.n+' PYQ</button>' : "")+'</div></div>';
 }
 function priSubjName(states){ return priSubject && states.some(function(x){ return x.name===priSubject; }) ? priSubject : (states.filter(function(x){ return x.state==="active"; })[0] || states[0] || {}).name; }
 function priorityHtml(plan, states, inTiers){
@@ -16306,7 +16306,7 @@ function weekReview(mon){
   Object.keys(studyProgress.topics).forEach(function(id){ var t = studyProgress.topics[id], k = days.indexOf(t.completedAt); if(t.status==="completed" && k>=0) r.days[k].chapters++; });
   return r;
 }
-// the weekly review as pictures: an outcome ring, day-by-day bars and time bars (used by Planner > Insights and by the dashboard)
+// the weekly review as pictures: an outcome ring, day-by-day bars and time bars (used by Syllabus planner > Insights and by the dashboard)
 function weekViz(r, rate, hrs){
   // outcome ring: every session of the week is in exactly one slice
   var parts = [{n:r.done, c:"#34b27b", l:"Done"}, {n:r.missed, c:"#e5675a", l:"Missed"}, {n:r.skipped, c:"#9aa5b1", l:"Skipped"}, {n:r.left, c:"var(--ink-soft)", l:"Still to come", o:.35}];
@@ -16444,7 +16444,7 @@ function nudgeShow(){
   c.innerHTML = '<b>'+esc(n.title)+'</b><p>'+esc(n.text)+'</p><div class="row"><button type="button" class="no" id="qnLater">Not today</button><button type="button" class="go" id="qnGo">'+esc(n.go)+'</button></div><button type="button" class="qn-off" id="qnOff">Stop these reminders</button>';
   document.body.appendChild(c);
   c.querySelector("#qnLater").addEventListener("click", function(){ nudge.skipped++; nudgeSave(); c.remove(); });
-  c.querySelector("#qnOff").addEventListener("click", function(){ nudge.off = true; nudgeSave(); c.remove(); toast("Welcome-back reminders are off. You can turn them on again in Planner."); });
+  c.querySelector("#qnOff").addEventListener("click", function(){ nudge.off = true; nudgeSave(); c.remove(); toast("Welcome-back reminders are off. You can turn them on again in Syllabus planner."); });
   c.querySelector("#qnGo").addEventListener("click", function(){ nudge.skipped = 0; nudgeSave(); c.remove(); nudgeAct(n.act); });
 }
 function nudgeAct(a){
@@ -16581,7 +16581,7 @@ function renderPlannerHome(host){
   if(tabNow==="plan") body = overviewHtml(plan, states)+fallingBehindHtml()+remindersHtml()+'<div class="section-title">Chapters</div>'+progressHtml(plan, states);
   var sub = tabNow==="schedule" ? '<div class="pl-sub" role="tablist">'+SCHED_VIEWS.map(function(t){ return '<button type="button" role="tab" class="'+(t[0]===plannerView?"on":"")+'" aria-selected="'+(t[0]===plannerView)+'" data-pa="view" data-v="'+t[0]+'">'+t[1]+'</button>'; }).join("")+'</div>' : "";
   host.innerHTML =
-    '<div class="card pl-title"><div><h2>Preparation Planner</h2>'+(subMode()==="trial" ? '<div class="trial-chip">Free trial · Day '+trialInfo().day+' of '+TRIAL_DAYS+' · '+esc(trialInfo().leftText)+'</div>' : "")+'</div><button type="button" class="btn ghost sm" data-go="reschedule">Adjust plan</button></div>'+
+    '<div class="card pl-title"><div><h2>Syllabus planner</h2>'+(subMode()==="trial" ? '<div class="trial-chip">Free trial · Day '+trialInfo().day+' of '+TRIAL_DAYS+' · '+esc(trialInfo().leftText)+'</div>' : "")+'</div><button type="button" class="btn ghost sm" data-go="reschedule">Adjust plan</button></div>'+
     '<div class="pl-tabs">'+PLANNER_TABS.map(function(t){ return '<button type="button" class="'+(t[0]===tabNow?"on":"")+'" data-pa="view" data-v="'+(t[0]==="plan" ? "overview" : (t[0]==="schedule" ? lastSched : "optional"))+'">'+t[1]+'</button>'; }).join("")+'</div>'+sub+catchBannerHtml()+body;
   centerActive(host.querySelector(".pl-tabs"), "button.on", false);
   if(plannerScrollTo){ var tgt = host.querySelector('[data-prog="'+plannerScrollTo.replace(/"/g, '\\"')+'"]'); plannerScrollTo = ""; if(tgt) setTimeout(function(){ tgt.scrollIntoView({block:"start"}); window.scrollBy(0, -70); }, 60); }
@@ -16756,7 +16756,7 @@ function plannerDashCard(){
     activeCardHtml(states, "banner")+planTimelineHtml(studyPlan, states)+
     '<div class="mini-t">Today</div><div class="muted">Planned '+esc(fmtDurMin(tp))+' &middot; Actual '+esc(fmtDurMin(ta))+' &middot; '+today.length+' sessions</div>'+
     '<div class="mini-t">Upcoming</div>'+upcomingHtml()+
-    '<button type="button" class="btn ghost sm" id="dashOpenPlanner">Open planner</button></div>';
+    '<button type="button" class="btn ghost sm" id="dashOpenPlanner">Open Syllabus planner</button></div>';
 }
 
 
@@ -17143,7 +17143,7 @@ function dxPlanHtml(){
       '<div class="dx-subj">'+esc(m.name)+'</div>'+(it && it.time ? '<div class="dm-time">'+esc(it.time)+'</div>' : '')+'<div class="dx-bar"><i style="width:'+m.pct+'%"></i></div><div class="dx-pc"><b>'+m.pct+'% COMPLETE</b><small>('+m.done+' of '+m.total+' chapters)</small></div>'+
       (n ? '<div class="dx-next" role="button" tabindex="0" data-go="subjday" data-subj="'+esc(m.name)+'" data-leaf="'+esc(n.id)+'">'+(it && it.over && isDone(n.id) ? "Done: " : "Currently running: ")+'<b>'+esc(n.unit)+'</b></div>' : '')+
       (n && !isDone(n.id) ? keepHtml(n) : '')+
-      '<button type="button" class="dx-btn" data-go="subjday" data-subj="'+esc(m.name)+'">Go to Planner</button>'+
+      '<button type="button" class="dx-btn" data-go="subjday" data-subj="'+esc(m.name)+'">Go to Syllabus planner</button>'+
       '<button type="button" class="dx-btn2" data-go="priority" data-subj="'+esc(m.name)+'">Topic Priority (Tiers) &rsaquo;</button></div>';
   }
   // every subject running right now: the active one plus any pinned to a session slot
@@ -17154,13 +17154,13 @@ function dxPlanHtml(){
     : items.length ? modCard(items[0].m, items[0])
     : running.length
     ? modCard(running[0])
-    : '<div class="dx-card dx-mod"><div class="dx-k">ALL SUBJECTS COMPLETED</div><div class="dx-subj">Well done</div><button type="button" class="dx-btn" data-go="day">Open planner</button></div>';
+    : '<div class="dx-card dx-mod"><div class="dx-k">ALL SUBJECTS COMPLETED</div><div class="dx-subj">Well done</div><button type="button" class="dx-btn" data-go="day">Open Syllabus planner</button></div>';
   var mods = "";
   var pace = '<div class="dx-card dx-pace"><div class="dx-k">TODAY'+(tp ? ' &middot; '+tpct+'%' : '')+'</div>'+(tp ? dxPieHtml(pieGroups, pathCtx(states).lanes) : '<div class="dx-seg"><i style="flex:1"></i></div>')+
     '<small>'+(tp ? 'Planned '+esc(fmtDurMin(tp))+' &middot; Actual '+esc(fmtDurMin(ta))+(ta>tp ? ' (over plan)' : '') : 'Nothing planned today')+'</small>'+'</div>';
   var pyq = pyqCardHtml(items);
   var path = pathHtml(states);
-  // this week at a glance: the same ring and day bars as Planner > Insights
+  // this week at a glance: the same ring and day bars as Syllabus planner > Insights
   var wr = weekReview(mondayOf(parseKey(todayKey))), wcount = wr.done + wr.missed + wr.skipped, wrate = wcount ? Math.round(100*wr.done/wcount) : 0, week = "";
   if(wr.planned){
     var wv = weekViz(wr, wrate, fmtDurMin);
@@ -17168,7 +17168,7 @@ function dxPlanHtml(){
     var wsk = toKey(mondayOf(parseKey(todayKey))), ws = weekStats(wsk);
     week = '<div class="dx-card dx-week"><div class="dx-k">THIS WEEK &middot; '+wr.done+' OF '+wr.planned+' SESSIONS DONE</div>'+wv.ring+wv.days+weekBodyHtml(ws, true)+'<div class="wk-btns"><button type="button" class="dx-btn2" data-go="insights">Open weekly review &rsaquo;</button><button type="button" class="dx-btn2" data-wk="share" data-wkstart="'+wsk+'">Share my week</button></div></div>';
   }
-  var upc = '<div class="dx-card dx-up"><div class="dx-k">UPCOMING</div>'+upcomingHtml()+'<button type="button" class="dx-btn2" id="dashOpenPlanner">Open planner</button></div>';
+  var upc = '<div class="dx-card dx-up"><div class="dx-k">UPCOMING</div>'+upcomingHtml()+'<button type="button" class="dx-btn2" id="dashOpenPlanner">Open Syllabus planner</button></div>';
   // the cards are laid out one under another in renderDashboard, in the order the user chose
   return {ring:ring, path:path, pace:pace, week:week, hasWeek:!!week, mods:mods, module:module, pyq:pyq, upc:upc};
 }
@@ -17243,7 +17243,7 @@ function bindPlannerDash(host){
 // ============================================================================
 var TAB_GROUPS = [
   {id:"dashboard", label:"Dashboard", accent:"dashboard"},
-  {id:"planner", label:"Planner", accent:"planner"},
+  {id:"planner", label:"Syllabus planner", accent:"planner"},
   {id:"syllabus", label:"Syllabus", accent:"syllabus"},
   {id:"tiers", label:"Tiers", accent:"tiers", children:[
     {id:"prelims", label:"Prelims"},
@@ -17411,7 +17411,7 @@ function setTab(id){
   if(id !== "dashboard"){ var ph = document.getElementById("planHint"); if(ph) ph.remove(); var qn = document.getElementById("quietNudge"); if(qn) qn.remove(); }
   if(id==="dashboard" && activeTab!=="dashboard") dashMore = false;
   if(id!=="caquiz") caqHide();
-  if(activeTab==="planner" && id!=="planner" && plannerEditing && studyPlan){ plannerEditing = false; wiz = null; }   // leaving a half-finished edit ends it, so the Planner opens on your plan and Edit plan starts from the first screen
+  if(activeTab==="planner" && id!=="planner" && plannerEditing && studyPlan){ plannerEditing = false; wiz = null; }   // leaving a half-finished edit ends it, so the Syllabus planner opens on your plan and Edit plan starts from the first screen
   activeTab = id;
   renderTabs();
   lsSet("dossier.tab", id);
@@ -19039,7 +19039,7 @@ function tdFp(){ var l = document.getElementById("d-linkmap"), q = document.getE
 function tdEntry(l){
   if(!TDC || !TDC.c) return null;
   if(TDC._ok===undefined) TDC._ok = TDC.fp===tdFp();
-  return TDC._ok ? (TDC.c[linkHash(l.id || (l.subject+"|"+l.group+"|"+l.unit))] || null) : null;   // Planner rows pass subject/group/unit without an id   // keyed by a short hash of the chapter id to keep the table small
+  return TDC._ok ? (TDC.c[linkHash(l.id || (l.subject+"|"+l.group+"|"+l.unit))] || null) : null;   // Syllabus planner rows pass subject/group/unit without an id   // keyed by a short hash of the chapter id to keep the table small
 }
 function tdTier(l){ var c = tdEntry(l); if(c) return c[0]; if(!chapterWarmDone) throw TD_WAIT; return tierRank(tierInfo(l)); }
 function tdSplit(l){
@@ -20011,12 +20011,12 @@ var GUIDES = {
     "<b>Today</b> compares the time you planned with the time you studied, counting every session of the day.",
     "<b>Recent PYQ</b> gives one real exam question for each subject you are on. It follows the card above, and <b>See more PYQs</b> opens every question on the chapter.",
     "<b>Study streak</b> counts the days in a row you studied. <b>Revise today</b> lists chapters due for a quick recall: tap ✓ when done.",
-    "No plan yet? Build one in the Planner and these cards fill up. <b>Backup</b> is at the bottom."]},
-  plansetup:{icon:"🗓", name:"Planner setup", title:"Build your plan", steps:[
+    "No plan yet? Build one in the Syllabus planner and these cards fill up. <b>Backup</b> is at the bottom."]},
+  plansetup:{icon:"🗓", name:"Syllabus planner setup", title:"Build your plan", steps:[
     "Work through the steps. Each one starts with a sensible choice, so tap <b>Next</b> if you are unsure.",
     "<b>Priority</b> is the order you study subjects. When one reaches 100%, the next unlocks.",
-    "Nothing is final. Change anything later in the Planner with <b>Edit plan</b> or <b>Adjust plan</b>. Your progress is kept."]},
-  planner:{icon:"🧭", name:"Planner", title:"Your Planner", steps:[
+    "Nothing is final. Change anything later in the Syllabus planner with <b>Edit plan</b> or <b>Adjust plan</b>. Your progress is kept."]},
+  planner:{icon:"🧭", name:"Syllabus planner", title:"Your Syllabus planner", steps:[
     "<b>Overview</b> shows the subjects running now. Tap <b>Mark current chapter complete</b> when you finish the chapter you are on.",
     "<b>Yearly, Monthly, Weekly</b> and <b>Daily</b> are the same plan at different zoom levels. <b>Daily</b> is where you log what you studied.",
     "<b>Progress</b> lists every chapter. <b>Priority</b> shows which topics matter most and how many past questions each has. <b>Insights</b> shows hours, reminders and catch-up.",
@@ -20024,20 +20024,20 @@ var GUIDES = {
   syllabus:{icon:"📚", name:"Syllabus", title:"Syllabus reference", steps:[
     "Read the official syllabus for Prelims and Mains, paper by paper. Tap a paper to open it.",
     "Use the <b>search box</b> to find a word anywhere in the syllabus, such as judiciary or biodiversity.",
-    "This page is for reading. Your tracking happens in the Planner."]},
+    "This page is for reading. Your tracking happens in the Syllabus planner."]},
   tiers:{icon:"🎯", name:"Tiers", title:"Topic tiers", steps:[
     "Topics are grouped by how often UPSC has asked them in past years (their <b>tier</b>), so you know what to study first.",
-    "There is nothing to tick here. Your progress follows the Planner: finish a chapter there and it shows as done here.",
+    "There is nothing to tick here. Your progress follows the Syllabus planner: finish a chapter there and it shows as done here.",
     "Tap a subject to open it. UPSC has no fixed pattern, so use tiers as a guide, not a guarantee."]},
   mocks:{icon:"📝", name:"Mock tests", title:"Mock tests", steps:[
-    "The Planner decides when your mock tests happen. The cards at the top show how many you have done against the plan.",
+    "The Syllabus planner decides when your mock tests happen. The cards at the top show how many you have done against the plan.",
     "After each test, log it here with its type, date and score.",
     "Your scores are kept together so you can see how you are improving."]},
   pyq:{icon:"❓", name:"PYQ Bank", title:"How the PYQ Bank works", steps:[
     "Pick <b>Prelims</b>, <b>Mains</b> or <b>Optional</b> at the top. Prelims opens the Practice hub: tap a year, then <b>Read paper</b> or <b>Start quiz</b>.",
     "A question counts as <b>practised</b> when you answer it and tap <b>Check</b> in a quiz. <b>Continue practising</b> serves 20 you have not done yet.",
     "On a question, <b>Show answer</b> and <b>Hide answer</b> reveal or hide it.",
-    "From the Dashboard or Planner, <b>See more PYQs</b> opens every question for a chapter."]},
+    "From the Dashboard or Syllabus planner, <b>See more PYQs</b> opens every question for a chapter."]},
   quotes:{icon:"💬", name:"Quotes & cases", title:"Quotes and case studies", steps:[
     "Three tabs: <b>Ethics (GS4)</b> and <b>Essay</b> quotes you can use in answers, and <b>Ethics Cases</b> with real, checked case studies.",
     "Pick a tab and read. Use a quote only where it fits your argument."]},
@@ -20055,7 +20055,7 @@ var GUIDE_TIPS = {
     "<b>Dates are a forecast.</b> Finish a subject early and the dates come sooner; fall behind and they slip later. Past months show what you actually did.",
     "<b>Daily:</b> set a session\u2019s status or actual time there. Your plan, progress and dashboard update automatically."],
   tiers:["Tiers show how often a topic appeared in past papers: Tier 1 most often. Tap a chapter to see the day it is planned, or tap its PYQ button to read the questions.",
-    "A chapter turns <b>In progress</b> as soon as you start studying it, and stays that way until you finish it. Mark it finished from the session (Planner \u2192 Schedule \u2192 Day) or when you save your timer. When every chapter of a subject is complete, the next subject unlocks."],
+    "A chapter turns <b>In progress</b> as soon as you start studying it, and stays that way until you finish it. Mark it finished from the session (Syllabus planner \u2192 Schedule \u2192 Day) or when you save your timer. When every chapter of a subject is complete, the next subject unlocks."],
   pyq:["Only questions with an answer key can be quizzed. Mains and Optional have no answer keys, so they are read-only.",
     "<b>Only questions I haven\u2019t practised</b> in a year\u2019s sheet skips what you have already done. When a paper is 100% practised you can start over.",
     "Your practice progress is saved on this device only."]
@@ -20139,7 +20139,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "374";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "375";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -20555,14 +20555,14 @@ function subInit(){
 function optionalCardHtml(){
   if(!studyPlan || !studyPlan.cfg) return "";
   var mode = studyPlan.cfg.mode;
-  if(mode==="prelims") return '<div class="card set-card"><h3>Optional subject</h3><div class="muted">Your plan covers Prelims only, so it has no optional. Choose Mains in <b>Planner → Edit plan</b> to add one.</div></div>';
+  if(mode==="prelims") return '<div class="card set-card"><h3>Optional subject</h3><div class="muted">Your plan covers Prelims only, so it has no optional. Choose Mains in <b>Syllabus planner → Edit plan</b> to add one.</div></div>';
   var cur = myOptional();
   var list = ALL_OPTIONALS.filter(function(n){ return hasBundledSyllabus(n) || n===cur; });
   function og(label, l){ return l.length ? '<optgroup label="'+label+'">'+l.map(function(n){ return '<option'+(n===cur?" selected":"")+'>'+esc(n)+'</option>'; }).join("")+'</optgroup>' : ""; }
   return '<div class="card set-card" id="optCard"><h3>Optional subject</h3>'+
     '<div class="muted">'+(cur ? 'Your optional is <b>'+esc(cur)+'</b>.' : 'You have not chosen an optional yet.')+' Changing it swaps the optional chapters in your plan and re-plans the days ahead. Your other subjects and your progress are kept; progress in the optional you leave is kept too and comes back if you choose it again.</div>'+
     '<div class="cf"><label for="optSel">Your optional subject</label><select id="optSel"><option value="">'+(cur ? "None (no optional)" : "Select optional…")+'</option>'+og("Subjects", list.filter(function(n){ return !/ Literature$/.test(n); }))+og("Literature", list.filter(function(n){ return / Literature$/.test(n); }))+'</select></div>'+
-    '<div class="muted small">A subject with no bundled syllabus can still be added with your own chapter list in <b>Planner → Edit plan</b>.</div></div>';
+    '<div class="muted small">A subject with no bundled syllabus can still be added with your own chapter list in <b>Syllabus planner → Edit plan</b>.</div></div>';
 }
 function changeOptional(name){
   var w = wizFromPlan(studyPlan), prev = myOptional();
@@ -20908,7 +20908,7 @@ function tierRowHtml(it, kind, label, CHIP){
     '<div class="t"><span class="chip '+tierClass(it.tier)+'" title="'+esc(tierFull(it.tier))+'">'+esc(tierShort(it.tier))+'</span>'+(CHIP[ps.st] ? ' <span class="chip plst st-'+ps.st+'">'+CHIP[ps.st]+'</span>' : "")+'<br>'+esc(it.topic)+
     '<div class="pyq-line">'+esc(tierRowStat(it, kind, label))+'</div>'+
     (subs.length ? '<details class="ol-subs"><summary>'+subs.length+' sub-topic'+(subs.length===1 ? "" : "s")+'</summary><ul>'+(function(){ var lf = leafLookup()[it.id]; if(!lf || (lf.subs || []).length!==subs.length) return subs.map(function(x){ return '<li>'+esc(x)+'</li>'; }).join(""); return subListHtml(lf, pyqSplit(lf)); })()+'</ul></details>' : "")+
-    (ps.link ? '<button type="button" class="link-btn" data-go="subjday" data-subj="'+esc(ps.link.split("|")[0])+'" data-leaf="'+esc(ps.link)+'">Open in planner &rsaquo;</button>' : "")+'</div>'+
+    (ps.link ? '<button type="button" class="link-btn" data-go="subjday" data-subj="'+esc(ps.link.split("|")[0])+'" data-leaf="'+esc(ps.link)+'">Open in Syllabus planner &rsaquo;</button>' : "")+'</div>'+
   '</div>';
 }
 function renderChecklist(kind){
@@ -20950,9 +20950,9 @@ function renderChecklist(kind){
   var ct = OL ? chapterTiers() : null;
 
   var html = tierSwitchHtml()+(studyPlan ? studyNextHtml(subjectStates(studyPlan))+tierRingsHtml(subjectStates(studyPlan)) : "")+'<div class="section-title">'+(studyPlan ? (function(tc){ return esc(tc.allDone)+' of '+esc(tc.all)+' chapters done &middot; Tier 1 to 4'; })(tierCounts(subjectStates(studyPlan))) : 'No plan yet')+'</div>'+
-    '<details class="tv-note"><summary>\u24D8 How tiers and progress work</summary><div class="card note-card">Progress here follows your Planner. Finish a chapter in the Planner and it shows as done on this page; there is nothing to tick here. '+(studyPlan ? '' : 'Build a plan to start tracking. ')+(OL ? 'Every Planner chapter is listed under the official syllabus line it belongs to. A chapter&rsquo;s tier follows how often it was asked; switch between years asked and number of questions below. Chapters in Tier 4 sit in a separate &ldquo;Rarely or never asked&rdquo; group under each line. ' : 'Tiers come from analysis of previous years&rsquo; questions. ')+'UPSC does not follow a fixed pattern, so a lower tier does not mean a topic will never be asked, and a higher tier does not mean it will be asked again.</div></details>';
+    '<details class="tv-note"><summary>\u24D8 How tiers and progress work</summary><div class="card note-card">Progress here follows your Syllabus planner. Finish a chapter in the Syllabus planner and it shows as done on this page; there is nothing to tick here. '+(studyPlan ? '' : 'Build a plan to start tracking. ')+(OL ? 'Every Syllabus planner chapter is listed under the official syllabus line it belongs to. A chapter&rsquo;s tier follows how often it was asked; switch between years asked and number of questions below. Chapters in Tier 4 sit in a separate &ldquo;Rarely or never asked&rdquo; group under each line. ' : 'Tiers come from analysis of previous years&rsquo; questions. ')+'UPSC does not follow a fixed pattern, so a lower tier does not mean a topic will never be asked, and a higher tier does not mean it will be asked again.</div></details>';
   if(OL) html += tierModeHtml(ct.ny)+'<input type="search" id="tierQ" class="syl-search" placeholder="Search the syllabus or a topic, e.g. federal, monsoon, ethics" autocomplete="off" aria-label="Search the syllabus"><div class="muted small" id="tierQn"></div>'+
-    '<div class="muted small ot-count">'+(kind==="prelims" ? 'The 7 lines of the official Prelims General Studies Paper I syllabus' : 'Every line of the official GS I&ndash;IV syllabus, in UPSC order')+', with '+all.length+' syllabus topics under them. Each topic holds one or more Planner chapters.</div>';
+    '<div class="muted small ot-count">'+(kind==="prelims" ? 'The 7 lines of the official Prelims General Studies Paper I syllabus' : 'Every line of the official GS I&ndash;IV syllabus, in UPSC order')+', with '+all.length+' syllabus topics under them. Each topic holds one or more Syllabus planner chapters.</div>';
   html += groups.map(function(g){
     var items = g.items, ol = g.ol;
     var inPlan = items.filter(function(it){ var t = tierPlanStatus(it).st; return t==="done" || t==="doing" || t==="todo"; });
@@ -20972,7 +20972,7 @@ function renderChecklist(kind){
     }
     var main = items.filter(function(it){ return rare.indexOf(it)<0; });
     return '<div class="subject-card card'+(isOpen?" open":"")+'" data-group="'+esc(g[labelKey])+'" data-hay="'+esc(hay)+'" data-line="'+esc(((ol ? g[labelKey]+" "+ol.text : g[labelKey])).toLowerCase())+'">'+head+
-      '<div class="subject-body">'+(ol ? '<div class="ol-full muted small">'+esc(ol.text)+'</div>' : "")+(ol && !items.length ? '<div class="muted small ol-none">No Planner chapter is filed under this line yet.</div>' : "")+
+      '<div class="subject-body">'+(ol ? '<div class="ol-full muted small">'+esc(ol.text)+'</div>' : "")+(ol && !items.length ? '<div class="muted small ol-none">No Syllabus planner chapter is filed under this line yet.</div>' : "")+
       main.map(function(it){ return tierRowHtml(it, kind, lbl, CHIP); }).join("")+
       (rare.length ? '<div class="rare"><button type="button" class="rare-h" data-rare aria-expanded="false">Rarely or never asked ('+rare.length+') <span class="chevron">&rsaquo;</span></button><div class="rare-b">'+rare.map(function(it){ return tierRowHtml(it, kind, lbl, CHIP); }).join("")+'</div></div>' : "")+
       '</div></div>';
@@ -21149,7 +21149,7 @@ function optSubject(){
 }
 function renderOptional(){
   var host = document.getElementById("view-optional"), D = optSyncMode(optLoad(optSubject()));
-  if(!D){ var mo = myOptional(); host.innerHTML = '<div class="card empty">'+(mo ? 'There is no ready-made syllabus or past-question analysis for <b>'+esc(mo)+'</b> yet. The chapters you added for it are in your Planner.' : 'The optional-subject analysis is not available in this copy of the app.')+'</div>'; return; }
+  if(!D){ var mo = myOptional(); host.innerHTML = '<div class="card empty">'+(mo ? 'There is no ready-made syllabus or past-question analysis for <b>'+esc(mo)+'</b> yet. The chapters you added for it are in your Syllabus planner.' : 'The optional-subject analysis is not available in this copy of the app.')+'</div>'; return; }
   var cnt = [0,0,0,0,0]; D.topics.forEach(function(t){ cnt[t.tier]++; });
   var tierChips = '<button type="button" class="sub-chip'+(optUi.tier ? "" : " on")+'" data-otier="0">All <b>'+D.topics.length+'</b></button>'+[1,2,3,4].map(function(n){ return '<button type="button" class="sub-chip'+(optUi.tier===n ? " on" : "")+'" data-otier="'+n+'">Tier '+n+' <b>'+cnt[n]+'</b></button>'; }).join("");
   var paperChips = [[0,"Both papers"],[1,"Paper I"],[2,"Paper II"]].map(function(p){ return '<button type="button" class="sub-chip'+(optUi.paper===p[0] ? " on" : "")+'" data-opaper="'+p[0]+'">'+p[1]+'</button>'; }).join("");
@@ -21203,7 +21203,7 @@ function renderMocks(){
   var host = document.getElementById("view-mocks");
   var targets = mockTargetsFromPlan();
 
-  var targetsHtml = '<div class="section-title">Planned by your Planner</div>' + (targets.length ? targets.map(function(t){
+  var targetsHtml = '<div class="section-title">Planned by your Syllabus planner</div>' + (targets.length ? targets.map(function(t){
     var logged = mockTests.filter(function(m){ return m.type===t.type; }).length;
     var pct = Math.min(100, Math.round(100*logged/t.target));
     return '<div class="target-card card">'+
@@ -21211,8 +21211,8 @@ function renderMocks(){
       '<div class="window">'+esc(fmtDM(parseKey(t.first)))+' &rarr; '+esc(fmtDM(parseKey(t.last)))+(t.next ? ' &middot; next '+esc(fmtDM(parseKey(t.next))) : "")+'</div>'+
       '<div class="bar"><i style="width:'+pct+'%"></i></div>'+
     '</div>';
-  }).join("") : '<div class="card empty">'+(studyPlan ? 'Your plan has no mock tests yet. Turn on Tests and the Planner will place them on your calendar for you.' : 'Build a plan and the Planner will decide when your mock tests happen.')+
-    ' <button type="button" class="btn ghost sm" id="mockPlanBtn">'+(studyPlan ? 'Turn on tests' : 'Open the Planner')+'</button></div>');
+  }).join("") : '<div class="card empty">'+(studyPlan ? 'Your plan has no mock tests yet. Turn on Tests and the Syllabus planner will place them on your calendar for you.' : 'Build a plan and the Syllabus planner will decide when your mock tests happen.')+
+    ' <button type="button" class="btn ghost sm" id="mockPlanBtn">'+(studyPlan ? 'Turn on tests' : 'Open the Syllabus planner')+'</button></div>');
 
   var typeList = targets.map(function(t){ return t.type; });
   ["Prelims GS Paper I","Prelims CSAT (GS Paper II)","Mains full paper","Essay","Optional paper"].forEach(function(x){ if(typeList.indexOf(x)<0) typeList.push(x); });
