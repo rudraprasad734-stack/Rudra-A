@@ -9324,6 +9324,16 @@ function chapterStats(){
   return out;
 }
 window.__chapterStats = chapterStats;
+// the service-worker update script (a separate script at the end of the page) asks this before it reloads the page onto a new version
+window.__swBusy = function(){
+  try{
+    if(timerState.running || timerState.pending > 0) return true;
+    if(document.getElementById("modalHost")) return true;
+    if(activeTab==="planner" && (wiz || plannerEditing)) return true;   // editing or setting up a plan
+    if(activeTab==="routine" && rtScreen==="build") return true;       // editing the routine
+  }catch(e){}
+  return false;
+};
 window.__cseTest = {setLeaves:function(i, st){ return setLeaves(i, st, 'test'); }, plan:function(){ return studyPlan; }};   // used by the automated checks
 // ---------- ONE tier for every chapter, worked out from how many years had a question on it ----------
 // Cut-offs come from tierCuts(): by years asked or by number of questions, whichever the reader picked.
@@ -20981,7 +20991,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "411";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "412";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -86457,8 +86467,14 @@ if("serviceWorker" in navigator && (location.protocol==="https:" || location.hos
   navigator.serviceWorker.addEventListener("controllerchange", function(){
     if(!swHadController){ swHadController = true; return; }   // first install: nothing old to replace
     if(swReloading) return;
-    if(typeof timerState !== "undefined" && timerState.running) return;   // never interrupt a running timer; the next open uses the new version
-    swReloading = true; location.reload();
+    // never reload the page under someone who is in the middle of something (a running timer, editing the plan or the routine, an open sheet):
+    // wait until they are done, then switch to the new version
+    var swTry = function(){
+      if(swReloading) return;
+      if(window.__swBusy && window.__swBusy()){ setTimeout(swTry, 8000); return; }
+      swReloading = true; location.reload();
+    };
+    swTry();
   });
   window.addEventListener("load", function(){
     navigator.serviceWorker.register("./sw.js", {updateViaCache:"none"}).then(function(reg){
