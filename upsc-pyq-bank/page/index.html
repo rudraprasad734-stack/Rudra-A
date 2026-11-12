@@ -8115,7 +8115,7 @@ function wzCapacity(w){
         wzClash(c, sl, i)+'<label class="ses-sub"><span>Subject</span><select data-w="cap.sessions.'+i+'.subject" aria-label="Subject for session '+(i+1)+'"><option value="">Any subject</option><optgroup label="Activity"><option value="@ca"'+(sl.subject==="@ca"?" selected":"")+'>Current Affairs (daily)</option></optgroup><optgroup label="Subjects">'+w.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(sl.subject===nm?" selected":"")+'>'+esc(nm)+'</option>'; }).join("")+'</optgroup></select></label></div>';
     }).join("")+'</div>'+(n < 6 ? '<button type="button" class="btn ghost sm" data-wa="sesAdd">+ Add a session</button>' : "");
     var rw = rtPlanSessions(w.acts, c.days), linked = rtSig(c.sessions)===rtSig(rw);
-    var rcard = rw.length ? '<div class="qx-info rt-link"><b>'+(linked ? 'From your Routine' : 'Your Routine has study time')+'</b><small>'+esc(rw.map(function(x){ return fmt12(x.start)+" – "+fmt12(x.end); }).join(" and "))+'</small></div>'+(linked ? '' : '<button type="button" class="btn ghost sm" data-wa="capRoutine">Use my routine\'s study time</button>') : '';
+    var rcard = rw.length ? '<div class="qx-info rt-link"><b>'+(linked ? 'From your Routine' : 'Your Routine has study time')+'</b><small>'+esc(rw.map(function(x){ return fmt12(x.start)+" – "+fmt12(x.end); }).join(" and "))+'</small></div>'+'<button type="button" class="btn ghost sm" data-wa="capRoutine">Use my routine\'s study time</button>'+(linked ? '<div class="rtd-ok">\u2713 Your sessions follow your routine and your daily activities.</div>' : '') : '';
     var wnd = rtPlanWindows(), asp = rw.length ? rtActSpans(w.acts, c.days).filter(function(x){ return wnd.some(function(q){ return toMin(q.start) < x.b && x.a < toMin(q.end); }); }) : [], anote = (asp.length && linked) ? '<div class="rtd-warn">Daily activities are taken out first: <b>'+esc(asp.map(function(x){ return ACT_INFO[x.k].title+" "+rtClock(x.a)+" \u2013 "+rtClock(x.b); }).join(", "))+'</b>. Sessions use the rest of your study time.</div>' : "";
     exactBox = rcard+anote+dayRingHtml(c.sessions)+list;
   }
@@ -20939,7 +20939,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "403";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "404";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
