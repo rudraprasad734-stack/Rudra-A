@@ -18298,7 +18298,7 @@ setInterval(function(){
 function renderRoutine(){
   var host = document.getElementById("view-routine");
   var made = !!rt.made && rt.items.length > 0;
-  if(!rtScreen) rtScreen = made ? (rt.span==="month" ? "month" : "card") : "build";
+  if(!rtScreen) rtScreen = made ? "card" : "build";   // opening Routine always shows the weekly card, even when it continues for a month
   if(!made && rtScreen!=="build") rtScreen = "build";
   host.innerHTML = rtDefs()+(rtScreen==="build" ? rtBuildHtml() : (rtScreen==="month" ? rtMonthHtml() : rtCardHtml()));
   rtBind(host);
@@ -18329,6 +18329,7 @@ function rtCardHtml(){
   });
   h += '</div><div class="rt-ft"><span>'+esc(rtDaysText())+'</span></div></div></div><div class="rt-shadow"></div>';
   h += '<div class="rt-two"><button type="button" class="rt-btn" data-rt="share">\u2197 Share as picture</button><button type="button" class="rt-btn" data-rt="edit-all">\u270E Edit</button></div>';
+  if(rt.span==="month") h += '<button type="button" class="rt-btn wide" data-rt="monthview">See my month \u203A</button><div class="muted rt-note">Your routine continues for 1 month.</div>';
   if(rt.span!=="month") h += '<button type="button" class="rt-go sm" data-rt="month">Continue this for 1 month \u203A</button><div class="muted rt-note">Runs for 1 week now. Continue keeps it going for four weeks.</div>';
   var ended = toKey(rtDate(6)) < todayKey;
   if(ended && rt.span!=="month") h += '<button type="button" class="rt-btn wide" data-rt="renew">This week has ended. Start a new week</button>';
@@ -18366,6 +18367,7 @@ function rtAct(a, b){
   if(a==="create"){ if(b.disabled) return; rt.made = todayKey; rt.span = "week"; rtSave(); rtScreen = "card"; renderRoutine(); window.scrollTo(0, 0); return; }
   if(a==="edit-all"){ rtScreen = "build"; renderRoutine(); window.scrollTo(0, 0); return; }
   if(a==="month"){ rt.span = "month"; rtSave(); rtScreen = "month"; renderRoutine(); window.scrollTo(0, 0); toast("Your routine will keep going for four weeks."); return; }
+  if(a==="monthview"){ rtScreen = "month"; renderRoutine(); window.scrollTo(0, 0); return; }
   if(a==="card"){ rtScreen = "card"; renderRoutine(); window.scrollTo(0, 0); return; }
   if(a==="stop"){ if(window.confirm("Stop at one week? Your routine stays saved.")){ rt.span = "week"; rtSave(); rtScreen = "card"; renderRoutine(); } return; }
   if(a==="renew"){ rt.made = todayKey; rtSave(); renderRoutine(); return; }
@@ -20816,7 +20818,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "400";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "401";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
