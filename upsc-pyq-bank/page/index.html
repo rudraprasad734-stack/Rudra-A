@@ -7242,7 +7242,7 @@ function activityCalendar(plan, from, to){
   ACT_KINDS.forEach(function(kind){
     var a = plan.activities[kind];
     if(!a || !a.on) return;
-    if(kind==="revision" && a.method==="auto") return;   // spaced revision only: no fixed weekly slot
+    if(kind==="revision" && !a.timed) return;   // an older plan: spaced revision only, no fixed time
     if(kind==="ca" && (plan.capacity.sessions || []).some(function(x){ return x.subject==="@ca"; })) return;   // Current Affairs already has a session of its own
     activityDates(plan, a, from, to).forEach(function(d){ (res[d] = res[d] || []).push({kind:kind, start:a.start, end:a.end}); });
   });
@@ -7463,7 +7463,7 @@ var ACT_INFO = {
   essay:{title:"Essay", hint:"Essay writing practice", color:"--tab-logs"},
   pyq:{title:"PYQ Practice", hint:"Previous-year questions on the active subject", color:"--tab-tiers"},
   test:{title:"Tests", hint:"Sectional or full-length tests", color:"--tab-mocks"},
-  revision:{title:"Revision", hint:"Spaced revision after each finished chapter, or days you choose", color:"--tab-pyq"},
+  revision:{title:"Revision", hint:"A time every study day to revise the chapters you have finished", color:"--tab-pyq"},
   ca:{title:"Current Affairs", hint:"Daily, specific days or weekly", color:"--tab-scheduler"}
 };
 function wizDefaults(){
@@ -7495,7 +7495,8 @@ function wizSync(w){
   if(w.cap.dayHours==null) w.cap.dayHours = 6; if(!w.cap.subjHours) w.cap.subjHours = {}; if(w.cap.exact==null) w.cap.exact = false;
   w.cap.subjHours = {};   // hours per subject are gone: the day's hours and your own sessions decide
   ACT_KINDS.forEach(function(k){ var a = w.acts[k]; if(!a) return; a.mode = "weekly"; if(!a.on && !(a.days||[]).length) a.days = k==="ca" ? [0,1,2,3,4,5,6] : [6]; });
-  if(w.acts.revision) w.acts.revision.method = "auto"; if(w.acts.ca) delete w.acts.ca.freq;
+  if(w.acts.revision){ var rva = w.acts.revision; rva.method = "auto"; rva.mode = "weekly"; rva.interval = 1; rva.timed = true; rva.days = (w.cap.days || [1,2,3,4,5,6]).slice(); }   // revision has a time of its own and runs on every study day
+  if(w.acts.ca) delete w.acts.ca.freq;
   w.cap.layout = "manual"; w.cap.hours.auto = true; w.cap.hours.by = {}; if(w.cap.limitMin==null) w.cap.limitMin = 0; if(!w.cap.dayStart) w.cap.dayStart = "06:00";
   var cat = wizCatalog(w), valid = {}, init = {};
   // a subject that has just become available (an optional, another paper) joins the end of the order; one you took out by hand stays out
@@ -7725,7 +7726,7 @@ function compilePlan(w){
 
 
 // ---------- time map: who owns which slot, and what is free ----------
-function actTimeOk(a){ return a.on && a.method!=="auto" && a.start && a.end && toMin(a.end) > toMin(a.start); }
+function actTimeOk(a){ return a.on && (a.method!=="auto" || a.timed) && a.start && a.end && toMin(a.end) > toMin(a.start); }
 function activityConflicts(w){
   var st = windowStats(w); if(!st.ok) return [];
   var pl = {window:{start:w.start, end:st.end}}, on = ACT_KINDS.filter(function(k){ return actTimeOk(w.acts[k]); }), dts = {}, res = [];
@@ -8057,7 +8058,7 @@ function actSummary(w, k){
   var a = w.acts[k];
   if(k==="ca" && w.cap.exact){ var pin = w.cap.sessions.filter(function(x){ return x.subject==="@ca"; })[0]; if(pin) return fmt12(pin.start)+" – "+fmt12(pin.end)+" · in your session list"; }
   if(!a.on) return "Off";
-  if(k==="revision") return "Spaced · after each finished chapter";
+  if(k==="revision") return fmt12(a.start)+" – "+fmt12(a.end)+" · every study day";
   var d = DOW_ORDER.filter(function(x){ return (a.days||[]).indexOf(x)>=0; });
   var when = d.length>=7 ? "every day" : (d.length ? d.map(function(x){ return DOW_SHORT[x]; }).join(", ") : "pick a day");
   return fmt12(a.start)+" – "+fmt12(a.end)+" · "+when;
@@ -8087,8 +8088,8 @@ function actDayPills(w, k){
 function actRowHtml(w, k){
   var a = w.acts[k], info = ACT_INFO[k], pin = k==="ca" && w.cap.exact && w.cap.sessions.some(function(x){ return x.subject==="@ca"; });
   var more = "";
-  if(a.on && !pin && k!=="revision"){
-    more = '<div class="act-more" data-tplabel="'+esc(info.title)+'"><div class="act-tm">'+timeChip("acts."+k+".start", a.start)+'<span class="arr" aria-hidden="true">→</span>'+timeChip("acts."+k+".end", a.end)+'</div>'+actDayPills(w, k)+wzActRoutine(w, k)+'</div>';
+  if(a.on && !pin){
+    more = '<div class="act-more" data-tplabel="'+esc(info.title)+'"><div class="act-tm">'+timeChip("acts."+k+".start", a.start)+'<span class="arr" aria-hidden="true">→</span>'+timeChip("acts."+k+".end", a.end)+'</div>'+(k==="revision" ? '' : actDayPills(w, k))+wzActRoutine(w, k)+'</div>';
   }
   return '<div class="cap-sub act-row'+(a.on ? " on" : "")+'"><div class="act-top"><span class="dot" style="background:var('+info.color+')"></span><span class="nm">'+esc(info.title)+'<small>'+esc(actSummary(w, k))+'</small></span>'+
     (pin ? '' : '<button type="button" class="sw'+(a.on ? " on" : "")+'" role="switch" aria-checked="'+(a.on ? "true" : "false")+'" aria-label="'+esc(info.title)+'" data-wa="actToggle" data-v="'+k+'"></button>')+'</div>'+more+'</div>';
@@ -8497,7 +8498,7 @@ function wizAction(a, b){
     case "actSuggest": var sg = String(v).split(":"), sa = w.acts[sg[0]]; if(sa){ sa.start = sg[1]+":"+sg[2]; sa.end = sg[3]+":"+sg[4]; w.actsOk = true; } break;
     case "capRoutine": w.cap.routineOff = false; if(rtApplyToPlan({capacity:w.cap}, w.acts)){ w.open.capEx = true; toast("Your sessions now follow your routine's study time."); } break;
     case "sesFix": var sf = w.cap.sessions[+v], ft = sf ? rtFreeFit(toMin(sf.start), toMin(sf.end)) : null; if(ft){ sf.start = hmStr(ft[0]); sf.end = hmStr(ft[1]); w.cap.fromRoutine = false; } break;
-    case "actToggle": var ta = w.acts[v]; ta.on = !ta.on; if(ta.on){ w.actsOk = true; ta.mode = "weekly"; ta.interval = 1; delete ta.freq; if(v==="ca"){ ta.start = "05:30"; ta.end = "06:00"; ta.days = [0,1,2,3,4,5,6]; } if(!ta.days || !ta.days.length) ta.days = [1,2,3,4,5,6]; var cl = actClashDays(w, v); ta.days = ta.days.filter(function(d){ return !cl[d]; }); if(!ta.days.length) toast("Another activity already uses that time on those days. Pick a different time."); } break;
+    case "actToggle": var ta = w.acts[v]; ta.on = !ta.on; if(ta.on){ w.actsOk = true; ta.mode = "weekly"; ta.interval = 1; delete ta.freq; if(v==="ca"){ ta.start = "05:30"; ta.end = "06:00"; ta.days = [0,1,2,3,4,5,6]; } if(v==="revision"){ ta.timed = true; ta.days = (w.cap.days || [1,2,3,4,5,6]).slice(); ta.start = ta.start || "18:00"; ta.end = ta.end || "19:00"; var rsg = rtMade() ? rtActSuggest(w, "revision")[0] : null; if(rsg){ ta.start = hmStr(rsg.a); ta.end = hmStr(rsg.b); } } if(!ta.days || !ta.days.length) ta.days = [1,2,3,4,5,6]; var cl = actClashDays(w, v); ta.days = ta.days.filter(function(d){ return !cl[d]; }); if(!ta.days.length) toast("Another activity already uses that time on those days. Pick a different time."); } break;
     case "actsDone": w.actsOk = true; break;
     case "capGoExact": var fq = null; try{ fq = fitInfo(w); }catch(x){} if(!w.cap.exact && fq){ w.cap.sessions = JSON.parse(JSON.stringify(fq.plan.capacity.sessions)); w.cap.count = w.cap.sessions.length; w.cap.perDay = {}; } w.cap.exact = true; w.open.capEx = true; w.step = 5; w.capScreen = "subj"; w.capView = "list"; scrollPlannerTop(); break;
     case "sesAdd": var ls = w.cap.sessions, last = ls[ls.length-1], gp = Math.max(5, +w.cap.breakMin || 5), st0 = last ? Math.min(1380-60, toMin(last.end)+gp) : 1080; ls.push({start:hmStr(st0), end:hmStr(st0+60), subject:""}); w.cap.count = ls.length; break;
@@ -18249,7 +18250,7 @@ function wzActRoutine(w, k){   // under an activity's time: does it clash with t
   var x = toMin(a.start), y = toMin(a.end), cl = (a.days || []).some(function(d){ return rt.days.indexOf(d) >= 0; }) ? rtClashes(x, y, null) : [];
   var sug = rtActSuggest(w, k), h = "";
   if(cl.length) h += '<div class="rtd-warn" role="status">Your routine uses <b>'+esc(fmt12(a.start))+' \u2013 '+esc(fmt12(a.end))+'</b> for <b>'+esc(rtClashText(cl))+'</b>.</div>';
-  if(sug.length && (k==="ca" || cl.length)){
+  if(sug.length && (k==="ca" || k==="revision" || cl.length)){
     h += '<div class="rtd-lab">PICK A TIME ('+(y - x)+' MIN)</div>'+sug.map(function(c){
       var on = c.a===x && c.b===y;
       return '<button type="button" class="rtd-opt'+(on ? " on" : "")+'" data-wa="actSuggest" data-v="'+k+':'+hmStr(c.a)+':'+hmStr(c.b)+'"><span><b>'+esc(rtClock(c.a))+' \u2013 '+esc(rtClock(c.b))+' <em class="'+c.kind+'">'+(c.kind==="study" ? "Study time" : "Free time")+'</em></b><small>'+esc(c.note)+'</small></span><span class="tick">'+(on ? "\u2713" : "")+'</span></button>';
@@ -20939,7 +20940,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "404";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "405";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
