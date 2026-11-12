@@ -1045,6 +1045,8 @@
   .qz-len{display:flex; gap:8px; flex-wrap:wrap;} .qz-len button{flex:1; min-width:64px; border:1.5px solid var(--line); background:var(--surface); color:var(--ink); border-radius:12px; padding:10px 0; font:inherit; font-weight:700; cursor:pointer;}
   .qz-len button.on{border-color:var(--gold); background:color-mix(in srgb,var(--gold) 16%,var(--surface));}
   .qz-row{display:flex; align-items:center; justify-content:space-between; margin-top:14px; font-size:15px; cursor:pointer;} .qz-row input{position:absolute; opacity:0; width:1px; height:1px;}
+  .rt-study{margin:14px 0 4px; padding:10px 12px; border:1.5px solid var(--line); border-radius:14px; display:flex; align-items:center; justify-content:space-between; gap:10px;} .rt-study span{display:flex; flex-direction:column; gap:2px;} .rt-study small{color:var(--ink-soft); font-size:12px;}
+  .ses-clash{margin:8px 0 2px; padding:9px 11px; border-radius:12px; background:rgba(255,184,76,.14); border:1px solid rgba(255,184,76,.45); font-size:13px; display:flex; flex-direction:column; gap:8px; align-items:flex-start;} .rt-link{margin-bottom:10px;}
   .qz-sw{width:46px; height:27px; border-radius:99px; background:var(--surface-2,var(--surface)); border:1.5px solid var(--line); position:relative; flex:none;}
   .qz-sw::after{content:""; position:absolute; top:2px; left:2px; width:20px; height:20px; border-radius:50%; background:var(--ink-soft); transition:left .15s;}
   .qz-row input:checked + .qz-sw{background:var(--gold); border-color:var(--gold);} .qz-row input:checked + .qz-sw::after{left:21px; background:var(--gold-ink,#241d0b);}
@@ -6808,6 +6810,16 @@ function openSessionEditor(id){
     findOverlaps(others.concat([{start:d.start, end:d.end, label:"This session"}])).forEach(function(x){ errs.push(x); });
     var box = m.querySelector("#seErr");
     if(errs.length){ box.hidden = false; box.innerHTML = errs.map(esc).join("<br>"); return; }
+    var rcl = d.rtKeep ? [] : rtClashes(toMin(d.start), toMin(d.end), parseKey(s.date).getDay());
+    if(rcl.length){   // the routine uses this time for something else: say so, and offer the free part
+      var rfit = rtFreeFit(toMin(d.start), toMin(d.end));
+      box.hidden = false;
+      box.innerHTML = '<div class="ses-clash"><span>Your routine uses <b>'+esc(fmt12(d.start))+' \u2013 '+esc(fmt12(d.end))+'</b> for <b>'+esc(rtClashText(rcl))+'</b>.</span>'+
+        (rfit ? '<button type="button" class="btn primary sm" id="seRtFit">Use '+esc(rtClock(rfit[0]))+' \u2013 '+esc(rtClock(rfit[1]))+'</button>' : '')+'<button type="button" class="btn ghost sm" id="seRtKeep">Keep my time</button></div>';
+      var bf = box.querySelector("#seRtFit"); if(bf) bf.addEventListener("click", function(){ d.start = hmStr(rfit[0]); d.end = hmStr(rfit[1]); d.rtKeep = true; m.querySelector("#seSave").click(); });
+      box.querySelector("#seRtKeep").addEventListener("click", function(){ d.rtKeep = true; m.querySelector("#seSave").click(); });
+      return;
+    }
     applyDraft(s, d);
     saveSessions(); replan(); closeModal(); toast("Session updated everywhere."); refreshView();
   });
@@ -7675,6 +7687,8 @@ function compilePlan(w){
   cap.hours = {def:(+H0.def >= 0.25 ? +H0.def : 2), by:Object.assign({}, H0.by || {}), auto:!!H0.auto};
   cap.layout = "manual"; cap.limitMin = 0; cap.dayStart = cap.dayStart || "06:00"; cap.hours.by = {}; cap.hours.auto = true;   // the time per chapter is fitted to the day
   cap.dayHours = +cap.dayHours > 0 ? +cap.dayHours : 6; cap.exact = !!cap.exact; cap.subjHours = {};
+  if(!cap.exact && !cap.routineOff && rtPlanWindows().length) rtApplyToPlan({capacity:cap});   // no own sessions chosen: the routine decides
+  cap.fromRoutine = !!cap.exact && !cap.routineOff && rtSameWindows(cap.sessions, rtPlanWindows());   // typing your own times unlinks it from the routine
   var plan = {v:1, createdAt:new Date().toISOString(), cfg:wizSnapshot(w), window:{start:w.start, end:st.end}, catCfg:wizCatCfg(w),
     priority:w.order.slice(), sel:Object.assign({}, w.sel), capacity:cap, activities:JSON.parse(JSON.stringify(w.acts)),
     startView:(w.startView==="auto" ? recommendedView(w) : w.startView), extraV:(EXTRA ? EXTRA.v : 0),
@@ -8054,6 +8068,13 @@ function actRowHtml(w, k){
   return '<div class="cap-sub act-row'+(a.on ? " on" : "")+'"><div class="act-top"><span class="dot" style="background:var('+info.color+')"></span><span class="nm">'+esc(info.title)+'<small>'+esc(actSummary(w, k))+'</small></span>'+
     (pin ? '' : '<button type="button" class="sw'+(a.on ? " on" : "")+'" role="switch" aria-checked="'+(a.on ? "true" : "false")+'" aria-label="'+esc(info.title)+'" data-wa="actToggle" data-v="'+k+'"></button>')+'</div>'+more+'</div>';
 }
+function wzClash(c, sl, i){   // under a session: your routine uses this time for something else
+  var a = toMin(sl.start), b = toMin(sl.end);
+  if(!(b > a) || !(c.days || []).some(function(d){ return rt.days.indexOf(d) >= 0; })) return "";
+  var cl = rtClashes(a, b, null); if(!cl.length) return "";
+  var fit = rtFreeFit(a, b);
+  return '<div class="ses-clash" role="status"><span>Your routine uses this time for <b>'+esc(rtClashText(cl))+'</b>.</span>'+(fit ? '<button type="button" class="btn ghost sm" data-wa="sesFix" data-v="'+i+'">Use '+esc(rtClock(fit[0]))+' – '+esc(rtClock(fit[1]))+'</button>' : '')+'</div>';
+}
 function wzCapacity(w){
   var c = w.cap, exact = !!c.exact;
   var exactBox = '';
@@ -8065,9 +8086,11 @@ function wzCapacity(w){
         '<div class="ses-h"><b>Session '+(i+1)+'</b><span class="dur">'+(d > 0 ? esc(fmtHM(d)) : "check times")+'</span>'+
         (n > 1 ? '<button type="button" class="ses-x" data-wa="sesDel" data-v="'+i+'" title="Remove this session" aria-label="Remove session '+(i+1)+'">✕</button>' : "")+'</div>'+
         '<div class="ses-t">'+timeChip("cap.sessions."+i+".start", sl.start)+'<span class="arr" aria-hidden="true">→</span>'+timeChip("cap.sessions."+i+".end", sl.end)+'</div>'+
-        '<label class="ses-sub"><span>Subject</span><select data-w="cap.sessions.'+i+'.subject" aria-label="Subject for session '+(i+1)+'"><option value="">Any subject</option><optgroup label="Activity"><option value="@ca"'+(sl.subject==="@ca"?" selected":"")+'>Current Affairs (daily)</option></optgroup><optgroup label="Subjects">'+w.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(sl.subject===nm?" selected":"")+'>'+esc(nm)+'</option>'; }).join("")+'</optgroup></select></label></div>';
+        wzClash(c, sl, i)+'<label class="ses-sub"><span>Subject</span><select data-w="cap.sessions.'+i+'.subject" aria-label="Subject for session '+(i+1)+'"><option value="">Any subject</option><optgroup label="Activity"><option value="@ca"'+(sl.subject==="@ca"?" selected":"")+'>Current Affairs (daily)</option></optgroup><optgroup label="Subjects">'+w.order.map(function(nm){ return '<option value="'+esc(nm)+'"'+(sl.subject===nm?" selected":"")+'>'+esc(nm)+'</option>'; }).join("")+'</optgroup></select></label></div>';
     }).join("")+'</div>'+(n < 6 ? '<button type="button" class="btn ghost sm" data-wa="sesAdd">+ Add a session</button>' : "");
-    exactBox = dayRingHtml(c.sessions)+list;
+    var rw = rtPlanWindows(), linked = rtSameWindows(c.sessions, rw);
+    var rcard = rw.length ? '<div class="qx-info rt-link"><b>'+(linked ? 'From your Routine' : 'Your Routine has study time')+'</b><small>'+esc(rw.map(function(x){ return fmt12(x.start)+" – "+fmt12(x.end); }).join(" and "))+'</small></div>'+(linked ? '' : '<button type="button" class="btn ghost sm" data-wa="capRoutine">Use my routine\'s study time</button>') : '';
+    exactBox = rcard+dayRingHtml(c.sessions)+list;
   }
   var anyAct = ACT_KINDS.some(function(k){ return w.acts[k].on; });
   var actOrder = ["ca","revision","essay","pyq","test"].filter(function(k){ return ACT_KINDS.indexOf(k) >= 0; });
@@ -8196,6 +8219,7 @@ function fsIndex(w){
 function fsGo(w, i){
   i = Math.max(0, Math.min(FS_SCREENS.length-1, i)); var S = FS_SCREENS[i];
   w.step = S.step; if(S.cap) w.capScreen = S.cap; w.capView = "list"; w.capPick = false;
+  if(S.id==="subj" && !studyPlan && !w.cap.ownInit && rtPlanWindows().length){ w.cap.ownInit = true; rtApplyToPlan({capacity:w.cap}); }   // a routine decides when you study
   if(S.id==="subj" && !studyPlan && !w.cap.ownInit){ w.cap.ownInit = true; if(!w.cap.exact){ var fx0 = null; try{ fx0 = fitInfo(w); }catch(x){} if(fx0){ w.cap.sessions = JSON.parse(JSON.stringify(fx0.plan.capacity.sessions)); w.cap.count = w.cap.sessions.length; w.cap.perDay = {}; } w.cap.exact = true; } }
 }
 function renderWizard(host){
@@ -8245,6 +8269,7 @@ function qsApply(w){
   w.order = ord; w.orderAuto = !(q.start==="optional" && w.optionalOn); w.init = {}; wizSync(w);
   w.cap.days = q.days.slice(); w.cap.perDay = {}; w.cap.breakMin = 15; w.cap.layout = "manual"; w.cap.hours = {def:2, by:{}, auto:true}; w.cap.dayHours = q.hours; w.cap.subjHours = {}; w.cap.exact = false;
   w.cap.count = hp[0]; w.cap.sessions = []; wizAfter("sessCount"); setSessLen(w, hp[1]);
+  if(rtPlanWindows().length){ w.cap.routineOff = false; rtApplyToPlan({capacity:w.cap}); }   // a routine decides the study days and times
   w.seen = {}; wizCatalog(w).order.forEach(function(n){ w.seen[n] = 1; });
 }
 function qsKeyText(k){ return parseKey(k).toLocaleDateString(undefined, {day:"numeric", month:"short", year:"numeric"}); }
@@ -8294,7 +8319,7 @@ function qsHtml(w){
   } else if(q.screen==="time"){
     title = "Study days?"; hint = "Which days can you study?"; chips = [qsExamLabel(q.exam)];
     body = '<div class="qx-lab">Study days</div><div class="qx-days">'+[1,2,3,4,5,6,0].map(function(d, i){ return '<button type="button" class="'+(q.days.indexOf(d)>=0 ? "on" : "")+'" data-wa="toggleArr" data-path="qs.days" data-v="'+d+'" aria-label="'+DOW_LONG[d]+'" aria-pressed="'+(q.days.indexOf(d)>=0)+'">'+"MTWTFSS".charAt(i)+'</button>'; }).join("")+'</div>'+
-      '<div class="qx-sub">'+(q.days.length ? "<b>"+q.days.length+" day"+(q.days.length===1 ? "" : "s")+"</b> a week. You set your session times later." : "Pick at least one study day")+'</div>';
+      '<div class="qx-sub">'+(q.days.length ? "<b>"+q.days.length+" day"+(q.days.length===1 ? "" : "s")+"</b> a week. "+(rtPlanWindows().length ? "Your Routine sets your study times and days." : "You set your session times later.") : "Pick at least one study day")+'</div>';
   } else if(q.screen==="opt"){
     var all = ALL_OPTIONALS.filter(function(n){ return hasBundledSyllabus(n); }), top = ["Anthropology","Sociology","Geography","History","Public Administration","Political Science and International Relations","Philosophy","Psychology"].filter(function(n){ return all.indexOf(n) >= 0; });
     var shown = q.all ? all : top.concat(q.opt && top.indexOf(q.opt)<0 ? [q.opt] : []);
@@ -8440,7 +8465,9 @@ function wizAction(a, b){
     case "qsBack": var bl = qsList(w.qs), bi = bl.indexOf(w.qs.screen); w.err = []; w.qs.screen = bl[Math.max(0, bi-1)]; scrollPlannerTop(); break;
     case "qsFull": qsApply(w); w.qs = null; w.step = 0; w.err = []; scrollPlannerTop(); break;
     case "capExact": var fx = null; try{ fx = fitInfo(w); }catch(x){} if(fx){ w.cap.sessions = JSON.parse(JSON.stringify(fx.plan.capacity.sessions)); w.cap.count = w.cap.sessions.length; w.cap.perDay = {}; } w.cap.exact = true; w.open.capEx = true; break;
-    case "capAuto": w.cap.exact = false; break;
+    case "capAuto": w.cap.exact = false; w.cap.routineOff = true; break;
+    case "capRoutine": w.cap.routineOff = false; if(rtApplyToPlan({capacity:w.cap})){ w.open.capEx = true; toast("Your sessions now follow your routine's study time."); } break;
+    case "sesFix": var sf = w.cap.sessions[+v], ft = sf ? rtFreeFit(toMin(sf.start), toMin(sf.end)) : null; if(ft){ sf.start = hmStr(ft[0]); sf.end = hmStr(ft[1]); w.cap.fromRoutine = false; } break;
     case "actToggle": var ta = w.acts[v]; ta.on = !ta.on; if(ta.on){ w.actsOk = true; ta.mode = "weekly"; ta.interval = 1; delete ta.freq; if(v==="ca"){ ta.start = "05:30"; ta.end = "06:00"; ta.days = [0,1,2,3,4,5,6]; } if(!ta.days || !ta.days.length) ta.days = [1,2,3,4,5,6]; var cl = actClashDays(w, v); ta.days = ta.days.filter(function(d){ return !cl[d]; }); if(!ta.days.length) toast("Another activity already uses that time on those days. Pick a different time."); } break;
     case "actsDone": w.actsOk = true; break;
     case "capGoExact": var fq = null; try{ fq = fitInfo(w); }catch(x){} if(!w.cap.exact && fq){ w.cap.sessions = JSON.parse(JSON.stringify(fq.plan.capacity.sessions)); w.cap.count = w.cap.sessions.length; w.cap.perDay = {}; } w.cap.exact = true; w.open.capEx = true; w.step = 5; w.capScreen = "subj"; w.capView = "list"; scrollPlannerTop(); break;
@@ -17979,7 +18006,7 @@ function rtLoad(){
   return v || rtDefault();
 }
 var rt = rtLoad(), rtScreen = "", rtEd = null, rtEdView = "form";
-function rtSave(){ lsSet(RT_KEY, JSON.stringify(rt)); }   // lsSet also tells cloud sync, so the routine is kept on this device and in the account
+function rtSave(){ lsSet(RT_KEY, JSON.stringify(rt)); clearTimeout(rtPlanTimer); rtPlanTimer = setTimeout(function(){ try{ rtPlannerCheck(); }catch(e){} }, 900); }   // lsSet also tells cloud sync, so the routine is kept on this device and in the account
 function rtSorted(){ return rt.items.slice().sort(function(a, b){ return toMin(a.t) - toMin(b.t); }); }
 function rtDur(it){ return it.e ? Math.max(0, toMin(it.e) - toMin(it.t)) : (it.d || 0); }
 function rtStk(id){ for(var i=0;i<RT_STICKERS.length;i++) if(RT_STICKERS[i][0]===id || RT_STICKERS[i][5]===id) return RT_STICKERS[i]; return null; }
@@ -18047,7 +18074,7 @@ function rtCardImage(){
   }
   return Promise.all(list.map(function(it){ return rtSvgImage(it.s, 112); })).then(function(imgs){
     list.forEach(function(it, i){
-      var y = top + i*rowH, ch = rowH-22, col = RT_COL[(rtStk(it.s)||[0,0,0,"blue"])[3]], study = it.k==="study" || /study/i.test(it.n);
+      var y = top + i*rowH, ch = rowH-22, col = RT_COL[(rtStk(it.s)||[0,0,0,"blue"])[3]], study = rtIsStudy(it);
       // the activity is a floating glass card
       var cg = c.createLinearGradient(0, y, 0, y+ch);
       if(study){ cg.addColorStop(0, sun ? "rgba(255,255,255,.85)" : "rgba(255,214,120,.34)"); cg.addColorStop(1, sun ? "rgba(255,255,255,.5)" : "rgba(255,214,120,.12)"); }
@@ -18124,7 +18151,70 @@ function rtDaysText(){
   var idx = d.map(function(x){ return (x+6)%7; }), run = idx.every(function(v, i){ return i===0 || v===idx[i-1]+1; });
   return run && d.length>2 ? RT_DAYN[d[0]]+" \u2013 "+RT_DAYN[d[d.length-1]] : d.map(function(x){ return RT_DAYN[x]; }).join(", ");
 }
-function rtStudyBlocks(){ return rtSorted().filter(function(x){ return x.k==="study" || /study/i.test(x.n); }); }
+// Study time comes from the sticker, not the name: a study sticker counts as study unless the person switched it off, and any other
+// sticker does not count unless the person switched it on. The name can be anything ("Polity", "Sing a song", "Cutting grass for cow").
+function rtIsStudy(it){ if(it.k==="study") return true; if(it.k==="off") return false; var st = rtStk(it.s); return !!st && st[4]==="Study"; }
+function rtStudyBlocks(){ return rtSorted().filter(rtIsStudy); }
+// ---- Routine -> Syllabus planner: the routine says when you can study, and what else the day is used for ----
+function rtMade(){ return !!rt.made && rt.items.length > 0; }
+function rtPlanWindows(){   // the study blocks of the routine as planner session windows (overlaps joined, at most 6)
+  if(!rtMade()) return [];
+  var sp = [], out = [];
+  rtStudyBlocks().forEach(function(it){ var q = rtSpan(it); if(q[1] - q[0] >= 15 && q[1] <= 1440) sp.push(q); });
+  sp.sort(function(a, b){ return a[0] - b[0]; });
+  sp.forEach(function(q){ var l = out[out.length-1]; if(l && q[0] <= l[1]) l[1] = Math.max(l[1], q[1]); else out.push([q[0], q[1]]); });
+  return out.slice(0, 6).map(function(q){ return {start:hmStr(q[0]), end:hmStr(q[1]), subject:""}; });
+}
+function rtSameWindows(a, b){ return !!a && !!b && a.length===b.length && a.every(function(x, i){ return x.start===b[i].start && x.end===b[i].end; }); }
+function rtOtherSpans(){ return rtMade() ? rtSorted().filter(function(it){ return !rtIsStudy(it) && rtDur(it) > 0; }).map(function(it){ var q = rtSpan(it); return {n:it.n, a:q[0], b:q[1]}; }) : []; }
+function rtClashes(a, b, dow){   // the non-study routine activities that fall inside [a, b) on that weekday (dow: 0-6, or null for "any day the routine runs")
+  if(!rtMade() || (dow!=null && rt.days.indexOf(dow) < 0)) return [];
+  return rtOtherSpans().filter(function(x){ return x.a < b && a < x.b; });
+}
+function rtFreeFit(a, b){   // the longest part of [a, b) that no other routine activity uses (at least 15 minutes), or null
+  var busy = rtOtherSpans().sort(function(x, y){ return x.a - y.a; }), cur = a, best = null;
+  function keep(p, q){ if(q - p >= 15 && (!best || q - p > best[1] - best[0])) best = [p, q]; }
+  busy.forEach(function(x){ if(x.b <= cur || x.a >= b) return; if(x.a > cur) keep(cur, x.a); cur = Math.max(cur, x.b); });
+  if(cur < b) keep(cur, b);
+  return best;
+}
+function rtClashText(list){ return list.slice(0, 3).map(function(x){ return x.n+" ("+rtClock(x.a)+" \u2013 "+rtClock(x.b)+")"; }).join(", ")+(list.length > 3 ? " and more" : ""); }
+function rtApplyToPlan(plan){   // the planner studies in the routine's study blocks, on the routine's days
+  var wins = rtPlanWindows(); if(!plan || !wins.length) return false;
+  var tot = wins.reduce(function(t, x){ return t + toMin(x.end) - toMin(x.start); }, 0);
+  [plan.capacity, plan.cfg && plan.cfg.cap].forEach(function(c){
+    if(!c) return;
+    c.sessions = JSON.parse(JSON.stringify(wins)); c.count = wins.length; c.perDay = {}; c.exact = true; c.layout = "manual"; c.fromRoutine = true;
+    c.dayHours = Math.max(0.5, Math.round(tot/15)/4);
+    if(rt.days.length) c.days = rt.days.slice();
+  });
+  return true;
+}
+var rtPlanTimer = 0;
+function rtPlannerCheck(){   // after the routine changes: keep a routine-linked plan in step, or say when a plan clashes with the routine
+  if(!studyPlan || !studyPlan.capacity || !rtMade()) return;
+  var wins = rtPlanWindows(), cap = studyPlan.capacity; if(!wins.length || document.getElementById("modalHost")) return;
+  if(cap.fromRoutine){
+    var daysSame = !rt.days.length || (cap.days.length===rt.days.length && rt.days.every(function(d){ return cap.days.indexOf(d)>=0; }));
+    if(rtSameWindows(cap.sessions, wins) && daysSame) return;
+    rtApplyToPlan(studyPlan); try{ reflow(studyPlan); }catch(e){} savePlan(); replan();
+    if(activeTab==="planner"){ try{ refreshView(); }catch(e){} }
+    toast("Your Syllabus planner now follows your routine's study time.");
+    return;
+  }
+  var days = (cap.days || []).filter(function(d){ return rt.days.indexOf(d) >= 0; }); if(!days.length) return;
+  var bad = cap.sessions.filter(function(sl){ return rtClashes(toMin(sl.start), toMin(sl.end), null).length > 0; }); if(!bad.length) return;
+  var sig = JSON.stringify([bad.map(function(x){ return x.start+x.end; }), wins.map(function(x){ return x.start+x.end; })]);
+  if(lsGet("dossier.rtplan.seen") === sig) return;
+  var first = bad[0], cl = rtClashes(toMin(first.start), toMin(first.end), null);
+  var m = showModal('<div class="fr-sheet rt-sheet" role="dialog" aria-modal="true" aria-label="Planner and routine do not match"><div class="grab"></div><h2>Your planner and routine do not match</h2>'+
+    '<p>Your Syllabus planner has a study session at <b>'+esc(fmt12(first.start))+' \u2013 '+esc(fmt12(first.end))+'</b>, but your routine uses that time for <b>'+esc(rtClashText(cl))+'</b>.</p>'+
+    '<p>Your routine\'s study time is <b>'+esc(wins.map(function(x){ return fmt12(x.start)+" \u2013 "+fmt12(x.end); }).join(" and "))+'</b>.</p>'+
+    '<button type="button" class="rt-go" id="rpUse">Use my routine\'s study time</button><button type="button" class="rt-btn wide" id="rpKeep">Keep my planner times</button></div>', true);
+  m.classList.add("fr-b");
+  m.querySelector("#rpUse").addEventListener("click", function(){ lsSet("dossier.rtplan.seen", sig); rtApplyToPlan(studyPlan); try{ reflow(studyPlan); }catch(e){} savePlan(); replan(); closeModal(); if(activeTab==="planner"){ try{ refreshView(); }catch(e){} } toast("Your Syllabus planner now studies in your routine's study time."); });
+  m.querySelector("#rpKeep").addEventListener("click", function(){ lsSet("dossier.rtplan.seen", sig); closeModal(); });
+}
 function rtFullRange(it){   // "5:20 – 6:20 AM": always both ends, with AM/PM
   var a = toMin(it.t), b = it.e ? toMin(it.e) : (a + (it.d||0)) % 1440;
   function p(m){ var h = Math.floor(m/60); return [(h%12||12)+":"+pad2(m%60), h>=12 ? "PM" : "AM"]; }
@@ -18234,7 +18324,7 @@ function rtCardHtml(){
   var h = '<div class="rt"><div class="rt-stage"><div class="rt-card'+(sun ? " sun2" : "")+'"><span class="rt-sun" aria-hidden="true">'+rtGlyph(list[0] ? list[0].s : "wake")+'</span><h2>My weekly routine</h2><div class="rt-sub">'+esc(rtWeekLabel())+(nm ? ' \u00B7 '+esc(nm) : '')+'</div>';
   h += '<div class="rt-wk">'+[0,1,2,3,4,5,6].map(function(i){ var d = rtDate(i), on = rt.days.indexOf(d.getDay())>=0, td = toKey(d)===todayKey; return '<div class="'+(td?"today":"")+'"'+(on ? "" : ' style="opacity:.45"')+'><b>'+d.getDate()+'</b>'+RT_DAYN[d.getDay()]+'</div>'; }).join("")+'</div><div class="rt-rows">';
   list.forEach(function(it){
-    var c = RT_COL[(rtStk(it.s)||[0,0,0,"blue"])[3]], study = it.k==="study" || /study/i.test(it.n);
+    var c = RT_COL[(rtStk(it.s)||[0,0,0,"blue"])[3]], study = rtIsStudy(it);
     h += '<div class="rt-r'+(study ? " study" : "")+'" data-id="'+esc(it.id)+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'"><span class="rt-tile">'+rtGlyph(it.s)+'</span><span class="t">'+esc(fmt12(it.t))+'</span><span class="n">'+esc(it.n)+'</span><span class="d">'+(it.e ? '\u2192 '+esc(fmt12(it.e)) : esc(fmtHM(rtDur(it)))) +'</span></div>';
   });
   h += '</div><div class="rt-ft"><span>'+esc(rtDaysText())+'</span></div></div></div><div class="rt-shadow"></div>';
@@ -18279,7 +18369,10 @@ function rtAct(a, b){
   if(a==="card"){ rtScreen = "card"; renderRoutine(); window.scrollTo(0, 0); return; }
   if(a==="stop"){ if(window.confirm("Stop at one week? Your routine stays saved.")){ rt.span = "week"; rtSave(); rtScreen = "card"; renderRoutine(); } return; }
   if(a==="renew"){ rt.made = todayKey; rtSave(); renderRoutine(); return; }
-  if(a==="planner"){ setTab("planner"); return; }
+  if(a==="planner"){   // until the planner is set up, go straight to step 1 of the setup; once it is set up, open the planner as usual
+    if(!studyPlan){ wiz = loadWizDraft() || wizDefaults(); wiz.step = 0; if(wiz.qs) wiz.qs.screen = QS_SCREENS[0]; wiz.err = []; }
+    setTab("planner"); window.scrollTo(0, 0); return;
+  }
   if(a==="share"){ rtShareImage(); return; }
 }
 // ---- the add / change sheet: form view and sticker library view ----
@@ -18295,6 +18388,7 @@ function rtSheetHtml(){
   if(row.indexOf(e.s)<0) row.unshift(e.s);
   h += '<h2>'+(e.id ? "Change activity" : "Add an activity")+'</h2><div class="rt-prev">'+rtTile(e.s, "rt-tile big")+'<label class="rt-nm"><input type="text" id="rtN" maxlength="30" value="'+esc(e.n)+'" placeholder="Name, e.g. Cycling" aria-label="Activity name"><small>Tap the name to change it</small></label></div>'+
     '<div class="rt-lab">STICKER</div><div class="rt-row6">'+row.map(function(em){ var s2 = rtStk(em), c = RT_COL[s2 ? s2[3] : "blue"]; return '<button type="button" class="rt-sk'+(em===e.s ? " sel" : "")+'" data-rs="pick" data-s="'+em+'" aria-label="'+esc(s2 ? s2[1] : "Sticker")+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'">'+rtGlyph(em)+'</button>'; }).join("")+'</div><button type="button" class="rt-link" data-rs="lib">See all stickers \u203A</button>'+
+    '<label class="gd-first rt-study"><span><b>Counts as study time</b><small>Your Syllabus planner studies in these hours</small></span><input type="checkbox" role="switch" id="rtStudy" '+(rtIsStudy(e) ? "checked" : "")+'><i class="qz-sw" aria-hidden="true"></i></label>'+
     '<div class="rt-lab">WHEN</div><div class="rt-when"><label>Starts<input type="time" id="rtT" value="'+esc(e.t)+'"></label>'+(e.e ? '<label>Until<input type="time" id="rtE" value="'+esc(e.e)+'"></label>' : '')+'</div>'+
     '<div class="rt-chips rt-durs" role="group" aria-label="How long">'+[5,10,15,30,45,60].map(function(m){ return '<button type="button" class="rt-chip'+(!e.e && e.d===m ? " on" : "")+'" data-rs="dur" data-m="'+m+'">'+(m===60 ? "1 h" : m+" min")+'</button>'; }).join("")+'<button type="button" class="rt-chip'+(e.e ? " on" : "")+'" data-rs="until">Until\u2026</button></div>'+
     '<button type="button" class="rt-go" data-rs="save">'+(e.id ? "Save" : "Add to my day")+'</button>'+(e.id ? '<button type="button" class="rt-btn wide bad" data-rs="del">Remove from my day</button>' : "")+'</div>';
@@ -18324,7 +18418,7 @@ function rtOpenSheet(ed, editing){
       rtEd.n = t.value;
       if(!rtEd.picked){   // until a sticker is chosen by hand, follow the name: "Lunch" gets the lunch sticker
         var w = t.value.trim().toLowerCase(), hit = w ? RT_STICKERS.filter(function(x){ return x[1].toLowerCase()===w || (" "+x[2]+" ").indexOf(" "+w+" ")>=0; })[0] : null;
-        if(hit && hit[0]!==rtEd.s){ rtEd.s = hit[0]; rtEd.k = hit[4]==="Study" || /study/i.test(w) ? "study" : ""; var pv = m.querySelector(".rt-prev .rt-tile"); if(pv) pv.outerHTML = rtTile(rtEd.s, "rt-tile big"); }
+        if(hit && hit[0]!==rtEd.s){ rtEd.s = hit[0]; rtEd.k = ""; var stBox = m.querySelector("#rtStudy"); if(stBox) stBox.checked = rtIsStudy(rtEd); var pv = m.querySelector(".rt-prev .rt-tile"); if(pv) pv.outerHTML = rtTile(rtEd.s, "rt-tile big"); }
       }
     }
     else if(t.id==="rtT") rtEd.t = t.value || rtEd.t;
@@ -18333,6 +18427,7 @@ function rtOpenSheet(ed, editing){
   });
   m.addEventListener("change", function(ev){
     var t = ev.target, id = rtEd.id;
+    if(t.id==="rtStudy"){ var stk = rtStk(rtEd.s), byStk = !!stk && stk[4]==="Study"; rtEd.k = t.checked===byStk ? "" : (t.checked ? "study" : "off"); return; }
     if(t.id==="rtT" && t.value){
       var st = toMin(t.value), moved = null, guard = 0, hit;
       while((hit = rtBusy(id, st, st + 1)) && guard++ < 50){ moved = hit; st = rtSpan(hit)[1]; }   // slide forward past each activity that is already there
@@ -18354,7 +18449,7 @@ function rtOpenSheet(ed, editing){
     if(a==="pick"){
       var s = rtStk(b.getAttribute("data-s")); rtEd.s = b.getAttribute("data-s"); rtEd.picked = true;
       if(!rtEd.n.trim() && s) rtEd.n = s[1];
-      rtEd.k = s && s[4]==="Study" ? "study" : (rtEd.k==="study" && !/study/i.test(rtEd.n) ? "" : rtEd.k);
+      rtEd.k = "";   // a new sticker sets study time by itself; the switch can still override it
       rtEdView = "form"; redraw();
     }
     else if(a==="lib"){ rtEdView = "lib"; redraw(); }
@@ -20624,8 +20719,11 @@ var GUIDE_TIPS = {
     "Activities are sorted by time for you. Tap an activity to change or remove it.",
     "<b>Changing a length moves the rest.</b> Make an activity longer or shorter and everything after it moves with it. The app tells you first.",
     "<b>Removing an activity leaves free time.</b> Tap the free-time row to add something else there.",
+    "<b>Counts as study time</b> is decided by the sticker you pick: a study sticker counts, other stickers do not. You can switch it on or off for any activity, and the name can be anything.",
+    "Your <b>Syllabus planner</b> studies only in your study time. If you change your routine, a plan made from it follows along. A plan with times of its own asks you first.",
     "<b>Share as picture</b> makes an image of your weekly card with a CSE Companion watermark, ready to send."],
-  planner:["<b>Subjects run one after another.</b> Complete a subject to unlock the next. The calendar follows your progress, and changing the plan never erases it.",
+  planner:["<b>Your routine sets your study time.</b> The sessions fit inside the study blocks of your Routine. Tap <b>Use my routine's study time</b> on the sessions screen to follow it, or set your own times and the app tells you when they clash with your routine.",
+    "<b>Subjects run one after another.</b> Complete a subject to unlock the next. The calendar follows your progress, and changing the plan never erases it.",
     "<b>Your subjects</b> list shows the subjects running now. Tap <b>Show all subjects</b> to see the ones that come later. A bar shows how much of a subject you have finished, and \uD83D\uDD12 means it starts after the one above.",
     "<b>Activities come first.</b> If a study session falls at the same time as an activity, the activity takes that slot and the topic moves to the next free study slot, on a later day. Nothing is dropped. One time slot holds only one thing.",
     "<b>Dates are a forecast.</b> Finish a subject early and the dates come sooner; fall behind and they slip later. Past months show what you actually did.",
@@ -20718,7 +20816,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "396";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "400";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
