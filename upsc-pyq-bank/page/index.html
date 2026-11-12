@@ -979,6 +979,7 @@
   .rt-list{display:flex; flex-direction:column; gap:8px; margin-top:10px;}
   .rt-item{display:flex; align-items:center; gap:12px; width:100%; text-align:left; background:var(--surface); border:1.5px solid var(--line); border-radius:16px; padding:10px 12px; color:var(--ink); font:inherit; cursor:pointer;}
   .rt-it{flex:1; min-width:0;} .rt-it b{display:block; font-size:15px;} .rt-it small,.rt-tm small{display:block; font-size:12px; color:var(--ink-soft); font-weight:500;} .rt-tm{flex:none; text-align:right; font-weight:800; font-size:14px;}
+  .rt-tr{flex:none; text-align:right;} .rt-rng{display:inline-flex; align-items:baseline; gap:3px; font-weight:800; font-size:13px; letter-spacing:.2px; background:color-mix(in srgb,var(--tab-accent) 14%,transparent); border:1px solid color-mix(in srgb,var(--tab-accent) 35%,transparent); border-radius:99px; padding:3px 10px; white-space:nowrap;} .rt-rng i{font-style:normal; color:var(--ink-soft); font-weight:600;} .rt-rng u{text-decoration:none; font-size:10.5px; color:var(--tab-accent); margin-left:1px;} .rt-tr small{display:block; margin-top:4px; font-size:12px; color:var(--ink-soft); font-weight:500;}
   .rt-tile{flex:none; width:40px; height:40px; border-radius:13px; display:grid; place-items:center; font-size:21px; background:linear-gradient(145deg,var(--c1),var(--c2)); box-shadow:0 4px 0 var(--c3),0 8px 10px rgba(0,0,0,.3),0 1px 0 rgba(255,255,255,.45) inset;} .rt-tile.big{width:54px; height:54px; font-size:28px; border-radius:16px;}
   .rt-chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;} .rt-chip{padding:8px 13px; border-radius:99px; border:1.5px solid var(--line); background:var(--surface); color:var(--ink); font:inherit; font-size:14px; font-weight:700; cursor:pointer;} .rt-chip.on{background:var(--tab-accent); color:var(--tab-accent-ink,#04141a); border-color:var(--tab-accent);}
   .rt-add{display:block; width:100%; margin-top:14px; padding:13px; border:1.5px dashed var(--tab-accent); border-radius:16px; background:none; color:var(--tab-accent); font:inherit; font-weight:700; cursor:pointer;}
@@ -1010,6 +1011,7 @@
   .rt-row6,.rt-lib{display:grid; grid-template-columns:repeat(6,1fr); gap:10px; margin-top:8px;} .rt-lib{grid-template-columns:repeat(5,1fr); gap:12px 10px; margin-top:12px;} .rt-lib [hidden]{display:none;}
   .rt-sk{aspect-ratio:1; border:0; border-radius:16px; display:grid; place-items:center; font-size:26px; cursor:pointer; background:linear-gradient(145deg,var(--c1),var(--c2)); box-shadow:0 4px 0 var(--c3),0 7px 9px rgba(0,0,0,.3),0 1px 0 rgba(255,255,255,.45) inset; position:relative;} .rt-sk.sel{outline:3px solid var(--gold); outline-offset:3px;}
   .rt-skw{display:flex; flex-direction:column; align-items:center; gap:6px; border:0; background:none; padding:0; color:var(--ink); font:inherit; cursor:pointer;} .rt-skw .rt-sk{width:100%; aspect-ratio:1;} .rt-skw small{font-size:11.5px; color:var(--ink-soft); text-align:center; line-height:1.15;} .rt-skw[hidden]{display:none;}
+  .rt-mv{display:flex; flex-direction:column; gap:6px; max-height:34vh; overflow-y:auto; margin:6px 0 14px;} .rt-mv-r{display:flex; justify-content:space-between; gap:10px; padding:9px 12px; border-radius:12px; background:var(--surface-2,var(--surface)); font-size:14px;} .rt-mv-r b{color:var(--tab-accent); white-space:nowrap;} .rt-sheet p{margin:8px 0;}
   .rt-link{display:block; margin:10px auto 0; border:0; background:none; color:var(--tab-accent); font:inherit; font-weight:700; cursor:pointer;}
   .rt-when{display:flex; gap:10px;} .rt-when label{flex:1 1 0; min-width:0; font-size:12px; color:var(--ink-soft);} .rt-when input{display:block; width:100%; min-width:0; box-sizing:border-box; margin-top:4px; padding:11px 10px; border-radius:12px; border:1.5px solid var(--line); background:var(--surface-2,var(--surface)); color:var(--ink); font:inherit; font-size:17px; font-weight:700;}
   .rt-q{width:100%; margin-top:12px; padding:11px 14px; border-radius:14px; border:1.5px solid var(--line); background:var(--surface-2,var(--surface)); color:var(--ink); font:inherit;} .rt-cats{display:flex; gap:8px; overflow-x:auto; margin-top:10px; scrollbar-width:none;} .rt-cats .rt-chip{flex:none;}
@@ -17965,6 +17967,35 @@ function rtBusy(skipId, a, b){   // the first other activity whose time overlaps
   var hit = null; rt.items.forEach(function(x){ if(hit || x.id===skipId) return; var sp = rtSpan(x); if(a < sp[1] && sp[0] < b) hit = x; });
   return hit;
 }
+// "5:00 \u2013 5:05 AM" for the list; both AM/PM are shown only when the range crosses noon
+function rtRangeHtml(it){
+  var a = toMin(it.t), b = (it.e ? toMin(it.e) : a + (it.d || 0)) % 1440;
+  function p(m){ var h = Math.floor(m/60), ap = h>=12 ? "PM" : "AM"; h = h%12 || 12; return [h+":"+pad2(m%60), ap]; }
+  var x = p(a), y = p(b);
+  return x[1]===y[1] ? esc(x[0])+'<i>\u2013</i>'+esc(y[0])+'<u>'+y[1]+'</u>' : esc(x[0])+'<u>'+x[1]+'</u><i>\u2013</i>'+esc(y[0])+'<u>'+y[1]+'</u>';
+}
+function rtLenText(m){
+  m = Math.max(0, Math.round(m||0)); var h = Math.floor(m/60), r = m%60;
+  if(!h) return m+(m===1 ? " minute" : " minutes");
+  if(!r) return h+(h===1 ? " hour" : " hours");
+  return h+" h "+r+" min";
+}
+// Editing an activity moves everything after it: a longer activity pushes the rest later, a shorter one pulls them earlier.
+function rtShiftPlan(rec){
+  var old = rt.items.filter(function(x){ return x.id===rec.id; })[0]; if(!old) return null;
+  var oldEnd = rtSpan(old)[1], newEnd = rtSpan(rec)[1], delta = newEnd - oldEnd;
+  var fol = rt.items.filter(function(x){ return x.id!==rec.id && rtSpan(x)[0] >= oldEnd; });
+  return {old:old, delta:delta, fol:fol, others:rt.items.filter(function(x){ return x.id!==rec.id && fol.indexOf(x)<0; })};
+}
+function rtMinutesText(m){ return rtLenText(Math.abs(m)); }
+function rtApplyShift(rec, plan){
+  plan.fol.forEach(function(x){
+    var a = toMin(x.t) + plan.delta; x.t = pad2(Math.floor(a/60))+":"+pad2(a%60);
+    if(x.e){ var b = toMin(x.e) + plan.delta; x.e = pad2(Math.floor(b/60))+":"+pad2(b%60); }
+  });
+  var i = rt.items.map(function(x){ return x.id; }).indexOf(rec.id); rt.items[i] = rec;
+  rtSave();
+}
 function rtClock(m){ return fmt12(pad2(Math.floor(m/60))+":"+pad2(m%60)); }
 function rtDays(){ var d = rt.days.slice().sort(function(a, b){ return ((a+6)%7) - ((b+6)%7); }); return d; }
 function rtDaysText(){
@@ -17991,7 +18022,7 @@ function rtBuildHtml(){
   if(!list.length) h += '<div class="rt-empty"><div class="rt-big" aria-hidden="true">\uD83C\uDF1E</div><h2>Tell us about your day</h2><div class="muted">Add each thing you do and when. Your weekly card is made after you add them.</div></div>';
   else h += '<h2>Your day so far</h2><div class="muted">'+list.length+' activit'+(list.length===1 ? "y" : "ies")+' added. Tap one to change it.</div>';
   if(list.length) h += '<div class="rt-list">'+list.map(function(it){
-    return '<button type="button" class="rt-item" data-rt="edit" data-id="'+esc(it.id)+'">'+rtTile(it.s)+'<span class="rt-it"><b>'+esc(it.n)+'</b>'+(it.e ? '<small>Until '+esc(fmt12(it.e))+'</small>' : '')+'</span><span class="rt-tm">'+esc(fmt12(it.t))+'<small>'+esc(fmtHM(rtDur(it)))+'</small></span></button>';
+    return '<button type="button" class="rt-item" data-rt="edit" data-id="'+esc(it.id)+'">'+rtTile(it.s)+'<span class="rt-it"><b>'+esc(it.n)+'</b></span><span class="rt-tr"><span class="rt-rng">'+rtRangeHtml(it)+'</span><small>'+esc(rtLenText(rtDur(it)))+'</small></span></button>';
   }).join("")+'</div>';
   h += '<div class="rt-lab">TAP TO ADD</div><div class="rt-chips">'+RT_PRESETS.map(function(p, i){ return '<button type="button" class="rt-chip" data-rt="preset" data-i="'+i+'"><span class="rt-mini">'+rtGlyph(p.s)+'</span>'+esc(p.n)+'</button>'; }).join("")+'<button type="button" class="rt-chip" data-rt="add">\uFF0B My own</button></div>';
   h += '<button type="button" class="rt-add" data-rt="add">\uFF0B Add an activity</button>';
@@ -18078,6 +18109,20 @@ function rtSheetHtml(){
     '<button type="button" class="rt-go" data-rs="save">'+(e.id ? "Save" : "Add to my day")+'</button>'+(e.id ? '<button type="button" class="rt-btn wide bad" data-rs="del">Remove from my day</button>' : "")+'</div>';
   return h;
 }
+function rtShiftPopup(rec, plan){
+  var dir = plan.delta > 0 ? "later" : "earlier", oldLen = rtLenText(rtDur(plan.old)), newLen = rtLenText(rtDur(rec));
+  var why = oldLen!==newLen ? '<b>'+esc(rec.n)+'</b> changes from '+esc(oldLen)+' to '+esc(newLen) : '<b>'+esc(rec.n)+'</b> now ends at '+esc(rtClock(rtSpan(rec)[1]));
+  var rows = plan.fol.sort(function(a, b){ return toMin(a.t) - toMin(b.t); }).map(function(x){
+    var a = rtSpan(x)[0];
+    return '<div class="rt-mv-r"><span>'+esc(x.n)+'</span><b>'+esc(rtClock(a))+' \u2192 '+esc(rtClock(a + plan.delta))+'</b></div>';
+  }).join("");
+  var m = showModal('<div class="fr-sheet rt-sheet" role="dialog" aria-modal="true" aria-label="Everything after this will move"><div class="grab"></div><h2>Everything after this will move</h2>'+
+    '<p>'+why+', so the '+(plan.fol.length===1 ? 'next activity moves' : plan.fol.length+' activities after it move')+' <b>'+esc(rtMinutesText(plan.delta))+' '+dir+'</b>.</p><div class="rt-mv">'+rows+'</div>'+
+    '<button type="button" class="rt-go" id="rtMvOk">OK, move them</button><button type="button" class="rt-btn wide" id="rtMvNo">Go back</button></div>', true);
+  m.classList.add("fr-b");
+  m.querySelector("#rtMvOk").addEventListener("click", function(){ rtApplyShift(rec, plan); closeModal(); renderRoutine(); toast(plan.fol.length===1 ? "Moved 1 activity "+rtMinutesText(plan.delta)+" "+dir+"." : "Moved "+plan.fol.length+" activities "+rtMinutesText(plan.delta)+" "+dir+"."); });
+  m.querySelector("#rtMvNo").addEventListener("click", function(){ rtOpenSheet(rtEd, true); });
+}
 function rtOpenSheet(ed, editing){
   rtEd = ed; rtEdView = "form"; if(!editing) delete rtEd.id;
   rtEd.picked = !!editing || !!ed.n;   // a preset or an existing activity already has its own sticker
@@ -18107,7 +18152,7 @@ function rtOpenSheet(ed, editing){
     }
     else if(t.id==="rtE" && t.value){
       var s0 = toMin(rtEd.t), e0 = toMin(t.value), next = null;
-      rt.items.forEach(function(x){ if(x.id===id) return; var a = rtSpan(x)[0]; if(a > s0 && a < e0 && (next===null || a < next.a)) next = {a:a, n:x.n}; });
+      if(!id) rt.items.forEach(function(x){ var a = rtSpan(x)[0]; if(a > s0 && a < e0 && (next===null || a < next.a)) next = {a:a, n:x.n}; });
       if(next){ toast(next.n+" starts at "+rtClock(next.a)+", so this ends then."); e0 = next.a; }
       rtEd.e = pad2(Math.floor(e0/60))+":"+pad2(e0%60); t.value = rtEd.e;
     }
@@ -18125,7 +18170,7 @@ function rtOpenSheet(ed, editing){
     else if(a==="form"){ rtEdView = "form"; redraw(); }
     else if(a==="cat"){ var g = b.getAttribute("data-g"); Array.prototype.forEach.call(m.querySelectorAll(".rt-cats .rt-chip"), function(c){ c.classList.toggle("on", c===b); }); Array.prototype.forEach.call(m.querySelectorAll(".rt-lib .rt-skw"), function(c){ c.hidden = !!g && c.getAttribute("data-g")!==g; }); }
     else if(a==="dur"){
-      var dm = +b.getAttribute("data-m"), s1 = toMin(rtEd.t), clash = rtBusy(rtEd.id, s1, s1 + dm);
+      var dm = +b.getAttribute("data-m"), s1 = toMin(rtEd.t), clash = rtEd.id ? null : rtBusy(rtEd.id, s1, s1 + dm);
       if(clash){ toast("That would run into "+clash.n+" at "+rtClock(rtSpan(clash)[0])+". Choose a shorter time."); return; }
       rtEd.e = ""; rtEd.d = dm; redraw();
     }
@@ -18135,12 +18180,16 @@ function rtOpenSheet(ed, editing){
       var n = (rtEd.n || "").trim();
       if(!n){ toast("Give it a name first."); return; }
       if(rtEd.e && toMin(rtEd.e) <= toMin(rtEd.t)){ toast("The end time must be after the start."); return; }
-      var sp = rtSpan({t:rtEd.t, e:rtEd.e, d:rtEd.d || 30}), clash2 = rtBusy(rtEd.id, sp[0], sp[1]);
-      if(clash2){ toast("That time is already taken by "+clash2.n+" ("+rtClock(rtSpan(clash2)[0])+" to "+rtClock(rtSpan(clash2)[1])+"). Pick a time after it."); return; }
+      var sp = rtSpan({t:rtEd.t, e:rtEd.e, d:rtEd.d || 30});
       var rec = {id: rtEd.id || ("r"+Date.now().toString(36)+Math.floor(Math.random()*1000)), n:n, s:rtEd.s, t:rtEd.t, e:rtEd.e || "", d:rtEd.e ? 0 : (rtEd.d || 30), k:rtEd.k || (/study/i.test(n) ? "study" : "")};
-      var i = rt.items.map(function(x){ return x.id; }).indexOf(rec.id);
-      if(i>=0) rt.items[i] = rec; else rt.items.push(rec);
-      rtSave(); closeModal(); renderRoutine();
+      var plan = rtEd.id ? rtShiftPlan(rec) : null;
+      var clash2 = plan ? (function(){ var h = null; plan.others.forEach(function(x){ var q = rtSpan(x); if(!h && sp[0] < q[1] && q[0] < sp[1]) h = x; }); return h; })() : rtBusy(rtEd.id, sp[0], sp[1]);
+      if(clash2){ toast("That time is already taken by "+clash2.n+" ("+rtClock(rtSpan(clash2)[0])+" to "+rtClock(rtSpan(clash2)[1])+"). Pick a time after it."); return; }
+      if(!plan){ rt.items.push(rec); rtSave(); closeModal(); renderRoutine(); return; }
+      if(plan.delta===0 || !plan.fol.length){ rtApplyShift(rec, {fol:[], delta:0}); closeModal(); renderRoutine(); return; }
+      var late = plan.fol.filter(function(x){ return rtSpan(x)[1] + plan.delta > 24*60 || rtSpan(x)[0] + plan.delta < 0; })[0];
+      if(late){ toast("That would push "+late.n+" past midnight. Choose a shorter time."); return; }
+      rtShiftPopup(rec, plan);
     }
   });
 }
@@ -20465,7 +20514,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "381";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "383";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
