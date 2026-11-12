@@ -1006,11 +1006,12 @@
   .rt-r.now .rt-tile{transform:scale(1.16); box-shadow:0 5px 0 var(--c3),0 14px 18px rgba(0,0,0,.4),0 0 22px var(--c1),0 1px 0 rgba(255,255,255,.55) inset;}
   .rt-r.now .n{font-weight:800; font-size:15.5px;} .rt-r.now .t{font-size:14px;}
   .rt-card.sun2 .rt-r.now{background:linear-gradient(100deg,rgba(255,255,255,.75),rgba(255,255,255,.35));}
-  .rt-r.near{transform:translateZ(20px) scale(1.025);}
-  .rt-flow .rt-r{transition:transform 1s cubic-bezier(.3,.1,.25,1), margin 1s cubic-bezier(.3,.1,.25,1), padding 1s ease, box-shadow 1s ease, background 1s ease;}
-  @keyframes rtLand{0%{transform:translateZ(46px) scale(1.07);} 50%{transform:translateZ(64px) scale(1.105);} 100%{transform:translateZ(46px) scale(1.07);}}
-  .rt-r.now.land{animation:rtLand 1.3s ease-in-out;}
-  @media (prefers-reduced-motion:reduce){ .rt-r{transition:none;} .rt-r.now.land{animation:none;} }
+  .rt-wave .rt-r{--w:0; --nb:.26; transition:none; transform:translateZ(calc(46px*var(--w))) scale(calc(1 + .07*var(--w))); margin:calc(8px + 6px*var(--w)) calc(-10px*var(--w)) calc(10px*var(--w)); padding:calc(9px*var(--w)) calc(10px*var(--w)); border-radius:calc(22px*var(--w)); position:relative;
+    background:linear-gradient(100deg,rgba(255,255,255,calc(var(--nb)*var(--w))),rgba(255,255,255,calc(var(--nb)*.3*var(--w)))); box-shadow:0 calc(14px*var(--w)) calc(26px*var(--w)) rgba(0,0,0,calc(.45*var(--w))),0 0 calc(26px*var(--w)) color-mix(in srgb,var(--c1) calc(100%*var(--w)),transparent);}
+  .rt-card.sun2.rt-wave .rt-r, .rt-wave .rt-card.sun2 .rt-r{--nb:.75;}
+  .rt-wave .rt-r .rt-tile{transform:scale(calc(1 + .16*var(--w)));}
+  .rt-wave .rt-r .n{font-weight:calc(600 + 200*var(--w)); font-size:calc(14.5px + 1px*var(--w));} .rt-wave .rt-r .t{font-size:calc(13px + 1px*var(--w));}
+  @media (prefers-reduced-motion:reduce){ .rt-r{transition:none;} }
   .rt-ft{position:relative; z-index:2; display:flex; justify-content:space-between; margin-top:14px; padding-top:10px; border-top:1px solid rgba(255,255,255,.14); font-size:12px; color:#bff3ef;}
   .rt-shadow{height:22px; margin:-4px 34px 0; border-radius:50%; background:radial-gradient(ellipse,rgba(0,0,0,.5),transparent 70%);}
   .rt-card.sun2{background:linear-gradient(160deg,#ffd9a0 0%,#ff9f7a 40%,#8a5fd0 100%); border-color:rgba(255,255,255,.55); box-shadow:0 2px 0 rgba(255,255,255,.5) inset,0 -26px 40px rgba(60,20,90,.25) inset,18px 30px 50px rgba(0,0,0,.5),-4px 6px 0 #b0613f,-8px 12px 0 #8a4a30;} .rt-card.sun2:after{background:radial-gradient(circle,rgba(255,255,255,.7),transparent 62%);}
@@ -18150,46 +18151,45 @@ function rtMarkNow(){
   var at = rtScreen==="card" || (!rtScreen && rt.made) ? rtNowId() : -1;
   Array.prototype.forEach.call(host.querySelectorAll(".rt-r"), function(r, i){ r.classList.toggle("now", i===at); });
 }
-// When Routine opens, the bulge starts at the first activity and flows down, slow and heavy like something drifting down a river,
-// then settles on the activity that is running now. The page scrolls along with it. A touch or scroll by the user ends it at once.
+// When Routine opens, a wave of bulge enters from the top and flows down the card, slow and heavy like something drifting down a river,
+// and comes to rest on the activity that is running now. It is one continuous motion (no stop between activities). The page scrolls along
+// with it. A touch or scroll by the user ends it at once.
 var rtRunNext = false, rtRun = {on:false, tok:0};
 function rtRunStop(host, at){
   rtRun.on = false; rtRun.tok++;
-  var rows = host ? host.querySelectorAll(".rt-r") : [];
-  Array.prototype.forEach.call(rows, function(r, i){ r.classList.remove("near"); r.classList.toggle("now", i===at); });
-  if(host) host.classList.remove("rt-flow");
+  if(!host) return;
+  host.classList.remove("rt-wave");
+  Array.prototype.forEach.call(host.querySelectorAll(".rt-r"), function(r, i){ r.style.removeProperty("--w"); r.classList.toggle("now", i===at); });
 }
 function rtRunBulge(){
   var host = document.getElementById("view-routine"); if(!host) return;
   var at = rtNowId(), rows = Array.prototype.slice.call(host.querySelectorAll(".rt-r"));
   var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if(at < 0 || !rows.length || calm){ rtRun.on = false; rtMarkNow(); return; }
-  var tok = ++rtRun.tok; rtRun.on = true; host.classList.add("rt-flow");
-  var est = 0, i; for(i = 0; i <= at; i++) est += 360 - 190*Math.sin(Math.PI*(at ? i/at : 1));
-  var k = Math.min(1, 3200/Math.max(est, 1));   // a long routine speeds up a little so the run never drags
-  window.scrollTo(0, 0);
-  var cut = function(){ if(rtRun.tok===tok){ rtRunStop(host, at); } };
+  var tok = ++rtRun.tok; rtRun.on = true;
+  rows.forEach(function(r){ r.classList.remove("now"); });
+  host.classList.add("rt-wave"); window.scrollTo(0, 0);
+  var cut = function(){ if(rtRun.tok===tok) rtRunStop(host, at); };
   ["touchstart", "wheel", "mousedown", "keydown"].forEach(function(ev){ window.addEventListener(ev, cut, {once:true, passive:true}); });
-  var target = null, pos = window.scrollY;
-  (function glide(){   // the page drifts after the bulge with a heavy, slow lerp
+  var START = -0.9, DUR = Math.min(4200, 1500 + 150*at), TAIL = 700, t0 = 0, last = 0, pos = 0;
+  function rowY(p){   // where the wave is, on the page, so the scroll can follow it
+    var a = Math.max(0, Math.min(rows.length-1, Math.floor(p))), c = Math.min(rows.length-1, a+1), f = Math.max(0, Math.min(1, p - a));
+    var ra = rows[a].getBoundingClientRect(), rc = rows[c].getBoundingClientRect();
+    return window.scrollY + (ra.top + ra.height/2)*(1-f) + (rc.top + rc.height/2)*f;
+  }
+  function frame(ts){
     if(rtRun.tok!==tok) return;
-    var cur = host.querySelector(".rt-r.now");
-    if(cur){ var r = cur.getBoundingClientRect(); target = Math.max(0, window.scrollY + r.top + r.height/2 - window.innerHeight*0.45); pos += (target - pos)*0.045; window.scrollTo(0, pos); }
-    requestAnimationFrame(glide);
-  })();
-  var step = 0;
-  (function hop(){
-    if(rtRun.tok!==tok) return;
-    rows.forEach(function(r, j){ r.classList.toggle("now", j===step); r.classList.toggle("near", j===step-1 || j===step+1); });
-    if(step >= at){
-      rows.forEach(function(r){ r.classList.remove("near"); });
-      rows[at].classList.add("land");
-      setTimeout(function(){ if(rtRun.tok===tok){ rows[at].classList.remove("land"); rtRunStop(host, at); } }, 2000);
-      return;
-    }
-    var d = (360 - 190*Math.sin(Math.PI*(at ? step/at : 1))) * k; step++;
-    setTimeout(hop, d);
-  })();
+    if(!t0){ t0 = ts; last = ts; pos = window.scrollY; }
+    var u = Math.min(1, (ts - t0)/DUR), e = 0.5 - 0.5*Math.cos(Math.PI*u);   // starts gently, ends gently
+    var p = START + (at - START)*e, sig = 0.62 - 0.30*Math.max(0, (u - 0.8)/0.2);   // the wave narrows to one bulge as it comes to rest
+    for(var j = 0; j < rows.length; j++){ var d = j - p, w = Math.exp(-(d*d)/(2*sig*sig)); rows[j].style.setProperty("--w", w < 0.004 ? "0" : w.toFixed(3)); }
+    var dt = Math.min(64, ts - last); last = ts;
+    pos += (Math.max(0, rowY(Math.max(0, p)) - window.innerHeight*0.45) - pos)*(1 - Math.exp(-dt/320));
+    window.scrollTo(0, pos);
+    if(u < 1 || ts - t0 < DUR + TAIL){ requestAnimationFrame(frame); return; }
+    rtRunStop(host, at);
+  }
+  requestAnimationFrame(frame);
 }
 setInterval(function(){
   if(typeof rtMarkNow!=="function" || document.visibilityState==="hidden") return;
@@ -20710,7 +20710,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "394";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "395";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
