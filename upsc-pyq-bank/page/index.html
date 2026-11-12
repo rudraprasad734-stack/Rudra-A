@@ -124,7 +124,8 @@
   .num{font-family:var(--font-mono); font-variant-numeric:tabular-nums;}
 
   #app{max-width:760px; margin:0 auto; min-height:100%;}
-  .site-foot{max-width:760px; margin:0 auto; padding:18px 16px 96px; text-align:center; font-size:12px; line-height:1.6; opacity:.75;}
+  .site-foot{display:none; max-width:760px; margin:0 auto; padding:18px 16px 96px; text-align:center; font-size:12px; line-height:1.6; opacity:.75;}   /* the price, policy links and disclaimer live on Settings only */
+  body.on-settings .site-foot{display:block;}
   .site-foot a{color:inherit; text-decoration:underline;}
   html.sp-on .site-foot{visibility:hidden;}
 
@@ -18608,6 +18609,7 @@ function rtOpenSheet(ed, editing){
 
 function renderView(id){
   setTimeout(syncTodayOpenClass, 0);
+  document.body.classList.toggle("on-settings", id==="settings");
   if(id!=="routine") rtFullSync(false);
   if(id==="dashboard") renderDashboard();
   else if(id==="planner") renderPlanner();
@@ -20960,7 +20962,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "406";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "407";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
