@@ -1,0 +1,1045 @@
+{
+ "day": "2026-11-13",
+ "title": "13 Nov 2026",
+ "src": "The Hindu, Delhi",
+ "topics": [
+  {
+   "id": "dn-2026-11-13-1",
+   "n": 1,
+   "sec": "Polity & Governance",
+   "t": "CAG — power-sector audit",
+   "gs": [
+    "GS2 Polity",
+    "GS3 Economy"
+   ],
+   "news": "CAG audits discoms first (FY21–FY26), then transmission, generation, renewables, RDSS. Private discoms are outside scope.",
+   "blocks": [
+    {
+     "h": "Comptroller and Auditor General of India",
+     "items": [
+      {
+       "rows": [
+        [
+         "What",
+         "Independent constitutional authority that audits the accounts of the Union and States; guardian of the public purse"
+        ],
+        [
+         "Article",
+         "**Art. 148** (appointment, oath, service conditions), **149** (duties and powers), **150** (form of accounts, prescribed by the President on CAG advice), **151** (audit reports)"
+        ],
+        [
+         "Appointed by",
+         "**President**, by warrant under hand and seal"
+        ],
+        [
+         "Oath",
+         "Before the President"
+        ],
+        [
+         "Term",
+         "**6 years or age 65**, whichever is earlier"
+        ],
+        [
+         "Removal",
+         "Same manner and grounds as a **Supreme Court judge**: President's order after an **address by both Houses** (special majority) on proved misbehaviour or incapacity"
+        ],
+        [
+         "Independence",
+         "Salary and service conditions like an SC judge, set by Parliament, cannot be varied to the holder's disadvantage during term; **barred from any further office** under the Union or a State after retirement; expenses charged on the **Consolidated Fund**"
+        ],
+        [
+         "Law",
+         "**CAG (Duties, Powers and Conditions of Service) Act, 1971**"
+        ],
+        [
+         "Audits",
+         "**Consolidated Fund, Contingency Fund, Public Account**, government companies, corporations, bodies substantially financed by government"
+        ],
+        [
+         "Types of audit",
+         "**Financial, compliance, performance**"
+        ],
+        [
+         "Reports",
+         "To the **President** (Union) / **Governor** (State), laid before **Parliament / State Legislature**; examined by the **Public Accounts Committee (PAC)**"
+        ],
+        [
+         "Role with PAC",
+         "CAG is called the \"friend, philosopher and guide\" of the PAC"
+        ],
+        [
+         "Government companies",
+         "CAG appoints the statutory auditor and conducts supplementary audit under the **Companies Act, 2013**"
+        ],
+        [
+         "Limits",
+         "Does not audit purely private companies; no direct power to enforce; works through Parliament"
+        ]
+       ]
+      },
+      {
+       "p": "**Related and similar bodies (to compare):**"
+      },
+      {
+       "ul": [
+        "**Controller General of Accounts** (Finance Ministry): keeps accounts; audit and accounts were separated in 1976.",
+        "**Parliamentary committees:** PAC, Estimates Committee, Committee on Public Undertakings.",
+        "**Other independent constitutional offices:** Election Commission (Art. 324), UPSC (Art. 315), Finance Commission (Art. 280), Attorney General (Art. 76), National Commissions for SC/ST.",
+        "**Anti-corruption bodies:** Central Vigilance Commission (statutory), Lokpal, CBI.",
+        "**International:** INTOSAI — the global body of Supreme Audit Institutions; India's CAG is an active member.",
+        "**Foreign counterparts:** the US Government Accountability Office, the UK National Audit Office."
+       ]
+      }
+     ]
+    },
+    {
+     "h": "Discoms and the power sector",
+     "items": [
+      {
+       "ul": [
+        "Discoms are state-owned distribution companies (a few are private); they supply at tariffs below cost and have high **AT&C losses**.",
+        "Earlier fixes: **UDAY (2015)**; now **RDSS (2021)**. A CAG audit found UDAY missed its goals.",
+        "**Electricity Act, 2003** is the framework; **Electricity is on the Concurrent List** (Entry 38)."
+       ]
+      }
+     ]
+    }
+   ],
+   "mains": "CAG's independence and reach (private discoms excluded); audit findings only matter if Parliament acts on them.",
+   "prel": [
+    "Art. 148–151",
+    "DPC Act 1971",
+    "PAC",
+    "INTOSAI",
+    "Consolidated Fund",
+    "UDAY",
+    "RDSS",
+    "AT&C."
+   ]
+  },
+  {
+   "id": "dn-2026-11-13-2",
+   "n": 2,
+   "sec": "Polity & Governance",
+   "t": "SIR and electoral rolls",
+   "gs": [
+    "GS2 Polity"
+   ],
+   "news": "op-ed says the 2025-26 Special Intensive Revision is a technology failure: central ERONet platform, \"logical discrepancy\" flags, name-matching errors, Form 6 mismatch, unpublished hearing rules.",
+   "blocks": [
+    {
+     "h": "Election Commission and electoral rolls",
+     "items": [
+      {
+       "rows": [
+        [
+         "ECI",
+         "Permanent constitutional body for **elections to Parliament, State Legislatures, President and Vice-President**; **Art. 324**"
+        ],
+        [
+         "Composition",
+         "Chief Election Commissioner + other Election Commissioners, fixed by the President"
+        ],
+        [
+         "Appointment",
+         "**Act of 2023**: selection committee of PM, a Union Minister and the Leader of Opposition (after the Supreme Court's 2023 ruling asked for a neutral process)"
+        ],
+        [
+         "Term",
+         "**6 years or age 65**, whichever earlier"
+        ],
+        [
+         "Removal",
+         "**CEC** only like a Supreme Court judge (special-majority address by both Houses); other Commissioners removed on the **CEC's recommendation**"
+        ],
+        [
+         "Elections to local bodies",
+         "**State Election Commission** (Art. 243K, 243ZA) — not the ECI"
+        ],
+        [
+         "Franchise",
+         "**Art. 325** (one general roll, no one excluded on religion, race, caste, sex); **Art. 326** (universal adult suffrage, age **18** after the 61st Amendment, 1988)"
+        ],
+        [
+         "Laws",
+         "**Representation of the People Act, 1950** (rolls, seat allocation, qualifications to register; Section 21 revision of rolls) and **1951** (conduct of elections, disqualification, corrupt practices)"
+        ],
+        [
+         "Functions",
+         "Prepare and update rolls, delimitation (via Delimitation Commission), registration and symbols for parties, model code of conduct, monitor expenditure"
+        ],
+        [
+         "Rolls",
+         "Electoral Registration Officer (ERO), Booth Level Officer (BLO); **Form 6** (new registration), Form 7 (objection), Form 8 (correction)"
+        ],
+        [
+         "Aadhaar link",
+         "**Puttaswamy (2017)** protected privacy; Aadhaar linkage is voluntary for the roll"
+        ],
+        [
+         "Bihar SIR 2025",
+         "Court did not stay it and suggested Aadhaar, EPIC and ration card be accepted; ECI said Aadhaar is not proof of citizenship. A Supreme Court verdict upholding the SIR (May 2026) has been reported."
+        ]
+       ]
+      },
+      {
+       "p": "**Similar bodies:** State Election Commissions, Delimitation Commission, UPSC, Finance Commission (all independent bodies with security of tenure)."
+      }
+     ]
+    }
+   ],
+   "mains": "accuracy vs inclusion; the burden of proof on the voter; need for pilots, change freeze, written SOPs.",
+   "prel": [
+    "Art. 324, 325, 326, 243K",
+    "RPA 1950/1951",
+    "Form 6",
+    "ERO/BLO",
+    "ERONet."
+   ]
+  },
+  {
+   "id": "dn-2026-11-13-3",
+   "n": 3,
+   "sec": "Polity & Governance",
+   "t": "LADAKH polls and the Sixth Schedule",
+   "gs": [
+    "GS2 Polity",
+    "Federalism"
+   ],
+   "news": "panchayat/municipal polls on 21 Nov, hill council polls on 4 Dec; Leh Apex Body and Kargil Democratic Alliance want a delay; talks on statehood and Sixth Schedule stalled; Centre floated a special model under Art. 371.",
+   "blocks": [
+    {
+     "h": "Fifth and Sixth Schedules, Art. 371, UTs",
+     "items": [
+      {
+       "rows": [
+        [
+         "**Fifth Schedule** (Art. 244(1))",
+         "Administration and control of **Scheduled Areas** and Scheduled Tribes in all States **except Assam, Meghalaya, Tripura, Mizoram**; Governor's report, **Tribes Advisory Council**, power to regulate land transfer"
+        ],
+        [
+         "**Sixth Schedule** (Art. 244(2), 275(1))",
+         "Tribal areas of **Assam, Meghalaya, Tripura, Mizoram**; **Autonomous District Councils (ADC)** and Regional Councils"
+        ],
+        [
+         "ADC",
+         "Elected members plus a few nominated by the Governor; **5-year term**; makes laws on land (not reserved forest), shifting cultivation, village administration, inheritance, marriage, social customs; courts and tax powers; Governor can dissolve"
+        ],
+        [
+         "Governor's role",
+         "Creates, alters, renames autonomous districts"
+        ],
+        [
+         "**Special provisions**",
+         "**Art. 371 to 371J** give special arrangements to Nagaland, Assam, Manipur, Andhra Pradesh/Telangana, Sikkim, Mizoram, Arunachal Pradesh, Goa and Karnataka"
+        ],
+        [
+         "UTs",
+         "**Art. 239–241**; Ladakh is a UT **without a legislature** (J&K Reorganisation Act, 2019)"
+        ],
+        [
+         "Local government",
+         "**73rd/74th Amendments** (Part IX, IXA); **PESA 1996** extends panchayats to Scheduled Areas"
+        ],
+        [
+         "Ladakh",
+         "Hill Development Councils for Leh and Kargil; now six districts with their own councils"
+        ],
+        [
+         "Demand",
+         "Sixth Schedule would need a constitutional amendment; NCST recommended inclusion in 2021"
+        ]
+       ]
+      },
+      {
+       "p": "**People and geography:** over 90% of Ladakh's population is Scheduled Tribe; **Balti** (Kargil), **Brokpa** (Dha-Hanu), **Changpa** (nomads, **pashmina** goats, Changthang plateau). Cold desert, high passes close in winter."
+      },
+      {
+       "p": "**Related bodies:** National Commission for Scheduled Tribes (Art. 338A), Tribal Affairs Ministry, Governor's Tribes Advisory Council."
+      }
+     ]
+    }
+   ],
+   "mains": "why tribal land, culture and jobs need constitutional safeguards; consultation before scheduling polls.",
+   "prel": [
+    "Art. 244, 275, 371",
+    "ADC",
+    "Fifth vs Sixth Schedule",
+    "PESA",
+    "Changpa",
+    "pashmina."
+   ]
+  },
+  {
+   "id": "dn-2026-11-13-4",
+   "n": 4,
+   "sec": "Social Issues",
+   "t": "CASTE ENUMERATION in Census 2027",
+   "gs": [
+    "GS1 Society",
+    "GS2 Polity"
+   ],
+   "news": "OBC groups call a protest on 28 Nov; want a drop-down list and unique caste codes; the Centre chose an open column for all but SC/ST.",
+   "blocks": [
+    {
+     "h": "Census, caste and reservation",
+     "items": [
+      {
+       "rows": [
+        [
+         "Census",
+         "Decennial; **Census Act, 1948**; Census is a **Union subject** (Seventh Schedule, Entry 69, List I); conducted by the **Registrar General and Census Commissioner**, Home Ministry"
+        ],
+        [
+         "History",
+         "First complete synchronous census **1881**; caste last counted in **1931**; after independence only SC/ST counted"
+        ],
+        [
+         "SECC 2011",
+         "Socio-Economic and Caste Census; caste data never released"
+        ],
+        [
+         "SC/ST lists",
+         "**Art. 341, 342** (President notifies lists)"
+        ],
+        [
+         "OBC",
+         "**Art. 340** (commission to study backward classes); **Kaka Kalelkar** (1953) and **Mandal Commission** (1979) → 27% OBC reservation (1990); **Indra Sawhney (1992)** upheld it, set the **50% cap** and the **creamy layer**"
+        ],
+        [
+         "Constitutional articles",
+         "**Art. 15(4), 16(4)** (special provisions), **Art. 342A** (102nd Amendment: NCBC constitutional body, President lists OBC), 105th Amendment (states can list their own OBC)"
+        ],
+        [
+         "EWS",
+         "**103rd Amendment**: 10% for economically weaker sections (upheld 2022)"
+        ],
+        [
+         "Sub-categorisation",
+         "A commission under Art. 340 (Rohini) examined splitting the OBC quota"
+        ],
+        [
+         "NCBC",
+         "National Commission for Backward Classes (**Art. 338B**)"
+        ]
+       ]
+      }
+     ]
+    }
+   ],
+   "mains": "data for targeting benefits vs risks of mis-recording and politicisation; open column vs coded list.",
+   "prel": [
+    "Census Act 1948",
+    "Art. 340, 341, 342, 342A",
+    "Mandal",
+    "Indra Sawhney",
+    "creamy layer",
+    "SECC."
+   ]
+  },
+  {
+   "id": "dn-2026-11-13-5",
+   "n": 5,
+   "sec": "Environment",
+   "t": "SIANG UPPER MULTIPURPOSE PROJECT",
+   "gs": [
+    "GS1",
+    "GS2",
+    "GS3"
+   ],
+   "news": "Adi community protests the proposed dam (NHPC; only at Pre-Feasibility Report stage); villages to be submerged; consent claimed only for the PFR; China's Medog dam upstream; no water treaty with China.",
+   "blocks": [
+    {
+     "h": "dams, rivers, water law",
+     "items": [
+      {
+       "rows": [
+        [
+         "Dam types",
+         "Gravity, arch, earth/rock-fill; **storage** vs **run-of-river**; \"live storage\" = usable water"
+        ],
+        [
+         "India's dams",
+         "Over 6,000 large dams; third in the world after China and the US; **Maharashtra has the most**"
+        ],
+        [
+         "Records",
+         "**Highest operating: Tehri** · **largest reservoir: Indira Sagar** · **longest: Hirakud** · **highest under construction: Dibang** · \"smallest\": no official answer"
+        ],
+        [
+         "Water in the Constitution",
+         "**State subject** (Entry 17, List II); **inter-State river regulation is Union** (Entry 56, List I); **Art. 262** (disputes); **Inter-State River Water Disputes Act, 1956**; **River Boards Act 1956**; **Brahmaputra Board (1980)**"
+        ],
+        [
+         "Bodies",
+         "**Central Water Commission**, **NHPC**, **National Dam Safety Authority** under the **Dam Safety Act, 2021**"
+        ],
+        [
+         "Clearances",
+         "**EIA Notification 2006** (public hearing, expert appraisal committee); **Forest Conservation Act 1980**; **Forest Rights Act 2006** (gram sabha consent); **LARR Act 2013** (consent, rehabilitation)"
+        ],
+        [
+         "Consent standard",
+         "**Free, Prior and Informed Consent** (UNDRIP 2007)"
+        ],
+        [
+         "Arunachal",
+         "**Inner Line Permit** (Bengal Eastern Frontier Regulation 1873); **Art. 371H** (Governor's special responsibility); formerly NEFA; statehood 1987"
+        ]
+       ]
+      },
+      {
+       "p": "**Geography:** Yarlung Tsangpo (Tibet) → **Siang** (enters near Gelling) → joins Dibang and Lohit → **Brahmaputra**; the \"Missing Link\"; Upper Siang has gorges and **Mouling National Park**; eastern Himalaya is seismically active. Arunachal is India's **hydropower frontier** (about 40% of national potential)."
+      },
+      {
+       "p": "**People:** **Adi**; faith **Donyi-Polo**; goddess **Kine Nane**; harvest festival **Solung**. At stake: burial grounds, ancestral land."
+      },
+      {
+       "p": "**Agriculture:** rice (staple), maize, millets; **jhum** (shifting); valley wet rice yields more; **oranges, ginger, turmeric, banana, pineapple**."
+      },
+      {
+       "p": "**History of dam opposition:** **Narmada Bachao Andolan** (World Bank withdrew in 1994) · **Tehri** (Sunderlal Bahuguna, built despite protests) · **Silent Valley** (dropped) · Koel-Karo · Lower Subansiri and Dibang."
+      },
+      {
+       "p": "**International:** Expert Level Mechanism with China (2006); GERD (Ethiopia–Egypt–Sudan); Indus Waters Treaty (see §7)."
+      }
+     ]
+    }
+   ],
+   "mains": "strategic water security vs consent and ecology; smaller tributary dams; consent for a PFR is not consent for a dam.",
+   "prel": [
+    "Siang/Brahmaputra",
+    "NHPC",
+    "PFR",
+    "run-of-river",
+    "Adi",
+    "Dam Safety Act 2021",
+    "FRA 2006",
+    "Art. 262",
+    "EIA 2006."
+   ]
+  },
+  {
+   "id": "dn-2026-11-13-6",
+   "n": 6,
+   "sec": "International Relations",
+   "t": "INDIA–BANGLADESH: Hasina row, Ganga Water Treaty",
+   "gs": [
+    "GS2 IR"
+   ],
+   "news": "Hasina applied for a passport; Dhaka rejects it and wants her back via extradition; the Ganga treaty expires next month; talks stalled; ties down.",
+   "blocks": [
+    {
+     "h": "India–Bangladesh relations and treaties",
+     "items": [
+      {
+       "rows": [
+        [
+         "Foundation",
+         "India helped create Bangladesh in **1971**; **Neighbourhood First** policy"
+        ],
+        [
+         "Border",
+         "**Land Boundary Agreement (2015)** implemented by the **100th Constitution Amendment**; enclaves exchanged; **Tin Bigha corridor**"
+        ],
+        [
+         "Rivers",
+         "Many shared rivers; **Joint Rivers Commission (1972)**; **Ganga Water Treaty (12 Dec 1996)**, 30-year term, dry-season sharing at **Farakka**; **Teesta** deal never concluded"
+        ],
+        [
+         "Farakka",
+         "Barrage (1975) diverts water to the **Hooghly** to keep **Kolkata port** navigable"
+        ],
+        [
+         "Legal tools",
+         "**Extradition Act, 1962**; extradition treaty with Bangladesh (2013); **Art. 253** (Parliament legislates to implement treaties); **Art. 51** (promote peace)"
+        ],
+        [
+         "Parties",
+         "Awami League vs BNP; Jamaat-e-Islami"
+        ],
+        [
+         "Geography",
+         "**Ganga**: Gangotri → Bhagirathi → Devprayag → plains; **Padma** in Bangladesh; **Petrapole–Benapole** land port"
+        ]
+       ]
+      }
+     ]
+    }
+   ],
+   "mains": "a neighbour's domestic politics and an exiled leader; water treaty renewal as leverage.",
+   "prel": [
+    "Ganga Treaty 1996",
+    "Farakka",
+    "Teesta",
+    "LBA 2015",
+    "100th Amendment",
+    "Extradition Act."
+   ]
+  },
+  {
+   "id": "dn-2026-11-13-7",
+   "n": 7,
+   "sec": "International Relations",
+   "t": "INDUS WATERS TREATY — Court of Arbitration",
+   "gs": [
+    "GS2 IR"
+   ],
+   "news": "the Court (31 Aug 2026) held the treaty remains in force and abeyance is unauthorised; India does not recognise it.",
+   "blocks": [
+    {
+     "h": "Key facts",
+     "items": [
+      {
+       "ul": [
+        "**Treaty 1960**, brokered by the **World Bank**; **eastern rivers (Ravi, Beas, Sutlej) to India; western rivers (Indus, Jhelum, Chenab) to Pakistan**, with limited Indian use (run-of-river hydropower, irrigation). **Permanent Indus Commission**; dispute path: questions → differences → **Neutral Expert** or **Court of Arbitration**.",
+        "Disputes: **Kishanganga**, **Ratle**, Baglihar. ",
+        "**Vienna Convention on the Law of Treaties (1969)**: treaties cannot be unilaterally suspended; \"fundamental change of circumstances\" is the usual argument. ",
+        "**Geography:** Indus rises near **Mansarovar** (Tibet), flows through Ladakh, Gilgit-Baltistan, then Pakistan to the Arabian Sea. Pakistan's agriculture depends on the Indus system."
+       ]
+      }
+     ]
+    }
+   ],
+   "mains": "water as strategic leverage; legality of \"abeyance\"; compare with China's upstream dams on the Brahmaputra.",
+   "prel": [
+    "six rivers",
+    "Permanent Indus Commission",
+    "Neutral Expert",
+    "Court of Arbitration",
+    "Kishanganga."
+   ]
+  },
+  {
+   "id": "dn-2026-11-13-8",
+   "n": 8,
+   "sec": "International Relations",
+   "t": "INDIA–EU FTA and India–Germany",
+   "gs": [
+    "GS2 IR",
+    "GS3 Economy"
+   ],
+   "news": "FTA concluded earlier in 2026; supply-chain integration, Project 75(I) submarines with TKMS built in India, green partnership, students and skilled workers, Tamil Nadu hub.",
+   "blocks": [
+    {
+     "h": "trade agreements and defence partnership",
+     "items": [
+      {
+       "ul": [
+        "**FTA vs CEPA vs PTA:** an FTA removes tariffs on most goods; a CEPA also covers services, investment and cooperation; a PTA reduces tariffs on a limited list. **WTO/GATT** is the multilateral base.",
+        "**India–EU:** relations since 1962; **Strategic Partnership 2004**; **Trade and Technology Council (2022)**; FTA talks restarted after a long gap. **CBAM** (EU carbon border tax) is a concern for Indian steel, aluminium and cement.",
+        "**Domestic bodies:** Commerce Ministry, **DGFT**, **Foreign Trade Policy**, Make in India.",
+        "**Defence:** **Strategic Partnership Model (2017)** for building submarines, fighters and helicopters with foreign partners; **P-75(I)** is the conventional submarine programme.",
+        "**Germany:** federal republic of **Länder**; part of **G4** (with India, Japan, Brazil) seeking a UN Security Council seat; **migration and mobility agreement (2022)** for skilled workers.",
+        "**Geography:** Tamil Nadu's **Chennai–Oragadam–Hosur** automotive belt, **Coimbatore** for engineering and wind components."
+       ]
+      }
+     ]
+    }
+   ],
+   "mains": "FTA gains vs sector risks; technology transfer in defence; skilled migration.",
+   "prel": [
+    "FTA/CEPA/PTA",
+    "CBAM",
+    "TTC",
+    "DGFT",
+    "P-75(I)",
+    "Strategic Partnership Model",
+    "G4."
+   ]
+  },
+  {
+   "id": "dn-2026-11-13-9",
+   "n": 9,
+   "sec": "Environment",
+   "t": "COP31 and the Earthshot Prize",
+   "gs": [
+    "GS3 Environment",
+    "GS2 IR"
+   ],
+   "news": "COP31 at Antalya; many leaders absent; finance mechanics deferred; India declined the electrification pledge. Earthshot Prize held in India.",
+   "blocks": [
+    {
+     "h": "global climate regime",
+     "items": [
+      {
+       "rows": [
+        [
+         "**UNFCCC (1992)**",
+         "Rio Earth Summit; **Conference of Parties (COP)** meets annually; **common but differentiated responsibilities (CBDR)**"
+        ],
+        [
+         "**Kyoto Protocol (1997)**",
+         "Binding targets on developed (Annex I) countries; Clean Development Mechanism"
+        ],
+        [
+         "**Paris Agreement (2015)**",
+         "Hold warming well below **2°C**, pursue **1.5°C**; **NDCs** set by each country; 5-year cycles; **Art. 6** (carbon markets), **Art. 9** (developed countries' finance)"
+        ],
+        [
+         "**Global Stocktake**",
+         "Periodic check on progress under Paris; the first concluded at COP28 (Dubai)"
+        ],
+        [
+         "**Finance**",
+         "**Green Climate Fund**; **Loss and Damage fund** (agreed COP27, operational after COP28); **NCQG (COP29, Baku)** of at least $300 bn a year by 2035, which **India rejected as too little, too late**"
+        ],
+        [
+         "**IPCC**",
+         "UN science body that produces assessment reports"
+        ],
+        [
+         "**India**",
+         "**Net zero by 2070**; Panchamrit (COP26); 500 GW non-fossil by 2030; **LiFE**; **National Action Plan on Climate Change (2008)**; **National Green Hydrogen Mission**; **Environment (Protection) Act, 1986**; **Art. 48A and 51A(g)**"
+        ],
+        [
+         "**India-led bodies**",
+         "**International Solar Alliance** (HQ Gurugram), **Coalition for Disaster Resilient Infrastructure (CDRI)**"
+        ],
+        [
+         "**Other treaties**",
+         "**Montreal Protocol (1987)**, Kigali Amendment — success model for ozone"
+        ],
+        [
+         "**Earthshot Prize**",
+         "Founded 2020 by Prince William; five themes (nature, clean air, oceans, waste-free, climate); Indian finalists: Mahindra Last Mile Mobility, **Mahila Housing Trust** (linked to **SEWA**, Ahmedabad)"
+        ]
+       ]
+      }
+     ]
+    }
+   ],
+   "mains": "finance, not targets, is the sticking point; India's CBDR stand.",
+   "prel": [
+    "UNFCCC",
+    "Kyoto",
+    "Paris",
+    "NDC",
+    "CBDR",
+    "NCQG",
+    "Global Stocktake",
+    "Loss and Damage fund",
+    "ISA",
+    "CDRI",
+    "Montreal Protocol."
+   ]
+  },
+  {
+   "id": "dn-2026-11-13-10",
+   "n": 10,
+   "sec": "Environment",
+   "t": "DELHI AIR POLLUTION",
+   "gs": [
+    "GS3 Environment"
+   ],
+   "news": "AQI 'severe' after Deepavali; student protests; Section 163 BNSS orders; Yamuna dead-fish spat.",
+   "blocks": [
+    {
+     "h": "air pollution law and geography",
+     "items": [
+      {
+       "rows": [
+        [
+         "Laws",
+         "**Air (Prevention and Control of Pollution) Act, 1981**; **Environment (Protection) Act, 1986**; **CAQM Act, 2021** (Commission for Air Quality Management in NCR; replaced EPCA)"
+        ],
+        [
+         "Bodies",
+         "**CPCB**, State Pollution Control Boards, **NGT (2010)**, **CAQM**"
+        ],
+        [
+         "Rights",
+         "**Art. 21** (clean air, via M.C. Mehta cases — CNG order for Delhi buses); **Art. 48A, 51A(g)**"
+        ],
+        [
+         "AQI",
+         "National AQI (2014): **Good, Satisfactory, Moderate, Poor, Very Poor, Severe**"
+        ],
+        [
+         "GRAP",
+         "Graded Response Action Plan: stage-wise curbs as AQI worsens; CAQM invoked Stage III on 6 Nov 2026 per reports"
+        ],
+        [
+         "**NCAP (2019)**",
+         "National Clean Air Programme: city-level PM reduction targets"
+        ],
+        [
+         "Causes",
+         "Vehicles, construction dust, industry, biomass burning; **stubble burning** in Punjab and Haryana adds a share in November; firecrackers on Deepavali"
+        ],
+        [
+         "Meteorology",
+         "**Temperature inversion** and low wind speed trap pollutants; Delhi lies in the **Indo-Gangetic plain**, with the Himalaya blocking dispersal"
+        ],
+        [
+         "Stubble",
+         "Rice–wheat cycle leaves short gap; solutions: **Happy Seeder**, PUSA decomposer, crop diversification"
+        ],
+        [
+         "Health",
+         "**PM2.5** reaches alveoli; COPD, asthma, children and pregnant women most at risk"
+        ],
+        [
+         "Law and order",
+         "**Section 163 BNSS** (replaced Section 144 CrPC) prohibitory orders"
+        ],
+        [
+         "**Yamuna**",
+         "Rises at **Yamunotri**; worst-polluted in the Delhi stretch (Wazirabad to Okhla); **Yamuna Action Plan**; fish kills linked to low oxygen and effluents"
+        ]
+       ]
+      }
+     ]
+    }
+   ],
+   "mains": "Centre–State coordination (CAQM), crop-residue economics, public-health framing.",
+   "prel": [
+    "Air Act 1981",
+    "EP Act 1986",
+    "CAQM",
+    "GRAP",
+    "NAQI",
+    "NCAP",
+    "PM2.5",
+    "temperature inversion",
+    "Art. 21."
+   ]
+  },
+  {
+   "id": "dn-2026-11-13-11",
+   "n": 11,
+   "sec": "Social Issues",
+   "t": "KURUMBA language, a PVTG",
+   "gs": [
+    "GS1 Society",
+    "GS2"
+   ],
+   "news": "Census marks languages under 10,000 speakers as \"others\"; Kurumba (oral, no script) of Kerala at risk; community is a PVTG.",
+   "blocks": [
+    {
+     "h": "PVTGs, tribal rights, language",
+     "items": [
+      {
+       "rows": [
+        [
+         "**ST**",
+         "Notified by the President, **Art. 342**; National Commission for STs **Art. 338A**"
+        ],
+        [
+         "**PVTG**",
+         "Particularly Vulnerable Tribal Groups; from the **Dhebar Commission (1960–61)**'s \"primitive tribal groups\"; renamed in 2006; criteria: pre-agricultural technology, low literacy, declining or stagnant population, subsistence economy"
+        ],
+        [
+         "Schemes",
+         "**PM-JANMAN (2023)** targets PVTG habitations; **Forest Rights Act 2006** gives habitat rights to PVTGs"
+        ],
+        [
+         "Kerala PVTGs",
+         "Five, including the **Kurumba** (others: Cholanaikayan, Kattunayakan, Koraga, Kadar)"
+        ],
+        [
+         "Language rights",
+         "**Eighth Schedule** (22 languages); **Art. 29** (protect culture), **350A** (mother-tongue teaching), **350B** (Special Officer for Linguistic Minorities); **Art. 51A(f)** composite culture"
+        ],
+        [
+         "Schemes",
+         "**SPPEL (2013)** for languages with under 10,000 speakers; **People's Linguistic Survey of India** found far more languages than the Census lists"
+        ],
+        [
+         "International",
+         "UN International Decade of Indigenous Languages (2022–2032)"
+        ]
+       ]
+      },
+      {
+       "p": "**Geography and livelihood:** **Attappady** (Palakkad), **Western Ghats**, Kerala's only tribal taluk; **Irula, Muduga, Kurumba**; shifting cultivation of **millets**; **Millet Village programme (2017)**; **sickle cell and anaemia** are health problems."
+      }
+     ]
+    }
+   ],
+   "mains": "language is identity; Census classification rules shape which languages get support.",
+   "prel": [
+    "Art. 342, 338A, 350A",
+    "PVTG",
+    "PM-JANMAN",
+    "FRA",
+    "Eighth Schedule",
+    "SPPEL",
+    "Attappady."
+   ]
+  },
+  {
+   "id": "dn-2026-11-13-12",
+   "n": 12,
+   "sec": "Social Issues",
+   "t": "MEGHALAYA — tribal land to a cement company",
+   "gs": [
+    "GS2",
+    "GS3"
+   ],
+   "news": "Jaintia National Council wants the transfer of tribal land at Umkyrpong (East Jaintia Hills) for a cement and limestone project paused; valuation questioned.",
+   "blocks": [
+    {
+     "h": "Meghalaya, Sixth Schedule and land",
+     "items": [
+      {
+       "rows": [
+        [
+         "State",
+         "Carved out of Assam in **1972**; **Garo, Khasi, Jaintia** hills; matrilineal societies"
+        ],
+        [
+         "**Sixth Schedule**",
+         "**Three ADCs** (Khasi, Jaintia, Garo Hills); land is mostly communal or private, **not state-owned**; councils regulate land use and customary law"
+        ],
+        [
+         "Land law",
+         "State law restricts transfer of tribal land to non-tribals"
+        ],
+        [
+         "Mining",
+         "**MMDR Act 1957**; **NGT** banned rat-hole coal mining in **2014**; Supreme Court later vacated the ban; the Centre allowed scientific mining in 2025; limestone feeds the cement industry"
+        ],
+        [
+         "Geography",
+         "**Shillong plateau**; **Cherrapunji/Mawsynram** among the wettest places; limestone and coal belts in the Jaintia Hills"
+        ],
+        [
+         "Culture",
+         "**Sacred groves** (Law Lyngdoh)"
+        ],
+        [
+         "Agriculture",
+         "**Lakadong turmeric** (high curcumin, Jaintia Hills), pineapple, oranges, areca nut, ginger"
+        ]
+       ]
+      }
+     ]
+    }
+   ],
+   "mains": "tribal land ownership vs industrial need; role of councils in consent.",
+   "prel": [
+    "Sixth Schedule",
+    "ADC",
+    "NGT",
+    "rat-hole mining",
+    "Shillong plateau",
+    "Lakadong turmeric."
+   ]
+  },
+  {
+   "id": "dn-2026-11-13-13",
+   "n": 13,
+   "sec": "Social Issues",
+   "t": "WHO GLOBAL TB REPORT 2026",
+   "gs": [
+    "GS2 Health"
+   ],
+   "news": "India's TB mortality down 38% since 2015 (global 35%); high treatment success; catastrophic costs; TB Mukt Bharat screening.",
+   "blocks": [
+    {
+     "h": "tuberculosis and the programme",
+     "items": [
+      {
+       "rows": [
+        [
+         "Disease",
+         "Caused by **Mycobacterium tuberculosis**, spreads through air; **MDR/XDR-TB** are drug-resistant forms"
+        ],
+        [
+         "Treatment",
+         "**DOTS**; **BPaLM** regimen for drug-resistant TB; **BCG** vaccine"
+        ],
+        [
+         "Diagnosis",
+         "**CBNAAT**, **Truenat**"
+        ],
+        [
+         "Programme",
+         "**RNTCP → National TB Elimination Programme (NTEP)**; **Ni-kshay** portal; **Ni-kshay Poshan Yojana** (monthly nutrition support); **Ni-kshay Mitra** (community support)"
+        ],
+        [
+         "Targets",
+         "India aimed for elimination by **2025** (missed); now aims for 2030; **WHO End TB Strategy**, **SDG 3.3**"
+        ],
+        [
+         "Reporting",
+         "WHO publishes the **Global TB Report** every year"
+        ],
+        [
+         "Constitution",
+         "**Public health is a State subject** (List II); **prevention of infectious diseases is Concurrent** (List III); **Art. 21, 47**"
+        ],
+        [
+         "Risk factors",
+         "HIV, undernutrition, diabetes, tobacco"
+        ]
+       ]
+      }
+     ]
+    }
+   ],
+   "mains": "gains in mortality vs missed incidence targets; nutrition and catastrophic costs.",
+   "prel": [
+    "NTEP",
+    "Ni-kshay",
+    "DOTS",
+    "MDR-TB",
+    "BPaLM",
+    "End TB",
+    "SDG 3."
+   ]
+  },
+  {
+   "id": "dn-2026-11-13-14",
+   "n": 14,
+   "sec": "Science & Technology",
+   "t": "PSLV third-stage test",
+   "gs": [
+    "GS3 Science and Technology"
+   ],
+   "news": "ground static test of a modified third stage (PS3) at Sriharikota to bring the PSLV back on track.",
+   "blocks": [
+    {
+     "h": "ISRO and launch vehicles",
+     "items": [
+      {
+       "rows": [
+        [
+         "ISRO",
+         "Founded **1969**; under the **Department of Space**; **NSIL** (commercial arm), **IN-SPACe** (2020, private-sector regulator), **Space Policy 2023**"
+        ],
+        [
+         "Launch vehicles",
+         "**SLV → ASLV → PSLV → GSLV → LVM3**"
+        ],
+        [
+         "**PSLV**",
+         "\"Workhorse\"; four stages alternating **solid** and **liquid**; used for **Chandrayaan-1, Mangalyaan**, Astrosat and many foreign satellites; reaches **polar/sun-synchronous orbit**"
+        ],
+        [
+         "**PS3**",
+         "Third stage, a **solid motor** with **HTPB** propellant; PSLV had **third-stage failures in May 2025 (C61) and Jan 2026 (C62)**, linked to a chamber-pressure drop; LVM3 (Gaganyaan) shares processes"
+        ],
+        [
+         "Spaceport",
+         "**Satish Dhawan Space Centre, Sriharikota** (Andhra Pradesh) — on the east coast, near the equator for a launch advantage; new spaceport at **Kulasekarapattinam** (Tamil Nadu)"
+        ],
+        [
+         "Orbits",
+         "LEO, **SSO**, GTO, GEO"
+        ]
+       ]
+      }
+     ]
+    }
+   ],
+   "mains": "reliability and quality control; private-sector manufacturing of stages.",
+   "prel": [
+    "PSLV",
+    "HTPB",
+    "SSO",
+    "NSIL",
+    "IN-SPACe",
+    "Sriharikota",
+    "LVM3."
+   ]
+  },
+  {
+   "id": "dn-2026-11-13-15",
+   "n": 15,
+   "sec": "Science & Technology",
+   "t": "OpenAI local processing in India",
+   "gs": [
+    "GS3 IT",
+    "Governance"
+   ],
+   "news": "in-country inference for the API, first for one model, for firms with data-localisation needs.",
+   "blocks": [
+    {
+     "h": "data protection and AI",
+     "items": [
+      {
+       "ul": [
+        "**Data residency** (where data sits) vs **local processing** (where the model computes).",
+        "**Digital Personal Data Protection Act, 2023**: data principal, **data fiduciary**, consent, **Data Protection Board**; cross-border transfer allowed except to restricted countries.",
+        "**Information Technology Act, 2000** (cyber law, intermediaries).",
+        "**Puttaswamy v. UoI (2017):** right to privacy is part of **Art. 21**.",
+        "**RBI 2018** rule: payment data must be stored in India.",
+        "**IndiaAI Mission (2024)** and MeitY's role; global frameworks such as the EU AI Act."
+       ]
+      }
+     ]
+    }
+   ],
+   "mains": "localisation vs free flow of data; sovereignty vs cost.",
+   "prel": [
+    "DPDP Act 2023",
+    "data fiduciary",
+    "Puttaswamy",
+    "IT Act 2000",
+    "IndiaAI Mission."
+   ]
+  },
+  {
+   "id": "dn-2026-11-13-16",
+   "n": 16,
+   "sec": "Science & Technology",
+   "t": "URBAN MICROBIOME and AMR",
+   "gs": [
+    "GS3 Biotechnology",
+    "GS2 Health"
+   ],
+   "news": "IIT Madras swabbed Chennai Metro; distinct \"transit biome\"; antimicrobial-resistance genes widespread; global projects such as PathoMap and MetaSUB.",
+   "blocks": [
+    {
+     "h": "antimicrobial resistance",
+     "items": [
+      {
+       "rows": [
+        [
+         "AMR",
+         "Microbes stop responding to drugs; driven by overuse in humans, livestock and farming; **superbugs**"
+        ],
+        [
+         "Basics",
+         "**Penicillin** discovered in 1928 (Fleming); **metagenomics** = reading all DNA in a sample; **microbiome**"
+        ],
+        [
+         "Policy",
+         "**Chennai Declaration (2012)**, **NAP-AMR 2017**, **NAP-AMR 2.0 (2025–29)** launched in Nov 2025 with a **One Health** approach (human, animal, agriculture, environment); **Kerala's state plan (KARSAP, 2018)** was the first by a State"
+        ],
+        [
+         "Rules",
+         "**Schedule H1** (prescription-only antibiotics), **Red Line campaign** (2016), **colistin banned in animal feed** (2019)"
+        ],
+        [
+         "Surveillance",
+         "**ICMR AMR Surveillance Network**; **World AMR Awareness Week** (18–24 Nov)"
+        ],
+        [
+         "Global",
+         "**WHO Global Action Plan on AMR**; WHO list of priority pathogens"
+        ],
+        [
+         "Geography",
+         "Chennai on the **Coromandel coast**; coastal humidity shapes its microbes"
+        ]
+       ]
+      }
+     ]
+    }
+   ],
+   "mains": "surveillance in public spaces; State action plans; One Health coordination.",
+   "prel": [
+    "AMR",
+    "One Health",
+    "NAP-AMR",
+    "Schedule H1",
+    "metagenomics",
+    "Chennai Declaration."
+   ]
+  }
+ ],
+ "note": "Cross-check before quoting: the Supreme Court ruling on the SIR (May 2026), the Rohini Commission and Bihar caste survey, the 2013 extradition treaty with Bangladesh, Meghalaya's land-transfer rule, Lakadong turmeric, the list of five PVTGs in Kerala, and the exact dates of GRAP Stage III. Article numbers and years come from standard textbooks (Laxmikanth, NCERT); confirm them before using them in an answer."
+}
