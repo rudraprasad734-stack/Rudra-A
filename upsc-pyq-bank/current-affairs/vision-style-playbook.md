@@ -96,3 +96,6 @@ Every news item is expanded beyond the article, using keyword searches, into the
 8. **Way forward, Prelims keywords, Mains questions.**
 Source tags on every fact: [today's PDF], [web] (with link), [bg] (my background, verify). Where sources disagree, say so (for example the Dibang dam height, 278 m or 288 m).
 Worked example: the Siang Upper Multipurpose Project note.
+
+## Rule added: keep numbers light
+Prefer records and comparisons (highest, largest, longest, first, most, smallest, or "no official smallest") over exact figures such as dam heights or capacities. Keep an exact number only if it is exam-relevant (a year, an article, a count that appears in schemes or laws) or it is the news itself. When sources disagree on a number, drop it and say it differs.
