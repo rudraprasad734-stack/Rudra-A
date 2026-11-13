@@ -99,3 +99,6 @@ Worked example: the Siang Upper Multipurpose Project note.
 
 ## Rule added: keep numbers light
 Prefer records and comparisons (highest, largest, longest, first, most, smallest, or "no official smallest") over exact figures such as dam heights or capacities. Keep an exact number only if it is exam-relevant (a year, an article, a count that appears in schemes or laws) or it is the news itself. When sources disagree on a number, drop it and say it differs.
+
+## Rule added: open with a core static explainer
+For every topic, start with the standing syllabus content of the institution, law, scheme or concept behind the news, before the news itself. Example: a CAG audit story gets what the CAG is (articles), who appoints, term, who can remove, independence safeguards, functions and types of audit, reports and the PAC, similar bodies (Controller General of Accounts, parliamentary committees, other constitutional offices, INTOSAI). Leave out the names of office-holders. Do the same for the Election Commission, Sixth Schedule, Census and reservation, dams and water law, treaties, GRAP/CAQM, PVTGs, tuberculosis programme, ISRO and launch vehicles, data protection, and AMR. Mark facts I did not look up as "standard knowledge" and flag the ones I am unsure of.
