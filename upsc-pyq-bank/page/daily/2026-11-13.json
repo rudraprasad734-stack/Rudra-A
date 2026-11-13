@@ -105,16 +105,56 @@
      ]
     }
    ],
-   "mains": "CAG's independence and reach (private discoms excluded); audit findings only matter if Parliament acts on them.",
    "prel": [
-    "Art. 148–151",
-    "DPC Act 1971",
-    "PAC",
-    "INTOSAI",
-    "Consolidated Fund",
-    "UDAY",
-    "RDSS",
-    "AT&C."
+    {
+     "k": "Art. 148–151",
+     "d": "The constitutional articles on the CAG: 148 (appointment, oath, term, removal), 149 (duties and powers), 150 (form of accounts, set by the President on the CAG's advice) and 151 (audit reports go to the President or Governor and then to Parliament or the Legislature)."
+    },
+    {
+     "k": "DPC Act 1971",
+     "d": "The Comptroller and Auditor-General's (Duties, Powers and Conditions of Service) Act, 1971: the law that spells out what the CAG audits and how."
+    },
+    {
+     "k": "PAC",
+     "d": "Public Accounts Committee of Parliament (15 Lok Sabha and 7 Rajya Sabha members). It examines CAG reports on how public money was spent; by convention an Opposition member chairs it."
+    },
+    {
+     "k": "INTOSAI",
+     "d": "International Organisation of Supreme Audit Institutions: the global body of national audit offices such as India's CAG."
+    },
+    {
+     "k": "Consolidated Fund of India",
+     "d": "Article 266: the main government account into which all revenue, loans and repayments flow. Money leaves it only with Parliament's approval."
+    },
+    {
+     "k": "UDAY",
+     "d": "Ujwal DISCOM Assurance Yojana (2015): States took over discom debt so the distribution companies could recover. CAG audits found its targets were missed."
+    },
+    {
+     "k": "RDSS",
+     "d": "Revamped Distribution Sector Scheme (2021): central money linked to performance, for cutting discom losses, smart meters and stronger networks."
+    },
+    {
+     "k": "AT&C losses",
+     "d": "Aggregate Technical and Commercial losses: the share of electricity fed into the grid that is lost on the lines or never paid for (theft, billing gaps)."
+    }
+   ],
+   "qs": [
+    {
+     "q": "The CAG's role has moved beyond checking the legality of spending to its propriety and performance. In this light, examine the scope and limits of the CAG's powers, with reference to audits of the power sector.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": "2024 GS2 (CAG: legality and propriety) · 2016 GS2 (Article 149 and audit of policy)"
+    },
+    {
+     "q": "Explain how the method of appointment and the terms of service of the CAG protect its independence. Why are audit findings often not acted upon, and how can the Public Accounts Committee make them count?",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": "2018 GS2 (CAG appointment and powers) · 2017 GS2 (role of the PAC) · 2023 GS2 (financial committees)"
+    },
+    {
+     "q": "Discoms keep making losses despite rescue schemes such as UDAY. Analyse the reasons and suggest reforms for the power distribution sector.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    }
    ]
   },
   {
@@ -188,13 +228,64 @@
      ]
     }
    ],
-   "mains": "accuracy vs inclusion; the burden of proof on the voter; need for pilots, change freeze, written SOPs.",
    "prel": [
-    "Art. 324, 325, 326, 243K",
-    "RPA 1950/1951",
-    "Form 6",
-    "ERO/BLO",
-    "ERONet."
+    {
+     "k": "SIR",
+     "d": "Special Intensive Revision: a door-to-door re-verification of the whole electoral roll in a State, unlike the routine yearly summary revision."
+    },
+    {
+     "k": "Art. 324",
+     "d": "Gives the Election Commission of India the superintendence, direction and control of elections and the preparation of electoral rolls."
+    },
+    {
+     "k": "Art. 325",
+     "d": "One general electoral roll for every constituency; nobody can be left out or put on a separate roll because of religion, race, caste or sex."
+    },
+    {
+     "k": "Art. 326",
+     "d": "Elections to the Lok Sabha and Assemblies are held on adult suffrage: every citizen aged 18 or more who is not disqualified can vote (age lowered from 21 by the 61st Amendment, 1988)."
+    },
+    {
+     "k": "Art. 243K",
+     "d": "Panchayat elections are run by the State Election Commission, not the ECI (Art. 243ZA does the same for municipalities)."
+    },
+    {
+     "k": "RPA 1950",
+     "d": "Representation of the People Act, 1950: who can register as a voter and how electoral rolls are prepared and revised (Section 21)."
+    },
+    {
+     "k": "RPA 1951",
+     "d": "Representation of the People Act, 1951: conduct of elections, qualifications and disqualifications of members, corrupt practices and election disputes."
+    },
+    {
+     "k": "Form 6",
+     "d": "The application to be added to the electoral roll, meant for new voters."
+    },
+    {
+     "k": "ERO and BLO",
+     "d": "Electoral Registration Officer: the statutory officer who finalises the roll of a constituency. Booth Level Officer: the local official who visits homes, collects forms and verifies voters."
+    },
+    {
+     "k": "ERONet",
+     "d": "The Election Commission's online platform for managing rolls; in the SIR it flagged 'logical discrepancies' centrally."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the powers of the Election Commission under Article 324 and the Representation of the People Act, 1950 in revising electoral rolls. Can a mass verification drive such as the SIR be reconciled with universal adult suffrage?",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": "2026 GS2 (right to vote, revision of rolls, citizenship)"
+    },
+    {
+     "q": "Technology can make election management accurate, but it can also exclude genuine voters. Examine with reference to the digital platform used in the SIR.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": "2018 GS2 (EVMs and trust in elections)"
+    },
+    {
+     "q": "Evaluate the role of the Election Commission in ensuring free and fair elections, and suggest reforms to protect its independence and credibility.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": "2022 GS2 (ECI and the Model Code of Conduct) · 2017 GS2 (electoral reforms)"
+    }
    ]
   },
   {
@@ -260,14 +351,60 @@
      ]
     }
    ],
-   "mains": "why tribal land, culture and jobs need constitutional safeguards; consultation before scheduling polls.",
    "prel": [
-    "Art. 244, 275, 371",
-    "ADC",
-    "Fifth vs Sixth Schedule",
-    "PESA",
-    "Changpa",
-    "pashmina."
+    {
+     "k": "Art. 244",
+     "d": "Provides for the administration of tribal and Scheduled Areas: 244(1) is the Fifth Schedule, 244(2) is the Sixth Schedule."
+    },
+    {
+     "k": "Art. 275",
+     "d": "Grants-in-aid from the Centre to States for tribal welfare, including the Fifth and Sixth Schedule areas."
+    },
+    {
+     "k": "Art. 371 to 371J",
+     "d": "Special provisions for particular States (for example Nagaland, Sikkim, Mizoram). The Centre floated a similar special arrangement for Ladakh."
+    },
+    {
+     "k": "Fifth vs Sixth Schedule",
+     "d": "Fifth: Scheduled Areas in ten States, run by the Governor with a Tribes Advisory Council. Sixth: tribal areas of Assam, Meghalaya, Tripura and Mizoram, run by elected councils with real law-making power, so more autonomy."
+    },
+    {
+     "k": "Autonomous District Council",
+     "d": "Elected council in a Sixth Schedule area (up to 30 members, five-year term). It makes laws on land, forests other than reserved ones, village administration and customs."
+    },
+    {
+     "k": "PESA 1996",
+     "d": "Panchayats (Extension to Scheduled Areas) Act: gives gram sabhas in Scheduled Areas a say over land, minor forest produce and local resources."
+    },
+    {
+     "k": "LAHDC",
+     "d": "Ladakh Autonomous Hill Development Council: the local councils of Leh and Kargil under a 1997 law. They now exist for each of Ladakh's six districts."
+    },
+    {
+     "k": "UT without a legislature",
+     "d": "Under the J&K Reorganisation Act 2019, Ladakh became a Union Territory run by the Centre through a Lieutenant Governor, with no elected assembly."
+    },
+    {
+     "k": "Changpa and pashmina",
+     "d": "Changpa are semi-nomadic herders of the high Changthang plateau, a Scheduled Tribe. They rear the Changthangi goats that give pashmina wool."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Why has the demand for Sixth Schedule status and statehood for Ladakh persisted? Examine the constitutional options before the Centre.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": "2026 GS2 (federalism and regional diversity) · 2025 GS2 (J&K Reorganisation Act)"
+    },
+    {
+     "q": "Compare the Fifth and Sixth Schedules. Do Autonomous District Councils protect tribal land and culture better than the Fifth Schedule arrangements?",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": "2016 GS1 (constitutional provisions for Scheduled Tribes)"
+    },
+    {
+     "q": "Ladakh lies between China and Pakistan. Discuss why local consent and development matter for border security.",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": "2026 GS3 (Ladakh, BADP and winning hearts and minds)"
+    }
    ]
   },
   {
@@ -327,14 +464,60 @@
      ]
     }
    ],
-   "mains": "data for targeting benefits vs risks of mis-recording and politicisation; open column vs coded list.",
    "prel": [
-    "Census Act 1948",
-    "Art. 340, 341, 342, 342A",
-    "Mandal",
-    "Indra Sawhney",
-    "creamy layer",
-    "SECC."
+    {
+     "k": "Census Act 1948",
+     "d": "The law under which the Census is conducted: the Union Government notifies it, citizens must answer, and the data is confidential."
+    },
+    {
+     "k": "Art. 340",
+     "d": "The President can appoint a commission to study the conditions of socially and educationally backward classes (the Kalelkar and Mandal commissions came under it)."
+    },
+    {
+     "k": "Art. 341 and 342",
+     "d": "The President notifies the lists of Scheduled Castes (341) and Scheduled Tribes (342), State by State; only Parliament can change them."
+    },
+    {
+     "k": "Art. 342A",
+     "d": "Added by the 102nd Amendment (2018): the President notifies backward classes for the Centre's list and the National Commission for Backward Classes became constitutional. The 105th Amendment (2021) restored the States' power to make their own lists."
+    },
+    {
+     "k": "Mandal Commission",
+     "d": "1979 commission that recommended 27% reservation for OBCs in central jobs; implemented in 1990."
+    },
+    {
+     "k": "Indra Sawhney (1992)",
+     "d": "Supreme Court upheld the 27% OBC quota, set the 50% ceiling on reservations and introduced the creamy layer exclusion."
+    },
+    {
+     "k": "Creamy layer",
+     "d": "The better-off section of OBCs, excluded from reservation through an income and status test."
+    },
+    {
+     "k": "SECC 2011",
+     "d": "Socio-Economic and Caste Census: a household survey on deprivation and caste. Its caste data was never published."
+    },
+    {
+     "k": "Open column vs drop-down",
+     "d": "With an open column the enumerator writes whatever caste the respondent says, so spellings vary. A drop-down offers a fixed coded list, which is easier to analyse but may miss some castes."
+    }
+   ],
+   "qs": [
+    {
+     "q": "A caste count is argued to be necessary for targeted welfare but feared to deepen caste identities. Critically examine.",
+     "m": "GS1 · 250 words · 15 marks",
+     "ref": "2023 GS1 (caste identity: fluid and static) · 2026 GS1 (is caste disappearing in urban India)"
+    },
+    {
+     "q": "Trace the constitutional evolution of reservation for OBCs from Article 340 to the 102nd and 105th Amendments. How does the 50% ceiling shape new demands for quotas?",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": "2026 GS2 (evolution of women's reservation) · 2026 GS2 (NCSC and NCST powers)"
+    },
+    {
+     "q": "Evaluate the open-column method of recording caste against a coded list in the Census. What safeguards are needed for data quality?",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
    ]
   },
   {
@@ -406,17 +589,68 @@
      ]
     }
    ],
-   "mains": "strategic water security vs consent and ecology; smaller tributary dams; consent for a PFR is not consent for a dam.",
    "prel": [
-    "Siang/Brahmaputra",
-    "NHPC",
-    "PFR",
-    "run-of-river",
-    "Adi",
-    "Dam Safety Act 2021",
-    "FRA 2006",
-    "Art. 262",
-    "EIA 2006."
+    {
+     "k": "Siang and the Brahmaputra",
+     "d": "The Brahmaputra is called the Siang in Arunachal. The Yarlung Tsangpo enters India from Tibet near Gelling, then meets the Dibang and Lohit before becoming the Brahmaputra in Assam."
+    },
+    {
+     "k": "NHPC",
+     "d": "National Hydroelectric Power Corporation: the central public-sector company that builds and runs hydropower projects."
+    },
+    {
+     "k": "PFR",
+     "d": "Pre-Feasibility Report: the first rough study of whether a project can be built. It is not an approval."
+    },
+    {
+     "k": "Storage vs run-of-river",
+     "d": "A storage dam holds a large reservoir for power, floods and irrigation but submerges more land. A run-of-river project uses the flow with little storage."
+    },
+    {
+     "k": "Live storage",
+     "d": "The usable water in a reservoir, above the unusable bottom layer (dead storage)."
+    },
+    {
+     "k": "Adi",
+     "d": "A major tribe of Arunachal's Siang region. They follow the Donyi-Polo faith and farm rice, millets and oranges."
+    },
+    {
+     "k": "Dam Safety Act 2021",
+     "d": "Created the National Dam Safety Authority and State bodies to inspect and regulate the safety of large dams."
+    },
+    {
+     "k": "Forest Rights Act 2006",
+     "d": "Recognises forest dwellers' rights over land and forest produce. The gram sabha's consent is needed before forest land is diverted."
+    },
+    {
+     "k": "Art. 262",
+     "d": "Lets Parliament make a law to settle inter-State river disputes and bar the courts; the Inter-State River Water Disputes Act 1956 follows from it."
+    },
+    {
+     "k": "EIA 2006",
+     "d": "Environmental Impact Assessment notification: large projects need a public hearing and expert appraisal before environmental clearance."
+    },
+    {
+     "k": "Medog dam",
+     "d": "China's planned giant hydropower project on the Yarlung Tsangpo just upstream of the Indian border, the strategic reason the Siang dam is being pushed."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Large Himalayan dams promise power and flood control but face growing local resistance. Examine with reference to the Siang project and earlier anti-dam movements in India.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": "2016 GS3 (rehabilitation of settlements) · 2024 GS3 (NGOs and EIA outcomes)"
+    },
+    {
+     "q": "Does tribal development in India revolve around the twin issues of displacement and rehabilitation? Discuss with reference to hydropower projects in the North-East.",
+     "m": "GS1 · 250 words · 15 marks",
+     "ref": "2025 GS1 (tribal development: displacement and rehabilitation)"
+    },
+    {
+     "q": "Water resources are both an asset and a source of conflict in South Asia. Discuss with reference to China's plans on the Yarlung Tsangpo and India's response.",
+     "m": "GS1 · 150 words · 10 marks",
+     "ref": "2026 GS1 (water resources in South Asia)"
+    }
    ]
   },
   {
@@ -467,14 +701,56 @@
      ]
     }
    ],
-   "mains": "a neighbour's domestic politics and an exiled leader; water treaty renewal as leverage.",
    "prel": [
-    "Ganga Treaty 1996",
-    "Farakka",
-    "Teesta",
-    "LBA 2015",
-    "100th Amendment",
-    "Extradition Act."
+    {
+     "k": "Ganga Water Treaty 1996",
+     "d": "30-year India–Bangladesh treaty sharing Ganga water in the dry months at Farakka. It expires in December 2026."
+    },
+    {
+     "k": "Farakka Barrage",
+     "d": "Barrage on the Ganga in West Bengal (1975) that diverts water into the Hooghly to flush silt and keep Kolkata port navigable."
+    },
+    {
+     "k": "Teesta",
+     "d": "River rising in Sikkim and flowing through North Bengal into Bangladesh. A sharing agreement has never been signed."
+    },
+    {
+     "k": "Land Boundary Agreement 2015",
+     "d": "India and Bangladesh swapped their enclaves (111 Indian enclaves went to Bangladesh, 51 Bangladeshi ones came to India) and settled the boundary."
+    },
+    {
+     "k": "100th Amendment",
+     "d": "Amended the First Schedule of the Constitution to give effect to the land boundary agreement."
+    },
+    {
+     "k": "Extradition Act 1962",
+     "d": "Indian law on surrendering fugitives to and from India; treaties set the terms, and political offences are usually excepted."
+    },
+    {
+     "k": "Joint Rivers Commission",
+     "d": "Set up in 1972 to manage the rivers India and Bangladesh share."
+    },
+    {
+     "k": "Petrapole–Benapole",
+     "d": "The busiest land port on the India–Bangladesh border (West Bengal to Jessore)."
+    }
+   ],
+   "qs": [
+    {
+     "q": "India–Bangladesh relations are shaped as much by domestic politics as by shared rivers. Discuss with reference to the renewal of the Ganga Water Treaty and the issue of political asylum.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": "2022 GS2 (India's role in the Sri Lanka crisis) · 2020 GS3 (Bangladesh border)"
+    },
+    {
+     "q": "Water-sharing treaties are tools of both cooperation and leverage. Critically examine with reference to the Ganga and the Teesta.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": "2026 GS1 (water: asset and source of conflict)"
+    },
+    {
+     "q": "Examine the significance of the 2015 Land Boundary Agreement. What challenges remain in managing the India–Bangladesh border?",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": "2020 GS3 (border security: Bangladesh, Myanmar, Pakistan)"
+    }
    ]
   },
   {
@@ -501,13 +777,56 @@
      ]
     }
    ],
-   "mains": "water as strategic leverage; legality of \"abeyance\"; compare with China's upstream dams on the Brahmaputra.",
    "prel": [
-    "six rivers",
-    "Permanent Indus Commission",
-    "Neutral Expert",
-    "Court of Arbitration",
-    "Kishanganga."
+    {
+     "k": "Indus Waters Treaty 1960",
+     "d": "Brokered by the World Bank. The three eastern rivers (Ravi, Beas, Sutlej) go to India; the three western rivers (Indus, Jhelum, Chenab) go to Pakistan, with limited Indian use."
+    },
+    {
+     "k": "Permanent Indus Commission",
+     "d": "Bilateral body with one commissioner from each country, meant to meet, inspect and share data."
+    },
+    {
+     "k": "Neutral Expert",
+     "d": "A technical expert appointed to settle 'differences' on technical questions under the treaty."
+    },
+    {
+     "k": "Court of Arbitration",
+     "d": "An arbitration tribunal, run through the Permanent Court of Arbitration at The Hague, for 'disputes' under the treaty. India says it does not recognise this one."
+    },
+    {
+     "k": "Kishanganga",
+     "d": "Indian run-of-river hydropower project on a Jhelum tributary that Pakistan objected to; an arbitration decided on it in 2013."
+    },
+    {
+     "k": "Run-of-river use",
+     "d": "On the western rivers India may generate hydropower with limited storage, under design rules in the treaty."
+    },
+    {
+     "k": "Vienna Convention on the Law of Treaties 1969",
+     "d": "Sets the rules on how treaties are interpreted, suspended and ended. Treaties cannot be dropped at will."
+    },
+    {
+     "k": "'In abeyance'",
+     "d": "India's wording for suspending its performance of the treaty after the April 2025 Pahalgam attack."
+    }
+   ],
+   "qs": [
+    {
+     "q": "The Indus Waters Treaty survived wars but is now under strain. Examine the legal and strategic implications of India placing it in abeyance.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": "2026 GS1 (water in South Asia) · 2024 GS3 (China and Pakistan borders)"
+    },
+    {
+     "q": "Compare India's position on the Indus with China's upstream actions on the Brahmaputra. What does it mean for India's water diplomacy?",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    },
+    {
+     "q": "What mechanisms does the Indus Waters Treaty provide for settling disputes? Why has India questioned the competence of the Court of Arbitration?",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
    ]
   },
   {
@@ -537,15 +856,56 @@
      ]
     }
    ],
-   "mains": "FTA gains vs sector risks; technology transfer in defence; skilled migration.",
    "prel": [
-    "FTA/CEPA/PTA",
-    "CBAM",
-    "TTC",
-    "DGFT",
-    "P-75(I)",
-    "Strategic Partnership Model",
-    "G4."
+    {
+     "k": "FTA, CEPA and PTA",
+     "d": "FTA: tariffs removed on most goods. CEPA: also covers services, investment and cooperation. PTA: tariffs cut on a limited list only."
+    },
+    {
+     "k": "CBAM",
+     "d": "Carbon Border Adjustment Mechanism: the EU's carbon tax on imports such as steel, aluminium, cement and fertiliser, based on their carbon content."
+    },
+    {
+     "k": "TTC",
+     "d": "The India–EU Trade and Technology Council (2022): a forum for cooperation on trade, technology and security."
+    },
+    {
+     "k": "DGFT",
+     "d": "Directorate General of Foreign Trade under the Commerce Ministry: frames the Foreign Trade Policy and issues export-import licences."
+    },
+    {
+     "k": "P-75(I)",
+     "d": "Project 75 India: the Navy's programme to build six conventional submarines in India with a foreign partner."
+    },
+    {
+     "k": "Strategic Partnership Model",
+     "d": "Since 2017, Indian private companies team up with foreign makers to build major defence platforms such as submarines in India."
+    },
+    {
+     "k": "G4",
+     "d": "Brazil, Germany, India and Japan: they back each other's claim to permanent seats on the UN Security Council."
+    },
+    {
+     "k": "Mobility agreement",
+     "d": "A 2022 India–Germany agreement that makes it easier for skilled Indians, students and trainees to study and work in Germany."
+    }
+   ],
+   "qs": [
+    {
+     "q": "What opportunities and challenges does an India–EU free trade agreement hold for Indian manufacturing, agriculture and services? How does the EU's carbon border tax affect it?",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": "2025 GS3 (protectionism and bilateralism)"
+    },
+    {
+     "q": "Technology transfer and local production are central to defence partnerships such as P-75(I). Examine how they advance self-reliance in defence.",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    },
+    {
+     "q": "India–Germany ties have widened from trade to skills mobility and defence. Discuss, and suggest how India can benefit.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": "2024 GS2 (the West and India as an alternative to China)"
+    }
    ]
   },
   {
@@ -609,19 +969,68 @@
      ]
     }
    ],
-   "mains": "finance, not targets, is the sticking point; India's CBDR stand.",
    "prel": [
-    "UNFCCC",
-    "Kyoto",
-    "Paris",
-    "NDC",
-    "CBDR",
-    "NCQG",
-    "Global Stocktake",
-    "Loss and Damage fund",
-    "ISA",
-    "CDRI",
-    "Montreal Protocol."
+    {
+     "k": "UNFCCC",
+     "d": "UN Framework Convention on Climate Change (1992), the parent treaty. Countries meet every year at the Conference of the Parties (COP)."
+    },
+    {
+     "k": "Kyoto Protocol",
+     "d": "1997 treaty that set binding emission cuts only for developed countries."
+    },
+    {
+     "k": "Paris Agreement",
+     "d": "2015 treaty to hold warming well below 2°C and pursue 1.5°C, through each country's own pledges."
+    },
+    {
+     "k": "NDC",
+     "d": "Nationally Determined Contribution: a country's own climate pledge, renewed every five years."
+    },
+    {
+     "k": "CBDR-RC",
+     "d": "Common but differentiated responsibilities and respective capabilities: all countries share the duty, but rich countries carry more because they emitted more."
+    },
+    {
+     "k": "NCQG",
+     "d": "New Collective Quantified Goal on climate finance (COP29, Baku): developed countries to provide at least $300 billion a year by 2035. India called it too little and too late."
+    },
+    {
+     "k": "Global Stocktake",
+     "d": "A five-yearly check of the world's progress under the Paris Agreement; the first ended at COP28."
+    },
+    {
+     "k": "Loss and Damage fund",
+     "d": "Money for countries hit by climate harm they cannot adapt to, agreed at COP27 and made operational after COP28."
+    },
+    {
+     "k": "India's Panchamrit",
+     "d": "India's five pledges at COP26 (2021): 500 GW non-fossil capacity and half its energy from renewables by 2030, a one-billion-tonne emissions cut, lower carbon intensity, and net zero by 2070."
+    },
+    {
+     "k": "ISA and CDRI",
+     "d": "International Solar Alliance (launched by India and France in 2015, HQ Gurugram) and Coalition for Disaster Resilient Infrastructure (launched by India in 2019)."
+    },
+    {
+     "k": "Montreal Protocol",
+     "d": "1987 treaty that phased out ozone-depleting substances; the Kigali Amendment (2016) added HFCs. Often cited as a success story."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Climate finance, not emission targets, has become the main fault line in climate negotiations. Discuss with reference to the COP29 finance goal and India's position.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": "2025 GS3 (India's climate commitments under Paris and COP26)"
+    },
+    {
+     "q": "Explain the principle of common but differentiated responsibilities. How relevant is it in the Paris Agreement era?",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    },
+    {
+     "q": "How are initiatives such as the International Solar Alliance and the Coalition for Disaster Resilient Infrastructure shaping India's climate diplomacy?",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": "2021 GS3 (Green Grid Initiative at COP26)"
+    }
    ]
   },
   {
@@ -692,17 +1101,68 @@
      ]
     }
    ],
-   "mains": "Centre–State coordination (CAQM), crop-residue economics, public-health framing.",
    "prel": [
-    "Air Act 1981",
-    "EP Act 1986",
-    "CAQM",
-    "GRAP",
-    "NAQI",
-    "NCAP",
-    "PM2.5",
-    "temperature inversion",
-    "Art. 21."
+    {
+     "k": "Air Act 1981",
+     "d": "The Air (Prevention and Control of Pollution) Act: creates the pollution control boards and lets them set and enforce air standards."
+    },
+    {
+     "k": "Environment Protection Act 1986",
+     "d": "The umbrella law under which the Centre makes rules and issues directions on pollution."
+    },
+    {
+     "k": "CAQM",
+     "d": "Commission for Air Quality Management in the NCR and adjoining areas (statutory body, 2021). Its orders bind the States concerned."
+    },
+    {
+     "k": "GRAP",
+     "d": "Graded Response Action Plan: emergency curbs that become stricter as the AQI worsens (for example construction halts and vehicle bans)."
+    },
+    {
+     "k": "National AQI",
+     "d": "Air Quality Index (2014) with six bands: Good, Satisfactory, Moderate, Poor, Very Poor, Severe."
+    },
+    {
+     "k": "NCAP 2019",
+     "d": "National Clean Air Programme: city-wise targets to cut particulate pollution."
+    },
+    {
+     "k": "PM2.5",
+     "d": "Particles smaller than 2.5 micrometres. They go deep into the lungs and can enter the bloodstream."
+    },
+    {
+     "k": "Temperature inversion",
+     "d": "A warm layer of air sits over cooler air near the ground in winter and traps pollutants close to the surface."
+    },
+    {
+     "k": "Stubble burning",
+     "d": "Farmers in Punjab and Haryana burn paddy straw to clear fields quickly before wheat sowing; the smoke adds to Delhi's November smog."
+    },
+    {
+     "k": "Art. 21 and clean air",
+     "d": "The Supreme Court reads the right to life to include a clean environment (M.C. Mehta cases)."
+    },
+    {
+     "k": "Section 163 BNSS",
+     "d": "Lets a magistrate issue prohibitory orders in an emergency; it replaced Section 144 of the old CrPC."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Delhi's air pollution is a problem of geography, governance and crop practices. Examine, and evaluate the effectiveness of GRAP and the CAQM.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": "2015 GS1 (why Delhi's air is worse than Mumbai's and Kolkata's) · 2022 GS3 (photochemical smog)"
+    },
+    {
+     "q": "Is the right to clean air part of the right to life? Discuss judicial interventions and their limits in controlling air pollution.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": "2025 GS2 (environmental pressure groups)"
+    },
+    {
+     "q": "Stubble burning persists despite bans and subsidies. Analyse the economic reasons and suggest a farmer-centric solution.",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    }
    ]
   },
   {
@@ -757,15 +1217,72 @@
      ]
     }
    ],
-   "mains": "language is identity; Census classification rules shape which languages get support.",
    "prel": [
-    "Art. 342, 338A, 350A",
-    "PVTG",
-    "PM-JANMAN",
-    "FRA",
-    "Eighth Schedule",
-    "SPPEL",
-    "Attappady."
+    {
+     "k": "Art. 342",
+     "d": "The President notifies the Scheduled Tribes of each State; Parliament can modify the list."
+    },
+    {
+     "k": "Art. 338A",
+     "d": "National Commission for Scheduled Tribes: monitors safeguards for STs and inquires into complaints."
+    },
+    {
+     "k": "Art. 350A",
+     "d": "The State should provide primary education in the mother tongue to children of linguistic minorities."
+    },
+    {
+     "k": "Art. 29",
+     "d": "Citizens with a distinct language, script or culture have the right to conserve it."
+    },
+    {
+     "k": "PVTG",
+     "d": "Particularly Vulnerable Tribal Group: the most vulnerable tribal groups, identified by pre-agricultural technology, declining or stagnant population, low literacy and a subsistence economy. About 75 groups are listed."
+    },
+    {
+     "k": "PM-JANMAN (2023)",
+     "d": "A mission to give PVTG habitations housing, roads, water, electricity and health services."
+    },
+    {
+     "k": "Forest Rights Act 2006",
+     "d": "Recognises forest dwellers' rights, including 'habitat rights' for PVTGs."
+    },
+    {
+     "k": "Eighth Schedule",
+     "d": "The list of 22 languages recognised in the Constitution."
+    },
+    {
+     "k": "SPPEL",
+     "d": "Scheme for Protection and Preservation of Endangered Languages (2013): documents languages spoken by fewer than 10,000 people."
+    },
+    {
+     "k": "People's Linguistic Survey of India",
+     "d": "Survey of 2010 led by G.N. Devy's Bhasha Centre that found about 800 languages, many more than the Census lists."
+    },
+    {
+     "k": "Attappady",
+     "d": "Hill area of Palakkad district in Kerala's Western Ghats and the state's only tribal taluk; home to the Irula, Muduga and Kurumba."
+    },
+    {
+     "k": "Language shift",
+     "d": "When younger people give up their community language for the dominant one, so the language slowly dies out."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Many tribal languages are disappearing for want of a script and official recognition. Discuss the constitutional and policy measures to protect endangered languages.",
+     "m": "GS1 · 150 words · 10 marks",
+     "ref": "2021 GS1 (uniqueness of tribal knowledge systems) · 2026 GS1 (linguistic reorganisation of States)"
+    },
+    {
+     "q": "Why are some tribal groups classified as Particularly Vulnerable? Evaluate the effectiveness of schemes for their development.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": "2026 GS2 (tribal development policy) · 2022 GS1 (tribes as a single category)"
+    },
+    {
+     "q": "Examine how Census methods can affect the visibility of small communities and their languages.",
+     "m": "GS1 · 150 words · 10 marks",
+     "ref": ""
+    }
    ]
   },
   {
@@ -817,14 +1334,60 @@
      ]
     }
    ],
-   "mains": "tribal land ownership vs industrial need; role of councils in consent.",
    "prel": [
-    "Sixth Schedule",
-    "ADC",
-    "NGT",
-    "rat-hole mining",
-    "Shillong plateau",
-    "Lakadong turmeric."
+    {
+     "k": "Sixth Schedule",
+     "d": "Gives tribal areas of Assam, Meghalaya, Tripura and Mizoram their own elected councils with law-making and administrative powers."
+    },
+    {
+     "k": "Autonomous District Council",
+     "d": "Elected council in a Sixth Schedule district; Meghalaya has three (Khasi Hills, Jaintia Hills and Garo Hills). Land is mostly community or privately owned, not State-owned."
+    },
+    {
+     "k": "National Green Tribunal",
+     "d": "Specialised court set up in 2010 for environmental cases."
+    },
+    {
+     "k": "Rat-hole mining",
+     "d": "Hand-dug narrow pits to reach thin coal seams; unsafe and unregulated. The NGT banned it in 2014."
+    },
+    {
+     "k": "MMDR Act 1957",
+     "d": "The central law governing mining and minerals; the Supreme Court has said it applies in Sixth Schedule hill districts too."
+    },
+    {
+     "k": "Shillong plateau",
+     "d": "The hilly plateau of Meghalaya, with limestone and coal belts in the Jaintia Hills and some of the wettest places on earth (Cherrapunji, Mawsynram)."
+    },
+    {
+     "k": "Matrilineal society",
+     "d": "Khasi, Jaintia and Garo communities trace descent and inheritance through the mother."
+    },
+    {
+     "k": "Sacred groves",
+     "d": "Patches of forest protected by community belief; in Meghalaya they are known as Law Kyntang or Law Lyngdoh."
+    },
+    {
+     "k": "Lakadong turmeric",
+     "d": "A Jaintia Hills turmeric variety famous for its high curcumin content."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Industrial and mining projects in Sixth Schedule areas often clash with community land ownership. Discuss with reference to Meghalaya.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": "2025 GS1 (tribal development: displacement and rehabilitation) · 2025 GS3 (mining as an environmental hazard)"
+    },
+    {
+     "q": "Why is mining considered an environmental hazard? Explain the remedial measures, with reference to coal and limestone mining in the North-East.",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": "2025 GS3 (mining and remedial measures) · 2017 GS1 (coal mining)"
+    },
+    {
+     "q": "How far do Autonomous District Councils safeguard tribal land rights? Suggest ways to strengthen consent processes.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
    ]
   },
   {
@@ -879,15 +1442,60 @@
      ]
     }
    ],
-   "mains": "gains in mortality vs missed incidence targets; nutrition and catastrophic costs.",
    "prel": [
-    "NTEP",
-    "Ni-kshay",
-    "DOTS",
-    "MDR-TB",
-    "BPaLM",
-    "End TB",
-    "SDG 3."
+    {
+     "k": "NTEP",
+     "d": "National TB Elimination Programme: India's programme (earlier RNTCP) for finding, treating and preventing TB."
+    },
+    {
+     "k": "Ni-kshay",
+     "d": "Online portal that tracks every notified TB patient from diagnosis to treatment outcome."
+    },
+    {
+     "k": "Ni-kshay Poshan Yojana",
+     "d": "Monthly cash support to TB patients for nutrition during treatment."
+    },
+    {
+     "k": "DOTS",
+     "d": "Directly Observed Treatment, Short-course: a health worker or volunteer watches the patient take each dose."
+    },
+    {
+     "k": "MDR-TB",
+     "d": "Multidrug-resistant TB: the bacteria resist the two main first-line drugs, isoniazid and rifampicin."
+    },
+    {
+     "k": "BPaLM",
+     "d": "A six-month all-oral regimen of four drugs (bedaquiline, pretomanid, linezolid, moxifloxacin) for drug-resistant TB."
+    },
+    {
+     "k": "End TB Strategy",
+     "d": "WHO's plan to end the epidemic by 2030, with deaths cut by 90% and new cases by 80% compared with 2015."
+    },
+    {
+     "k": "Catastrophic costs",
+     "d": "When a family's TB-related spending (medicines, travel, lost wages) exceeds 20% of its yearly income."
+    },
+    {
+     "k": "SDG 3.3",
+     "d": "The UN goal target to end the TB epidemic, along with AIDS and malaria, by 2030."
+    }
+   ],
+   "qs": [
+    {
+     "q": "India has cut TB deaths faster than the global average but missed its 2025 elimination target. Examine the gaps in the National TB Elimination Programme.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": "2020 GS2 (health care policies) · 2024 GS2 (public healthcare and marketisation)"
+    },
+    {
+     "q": "TB is a disease of poverty and malnutrition. How can nutrition support and social protection improve outcomes?",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": "2026 GS2 (malnutrition and social equity) · 2024 GS2 (poverty and malnutrition cycle)"
+    },
+    {
+     "q": "Discuss the role of WHO and international cooperation in global health security.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": "2020 GS2 (role of WHO in the Covid-19 pandemic)"
+    }
    ]
   },
   {
@@ -934,15 +1542,60 @@
      ]
     }
    ],
-   "mains": "reliability and quality control; private-sector manufacturing of stages.",
    "prel": [
-    "PSLV",
-    "HTPB",
-    "SSO",
-    "NSIL",
-    "IN-SPACe",
-    "Sriharikota",
-    "LVM3."
+    {
+     "k": "PSLV",
+     "d": "Polar Satellite Launch Vehicle: ISRO's four-stage workhorse rocket with alternating solid and liquid stages."
+    },
+    {
+     "k": "PS3",
+     "d": "The third stage of the PSLV, a solid rocket motor. The 2025 and 2026 failures were traced to this stage."
+    },
+    {
+     "k": "HTPB",
+     "d": "Hydroxyl-terminated polybutadiene: the rubber-like binder that also serves as fuel in solid rocket motors."
+    },
+    {
+     "k": "Solid vs liquid motors",
+     "d": "Solid motors are simple and strong but cannot be throttled or shut down; liquid engines are controllable but more complex."
+    },
+    {
+     "k": "Sun-synchronous orbit",
+     "d": "A near-polar orbit in which the satellite crosses each place at the same local time, ideal for imaging."
+    },
+    {
+     "k": "NSIL",
+     "d": "NewSpace India Limited: ISRO's commercial arm that markets launches and services."
+    },
+    {
+     "k": "IN-SPACe",
+     "d": "The agency (2020) that authorises and promotes private-sector space activity in India."
+    },
+    {
+     "k": "Sriharikota",
+     "d": "India's main launch site (Satish Dhawan Space Centre) in Andhra Pradesh, on the east coast and close to the equator."
+    },
+    {
+     "k": "LVM3",
+     "d": "ISRO's heavier launcher, used for Chandrayaan-3 and planned for Gaganyaan; it shares some quality processes with the PSLV."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Reliability of launch vehicles is key to India's growing space economy. Examine the challenges before ISRO and the role of private industry.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": "2019 GS3 (India's space station plan) · 2026 GS3 (Mission Drishti)"
+    },
+    {
+     "q": "Discuss the roles of NSIL and IN-SPACe in opening India's space sector to private players.",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    },
+    {
+     "q": "How do space technologies contribute to governance and development in India?",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": "2026 GS1 (satellite technologies for climate-smart agriculture)"
+    }
    ]
   },
   {
@@ -972,13 +1625,52 @@
      ]
     }
    ],
-   "mains": "localisation vs free flow of data; sovereignty vs cost.",
    "prel": [
-    "DPDP Act 2023",
-    "data fiduciary",
-    "Puttaswamy",
-    "IT Act 2000",
-    "IndiaAI Mission."
+    {
+     "k": "DPDP Act 2023",
+     "d": "India's data protection law: consent-based use of personal data, duties for the organisations that handle it, rights for individuals, and penalties through the Data Protection Board."
+    },
+    {
+     "k": "Data fiduciary",
+     "d": "The organisation that decides why and how personal data is processed; the individual is the 'data principal'."
+    },
+    {
+     "k": "Puttaswamy (2017)",
+     "d": "Nine-judge Supreme Court ruling that privacy is a fundamental right under Article 21."
+    },
+    {
+     "k": "IT Act 2000",
+     "d": "India's cyber law: electronic contracts, cyber offences and the liability of intermediaries such as platforms."
+    },
+    {
+     "k": "IndiaAI Mission (2024)",
+     "d": "National programme to build AI computing capacity, datasets and AI start-ups."
+    },
+    {
+     "k": "Data localisation",
+     "d": "The requirement that certain data be stored, and sometimes processed, inside India."
+    },
+    {
+     "k": "Residency vs processing",
+     "d": "Residency is where data is stored; local processing (inference) is where the AI model actually computes on it."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Examine the issues in balancing the right to privacy with the use of AI and cross-border data flows. How adequate is India's data protection law?",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": "2024 GS2 (privacy under Article 21) · 2023 GS3 (AI in diagnosis and privacy)"
+    },
+    {
+     "q": "Discuss the benefits and risks of data localisation for India's digital economy.",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": "2025 GS2 (children's rights in the digital era)"
+    },
+    {
+     "q": "How can India build sovereign AI capacity while using global AI platforms?",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": "2026 GS3 (agentic AI: working, uses and risks)"
+    }
    ]
   },
   {
@@ -1030,14 +1722,56 @@
      ]
     }
    ],
-   "mains": "surveillance in public spaces; State action plans; One Health coordination.",
    "prel": [
-    "AMR",
-    "One Health",
-    "NAP-AMR",
-    "Schedule H1",
-    "metagenomics",
-    "Chennai Declaration."
+    {
+     "k": "AMR",
+     "d": "Antimicrobial resistance: microbes stop responding to medicines, driven by overuse of antibiotics in people, livestock and farming. The resulting 'superbugs' are hard to treat."
+    },
+    {
+     "k": "One Health",
+     "d": "An approach that treats human, animal, plant and environmental health as linked and plans them together."
+    },
+    {
+     "k": "NAP-AMR 2.0",
+     "d": "India's National Action Plan on AMR for 2025–29, with a One Health approach and stronger surveillance."
+    },
+    {
+     "k": "Schedule H1",
+     "d": "A list of drugs, including many antibiotics, that pharmacists can sell only on prescription and must record."
+    },
+    {
+     "k": "Metagenomics",
+     "d": "Reading all the DNA in a sample to find which microbes and resistance genes are present."
+    },
+    {
+     "k": "Chennai Declaration (2012)",
+     "d": "Doctors' joint declaration that gave India its first roadmap against AMR."
+    },
+    {
+     "k": "Colistin ban",
+     "d": "India banned colistin, a last-resort antibiotic, in animal feed in 2019."
+    },
+    {
+     "k": "World AMR Awareness Week",
+     "d": "Held every year from 18 to 24 November."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Antimicrobial resistance is called a silent pandemic. Discuss its causes and evaluate India's National Action Plan.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": "2022 GS3 (vaccines and the Covid-19 response) · 2021 GS3 (applied biotechnology)"
+    },
+    {
+     "q": "Explain the One Health approach and its relevance for tackling AMR and diseases that spread from animals to humans.",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    },
+    {
+     "q": "How can surveillance of public spaces such as metros and hospitals help control the spread of resistant microbes?",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    }
    ]
   }
  ],

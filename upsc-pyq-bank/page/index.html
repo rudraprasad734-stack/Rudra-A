@@ -201,6 +201,8 @@
   .dy-box.mains{border-color:#ffd27a; background:#2a2412;} .dy-box.mains span{color:#ffd27a;} .dy-box.prel{border-color:#a99bff; background:#1d1a3a;} .dy-box.prel span{color:#a99bff;} .dy-box.prel i{margin:3px 5px 3px 0; display:inline-block; background:#2a2552; color:#e3deff;}
   .dy-h3{font:700 15px Georgia,serif; color:#2de6d6; margin:16px 0 6px;} #caqGame[data-s="daily"] .cg-body p,#caqGame[data-s="daily"] .cg-body li{font-size:14.5px; line-height:1.55; color:#d9efe9;} #caqGame[data-s="daily"] .cg-body ul{margin:4px 0 8px; padding-left:20px;} #caqGame[data-s="daily"] .cg-body p{margin:6px 0;} #caqGame[data-s="daily"] .dy-card small{font-size:13px; line-height:1.4; color:#9fd8d0;}
   .dy-tb{width:100%; border-collapse:collapse; margin:6px 0 10px; font-size:13.5px;} .dy-tb th{width:31%; text-align:left; vertical-align:top; background:#0f3a40; color:#ffd27a; padding:7px 9px; border:1px solid #1d5a60; font-size:12.5px;} .dy-tb td{padding:7px 9px; border:1px solid #1d5a60; vertical-align:top; color:#e6f7f4; line-height:1.45;}
+  .dy-terms{margin:4px 0 8px;} .dy-term{border-left:3px solid #a99bff; background:#1d1a3a; border-radius:0 10px 10px 0; padding:8px 11px; margin-bottom:7px;} .dy-term b{display:block; color:#e3deff; font-size:14px; margin-bottom:2px;} .dy-term span{display:block; color:#d9efe9; font-size:13.8px; line-height:1.5;}
+  .dy-q{border-left:4px solid #ffd27a; background:#2a2412; border-radius:0 12px 12px 0; padding:9px 12px; margin:8px 0;} .dy-qn{display:flex; align-items:baseline; gap:9px; color:#ffd27a; font-weight:800; font-size:13px; letter-spacing:.06em;} .dy-qn small{color:#c9b77a; font-weight:600; font-size:11.5px; letter-spacing:0;} #caqGame[data-s="daily"] .dy-q p{margin:4px 0 4px; color:#fff; font-size:14.5px; line-height:1.5;} .dy-ref{color:#b9a86a; font-size:12px; line-height:1.4; margin-top:3px;}
   .dy-read{display:block; width:100%; margin:16px 0 6px; background:linear-gradient(180deg,#3df0de,#1fb8aa); color:#032; border:0; border-radius:14px; padding:13px; font:inherit; font-weight:800; cursor:pointer;} .dy-read.on{background:#0a262c; color:#2de6d6; border:1.5px solid #2de6d6;}
   .dy-note{color:#9fd8d0; font-size:12px; line-height:1.5; border-top:1px dashed #1d5a60; padding-top:10px; margin:16px 2px 4px;}
   .cx-p{margin:0; padding:0 14px 14px 32px; color:#d9efe9; font-size:14.5px; line-height:1.55;} .cx-p li{margin-bottom:7px;} .cx-intro{color:#9fd8d0; font-size:13px; margin:0 2px 8px;}
@@ -17848,8 +17850,8 @@ function caqDailyHtml(){
     h += '<div class="dy-head"><div class="dy-gsrow">'+dyGs(x)+'</div><h2>'+esc(x.t)+'</h2></div>';
     if(x.news) h += '<div class="dy-box news"><span>In the news</span>'+dyMd(dyCap(x.news))+'</div>';
     x.blocks.forEach(function(b){ h += (b.h ? '<h3 class="dy-h3">'+esc(b.h)+'</h3>' : "")+dyItems(b); });
-    if(x.mains) h += '<div class="dy-box mains"><span>Mains angle</span>'+dyMd(x.mains)+'</div>';
-    if(x.prel && x.prel.length) h += '<div class="dy-box prel"><span>Prelims keywords</span>'+x.prel.map(function(k){ return '<i>'+esc(k)+'</i>'; }).join("")+'</div>';
+    if(x.prel && x.prel.length) h += '<h3 class="dy-h3">Prelims: key terms explained</h3><div class="dy-terms">'+x.prel.map(function(k){ return '<div class="dy-term"><b>'+esc(k.k)+'</b><span>'+dyMd(k.d)+'</span></div>'; }).join("")+'</div>';
+    if(x.qs && x.qs.length) h += '<h3 class="dy-h3">Mains: practice questions</h3>'+x.qs.map(function(q, i){ return '<div class="dy-q"><div class="dy-qn">Q'+(i+1)+'<small>'+esc(q.m)+'</small></div><p>'+esc(q.q)+'</p>'+(q.ref ? '<div class="dy-ref">Similar to: '+esc(q.ref)+'</div>' : "")+'</div>'; }).join("");
     h += '<button type="button" class="dy-read'+(done ? " on" : "")+'" data-caq="dyread" data-id="'+esc(x.id)+'">'+(done ? "✓ Read" : "Mark as read")+'</button>';
     return h+'</div>';
   }
@@ -17860,7 +17862,7 @@ function caqDailyHtml(){
   var last = "";
   d.topics.forEach(function(z){
     if(z.sec!==last){ h += '<div class="cx-sec">'+esc(z.sec)+'</div>'; last = z.sec; }
-    h += '<button type="button" class="dy-card" data-caq="dyt" data-id="'+esc(z.id)+'"><span class="dy-top"><span>'+dyGs(z)+'</span><span class="dy-dot'+(rd[z.id] ? " on" : "")+'" aria-label="'+(rd[z.id] ? "Read" : "Not read")+'"></span></span><b>'+esc(z.t)+'</b><small>'+dyMd(z.news || "")+'</small><span class="dy-kw">'+(z.prel || []).slice(0, 4).map(function(k){ return '<i>'+esc(k)+'</i>'; }).join("")+'</span></button>';
+    h += '<button type="button" class="dy-card" data-caq="dyt" data-id="'+esc(z.id)+'"><span class="dy-top"><span>'+dyGs(z)+'</span><span class="dy-dot'+(rd[z.id] ? " on" : "")+'" aria-label="'+(rd[z.id] ? "Read" : "Not read")+'"></span></span><b>'+esc(z.t)+'</b><small>'+dyMd(z.news || "")+'</small><span class="dy-kw">'+(z.prel || []).slice(0, 4).map(function(k){ return '<i>'+esc(k.k)+'</i>'; }).join("")+'</span></button>';
   });
   if(d.note) h += '<p class="dy-note">'+esc(d.note)+'</p>';
   return h+'</div>';
@@ -21117,7 +21119,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "417";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "418";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
