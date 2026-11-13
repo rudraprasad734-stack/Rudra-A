@@ -80,3 +80,19 @@ Any new delimitation must reconcile "one person, one vote, one value" with coope
 **Mains Q (GS2, 250 words, 15 marks):** Population-based delimitation can penalise states that stabilised population. Discuss, and suggest a fair way to redistribute Lok Sabha seats.
 
 **What I could not check:** what the Bill in today's headline contains, and whether it is the April Bill revived or a new one.
+
+---
+
+# Rule added: static linkage (how aspirants really make notes)
+
+Every news item is expanded beyond the article, using keyword searches, into these blocks (skip a block only if it truly does not apply):
+1. **Numbers and records:** how many such things exist in India, the largest, tallest, longest, oldest, the state with most; say when a "smallest" has no official answer.
+2. **Geography:** where it is, the river/range/district, the neighbouring features, parks and hazards (seismic, flood).
+3. **People:** which tribe or community lives there, their religion, festivals, history.
+4. **Livelihood:** the crops (rice, millet, orchards, cash crops), farming system (jhum, wet rice), what the project or event puts at stake.
+5. **History of similar cases:** earlier movements or precedents with leaders, years and outcomes (e.g. for dams: Narmada Bachao Andolan, Tehri, Silent Valley, Koel-Karo, Lower Subansiri).
+6. **Law and policy hooks:** acts, schemes, bodies, constitutional articles.
+7. **International or strategic angle.**
+8. **Way forward, Prelims keywords, Mains questions.**
+Source tags on every fact: [today's PDF], [web] (with link), [bg] (my background, verify). Where sources disagree, say so (for example the Dibang dam height, 278 m or 288 m).
+Worked example: the Siang Upper Multipurpose Project note.
