@@ -102,3 +102,13 @@ Prefer records and comparisons (highest, largest, longest, first, most, smallest
 
 ## Rule added: open with a core static explainer
 For every topic, start with the standing syllabus content of the institution, law, scheme or concept behind the news, before the news itself. Example: a CAG audit story gets what the CAG is (articles), who appoints, term, who can remove, independence safeguards, functions and types of audit, reports and the PAC, similar bodies (Controller General of Accounts, parliamentary committees, other constitutional offices, INTOSAI). Leave out the names of office-holders. Do the same for the Election Commission, Sixth Schedule, Census and reservation, dams and water law, treaties, GRAP/CAQM, PVTGs, tuberculosis programme, ISRO and launch vehicles, data protection, and AMR. Mark facts I did not look up as "standard knowledge" and flag the ones I am unsure of.
+
+---
+
+# How to add a new day to the app
+1. The user uploads the day's Hindu PDF. Extract the text (pdftotext) and read all of it.
+2. Pick the topics that matter for UPSC; skip local crime, sports and similar items.
+3. Per topic write: section, title, GS chips, one-line news, blocks of the static explainer (tables and bullets), 5–11 Prelims terms each with a one-to-two-sentence explanation, and 3 Mains questions with word limit and marks plus a "Similar to" line from the app's PYQ bank (search the d-bank data in index.html for related Mains questions).
+4. Save as `page/daily/YYYY-MM-DD.json` (same structure as `2026-11-13.json`), add it to `page/daily/index.json` and to the APP_SHELL list in `page/sw.js`.
+5. Bump `APP_BUILD` and `CACHE_NAME` together, syntax-check, test in the browser at 390px, open a draft PR, and merge only when the user says "Merge".
+6. At month end, the day files are the source for the monthly MCQs for the Current Affairs Quizzes.
