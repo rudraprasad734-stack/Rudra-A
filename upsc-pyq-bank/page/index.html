@@ -1042,6 +1042,7 @@
   .rt-wave .rt-r .n{font-weight:calc(600 + 200*var(--w)); font-size:calc(14.5px + 1px*var(--w));} .rt-wave .rt-r .t{font-size:calc(13px + 1px*var(--w));}
   @media (prefers-reduced-motion:reduce){ .rt-r{transition:none;} }
   .rt-x{display:flex; align-items:center; gap:10px; margin:6px 0 0; padding:6px 10px; border:1.5px dashed rgba(255,255,255,.38); border-radius:14px; color:#d9fffb; font-size:13px;} .rt-x .ic{flex:none; width:34px; text-align:center; font-size:17px;} .rt-x .t{flex:none; width:68px; font-weight:800;} .rt-x .n{flex:1; min-width:0;} .rt-x .d{flex:none; opacity:.85;} .rt-x.warn{border-color:#ffb3a6; color:#ffd9d2;} .rt-card.sun2 .rt-x{color:#4a2a58; border-color:rgba(74,42,88,.45);} .rt-card.sun2 .rt-x.warn{color:#8a1d12; border-color:#c0473a;}
+  .rt-pd{position:relative; height:30px; margin:12px -18px 0; pointer-events:none;} .rt-pd svg{position:absolute; inset:0; width:100%; height:100%; display:block;} .rt-pd b{position:absolute; left:22px; top:12px; line-height:16px; font-size:10.5px; letter-spacing:.14em; text-transform:uppercase; color:#fff; text-shadow:0 1px 2px rgba(0,0,0,.35);} .rt-pd.m b{left:auto; right:22px;}
   .rt-ft{position:relative; z-index:2; display:flex; justify-content:space-between; margin-top:14px; padding-top:10px; border-top:1px solid rgba(255,255,255,.14); font-size:12px; color:#bff3ef;}
   .rt-shadow{height:22px; margin:-4px 34px 0; border-radius:50%; background:radial-gradient(ellipse,rgba(0,0,0,.5),transparent 70%);}
   .rt-card.sun2{background:linear-gradient(160deg,#ffd9a0 0%,#ff9f7a 40%,#8a5fd0 100%); border-color:rgba(255,255,255,.55); box-shadow:0 2px 0 rgba(255,255,255,.5) inset,0 -26px 40px rgba(60,20,90,.25) inset,18px 30px 50px rgba(0,0,0,.5),-4px 6px 0 #b0613f,-8px 12px 0 #8a4a30;} .rt-card.sun2:after{background:radial-gradient(circle,rgba(255,255,255,.7),transparent 62%);}
@@ -18625,6 +18626,14 @@ function rtBuildHtml(){
   h += '<div class="rt-bar"><button type="button" class="rt-go" data-rt="create"'+(ok ? "" : " disabled")+'>Create my weekly routine<small>'+(ok ? list.length+' activit'+(list.length===1 ? "y" : "ies")+' \u00B7 '+esc(rtDaysText()) : (list.length ? "Pick at least one day" : "Add an activity first"))+'</small></button></div></div>';
   return h;
 }
+function rtPeriod(a){ return a < 300 ? "n" : a < 720 ? "m" : a < 1020 ? "d" : "e"; }   // 5 AM-12 PM morning, 12-5 PM afternoon, 5 PM on evening, small hours count as night
+function rtPeriodHtml(k){
+  var name = {m:"Morning", d:"Afternoon", e:"Evening", n:"Night"}[k], sc;
+  if(k === "m") sc = '<circle cx="48" cy="13" r="11" fill="#fff6b0"/><g stroke="#fff6b0" stroke-width="2" stroke-linecap="round"><path d="M48 -2v-4M61 2l3-3M35 2l-3-3"/></g><path d="M0 30V22Q40 4 90 20Q130 8 170 22Q230 6 300 22Q350 12 400 24V30Z" fill="#e0a800"/>';
+  else if(k === "d") sc = '<g fill="#fff" opacity=".92"><ellipse cx="225" cy="12" rx="22" ry="7"/><ellipse cx="241" cy="9" rx="14" ry="7"/><ellipse cx="270" cy="15" rx="18" ry="6"/></g><path d="M0 30V20Q60 8 120 20T240 20T400 18V30Z" fill="#e0671f"/>';
+  else sc = '<circle cx="350" cy="11" r="9" fill="#fff4c2"/><circle cx="354" cy="9" r="8" fill="#5b36b0"/><g fill="#fff"><circle cx="300" cy="6" r="1.5"/><circle cx="270" cy="14" r="1.2"/><circle cx="380" cy="22" r="1.2"/><circle cx="320" cy="18" r="1"/></g><path d="M0 30V22H30V14H48V22H80V10H96V22H140V16H170V22H400V30Z" fill="#4b2b9a"/>';
+  return '<div class="rt-pd '+(k === "n" ? "e" : k)+'"><svg viewBox="0 0 400 30" preserveAspectRatio="none" aria-hidden="true">'+sc+'</svg><b>'+name+'</b></div>';
+}
 function rtCardHtml(){
   var list = rtSorted(), sun = rtIsDay(), nm = profile && profile.name ? profile.name : "";
   var h = '<div class="rt"><div class="rt-stage"><div class="rt-card'+(sun ? " sun2" : "")+'"><span class="rt-sun" aria-hidden="true">'+rtGlyph(list[0] ? list[0].s : "wake")+'</span><h2>My weekly routine</h2><div class="rt-sub">'+esc(rtWeekLabel())+(nm ? ' \u00B7 '+esc(nm) : '')+'</div>';
@@ -18647,7 +18656,8 @@ function rtCardHtml(){
     ents.push({a:x.a, o:1, h:'<div class="rt-x'+(clash ? ' warn' : '')+'"><span class="ic" aria-hidden="true">\u2795</span><span class="t">'+esc(fmt12(hmStr(x.a)))+'</span><span class="n">'+esc(x.name)+' ('+esc(rtDayTag(x.days))+')'+(clash ? ' \u00B7 clashes with '+esc(clash[3]) : '')+'</span><span class="d">\u2192 '+esc(fmt12(hmStr(x.b)))+'</span></div>'});
   });
   ents.sort(function(p, q){ return p.a - q.a || p.o - q.o; });
-  ents.forEach(function(e){ h += e.h; });
+  var lastP = "";
+  ents.forEach(function(e){ var p = rtPeriod(e.a); if(p !== lastP){ lastP = p; h += rtPeriodHtml(p); } h += e.h; });   // a little scene where morning, afternoon and evening begin
   var ended = toKey(rtDate(6)) < todayKey, hasPlan = !!studyPlan;
   var acts = '<div class="rt-acts" role="toolbar" aria-label="Routine actions">'+
     '<button type="button" data-rt="share"><i aria-hidden="true">\u2197</i><span>Share</span></button>'+
@@ -21170,7 +21180,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "424";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "425";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
