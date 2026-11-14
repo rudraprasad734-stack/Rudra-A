@@ -18292,7 +18292,8 @@ function rtMade(){ return !!rt.made && rt.items.length > 0; }
 function rtPlanWindows(){   // the study blocks of the routine as planner session windows (overlaps joined, at most 6)
   if(!rtMade()) return [];
   var sp = [], out = [];
-  rtStudyBlocks().forEach(function(it){ var q = rtSpan(it); if(q[1] - q[0] >= 15 && q[1] <= 1440) sp.push(q); });
+  rtStudyBlocks().forEach(function(it){ var q = rtSpan(it); if(q[1] <= 1440){ if(q[1] - q[0] >= 15) sp.push(q); } else{   // a study block that runs past midnight (10 PM to 1 AM): the planner gets both parts, the evening and the early morning
+      if(1440 - q[0] >= 15) sp.push([q[0], 1440]); if(q[1] - 1440 >= 15) sp.push([0, q[1] - 1440]); } });
   sp.sort(function(a, b){ return a[0] - b[0]; });
   sp.forEach(function(q){ var l = out[out.length-1]; if(l && q[0] <= l[1]) l[1] = Math.max(l[1], q[1]); else out.push([q[0], q[1]]); });
   return out.slice(0, 6).map(function(q){ return {start:hmStr(q[0]), end:hmStr(q[1]), subject:""}; });
@@ -21135,7 +21136,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "421";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "422";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
