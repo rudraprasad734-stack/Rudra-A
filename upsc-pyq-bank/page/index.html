@@ -2768,9 +2768,9 @@ function openProfileModal(isEdit){
       '<h2 id="pfTitle">User Setup</h2>'+
       '<p class="muted">Set your details to personalise your study planner.</p>'+
       '<div class="sf"><label for="pfName">1. Name</label><input id="pfName" type="text" autocomplete="name" placeholder="Enter your full name" value="'+esc(p.name)+'"></div>'+
-      '<div class="sf"><label for="pfDistrict">2. District</label><input id="pfDistrict" type="text" placeholder="Enter your district" value="'+esc(p.district)+'"></div>'+
-      '<div class="sf"><label for="pfState">3. State</label><select id="pfState"><option value="">Select state</option>'+
+      '<div class="sf"><label for="pfState">2. State</label><select id="pfState"><option value="">Select state</option>'+
         INDIAN_STATES.map(function(s){ return '<option'+(s===p.state?" selected":"")+'>'+esc(s)+'</option>'; }).join("")+'</select></div>'+
+      '<div class="sf"><label for="pfDistrict">3. District</label><input id="pfDistrict" type="text" placeholder="Enter your district" value="'+esc(p.district)+'"></div>'+
       '<div class="sf"><label for="pfPrefix">4. Choose prefix / post</label><select id="pfPrefix">'+
         PREFIXES.map(function(s){ return '<option'+((custom ? s==="Custom" : s===p.prefix)?" selected":"")+'>'+esc(s)+'</option>'; }).join("")+'</select></div>'+
       '<div class="sf" id="pfCustomWrap"'+(custom?"":" hidden")+'><label for="pfCustom">Custom prefix / post</label><input id="pfCustom" type="text" placeholder="e.g. IFoS" value="'+esc(custom?p.prefix:"")+'"></div>'+
@@ -2792,8 +2792,8 @@ function openProfileModal(isEdit){
     var prefix = prefixSel.value === "Custom" ? m.querySelector("#pfCustom").value.trim() : prefixSel.value;
     var errs = [];
     if(!name) errs.push("Enter your full name.");
-    if(!district) errs.push("Enter your district.");
     if(!state) errs.push("Select your state.");
+    if(!district) errs.push("Enter your district.");
     if(!prefix) errs.push("Enter your custom prefix / post.");
     var box = m.querySelector("#pfErr");
     if(errs.length){ box.hidden = false; box.innerHTML = errs.map(esc).join("<br>"); return; }
@@ -2880,17 +2880,19 @@ function frWelcome(){
   try{ guidesSeen.home = 1; lsSetJSON(GUIDE_KEY, guidesSeen); }catch(e){}   // the timer needs no tips pop-up on day one
   var m = showModal('<div class="modal card fr-welcome" role="dialog" aria-modal="true" aria-labelledby="fwT"><div class="fr-ico" aria-hidden="true">&#128075;</div>'+
     '<h2 id="fwT">Welcome, '+esc(profile.prefix)+' '+esc(profile.name)+'</h2>'+
-    '<p>Your study timer is ready. Start it whenever you sit down to study. You can plan your syllabus any time.</p>'+
-    '<button type="button" class="btn primary fr-go" id="frOpen">Open my timer</button></div>', false);
-  m.querySelector("#frOpen").addEventListener("click", function(){ closeModal(); setTab("dashboard"); setTimeout(planHintShow, 1200); });
+    '<p>Start by telling us about your day. Your routine decides when you study, and your study plan is built around it.</p>'+
+    '<button type="button" class="btn primary fr-go" id="frOpen">Make my routine</button>'+
+    '<button type="button" class="fr-later" id="frTimer">Open my timer instead</button></div>', false);
+  m.querySelector("#frOpen").addEventListener("click", function(){ closeModal(); setTab("routine"); });
+  m.querySelector("#frTimer").addEventListener("click", function(){ closeModal(); setTab("dashboard"); setTimeout(planHintShow, 1200); });
 }
 function planHintShow(){
   if(studyPlan || lsGet(PLANHINT_KEY) || activeTab !== "dashboard" || document.getElementById("modalHost") || document.getElementById("planHint")) return;
   var c = document.createElement("div"); c.id = "planHint"; c.className = "fr-hint"; c.setAttribute("role", "dialog"); c.setAttribute("aria-label", "Plan your study");
-  c.innerHTML = '<b>Plan your study?</b><p>A plan saves your study time against chapters and shows what to study next. It takes about a minute.</p><div class="row"><button type="button" class="no" id="phLater">Later</button><button type="button" class="go" id="phGo">Make my plan</button></div>';
+  c.innerHTML = '<b>Plan your study?</b><p>Tell us about your day first. Your routine sets the study times, then the plan follows.</p><div class="row"><button type="button" class="no" id="phLater">Later</button><button type="button" class="go" id="phGo">Make my routine</button></div>';
   document.body.appendChild(c);
   c.querySelector("#phLater").addEventListener("click", function(){ lsSet(PLANHINT_KEY, "1"); c.remove(); });
-  c.querySelector("#phGo").addEventListener("click", function(){ lsSet(PLANHINT_KEY, "1"); c.remove(); setTab("planner"); });
+  c.querySelector("#phGo").addEventListener("click", function(){ lsSet(PLANHINT_KEY, "1"); c.remove(); setTab((rt && rt.made && rt.items.length) ? "planner" : "routine"); });
 }
 // when a timer or Pomodoro ends and there is no plan yet: the time is saved either way, and they are invited to plan
 function openTimerNoPlan(){
@@ -7498,9 +7500,9 @@ var ACT_INFO = {
   ca:{title:"Current Affairs", hint:"Daily, specific days or weekly", color:"--tab-scheduler"}
 };
 function wizDefaults(){
-  return {step:0, qs:qsNew(), err:[], open:{}, init:{}, durMode:"months", months:12, target:"", start:todayKey, startView:"auto",
-    mode:"mains", gs1:true, csat:true, gs:[1,2,3,4], essay:true, optionalOn:true, optional:"", customText:"",
-    order:[], sel:{}, optStart:"syllabus", optFirst:"", optOrder:null,
+  return {step:0, qs:null, err:[], open:{}, init:{}, durMode:"months", months:12, target:"", start:todayKey, startView:"auto",
+    mode:"both", gs1:true, csat:true, gs:[1,2,3,4], essay:true, optionalOn:true, optional:"", customText:"",
+    order:[], orderAuto:true, sel:{}, optStart:"syllabus", optFirst:"", optOrder:null,
     cap:{days:[1,2,3,4,5,6], sessions:[{start:"06:00",end:"08:00",subject:""},{start:"10:00",end:"12:00",subject:""},{start:"16:00",end:"17:00",subject:""}], perDay:{}, breakMin:15, blocks:"auto", hours:{def:2, by:{}, auto:true}, layout:"manual", limitMin:0, dayStart:"06:00", dayHours:6, subjHours:{}, exact:false},
     acts:{
       essay:{on:false, mode:"weekly", days:[5], interval:1, count:2, dates:[], start:"19:00", end:"21:00"},
@@ -7989,7 +7991,6 @@ function wzPrep(w){
         [1,2,3,4].map(function(n){ return '<button type="button" class="pill'+(w.gs.indexOf(n)>=0?" on":"")+'" data-wa="toggleArr" data-path="gs" data-v="'+n+'">GS Paper '+["I","II","III","IV"][n-1]+'</button>'; }).join("")+
         '<button type="button" class="pill'+(w.essay?" on":"")+'" data-wa="toggleBool" data-path="essay">Essay</button>'+
         '<button type="button" class="pill'+(w.optionalOn?" on":"")+'" data-wa="toggleBool" data-path="optionalOn">Optional</button></div>'+
-        (w.optionalOn ? optionalSelectHtml(w) : "")+
         (w.essay ? '<div class="hint">Essay is a practice activity. You can set when you write it later, under Activities in the app.</div>' : "")+'</div>' : "");
 }
 function optStartHtml(w, cat){   // where the optional begins: syllabus start, a chosen unit or chapter, or the student's own order
@@ -8263,6 +8264,7 @@ var WZ_STEPS = [wzDuration, wzStartView, wzPrep, wzPriority, wzTopics, wzCapacit
 var FS_SCREENS = [
   {id:"dur",  step:0, title:"How long?", hint:"Your preparation window."},
   {id:"prep", step:2, title:"Preparing for?", hint:"Choose what goes into the plan."},
+  {id:"opt",  step:2, opt:1, title:"Your optional subject", hint:"The one you chose for Mains. Its chapters join your plan."},
   {id:"pri",  step:3, title:"Study order", hint:"Tap subjects in the order you want to study them."},
   {id:"top",  step:4, title:"Skip anything?", hint:"Tap a subject to see or trim its chapters."},
   {id:"days", step:5, cap:"days", title:"Study days", hint:"Which days can you study?"},
@@ -8270,20 +8272,24 @@ var FS_SCREENS = [
   {id:"subj", step:5, cap:"subj", title:"Your sessions", hint:"Choose when you study each day."},
   {id:"week", step:7, title:"Your first week", hint:"Looks good?"}
 ];
+function fsShowOpt(w){ return w.mode!=="prelims" && !!w.optionalOn; }   // the optional subject has its own screen, only when Mains is in the plan
+function fsList(w){ var o = fsShowOpt(w); return FS_SCREENS.filter(function(S){ return !S.opt || o; }); }
 function fsIndex(w){
   if(w.step===6) w.step = 7; if(w.step===1) w.step = 2;
-  for(var i=0;i<FS_SCREENS.length;i++){ var S = FS_SCREENS[i]; if(S.step===w.step && (!S.cap || S.cap===capScreenOf(w))) return i; }
-  return 0;
+  var L = fsList(w);
+  for(var i=0;i<L.length;i++){ var S = L[i]; if(S.step===w.step && (!S.cap || S.cap===capScreenOf(w)) && (w.step!==2 || !!S.opt === !!w.optScreen)) return i; }
+  return w.step===2 ? 1 : 0;
 }
 function fsGo(w, i){
-  i = Math.max(0, Math.min(FS_SCREENS.length-1, i)); var S = FS_SCREENS[i];
-  w.step = S.step; if(S.cap) w.capScreen = S.cap; w.capView = "list"; w.capPick = false;
+  var L = fsList(w); i = Math.max(0, Math.min(L.length-1, i)); var S = L[i];
+  w.step = S.step; w.optScreen = !!S.opt; if(S.cap) w.capScreen = S.cap; w.capView = "list"; w.capPick = false;
   if(S.id==="subj" && !studyPlan && !w.cap.ownInit && rtPlanWindows().length){ w.cap.ownInit = true; rtApplyToPlan({capacity:w.cap}, w.acts); }
   else if(S.id==="subj" && w.cap.routineSig && !w.cap.routineOff && rtSig(w.cap.sessions)===w.cap.routineSig && rtPlanWindows().length) rtApplyToPlan({capacity:w.cap}, w.acts);   // untouched sessions follow the daily activities you just set   // a routine decides when you study
   if(S.id==="subj" && !studyPlan && !w.cap.ownInit){ w.cap.ownInit = true; if(!w.cap.exact){ var fx0 = null; try{ fx0 = fitInfo(w); }catch(x){} if(fx0){ w.cap.sessions = JSON.parse(JSON.stringify(fx0.plan.capacity.sessions)); w.cap.count = w.cap.sessions.length; w.cap.perDay = {}; } w.cap.exact = true; } }
 }
 function renderWizard(host){
   var w = wiz;
+  if(w.qs) w.qs = null;   // the short four-question setup is gone: the routine and the full steps replace it
   if(w.qs && QS_SCREENS.indexOf(w.qs.screen) < 0) w.qs = qsNew();   // a draft saved by an older version
   if(w.qs && !studyPlan){
     host.innerHTML = (planBackupInfo() ? '<div class="card restore-card"><div><b>You reset your plan</b><div class="muted">Your earlier plan and progress were kept. Restore them any time in the next 30 days.</div></div><button type="button" class="btn primary sm" data-pa="restorePlan">Restore previous plan</button></div>' : "")+'<div class="card qx-card">'+qsHtml(w)+'</div>';
@@ -8294,16 +8300,17 @@ function renderWizard(host){
   if(w.step===1) w.step = 2;   // the old Start view step no longer exists (a saved draft may still be on it)
   var stepper = '<div class="stepper">'+STEP_TITLES.map(function(t, i){ if(i===1 || i===6) return ""; return '<button type="button" class="st'+(i===w.step?" cur":(i<w.step?" done":""))+'" data-wa="goto" data-v="'+i+'"><i>'+(i>6 ? i-1 : (i>1 ? i : i+1))+'</i><span>'+esc(t)+'</span></button>'; }).join("")+'</div>';
   var restore = !studyPlan && planBackupInfo() ? '<div class="card restore-card"><div><b>You reset your plan</b><div class="muted">Your earlier plan and progress were kept. Restore them any time in the next 30 days.</div></div><button type="button" class="btn primary sm" data-pa="restorePlan">Restore previous plan</button></div>' : "";
-  var si = fsIndex(w), S = FS_SCREENS[si], last = si===FS_SCREENS.length-1, stt = windowStats(w), chips = [];
-  if(si > 1) chips.push(w.mode==="prelims" ? "Prelims" : (w.mode==="mains" ? "Mains" : "Prelims + Mains"));
+  var FL = fsList(w), si = fsIndex(w), S = FL[si], last = si===FL.length-1, stt = windowStats(w), chips = [], at = {};
+  FL.forEach(function(x, k){ at[x.id] = k; });
+  if(si > at.prep) chips.push(w.mode==="prelims" ? "Prelims" : (w.mode==="mains" ? "Mains" : "Prelims + Mains"));
   if(si > 0 && stt.ok) chips.push((w.durMode==="months" && +w.months > 0 ? +w.months : stt.months)+" months");
-  if(si > 4) chips.push(w.cap.days.length+" study days");
-  if(si > 1 && w.optionalOn && w.optional && w.mode!=="prelims") chips.push(w.optional);
+  if(si > at.days) chips.push(w.cap.days.length+" study days");
+  if(si > at.prep && w.optionalOn && w.optional && w.mode!=="prelims") chips.push(w.optional);
   host.innerHTML = restore+'<div class="card qx-card"><div class="qx">'+
     '<div class="qx-top">'+(si>0 ? '<button type="button" data-wa="back">‹ Back</button>' : '<span></span>')+(studyPlan ? '<button type="button" data-wa="cancelEdit">Cancel</button>' : '<span></span>')+'</div>'+
-    '<div class="qx-dots">'+FS_SCREENS.map(function(x, k){ return '<i class="'+(k<=si ? "on" : "")+'"></i>'; }).join("")+'</div>'+
+    '<div class="qx-dots">'+FL.map(function(x, k){ return '<i class="'+(k<=si ? "on" : "")+'"></i>'; }).join("")+'</div>'+
     '<h2>'+esc(S.title)+'</h2><div class="qx-hint">'+esc(S.hint)+'</div>'+
-    '<div class="fsbody">'+WZ_STEPS[S.step](w)+'</div>'+
+    '<div class="fsbody">'+(S.opt ? optionalSelectHtml(w)+'<div class="hint" style="margin-top:14px">Not sure yet? Pick the closest one now. You can change it any time from Adjust plan.</div>' : WZ_STEPS[S.step](w))+'</div>'+
     (w.err.length ? '<div class="form-err" role="alert"><b>Please fix:</b><br>'+w.err.map(esc).join("<br>")+'</div>' : "")+
     (chips.length ? '<div class="qx-sum">'+chips.map(function(c){ return '<span>'+esc(c)+'</span>'; }).join("")+'</div>' : "")+
     (last ? '<button type="button" class="btn primary qx-go" data-wa="gen">'+(studyPlan ? "Save and regenerate plan" : "Start my plan")+'</button>' : '<button type="button" class="btn primary qx-go" data-wa="next">Next →</button>')+
@@ -8478,10 +8485,11 @@ function wizAction(a, b){
     case "next": if(w.step===5 && capScreenOf(w)==="acts" && !actErrors(w).filter(function(m){ return !/both fall on/.test(m); }).length && activityConflicts(w).length){ openClashAsk(w, activityConflicts(w)[0]); return; }
       var fi = fsIndex(w), e = [];
       if(w.step===5){ var sc = capScreenOf(w); e = sc==="acts" ? actErrors(w) : capacityErrors(w); }
+      else if(w.step===2 && !w.optScreen && fsShowOpt(w)) e = wizValidate(w, 2).filter(function(m){ return !/optional/i.test(m); });   // the optional subject is asked on the next screen
       else e = wizValidate(w, w.step);
       w.err = e; if(!e.length) fsGo(w, fi+1); break;
     case "back": w.err = []; fsGo(w, fsIndex(w)-1); break;
-    case "goto": var t = +v; if(t===6) t = 7; if(t <= w.step){ w.err = []; w.step = t; } else { var ee = []; for(var s=w.step; s<t; s++) ee = ee.concat(wizValidate(w, s)); w.err = ee; if(!ee.length) w.step = t; } break;
+    case "goto": var t = +v; if(t===6) t = 7; w.optScreen = false; if(t <= w.step){ w.err = []; w.step = t; } else { var ee = []; for(var s=w.step; s<t; s++) ee = ee.concat(wizValidate(w, s)); w.err = ee; if(!ee.length) w.step = t; } break;
     case "set": wset(path, b.getAttribute("data-n") ? +v : v); if(path==="mode"){ wizSync(w); } break;
     case "toggleBool": wset(path, !wget(path)); wizSync(w); break;
     case "toggleArr": var arr = wget(path), val = +v, i = arr.indexOf(val); if(i>=0) arr.splice(i,1); else arr.push(val); if(path==="gs") arr.sort(); wizSync(w); break;
@@ -8542,7 +8550,7 @@ function wizAction(a, b){
 }
 function wizAfter(kind){
   var w = wiz;
-  if(kind==="optional"){ w.customText = ""; w.optStart = "syllabus"; w.optFirst = ""; w.optOrder = null; delete w.init[optLabel(w.optional)]; delete w.init[""]; wizSync(w); }
+  if(kind==="optional"){ w.err = []; w.customText = ""; w.optStart = "syllabus"; w.optFirst = ""; w.optOrder = null; delete w.init[optLabel(w.optional)]; delete w.init[""]; wizSync(w); }
   if(kind==="custom"){ w.optStart = "syllabus"; w.optFirst = ""; w.optOrder = null; delete w.init[optLabel(w.optional)]; wizSync(w); }
   if(kind==="optfirst"){ w.optOrder = w.optFirst ? optOrderFromFirst(w, w.optFirst) : null; }
   if(kind==="sessLen"){ var ln = +w.cap.sessLen; delete w.cap.sessLen; if(ln > 0) setSessLen(w, ln); }
@@ -21183,7 +21191,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "428";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "430";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
