@@ -2768,9 +2768,9 @@ function openProfileModal(isEdit){
       '<h2 id="pfTitle">User Setup</h2>'+
       '<p class="muted">Set your details to personalise your study planner.</p>'+
       '<div class="sf"><label for="pfName">1. Name</label><input id="pfName" type="text" autocomplete="name" placeholder="Enter your full name" value="'+esc(p.name)+'"></div>'+
-      '<div class="sf"><label for="pfDistrict">2. District</label><input id="pfDistrict" type="text" placeholder="Enter your district" value="'+esc(p.district)+'"></div>'+
-      '<div class="sf"><label for="pfState">3. State</label><select id="pfState"><option value="">Select state</option>'+
+      '<div class="sf"><label for="pfState">2. State</label><select id="pfState"><option value="">Select state</option>'+
         INDIAN_STATES.map(function(s){ return '<option'+(s===p.state?" selected":"")+'>'+esc(s)+'</option>'; }).join("")+'</select></div>'+
+      '<div class="sf"><label for="pfDistrict">3. District</label><input id="pfDistrict" type="text" placeholder="Enter your district" value="'+esc(p.district)+'"></div>'+
       '<div class="sf"><label for="pfPrefix">4. Choose prefix / post</label><select id="pfPrefix">'+
         PREFIXES.map(function(s){ return '<option'+((custom ? s==="Custom" : s===p.prefix)?" selected":"")+'>'+esc(s)+'</option>'; }).join("")+'</select></div>'+
       '<div class="sf" id="pfCustomWrap"'+(custom?"":" hidden")+'><label for="pfCustom">Custom prefix / post</label><input id="pfCustom" type="text" placeholder="e.g. IFoS" value="'+esc(custom?p.prefix:"")+'"></div>'+
@@ -2792,8 +2792,8 @@ function openProfileModal(isEdit){
     var prefix = prefixSel.value === "Custom" ? m.querySelector("#pfCustom").value.trim() : prefixSel.value;
     var errs = [];
     if(!name) errs.push("Enter your full name.");
-    if(!district) errs.push("Enter your district.");
     if(!state) errs.push("Select your state.");
+    if(!district) errs.push("Enter your district.");
     if(!prefix) errs.push("Enter your custom prefix / post.");
     var box = m.querySelector("#pfErr");
     if(errs.length){ box.hidden = false; box.innerHTML = errs.map(esc).join("<br>"); return; }
@@ -2880,17 +2880,19 @@ function frWelcome(){
   try{ guidesSeen.home = 1; lsSetJSON(GUIDE_KEY, guidesSeen); }catch(e){}   // the timer needs no tips pop-up on day one
   var m = showModal('<div class="modal card fr-welcome" role="dialog" aria-modal="true" aria-labelledby="fwT"><div class="fr-ico" aria-hidden="true">&#128075;</div>'+
     '<h2 id="fwT">Welcome, '+esc(profile.prefix)+' '+esc(profile.name)+'</h2>'+
-    '<p>Your study timer is ready. Start it whenever you sit down to study. You can plan your syllabus any time.</p>'+
-    '<button type="button" class="btn primary fr-go" id="frOpen">Open my timer</button></div>', false);
-  m.querySelector("#frOpen").addEventListener("click", function(){ closeModal(); setTab("dashboard"); setTimeout(planHintShow, 1200); });
+    '<p>Start by telling us about your day. Your routine decides when you study, and your study plan is built around it.</p>'+
+    '<button type="button" class="btn primary fr-go" id="frOpen">Make my routine</button>'+
+    '<button type="button" class="fr-later" id="frTimer">Open my timer instead</button></div>', false);
+  m.querySelector("#frOpen").addEventListener("click", function(){ closeModal(); setTab("routine"); });
+  m.querySelector("#frTimer").addEventListener("click", function(){ closeModal(); setTab("dashboard"); setTimeout(planHintShow, 1200); });
 }
 function planHintShow(){
   if(studyPlan || lsGet(PLANHINT_KEY) || activeTab !== "dashboard" || document.getElementById("modalHost") || document.getElementById("planHint")) return;
   var c = document.createElement("div"); c.id = "planHint"; c.className = "fr-hint"; c.setAttribute("role", "dialog"); c.setAttribute("aria-label", "Plan your study");
-  c.innerHTML = '<b>Plan your study?</b><p>A plan saves your study time against chapters and shows what to study next. It takes about a minute.</p><div class="row"><button type="button" class="no" id="phLater">Later</button><button type="button" class="go" id="phGo">Make my plan</button></div>';
+  c.innerHTML = '<b>Plan your study?</b><p>Tell us about your day first. Your routine sets the study times, then the plan follows.</p><div class="row"><button type="button" class="no" id="phLater">Later</button><button type="button" class="go" id="phGo">Make my routine</button></div>';
   document.body.appendChild(c);
   c.querySelector("#phLater").addEventListener("click", function(){ lsSet(PLANHINT_KEY, "1"); c.remove(); });
-  c.querySelector("#phGo").addEventListener("click", function(){ lsSet(PLANHINT_KEY, "1"); c.remove(); setTab("planner"); });
+  c.querySelector("#phGo").addEventListener("click", function(){ lsSet(PLANHINT_KEY, "1"); c.remove(); setTab((rt && rt.made && rt.items.length) ? "planner" : "routine"); });
 }
 // when a timer or Pomodoro ends and there is no plan yet: the time is saved either way, and they are invited to plan
 function openTimerNoPlan(){
@@ -7498,9 +7500,9 @@ var ACT_INFO = {
   ca:{title:"Current Affairs", hint:"Daily, specific days or weekly", color:"--tab-scheduler"}
 };
 function wizDefaults(){
-  return {step:0, qs:qsNew(), err:[], open:{}, init:{}, durMode:"months", months:12, target:"", start:todayKey, startView:"auto",
-    mode:"mains", gs1:true, csat:true, gs:[1,2,3,4], essay:true, optionalOn:true, optional:"", customText:"",
-    order:[], sel:{}, optStart:"syllabus", optFirst:"", optOrder:null,
+  return {step:0, qs:null, err:[], open:{}, init:{}, durMode:"months", months:12, target:"", start:todayKey, startView:"auto",
+    mode:"both", gs1:true, csat:true, gs:[1,2,3,4], essay:true, optionalOn:true, optional:"", customText:"",
+    order:[], orderAuto:true, sel:{}, optStart:"syllabus", optFirst:"", optOrder:null,
     cap:{days:[1,2,3,4,5,6], sessions:[{start:"06:00",end:"08:00",subject:""},{start:"10:00",end:"12:00",subject:""},{start:"16:00",end:"17:00",subject:""}], perDay:{}, breakMin:15, blocks:"auto", hours:{def:2, by:{}, auto:true}, layout:"manual", limitMin:0, dayStart:"06:00", dayHours:6, subjHours:{}, exact:false},
     acts:{
       essay:{on:false, mode:"weekly", days:[5], interval:1, count:2, dates:[], start:"19:00", end:"21:00"},
@@ -8284,6 +8286,7 @@ function fsGo(w, i){
 }
 function renderWizard(host){
   var w = wiz;
+  if(w.qs) w.qs = null;   // the short four-question setup is gone: the routine and the full steps replace it
   if(w.qs && QS_SCREENS.indexOf(w.qs.screen) < 0) w.qs = qsNew();   // a draft saved by an older version
   if(w.qs && !studyPlan){
     host.innerHTML = (planBackupInfo() ? '<div class="card restore-card"><div><b>You reset your plan</b><div class="muted">Your earlier plan and progress were kept. Restore them any time in the next 30 days.</div></div><button type="button" class="btn primary sm" data-pa="restorePlan">Restore previous plan</button></div>' : "")+'<div class="card qx-card">'+qsHtml(w)+'</div>';
@@ -21183,7 +21186,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "428";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "429";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
