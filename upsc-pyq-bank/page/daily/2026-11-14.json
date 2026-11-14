@@ -1,0 +1,753 @@
+{
+ "day": "2026-11-14",
+ "title": "14 Nov 2026",
+ "src": "The Hindu (pages shared as images)",
+ "topics": [
+  {
+   "id": "dn-2026-11-14-1",
+   "n": 1,
+   "sec": "Polity & Governance",
+   "t": "Supreme Court: restructure by dividing it?",
+   "gs": [
+    "GS2 Polity",
+    "Judiciary"
+   ],
+   "news": "An opinion piece titled 'To strengthen the Supreme Court, divide it' argues for restructuring the apex court.",
+   "blocks": [
+    {
+     "h": "The Supreme Court: structure and jurisdiction",
+     "items": [
+      {
+       "rows": [
+        [
+         "Composition",
+         "Art. 124: the Chief Justice and other judges, with the number fixed by Parliament (Supreme Court (Number of Judges) Act, 1956, raised to 34 in 2019). A 2026 amendment bill was in the news, so check the latest strength."
+        ],
+        [
+         "Seat",
+         "Art. 130: Delhi, or other places the Chief Justice decides with the President's approval."
+        ],
+        [
+         "Original jurisdiction",
+         "Art. 131: disputes between the Centre and States, or between States. Art. 32: enforcement of fundamental rights."
+        ],
+        [
+         "Appellate jurisdiction",
+         "Arts. 132–134: constitutional, civil and criminal appeals. Art. 136: special leave to appeal (SLP), the main source of the docket."
+        ],
+        [
+         "Advisory jurisdiction",
+         "Art. 143: the President can seek the Court's opinion."
+        ],
+        [
+         "Constitution Bench",
+         "Art. 145(3): at least five judges must decide cases involving a substantial question of constitutional law."
+        ],
+        [
+         "Court of record",
+         "Art. 129: its judgments are permanent records and it can punish for contempt of itself."
+        ]
+       ]
+      },
+      {
+       "p": "**Why 'divide' it?** The Court hears thousands of SLPs, so little time is left for large constitutional questions. The idea is to split it into a Constitutional Court (large questions) and a Court of Appeal or Cassation (ordinary appeals)."
+      },
+      {
+       "ul": [
+        "**Law Commission, 95th Report (1984):** proposed two divisions, a Constitutional Division and a Legal Division.",
+        "**Regional benches:** a Law Commission report and a parliamentary committee suggested benches outside Delhi; the Court has resisted, saying a divided Court is no longer one apex court.",
+        "**Counter-arguments:** access to justice, unity of the law, and the risk to judicial independence if the structure is redesigned by Parliament."
+       ]
+      }
+     ]
+    },
+    {
+     "h": "Related institutions",
+     "items": [
+      {
+       "ul": [
+        "**High Courts:** Art. 214 (every State has one), Art. 226 (writs, wider than Art. 32).",
+        "**National Judicial Appointments Commission (2014):** struck down in 2015; the collegium system continues.",
+        "**Tribunals** take some load off courts but their independence is also debated."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Art. 124",
+     "d": "Establishes the Supreme Court and says how judges are appointed and removed (removal by Parliament for proved misbehaviour or incapacity)."
+    },
+    {
+     "k": "Art. 130",
+     "d": "The Supreme Court sits in Delhi or such other place as the Chief Justice decides with the President's approval; the basis for regional-bench proposals."
+    },
+    {
+     "k": "Art. 136 (SLP)",
+     "d": "Special Leave Petition: the Court may grant leave to appeal against almost any judgment of any court or tribunal, which is why its docket is so large."
+    },
+    {
+     "k": "Art. 145(3) Constitution Bench",
+     "d": "A bench of at least five judges that decides cases on substantial questions of constitutional law."
+    },
+    {
+     "k": "Art. 143",
+     "d": "The President can refer a question of law or fact to the Supreme Court for an advisory opinion; the Court need not always answer."
+    },
+    {
+     "k": "Court of Cassation",
+     "d": "A final court of appeal that mainly decides questions of law, as in France; used in the proposal for apex court reform."
+    },
+    {
+     "k": "Collegium",
+     "d": "The Chief Justice and the senior-most judges who recommend appointments and transfers of judges."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Examine the proposals to divide the Supreme Court into a Constitutional Court and a Court of Appeal. What are their merits and risks for judicial independence and access to justice?",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": "2023 GS2 (judicial independence) · 2024 GS2 (growth of PIL and the Supreme Court)"
+    },
+    {
+     "q": "The rising docket of the Supreme Court leaves too little time for constitutional questions. Analyse the causes and suggest reforms, including regional benches.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": "2025 GS2 (collegium system)"
+    },
+    {
+     "q": "Discuss the original, appellate and advisory jurisdiction of the Supreme Court and how special leave petitions have shaped its role.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-14-2",
+   "n": 2,
+   "sec": "Polity & Governance",
+   "t": "C.S. Karnan and contempt of court",
+   "gs": [
+    "GS2 Polity",
+    "Judiciary"
+   ],
+   "news": "The headline reports the death of C.S. Karnan, the controversial former High Court judge.",
+   "blocks": [
+    {
+     "h": "Contempt of court and removal of judges",
+     "items": [
+      {
+       "rows": [
+        [
+         "Contempt in the Constitution",
+         "Art. 129: the Supreme Court as a court of record can punish for contempt of itself. Art. 215: the same for High Courts."
+        ],
+        [
+         "Contempt of Courts Act, 1971",
+         "Defines civil contempt (wilful disobedience of a court order) and criminal contempt (scandalising or lowering the authority of a court, prejudice to a trial, obstructing justice). Punishment up to six months, a fine, or both. Truth is a defence since the 2006 amendment if it is in public interest and made in good faith."
+        ],
+        [
+         "Removal of a judge",
+         "Art. 124(4) (Supreme Court) and Art. 217 (High Courts): an address by both Houses of Parliament by a special majority on proved misbehaviour or incapacity. The Judges (Inquiry) Act, 1968 sets the process. No judge has been removed so far."
+        ],
+        [
+         "Why it was unusual",
+         "In 2017 the Supreme Court sentenced a sitting High Court judge to six months for contempt, the first time this happened. He retired soon after while absent, and was arrested and later released after serving the term."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**The tension:** judicial independence and accountability. Impeachment is hard, so contempt and the in-house inquiry are the practical tools.",
+        "**Related:** the Collegium, the proposed National Judicial Appointments Commission (struck down in 2015) and in-house procedures for complaints against judges."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Court of record",
+     "d": "A court whose proceedings are kept as permanent evidence and which has the power to punish for its own contempt; the Supreme Court (Art. 129) and the High Courts (Art. 215)."
+    },
+    {
+     "k": "Civil vs criminal contempt",
+     "d": "Civil: wilfully disobeying a court order. Criminal: scandalising the court, interfering with a trial or obstructing the administration of justice."
+    },
+    {
+     "k": "Contempt of Courts Act 1971",
+     "d": "The law that sets out contempt, defences and punishment (up to six months and/or a fine)."
+    },
+    {
+     "k": "Art. 124(4)",
+     "d": "Removal of a Supreme Court judge by the President after both Houses pass an address by a special majority."
+    },
+    {
+     "k": "Judges (Inquiry) Act 1968",
+     "d": "Sets up a three-member committee to investigate charges of misbehaviour or incapacity before Parliament votes."
+    },
+    {
+     "k": "Art. 217",
+     "d": "Appointment, tenure and removal of High Court judges (removal as for the Supreme Court)."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the balance between judicial independence and accountability in India. Are the present mechanisms for dealing with judicial misconduct adequate?",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": "2023 GS2 (judicial independence)"
+    },
+    {
+     "q": "Explain the law of contempt of court in India. Does it restrict free speech under Article 19(1)(a)?",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    },
+    {
+     "q": "Describe the procedure for the removal of a Supreme Court or High Court judge and why it has rarely been used.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-14-3",
+   "n": 3,
+   "sec": "Security",
+   "t": "UAPA and the ban on Zakir Naik's IRF",
+   "gs": [
+    "GS3 Security",
+    "Internal security"
+   ],
+   "news": "The headline says the UAPA ban on Zakir Naik's Islamic Research Foundation (IRF) has been extended for five years.",
+   "blocks": [
+    {
+     "h": "Unlawful Activities (Prevention) Act, 1967",
+     "items": [
+      {
+       "rows": [
+        [
+         "What it is",
+         "India's main anti-terror and anti-unlawful-association law, passed in 1967."
+        ],
+        [
+         "Unlawful association",
+         "Section 3: the Centre can declare an association unlawful by notification. It does not take effect until a Tribunal confirms it."
+        ],
+        [
+         "Tribunal",
+         "Section 4 and 5: a Tribunal headed by a sitting High Court judge examines the case, and the Centre must refer it within 30 days."
+        ],
+        [
+         "Terrorist organisation",
+         "Section 35 and the Fourth Schedule list banned terrorist organisations."
+        ],
+        [
+         "2019 amendment",
+         "Individuals can be declared terrorists, not only organisations; the NIA can seize property without waiting for the State police chief's consent; NIA inspectors can investigate."
+        ],
+        [
+         "Bail",
+         "Section 43D(5): bail is hard to get where the court finds the accusation prima facie true; police custody and detention can run up to 180 days."
+        ],
+        [
+         "Investigating agency",
+         "National Investigation Agency (NIA), set up in 2008 after the Mumbai attacks."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**IRF timeline:** banned in November 2016; the ban was extended for five years in November 2021 and confirmed by a UAPA Tribunal in 2022; the headline now reports another five-year extension.",
+        "**The Centre's case:** the group's speeches and funding encouraged radicalisation. **The group's case:** fresh grounds were not shown for the repeated ban.",
+        "**Critics of UAPA:** wide definitions, long pre-trial detention and low conviction rates. **Supporters:** terror networks need strong tools."
+       ]
+      }
+     ]
+    },
+    {
+     "h": "Related laws and bodies",
+     "items": [
+      {
+       "ul": [
+        "**Other bans:** SIMI, Popular Front of India (2022) and others.",
+        "**FATF and terror funding:** Prevention of Money Laundering Act and UAPA work together.",
+        "**Radicalisation online:** the IT Act, 2000 and blocking powers."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "UAPA 1967",
+     "d": "Unlawful Activities (Prevention) Act: the law for banning associations and tackling terrorism, strengthened in 2004, 2008, 2012 and 2019."
+    },
+    {
+     "k": "Unlawful association",
+     "d": "An association whose aim is to cause secession or disrupt India's sovereignty, or support such activity; declared by the Centre under Section 3."
+    },
+    {
+     "k": "UAPA Tribunal",
+     "d": "A one-member body, a High Court judge, that decides whether there is enough cause to confirm a ban."
+    },
+    {
+     "k": "Section 43D(5)",
+     "d": "Makes bail difficult in UAPA cases if the case diary shows the charge is prima facie true."
+    },
+    {
+     "k": "2019 Amendment",
+     "d": "Allows individuals to be designated as terrorists and strengthens the NIA's powers."
+    },
+    {
+     "k": "NIA",
+     "d": "National Investigation Agency: central agency for terror and other scheduled offences, set up by the NIA Act, 2008."
+    },
+    {
+     "k": "Radicalisation",
+     "d": "The process by which a person adopts extreme views that may lead to violence."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Examine the provisions of the UAPA, 1967 for banning organisations and designating individuals. Do they balance national security with civil liberties?",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": "2025 GS3 (terrorism and counter-measures) · 2019 GS3 (ban on Jamaat-e-Islami)"
+    },
+    {
+     "q": "Radicalisation through social media and preaching platforms poses a growing internal security threat. Discuss legal and community measures to counter it.",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": "2026 GS3 (disinformation and internal security)"
+    },
+    {
+     "q": "Discuss the role, powers and limits of the National Investigation Agency in India's counter-terrorism framework.",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-14-4",
+   "n": 4,
+   "sec": "Security",
+   "t": "Manipur: Naga civilians killed, probe panel extended",
+   "gs": [
+    "GS3 Security",
+    "GS2 Federalism"
+   ],
+   "news": "The headlines report four Naga civilians killed in a highway ambush in Manipur, and the sixth extension of the Manipur probe panel with no report yet.",
+   "blocks": [
+    {
+     "h": "Manipur: the background",
+     "items": [
+      {
+       "rows": [
+        [
+         "Communities",
+         "Meiteis mostly in the Imphal valley; Nagas in the hills of Ukhrul, Senapati, Tamenglong and Kamjong; Kuki-Zo groups in Churachandpur and Kangpokpi. Ethnic violence began in May 2023."
+        ],
+        [
+         "Special status",
+         "Art. 371C: a Hill Areas Committee of the Assembly looks after the hill districts. Manipur's hills are not under the Sixth Schedule."
+        ],
+        [
+         "Union's duty",
+         "Art. 355: the Centre must protect every State from internal disturbance. Art. 356: President's Rule if the State government cannot function."
+        ],
+        [
+         "AFSPA 1958",
+         "Special powers for the armed forces in 'disturbed areas'; in force in parts of Manipur."
+        ],
+        [
+         "Naga peace process",
+         "A Framework Agreement was signed with the NSCN (IM) in 2015; a final settlement is still awaited."
+        ],
+        [
+         "Geography",
+         "Landlocked State bordering Myanmar; NH-2 (Imphal–Dimapur) and NH-37 are the lifelines, so highway blockades hurt supplies."
+        ]
+       ]
+      },
+      {
+       "h": "Commissions of Inquiry",
+       "items": [
+        {
+         "rows": [
+          [
+           "Law",
+           "Commissions of Inquiry Act, 1952: the Centre or a State appoints a commission to inquire into a matter of public importance."
+          ],
+          [
+           "Powers",
+           "Like a civil court: summon witnesses, demand documents."
+          ],
+          [
+           "Report",
+           "Must be laid before Parliament or the Legislature with an action-taken memorandum; the report is only a recommendation and the government need not accept it."
+          ],
+          [
+           "Problem",
+           "Repeated extensions delay accountability; reports are often late or shelved."
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "ul": [
+        "**Why highways are targets:** control of movement, trade and supplies; blockades are a pressure tool for all groups.",
+        "**Link to the border:** the free movement regime with Myanmar and arms flows are central security worries."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Art. 371C",
+     "d": "Special provision for Manipur: the Hill Areas Committee of the Legislative Assembly deals with matters in the hill areas."
+    },
+    {
+     "k": "Art. 355",
+     "d": "The Union must protect every State against external aggression and internal disturbance and ensure State governments work as the Constitution requires."
+    },
+    {
+     "k": "Art. 356",
+     "d": "President's Rule: the Centre takes over a State if the constitutional machinery fails."
+    },
+    {
+     "k": "AFSPA 1958",
+     "d": "Armed Forces (Special Powers) Act: gives the armed forces special powers in areas declared 'disturbed'."
+    },
+    {
+     "k": "Commissions of Inquiry Act 1952",
+     "d": "The law under which the government appoints inquiry commissions; their reports are not binding."
+    },
+    {
+     "k": "Naga Framework Agreement 2015",
+     "d": "An agreement between the Centre and the NSCN (IM) to settle the Naga political issue, not yet finalised."
+    },
+    {
+     "k": "Free Movement Regime",
+     "d": "Allowed people on both sides of the India–Myanmar border to travel a short distance without a visa; being restricted."
+    },
+    {
+     "k": "NH-2",
+     "d": "The highway from Imphal to Dimapur in Nagaland, Manipur's main supply road."
+    }
+   ],
+   "qs": [
+    {
+     "q": "What are the major challenges to internal security and peace processes in the North-East? Discuss with reference to the situation in Manipur.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": "2025 GS3 (North-East security and peace accords) · 2017 GS3 (survival of insurgency in the North-East)"
+    },
+    {
+     "q": "Ethnic conflict and border management together shape security in Manipur. Examine the role of the Centre and the State.",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": "2019 GS3 (border policing in the North-East)"
+    },
+    {
+     "q": "Do Commissions of Inquiry deliver accountability? Examine, with examples of delayed reports and extensions.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-14-5",
+   "n": 5,
+   "sec": "International Relations",
+   "t": "India–U.S. trade: a tariff edge over competitors",
+   "gs": [
+    "GS2 IR",
+    "GS3 Economy"
+   ],
+   "news": "The headline says the U.S. has assured India of a tariff edge over its competitors.",
+   "blocks": [
+    {
+     "h": "Trade basics",
+     "items": [
+      {
+       "rows": [
+        [
+         "Tariff",
+         "A tax on imports. A preferential tariff means a lower rate for some countries than others."
+        ],
+        [
+         "MFN",
+         "Most Favoured Nation (Art. I of GATT): a WTO member must give every member the same tariff as its best treatment. FTAs and preferential schemes are exceptions."
+        ],
+        [
+         "Reciprocal tariffs",
+         "The U.S. approach of charging tariffs to match what partners charge, or by country, outside the usual WTO rules."
+        ],
+        [
+         "BTA",
+         "Bilateral Trade Agreement: a deal between two countries, often a first phase before a full FTA."
+        ],
+        [
+         "GSP",
+         "Generalised System of Preferences: lower U.S. tariffs for developing countries; India lost its benefits in 2019."
+        ],
+        [
+         "India's aim",
+         "Lower tariffs than rivals such as Vietnam, Bangladesh, Indonesia and Malaysia in textiles, gems, shrimp and similar goods, so Indian exporters can win U.S. orders."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Why it matters:** the U.S. is India's largest export market, so tariffs directly hit labour-intensive sectors.",
+        "**The wider setting:** the world is moving from free trade to protectionism and bilateral deals.",
+        "**Link to earlier notes:** India–EU FTA talks and CBAM show India widening trade partners."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "MFN (GATT Art. I)",
+     "d": "Non-discrimination: a WTO member must give all members the same tariff it gives its most favoured trading partner."
+    },
+    {
+     "k": "Preferential tariff",
+     "d": "A lower tariff given to selected countries, allowed in FTAs and special schemes."
+    },
+    {
+     "k": "Reciprocal tariff",
+     "d": "A tariff set to match the other country's trade barriers rather than a common rule."
+    },
+    {
+     "k": "BTA",
+     "d": "A bilateral trade agreement, often an early step before a broader FTA."
+    },
+    {
+     "k": "GSP",
+     "d": "Generalised System of Preferences: lower tariffs for developing countries, withdrawn for India by the U.S. in 2019."
+    },
+    {
+     "k": "Trade deficit",
+     "d": "When a country imports more than it exports; a surplus is the reverse."
+    },
+    {
+     "k": "Section 301 and 232",
+     "d": "U.S. laws that let the President impose tariffs for unfair trade practices (301) or national security (232)."
+    }
+   ],
+   "qs": [
+    {
+     "q": "What challenges does the Indian economy face as the world moves from free trade and multilateralism to protectionism and bilateralism? How can India respond?",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": "2025 GS3 (protectionism and bilateralism)"
+    },
+    {
+     "q": "Examine the importance of the U.S. as a market for Indian exports and how tariff differences with competitors shape sectors like textiles and gems.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": "2026 GS1 (shift of global trade to the Indo-Pacific)"
+    },
+    {
+     "q": "How does a bilateral trade agreement with the U.S. fit with India's wider trade strategy, including the EU and the Indo-Pacific?",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-14-6",
+   "n": 6,
+   "sec": "International Relations",
+   "t": "Quad: the challenge of holding it together",
+   "gs": [
+    "GS2 IR",
+    "Indo-Pacific"
+   ],
+   "news": "An editorial discusses the challenge of holding the Quad together.",
+   "blocks": [
+    {
+     "h": "The Quad",
+     "items": [
+      {
+       "rows": [
+        [
+         "Members",
+         "India, the United States, Japan and Australia."
+        ],
+        [
+         "Origins",
+         "2004 tsunami relief by the four navies; a first dialogue in 2007; revived in 2017; foreign ministers met from 2019; leaders' summits from 2021."
+        ],
+        [
+         "Aim",
+         "A free, open and rules-based Indo-Pacific, without a formal treaty or alliance."
+        ],
+        [
+         "Workstreams",
+         "Maritime domain awareness (IPMDA), vaccines and health, critical and emerging technology, climate and clean energy, infrastructure, and the Quad Fellowship."
+        ],
+        [
+         "Malabar",
+         "Naval exercise among the four navies, an important military signal."
+        ],
+        [
+         "Why it struggles",
+         "Members' interests differ (trade, tariffs, relations with China), the rotating chair and summit schedule, and the gap between big announcements and delivery."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**India's view:** ASEAN centrality and strategic autonomy; wants Quad to deliver public goods, not become a military alliance.",
+        "**Related groupings:** AUKUS (U.S., UK, Australia), IPEF, I2U2, BRICS and SCO, which India also belongs to."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Quad",
+     "d": "Quadrilateral Security Dialogue: India, the U.S., Japan and Australia cooperating on an open Indo-Pacific."
+    },
+    {
+     "k": "IPMDA",
+     "d": "Indo-Pacific Partnership for Maritime Domain Awareness: a Quad programme to share maritime data from satellites and other sources."
+    },
+    {
+     "k": "Malabar",
+     "d": "Naval exercise among India, the U.S., Japan and Australia."
+    },
+    {
+     "k": "AUKUS",
+     "d": "A 2021 security pact of Australia, the UK and the U.S. that includes nuclear-powered submarines for Australia."
+    },
+    {
+     "k": "IPEF",
+     "d": "Indo-Pacific Economic Framework: a U.S.-led economic initiative with 14 partners; India joined three of its four pillars."
+    },
+    {
+     "k": "ASEAN centrality",
+     "d": "The principle that ASEAN is the core of the region's cooperation; India says the Quad should respect it."
+    },
+    {
+     "k": "Strategic autonomy",
+     "d": "India's policy of making its own foreign policy choices without joining a bloc."
+    }
+   ],
+   "qs": [
+    {
+     "q": "The Quad's challenge is strategic coherence rather than survival. Discuss with reference to India's interests in the Indo-Pacific.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": "2020 GS2 (Quad becoming a trade bloc?) · 2021 GS2 (AUKUS and existing partnerships)"
+    },
+    {
+     "q": "How do IPMDA and similar initiatives link the Quad with India's SAGAR/MAHASAGAR vision?",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": "2026 GS2 (IPMDA and SAGAR)"
+    },
+    {
+     "q": "Evaluate the Quad's role in managing China's rise. Can a loose grouping do what a formal alliance does?",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-14-7",
+   "n": 7,
+   "sec": "International Relations",
+   "t": "Iran–U.S. tension: a radar in Bahrain",
+   "gs": [
+    "GS2 IR",
+    "West Asia"
+   ],
+   "news": "The headline reports that Iran says it targeted a U.S. radar in Bahrain in a retaliatory strike.",
+   "blocks": [
+    {
+     "h": "The Gulf: geography and the stakes",
+     "items": [
+      {
+       "rows": [
+        [
+         "Bahrain",
+         "Small island kingdom in the Persian Gulf, linked to Saudi Arabia by a causeway; hosts the U.S. Fifth Fleet headquarters at Manama."
+        ],
+        [
+         "Strait of Hormuz",
+         "The narrow waterway between Iran and Oman at the mouth of the Persian Gulf; a large share of the world's oil and gas shipments pass through it."
+        ],
+        [
+         "GCC",
+         "Gulf Cooperation Council: Saudi Arabia, UAE, Kuwait, Qatar, Bahrain, Oman."
+        ],
+        [
+         "India's interests",
+         "Energy imports, a very large diaspora and remittances, trade and investment, and the safety of sea routes."
+        ],
+        [
+         "India's links",
+         "Chabahar port in Iran (access to Afghanistan and Central Asia), IMEC corridor, I2U2 (India, Israel, UAE, U.S.), the Navy's Operation Sankalp to protect shipping."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Why escalation matters to India:** oil prices, shipping insurance, Indian crews and citizens in the region, and the cost of evacuations.",
+        "**India's approach:** balanced ties with Iran, the Gulf Arabs, Israel and the U.S.; calls for restraint and dialogue.",
+        "**Earlier notes:** the 'Impact of Iran War on Agriculture' and 'Middle East war and IMEC' items in the monthly magazines."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Strait of Hormuz",
+     "d": "The strait at the mouth of the Persian Gulf through which a large share of global oil exports pass."
+    },
+    {
+     "k": "Fifth Fleet",
+     "d": "The U.S. Navy force responsible for the Gulf and nearby seas, based in Bahrain."
+    },
+    {
+     "k": "GCC",
+     "d": "Gulf Cooperation Council: a six-member regional bloc of Arab Gulf monarchies."
+    },
+    {
+     "k": "Chabahar Port",
+     "d": "Iranian port developed with Indian help to reach Afghanistan and Central Asia bypassing Pakistan."
+    },
+    {
+     "k": "IMEC",
+     "d": "India–Middle East–Europe Economic Corridor: a rail and shipping route planned through the Gulf and Israel."
+    },
+    {
+     "k": "I2U2",
+     "d": "Grouping of India, Israel, the UAE and the U.S. for cooperation in food, water, energy and technology."
+    },
+    {
+     "k": "Operation Sankalp",
+     "d": "The Indian Navy's 2019 deployment to protect Indian shipping in the Gulf of Oman and Persian Gulf."
+    }
+   ],
+   "qs": [
+    {
+     "q": "How would tension between Iran and the U.S. in the Gulf affect India's national interest? How should India respond?",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": "2018 GS2 (US–Iran nuclear pact controversy and India)"
+    },
+    {
+     "q": "Energy security is a key driver of India's foreign policy in West Asia. Discuss.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": "2025 GS2 (energy security and Middle East) · 2026 GS3 (India's energy security)"
+    },
+    {
+     "q": "Evaluate the significance of the Strait of Hormuz and the Persian Gulf for India's trade, energy and diaspora.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": "2022 GS2 (I2U2 and India's position)"
+    }
+   ]
+  }
+ ],
+ "note": "How this day was made: the page images were too small to read the stories, so the 'In the news' lines only repeat what the headlines say; the rest is the syllabus background. Read the articles for details such as numbers, names and dates. Cross-check before quoting: the 2026 change to the number of Supreme Court judges, the Law Commission reports on dividing the Supreme Court, the IRF ban dates, and the exact status of the Manipur inquiry. Article numbers and years come from standard textbooks (Laxmikanth, NCERT)."
+}
