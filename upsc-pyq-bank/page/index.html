@@ -1041,6 +1041,7 @@
   .rt-wave .rt-r .rt-tile{transform:scale(calc(1 + .16*var(--w)));}
   .rt-wave .rt-r .n{font-weight:calc(600 + 200*var(--w)); font-size:calc(14.5px + 1px*var(--w));} .rt-wave .rt-r .t{font-size:calc(13px + 1px*var(--w));}
   @media (prefers-reduced-motion:reduce){ .rt-r{transition:none;} }
+  .rt-x{display:flex; align-items:center; gap:10px; margin:6px 0 0; padding:6px 10px; border:1.5px dashed rgba(255,255,255,.38); border-radius:14px; color:#d9fffb; font-size:13px;} .rt-x .ic{flex:none; width:34px; text-align:center; font-size:17px;} .rt-x .t{flex:none; width:68px; font-weight:800;} .rt-x .n{flex:1; min-width:0;} .rt-x .d{flex:none; opacity:.85;} .rt-x.warn{border-color:#ffb3a6; color:#ffd9d2;} .rt-card.sun2 .rt-x{color:#4a2a58; border-color:rgba(74,42,88,.45);} .rt-card.sun2 .rt-x.warn{color:#8a1d12; border-color:#c0473a;}
   .rt-ft{position:relative; z-index:2; display:flex; justify-content:space-between; margin-top:14px; padding-top:10px; border-top:1px solid rgba(255,255,255,.14); font-size:12px; color:#bff3ef;}
   .rt-shadow{height:22px; margin:-4px 34px 0; border-radius:50%; background:radial-gradient(ellipse,rgba(0,0,0,.5),transparent 70%);}
   .rt-card.sun2{background:linear-gradient(160deg,#ffd9a0 0%,#ff9f7a 40%,#8a5fd0 100%); border-color:rgba(255,255,255,.55); box-shadow:0 2px 0 rgba(255,255,255,.5) inset,0 -26px 40px rgba(60,20,90,.25) inset,18px 30px 50px rgba(0,0,0,.5),-4px 6px 0 #b0613f,-8px 12px 0 #8a4a30;} .rt-card.sun2:after{background:radial-gradient(circle,rgba(255,255,255,.7),transparent 62%);}
@@ -18411,9 +18412,26 @@ function rtPlanLabels(it){   // what the planner really has in this study time t
       var l = x.kind==="revision" ? "Revision" : x.kind==="essay" ? "Essay" : x.kind==="ca" ? "Current affairs" : x.kind==="pyq" ? "PYQ practice" : x.kind==="test" ? "Test" : String(x.subject || "").replace(/ \(Optional\)$/, "");
       if(l && seen.indexOf(l) < 0){ seen.push(l); out.push(l); }
     });
+    var dow = new Date().getDay();   // activities that happen in this study time on other days of the week (an essay on Fridays) are named with their days
+    rtPlanActs().forEach(function(x){ if(x.days && x.days.indexOf(dow) < 0 && x.a < q[1] && q[0] < x.b && out.indexOf(x.name) < 0) out.push(x.name+" ("+rtDayTag(x.days)+")"); });
     return out.join(", ");
   }catch(e){ return ""; }
 }
+var RT_ACT_NAME = {revision:"Revision", essay:"Essay", pyq:"PYQ practice", test:"Test", ca:"Current affairs"};
+function rtPlanActs(){   // the planner's activities (revision, essay, PYQ, test, current affairs) with their time and days: [{k, name, a, b, days:null (every day) | [weekdays]}]
+  var out = [];
+  try{
+    if(!studyPlan || !studyPlan.activities) return out;
+    ["revision", "essay", "pyq", "test", "ca"].forEach(function(k){
+      var x = studyPlan.activities[k]; if(!x || !x.on || !x.start || !x.end || toMin(x.end) <= toMin(x.start)) return;
+      var days = (x.mode==="weekly" && Array.isArray(x.days) && x.days.length < 7) ? x.days.slice() : null;
+      if(k==="revision" && days && studyPlan.capacity && Array.isArray(studyPlan.capacity.days) && days.length===studyPlan.capacity.days.length) days = null;   // "every study day"
+      out.push({k:k, name:RT_ACT_NAME[k], a:toMin(x.start), b:toMin(x.end), days:days});
+    });
+  }catch(e){}
+  return out;
+}
+function rtDayTag(days){ return days ? days.slice().sort(function(a, b){ return ((a+6)%7) - ((b+6)%7); }).map(function(d){ return RT_DAYN[d]; }).join(", ") : "daily"; }
 function rtTitle(it){
   if(!rtIsStudy(it)) return it.n;
   var live = rtPlanLabels(it);
@@ -18610,10 +18628,25 @@ function rtCardHtml(){
   var list = rtSorted(), sun = rtIsDay(), nm = profile && profile.name ? profile.name : "";
   var h = '<div class="rt"><div class="rt-stage"><div class="rt-card'+(sun ? " sun2" : "")+'"><span class="rt-sun" aria-hidden="true">'+rtGlyph(list[0] ? list[0].s : "wake")+'</span><h2>My weekly routine</h2><div class="rt-sub">'+esc(rtWeekLabel())+(nm ? ' \u00B7 '+esc(nm) : '')+'</div>';
   h += '<div class="rt-wk">'+[0,1,2,3,4,5,6].map(function(i){ var d = rtDate(i), on = rt.days.indexOf(d.getDay())>=0, td = toKey(d)===todayKey; return '<div class="'+(td?"today":"")+'"'+(on ? "" : ' style="opacity:.45"')+'><b>'+d.getDate()+'</b>'+RT_DAYN[d.getDay()]+'</div>'; }).join("")+'</div><div class="rt-rows">';
-  list.forEach(function(it){
+  var ents = list.map(function(it){
     var c = RT_COL[(rtStk(it.s)||[0,0,0,"blue"])[3]], study = rtIsStudy(it);
-    h += '<div class="rt-r'+(study ? " study" : "")+'" data-id="'+esc(it.id)+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'"><span class="rt-tile">'+rtGlyph(it.s)+'</span><span class="t">'+esc(fmt12(it.t))+'</span><span class="n">'+esc(rtTitle(it))+'</span><span class="d">'+(it.e ? '\u2192 '+esc(fmt12(it.e)) : esc(fmtHM(rtDur(it)))) +'</span></div>';
+    return {a:toMin(it.t), o:0, h:'<div class="rt-r'+(study ? " study" : "")+'" data-id="'+esc(it.id)+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'"><span class="rt-tile">'+rtGlyph(it.s)+'</span><span class="t">'+esc(fmt12(it.t))+'</span><span class="n">'+esc(rtTitle(it))+'</span><span class="d">'+(it.e ? '\u2192 '+esc(fmt12(it.e)) : esc(fmtHM(rtDur(it)))) +'</span></div>'};
   });
+  var pacts = rtPlanActs(), spans = rtAllSpans(), gaps = rtFreeGaps(15), freeMin = 0, used = [];
+  gaps.forEach(function(g){   // free time between the activities, and what the planner has put in it
+    freeMin += g[1] - g[0];
+    var here = pacts.filter(function(x){ return x.a < g[1] && g[0] < x.b; });
+    here.forEach(function(x){ used.push(x); });
+    ents.push({a:g[0], o:1, h:'<div class="rt-x free"><span class="ic" aria-hidden="true">\u23F3</span><span class="t">'+esc(fmt12(hmStr(g[0])))+'</span><span class="n">Free time'+(here.length ? ' \u00B7 '+esc(here.map(function(x){ return x.name+" ("+rtDayTag(x.days)+")"; }).join(", ")) : '')+'</span><span class="d">\u2192 '+esc(fmt12(hmStr(g[1])))+'</span></div>'});
+  });
+  pacts.forEach(function(x){   // planner activities that are in neither study time nor a free gap: show them, and say when they clash with something in the routine
+    if(used.indexOf(x) >= 0 || spans.some(function(q){ return q[2] && q[0] <= x.a && x.b <= q[1]; })) return;
+    var days = x.days || [0, 1, 2, 3, 4, 5, 6], clash = spans.filter(function(q){ return !q[2] && x.a < q[1] && q[0] < x.b; })[0];
+    if(clash && !days.some(function(d){ return rt.days.indexOf(d) >= 0; })) clash = null;   // it falls on a day the routine is off
+    ents.push({a:x.a, o:1, h:'<div class="rt-x'+(clash ? ' warn' : '')+'"><span class="ic" aria-hidden="true">\u2795</span><span class="t">'+esc(fmt12(hmStr(x.a)))+'</span><span class="n">'+esc(x.name)+' ('+esc(rtDayTag(x.days))+')'+(clash ? ' \u00B7 clashes with '+esc(clash[3]) : '')+'</span><span class="d">\u2192 '+esc(fmt12(hmStr(x.b)))+'</span></div>'});
+  });
+  ents.sort(function(p, q){ return p.a - q.a || p.o - q.o; });
+  ents.forEach(function(e){ h += e.h; });
   var ended = toKey(rtDate(6)) < todayKey, hasPlan = !!studyPlan;
   var acts = '<div class="rt-acts" role="toolbar" aria-label="Routine actions">'+
     '<button type="button" data-rt="share"><i aria-hidden="true">\u2197</i><span>Share</span></button>'+
@@ -18622,7 +18655,7 @@ function rtCardHtml(){
     '<button type="button" data-rt="planner" class="'+(hasPlan ? "" : "hl")+'"><i aria-hidden="true">\uD83E\uDDED</i><span>Planner</span></button>'+
     (ended && rt.span!=="month" ? '<button type="button" data-rt="renew" class="hl"><i aria-hidden="true">\u21BB</i><span>New week</span></button>' : '')+
     '</div>';
-  h += '</div><div class="rt-ft"><span>'+esc(rtDaysText())+'</span></div>'+acts+'</div></div><div class="rt-shadow"></div>';
+  h += '</div><div class="rt-ft"><span>'+esc(rtDaysText())+'</span>'+(freeMin ? '<span>Free time: '+esc(rtLenText(freeMin))+'</span>' : '')+'</div>'+acts+'</div></div><div class="rt-shadow"></div>';
   return h;
 }
 function rtMonthHtml(){
@@ -21136,7 +21169,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "422";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "423";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
