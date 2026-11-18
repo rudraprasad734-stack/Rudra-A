@@ -252,7 +252,7 @@
   body.dash-timer #dashFab{animation:fabBreathe 4s ease-in-out infinite, fabShake 7s ease-in-out 2.5s infinite;}
   @keyframes fabGlow{0%,100%{opacity:0;}50%{opacity:.5;}}
   @keyframes fabShake{0%,84%,100%{transform:translateX(-50%) rotate(0);}87%{transform:translateX(calc(-50% - 4px)) rotate(-7deg);}90%{transform:translateX(calc(-50% + 4px)) rotate(7deg);}93%{transform:translateX(calc(-50% - 3px)) rotate(-4deg);}96%{transform:translateX(calc(-50% + 2px)) rotate(3deg);}}
-  #fabHint{position:fixed; left:50%; bottom:calc(20px + env(safe-area-inset-bottom,0px) + 62px * var(--tb,1) + 16px); transform:translateX(-50%); z-index:61; max-width:90vw; white-space:nowrap; padding:9px 14px; border-radius:14px; background:var(--tab-accent); color:var(--tab-accent-ink,#04141a); font-size:14px; font-weight:700; text-align:center; box-shadow:0 8px 24px rgba(2,8,20,.5); animation:fabHintIn .35s ease-out both; cursor:pointer;}
+  #fabHint{position:fixed; left:50%; bottom:calc(20px + env(safe-area-inset-bottom,0px) + 62px * var(--tb,1) + 16px + 62px * var(--tb,1)); transform:translateX(-50%); z-index:61; max-width:90vw; white-space:nowrap; padding:9px 14px; border-radius:14px; background:var(--tab-accent); color:var(--tab-accent-ink,#04141a); font-size:14px; font-weight:700; text-align:center; box-shadow:0 8px 24px rgba(2,8,20,.5); animation:fabHintIn .35s ease-out both; cursor:pointer;}
   #fabHint::after{content:""; position:absolute; left:50%; bottom:-6px; width:12px; height:12px; background:inherit; transform:translateX(-50%) rotate(45deg);}
   body:not(.dash-timer) #fabHint, body.today-open #fabHint, body.ui-sleep #fabHint{display:none;}
   @keyframes fabHintIn{from{opacity:0; transform:translateX(-50%) translateY(8px);}to{opacity:1; transform:translateX(-50%) translateY(0);}}
@@ -17520,6 +17520,11 @@ function fabHintMaybe(){
     var h = document.createElement("div"); h.id = "fabHint"; h.setAttribute("role", "status"); h.textContent = "Tap here for your Dashboard";
     h.addEventListener("click", function(){ fabHintDone(); document.getElementById("dashFab").click(); });
     document.body.appendChild(h);
+    try{   // keep the hint clear of the timer buttons on every screen size (a tablet puts them higher than a phone does)
+      var top = 1e9; [].forEach.call(document.querySelectorAll(".timer-btn"), function(b){ if(b.offsetParent){ var r = b.getBoundingClientRect(); if(r.height) top = Math.min(top, r.top); } });
+      var hr = h.getBoundingClientRect();
+      if(top < 1e9 && hr.bottom > top - 6) h.style.bottom = Math.max(8, window.innerHeight - top + 14)+"px";
+    }catch(e){}
     fabHintTimer = setTimeout(fabHintDone, 9000);
   }, 2500);
 }
@@ -19428,7 +19433,8 @@ function openTimerSave(){
   refresh();
   document.getElementById("tsDiscard").addEventListener("click", function(){ timerState.pending = 0; timerState.pendInfo = null; timerState.target = ""; timerSave(); closeModal(); timerUi(); renderView(activeTab); toast("Timer discarded."); });
   document.getElementById("tsSave").addEventListener("click", function(){
-    var sid = document.getElementById("tsTarget").value, add = timerState.pending;
+    var tsT = document.getElementById("tsTarget"); if(!tsT) return;   // a second tap in the same instant: the first one already saved and closed this box
+    var sid = tsT.value, add = timerState.pending;
     if(tooLong){
       var hrs = parseFloat(document.getElementById("tsReal").value);
       if(!(hrs > 0 && hrs <= 16)){ toast("Enter the hours you really studied (up to 16), or tap Discard."); return; }
@@ -21191,7 +21197,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "431";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "432";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
