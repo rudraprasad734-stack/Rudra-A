@@ -1,0 +1,681 @@
+{
+ "month": "2026-11",
+ "updated": "18 Nov 2026",
+ "questions": [
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Freedom of religion",
+   "exam": "pre",
+   "q": "With reference to freedom of religion under the Constitution of India, consider the following statements:\n1. Article 25 is subject to public order, morality and health and to the other Fundamental Rights.\n2. Article 26 gives every religious denomination the right to manage its own affairs in matters of religion.\n3. Courts protect every practice of a religion, whether or not it is essential to that religion.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Arts. 25 and 26 are both subject to public order, morality and health. Courts protect only practices that are essential to a religion, a test that began with the Shirur Mutt case (1954), so statement 3 is wrong.",
+   "id": "caq-2026-11-001"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Union Territories",
+   "exam": "pre",
+   "q": "Consider the following Union Territories:\n1. Puducherry\n2. Delhi\n3. Jammu and Kashmir\n4. Ladakh\nHow many of the above have a legislature?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 2,
+   "why": "Puducherry (Art. 239A), Delhi (Art. 239AA) and J&K (under the Reorganisation Act, 2019) have legislatures. Ladakh is a Union Territory without a legislature.",
+   "id": "caq-2026-11-002"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Jammu and Kashmir",
+   "exam": "pre",
+   "q": "With reference to the constitutional position of Jammu and Kashmir, consider the following statements:\n1. The Jammu and Kashmir Reorganisation Act, 2019 made J&K a Union Territory with a legislature from 31 October 2019.\n2. Statehood can be restored only by a constitutional amendment under Article 368.\n3. Parliament can form a State out of a Union Territory by a law passed by a simple majority under Articles 3 and 4.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "A law under Arts. 3 and 4 that forms a State is not treated as an amendment under Art. 368, so a simple majority is enough. Statement 2 is therefore wrong.",
+   "id": "caq-2026-11-003"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Death penalty",
+   "exam": "pre",
+   "q": "Consider the following statements:\nStatement-I: Unexplained and unreasonable delay in deciding a mercy petition can be a ground to commute a death sentence.\nStatement-II: The power to grant pardon, reprieve, remission or commutation is given to the President under Article 72 and to the Governor under Article 161.\nWhich one of the following is correct in respect of the above statements?",
+   "opts": [
+    "Both Statement-I and Statement-II are correct and Statement-II explains Statement-I",
+    "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I",
+    "Statement-I is correct, but Statement-II is incorrect",
+    "Statement-I is incorrect, but Statement-II is correct"
+   ],
+   "ans": 1,
+   "why": "Shatrughan Chauhan v. Union of India (2014) held that unexplained delay in deciding a mercy petition can be a ground for commutation. Arts. 72 and 161 are the source of the mercy power, but they do not explain why delay matters, which comes from the right to life under Art. 21.",
+   "id": "caq-2026-11-004"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Death penalty",
+   "exam": "pre",
+   "q": "Which one of the following recommended in 2015 that the death penalty be abolished for all crimes other than terrorism-related offences?",
+   "opts": [
+    "The Malimath Committee Report on reforms of the criminal justice system",
+    "The Justice Verma Committee Report on amendments to criminal law",
+    "The 262nd Report of the Law Commission of India",
+    "The Second Administrative Reforms Commission Report on public order"
+   ],
+   "ans": 2,
+   "why": "The Law Commission’s 262nd Report (2015) recommended abolishing capital punishment for all crimes except terrorism-related offences and waging war.",
+   "id": "caq-2026-11-005"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Transgender rights",
+   "exam": "pre",
+   "q": "With reference to the rights of transgender persons in India, consider the following statements:\n1. The Supreme Court in the NALSA case (2014) asked that transgender persons be treated as members of the Scheduled Castes for reservation.\n2. In Navtej Singh Johar (2018) the Supreme Court read down Section 377 of the Indian Penal Code for consenting adults.\n3. The Transgender Persons (Protection of Rights) Act, 2019 provides for a National Council for Transgender Persons.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "NALSA asked the Centre and States to treat transgender persons as socially and educationally backward classes for reservation, not as Scheduled Castes, so statement 1 is wrong.",
+   "id": "caq-2026-11-006"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Arrest and bail",
+   "exam": "pre",
+   "q": "With reference to arrest and bail in India, consider the following statements:\n1. Article 22 requires an arrested person to be produced before a Magistrate within 24 hours, excluding travel time.\n2. In Arnesh Kumar v. State of Bihar (2014) the Supreme Court said that arrest should not be automatic for offences punishable up to seven years.\n3. According to the Supreme Court, jail is the rule and bail is the exception.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 1,
+   "why": "Statements 1 and 2 are correct. The Supreme Court has said that bail is the rule and jail the exception, so statement 3 is wrong.",
+   "id": "caq-2026-11-007"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Administrative law",
+   "exam": "pre",
+   "q": "In administrative law, ‘Wednesbury unreasonableness’ as a ground of judicial review refers to a decision that is",
+   "opts": [
+    "so unreasonable that no reasonable authority could have made it",
+    "taken without following the procedure that the law requires for such decisions",
+    "beyond the powers that the law has conferred on the deciding authority",
+    "made out of personal ill-will towards the person affected by it"
+   ],
+   "ans": 0,
+   "why": "Wednesbury unreasonableness (1948) is the test of irrationality. A decision without the required procedure is procedural impropriety, one beyond the power given is illegality and a decision made with ill-will is mala fide.",
+   "id": "caq-2026-11-008"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Microfinance",
+   "exam": "pre",
+   "q": "With reference to the regulation of microfinance in India, consider the following statements:\n1. Under the RBI’s 2022 framework a microfinance borrower’s annual household income must not exceed ₹5 lakh.\n2. The framework caps loan repayments at 50% of household income, known as the FOIR.\n3. MFIN and Sa-Dhan are the self-regulatory organisations recognised by the RBI for NBFC-MFIs.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The 2022 framework sets the household income limit at ₹3 lakh, not ₹5 lakh, so statement 1 is wrong.",
+   "id": "caq-2026-11-009"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Consumer protection in lending",
+   "exam": "pre",
+   "q": "The ‘Key Facts Statement’ that lenders must give to a borrower is",
+   "opts": [
+    "a credit report prepared by a credit bureau on the borrower’s repayment history",
+    "a standard sheet stating the all-in cost, charges and recovery process of a loan",
+    "a government guarantee that covers small loans given to women’s self-help groups",
+    "a lender’s statement of its capital adequacy and its non-performing assets"
+   ],
+   "ans": 1,
+   "why": "The KFS gives the borrower the real cost and terms of a loan in plain language. It has been mandatory for retail and MSME loans since October 2024.",
+   "id": "caq-2026-11-010"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "State finances",
+   "exam": "pre",
+   "q": "With reference to State finances in India, consider the following statements:\n1. Spending on cash transfer schemes is revenue expenditure.\n2. Under Article 280 the Finance Commission fixes the borrowing limit of each State.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 only",
+    "2 only",
+    "Both 1 and 2",
+    "Neither 1 nor 2"
+   ],
+   "ans": 0,
+   "why": "Cash transfers create no asset, so they are revenue expenditure. The borrowing powers of States are limited by Art. 293, while the Finance Commission under Art. 280 recommends how Union taxes are shared.",
+   "id": "caq-2026-11-011"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Horticulture",
+   "exam": "pre",
+   "q": "With reference to horticulture in India, consider the following statements:\n1. India is the second-largest producer of fruits and vegetables in the world after China.\n2. Wheat is the main kharif crop of India.\n3. Operation Greens, launched in 2018, aims to stabilise prices of tomato, onion and potato.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "Wheat is the main rabi crop, sown in October–December and harvested in March–April, so statement 2 is wrong.",
+   "id": "caq-2026-11-012"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Cropping seasons",
+   "exam": "pre",
+   "q": "Consider the following crops:\n1. Wheat\n2. Mustard\n3. Bajra\n4. Cotton\nHow many of the above are rabi crops?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 1,
+   "why": "Wheat and mustard are rabi crops sown in winter. Bajra and cotton are kharif crops sown with the monsoon.",
+   "id": "caq-2026-11-013"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Statistics",
+   "exam": "pre",
+   "q": "Consider the following statements about official statistics:\nStatement-I: Synthetic data generated by AI can distort official estimates if it replaces data from field surveys.\nStatement-II: Synthetic data inherits the gaps and biases of the data on which the model was trained.\nWhich one of the following is correct in respect of the above statements?",
+   "opts": [
+    "Both Statement-I and Statement-II are correct and Statement-II explains Statement-I",
+    "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I",
+    "Statement-I is correct, but Statement-II is incorrect",
+    "Statement-I is incorrect, but Statement-II is correct"
+   ],
+   "ans": 0,
+   "why": "A model trained on data that under-counts informal work will reproduce that gap, which is why synthetic estimates can distort official statistics. Statement II explains statement I.",
+   "id": "caq-2026-11-014"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Statistics",
+   "exam": "pre",
+   "q": "Which one of the following is the main source of official data on employment and unemployment in India?",
+   "opts": [
+    "The Annual Survey of Industries",
+    "The Annual Survey of Unincorporated Sector Enterprises",
+    "The Household Consumption Expenditure Survey",
+    "The Periodic Labour Force Survey"
+   ],
+   "ans": 3,
+   "why": "The Periodic Labour Force Survey of the National Statistical Office is the main source of employment and unemployment data. The Annual Survey of Industries covers factories, ASUSE covers unincorporated enterprises, and the Household Consumption Expenditure Survey covers spending.",
+   "id": "caq-2026-11-015"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Statistics",
+   "exam": "pre",
+   "q": "The Gauss–Markov theorem in statistics states that, under its assumptions, the ordinary least squares estimator is",
+   "opts": [
+    "the Maximum Entropy Estimator for every distribution",
+    "the Best Linear Unbiased Estimator",
+    "the Best Unbiased Non-linear Estimator",
+    "the Consistent Bayesian Estimator of the mean"
+   ],
+   "ans": 1,
+   "why": "Under the Gauss–Markov assumptions, OLS is the Best Linear Unbiased Estimator (BLUE).",
+   "id": "caq-2026-11-016"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Protected areas of Assam",
+   "exam": "pre",
+   "q": "With reference to the protected areas of Assam, consider the following statements:\n1. Manas National Park lies on the border between India and Nepal.\n2. Dibru-Saikhowa is a Biosphere Reserve that is known for its feral horses.\n3. Hoollongapar in Jorhat district is the only gibbon sanctuary in India.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "Manas is on the border with Bhutan, not Nepal, so statement 1 is wrong.",
+   "id": "caq-2026-11-017"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Threatened species",
+   "exam": "pre",
+   "q": "Consider the following animals of Assam:\n1. Greater one-horned rhinoceros\n2. Pygmy hog\n3. Bengal florican\n4. Golden langur\nHow many of the above are listed as Critically Endangered by the IUCN?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 1,
+   "why": "The pygmy hog and the Bengal florican are listed as Critically Endangered by the IUCN. The greater one-horned rhinoceros is Vulnerable and the golden langur is Endangered.",
+   "id": "caq-2026-11-018"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Wildlife conservation",
+   "exam": "pre",
+   "q": "In which year was Project Elephant launched by the Government of India?",
+   "opts": [
+    "1973",
+    "2006",
+    "2010",
+    "1992"
+   ],
+   "ans": 3,
+   "why": "Project Elephant began in 1992 to protect elephants, their habitats and corridors. Project Tiger began in 1973, and the elephant was declared the National Heritage Animal in 2010.",
+   "id": "caq-2026-11-019"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Cyclones",
+   "exam": "pre",
+   "q": "With reference to tropical cyclones over the north Indian Ocean, consider the following statements:\n1. A cyclonic storm on the IMD scale has maximum sustained winds of 89 to 117 km/h.\n2. The India Meteorological Department is the Regional Specialised Meteorological Centre for tropical cyclones in this region.\n3. Names are used in sequence from a list proposed by the member countries of the WMO/ESCAP Panel on Tropical Cyclones.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "A cyclonic storm has winds of 62 to 88 km/h. Winds of 89 to 117 km/h make a severe cyclonic storm, so statement 1 is wrong.",
+   "id": "caq-2026-11-020"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Cyclones",
+   "exam": "pre",
+   "q": "The tropical cyclone ‘Akvan’, expected to cross the Andhra Pradesh coast, took its name from a list kept by the WMO/ESCAP Panel on Tropical Cyclones. Which one of the following countries proposed this name?",
+   "opts": [
+    "Iran",
+    "Bangladesh",
+    "Oman",
+    "Sri Lanka"
+   ],
+   "ans": 0,
+   "why": "The name Akvan was proposed by Iran. The names are used in sequence, so the proposing country has no link to where the storm goes. Bangladesh’s ‘Arnab’ and India’s ‘Murasu’ came before it.",
+   "id": "caq-2026-11-021"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Environmental awards",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. It gives five prizes of £1 million every year until 2030.\n2. The Constitution of Bhutan requires that at least 60% of the country’s land remain under forest cover.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 only",
+    "2 only",
+    "Both 1 and 2",
+    "Neither 1 nor 2"
+   ],
+   "ans": 2,
+   "why": "The Prize runs for a decade to 2030 with five £1 million awards a year, and Bhutan’s Constitution requires a minimum of 60% forest cover for all time.",
+   "id": "caq-2026-11-022"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Renewable energy",
+   "exam": "pre",
+   "q": "With reference to India’s renewable energy efforts, consider the following statements:\n1. The PM Surya Ghar: Muft Bijli Yojana aims to put rooftop solar on one crore households.\n2. India’s updated NDC (2022) promises that 50% of installed electric capacity will come from non-fossil sources by 2030.\n3. The International Solar Alliance has its headquarters in Paris.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The ISA was launched in Paris in 2015, but its headquarters is in Gurugram, so statement 3 is wrong.",
+   "id": "caq-2026-11-023"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Bioenergy",
+   "exam": "pre",
+   "q": "The SATAT scheme, launched by the Ministry of Petroleum and Natural Gas in 2018, is associated with which one of the following?",
+   "opts": [
+    "installing solar pumps on farms and solarising agricultural feeders",
+    "replacing diesel buses with electric buses in the larger cities",
+    "setting up compressed biogas plants and a market for it",
+    "creating a strategic reserve of crude oil in underground caverns"
+   ],
+   "ans": 2,
+   "why": "SATAT (Sustainable Alternative Towards Affordable Transportation) created a market for compressed biogas, while PM-KUSUM covers solar pumps.",
+   "id": "caq-2026-11-024"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Bioenergy",
+   "exam": "pre",
+   "q": "Consider the following statements about renewable fuels:\n1. Compressed biogas has more than 90% methane.\n2. Sustainable aviation fuel cannot be blended with ordinary aviation fuel.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 only",
+    "2 only",
+    "Both 1 and 2",
+    "Neither 1 nor 2"
+   ],
+   "ans": 0,
+   "why": "CBG is purified biogas with more than 90% methane. Sustainable aviation fuel can be blended with ordinary aviation fuel, up to 50% under the standard.",
+   "id": "caq-2026-11-025"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "ASEAN and East Asia",
+   "exam": "pre",
+   "q": "With reference to India’s engagement with Southeast and East Asia, consider the following statements:\n1. India became a summit-level partner of ASEAN in 2002.\n2. The East Asia Summit, begun in 2005, is an ASEAN-led leaders’ forum on regional strategic issues.\n3. The Act East Policy of 2014 upgraded the Look East Policy of 1991.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three statements are correct. India became a summit-level partner in 2002, the East Asia Summit began in 2005, and the Act East Policy upgraded the Look East Policy.",
+   "id": "caq-2026-11-026"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Quad",
+   "exam": "pre",
+   "q": "Consider the following countries:\n1. Japan\n2. Australia\n3. South Korea\n4. New Zealand\nHow many of the above are members of the Quad?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 1,
+   "why": "Japan and Australia are Quad members along with India and the US. South Korea and New Zealand are not.",
+   "id": "caq-2026-11-027"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Quad",
+   "exam": "pre",
+   "q": "Consider the following statements:\nStatement-I: The Quad is a formal military alliance with a mutual-defence clause.\nStatement-II: Quad cooperation covers areas such as maritime domain awareness, supply chains and technology.\nWhich one of the following is correct in respect of the above statements?",
+   "opts": [
+    "Both Statement-I and Statement-II are correct and Statement-II explains Statement-I",
+    "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I",
+    "Statement-I is correct, but Statement-II is incorrect",
+    "Statement-I is incorrect, but Statement-II is correct"
+   ],
+   "ans": 3,
+   "why": "The Quad is an informal grouping of India, the US, Japan and Australia with no mutual-defence clause. Its work covers maritime domain awareness, supply chains, technology and health.",
+   "id": "caq-2026-11-028"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "ASEAN",
+   "exam": "pre",
+   "q": "The 2026 India–ASEAN and East Asia Summits were held in Manila because the country that holds the ASEAN chair in 2026 hosts them. Which one of the following countries holds that chair?",
+   "opts": [
+    "Thailand",
+    "The Philippines",
+    "Vietnam",
+    "Indonesia"
+   ],
+   "ans": 1,
+   "why": "The Philippines chairs ASEAN in 2026, which is why the India–ASEAN and East Asia Summits were held in Manila.",
+   "id": "caq-2026-11-029"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Maritime exercises",
+   "exam": "pre",
+   "q": "With reference to the Malabar naval exercise, consider the following statements:\n1. It began in 1992 as an exercise between India and Japan.\n2. Japan became a permanent participant in 2015.\n3. Australia became a permanent participant in 2020.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "Malabar began in 1992 as a bilateral exercise between India and the US, so statement 1 is wrong.",
+   "id": "caq-2026-11-030"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Indian Navy",
+   "exam": "pre",
+   "q": "INS Vikrant, the first aircraft carrier built in India and commissioned in 2022, was built by which shipyard?",
+   "opts": [
+    "Mazagon Dock Shipbuilders Limited",
+    "Garden Reach Shipbuilders and Engineers",
+    "Cochin Shipyard Limited",
+    "Hindustan Shipyard Limited"
+   ],
+   "ans": 2,
+   "why": "INS Vikrant was built by Cochin Shipyard Limited and commissioned on 2 September 2022. The other carrier, INS Vikramaditya, was bought from Russia.",
+   "id": "caq-2026-11-031"
+  },
+  {
+   "subject": "History",
+   "syllabus": "Modern India",
+   "exam": "pre",
+   "q": "In which year did the older INS Vikrant (R11) take part in the naval blockade of East Pakistan?",
+   "opts": [
+    "1962",
+    "1965",
+    "1999",
+    "1971"
+   ],
+   "ans": 3,
+   "why": "The first INS Vikrant (1961–97) took part in the blockade of East Pakistan during the Bangladesh Liberation War of 1971.",
+   "id": "caq-2026-11-032"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Space",
+   "exam": "pre",
+   "q": "With reference to space policy and law, consider the following statements:\n1. The Outer Space Treaty, 1967 allows States to claim sovereignty over celestial bodies.\n2. In Mission Shakti (2019) India hit a satellite in low-Earth orbit at about 300 km.\n3. NewSpace India Limited is the commercial arm of ISRO.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The Outer Space Treaty forbids national appropriation of outer space and celestial bodies, so statement 1 is wrong.",
+   "id": "caq-2026-11-033"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Malaria",
+   "exam": "pre",
+   "q": "With reference to malaria, consider the following:\n1. Plasmodium falciparum\n2. Plasmodium vivax\n3. Plasmodium knowlesi\n4. Anopheles stephensi\nHow many of the above are species of the malaria parasite?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 2,
+   "why": "The first three are species of the malaria parasite. Anopheles stephensi is a mosquito that spreads malaria in cities.",
+   "id": "caq-2026-11-034"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Malaria",
+   "exam": "pre",
+   "q": "With reference to malaria, consider the following statements:\n1. Only female Anopheles mosquitoes spread the disease.\n2. Artemisinin-based combination therapy is the standard treatment for falciparum malaria.\n3. World Malaria Day is observed on 20 August.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "World Malaria Day is on 25 April. 20 August is World Mosquito Day, which marks Ronald Ross’s 1897 discovery.",
+   "id": "caq-2026-11-035"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Health",
+   "exam": "pre",
+   "q": "Which one of the following pairs of vaccines has been recommended by the World Health Organization for the prevention of malaria in children?",
+   "opts": [
+    "RTS,S/AS01 and R21/Matrix-M",
+    "BCG and MMR",
+    "Covaxin and Covishield",
+    "Sputnik V and Corbevax"
+   ],
+   "ans": 0,
+   "why": "WHO recommended RTS,S/AS01 in 2021 and R21/Matrix-M in 2023 for children.",
+   "id": "caq-2026-11-036"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Space missions",
+   "exam": "pre",
+   "q": "With reference to the Voyager 1 spacecraft, consider the following statements:\n1. A radio signal takes about one day to travel between the Earth and Voyager 1.\n2. Voyager 1 was launched before Voyager 2.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 only",
+    "2 only",
+    "Both 1 and 2",
+    "Neither 1 nor 2"
+   ],
+   "ans": 0,
+   "why": "Voyager 1 is about one light-day from Earth. Voyager 2 was launched on 20 August 1977, before Voyager 1 on 5 September 1977.",
+   "id": "caq-2026-11-037"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Computing",
+   "exam": "pre",
+   "q": "The Top500 list is published twice a year to rank the world’s fastest supercomputers. Which one of the following benchmarks is used to rank the machines on that list?",
+   "opts": [
+    "MLPerf",
+    "LINPACK",
+    "SPEC CPU",
+    "Geekbench"
+   ],
+   "ans": 1,
+   "why": "The Top500 list ranks machines by their speed on the LINPACK benchmark.",
+   "id": "caq-2026-11-038"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Space and computing policy",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. IN-SPACe, set up in 2020, is a single-window authority to promote and authorise private space activity.\n2. The National Supercomputing Mission, started in 2015, is run by MeitY and the Department of Science and Technology.\n3. The Indian Space Policy 2023 bars private companies from building launch vehicles.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The Indian Space Policy 2023 opens space activity, including launch vehicles, to private firms, so statement 3 is wrong.",
+   "id": "caq-2026-11-039"
+  },
+  {
+   "subject": "Geography",
+   "syllabus": "Cyclones",
+   "exam": "pre",
+   "q": "With reference to the formation of tropical cyclones, consider the following statements:\n1. They need sea-surface temperatures above about 26.5°C.\n2. The Coriolis force is too weak at the equator for a cyclone to form there.\n3. The Arabian Sea produces more cyclones than the Bay of Bengal.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The Bay of Bengal sees several times more cyclones than the Arabian Sea, so statement 3 is wrong.",
+   "id": "caq-2026-11-040"
+  },
+  {
+   "subject": "Geography",
+   "syllabus": "Disasters",
+   "exam": "pre",
+   "q": "The Super Cyclone that killed about 10,000 people in Odisha struck in which year?",
+   "opts": [
+    "1971",
+    "1989",
+    "1999",
+    "2013"
+   ],
+   "ans": 2,
+   "why": "The Odisha Super Cyclone of 1999 killed about 10,000 people. Later storms such as Phailin (2013) and Fani (2019) caused deaths in double digits after better warnings and evacuation.",
+   "id": "caq-2026-11-041"
+  },
+  {
+   "subject": "Geography",
+   "syllabus": "Rivers",
+   "exam": "pre",
+   "q": "Consider the following rivers:\n1. Mahanadi\n2. Godavari\n3. Krishna\n4. Narmada\nHow many of the above flow into the Bay of Bengal?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 2,
+   "why": "The Mahanadi, Godavari and Krishna flow into the Bay of Bengal. The Narmada flows west into the Arabian Sea.",
+   "id": "caq-2026-11-042"
+  },
+  {
+   "subject": "Geography",
+   "syllabus": "Rivers and islands",
+   "exam": "pre",
+   "q": "Majuli, which is one of the largest river islands in the world, lies in which river?",
+   "opts": [
+    "The Brahmaputra",
+    "The Ganga",
+    "The Godavari",
+    "The Mahanadi"
+   ],
+   "ans": 0,
+   "why": "Majuli is a river island in the Brahmaputra in Assam.",
+   "id": "caq-2026-11-043"
+  },
+  {
+   "subject": "Art & Culture",
+   "syllabus": "Temples and festivals",
+   "exam": "pre",
+   "q": "Thirupparankundram, in Tamil Nadu, is the first of the six abodes (Arupadai Veedu) of which deity?",
+   "opts": [
+    "Shiva",
+    "Vishnu",
+    "Ganesha",
+    "Murugan"
+   ],
+   "ans": 3,
+   "why": "Thirupparankundram is the first of the six abodes of Murugan. The others are Tiruchendur, Palani, Swamimalai, Thiruthani and Pazhamudircholai.",
+   "id": "caq-2026-11-044"
+  },
+  {
+   "subject": "Art & Culture",
+   "syllabus": "Festivals",
+   "exam": "pre",
+   "q": "With reference to the Karthigai Deepam festival, consider the following statements:\n1. It falls in the Tamil month of Karthigai, in November–December.\n2. It is observed on the new-moon day of that month.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 only",
+    "2 only",
+    "Both 1 and 2",
+    "Neither 1 nor 2"
+   ],
+   "ans": 0,
+   "why": "The festival is held on the full-moon day when the Krittika star rules the sky, not on the new-moon day.",
+   "id": "caq-2026-11-045"
+  }
+ ]
+}

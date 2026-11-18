@@ -94,3 +94,10 @@ This part is judgment, not counted data.
 - `README.md`: this guide.
 - `pyq_stats.py`: recomputes `pyq-stats.json` from `bank-docs/`.
 - `lint_quiz.py`: checks a month file. Errors (exit code 1) are structural, such as a missing field or an answer out of range. Warnings are style gaps against section 1 to 4.
+
+## Presentation rules (added 18 Nov 2026)
+
+- No source lines, "taken from ..." wording, news commentary or extra notes under a question or its options. Show only the question, the four options and a short neutral explanation of the answer.
+- Do not add a `src`, `checked` or `insight` field to new questions.
+- If a keyword or fact is unclear, search the internet and use the result to write a fuller, accurate question instead of guessing.
+- The correct option must not be the longest option. Keep the option lengths close, and vary the position (A to D) of the correct answer so it cannot be guessed.
