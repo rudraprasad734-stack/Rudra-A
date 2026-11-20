@@ -17621,7 +17621,7 @@ var caq = {loaded:false, loading:false, err:"", months:[], qs:{}, ui:{subject:"A
 // device-only on purpose (plain localStorage, not lsSet): the cloud sync never sees these keys
 function caqLoadData(){ try{ var v = JSON.parse(localStorage.getItem(CAQ_STORE) || "null"); if(v && typeof v==="object" && v.ans && typeof v.ans==="object") return {ans:v.ans, reports:Array.isArray(v.reports) ? v.reports : [], days:Array.isArray(v.days) ? v.days : []}; }catch(e){} return {ans:{}, reports:[], days:[]}; }
 var caqData = caqLoadData();
-function caqSave(){ try{ localStorage.setItem(CAQ_STORE, JSON.stringify(caqData)); }catch(e){} }
+function caqSave(){ lsSet(CAQ_STORE, JSON.stringify(caqData)); }
 function caqPersist(){ try{ if(navigator.storage && navigator.storage.persist) navigator.storage.persist(); }catch(e){} }   // asks the browser not to clear this data when it is short of space
 function caqFetch(url){ return fetch(url).then(function(r){ if(!r.ok) throw new Error(url+" "+r.status); return r.json(); }); }
 function caqLoad(done){
@@ -20557,7 +20557,7 @@ if(!syncMeta.tl) syncMeta.tl = (syncMeta.uid && syncMeta.hash && syncMeta.hash.t
 if(!syncMeta.pt) syncMeta.pt = {};
 function saveSyncMeta(){ lsSetJSON(SYNC_META_KEY, syncMeta); }
 function cloudConfigured(){ return !!(devHook("__cloudTestAdapter") || (FIREBASE_CONFIG.apiKey && FIREBASE_CONFIG.projectId)); }
-var CLOUD_KEY_RE = /^dossier\.(plan\.v1|progress\.v1|sessions\.v1|profile\.v1|state\.(prelims|mains|months|daily|mockTests)|timerLog|revdone\.v1|catchup\.v1|planConfig|pathTheme|uiTheme|timerScene|soundId|soundOn|soundVol|tierMode|routine\.v1)$/;
+var CLOUD_KEY_RE = /^dossier\.(plan\.v1|progress\.v1|sessions\.v1|profile\.v1|state\.(prelims|mains|months|daily|mockTests)|timerLog|revdone\.v1|catchup\.v1|planConfig|pathTheme|uiTheme|timerScene|soundId|soundOn|soundVol|tierMode|routine\.v1|caq\.v1|pyq\.practised\.v1|dailyread\.v1)$/;
 // settings that follow the person from phone to phone (each one keeps its own change time, so the latest change on any device wins)
 var PREF_LS = {pathTheme:"dossier.pathTheme", uiTheme:"dossier.uiTheme", timerScene:"dossier.timerScene", soundId:"dossier.soundId", soundOn:"dossier.soundOn", soundVol:"dossier.soundVol", tierMode:"dossier.tierMode"};
 function prefKeyOf(lsKey){ for(var k in PREF_LS) if(PREF_LS[k]===lsKey) return k; return null; }
@@ -20650,12 +20650,16 @@ function localDocs(){
   out.prefs = JSON.stringify(pv);
   if(sub.t0) out.sub = JSON.stringify({t0:sub.t0});
   if(rt.items.length) out.routine = JSON.stringify(rt);
+  if(!isEmptyObj(caqData.ans) || caqData.days.length) out.caq = JSON.stringify({ans:caqData.ans, days:caqData.days});
+  if(!isEmptyObj(pyqPracGet())) out.pyqprac = JSON.stringify(pyqPracGet());
+  var dr = dyRead(); if(!isEmptyObj(dr)) out.dailyread = JSON.stringify(dr);
   return out;
 }
 // what an emptied document looks like (so a deletion on one phone reaches the others)
 function emptyDoc(id){
   if(/^sessions-/.test(id) || id==="mocks") return "[]";
-  if(/^daily-/.test(id) || id==="prelims" || id==="mains" || id==="months" || id==="timerlog" || id==="revdone") return "{}";
+  if(/^daily-/.test(id) || id==="prelims" || id==="mains" || id==="months" || id==="timerlog" || id==="revdone" || id==="pyqprac" || id==="dailyread") return "{}";
+  if(id==="caq") return JSON.stringify({ans:{}, days:[]});
   if(id==="progress") return JSON.stringify({topics:{}, lastUnlock:null});
   return null;   // plan, profile, prefs, ...: never "deleted" by syncing
 }
@@ -20686,10 +20690,15 @@ function mergeDoc(id, L, R){
     return out;
   }
   if(id==="prelims" || id==="mains"){ out = Object.assign({}, R); Object.keys(L).forEach(function(d){ if(L[d]) out[d] = true; }); return out; }
-  if(/^daily-/.test(id) || id==="months" || id==="revdone") return Object.assign({}, L, R);
+  if(id==="caq"){
+    var ans = Object.assign({}, R.ans || {}); Object.keys(L.ans || {}).forEach(function(q){ var x = L.ans[q], y = ans[q]; if(!y || String(x.d||"") > String(y.d||"")) ans[q] = x; });
+    var dset = {}; (L.days || []).concat(R.days || []).forEach(function(d){ dset[d] = 1; });
+    return {ans:ans, days:Object.keys(dset).sort()};
+  }
+  if(/^daily-/.test(id) || id==="months" || id==="revdone" || id==="pyqprac" || id==="dailyread") return Object.assign({}, L, R);
   return null;
 }
-function cloudMergeable(id){ return /^(progress|sessions-.*|daily-.*|mocks|timerlog|prelims|mains|months|revdone|prefs|sub)$/.test(id); }
+function cloudMergeable(id){ return /^(progress|sessions-.*|daily-.*|mocks|timerlog|prelims|mains|months|revdone|prefs|sub|caq|pyqprac|dailyread)$/.test(id); }
 
 // ---- apply downloaded documents to this device (reuses the backup restore code) ----
 function applyRemoteDocs(take){
@@ -20716,6 +20725,9 @@ function applyRemoteDocs(take){
     else if(id==="revdone") data.revDone = v;
     else if(id==="catch") data.catchState = v;
     else if(id==="routine") data.routine = v;
+    else if(id==="caq") data.caQuiz = {ans:v.ans || {}, days:Array.isArray(v.days) ? v.days : [], reports:caqData.reports};
+    else if(id==="pyqprac"){ pyqPrac = v; try{ localStorage.setItem(PYQ_PRAC_KEY, JSON.stringify(v)); }catch(e){} }
+    else if(id==="dailyread"){ try{ localStorage.setItem(DYR_KEY, JSON.stringify(v)); }catch(e){} }
     else if(id==="planconfig" && JSON.stringify(v) !== JSON.stringify(curCfg)) data.planConfig = v;
   });
   if(sessM){ var all = []; Object.keys(sessM).sort().forEach(function(k){ all = all.concat(sessM[k]); }); data.studySessions = all; }
@@ -21198,7 +21210,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "442";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "443";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -22766,13 +22778,13 @@ function pyqPracGet(){
 }
 function pyqPracMark(key){
   var p = pyqPracGet(); if(p[key]) return; p[key] = 1;
-  try{ localStorage.setItem(PYQ_PRAC_KEY, JSON.stringify(p)); }catch(e){}
+  lsSet(PYQ_PRAC_KEY, JSON.stringify(p));
 }
-function pyqPracReset(){ pyqPrac = {}; try{ localStorage.removeItem(PYQ_PRAC_KEY); }catch(e){} }
+function pyqPracReset(){ pyqPrac = {}; lsSet(PYQ_PRAC_KEY, "{}"); }
 function pyqPracResetDocs(docs){   // forget progress for just these papers
   var p = pyqPracGet();
   docs.forEach(function(d){ Object.keys(p).forEach(function(k){ if(k.indexOf(d.id+"#")===0) delete p[k]; }); });
-  try{ localStorage.setItem(PYQ_PRAC_KEY, JSON.stringify(p)); }catch(e){}
+  lsSet(PYQ_PRAC_KEY, JSON.stringify(p));
 }
 function pyqDocProg(d){   // n = questions that can be quizzed, p = of those, already practised
   var n = 0, p = 0, pr = pyqPracGet();
