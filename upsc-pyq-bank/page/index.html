@@ -20782,12 +20782,13 @@ function cloudSync(){
       var stamp = Math.max(Date.now(), (syncMeta.base[id]||0) + 1, rmap[id] ? rmap[id].updatedAt + 1 : 0);
       ops.push({id:id, json:json, stamp:stamp, expect:rmap[id] ? rmap[id].updatedAt : 0});
     });
-    var chain = Promise.resolve();
-    ops.forEach(function(o){ chain = chain.then(function(){ return A.put(uid, o.id, {json:o.json, updatedAt:o.stamp, device:syncMeta.device}, o.expect).then(function(){ syncMeta.hash[o.id] = now[o.id]!=null ? hashStr(now[o.id]) : "-"; syncMeta.base[o.id] = o.stamp; (syncMeta.rh || (syncMeta.rh = {}))[o.id] = hashStr(o.json); }); }); });
-    return chain.then(function(){ syncMeta.tl = lsGetJSON("dossier.timerLog", {}); syncMeta.last = {at:Date.now(), pulled:Object.keys(take).length, pushed:ops.length}; saveSyncMeta(); return {pushed:ops.length, pulled:Object.keys(take).length, tooBig:tooBig}; });
+    var chain = Promise.resolve(), refused = [];
+    // one document the cloud will not accept must not stop the others from syncing: it is noted and the rest go on
+    ops.forEach(function(o){ chain = chain.then(function(){ return A.put(uid, o.id, {json:o.json, updatedAt:o.stamp, device:syncMeta.device}, o.expect).then(function(){ syncMeta.hash[o.id] = now[o.id]!=null ? hashStr(now[o.id]) : "-"; syncMeta.base[o.id] = o.stamp; (syncMeta.rh || (syncMeta.rh = {}))[o.id] = hashStr(o.json); }, function(e){ if(e && /permission/i.test(String(e.code || e.message || ""))){ refused.push(o.id); return; } throw e; }); }); });
+    return chain.then(function(){ syncMeta.tl = lsGetJSON("dossier.timerLog", {}); syncMeta.last = {at:Date.now(), pulled:Object.keys(take).length, pushed:ops.length - refused.length}; saveSyncMeta(); return {pushed:ops.length - refused.length, pulled:Object.keys(take).length, tooBig:tooBig, refused:refused}; });
   }).then(function(r){
     cloud.busy = false; cloud.conflicts = 0;
-    setCloud(r.tooBig ? "err" : "ok", r.tooBig ? "Some of your data is too large to sync. Use Download backup to keep a copy." : "");
+    setCloud((r.tooBig || (r.refused && r.refused.length)) ? "err" : "ok", r.tooBig ? "Some of your data is too large to sync. Use Download backup to keep a copy." : (r.refused && r.refused.length ? "Everything is synced except "+r.refused.map(function(x){ return x==="routine" ? "your routine" : x; }).join(", ")+", which the cloud did not accept yet. It is safe on this phone." : ""));
     if(dismissFirstRunProfile()) renderCurrentView();
     if(cloud.queued) cloudSoon(800);
   }).catch(function(e){
@@ -21197,7 +21198,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "441";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "442";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
