@@ -1,8 +1,8 @@
 {
  "day": "2026-11-19",
  "title": "19 Nov 2026",
- "src": "News reports and official releases, 19 Nov 2026",
- "note": "Notes for 19 November 2026, built from news reports and official releases. Where only the headline was available (the three Supreme Court items), the note gives the background to the story, and the facts behind each news item come from standard textbooks and official sources.",
+ "src": "The Hindu, 19 November 2026",
+ "note": "Notes for 19 November 2026 from The Hindu’s Delhi edition of 19 November (the pages supplied) and from news reports and official releases. Where only the headline was available (the three Supreme Court items of that day), the note gives the background to the story, and the facts behind each news item come from standard textbooks and official sources. The paper’s editorials and opinion pieces are presented as the writers’ views.",
  "topics": [
   {
    "id": "dn-2026-11-19-1",
@@ -91,7 +91,7 @@
     "GS2 Polity",
     "GS2 Judiciary"
    ],
-   "news": "As listed in the Supreme Court’s round-up for 19 November, the Court dismissed the Enforcement Directorate’s challenge to the interim bail given to Samajwadi Party leader Azam Khan. Only the headline was available, so the note gives the background on bail in money-laundering cases and links to the 18 November note on mala fide.",
+   "news": "Samajwadi Party leader Azam Khan walked out of Ghaziabad jail on Wednesday, a day after the Allahabad High Court granted him interim bail in a money-laundering case investigated by the Enforcement Directorate and linked to his Mohammad Ali Jauhar Trust, which runs a university in Uttar Pradesh. He said his only crime was that a Muslim had built an educational institution, and party chief Akhilesh Yadav welcomed the release. The Hindu reports that the Supreme Court has declined the ED’s plea against the interim bail, as the Court’s 19 November round-up also lists. The note adds the background on bail in money-laundering cases and links to the 18 November note on mala fide.",
    "blocks": [
     {
      "h": "Bail under the money-laundering law",
@@ -233,6 +233,158 @@
   {
    "id": "dn-2026-11-19-4",
    "n": 4,
+   "sec": "Polity & Governance",
+   "t": "Turning police reform into practice: the Indian Police Foundation’s change manual",
+   "gs": [
+    "GS2 Polity",
+    "GS2 Governance"
+   ],
+   "news": "R. K. Vij, a former IPS officer, writes that people still hesitate to visit a police station, while police personnel complain of heavy workloads and too few weekly rest days. The Indian Police Foundation (set up on 21 October 2015), with the Azim Premji Foundation, has run a project on ‘internal police reforms’ with interviews at 15 police stations in Punjab, Telangana and Tamil Nadu, and has prepared a ‘change manual’ to be first applied in Punjab and then in the other two States. Its four focus areas: better complaint and FIR registration and police response (e-FIR under the BNSS, a visitor management system, QR codes); crime prevention and community outreach (a night safety escort scheme for working women, CCTV, a citizen sentinel scheme); prevention of misconduct and harassment (scrutiny of the reasons for arrest at DySP level, a phone call to a relative after arrest, free legal aid, videography of personal searches, online monitoring of lock-ups); and better working conditions (rest rooms, weekly offs, vehicle allowances, a contingency fund, a tablet for each investigating officer to use the e-Sakshya app, a recruitment board). Most proposals need no extra budget.",
+   "blocks": [
+    {
+     "h": "Police reform in India",
+     "items": [
+      {
+       "rows": [
+        [
+         "Constitution",
+         "‘Police’ and ‘public order’ are State subjects (Entries 2 and 1 of the State List), so reform depends on the States."
+        ],
+        [
+         "Prakash Singh case (2006)",
+         "The Supreme Court directed seven reforms, among them fixed tenure for police chiefs, a State Security Commission, separation of investigation from law and order, and a Police Complaints Authority."
+        ],
+        [
+         "New criminal laws",
+         "The Bharatiya Nagarik Suraksha Sanhita, 2023 allows e-complaints (signed within three days) and zero FIRs, and the e-Sakshya app records searches and seizures."
+        ],
+        [
+         "Working conditions",
+         "Long hours and no weekly off reduce the quality of investigation and the behaviour of police towards the public."
+        ],
+        [
+         "Model Police Act",
+         "A 2006 draft law prepared by an expert committee for States to adopt."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Station-level reform:** most of the proposals can be applied at the police station and cost little.",
+        "**Phased rollout:** testing in one State before wider use lets the reforms be adjusted to local conditions."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Indian Police Foundation",
+     "d": "Think tank for police reform, set up on 21 October 2015."
+    },
+    {
+     "k": "Prakash Singh judgment (2006)",
+     "d": "Supreme Court directions for seven police reforms."
+    },
+    {
+     "k": "e-FIR / zero FIR",
+     "d": "BNSS provisions for online complaints and registration of an FIR at any police station."
+    },
+    {
+     "k": "e-Sakshya",
+     "d": "App for recording evidence collected during searches and seizures."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the need for police reforms in India. Why has the implementation of the Supreme Court’s directions been slow?",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "How do the new criminal laws change the way police register complaints and conduct arrests and searches?",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-5",
+   "n": 5,
+   "sec": "Polity & Governance",
+   "t": "Sacrilege at a Tilak Nagar gurdwara: arrest and calls for a probe",
+   "gs": [
+    "GS2 Polity",
+    "GS1 Society"
+   ],
+   "news": "The Delhi police on Wednesday arrested a 40-year-old man for allegedly desecrating the Guru Granth Sahib at a gurdwara in west Delhi’s Tilak Nagar on Sunday. Police are also looking into claims that some gurdwara management committee members tried to hide the incident for two days. After a complaint by the gurdwara management on Tuesday, an FIR was registered under Bharatiya Nyaya Sanhita Sections 192 (provocation with intent to cause riot), 298 (defiling a place of worship) and 299 (acts intended to outrage religious feelings). A separate complaint was filed against five members of the panel. Delhi Sikh Gurdwara Management Committee president Harmeet Singh Kalka called the incident deeply distressing, sought strict action and asked the Lieutenant-Governor to take cognisance and urged gurdwara committees to install CCTV cameras and strengthen security.",
+   "blocks": [
+    {
+     "h": "The law and the setting",
+     "items": [
+      {
+       "rows": [
+        [
+         "BNS offences",
+         "Sections 298 and 299 of the Bharatiya Nyaya Sanhita, 2023 deal with damaging or defiling a place of worship and with deliberate acts to outrage religious feelings; they replace Sections 295 and 295A of the Indian Penal Code."
+        ],
+        [
+         "Religious freedom",
+         "Articles 25 and 26 protect freedom of religion and the right of religious denominations to manage their affairs, subject to public order, morality and health."
+        ],
+        [
+         "Gurdwara management",
+         "In Delhi, gurdwaras are managed by the Delhi Sikh Gurdwara Management Committee under the Delhi Sikh Gurdwara Act, 1971; the Sikh Gurdwaras Act, 1925 governs the SGPC in Punjab."
+        ],
+        [
+         "Law and order",
+         "Public order is a State subject, but in Delhi the Union Government controls the police."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Public order:** quick arrest and investigation are meant to calm tension and prevent reprisals.",
+        "**Accountability of managers:** the question is whether those in charge hid the incident, which is being examined."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "BNS Section 298",
+     "d": "Damaging or defiling a place of worship or object held sacred."
+    },
+    {
+     "k": "BNS Section 299",
+     "d": "Deliberate and malicious acts intended to outrage religious feelings."
+    },
+    {
+     "k": "DSGMC",
+     "d": "Delhi Sikh Gurdwara Management Committee, set up under the 1971 Act."
+    },
+    {
+     "k": "Articles 25–26",
+     "d": "Freedom of religion and of religious affairs."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss how the Constitution and criminal law balance freedom of religion and the protection of religious sentiments.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Why is the control of police in Delhi different from that in other States?",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-6",
+   "n": 6,
    "sec": "International Relations",
    "t": "ICJ finds Myanmar committed genocide against the Rohingya",
    "gs": [
@@ -304,6 +456,1587 @@
     {
      "q": "Examine the Rohingya crisis and its implications for India’s refugee and neighbourhood policy.",
      "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-7",
+   "n": 7,
+   "sec": "International Relations",
+   "t": "Many imperatives: India’s partnerships after the Manila summits",
+   "gs": [
+    "GS2 International Relations"
+   ],
+   "news": "The Hindu’s editorial says the summits in Manila had many imperatives: they were the first ASEAN summits since the U.S.–Israel attacks on Iran and Iran’s blockade of Hormuz and strikes on Gulf countries upended energy and trade across South and South East Asia. Prime Minister Modi’s call for ‘peace, stability and predictability’ at the East Asia Summit was aimed as much at leaders of the U.S., Russia and China as at the region. India and the Philippines have deepened ties since President Marcos’s visit to Delhi in August 2025, including an upgraded Strategic Partnership, maritime exchanges and talks on supplying more Indian-made BrahMos missile batteries. For the first time a Quad leaders’ summit was held in a non-Quad country, hosted by the U.S. on the sidelines. Outcomes: a new ASEAN–India cooperation on disaster management; a focus on cyber-crime at the East Asia Summit; free tourist visas for all ASEAN citizens; a Quad Business Leaders Forum in Mumbai next year; and the first Quad naval exercises with patrol aircraft. The editorial says these paled beside the anticipated three-way summit of Mr Trump, Mr Putin and Mr Xi in Shenzhen, which New Delhi must watch closely.",
+   "blocks": [
+    {
+     "h": "Why this matters",
+     "items": [
+      {
+       "rows": [
+        [
+         "ASEAN summits",
+         "The ASEAN–India Summit and the East Asia Summit are held every year when ASEAN meets; ASEAN has 11 members and the Philippines is chair in 2026."
+        ],
+        [
+         "India–Philippines",
+         "BrahMos, the supersonic cruise missile built by an Indo-Russian joint venture, was exported first to the Philippines under a 2022 contract; the ties rest on a shared interest in the South China Sea."
+        ],
+        [
+         "Quad",
+         "India, the U.S., Japan and Australia; a leaders’ summit outside a member country shows the grouping’s link with ASEAN."
+        ],
+        [
+         "Free visas",
+         "Free or relaxed visas raise tourism and people-to-people ties, which in turn support trade."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Energy and trade shock:** the Gulf conflict hits India’s oil and gas imports and trade routes, which is why Asian partners are being engaged for stability.",
+        "**Balance:** India engages the Quad, ASEAN and also Russia and China at once, which is the meaning of strategic autonomy."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "ASEAN",
+     "d": "Association of Southeast Asian Nations; 11 members; the Philippines chairs in 2026."
+    },
+    {
+     "k": "BrahMos",
+     "d": "Supersonic cruise missile of an Indo-Russian joint venture; the Philippines was its first export customer."
+    },
+    {
+     "k": "Quad naval exercise",
+     "d": "Naval drills of India, the U.S., Japan and Australia, now to include patrol aircraft."
+    },
+    {
+     "k": "Strategic Partnership",
+     "d": "A formal level of bilateral ties, here between India and the Philippines."
+    }
+   ],
+   "qs": [
+    {
+     "q": "‘India’s Act East Policy has deepened ties with ASEAN.’ Discuss the recent outcomes and the challenges.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Discuss how India can balance its partnerships with the Quad, ASEAN, Russia and China.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-8",
+   "n": 8,
+   "sec": "International Relations",
+   "t": "Xi hails ties with Russia ahead of the Shenzhen trilateral with Trump and Putin",
+   "gs": [
+    "GS2 International Relations"
+   ],
+   "news": "Chinese President Xi Jinping on Wednesday hailed relations with Russia as ‘a source of stability’ in a ‘turbulent’ world, even as he welcomed U.S. President Donald Trump with a rare airport reception a day before a trilateral summit in Shenzhen. Mr Xi opened the two-day APEC gathering with an address to a CEO Summit. Beijing has described the meeting of the three leaders on Thursday as of ‘groundbreaking significance’, and U.S. officials said they would discuss the war in Ukraine, the situation in Iran, global energy supply chains and nuclear arms control.",
+   "blocks": [
+    {
+     "h": "The summit and the groupings",
+     "items": [
+      {
+       "rows": [
+        [
+         "APEC",
+         "Asia-Pacific Economic Cooperation, a forum of 21 economies set up in 1989 for trade and economic cooperation; India is not a member."
+        ],
+        [
+         "China–Russia",
+         "A ‘no limits’ partnership was declared in February 2022; trade, energy and military ties have grown since the Ukraine war."
+        ],
+        [
+         "Three-way meeting",
+         "The first sit-down of the three leaders; it comes as arms-control limits on the U.S. and Russia have lapsed and China’s arsenal is growing."
+        ],
+        [
+         "India’s interest",
+         "A shift among the three powers on Ukraine, Iran, energy and arms control would affect India’s oil supplies, defence partners and the Indo-Pacific balance."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Reception as signal:** greeting a visiting leader at the airport is a rare mark of protocol, signalling Beijing’s wish for a warmer tone with Washington.",
+        "**Middle powers:** countries such as India watch to see whether a three-way understanding leaves their interests out."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "APEC",
+     "d": "Asia-Pacific Economic Cooperation, 21 economies, founded in 1989; India is not a member."
+    },
+    {
+     "k": "Shenzhen summit",
+     "d": "The Chinese city that hosts APEC 2026 and the three-way U.S.–China–Russia meeting."
+    },
+    {
+     "k": "Strategic autonomy",
+     "d": "India’s practice of independent decisions and ties with rival powers."
+    },
+    {
+     "k": "Hormuz",
+     "d": "Strait through which a large share of the world’s oil passes."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Examine how a thaw among the U.S., China and Russia would affect India’s foreign policy options.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "What is APEC? Discuss its relevance for India, which is not a member.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-9",
+   "n": 9,
+   "sec": "International Relations",
+   "t": "Iran widens Gulf attacks; Saudi Arabia prepares for a long Houthi war",
+   "gs": [
+    "GS2 International Relations"
+   ],
+   "news": "Iran widened its attacks on Gulf neighbours on Wednesday, hitting a U.S. airbase in Kuwait and launching several attacks on Bahrain, apparently in retaliation for a U.S. strike the day before on a Revolutionary Guard missile launch site on Qeshm Island in the Strait of Hormuz, which was itself a response to an Iranian attack on a U.S. radar installation in Bahrain. After about two months without such attacks, Iran has targeted U.S. facilities in Bahrain, which hosts the U.S. Navy’s 5th Fleet, several times in recent days. At the Ali Al Salem airbase in Kuwait the Iranian military fired at air defence systems and missile launch platforms; Kuwait’s military said it intercepted drones and its Foreign Ministry condemned the attacks as ‘criminal’. The UAE’s ADNOC said a tanker crew member was missing after an attack in the strait. The war is nearly nine months old and negotiations have stagnated despite mediation by Qatar. Separately, Saudi Arabia is preparing for a war against Yemen’s Houthis (Ansar Allah) to last well into next year, now the most active front in the wider Iran war, with officials foreseeing up to six more months of campaign. Saudi Arabia entered the Yemen conflict in 2015 at the head of an Arab coalition to restore the government that the Houthis ousted from Sanaa; a 2022 ceasefire lasted until this summer.",
+   "blocks": [
+    {
+     "h": "The conflict and India",
+     "items": [
+      {
+       "rows": [
+        [
+         "Strait of Hormuz",
+         "The narrow waterway between Iran and Oman through which about a fifth of the world’s oil trade passes; Qeshm is Iran’s largest island in it."
+        ],
+        [
+         "Bahrain and the 5th Fleet",
+         "Bahrain hosts the headquarters of the U.S. Navy’s 5th Fleet, which covers the Gulf and Arabian Sea."
+        ],
+        [
+         "Yemen",
+         "The Houthis, a Zaidi Shia group, took Sanaa in 2014–15; a Saudi-led coalition intervened in 2015."
+        ],
+        [
+         "India’s stake",
+         "Around nine million Indians live and work in the Gulf and send home large remittances; the region supplies much of India’s oil and gas, and Indian seafarers have been among those killed."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Energy and shipping:** attacks near Hormuz raise oil prices and insurance costs, as the day’s crude import data show.",
+        "**India’s stance:** India calls for restraint and diplomacy, protects its nationals and keeps ties with Iran, the Gulf states and the U.S."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Strait of Hormuz",
+     "d": "Waterway linking the Gulf to the Gulf of Oman; a main route for oil."
+    },
+    {
+     "k": "U.S. 5th Fleet",
+     "d": "U.S. naval command based in Bahrain."
+    },
+    {
+     "k": "Houthis",
+     "d": "Yemeni armed group, also called Ansar Allah, that holds Sanaa."
+    },
+    {
+     "k": "Qeshm Island",
+     "d": "Iran’s largest island, in the Strait of Hormuz."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the implications of the conflict in West Asia for India’s energy security and its diaspora.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Examine the role of the Strait of Hormuz in global energy security.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-10",
+   "n": 10,
+   "sec": "International Relations",
+   "t": "World in brief: Ethiopia–Eritrea, Gaza, Bangladesh and U.S. green cards",
+   "gs": [
+    "GS2 International Relations"
+   ],
+   "news": "Four items from the World page. Ethiopia and Eritrea have massed forces along their border, according to conflict monitors and people tied to militias in Tigray, raising fears of outright war between the old rivals. The Board of Peace, which oversees U.S. President Trump’s plan to end the Gaza war, accused both Israel and Hamas of failing to meet their commitments, leaving Gaza’s people in dire conditions and the ceasefire in danger of collapse. Bangladesh deployed paramilitary troops nationwide as the planned return of former Prime Minister Sheikh Hasina, who says she will come back in December, has led to clashes, bomb blasts and arson attacks blamed on supporters of her banned Awami League. The U.S. proposed tougher rules for employment-based green cards so that Americans get priority for jobs, with employers barred from tailoring jobs to foreign workers.",
+   "blocks": [
+    {
+     "h": "Background",
+     "items": [
+      {
+       "rows": [
+        [
+         "Ethiopia and Eritrea",
+         "Eritrea became independent from Ethiopia in 1993; they fought a war in 1998–2000 and made peace in 2018, for which Ethiopia’s Prime Minister Abiy Ahmed won the 2019 Nobel Peace Prize. Tigray in northern Ethiopia was the scene of a 2020–22 war."
+        ],
+        [
+         "Gaza",
+         "A ceasefire framework and a Board of Peace oversee the U.S. plan; Israel’s strikes and Hamas’s conduct are the main points of dispute."
+        ],
+        [
+         "Bangladesh",
+         "Sheikh Hasina’s government fell in August 2024 after mass protests, and the Awami League has been banned; her return is a flashpoint."
+        ],
+        [
+         "Green cards",
+         "Employment-based green cards give foreign workers permanent residence in the U.S. and matter to many Indian professionals."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**India’s interests:** peace in the neighbourhood, the safety of Indians abroad and the effect of U.S. immigration rules on Indian professionals."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Board of Peace",
+     "d": "The body overseeing the U.S.-backed plan to end the Gaza war."
+    },
+    {
+     "k": "Tigray",
+     "d": "Region of northern Ethiopia, site of a 2020–22 war."
+    },
+    {
+     "k": "Awami League",
+     "d": "Bangladesh’s party of Sheikh Hasina, now banned."
+    },
+    {
+     "k": "Employment-based green card",
+     "d": "U.S. permanent residence granted on the basis of a job offer."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the challenges to peace in the Horn of Africa and India’s interests in the region.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    },
+    {
+     "q": "How do changes in U.S. immigration rules affect India?",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-11",
+   "n": 11,
+   "sec": "International Relations",
+   "t": "Why Ukraine keeps targeting the Kerch bridge",
+   "gs": [
+    "GS2 International Relations",
+    "GS3 Security"
+   ],
+   "news": "In a news analysis, Stanly Johny writes that Ukrainian attacks earlier this week, with drones and missiles, brought down a crucial span of the Kerch road bridge and damaged the parallel rail bridge; Russia suspended road traffic and restricted trains. Earlier attacks in 2022 (a truck bomb), 2023 (naval drones) and 2025 (bombs on undersea pillars) did not cause major damage. The 19-km bridge across the Kerch Strait, which joins the Black Sea and the Sea of Azov, is the longest in Europe, cost $3.6 billion and was opened by Mr Putin in 2018, four years after Russia annexed Crimea. It matters to Russia for symbolic, administrative and operational reasons: Crimea hosts Russia’s Black Sea fleet and depends on the mainland for food, fuel and consumer goods, and the bridge remains a key supply link for Russian troops in the south. President Zelensky said Ukraine ran a seven-stage operation that disabled radars, air defence and electronic warfare systems before a two-tier attack, days before Mr Putin’s trilateral meeting with Mr Trump and Mr Xi. The author says the loss is a setback but less consequential than in 2022, because Russia now has a land corridor through Donbas and Kherson and ferry services across the strait; it shows Ukraine’s growing ability to strike fortified targets.",
+   "blocks": [
+    {
+     "h": "Geography and strategy",
+     "items": [
+      {
+       "rows": [
+        [
+         "Kerch Strait",
+         "A narrow strait between the Crimean Peninsula and Russia’s Taman Peninsula, joining the Sea of Azov to the Black Sea."
+        ],
+        [
+         "Crimea",
+         "Annexed by Russia in 2014 after a contested referendum; home of the Black Sea fleet at Sevastopol; about 77% of its people spoke Russian as their native language."
+        ],
+        [
+         "Land bridge",
+         "The territory Russia holds from its southwest through Donbas and Kherson to Crimea, which reduces its dependence on the bridge."
+        ],
+        [
+         "Strikes on infrastructure",
+         "Attacking supply links, air defences and radar systems is a way to weaken an opponent’s ability to move forces and goods."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Symbol of occupation versus pride:** Ukraine sees the bridge as a symbol of occupation, Russia as a symbol of its hold on Crimea.",
+        "**Talks and timing:** the attack came days before the Shenzhen trilateral and while peace talks stall."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Kerch bridge",
+     "d": "19-km road and rail bridge between Russia and Crimea, opened in 2018."
+    },
+    {
+     "k": "Kerch Strait",
+     "d": "Strait between the Black Sea and the Sea of Azov."
+    },
+    {
+     "k": "Crimea",
+     "d": "Peninsula annexed by Russia in 2014; home of the Black Sea fleet."
+    },
+    {
+     "k": "Land corridor",
+     "d": "Russian-held territory linking Russia with Crimea by land."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Examine the strategic importance of Crimea and the Kerch bridge in the Russia–Ukraine war.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    },
+    {
+     "q": "How have attacks on infrastructure changed modern warfare? Discuss with the Ukraine example.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-12",
+   "n": 12,
+   "sec": "Economy",
+   "t": "The average cost of a thali has jumped 16% in ten months",
+   "gs": [
+    "GS3 Economy"
+   ],
+   "news": "The Hindu’s data analysis says food inflation climbed to 8.9% last month, the highest in at least 22 months of the new series and the highest this year. Prices of many items have risen sharply since January: onion by over 100% since March, garlic by 22% and rice by 11%. The analysis ties this largely to the prolonged U.S.–Iran war, which began with U.S. and Israeli attacks on Iran on 28 February, and to disruptions in the Strait of Hormuz that hit supplies of crude oil and fertilisers. The average cost of a vegetarian home-cooked meal has risen 16% since March; two thalis a day now cost a household about ₹2,515 a month, against about ₹2,205 a year ago and ₹1,847 five years ago, or 9.6% of average monthly wages of ₹26,310 (a Centre for Monitoring Indian Economy survey for September 2026), against 9.3% a year ago and 11.4% five years ago. Wages rose about 11% in a year, so the squeeze is smaller than prices alone suggest, but daily-wage households may struggle. The data come from the Consumer Affairs Ministry, the National Horticulture Board and CMIE.",
+   "blocks": [
+    {
+     "h": "Food inflation",
+     "items": [
+      {
+       "rows": [
+        [
+         "CPI",
+         "The Consumer Price Index measures retail inflation; food has a large weight, so food prices drive headline inflation. A new CPI series was introduced in 2026."
+        ],
+        [
+         "Supply shocks",
+         "War and shipping disruption raise the cost of oil, fertiliser and transport, and so of food."
+        ],
+        [
+         "Real wages",
+         "Wages adjusted for prices; if prices rise faster than wages, purchasing power falls."
+        ],
+        [
+         "Policy tools",
+         "Buffer stocks and open-market sales, import duty changes, stock limits and, for the poor, the public distribution system."
+        ],
+        [
+         "RBI",
+         "The Reserve Bank targets CPI inflation of 4% within a band of 2 to 6% and uses the repo rate."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Method:** the analysis assumes two thalis a day per family and omits spices, ghee and non-vegetarian meals, so the true cost is higher.",
+        "**Who is hit:** daily-wage households spend a large share of income on food."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "CPI",
+     "d": "Consumer Price Index, the measure of retail inflation."
+    },
+    {
+     "k": "Food inflation",
+     "d": "Rate of rise of food prices over a year."
+    },
+    {
+     "k": "Real wages",
+     "d": "Wages adjusted for changes in prices."
+    },
+    {
+     "k": "Hormuz",
+     "d": "Strait through which much of the world’s oil and fertiliser trade passes."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the causes and consequences of food inflation in India and the policy options to deal with it.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Poverty and malnutrition create a vicious cycle, hurting human capital. Discuss with reference to rising food costs.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": "2024 GS2 (poverty and malnutrition)"
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-13",
+   "n": 13,
+   "sec": "Economy",
+   "t": "How AI could reshape global growth and productivity",
+   "gs": [
+    "GS3 Economy",
+    "GS3 Science and Technology"
+   ],
+   "news": "In the first of a two-part series in The Hindu, economists Rohit Azad and Indranil Chowdhury of the DevMac network ask whether artificial intelligence will prove as epoch-making as the steam engine or the internal combustion engine. A key expected effect is a big rise in labour productivity, the ratio of output to workers employed, which can rise if output grows for a given number of workers, if jobs are lost, or if jobs grow but output grows faster. They set out two schools. In the neoclassical, supply-side view (Robert Solow), output growth is the sum of labour-force growth and productivity growth, so a 2% workforce growth and 4% productivity growth settle at 6% growth, and productivity itself depends on human capital, research and development and patents (endogenous growth). In the heterodox, demand-side view, output that is not demanded is not produced, so unless productivity growth lifts demand, rising productivity affects jobs: if demand grows 3% and productivity 4%, jobs fall by 1%, and labour growth becomes the adjusting variable; labour supply has historically adjusted through migration, from the Atlantic slave trade to Bihar and Uttar Pradesh workers moving to Punjab. Chart 1 shows real output per worker in the U.S. sectors that adopt AI (information, finance and insurance, and professional and business services) at 148.17 in the second quarter of 2026 against 100 in 2012, well above the 120.61 that the 2012–19 trend implies. The authors say it is too early to be conclusive and that how widely the effect spreads is the open question; the second part will look at global macroeconomic effects.",
+   "blocks": [
+    {
+     "h": "The two views of growth",
+     "items": [
+      {
+       "rows": [
+        [
+         "Labour productivity",
+         "Output divided by the number of workers employed."
+        ],
+        [
+         "Solow growth model",
+         "Robert Solow (Nobel Prize in Economics, 1987) showed that output growth depends on growth of labour and capital and of productivity, which he treated as outside the model."
+        ],
+        [
+         "Endogenous growth",
+         "Later theories (Paul Romer, Robert Lucas) explain productivity growth by investment in human capital, research and development and patent systems."
+        ],
+        [
+         "Heterodox demand-side view",
+         "Output is limited by demand, so the effect of higher productivity on jobs depends on whether demand grows faster or slower than productivity."
+        ],
+        [
+         "Migration",
+         "Workers moving from low-wage to high-wage regions or countries adjust the supply of labour to the demand for it."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Jobs and productivity:** if output demanded rises faster than productivity, more jobs are created; if slower, jobs fall.",
+        "**India’s response:** the IndiaAI Mission, approved in 2024 with an outlay of about ₹10,372 crore, funds computing power, datasets and skills.",
+        "**Open question:** the data cover U.S. sectors only, so the spread to the whole economy is yet to be seen."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Labour productivity",
+     "d": "Output per worker employed."
+    },
+    {
+     "k": "Solow model",
+     "d": "Neoclassical growth model by Robert Solow, Nobel laureate of 1987."
+    },
+    {
+     "k": "Endogenous growth theory",
+     "d": "Growth theory that explains productivity through human capital, research and innovation."
+    },
+    {
+     "k": "IndiaAI Mission",
+     "d": "2024 Union Government mission, with an outlay of about ₹10,372 crore, to build India’s AI capacity."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the likely impact of artificial intelligence on productivity, employment and growth. How should India prepare?",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Distinguish the supply-side and demand-side views of economic growth. How does each see the effect of rising productivity on jobs?",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-14",
+   "n": 14,
+   "sec": "Economy",
+   "t": "October’s crude import bill jumps 87.5% to $19.5 billion",
+   "gs": [
+    "GS3 Economy",
+    "GS3 Energy"
+   ],
+   "news": "India’s crude oil import bill rose 87.5% year-on-year to $19.5 billion in October, up from $10.4 billion, as international benchmark prices stayed high amid renewed tensions in West Asia, alongside an 11% rise in import volumes to 23.3 million tonnes from 21. The net import bill for oil and gas (imports of crude, petroleum products and natural gas less exports of petroleum products) rose 60% to $16 billion from $10 billion. The Indian basket of crude averaged $119.91 a barrel in October against Brent at $124.77, and India meets 88.7% of its crude requirement through imports. Exports of petroleum products rose 5.9% in volume to 5.4 million tonnes and their revenue surged about 91% to $6.3 billion, a partial natural hedge. LNG import volumes fell about 7% to 3,014 million standard cubic metres but the LNG bill rose 8.33%. Separately, the rupee touched a seven-month high of 93.28 to the dollar on foreign fund inflows but settled flat at 93.50 as the dollar index rose 0.2% to 103.8, its highest since April 2025.",
+   "blocks": [
+    {
+     "h": "Why oil prices matter to India",
+     "items": [
+      {
+       "rows": [
+        [
+         "Import dependence",
+         "India meets about 88% of its crude oil needs from imports, so global prices pass straight into the import bill, the current account and inflation."
+        ],
+        [
+         "Indian basket",
+         "A weighted mix of the sour (Oman and Dubai) and sweet (Brent) crudes that India buys; the Petroleum Planning and Analysis Cell publishes its price."
+        ],
+        [
+         "Natural hedge",
+         "India refines imported crude and exports products such as diesel and petrol, so higher export earnings offset part of the higher import bill."
+        ],
+        [
+         "Rupee",
+         "A higher import bill raises demand for dollars and can weaken the rupee; foreign fund inflows can support it."
+        ],
+        [
+         "Dollar index",
+         "Measures the dollar against a basket of six major currencies."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Chain of effects:** costlier crude raises the trade and current account deficits, fuel and transport costs and so retail inflation.",
+        "**Cushions:** refining exports, diversified suppliers, strategic reserves and growth in renewables and biofuels."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "PPAC",
+     "d": "Petroleum Planning and Analysis Cell of the petroleum ministry, which publishes oil data."
+    },
+    {
+     "k": "Indian basket",
+     "d": "Weighted average price of the crudes India imports."
+    },
+    {
+     "k": "Current account deficit",
+     "d": "Gap between a country’s foreign exchange earnings and payments on goods, services and transfers."
+    },
+    {
+     "k": "Dollar index",
+     "d": "Value of the dollar against six major currencies."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the impact of volatile crude oil prices on the Indian economy and the policy options available.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "What is a ‘natural hedge’? How does India’s refining and export capacity serve as one against high crude prices?",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-15",
+   "n": 15,
+   "sec": "Economy",
+   "t": "India–U.S. trade deal: the signing ‘will still take some time’",
+   "gs": [
+    "GS2 International Relations",
+    "GS3 Economy"
+   ],
+   "news": "Commerce Secretary Rajesh Agrawal said the actual signing of the India–U.S. trade deal would still take time, though the negotiating and legal text would be completed soon. The delay is because it can be done only after the United States concludes its Section 301 investigations into trade partners and finalises its tariff structure. He pointed to the joint statement of February announcing the framework of an interim deal, made when the U.S. tariff on India was 50% under the executive tariff system; later in February the U.S. Supreme Court struck down the legal foundation of those tariffs, and the U.S. is now creating a new tariff architecture. Commerce Minister Piyush Goyal had said the U.S. acknowledged that India would get lower tariffs than its competitors.",
+   "blocks": [
+    {
+     "h": "Trade deal terms",
+     "items": [
+      {
+       "rows": [
+        [
+         "Section 301",
+         "A provision of the U.S. Trade Act, 1974 under which the U.S. can investigate and act against unfair trade practices of other countries."
+        ],
+        [
+         "Interim deal",
+         "An early agreement on part of the trade relationship, with a fuller agreement to follow."
+        ],
+        [
+         "Tariff",
+         "A tax on imports; higher U.S. tariffs make Indian goods dearer in the U.S. market."
+        ],
+        [
+         "Why timing matters",
+         "Until the U.S. fixes its own tariff rules, India cannot know the final terms it will get."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Legal basis:** the Supreme Court ruling removed the earlier legal basis for the tariffs, so the U.S. is building a new one.",
+        "**India’s aim:** lower tariffs than competitors, so that Indian exports are competitive in the U.S. market."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Section 301",
+     "d": "U.S. law allowing action against unfair foreign trade practices."
+    },
+    {
+     "k": "Interim trade deal",
+     "d": "A first-stage agreement ahead of a comprehensive trade pact."
+    },
+    {
+     "k": "Tariff",
+     "d": "A tax on imported goods."
+    },
+    {
+     "k": "Joint statement of February",
+     "d": "The India–U.S. statement announcing the framework of an interim trade deal."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the importance of the India–U.S. trade relationship and the issues in concluding a trade agreement.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "How do tariffs affect exporters and consumers? Illustrate with the recent India–U.S. experience.",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-16",
+   "n": 16,
+   "sec": "Economy",
+   "t": "Government relaxes Export Promotion Mission norms to help MSME exporters",
+   "gs": [
+    "GS3 Economy"
+   ],
+   "news": "The Commerce Ministry amended guidelines of the Export Promotion Mission (EPM) to help exporters, especially small ones, expand into new markets. The Union Cabinet approved the EPM on 12 November 2025 with an outlay of ₹25,060 crore for 2025-26 to 2030-31. The amendments cover three interventions under the Niryat Disha sub-scheme. Under Market Access Support, which funds buyer-seller meets, reverse buyer-seller meets, trade fairs and delegations, the maximum export turnover for claiming airfare reimbursement has been raised from ₹75 lakh to ₹50 crore, airfare reimbursement is enhanced to up to 95% for micro and small exporters and up to 80% for other eligible exporters, and the mandatory membership period with Export Promotion Councils is cut from six months to three. A third intervention, TRACE (Trade Regulations, Accreditation and Compliance Enablement), helps MSMEs meet international quality, safety and technical requirements.",
+   "blocks": [
+    {
+     "h": "The Export Promotion Mission",
+     "items": [
+      {
+       "rows": [
+        [
+         "Two sub-schemes",
+         "Niryat Protsahan supports exporters with financial help such as interest relief and export credit; Niryat Disha provides non-financial support such as market access, branding, compliance and logistics."
+        ],
+        [
+         "Market access",
+         "Buyer-seller meets and trade fairs help small firms find overseas buyers."
+        ],
+        [
+         "Export Promotion Councils",
+         "Bodies of exporters of a product group, which register exporters and promote their goods abroad."
+        ],
+        [
+         "Why MSMEs",
+         "Micro, small and medium enterprises are a large share of exports and employment but face costs of compliance and market entry."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Quality compliance:** meeting standards in importing countries is a main barrier for small exporters, hence the TRACE intervention.",
+        "**Wider context:** diversifying markets matters when tariffs and trade tensions affect major destinations."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Export Promotion Mission",
+     "d": "2025 Union scheme (₹25,060 crore for 2025-26 to 2030-31) to support exports."
+    },
+    {
+     "k": "Niryat Disha",
+     "d": "EPM sub-scheme for non-financial export support such as market access and compliance."
+    },
+    {
+     "k": "TRACE",
+     "d": "Trade Regulations, Accreditation and Compliance Enablement intervention for MSMEs."
+    },
+    {
+     "k": "Export Promotion Council",
+     "d": "Industry body that promotes exports of a group of products."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the role of MSMEs in India’s exports and the support measures available to them.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "How can non-financial support such as market access and compliance help in export diversification?",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-17",
+   "n": 17,
+   "sec": "Economy",
+   "t": "ACME’s $3.6 billion green ammonia project at Paradip",
+   "gs": [
+    "GS3 Energy",
+    "GS3 Environment"
+   ],
+   "news": "ACME Group has completed formalities for its $3.6 billion green ammonia project at Paradip, Odisha, a step towards large-scale domestic production of green molecules. Brookfield will invest $600 million. The facility, with a capacity of 760,000 tonnes a year, is expected to be commissioned by 2029, will house a 2,200-tonne-a-day ammonia loop, will have Thyssenkrupp Uhde as technology partner and will run entirely on renewable energy.",
+   "blocks": [
+    {
+     "h": "Green hydrogen and ammonia",
+     "items": [
+      {
+       "rows": [
+        [
+         "Green hydrogen",
+         "Hydrogen made by splitting water with renewable electricity; green ammonia is made from it and nitrogen."
+        ],
+        [
+         "National Green Hydrogen Mission",
+         "Launched in January 2023 with an outlay of ₹19,744 crore and a goal of 5 million tonnes of green hydrogen a year by 2030."
+        ],
+        [
+         "Uses of ammonia",
+         "A feedstock for fertilisers, and a way to store and transport hydrogen and a clean shipping fuel."
+        ],
+        [
+         "Paradip",
+         "A major port and industrial centre in Odisha."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Import substitution:** India imports much of its ammonia and urea inputs; green ammonia can cut gas imports.",
+        "**Export potential:** green ammonia can be exported to countries that want low-carbon fuel."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Green ammonia",
+     "d": "Ammonia made using hydrogen produced from renewable electricity."
+    },
+    {
+     "k": "National Green Hydrogen Mission",
+     "d": "2023 mission with a 5 million tonne a year target for 2030."
+    },
+    {
+     "k": "Ammonia loop",
+     "d": "The reactor section of an ammonia plant where ammonia is synthesised."
+    },
+    {
+     "k": "Thyssenkrupp Uhde",
+     "d": "Engineering company named as technology partner for the project."
+    }
+   ],
+   "qs": [
+    {
+     "q": "What is green hydrogen? Discuss its importance for India’s energy transition and the challenges in scaling it up.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "How can green ammonia help India’s fertiliser sector and its climate commitments?",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-18",
+   "n": 18,
+   "sec": "Social Issues",
+   "t": "The need to expand Jan Aushadhi",
+   "gs": [
+    "GS2 Health",
+    "GS3 Economy"
+   ],
+   "news": "T. C. Suseel Kumar and R. Sudhakar write that the Pradhan Mantri Bhartiya Janaushadhi Pariyojana has put low-cost medicines within reach but has not caught on as widely as India’s size and incomes warrant. A monthly medicines bill of ₹2,900 fell to ₹663 at a Jan Aushadhi outlet, they say. The scheme, launched in 2008 and revamped in 2015, runs through the Pharmaceuticals and Medical Devices Bureau of India and now covers 2,110 medicines and 315 surgical items. The network grew to 20,547 Kendras by end-July 2026 from 17,990 at the end of December 2025, with a target of 25,000 by March 2027, and 10 to 12 lakh visitors a day; sales at maximum retail price were ₹2,252 crore in 2025-26 and citizens saved about ₹9,000 crore that year, about 80% below market prices. Against about 12 lakh chemists, the Kendras are only about 1.7%. A study of 200 outpatients in Port Blair found only a third had heard of the scheme; a 2020 report counted 106 batches recalled over four years; the reported rate of substandard medicines is 0.34% against 3.70% in the open market; stock-outs and doctors’ reluctance to prescribe generics (a National Medical Commission order on generic names was put on hold) hurt trust. Their six steps: a national survey, regular published testing (the Indian Pharmacopoeia Commission has agreed to test random batches), online stock tracking, convincing doctors, promoting the Kendras for everyone, and funding. Medicines are 60–70% of households’ out-of-pocket health spending, and government health expenditure was 1.43% of GDP in 2023-24 against the National Health Policy’s 2.5% target for 2025.",
+   "blocks": [
+    {
+     "h": "Generic medicines and health costs",
+     "items": [
+      {
+       "rows": [
+        [
+         "Generic medicine",
+         "A medicine sold under its chemical name, with the same active ingredient, strength and form as the branded one, usually at a lower price."
+        ],
+        [
+         "Jan Aushadhi",
+         "The scheme sells quality generics through Kendras at prices well below market; Jan Aushadhi Diwas is observed on 7 March."
+        ],
+        [
+         "Quality",
+         "Manufacturers must hold WHO-GMP certification and each batch is tested before supply."
+        ],
+        [
+         "Out-of-pocket spending",
+         "Medicines make up most of what households pay directly for health; insurance such as Ayushman Bharat PM-JAY mainly covers hospital stays, not outpatient drugs."
+        ],
+        [
+         "Public spending",
+         "The National Health Policy, 2017 set a target of 2.5% of GDP for public health spending by 2025."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Awareness and trust:** low awareness, stock-outs and doubts about quality limit use.",
+        "**Doctors’ role:** prescriptions by generic name would help, but doctors want assurance of quality first."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "PMBJP",
+     "d": "Pradhan Mantri Bhartiya Janaushadhi Pariyojana, the scheme for low-cost generic medicines, run by the Pharmaceuticals and Medical Devices Bureau of India."
+    },
+    {
+     "k": "Generic medicine",
+     "d": "A medicine sold under its chemical name at a lower price than the brand."
+    },
+    {
+     "k": "WHO-GMP",
+     "d": "World Health Organization good manufacturing practice certification."
+    },
+    {
+     "k": "Out-of-pocket expenditure",
+     "d": "Money paid directly by households for health care."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the role of generic medicines and the Jan Aushadhi scheme in reducing out-of-pocket health expenditure.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Examine the challenges before India’s health system in making medicines affordable and trusted.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-19",
+   "n": 19,
+   "sec": "Security",
+   "t": "‘Last local recruit’ of the Lashkar-e-Taiba killed in Kulgam",
+   "gs": [
+    "GS3 Internal Security"
+   ],
+   "news": "Lateef Bhat, a 22-year-old accused of the terror attack on CRPF personnel the previous week, was killed on Wednesday outside a mosque in Zangalpora in Kulgam district, south Kashmir, after an eight-day operation. Police described him as the last local recruit of the Lashkar-e-Taiba and its last known active local terrorist in the Valley. He had hidden inside the mosque and turned down an offer to surrender, saying he was happy to meet Allah; he was shot dead about 50 metres from the mosque as he tried to escape the cordon. Senior Superintendent of Police Anayat Ali Choudhary said the forces had asked him to surrender with maximum restraint because he was inside a mosque, and a weapon was recovered. Another associate, Umar Nisar, was also killed in Kulgam the day before. Union Home Minister Amit Shah praised the synergy of the Jammu and Kashmir Police, the Army, the CRPF and intelligence agencies, and an Army spokesperson said the forces neutralised him by making him leave the mosque premises.",
+   "blocks": [
+    {
+     "h": "Terrorism in Jammu and Kashmir",
+     "items": [
+      {
+       "rows": [
+        [
+         "Lashkar-e-Taiba",
+         "A Pakistan-based terror group formed around 1990 and responsible for the 2008 Mumbai attacks; it is listed as a terrorist organisation under the Unlawful Activities (Prevention) Act, 1967."
+        ],
+        [
+         "Local recruitment",
+         "The number of local youth joining militant groups has fallen sharply in recent years, so most active militants are foreign."
+        ],
+        [
+         "Forces involved",
+         "The Jammu and Kashmir Police, the Army (Rashtriya Rifles), the Central Reserve Police Force and intelligence agencies run joint operations under a Unified Headquarters."
+        ],
+        [
+         "Protecting religious places",
+         "Security forces follow standing procedures to avoid damage to shrines and mosques, and to offer surrender before a final assault."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Proportionate force:** counter-terror operations aim to avoid harm to civilians and sacred places; offering surrender first is part of that approach.",
+        "**What next:** with local recruitment low, the Union Government’s focus is on cross-border infiltration, over-ground support networks and terror financing."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Lashkar-e-Taiba",
+     "d": "Pakistan-based terror group behind the 2008 Mumbai attacks."
+    },
+    {
+     "k": "UAPA, 1967",
+     "d": "India’s main law against unlawful and terrorist activities and organisations."
+    },
+    {
+     "k": "Unified Headquarters",
+     "d": "Joint command of the Army, police and paramilitary in J&K counter-terror operations."
+    },
+    {
+     "k": "Zangalpora",
+     "d": "Village in Kulgam district where the operation took place."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the changing nature of terrorism in Jammu and Kashmir and the measures taken to counter it.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Examine the challenges of conducting counter-terror operations in or near places of worship.",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-20",
+   "n": 20,
+   "sec": "Security",
+   "t": "India and Israel sign a contract to upgrade the Barak missile system",
+   "gs": [
+    "GS3 Defence"
+   ],
+   "news": "The Defence Ministry signed a ₹1,976.40 crore contract with Israel Aerospace Industries on Wednesday to upgrade and manage the obsolescence of the Barak Point Defence Missile System fitted on Indian Navy warships. It was signed in New Delhi in the presence of Defence Secretary Rajesh Kumar Singh under the Other Capital Procurement Procedure, and is meant to improve the operational capability of the Barak systems and the air defence of Navy platforms.",
+   "blocks": [
+    {
+     "h": "Barak and ship defence",
+     "items": [
+      {
+       "rows": [
+        [
+         "Barak point defence missile",
+         "A short-range surface-to-air missile on warships that protects a ship against incoming anti-ship missiles and aircraft."
+        ],
+        [
+         "Barak-8 (MR-SAM)",
+         "A longer-range version developed jointly by DRDO and Israel Aerospace Industries, used by the Navy, the Army and the Air Force."
+        ],
+        [
+         "Obsolescence management",
+         "Replacing parts and electronics that are no longer made so that a system stays usable through its life."
+        ],
+        [
+         "Procurement",
+         "Defence purchases follow the Defence Acquisition Procedure, which grades buying from ‘Buy (Indian–IDDM)’ to ‘Buy (Global)’; the Defence Acquisition Council gives the first approval."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Air defence at sea:** layered defence on a warship combines long-range, medium-range and point-defence missiles with guns.",
+        "**India–Israel defence ties:** joint development, upgrades and imports are a long-standing part of the relationship."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Barak",
+     "d": "Israeli-origin missile family used by the Indian Navy for ship air defence."
+    },
+    {
+     "k": "MR-SAM",
+     "d": "Medium-range surface-to-air missile jointly developed by DRDO and Israel Aerospace Industries."
+    },
+    {
+     "k": "Point defence",
+     "d": "Close-in defence of a single ship against incoming threats."
+    },
+    {
+     "k": "Defence Acquisition Procedure",
+     "d": "Rules that govern the purchase of military equipment."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the importance of layered air defence for naval platforms and India’s defence cooperation with Israel.",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    },
+    {
+     "q": "Examine the steps taken to reduce India’s dependence on imported defence equipment.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-21",
+   "n": 21,
+   "sec": "Environment",
+   "t": "Delhi’s November air best in ten years: the numbers and the measures",
+   "gs": [
+    "GS3 Environment",
+    "GS2 Governance"
+   ],
+   "news": "Chief Minister Rekha Gupta said Delhi’s air quality this November has been the best for the month in the last 10 years, but that strict measures will continue as the challenging period lies ahead. Environment Minister Manjinder Singh Sirsa said the city has not had a single ‘severe’ day this season and recorded a record 220 clean-air days this year, whereas Novembers over the past 10 years often had four to six days above that level; the average AQI in the first half of November was about 170. The 24-hour average AQI on Wednesday was 232, up from 204 on Tuesday, and the Air Quality Early Warning System forecast ‘poor’ air on Thursday and ‘very poor’ on Friday because of unfavourable weather. The Government’s data: 25,610 vehicles challaned for pollution-certificate violations; 1,81,548 non-Delhi vehicles inspected, 30,742 turned back and 189 seized; 41,659 overage vehicles seized and 64,800 scrapped; 6,000 new EV charging points bringing the total to 14,913; 1,703 electric buses added out of 2,395 planned, with 692 more expected in December; road-sweeper shifts doubled to clean 4,000 km a day; action against about 12,000 polluting industrial units. Between 1 and 17 November, 8,874 construction and demolition sites were inspected, violations were found at 554, 112 were ordered closed, 462 got show-cause notices and compensation of over ₹2.65 crore was imposed. The Government aims to cut pollution by 10 to 15% every year.",
+   "blocks": [
+    {
+     "h": "Delhi’s air and the tools used",
+     "items": [
+      {
+       "rows": [
+        [
+         "AQI bands",
+         "Good 0–50, Satisfactory 51–100, Moderate 101–200, Poor 201–300, Very Poor 301–400, Severe 401–500."
+        ],
+        [
+         "PUC",
+         "A Pollution Under Control certificate shows that a vehicle’s emissions are within limits; vehicles without one can be challaned."
+        ],
+        [
+         "Overage vehicles",
+         "Delhi’s rules phase out older vehicles (generally 15 years for petrol and 10 for diesel) because of their higher emissions."
+        ],
+        [
+         "GRAP",
+         "The Graded Response Action Plan adds curbs as the AQI worsens; the Commission for Air Quality Management coordinates action across Delhi–NCR."
+        ],
+        [
+         "Seasonal factors",
+         "Winter cold, low winds and moisture trap pollutants; crop-residue burning in neighbouring States adds to the load."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Weather versus action:** a better month may reflect weather as well as measures, which is why year-round cuts in emissions matter.",
+        "**Single-day reading versus exposure:** daily AQI says little about long-term exposure, a point made in the day’s editorial."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "AQI",
+     "d": "Air Quality Index, with six bands from Good to Severe."
+    },
+    {
+     "k": "PUC certificate",
+     "d": "Proof that a vehicle’s emissions are within limits."
+    },
+    {
+     "k": "Air Quality Early Warning System",
+     "d": "System that forecasts air quality days ahead for Delhi."
+    },
+    {
+     "k": "Overage vehicles",
+     "d": "Vehicles older than the legal limit, taken off Delhi’s roads."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Mumbai, Delhi and Kolkata are mega cities with high air pollution. Discuss the causes and the measures taken to tackle it.",
+     "m": "GS1 · 250 words · 15 marks",
+     "ref": "2015 GS1 (air pollution in mega cities)"
+    },
+    {
+     "q": "Evaluate the effectiveness of emergency measures such as GRAP compared with year-round emission reduction.",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-22",
+   "n": 22,
+   "sec": "Environment",
+   "t": "Cyclone Akvan shifts course: uncertainty over landfall and intensity",
+   "gs": [
+    "GS1 Geography",
+    "GS3 Disaster Management"
+   ],
+   "news": "Severe cyclonic storm Akvan changed its path and, according to the IMD’s 8 p.m. bulletin on Wednesday, was set to make landfall between Narsapur in Andhra Pradesh and Puri in Odisha on 20 November. Its projected track kept changing: the first forecast showed it moving towards Machilipatnam or Bapatla in central Andhra Pradesh as a very severe cyclonic storm, a revised forecast said it may not intensify into one, and the track later shifted to Narsapur–Kakinada and then north towards north Andhra Pradesh and south Odisha. Experts blamed the uncertainty on El Niño, a poor distribution of ocean heat content and mid-level moisture, and said it might weaken further before landfall. The IMD issued a red alert for Srikakulam, Vizianagaram, Visakhapatnam, Alluri Sitarama Raju, Anakapalli and Kakinada districts and southern Odisha, and Andhra Pradesh’s Home Minister V. Anitha said 13 NDRF and 11 SDRF teams and fire service units were ready.",
+   "blocks": [
+    {
+     "h": "Why forecasts change",
+     "items": [
+      {
+       "rows": [
+        [
+         "Track errors",
+         "Cyclone tracks depend on steering winds and the surrounding systems; small shifts change the landfall point by hundreds of kilometres."
+        ],
+        [
+         "Ocean heat content",
+         "Warm water to a good depth feeds a cyclone; uneven heat limits its strengthening."
+        ],
+        [
+         "Mid-level moisture",
+         "Dry air in the middle atmosphere can weaken a storm by starving it of moisture."
+        ],
+        [
+         "El Niño",
+         "A warm phase in the Pacific that changes wind and heat patterns across the tropics, including the Indian Ocean."
+        ],
+        [
+         "Response forces",
+         "The National Disaster Response Force and the State Disaster Response Forces carry out rescue and relief."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Alerts and colour codes:** red means the authorities should take action; orange asks them to be prepared.",
+        "**Weaker does not mean safe:** even a weaker storm can bring heavy rain, flooding and a storm surge."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Severe cyclonic storm",
+     "d": "Winds of 89 to 117 km/h on the IMD scale."
+    },
+    {
+     "k": "Ocean heat content",
+     "d": "Heat stored in the upper ocean, a fuel for cyclones."
+    },
+    {
+     "k": "NDRF and SDRF",
+     "d": "National and State Disaster Response Forces."
+    },
+    {
+     "k": "El Niño",
+     "d": "Warm phase of the Pacific that alters weather worldwide."
+    }
+   ],
+   "qs": [
+    {
+     "q": "What is the Fujiwhara effect? Explain its impact on the movement and intensity of tropical cyclones.",
+     "m": "GS1 · 150 words · 10 marks",
+     "ref": "2026 GS1 (Fujiwhara effect)"
+    },
+    {
+     "q": "What factors make cyclone tracks and intensity hard to forecast? How do early warnings reduce loss of life?",
+     "m": "GS1 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-23",
+   "n": 23,
+   "sec": "Environment",
+   "t": "COVID-19 lessons for India’s response to air pollution",
+   "gs": [
+    "GS3 Environment",
+    "GS2 Health"
+   ],
+   "news": "In an editorial, Dr Soumya Swaminathan and Dr Chandrakant Lahariya argue that the COVID-19 response offers lessons for air pollution, which is still treated largely as a seasonal inconvenience. They note that an adult takes about 20,000–25,000 breaths a day, that the State of Global Air 2025 report estimated that more than two million deaths in India in 2023 were attributable to air pollution, and that a Lancet Planetary Health study put the economic loss at 1.36% of India’s GDP in 2019. Their seven lessons: strong political leadership and coordinated governance across Ministries and States; systematic data and a national environmental health surveillance platform linking air quality, weather, admissions and deaths; transparency, with public dashboards of annual PM2.5 exposure; outcome-based financing (a January 2026 CREA assessment found ₹13,415 crore released through the National Clean Air Programme and Finance Commission funding, about 74% used, with 68% spent on road dust, 14% on transport, 12% on waste and biomass burning, and under 1% each on industry and household fuel); separating emergency measures such as GRAP from sustained emission cuts; tightening standards, since India’s annual PM2.5 limit of 40 micrograms per cubic metre is eight times the WHO guideline of five; and public participation without shifting responsibility to individuals, since masks and purifiers do not cut pollution at its source.",
+   "blocks": [
+    {
+     "h": "The argument in brief",
+     "items": [
+      {
+       "rows": [
+        [
+         "Health burden",
+         "Air pollution is linked to heart disease, stroke, chronic lung disease, lung cancer, diabetes and harm to pregnancy and children’s development, apart from respiratory illness."
+        ],
+        [
+         "NCAP",
+         "The National Clean Air Programme, launched in 2019, covers about 130 cities that do not meet the national standards."
+        ],
+        [
+         "Standards",
+         "India’s annual PM2.5 limit is 40 µg/m³; the WHO’s 2021 guideline is 5."
+        ],
+        [
+         "Source mix",
+         "PM2.5 comes from combustion, industry, transport, household fuels and chemical reactions of gases, so spending on road dust alone misses much of the problem."
+        ],
+        [
+         "Surveillance",
+         "Linking AQI with hospital and death data would show where the harm falls and whether measures work."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Equity:** poorer households, outdoor workers and children have the most exposure and the fewest resources.",
+        "**Outcome measure:** success should be judged by lower exposure and better health, not by the number of restrictions announced."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "State of Global Air",
+     "d": "Annual report on air pollution and health by the Health Effects Institute and partners."
+    },
+    {
+     "k": "NCAP",
+     "d": "National Clean Air Programme, launched in 2019."
+    },
+    {
+     "k": "PM2.5",
+     "d": "Fine particles under 2.5 micrometres that reach deep into the lungs."
+    },
+    {
+     "k": "Outcome-based financing",
+     "d": "Funding linked to results such as lower exposure rather than to activity."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Air pollution is a public health emergency. Discuss how the lessons of the COVID-19 response can improve India’s policy.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Examine the case for tighter national air-quality standards and a national environmental health surveillance system.",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-24",
+   "n": 24,
+   "sec": "Environment",
+   "t": "Climate promises need to become praxis: finance, grids and a fair transition",
+   "gs": [
+    "GS3 Environment",
+    "GS3 Energy"
+   ],
+   "news": "An opinion piece by Vipin Benny argues that climate promises must reach people as money, grids and jobs. At COP29 in Baku in 2024, countries agreed to provide up to $300 billion a year to developing countries by 2035 and called for mobilising $1.3 trillion a year from public and private sources; the test is whether funds arrive on time, at affordable prices and in a usable form, with grants, cheap loans and guarantees. India’s electricity demand is projected to grow about 6.4% a year over the next five years, according to the International Energy Agency. India reached 300.5 GW of non-fossil capacity by July 2026, over 60% of its 500 GW target for 2030, but installed capacity is not the same as electricity produced, and solar and wind are intermittent, so networks, storage and flexible power are needed. The renewable consumption obligation requires certain distribution companies and consumers to reach 43.33% renewable electricity by 2029-30. The article adds that a COP31 goal is to raise the share of electricity in final energy consumption to 35% by 2035, that coal workers need retraining, that electric buses are only as clean as the power that charges them, and that benefits should reach small firms and households.",
+   "blocks": [
+    {
+     "h": "Terms and numbers",
+     "items": [
+      {
+       "rows": [
+        [
+         "NCQG",
+         "The New Collective Quantified Goal on climate finance: at least $300 billion a year by 2035 as developed countries’ lead, within a wider call for $1.3 trillion."
+        ],
+        [
+         "500 GW by 2030",
+         "India’s target for non-fossil electricity capacity; the 50% non-fossil share of installed capacity was reached earlier than planned."
+        ],
+        [
+         "RCO",
+         "The renewable consumption obligation, which sets minimum shares of renewable power for obligated entities under the Energy Conservation Act framework."
+        ],
+        [
+         "Carbon lock-in",
+         "Building long-lived fossil plants that keep emissions high for decades."
+        ],
+        [
+         "Just transition",
+         "Moving from coal while protecting workers and regions that depend on it."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Capacity versus generation:** a solar plant produces only in daylight, so its capacity factor is much lower than that of a coal plant.",
+        "**People-centric transition:** jobs in solar installation, battery maintenance and efficient manufacturing, and finance for small industry."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "NCQG",
+     "d": "New Collective Quantified Goal on climate finance set at COP29."
+    },
+    {
+     "k": "500 GW target",
+     "d": "India’s goal of non-fossil electricity capacity by 2030."
+    },
+    {
+     "k": "Renewable consumption obligation",
+     "d": "Minimum renewable power share for obligated distribution companies and consumers."
+    },
+    {
+     "k": "Lock-in",
+     "d": "Dependence on fossil infrastructure that is hard to leave."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Examine the issues in climate finance for developing countries and India’s approach to the energy transition.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Why is installed renewable capacity not the same as electricity supplied? What does the grid need?",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-25",
+   "n": 25,
+   "sec": "Environment",
+   "t": "A regulatory fix for educational campuses and environmental clearance",
+   "gs": [
+    "GS3 Environment",
+    "GS2 Polity"
+   ],
+   "news": "Environmentalist Kalaiselvan Periyasamy writes that recent Supreme Court judgments have reaffirmed that educational buildings of over 20,000 square metres need prior Environmental Clearance under the EIA Notification, 2006, leaving institutions that built without it with no way to regularise them. The Notification had no built-up-area rule for educational institutions until a December 2014 exemption for schools, colleges and institutional hostels, which the Kerala High Court quashed in March 2024; a fresh exemption in January 2025 was stayed and then cancelled by the Supreme Court in August 2025. The Union’s 2017 Notification and 2021 Office Memorandum, which let violating projects seek clearance after the fact, were struck down in May 2025; after review, the Court’s final judgment on 29 July 2026 reaffirmed that prior clearance is mandatory and no fresh applications can be taken under them, but said the Government could bring a tailored, time-bound scheme through a valid statutory notification for categories of non-compliant projects with an overriding public interest. A Ministry Office Memorandum of 30 September 2026 says only pending applications may proceed. The author urges the Environment Ministry to issue a statutory notification for eligible campuses that covers environmental scrutiny, damage assessment, proportionate compensation and remediation, and that separates deliberate violations from developments made without intent.",
+   "blocks": [
+    {
+     "h": "Environmental clearance",
+     "items": [
+      {
+       "rows": [
+        [
+         "EIA Notification, 2006",
+         "Issued under the Environment (Protection) Act, 1986; large projects such as buildings above a set built-up area need prior clearance after appraisal."
+        ],
+        [
+         "Ex post facto clearance",
+         "Clearance after construction has started; the Supreme Court in the Vanashakti case (May 2025) held it unlawful, and the final July 2026 judgment confirmed that prior clearance is mandatory."
+        ],
+        [
+         "Polluter pays",
+         "A violator bears the cost of damage and its repair, a principle the author wants built into any new scheme."
+        ],
+        [
+         "Statutory route",
+         "A fix must come through a valid statutory notification, not an office memorandum."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**No blanket exemption:** the Court has not allowed exemption for educational buildings, and the author says a blanket exemption would also ignore environmental impact.",
+        "**Cost of delay:** the author warns that the gap could hinder the expansion of classrooms, laboratories and hostels and so the education goals of Viksit Bharat."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "EIA Notification, 2006",
+     "d": "Rule requiring prior Environmental Clearance for listed projects."
+    },
+    {
+     "k": "Ex post facto clearance",
+     "d": "Approval given after a project has started or been built."
+    },
+    {
+     "k": "Vanashakti case",
+     "d": "2025 Supreme Court ruling against clearance after the fact."
+    },
+    {
+     "k": "Polluter pays principle",
+     "d": "The polluter pays for the damage and for restoring the environment."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the role of Environmental Impact Assessment in sustainable development. What are its limits?",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Examine the issues in granting environmental clearance after construction (ex post facto clearance).",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-26",
+   "n": 26,
+   "sec": "Environment",
+   "t": "Asian elephants’ social fabric fraying to a ‘tipping point’",
+   "gs": [
+    "GS3 Environment",
+    "GS3 Biodiversity"
+   ],
+   "news": "A study published in Science says that human-induced pressures are fragmenting the groups of wild Asian elephants. Unlike African elephants, which form larger groups under stress, Asian elephants split into smaller groups and their bonds fray after the death of an individual or a shortage of food. Scientists followed the social bonds of 443 female elephants in Sri Lanka’s Udawalawe National Park for over a decade: 20 groups of 14 individuals in 2007 split into 37 groups by 2018, the average group size fell to about three, and the number of females observed fell by 69%. The paper says the population has reached a ‘tipping point’ where individuals lost exceed those gained, and notes poaching, conflict with people and food scarcity as native grasses give way to unpalatable shrubs and invasive plants. Raman Sukumar of the Indian Institute of Science says much elephant behaviour is learned from older individuals, so losing an adult female can impair the family’s ability to adapt. The study appeared soon after a report on the hasty and dubious transfer of five young Asian elephants from Assam to Tamil Nadu.",
+   "blocks": [
+    {
+     "h": "Elephants and conservation",
+     "items": [
+      {
+       "rows": [
+        [
+         "Status",
+         "The Asian elephant is listed as Endangered by the IUCN and is in Schedule I of the Wild Life (Protection) Act, 1972; the elephant is India’s National Heritage Animal (2010)."
+        ],
+        [
+         "Project Elephant",
+         "Launched in 1992 to protect elephants, their habitats and corridors and to reduce human–elephant conflict."
+        ],
+        [
+         "Social structure",
+         "Elephants live in female-led family groups; older females hold knowledge of water, food and routes."
+        ],
+        [
+         "Captivity",
+         "A 2010 study found that social isolation in captive elephants in Tamil Nadu led to stereotypic behaviour such as repeated body rocking and head nodding."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Generational knowledge:** an elephant calf’s brain is about a third of its adult weight at birth, so much behaviour is learnt from elders.",
+        "**Conservation lesson:** protecting social groups and corridors, not only counting individuals."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Asian elephant",
+     "d": "Endangered; Schedule I of the Wild Life (Protection) Act, 1972."
+    },
+    {
+     "k": "Project Elephant",
+     "d": "1992 programme for elephant conservation and corridors."
+    },
+    {
+     "k": "Tipping point",
+     "d": "A threshold beyond which a system changes sharply to a new state."
+    },
+    {
+     "k": "National Heritage Animal",
+     "d": "Status given to the elephant in India in 2010."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the causes of human–elephant conflict in India and the measures taken to reduce it.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Why is the protection of social groups important for the conservation of social animals such as elephants?",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-27",
+   "n": 27,
+   "sec": "Science & Technology",
+   "t": "Rosalind Franklin’s notes and ‘Photograph 51’",
+   "gs": [
+    "GS3 Science and Technology"
+   ],
+   "news": "A new paper in the Journal of the History of Biology, by researchers from the Science History Institute in Philadelphia and King’s College London, uses Rosalind Franklin’s laboratory notebooks, X-ray photographs and camera to argue that Photograph 51, the famous X-ray image of the ‘B’ form of DNA, ‘shouted helix’ because Franklin had intended it to. On 2 May 1952 Franklin and her PhD student Raymond Gosling began taking X-ray images of the ‘B’ form, one of a series of 78. A photograph from the same day, Photograph 49, had a misaligned film holder that cut off part of the diffraction pattern, so Franklin deliberately took Photograph 51 with the holder centred to capture the full pattern. Her notes on Photograph 49 interpret the pattern as helical and work out the repeat length of 34 ångström, with bases 3.4 Å apart, while her entry for Photograph 51 has little analysis because she already knew what it would show. Franklin had focused first on the drier ‘A’ form, which gave more distinct spots and richer data, and put the photograph aside until early 1953, when Maurice Wilkins showed it to James Watson, who realised at once that DNA was helical. Watson and Crick solved the structure in March 1953. The authors do not deny them credit for the complementary base pairing and the opposite direction of the two strands, but challenge the story that the image revealed the helix to Watson alone.",
+   "blocks": [
+    {
+     "h": "The structure of DNA",
+     "items": [
+      {
+       "rows": [
+        [
+         "DNA structure",
+         "A double helix of two strands running in opposite directions, with bases adenine paired to thymine and cytosine to guanine."
+        ],
+        [
+         "Chargaff’s rules",
+         "Erwin Chargaff showed that in DNA the amount of adenine equals thymine and cytosine equals guanine."
+        ],
+        [
+         "X-ray crystallography",
+         "Shooting X-rays at a crystal or fibre and studying the scattering pattern to find the arrangement of atoms; Franklin and Wilkins worked at King’s College London."
+        ],
+        [
+         "A and B forms",
+         "The drier ‘A’ form gives sharp spots and is harder to interpret; the wetter ‘B’ form, close to DNA inside cells, gives a clear helical pattern."
+        ],
+        [
+         "Credit",
+         "Watson, Crick and Wilkins received the 1962 Nobel Prize in Physiology or Medicine; Franklin died in 1958, and the Nobel is not given posthumously."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Complementary base pairing:** adenine with thymine and cytosine with guanine, which explains how DNA is copied.",
+        "**Credit in science:** the debate shows the importance of acknowledging all contributors, and of women scientists’ place in research."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Photograph 51",
+     "d": "X-ray diffraction image of the ‘B’ form of DNA taken by Franklin and Gosling in 1952."
+    },
+    {
+     "k": "Chargaff’s rules",
+     "d": "A equals T and C equals G in DNA."
+    },
+    {
+     "k": "X-ray crystallography",
+     "d": "Method of finding molecular structure from X-ray scattering patterns."
+    },
+    {
+     "k": "Double helix",
+     "d": "The two-stranded, coiled structure of DNA proposed by Watson and Crick in 1953."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the contribution of X-ray crystallography to biology. Why is the discovery of the DNA structure considered a landmark?",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    },
+    {
+     "q": "What can the debate on credit for the DNA structure teach about ethics and gender in science?",
+     "m": "GS3 · 150 words · 10 marks",
      "ref": ""
     }
    ]
