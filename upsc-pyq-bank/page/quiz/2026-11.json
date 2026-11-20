@@ -1,6 +1,6 @@
 {
  "month": "2026-11",
- "updated": "18 Nov 2026",
+ "updated": "20 Nov 2026",
  "questions": [
   {
    "subject": "Polity & Governance",
@@ -70,10 +70,10 @@
    "opts": [
     "The Malimath Committee Report on reforms of the criminal justice system",
     "The Justice Verma Committee Report on amendments to criminal law",
-    "The 262nd Report of the Law Commission of India",
-    "The Second Administrative Reforms Commission Report on public order"
+    "The Second Administrative Reforms Commission Report on public order",
+    "The 262nd Report of the Law Commission of India"
    ],
-   "ans": 2,
+   "ans": 3,
    "why": "The Law Commission’s 262nd Report (2015) recommended abolishing capital punishment for all crimes except terrorism-related offences and waging war.",
    "id": "caq-2026-11-005"
   },
@@ -113,12 +113,12 @@
    "exam": "pre",
    "q": "In administrative law, ‘Wednesbury unreasonableness’ as a ground of judicial review refers to a decision that is",
    "opts": [
-    "so unreasonable that no reasonable authority could have made it",
     "taken without following the procedure that the law requires for such decisions",
     "beyond the powers that the law has conferred on the deciding authority",
-    "made out of personal ill-will towards the person affected by it"
+    "made out of personal ill-will towards the person affected by it",
+    "so unreasonable that no reasonable authority could have made it"
    ],
-   "ans": 0,
+   "ans": 3,
    "why": "Wednesbury unreasonableness (1948) is the test of irrationality. A decision without the required procedure is procedural impropriety, one beyond the power given is illegality and a decision made with ill-will is mala fide.",
    "id": "caq-2026-11-008"
   },
@@ -144,11 +144,11 @@
    "q": "The ‘Key Facts Statement’ that lenders must give to a borrower is",
    "opts": [
     "a credit report prepared by a credit bureau on the borrower’s repayment history",
-    "a standard sheet stating the all-in cost, charges and recovery process of a loan",
     "a government guarantee that covers small loans given to women’s self-help groups",
-    "a lender’s statement of its capital adequacy and its non-performing assets"
+    "a lender’s statement of its capital adequacy and its non-performing assets",
+    "a standard sheet stating the all-in cost, charges and recovery process of a loan"
    ],
-   "ans": 1,
+   "ans": 3,
    "why": "The KFS gives the borrower the real cost and terms of a loan in plain language. It has been mandatory for retail and MSME loans since October 2024.",
    "id": "caq-2026-11-010"
   },
@@ -234,11 +234,11 @@
    "q": "The Gauss–Markov theorem in statistics states that, under its assumptions, the ordinary least squares estimator is",
    "opts": [
     "the Maximum Entropy Estimator for every distribution",
-    "the Best Linear Unbiased Estimator",
     "the Best Unbiased Non-linear Estimator",
-    "the Consistent Bayesian Estimator of the mean"
+    "the Consistent Bayesian Estimator of the mean",
+    "the Best Linear Unbiased Estimator"
    ],
-   "ans": 1,
+   "ans": 3,
    "why": "Under the Gauss–Markov assumptions, OLS is the Best Linear Unbiased Estimator (BLUE).",
    "id": "caq-2026-11-016"
   },
@@ -308,12 +308,12 @@
    "exam": "pre",
    "q": "The tropical cyclone ‘Akvan’, expected to cross the Andhra Pradesh coast, took its name from a list kept by the WMO/ESCAP Panel on Tropical Cyclones. Which one of the following countries proposed this name?",
    "opts": [
-    "Iran",
     "Bangladesh",
     "Oman",
-    "Sri Lanka"
+    "Sri Lanka",
+    "Iran"
    ],
-   "ans": 0,
+   "ans": 3,
    "why": "The name Akvan was proposed by Iran. The names are used in sequence, so the proposing country has no link to where the storm goes. Bangladesh’s ‘Arnab’ and India’s ‘Murasu’ came before it.",
    "id": "caq-2026-11-021"
   },
@@ -355,10 +355,10 @@
    "opts": [
     "installing solar pumps on farms and solarising agricultural feeders",
     "replacing diesel buses with electric buses in the larger cities",
-    "setting up compressed biogas plants and a market for it",
-    "creating a strategic reserve of crude oil in underground caverns"
+    "creating a strategic reserve of crude oil in underground caverns",
+    "setting up compressed biogas plants and a market for it"
    ],
-   "ans": 2,
+   "ans": 3,
    "why": "SATAT (Sustainable Alternative Towards Affordable Transportation) created a market for compressed biogas, while PM-KUSUM covers solar pumps.",
    "id": "caq-2026-11-024"
   },
@@ -429,11 +429,11 @@
    "q": "The 2026 India–ASEAN and East Asia Summits were held in Manila because the country that holds the ASEAN chair in 2026 hosts them. Which one of the following countries holds that chair?",
    "opts": [
     "Thailand",
-    "The Philippines",
     "Vietnam",
-    "Indonesia"
+    "Indonesia",
+    "The Philippines"
    ],
-   "ans": 1,
+   "ans": 3,
    "why": "The Philippines chairs ASEAN in 2026, which is why the India–ASEAN and East Asia Summits were held in Manila.",
    "id": "caq-2026-11-029"
   },
@@ -460,10 +460,10 @@
    "opts": [
     "Mazagon Dock Shipbuilders Limited",
     "Garden Reach Shipbuilders and Engineers",
-    "Cochin Shipyard Limited",
-    "Hindustan Shipyard Limited"
+    "Hindustan Shipyard Limited",
+    "Cochin Shipyard Limited"
    ],
-   "ans": 2,
+   "ans": 3,
    "why": "INS Vikrant was built by Cochin Shipyard Limited and commissioned on 2 September 2022. The other carrier, INS Vikramaditya, was bought from Russia.",
    "id": "caq-2026-11-031"
   },
@@ -533,12 +533,12 @@
    "exam": "pre",
    "q": "Which one of the following pairs of vaccines has been recommended by the World Health Organization for the prevention of malaria in children?",
    "opts": [
-    "RTS,S/AS01 and R21/Matrix-M",
     "BCG and MMR",
     "Covaxin and Covishield",
-    "Sputnik V and Corbevax"
+    "Sputnik V and Corbevax",
+    "RTS,S/AS01 and R21/Matrix-M"
    ],
-   "ans": 0,
+   "ans": 3,
    "why": "WHO recommended RTS,S/AS01 in 2021 and R21/Matrix-M in 2023 for children.",
    "id": "caq-2026-11-036"
   },
@@ -564,11 +564,11 @@
    "q": "The Top500 list is published twice a year to rank the world’s fastest supercomputers. Which one of the following benchmarks is used to rank the machines on that list?",
    "opts": [
     "MLPerf",
-    "LINPACK",
     "SPEC CPU",
-    "Geekbench"
+    "Geekbench",
+    "LINPACK"
    ],
-   "ans": 1,
+   "ans": 3,
    "why": "The Top500 list ranks machines by their speed on the LINPACK benchmark.",
    "id": "caq-2026-11-038"
   },
@@ -610,10 +610,10 @@
    "opts": [
     "1971",
     "1989",
-    "1999",
-    "2013"
+    "2013",
+    "1999"
    ],
-   "ans": 2,
+   "ans": 3,
    "why": "The Odisha Super Cyclone of 1999 killed about 10,000 people. Later storms such as Phailin (2013) and Fani (2019) caused deaths in double digits after better warnings and evacuation.",
    "id": "caq-2026-11-041"
   },
@@ -638,12 +638,12 @@
    "exam": "pre",
    "q": "Majuli, which is one of the largest river islands in the world, lies in which river?",
    "opts": [
-    "The Brahmaputra",
     "The Ganga",
     "The Godavari",
+    "The Brahmaputra",
     "The Mahanadi"
    ],
-   "ans": 0,
+   "ans": 2,
    "why": "Majuli is a river island in the Brahmaputra in Assam.",
    "id": "caq-2026-11-043"
   },
@@ -676,6 +676,1266 @@
    "ans": 0,
    "why": "The festival is held on the full-moon day when the Krittika star rules the sky, not on the new-moon day.",
    "id": "caq-2026-11-045"
+  },
+  {
+   "subject": "History",
+   "syllabus": "Modern India",
+   "exam": "pre",
+   "q": "The 1899–1900 movement led by Birsa Munda in the Chotanagpur region against landlords, moneylenders and colonial land rules is known as",
+   "opts": [
+    "the Tana Bhagat movement",
+    "the Kol insurrection",
+    "the Ulgulan",
+    "the Tebhaga movement"
+   ],
+   "ans": 2,
+   "why": "Birsa Munda led the Ulgulan, or Great Tumult, of 1899–1900. The Tana Bhagat movement was among the Oraon, the Kol insurrection was of 1831–32 and the Tebhaga movement was a sharecroppers’ struggle in Bengal.",
+   "id": "caq-2026-11-046"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Tribal areas",
+   "exam": "pre",
+   "q": "With reference to the administration of tribal areas in India, consider the following statements:\n1. Article 338A provides for the National Commission for Scheduled Tribes.\n2. The Fifth Schedule governs the administration of Scheduled Areas in most States.\n3. The Sixth Schedule applies to the Scheduled Areas of Odisha and Jharkhand.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The Sixth Schedule applies to tribal areas in Assam, Meghalaya, Tripura and Mizoram. Odisha and Jharkhand have Scheduled Areas under the Fifth Schedule, so statement 3 is wrong.",
+   "id": "caq-2026-11-047"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Panchayats",
+   "exam": "pre",
+   "q": "The Panchayats (Extension to Scheduled Areas) Act, 1996 gives a central role in decisions on land and natural resources to",
+   "opts": [
+    "the Gram Panchayat",
+    "the Block Samiti",
+    "the Zila Parishad",
+    "the Gram Sabha"
+   ],
+   "ans": 3,
+   "why": "PESA makes the Gram Sabha, the body of all adult voters of the village, central to decisions on land and natural resources in Scheduled Areas.",
+   "id": "caq-2026-11-048"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Tribal land",
+   "exam": "pre",
+   "q": "Consider the following statements:\nStatement-I: Prior consent of the Gram Sabha is required for acquiring land in Scheduled Areas.\nStatement-II: Section 41 of the Land Acquisition, Rehabilitation and Resettlement Act, 2013 provides special safeguards for acquisition in Scheduled Areas.\nWhich one of the following is correct in respect of the above statements?",
+   "opts": [
+    "Both Statement-I and Statement-II are correct and Statement-II explains Statement-I",
+    "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I",
+    "Statement-I is correct, but Statement-II is incorrect",
+    "Statement-I is incorrect, but Statement-II is correct"
+   ],
+   "ans": 0,
+   "why": "Section 41 of the 2013 Act requires prior consent of the Gram Sabha in Scheduled Areas, which is the basis of the requirement in Statement-I.",
+   "id": "caq-2026-11-049"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Poverty measurement",
+   "exam": "pre",
+   "q": "With reference to the measurement of poverty in India, consider the following statements:\n1. The Tendulkar Committee’s poverty line is the basis of India’s last official poverty estimate, for 2011-12.\n2. NITI Aayog’s National Multidimensional Poverty Index uses indicators of health, education and standard of living.\n3. Since June 2025 the World Bank’s extreme-poverty line has been $2.15 a day.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The World Bank raised its extreme-poverty line to $3 a day (2021 prices, adjusted for purchasing power) in June 2025. $2.15 was the earlier line, so statement 3 is wrong.",
+   "id": "caq-2026-11-050"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Poverty measurement",
+   "exam": "pre",
+   "q": "Consider the following expert bodies:\n1. Lakdawala Expert Group\n2. Tendulkar Committee\n3. Sachar Committee\n4. Ranganath Misra Commission\nHow many of the above were set up to estimate poverty?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 1,
+   "why": "The Lakdawala group and the Tendulkar Committee were set up to estimate poverty. The Sachar Committee studied the status of Muslims and the Ranganath Misra Commission examined reservation for religious and linguistic minorities.",
+   "id": "caq-2026-11-051"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Data protection",
+   "exam": "pre",
+   "q": "With reference to the Digital Personal Data Protection Act, 2023, consider the following statements:\n1. It provides for a Data Protection Board.\n2. It contains a blanket exemption for journalistic activity.\n3. It amends Section 8(1)(j) of the Right to Information Act, 2005.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "The Act has no blanket exemption for journalism, which is the publishers’ main complaint, so statement 2 is wrong. Section 44(3) amends Section 8(1)(j) of the RTI Act.",
+   "id": "caq-2026-11-052"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Fundamental rights",
+   "exam": "pre",
+   "q": "The nine-judge Bench of the Supreme Court that held privacy to be a fundamental right under Article 21 in 2017 decided",
+   "opts": [
+    "A. K. Gopalan v. State of Madras",
+    "Maneka Gandhi v. Union of India",
+    "K. S. Puttaswamy v. Union of India",
+    "A. D. M. Jabalpur v. Shivkant Shukla"
+   ],
+   "ans": 2,
+   "why": "Puttaswamy (2017) overruled the earlier view in the Kharak Singh and M. P. Sharma cases and held privacy a fundamental right under Article 21.",
+   "id": "caq-2026-11-053"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Press freedom",
+   "exam": "pre",
+   "q": "Consider the following statements:\nStatement-I: Freedom of the press is read into Article 19(1)(a) of the Constitution.\nStatement-II: Article 19(2) places no restriction on the freedom of speech and expression.\nWhich one of the following is correct in respect of the above statements?",
+   "opts": [
+    "Both Statement-I and Statement-II are correct and Statement-II explains Statement-I",
+    "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I",
+    "Statement-I is correct, but Statement-II is incorrect",
+    "Statement-I is incorrect, but Statement-II is correct"
+   ],
+   "ans": 2,
+   "why": "Press freedom flows from Article 19(1)(a), but Article 19(2) allows reasonable restrictions on grounds such as public order, decency and the security of the State.",
+   "id": "caq-2026-11-054"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Environmental law",
+   "exam": "pre",
+   "q": "With reference to the National Green Tribunal, consider the following statements:\n1. It was established under the National Green Tribunal Act, 2010.\n2. Appeals from its orders lie to the Supreme Court.\n3. It applies the precautionary principle and the polluter pays principle.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The Tribunal was set up under the 2010 Act, appeals lie to the Supreme Court and Section 20 directs it to apply the precautionary and polluter pays principles.",
+   "id": "caq-2026-11-055"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Environmental law",
+   "exam": "pre",
+   "q": "The principle of absolute liability for harm caused by hazardous industry was laid down by the Supreme Court in",
+   "opts": [
+    "Vellore Citizens’ Welfare Forum v. Union of India (1996)",
+    "Rylands v. Fletcher (1868)",
+    "Indian Council for Enviro-Legal Action v. Union of India (1996)",
+    "M. C. Mehta v. Union of India (1987)"
+   ],
+   "ans": 3,
+   "why": "M. C. Mehta (1987), the Oleum gas leak case, laid down absolute liability. Rylands v. Fletcher is an English case on strict liability, and Vellore (1996) made the precautionary and polluter pays principles part of Indian law.",
+   "id": "caq-2026-11-056"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Environmental law",
+   "exam": "pre",
+   "q": "Consider the following laws:\n1. The Water (Prevention and Control of Pollution) Act, 1974\n2. The Wildlife (Protection) Act, 1972\n3. The Forest (Conservation) Act, 1980\n4. The Air (Prevention and Control of Pollution) Act, 1981\nHow many of the above laws are covered by the Tribunal’s jurisdiction under the National Green Tribunal Act, 2010?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 2,
+   "why": "The Tribunal’s jurisdiction covers the Water, Water Cess, Forest (Conservation), Air, Environment (Protection), Public Liability Insurance and Biological Diversity Acts. The Wildlife (Protection) Act is not among them.",
+   "id": "caq-2026-11-057"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Census",
+   "exam": "pre",
+   "q": "With reference to the Census of India, consider the following statements:\n1. The Constitution makes the census a State subject.\n2. The census is conducted under the Census Act, 1948.\n3. Census 2027 includes the enumeration of caste.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The census is a Union subject under Entry 69 of the Union List, so statement 1 is wrong. The Census Act, 1948 governs it and Census 2027 includes caste enumeration.",
+   "id": "caq-2026-11-058"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Census",
+   "exam": "pre",
+   "q": "The Registrar General and Census Commissioner of India functions under the",
+   "opts": [
+    "Ministry of Statistics and Programme Implementation",
+    "Ministry of Home Affairs",
+    "Ministry of Electronics and Information Technology",
+    "NITI Aayog"
+   ],
+   "ans": 1,
+   "why": "The Registrar General and Census Commissioner works under the Ministry of Home Affairs.",
+   "id": "caq-2026-11-059"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Minorities",
+   "exam": "pre",
+   "q": "The Ministry of Minority Affairs was created in",
+   "opts": [
+    "1992",
+    "2006",
+    "2001",
+    "2014"
+   ],
+   "ans": 1,
+   "why": "The Ministry was created in January 2006, after the Sachar Committee was set up in March 2005. The National Commission for Minorities Act dates from 1992 and Jains were notified as a minority in 2014.",
+   "id": "caq-2026-11-060"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Minorities",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. The Ministry of Minority Affairs was created before the Sachar Committee was constituted.\n2. The Ranganath Misra Commission examined reservation for religious and linguistic minorities.\n3. The Kundu Committee assessed the follow-up to the Sachar Committee’s findings.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The Sachar Committee was set up in March 2005 and the Ministry of Minority Affairs was created in January 2006, so statement 1 is wrong.",
+   "id": "caq-2026-11-061"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Sustainable Development Goals",
+   "exam": "pre",
+   "q": "Sustainable Development Goal 6 of the United Nations is about",
+   "opts": [
+    "zero hunger",
+    "affordable and clean energy",
+    "life below water",
+    "clean water and sanitation"
+   ],
+   "ans": 3,
+   "why": "SDG 6 is clean water and sanitation for all. SDG 2 is zero hunger, SDG 7 is affordable and clean energy and SDG 14 is life below water.",
+   "id": "caq-2026-11-062"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Water resources",
+   "exam": "pre",
+   "q": "With reference to water in India, consider the following statements:\n1. The Jal Jeevan Mission was launched in 2019 to provide tap water to rural households.\n2. India has about 18% of the world’s freshwater resources.\n3. The Indus Waters Treaty between India and Pakistan was signed in 1960.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "India has about 4% of the world’s freshwater for around 18% of its people, so statement 2 is wrong.",
+   "id": "caq-2026-11-063"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Water resources",
+   "exam": "pre",
+   "q": "Consider the following:\n1. Jal Jeevan Mission\n2. Atal Bhujal Yojana\n3. Namami Gange\n4. National Water Mission\nHow many of the above were launched in 2019?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 1,
+   "why": "The Jal Jeevan Mission and the Atal Bhujal Yojana were launched in 2019. Namami Gange began in 2014 and the National Water Mission is part of the 2008 climate action plan, set up in 2011.",
+   "id": "caq-2026-11-064"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "International law",
+   "exam": "pre",
+   "q": "The United Nations treaty of 1948 that defines and prohibits the crime of genocide is the",
+   "opts": [
+    "Rome Statute",
+    "Geneva Conventions",
+    "Genocide Convention",
+    "Refugee Convention"
+   ],
+   "ans": 2,
+   "why": "The Genocide Convention (1948) defines genocide. The Rome Statute created the International Criminal Court, the Geneva Conventions cover armed conflict and the Refugee Convention is of 1951.",
+   "id": "caq-2026-11-065"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "International law",
+   "exam": "pre",
+   "q": "With reference to international courts, consider the following statements:\n1. Judgments of the International Court of Justice can be appealed to the UN Security Council.\n2. The International Criminal Court tries individuals under the Rome Statute.\n3. India is not a party to the Rome Statute.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "ICJ judgments are final and binding with no appeal, so statement 1 is wrong. The Security Council can be approached only to enforce a judgment under Article 94 of the UN Charter.",
+   "id": "caq-2026-11-066"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "International law",
+   "exam": "pre",
+   "q": "Consider the following statements:\nStatement-I: The International Court of Justice has no power of its own to enforce its judgments.\nStatement-II: Under Article 94 of the UN Charter a party can take the matter to the Security Council, where a veto can block action.\nWhich one of the following is correct in respect of the above statements?",
+   "opts": [
+    "Both Statement-I and Statement-II are correct and Statement-II explains Statement-I",
+    "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I",
+    "Statement-I is correct, but Statement-II is incorrect",
+    "Statement-I is incorrect, but Statement-II is correct"
+   ],
+   "ans": 0,
+   "why": "The ICJ has no police power, and Article 94 allows enforcement only through the Security Council, where a permanent member’s veto can block action.",
+   "id": "caq-2026-11-067"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Neighbourhood",
+   "exam": "pre",
+   "q": "The Rohingya, the subject of the case in The Gambia v. Myanmar, are a minority community mainly of",
+   "opts": [
+    "Kachin State in Myanmar",
+    "Rakhine State in Myanmar",
+    "Shan State in Myanmar",
+    "Chin State in Myanmar"
+   ],
+   "ans": 1,
+   "why": "The Rohingya are a Muslim minority of Rakhine State, on the Bangladesh border.",
+   "id": "caq-2026-11-068"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "International law",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. India enacted the Genocide Convention Act, 1960.\n2. India is a party to the 1951 Refugee Convention.\n3. India is a party to the Rome Statute of the International Criminal Court.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 0,
+   "why": "India enacted the Genocide Convention Act, 1960. It is not a party to the 1951 Refugee Convention or to the Rome Statute.",
+   "id": "caq-2026-11-069"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Tribal land",
+   "exam": "pre",
+   "q": "In Samatha v. State of Andhra Pradesh (1997), the Supreme Court barred",
+   "opts": [
+    "mining in all forest areas of the country",
+    "tribal people from selling land to one another",
+    "leases of tribal land in Scheduled Areas to private mining companies",
+    "the State from notifying new Scheduled Areas"
+   ],
+   "ans": 2,
+   "why": "Samatha (1997) barred the lease of tribal land in Scheduled Areas to private companies for mining.",
+   "id": "caq-2026-11-070"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Tribal land",
+   "exam": "pre",
+   "q": "In the Orissa Mining Corporation case (2013), the Supreme Court asked the Gram Sabhas to decide the religious and cultural rights of",
+   "opts": [
+    "the Santhal",
+    "the Gond",
+    "the Bhil",
+    "the Dongria Kondh"
+   ],
+   "ans": 3,
+   "why": "The Niyamgiri judgment asked the Gram Sabhas to decide, under the Forest Rights Act, the claims of the Dongria Kondh over the Niyamgiri hills.",
+   "id": "caq-2026-11-071"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Bail",
+   "exam": "pre",
+   "q": "With reference to bail under the Prevention of Money Laundering Act, 2002, consider the following statements:\n1. Section 45 sets twin conditions for the grant of bail.\n2. The twin conditions were struck down in Nikesh Tarachand Shah (2017) and later restored by an amendment.\n3. The Supreme Court in Vijay Madanlal Choudhary (2022) struck down Section 45 permanently.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Vijay Madanlal Choudhary (2022) upheld Section 45, so statement 3 is wrong.",
+   "id": "caq-2026-11-072"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Elections",
+   "exam": "pre",
+   "q": "In the process of maintaining electoral rolls, Form 7 is used for",
+   "opts": [
+    "registering a new voter",
+    "correcting details in an entry",
+    "shifting a voter to another constituency",
+    "an objection to a name or a request to delete it"
+   ],
+   "ans": 3,
+   "why": "Form 6 is for new voters and Form 8 is for corrections or shifting. Form 7 is for objecting to the inclusion of a name or seeking its deletion.",
+   "id": "caq-2026-11-073"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Elections",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. Article 324 gives the Election Commission superintendence, direction and control of the preparation of electoral rolls.\n2. Article 326 provides for elections to the Lok Sabha and State Assemblies on the basis of adult suffrage.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 only",
+    "2 only",
+    "Both 1 and 2",
+    "Neither 1 nor 2"
+   ],
+   "ans": 2,
+   "why": "Both are correct. Article 324 covers the rolls and elections, and Article 326 provides adult suffrage.",
+   "id": "caq-2026-11-074"
+  },
+  {
+   "subject": "Geography",
+   "syllabus": "Cyclones",
+   "exam": "pre",
+   "q": "On the scale of the India Meteorological Department, consider the following statements:\n1. A cyclonic storm has maximum sustained winds of 89 to 117 km/h.\n2. A very severe cyclonic storm has winds of 118 to 165 km/h.\n3. A red colour code means the authorities should take action.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "A cyclonic storm has winds of 62 to 88 km/h. Winds of 89 to 117 km/h make a severe cyclonic storm, so statement 1 is wrong.",
+   "id": "caq-2026-11-075"
+  },
+  {
+   "subject": "Geography",
+   "syllabus": "Coastal India",
+   "exam": "pre",
+   "q": "Consider the following ports:\n1. Gopalpur\n2. Paradip\n3. Kandla\n4. Kakinada\nHow many of the above ports are on the Bay of Bengal coast?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 2,
+   "why": "Gopalpur and Paradip are in Odisha and Kakinada is in Andhra Pradesh, all on the Bay of Bengal. Kandla is in Gujarat on the Arabian Sea coast.",
+   "id": "caq-2026-11-076"
+  },
+  {
+   "subject": "Geography",
+   "syllabus": "Cyclones",
+   "exam": "pre",
+   "q": "A storm surge during a cyclone refers to",
+   "opts": [
+    "the heavy rainfall that comes with the storm",
+    "a warm ocean current that feeds the storm",
+    "a rise in sea level pushed onto the coast by the storm",
+    "the loss of wind speed after landfall"
+   ],
+   "ans": 2,
+   "why": "A storm surge is the rise of sea water driven ashore by the cyclone, and it is usually the greatest cause of deaths in coastal areas.",
+   "id": "caq-2026-11-077"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Regional groupings",
+   "exam": "pre",
+   "q": "With reference to the Shanghai Cooperation Organisation, consider the following statements:\n1. Its headquarters is in Beijing.\n2. Its Regional Anti-Terrorist Structure is based in Tashkent.\n3. Iran became a full member in 2023.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The SCO is headquartered in Beijing, its Regional Anti-Terrorist Structure is in Tashkent and Iran joined as a full member in 2023.",
+   "id": "caq-2026-11-078"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Regional groupings",
+   "exam": "pre",
+   "q": "With the entry of Belarus in 2024, the number of full members of the Shanghai Cooperation Organisation became",
+   "opts": [
+    "eight",
+    "ten",
+    "nine",
+    "eleven"
+   ],
+   "ans": 1,
+   "why": "The SCO had eight members after India and Pakistan joined in 2017. Iran (2023) and Belarus (2024) made it ten.",
+   "id": "caq-2026-11-079"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Mental health law",
+   "exam": "pre",
+   "q": "Under the Mental Healthcare Act, 2017, a person who attempts suicide is presumed to be",
+   "opts": [
+    "of unsound mind",
+    "under severe stress",
+    "a danger to others",
+    "in need of compulsory admission"
+   ],
+   "ans": 1,
+   "why": "Section 115 of the Act presumes that a person who attempts suicide is under severe stress, so the attempt is not punished.",
+   "id": "caq-2026-11-080"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Mental health",
+   "exam": "pre",
+   "q": "Tele-MANAS, launched in October 2022, is a national",
+   "opts": [
+    "health insurance scheme for mental illness",
+    "round-the-clock tele-mental-health helpline",
+    "network of residential schools for the disabled",
+    "portal for registering medical practitioners"
+   ],
+   "ans": 1,
+   "why": "Tele-MANAS gives free tele-mental-health counselling and care through a 24×7 helpline.",
+   "id": "caq-2026-11-081"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Mental health",
+   "exam": "pre",
+   "q": "With reference to mental health policy in India, consider the following statements:\n1. The National Mental Health Survey of 2015-16 found that about half of Indian adults had a mental disorder.\n2. The National Mental Health Programme was launched in 1982.\n3. The District Mental Health Programme began in 1996.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The 2015-16 survey found that about 10.6% of adults had a mental disorder, so statement 1 is wrong.",
+   "id": "caq-2026-11-082"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Criminal law",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. The Bharatiya Nagarik Suraksha Sanhita, 2023 replaced the Code of Criminal Procedure from 1 July 2024.\n2. The Bharatiya Nyaya Sanhita, 2023 replaced the Code of Criminal Procedure.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 only",
+    "2 only",
+    "Both 1 and 2",
+    "Neither 1 nor 2"
+   ],
+   "ans": 0,
+   "why": "The Bharatiya Nyaya Sanhita replaced the Indian Penal Code. The Code of Criminal Procedure was replaced by the Bharatiya Nagarik Suraksha Sanhita.",
+   "id": "caq-2026-11-083"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Child protection",
+   "exam": "pre",
+   "q": "The Protection of Children from Sexual Offences Act, 2012 protects every person below the age of",
+   "opts": [
+    "16 years",
+    "14 years",
+    "21 years",
+    "18 years"
+   ],
+   "ans": 3,
+   "why": "The POCSO Act defines a child as any person below 18 years of age.",
+   "id": "caq-2026-11-084"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Money laundering",
+   "exam": "pre",
+   "q": "Under the Prevention of Money Laundering Act, 2002, ‘proceeds of crime’ means property derived or obtained from",
+   "opts": [
+    "any civil dispute",
+    "a tax assessment order",
+    "a scheduled offence",
+    "a bank loan default"
+   ],
+   "ans": 2,
+   "why": "The Act defines proceeds of crime as property derived or obtained, directly or indirectly, from a scheduled offence.",
+   "id": "caq-2026-11-085"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Internal security",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. Hawala is an informal system of moving money through trusted agents outside the banking system.\n2. The National Investigation Agency was established under the Prevention of Money Laundering Act, 2002.\n3. The National Investigation Agency investigates scheduled offences such as terrorism.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "The National Investigation Agency was set up under the NIA Act, 2008, so statement 2 is wrong.",
+   "id": "caq-2026-11-086"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Parliament",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. A legislator convicted and sentenced to two years or more is disqualified under the Representation of the People Act, 1951.\n2. Article 105 protects the freedom of speech of members inside Parliament.\n3. The post of Leader of the Opposition has statutory recognition under a 1977 Act.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three statements are correct.",
+   "id": "caq-2026-11-087"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Waste management",
+   "exam": "pre",
+   "q": "With reference to e-waste in India, consider the following statements:\n1. The E-Waste (Management) Rules, 2022 are based on extended producer responsibility.\n2. The Rules came into force on 1 April 2023.\n3. The Basel Convention controls the trans-boundary movement of hazardous waste.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The 2022 Rules use extended producer responsibility, took effect on 1 April 2023, and the Basel Convention of 1989 controls the movement of hazardous waste across borders.",
+   "id": "caq-2026-11-088"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Waste management",
+   "exam": "pre",
+   "q": "In Kerala, the Haritha Karma Sena is a",
+   "opts": [
+    "State agency that licenses chemical industries",
+    "body that manages the State’s wildlife sanctuaries",
+    "green task force that collects non-biodegradable waste from households",
+    "cooperative society of coconut farmers"
+   ],
+   "ans": 2,
+   "why": "The Haritha Karma Sena is a group of trained workers who collect non-biodegradable waste, including e-waste, door to door.",
+   "id": "caq-2026-11-089"
+  },
+  {
+   "subject": "Art & Culture",
+   "syllabus": "Music",
+   "exam": "pre",
+   "q": "Pandit Ravi Shankar, the sitar maestro, was honoured with the Bharat Ratna in",
+   "opts": [
+    "1981",
+    "1992",
+    "2008",
+    "1999"
+   ],
+   "ans": 3,
+   "why": "Ravi Shankar received the Padma Vibhushan in 1981 and the Bharat Ratna in 1999.",
+   "id": "caq-2026-11-090"
+  },
+  {
+   "subject": "Art & Culture",
+   "syllabus": "Music",
+   "exam": "pre",
+   "q": "Ustad Allauddin Khan, the teacher of Pandit Ravi Shankar, is associated with the",
+   "opts": [
+    "Maihar gharana",
+    "Kirana gharana",
+    "Gwalior gharana",
+    "Patiala gharana"
+   ],
+   "ans": 0,
+   "why": "Allauddin Khan founded the Maihar gharana at Maihar, Madhya Pradesh. The Kirana, Gwalior and Patiala gharanas are mainly vocal traditions.",
+   "id": "caq-2026-11-091"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Conflicts",
+   "exam": "pre",
+   "q": "Consider the following statements:\nStatement-I: Donbas comprises the Donetsk and Luhansk regions of eastern Ukraine.\nStatement-II: Ukraine annexed Crimea in 2014.\nWhich one of the following is correct in respect of the above statements?",
+   "opts": [
+    "Both Statement-I and Statement-II are correct and Statement-II explains Statement-I",
+    "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I",
+    "Statement-I is correct, but Statement-II is incorrect",
+    "Statement-I is incorrect, but Statement-II is correct"
+   ],
+   "ans": 2,
+   "why": "Russia, not Ukraine, annexed Crimea in 2014, so Statement-II is incorrect. Donbas is the Donetsk and Luhansk regions.",
+   "id": "caq-2026-11-092"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Conflicts",
+   "exam": "pre",
+   "q": "Under the Budapest Memorandum of 1994, Ukraine agreed to give up",
+   "opts": [
+    "the nuclear weapons it had inherited from the Soviet Union",
+    "its claim over the Crimean peninsula",
+    "its membership of the United Nations",
+    "the gas pipelines on its territory"
+   ],
+   "ans": 0,
+   "why": "Ukraine gave up the Soviet-era nuclear weapons on its soil in return for assurances about its security.",
+   "id": "caq-2026-11-093"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Global politics",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. The New START treaty limits the strategic nuclear weapons of the United States and Russia.\n2. China is a party to the New START treaty.\n3. The Quad consists of India, the United States, Japan and Australia.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "China is not a party to New START, so statement 2 is wrong.",
+   "id": "caq-2026-11-094"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Nationalism",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. The Supreme Court in S. R. Bommai (1994) held secularism to be part of the basic structure of the Constitution.\n2. The Preamble to the Constitution promises fraternity.\n3. Article 51A, which lists the fundamental duties, is in Part IV of the Constitution.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Article 51A is in Part IV-A, not Part IV, so statement 3 is wrong.",
+   "id": "caq-2026-11-095"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Parliament",
+   "exam": "pre",
+   "q": "The Salary and Allowances of Leaders of Opposition in Parliament Act was passed in",
+   "opts": [
+    "1952",
+    "1985",
+    "1977",
+    "1999"
+   ],
+   "ans": 2,
+   "why": "The Act of 1977 gave statutory recognition to the Leaders of Opposition in both Houses.",
+   "id": "caq-2026-11-096"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Parliament",
+   "exam": "pre",
+   "q": "By the Speaker’s convention, a party must hold at least what share of the seats in the Lok Sabha for its leader to be recognised as the Leader of the Opposition?",
+   "opts": [
+    "5%",
+    "10%",
+    "15%",
+    "25%"
+   ],
+   "ans": 1,
+   "why": "The convention follows the rule laid down by the first Speaker, G. V. Mavalankar: at least one-tenth of the strength of the House, which is 55 seats in the Lok Sabha.",
+   "id": "caq-2026-11-097"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Air pollution",
+   "exam": "pre",
+   "q": "With reference to air pollution in India, consider the following statements:\n1. The national Air Quality Index has six categories.\n2. The National Clean Air Programme was launched in 2014.\n3. The Commission for Air Quality Management was set up in 2021 for Delhi–NCR and adjoining areas.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "The National Clean Air Programme was launched in 2019, so statement 2 is wrong.",
+   "id": "caq-2026-11-098"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Air pollution",
+   "exam": "pre",
+   "q": "On the national Air Quality Index, an AQI value of 301 to 400 falls in the category",
+   "opts": [
+    "Very Poor",
+    "Poor",
+    "Severe",
+    "Moderate"
+   ],
+   "ans": 0,
+   "why": "The bands are Good (0–50), Satisfactory (51–100), Moderate (101–200), Poor (201–300), Very Poor (301–400) and Severe (401–500).",
+   "id": "caq-2026-11-099"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Climate change",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. COP29 set a goal for developed countries to lead mobilisation of at least $300 billion a year by 2035 for climate finance.\n2. India has announced a target of net zero emissions by 2070.\n3. COP29 was held in Dubai.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "COP29 was held in Baku, Azerbaijan, in 2024, so statement 3 is wrong.",
+   "id": "caq-2026-11-100"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Minerals",
+   "exam": "pre",
+   "q": "The National Critical Mineral Mission was approved by the Union Cabinet in",
+   "opts": [
+    "2019",
+    "2021",
+    "2023",
+    "2025"
+   ],
+   "ans": 3,
+   "why": "The Mission was approved in January 2025 to secure the supply of critical minerals.",
+   "id": "caq-2026-11-101"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Minerals",
+   "exam": "pre",
+   "q": "With reference to critical minerals in India, consider the following statements:\n1. Khanij Bidesh India Ltd is a wholly private company.\n2. The Mines and Minerals (Development and Regulation) Amendment Act, 2023 let the Centre auction critical mineral blocks.\n3. Beneficiation is the treatment of raw ore to remove impurities.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "Khanij Bidesh India Ltd is a joint venture of public sector companies, so statement 1 is wrong.",
+   "id": "caq-2026-11-102"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Labour",
+   "exam": "pre",
+   "q": "With reference to the Labour Codes in India, consider the following statements:\n1. The four Labour Codes replaced 29 earlier laws.\n2. The Labour Codes came into force on 1 April 2025.\n3. The Code on Social Security, 2020 defines gig workers and platform workers.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "The Labour Codes came into force on 21 November 2025, so statement 2 is wrong.",
+   "id": "caq-2026-11-103"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Labour",
+   "exam": "pre",
+   "q": "Consider the following:\n1. The Code on Wages, 2019\n2. The Industrial Relations Code, 2020\n3. The Code on Social Security, 2020\n4. The Factories Act, 1948\nHow many of the above are among the four Labour Codes?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 2,
+   "why": "The Code on Wages, the Industrial Relations Code and the Code on Social Security are three of the four Labour Codes. The fourth is the Occupational Safety, Health and Working Conditions Code; the Factories Act, 1948 is one of the older laws it replaced.",
+   "id": "caq-2026-11-104"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Labour",
+   "exam": "pre",
+   "q": "e-Shram, the national database of unorganised workers, was launched in",
+   "opts": [
+    "2016",
+    "2019",
+    "2023",
+    "2021"
+   ],
+   "ans": 3,
+   "why": "The e-Shram portal was launched in August 2021.",
+   "id": "caq-2026-11-105"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Labour",
+   "exam": "pre",
+   "q": "Under the Industrial Disputes Act, 1947, a retrenched workman is entitled to compensation equal to",
+   "opts": [
+    "30 days’ average pay for every completed year of service",
+    "15 days’ average pay for every completed year of service",
+    "7 days’ average pay for every completed year of service",
+    "60 days’ average pay for every completed year of service"
+   ],
+   "ans": 1,
+   "why": "Retrenchment compensation is 15 days’ average pay for every completed year of service; the Industrial Relations Code keeps the same rate.",
+   "id": "caq-2026-11-106"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Space missions",
+   "exam": "pre",
+   "q": "Which one of the following is the radioactive element whose decay powers the thermoelectric generators of Voyager 1?",
+   "opts": [
+    "Uranium-235",
+    "Strontium-90",
+    "Plutonium-238",
+    "Cobalt-60"
+   ],
+   "ans": 2,
+   "why": "Voyager 1 uses radioisotope thermoelectric generators that turn the heat from the decay of plutonium-238 into electricity.",
+   "id": "caq-2026-11-107"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Space missions",
+   "exam": "pre",
+   "q": "With reference to the Voyager 1 spacecraft, consider the following statements:\n1. In February 1998 it overtook Pioneer 10 as the most distant human-made object.\n2. NASA communicates with it through antennas of the Deep Space Network in the United States, Spain and Australia.\n3. The location map on the cover of its Golden Record is drawn using quasars.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The map on the Golden Record’s cover uses pulsars to show the Sun’s position, not quasars, so statement 3 is wrong.",
+   "id": "caq-2026-11-108"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Space missions",
+   "exam": "pre",
+   "q": "The photograph of Earth taken by Voyager 1 on 14 February 1990 from about 6 billion kilometres, showing it as a tiny speck, is known as",
+   "opts": [
+    "the Blue Marble",
+    "the Pale Blue Dot",
+    "Earthrise",
+    "the Golden Disc"
+   ],
+   "ans": 1,
+   "why": "The Pale Blue Dot was taken as Voyager 1 left the planetary region of the solar system. The Blue Marble and Earthrise were taken by Apollo astronauts.",
+   "id": "caq-2026-11-109"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Space missions",
+   "exam": "pre",
+   "q": "A light-day, the distance Voyager 1 has now reached from Earth, is about",
+   "opts": [
+    "26 billion kilometres",
+    "9.5 trillion kilometres",
+    "150 million kilometres",
+    "384,000 kilometres"
+   ],
+   "ans": 0,
+   "why": "Light travels about 300,000 km a second, which is about 26 billion km in a day. A light-year is about 9.5 trillion km, the Earth–Sun distance is about 150 million km and the Earth–Moon distance is about 384,000 km.",
+   "id": "caq-2026-11-110"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "China",
+   "exam": "pre",
+   "q": "With reference to the governance of China, consider the following statements:\n1. The Communist Party of China was founded in 1921.\n2. Local Party committees hold the real power at the provincial, city and county levels.\n3. India is a member of the Asia-Pacific Economic Cooperation grouping.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "India is not a member of APEC, so statement 3 is wrong.",
+   "id": "caq-2026-11-111"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "China",
+   "exam": "pre",
+   "q": "‘Democratic centralism’, a principle of the Communist Party of China, means that",
+   "opts": [
+    "every decision is put to a public referendum",
+    "provinces may reject national laws",
+    "the judiciary elects Party officials",
+    "lower bodies follow the decisions of higher bodies once they are taken"
+   ],
+   "ans": 3,
+   "why": "Under democratic centralism, discussion is followed by obedience: once a decision is taken, lower bodies implement the decisions of higher ones.",
+   "id": "caq-2026-11-112"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Public health",
+   "exam": "pre",
+   "q": "Tuberculosis is caused by",
+   "opts": [
+    "a virus",
+    "a bacterium",
+    "a fungus",
+    "a protozoan"
+   ],
+   "ans": 1,
+   "why": "Tuberculosis is caused by the bacterium Mycobacterium tuberculosis and spreads through the air.",
+   "id": "caq-2026-11-113"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Public health",
+   "exam": "pre",
+   "q": "With reference to tuberculosis in India, consider the following statements:\n1. Incidence means the number of new cases in a population over a period.\n2. India set a national target of eliminating tuberculosis by 2025, five years before the global Sustainable Development Goal deadline.\n3. The WHO’s 2026 report showed that India met its 2025 elimination target.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "India missed its 2025 target, so statement 3 is wrong; the WHO has also withheld its 2025 incidence estimate while new district-level surveillance data are assessed.",
+   "id": "caq-2026-11-114"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Public health",
+   "exam": "pre",
+   "q": "A tuberculosis patient whose illness does not respond to the two main drugs, isoniazid and rifampicin, is said to have",
+   "opts": [
+    "latent TB",
+    "multidrug-resistant TB",
+    "extensively infectious TB",
+    "primary complex"
+   ],
+   "ans": 1,
+   "why": "Multidrug-resistant TB is resistant to at least isoniazid and rifampicin.",
+   "id": "caq-2026-11-115"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Public health",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. The National TB Elimination Programme was earlier called the Revised National TB Control Programme.\n2. Ni-kshay Poshan Yojana gives nutrition support to TB patients.\n3. The India-made TrueNat test detects TB and rifampicin resistance.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three statements are correct.",
+   "id": "caq-2026-11-116"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Public health",
+   "exam": "pre",
+   "q": "The World Health Organization’s End TB Strategy aimed to cut tuberculosis deaths, compared with 2015, by what share by 2025?",
+   "opts": [
+    "50%",
+    "90%",
+    "75%",
+    "35%"
+   ],
+   "ans": 2,
+   "why": "The End TB Strategy set 2025 targets of a 50% fall in incidence and a 75% fall in deaths against 2015. India’s own plan aimed at a 90% fall in deaths.",
+   "id": "caq-2026-11-117"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "India and Japan",
+   "exam": "pre",
+   "q": "The ‘2+2’ dialogue that India and Japan held in Tokyo is a meeting of the",
+   "opts": [
+    "Foreign and Defence Ministers of the two countries",
+    "Finance and Commerce Ministers of the two countries",
+    "Home and Defence Ministers of the two countries",
+    "Prime Ministers and Chiefs of the Navy"
+   ],
+   "ans": 0,
+   "why": "A ‘2+2’ dialogue brings together the foreign and defence ministers of two countries.",
+   "id": "caq-2026-11-118"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "India and Japan",
+   "exam": "pre",
+   "q": "With reference to India–Japan relations, consider the following statements:\n1. The relationship was raised to a Special Strategic and Global Partnership in 2014.\n2. Japan has been a permanent participant in the Malabar naval exercise since 2015.\n3. UNICORN, the system offered by Japan to India, is a submarine.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "UNICORN stands for Unified Complex Radio Antenna, a naval radar and antenna system, not a submarine, so statement 3 is wrong.",
+   "id": "caq-2026-11-119"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Defence procurement",
+   "exam": "pre",
+   "q": "In Indian defence procurement, the ‘Acceptance of Necessity’ for buying new equipment is given by the",
+   "opts": [
+    "Defence Acquisition Council",
+    "Cabinet Committee on Security",
+    "Comptroller and Auditor General",
+    "Chief of Defence Staff"
+   ],
+   "ans": 0,
+   "why": "The Defence Acquisition Council, chaired by the Defence Minister, gives the Acceptance of Necessity, the first approval in the procurement process.",
+   "id": "caq-2026-11-120"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Women and the law",
+   "exam": "pre",
+   "q": "With reference to women’s rights in India, consider the following statements:\n1. The Constitution (106th Amendment) Act, 2023 reserves one-third of the seats in the Lok Sabha and State Assemblies for women.\n2. India ratified the Convention on the Elimination of All Forms of Discrimination Against Women in 1993.\n3. The Vishaka guidelines on sexual harassment at the workplace were framed by Parliament.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The Vishaka guidelines were laid down by the Supreme Court in 1997; Parliament passed the Sexual Harassment of Women at Workplace Act in 2013, so statement 3 is wrong.",
+   "id": "caq-2026-11-121"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Equality",
+   "exam": "pre",
+   "q": "In constitutional discussion, ‘substantive equality’ means",
+   "opts": [
+    "treating all persons alike whatever their circumstances",
+    "equal numbers in every public office",
+    "taking account of actual disadvantage to reach real equality",
+    "equality only before the law"
+   ],
+   "ans": 2,
+   "why": "Substantive equality looks at disadvantage and outcomes. Treating all alike is formal equality, which Article 14 broadly reflects.",
+   "id": "caq-2026-11-122"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Women’s reservation",
+   "exam": "pre",
+   "q": "The Constitution (106th Amendment) Act, 2023 is also known as the",
+   "opts": [
+    "Beti Bachao Adhiniyam",
+    "Mahila Samman Adhiniyam",
+    "Stree Shakti Adhiniyam",
+    "Nari Shakti Vandan Adhiniyam"
+   ],
+   "ans": 3,
+   "why": "The 106th Amendment, the Nari Shakti Vandan Adhiniyam, reserves one-third of seats for women in the Lok Sabha and State Assemblies.",
+   "id": "caq-2026-11-123"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Defence",
+   "exam": "pre",
+   "q": "The first Rafale squadron of the Indian Air Force, No. 17 Squadron ‘Golden Arrows’, is based at",
+   "opts": [
+    "Hasimara",
+    "Ambala",
+    "Pathankot",
+    "Jodhpur"
+   ],
+   "ans": 1,
+   "why": "No. 17 Squadron operates from Ambala, where the first Rafale aircraft arrived in July 2020. No. 101 Squadron is at Hasimara.",
+   "id": "caq-2026-11-124"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Defence",
+   "exam": "pre",
+   "q": "Consider the following statements about the Rafale fighters of the Indian Air Force:\n1. India bought 36 Rafale jets from France under an inter-governmental agreement of 2016.\n2. The 36 Rafales are all single-seat aircraft.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 only",
+    "2 only",
+    "Both 1 and 2",
+    "Neither 1 nor 2"
+   ],
+   "ans": 0,
+   "why": "The 36 include 28 single-seat EH and eight twin-seat DH variants, so statement 2 is wrong.",
+   "id": "caq-2026-11-125"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Climate action",
+   "exam": "pre",
+   "q": "With reference to the Green India Mission, consider the following statements:\n1. It is a mission under the Ministry of Agriculture.\n2. It is one of the eight missions under the National Action Plan on Climate Change.\n3. It aims to increase forest and tree cover and carbon sinks.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The Mission is run by the Ministry of Environment, Forest and Climate Change, so statement 1 is wrong.",
+   "id": "caq-2026-11-126"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Accountability",
+   "exam": "pre",
+   "q": "The Public Accounts Committee of Parliament mainly examines",
+   "opts": [
+    "the audit reports of the Comptroller and Auditor General",
+    "the Budget proposals of the Finance Ministry",
+    "bills passed by State legislatures",
+    "the accounts of political parties"
+   ],
+   "ans": 0,
+   "why": "The PAC examines the CAG’s audit reports on government spending. By convention its chairperson is a member of the Opposition.",
+   "id": "caq-2026-11-127"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Awards",
+   "exam": "pre",
+   "q": "The Indira Gandhi Prize for Peace, Disarmament and Development carries a cash award of",
+   "opts": [
+    "₹10 lakh",
+    "₹25 lakh",
+    "₹51 lakh",
+    "₹1 crore"
+   ],
+   "ans": 3,
+   "why": "The prize, given by the Indira Gandhi Memorial Trust, carries a citation and ₹1 crore.",
+   "id": "caq-2026-11-128"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Global issues",
+   "exam": "pre",
+   "q": "Graça Machel’s 1996 report to the United Nations dealt with the impact of armed conflict on",
+   "opts": [
+    "refugee camps",
+    "children",
+    "cultural heritage",
+    "ocean resources"
+   ],
+   "ans": 1,
+   "why": "The 1996 study ‘Impact of Armed Conflict on Children’ led to the UN Special Representative on Children and Armed Conflict, created in 1997.",
+   "id": "caq-2026-11-129"
   }
  ]
 }
