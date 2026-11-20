@@ -1,0 +1,314 @@
+{
+ "day": "2026-11-17",
+ "title": "17 Nov 2026",
+ "src": "News reports and official releases, 17 Nov 2026",
+ "note": "Notes for 17 November 2026, built from news reports and official releases. Where only the headline was available (the RBI outsourcing directions), the note gives the background to the story, and the facts behind each news item come from standard textbooks and official sources.",
+ "topics": [
+  {
+   "id": "dn-2026-11-17-1",
+   "n": 1,
+   "sec": "Polity & Governance",
+   "t": "Census 2027: the ‘Others’ religion list on the self-enumeration portal",
+   "gs": [
+    "GS1 Society",
+    "GS2 Governance"
+   ],
+   "news": "On 16 November the Census 2027 self-enumeration portal, live for residents of Uttar Pradesh, Punjab, Goa and Uttarakhand, briefly showed a drop-down of 287 entries under ‘Others’ for religion, including ISKCON, Sarna, Shia, Sunni and Pentecostal. It was removed the same day after The Hindu asked the Home Ministry. The Registrar General and Census Commissioner’s office said ‘Others’ remains an open field where any religion can be entered, and that the religion question still offers seven broad choices: Hindu, Muslim, Christian, Sikh, Buddhist, Jain and Others.",
+   "blocks": [
+    {
+     "h": "The Census and the religion question",
+     "items": [
+      {
+       "rows": [
+        [
+         "Legal basis",
+         "The Census Act, 1948; the Union List (Entry 69) makes the census a Union subject. The Registrar General and Census Commissioner works under the Ministry of Home Affairs."
+        ],
+        [
+         "Census 2027",
+         "India’s first digital census, in two phases: houselisting (from April 2026) and population enumeration with a reference date of 1 March 2027. It includes caste enumeration, decided by the Union Government in April 2025."
+        ],
+        [
+         "Self-enumeration",
+         "Households can fill in their details online before the enumerator’s visit, a new option for this round."
+        ],
+        [
+         "Religion data",
+         "The seven choices are Hindu, Muslim, Christian, Sikh, Buddhist, Jain and Others; any other faith or belief is entered under ‘Others’."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Why the list matters:** a long pick-list can nudge people towards categories and split the count of tribal faiths such as Sarna, so how the options appear shapes the data.",
+        "**Predictive text versus fixed list:** the Census office says the names were suggestions in an open field, not recognised religions.",
+        "**Use of the data:** religion counts feed minority welfare schemes and policy, which is why precision in the question matters."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Census Act, 1948",
+     "d": "The law under which the Census is conducted."
+    },
+    {
+     "k": "Self-enumeration",
+     "d": "A new online option in Census 2027 to fill in household details in advance."
+    },
+    {
+     "k": "Entry 69, Union List",
+     "d": "Makes the Census a Union subject."
+    },
+    {
+     "k": "Sarna",
+     "d": "Faith of many tribal communities of Jharkhand and neighbouring States."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the significance of the Census for governance and policy making. What new features does Census 2027 introduce?",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "How do classification choices in a census shape the data on religion and caste? Illustrate.",
+     "m": "GS1 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-17-2",
+   "n": 2,
+   "sec": "Economy",
+   "t": "RBI outsourcing directions and dependence on cloud providers",
+   "gs": [
+    "GS3 Economy",
+    "GS3 Science and Technology"
+   ],
+   "news": "The Hindu’s 17 November coverage points to RBI directions that make banks assess their dependence on cloud services and keep exit plans, alongside the European Union’s rules on operational resilience (DORA) and network security (NIS2). The note below gives the background of the Reserve Bank’s outsourcing framework, since only the headline of the story was available.",
+   "blocks": [
+    {
+     "h": "The framework",
+     "items": [
+      {
+       "rows": [
+        [
+         "IT outsourcing",
+         "The RBI’s Master Direction on Outsourcing of Information Technology Services (April 2023) required regulated entities to remain responsible for outsourced work, protect customer data and allow RBI supervision."
+        ],
+        [
+         "2025 directions",
+         "In November 2025 the RBI issued outsourcing directions for different kinds of regulated entities. They cover cloud computing as material IT outsourcing and have sections on an **exit strategy** and on cloud use."
+        ],
+        [
+         "Core rule",
+         "Outsourcing must not reduce a bank’s ability to meet its obligations to customers, or get in the way of effective RBI supervision."
+        ],
+        [
+         "EU parallels",
+         "The EU’s Digital Operational Resilience Act (DORA), in force from 17 January 2025, and the NIS2 Directive set resilience and incident-reporting duties on financial firms and critical services."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Concentration risk:** if many banks rely on the same two or three cloud providers, one outage can disrupt many at once.",
+        "**Exit plan:** a documented way to move data and services to another provider or bring them back in-house, with secure deletion at the end.",
+        "**Banking Regulation Act, 1949:** section 35A gives the RBI power to issue directions to banks in the public interest."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Outsourcing",
+     "d": "Hiring a third party to do work a regulated entity would otherwise do itself, with the entity still fully responsible."
+    },
+    {
+     "k": "Exit strategy",
+     "d": "A plan to move away from a service provider without disrupting customers."
+    },
+    {
+     "k": "Concentration risk",
+     "d": "The danger from many institutions depending on the same provider."
+    },
+    {
+     "k": "Section 35A, BR Act",
+     "d": "Allows the RBI to issue directions to banking companies."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the risks that cloud and other third-party technology providers pose to financial stability, and the steps a regulator can take.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Examine the role of the RBI in regulating the digital operations of banks.",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-17-3",
+   "n": 3,
+   "sec": "Social Issues",
+   "t": "Twenty years of the Sachar Committee report",
+   "gs": [
+    "GS1 Society",
+    "GS2 Social Justice"
+   ],
+   "news": "17 November 2026 marks 20 years since the Sachar Committee submitted its report on the social, economic and educational status of Muslims in India. The Committee, headed by Justice Rajindar Sachar, was set up in March 2005 and its report was tabled in Parliament on 30 November 2006.",
+   "blocks": [
+    {
+     "h": "The report and what followed",
+     "items": [
+      {
+       "rows": [
+        [
+         "Findings",
+         "In 2001 the Muslim literacy rate was 59.1% against 65.1% nationally; Muslims had a very small share of bank credit; their presence in central government departments and agencies was very low at all levels."
+        ],
+        [
+         "Follow-up",
+         "The Ministry of Minority Affairs was created in January 2006; the Prime Minister’s New 15-Point Programme for minorities and area-focused schemes followed."
+        ],
+        [
+         "Other panels",
+         "The Ranganath Misra Commission (report 2007) examined reservation for religious and linguistic minorities; the Kundu Committee (2014) assessed what had been done since Sachar."
+        ],
+        [
+         "Minorities",
+         "Six communities are notified as minorities under the National Commission for Minorities Act, 1992: Muslims, Christians, Sikhs, Buddhists, Zoroastrians and, since 2014, Jains."
+        ],
+        [
+         "Constitution",
+         "Articles 29 and 30 protect the cultural and educational rights of minorities."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Reading the data again:** the next Census, with its new religion and caste counts, will show how far the gaps have narrowed since 2001.",
+        "**Targeted schemes:** scholarships and area development for minority-concentrated districts were the main follow-up measures."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Sachar Committee",
+     "d": "High Level Committee headed by Justice Rajindar Sachar on the status of Muslims; report submitted 17 November 2006."
+    },
+    {
+     "k": "Ministry of Minority Affairs",
+     "d": "Created in January 2006."
+    },
+    {
+     "k": "Articles 29 and 30",
+     "d": "Protect minorities’ culture, language and educational institutions."
+    },
+    {
+     "k": "Notified minorities",
+     "d": "Muslims, Christians, Sikhs, Buddhists, Zoroastrians and Jains."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Examine the policy measures taken after the Sachar Committee report. How far have they improved the socio-economic status of minorities?",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "What do Articles 29 and 30 provide, and how have courts interpreted the rights of minority educational institutions?",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-17-4",
+   "n": 4,
+   "sec": "Environment",
+   "t": "The 2026 UN Water Conference in Abu Dhabi",
+   "gs": [
+    "GS2 International Relations",
+    "GS3 Environment"
+   ],
+   "news": "The UN Water Conference 2026 will be held in Abu Dhabi, co-hosted by the United Arab Emirates and Senegal, to speed up work on Sustainable Development Goal 6 (clean water and sanitation). The UN’s media advisory gives 8–10 December 2026 at the Abu Dhabi National Exhibition Centre, although some UN pages list 2–4 December. The conference will end with a summary by the President of the General Assembly instead of a negotiated outcome document.",
+   "blocks": [
+    {
+     "h": "Water in global and Indian policy",
+     "items": [
+      {
+       "rows": [
+        [
+         "UN water conferences",
+         "The first was at Mar del Plata in 1977; the 2023 conference at the UN in New York (22–24 March 2023) was the first in 46 years."
+        ],
+        [
+         "SDG 6",
+         "Ensure availability and sustainable management of water and sanitation for all by 2030."
+        ],
+        [
+         "India’s position",
+         "India has about 4% of the world’s freshwater for around 18% of its people."
+        ],
+        [
+         "Missions",
+         "**Jal Jeevan Mission** (2019, tap water to rural homes), **Atal Bhujal Yojana** (2019, community groundwater management), **Namami Gange** and **Jal Shakti Abhiyan** (water conservation)."
+        ],
+        [
+         "Transboundary",
+         "The Indus Waters Treaty (1960) has been held in abeyance by India since April 2025; the 1996 Ganga water treaty with Bangladesh is due to expire in December 2026."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Interactive dialogues, not a treaty:** the Conference produces a presidential summary, so its value lies in commitments and partnerships.",
+        "**Why it matters for India:** groundwater depletion, floods and river sharing all need coordination at home and with neighbours."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "SDG 6",
+     "d": "Clean water and sanitation for all by 2030."
+    },
+    {
+     "k": "Jal Jeevan Mission",
+     "d": "Launched in 2019 to provide tap water connections to rural households."
+    },
+    {
+     "k": "Atal Bhujal Yojana",
+     "d": "A 2019 scheme for community-led groundwater management in water-stressed areas."
+    },
+    {
+     "k": "Indus Waters Treaty, 1960",
+     "d": "India–Pakistan treaty on the Indus system, held in abeyance by India since April 2025."
+    }
+   ],
+   "qs": [
+    {
+     "q": "‘Water resources are both an asset and a source of conflict in South Asia.’ Examine this statement giving examples.",
+     "m": "GS1 · 150 words · 10 marks",
+     "ref": "2026 GS1 (water resources in South Asia)"
+    },
+    {
+     "q": "Examine the factors behind the depletion of groundwater in India and the steps taken to curb it.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": "2025 GS3 (groundwater depletion)"
+    }
+   ]
+  }
+ ]
+}

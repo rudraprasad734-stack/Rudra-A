@@ -1,0 +1,312 @@
+{
+ "day": "2026-11-19",
+ "title": "19 Nov 2026",
+ "src": "News reports and official releases, 19 Nov 2026",
+ "note": "Notes for 19 November 2026, built from news reports and official releases. Where only the headline was available (the three Supreme Court items), the note gives the background to the story, and the facts behind each news item come from standard textbooks and official sources.",
+ "topics": [
+  {
+   "id": "dn-2026-11-19-1",
+   "n": 1,
+   "sec": "Polity & Governance",
+   "t": "Supreme Court: Gram Sabha consent is mandatory for mining land acquisition in tribal areas",
+   "gs": [
+    "GS2 Polity",
+    "GS2 Social Justice"
+   ],
+   "news": "According to the Supreme Court’s daily round-up for 19 November, the Court quashed a mining land acquisition in a tribal area and held that Gram Sabha consent is mandatory. Only the headline of the ruling was available, so the note gives the legal background.",
+   "blocks": [
+    {
+     "h": "The law on tribal land",
+     "items": [
+      {
+       "rows": [
+        [
+         "Fifth Schedule",
+         "Article 244(1): Scheduled Areas are administered with a Governor’s special powers to regulate transfer of tribal land."
+        ],
+        [
+         "PESA, 1996",
+         "The Gram Sabha must be consulted before land is acquired in Scheduled Areas and before minor minerals are leased."
+        ],
+        [
+         "Land Acquisition Act, 2013",
+         "Section 41 requires the prior consent of the Gram Sabha for acquisition in Scheduled Areas."
+        ],
+        [
+         "Samatha (1997)",
+         "The Court barred leases of tribal land to private mining companies in Scheduled Areas."
+        ],
+        [
+         "Niyamgiri (2013)",
+         "In the Orissa Mining Corporation case the Court asked Gram Sabhas to decide on the religious and cultural rights of the Dongria Kondh under the Forest Rights Act."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Why consent matters:** mining in Scheduled Areas displaces communities that depend on forest and land, so consent is the main safeguard.",
+        "**Mines and Minerals Act, 1957:** the Act governs mining leases; the tribal-land safeguards sit alongside it."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Gram Sabha",
+     "d": "The body of all adult voters of a village; central to decisions under PESA."
+    },
+    {
+     "k": "Fifth Schedule",
+     "d": "Governs the administration of Scheduled Areas and Scheduled Tribes in most States."
+    },
+    {
+     "k": "Samatha judgment (1997)",
+     "d": "Barred private mining leases in Scheduled Areas."
+    },
+    {
+     "k": "Section 41, LARR Act 2013",
+     "d": "Prior Gram Sabha consent for acquisition in Scheduled Areas."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Examine the constitutional and legal safeguards for tribal land against mining and development projects.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": "2026 GS2 (tribal development policy)"
+    },
+    {
+     "q": "Discuss the role of the Gram Sabha under PESA and the Forest Rights Act.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-2",
+   "n": 2,
+   "sec": "Polity & Governance",
+   "t": "Supreme Court dismisses the ED’s challenge to Azam Khan’s interim bail",
+   "gs": [
+    "GS2 Polity",
+    "GS2 Judiciary"
+   ],
+   "news": "As listed in the Supreme Court’s round-up for 19 November, the Court dismissed the Enforcement Directorate’s challenge to the interim bail given to Samajwadi Party leader Azam Khan. Only the headline was available, so the note gives the background on bail in money-laundering cases and links to the 18 November note on mala fide.",
+   "blocks": [
+    {
+     "h": "Bail under the money-laundering law",
+     "items": [
+      {
+       "rows": [
+        [
+         "PMLA section 45",
+         "Bail needs the Court to be satisfied that there are reasonable grounds to believe the accused is not guilty and is not likely to commit an offence on bail (the **twin conditions**)."
+        ],
+        [
+         "Case law",
+         "Nikesh Tarachand Shah (2017) struck down the twin conditions; they were restored by a 2018 amendment and upheld in Vijay Madanlal Choudhary (2022)."
+        ],
+        [
+         "Bail is the rule",
+         "In Manish Sisodia v. ED (2024) the Court said bail is the rule and jail the exception, even under the PMLA."
+        ],
+        [
+         "Interim bail",
+         "Temporary relief for a limited period or purpose, given while the main bail plea or trial is pending."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Challenge by the agency:** an appeal against bail asks whether the order was perverse or ignored relevant facts; cancelling bail needs strong reasons.",
+        "**Personal liberty:** Article 21 weighs against long pre-trial custody."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Twin conditions",
+     "d": "The two tests for bail in Section 45 of the PMLA."
+    },
+    {
+     "k": "Interim bail",
+     "d": "Short-term bail granted pending a final decision on bail."
+    },
+    {
+     "k": "Vijay Madanlal Choudhary (2022)",
+     "d": "Judgment upholding key provisions of the PMLA, including Section 45."
+    },
+    {
+     "k": "Enforcement Directorate",
+     "d": "The agency that investigates money laundering under the PMLA."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss how courts balance personal liberty and the need for custodial investigation in bail decisions under special laws such as the PMLA.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "What is mala fide in administrative and criminal law? Explain how courts test an allegation of mala fide.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-3",
+   "n": 3,
+   "sec": "Polity & Governance",
+   "t": "Delhi voter-roll revision: complaint of fraudulent Form 7 applications",
+   "gs": [
+    "GS2 Polity",
+    "GS2 Elections"
+   ],
+   "news": "The Supreme Court on 19 November directed the Election Commission and Delhi’s Chief Electoral Officer to examine a complaint by Congress leader Ali Mehdi that fraudulent Form 7 applications were filed to delete voters in the Mustafabad constituency during the Special Intensive Revision, and said remedial steps must follow if the allegations prove true. This is based on the Court’s daily round-up headline.",
+   "blocks": [
+    {
+     "h": "How the electoral roll is kept",
+     "items": [
+      {
+       "rows": [
+        [
+         "Constitution",
+         "Article 324 gives the Election Commission superintendence, direction and control of the preparation of electoral rolls; Article 326 provides adult suffrage."
+        ],
+        [
+         "Law",
+         "The Representation of the People Act, 1950 (sections 21 to 23) deals with preparing and revising rolls and including names."
+        ],
+        [
+         "Forms",
+         "Form 6 is for new voters, **Form 7** is an objection to a name or a request to delete it, and Form 8 is for corrections."
+        ],
+        [
+         "Special Intensive Revision",
+         "A door-to-door re-verification of the entire roll, used in several States; the notes of 13 and 14 November cover the exercise."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Deletion safeguards:** a name should be removed only after notice and a hearing to the voter.",
+        "**Misuse of Form 7:** bulk or false objections can wrongly remove voters, which is why complaints are examined at the level of the Electoral Registration Officer."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Article 324",
+     "d": "Vests superintendence and control of elections in the Election Commission."
+    },
+    {
+     "k": "Form 7",
+     "d": "Used to object to the inclusion of a name or to seek deletion from the electoral roll."
+    },
+    {
+     "k": "Special Intensive Revision",
+     "d": "A full re-verification of the voter list."
+    },
+    {
+     "k": "RP Act, 1950",
+     "d": "Governs electoral rolls and the qualification and registration of voters."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the role of the Election Commission in maintaining the integrity of electoral rolls. What safeguards protect a voter from wrongful deletion?",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Examine the issues raised by the Special Intensive Revision of electoral rolls.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-4",
+   "n": 4,
+   "sec": "International Relations",
+   "t": "ICJ finds Myanmar committed genocide against the Rohingya",
+   "gs": [
+    "GS2 International Relations"
+   ],
+   "news": "On 19 November 2026 the International Court of Justice ruled in The Gambia v. Myanmar that Myanmar’s 2017 ‘clearance operations’ in northern Rakhine State violated its obligations under the Genocide Convention. The Court found that Myanmar had not directly and publicly incited genocide by private persons, and that it breached the Court’s 2020 order on provisional measures by failing to prevent the destruction of evidence and genocidal acts. Reparations were left to a later phase, with Myanmar to report within two years on restitution measures and proposed compensation. The judgment is final and binding, with no appeal.",
+   "blocks": [
+    {
+     "h": "The case and the courts",
+     "items": [
+      {
+       "rows": [
+        [
+         "Genocide Convention, 1948",
+         "Defines genocide as acts such as killing or causing serious harm committed with intent to destroy a national, ethnic, racial or religious group in whole or in part. Article IX gives the ICJ jurisdiction over disputes between parties."
+        ],
+        [
+         "The case",
+         "The Gambia filed it in November 2019; the Court ordered provisional measures in January 2020 and rejected Myanmar’s preliminary objections in July 2022."
+        ],
+        [
+         "Rohingya",
+         "A Muslim minority of Rakhine State, denied citizenship in Myanmar under the 1982 law. More than seven lakh fled to Bangladesh after the August 2017 military operations."
+        ],
+        [
+         "ICJ",
+         "The UN’s principal judicial organ, at The Hague, with 15 judges elected for nine-year terms by the General Assembly and Security Council. It decides disputes **between States**."
+        ],
+        [
+         "ICC",
+         "The International Criminal Court tries **individuals** under the Rome Statute; India is not a party."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Enforcement:** the ICJ has no police power; under Article 94 of the UN Charter a party can go to the Security Council, where a veto can block action.",
+        "**India’s link:** India is a party to the Genocide Convention (it enacted the Genocide Convention Act, 1960), hosts Rohingya refugees, and is not a party to the 1951 Refugee Convention.",
+        "**Non-refoulement:** the principle that a person should not be sent back to a place where they face serious harm."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Genocide Convention, 1948",
+     "d": "UN treaty that defines and prohibits genocide."
+    },
+    {
+     "k": "The Gambia v. Myanmar",
+     "d": "ICJ case filed in 2019; the merits judgment of 19 November 2026 found Myanmar in breach."
+    },
+    {
+     "k": "ICJ versus ICC",
+     "d": "The ICJ settles disputes between States; the ICC prosecutes individuals."
+    },
+    {
+     "k": "Non-refoulement",
+     "d": "No return of a person to a place where they face persecution or serious harm."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the role of the International Court of Justice in upholding international law. What are the limits on enforcing its judgments?",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Examine the Rohingya crisis and its implications for India’s refugee and neighbourhood policy.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  }
+ ]
+}

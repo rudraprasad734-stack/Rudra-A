@@ -1,0 +1,164 @@
+{
+ "day": "2026-11-16",
+ "title": "16 Nov 2026",
+ "src": "News reports and official releases, 16 Nov 2026",
+ "note": "Notes for 16 November 2026, built from news reports and official releases. Where only the headline was available (The Hindu’s environmental-law editorial), the note gives the background to the story, and the facts behind each news item come from standard textbooks and official sources.",
+ "topics": [
+  {
+   "id": "dn-2026-11-16-1",
+   "n": 1,
+   "sec": "Polity & Governance",
+   "t": "News publishers challenge the Data Protection Act in the Supreme Court",
+   "gs": [
+    "GS2 Polity",
+    "GS3 Science and Technology"
+   ],
+   "news": "The Digital News Publishers Association, which represents the digital arms of 21 news organisations, has challenged the Digital Personal Data Protection Act, 2023 and the 2025 Rules in the Supreme Court. It argues that the law has no general exemption for journalism, which could make it hard to gather information and protect sources. On 27 October a Bench led by Chief Justice Surya Kant issued notice to the Centre and did not grant an immediate stay without hearing the Union.",
+   "blocks": [
+    {
+     "h": "The law and the question",
+     "items": [
+      {
+       "rows": [
+        [
+         "DPDP Act, 2023",
+         "Governs digital personal data in India. It rests on **consent**, with duties on the data fiduciary (the entity deciding how data is used) and rights for the data principal (the person the data is about). A Data Protection Board adjudicates and penalties can reach ₹250 crore."
+        ],
+        [
+         "Journalism",
+         "Unlike Europe’s GDPR, which has a journalism exemption (Article 85), the Indian Act has no blanket exemption for journalistic work, which is the publishers’ main complaint."
+        ],
+        [
+         "RTI link",
+         "Section 44(3) of the Act amends Section 8(1)(j) of the Right to Information Act, 2005; separate petitions challenge this change."
+        ],
+        [
+         "Privacy",
+         "In **Puttaswamy (2017)** a nine-judge Bench held privacy a fundamental right under Article 21, subject to legality, necessity and proportionality."
+        ],
+        [
+         "Press freedom",
+         "Courts read press freedom into Article 19(1)(a): Romesh Thappar (1950) and Indian Express Newspapers (1985). Article 19(2) lists the permissible restrictions."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Balancing test:** the Court is likely to weigh the individual’s privacy against the public’s right to know and the press’s need to protect sources.",
+        "**Stay of a law:** courts are slow to stay a statute before hearing the Union, because an Act is presumed constitutional."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "DPDP Act, 2023",
+     "d": "India’s data protection law, based on consent, with a Data Protection Board."
+    },
+    {
+     "k": "Data fiduciary",
+     "d": "The entity that decides why and how personal data is processed."
+    },
+    {
+     "k": "Puttaswamy (2017)",
+     "d": "Nine-judge Bench judgment holding privacy a fundamental right under Article 21."
+    },
+    {
+     "k": "Section 8(1)(j) RTI Act",
+     "d": "The RTI exemption for personal information, amended by the DPDP Act."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Describe the context and salient features of the Digital Personal Data Protection Act, 2023.",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": "2024 GS3 (DPDP Act, 2023)"
+    },
+    {
+     "q": "Right to privacy is intrinsic to life and personal liberty under Article 21. Explain, with reference to the challenge to the DPDP Act by news publishers.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": "2024 GS2 (right to privacy)"
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-16-2",
+   "n": 2,
+   "sec": "Environment",
+   "t": "Environmental compensation and the National Green Tribunal",
+   "gs": [
+    "GS3 Environment",
+    "GS2 Polity"
+   ],
+   "news": "The Hindu’s editorial of 16 November, ‘India’s green law needs baselines, not snapshots’, argues for measuring ecological harm against a baseline. This note gives the legal background: in Rhythm County v. Satish Sanjay Hegde (30 January 2026) the Supreme Court held that the Tribunal can fix environmental compensation even without a rigid statutory formula, using project cost or turnover as a yardstick. A separate ruling kept in place the Tribunal’s November 2025 finding that a landlord is not liable for a tenant’s violations.",
+   "blocks": [
+    {
+     "h": "The Tribunal and compensation",
+     "items": [
+      {
+       "rows": [
+        [
+         "NGT Act, 2010",
+         "Set up the **National Green Tribunal** in October 2010, with a principal bench in Delhi and regional benches at Bhopal, Pune, Kolkata and Chennai. It hears civil cases on environmental questions under seven laws, among them the Water, Air, Forest (Conservation), Environment (Protection) and Biological Diversity Acts."
+        ],
+        [
+         "Relief",
+         "Section 15 lets it order relief and compensation and the restoration of the damaged environment. Appeals lie to the Supreme Court."
+        ],
+        [
+         "Principles",
+         "Section 20 directs it to apply sustainable development, the **precautionary principle** and the **polluter pays** principle."
+        ],
+        [
+         "Case law",
+         "Vellore Citizens’ Welfare Forum (1996) made the precautionary and polluter-pays principles part of Indian law; M. C. Mehta (1987) laid down **absolute liability** for hazardous industry."
+        ],
+        [
+         "Baseline",
+         "A baseline is the state of the environment before a project began; harm is measured against it. Environmental Impact Assessment under the 2006 notification relies on such baselines."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Why a formula is hard:** damage to a river, wetland or floodplain is difficult to price, so the Tribunal has used proxies such as project value.",
+        "**Restorative, not a fee:** the Court has treated the amount as meant to restore and deter, not as a licence to pollute."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "National Green Tribunal",
+     "d": "Statutory body under the NGT Act, 2010 for speedy disposal of environmental cases."
+    },
+    {
+     "k": "Polluter pays principle",
+     "d": "The one who causes pollution bears the cost of the damage and its repair."
+    },
+    {
+     "k": "Precautionary principle",
+     "d": "Lack of full scientific certainty is no reason to postpone measures to prevent harm."
+    },
+    {
+     "k": "Absolute liability",
+     "d": "M. C. Mehta (1987): a hazardous industry is strictly liable for harm, with no exceptions."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the role of the National Green Tribunal in environmental governance. How effective has it been?",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Examine how the polluter pays and precautionary principles have shaped environmental jurisprudence in India.",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  }
+ ]
+}
