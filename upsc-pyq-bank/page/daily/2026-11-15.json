@@ -1,0 +1,160 @@
+{
+ "day": "2026-11-15",
+ "title": "15 Nov 2026",
+ "src": "News reports and official releases, 15 Nov 2026",
+ "note": "Notes for 15 November 2026, built from news reports and official releases. The facts behind each news item come from standard textbooks and official sources.",
+ "topics": [
+  {
+   "id": "dn-2026-11-15-1",
+   "n": 1,
+   "sec": "Economy",
+   "t": "World Bank poverty numbers and the debate on India’s poverty estimate",
+   "gs": [
+    "GS3 Economy",
+    "GS2 Social Justice"
+   ],
+   "news": "A World Bank India Poverty and Equity Brief released in October 2026 estimates that about 496 million Indians moved out of poverty between 2011 and 2023, with extreme poverty falling from 27.1% in 2011-12 to 2.6% in 2023-24. Economists have questioned whether the 2011-12 and 2023-24 household consumption surveys can be compared, and India has not published its own consumption-based poverty estimate for over a decade.",
+   "blocks": [
+    {
+     "h": "How poverty is measured",
+     "items": [
+      {
+       "rows": [
+        [
+         "Tendulkar line (2011-12)",
+         "India’s last officially adopted poverty line: about ₹816 a month in rural areas and ₹1,000 in urban areas, giving a poverty ratio of 21.9%."
+        ],
+        [
+         "Rangarajan Committee (2014)",
+         "Suggested higher lines (about ₹972 rural, ₹1,407 urban) and a ratio of 29.5% for 2011-12; the Government did not adopt it."
+        ],
+        [
+         "International line",
+         "The World Bank’s extreme-poverty line was raised in June 2025 to $3 a day (2021 prices, adjusted for purchasing power)."
+        ],
+        [
+         "National MPI (NITI Aayog)",
+         "A multidimensional index with 12 indicators in health, education and standard of living; the 2023 report put the headcount at 14.96% in 2019-21, down from 24.85% in 2015-16."
+        ],
+        [
+         "HCES",
+         "The Household Consumption Expenditure Survey of the National Statistics Office; new rounds were run in 2022-23 and 2023-24 after the 2011-12 round."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Why comparability matters:** a change in the survey method (recall period, items covered, questionnaire) can change measured consumption, and so the poverty line crossing.",
+        "**The jobs question:** the Bank credits employment growth, especially of women, but critics point out that a large share of the new jobs are in agriculture and real earnings have been broadly flat.",
+        "**Consumption versus multidimensional poverty:** the first counts spending against a line; the second counts overlapping deprivations such as schooling, nutrition and sanitation."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Tendulkar Committee",
+     "d": "Set the 2011-12 poverty line used in India’s last official estimate."
+    },
+    {
+     "k": "National MPI",
+     "d": "NITI Aayog’s multidimensional poverty index built on health, education and standard of living."
+    },
+    {
+     "k": "HCES",
+     "d": "The consumption expenditure survey of the National Statistics Office."
+    },
+    {
+     "k": "Extreme poverty line",
+     "d": "The World Bank’s international line, $3 a day at 2021 purchasing power since June 2025."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Inequality in the ownership pattern of resources is one of the major causes of poverty. Discuss in the context of the ‘paradox of poverty’.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": "2025 GS2 (inequality and the paradox of poverty)"
+    },
+    {
+     "q": "Why do different methods give different poverty figures for India? Examine the case for a fresh official poverty estimate.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": "2024 GS2 (poverty and malnutrition)"
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-15-2",
+   "n": 2,
+   "sec": "Social Issues",
+   "t": "Janjatiya Gaurav Divas: Birsa Munda’s 151st birth anniversary",
+   "gs": [
+    "GS1 Society",
+    "GS2 Social Justice"
+   ],
+   "news": "The nation marked Janjatiya Gaurav Divas on 15 November, the 151st birth anniversary of Bhagwan Birsa Munda. President Droupadi Murmu, Vice President C. P. Radhakrishnan, Prime Minister Narendra Modi and Lok Sabha Speaker Om Birla paid floral tributes at Prerana Sthal. The Prime Minister said the day, first observed on 15 November 2021, has become a national festival.",
+   "blocks": [
+    {
+     "h": "Birsa Munda and the day",
+     "items": [
+      {
+       "rows": [
+        [
+         "Birsa Munda",
+         "Born on 15 November 1875 at Ulihatu (now in Khunti district, Jharkhand), a Munda tribal leader. He led the **Ulgulan** (Great Tumult) of 1899–1900 against landlords, moneylenders and colonial forest and land rules, and died in Ranchi jail on 9 June 1900."
+        ],
+        [
+         "Janjatiya Gaurav Divas",
+         "Declared by the Union Cabinet in November 2021 to honour tribal freedom fighters; 15 November is Birsa Munda’s birth date. Jharkhand was also created on 15 November 2000."
+        ],
+        [
+         "Land protection",
+         "The agitation led to the Chotanagpur Tenancy Act, 1908, which recognised the tribal right over land and limited its transfer."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Fifth and Sixth Schedules (Article 244):** the Fifth Schedule governs Scheduled Areas in most States; the Sixth governs tribal areas in Assam, Meghalaya, Tripura and Mizoram.",
+        "**PESA, 1996:** extends Panchayats to Scheduled Areas and makes the Gram Sabha central to decisions on land and natural resources.",
+        "**Forest Rights Act, 2006:** recognises individual and community forest rights of Scheduled Tribes and other traditional forest dwellers.",
+        "**PM-JANMAN (launched 15 November 2023):** a mission for the Particularly Vulnerable Tribal Groups (PVTGs), covering housing, roads, water, electricity and health.",
+        "**Constitutional bodies:** Article 342 lists Scheduled Tribes; Article 338A created the National Commission for Scheduled Tribes (89th Amendment, 2003)."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Ulgulan",
+     "d": "Birsa Munda’s 1899–1900 movement in the Chotanagpur region against exploitation and the loss of tribal land."
+    },
+    {
+     "k": "Janjatiya Gaurav Divas",
+     "d": "Observed on 15 November every year since 2021, the birth anniversary of Birsa Munda."
+    },
+    {
+     "k": "PM-JANMAN",
+     "d": "A 2023 mission to improve the living conditions of Particularly Vulnerable Tribal Groups."
+    },
+    {
+     "k": "Article 338A",
+     "d": "Provides for the National Commission for Scheduled Tribes."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Does India’s tribal development policy reflect the aspirations for a socially grounded and equity-based governance? Justify your answer.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": "2026 GS2 (tribal development policy)"
+    },
+    {
+     "q": "Discuss the role of the Fifth Schedule, PESA and the Forest Rights Act in protecting tribal land and livelihoods.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  }
+ ]
+}
