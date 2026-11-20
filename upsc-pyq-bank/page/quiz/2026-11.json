@@ -1,6 +1,6 @@
 {
  "month": "2026-11",
- "updated": "18 Nov 2026",
+ "updated": "20 Nov 2026",
  "questions": [
   {
    "subject": "Polity & Governance",
@@ -676,6 +676,516 @@
    "ans": 0,
    "why": "The festival is held on the full-moon day when the Krittika star rules the sky, not on the new-moon day.",
    "id": "caq-2026-11-045"
+  },
+  {
+   "subject": "History",
+   "syllabus": "Modern India",
+   "exam": "pre",
+   "q": "The 1899–1900 movement led by Birsa Munda in the Chotanagpur region against landlords, moneylenders and colonial land rules is known as",
+   "opts": [
+    "the Ulgulan",
+    "the Tana Bhagat movement",
+    "the Kol insurrection",
+    "the Tebhaga movement"
+   ],
+   "ans": 0,
+   "why": "Birsa Munda led the Ulgulan, or Great Tumult, of 1899–1900. The Tana Bhagat movement was among the Oraon, the Kol insurrection was of 1831–32 and the Tebhaga movement was a sharecroppers’ struggle in Bengal.",
+   "id": "caq-2026-11-046"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Tribal areas",
+   "exam": "pre",
+   "q": "With reference to the administration of tribal areas in India, consider the following statements:\n1. Article 338A provides for the National Commission for Scheduled Tribes.\n2. The Fifth Schedule governs the administration of Scheduled Areas in most States.\n3. The Sixth Schedule applies to the Scheduled Areas of Odisha and Jharkhand.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The Sixth Schedule applies to tribal areas in Assam, Meghalaya, Tripura and Mizoram. Odisha and Jharkhand have Scheduled Areas under the Fifth Schedule, so statement 3 is wrong.",
+   "id": "caq-2026-11-047"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Panchayats",
+   "exam": "pre",
+   "q": "The Panchayats (Extension to Scheduled Areas) Act, 1996 gives a central role in decisions on land and natural resources to",
+   "opts": [
+    "the Gram Panchayat",
+    "the Block Samiti",
+    "the Gram Sabha",
+    "the Zila Parishad"
+   ],
+   "ans": 2,
+   "why": "PESA makes the Gram Sabha, the body of all adult voters of the village, central to decisions on land and natural resources in Scheduled Areas.",
+   "id": "caq-2026-11-048"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Tribal land",
+   "exam": "pre",
+   "q": "Consider the following statements:\nStatement-I: Prior consent of the Gram Sabha is required for acquiring land in Scheduled Areas.\nStatement-II: Section 41 of the Land Acquisition, Rehabilitation and Resettlement Act, 2013 provides special safeguards for acquisition in Scheduled Areas.\nWhich one of the following is correct in respect of the above statements?",
+   "opts": [
+    "Both Statement-I and Statement-II are correct and Statement-II explains Statement-I",
+    "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I",
+    "Statement-I is correct, but Statement-II is incorrect",
+    "Statement-I is incorrect, but Statement-II is correct"
+   ],
+   "ans": 0,
+   "why": "Section 41 of the 2013 Act requires prior consent of the Gram Sabha in Scheduled Areas, which is the basis of the requirement in Statement-I.",
+   "id": "caq-2026-11-049"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Poverty measurement",
+   "exam": "pre",
+   "q": "With reference to the measurement of poverty in India, consider the following statements:\n1. The Tendulkar Committee’s poverty line is the basis of India’s last official poverty estimate, for 2011-12.\n2. NITI Aayog’s National Multidimensional Poverty Index uses indicators of health, education and standard of living.\n3. Since June 2025 the World Bank’s extreme-poverty line has been $2.15 a day.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The World Bank raised its extreme-poverty line to $3 a day (2021 prices, adjusted for purchasing power) in June 2025. $2.15 was the earlier line, so statement 3 is wrong.",
+   "id": "caq-2026-11-050"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Poverty measurement",
+   "exam": "pre",
+   "q": "Consider the following expert bodies:\n1. Lakdawala Expert Group\n2. Tendulkar Committee\n3. Sachar Committee\n4. Ranganath Misra Commission\nHow many of the above were set up to estimate poverty?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 1,
+   "why": "The Lakdawala group and the Tendulkar Committee were set up to estimate poverty. The Sachar Committee studied the status of Muslims and the Ranganath Misra Commission examined reservation for religious and linguistic minorities.",
+   "id": "caq-2026-11-051"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Data protection",
+   "exam": "pre",
+   "q": "With reference to the Digital Personal Data Protection Act, 2023, consider the following statements:\n1. It provides for a Data Protection Board.\n2. It contains a blanket exemption for journalistic activity.\n3. It amends Section 8(1)(j) of the Right to Information Act, 2005.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "The Act has no blanket exemption for journalism, which is the publishers’ main complaint, so statement 2 is wrong. Section 44(3) amends Section 8(1)(j) of the RTI Act.",
+   "id": "caq-2026-11-052"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Fundamental rights",
+   "exam": "pre",
+   "q": "The nine-judge Bench of the Supreme Court that held privacy to be a fundamental right under Article 21 in 2017 decided",
+   "opts": [
+    "A. K. Gopalan v. State of Madras",
+    "Maneka Gandhi v. Union of India",
+    "A. D. M. Jabalpur v. Shivkant Shukla",
+    "K. S. Puttaswamy v. Union of India"
+   ],
+   "ans": 3,
+   "why": "Puttaswamy (2017) overruled the earlier view in the Kharak Singh and M. P. Sharma cases and held privacy a fundamental right under Article 21.",
+   "id": "caq-2026-11-053"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Press freedom",
+   "exam": "pre",
+   "q": "Consider the following statements:\nStatement-I: Freedom of the press is read into Article 19(1)(a) of the Constitution.\nStatement-II: Article 19(2) places no restriction on the freedom of speech and expression.\nWhich one of the following is correct in respect of the above statements?",
+   "opts": [
+    "Both Statement-I and Statement-II are correct and Statement-II explains Statement-I",
+    "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I",
+    "Statement-I is correct, but Statement-II is incorrect",
+    "Statement-I is incorrect, but Statement-II is correct"
+   ],
+   "ans": 2,
+   "why": "Press freedom flows from Article 19(1)(a), but Article 19(2) allows reasonable restrictions on grounds such as public order, decency and the security of the State.",
+   "id": "caq-2026-11-054"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Environmental law",
+   "exam": "pre",
+   "q": "With reference to the National Green Tribunal, consider the following statements:\n1. It was established under the National Green Tribunal Act, 2010.\n2. Appeals from its orders lie to the Supreme Court.\n3. It applies the precautionary principle and the polluter pays principle.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The Tribunal was set up under the 2010 Act, appeals lie to the Supreme Court and Section 20 directs it to apply the precautionary and polluter pays principles.",
+   "id": "caq-2026-11-055"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Environmental law",
+   "exam": "pre",
+   "q": "The principle of absolute liability for harm caused by hazardous industry was laid down by the Supreme Court in",
+   "opts": [
+    "M. C. Mehta v. Union of India (1987)",
+    "Vellore Citizens’ Welfare Forum v. Union of India (1996)",
+    "Rylands v. Fletcher (1868)",
+    "Indian Council for Enviro-Legal Action v. Union of India (1996)"
+   ],
+   "ans": 0,
+   "why": "M. C. Mehta (1987), the Oleum gas leak case, laid down absolute liability. Rylands v. Fletcher is an English case on strict liability, and Vellore (1996) made the precautionary and polluter pays principles part of Indian law.",
+   "id": "caq-2026-11-056"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Environmental law",
+   "exam": "pre",
+   "q": "Consider the following laws:\n1. The Water (Prevention and Control of Pollution) Act, 1974\n2. The Wildlife (Protection) Act, 1972\n3. The Forest (Conservation) Act, 1980\n4. The Air (Prevention and Control of Pollution) Act, 1981\nHow many of the above laws are covered by the Tribunal’s jurisdiction under the National Green Tribunal Act, 2010?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 2,
+   "why": "The Tribunal’s jurisdiction covers the Water, Water Cess, Forest (Conservation), Air, Environment (Protection), Public Liability Insurance and Biological Diversity Acts. The Wildlife (Protection) Act is not among them.",
+   "id": "caq-2026-11-057"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Census",
+   "exam": "pre",
+   "q": "With reference to the Census of India, consider the following statements:\n1. The Constitution makes the census a State subject.\n2. The census is conducted under the Census Act, 1948.\n3. Census 2027 includes the enumeration of caste.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The census is a Union subject under Entry 69 of the Union List, so statement 1 is wrong. The Census Act, 1948 governs it and Census 2027 includes caste enumeration.",
+   "id": "caq-2026-11-058"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Census",
+   "exam": "pre",
+   "q": "The Registrar General and Census Commissioner of India functions under the",
+   "opts": [
+    "Ministry of Statistics and Programme Implementation",
+    "Ministry of Home Affairs",
+    "Ministry of Electronics and Information Technology",
+    "NITI Aayog"
+   ],
+   "ans": 1,
+   "why": "The Registrar General and Census Commissioner works under the Ministry of Home Affairs.",
+   "id": "caq-2026-11-059"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Minorities",
+   "exam": "pre",
+   "q": "The Ministry of Minority Affairs was created in",
+   "opts": [
+    "2006",
+    "1992",
+    "2001",
+    "2014"
+   ],
+   "ans": 0,
+   "why": "The Ministry was created in January 2006, after the Sachar Committee was set up in March 2005. The National Commission for Minorities Act dates from 1992 and Jains were notified as a minority in 2014.",
+   "id": "caq-2026-11-060"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Minorities",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. The Ministry of Minority Affairs was created before the Sachar Committee was constituted.\n2. The Ranganath Misra Commission examined reservation for religious and linguistic minorities.\n3. The Kundu Committee assessed the follow-up to the Sachar Committee’s findings.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The Sachar Committee was set up in March 2005 and the Ministry of Minority Affairs was created in January 2006, so statement 1 is wrong.",
+   "id": "caq-2026-11-061"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Sustainable Development Goals",
+   "exam": "pre",
+   "q": "Sustainable Development Goal 6 of the United Nations is about",
+   "opts": [
+    "zero hunger",
+    "affordable and clean energy",
+    "life below water",
+    "clean water and sanitation"
+   ],
+   "ans": 3,
+   "why": "SDG 6 is clean water and sanitation for all. SDG 2 is zero hunger, SDG 7 is affordable and clean energy and SDG 14 is life below water.",
+   "id": "caq-2026-11-062"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Water resources",
+   "exam": "pre",
+   "q": "With reference to water in India, consider the following statements:\n1. The Jal Jeevan Mission was launched in 2019 to provide tap water to rural households.\n2. India has about 18% of the world’s freshwater resources.\n3. The Indus Waters Treaty between India and Pakistan was signed in 1960.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "India has about 4% of the world’s freshwater for around 18% of its people, so statement 2 is wrong.",
+   "id": "caq-2026-11-063"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Water resources",
+   "exam": "pre",
+   "q": "Consider the following:\n1. Jal Jeevan Mission\n2. Atal Bhujal Yojana\n3. Namami Gange\n4. National Water Mission\nHow many of the above were launched in 2019?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 1,
+   "why": "The Jal Jeevan Mission and the Atal Bhujal Yojana were launched in 2019. Namami Gange began in 2014 and the National Water Mission is part of the 2008 climate action plan, set up in 2011.",
+   "id": "caq-2026-11-064"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "International law",
+   "exam": "pre",
+   "q": "The United Nations treaty of 1948 that defines and prohibits the crime of genocide is the",
+   "opts": [
+    "Rome Statute",
+    "Genocide Convention",
+    "Geneva Conventions",
+    "Refugee Convention"
+   ],
+   "ans": 1,
+   "why": "The Genocide Convention (1948) defines genocide. The Rome Statute created the International Criminal Court, the Geneva Conventions cover armed conflict and the Refugee Convention is of 1951.",
+   "id": "caq-2026-11-065"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "International law",
+   "exam": "pre",
+   "q": "With reference to international courts, consider the following statements:\n1. Judgments of the International Court of Justice can be appealed to the UN Security Council.\n2. The International Criminal Court tries individuals under the Rome Statute.\n3. India is not a party to the Rome Statute.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "ICJ judgments are final and binding with no appeal, so statement 1 is wrong. The Security Council can be approached only to enforce a judgment under Article 94 of the UN Charter.",
+   "id": "caq-2026-11-066"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "International law",
+   "exam": "pre",
+   "q": "Consider the following statements:\nStatement-I: The International Court of Justice has no power of its own to enforce its judgments.\nStatement-II: Under Article 94 of the UN Charter a party can take the matter to the Security Council, where a veto can block action.\nWhich one of the following is correct in respect of the above statements?",
+   "opts": [
+    "Both Statement-I and Statement-II are correct and Statement-II explains Statement-I",
+    "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I",
+    "Statement-I is correct, but Statement-II is incorrect",
+    "Statement-I is incorrect, but Statement-II is correct"
+   ],
+   "ans": 0,
+   "why": "The ICJ has no police power, and Article 94 allows enforcement only through the Security Council, where a permanent member’s veto can block action.",
+   "id": "caq-2026-11-067"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Neighbourhood",
+   "exam": "pre",
+   "q": "The Rohingya, the subject of the case in The Gambia v. Myanmar, are a minority community mainly of",
+   "opts": [
+    "Kachin State in Myanmar",
+    "Shan State in Myanmar",
+    "Rakhine State in Myanmar",
+    "Chin State in Myanmar"
+   ],
+   "ans": 2,
+   "why": "The Rohingya are a Muslim minority of Rakhine State, on the Bangladesh border.",
+   "id": "caq-2026-11-068"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "International law",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. India enacted the Genocide Convention Act, 1960.\n2. India is a party to the 1951 Refugee Convention.\n3. India is a party to the Rome Statute of the International Criminal Court.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 0,
+   "why": "India enacted the Genocide Convention Act, 1960. It is not a party to the 1951 Refugee Convention or to the Rome Statute.",
+   "id": "caq-2026-11-069"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Tribal land",
+   "exam": "pre",
+   "q": "In Samatha v. State of Andhra Pradesh (1997), the Supreme Court barred",
+   "opts": [
+    "leases of tribal land in Scheduled Areas to private mining companies",
+    "mining in all forest areas of the country",
+    "tribal people from selling land to one another",
+    "the State from notifying new Scheduled Areas"
+   ],
+   "ans": 0,
+   "why": "Samatha (1997) barred the lease of tribal land in Scheduled Areas to private companies for mining.",
+   "id": "caq-2026-11-070"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Tribal land",
+   "exam": "pre",
+   "q": "In the Orissa Mining Corporation case (2013), the Supreme Court asked the Gram Sabhas to decide the religious and cultural rights of",
+   "opts": [
+    "the Santhal",
+    "the Gond",
+    "the Bhil",
+    "the Dongria Kondh"
+   ],
+   "ans": 3,
+   "why": "The Niyamgiri judgment asked the Gram Sabhas to decide, under the Forest Rights Act, the claims of the Dongria Kondh over the Niyamgiri hills.",
+   "id": "caq-2026-11-071"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Bail",
+   "exam": "pre",
+   "q": "With reference to bail under the Prevention of Money Laundering Act, 2002, consider the following statements:\n1. Section 45 sets twin conditions for the grant of bail.\n2. The twin conditions were struck down in Nikesh Tarachand Shah (2017) and later restored by an amendment.\n3. The Supreme Court in Vijay Madanlal Choudhary (2022) struck down Section 45 permanently.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Vijay Madanlal Choudhary (2022) upheld Section 45, so statement 3 is wrong.",
+   "id": "caq-2026-11-072"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Elections",
+   "exam": "pre",
+   "q": "In the process of maintaining electoral rolls, Form 7 is used for",
+   "opts": [
+    "registering a new voter",
+    "correcting details in an entry",
+    "an objection to a name or a request to delete it",
+    "shifting a voter to another constituency"
+   ],
+   "ans": 2,
+   "why": "Form 6 is for new voters and Form 8 is for corrections or shifting. Form 7 is for objecting to the inclusion of a name or seeking its deletion.",
+   "id": "caq-2026-11-073"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Elections",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. Article 324 gives the Election Commission superintendence, direction and control of the preparation of electoral rolls.\n2. Article 326 provides for elections to the Lok Sabha and State Assemblies on the basis of adult suffrage.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 only",
+    "2 only",
+    "Both 1 and 2",
+    "Neither 1 nor 2"
+   ],
+   "ans": 2,
+   "why": "Both are correct. Article 324 covers the rolls and elections, and Article 326 provides adult suffrage.",
+   "id": "caq-2026-11-074"
+  },
+  {
+   "subject": "Geography",
+   "syllabus": "Cyclones",
+   "exam": "pre",
+   "q": "On the scale of the India Meteorological Department, consider the following statements:\n1. A cyclonic storm has maximum sustained winds of 89 to 117 km/h.\n2. A very severe cyclonic storm has winds of 118 to 165 km/h.\n3. A red colour code means the authorities should take action.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "A cyclonic storm has winds of 62 to 88 km/h. Winds of 89 to 117 km/h make a severe cyclonic storm, so statement 1 is wrong.",
+   "id": "caq-2026-11-075"
+  },
+  {
+   "subject": "Geography",
+   "syllabus": "Coastal India",
+   "exam": "pre",
+   "q": "Consider the following ports:\n1. Gopalpur\n2. Paradip\n3. Kandla\n4. Kakinada\nHow many of the above ports are on the Bay of Bengal coast?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 2,
+   "why": "Gopalpur and Paradip are in Odisha and Kakinada is in Andhra Pradesh, all on the Bay of Bengal. Kandla is in Gujarat on the Arabian Sea coast.",
+   "id": "caq-2026-11-076"
+  },
+  {
+   "subject": "Geography",
+   "syllabus": "Cyclones",
+   "exam": "pre",
+   "q": "A storm surge during a cyclone refers to",
+   "opts": [
+    "the heavy rainfall that comes with the storm",
+    "a rise in sea level pushed onto the coast by the storm",
+    "a warm ocean current that feeds the storm",
+    "the loss of wind speed after landfall"
+   ],
+   "ans": 1,
+   "why": "A storm surge is the rise of sea water driven ashore by the cyclone, and it is usually the greatest cause of deaths in coastal areas.",
+   "id": "caq-2026-11-077"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Regional groupings",
+   "exam": "pre",
+   "q": "With reference to the Shanghai Cooperation Organisation, consider the following statements:\n1. Its headquarters is in Beijing.\n2. Its Regional Anti-Terrorist Structure is based in Tashkent.\n3. Iran became a full member in 2023.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The SCO is headquartered in Beijing, its Regional Anti-Terrorist Structure is in Tashkent and Iran joined as a full member in 2023.",
+   "id": "caq-2026-11-078"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Regional groupings",
+   "exam": "pre",
+   "q": "With the entry of Belarus in 2024, the number of full members of the Shanghai Cooperation Organisation became",
+   "opts": [
+    "ten",
+    "eight",
+    "nine",
+    "eleven"
+   ],
+   "ans": 0,
+   "why": "The SCO had eight members after India and Pakistan joined in 2017. Iran (2023) and Belarus (2024) made it ten.",
+   "id": "caq-2026-11-079"
   }
  ]
 }
