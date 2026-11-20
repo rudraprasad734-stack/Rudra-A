@@ -2,7 +2,7 @@
  "day": "2026-11-20",
  "title": "20 Nov 2026",
  "src": "The Hindu, 20 November 2026",
- "note": "Notes for 20 November 2026 from The Hindu (the articles supplied for the day) and from news reports and official releases for Cyclone Akvan and the SCO forum. The paper’s letters and opinion pieces are presented as the writers’ views, with the facts behind each item drawn from standard textbooks and official sources.",
+ "note": "Notes for 20 November 2026 from The Hindu (the articles supplied for the day) and from news reports and official releases for Cyclone Akvan and the SCO forum. The paper’s letters and opinion pieces are presented as the writers’ views, with the facts behind each item drawn from standard textbooks and official sources. For the Voyager quiz only the questions were available, so the answers come from NASA’s public record of the mission.",
  "topics": [
   {
    "id": "dn-2026-11-20-1",
@@ -536,6 +536,80 @@
   {
    "id": "dn-2026-11-20-8",
    "n": 8,
+   "sec": "International Relations",
+   "t": "China’s revised rules for local Party committees: tighter central control",
+   "gs": [
+    "GS2 International Relations"
+   ],
+   "news": "Writing in The Hindu, Manoj Kewalramani of the Takshashila Institution says the most important political development in China this week was not the Shenzhen summit but the Communist Party’s publication on Monday of revised Regulations on the Work of Local Committees, which govern every Party committee at the provincial, city and county levels. Compared with the 2015 text, he finds four shifts. The references to Marxism-Leninism and Mao Zedong Thought have been dropped in favour of Xi Jinping Thought and his central position. The committees’ remit now extends over economic, political, cultural, social and ecological work, blurring the line with local governments. Political integrity is placed ahead of competence in staffing, and higher committees have stronger powers to appoint and remove members of lower ones. The document stresses discipline: a new Article 27 lists 10 kinds of prohibited conduct, including vanity projects, new local government debt and local protectionism, and Article 30 brings lifelong accountability for secretaries and standing committee members. He concludes that the rules tighten central control but are unlikely to encourage local initiative.",
+   "blocks": [
+    {
+     "h": "How China is governed",
+     "items": [
+      {
+       "rows": [
+        [
+         "Party and State",
+         "The Communist Party of China (founded in 1921) leads the State; Party committees at each level, not the governments, set direction, manage officials and supervise legislatures, courts and procuratorates."
+        ],
+        [
+         "Local leadership",
+         "The Party secretary heads each committee; local officials run growth and policy experiments but have also been behind debt, statistical fudging, protectionism and corruption."
+        ],
+        [
+         "Xi Jinping",
+         "General Secretary of the Party since 2012; ‘Xi Jinping Thought on Socialism with Chinese Characteristics for a New Era’ was written into the Party constitution in 2017."
+        ],
+        [
+         "Democratic centralism",
+         "The Party’s principle that lower bodies follow higher ones once a decision is taken."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Contrast with India:** India has an elected government answerable to Parliament and State legislatures, with a federal division of powers and independent courts.",
+        "**Why India watches:** China’s internal governance affects its policy on the border, trade and the neighbourhood, and the stability of the second-largest economy.",
+        "**Same week:** the APEC summit in Shenzhen, where the first meeting of the U.S., Chinese and Russian leaders took place."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Local Party committees",
+     "d": "Party bodies at provincial, city and county levels that hold real power in China."
+    },
+    {
+     "k": "Xi Jinping Thought",
+     "d": "The Party’s guiding ideology, centred on Xi’s leadership and vision of national rejuvenation."
+    },
+    {
+     "k": "Democratic centralism",
+     "d": "Lower bodies follow decisions taken by higher ones."
+    },
+    {
+     "k": "APEC",
+     "d": "Asia-Pacific Economic Cooperation, a 21-economy grouping; India is not a member."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Compare the political systems of India and China. What explains the stability of each?",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "How do developments in China’s domestic politics affect India’s security and economic interests?",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-20-9",
+   "n": 9,
    "sec": "Economy",
    "t": "From mineral auctions to material security",
    "gs": [
@@ -613,8 +687,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-20-9",
-   "n": 9,
+   "id": "dn-2026-11-20-10",
+   "n": 10,
    "sec": "Economy",
    "t": "Layoffs, severance and social security: what protects workers",
    "gs": [
@@ -696,8 +770,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-20-10",
-   "n": 10,
+   "id": "dn-2026-11-20-11",
+   "n": 11,
    "sec": "Social Issues",
    "t": "Delhi launches the ‘Ehsaas 2026’ mental health policy for educational institutions",
    "gs": [
@@ -779,8 +853,87 @@
    ]
   },
   {
-   "id": "dn-2026-11-20-11",
-   "n": 11,
+   "id": "dn-2026-11-20-12",
+   "n": 12,
+   "sec": "Social Issues",
+   "t": "WHO Global TB Report 2026: India misses its 2025 elimination target",
+   "gs": [
+    "GS2 Health",
+    "GS3 Science and Technology"
+   ],
+   "news": "India still accounts for nearly a quarter of the world’s tuberculosis burden and has missed its national target of eliminating TB by 2025, according to the WHO Global Tuberculosis Report released on 12 November 2026, which estimates that 10.6 million people developed TB worldwide in 2025. India’s estimated TB death rate fell 38%, from 28 per lakh population in 2015 to 18 per lakh in 2025, and 25.3 lakh cases were diagnosed and notified in 2025. The WHO has withheld India’s 2025 incidence estimate while it assesses data from a new sentinel surveillance exercise in 50 districts, with the update expected in early 2027. The National Strategic Plan 2017–2025 aimed to cut incidence from 217 to 43 per lakh and deaths from 32 to 3 per lakh. The WHO’s 2025 report put India’s incidence at 237 per lakh in 2015 and 187 in 2024, a fall of about 21%. Some 46% of diagnosed cases in 2025 were first tested with rapid molecular tests, up from 38% in 2024. Reasons for the shortfall include delayed diagnosis, uneven access, patients treated in the private sector, undernutrition, crowded housing, catastrophic costs and drug-resistant TB.",
+   "blocks": [
+    {
+     "h": "Tuberculosis and the programme",
+     "items": [
+      {
+       "rows": [
+        [
+         "The disease",
+         "TB is caused by the bacterium Mycobacterium tuberculosis and spreads through the air. **Incidence** is the number of new cases in a period; **prevalence** is the number of people with the disease at a time; **notifications** are the cases diagnosed and reported."
+        ],
+        [
+         "Targets",
+         "The global End TB Strategy aimed to cut incidence by 50% and deaths by 75% by 2025 against 2015, and Sustainable Development Goal 3.3 calls for ending the epidemic by 2030. India set 2025 for elimination."
+        ],
+        [
+         "Programme",
+         "The National TB Elimination Programme (renamed from the Revised National TB Control Programme in 2020) runs the TB Mukt Bharat Abhiyaan, with the Ni-kshay portal and Ni-kshay Poshan Yojana, which gives patients a monthly nutrition support payment."
+        ],
+        [
+         "Tests",
+         "Rapid molecular tests such as CBNAAT and the India-made TrueNat detect TB and rifampicin resistance quickly."
+        ],
+        [
+         "Drug resistance",
+         "Multidrug-resistant TB does not respond to the two main drugs, isoniazid and rifampicin; the six-month all-oral BPaLM regimen shortens treatment for eligible patients."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Catastrophic costs:** even where drugs are free, travel, tests, nutrition and lost wages can push families into debt.",
+        "**Private sector:** many patients first go to private providers, so notification and follow-up are harder.",
+        "**Surveillance:** the 50-district sentinel exercise will be compared with the 2020–21 national prevalence survey before the estimate is revised."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Incidence",
+     "d": "Number of new TB cases in a population over a period."
+    },
+    {
+     "k": "National Strategic Plan 2017–2025",
+     "d": "India’s plan to eliminate TB by 2025, five years ahead of the global goal."
+    },
+    {
+     "k": "Ni-kshay Poshan Yojana",
+     "d": "Monthly nutrition support to TB patients."
+    },
+    {
+     "k": "BPaLM",
+     "d": "Six-month all-oral regimen for drug-resistant TB."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the progress and gaps in India’s efforts to eliminate tuberculosis. Why was the 2025 target missed?",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Poverty and malnutrition create a vicious cycle, hurting human capital. Discuss with reference to TB.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": "2024 GS2 (poverty and malnutrition)"
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-20-13",
+   "n": 13,
    "sec": "Environment",
    "t": "Cyclone Akvan makes landfall on the Andhra–Odisha coast",
    "gs": [
@@ -858,8 +1011,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-20-12",
-   "n": 12,
+   "id": "dn-2026-11-20-14",
+   "n": 14,
    "sec": "Environment",
    "t": "Wayanad set to be declared India’s first e-waste-free district",
    "gs": [
@@ -936,8 +1089,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-20-13",
-   "n": 13,
+   "id": "dn-2026-11-20-15",
+   "n": 15,
    "sec": "Environment",
    "t": "Poisonous air: readers on pollution and who can protect themselves",
    "gs": [
@@ -1014,8 +1167,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-20-14",
-   "n": 14,
+   "id": "dn-2026-11-20-16",
+   "n": 16,
    "sec": "Environment",
    "t": "Climate finance and India’s energy transition: a reader’s view",
    "gs": [
@@ -1088,8 +1241,95 @@
    ]
   },
   {
-   "id": "dn-2026-11-20-15",
-   "n": 15,
+   "id": "dn-2026-11-20-17",
+   "n": 17,
+   "sec": "Science & Technology",
+   "t": "Voyager 1 reaches a distance of one light-day from Earth",
+   "gs": [
+    "GS3 Science and Technology",
+    "GS3 Space"
+   ],
+   "news": "On 18 November Voyager 1 became the first human-made object to reach a distance of one light-day from Earth, the distance light travels in a day, about 26 billion kilometres. It was launched on 5 September 1977 and has been the most distant human-made object since it overtook Pioneer 10 in February 1998. The Hindu marked the milestone with a quiz on the spacecraft, its power source, the Deep Space Network, the ‘Pale Blue Dot’ photograph of 1990 and the Golden Record.",
+   "blocks": [
+    {
+     "h": "The Voyager mission",
+     "items": [
+      {
+       "rows": [
+        [
+         "Launch",
+         "Voyager 1 was launched on 5 September 1977 by a Titan IIIE–Centaur rocket from Cape Canaveral; its twin Voyager 2 went up on 20 August 1977."
+        ],
+        [
+         "Original mission",
+         "A short mission of a few years to study Jupiter and Saturn, extended into the outer solar system and then interstellar space; Voyager 1 passed Jupiter in 1979 and Saturn in 1980."
+        ],
+        [
+         "Distance record",
+         "On 17 February 1998 Voyager 1 overtook Pioneer 10 as the most distant human-made object; it crossed the heliopause, the edge of the Sun’s influence, in 2012."
+        ],
+        [
+         "Power",
+         "Radioisotope thermoelectric generators that turn the heat of decaying **plutonium-238** into electricity; the output falls every year, so instruments are switched off one by one."
+        ],
+        [
+         "Deep Space Network",
+         "NASA’s antennas at Goldstone (United States), Madrid (Spain) and Canberra (Australia) keep contact with the probes as the Earth turns."
+        ],
+        [
+         "Pale Blue Dot",
+         "The picture of Earth as a tiny speck, taken by Voyager 1 on 14 February 1990 from about 6 billion kilometres."
+        ],
+        [
+         "Golden Record",
+         "A gold-plated copper disc carrying sounds and images of Earth, greetings in 55 languages and music from many cultures, among them Chuck Berry’s ‘Johnny B. Goode’ and the Hindustani singer Kesarbai Kerkar’s ‘Jaat Kahan Ho’. A map of the Sun’s position relative to **pulsars** is on its cover."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Light-day:** light travels about 300,000 km every second, so in a day it goes about 26 billion km; a radio signal now takes about a day to reach Voyager 1.",
+        "**Interstellar space:** the region beyond the heliopause where the Sun’s wind no longer dominates.",
+        "**Light-year:** the distance light travels in a year, about 9.46 trillion km."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Voyager 1",
+     "d": "NASA probe launched on 5 September 1977; the most distant human-made object."
+    },
+    {
+     "k": "Heliopause",
+     "d": "The boundary where the solar wind meets interstellar space; Voyager 1 crossed it in 2012."
+    },
+    {
+     "k": "Plutonium-238",
+     "d": "The radioactive isotope in the probe’s thermoelectric generators."
+    },
+    {
+     "k": "Deep Space Network",
+     "d": "NASA’s antennas in the United States, Spain and Australia that communicate with distant spacecraft."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the importance of deep-space missions such as Voyager for science. What are the challenges of keeping them running for decades?",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    },
+    {
+     "q": "Distinguish between a light-year and an astronomical unit. Why do such units become necessary in astronomy?",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-20-18",
+   "n": 18,
    "sec": "Art & Culture",
    "t": "‘Enchantment’: a play on Pandit Ravi Shankar’s life",
    "gs": [

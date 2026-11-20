@@ -1591,6 +1591,171 @@
    "ans": 1,
    "why": "Retrenchment compensation is 15 days’ average pay for every completed year of service; the Industrial Relations Code keeps the same rate.",
    "id": "caq-2026-11-106"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Space missions",
+   "exam": "pre",
+   "q": "Which one of the following is the radioactive element whose decay powers the thermoelectric generators of Voyager 1?",
+   "opts": [
+    "Uranium-235",
+    "Strontium-90",
+    "Plutonium-238",
+    "Cobalt-60"
+   ],
+   "ans": 2,
+   "why": "Voyager 1 uses radioisotope thermoelectric generators that turn the heat from the decay of plutonium-238 into electricity.",
+   "id": "caq-2026-11-107"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Space missions",
+   "exam": "pre",
+   "q": "With reference to the Voyager 1 spacecraft, consider the following statements:\n1. In February 1998 it overtook Pioneer 10 as the most distant human-made object.\n2. NASA communicates with it through antennas of the Deep Space Network in the United States, Spain and Australia.\n3. The location map on the cover of its Golden Record is drawn using quasars.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The map on the Golden Record’s cover uses pulsars to show the Sun’s position, not quasars, so statement 3 is wrong.",
+   "id": "caq-2026-11-108"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Space missions",
+   "exam": "pre",
+   "q": "The photograph of Earth taken by Voyager 1 on 14 February 1990 from about 6 billion kilometres, showing it as a tiny speck, is known as",
+   "opts": [
+    "the Pale Blue Dot",
+    "the Blue Marble",
+    "Earthrise",
+    "the Golden Disc"
+   ],
+   "ans": 0,
+   "why": "The Pale Blue Dot was taken as Voyager 1 left the planetary region of the solar system. The Blue Marble and Earthrise were taken by Apollo astronauts.",
+   "id": "caq-2026-11-109"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Space missions",
+   "exam": "pre",
+   "q": "A light-day, the distance Voyager 1 has now reached from Earth, is about",
+   "opts": [
+    "9.5 trillion kilometres",
+    "26 billion kilometres",
+    "150 million kilometres",
+    "384,000 kilometres"
+   ],
+   "ans": 1,
+   "why": "Light travels about 300,000 km a second, which is about 26 billion km in a day. A light-year is about 9.5 trillion km, the Earth–Sun distance is about 150 million km and the Earth–Moon distance is about 384,000 km.",
+   "id": "caq-2026-11-110"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "China",
+   "exam": "pre",
+   "q": "With reference to the governance of China, consider the following statements:\n1. The Communist Party of China was founded in 1921.\n2. Local Party committees hold the real power at the provincial, city and county levels.\n3. India is a member of the Asia-Pacific Economic Cooperation grouping.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "India is not a member of APEC, so statement 3 is wrong.",
+   "id": "caq-2026-11-111"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "China",
+   "exam": "pre",
+   "q": "‘Democratic centralism’, a principle of the Communist Party of China, means that",
+   "opts": [
+    "every decision is put to a public referendum",
+    "provinces may reject national laws",
+    "the judiciary elects Party officials",
+    "lower bodies follow the decisions of higher bodies once they are taken"
+   ],
+   "ans": 3,
+   "why": "Under democratic centralism, discussion is followed by obedience: once a decision is taken, lower bodies implement the decisions of higher ones.",
+   "id": "caq-2026-11-112"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Public health",
+   "exam": "pre",
+   "q": "Tuberculosis is caused by",
+   "opts": [
+    "a virus",
+    "a bacterium",
+    "a fungus",
+    "a protozoan"
+   ],
+   "ans": 1,
+   "why": "Tuberculosis is caused by the bacterium Mycobacterium tuberculosis and spreads through the air.",
+   "id": "caq-2026-11-113"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Public health",
+   "exam": "pre",
+   "q": "With reference to tuberculosis in India, consider the following statements:\n1. Incidence means the number of new cases in a population over a period.\n2. India set a national target of eliminating tuberculosis by 2025, five years before the global Sustainable Development Goal deadline.\n3. The WHO’s 2026 report showed that India met its 2025 elimination target.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "India missed its 2025 target, so statement 3 is wrong; the WHO has also withheld its 2025 incidence estimate while new district-level surveillance data are assessed.",
+   "id": "caq-2026-11-114"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Public health",
+   "exam": "pre",
+   "q": "A tuberculosis patient whose illness does not respond to the two main drugs, isoniazid and rifampicin, is said to have",
+   "opts": [
+    "multidrug-resistant TB",
+    "latent TB",
+    "extensively infectious TB",
+    "primary complex"
+   ],
+   "ans": 0,
+   "why": "Multidrug-resistant TB is resistant to at least isoniazid and rifampicin.",
+   "id": "caq-2026-11-115"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Public health",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. The National TB Elimination Programme was earlier called the Revised National TB Control Programme.\n2. Ni-kshay Poshan Yojana gives nutrition support to TB patients.\n3. The India-made TrueNat test detects TB and rifampicin resistance.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three statements are correct.",
+   "id": "caq-2026-11-116"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Public health",
+   "exam": "pre",
+   "q": "The World Health Organization’s End TB Strategy aimed to cut tuberculosis deaths, compared with 2015, by what share by 2025?",
+   "opts": [
+    "50%",
+    "90%",
+    "75%",
+    "35%"
+   ],
+   "ans": 2,
+   "why": "The End TB Strategy set 2025 targets of a 50% fall in incidence and a 75% fall in deaths against 2015. India’s own plan aimed at a 90% fall in deaths.",
+   "id": "caq-2026-11-117"
   }
  ]
 }
