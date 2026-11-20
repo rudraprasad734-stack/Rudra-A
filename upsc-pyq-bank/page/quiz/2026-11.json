@@ -1936,6 +1936,66 @@
    "ans": 1,
    "why": "The 1996 study ‘Impact of Armed Conflict on Children’ led to the UN Special Representative on Children and Armed Conflict, created in 1997.",
    "id": "caq-2026-11-129"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Medical devices",
+   "exam": "pre",
+   "q": "The Medical Devices Rules, 2017, which regulate medical devices in India, are framed under the",
+   "opts": [
+    "Clinical Establishments Act, 2010",
+    "Consumer Protection Act, 2019",
+    "Drugs and Cosmetics Act, 1940",
+    "Bio-Medical Waste Management Rules, 2016"
+   ],
+   "ans": 2,
+   "why": "The Medical Devices Rules, 2017 are framed under the Drugs and Cosmetics Act, 1940 and have been in force since 1 January 2018.",
+   "id": "caq-2026-11-130"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Medical devices",
+   "exam": "pre",
+   "q": "With reference to the regulation of medical devices in India, consider the following statements:\n1. The Central Drugs Standard Control Organisation functions under the Directorate-General of Health Services.\n2. Medical devices are grouped into four risk classes from A to D.\n3. India makes most of its high-end medical devices at home.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "India still imports most of its high-end medical devices, which is why the Production Linked Incentive scheme and the Medical Device Parks scheme support local manufacture, so statement 3 is wrong.",
+   "id": "caq-2026-11-131"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Medical devices",
+   "exam": "pre",
+   "q": "The Production Linked Incentive scheme for medical devices, meant to boost their domestic manufacture, was approved in",
+   "opts": [
+    "2014",
+    "2020",
+    "2017",
+    "2023"
+   ],
+   "ans": 1,
+   "why": "The Union Cabinet approved the Production Linked Incentive scheme for medical devices in 2020.",
+   "id": "caq-2026-11-132"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Medical devices",
+   "exam": "pre",
+   "q": "Consider the following statements about single-use medical devices:\n1. In the United States the Food and Drug Administration treats anyone who reprocesses a single-use device as a manufacturer.\n2. In India an independent regulator decides which devices are labelled single-use.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 only",
+    "2 only",
+    "Both 1 and 2",
+    "Neither 1 nor 2"
+   ],
+   "ans": 0,
+   "why": "In practice the single-use label is usually set by the manufacturer, not by an independent regulator, so statement 2 is wrong.",
+   "id": "caq-2026-11-133"
   }
  ]
 }

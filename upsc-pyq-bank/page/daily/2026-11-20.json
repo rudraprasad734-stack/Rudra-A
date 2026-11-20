@@ -1169,6 +1169,86 @@
   {
    "id": "dn-2026-11-20-16",
    "n": 16,
+   "sec": "Social Issues",
+   "t": "Reuse of single-use medical devices: the DGHS ban and the case for regulated reprocessing",
+   "gs": [
+    "GS2 Health",
+    "GS3 Science and Technology"
+   ],
+   "news": "The Directorate-General of Health Services issued a directive on 16 October banning the reuse of devices labelled for single use in all public and private healthcare facilities, citing the risk of infection, possible breaches of existing laws, and cases where patients or government schemes were reportedly charged the full price for reused devices. In an article in The Hindu, a Chennai transplant surgeon, Magnus Jayaraj Mansard, agrees the concerns are fair but asks who decides that a device is single-use and on what evidence. He notes that the single-use label is usually set by the manufacturer, who gains from every new sale and avoids the cost of testing for reuse, although many devices with narrow tubes and delicate parts are hard to clean. He says Indian hospitals have reprocessed devices without consistent protocols or tracking, and that in 2017 Maharashtra’s Food and Drug Administration reportedly investigated eight private hospitals over the reuse of 1,306 catheters across more than 1,000 patients. In the United States the FDA treats a reprocessor of single-use devices as a manufacturer, and Canada, Japan and the European Union have rules too. He proposes a national programme that sorts devices into those never to be reprocessed, those that can be under tested and regulated conditions, and those needing more research, with approved facilities, tested methods, recorded limits on reuse cycles, tracing of each device, reporting of failures, independent audits and clear disclosure to patients, along with more domestic manufacture and independent Indian studies of safety, performance and value for money.",
+   "blocks": [
+    {
+     "h": "How medical devices are regulated and priced in India",
+     "items": [
+      {
+       "rows": [
+        [
+         "Medical Devices Rules, 2017",
+         "Framed under the Drugs and Cosmetics Act, 1940 and in force from 1 January 2018; devices are grouped in four risk classes, A (low) to D (high), and all devices are regulated as drugs from April 2020."
+        ],
+        [
+         "Regulator",
+         "The Central Drugs Standard Control Organisation (CDSCO), which works under the Directorate-General of Health Services in the health ministry."
+        ],
+        [
+         "Price control",
+         "The National Pharmaceutical Pricing Authority capped the price of coronary stents in February 2017 and knee implants in August 2017, and in 2019 limited the trade margins on a set of devices."
+        ],
+        [
+         "Domestic manufacture",
+         "The Production Linked Incentive scheme for medical devices (2020) and the Medical Device Parks scheme support local production; the National Medical Devices Policy, 2023 aims to cut the dependence on imports, which meet most of the demand for high-end devices."
+        ],
+        [
+         "Waste",
+         "The Bio-Medical Waste Management Rules, 2016 govern how used devices must be handled and disposed of."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Reprocessing is more than sterilising:** a sterile device can still be weakened or contaminated in ways cleaning does not reach, so function and quality also have to be shown.",
+        "**The single-use label:** if the manufacturer alone decides it, the label can reflect commercial interest as well as safety.",
+        "**Cost and safety:** a ban protects patients from unsafe reuse, but where devices are costly the burden of cost falls on patients unless affordable alternatives are available.",
+        "**Patient rights:** informed consent and honest billing, so that patients are not charged the price of a new device for a reprocessed one."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Medical Devices Rules, 2017",
+     "d": "Rules under the Drugs and Cosmetics Act, 1940 that regulate medical devices, in force from 1 January 2018."
+    },
+    {
+     "k": "CDSCO",
+     "d": "Central Drugs Standard Control Organisation, the national regulator of drugs and devices."
+    },
+    {
+     "k": "Reprocessing",
+     "d": "Cleaning, disinfecting and testing a used device so that it can be used again."
+    },
+    {
+     "k": "NPPA",
+     "d": "National Pharmaceutical Pricing Authority, which fixes and monitors prices of essential drugs and some devices."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the regulatory framework for medical devices in India and the challenges in ensuring their safety and affordability.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Examine the case for and against the reuse of single-use medical devices. What safeguards would make regulated reprocessing acceptable?",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-20-17",
+   "n": 17,
    "sec": "Security",
    "t": "Rafale count in a global directory and Defence Ministry’s response",
    "gs": [
@@ -1244,8 +1324,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-20-17",
-   "n": 17,
+   "id": "dn-2026-11-20-18",
+   "n": 18,
    "sec": "Environment",
    "t": "Cyclone Akvan makes landfall on the Andhra–Odisha coast",
    "gs": [
@@ -1323,8 +1403,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-20-18",
-   "n": 18,
+   "id": "dn-2026-11-20-19",
+   "n": 19,
    "sec": "Environment",
    "t": "Wayanad set to be declared India’s first e-waste-free district",
    "gs": [
@@ -1401,8 +1481,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-20-19",
-   "n": 19,
+   "id": "dn-2026-11-20-20",
+   "n": 20,
    "sec": "Environment",
    "t": "Poisonous air: readers on pollution and who can protect themselves",
    "gs": [
@@ -1479,8 +1559,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-20-20",
-   "n": 20,
+   "id": "dn-2026-11-20-21",
+   "n": 21,
    "sec": "Environment",
    "t": "Climate finance and India’s energy transition: a reader’s view",
    "gs": [
@@ -1553,8 +1633,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-20-21",
-   "n": 21,
+   "id": "dn-2026-11-20-22",
+   "n": 22,
    "sec": "Environment",
    "t": "Parliamentary panel calls the Green India Mission a failure",
    "gs": [
@@ -1632,8 +1712,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-20-22",
-   "n": 22,
+   "id": "dn-2026-11-20-23",
+   "n": 23,
    "sec": "Science & Technology",
    "t": "Voyager 1 reaches a distance of one light-day from Earth",
    "gs": [
@@ -1719,8 +1799,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-20-23",
-   "n": 23,
+   "id": "dn-2026-11-20-24",
+   "n": 24,
    "sec": "Art & Culture",
    "t": "‘Enchantment’: a play on Pandit Ravi Shankar’s life",
    "gs": [
