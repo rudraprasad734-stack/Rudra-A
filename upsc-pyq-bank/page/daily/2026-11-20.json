@@ -1,12 +1,320 @@
 {
  "day": "2026-11-20",
  "title": "20 Nov 2026",
- "src": "News reports and official releases, 20 Nov 2026",
- "note": "Notes for 20 November 2026, built from news reports and official releases. The facts behind each news item come from standard textbooks and official sources.",
+ "src": "The Hindu, 20 November 2026",
+ "note": "Notes for 20 November 2026 from The Hindu (the articles supplied for the day) and from news reports and official releases for Cyclone Akvan and the SCO forum. The paper’s letters and opinion pieces are presented as the writers’ views, with the facts behind each item drawn from standard textbooks and official sources.",
  "topics": [
   {
    "id": "dn-2026-11-20-1",
    "n": 1,
+   "sec": "Polity & Governance",
+   "t": "Astha Kunj case: court takes cognisance of the chargesheet",
+   "gs": [
+    "GS2 Polity",
+    "GS2 Social Justice"
+   ],
+   "news": "A Delhi court on Thursday took cognisance of the chargesheet in the gang rape of a 17-year-old girl at Astha Kunj Park on 22 September. Fast Track POCSO judge Swati Sharma fixed 1 December for arguments on framing of charges. The 500-page chargesheet charges three men with gang rape, criminal conspiracy, voluntarily causing hurt and criminal intimidation under the Bharatiya Nyaya Sanhita, and relies on mobile phone location data, call records, CCTV footage and biological samples; more than 60 witnesses are listed.",
+   "blocks": [
+    {
+     "h": "How the case moves through court",
+     "items": [
+      {
+       "rows": [
+        [
+         "Chargesheet",
+         "The police report filed at the end of an investigation. Under the Bharatiya Nagarik Suraksha Sanhita, 2023 (which replaced the CrPC from 1 July 2024) the court then takes **cognisance** of the offence."
+        ],
+        [
+         "Framing of charges",
+         "After hearing both sides the court decides on what charges the accused will be tried; only then does the trial begin."
+        ],
+        [
+         "POCSO Act, 2012",
+         "Protects persons below 18 from sexual offences and provides for special courts and child-friendly procedure."
+        ],
+        [
+         "Fast Track Special Courts",
+         "Set up under a central scheme to try rape and POCSO cases quickly."
+        ],
+        [
+         "BNS, 2023",
+         "The Bharatiya Nyaya Sanhita replaced the Indian Penal Code from 1 July 2024."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Scientific evidence:** location data, call records, CCTV footage and DNA samples are used to build a chain of circumstances; the Bharatiya Sakshya Adhiniyam, 2023 governs electronic evidence.",
+        "**Survivor’s protection:** the identity of a child survivor cannot be disclosed, and the trial is held in camera."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Cognisance",
+     "d": "The court’s formal notice of an offence on a chargesheet, so that the case can proceed."
+    },
+    {
+     "k": "POCSO Act, 2012",
+     "d": "Law protecting children from sexual offences, with special courts."
+    },
+    {
+     "k": "Framing of charges",
+     "d": "The stage at which the court decides the charges on which the accused will be tried."
+    },
+    {
+     "k": "BNSS, 2023",
+     "d": "The code of criminal procedure that replaced the CrPC from 1 July 2024."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Examine the adequacy of laws and institutions in India for protecting children from sexual offences.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Discuss the changes brought by the new criminal laws (BNS, BNSS and BSA) in the investigation and trial of offences against women and children.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-20-2",
+   "n": 2,
+   "sec": "Polity & Governance",
+   "t": "Delhi High Court seeks the ED’s reply on Engineer Rashid’s plea in a money-laundering case",
+   "gs": [
+    "GS2 Polity",
+    "GS3 Internal Security"
+   ],
+   "news": "The Delhi High Court on Thursday issued notice to the Enforcement Directorate on a plea by Baramulla MP Abdul Rashid Sheikh against the framing of charges in a money-laundering case linked to alleged funding from Pakistan through hawala channels for secessionist activities in Jammu and Kashmir. Justice Sachin Datta listed the matter for next week. Mr Rashid challenges a 9 September order of the trial court; on 24 October the special court framed charges against him, jailed separatist leader Yasin Malik and five others after finding sufficient material to raise a strong suspicion. The ED alleges proceeds of crime of ₹8.94 crore were generated, routed and used by the accused. The case stems from a 2017 National Investigation Agency case under the Indian Penal Code and the Unlawful Activities (Prevention) Act.",
+   "blocks": [
+    {
+     "h": "The laws involved",
+     "items": [
+      {
+       "rows": [
+        [
+         "PMLA, 2002",
+         "Makes money laundering an offence (Section 3); **proceeds of crime** means property derived from a scheduled offence; the ED investigates and can attach property."
+        ],
+        [
+         "Link to terror funding",
+         "A UAPA or other scheduled offence is the base (predicate) offence; the PMLA case follows the money trail from it."
+        ],
+        [
+         "Hawala",
+         "An informal system of transferring money through trusted agents without moving it through banks."
+        ],
+        [
+         "UAPA, 1967",
+         "The law against unlawful and terrorist activities; the National Investigation Agency (NIA Act, 2008) investigates scheduled offences."
+        ],
+        [
+         "Elected members",
+         "Under Section 8 of the Representation of the People Act, 1951 a member convicted and sentenced to two years or more is disqualified."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Stage of the case:** framing of charges is not a finding of guilt; the accused can challenge the order in a higher court, as here.",
+        "**Strong suspicion test:** at the stage of framing charges, the court looks at whether the material raises a strong suspicion, not whether guilt is proved."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Proceeds of crime",
+     "d": "Property derived or obtained from a scheduled offence, as defined under the PMLA."
+    },
+    {
+     "k": "Hawala",
+     "d": "Informal money transfer through agents, outside the banking system."
+    },
+    {
+     "k": "NIA",
+     "d": "National Investigation Agency, the central agency for terrorism and related offences."
+    },
+    {
+     "k": "Section 8, RP Act 1951",
+     "d": "Disqualification of a legislator on conviction with a sentence of two years or more."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss counterfeit currency and money laundering as major sources of terror funding. What measures have been taken to curb them?",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": "2026 GS3 (counterfeit currency and money laundering)"
+    },
+    {
+     "q": "Examine the powers of the Enforcement Directorate under the PMLA and the safeguards available to the accused.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-20-3",
+   "n": 3,
+   "sec": "Polity & Governance",
+   "t": "Civic and ethnic nationalism: an academic’s view",
+   "gs": [
+    "GS1 Society",
+    "GS2 Polity"
+   ],
+   "news": "A sociologist from North-Eastern Hill University argues in The Hindu that nationalism has endured despite predictions that capitalism and modernity would weaken it. He distinguishes **civic nationalism**, based on liberty, equality, justice and fraternity and faith in the constitutional framework, from **ethnic nationalism**, which privileges one religion, language or ethnicity. He holds that nationalism in the freedom struggle was largely civic and inclusive, that the Constitution grew out of it, and that a form of ethnic nationalism has become dominant in India over the last decade, a view that is contested. He draws on Benedict Anderson’s idea of the nation as an ‘imagined political community’, Jason Stanley’s features of fascism and Prabhat Patnaik’s view of Indian nationalism as anti-imperialist, and ties the ideas to the relationship between the State and corporate capitalism.",
+   "blocks": [
+    {
+     "h": "Concepts",
+     "items": [
+      {
+       "rows": [
+        [
+         "Civic nationalism",
+         "Membership rests on shared citizenship and constitutional values, open to all irrespective of religion, language or descent."
+        ],
+        [
+         "Ethnic nationalism",
+         "Membership rests on a shared ancestry, religion, language or culture."
+        ],
+        [
+         "Anderson (1983)",
+         "Benedict Anderson’s book Imagined Communities says a nation is a community imagined by people who will never meet; print capitalism helped to create it."
+        ],
+        [
+         "Indian Constitution",
+         "The Preamble promises justice, liberty, equality and fraternity; Article 51A lists the duty to promote harmony and respect the country’s composite culture."
+        ],
+        [
+         "Secularism",
+         "The Supreme Court in S. R. Bommai (1994) held secularism to be part of the basic structure of the Constitution."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Anti-colonial nationalism:** the freedom movement united people of different faiths and regions against foreign rule; leaders such as Gandhi, Nehru and Tagore differed on what nationalism should mean.",
+        "**Contested view:** the article is an opinion; other scholars hold that cultural nationalism rests on India’s civilisational unity and is consistent with the Constitution.",
+        "**Dissent and the law:** the right to peaceful protest comes from Article 19(1)(a) and (b), subject to the reasonable restrictions in Article 19(2) and (3)."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Civic nationalism",
+     "d": "Nationalism based on shared citizenship and constitutional values."
+    },
+    {
+     "k": "Ethnic nationalism",
+     "d": "Nationalism based on a common ethnicity, religion or language."
+    },
+    {
+     "k": "Imagined community",
+     "d": "Benedict Anderson’s term for the nation as a community imagined by its members."
+    },
+    {
+     "k": "S. R. Bommai (1994)",
+     "d": "Held secularism to be part of the basic structure of the Constitution."
+    }
+   ],
+   "qs": [
+    {
+     "q": "What was the difference between Mahatma Gandhi and Rabindranath Tagore on nationalism?",
+     "m": "GS1 · 150 words · 10 marks",
+     "ref": "2023 GS1 (Gandhi and Tagore on nationalism)"
+    },
+    {
+     "q": "Distinguish civic nationalism from ethnic nationalism. How does the Indian Constitution reflect the civic idea of the nation?",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-20-4",
+   "n": 4,
+   "sec": "Polity & Governance",
+   "t": "Space for dissent: the Opposition’s role in Parliament",
+   "gs": [
+    "GS2 Polity"
+   ],
+   "news": "A reader’s letter in The Hindu argues that when Opposition viewpoints do not get enough space in Parliament and the media, Opposition leaders look for other platforms, including abroad, and that the Opposition, which represents a large part of the electorate, deserves adequate time in Parliament. It was prompted by criticism of the Indian economy made by Rahul Gandhi on foreign soil.",
+   "blocks": [
+    {
+     "h": "The Opposition in a parliamentary democracy",
+     "items": [
+      {
+       "rows": [
+        [
+         "Leader of the Opposition",
+         "Recognised by the Salary and Allowances of Leaders of Opposition in Parliament Act, 1977; the post goes to the leader of the largest Opposition party, which by the Speaker’s convention needs at least 10% of the seats (55 in the Lok Sabha). Rahul Gandhi has held the post in the 18th Lok Sabha since June 2024."
+        ],
+        [
+         "Roles",
+         "Holds the government to account, offers an alternative, and takes part in key appointments through committees such as those that choose the CBI Director, the Chief Vigilance Commissioner and the Lokpal."
+        ],
+        [
+         "Parliamentary tools",
+         "Question Hour, Zero Hour, adjournment and no-confidence motions, committees and debates."
+        ],
+        [
+         "Free speech",
+         "Article 19(1)(a) protects criticism, subject to Article 19(2); Article 105 protects speech inside Parliament."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Debate:** supporters of the government say criticism of India abroad should stay within bounds; critics reply that democratic criticism is legitimate anywhere.",
+        "**Time in Parliament:** the Business Advisory Committee allots time to parties in proportion to their strength."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Leader of the Opposition",
+     "d": "Head of the largest Opposition party; statutory recognition under the 1977 Act."
+    },
+    {
+     "k": "Article 105",
+     "d": "Privileges of Parliament and its members, including freedom of speech in the House."
+    },
+    {
+     "k": "Business Advisory Committee",
+     "d": "Decides the time to be given to different business and parties."
+    },
+    {
+     "k": "No-confidence motion",
+     "d": "A motion that tests whether the government has the support of the Lok Sabha."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the role of the Opposition in a parliamentary democracy. How can its space in Parliament be protected?",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Examine the factors affecting the functioning of Parliament and the steps to improve its productivity.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-20-5",
+   "n": 5,
    "sec": "International Relations",
    "t": "India hosts the first SCO Civilisational Dialogue Forum",
    "gs": [
@@ -79,8 +387,400 @@
    ]
   },
   {
-   "id": "dn-2026-11-20-2",
-   "n": 2,
+   "id": "dn-2026-11-20-6",
+   "n": 6,
+   "sec": "International Relations",
+   "t": "Talks without peace: the Ukraine war and the case for including Europe",
+   "gs": [
+    "GS2 International Relations"
+   ],
+   "news": "The Hindu’s editorial says the trilateral talks in Abu Dhabi between Russia, Ukraine and the United States earlier this month produced no major breakthrough but were a good start. The sides agreed on humanitarian steps such as a prisoner exchange, and U.S. envoys Jared Kushner and Steve Witkoff then met President Putin in Moscow. The next round will bring U.S., Ukrainian and European officials to Berlin. Russia wants Ukraine to leave the parts of Donbas it holds, limits on Ukraine’s military and a declaration of neutrality; Ukraine rejects territorial concessions and wants Western security guarantees. The editorial notes that Ukraine has lost over 20% of its territory, that Western unity is fraying (President Trump has lifted sanctions on Russian diesel, and Finnish and Norwegian leaders spoke to Mr Putin in October), and argues that Europe must be brought to the table.",
+   "blocks": [
+    {
+     "h": "Background",
+     "items": [
+      {
+       "rows": [
+        [
+         "The war",
+         "Russia invaded Ukraine on 24 February 2022, after annexing Crimea in 2014; Donbas means the Donetsk and Luhansk regions of eastern Ukraine."
+        ],
+        [
+         "NATO",
+         "The North Atlantic Treaty Organization, formed in 1949; Article 5 treats an attack on one member as an attack on all. Neutrality would mean Ukraine giving up its NATO ambition."
+        ],
+        [
+         "Earlier deals",
+         "The Budapest Memorandum (1994), in which Ukraine gave up Soviet nuclear weapons for assurances of its security, and the Minsk agreements (2014–15) on eastern Ukraine."
+        ],
+        [
+         "India’s stance",
+         "India has not condemned Russia, calls for dialogue and diplomacy, and told Russia in 2022 that ‘this is not an era of war’; it buys Russian oil and backs a settlement that all sides accept."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Security guarantees:** Ukraine wants a commitment from the West that Russia will not attack again; Russia wants limits on Ukraine’s forces.",
+        "**Why Europe matters:** Europe pays much of the cost of supporting Ukraine and would live with the settlement’s consequences.",
+        "**Impact on India:** energy and fertiliser prices, defence supplies from Russia, and the balance between Russia and the West."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Donbas",
+     "d": "The Donetsk and Luhansk regions of eastern Ukraine."
+    },
+    {
+     "k": "NATO Article 5",
+     "d": "Collective defence: an armed attack on one member is an attack on all."
+    },
+    {
+     "k": "Budapest Memorandum, 1994",
+     "d": "Assurances to Ukraine in return for giving up the nuclear weapons it inherited from the Soviet Union."
+    },
+    {
+     "k": "Minsk agreements",
+     "d": "2014–15 agreements meant to end the fighting in eastern Ukraine."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Russia and Ukraine war has been going on for a long time. Discuss its impact on the world order and on India.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Examine the challenges in reaching a negotiated settlement in the Russia–Ukraine war.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-20-7",
+   "n": 7,
+   "sec": "International Relations",
+   "t": "Readers on the U.S.–China–Russia trilateral and India’s interests",
+   "gs": [
+    "GS2 International Relations"
+   ],
+   "news": "Letters in The Hindu on the first-ever trilateral meeting of the United States, China and Russia (reported on 19 November) argue that dialogue must lead to verifiable commitments on arms control, the protection of civilians and the interests of smaller nations. One reader says India must ensure that decisions on nuclear security, Ukraine, energy, trade and Indo-Pacific security taken at the Shenzhen summit do not sideline India or its neighbours.",
+   "blocks": [
+    {
+     "h": "Why the trilateral matters to India",
+     "items": [
+      {
+       "rows": [
+        [
+         "Arms control",
+         "The U.S.–Russia New START treaty on strategic nuclear weapons ran out in February 2026; China is not bound by any such treaty, so any wider arrangement would have to include it."
+        ],
+        [
+         "Indo-Pacific",
+         "India works with the Quad (India, the U.S., Japan and Australia) and with ASEAN, and wants a rules-based order without domination by any one power."
+        ],
+        [
+         "Strategic autonomy",
+         "India’s policy of taking decisions in its own interest and of keeping relations with all major powers."
+        ],
+        [
+         "Multilateral forums",
+         "India is in BRICS and the SCO, which include China and Russia, and in the Quad with the United States."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Risk of a ‘G-3’:** a direct deal among three great powers could leave out middle powers such as India.",
+        "**India’s response:** deepen ties with each of the three, strengthen the Quad and ASEAN links, and push for reform of global institutions."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Strategic autonomy",
+     "d": "Independent decision-making in foreign policy, with relations across rival blocs."
+    },
+    {
+     "k": "New START",
+     "d": "U.S.–Russia treaty limiting strategic nuclear weapons, which expired in February 2026."
+    },
+    {
+     "k": "Quad",
+     "d": "Grouping of India, the U.S., Japan and Australia."
+    },
+    {
+     "k": "G-3",
+     "d": "A term for a three-way summit of the United States, China and Russia."
+    }
+   ],
+   "qs": [
+    {
+     "q": "‘The Quad is moving from a security grouping to a wider partnership.’ Discuss with reference to India’s interests.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Examine how a closer understanding among the United States, China and Russia could affect India’s strategic autonomy.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-20-8",
+   "n": 8,
+   "sec": "Economy",
+   "t": "From mineral auctions to material security",
+   "gs": [
+    "GS3 Economy",
+    "GS3 Internal Security"
+   ],
+   "news": "An article by Attero’s co-founder argues that India’s critical minerals policy must move from auctioning blocks to securing usable materials. The National Critical Mineral Mission has ₹34,300 crore over seven years for exploration, mining and processing, and the amended mining law allows the auction of blocks of 24 critical minerals, with more expected before 2031. The author says mining must go together with beneficiation and refining, since China’s hold comes from processing at scale, not mining alone. A scheme under the Mission aims to recycle 400 kilotonnes of critical minerals from tailings, fly ash, red mud and end-of-life products by 2031 with ₹1,500 crore; India produced about 3.8 million tonnes of e-waste in 2024, according to Redseer. The article calls a national stockpile useful for short-term shocks but not a strategy, and says the main challenge now is implementation.",
+   "blocks": [
+    {
+     "h": "Critical minerals",
+     "items": [
+      {
+       "rows": [
+        [
+         "Critical minerals",
+         "Minerals essential for batteries, electronics, clean energy and defence, with a high risk to supply: lithium, cobalt, nickel, graphite, rare earth elements and others."
+        ],
+        [
+         "NCMM",
+         "The National Critical Mineral Mission, approved in January 2025, covers exploration, mining, processing, recycling and overseas assets. The Cabinet approved a further ₹2,814 crore scheme on 4 November 2026 to support processing of lithium and nickel."
+        ],
+        [
+         "Mining law",
+         "The Mines and Minerals (Development and Regulation) Amendment Act, 2023 let the Centre auction critical mineral blocks and added minerals to the list."
+        ],
+        [
+         "KABIL",
+         "Khanij Bidesh India Ltd (2019), a joint venture of public companies, acquires mineral assets abroad, for example lithium in Argentina."
+        ],
+        [
+         "Beneficiation",
+         "Treating raw ore to remove impurities and raise its grade before refining."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Resource versus supply:** owning a block is not the same as having refined metal; processing capacity, technology and power decide the supply chain.",
+        "**Recycling:** battery and e-waste recycling can supply metals faster than new mines; collection and traceability from a fragmented scrap sector are the hard parts.",
+        "**Export restrictions:** curbs by China on minerals and equipment show how fast supply can change."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "National Critical Mineral Mission",
+     "d": "2025 mission with ₹34,300 crore over seven years to secure critical mineral supply."
+    },
+    {
+     "k": "KABIL",
+     "d": "Khanij Bidesh India Ltd, which acquires critical mineral assets abroad."
+    },
+    {
+     "k": "Beneficiation",
+     "d": "Removing impurities from raw ore before refining."
+    },
+    {
+     "k": "MMDR Amendment Act, 2023",
+     "d": "Allowed the Centre to auction critical mineral blocks."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the significance of critical minerals for India’s manufacturing and energy transition. What steps has India taken to secure their supply?",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Why is processing capacity as important as mining in securing mineral supply chains? Discuss the role of recycling.",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-20-9",
+   "n": 9,
+   "sec": "Economy",
+   "t": "Layoffs, severance and social security: what protects workers",
+   "gs": [
+    "GS3 Economy",
+    "GS2 Social Justice"
+   ],
+   "news": "As India marks the first anniversary of its four Labour Codes on 21 November, an interview with economist K. R. Shyam Sundar and Rahul Charkha asks what protects workers who lose their jobs. They note that the mandatory rules on retrenchment pay cover only three industries (coal mining, plantations and manufacturing), leaving out service, IT and informal workers; that severance pay is taxed as salary or income from other sources; that the Industrial Relations Code replaced labour courts with Industrial Tribunals; and that India has no unemployment insurance. They point to Germany’s earnings-linked unemployment insurance and the U.S. payroll-tax funded system, and suggest premium schemes for gig workers matched by platforms and customers, with the e-Shram database and the Employees’ State Insurance scheme as the base.",
+   "blocks": [
+    {
+     "h": "Law on job loss and social security",
+     "items": [
+      {
+       "rows": [
+        [
+         "Four Labour Codes",
+         "The Codes on Wages, Industrial Relations, Social Security, and Occupational Safety, Health and Working Conditions replaced 29 laws; they came into force on 21 November 2025."
+        ],
+        [
+         "Retrenchment",
+         "Under the Industrial Disputes Act, 1947 a retrenched workman got notice and **15 days’ average pay for every completed year of service**; the Industrial Relations Code keeps the same compensation. Special rules on layoff, retrenchment and closure, including prior permission, apply to bigger establishments, and the Code raises the size limit to 300 workers."
+        ],
+        [
+         "Industrial Tribunals",
+         "The Industrial Relations Code replaced labour courts and tribunals with Industrial Tribunals and set time limits for cases."
+        ],
+        [
+         "Gig and platform workers",
+         "The Code on Social Security, 2020 defines them and asks aggregators to contribute 1–2% of turnover (up to 5% of what they pay workers) to a social security fund."
+        ],
+        [
+         "e-Shram",
+         "A national database of unorganised workers launched in August 2021."
+        ],
+        [
+         "ESI",
+         "Employees’ State Insurance provides medical, sickness and maternity benefits to covered workers; the Rajiv Gandhi Shramik Kalyan Yojana pays an unemployment allowance to insured persons."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Layoff versus retrenchment:** a layoff is a temporary stop in work; retrenchment is a permanent termination.",
+        "**AI and job security:** the interview links the debate to firms’ spending on AI infrastructure and worries about job losses.",
+        "**Unemployment insurance:** Germany pays a share of earlier earnings; the U.S. funds it by payroll tax with rates tied to an employer’s history of claims."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Labour Codes",
+     "d": "Four codes on wages, industrial relations, social security and occupational safety, in force since 21 November 2025."
+    },
+    {
+     "k": "Retrenchment compensation",
+     "d": "15 days’ average pay for every completed year of service."
+    },
+    {
+     "k": "e-Shram",
+     "d": "National database of unorganised workers, launched in August 2021."
+    },
+    {
+     "k": "Social Security Code, 2020",
+     "d": "Brings gig and platform workers under social security and sets aggregator contributions."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Most of the unemployment in India is structural in nature. Examine the statement.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": "2023 GS3 (structural unemployment)"
+    },
+    {
+     "q": "Examine the role of the gig economy in the empowerment of women. What protections do gig workers need?",
+     "m": "GS1 · 150 words · 10 marks",
+     "ref": "2021 GS1 (gig economy and women)"
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-20-10",
+   "n": 10,
+   "sec": "Social Issues",
+   "t": "Delhi launches the ‘Ehsaas 2026’ mental health policy for educational institutions",
+   "gs": [
+    "GS2 Health and Education",
+    "GS2 Social Justice"
+   ],
+   "news": "The Delhi government launched the ‘Ehsaas 2026’ Mental Health and Well-Being Policy for schools and higher educational institutions on Thursday. It provides one counsellor for every 500 students, helplines and mental health support, and aims to address academic stress, anxiety, depression and digital behaviour, including among students preparing for board and entrance examinations. District well-being centres will offer psychological assessments, therapy and psychiatric consultations. Education Minister Ashish Sood said work began after a student attempted self-harm a few days earlier, with inputs from the Art of Living, the Institute of Human Behaviour and Allied Sciences (IHBAS) and other experts; teachers, parents, principals and Educational and Vocational Guidance Counsellors will be trained to spot early changes in behaviour. The policy rests on four pillars: a whole-institution approach, preventive care through early identification and resilience-building, institutional accountability through staff training, and rights-based support that protects students’ dignity, privacy and autonomy.",
+   "blocks": [
+    {
+     "h": "The legal and policy frame",
+     "items": [
+      {
+       "rows": [
+        [
+         "Mental Healthcare Act, 2017",
+         "Gives every person the right to access mental healthcare, treats mental illness as a health matter and presumes that a person who attempts suicide is under severe stress (Section 115), so the attempt is not punished."
+        ],
+        [
+         "Tele-MANAS",
+         "A national 24×7 tele-mental-health helpline launched on 10 October 2022."
+        ],
+        [
+         "Manodarpan",
+         "A 2020 initiative of the education ministry to give psychosocial support to students, teachers and families."
+        ],
+        [
+         "Earlier programmes",
+         "The National Mental Health Programme (1982) and the District Mental Health Programme (1996). The National Mental Health Survey of 2015-16 found that about 10.6% of adults had a mental disorder."
+        ],
+        [
+         "National Suicide Prevention Strategy",
+         "Announced in 2022, it aims to cut suicide deaths by 10% by 2030."
+        ],
+        [
+         "Courts",
+         "The Supreme Court has read the right to health and a life of dignity into Article 21 and, in 2025, issued guidelines for educational institutions to deal with student suicides."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Whole-institution approach:** mental health is treated as part of teaching, discipline and school culture, not only as counselling for those in crisis.",
+        "**Counsellor ratio:** one per 500 students is a staffing norm; the harder task is to keep the posts filled with trained people.",
+        "**Rights-based support:** confidentiality and consent matter, especially for minors."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Mental Healthcare Act, 2017",
+     "d": "Law that recognises a right to mental healthcare and presumes severe stress in a suicide attempt (Section 115)."
+    },
+    {
+     "k": "Tele-MANAS",
+     "d": "National tele-mental-health helpline launched in October 2022."
+    },
+    {
+     "k": "Manodarpan",
+     "d": "Education ministry initiative for psychosocial support, launched in 2020."
+    },
+    {
+     "k": "IHBAS",
+     "d": "Institute of Human Behaviour and Allied Sciences, Delhi, a leading public mental health institute."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Explain why suicide among young people is increasing in Indian society.",
+     "m": "GS1 · 150 words · 10 marks",
+     "ref": "2023 GS1 (suicide among young women)"
+    },
+    {
+     "q": "Discuss the Mental Healthcare Act, 2017 and the steps needed to extend mental health support in schools and colleges.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-20-11",
+   "n": 11,
    "sec": "Environment",
    "t": "Cyclone Akvan makes landfall on the Andhra–Odisha coast",
    "gs": [
@@ -154,6 +854,313 @@
      "q": "Discuss the meaning of colour-coded weather warnings for cyclone-prone areas given by the IMD. How has India’s cyclone management improved?",
      "m": "GS1 · 150 words · 10 marks",
      "ref": "2022 GS1 (colour-coded cyclone warnings)"
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-20-12",
+   "n": 12,
+   "sec": "Environment",
+   "t": "Wayanad set to be declared India’s first e-waste-free district",
+   "gs": [
+    "GS3 Environment",
+    "GS3 Waste Management"
+   ],
+   "news": "Wayanad will be declared India’s first e-waste-free district on 27 November, when Keralam Chief Minister V. D. Satheesan makes the announcement at Kalpetta, after a month-long collection campaign. The Suchitwa Mission and the Clean Kerala Company collected 97.26 tonnes of e-waste: 38.46 tonnes from the district’s 26 local self-government institutions and 58.8 tonnes from government offices and schools. The Clean Kerala Company collected directly from government institutions and the Haritha Karma Sena collected from households. Officials say some model villages have reached e-waste-free status, but no district has before.",
+   "blocks": [
+    {
+     "h": "E-waste rules",
+     "items": [
+      {
+       "rows": [
+        [
+         "E-Waste (Management) Rules, 2022",
+         "In force from 1 April 2023. They rest on **extended producer responsibility (EPR)**: producers must collect and recycle set quantities and obtain EPR certificates on an online portal."
+        ],
+        [
+         "Who does what",
+         "Producers, manufacturers, refurbishers and recyclers register with the Central Pollution Control Board; urban local bodies and households hand over e-waste to authorised collectors."
+        ],
+        [
+         "Why it matters",
+         "E-waste holds toxic substances such as lead, mercury and cadmium and valuable metals such as copper, gold and rare earths."
+        ],
+        [
+         "Global treaty",
+         "The Basel Convention (1989) controls the trans-boundary movement of hazardous waste."
+        ],
+        [
+         "Kerala bodies",
+         "The Suchitwa Mission is the State’s sanitation and waste agency; the Haritha Karma Sena is the Green Task Force of workers who collect non-biodegradable waste door to door."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Urban mining:** recycling recovers metals that would otherwise have to be mined and imported; the same point appears in the critical minerals discussion of the day.",
+        "**Formal versus informal sector:** much e-waste is handled by informal dismantlers, which harms workers’ health and loses valuable material."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "E-Waste (Management) Rules, 2022",
+     "d": "Rules based on extended producer responsibility with EPR certificates, in force since April 2023."
+    },
+    {
+     "k": "EPR",
+     "d": "Extended producer responsibility: producers are responsible for the collection and recycling of their products at end of life."
+    },
+    {
+     "k": "Basel Convention",
+     "d": "1989 treaty on the trans-boundary movement of hazardous wastes."
+    },
+    {
+     "k": "Haritha Karma Sena",
+     "d": "Kerala’s Green Task Force that collects non-biodegradable waste from households."
+    }
+   ],
+   "qs": [
+    {
+     "q": "What are the challenges to solid waste management in India? Discuss the steps taken to meet them.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": "2026 GS3 (solid waste management)"
+    },
+    {
+     "q": "Explain extended producer responsibility and its role in e-waste management in India.",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-20-13",
+   "n": 13,
+   "sec": "Environment",
+   "t": "Poisonous air: readers on pollution and who can protect themselves",
+   "gs": [
+    "GS3 Environment",
+    "GS2 Health"
+   ],
+   "news": "A reader’s letter says people have grown used to grey skies and the yearly advice to stay indoors, and argues that warnings must come with practical protection and visible action, because advice to ‘stay indoors’ means little to a street vendor, a construction worker or a child living beside a busy road, and clean air cannot depend on being able to buy a purifier.",
+   "blocks": [
+    {
+     "h": "Air quality in India",
+     "items": [
+      {
+       "rows": [
+        [
+         "AQI",
+         "The national Air Quality Index has six bands: Good (0–50), Satisfactory (51–100), Moderate (101–200), Poor (201–300), Very Poor (301–400) and Severe (401–500)."
+        ],
+        [
+         "Standards",
+         "India’s PM2.5 limit is 40 µg/m³ a year and 60 µg/m³ over 24 hours; the WHO’s 2021 guideline is far stricter at 5 and 15."
+        ],
+        [
+         "NCAP",
+         "The National Clean Air Programme (2019) targets a cut in PM concentrations in about 130 non-attainment cities."
+        ],
+        [
+         "CAQM",
+         "The Commission for Air Quality Management (2021) coordinates action in Delhi–NCR and nearby States; the **Graded Response Action Plan** adds curbs as the air worsens."
+        ],
+        [
+         "Law",
+         "The Air (Prevention and Control of Pollution) Act, 1981; Article 21 includes the right to a clean environment."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Unequal exposure:** outdoor workers and people living near roads cannot stay indoors or buy purifiers, so protection has to be public: cleaner transport, dust control, and shelters and health care.",
+        "**Sources:** vehicles, construction dust, crop-residue burning, industry, and winter weather that traps pollutants."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "PM2.5",
+     "d": "Particles smaller than 2.5 micrometres that reach deep into the lungs."
+    },
+    {
+     "k": "NCAP",
+     "d": "National Clean Air Programme, launched in 2019."
+    },
+    {
+     "k": "CAQM",
+     "d": "Commission for Air Quality Management in the National Capital Region and adjoining areas."
+    },
+    {
+     "k": "GRAP",
+     "d": "Graded Response Action Plan: stage-wise emergency curbs as air quality falls."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Mumbai, Delhi and Kolkata are mega cities with high air pollution. Discuss the causes and the measures taken to tackle it.",
+     "m": "GS1 · 250 words · 15 marks",
+     "ref": "2015 GS1 (air pollution in mega cities)"
+    },
+    {
+     "q": "Air pollution is a public health emergency that hits the poor hardest. Examine and suggest a policy response.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-20-14",
+   "n": 14,
+   "sec": "Environment",
+   "t": "Climate finance and India’s energy transition: a reader’s view",
+   "gs": [
+    "GS3 Environment",
+    "GS3 Energy"
+   ],
+   "news": "A reader’s letter, responding to The Hindu’s editorial ‘Climate promises need to become praxis’ (19 November), says that despite agreements at COP29 developing nations still lack adequate climate finance, while India faces rising electricity demand, limited energy storage, continued reliance on fossil fuels and the loss of livelihoods of coal workers. It urges governments to raise climate funding, expand renewable infrastructure, create alternative livelihoods and diversify the energy mix with hydropower, geothermal, biomass and tidal power, with genuine international cooperation and accountability.",
+   "blocks": [
+    {
+     "h": "Climate finance and transition",
+     "items": [
+      {
+       "rows": [
+        [
+         "COP29 (Baku, 2024)",
+         "Set the New Collective Quantified Goal: developed countries to lead mobilisation of at least $300 billion a year by 2035, within a wider aim of $1.3 trillion."
+        ],
+        [
+         "India’s targets",
+         "Net zero by 2070; a 2030 goal of 500 GW of non-fossil capacity, and the 50% non-fossil share of installed power capacity reached in 2025."
+        ],
+        [
+         "Just transition",
+         "Moving away from coal while protecting workers and regions that depend on it, through retraining and alternative jobs."
+        ],
+        [
+         "Storage",
+         "Solar and wind are variable, so batteries and pumped hydro are needed to supply power when the sun and wind fall."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Finance gap:** developing countries say the promised sums are lower than their needs and come mostly as loans.",
+        "**India’s choices:** coal still supplies most electricity, so the pace of renewables, storage and grid upgrades decides how fast emissions growth slows."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "NCQG",
+     "d": "New Collective Quantified Goal on climate finance agreed at COP29, $300 billion a year by 2035."
+    },
+    {
+     "k": "Just transition",
+     "d": "A shift from fossil fuels that protects workers and communities."
+    },
+    {
+     "k": "Net zero 2070",
+     "d": "India’s long-term target announced at COP26."
+    },
+    {
+     "k": "Energy storage",
+     "d": "Batteries and pumped storage that hold power for later use."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Examine the concept of climate finance and the issues in meeting the needs of developing countries.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "What is a ‘just transition’? Discuss its relevance for India’s coal-dependent regions.",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-20-15",
+   "n": 15,
+   "sec": "Art & Culture",
+   "t": "‘Enchantment’: a play on Pandit Ravi Shankar’s life",
+   "gs": [
+    "GS1 Art and Culture"
+   ],
+   "news": "Playwright and director Gowri Ramnarayan’s play ‘Enchantment’, on the personal side of sitar maestro Pandit Ravi Shankar, will be staged on 21 November. It draws on his autobiography, her own conversations with him and his partner Kamala Chakravarty, and interviews for The Hindu, and follows four phases of his life: his early years as a dancer in his brother’s troupe in Paris, his decision to study Hindustani classical music and seven years of training under Ustad Allauddin Khan in Maihar, his struggle to establish himself, and his rise as a global icon. Music includes his original recordings and pieces re-recorded by Bombay Jayashri, Aditya Prakash and Vignesh Ishwar. It is produced by JustUs Repertory and presented by Rasaja Foundation.",
+   "blocks": [
+    {
+     "h": "The musician and his music",
+     "items": [
+      {
+       "rows": [
+        [
+         "Pandit Ravi Shankar (1920–2012)",
+         "Sitar maestro who took Hindustani music to world audiences; Padma Vibhushan (1981) and Bharat Ratna (1999)."
+        ],
+        [
+         "Teacher and gharana",
+         "Ustad Allauddin Khan of Maihar, whose Maihar gharana trained several leading instrumentalists; Ravi Shankar’s elder brother Uday Shankar led the dance troupe in which he started."
+        ],
+        [
+         "World stage",
+         "Performed at the Monterey Pop Festival (1967) and Woodstock (1969), worked with George Harrison and the Beatles, and organised the Concert for Bangladesh (1971)."
+        ],
+        [
+         "Hindustani and Carnatic",
+         "Hindustani music of the north stresses raga improvisation; Carnatic music of the south stresses composition (kriti)."
+        ],
+        [
+         "Sitar",
+         "A plucked string instrument associated with Amir Khusro by tradition; developed in the Mughal era."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Gharana:** a school or lineage of music passed from guru to disciple, with its own style.",
+        "**Cultural diplomacy:** performances abroad by artists such as Ravi Shankar worked as India’s soft power."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Ravi Shankar",
+     "d": "Sitar maestro, Bharat Ratna 1999."
+    },
+    {
+     "k": "Maihar gharana",
+     "d": "Music school founded by Ustad Allauddin Khan in Maihar, Madhya Pradesh."
+    },
+    {
+     "k": "Concert for Bangladesh",
+     "d": "1971 benefit concert in New York organised by Ravi Shankar and George Harrison."
+    },
+    {
+     "k": "Gharana",
+     "d": "A lineage of musicians sharing a distinct style, passed on from teacher to student."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the role of gharanas in the evolution of Hindustani classical music.",
+     "m": "GS1 · 150 words · 10 marks",
+     "ref": ""
+    },
+    {
+     "q": "How has Indian classical music served as an instrument of cultural diplomacy?",
+     "m": "GS1 · 150 words · 10 marks",
+     "ref": ""
     }
    ]
   }

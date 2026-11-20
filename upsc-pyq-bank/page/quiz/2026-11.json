@@ -1186,6 +1186,411 @@
    "ans": 0,
    "why": "The SCO had eight members after India and Pakistan joined in 2017. Iran (2023) and Belarus (2024) made it ten.",
    "id": "caq-2026-11-079"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Mental health law",
+   "exam": "pre",
+   "q": "Under the Mental Healthcare Act, 2017, a person who attempts suicide is presumed to be",
+   "opts": [
+    "of unsound mind",
+    "under severe stress",
+    "a danger to others",
+    "in need of compulsory admission"
+   ],
+   "ans": 1,
+   "why": "Section 115 of the Act presumes that a person who attempts suicide is under severe stress, so the attempt is not punished.",
+   "id": "caq-2026-11-080"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Mental health",
+   "exam": "pre",
+   "q": "Tele-MANAS, launched in October 2022, is a national",
+   "opts": [
+    "round-the-clock tele-mental-health helpline",
+    "health insurance scheme for mental illness",
+    "network of residential schools for the disabled",
+    "portal for registering medical practitioners"
+   ],
+   "ans": 0,
+   "why": "Tele-MANAS gives free tele-mental-health counselling and care through a 24×7 helpline.",
+   "id": "caq-2026-11-081"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Mental health",
+   "exam": "pre",
+   "q": "With reference to mental health policy in India, consider the following statements:\n1. The National Mental Health Survey of 2015-16 found that about half of Indian adults had a mental disorder.\n2. The National Mental Health Programme was launched in 1982.\n3. The District Mental Health Programme began in 1996.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The 2015-16 survey found that about 10.6% of adults had a mental disorder, so statement 1 is wrong.",
+   "id": "caq-2026-11-082"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Criminal law",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. The Bharatiya Nagarik Suraksha Sanhita, 2023 replaced the Code of Criminal Procedure from 1 July 2024.\n2. The Bharatiya Nyaya Sanhita, 2023 replaced the Code of Criminal Procedure.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 only",
+    "2 only",
+    "Both 1 and 2",
+    "Neither 1 nor 2"
+   ],
+   "ans": 0,
+   "why": "The Bharatiya Nyaya Sanhita replaced the Indian Penal Code. The Code of Criminal Procedure was replaced by the Bharatiya Nagarik Suraksha Sanhita.",
+   "id": "caq-2026-11-083"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Child protection",
+   "exam": "pre",
+   "q": "The Protection of Children from Sexual Offences Act, 2012 protects every person below the age of",
+   "opts": [
+    "16 years",
+    "14 years",
+    "21 years",
+    "18 years"
+   ],
+   "ans": 3,
+   "why": "The POCSO Act defines a child as any person below 18 years of age.",
+   "id": "caq-2026-11-084"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Money laundering",
+   "exam": "pre",
+   "q": "Under the Prevention of Money Laundering Act, 2002, ‘proceeds of crime’ means property derived or obtained from",
+   "opts": [
+    "any civil dispute",
+    "a tax assessment order",
+    "a scheduled offence",
+    "a bank loan default"
+   ],
+   "ans": 2,
+   "why": "The Act defines proceeds of crime as property derived or obtained, directly or indirectly, from a scheduled offence.",
+   "id": "caq-2026-11-085"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Internal security",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. Hawala is an informal system of moving money through trusted agents outside the banking system.\n2. The National Investigation Agency was established under the Prevention of Money Laundering Act, 2002.\n3. The National Investigation Agency investigates scheduled offences such as terrorism.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "The National Investigation Agency was set up under the NIA Act, 2008, so statement 2 is wrong.",
+   "id": "caq-2026-11-086"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Parliament",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. A legislator convicted and sentenced to two years or more is disqualified under the Representation of the People Act, 1951.\n2. Article 105 protects the freedom of speech of members inside Parliament.\n3. The post of Leader of the Opposition has statutory recognition under a 1977 Act.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three statements are correct.",
+   "id": "caq-2026-11-087"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Waste management",
+   "exam": "pre",
+   "q": "With reference to e-waste in India, consider the following statements:\n1. The E-Waste (Management) Rules, 2022 are based on extended producer responsibility.\n2. The Rules came into force on 1 April 2023.\n3. The Basel Convention controls the trans-boundary movement of hazardous waste.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "All three are correct. The 2022 Rules use extended producer responsibility, took effect on 1 April 2023, and the Basel Convention of 1989 controls the movement of hazardous waste across borders.",
+   "id": "caq-2026-11-088"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Waste management",
+   "exam": "pre",
+   "q": "In Kerala, the Haritha Karma Sena is a",
+   "opts": [
+    "State agency that licenses chemical industries",
+    "body that manages the State’s wildlife sanctuaries",
+    "green task force that collects non-biodegradable waste from households",
+    "cooperative society of coconut farmers"
+   ],
+   "ans": 2,
+   "why": "The Haritha Karma Sena is a group of trained workers who collect non-biodegradable waste, including e-waste, door to door.",
+   "id": "caq-2026-11-089"
+  },
+  {
+   "subject": "Art & Culture",
+   "syllabus": "Music",
+   "exam": "pre",
+   "q": "Pandit Ravi Shankar, the sitar maestro, was honoured with the Bharat Ratna in",
+   "opts": [
+    "1981",
+    "1992",
+    "2008",
+    "1999"
+   ],
+   "ans": 3,
+   "why": "Ravi Shankar received the Padma Vibhushan in 1981 and the Bharat Ratna in 1999.",
+   "id": "caq-2026-11-090"
+  },
+  {
+   "subject": "Art & Culture",
+   "syllabus": "Music",
+   "exam": "pre",
+   "q": "Ustad Allauddin Khan, the teacher of Pandit Ravi Shankar, is associated with the",
+   "opts": [
+    "Maihar gharana",
+    "Kirana gharana",
+    "Gwalior gharana",
+    "Patiala gharana"
+   ],
+   "ans": 0,
+   "why": "Allauddin Khan founded the Maihar gharana at Maihar, Madhya Pradesh. The Kirana, Gwalior and Patiala gharanas are mainly vocal traditions.",
+   "id": "caq-2026-11-091"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Conflicts",
+   "exam": "pre",
+   "q": "Consider the following statements:\nStatement-I: Donbas comprises the Donetsk and Luhansk regions of eastern Ukraine.\nStatement-II: Ukraine annexed Crimea in 2014.\nWhich one of the following is correct in respect of the above statements?",
+   "opts": [
+    "Both Statement-I and Statement-II are correct and Statement-II explains Statement-I",
+    "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I",
+    "Statement-I is correct, but Statement-II is incorrect",
+    "Statement-I is incorrect, but Statement-II is correct"
+   ],
+   "ans": 2,
+   "why": "Russia, not Ukraine, annexed Crimea in 2014, so Statement-II is incorrect. Donbas is the Donetsk and Luhansk regions.",
+   "id": "caq-2026-11-092"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Conflicts",
+   "exam": "pre",
+   "q": "Under the Budapest Memorandum of 1994, Ukraine agreed to give up",
+   "opts": [
+    "its claim over the Crimean peninsula",
+    "the nuclear weapons it had inherited from the Soviet Union",
+    "its membership of the United Nations",
+    "the gas pipelines on its territory"
+   ],
+   "ans": 1,
+   "why": "Ukraine gave up the Soviet-era nuclear weapons on its soil in return for assurances about its security.",
+   "id": "caq-2026-11-093"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Global politics",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. The New START treaty limits the strategic nuclear weapons of the United States and Russia.\n2. China is a party to the New START treaty.\n3. The Quad consists of India, the United States, Japan and Australia.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "China is not a party to New START, so statement 2 is wrong.",
+   "id": "caq-2026-11-094"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Nationalism",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. The Supreme Court in S. R. Bommai (1994) held secularism to be part of the basic structure of the Constitution.\n2. The Preamble to the Constitution promises fraternity.\n3. Article 51A, which lists the fundamental duties, is in Part IV of the Constitution.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Article 51A is in Part IV-A, not Part IV, so statement 3 is wrong.",
+   "id": "caq-2026-11-095"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Parliament",
+   "exam": "pre",
+   "q": "The Salary and Allowances of Leaders of Opposition in Parliament Act was passed in",
+   "opts": [
+    "1952",
+    "1985",
+    "1977",
+    "1999"
+   ],
+   "ans": 2,
+   "why": "The Act of 1977 gave statutory recognition to the Leaders of Opposition in both Houses.",
+   "id": "caq-2026-11-096"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Parliament",
+   "exam": "pre",
+   "q": "By the Speaker’s convention, a party must hold at least what share of the seats in the Lok Sabha for its leader to be recognised as the Leader of the Opposition?",
+   "opts": [
+    "10%",
+    "5%",
+    "15%",
+    "25%"
+   ],
+   "ans": 0,
+   "why": "The convention follows the rule laid down by the first Speaker, G. V. Mavalankar: at least one-tenth of the strength of the House, which is 55 seats in the Lok Sabha.",
+   "id": "caq-2026-11-097"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Air pollution",
+   "exam": "pre",
+   "q": "With reference to air pollution in India, consider the following statements:\n1. The national Air Quality Index has six categories.\n2. The National Clean Air Programme was launched in 2014.\n3. The Commission for Air Quality Management was set up in 2021 for Delhi–NCR and adjoining areas.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "The National Clean Air Programme was launched in 2019, so statement 2 is wrong.",
+   "id": "caq-2026-11-098"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Air pollution",
+   "exam": "pre",
+   "q": "On the national Air Quality Index, an AQI value of 301 to 400 falls in the category",
+   "opts": [
+    "Poor",
+    "Very Poor",
+    "Severe",
+    "Moderate"
+   ],
+   "ans": 1,
+   "why": "The bands are Good (0–50), Satisfactory (51–100), Moderate (101–200), Poor (201–300), Very Poor (301–400) and Severe (401–500).",
+   "id": "caq-2026-11-099"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Climate change",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. COP29 set a goal for developed countries to lead mobilisation of at least $300 billion a year by 2035 for climate finance.\n2. India has announced a target of net zero emissions by 2070.\n3. COP29 was held in Dubai.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "COP29 was held in Baku, Azerbaijan, in 2024, so statement 3 is wrong.",
+   "id": "caq-2026-11-100"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Minerals",
+   "exam": "pre",
+   "q": "The National Critical Mineral Mission was approved by the Union Cabinet in",
+   "opts": [
+    "2019",
+    "2021",
+    "2023",
+    "2025"
+   ],
+   "ans": 3,
+   "why": "The Mission was approved in January 2025 to secure the supply of critical minerals.",
+   "id": "caq-2026-11-101"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Minerals",
+   "exam": "pre",
+   "q": "With reference to critical minerals in India, consider the following statements:\n1. Khanij Bidesh India Ltd is a wholly private company.\n2. The Mines and Minerals (Development and Regulation) Amendment Act, 2023 let the Centre auction critical mineral blocks.\n3. Beneficiation is the treatment of raw ore to remove impurities.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "Khanij Bidesh India Ltd is a joint venture of public sector companies, so statement 1 is wrong.",
+   "id": "caq-2026-11-102"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Labour",
+   "exam": "pre",
+   "q": "With reference to the Labour Codes in India, consider the following statements:\n1. The four Labour Codes replaced 29 earlier laws.\n2. The Labour Codes came into force on 1 April 2025.\n3. The Code on Social Security, 2020 defines gig workers and platform workers.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "The Labour Codes came into force on 21 November 2025, so statement 2 is wrong.",
+   "id": "caq-2026-11-103"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Labour",
+   "exam": "pre",
+   "q": "Consider the following:\n1. The Code on Wages, 2019\n2. The Industrial Relations Code, 2020\n3. The Code on Social Security, 2020\n4. The Factories Act, 1948\nHow many of the above are among the four Labour Codes?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 2,
+   "why": "The Code on Wages, the Industrial Relations Code and the Code on Social Security are three of the four Labour Codes. The fourth is the Occupational Safety, Health and Working Conditions Code; the Factories Act, 1948 is one of the older laws it replaced.",
+   "id": "caq-2026-11-104"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Labour",
+   "exam": "pre",
+   "q": "e-Shram, the national database of unorganised workers, was launched in",
+   "opts": [
+    "2016",
+    "2019",
+    "2023",
+    "2021"
+   ],
+   "ans": 3,
+   "why": "The e-Shram portal was launched in August 2021.",
+   "id": "caq-2026-11-105"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Labour",
+   "exam": "pre",
+   "q": "Under the Industrial Disputes Act, 1947, a retrenched workman is entitled to compensation equal to",
+   "opts": [
+    "30 days’ average pay for every completed year of service",
+    "15 days’ average pay for every completed year of service",
+    "7 days’ average pay for every completed year of service",
+    "60 days’ average pay for every completed year of service"
+   ],
+   "ans": 1,
+   "why": "Retrenchment compensation is 15 days’ average pay for every completed year of service; the Industrial Relations Code keeps the same rate.",
+   "id": "caq-2026-11-106"
   }
  ]
 }
