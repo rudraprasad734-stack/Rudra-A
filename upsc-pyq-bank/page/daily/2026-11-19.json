@@ -686,6 +686,85 @@
   {
    "id": "dn-2026-11-19-10",
    "n": 10,
+   "sec": "Economy",
+   "t": "How AI could reshape global growth and productivity",
+   "gs": [
+    "GS3 Economy",
+    "GS3 Science and Technology"
+   ],
+   "news": "In the first of a two-part series in The Hindu, economists Rohit Azad and Indranil Chowdhury of the DevMac network ask whether artificial intelligence will prove as epoch-making as the steam engine or the internal combustion engine. A key expected effect is a big rise in labour productivity, the ratio of output to workers employed, which can rise if output grows for a given number of workers, if jobs are lost, or if jobs grow but output grows faster. They set out two schools. In the neoclassical, supply-side view (Robert Solow), output growth is the sum of labour-force growth and productivity growth, so a 2% workforce growth and 4% productivity growth settle at 6% growth, and productivity itself depends on human capital, research and development and patents (endogenous growth). In the heterodox, demand-side view, output that is not demanded is not produced, so unless productivity growth lifts demand, rising productivity affects jobs: if demand grows 3% and productivity 4%, jobs fall by 1%, and labour growth becomes the adjusting variable; labour supply has historically adjusted through migration, from the Atlantic slave trade to Bihar and Uttar Pradesh workers moving to Punjab. Chart 1 shows real output per worker in the U.S. sectors that adopt AI (information, finance and insurance, and professional and business services) at 148.17 in the second quarter of 2026 against 100 in 2012, well above the 120.61 that the 2012–19 trend implies. The authors say it is too early to be conclusive and that how widely the effect spreads is the open question; the second part will look at global macroeconomic effects.",
+   "blocks": [
+    {
+     "h": "The two views of growth",
+     "items": [
+      {
+       "rows": [
+        [
+         "Labour productivity",
+         "Output divided by the number of workers employed."
+        ],
+        [
+         "Solow growth model",
+         "Robert Solow (Nobel Prize in Economics, 1987) showed that output growth depends on growth of labour and capital and of productivity, which he treated as outside the model."
+        ],
+        [
+         "Endogenous growth",
+         "Later theories (Paul Romer, Robert Lucas) explain productivity growth by investment in human capital, research and development and patent systems."
+        ],
+        [
+         "Heterodox demand-side view",
+         "Output is limited by demand, so the effect of higher productivity on jobs depends on whether demand grows faster or slower than productivity."
+        ],
+        [
+         "Migration",
+         "Workers moving from low-wage to high-wage regions or countries adjust the supply of labour to the demand for it."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Jobs and productivity:** if output demanded rises faster than productivity, more jobs are created; if slower, jobs fall.",
+        "**India’s response:** the IndiaAI Mission, approved in 2024 with an outlay of about ₹10,372 crore, funds computing power, datasets and skills.",
+        "**Open question:** the data cover U.S. sectors only, so the spread to the whole economy is yet to be seen."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Labour productivity",
+     "d": "Output per worker employed."
+    },
+    {
+     "k": "Solow model",
+     "d": "Neoclassical growth model by Robert Solow, Nobel laureate of 1987."
+    },
+    {
+     "k": "Endogenous growth theory",
+     "d": "Growth theory that explains productivity through human capital, research and innovation."
+    },
+    {
+     "k": "IndiaAI Mission",
+     "d": "2024 Union Government mission, with an outlay of about ₹10,372 crore, to build India’s AI capacity."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the likely impact of artificial intelligence on productivity, employment and growth. How should India prepare?",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Distinguish the supply-side and demand-side views of economic growth. How does each see the effect of rising productivity on jobs?",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-19-11",
+   "n": 11,
    "sec": "Social Issues",
    "t": "The need to expand Jan Aushadhi",
    "gs": [
@@ -762,8 +841,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-19-11",
-   "n": 11,
+   "id": "dn-2026-11-19-12",
+   "n": 12,
    "sec": "Security",
    "t": "‘Last local recruit’ of the Lashkar-e-Taiba killed in Kulgam",
    "gs": [
@@ -835,8 +914,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-19-12",
-   "n": 12,
+   "id": "dn-2026-11-19-13",
+   "n": 13,
    "sec": "Environment",
    "t": "Delhi’s November air best in ten years: the numbers and the measures",
    "gs": [
@@ -913,8 +992,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-19-13",
-   "n": 13,
+   "id": "dn-2026-11-19-14",
+   "n": 14,
    "sec": "Environment",
    "t": "Cyclone Akvan shifts course: uncertainty over landfall and intensity",
    "gs": [
@@ -991,8 +1070,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-19-14",
-   "n": 14,
+   "id": "dn-2026-11-19-15",
+   "n": 15,
    "sec": "Environment",
    "t": "COVID-19 lessons for India’s response to air pollution",
    "gs": [
@@ -1069,8 +1148,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-19-15",
-   "n": 15,
+   "id": "dn-2026-11-19-16",
+   "n": 16,
    "sec": "Environment",
    "t": "Climate promises need to become praxis: finance, grids and a fair transition",
    "gs": [
@@ -1147,8 +1226,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-19-16",
-   "n": 16,
+   "id": "dn-2026-11-19-17",
+   "n": 17,
    "sec": "Environment",
    "t": "A regulatory fix for educational campuses and environmental clearance",
    "gs": [

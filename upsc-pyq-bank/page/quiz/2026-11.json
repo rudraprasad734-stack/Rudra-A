@@ -2296,6 +2296,51 @@
    "ans": 1,
    "why": "The Delhi Sikh Gurdwara Act, 1971 governs the committee. The Sikh Gurdwaras Act, 1925 applies to Punjab and governs the SGPC.",
    "id": "caq-2026-11-153"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Productivity",
+   "exam": "pre",
+   "q": "In economics, labour productivity is estimated as the ratio of",
+   "opts": [
+    "wages to the value of output",
+    "output to the number of workers employed",
+    "capital to the number of workers",
+    "the number of workers to total population"
+   ],
+   "ans": 1,
+   "why": "Labour productivity is output divided by the number of workers employed, so it rises when output grows faster than employment.",
+   "id": "caq-2026-11-154"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Growth theory",
+   "exam": "pre",
+   "q": "With reference to theories of economic growth, consider the following statements:\n1. In the neoclassical framework, output growth is the sum of the growth of the labour force and the growth of productivity.\n2. Robert Solow’s growth theory explained why and where labour productivity rises.\n3. In a demand-side view, if demand grows at 3% and productivity at 4%, jobs will fall by about 1%.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "Solow’s model did not explain the source of productivity growth; later endogenous growth theories attributed it to human capital, research and development and patents, so statement 2 is wrong.",
+   "id": "caq-2026-11-155"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Artificial intelligence",
+   "exam": "pre",
+   "q": "The IndiaAI Mission, to build the country’s capacity in artificial intelligence, was approved by the Union Cabinet in",
+   "opts": [
+    "2019",
+    "2021",
+    "2024",
+    "2023"
+   ],
+   "ans": 2,
+   "why": "The Cabinet approved the IndiaAI Mission in March 2024 with an outlay of about ₹10,372 crore.",
+   "id": "caq-2026-11-156"
   }
  ]
 }
