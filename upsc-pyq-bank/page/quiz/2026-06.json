@@ -2677,7 +2677,7 @@
    "subject": "Sci & Tech",
    "syllabus": "Energy",
    "exam": "pre",
-   "q": "With reference to Battery Energy Storage Systems (BESS), consider the following statements:\n1. BESS converts electrical energy into chemical energy during charging and reverses it during discharging.\n2. Flow batteries store energy in liquid electrolytes kept in external tanks.\n3. Sodium-based batteries described in the magazine operate at high temperatures above 300 degrees Celsius.\nWhich of the statements given above is/are correct?",
+   "q": "With reference to Battery Energy Storage Systems (BESS), consider the following statements:\n1. BESS converts electrical energy into chemical energy during charging and reverses it during discharging.\n2. Flow batteries store energy in liquid electrolytes kept in external tanks.\n3. Sodium-based batteries operate at high temperatures above 300 degrees Celsius.\nWhich of the statements given above is/are correct?",
    "opts": [
     "1 and 2 only",
     "2 and 3 only",
@@ -3275,7 +3275,7 @@
     "Hale-Bopp"
    ],
    "ans": 0,
-   "why": "JWST observes in the infrared; the detection was reported in this magazine.",
+   "why": "JWST observes in the infrared.",
    "insight": "",
    "cx": [
     "cx-2026-06-040",

@@ -1,8 +1,6 @@
 {
  "day": "2026-11-16",
  "title": "16 Nov 2026",
- "src": "News reports and official releases, 16 Nov 2026",
- "note": "Notes for 16 November 2026, built from news reports and official releases. Where only the headline was available (The Hindu’s environmental-law editorial), the note gives the background to the story, and the facts behind each news item come from standard textbooks and official sources.",
  "topics": [
   {
    "id": "dn-2026-11-16-1",
@@ -91,7 +89,7 @@
     "GS3 Environment",
     "GS2 Polity"
    ],
-   "news": "The Hindu’s editorial of 16 November, ‘India’s green law needs baselines, not snapshots’, argues for measuring ecological harm against a baseline. This note gives the legal background: in Rhythm County v. Satish Sanjay Hegde (30 January 2026) the Supreme Court held that the Tribunal can fix environmental compensation even without a rigid statutory formula, using project cost or turnover as a yardstick. A separate ruling kept in place the Tribunal’s November 2025 finding that a landlord is not liable for a tenant’s violations.",
+   "news": "A policy argument holds that India’s green law needs baselines, not snapshots, and calls for measuring ecological harm against a baseline. This note gives the legal background: in Rhythm County v. Satish Sanjay Hegde (30 January 2026) the Supreme Court held that the Tribunal can fix environmental compensation even without a rigid statutory formula, using project cost or turnover as a yardstick. A separate ruling kept in place the Tribunal’s November 2025 finding that a landlord is not liable for a tenant’s violations.",
    "blocks": [
     {
      "h": "The Tribunal and compensation",
