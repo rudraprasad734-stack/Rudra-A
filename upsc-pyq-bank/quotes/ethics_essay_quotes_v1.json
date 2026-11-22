@@ -1,5 +1,4 @@
 {
- "note": "Phase 1 starter set. Every quote below was checked against a primary or clearly documented secondary source before inclusion — nothing here was generated because it 'sounded right'. Coverage is intentionally partial: only concepts/themes with quotes I could verify are included. More will be added in later passes rather than padded out now. Newer short quotes were added from memory and have NOT been re-checked online. Those with no tag name a dated book, speech or journal; those tagged 'Widely cited' are commonly attributed without a firm primary source. Check any quote before using it in an exam answer. Quotes tagged 'Wikiquote' were copied from the quote lists on Wikiquote with the citation shown there; Wikiquote is community-edited and the citation is secondary, so confirm the original before relying on a quote in an exam answer. Quotes whose source says 'Project Gutenberg' are sentences taken from the public-domain text of that work; those marked 'excerpt' are one sentence from a longer cited passage. Quotes were picked by an automated filter plus a model reading pass, not by a human editor.",
  "ethics": [
   {
    "concept": "Constitutional Morality",
@@ -15,6 +14,29 @@
       "body"
      ],
      "rel": ["constitutional-morality", "governance", "education"]
+    },
+    {
+     "quote": "A paramount reverence for the forms of the constitution, enforcing obedience to authority and acting under and within these forms, yet combined with the habit of open speech, of action subject only to definite legal control, and unrestrained censure of those very authorities as to all their public acts.",
+     "author": "B. R. Ambedkar",
+     "source": "Speech to the Constituent Assembly, 4 November 1948 (quoting George Grote's definition, which Ambedkar endorsed)",
+     "meaning": "Defines constitutional morality as obeying constitutional forms while still retaining the right to freely criticise those in authority.",
+     "usage": "Good for a body paragraph on dissent, free speech and constitutionalism coexisting.",
+     "position": [
+      "body"
+     ],
+     "rel": ["constitutional-morality", "governance", "media-privacy", "accountability-transparency"]
+    },
+    {
+     "quote": "The survival of our democracy and the unity and integrity of the nation depend upon the realisation that constitutional morality is no less essential than constitutional legality. Dharma (righteousness; sense of public duty or virtue) lives in the hearts of public men; when it dies there, no Constitution, no law, no amendment, can save it.",
+     "author": "Nani Palkhivala",
+     "source": "Arguments in the Privy Purse case, Madhav Rao Scindia v. Union of India (1971)",
+     "meaning": "Legal compliance alone cannot sustain a constitution — it depends on public servants genuinely internalising its values.",
+     "usage": "Powerful complement to Ambedkar's constitutional morality quote, emphasising that law without internalised ethics is fragile.",
+     "position": [
+      "body",
+      "conclusion"
+     ],
+     "rel": ["constitutional-morality", "governance", "public-service-integrity", "nationalism-culture", "responsibility-duty"]
     },
     {
      "quote": "Constitutional morality is not a natural sentiment. It has to be cultivated. We must realise that our people have yet to learn it.",
@@ -52,6 +74,29 @@
      "rel": ["constitutional-morality", "governance", "nationalism-culture"]
     },
     {
+     "quote": "The survival of our democracy and the unity and integrity of the nation depend upon the realisation that constitutional morality is no less essential than constitutional legality. Dharma lives in the hearts of public men; when it dies there, no Constitution, no law, no amendment, can save it.",
+     "author": "Nani Palkhivala",
+     "source": "We, The People: India, The Largest Democracy",
+     "meaning": "Constitutions survive only when public figures internalize constitutional morality as a lived value, not merely follow legal formalities.",
+     "usage": "Use for GS2/GS4 answers on why constitutional morality (dharma in public life) matters beyond mere legal compliance.",
+     "position": [
+      "body",
+      "conclusion"
+     ],
+     "rel": ["constitutional-morality", "governance", "public-service-integrity", "nationalism-culture", "responsibility-duty"]
+    },
+    {
+     "quote": "The first thing in my judgement we must do is to hold fast to constitutional methods of achieving our social and economic objectives... These methods are nothing but the Grammar of Anarchy and the sooner they are abandoned, the better for us.",
+     "author": "B. R. Ambedkar",
+     "source": "'The Grammar of Anarchy' speech, Constituent Assembly of India, 25 November 1949",
+     "meaning": "Ambedkar warns against abandoning constitutional methods for revolution, civil disobedience, or satyagraha once constitutional democracy is established, calling such methods the 'grammar of anarchy.'",
+     "usage": "Widely cited for GS2/GS4 answers on constitutional methods, dissent within democracy, and the limits of extra-constitutional protest post-Independence.",
+     "position": [
+      "body"
+     ],
+     "rel": ["constitutional-morality", "governance", "responsibility-duty"]
+    },
+    {
      "quote": "Any rule based on discrimination or segregation of women pertaining to biological characteristics is not only unfounded, indefensible and implausible but can also never pass the muster of constitutional morality.",
      "author": "Chief Justice Dipak Misra",
      "source": "Indian Young Lawyers Association v. State of Kerala (the Sabarimala judgment), 28 September 2018",
@@ -61,6 +106,17 @@
       "body"
      ],
      "rel": ["constitutional-morality", "gender", "justice", "governance"]
+    },
+    {
+     "quote": "A democracy in which the government, whomever that government may be, will be bound by a higher set of rules, embodied in a constitution, and will not be able to govern the country as it pleases.",
+     "author": "Nelson Mandela",
+     "source": "Inaugural Address as President of South Africa, Pretoria, 10 May 1994",
+     "meaning": "True constitutional democracy binds even the government itself to higher rules, preventing arbitrary rule regardless of who holds power.",
+     "usage": "Use for GS2/GS4 answers on constitutionalism as a check on government power itself, not just on citizens.",
+     "position": [
+      "body"
+     ],
+     "rel": ["constitutional-morality", "governance", "accountability-transparency"]
     },
     {
      "quote": "If I find the constitution being misused, I shall be the first to burn it.",
@@ -3081,6 +3137,18 @@
      "rel": ["compassion-trusteeship", "empathy", "philosophy"]
     },
     {
+     "quote": "Ubuntu is very difficult to render into a Western language. It speaks of the very essence of being human... you are generous, you are hospitable, you are friendly and caring and compassionate. You share what you have. It is to say, 'My humanity is caught up, is inextricably bound up, in yours.'",
+     "author": "Desmond Tutu",
+     "source": "No Future Without Forgiveness (1999)",
+     "meaning": "Compassion flows from recognising that one's own humanity is bound up with others' — not an isolated act of charity.",
+     "usage": "Strong for GS4/essay answers on compassion, community, or interdependence as the basis of ethics.",
+     "position": [
+      "body",
+      "conclusion"
+     ],
+     "rel": ["compassion-trusteeship", "empathy", "philosophy", "nationalism-culture"]
+    },
+    {
      "quote": "The fruit of love is service, which is compassion in action.",
      "author": "Mother Teresa",
      "source": "Nobel Peace Prize Lecture, 11 December 1979",
@@ -3127,6 +3195,18 @@
      "rel": ["compassion-trusteeship", "responsibility-duty", "probity"]
     },
     {
+     "quote": "Ubuntu... speaks of the very essence of being human... Then you are generous, you are hospitable, you are friendly and caring and compassionate... My humanity is caught up, is inextricably bound up, in yours.",
+     "author": "Desmond Tutu",
+     "source": "No Future Without Forgiveness (Doubleday, 1999), p. 31",
+     "meaning": "The African philosophy of Ubuntu holds that one's own humanity is inseparable from compassion and care for others.",
+     "usage": "Use for GS4 answers on compassion grounded in interconnectedness, or introducing the concept of Ubuntu as an ethical framework.",
+     "position": [
+      "intro",
+      "body"
+     ],
+     "rel": ["compassion-trusteeship", "empathy", "philosophy", "nationalism-culture"]
+    },
+    {
      "quote": "Heavy bail from a poor man is obviously wrong. Poverty is society's malady and sympathy, not sternness, is the judicial response.",
      "author": "Justice V. R. Krishna Iyer",
      "source": "Gudikanti Narasimhulu & Ors. v. Public Prosecutor, High Court of Andhra Pradesh, 1978 AIR 429",
@@ -3136,6 +3216,18 @@
       "body"
      ],
      "rel": ["compassion-trusteeship", "justice", "governance", "economy-inclusive-growth", "empathy"]
+    },
+    {
+     "quote": "I can do no other than be reverent before everything that is called life. I can do no other than to have compassion for all that is called life. That is the beginning and the foundation of all ethics.",
+     "author": "Albert Schweitzer",
+     "source": "The Teaching of Reverence for Life (1966)",
+     "meaning": "Reverence for all life is the necessary foundation from which compassion, and ethics itself, must begin.",
+     "usage": "Use for GS4 answers grounding compassion in a broader ethical principle of reverence for life.",
+     "position": [
+      "intro",
+      "body"
+     ],
+     "rel": ["compassion-trusteeship", "environment", "philosophy"]
     },
     {
      "quote": "Recall the face of the poorest and the weakest man you have seen.",
@@ -6340,6 +6432,18 @@
       "body"
      ],
      "rel": ["courage", "philosophy", "emotional-intelligence"]
+    },
+    {
+     "quote": "I learned that courage was not the absence of fear, but the triumph over it. The brave man is not he who does not feel afraid, but he who conquers that fear.",
+     "author": "Nelson Mandela",
+     "source": "Long Walk to Freedom (1995), Part 11, 'Freedom'",
+     "meaning": "True courage is not fearlessness but the ability to act rightly despite fear.",
+     "usage": "Use for GS4 answers on moral/civil courage as triumph over fear rather than its absence; from Mandela's own autobiography.",
+     "position": [
+      "intro",
+      "conclusion"
+     ],
+     "rel": ["courage", "emotional-intelligence", "philosophy"]
     },
     {
      "quote": "People always say that I didn't give up my seat because I was tired, but that isn't true... the only tired I was, was tired of giving in.",
@@ -10047,6 +10151,17 @@
      "rel": ["accountability-transparency", "media-privacy", "governance"]
     },
     {
+     "quote": "Work implies not only that somebody is supposed to do the job, but also accountability, a deadline and, finally, the measurement of results — that is, feedback from results on the work and on the planning process itself.",
+     "author": "Peter Drucker",
+     "source": "Management: Tasks, Responsibilities, Practices (Harper & Row, 1973)",
+     "meaning": "Real accountability requires clear ownership, deadlines, and measurable feedback loops — not just assigning a task.",
+     "usage": "Use for GS4 answers on institutional accountability mechanisms and performance measurement in public administration.",
+     "position": [
+      "body"
+     ],
+     "rel": ["accountability-transparency", "responsibility-duty", "governance", "public-service-integrity"]
+    },
+    {
      "quote": "In framing a government which is to be administered by men over men, the great difficulty lies in this: you must first enable the government to control the governed; and in the next place oblige it to control itself.",
      "author": "James Madison",
      "source": "Federalist No. 51 (1788)",
@@ -10057,6 +10172,17 @@
       "body"
      ],
      "rel": ["accountability-transparency", "governance", "constitutional-morality"]
+    },
+    {
+     "quote": "I agree that during the dark days of Emergency the attitude of the Supreme Court was far from satisfactory. The Supreme Court should be ashamed about the ADM Jabalpur judgment. I plead guilty. I don't know why I yielded... It was an act of weakness on my part. I confess.",
+     "author": "Justice P. N. Bhagwati",
+     "source": "On-camera interview, 2 August 2011, on his role in ADM Jabalpur v. Shiv Kant Shukla (1976)",
+     "meaning": "A rare example of a former Chief Justice publicly holding himself accountable decades later for a judgment he regarded as a failure of judicial courage during the Emergency.",
+     "usage": "Powerful real-world example for GS4 answers on personal accountability, admitting institutional failure, and moral courage in self-criticism.",
+     "position": [
+      "body"
+     ],
+     "rel": ["accountability-transparency", "constitutional-morality", "justice", "probity"]
     },
     {
      "quote": "Rules usually have enforcement mechanisms attached to them. And this one, this set of rules does not.",
@@ -11147,6 +11273,17 @@
      "rel": ["objectivity", "philosophy", "education"]
     },
     {
+     "quote": "There is no objective stance but only a series of perspectives — no neutrality, no escape from choice in judging... The aspiration to impartiality is just that — it's an aspiration because it denies the fact that we are, by our experiences, making different choices than others.",
+     "author": "Sonia Sotomayor",
+     "source": "Speech at UC Berkeley School of Law, 2001 (the 'A Latina Judge's Voice' lecture)",
+     "meaning": "A candid, complicating view: complete objectivity may be an aspiration rather than a fully achievable state, given that everyone's judgement is shaped by their experience.",
+     "usage": "Use for a nuanced GS4 answer that acknowledges the limits of claimed objectivity, rather than treating it as simply attainable by will alone.",
+     "position": [
+      "body"
+     ],
+     "rel": ["objectivity", "justice", "constitutional-morality", "philosophy"]
+    },
+    {
      "quote": "The first principle is that you must not fool yourself — and you are the easiest person to fool.",
      "author": "Richard Feynman",
      "source": "'Cargo Cult Science', Caltech commencement address, 1974",
@@ -11204,6 +11341,17 @@
       "body"
      ],
      "rel": ["objectivity", "philosophy", "technology"]
+    },
+    {
+     "quote": "When you approach a problem, strip yourself of preconceived opinions and prejudice, assemble and learn the facts of the situation, make the decision which seems to you to be the most honest, and then stick to it.",
+     "author": "Chester Bowles",
+     "source": "Ambassador's Report (Harper & Brothers, 1954)",
+     "meaning": "Objective decision-making requires deliberately setting aside prior bias, gathering facts, and committing to an honestly reasoned conclusion.",
+     "usage": "Use for GS4 answers as a practical, step-by-step model of how to approach a decision objectively.",
+     "position": [
+      "body"
+     ],
+     "rel": ["objectivity", "public-service-integrity", "governance", "probity"]
     },
     {
      "quote": "But although [all human] cognition commences with experience, yet it does not on that account all arise from experience.",
@@ -14388,6 +14536,18 @@
      "rel": ["empathy", "compassion-trusteeship", "emotional-intelligence"]
     },
     {
+     "quote": "I think we should talk more about our empathy deficit — the ability to put ourselves in someone else's shoes; to see the world through the eyes of those who are different from us.",
+     "author": "Barack Obama",
+     "source": "Xavier University of Louisiana Commencement Address, 11 August 2006",
+     "meaning": "Names empathy as a deficit worth addressing directly, alongside more commonly discussed deficits like the budget deficit.",
+     "usage": "Use for GS4 answers on empathy in policy-making, or why administrators must consciously work to understand those unlike themselves.",
+     "position": [
+      "intro",
+      "body"
+     ],
+     "rel": ["empathy", "emotional-intelligence", "nationalism-culture", "governance"]
+    },
+    {
      "quote": "To be with another in this [empathic] way means that for the time being, you lay aside your own views and values in order to enter another's world without prejudice.",
      "author": "Carl Rogers",
      "source": "A Way of Being (1980)",
@@ -14420,6 +14580,29 @@
       "body"
      ],
      "rel": ["empathy", "emotional-intelligence"]
+    },
+    {
+     "quote": "When you are aware of your pain and suffering, it helps you to develop your capacity for empathy, the capacity that allows you to relate to other people's feelings and suffering.",
+     "author": "Dalai Lama XIV (with Howard C. Cutler)",
+     "source": "The Art of Happiness: A Handbook for Living (1998)",
+     "meaning": "Personal experience of suffering, when consciously reflected on, can deepen one's capacity to empathize with others' pain.",
+     "usage": "Use for GS4 answers linking self-awareness of suffering to the development of empathy.",
+     "position": [
+      "body"
+     ],
+     "rel": ["empathy", "emotional-intelligence", "compassion-trusteeship"]
+    },
+    {
+     "quote": "I think we should talk more about our empathy deficit - the ability to put ourselves in someone else's shoes; to see the world through the eyes of those who are different from us.",
+     "author": "Barack Obama",
+     "source": "Commencement Address, Northwestern University, 2006",
+     "meaning": "Societal problems often stem less from a lack of resources than from a lack of empathy for those whose experiences differ from our own.",
+     "usage": "Use for GS4 answers framing empathy as a societal 'deficit' comparable to economic deficits, worth deliberately addressing.",
+     "position": [
+      "intro",
+      "body"
+     ],
+     "rel": ["empathy", "emotional-intelligence", "nationalism-culture", "governance"]
     },
     {
      "quote": "A Jew must be sensitive to the pain of all human beings. A Jew cannot remain indifferent to human suffering.",
@@ -15701,6 +15884,30 @@
      "rel": ["probity", "public-service-integrity", "governance"]
     },
     {
+     "quote": "Holders of public office should act solely in terms of the public interest. They should not do so in order to gain financial or other benefits for themselves, their family or their friends.",
+     "author": "Committee on Standards in Public Life (Nolan Committee), UK",
+     "source": "First Report of the Committee on Standards in Public Life, 'Standards in Public Life', Cm 2850-I, May 1995 (Principle of Selflessness)",
+     "meaning": "The foundational principle of probity: public office must be exercised only for the public interest, never personal or familial gain.",
+     "usage": "Use to define/anchor probity in GS4 answers; can be paired with the other six Nolan Principles for a structured answer.",
+     "position": [
+      "intro",
+      "body"
+     ],
+     "rel": ["probity", "public-service-integrity", "governance", "accountability-transparency"]
+    },
+    {
+     "quote": "Somebody once said that in looking for people to hire, you look for three qualities: integrity, intelligence and energy. And if they don't have the first, the other two will kill you.",
+     "author": "Warren Buffett",
+     "source": "Remarks to graduate students, Columbia Business School, 1993; published in the Omaha World-Herald, January 1994",
+     "meaning": "Integrity is the foundational trait; without it, competence and drive become dangerous rather than beneficial.",
+     "usage": "Strong line for GS4 answers on why integrity/probity is prioritized over mere competence in public office.",
+     "position": [
+      "intro",
+      "conclusion"
+     ],
+     "rel": ["probity", "public-service-integrity", "economy-inclusive-growth"]
+    },
+    {
      "quote": "Honesty is the 1st chapter in the book of wisdom.",
      "author": "Thomas Jefferson",
      "source": "Letter to Nathaniel Macon, 12 January 1819",
@@ -15713,6 +15920,18 @@
      "rel": ["probity", "philosophy", "education"]
     },
     {
+     "quote": "As I have said, the first thing is to be honest with yourself. You can never have an impact on society if you have not changed yourself... Great peacemakers are all people of integrity, of honesty, but humility.",
+     "author": "Nelson Mandela",
+     "source": "Conversations with Myself (Pan Macmillan, 2011), p. 150",
+     "meaning": "Personal honesty and self-transformation are prerequisites for genuine integrity and any lasting positive impact on society.",
+     "usage": "Use for GS4 answers on the link between personal probity/self-honesty and effective public leadership.",
+     "position": [
+      "body",
+      "conclusion"
+     ],
+     "rel": ["probity", "empathy", "nationalism-culture", "philosophy"]
+    },
+    {
      "quote": "An Act to consolidate and amend the law relating to the prevention of corruption and for matters connected therewith.",
      "author": "Parliament of India",
      "source": "The Prevention of Corruption Act, 1988 (Act No. 49 of 1988) — official enactment/long title",
@@ -15722,6 +15941,17 @@
       "body"
      ],
      "rel": ["probity", "governance", "accountability-transparency", "public-service-integrity"]
+    },
+    {
+     "quote": "For when I speak of the banality of evil, I do so only on the strictly factual level, pointing to a phenomenon which stared one in the face at the trial.",
+     "author": "Hannah Arendt",
+     "source": "Eichmann in Jerusalem: A Report on the Banality of Evil (1963)",
+     "meaning": "Great evil can arise not from monstrous intent but from ordinary, thoughtless failure to exercise moral judgment — a warning against unreflective conformity in public office.",
+     "usage": "Use for GS4 answers on moral thoughtlessness, bureaucratic complicity, and why probity requires active moral judgment, not just rule-following.",
+     "position": [
+      "body"
+     ],
+     "rel": ["probity", "responsibility-duty", "philosophy", "justice"]
     },
     {
      "quote": "Hold faithfulness and sincerity as first principles.",
@@ -17609,6 +17839,18 @@
       "body"
      ],
      "rel": ["justice", "philosophy", "nationalism-culture", "compassion-trusteeship"]
+    },
+    {
+     "quote": "Justice is the first virtue of social institutions, as truth is of systems of thought. A theory however elegant and economical must be rejected or revised if it is untrue; likewise laws and institutions no matter how efficient and well-arranged must be reformed or abolished if they are unjust.",
+     "author": "John Rawls",
+     "source": "A Theory of Justice (1971)",
+     "meaning": "Justice is a non-negotiable baseline for institutions — efficiency or elegance cannot excuse injustice.",
+     "usage": "Use for GS4 questions weighing efficiency/administrative convenience against fairness and justice.",
+     "position": [
+      "body",
+      "conclusion"
+     ],
+     "rel": ["justice", "governance", "constitutional-morality", "philosophy"]
     },
     {
      "quote": "Act in such a way that you treat humanity, whether in your own person or in the person of another, always at the same time as an end and never simply as a means.",
@@ -21794,11 +22036,34 @@
      "rel": ["emotional-intelligence", "philosophy"]
     },
     {
+     "quote": "If your emotional abilities aren't in hand, if you don't have self-awareness, if you are not able to manage your distressing emotions, if you can't have empathy and have effective relationships, then no matter how smart you are, you are not going to get very far.",
+     "author": "Daniel Goleman",
+     "source": "Emotional Intelligence: Why It Can Matter More Than IQ (Bantam Books, 1995), p. xi (Preface)",
+     "meaning": "Intellectual ability alone is insufficient for real-world effectiveness without self-awareness, emotional regulation, and interpersonal skill.",
+     "usage": "Strong opening/closing line for GS4 answers on why EQ matters alongside IQ in public administration.",
+     "position": [
+      "intro",
+      "conclusion"
+     ],
+     "rel": ["emotional-intelligence", "empathy", "philosophy"]
+    },
+    {
      "quote": "Emotional intelligence refers to the capacity for recognising our own feelings and those of others, for motivating ourselves, and for managing emotions well in ourselves and in our relationships.",
      "author": "Daniel Goleman",
      "source": "Working with Emotional Intelligence (Bantam Books, 1998)",
      "meaning": "A working definition of EI as self-awareness, self-motivation, and relationship management combined.",
      "usage": "Use as a crisp definitional line for GS4 answers introducing or defining emotional intelligence.",
+     "position": [
+      "intro"
+     ],
+     "rel": ["emotional-intelligence", "empathy"]
+    },
+    {
+     "quote": "A type of social intelligence that involves the ability to monitor one's own and others' emotions, to discriminate among them, and to use the information to guide one's thinking and actions.",
+     "author": "Peter Salovey and John D. Mayer",
+     "source": "'Emotional Intelligence', Imagination, Cognition and Personality, Vol. 9, No. 3 (1990)",
+     "meaning": "The original academic definition of emotional intelligence, predating and underlying Goleman's later popularization of the term.",
+     "usage": "Use for GS4 answers that want to cite the original scholarly source/definition of emotional intelligence rather than its popular treatment.",
      "position": [
       "intro"
      ],
@@ -25764,6 +26029,17 @@
      "rel": ["technology", "responsibility-duty", "governance"]
     },
     {
+     "quote": "It is the scientific approach, the adventurous yet critical temper of science, the search for truth and new knowledge, the refusal to accept anything without testing and trial, the capacity to change previous conclusions in the face of new evidence, the reliance on observed fact and not pre-conceived theory.",
+     "author": "Jawaharlal Nehru",
+     "source": "The Discovery of India (1946) — the passage that popularised the term 'scientific temper'",
+     "meaning": "Defines the scientific temper as a willingness to test, question and revise beliefs in light of evidence.",
+     "usage": "Use to broaden a technology essay into 'scientific temper' more generally — good for questions on rationality, evidence-based policy, or Article 51A(h) (duty to develop scientific temper).",
+     "position": [
+      "body"
+     ],
+     "rel": ["technology", "objectivity", "education", "philosophy"]
+    },
+    {
      "quote": "To develop the scientific temper, humanism and the spirit of inquiry and reform.",
      "author": "Constitution of India",
      "source": "Article 51A(h), Fundamental Duties (inserted by the 42nd Amendment Act, 1976)",
@@ -25818,6 +26094,28 @@
       "body"
      ],
      "rel": ["technology", "education", "philosophy"]
+    },
+    {
+     "quote": "Technology isn't bad. If you know what you want in life, technology can help you get it. But if you don't know what you want in life, it will be all too easy for technology to shape your aims for you and take control of your life.",
+     "author": "Yuval Noah Harari",
+     "source": "21 Lessons for the 21st Century (Jonathan Cape, 2018)",
+     "meaning": "Technology is neutral; its impact depends on whether the user has clear self-knowledge and purpose, or lets technology dictate their goals.",
+     "usage": "Use for essays on technology's dual nature and the importance of human agency and self-knowledge in the digital age.",
+     "position": [
+      "body"
+     ],
+     "rel": ["technology", "philosophy", "media-privacy"]
+    },
+    {
+     "quote": "The best way to understand it emotionally is we are like somebody who has this really cute tiger cub. Unless you can be very sure that it's not gonna want to kill you when it's grown up, you should worry.",
+     "author": "Geoffrey Hinton",
+     "source": "Interview, 2024 (widely reported, including CBS News)",
+     "meaning": "AI's current helpfulness is not proof of future safety; unchecked, a powerful system could become dangerous once it matures.",
+     "usage": "Use for essays on AI risk and the danger of complacency about powerful but still-developing technology, from the 'Godfather of AI.'",
+     "position": [
+      "body"
+     ],
+     "rel": ["technology", "responsibility-duty", "governance"]
     },
     {
      "quote": "Any sufficiently advanced technology is indistinguishable from magic.",
@@ -28207,6 +28505,28 @@
    "cluster": "Environment & sustainability",
    "quotes": [
     {
+     "quote": "The 'control of nature' is a phrase conceived in arrogance, born of the Neanderthal age of biology and philosophy, when it was supposed that nature exists for the convenience of man.",
+     "author": "Rachel Carson",
+     "source": "Silent Spring (1962)",
+     "meaning": "Critiques the assumption that nature exists to be dominated and used by humans without consequence.",
+     "usage": "Powerful for essays on development-vs-environment trade-offs or the ethics of exploiting nature.",
+     "position": [
+      "body"
+     ],
+     "rel": ["environment", "philosophy", "responsibility-duty"]
+    },
+    {
+     "quote": "In this now universal contamination of the environment, chemicals are the sinister and little-recognized partners of radiation in changing the very nature of the world — the very nature of its life.",
+     "author": "Rachel Carson",
+     "source": "Silent Spring (1962)",
+     "meaning": "Highlights how slow, invisible environmental damage can be as consequential as dramatic disasters.",
+     "usage": "Good for essays on pollution, climate change, or the invisibility of ecological harm.",
+     "position": [
+      "body"
+     ],
+     "rel": ["environment", "technology", "responsibility-duty"]
+    },
+    {
      "quote": "You cannot protect the environment unless you empower people, you inform them, and you help them understand that these resources are their own, that they must protect them.",
      "author": "Wangari Maathai",
      "source": "Documented public remarks; Nobel Peace Laureate and founder of the Green Belt Movement",
@@ -28218,6 +28538,18 @@
      "rel": ["environment", "governance", "education", "responsibility-duty"]
     },
     {
+     "quote": "I do believe there is a window of time when we can at least slow down climate change and loss of biodiversity. But only if we get together and take action now. And without hope we will fall into apathy and do nothing. Then we are doomed.",
+     "author": "Jane Goodall",
+     "source": "2025 Earth Day Message",
+     "meaning": "Frames hope as a practical precondition for climate action, not just an emotional comfort — without it, apathy takes over.",
+     "usage": "Use for essays on climate urgency balanced with a call to action rather than despair.",
+     "position": [
+      "body",
+      "conclusion"
+     ],
+     "rel": ["environment", "courage", "responsibility-duty"]
+    },
+    {
      "quote": "I want you to act as if the house is on fire, because it is.",
      "author": "Greta Thunberg",
      "source": "World Economic Forum, Davos, January 2019 ('Our House Is on Fire' speech)",
@@ -28227,6 +28559,18 @@
       "intro"
      ],
      "rel": ["environment", "responsibility-duty", "courage"]
+    },
+    {
+     "quote": "We are called to assist the Earth to heal her wounds and in the process heal our own — indeed, to embrace the whole creation in all its diversity, beauty and wonder.",
+     "author": "Wangari Maathai",
+     "source": "Nobel Peace Prize Lecture, Oslo City Hall, 10 December 2004",
+     "meaning": "Environmental restoration and human wellbeing are deeply interconnected; healing the Earth is also a path to healing ourselves.",
+     "usage": "Strong opening/closing line for essays on environmental restoration, sustainability, and humanity's relationship with nature.",
+     "position": [
+      "intro",
+      "conclusion"
+     ],
+     "rel": ["environment", "compassion-trusteeship", "philosophy"]
     },
     {
      "quote": "Sustainable development is development that meets the needs of the present without compromising the ability of future generations to meet their own needs.",
@@ -28241,6 +28585,17 @@
      "rel": ["environment", "economy-inclusive-growth", "governance", "justice"]
     },
     {
+     "quote": "Global warming, along with the cutting and burning of forests and other critical habitats, is causing the loss of living species at a level comparable to the extinction event that wiped out the dinosaurs 65 million years ago... This time it is not an asteroid colliding with the Earth and wreaking havoc: it is us.",
+     "author": "Al Gore",
+     "source": "An Inconvenient Truth: The Planetary Emergency of Global Warming and What We Can Do About It (2006)",
+     "meaning": "Human-caused climate change and habitat destruction now drive mass extinction at a scale comparable to a planetary catastrophe.",
+     "usage": "Powerful line for essays on climate change, biodiversity loss, and human responsibility for environmental crisis.",
+     "position": [
+      "body"
+     ],
+     "rel": ["environment", "responsibility-duty", "technology"]
+    },
+    {
      "quote": "We have a responsibility toward the other life-forms of our planet whose continued existence is threatened by the thoughtless behavior of our own human species.",
      "author": "Jane Goodall",
      "source": "Reason for Hope: A Spiritual Journey (Warner Books, 1999)",
@@ -28250,6 +28605,18 @@
       "body"
      ],
      "rel": ["environment", "responsibility-duty", "compassion-trusteeship"]
+    },
+    {
+     "quote": "This is all wrong. I shouldn't be up here. I should be back in school on the other side of the ocean. Yet you all come to us young people for hope? How dare you!",
+     "author": "Greta Thunberg",
+     "source": "",
+     "meaning": "Adults and leaders have failed young people by not acting on climate change, then unjustly ask youth to provide hope for the future.",
+     "usage": "Powerful, widely known quote for essays on intergenerational climate justice and youth climate activism.",
+     "position": [
+      "intro",
+      "body"
+     ],
+     "rel": ["environment", "accountability-transparency", "courage", "education"]
     },
     {
      "quote": "The earth provides enough to satisfy every man's need, but not every man's greed.",
@@ -34481,6 +34848,18 @@
      "rel": ["accountability-transparency", "governance"]
     },
     {
+     "quote": "Many forms of Government have been tried, and will be tried in this world of sin and woe. No one pretends that democracy is perfect or all-wise. Indeed, it has been said that democracy is the worst form of Government except all those other forms that have been tried from time to time.",
+     "author": "Winston Churchill",
+     "source": "House of Commons, Hansard, 11 November 1947 (Churchill himself attributed the core line to an unnamed earlier source, not to himself)",
+     "meaning": "Democracy is defended not as perfect, but as better than every alternative actually tried.",
+     "usage": "Use for essays on democracy's imperfections vs. its alternatives — note in your answer that Churchill was quoting an earlier saying, for precision.",
+     "position": [
+      "intro",
+      "body"
+     ],
+     "rel": ["governance", "philosophy"]
+    },
+    {
      "quote": "...that this nation, under God, shall have a new birth of freedom — and that government of the people, by the people, for the people, shall not perish from the earth.",
      "author": "Abraham Lincoln",
      "source": "Gettysburg Address, 19 November 1863",
@@ -34513,6 +34892,17 @@
       "body"
      ],
      "rel": ["economy-inclusive-growth", "governance", "philosophy"]
+    },
+    {
+     "quote": "We are pragmatists. We don't stick to any ideology. Does it work? Let's try it, and if it does work, fine, let's continue it. If it doesn't work, toss it out, try another one.",
+     "author": "Lee Kuan Yew",
+     "source": "",
+     "meaning": "Effective governance prioritizes practical results over rigid ideological commitment, testing and discarding policies by outcome.",
+     "usage": "Use for essays on pragmatic governance, policy experimentation, or evidence-based public administration.",
+     "position": [
+      "body"
+     ],
+     "rel": ["governance", "objectivity"]
     },
     {
      "quote": "Good governance is perhaps the single most important factor in eradicating poverty and promoting development.",
@@ -34549,6 +34939,18 @@
       "conclusion"
      ],
      "rel": ["governance", "nationalism-culture"]
+    },
+    {
+     "quote": "No one pretends that democracy is perfect or all-wise. Indeed, it has been said that democracy is the worst form of government except all those other forms that have been tried from time to time.",
+     "author": "Winston Churchill",
+     "source": "Speech to the House of Commons, 11 November 1947 (Official Report, House of Commons, 5th Series, vol. 444)",
+     "meaning": "Democracy is imperfect, but remains preferable to every alternative system of government that has been tried.",
+     "usage": "Classic citation for essays on the strengths and limits of democratic governance; note Churchill himself attributed the aphorism to an earlier, anonymous source.",
+     "position": [
+      "body",
+      "conclusion"
+     ],
+     "rel": ["governance", "philosophy"]
     },
     {
      "quote": "Government of the people, by the people, for the people, shall not perish from the earth.",
@@ -41745,6 +42147,41 @@
    "cluster": "Nationalism & culture",
    "quotes": [
     {
+     "quote": "Long years ago, we made a tryst with destiny, and now the time comes when we shall redeem our pledge, not wholly or in full measure, but very substantially. At the stroke of the midnight hour, when the world sleeps, India will awake to life and freedom.",
+     "author": "Jawaharlal Nehru",
+     "source": "'Tryst with Destiny' speech to the Constituent Assembly, midnight of 14-15 August 1947",
+     "meaning": "Marks India's independence as the fulfilment of a long, collective national pledge.",
+     "usage": "Use for essays on nationhood, independence, or India's civilisational journey — best in the introduction, given how well-known it is.",
+     "position": [
+      "intro"
+     ],
+     "rel": ["nationalism-culture", "governance", "philosophy"]
+    },
+    {
+     "quote": "A moment comes, which comes but rarely in history, when we step out from the old to the new, when an age ends, and when the soul of a nation, long suppressed, finds utterance.",
+     "author": "Jawaharlal Nehru",
+     "source": "'Tryst with Destiny' speech, 14-15 August 1947",
+     "meaning": "Frames independence as a civilisational turning point, not just a political event.",
+     "usage": "Works well for essays on transformation, historical turning points, or national identity.",
+     "position": [
+      "intro",
+      "body"
+     ],
+     "rel": ["nationalism-culture", "philosophy", "governance"]
+    },
+    {
+     "quote": "A developed India by 2020, or even earlier, is not a dream. It need not be a mere vision in the minds of many Indians. It is a mission we can all take up — and succeed.",
+     "author": "A. P. J. Abdul Kalam",
+     "source": "Ignited Minds: Unleashing the Power Within India (2003)",
+     "meaning": "Frames national development as an achievable collective mission, not a distant aspiration.",
+     "usage": "Use for essays on India's development trajectory, national mission, or collective effort — update the date reference in your own writing since 2020 has passed.",
+     "position": [
+      "intro",
+      "conclusion"
+     ],
+     "rel": ["nationalism-culture", "economy-inclusive-growth", "technology", "responsibility-duty"]
+    },
+    {
      "quote": "Educate, Agitate, Organize.",
      "author": "B. R. Ambedkar",
      "source": "Founding motto of the Bahishkrit Hitakarini Sabha, established by Ambedkar, 20 July 1924",
@@ -41757,6 +42194,29 @@
      "rel": ["education", "nationalism-culture", "justice", "courage"]
     },
     {
+     "quote": "Some kind of a dream of unity has occupied the mind of India since the dawn of civilization. That unity was not conceived as something imposed from outside, standardization of externs or even of beliefs.",
+     "author": "Jawaharlal Nehru",
+     "source": "The Discovery of India (1946)",
+     "meaning": "India's unity has historically been organic and internally generated, not an externally imposed uniformity — the basis of 'unity in diversity'.",
+     "usage": "Use for essays on Indian civilisation, unity in diversity, or pluralism as an indigenous rather than imported value.",
+     "position": [
+      "body"
+     ],
+     "rel": ["nationalism-culture", "constitutional-morality", "governance"]
+    },
+    {
+     "quote": "There is no easy walk to freedom anywhere and many of us will have to pass through the valley of the shadow of death again and again before we reach the mountain tops of our desires.",
+     "author": "Nelson Mandela",
+     "source": "Presidential address to the ANC (Transvaal) Conference, 21 September 1953 (read on his behalf due to a banning order); published in No Easy Walk to Freedom (1965)",
+     "meaning": "Freedom struggles demand repeated sacrifice and hardship, not a single decisive victory.",
+     "usage": "Use for essays on independence movements, sustained struggle, or the cost of freedom.",
+     "position": [
+      "body",
+      "conclusion"
+     ],
+     "rel": ["nationalism-culture", "courage", "philosophy"]
+    },
+    {
      "quote": "It is blood alone that can pay the price of freedom. Give me blood and I will give you freedom!",
      "author": "Subhas Chandra Bose",
      "source": "Address to the Indian National Army, Burma, 4 July 1944",
@@ -41766,6 +42226,18 @@
       "body"
      ],
      "rel": ["nationalism-culture", "courage", "responsibility-duty"]
+    },
+    {
+     "quote": "Long years ago we made a tryst with destiny, and now the time comes when we shall redeem our pledge... At the stroke of the midnight hour, when the world sleeps, India will awake to life and freedom.",
+     "author": "Jawaharlal Nehru",
+     "source": "'Tryst with Destiny' speech, Constituent Assembly of India, midnight, 14-15 August 1947",
+     "meaning": "India's independence is framed as the fulfillment of a long-held national pledge, marking a historic rebirth.",
+     "usage": "Iconic opening/closing quote for essays on Indian independence, nationhood, or historic turning points.",
+     "position": [
+      "intro",
+      "conclusion"
+     ],
+     "rel": ["nationalism-culture", "governance", "philosophy"]
     },
     {
      "quote": "I tell you that the British rule is not there because God willed it but for the reason that we lack the will and courage to oppose it.",
@@ -44339,6 +44811,17 @@
    "cluster": "Gender & women's issues",
    "quotes": [
     {
+     "quote": "I think gender inequality is not the natural human condition. But the idea that somehow women have to be in an inferior position — or not quite such a dominant position — is really wholly artificial.",
+     "author": "Amartya Sen",
+     "source": "Interview, UNU-WIDER ('Feminism is an issue of humanity')",
+     "meaning": "Sen argues gender hierarchy is a social construction, not a natural or inevitable state.",
+     "usage": "Use to open a body paragraph arguing that gender inequality is a policy and social failure, not a biological given.",
+     "position": [
+      "body"
+     ],
+     "rel": ["gender", "justice"]
+    },
+    {
      "quote": "There is no tool for development more effective than the empowerment of women.",
      "author": "Kofi Annan",
      "source": "Remarks at the UN Commission on the Status of Women",
@@ -44370,6 +44853,29 @@
       "intro"
      ],
      "rel": ["gender", "justice"]
+    },
+    {
+     "quote": "Culture does not make people. People make culture. So if it is in fact true that the full humanity of women is not our culture, then we can and must make it our culture.",
+     "author": "Chimamanda Ngozi Adichie",
+     "source": "'We Should All Be Feminists', TEDxEuston talk, London, December 2012",
+     "meaning": "Culture is a human construction and can be deliberately reshaped to secure full equality for women.",
+     "usage": "Powerful line for essays on gender equality, cultural change, and challenging patriarchal norms as social constructs.",
+     "position": [
+      "body",
+      "conclusion"
+     ],
+     "rel": ["gender", "nationalism-culture"]
+    },
+    {
+     "quote": "Race discrimination was immediately perceived as evil, as odious, as wrong, as intolerable. But the response I was getting from the judges before whom I appeared when I first talked about sex-based discrimination... was: 'What are you talking about?'",
+     "author": "Ruth Bader Ginsburg",
+     "source": "U.S. Senate Judiciary Committee confirmation hearing, 1993",
+     "meaning": "Gender discrimination historically took much longer than race discrimination to be recognized by courts as a serious legal wrong.",
+     "usage": "Use for essays on the history/pace of legal recognition of gender discrimination and the fight for equal treatment under law.",
+     "position": [
+      "body"
+     ],
+     "rel": ["gender", "justice", "constitutional-morality"]
     },
     {
      "quote": "Unless and until you give to your women all those equal privileges that form the highest and noblest teaching of your great nation-builder... you will not attain that regeneration of your race.",
@@ -46000,6 +46506,17 @@
   {
    "cluster": "Media & privacy",
    "quotes": [
+    {
+     "quote": "Arguing that you don't care about the right to privacy because you have nothing to hide is no different than saying you don't care about free speech because you have nothing to say.",
+     "author": "Edward Snowden",
+     "source": "Widely documented public remarks/interview",
+     "meaning": "Rebuts the 'nothing to hide' argument by comparing privacy to free speech — both are rights worth defending regardless of whether you currently need to exercise them.",
+     "usage": "Strong for essays on surveillance, data privacy, or digital-age civil liberties.",
+     "position": [
+      "body"
+     ],
+     "rel": ["media-privacy", "philosophy"]
+    },
     {
      "quote": "It was one of those pictures which are so contrived that the eyes follow you about when you move. BIG BROTHER IS WATCHING YOU... You had to live — did live, from habit that became instinct — in the assumption that every sound you made was overheard, and, except in darkness, every moment scrutinized.",
      "author": "George Orwell",
@@ -47772,6 +48289,18 @@
       "body"
      ],
      "rel": ["economy-inclusive-growth", "justice", "governance"]
+    },
+    {
+     "quote": "Massive poverty and obscene inequality are such terrible scourges of our times — times in which the world boasts breathtaking advances in science, technology, industry and wealth accumulation — that they have to rank alongside slavery and apartheid as social evils.",
+     "author": "Nelson Mandela",
+     "source": "'Make Poverty History' campaign speech, Trafalgar Square, London, 3 February 2005",
+     "meaning": "Frames extreme poverty amid modern abundance as a moral evil comparable to slavery and apartheid, not merely an economic inefficiency.",
+     "usage": "Powerful line for essays on inequality or inclusive growth, especially contrasting technological progress with persistent poverty.",
+     "position": [
+      "intro",
+      "body"
+     ],
+     "rel": ["economy-inclusive-growth", "justice", "technology"]
     },
     {
      "quote": "Overcoming poverty is not a gesture of charity. It is the protection of a fundamental human right, the right to dignity and a decent life.",
@@ -50584,6 +51113,17 @@
       "conclusion"
      ],
      "rel": ["philosophy", "courage", "nationalism-culture"]
+    },
+    {
+     "quote": "If there is meaning in life at all, then there must be a meaning in suffering... We must never forget that we may also find meaning in life even when confronted with a hopeless situation, when facing a fate that cannot be changed.",
+     "author": "Viktor Frankl",
+     "source": "Man's Search for Meaning (1946)",
+     "meaning": "Meaning can be found even in unavoidable suffering, through the attitude one takes toward it.",
+     "usage": "Use for philosophical essays on suffering, resilience, or purpose in adversity.",
+     "position": [
+      "body"
+     ],
+     "rel": ["philosophy", "courage", "empathy"]
     },
     {
      "quote": "Where the mind is without fear and the head is held high; where knowledge is free...",
