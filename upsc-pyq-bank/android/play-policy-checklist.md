@@ -26,3 +26,10 @@ Checked against Google's Play policies (Payments, Subscriptions, Metadata, Decep
 ## Web payments and Play policy (build 185)
 - Google forbids steering Play users to other payment methods from inside the app (Payments policy, section 4). The Android app from Google Play therefore shows only the Google Play subscribe flow. The Razorpay button exists only in a browser. The app counts a web-paid account as subscribed (letting people use what they bought elsewhere is allowed) but never tells Play users how or where to pay on the web. The sign-in button on the Play paywall says only "Already subscribed? Sign in with Google".
 - The Play store listing must not mention website payments.
+
+## Build 444 (22 Nov 2026): no source names anywhere, and items to re-check before any appeal or resubmission
+- Removed every source line, `src`/`note`/`checked` field and phrase such as "the article says" or "per the release" from Daily analysis, quizzes and Crux notes, and removed the Source line and the Daily header/footer source text from the app.
+- Daily analysis is rewritten in our own words with no outlet names. Keep it short facts and static background; do not reproduce article text.
+- Declarations to re-check in Play Console (they were written at build 180): content rating and "News app: No" now that Daily current affairs exists; Data safety (CA quiz progress, PYQ practised marks and Daily-read marks now sync with the account, so "App interactions" must stay ticked); store description ("keeps your data on your phone" is only true without sign-in, which the text already says).
+- Past exam questions: the app shows only the exam name and year, not a source line. Keep the disclaimer that the app is independent and not affiliated with UPSC.
+- Quote bank: attribution lines come from Wikiquote (CC BY-SA); keep them unless you replace the quote text.

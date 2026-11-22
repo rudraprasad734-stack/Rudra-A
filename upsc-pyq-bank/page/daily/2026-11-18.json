@@ -1,8 +1,6 @@
 {
  "day": "2026-11-18",
  "title": "18 Nov 2026",
- "src": "The Hindu, 18 November 2026",
- "note": "Notes made from The Hindu, 18 November 2026. Where only a headline was available (Azam Khan’s bail and the Assam elephant rescue), the note gives the background to the story, and the facts behind each news item come from standard textbooks and official sources.",
  "topics": [
   {
    "id": "dn-2026-11-18-1",
@@ -125,7 +123,7 @@
     "GS2 Polity",
     "GS3 Internal Security"
    ],
-   "news": "In ‘Elusive peace’ The Hindu says three months of calm in J&K were broken in six days. A terror attack on a CRPF checkpoint in Kulgam on 11 November injured three jawans; a local suspected of joining the terror ranks was killed on 16 November after a six-day siege-like operation in Kulgam’s residential areas; and two Special Police Officers were found dead with bullet wounds in Kishtwar. Leaders have called the Kulgam operation ‘collective punishment’. The editorial says the fall in attacks should not be mistaken for peace and asks the Centre to begin with restoring Statehood. Police say local recruitment into militancy in Kashmir is now in single digits.",
+   "news": "Three months of calm in J&K were broken in six days. A terror attack on a CRPF checkpoint in Kulgam on 11 November injured three jawans; a local suspected of joining the terror ranks was killed on 16 November after a six-day siege-like operation in Kulgam’s residential areas; and two Special Police Officers were found dead with bullet wounds in Kishtwar. Leaders have called the Kulgam operation ‘collective punishment’. It adds that the fall in attacks should not be mistaken for peace and asks the Centre to begin with restoring Statehood. Police say local recruitment into militancy in Kashmir is now in single digits.",
    "blocks": [
     {
      "h": "Where J&K stands in the Constitution",
@@ -146,7 +144,7 @@
         ],
         [
          "Limits of the elected government",
-         "Under the 2019 Act the **Lieutenant Governor** controls police, public order and the All India Services. The editorial notes that the Chief Minister’s government has no jurisdiction over the police."
+         "Under the 2019 Act the **Lieutenant Governor** controls police, public order and the All India Services. Note that the Chief Minister’s government has no jurisdiction over the police."
         ],
         [
          "How Statehood can be restored",
@@ -162,7 +160,7 @@
        "ul": [
         "**Special Police Officers (SPOs):** temporary police volunteers paid an honorarium and used in counter-insurgency. In Nandini Sundar v. State of Chhattisgarh (2011) the Supreme Court held that using such poorly trained tribal youths as SPOs in anti-Naxal operations violated Arts. 14 and 21.",
         "**The security view:** the ‘iron hand’ policy has cut terror attacks and local recruitment.",
-        "**The political view:** keeping whole villages under restrictions for days breeds alienation, as Mehbooba Mufti said of the Kulgam operation. The editorial calls for security and political outreach to work together."
+        "**The political view:** keeping whole villages under restrictions for days breeds alienation, as Mehbooba Mufti said of the Kulgam operation. The call is for security and political outreach to work together."
        ]
       }
      ]
@@ -238,7 +236,7 @@
     "GS2 Polity",
     "GS4 Ethics"
    ],
-   "news": "‘All-too fallible’, a Hindu editorial, notes that India voted against a proposed global moratorium on the death penalty at the UN. It reports 574 people on death row on 31 December 2025, the highest since 2016. Per Project 39A the Supreme Court released 38 people from death row in 2016–2025 after about eight years there on average. India last carried out executions in 2020 (the Delhi gang-rape case), while the Bharatiya Nyaya Sanhita extended the list of capital offences. The editorial asks for a formal suspension of executions and a review of capital statutes.",
+   "news": "India voted against a proposed global moratorium on the death penalty at the UN. It reports 574 people on death row on 31 December 2025, the highest since 2016. Per Project 39A the Supreme Court released 38 people from death row in 2016–2025 after about eight years there on average. India last carried out executions in 2020 (the Delhi gang-rape case), while the Bharatiya Nyaya Sanhita extended the list of capital offences. The ask is for a formal suspension of executions and a review of capital statutes.",
    "blocks": [
     {
      "h": "Capital punishment in India",
@@ -287,7 +285,7 @@
        "ul": [
         "**For retention:** retribution, deterrence and public confidence in cases of extreme violence.",
         "**Against:** no evidence of added deterrence over life imprisonment (Law Commission, 2015); errors cannot be undone; unequal access to competent lawyers; and long years on death row.",
-        "**The editorial’s asks:** suspend executions and review the capital statutes and the treatment of death-row prisoners; spare offences that do not involve intentional killing; strengthen investigation, prosecution and legal aid so that the system is fit for a punishment that needs near-infallibility."
+        "**The asks:** suspend executions and review the capital statutes and the treatment of death-row prisoners; spare offences that do not involve intentional killing; strengthen investigation, prosecution and legal aid so that the system is fit for a punishment that needs near-infallibility."
        ]
       }
      ]
@@ -495,7 +493,7 @@
       },
       {
        "ul": [
-        "**Why export controls matter to India:** the article says China recently restricted critical minerals and heavy equipment such as tunnel-boring machines, which hurts Indian infrastructure work.",
+        "**Why export controls matter to India:** China recently restricted critical minerals and heavy equipment such as tunnel-boring machines, which hurts Indian infrastructure work.",
         "**Why the Gulf matters:** India imports most of its crude oil and a large share of its gas by sea, and Hormuz is the passage for much of it.",
         "**ASEAN centrality:** India backs ASEAN’s role in the Indo-Pacific, while building the Quad as a flexible group that does not replace it."
        ]
@@ -892,7 +890,7 @@
     "GS3 Economy",
     "GS3 S&T"
    ],
-   "news": "AI and Machine Learning are core pillars of the newly approved Viksit Bharat Initiative for Statistical Transformation, Analytics & Research (VISTAR), meant to overhaul India’s official data. The Hindu explainer warns that synthetic data, which AI generates, could slip into official estimates and be mistaken for evidence. VISTAR also proposes raising the number of major surveys from 43 to 59 during the 16th Finance Commission cycle.",
+   "news": "AI and Machine Learning are core pillars of the newly approved Viksit Bharat Initiative for Statistical Transformation, Analytics & Research (VISTAR), meant to overhaul India’s official data. A warning: synthetic data, which AI generates, could slip into official estimates and be mistaken for evidence. VISTAR also proposes raising the number of major surveys from 43 to 59 during the 16th Finance Commission cycle.",
    "blocks": [
     {
      "h": "Observation, estimation and synthetic data",
@@ -905,7 +903,7 @@
         ],
         [
          "Main surveys",
-         "PLFS (employment), the Household Consumption Expenditure Survey, and the Annual Survey of Unincorporated Sector Enterprises (ASUSE, 2025: over 6.7 lakh establishments in 24,153 first-stage units, per the article)."
+         "PLFS (employment), the Household Consumption Expenditure Survey, and the Annual Survey of Unincorporated Sector Enterprises (ASUSE, 2025: over 6.7 lakh establishments in 24,153 first-stage units)."
         ],
         [
          "Synthetic data",
@@ -1026,7 +1024,7 @@
          "The right to privacy under Art. 21 includes identity and bodily autonomy."
         ],
         [
-         "The 2026 Amendment (as described in the Hindu article)",
+         "The 2026 Amendment",
          "Replaces self-identification with a medical board’s recommendation, a selection from prescribed categories (socio-cultural identities such as kinner, hijra, aravani, jogta and persons with specified variations in sex characteristics) and DM certification, with no appeal or independent review. Trans men, trans women and genderqueer persons fall outside the definition."
         ],
         [
@@ -1035,7 +1033,7 @@
         ],
         [
          "NHRC advisory, 2026",
-         "As the article reports, it flags gaps in education, healthcare, property, employment, documentation and policing and urges self-identification and independent grievance redress."
+         "It flags gaps in education, healthcare, property, employment, documentation and policing and urges self-identification and independent grievance redress."
         ]
        ]
       },
@@ -1043,7 +1041,7 @@
        "ul": [
         "**Why the voter numbers matter:** Art. 326 gives universal adult suffrage. The ECI first recorded transgender electors under ‘Others’ in 2009, and the category grew after NALSA. Enrolment nearly doubled from 28,046 (2014) to 45,610 (2024). Turnout among enrolled transgender voters rose from 7.8% to 27%. Census 2011 counted roughly 4.8 lakh transgender persons.",
         "**Why they are deleted more easily:** migration after family rejection, no documents, and a certificate that is harder to obtain.",
-        "**Health care:** the article says medico-legal hurdles delay or stop care, push people to unregulated sources and add to distress. The Madras High Court’s Sushma ruling (2021) asked for training of health staff on transgender health. The Centre’s SMILE scheme (2022) supports livelihood and shelter, including Garima Greh shelter homes."
+        "**Health care:** medico-legal hurdles delay or stop care, push people to unregulated sources and add to distress. The Madras High Court’s Sushma ruling (2021) asked for training of health staff on transgender health. The Centre’s SMILE scheme (2022) supports livelihood and shelter, including Garima Greh shelter homes."
        ]
       }
      ]
@@ -1054,8 +1052,8 @@
       {
        "ul": [
         "**Autonomy vs protection:** should the State protect by medical and administrative gatekeeping or by maximising autonomy with safeguards against exploitation?",
-        "**Welfare and identity are different questions:** the article says the Act conflates legal recognition of gender identity with eligibility for benefits.",
-        "**What the article suggests:** treat transgender health as part of general healthcare, train staff, allow a preferred name and identity in records, and set up the Complaints Officers the 2019 Act requires."
+        "**Welfare and identity are different questions:** the Act conflates legal recognition of gender identity with eligibility for benefits.",
+        "**Suggestions:** treat transgender health as part of general healthcare, train staff, allow a preferred name and identity in records, and set up the Complaints Officers the 2019 Act requires."
        ]
       }
      ]
@@ -1122,7 +1120,7 @@
     "GS2 Health",
     "GS2 Governance"
    ],
-   "news": "In a Hindu op-ed, Dinesh S. Thakur says reports that fake cancer drugs were seized from a licensed distributor in Karnataka are unconfirmed: the State has not confirmed it, and the list that circulated on social media held only antibiotics. He cites the National Drug Survey (2017), which found only 0.0245% of drugs counterfeit, and urges a response in proportion to the problem. He also asks for a licensing framework for people who transport drugs and for Good Distribution Practices.",
+   "news": "Dinesh S. Thakur says reports that fake cancer drugs were seized from a licensed distributor in Karnataka are unconfirmed: the State has not confirmed it, and the list that circulated on social media held only antibiotics. He cites the National Drug Survey (2017), which found only 0.0245% of drugs counterfeit, and urges a response in proportion to the problem. He also asks for a licensing framework for people who transport drugs and for Good Distribution Practices.",
    "blocks": [
     {
      "h": "Regulating the drug supply",
@@ -1154,7 +1152,7 @@
          "Revised Schedule M (December 2023) tightened Good Manufacturing Practices; larger firms had to comply first, small units later."
         ],
         [
-         "Loopholes the op-ed names",
+         "Loopholes named",
          "No licensing framework for those who transport drugs between manufacturers, distributors and retailers (raised by the Supreme Court in the 1970s). The adoption of WHO’s Good Distribution Practices has been pending for over a decade."
         ]
        ]
@@ -1470,7 +1468,7 @@
         ],
         [
          "Space situational awareness",
-         "ISRO’s annual Indian Space Situational Awareness Report (ISSAR-2025 in the article) covers tracking, collision avoidance and debris reduction. IS4OM and the NETRA project support it."
+         "ISRO’s annual Indian Space Situational Awareness Report (ISSAR-2025) covers tracking, collision avoidance and debris reduction. IS4OM and the NETRA project support it."
         ],
         [
          "New forms of interference",
@@ -1484,7 +1482,7 @@
       },
       {
        "ul": [
-        "**The questions the article asks:** is destroying a satellite different from jamming it? How is blame assigned when interference comes through a network of actors? How to tell an accident from an attack? How to respond without escalating when attribution is unclear?",
+        "**The questions to ask:** is destroying a satellite different from jamming it? How is blame assigned when interference comes through a network of actors? How to tell an accident from an attack? How to respond without escalating when attribution is unclear?",
         "**Why industry must be included:** commercial operators now run much of the communications and navigation that public services use, so security depends on the whole ecosystem.",
         "**What the doctrine should do:** deter, withstand, attribute and recover, while keeping outer space for peaceful use. Its measure should be preserving function and recovering fast, not the number of capabilities."
        ]

@@ -8,7 +8,7 @@ python3 quiz-guide/lint_quiz.py page/quiz/2026-09.json
 
 It is built from the 595 proofread Prelims GS Paper I questions in `bank-docs/` (papers 2014, 2015, 2020, 2021, 2024, 2025). `pyq_stats.py` recomputes every number below into `pyq-stats.json`. Official answers are in the bank only for 2024, so nothing here depends on answers except the 2024 answer-position check.
 
-What this is not: it does not copy any past question. It records the shape of UPSC questions, so new questions on current facts read and behave the same way. The facts still come from official sources, written in our own words, with the "Why", "Insight" and source line the app already shows.
+What this is not: it does not copy any past question. It records the shape of UPSC questions, so new questions on current facts read and behave the same way. The facts are written in our own words, with a short "Why" under each answer. No source is named.
 
 ## 1. What UPSC actually asks (the mix has changed)
 
@@ -76,7 +76,7 @@ This part is judgment, not counted data.
 - "With reference to", "In the context of", "is/are", "given above". Negative stems ("not correct", "incorrect", "except") are about 9% of UPSC questions overall and 4 of 200 in 2024–25, so keep them under one in ten.
 - Plain Indian-English spelling and Indian units.
 - Positions: answer letters spread evenly (2024: A 25, B 22, C 24, D 29). The statement-type option sets keep their fixed order, so shuffle only single-answer options.
-- Our additions to UPSC style: every question has a source with a date, a "Why" in one or two sentences, and an "Insight" that adds one related fact. Facts come from official pages (PIB, RBI, MoSPI, ministries, UN bodies), never copied from a magazine.
+- Our additions to UPSC style: every question has a "Why" in one or two sentences. Facts are checked against official pages and rewritten in our own words; no source, publication or outlet is named anywhere.
 - A current-affairs hook is not a requirement for every question. UPSC mixes static concepts with a recent event; about one in four of our questions can be a pure static concept anchored to something in the news.
 
 ## 5. Where our packs stand (checker output, 30 Oct 2026)
@@ -101,3 +101,5 @@ This part is judgment, not counted data.
 - Do not add a `src`, `checked` or `insight` field to new questions.
 - If a keyword or fact is unclear, search the internet and use the result to write a fuller, accurate question instead of guessing.
 - The correct option must not be the longest option. Keep the option lengths close, and vary the position (A to D) of the correct answer so it cannot be guessed.
+
+- **No source names anywhere (added 22 Nov 2026).** This covers Daily analysis, quizzes, Crux notes and every screen of the app. Never write the name of a newspaper, magazine, website or press office, or phrases such as "the article says", "the editorial notes", "as reported by", "per the release" or "the text states". Do not add `src`, `note` or `checked` fields. State the fact directly; if an argument is an opinion, write "it is argued that".

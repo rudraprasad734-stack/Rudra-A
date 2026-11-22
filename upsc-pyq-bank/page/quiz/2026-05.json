@@ -2501,7 +2501,7 @@
    "subject": "Polity & Governance",
    "syllabus": "Health",
    "exam": "pre",
-   "q": "With reference to healthcare in India as highlighted in the survey, consider the following statements:\n1. Government health expenditure is 1.43% of GDP against the National Health Policy 2017 target of 2.5%.\n2. The doctor-population ratio of 1:811 includes both allopathic and AYUSH practitioners.\n3. AMRIT pharmacies are managed by HLL Lifecare Limited.\nWhich of the statements given above is/are correct?",
+   "q": "With reference to healthcare in India, consider the following statements:\n1. Government health expenditure is 1.43% of GDP against the National Health Policy 2017 target of 2.5%.\n2. The doctor-population ratio of 1:811 includes both allopathic and AYUSH practitioners.\n3. AMRIT pharmacies are managed by HLL Lifecare Limited.\nWhich of the statements given above is/are correct?",
    "opts": [
     "1 and 2 only",
     "2 and 3 only",
@@ -3113,7 +3113,7 @@
     "1, 2 and 3"
    ],
    "ans": 3,
-   "why": "All three are correct per the magazine. Naegleria fowleri enters through the nose and lives in warm fresh water; hantavirus has no specific cure.",
+   "why": "All three are correct. Naegleria fowleri enters through the nose and lives in warm fresh water; hantavirus has no specific cure.",
    "insight": "",
    "cx": [
     "cx-2026-05-033",
@@ -3313,7 +3313,7 @@
     "1, 2 and 3"
    ],
    "ans": 0,
-   "why": "Articles 39(d), 41 and 43 are Directive Principles, which are non-justiciable. The magazine also notes a government search for a unified National Floor Wage Rate.",
+   "why": "Articles 39(d), 41 and 43 are Directive Principles, which are non-justiciable. There is also a government search for a unified National Floor Wage Rate.",
    "insight": "",
    "cx": [
     "cx-2026-05-036",
@@ -3516,7 +3516,7 @@
     "1, 2 and 3"
    ],
    "ans": 3,
-   "why": "All three are correct per the NITI Aayog report on a decade of school education.",
+   "why": "All three are correct.",
    "insight": "",
    "cx": [
     "cx-2026-05-026",

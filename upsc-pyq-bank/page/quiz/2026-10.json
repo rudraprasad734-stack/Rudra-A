@@ -16,13 +16,7 @@
    ],
    "ans": 1,
    "why": "The MPC raised the repo rate by 25 basis points, from 5.25% to 5.50%, and changed the stance to calibrated tightening. A higher repo rate makes bank loans costlier and cools demand and prices.",
-   "insight": "A higher repo rate makes bank loans costlier and cools demand and prices.",
-   "src": {
-    "name": "RBI, Monetary Policy",
-    "url": "https://www.rbi.org.in/scripts/annualpolicy.aspx",
-    "date": "7 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "A higher repo rate makes bank loans costlier and cools demand and prices."
   },
   {
    "id": "caq-2026-10-002",
@@ -38,13 +32,7 @@
    ],
    "ans": 2,
    "why": "The corridor is repo plus 25 basis points (MSF and Bank Rate) and repo minus 25 basis points (SDF), so MSF is 5.75% and SDF is 5.25%. The SDF lets the RBI absorb surplus liquidity without giving collateral.",
-   "insight": "SDF is the floor of the corridor: it lets the RBI absorb surplus liquidity without giving collateral.",
-   "src": {
-    "name": "RBI, Monetary Policy",
-    "url": "https://www.rbi.org.in/scripts/annualpolicy.aspx",
-    "date": "7 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "SDF is the floor of the corridor: it lets the RBI absorb surplus liquidity without giving collateral."
   },
   {
    "id": "caq-2026-10-003",
@@ -60,13 +48,7 @@
    ],
    "ans": 0,
    "why": "Karl Deisseroth, Peter Hegemann and Georg Nagel were honoured for work that led to optogenetics: Deisseroth used channelrhodopsin to switch neurons on and off in living animals. It did not lead to CRISPR.",
-   "insight": "Channelrhodopsin is a light-sensitive protein, a common Prelims keyword for this topic.",
-   "src": {
-    "name": "NobelPrize.org",
-    "url": "https://www.nobelprize.org/prizes/medicine/2026/press-release/",
-    "date": "5 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "Channelrhodopsin is a light-sensitive protein, a common Prelims keyword for this topic."
   },
   {
    "id": "caq-2026-10-004",
@@ -82,13 +64,7 @@
    ],
    "ans": 3,
    "why": "The Academy recognised their work building macroeconomic models on microeconomic foundations. Central banks and governments use such models to counter shocks, so policy tools are tested in them.",
-   "insight": "Link it to monetary policy questions: the policy tools are tested in such models.",
-   "src": {
-    "name": "NobelPrize.org",
-    "url": "https://www.nobelprize.org/prizes/economic-sciences/2026/press-release/",
-    "date": "12 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "Link it to monetary policy questions: the policy tools are tested in such models."
   },
   {
    "id": "caq-2026-10-005",
@@ -104,13 +80,7 @@
    ],
    "ans": 1,
    "why": "Both are correct, but the second describes how the detector works and does not explain why it is at the South Pole. India's own neutrino project, INO, has been proposed at Theni in Tamil Nadu.",
-   "insight": "India's own neutrino project, INO, has been proposed at Theni in Tamil Nadu.",
-   "src": {
-    "name": "NobelPrize.org",
-    "url": "https://www.nobelprize.org/prizes/physics/2026/press-release/",
-    "date": "6 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "India's own neutrino project, INO, has been proposed at Theni in Tamil Nadu."
   },
   {
    "id": "caq-2026-10-006",
@@ -126,13 +96,7 @@
    ],
    "ans": 3,
    "why": "Their work on non-linear effects and autocatalysis in asymmetric synthesis showed how one mirror-image form (homochirality) can win out and be made on purpose. Mirror-image forms of a drug can act very differently, so this matters for medicines.",
-   "insight": "Mirror-image forms of a drug can act very differently, so this matters for medicines.",
-   "src": {
-    "name": "NobelPrize.org",
-    "url": "https://www.nobelprize.org/prizes/chemistry/2026/press-release/",
-    "date": "7 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "Mirror-image forms of a drug can act very differently, so this matters for medicines."
   },
   {
    "id": "caq-2026-10-007",
@@ -148,13 +112,7 @@
    ],
    "ans": 0,
    "why": "A higher score means worse hunger. India's 24.1 is above the South Asia score of 23.5 and the world score of 18.1. Child wasting at 19.0% is the highest rate in South Asia.",
-   "insight": "Child wasting at 19.0% is the highest rate in South Asia, so a question on the weakest indicator is likely.",
-   "src": {
-    "name": "Global Hunger Index 2026, India",
-    "url": "https://www.globalhungerindex.org/india.html",
-    "date": "14 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "Child wasting at 19.0% is the highest rate in South Asia, so a question on the weakest indicator is likely."
   },
   {
    "id": "caq-2026-10-008",
@@ -170,13 +128,7 @@
    ],
    "ans": 2,
    "why": "The four indicators are undernourishment, child stunting, child wasting and child mortality. Literacy is not included. A higher score means worse hunger.",
-   "insight": "Remember GHI as a score out of 100: higher means worse hunger.",
-   "src": {
-    "name": "Global Hunger Index 2026, India",
-    "url": "https://www.globalhungerindex.org/india.html",
-    "date": "14 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "Remember GHI as a score out of 100: higher means worse hunger."
   },
   {
    "id": "caq-2026-10-009",
@@ -192,13 +144,7 @@
    ],
    "ans": 1,
    "why": "The programme was continued with about Rs 53,428 crore, and the disability benchmark was lowered to 40%. The age condition was removed, so eligibility starts from birth, not raised to 18.",
-   "insight": "NSAP gives effect to the Directive Principle in Article 41 (public assistance in old age, sickness and disablement).",
-   "src": {
-    "name": "PIB",
-    "url": "https://www.pib.gov.in/PressReleasepage.aspx?PRID=2323264&reg=48&lang=1",
-    "date": "14 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "NSAP gives effect to the Directive Principle in Article 41 (public assistance in old age, sickness and disablement)."
   },
   {
    "id": "caq-2026-10-010",
@@ -213,21 +159,15 @@
     "1, 2 and 3"
    ],
    "ans": 3,
-   "why": "All three are correct per the PIB release. The government and LIC keep 15% and 19% respectively after the sale.",
-   "insight": "IDBI Bank was re-categorised as a private sector bank by the RBI in 2019 after LIC took a controlling stake.",
-   "src": {
-    "name": "PIB",
-    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2323318&reg=48&lang=1",
-    "date": "14 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "why": "All three are correct. The government and LIC keep 15% and 19% respectively after the sale.",
+   "insight": "IDBI Bank was re-categorised as a private sector bank by the RBI in 2019 after LIC took a controlling stake."
   },
   {
    "id": "caq-2026-10-011",
    "subject": "Environment",
    "syllabus": "Wetlands and conservation",
    "exam": "pre",
-   "q": "With reference to Ramsar Sites in India, as per the Government of India's note of 25 October 2026, consider the following statements:\n1. India has 103 Ramsar Sites.\n2. The number has risen from 26 in 2014.\n3. Ramsar designation creates a separate Indian law for each site.\nWhich of the statements given above is/are correct?",
+   "q": "With reference to Ramsar Sites in India as of 25 October 2026, consider the following statements:\n1. India has 103 Ramsar Sites.\n2. The number has risen from 26 in 2014.\n3. Ramsar designation creates a separate Indian law for each site.\nWhich of the statements given above is/are correct?",
    "opts": [
     "1 and 2 only",
     "2 and 3 only",
@@ -236,13 +176,7 @@
    ],
    "ans": 0,
    "why": "Ramsar designation recognises a site's international importance and 'wise use'. It does not by itself create a separate Indian law for the site.",
-   "insight": "Ramsar designation recognises international importance and 'wise use'; it does not by itself create a separate Indian law for the site.",
-   "src": {
-    "name": "PIB, Ramsar Sites in India",
-    "url": "https://www.pib.gov.in/PressNoteDetails.aspx?NoteId=160558&ModuleId=3&reg=3&lang=1",
-    "date": "25 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "Ramsar designation recognises international importance and 'wise use'; it does not by itself create a separate Indian law for the site."
   },
   {
    "id": "caq-2026-10-012",
@@ -258,13 +192,7 @@
    ],
    "ans": 1,
    "why": "Both are correct, but Part IX does not explain why the scheme is Centrally Sponsored. The outlay is about Rs 7,395.55 crore: about Rs 4,869.48 crore from the Centre and Rs 2,526.07 crore from the States. It covers over 2.55 lakh Panchayats and traditional local bodies.",
-   "insight": "Panchayats come under Part IX of the Constitution (Articles 243 to 243O), added by the 73rd Amendment.",
-   "src": {
-    "name": "PIB",
-    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2329692&reg=48&lang=2",
-    "date": "28 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "Panchayats come under Part IX of the Constitution (Articles 243 to 243O), added by the 73rd Amendment."
   },
   {
    "id": "caq-2026-10-013",
@@ -280,13 +208,7 @@
    ],
    "ans": 1,
    "why": "The scheme is Centrally Sponsored, so costs are shared (Centre about Rs 4,869 crore, States about Rs 2,526 crore). Statement 3 is wrong.",
-   "insight": "Part IX does not apply to Scheduled Areas and tribal areas (Article 243M); PESA 1996 extends Panchayats there.",
-   "src": {
-    "name": "PIB",
-    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2329692&reg=48&lang=2",
-    "date": "28 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "Part IX does not apply to Scheduled Areas and tribal areas (Article 243M); PESA 1996 extends Panchayats there."
   },
   {
    "id": "caq-2026-10-014",
@@ -302,13 +224,7 @@
    ],
    "ans": 2,
    "why": "The increase is effective 1 July 2026, not 1 January 2027, and costs about Rs 10,016 crore a year. DA offsets inflation for serving employees, and Dearness Relief is the same relief for pensioners.",
-   "insight": "DA offsets inflation for serving employees; Dearness Relief is the same relief for pensioners.",
-   "src": {
-    "name": "PIB",
-    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2329485&reg=48&lang=1",
-    "date": "28 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "DA offsets inflation for serving employees; Dearness Relief is the same relief for pensioners."
   },
   {
    "id": "caq-2026-10-015",
@@ -324,13 +240,7 @@
    ],
    "ans": 3,
    "why": "Article 155 provides for appointment by the President by warrant under hand and seal. The Governor holds office during the pleasure of the President (Article 156). The normal term is five years, but the Governor continues until a successor takes charge.",
-   "insight": "The normal term is five years, but the Governor continues until a successor takes charge.",
-   "src": {
-    "name": "President of India, press communique",
-    "url": "https://www.presidentofindia.gov.in/press_releases/press-communique-38",
-    "date": "12 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "The normal term is five years, but the Governor continues until a successor takes charge."
   },
   {
    "id": "caq-2026-10-016",
@@ -346,13 +256,7 @@
    ],
    "ans": 3,
    "why": "Article 324 vests superintendence, direction and control of the preparation of electoral rolls and the conduct of elections in the Commission. Article 326 gives universal adult suffrage at 18 years, and Article 329 bars courts from interfering in electoral matters.",
-   "insight": "Article 326 gives universal adult suffrage (18 years); Article 329 bars courts from interfering in electoral matters.",
-   "src": {
-    "name": "PIB, ECI decisions",
-    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2315309&reg=3&lang=1",
-    "date": "26 Sep 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "Article 326 gives universal adult suffrage (18 years); Article 329 bars courts from interfering in electoral matters."
   },
   {
    "id": "caq-2026-10-017",
@@ -368,13 +272,7 @@
    ],
    "ans": 1,
    "why": "Section 151A requires a by-election within six months, unless the remainder of the term is under one year. The Nagaon (Assam) Lok Sabha by-election was held on 6 October 2026, with counting on 9 October.",
-   "insight": "The Election Commission, not the Government, decides the date of by-elections.",
-   "src": {
-    "name": "PIB, ECI schedule",
-    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2253728&reg=3&lang=1",
-    "date": "6 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "The Election Commission, not the Government, decides the date of by-elections."
   },
   {
    "id": "caq-2026-10-018",
@@ -390,13 +288,7 @@
    ],
    "ans": 2,
    "why": "Article 93 provides for the Lok Sabha to choose its Speaker and Deputy Speaker from among its members, so the statement on appointment by the President is wrong. The Speaker presides over joint sittings and certifies Money Bills.",
-   "insight": "The Speaker presides over joint sittings and decides whether a bill is a Money Bill.",
-   "src": {
-    "name": "PIB",
-    "url": "https://www.pib.gov.in/PressReleaseDetail.aspx?PRID=2329065&reg=3&lang=1",
-    "date": "27 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "The Speaker presides over joint sittings and decides whether a bill is a Money Bill."
   },
   {
    "id": "caq-2026-10-019",
@@ -412,13 +304,7 @@
    ],
    "ans": 1,
    "why": "Food inflation on the Consumer Food Price Index was 7.74%. CPI is compiled by the National Statistics Office under MoSPI.",
-   "insight": "CPI is compiled by the National Statistics Office under MoSPI. The new series uses 2024 as the base year.",
-   "src": {
-    "name": "MoSPI, CPI press release",
-    "url": "https://www.mospi.gov.in/uploads/latestreleasesfiles/1791801549227-Press%20Release%20for%20the%20month%20of%20September,%202026.pdf",
-    "date": "12 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "CPI is compiled by the National Statistics Office under MoSPI. The new series uses 2024 as the base year."
   },
   {
    "id": "caq-2026-10-020",
@@ -434,13 +320,7 @@
    ],
    "ans": 0,
    "why": "The band is 2% to 6%, so 5.54% is inside the band but above the 4% target. The MPC has six members, and the RBI Governor has a casting vote in a tie.",
-   "insight": "The MPC has six members; the RBI Governor has a casting vote in a tie.",
-   "src": {
-    "name": "MoSPI, CPI press release",
-    "url": "https://www.mospi.gov.in/uploads/latestreleasesfiles/1791801549227-Press%20Release%20for%20the%20month%20of%20September,%202026.pdf",
-    "date": "12 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "The MPC has six members; the RBI Governor has a casting vote in a tie."
   },
   {
    "id": "caq-2026-10-021",
@@ -456,13 +336,7 @@
    ],
    "ans": 2,
    "why": "Safflower got the largest rise (Rs 675), then rapeseed and mustard (Rs 413). The Government cites a margin of about 106% over cost for wheat.",
-   "insight": "Production cost and expected margin: the Government cites a margin of about 106% over cost for wheat.",
-   "src": {
-    "name": "PIB, Cabinet",
-    "url": "https://www.pib.gov.in/PressReleasepage.aspx?PRID=2316941&reg=48&lang=1",
-    "date": "30 Sep 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "Production cost and expected margin: the Government cites a margin of about 106% over cost for wheat."
   },
   {
    "id": "caq-2026-10-022",
@@ -478,13 +352,7 @@
    ],
    "ans": 3,
    "why": "The Cabinet Committee on Economic Affairs approves the MSPs. Sugarcane has a Fair and Remunerative Price (FRP), not an MSP.",
-   "insight": "Sugarcane has a Fair and Remunerative Price (FRP), not an MSP.",
-   "src": {
-    "name": "PIB, Cabinet",
-    "url": "https://www.pib.gov.in/PressReleasepage.aspx?PRID=2316941&reg=48&lang=1",
-    "date": "30 Sep 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "Sugarcane has a Fair and Remunerative Price (FRP), not an MSP."
   },
   {
    "id": "caq-2026-10-023",
@@ -500,13 +368,7 @@
    ],
    "ans": 0,
    "why": "The fund fills a gap in long-term equity for growth-stage SMEs, with a focus on manufacturing and industrial clusters in Tier II and III cities. AIFs are regulated by SEBI, and the money is risk capital, not loans.",
-   "insight": "AIFs are regulated by SEBI; SME Growth Fund money is meant as risk capital, not loans.",
-   "src": {
-    "name": "PIB, Cabinet",
-    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2319534&reg=3&lang=1",
-    "date": "6 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "AIFs are regulated by SEBI; SME Growth Fund money is meant as risk capital, not loans."
   },
   {
    "id": "caq-2026-10-024",
@@ -522,13 +384,7 @@
    ],
    "ans": 1,
    "why": "Both are correct, but the definition of interest subvention does not explain why the scheme was introduced; the scheme aims to build domestic container manufacturing. Operating expenditure assistance is about Rs 8,891 crore.",
-   "insight": "Interest subvention means the Government pays part of the interest so the borrower pays less.",
-   "src": {
-    "name": "PIB",
-    "url": "https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2329601&reg=48&lang=2",
-    "date": "28 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "Interest subvention means the Government pays part of the interest so the borrower pays less."
   },
   {
    "id": "caq-2026-10-025",
@@ -544,13 +400,7 @@
    ],
    "ans": 2,
    "why": "The Union Budget 2026-27 had earmarked Rs 500 crore for sports goods manufacturing, not Rs 5,000 crore. The scheme builds a competitive manufacturing base.",
-   "insight": "The Union Budget 2026-27 had earmarked Rs 500 crore for sports goods manufacturing.",
-   "src": {
-    "name": "PIB",
-    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2329701&reg=48&lang=2",
-    "date": "28 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "The Union Budget 2026-27 had earmarked Rs 500 crore for sports goods manufacturing."
   },
   {
    "id": "caq-2026-10-026",
@@ -566,13 +416,7 @@
    ],
    "ans": 3,
    "why": "COP15 (Kunming-Montreal) adopted the Global Biodiversity Framework, whose '30 by 30' target aims to protect 30% of land and sea by 2030.",
-   "insight": "The Framework's '30 by 30' target aims to protect 30% of land and sea by 2030.",
-   "src": {
-    "name": "CMS, CBD COP17",
-    "url": "https://www.cms.int/eventcalendar/cms-un-biodiversity-conference-cbd-cop17",
-    "date": "Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "The Framework's '30 by 30' target aims to protect 30% of land and sea by 2030."
   },
   {
    "id": "caq-2026-10-027",
@@ -588,13 +432,7 @@
    ],
    "ans": 1,
    "why": "COP31 is scheduled for 9 to 20 November 2026 in Antalya, Türkiye. COP30 was held in Belem, Brazil, in 2025.",
-   "insight": "COP30 was held in Belem, Brazil, in 2025.",
-   "src": {
-    "name": "UNFCCC, COP31",
-    "url": "https://unfccc.int/cop31/about",
-    "date": "Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "COP30 was held in Belem, Brazil, in 2025."
   },
   {
    "id": "caq-2026-10-028",
@@ -610,20 +448,14 @@
    ],
    "ans": 2,
    "why": "The scheme is mainly for intra-State transmission, carried out by State Transmission Utilities, along with 50 GWh of battery storage. Battery storage helps manage the intermittency of solar and wind.",
-   "insight": "Battery storage helps manage the intermittency of solar and wind.",
-   "src": {
-    "name": "PIB, Cabinet",
-    "url": "https://www.pib.gov.in/PressReleasepage.aspx?PRID=2316948&reg=48&lang=1",
-    "date": "30 Sep 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "Battery storage helps manage the intermittency of solar and wind."
   },
   {
    "id": "caq-2026-10-029",
    "subject": "Environment",
    "syllabus": "Renewable energy",
    "exam": "pre",
-   "q": "With reference to India's renewable energy capacity, as per PIB figures for 31 July 2026, consider the following statements:\n1. Installed solar capacity was about 164.59 GW.\n2. Non-fossil capacity was about 300.50 GW.\n3. Non-fossil capacity was over 54% of total installed capacity.\n4. India ranks first in the world in renewable capacity, according to IRENA.\nHow many of the above statements are correct?",
+   "q": "With reference to India's renewable energy capacity as on 31 July 2026, consider the following statements:\n1. Installed solar capacity was about 164.59 GW.\n2. Non-fossil capacity was about 300.50 GW.\n3. Non-fossil capacity was over 54% of total installed capacity.\n4. India ranks first in the world in renewable capacity, according to IRENA.\nHow many of the above statements are correct?",
    "opts": [
     "Only one",
     "Only two",
@@ -632,13 +464,7 @@
    ],
    "ans": 2,
    "why": "India ranks third globally in renewable capacity according to IRENA statistics, not first.",
-   "insight": "India ranks third globally in renewable capacity according to IRENA statistics.",
-   "src": {
-    "name": "PIB, India's Energy Journey",
-    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2298869&reg=48&lang=1",
-    "date": "Jul 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "India ranks third globally in renewable capacity according to IRENA statistics."
   },
   {
    "id": "caq-2026-10-030",
@@ -654,13 +480,7 @@
    ],
    "ans": 1,
    "why": "Both are correct, but the size of the outlay does not explain why the scheme was set up. It offers assured offtake, a pricing framework and capital assistance. GOBARdhan stands for Galvanizing Organic Bio-Agro Resources Dhan.",
-   "insight": "GOBARdhan stands for Galvanizing Organic Bio-Agro Resources Dhan.",
-   "src": {
-    "name": "PIB, GOBARdhan",
-    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2317937&reg=48&lang=2",
-    "date": "1 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "GOBARdhan stands for Galvanizing Organic Bio-Agro Resources Dhan."
   },
   {
    "id": "caq-2026-10-031",
@@ -676,13 +496,7 @@
    ],
    "ans": 3,
    "why": "SATAT set up CBG plants and a market for them, and the new GOBARdhan scheme builds on it with guaranteed offtake and pricing. CBG is a purified form of biogas, mainly methane, that can replace CNG.",
-   "insight": "CBG is a purified form of biogas, mainly methane, that can replace CNG.",
-   "src": {
-    "name": "PIB, GOBARdhan",
-    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2317937&reg=48&lang=2",
-    "date": "1 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "CBG is a purified form of biogas, mainly methane, that can replace CNG."
   },
   {
    "id": "caq-2026-10-032",
@@ -698,13 +512,7 @@
    ],
    "ans": 0,
    "why": "The 2022 tiger estimate was 3,682, up from 2,967 in 2018. India also has 18 Biosphere Reserves, 106 National Parks and 574 Wildlife Sanctuaries. Tiger reserves are notified by States on the advice of the NTCA.",
-   "insight": "The 2022 tiger estimate was 3,682, up from 2,967 in 2018. Tiger reserves are notified by States on NTCA advice.",
-   "src": {
-    "name": "PIB",
-    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2240576&reg=3&lang=2",
-    "date": "16 Mar 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "The 2022 tiger estimate was 3,682, up from 2,967 in 2018. Tiger reserves are notified by States on NTCA advice."
   },
   {
    "id": "caq-2026-10-033",
@@ -720,13 +528,7 @@
    ],
    "ans": 0,
    "why": "The stratosphere lies from about 12 to 50 km. Such platforms sit between aircraft and satellites, so they are called pseudo-satellites, and they fly there for long-endurance surveillance and communication.",
-   "insight": "Because they sit between aircraft and satellites, such platforms are called pseudo-satellites.",
-   "src": {
-    "name": "PIB, DRDO",
-    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2319551&reg=3&lang=1",
-    "date": "6 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "Because they sit between aircraft and satellites, such platforms are called pseudo-satellites."
   },
   {
    "id": "caq-2026-10-034",
@@ -742,13 +544,7 @@
    ],
    "ans": 2,
    "why": "The India Semiconductor Mission works under the Ministry of Electronics and Information Technology (MeitY), not the Department of Science and Technology.",
-   "insight": "The India Semiconductor Mission works under MeitY.",
-   "src": {
-    "name": "PIB",
-    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2311726&lang=1&reg=3",
-    "date": "Sep 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "The India Semiconductor Mission works under MeitY."
   },
   {
    "id": "caq-2026-10-035",
@@ -764,13 +560,7 @@
    ],
    "ans": 1,
    "why": "The Union Cabinet approved the Mission in March 2024, with an outlay of Rs 10,371.92 crore. A GPU is a graphics processing unit, the chip type used to train AI models.",
-   "insight": "A GPU is a graphics processing unit, the chip type used to train AI models.",
-   "src": {
-    "name": "PIB",
-    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2229171&reg=1&lang=1",
-    "date": "Feb 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "A GPU is a graphics processing unit, the chip type used to train AI models."
   },
   {
    "id": "caq-2026-10-036",
@@ -786,13 +576,7 @@
    ],
    "ans": 0,
    "why": "The Maratha Military Landscapes was the 44th property, inscribed in 2025; Sarnath became the 45th in July 2026. At Sarnath the Buddha gave his first sermon, the Dhammachakkapravartana.",
-   "insight": "At Sarnath the Buddha gave his first sermon, the Dhammachakkapravartana.",
-   "src": {
-    "name": "PIB, Ministry of Culture",
-    "url": "https://www.pib.gov.in/PressReleasePage.aspx?PRID=2289399&reg=48&lang=2",
-    "date": "25 Jul 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "At Sarnath the Buddha gave his first sermon, the Dhammachakkapravartana."
   },
   {
    "id": "caq-2026-10-037",
@@ -808,13 +592,7 @@
    ],
    "ans": 0,
    "why": "Patel was born on 31 October 1875, and he was India's first Deputy Prime Minister and Home Minister. The Statue of Unity stands at Ekta Nagar, Gujarat.",
-   "insight": "He was India's first Deputy Prime Minister and Home Minister.",
-   "src": {
-    "name": "PIB, Ministry of Home Affairs",
-    "url": "https://www.pib.gov.in/allrelease.aspx?reg=3&lang=1",
-    "date": "21 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "He was India's first Deputy Prime Minister and Home Minister."
   },
   {
    "id": "caq-2026-10-038",
@@ -830,13 +608,7 @@
    ],
    "ans": 3,
    "why": "The Gyan Bharatam Mission works to survey, conserve and digitise Indic manuscripts, and the MoU covers Indic-origin manuscripts held in France. Digital access is a key way of preserving fragile palm-leaf and paper manuscripts.",
-   "insight": "Digital access is a key way of preserving fragile palm-leaf and paper manuscripts.",
-   "src": {
-    "name": "PIB, Ministry of Culture",
-    "url": "https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2329163&reg=1&lang=1",
-    "date": "27 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "Digital access is a key way of preserving fragile palm-leaf and paper manuscripts."
   },
   {
    "id": "caq-2026-10-039",
@@ -852,13 +624,7 @@
    ],
    "ans": 0,
    "why": "Bismillah Khan was a shehnai maestro and a Bharat Ratna awardee. The Sangeet Natak Akademi is the national academy of music, dance and drama.",
-   "insight": "Bismillah Khan was a shehnai maestro and a Bharat Ratna awardee.",
-   "src": {
-    "name": "PIB, Ministry of Culture",
-    "url": "https://www.pib.gov.in/allmediainvitation.aspx?reg=3&lang=1",
-    "date": "19 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "Bismillah Khan was a shehnai maestro and a Bharat Ratna awardee."
   },
   {
    "id": "caq-2026-10-040",
@@ -874,13 +640,7 @@
    ],
    "ans": 2,
    "why": "The festival brought together over 100 theatre practitioners. India holds the BRICS chair in 2026.",
-   "insight": "India holds the BRICS chair in 2026.",
-   "src": {
-    "name": "PIB, Ministry of Culture",
-    "url": "https://pib.gov.in/PressReleseDetailm.aspx?PRID=2314468&lang=2&reg=48",
-    "date": "Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "India holds the BRICS chair in 2026."
   },
   {
    "id": "caq-2026-10-041",
@@ -896,13 +656,7 @@
    ],
    "ans": 0,
    "why": "The northeast monsoon sets in over the south-eastern coast. Tamil Nadu gets most of its rain from this retreating monsoon, from October to December.",
-   "insight": "Tamil Nadu gets most of its rain from the northeast (retreating) monsoon, from October to December.",
-   "src": {
-    "name": "IMD press release",
-    "url": "https://internal.imd.gov.in/press_release/20261015_pr_5405.pdf",
-    "date": "15 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "Tamil Nadu gets most of its rain from the northeast (retreating) monsoon, from October to December."
   },
   {
    "id": "caq-2026-10-042",
@@ -918,13 +672,7 @@
    ],
    "ans": 0,
    "why": "Western disturbances bring winter rain to the north-west, not to Tamil Nadu. The Himalayas do not block the monsoon winds that reach the south.",
-   "insight": "Western disturbances bring winter rain to the north-west, not to Tamil Nadu.",
-   "src": {
-    "name": "IMD press release",
-    "url": "https://internal.imd.gov.in/press_release/20261015_pr_5405.pdf",
-    "date": "15 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "Western disturbances bring winter rain to the north-west, not to Tamil Nadu."
   },
   {
    "id": "caq-2026-10-043",
@@ -940,13 +688,7 @@
    ],
    "ans": 1,
    "why": "Strong vertical wind shear discourages cyclone formation during the southwest monsoon. IMD reported a low-pressure area in the Arabian Sea on 18 October 2026 and expected another over the Bay of Bengal near 23 October.",
-   "insight": "During the southwest monsoon, strong vertical wind shear discourages cyclone formation.",
-   "src": {
-    "name": "IMD, extended range outlook",
-    "url": "https://mausam.imd.gov.in/Forecast/marquee_data/ERF%2008.10.26.pdf",
-    "date": "Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "During the southwest monsoon, strong vertical wind shear discourages cyclone formation."
   },
   {
    "id": "caq-2026-10-044",
@@ -962,13 +704,7 @@
    ],
    "ans": 1,
    "why": "Sukhna is a reservoir at the foot of the Shivalik hills, fed by seasonal streams. Sauj Jheel, also added, is in Uttar Pradesh.",
-   "insight": "Sauj Jheel, also added, is in Uttar Pradesh.",
-   "src": {
-    "name": "Ramsar",
-    "url": "https://www.ramsar.org/news/india-adds-two-more-wetlands-international-importance-list",
-    "date": "2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "Sauj Jheel, also added, is in Uttar Pradesh."
   },
   {
    "id": "caq-2026-10-045",
@@ -984,13 +720,7 @@
    ],
    "ans": 2,
    "why": "India's research stations in Antarctica are Maitri and Bharati. Himadri is India's research station in the Arctic.",
-   "insight": "The Indian research stations in Antarctica are Maitri and Bharati.",
-   "src": {
-    "name": "NobelPrize.org",
-    "url": "https://www.nobelprize.org/prizes/physics/2026/press-release/",
-    "date": "6 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "The Indian research stations in Antarctica are Maitri and Bharati."
   },
   {
    "id": "caq-2026-10-046",
@@ -1006,13 +736,7 @@
    ],
    "ans": 1,
    "why": "Both are correct, but the list of neighbours does not explain the fact that it is landlocked. Its capital, Yerevan, hosted COP17 from 19 to 30 October 2026.",
-   "insight": "Its capital, Yerevan, hosted COP17 from 19 to 30 October 2026.",
-   "src": {
-    "name": "CMS, CBD COP17",
-    "url": "https://www.cms.int/eventcalendar/cms-un-biodiversity-conference-cbd-cop17",
-    "date": "Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "Its capital, Yerevan, hosted COP17 from 19 to 30 October 2026."
   },
   {
    "id": "caq-2026-10-047",
@@ -1028,13 +752,7 @@
    ],
    "ans": 1,
    "why": "The two sides set a target of doubling bilateral trade by 2030, not tripling defence exports. They also expected a classified-information protection agreement to be signed soon. India and Poland set up a Strategic Partnership in 2024, with an Action Plan for 2024 to 2028.",
-   "insight": "India and Poland set up a Strategic Partnership in 2024 with an Action Plan for 2024 to 2028.",
-   "src": {
-    "name": "PIB, India-Poland joint statement",
-    "url": "https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2326568&reg=3&lang=1",
-    "date": "22 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "India and Poland set up a Strategic Partnership in 2024 with an Action Plan for 2024 to 2028."
   },
   {
    "id": "caq-2026-10-048",
@@ -1050,13 +768,7 @@
    ],
    "ans": 3,
    "why": "India announced IPOI at the East Asia Summit in November 2019 as an open, global initiative for a safe and secure maritime domain.",
-   "insight": "Poland also said it would join the Coalition for Disaster Resilient Infrastructure (CDRI).",
-   "src": {
-    "name": "PIB, India-Poland joint statement",
-    "url": "https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2326568&reg=3&lang=1",
-    "date": "22 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "Poland also said it would join the Coalition for Disaster Resilient Infrastructure (CDRI)."
   },
   {
    "id": "caq-2026-10-049",
@@ -1072,13 +784,7 @@
    ],
    "ans": 1,
    "why": "Both are correct, but the location of the secretariat does not explain Poland's decision to join. CDRI promotes resilient infrastructure so that countries can cope with disasters and climate risks.",
-   "insight": "CDRI promotes resilient infrastructure, helping countries cope with disasters and climate risks.",
-   "src": {
-    "name": "PIB, India-Poland joint statement",
-    "url": "https://www.pib.gov.in/PressReleseDetailm.aspx?PRID=2326568&reg=3&lang=1",
-    "date": "22 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "CDRI promotes resilient infrastructure, helping countries cope with disasters and climate risks."
   },
   {
    "id": "caq-2026-10-050",
@@ -1094,13 +800,7 @@
    ],
    "ans": 0,
    "why": "The Parliamentary Forum and a Theatre Festival were part of India's programme as chair, so the Forum was held in New Delhi, not Johannesburg.",
-   "insight": "BRICS originally stood for Brazil, Russia, India and China, with South Africa joining in 2010.",
-   "src": {
-    "name": "PIB",
-    "url": "https://www.pib.gov.in/PressReleaseDetail.aspx?PRID=2329065&reg=3&lang=1",
-    "date": "27 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "BRICS originally stood for Brazil, Russia, India and China, with South Africa joining in 2010."
   },
   {
    "id": "caq-2026-10-051",
@@ -1116,13 +816,7 @@
    ],
    "ans": 2,
    "why": "EFTA has four members: Iceland, Liechtenstein, Norway and Switzerland. Poland is in the European Union. India signed a trade and economic partnership agreement with EFTA, so these visits matter for investment.",
-   "insight": "India signed a trade and economic partnership agreement with EFTA, so these visits matter for investment.",
-   "src": {
-    "name": "MEA",
-    "url": "https://www.mea.gov.in/",
-    "date": "27 Oct 2026"
-   },
-   "checked": "30 Oct 2026"
+   "insight": "India signed a trade and economic partnership agreement with EFTA, so these visits matter for investment."
   },
   {
    "id": "caq-2026-10-052",

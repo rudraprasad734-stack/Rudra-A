@@ -17702,11 +17702,7 @@ function caqResume(){
   if(v.key){ caq.ui.subj = caqSubjIndex(v.key); caq.ui.screen = "road"; }
   caqSetPos(Math.min(v.res.length, v.ids.length-1)); renderCaQuiz(); window.scrollTo(0, 0);
 }
-function caqSrcHtml(q){
-  if(!q.src || !(q.src.name || q.src.url)) return "";   // some sets carry no source line
-  var s = q.src || {}, t = esc((s.name || "Source")+(s.date ? " · "+s.date : "")), link = s.url && /^https:\/\//.test(s.url) ? '<a href="'+esc(s.url)+'" target="_blank" rel="noopener">'+t+'</a>' : t;
-  return '<div class="caq-src">Source: '+link+(q.checked ? ' &middot; checked '+esc(q.checked) : "")+'</div>';
-}
+function caqSrcHtml(q){ return ""; }   // no source or reference lines are shown under questions
 function caqReportSheet(id){
   var q = caq.qs[id]; if(!q) return;
   var m = showModal('<div class="modal card caq-rep" role="dialog" aria-modal="true" aria-labelledby="caqRT"><h2 id="caqRT">Report this answer</h2><p class="muted">Tell us what looks wrong. We check every report against the source.</p>'+
@@ -17876,13 +17872,12 @@ function caqDailyHtml(){
   var d = c.days.filter(function(z){ return z.day===u.dd; })[0] || c.days[0];
   if(c.days.length>1) h += '<div class="cx-month">'+c.days.map(function(z){ return '<button type="button" data-caq="dyd" data-id="'+esc(z.day)+'"'+(z.day===d.day ? ' class="on"' : "")+'>'+esc(z.title)+'</button>'; }).join("")+'</div>';
   var nr = d.topics.filter(function(z){ return rd[z.id]; }).length;
-  h += '<p class="cx-intro">'+esc(d.src)+' · '+d.topics.length+' topics · '+nr+' read. Each topic starts with the syllabus background, then the news.</p>';
+  h += '<p class="cx-intro">'+d.topics.length+' topics · '+nr+' read. Each topic starts with the syllabus background, then the news.</p>';
   var last = "";
   d.topics.forEach(function(z){
     if(z.sec!==last){ h += '<div class="cx-sec">'+esc(z.sec)+'</div>'; last = z.sec; }
     h += '<button type="button" class="dy-card" data-caq="dyt" data-id="'+esc(z.id)+'"><span class="dy-top"><span>'+dyGs(z)+'</span><span class="dy-dot'+(rd[z.id] ? " on" : "")+'" aria-label="'+(rd[z.id] ? "Read" : "Not read")+'"></span></span><b>'+esc(z.t)+'</b><small>'+dyMd(z.news || "")+'</small><span class="dy-kw">'+(z.prel || []).slice(0, 4).map(function(k){ return '<i>'+esc(k.k)+'</i>'; }).join("")+'</span></button>';
   });
-  if(d.note) h += '<p class="dy-note">'+esc(d.note)+'</p>';
   return h+'</div>';
 }
 function caqCruxTopic(id){
@@ -21210,7 +21205,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "443";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "444";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+

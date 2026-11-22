@@ -1,8 +1,6 @@
 {
  "day": "2026-11-17",
  "title": "17 Nov 2026",
- "src": "News reports and official releases, 17 Nov 2026",
- "note": "Notes for 17 November 2026, built from news reports and official releases. Where only the headline was available (the RBI outsourcing directions), the note gives the background to the story, and the facts behind each news item come from standard textbooks and official sources.",
  "topics": [
   {
    "id": "dn-2026-11-17-1",
@@ -13,7 +11,7 @@
     "GS1 Society",
     "GS2 Governance"
    ],
-   "news": "On 16 November the Census 2027 self-enumeration portal, live for residents of Uttar Pradesh, Punjab, Goa and Uttarakhand, briefly showed a drop-down of 287 entries under ‘Others’ for religion, including ISKCON, Sarna, Shia, Sunni and Pentecostal. It was removed the same day after The Hindu asked the Home Ministry. The Registrar General and Census Commissioner’s office said ‘Others’ remains an open field where any religion can be entered, and that the religion question still offers seven broad choices: Hindu, Muslim, Christian, Sikh, Buddhist, Jain and Others.",
+   "news": "On 16 November the Census 2027 self-enumeration portal, live for residents of Uttar Pradesh, Punjab, Goa and Uttarakhand, briefly showed a drop-down of 287 entries under ‘Others’ for religion, including ISKCON, Sarna, Shia, Sunni and Pentecostal. It was removed the same day after the Home Ministry was asked about it. The Registrar General and Census Commissioner’s office said ‘Others’ remains an open field where any religion can be entered, and that the religion question still offers seven broad choices: Hindu, Muslim, Christian, Sikh, Buddhist, Jain and Others.",
    "blocks": [
     {
      "h": "The Census and the religion question",
@@ -88,7 +86,7 @@
     "GS3 Economy",
     "GS3 Science and Technology"
    ],
-   "news": "The Hindu’s 17 November coverage points to RBI directions that make banks assess their dependence on cloud services and keep exit plans, alongside the European Union’s rules on operational resilience (DORA) and network security (NIS2). The note below gives the background of the Reserve Bank’s outsourcing framework, since only the headline of the story was available.",
+   "news": "RBI directions now make banks assess their dependence on cloud services and keep exit plans, alongside the European Union’s rules on operational resilience (DORA) and network security (NIS2). The note below gives the background of the Reserve Bank’s outsourcing framework, since only the headline of the story was available.",
    "blocks": [
     {
      "h": "The framework",
