@@ -4,7 +4,7 @@ import sys,os,json
 import numpy as np,pymupdf
 from PIL import Image,ImageDraw,ImageFont
 here=os.path.dirname(os.path.abspath(__file__)); pdfdir=sys.argv[1]; key=sys.argv[2]
-S='/tmp/claude-0/-home-user-Rudra-A/8d6d6fe3-157c-5862-b382-28c5f4190943/scratchpad/bands'; os.makedirs(S,exist_ok=True); os.makedirs(os.path.join(here,'.bands'),exist_ok=True)
+S='./scratch/bands'; os.makedirs(S,exist_ok=True); os.makedirs(os.path.join(here,'.bands'),exist_ok=True)
 d=pymupdf.open(os.path.join(pdfdir,key+'.pdf'))
 for pg in sys.argv[3:]:
     pix=d[int(pg)-1].get_pixmap(dpi=100); im=Image.frombytes('RGB',(pix.width,pix.height),pix.samples); a=np.asarray(im.convert('L')); H,W=a.shape

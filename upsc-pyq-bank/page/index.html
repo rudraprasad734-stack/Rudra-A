@@ -21205,7 +21205,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "447";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "448";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -23137,7 +23137,7 @@ var PAPER_NAMES = ["GS Paper I","CSAT (GS Paper II)","Essay","GS Paper II","GS P
 
 function renderPapers(){
   var host = document.getElementById("view-papers");
-  if(!db){ host.innerHTML = '<div class="card empty">Open this page while signed in to claude.ai to see and upload your question papers.</div>'; return; }
+  if(!db){ host.innerHTML = '<div class="card empty">This section is not available in this version of the app.</div>'; return; }
   if(!papers){ host.innerHTML = '<div class="card empty">Loading your papers…</div>'; loadPapers().then(function(){ if(activeTab==="papers") renderPapers(); }); return; }
   if(assetsNs===undefined){
     assetsNs = null;
@@ -23146,7 +23146,7 @@ function renderPapers(){
   var canUpload = !!assetsNs;
   var up = '<details class="card add-mock"'+(pending.length?' open':'')+'><summary><h3>Add question papers</h3></summary>'+
     (canUpload ?
-      '<p class="muted small">PDFs up to 20 MB each. They are filed by paper and year below. For Prelims or optional papers you can also tell Claude: <b>“Add my new papers to the question bank.”</b></p>'+
+      '<p class="muted small">PDFs up to 20 MB each. They are filed by paper and year below.</p>'+
       '<label class="file-drop" for="paperFiles"><input type="file" id="paperFiles" accept="application/pdf,.pdf" multiple><span>Choose PDFs</span><small>or drop them here</small></label>'+
       (pending.length ? '<div class="pending">'+pending.map(function(p,i){
         return '<div class="pend-row"><div class="pend-name">'+esc(p.file.name)+' <span class="num muted">'+fmtSize(p.file.size)+'</span></div>'+
@@ -23248,7 +23248,7 @@ function uploadPending(){
   var next = function(){
     if(!list.length){
       uploading = false; pending = pending.filter(function(p){ return p._failed; }).map(function(p){ delete p._failed; return p; });
-      toast(done+" paper"+(done===1?"":"s")+" uploaded"+(failed?", "+failed+" failed":"")+". Ask Claude to add them to the question bank.");
+      toast(done+" paper"+(done===1?"":"s")+" uploaded"+(failed?", "+failed+" failed":"")+".");
       renderPapers(); return;
     }
     var p = list.shift();
@@ -86678,7 +86678,7 @@ if(document.readyState !== "loading") lateReady();
 <script>
 // Registers the offline app-shell cache when hosted for real (http/https).
 // Service workers require a real origin, so this is a silent no-op both
-// inside the Claude Artifact viewer and when this file is opened directly
+// inside embedded previews and when this file is opened directly
 // from disk (file://) -- the app itself doesn't depend on it either way,
 // since all its data is already inlined above and all progress is saved
 // to localStorage regardless.

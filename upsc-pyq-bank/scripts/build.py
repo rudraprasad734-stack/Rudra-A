@@ -1,5 +1,5 @@
 import re, json, os, glob
-SP = '/tmp/claude-0/-home-user-Rudra-A/8d6d6fe3-157c-5862-b382-28c5f4190943/scratchpad'
+SP = './scratch'
 OUT = SP + '/bank/docs'; os.makedirs(OUT, exist_ok=True)
 FOLDER = 'From your Drive folder "Upsc question bank"'
 NEWF = 'From your Drive folder "Upsc question bank" (Mains and pre after 2022 questions mixed)'
