@@ -33,3 +33,15 @@ Checked against Google's Play policies (Payments, Subscriptions, Metadata, Decep
 - Declarations to re-check in Play Console (they were written at build 180): content rating and "News app: No" now that Daily current affairs exists; Data safety (CA quiz progress, PYQ practised marks and Daily-read marks now sync with the account, so "App interactions" must stay ticked); store description ("keeps your data on your phone" is only true without sign-in, which the text already says).
 - Past exam questions: the app shows only the exam name and year, not a source line. Keep the disclaimer that the app is independent and not affiliated with UPSC.
 - Quote bank: attribution lines come from Wikiquote (CC BY-SA); keep them unless you replace the quote text.
+
+## Policy announcement of 29 Oct 2026: check (23 Nov 2026)
+| Item | Applies? | Status |
+|---|---|---|
+| Trader status declaration in Play Console (required from Nov 2026) | Yes: the app charges for a subscription | **You declare it** in Play Console (Policy and programs > App content > Trader status). Not code. |
+| Japan authorization (by 1 Dec 2026) | Only if the app is sold in Japan | Leave Japan out of the countries list, or complete the form |
+| Location, Local Network, Manage Contacts, SMS and call log, All files access, Accessibility, AppFunctions | No: the app requests none of these (its only permission is notifications, for Play Billing) | Nothing to do |
+| Android 17 (API 37) requirements | Not yet: the app targets API 36 | Nothing to do until the target is raised |
+| Subscriptions with ongoing eligibility-based discounts (student plans) | No: one yearly plan, no offers | Nothing to do; keep it that way |
+| Deceptive behavior: review manipulation | No: no rating prompts or incentives anywhere in the app | Nothing to do |
+| February 2027 app-quality thresholds (memory, code optimisation) | Low risk: a lightweight web app in a Trusted Web Activity | Re-check the Android vitals page after reinstatement |
+| Payments through AI or agentic experiences | No | Nothing to do |
