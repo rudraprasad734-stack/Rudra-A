@@ -3166,6 +3166,336 @@
    "ans": 3,
    "why": "Langar is the community kitchen, started by Guru Nanak and expanded by later Gurus.",
    "id": "caq-2026-11-211"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Industry",
+   "exam": "pre",
+   "q": "In the context of public procurement preference for domestic manufacturers, ‘domestic value addition’ refers to",
+   "opts": [
+    "the share of a product’s value created within India",
+    "the total import duty paid on the components of a product",
+    "the profit margin earned by the seller on each unit sold",
+    "the number of workers employed in the final assembly plant"
+   ],
+   "ans": 0,
+   "why": "Domestic value addition is the portion of a product’s value that is created in India and decides eligibility for purchase preference.",
+   "id": "caq-2026-11-212"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Industry",
+   "exam": "pre",
+   "q": "Which of the following IT hardware products are covered by the revised domestic value addition methodology announced in November 2026?\n1. Laptops\n2. Servers\n3. Interactive flat-panel displays\nSelect the correct answer using the code given below.",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "The six product groups are desktop and all-in-one computers, laptops, thin clients, servers, monitors and interactive flat-panel displays.",
+   "id": "caq-2026-11-213"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Regulation",
+   "exam": "pre",
+   "q": "The Insurance Ombudsman is a body that",
+   "opts": [
+    "fixes the premium that every insurer must charge for health policies",
+    "grants licences to new insurance companies and agents in each state",
+    "resolves complaints of policyholders against insurers",
+    "audits the accounts of insurers on behalf of the Comptroller and Auditor General"
+   ],
+   "ans": 2,
+   "why": "The Insurance Ombudsman is a grievance-redress authority for complaints against insurers.",
+   "id": "caq-2026-11-214"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Tribal areas",
+   "exam": "pre",
+   "q": "Under Section 41(3) of the Right to Fair Compensation and Transparency in Land Acquisition, Rehabilitation and Resettlement Act, 2013, land acquisition in Scheduled Areas requires the prior consent of",
+   "opts": [
+    "the Governor of the State acting on the advice of the Tribes Advisory Council",
+    "the Gram Sabha or the Panchayat or autonomous district council concerned",
+    "the Ministry of Tribal Affairs after a public hearing in the district",
+    "the District Collector with the approval of the State Legislature"
+   ],
+   "ans": 1,
+   "why": "The Court has held that prior Gram Sabha consent is mandatory in Scheduled Areas, even in urgency cases.",
+   "id": "caq-2026-11-215"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Tribal areas",
+   "exam": "pre",
+   "q": "For acquisition of land for a private company under the 2013 land acquisition law, the prior consent of at least what share of the affected families is required?",
+   "opts": [
+    "80%",
+    "50%",
+    "60%",
+    "70%"
+   ],
+   "ans": 0,
+   "why": "A private-company acquisition needs the prior consent of at least 80% of the affected families; for public–private partnership projects the share is 70%.",
+   "id": "caq-2026-11-216"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Tribal areas",
+   "exam": "pre",
+   "q": "The Panchayats (Extension to Scheduled Areas) Act, 1996",
+   "opts": [
+    "abolishes the Fifth Schedule and extends the Sixth Schedule to all tribal areas",
+    "applies to the north-eastern states covered by the Sixth Schedule only",
+    "empowers the State Governor to dissolve the Gram Sabha in tribal areas",
+    "gives Gram Sabhas in tribal areas powers over natural resources and land"
+   ],
+   "ans": 3,
+   "why": "PESA extends the Panchayat system to Scheduled Areas under the Fifth Schedule and strengthens the role of the Gram Sabha.",
+   "id": "caq-2026-11-217"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Social justice",
+   "exam": "pre",
+   "q": "The Narcotic Drugs and Psychotropic Substances Act, 1985",
+   "opts": [
+    "permits the private sale of all psychotropic substances without any licence at all",
+    "applies only to drugs that are produced inside the territory of India itself",
+    "prohibits production and sale of narcotics except for medical and scientific purposes",
+    "treats every person who uses a drug as guilty of a serious and non-bailable offence"
+   ],
+   "ans": 2,
+   "why": "The Act controls narcotic drugs and psychotropic substances and allows them only for medical and scientific purposes under licence.",
+   "id": "caq-2026-11-218"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "External sector",
+   "exam": "pre",
+   "q": "The Foreign Exchange Management Act, 1999 differs from the earlier Foreign Exchange Regulation Act, 1973 in that it",
+   "opts": [
+    "makes every foreign exchange violation punishable by a prison term",
+    "treats most violations as civil offences",
+    "bans all transactions in foreign currency by private persons",
+    "gives the Enforcement Directorate sole control over exchange rates"
+   ],
+   "ans": 1,
+   "why": "FEMA replaced FERA and treats most foreign exchange violations as civil, not criminal, offences.",
+   "id": "caq-2026-11-219"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Courts",
+   "exam": "pre",
+   "q": "With reference to international courts, consider the following statements:\n1. The International Court of Justice settles disputes between states.\n2. The International Criminal Court tries individuals for genocide and war crimes.\n3. India is a party to the Rome Statute of the International Criminal Court.\nWhich of the statements given above are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The ICJ decides disputes between states and the ICC tries individuals. India is not a party to the Rome Statute.",
+   "id": "caq-2026-11-220"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Courts",
+   "exam": "pre",
+   "q": "The International Court of Justice found Myanmar responsible for genocide against the Rohingya in a case brought under the",
+   "opts": [
+    "Refugee Convention, 1951 on the status of refugees",
+    "Rome Statute, 1998 of the International Criminal Court",
+    "Geneva Convention, 1949 on the laws of war",
+    "Genocide Convention, 1948"
+   ],
+   "ans": 3,
+   "why": "The Gambia brought the case under the Genocide Convention and the Court found Myanmar responsible for genocide in the 2017 operations.",
+   "id": "caq-2026-11-221"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Order",
+   "exam": "pre",
+   "q": "The Non-Aligned Movement was formally founded in 1961 at",
+   "opts": [
+    "Bandung, Indonesia",
+    "Cairo, Egypt",
+    "Belgrade",
+    "Colombo, Sri Lanka"
+   ],
+   "ans": 2,
+   "why": "The first Non-Aligned Movement summit was held at Belgrade in 1961. The Bandung Conference of 1955 was a forerunner.",
+   "id": "caq-2026-11-222"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Order",
+   "exam": "pre",
+   "q": "Panchsheel, the five principles of peaceful coexistence, was agreed between India and China in",
+   "opts": [
+    "1947",
+    "1954",
+    "1955",
+    "1962"
+   ],
+   "ans": 1,
+   "why": "The Panchsheel agreement on trade and intercourse with Tibet was signed in 1954.",
+   "id": "caq-2026-11-223"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Regulation",
+   "exam": "pre",
+   "q": "In India, the term ‘sum insured’ in a health insurance policy refers to",
+   "opts": [
+    "the maximum amount payable for claims in a policy year",
+    "the premium paid by the policyholder each year",
+    "the amount charged by a hospital for a day of stay",
+    "the discount offered by a network hospital to the insurer"
+   ],
+   "ans": 0,
+   "why": "The sum insured is the coverage limit of the policy.",
+   "id": "caq-2026-11-224"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Health",
+   "exam": "pre",
+   "q": "Consider the following statements about poliomyelitis:\n1. India was certified polio-free by the World Health Organization in 2014.\n2. Circulating variant poliovirus can arise from the weakened virus in the oral vaccine in under-immunised communities.\n3. Wild poliovirus is still reported in Afghanistan and Pakistan.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. India was certified polio-free in March 2014.",
+   "id": "caq-2026-11-225"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Health",
+   "exam": "pre",
+   "q": "Acute flaccid paralysis surveillance is used to",
+   "opts": [
+    "measure the number of children who have received every routine vaccine",
+    "identify children with malnutrition in anganwadi centres across a district",
+    "record deaths caused by road accidents in a month in each state",
+    "detect cases of polio by investigating sudden limb weakness in children"
+   ],
+   "ans": 3,
+   "why": "Cases of sudden limb weakness are investigated and tested to detect polio.",
+   "id": "caq-2026-11-226"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Health",
+   "exam": "pre",
+   "q": "Ayushman Bharat Health Account (ABHA) is",
+   "opts": [
+    "a health insurance card that gives every citizen a cover of five lakh rupees",
+    "a digital health ID that links a person’s health records with consent",
+    "a savings account in which the Government deposits money for medical care",
+    "a registry that lists every doctor and hospital in the country by name"
+   ],
+   "ans": 1,
+   "why": "ABHA is a health account number for consent-based linking of health records. It does not by itself make a person eligible for AB PM-JAY.",
+   "id": "caq-2026-11-227"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Health",
+   "exam": "pre",
+   "q": "The National Cancer Grid is",
+   "opts": [
+    "a network of cancer centres, research institutions and patient groups",
+    "a satellite network that monitors the spread of cancer cases across the whole country",
+    "a power grid that supplies electricity to radiotherapy machines in district hospitals",
+    "a tax scheme that funds the treatment of cancer through a special cess on tobacco"
+   ],
+   "ans": 0,
+   "why": "The National Cancer Grid is a network of cancer hospitals, research institutions and patient groups across India.",
+   "id": "caq-2026-11-228"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Disasters",
+   "exam": "pre",
+   "q": "Which one of the following best explains how rainfall triggers landslides on a slope?",
+   "opts": [
+    "Rainwater makes the soil lighter so that it floats away down the slope in large masses",
+    "Rainwater cools the rock and causes it to expand and then slide down the hillside quickly",
+    "Rainwater increases the friction between the soil grains at the base of the slope on a hill",
+    "Rainwater raises the pore-water pressure in the soil and reduces its resistance to sliding"
+   ],
+   "ans": 3,
+   "why": "Higher pore-water pressure reduces the effective stress between soil particles and lowers resistance to sliding.",
+   "id": "caq-2026-11-229"
+  },
+  {
+   "subject": "Geography",
+   "syllabus": "Landforms",
+   "exam": "pre",
+   "q": "Which of the following describes the Eastern Ghats?",
+   "opts": [
+    "A continuous range that runs along the entire west coast",
+    "A mountain range that forms the northern boundary of the peninsula",
+    "A discontinuous range of hills along the east coast of India",
+    "A volcanic range found only in the north-eastern states"
+   ],
+   "ans": 2,
+   "why": "The Eastern Ghats are a discontinuous range of hills along the east coast, broken by rivers such as the Godavari, Krishna and Mahanadi.",
+   "id": "caq-2026-11-230"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Disasters",
+   "exam": "pre",
+   "q": "In disaster risk assessment, ‘exposure’ refers to",
+   "opts": [
+    "how likely a hillside is to fail under heavy and continuous rainfall in a season",
+    "what lies in the path of a hazard, such as people, roads and buildings",
+    "how badly people and property are affected after a disaster has already taken place",
+    "the amount of money that is paid as relief to the affected families in the district"
+   ],
+   "ans": 1,
+   "why": "Susceptibility, exposure and vulnerability are the distinct parts of risk. Exposure covers the people and property that a hazard could affect.",
+   "id": "caq-2026-11-231"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Biotechnology",
+   "exam": "pre",
+   "q": "Which one of the following pathogens is typically handled in a Biosafety Level-4 laboratory?",
+   "opts": [
+    "Ebola virus",
+    "Common cold virus",
+    "Salmonella in food samples",
+    "Yeast used in brewing"
+   ],
+   "ans": 0,
+   "why": "BSL-4 is the highest containment level and is used for dangerous agents with no or limited treatment, such as Ebola and Nipah viruses.",
+   "id": "caq-2026-11-232"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Biotechnology",
+   "exam": "pre",
+   "q": "The ‘One Health’ approach recognises that",
+   "opts": [
+    "human health depends only on the quality of hospitals and the supply of medicines",
+    "animal diseases can never be passed on to human beings under any circumstances",
+    "environmental change has no effect on the spread of infectious disease in a region",
+    "the health of humans, animals and the environment is closely linked"
+   ],
+   "ans": 3,
+   "why": "One Health treats human, animal and environmental health together because many diseases pass between animals and humans.",
+   "id": "caq-2026-11-233"
   }
  ]
 }

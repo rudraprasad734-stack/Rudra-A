@@ -1,0 +1,463 @@
+{
+ "day": "2026-11-21",
+ "title": "21 Nov 2026",
+ "topics": [
+  {
+   "id": "dn-2026-11-21-1",
+   "n": 1,
+   "sec": "Economy",
+   "t": "Revised domestic value addition rules for IT hardware",
+   "gs": [
+    "GS3 Economy"
+   ],
+   "news": "On 20 November 2026 the Ministry of Electronics and Information Technology announced a revised methodology to calculate domestic value addition for six IT hardware product groups under the public procurement preference framework: desktop and all-in-one computers, laptops, thin clients, servers, monitors and interactive flat-panel displays. The methodology takes effect six months after publication in the Official Gazette.",
+   "blocks": [
+    {
+     "h": "How it works",
+     "items": [
+      {
+       "rows": [
+        [
+         "Domestic value addition",
+         "The share of a product’s value that is created in India; it decides whether a supplier qualifies for purchase preference in government buying."
+        ],
+        [
+         "Activities counted",
+         "Eligible manufacturing processes, Indian research and development, product design and intellectual property; examples include motherboard assembly by surface mount technology, domestic bare circuit boards, assembly and testing of memory and storage, display assembly, chassis and power modules, and final assembly and testing."
+        ],
+        [
+         "Calculation",
+         "A standard format based on the Bill of Materials, supported by self-certification and verification of declarations."
+        ],
+        [
+         "Start date",
+         "Six months from the date of publication in the Official Gazette, which is the date that counts, not the date of the announcement."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Why it matters:** public purchases are a large demand for domestic manufacturers; clear counting rules reduce disputes and encourage design and component making in India.",
+        "**Concern:** self-certification needs credible verification so that assembly of imported parts is not passed off as value addition."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Domestic value addition",
+     "d": "The portion of a product’s value created within India."
+    },
+    {
+     "k": "Bill of Materials",
+     "d": "A list of all components and materials that go into a product."
+    },
+    {
+     "k": "Surface mount technology",
+     "d": "A method of mounting electronic components directly on the surface of a circuit board."
+    }
+   ],
+   "qs": [
+    {
+     "q": "How can public procurement be used to promote domestic manufacturing and design? Discuss the challenges.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-21-2",
+   "n": 2,
+   "sec": "Social Justice",
+   "t": "Health insurance claims: penalty for unjustified rejections",
+   "gs": [
+    "GS2 Governance",
+    "GS2 Health"
+   ],
+   "news": "On 20 November 2026 the insurance regulator announced enforcement action against Star Health over unjustified claim rejections, unsupported deductions and poor communication with policyholders, including in COVID-19 claims. It imposed a penalty of ₹2 crore and directed clearer settlement letters. The proceedings followed an inspection in 2022, a show-cause notice in December 2024 and a hearing in June 2025.",
+   "blocks": [
+    {
+     "h": "What the directions say",
+     "items": [
+      {
+       "rows": [
+        [
+         "Settlement letters",
+         "Must itemise amounts allowed, disallowed, non-payable and discounted."
+        ],
+        [
+         "Hospital discounts",
+         "Discounts agreed with network hospitals must appear on bills and be disclosed to the policyholder."
+        ],
+        [
+         "Sum insured",
+         "Any reduction must be disclosed; sum insured is the coverage limit."
+        ],
+        [
+         "Grievance redress",
+         "Details of the Insurance Ombudsman must be given to complainants."
+        ],
+        [
+         "Board and follow-up",
+         "The order must be placed before the Board and an Action Taken Report is required."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Repudiation** means rejection of a claim; a **deduction** reduces the amount admitted.",
+        "**Note:** the penalty does not by itself mean that every rejected claim must be paid in full.",
+        "**Regulator:** the Insurance Regulatory and Development Authority of India regulates insurers and protects policyholders' interests."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "IRDAI",
+     "d": "The statutory regulator of the insurance sector in India."
+    },
+    {
+     "k": "Insurance Ombudsman",
+     "d": "A grievance-redress authority for complaints against insurers."
+    },
+    {
+     "k": "Repudiation of claim",
+     "d": "Rejection of an insurance claim by the insurer."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Examine the role of regulators in protecting consumers of health insurance in India.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-21-3",
+   "n": 3,
+   "sec": "Polity & Governance",
+   "t": "Scheduled Areas: Gram Sabha consent is mandatory for land acquisition",
+   "gs": [
+    "GS2 Polity",
+    "GS3 Economy"
+   ],
+   "news": "On 18 November 2026 the Supreme Court set aside the acquisition of land in Sundargarh district, Odisha, for a private company’s mining project in Bibol Toppo v. State of Odisha. The Court held that prior Gram Sabha consent under Section 41(3) of the land acquisition law is mandatory in Scheduled Areas, even in urgency cases, and that a private-company acquisition also needs the prior consent of at least 80% of the affected families under Section 2(2). Later consent cannot cure the lack of prior consent.",
+   "blocks": [
+    {
+     "h": "Legal framework",
+     "items": [
+      {
+       "rows": [
+        [
+         "RFCTLARR Act, 2013",
+         "The Right to Fair Compensation and Transparency in Land Acquisition, Rehabilitation and Resettlement Act, 2013."
+        ],
+        [
+         "Section 41(3)",
+         "In Scheduled Areas, land can be acquired only with the prior consent of the Gram Sabha or the Panchayat or the autonomous district council concerned."
+        ],
+        [
+         "Section 2(2)",
+         "For private companies, the prior consent of at least 80% of the affected families is needed; for public–private partnership projects, 70%."
+        ],
+        [
+         "Fifth Schedule",
+         "Provides for the administration and control of Scheduled Areas and protects tribal land."
+        ],
+        [
+         "PESA, 1996",
+         "Extends Panchayats to Scheduled Areas and gives Gram Sabhas powers over natural resources and land."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Holding:** acquisition in Scheduled Areas must be a demonstrable last resort.",
+        "**Outcome:** the acquisition and related notifications were set aside, but a fresh acquisition that follows the law remains possible.",
+        "**Limit:** the 80% consent condition does not apply to every government acquisition."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Fifth Schedule",
+     "d": "The part of the Constitution on the administration of Scheduled Areas and Scheduled Tribes in states other than the north-eastern states."
+    },
+    {
+     "k": "PESA, 1996",
+     "d": "Panchayats (Extension to Scheduled Areas) Act, which empowers Gram Sabhas in tribal areas."
+    },
+    {
+     "k": "Gram Sabha",
+     "d": "A body of all adult residents of a village."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the safeguards for tribal land and local participation in land acquisition in Scheduled Areas.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-21-4",
+   "n": 4,
+   "sec": "Social Justice",
+   "t": "Drug demand reduction: Centre–State summit action points",
+   "gs": [
+    "GS2 Social Justice",
+    "GS3 Internal Security"
+   ],
+   "news": "On 20 November 2026 the Social Justice Ministry announced action points agreed at a Centre–State summit on 18–19 November on drug prevention, demand reduction and rehabilitation. They include a monthly prevention day from December 2026, a standing drug-prevention agenda in Gram Sabhas and municipal wards, and a proposed aim of at least one de-addiction centre in every district by March 2029. The outcomes will feed a national action plan.",
+   "blocks": [
+    {
+     "h": "Framework",
+     "items": [
+      {
+       "rows": [
+        [
+         "NDPS Act, 1985",
+         "The Narcotic Drugs and Psychotropic Substances Act prohibits production, sale and use of narcotics except for medical and scientific purposes."
+        ],
+        [
+         "NAPDDR",
+         "National Action Plan for Drug Demand Reduction, run by the Social Justice Ministry."
+        ],
+        [
+         "Nasha Mukt Bharat Abhiyaan",
+         "A campaign for awareness and treatment launched in 2020."
+        ],
+        [
+         "Rehabilitation",
+         "Involves health services, families, schools and district administrations."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Target:** one de-addiction centre per district by March 2029 is a future goal, not an achievement."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "NDPS Act, 1985",
+     "d": "The law that controls narcotic drugs and psychotropic substances."
+    },
+    {
+     "k": "Demand reduction",
+     "d": "Measures such as awareness, treatment and rehabilitation to reduce drug use."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Drug abuse is both a health and a security issue. Discuss the approach India should take.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-21-5",
+   "n": 5,
+   "sec": "Economy",
+   "t": "FEMA rules for trade in goods and services: amendments and clarifications",
+   "gs": [
+    "GS3 Economy"
+   ],
+   "news": "On 20 November 2026 the Reserve Bank announced amendments and clarifications on foreign-exchange rules for exports and imports of goods and services. The second amendment was notified on 2 November 2026 with effect from 1 October 2026. Specified service exporters may be deemed to have submitted the Export Declaration Form when they give their authorised dealer the required payment information; the Reserve Bank has discontinued EDF waiver letters.",
+   "blocks": [
+    {
+     "h": "Key changes",
+     "items": [
+      {
+       "rows": [
+        [
+         "Export Declaration Form",
+         "A declaration of export value; the new rules reduce paperwork for specified service exporters."
+        ],
+        [
+         "Non-individual exporters",
+         "Inward remittance must be within ₹10 lakh or its foreign-currency equivalent for the simplified route."
+        ],
+        [
+         "Goods with no realisable value",
+         "Exporters must declare zero value."
+        ],
+        [
+         "Importers",
+         "Narrower entry requirements apply to specified non-individual service importers above a set invoice or contract threshold."
+        ],
+        [
+         "Authorised dealers",
+         "Banks authorised to deal in foreign exchange must publish their trade policies and procedures."
+        ],
+        [
+         "Transition",
+         "Transactions begun before October 2026 continue under the old framework."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**FEMA:** the Foreign Exchange Management Act, 1999 replaced FERA and treats most foreign-exchange violations as civil, not criminal, offences."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "FEMA, 1999",
+     "d": "The law that governs foreign exchange transactions and external trade payments in India."
+    },
+    {
+     "k": "Authorised dealer",
+     "d": "A bank or institution permitted by the Reserve Bank to deal in foreign exchange."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss how simplification of foreign-exchange rules can help exporters and importers.",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-21-6",
+   "n": 6,
+   "sec": "International Relations",
+   "t": "ICJ judgment on Myanmar and the Rohingya",
+   "gs": [
+    "GS2 IR"
+   ],
+   "news": "On 19 November 2026 the International Court of Justice delivered its judgment in the case brought by The Gambia against Myanmar under the Genocide Convention. The Court found Myanmar responsible for genocide against the Rohingya in the 2017 operations and ordered reparation, including measures for safe, voluntary and dignified return, family reunification, property, rehabilitation and protection from discrimination. The amount and arrangements for compensation are reserved for a later phase, and Myanmar must report within two years on restitution and compensation proposals.",
+   "blocks": [
+    {
+     "h": "Background",
+     "items": [
+      {
+       "rows": [
+        [
+         "ICJ",
+         "The principal judicial organ of the United Nations, at The Hague, which settles disputes between states; its judgments are binding on the parties but it has no direct enforcement power."
+        ],
+        [
+         "ICC",
+         "The International Criminal Court tries individuals for genocide, war crimes and crimes against humanity; India is not a party to its Statute."
+        ],
+        [
+         "Genocide Convention, 1948",
+         "Defines genocide and obliges states to prevent and punish it."
+        ],
+        [
+         "Rohingya",
+         "A Muslim minority from Rakhine state in Myanmar; over 700,000 fled to Bangladesh in 2017."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**India’s position:** India has not recognised Rohingya as refugees and is not a party to the 1951 Refugee Convention; it follows a policy of non-interference while supporting humanitarian aid to Rakhine and Bangladesh."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "International Court of Justice",
+     "d": "The UN court that settles legal disputes between states."
+    },
+    {
+     "k": "Genocide Convention",
+     "d": "The 1948 treaty that defines genocide as a crime under international law."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Distinguish between the ICJ and the ICC. How does the Myanmar judgment affect the Rohingya question and India’s policy?",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-21-7",
+   "n": 7,
+   "sec": "International Relations",
+   "t": "After the Shenzhen summit: options for India",
+   "gs": [
+    "GS2 IR"
+   ],
+   "news": "The leaders of the United States, China and Russia held their first trilateral summit in Shenzhen on 19 November, and a Chinese proposal suggested calling the emerging order the ‘Shenzhen International System’. It is argued that India should aim to lead a wider group of like-minded middle powers rather than rely on its own standing as a pole, because of limits such as low per-capita income and dependence on defence imports.",
+   "blocks": [
+    {
+     "h": "Ideas for India",
+     "items": [
+      {
+       "ul": [
+        "**A collective pole:** a group of middle powers that share interests in rules-based order and civilian protection.",
+        "**Strengthening multilateralism:** defending international law and reforming the Security Council.",
+        "**Common nuclear rules:** support for arms control with verifiable commitments."
+       ]
+      }
+     ]
+    },
+    {
+     "h": "Historic links",
+     "items": [
+      {
+       "rows": [
+        [
+         "Panchsheel, 1954",
+         "Five principles of peaceful coexistence agreed by India and China."
+        ],
+        [
+         "Bandung Conference, 1955",
+         "Meeting of Asian and African states that led to the Non-Aligned Movement."
+        ],
+        [
+         "Non-Aligned Movement, 1961",
+         "Founded in Belgrade by Nehru, Nasser, Tito, Nkrumah and Sukarno."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Challenges:** diverse interests among middle powers, China’s economic reach and India’s own gaps in capability."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Multipolarity",
+     "d": "A world order with several major centres of power."
+    },
+    {
+     "k": "Non-Aligned Movement",
+     "d": "A grouping of states that did not formally join either Cold War bloc."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Is a multipolar world in India’s interest? Examine India’s strategic options in a changing great-power order.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  }
+ ]
+}
