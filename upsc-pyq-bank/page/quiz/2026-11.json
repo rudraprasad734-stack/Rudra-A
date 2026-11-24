@@ -1,6 +1,6 @@
 {
  "month": "2026-11",
- "updated": "20 Nov 2026",
+ "updated": "24 Nov 2026",
  "questions": [
   {
    "subject": "Polity & Governance",
@@ -2596,6 +2596,906 @@
    "ans": 3,
    "why": "Unlike African elephants, which form larger groups under stress, Asian elephants splinter into smaller groups and their bonds fray.",
    "id": "caq-2026-11-173"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Elections",
+   "exam": "pre",
+   "q": "With reference to the use of Electronic Voting Machines in India, consider the following statements:\n1. The first use of EVMs in an election was in a by-election in Kerala in 1982.\n2. Section 61A of the Representation of the People Act, 1951 provides for voting by machines.\n3. VVPAT was first used in a by-election in Nagaland in 2013.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. EVMs were first used at Paravur in 1982, Section 61A was inserted in 1988, and VVPAT was first used at Noksen in 2013.",
+   "id": "caq-2026-11-174"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Elections",
+   "exam": "pre",
+   "q": "In 2024 the Supreme Court, while dealing with petitions on EVMs and VVPAT, directed that",
+   "opts": [
+    "every voter be given the VVPAT slip to take home after voting for safe keeping of the record",
+    "paper ballots be reintroduced in all Lok Sabha constituencies from the next general election",
+    "all VVPAT slips be counted and matched with the electronic votes in every constituency",
+    "Symbol Loading Units be sealed and kept for 45 days after the declaration of results"
+   ],
+   "ans": 3,
+   "why": "The Court refused to return to paper ballots or to count every slip, but ordered Symbol Loading Units to be sealed for 45 days and allowed verification of the burnt memory of 5% of EVMs per segment on request.",
+   "id": "caq-2026-11-175"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Parliament",
+   "exam": "pre",
+   "q": "Which one of the following statements about the prorogation of Parliament is correct?",
+   "opts": [
+    "The President prorogues a House on the advice of the Council of Ministers",
+    "The Speaker of the Lok Sabha prorogues the House on the recommendation of the Business Advisory Committee",
+    "Prorogation of the Lok Sabha causes all pending bills in the Lok Sabha to lapse automatically",
+    "Prorogation ends the life of the Lok Sabha and is followed by a general election immediately"
+   ],
+   "ans": 0,
+   "why": "Prorogation is ordered by the President on the advice of the Council of Ministers and ends a session. Pending bills do not lapse on prorogation; they lapse on dissolution of the Lok Sabha.",
+   "id": "caq-2026-11-176"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Parliament",
+   "exam": "pre",
+   "q": "Consider the following statements about the sessions of Parliament:\n1. Article 85 requires that six months must not intervene between the last sitting of one session and the first sitting of the next.\n2. An ordinance under Article 123 can be promulgated only when Parliament is not in session.\n3. The Rajya Sabha is subject to dissolution like the Lok Sabha.\nWhich of the statements given above are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The six-month rule is in Article 85 and ordinances can be issued only when Parliament is not in session. The Rajya Sabha is a permanent House and is not dissolved.",
+   "id": "caq-2026-11-177"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Parliament",
+   "exam": "pre",
+   "q": "Which of the following bodies recommended at least 120 sitting days a year for the Lok Sabha and 100 days for the Rajya Sabha?",
+   "opts": [
+    "Second Administrative Reforms Commission headed by Veerappa Moily",
+    "National Commission to Review the Working of the Constitution",
+    "Sarkaria Commission on Centre-State relations in India",
+    "Parliamentary Standing Committee on Rules and Procedure of the Lok Sabha"
+   ],
+   "ans": 1,
+   "why": "The National Commission to Review the Working of the Constitution (2002) made this recommendation.",
+   "id": "caq-2026-11-178"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Anti-defection",
+   "exam": "pre",
+   "q": "Which one of the following changes was made to the Tenth Schedule by the 91st Constitutional Amendment Act, 2003?",
+   "opts": [
+    "The Speaker was made subject to a three-month limit for deciding disqualification petitions",
+    "Nominated members were permitted to join any party at any time after their nomination",
+    "An independent tribunal was created in place of the Presiding Officer to decide cases",
+    "The provision allowing a split of one-third of a legislature party was removed"
+   ],
+   "ans": 3,
+   "why": "The 91st Amendment removed the one-third split exception, so only a merger of two-thirds of the legislature party protects members from disqualification.",
+   "id": "caq-2026-11-179"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Anti-defection",
+   "exam": "pre",
+   "q": "In Kihoto Hollohan v. Zachillhu (1992) the Supreme Court held that",
+   "opts": [
+    "the Tenth Schedule is invalid because it violates the freedom of speech of legislators",
+    "the Speaker’s decision on disqualification is final and cannot be questioned in any court",
+    "the decision of the Speaker on disqualification is subject to judicial review",
+    "the Election Commission alone is empowered to decide on all disqualification petitions"
+   ],
+   "ans": 2,
+   "why": "The Court upheld the Tenth Schedule but held that the Speaker’s decision is open to judicial review on limited grounds.",
+   "id": "caq-2026-11-180"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Neighbours",
+   "exam": "pre",
+   "q": "Consider the following statements about the India–Nepal Joint Vision announced in November 2026:\n1. India announced a development cooperation package of ₹15,000 crore for Nepal.\n2. Kandla and Paradip were added as ports for Nepal’s transit cargo.\n3. The 1950 Treaty of Peace and Friendship was terminated with immediate effect.\nWhich of the statements given above are correct?",
+   "opts": [
+    "1 only",
+    "1 and 2 only",
+    "2 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The package and the additional ports were announced. The 1950 Treaty is to be reviewed by mutual consent; it was not terminated.",
+   "id": "caq-2026-11-181"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Neighbours",
+   "exam": "pre",
+   "q": "The motorable bridge between Dharchula in India and Darchula in Nepal is built over which river?",
+   "opts": [
+    "Mahakali",
+    "Gandak (Narayani)",
+    "Koshi (Sapta Kosi)",
+    "Karnali (Ghaghara)"
+   ],
+   "ans": 0,
+   "why": "The Mahakali, known as the Sharda in India, forms part of the India–Nepal boundary in this section.",
+   "id": "caq-2026-11-182"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Groupings",
+   "exam": "pre",
+   "q": "With reference to the Shanghai Cooperation Organisation, consider the following statements:\n1. India became a full member in 2017.\n2. Iran became a member in 2023.\n3. Its secretariat is located in Moscow.\nWhich of the statements given above are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "India joined in 2017 and Iran in 2023. The SCO Secretariat is in Beijing.",
+   "id": "caq-2026-11-183"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Groupings",
+   "exam": "pre",
+   "q": "The first Civilisational Dialogue Forum of the Shanghai Cooperation Organisation, held in November 2026, adopted a document known as the",
+   "opts": [
+    "Tianjin Declaration on Culture",
+    "Bishkek Charter of Heritage",
+    "Indraprastha Communiqué",
+    "Astana Accord on Civilisations"
+   ],
+   "ans": 2,
+   "why": "The forum at Purana Qila, New Delhi adopted the Indraprastha Communiqué on cultural cooperation and shared heritage.",
+   "id": "caq-2026-11-184"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Banking",
+   "exam": "pre",
+   "q": "With reference to securitisation of loans, consider the following statements:\n1. A lender sells a pool of loans to a special purpose vehicle that issues securities backed by the repayments.\n2. It helps lenders free capital for fresh lending.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 only",
+    "2 only",
+    "Both 1 and 2",
+    "Neither 1 nor 2"
+   ],
+   "ans": 2,
+   "why": "Both are correct. Securitisation converts a pool of loans into tradable securities and frees capital for new credit.",
+   "id": "caq-2026-11-185"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Banking",
+   "exam": "pre",
+   "q": "Under the Reserve Bank’s final securitisation amendments issued in November 2026, a minimum ticket size per investor is fixed at",
+   "opts": [
+    "₹10 lakh per investor",
+    "₹1 crore",
+    "₹25 lakh per investor",
+    "₹5 crore per investor"
+   ],
+   "ans": 1,
+   "why": "A minimum ticket size of ₹1 crore applies at issue and on transfer, and covered notes must be held in dematerialised form from 1 April 2027.",
+   "id": "caq-2026-11-186"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Banking",
+   "exam": "pre",
+   "q": "A feature proposed in the Reserve Bank’s draft rules on electronic payment safeguards that blocks outward debits from an account while allowing credits to continue is called a",
+   "opts": [
+    "Safe Lock",
+    "Debit Freeze",
+    "Circuit Breaker",
+    "Stop Switch"
+   ],
+   "ans": 3,
+   "why": "The Stop Switch blocks outward debits while inward credits continue, giving customers a quick way to protect an account.",
+   "id": "caq-2026-11-187"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Forests",
+   "exam": "pre",
+   "q": "The Green India Mission is one of the missions under which of the following?",
+   "opts": [
+    "National Clean Energy Mission and Innovation Fund",
+    "Namami Gange Programme for rivers and wetlands",
+    "Compensatory Afforestation Fund Management Scheme",
+    "National Action Plan on Climate Change"
+   ],
+   "ans": 3,
+   "why": "The Green India Mission is one of the eight missions under the National Action Plan on Climate Change (2008).",
+   "id": "caq-2026-11-188"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Forests",
+   "exam": "pre",
+   "q": "India’s Nationally Determined Contribution includes creating an additional carbon sink of how much by 2030?",
+   "opts": [
+    "1 to 1.5 billion tonnes of CO2 equivalent",
+    "2.5 to 3 billion tonnes of CO2 equivalent",
+    "5 to 6 billion tonnes of CO2 equivalent",
+    "8 to 10 billion tonnes of CO2 equivalent"
+   ],
+   "ans": 1,
+   "why": "India pledged an additional carbon sink of 2.5 to 3 billion tonnes of CO2 equivalent through additional forest and tree cover by 2030.",
+   "id": "caq-2026-11-189"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Wildlife",
+   "exam": "pre",
+   "q": "Consider the following statements about the dugong:\n1. It is a marine mammal that feeds mainly on seagrass.\n2. India’s first Dugong Conservation Reserve was declared in Palk Bay.\n3. It is listed in Schedule I of the Wildlife (Protection) Act, 1972.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. The Palk Bay Dugong Conservation Reserve in Tamil Nadu was declared in 2022.",
+   "id": "caq-2026-11-190"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Wildlife",
+   "exam": "pre",
+   "q": "Mass nesting of olive ridley turtles on a beach is known as",
+   "opts": [
+    "bioluminescence",
+    "metamorphosis",
+    "migration",
+    "arribada"
+   ],
+   "ans": 3,
+   "why": "Arribada is the Spanish word for arrival and describes mass nesting, as seen on the Odisha coast.",
+   "id": "caq-2026-11-191"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Climate",
+   "exam": "pre",
+   "q": "Which one of the following best describes ‘Just Transition’ in climate negotiations?",
+   "opts": [
+    "Support for workers and regions dependent on fossil fuels as the economy shifts to clean energy",
+    "A transfer of clean energy technology free of cost to every developing country that formally asks for it",
+    "A global fund that pays for the permanent loss of coastal land when the sea level rises over time",
+    "A carbon tax that is charged at the border on all goods imported from every country in the world"
+   ],
+   "ans": 0,
+   "why": "Just Transition covers training, jobs and support for people and places that depend on fossil fuels.",
+   "id": "caq-2026-11-192"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Climate",
+   "exam": "pre",
+   "q": "Decisions at the Conference of the Parties to the UNFCCC are generally taken by",
+   "opts": [
+    "simple majority",
+    "consensus",
+    "two-thirds majority",
+    "weighted voting by emissions"
+   ],
+   "ans": 1,
+   "why": "COP decisions are taken by consensus, so objection by even one Party can block a text.",
+   "id": "caq-2026-11-193"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Space",
+   "exam": "pre",
+   "q": "The joint ISRO–CNES satellite mission TRISHNA is intended for",
+   "opts": [
+    "thermal infrared observation of land and water surfaces",
+    "deep space observation of distant galaxies and black holes in the universe",
+    "navigation and timing signals for aircraft, ships and ground vehicles",
+    "communication links for remote villages and mountain regions of the country"
+   ],
+   "ans": 0,
+   "why": "TRISHNA is a thermal infrared Earth observation mission for water and land surface monitoring, planned in a sun-synchronous orbit.",
+   "id": "caq-2026-11-194"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Space",
+   "exam": "pre",
+   "q": "Which of the following is a joint India–France satellite mission to study the tropical water cycle?",
+   "opts": [
+    "SARAL-AltiKa (ocean altimetry)",
+    "Oceansat-3 (ocean colour)",
+    "Cartosat-3 (high resolution imaging)",
+    "Megha-Tropiques"
+   ],
+   "ans": 3,
+   "why": "Megha-Tropiques (2011) studied the tropical water cycle. SARAL-AltiKa (2013) is a joint ocean altimetry satellite.",
+   "id": "caq-2026-11-195"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Biotechnology",
+   "exam": "pre",
+   "q": "A bacteriophage is a",
+   "opts": [
+    "bacterium that infects fungi",
+    "fungus that grows on bacteria",
+    "virus that infects bacteria",
+    "protein that breaks down viruses"
+   ],
+   "ans": 2,
+   "why": "A bacteriophage is a virus that infects bacteria and is used in phage therapy.",
+   "id": "caq-2026-11-196"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Biotechnology",
+   "exam": "pre",
+   "q": "Consider the following statements about genome language models:\n1. They are trained on DNA sequences and learn patterns in them.\n2. They can be used to predict the effect of mutations.\n3. They pose no biosafety or biosecurity concerns.\nWhich of the statements given above are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "Such models learn from DNA and predict mutation effects, but they raise dual-use concerns, so statement 3 is wrong.",
+   "id": "caq-2026-11-197"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Health",
+   "exam": "pre",
+   "q": "Indirect calorimetry, as used in a human metabolic chamber, estimates energy expenditure by measuring",
+   "opts": [
+    "body temperature and heart rate measured together over a day",
+    "oxygen consumed and carbon dioxide produced",
+    "weight gained over a week of regular eating and rest",
+    "blood sugar and insulin levels measured after every meal"
+   ],
+   "ans": 1,
+   "why": "Energy use is inferred from the oxygen a person consumes and the carbon dioxide produced.",
+   "id": "caq-2026-11-198"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Statistics",
+   "exam": "pre",
+   "q": "The National Industrial Classification (NIC) is used to",
+   "opts": [
+    "classify banks by the size of their assets and deposits",
+    "rank the states by their level of industrial output each year",
+    "set import duties on industrial goods brought from other countries",
+    "group economic activities for statistical purposes"
+   ],
+   "ans": 3,
+   "why": "NIC is the standard classification of economic activities. The 2026 survey of unincorporated enterprises uses NIC 2025.",
+   "id": "caq-2026-11-199"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Statistics",
+   "exam": "pre",
+   "q": "Which one of the following is excluded from the coverage of the Annual Survey of Unincorporated Sector Enterprises?",
+   "opts": [
+    "Retail trade",
+    "Repair services",
+    "Construction",
+    "Small manufacturing"
+   ],
+   "ans": 2,
+   "why": "Construction is outside the coverage of the survey of non-agricultural unincorporated enterprises.",
+   "id": "caq-2026-11-200"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Health",
+   "exam": "pre",
+   "q": "Anaemia Mukt Bharat, launched in 2018, aims to reduce anaemia among",
+   "opts": [
+    "children below five years of age in rural areas only",
+    "children, adolescents and women",
+    "pregnant and lactating women in urban areas only",
+    "elderly persons living alone in all districts"
+   ],
+   "ans": 1,
+   "why": "The programme targets children, adolescents and women, using supplements, deworming, testing and diet measures.",
+   "id": "caq-2026-11-201"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Health",
+   "exam": "pre",
+   "q": "Which of the following is a marker of the body’s iron stores that is measured in nutrition surveys?",
+   "opts": [
+    "Ferritin",
+    "Insulin",
+    "Creatinine",
+    "Bilirubin"
+   ],
+   "ans": 0,
+   "why": "Ferritin reflects iron stores in the body and is adjusted for inflammation in nutrition surveys.",
+   "id": "caq-2026-11-202"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Mining",
+   "exam": "pre",
+   "q": "Under the Mining Plan and Mine Closure Guidelines 2026 for coal, an operator must",
+   "opts": [
+    "pay the entire closure cost to the State government in advance at the time of lease grant",
+    "complete all restoration work before production from the mine is allowed to begin",
+    "hand over the mined-out land to the local municipality free of any conditions",
+    "open a closure escrow account in a scheduled commercial bank and deposit money each year"
+   ],
+   "ans": 3,
+   "why": "The guidelines require an escrow account with annual deposits, and withdrawals are checked by the Coal Controller.",
+   "id": "caq-2026-11-203"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Mining",
+   "exam": "pre",
+   "q": "Underground coal gasification refers to",
+   "opts": [
+    "washing coal in water to reduce its ash content before sale",
+    "crushing coal into fine powder before it is burnt in boilers",
+    "converting coal in place into gas that is brought to the surface",
+    "storing coal underground in sealed chambers as a national reserve"
+   ],
+   "ans": 2,
+   "why": "In underground coal gasification the coal seam is burnt in place and the gas produced is brought to the surface.",
+   "id": "caq-2026-11-204"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Trade",
+   "exam": "pre",
+   "q": "Which one of the following is an EU measure that charges carbon-intensive imports?",
+   "opts": [
+    "Global Gateway Investment Initiative",
+    "Carbon Border Adjustment Mechanism",
+    "European Green Deal Climate Fund",
+    "Emissions Trading Standard Scheme"
+   ],
+   "ans": 1,
+   "why": "The Carbon Border Adjustment Mechanism puts a carbon price on imports of selected carbon-intensive goods and is a concern in India–EU trade talks.",
+   "id": "caq-2026-11-205"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Trade",
+   "exam": "pre",
+   "q": "Negotiations for the India–European Union free trade agreement were concluded on",
+   "opts": [
+    "27 January 2026",
+    "15 August 2025",
+    "26 January 2027",
+    "1 April 2026"
+   ],
+   "ans": 0,
+   "why": "The negotiations were concluded on 27 January 2026, with signing expected in December 2026.",
+   "id": "caq-2026-11-206"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Monetary policy",
+   "exam": "pre",
+   "q": "Under the monetary policy framework of India, the inflation target is",
+   "opts": [
+    "6% with a tolerance band of plus or minus 2%",
+    "3% with a tolerance band of plus or minus 3%",
+    "5% with a tolerance band of plus or minus 1.5%",
+    "4% with a tolerance band of plus or minus 2%"
+   ],
+   "ans": 3,
+   "why": "The target is 4% with a band of 2% to 6%. If inflation stays outside the band for three consecutive quarters, the Reserve Bank must report to the government.",
+   "id": "caq-2026-11-207"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Monetary policy",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. An increase in the repo rate makes bank credit costlier.\n2. The repo rate is the rate at which the Reserve Bank borrows from banks.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 only",
+    "2 only",
+    "Both 1 and 2",
+    "Neither 1 nor 2"
+   ],
+   "ans": 0,
+   "why": "A higher repo rate makes credit costlier. The repo rate is the rate at which the Reserve Bank lends to banks; the rate at which it borrows is the reverse repo rate.",
+   "id": "caq-2026-11-208"
+  },
+  {
+   "subject": "Art & Culture",
+   "syllabus": "Religion",
+   "exam": "pre",
+   "q": "Which one of the following festivals is observed on Karthika Purnima?",
+   "opts": [
+    "Guru Purnima celebrated in Ashadha",
+    "Guru Nanak Jayanti",
+    "Buddha Purnima celebrated in Vaisakha",
+    "Raksha Bandhan celebrated in Shravana"
+   ],
+   "ans": 1,
+   "why": "Guru Nanak Jayanti, the birth anniversary of the first Sikh Guru, falls on Karthika Purnima, which was 24 November in 2026.",
+   "id": "caq-2026-11-209"
+  },
+  {
+   "subject": "Art & Culture",
+   "syllabus": "Religion",
+   "exam": "pre",
+   "q": "Guru Tegh Bahadur, whose martyrdom day is observed on 24 November, was the",
+   "opts": [
+    "tenth Sikh Guru, killed at Chamkaur in 1705",
+    "fifth Sikh Guru, who compiled the Adi Granth",
+    "ninth Sikh Guru, executed in Delhi in 1675",
+    "seventh Sikh Guru, who defended Amritsar against Mughal forces"
+   ],
+   "ans": 2,
+   "why": "Guru Tegh Bahadur was the ninth Guru and was executed in Delhi in 1675 for defending freedom of belief.",
+   "id": "caq-2026-11-210"
+  },
+  {
+   "subject": "Art & Culture",
+   "syllabus": "Religion",
+   "exam": "pre",
+   "q": "The Sikh practice of community kitchen that serves free meals to all without distinction is called",
+   "opts": [
+    "kirtan (devotional singing)",
+    "sangat (holy congregation)",
+    "seva (voluntary service)",
+    "langar"
+   ],
+   "ans": 3,
+   "why": "Langar is the community kitchen, started by Guru Nanak and expanded by later Gurus.",
+   "id": "caq-2026-11-211"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Industry",
+   "exam": "pre",
+   "q": "In the context of public procurement preference for domestic manufacturers, ‘domestic value addition’ refers to",
+   "opts": [
+    "the share of a product’s value created within India",
+    "the total import duty paid on the components of a product",
+    "the profit margin earned by the seller on each unit sold",
+    "the number of workers employed in the final assembly plant"
+   ],
+   "ans": 0,
+   "why": "Domestic value addition is the portion of a product’s value that is created in India and decides eligibility for purchase preference.",
+   "id": "caq-2026-11-212"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Industry",
+   "exam": "pre",
+   "q": "Which of the following IT hardware products are covered by the revised domestic value addition methodology announced in November 2026?\n1. Laptops\n2. Servers\n3. Interactive flat-panel displays\nSelect the correct answer using the code given below.",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "The six product groups are desktop and all-in-one computers, laptops, thin clients, servers, monitors and interactive flat-panel displays.",
+   "id": "caq-2026-11-213"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Regulation",
+   "exam": "pre",
+   "q": "The Insurance Ombudsman is a body that",
+   "opts": [
+    "fixes the premium that every insurer must charge for health policies",
+    "grants licences to new insurance companies and agents in each state",
+    "resolves complaints of policyholders against insurers",
+    "audits the accounts of insurers on behalf of the Comptroller and Auditor General"
+   ],
+   "ans": 2,
+   "why": "The Insurance Ombudsman is a grievance-redress authority for complaints against insurers.",
+   "id": "caq-2026-11-214"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Tribal areas",
+   "exam": "pre",
+   "q": "Under Section 41(3) of the Right to Fair Compensation and Transparency in Land Acquisition, Rehabilitation and Resettlement Act, 2013, land acquisition in Scheduled Areas requires the prior consent of",
+   "opts": [
+    "the Governor of the State acting on the advice of the Tribes Advisory Council",
+    "the Gram Sabha or the Panchayat or autonomous district council concerned",
+    "the Ministry of Tribal Affairs after a public hearing in the district",
+    "the District Collector with the approval of the State Legislature"
+   ],
+   "ans": 1,
+   "why": "The Court has held that prior Gram Sabha consent is mandatory in Scheduled Areas, even in urgency cases.",
+   "id": "caq-2026-11-215"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Tribal areas",
+   "exam": "pre",
+   "q": "For acquisition of land for a private company under the 2013 land acquisition law, the prior consent of at least what share of the affected families is required?",
+   "opts": [
+    "80%",
+    "50%",
+    "60%",
+    "70%"
+   ],
+   "ans": 0,
+   "why": "A private-company acquisition needs the prior consent of at least 80% of the affected families; for public–private partnership projects the share is 70%.",
+   "id": "caq-2026-11-216"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Tribal areas",
+   "exam": "pre",
+   "q": "The Panchayats (Extension to Scheduled Areas) Act, 1996",
+   "opts": [
+    "abolishes the Fifth Schedule and extends the Sixth Schedule to all tribal areas",
+    "applies to the north-eastern states covered by the Sixth Schedule only",
+    "empowers the State Governor to dissolve the Gram Sabha in tribal areas",
+    "gives Gram Sabhas in tribal areas powers over natural resources and land"
+   ],
+   "ans": 3,
+   "why": "PESA extends the Panchayat system to Scheduled Areas under the Fifth Schedule and strengthens the role of the Gram Sabha.",
+   "id": "caq-2026-11-217"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Social justice",
+   "exam": "pre",
+   "q": "The Narcotic Drugs and Psychotropic Substances Act, 1985",
+   "opts": [
+    "permits the private sale of all psychotropic substances without any licence at all",
+    "applies only to drugs that are produced inside the territory of India itself",
+    "prohibits production and sale of narcotics except for medical and scientific purposes",
+    "treats every person who uses a drug as guilty of a serious and non-bailable offence"
+   ],
+   "ans": 2,
+   "why": "The Act controls narcotic drugs and psychotropic substances and allows them only for medical and scientific purposes under licence.",
+   "id": "caq-2026-11-218"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "External sector",
+   "exam": "pre",
+   "q": "The Foreign Exchange Management Act, 1999 differs from the earlier Foreign Exchange Regulation Act, 1973 in that it",
+   "opts": [
+    "makes every foreign exchange violation punishable by a prison term",
+    "treats most violations as civil offences",
+    "bans all transactions in foreign currency by private persons",
+    "gives the Enforcement Directorate sole control over exchange rates"
+   ],
+   "ans": 1,
+   "why": "FEMA replaced FERA and treats most foreign exchange violations as civil, not criminal, offences.",
+   "id": "caq-2026-11-219"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Courts",
+   "exam": "pre",
+   "q": "With reference to international courts, consider the following statements:\n1. The International Court of Justice settles disputes between states.\n2. The International Criminal Court tries individuals for genocide and war crimes.\n3. India is a party to the Rome Statute of the International Criminal Court.\nWhich of the statements given above are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The ICJ decides disputes between states and the ICC tries individuals. India is not a party to the Rome Statute.",
+   "id": "caq-2026-11-220"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Courts",
+   "exam": "pre",
+   "q": "The International Court of Justice found Myanmar responsible for genocide against the Rohingya in a case brought under the",
+   "opts": [
+    "Refugee Convention, 1951 on the status of refugees",
+    "Rome Statute, 1998 of the International Criminal Court",
+    "Geneva Convention, 1949 on the laws of war",
+    "Genocide Convention, 1948"
+   ],
+   "ans": 3,
+   "why": "The Gambia brought the case under the Genocide Convention and the Court found Myanmar responsible for genocide in the 2017 operations.",
+   "id": "caq-2026-11-221"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Order",
+   "exam": "pre",
+   "q": "The Non-Aligned Movement was formally founded in 1961 at",
+   "opts": [
+    "Bandung, Indonesia",
+    "Cairo, Egypt",
+    "Belgrade",
+    "Colombo, Sri Lanka"
+   ],
+   "ans": 2,
+   "why": "The first Non-Aligned Movement summit was held at Belgrade in 1961. The Bandung Conference of 1955 was a forerunner.",
+   "id": "caq-2026-11-222"
+  },
+  {
+   "subject": "IR",
+   "syllabus": "Order",
+   "exam": "pre",
+   "q": "Panchsheel, the five principles of peaceful coexistence, was agreed between India and China in",
+   "opts": [
+    "1947",
+    "1954",
+    "1955",
+    "1962"
+   ],
+   "ans": 1,
+   "why": "The Panchsheel agreement on trade and intercourse with Tibet was signed in 1954.",
+   "id": "caq-2026-11-223"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Regulation",
+   "exam": "pre",
+   "q": "In India, the term ‘sum insured’ in a health insurance policy refers to",
+   "opts": [
+    "the maximum amount payable for claims in a policy year",
+    "the premium paid by the policyholder each year",
+    "the amount charged by a hospital for a day of stay",
+    "the discount offered by a network hospital to the insurer"
+   ],
+   "ans": 0,
+   "why": "The sum insured is the coverage limit of the policy.",
+   "id": "caq-2026-11-224"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Health",
+   "exam": "pre",
+   "q": "Consider the following statements about poliomyelitis:\n1. India was certified polio-free by the World Health Organization in 2014.\n2. Circulating variant poliovirus can arise from the weakened virus in the oral vaccine in under-immunised communities.\n3. Wild poliovirus is still reported in Afghanistan and Pakistan.\nHow many of the statements given above are correct?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "All three",
+    "None"
+   ],
+   "ans": 2,
+   "why": "All three are correct. India was certified polio-free in March 2014.",
+   "id": "caq-2026-11-225"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Health",
+   "exam": "pre",
+   "q": "Acute flaccid paralysis surveillance is used to",
+   "opts": [
+    "measure the number of children who have received every routine vaccine",
+    "identify children with malnutrition in anganwadi centres across a district",
+    "record deaths caused by road accidents in a month in each state",
+    "detect cases of polio by investigating sudden limb weakness in children"
+   ],
+   "ans": 3,
+   "why": "Cases of sudden limb weakness are investigated and tested to detect polio.",
+   "id": "caq-2026-11-226"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Health",
+   "exam": "pre",
+   "q": "Ayushman Bharat Health Account (ABHA) is",
+   "opts": [
+    "a health insurance card that gives every citizen a cover of five lakh rupees",
+    "a digital health ID that links a person’s health records with consent",
+    "a savings account in which the Government deposits money for medical care",
+    "a registry that lists every doctor and hospital in the country by name"
+   ],
+   "ans": 1,
+   "why": "ABHA is a health account number for consent-based linking of health records. It does not by itself make a person eligible for AB PM-JAY.",
+   "id": "caq-2026-11-227"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Health",
+   "exam": "pre",
+   "q": "The National Cancer Grid is",
+   "opts": [
+    "a network of cancer centres, research institutions and patient groups",
+    "a satellite network that monitors the spread of cancer cases across the whole country",
+    "a power grid that supplies electricity to radiotherapy machines in district hospitals",
+    "a tax scheme that funds the treatment of cancer through a special cess on tobacco"
+   ],
+   "ans": 0,
+   "why": "The National Cancer Grid is a network of cancer hospitals, research institutions and patient groups across India.",
+   "id": "caq-2026-11-228"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Disasters",
+   "exam": "pre",
+   "q": "Which one of the following best explains how rainfall triggers landslides on a slope?",
+   "opts": [
+    "Rainwater makes the soil lighter so that it floats away down the slope in large masses",
+    "Rainwater cools the rock and causes it to expand and then slide down the hillside quickly",
+    "Rainwater increases the friction between the soil grains at the base of the slope on a hill",
+    "Rainwater raises the pore-water pressure in the soil and reduces its resistance to sliding"
+   ],
+   "ans": 3,
+   "why": "Higher pore-water pressure reduces the effective stress between soil particles and lowers resistance to sliding.",
+   "id": "caq-2026-11-229"
+  },
+  {
+   "subject": "Geography",
+   "syllabus": "Landforms",
+   "exam": "pre",
+   "q": "Which of the following describes the Eastern Ghats?",
+   "opts": [
+    "A continuous range that runs along the entire west coast",
+    "A mountain range that forms the northern boundary of the peninsula",
+    "A discontinuous range of hills along the east coast of India",
+    "A volcanic range found only in the north-eastern states"
+   ],
+   "ans": 2,
+   "why": "The Eastern Ghats are a discontinuous range of hills along the east coast, broken by rivers such as the Godavari, Krishna and Mahanadi.",
+   "id": "caq-2026-11-230"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Disasters",
+   "exam": "pre",
+   "q": "In disaster risk assessment, ‘exposure’ refers to",
+   "opts": [
+    "how likely a hillside is to fail under heavy and continuous rainfall in a season",
+    "what lies in the path of a hazard, such as people, roads and buildings",
+    "how badly people and property are affected after a disaster has already taken place",
+    "the amount of money that is paid as relief to the affected families in the district"
+   ],
+   "ans": 1,
+   "why": "Susceptibility, exposure and vulnerability are the distinct parts of risk. Exposure covers the people and property that a hazard could affect.",
+   "id": "caq-2026-11-231"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Biotechnology",
+   "exam": "pre",
+   "q": "Which one of the following pathogens is typically handled in a Biosafety Level-4 laboratory?",
+   "opts": [
+    "Ebola virus",
+    "Common cold virus",
+    "Salmonella in food samples",
+    "Yeast used in brewing"
+   ],
+   "ans": 0,
+   "why": "BSL-4 is the highest containment level and is used for dangerous agents with no or limited treatment, such as Ebola and Nipah viruses.",
+   "id": "caq-2026-11-232"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Biotechnology",
+   "exam": "pre",
+   "q": "The ‘One Health’ approach recognises that",
+   "opts": [
+    "human health depends only on the quality of hospitals and the supply of medicines",
+    "animal diseases can never be passed on to human beings under any circumstances",
+    "environmental change has no effect on the spread of infectious disease in a region",
+    "the health of humans, animals and the environment is closely linked"
+   ],
+   "ans": 3,
+   "why": "One Health treats human, animal and environmental health together because many diseases pass between animals and humans.",
+   "id": "caq-2026-11-233"
   }
  ]
 }

@@ -1,0 +1,251 @@
+{
+ "day": "2026-11-22",
+ "title": "22 Nov 2026",
+ "topics": [
+  {
+   "id": "dn-2026-11-22-1",
+   "n": 1,
+   "sec": "Social Justice",
+   "t": "Ethiopia polio campaign and community immunity gaps",
+   "gs": [
+    "GS2 Health",
+    "GS2 IR"
+   ],
+   "news": "Ethiopia launched a polio vaccination campaign on 21 November 2026 after cases of circulating variant poliovirus type 1 in 2026, aiming to reach more than 11.3 million children. The first round runs from 21 to 24 November, with another round in December. The country remains free of wild poliovirus.",
+   "blocks": [
+    {
+     "h": "Key ideas",
+     "items": [
+      {
+       "rows": [
+        [
+         "Poliomyelitis",
+         "A vaccine-preventable disease that can cause paralysis, mainly in children."
+        ],
+        [
+         "Wild poliovirus",
+         "The naturally circulating virus; only Afghanistan and Pakistan still report it."
+        ],
+        [
+         "Circulating variant poliovirus",
+         "A form that arises from the weakened virus in the oral vaccine, when it spreads and mutates in under-immunised communities."
+        ],
+        [
+         "Surveillance",
+         "Acute flaccid paralysis surveillance and testing of sewage (environmental surveillance) detect the virus."
+        ],
+        [
+         "India",
+         "Declared polio-free by the World Health Organization in March 2014 after three years without a case."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Target:** 11.3 million children is the launch target, not coverage achieved.",
+        "**Lesson:** high routine immunisation and surveillance are needed to keep a region polio-free."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Circulating variant poliovirus",
+     "d": "A vaccine-derived virus that spreads where immunity is low."
+    },
+    {
+     "k": "Acute flaccid paralysis",
+     "d": "Sudden weakness in a limb that is investigated to detect polio."
+    }
+   ],
+   "qs": [
+    {
+     "q": "India has been polio-free since 2014. Why must it remain vigilant?",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-22-2",
+   "n": 2,
+   "sec": "Social Justice",
+   "t": "NCG VISHWAS: education and continuity in cancer care",
+   "gs": [
+    "GS2 Health"
+   ],
+   "news": "The Health Ministry launched NCG VISHWAS in Mumbai on 21 November 2026: AI-enabled, clinician-reviewed educational videos on breast, cervical and oral cancers, in Hindi, Marathi, Tamil and English, covering prevention, diagnosis, treatment and long-term care. The Ministry urged consent-based record linkage through ABHA and wider sharing through health workers and digital platforms.",
+   "blocks": [
+    {
+     "h": "Key points",
+     "items": [
+      {
+       "rows": [
+        [
+         "NCG",
+         "National Cancer Grid, a network of cancer centres and institutions across India."
+        ],
+        [
+         "ABHA",
+         "Ayushman Bharat Health Account, a digital health ID that allows consent-based linking of health records."
+        ],
+        [
+         "AB PM-JAY",
+         "Provides health coverage to eligible families under its own rules; an ABHA number alone does not make a person eligible."
+        ],
+        [
+         "Cancers covered",
+         "Breast, cervical and oral cancers, which are common and can be detected early by screening."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Why it matters:** late detection is a major reason for poor outcomes; education, screening and referral need to be linked."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "National Cancer Grid",
+     "d": "A network of cancer hospitals, research institutions and patient groups."
+    },
+    {
+     "k": "ABHA",
+     "d": "A health account number used to link a person’s health records with consent."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the role of digital health initiatives in improving cancer prevention and care in India.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-22-3",
+   "n": 3,
+   "sec": "Environment",
+   "t": "Eastern Ghats landslides and rainfall-triggered slope failure",
+   "gs": [
+    "GS3 Disaster Management",
+    "GS1 Geography"
+   ],
+   "news": "Odisha has had 92 landslides across six districts so far in 2026. Destructive landslides on 28 October in Ganjam and Kandhamal damaged roads and isolated settlements.",
+   "blocks": [
+    {
+     "h": "Why slopes fail",
+     "items": [
+      {
+       "rows": [
+        [
+         "Pore-water pressure",
+         "Rainwater raises water pressure within soil, which lowers the effective stress and the resistance to sliding."
+        ],
+        [
+         "Terrain",
+         "Slope, geology and drainage decide how a hillside responds to rain."
+        ],
+        [
+         "Susceptibility, exposure, vulnerability",
+         "Three distinct parts of risk: how likely the slope is to fail, what lies in its path, and how badly people and property would be affected."
+        ],
+        [
+         "Mitigation",
+         "Intercepting surface water and removing sub-surface water through drains; avoiding cuts and construction on unstable slopes."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Eastern Ghats:** a discontinuous range along the east coast, less prone than the Himalaya but affected by heavy rain and road cutting.",
+        "**Impact:** road disruption increases the consequences by isolating settlements."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Landslide",
+     "d": "Downslope movement of rock, soil or debris."
+    },
+    {
+     "k": "Pore-water pressure",
+     "d": "Pressure of water held in the spaces between soil particles."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Explain the causes of landslides and the measures for their mitigation in India.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-22-4",
+   "n": 4,
+   "sec": "Science & Technology",
+   "t": "Biosafety Level-4 laboratory planned at Bhopal",
+   "gs": [
+    "GS3 S&T",
+    "GS3 Agriculture"
+   ],
+   "news": "Union Minister Shivraj Singh Chouhan announced the construction of a Biosafety Level-4 laboratory at the ICAR-National Institute of High Security Animal Diseases, Bhopal.",
+   "blocks": [
+    {
+     "h": "Biosafety levels",
+     "items": [
+      {
+       "rows": [
+        [
+         "BSL-1 and BSL-2",
+         "Work on agents that pose low or moderate risk."
+        ],
+        [
+         "BSL-3",
+         "Work on agents that can cause serious disease through the air, with controlled access and special ventilation."
+        ],
+        [
+         "BSL-4",
+         "The highest level; for dangerous agents with no or limited treatment, such as Ebola and Nipah virus, with full-body suits and sealed facilities."
+        ],
+        [
+         "Use",
+         "Research on emerging animal diseases that can pass to humans, which is important for livestock and public health."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**One Health:** human, animal and environmental health are linked, so animal disease laboratories matter for human health too."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Biosafety Level-4",
+     "d": "The highest containment level for work with the most dangerous pathogens."
+    },
+    {
+     "k": "One Health",
+     "d": "An approach that treats human, animal and environmental health together."
+    }
+   ],
+   "qs": [
+    {
+     "q": "What is the One Health approach and why is it important for India?",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  }
+ ]
+}

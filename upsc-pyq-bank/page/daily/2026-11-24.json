@@ -1,0 +1,381 @@
+{
+ "day": "2026-11-24",
+ "title": "24 Nov 2026",
+ "topics": [
+  {
+   "id": "dn-2026-11-24-1",
+   "n": 1,
+   "sec": "Economy",
+   "t": "Quarterly bulletin on unincorporated enterprises and new industry classification",
+   "gs": [
+    "GS3 Economy"
+   ],
+   "news": "The National Statistics Office’s Quarterly Bulletin on Unincorporated Sector Enterprises estimates 9.47 crore establishments and 15.03 crore workers in the non-agricultural unincorporated sector for July to September. The 2026 survey uses the National Industrial Classification 2025 in place of the 2008 version, so some activities, such as vehicle maintenance and repair, moved from trade to other services.",
+   "blocks": [
+    {
+     "h": "Key points",
+     "items": [
+      {
+       "rows": [
+        [
+         "Unincorporated sector",
+         "Proprietary and partnership enterprises that are not registered as companies; it employs a large share of India’s workers."
+        ],
+        [
+         "NIC",
+         "National Industrial Classification, the system used to group economic activities."
+        ],
+        [
+         "Comparability",
+         "A change in classification means that some figures are not directly comparable with earlier rounds."
+        ],
+        [
+         "Coverage",
+         "Construction is excluded from the survey."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Why it matters:** the informal sector shapes employment, GDP estimates and policy for small enterprises."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Unincorporated enterprise",
+     "d": "A business that is not a separate legal entity such as a company."
+    },
+    {
+     "k": "NIC 2025",
+     "d": "The updated classification of industries used for the 2026 survey."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Why is data on the informal sector important for policy-making? Discuss the challenges in measuring it.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-24-2",
+   "n": 2,
+   "sec": "Social Justice",
+   "t": "SAMPADA: anaemia prevalence in India",
+   "gs": [
+    "GS2 Health",
+    "GS2 Social Justice"
+   ],
+   "news": "The Indian Council of Medical Research released findings of SAMPADA 2023–25, which put anaemia at about 42% among children aged 12 to 59 months and about 56% among women of reproductive age. Iron deficiency explains about half of anaemia among women, adolescent girls and children. Vitamin B12 and folate deficiencies were similar in anaemic and non-anaemic groups.",
+   "blocks": [
+    {
+     "h": "What was measured",
+     "items": [
+      {
+       "rows": [
+        [
+         "SAMPADA",
+         "Survey for Assessment of Markers of Population Health, Activity, Diet and Anthropometry, done by ICMR’s National Institute of Nutrition."
+        ],
+        [
+         "Method",
+         "Haemoglobin measured in venous blood with automated analysers; earlier surveys used finger-prick devices."
+        ],
+        [
+         "Ferritin",
+         "A marker of iron stores, adjusted for inflammation."
+        ],
+        [
+         "Programme link",
+         "Anaemia Mukt Bharat and Poshan Abhiyaan."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Way forward:** iron and folic acid supplementation, fortified foods, deworming and diet diversity, plus better testing so that measurements are comparable."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Anaemia",
+     "d": "A condition in which haemoglobin in the blood is below normal."
+    },
+    {
+     "k": "Anaemia Mukt Bharat",
+     "d": "A programme launched in 2018 to reduce anaemia among children, adolescents and women."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Despite many programmes, anaemia remains widespread in India. Examine the reasons and suggest measures.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-24-3",
+   "n": 3,
+   "sec": "Environment",
+   "t": "Mining Plan and Mine Closure Guidelines 2026 for coal",
+   "gs": [
+    "GS3 Environment",
+    "GS3 Economy"
+   ],
+   "news": "The Ministry of Coal issued the Mining Plan and Mine Closure Guidelines 2026 on 20 November, effective 30 days after issue. An operator must open a closure escrow account in a scheduled commercial bank and deposit money every year, and withdrawals are checked by the Coal Controller. Underground coal gasification is recognised in the guidelines.",
+   "blocks": [
+    {
+     "h": "How the escrow works",
+     "items": [
+      {
+       "rows": [
+        [
+         "Escrow account",
+         "A closure fund the operator builds up with annual deposits."
+        ],
+        [
+         "Annual claim",
+         "Self-certified by an authorised company official, up to half of the previous year’s deposit excluding interest."
+        ],
+        [
+         "Periodic claims",
+         "In years 6, 11 and 16 and every five years afterwards, verified by an outside agency; videos and georeferenced images are needed."
+        ],
+        [
+         "Release of balance",
+         "After a closure certificate, post-closure monitoring, an operator undertaking and a third-party audit."
+        ],
+        [
+         "Forfeiture",
+         "The Coal Controller can issue a notice of intended forfeiture with the Central Government’s approval."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Underground coal gasification:** converting coal in place into gas; it may reduce the need for open-cast mining.",
+        "**Why it matters:** mined-out land, water and communities are often left without restoration."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Mine closure plan",
+     "d": "A plan to restore land and manage the environment after mining ends."
+    },
+    {
+     "k": "Escrow account",
+     "d": "A separate account that holds money until set conditions are met."
+    },
+    {
+     "k": "Underground coal gasification",
+     "d": "Burning coal underground to produce gas that is brought to the surface."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the importance of mine closure and rehabilitation. How do the new guidelines address it?",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-24-4",
+   "n": 4,
+   "sec": "International Relations",
+   "t": "India–EU trade agreement: signing expected in December",
+   "gs": [
+    "GS2 IR",
+    "GS3 Economy"
+   ],
+   "news": "The European Union’s ambassador to India said the wide expectation is that the free trade agreement will be ready for signing in December, with one estimate of 16 December, and that it may come into force by mid-2027. Negotiations were concluded on 27 January 2026.",
+   "blocks": [
+    {
+     "h": "Context",
+     "items": [
+      {
+       "rows": [
+        [
+         "Why it matters",
+         "The EU is among India’s largest trading partners; the agreement covers goods, services and investment."
+        ],
+        [
+         "Indian interests",
+         "Access for textiles, pharmaceuticals, services and agricultural goods, and reduced tariffs on imports."
+        ],
+        [
+         "Sensitive issues",
+         "Carbon border adjustment, standards, dairy and agriculture, and data rules."
+        ],
+        [
+         "Other talks",
+         "India–US trade talks are also near completion, with signing awaiting tariff clarity."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Steps after signing:** ratification by the European Parliament and the Council, then entry into force."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Free trade agreement",
+     "d": "A pact in which countries remove or reduce tariffs on most goods traded between them."
+    },
+    {
+     "k": "Carbon Border Adjustment Mechanism",
+     "d": "An EU charge on carbon-intensive imports."
+    }
+   ],
+   "qs": [
+    {
+     "q": "What are the benefits and concerns for India in a free trade agreement with the European Union?",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-24-5",
+   "n": 5,
+   "sec": "Economy",
+   "t": "Monetary policy outlook: new GDP series and rate expectations",
+   "gs": [
+    "GS3 Economy"
+   ],
+   "news": "A Reserve Bank Deputy Governor said the new GDP data series should help the central bank forecast growth and inflation more accurately, with smaller revisions. A poll of economists expects the Reserve Bank to raise the repo rate by 25 basis points to 5.75% at its meeting on 2 to 4 December, with a final hike to 6% in February. Inflation went above the 6% upper tolerance level in October for the first time in two years, driven by an energy price shock linked to the Middle East war and weak monsoon rain.",
+   "blocks": [
+    {
+     "h": "How the policy works",
+     "items": [
+      {
+       "rows": [
+        [
+         "Inflation target",
+         "4% with a tolerance band of 2% on either side, set under the Reserve Bank of India Act."
+        ],
+        [
+         "Repo rate",
+         "The rate at which the Reserve Bank lends to banks; raising it makes credit costlier and cools demand."
+        ],
+        [
+         "Basis point",
+         "One hundredth of a percentage point."
+        ],
+        [
+         "Monetary Policy Committee",
+         "Six members; decides the repo rate by majority."
+        ],
+        [
+         "Failure to meet target",
+         "If inflation stays outside the band for three straight quarters, the Reserve Bank must report to the government."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Supply shocks:** energy and food price shocks are not easily controlled by interest rates alone."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Repo rate",
+     "d": "The rate at which the Reserve Bank lends short-term funds to banks."
+    },
+    {
+     "k": "Basis point",
+     "d": "One hundredth of one percentage point."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Explain how monetary policy tools are used to control inflation. How effective are they against supply-side shocks?",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-24-6",
+   "n": 6,
+   "sec": "Art & Culture",
+   "t": "Guru Nanak Jayanti and the martyrdom day of Guru Tegh Bahadur",
+   "gs": [
+    "GS1 Culture",
+    "GS1 History"
+   ],
+   "news": "Guru Nanak Jayanti, the birth anniversary of the first Sikh Guru, is observed on Karthika Purnima, which falls on 24 November 2026. The martyrdom day of Guru Tegh Bahadur, the ninth Guru, is also observed on 24 November.",
+   "blocks": [
+    {
+     "h": "Key facts",
+     "items": [
+      {
+       "rows": [
+        [
+         "Guru Nanak (1469–1539)",
+         "Born at Talwandi (now Nankana Sahib). Taught belief in one God, equality, honest work (kirat karni), sharing (vand chakko) and remembering God (naam japna)."
+        ],
+        [
+         "Langar",
+         "Community kitchen that serves food to all without distinction."
+        ],
+        [
+         "Guru Tegh Bahadur",
+         "Ninth Guru; executed in Delhi in 1675 for defending the freedom of belief of Kashmiri Pandits. Anandpur Sahib was founded by him."
+        ],
+        [
+         "Guru Granth Sahib",
+         "Compiled by the fifth Guru, Arjan Dev, in 1604; made the eternal Guru by Guru Gobind Singh."
+        ],
+        [
+         "Karthika Purnima",
+         "Full moon of the month of Kartik; also marked as Dev Deepawali."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Teachings:** rejection of caste and ritual, and emphasis on devotion and service."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Langar",
+     "d": "The Sikh community kitchen that serves free meals to all."
+    },
+    {
+     "k": "Guru Granth Sahib",
+     "d": "The holy scripture of Sikhism."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the contribution of Guru Nanak’s teachings to social reform and communal harmony in medieval India.",
+     "m": "GS1 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  }
+ ]
+}
