@@ -1,0 +1,864 @@
+{
+ "day": "2026-11-23",
+ "title": "23 Nov 2026",
+ "topics": [
+  {
+   "id": "dn-2026-11-23-1",
+   "n": 1,
+   "sec": "Polity & Governance",
+   "t": "EVMs, VVPAT and electoral rolls: software, audits and trust",
+   "gs": [
+    "GS2 Polity"
+   ],
+   "news": "A fresh argument on election technology says the Election Commission’s reliance on central software for electoral rolls (ECINet and ERONet) dilutes the statutory role of Electoral Registration Officers and Booth Level Officers, and that EVMs are not fully “key-agnostic” because Symbol Loading Units put candidate names and symbols into the VVPAT. It asks for independent audits, statistically sound VVPAT sampling and published deletion lists.",
+   "blocks": [
+    {
+     "h": "How the system works",
+     "items": [
+      {
+       "rows": [
+        [
+         "EVM",
+         "Electronic Voting Machine: a control unit and a balloting unit. First used in a by-election at Paravur, Kerala, in 1982; Section 61A of the Representation of the People Act, 1951 (inserted in 1988) legalised its use."
+        ],
+        [
+         "VVPAT",
+         "Voter Verifiable Paper Audit Trail: a printer that shows the voter a slip for about seven seconds. First used at Noksen, Nagaland, in 2013 and fitted to all EVMs by 2019."
+        ],
+        [
+         "Symbol Loading Unit",
+         "A device that loads candidate names and symbols into the VVPAT before polling."
+        ],
+        [
+         "Electoral roll",
+         "Prepared under the Representation of the People Act, 1950. The Electoral Registration Officer of each constituency is responsible for the roll; Section 13B provides for these officers."
+        ],
+        [
+         "Burnt-memory check",
+         "Verification of the microcontroller in an EVM by engineers after results, on request by a candidate."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Supreme Court, 2019:** verification of VVPAT slips was raised from one to five EVMs per Assembly segment.",
+        "**Supreme Court, 2024:** the Court refused a return to paper ballots and 100% matching of slips, but ordered Symbol Loading Units to be sealed for 45 days after results and allowed verification of the burnt memory of 5% of EVMs per segment on request."
+       ]
+      }
+     ]
+    },
+    {
+     "h": "Issues and the way forward",
+     "items": [
+      {
+       "ul": [
+        "**Transparency:** voters and parties want to see how deletions and additions to rolls are made.",
+        "**Audit:** randomised, statistically sound sampling of slips would give stronger assurance than a fixed number.",
+        "**Federal and statutory roles:** local officers must keep real control of the roll even when a central platform is used.",
+        "**Way forward:** independent audits, published deletion lists, a clear grievance route and continued public demonstration of the machines."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "VVPAT",
+     "d": "A printer attached to the EVM that shows the voter a paper slip of the vote cast."
+    },
+    {
+     "k": "Section 61A, RP Act 1951",
+     "d": "The provision that allows voting machines in elections."
+    },
+    {
+     "k": "Symbol Loading Unit",
+     "d": "Device used to load candidate names and symbols into the VVPAT."
+    }
+   ],
+   "qs": [
+    {
+     "q": "“Electronic voting has improved efficiency but public trust depends on verifiability.” Discuss in the light of recent debates on EVMs and VVPAT.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Examine the role of the Election Commission and local officers in preparing electoral rolls and the challenges of using central software platforms.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-23-2",
+   "n": 2,
+   "sec": "Polity & Governance",
+   "t": "Parliament not prorogued for about 100 days",
+   "gs": [
+    "GS2 Polity"
+   ],
+   "news": "Both Houses of Parliament were adjourned sine die on 13 August 2026 at the end of the Monsoon Session (20 July to 13 August) but were not prorogued. The gap of about 100 days is longer than the 87 days in 2008 and has revived the debate on how often Parliament sits.",
+   "blocks": [
+    {
+     "h": "Adjournment, prorogation and dissolution",
+     "items": [
+      {
+       "rows": [
+        [
+         "Adjournment",
+         "Ends a sitting. It may be for hours or days; adjournment sine die ends a session without fixing a date for the next sitting. The presiding officer decides."
+        ],
+        [
+         "Prorogation",
+         "Ends a session. The President prorogues a House on the advice of the Council of Ministers. Pending bills do not lapse; pending notices may lapse."
+        ],
+        [
+         "Dissolution",
+         "Ends the life of the Lok Sabha only. Bills pending in the Lok Sabha lapse; the Rajya Sabha is a permanent House."
+        ],
+        [
+         "Article 85",
+         "The President summons Parliament so that six months do not pass between the last sitting of one session and the first sitting of the next."
+        ],
+        [
+         "Article 123",
+         "The President may promulgate an ordinance only when Parliament is not in session; Parliament must approve it within six weeks of reassembly."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Why it matters:** a House that is not prorogued is still in session in a technical sense, so the six-month rule is not breached and the executive does not need to reissue summons.",
+        "**Sitting days:** the National Commission to Review the Working of the Constitution (2002) recommended at least 120 sitting days a year for the Lok Sabha and 100 for the Rajya Sabha. Average sitting days have fallen from about 135 in the early years to about 55 now."
+       ]
+      }
+     ]
+    },
+    {
+     "h": "Way forward",
+     "items": [
+      {
+       "ul": [
+        "Fix a minimum number of sitting days in law or the Rules of Procedure.",
+        "Publish a calendar of sessions at the start of the year.",
+        "Strengthen committees so scrutiny continues between sessions."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Adjournment sine die",
+     "d": "Ending a sitting without fixing a date to meet again."
+    },
+    {
+     "k": "Prorogation",
+     "d": "Ending a session by the President’s order."
+    },
+    {
+     "k": "Article 85",
+     "d": "Gap between two sessions cannot exceed six months."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Distinguish between adjournment, prorogation and dissolution. How far do the present sitting patterns of Parliament affect legislative scrutiny?",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    },
+    {
+     "q": "Discuss the constitutional limits on the ordinance-making power of the President and the concerns raised about its use.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-23-3",
+   "n": 3,
+   "sec": "Polity & Governance",
+   "t": "Supreme Court: anti-defection law reform and appeals on electoral roll revision",
+   "gs": [
+    "GS2 Polity"
+   ],
+   "news": "A Supreme Court bench led by Chief Justice Surya Kant issued notice to the Centre, the Election Commission and the Law Commission on a public interest petition seeking wide reforms to the anti-defection law. In a separate matter on the Special Intensive Revision of electoral rolls in West Bengal, the Court directed the appellate tribunals to defer hearings on appeals against inclusions and to take up first the appeals of those excluded from the rolls.",
+   "blocks": [
+    {
+     "h": "The anti-defection law",
+     "items": [
+      {
+       "rows": [
+        [
+         "Tenth Schedule",
+         "Added by the 52nd Constitutional Amendment Act, 1985 to stop legislators from changing parties for gain."
+        ],
+        [
+         "Grounds",
+         "A member is disqualified for voluntarily giving up membership of the party, or for voting or abstaining against the party whip without permission."
+        ],
+        [
+         "Merger",
+         "The 91st Amendment, 2003 removed the one-third split exception; a merger needs two-thirds of the legislature party."
+        ],
+        [
+         "Deciding authority",
+         "The Speaker or Chairman decides. In Kihoto Hollohan (1992) the Court upheld the Schedule but held the decision is subject to judicial review."
+        ],
+        [
+         "Time limit",
+         "In Keisham Meghachandra Singh (2020) the Court said Speakers should decide within three months."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Reform ideas:** an independent tribunal in place of the Speaker, a fixed time limit, limiting whip-bound votes to confidence and money matters, and curbs on the misuse of ‘merger’."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Tenth Schedule",
+     "d": "The part of the Constitution that deals with disqualification on grounds of defection."
+    },
+    {
+     "k": "Kihoto Hollohan (1992)",
+     "d": "Judgment upholding the Tenth Schedule and allowing judicial review of the Speaker’s decision."
+    },
+    {
+     "k": "Whip",
+     "d": "A party direction to members on how to vote."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Evaluate the working of the anti-defection law and suggest reforms to make it more effective.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-23-4",
+   "n": 4,
+   "sec": "International Relations",
+   "t": "India–Nepal Joint Vision and a development package",
+   "gs": [
+    "GS2 IR"
+   ],
+   "news": "The Prime Ministers of India and Nepal signed eight agreements in New Delhi and issued a Joint Vision on connectivity, development and institutional cooperation. India announced a development cooperation package of ₹15,000 crore for Nepal’s reconstruction and long-term development, and Nepal gained access to two more Indian ports, Kandla and Paradip, for transit cargo.",
+   "blocks": [
+    {
+     "h": "What was agreed",
+     "items": [
+      {
+       "rows": [
+        [
+         "Package",
+         "₹15,000 crore (about NPR 24,000 crore) for reconstruction and development."
+        ],
+        [
+         "Ports",
+         "Kandla and Paradip added for Nepal’s transit cargo, alongside the existing routes through Kolkata and Visakhapatnam."
+        ],
+        [
+         "Connectivity",
+         "The Ayodhya–Janakpur express rail service and the motorable bridge between Dharchula and Darchula over the Mahakali were welcomed."
+        ],
+        [
+         "Treaty review",
+         "Existing agreements, including the 1950 Treaty of Peace and Friendship, are to be reviewed by mutual consent."
+        ],
+        [
+         "Mechanism",
+         "A High-Level Monitoring Group led by Nepal’s Foreign Secretary and India’s Ambassador meets at least every six months and reports to the Joint Commission led by the foreign ministers."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Why Nepal matters:** an open border, deep cultural ties, hydropower and a long border with Uttarakhand, Uttar Pradesh, Bihar, West Bengal and Sikkim.",
+        "**Concerns:** China’s Belt and Road projects, boundary questions such as Kalapani, and Nepal’s wish for a balanced relationship."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Treaty of Peace and Friendship, 1950",
+     "d": "Treaty between India and Nepal giving each country’s citizens reciprocal rights of residence and work."
+    },
+    {
+     "k": "Mahakali",
+     "d": "River that forms part of the India–Nepal boundary, known as the Sharda in India."
+    },
+    {
+     "k": "Neighbourhood First",
+     "d": "India’s policy of giving priority to relations with immediate neighbours."
+    }
+   ],
+   "qs": [
+    {
+     "q": "India–Nepal relations are called ‘roti-beti’ but have seen strains. Discuss the factors and the way forward.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-23-5",
+   "n": 5,
+   "sec": "International Relations",
+   "t": "SCO Civilisational Dialogue Forum and the Indraprastha Communiqué",
+   "gs": [
+    "GS2 IR",
+    "GS1 Culture"
+   ],
+   "news": "The first Civilisational Dialogue Forum of the Shanghai Cooperation Organisation was held at Purana Qila, New Delhi, from 20 to 22 November 2026 and adopted the Indraprastha Communiqué on cultural cooperation and shared heritage. It follows the Prime Minister’s proposal at the 2025 Tianjin summit.",
+   "blocks": [
+    {
+     "h": "Key points",
+     "items": [
+      {
+       "rows": [
+        [
+         "SCO",
+         "A Eurasian grouping set up in 2001 (Shanghai Five from 1996). India became a full member in 2017."
+        ],
+        [
+         "Purpose of the forum",
+         "To discuss how civilisations have exchanged ideas, trade and art, and to promote cultural cooperation."
+        ],
+        [
+         "Communiqué",
+         "An outcome document of the forum, not a negotiated joint statement of the SCO heads of state."
+        ],
+        [
+         "India’s interest",
+         "Soft power, links with Central Asia and the idea of a shared civilisational heritage."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Member states:** China, Russia, India, Pakistan, Kazakhstan, Kyrgyzstan, Tajikistan, Uzbekistan and Iran (member from 2023), with Belarus joining in 2024."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "SCO",
+     "d": "Eurasian political, economic and security grouping with its secretariat in Beijing."
+    },
+    {
+     "k": "Soft power",
+     "d": "The ability to influence through culture, values and policies rather than force."
+    }
+   ],
+   "qs": [
+    {
+     "q": "What are the objectives of the Shanghai Cooperation Organisation? Assess India’s role in it.",
+     "m": "GS2 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-23-6",
+   "n": 6,
+   "sec": "Economy",
+   "t": "RBI final amendments on securitisation of standard assets",
+   "gs": [
+    "GS3 Economy"
+   ],
+   "news": "The Reserve Bank issued final amendments on securitisation, effective 1 April 2027. Covered notes must be issued, held and transferred in dematerialised form, a minimum ticket size of ₹1 crore per investor applies at issue and on transfer, and public offers must follow the securitised debt instrument regulations.",
+   "blocks": [
+    {
+     "h": "How securitisation works",
+     "items": [
+      {
+       "rows": [
+        [
+         "Securitisation",
+         "A lender pools loans and sells them to a special purpose vehicle, which issues securities backed by the repayments."
+        ],
+        [
+         "Originator",
+         "The bank or non-bank lender that made the loans."
+        ],
+        [
+         "Pass-through certificate",
+         "A security that passes loan repayments to investors."
+        ],
+        [
+         "Benefit to lenders",
+         "Frees capital and spreads risk, so more credit can be given."
+        ],
+        [
+         "Risk",
+         "Poor quality loans can be hidden in pools; rules on retention, disclosure and minimum investment reduce this."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Dematerialisation** brings records into depositories and improves transparency.",
+        "**A ₹1 crore floor** keeps these notes with larger, better informed investors."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Securitisation",
+     "d": "Turning a pool of loans into tradable securities."
+    },
+    {
+     "k": "Dematerialisation",
+     "d": "Holding securities in electronic form instead of paper certificates."
+    },
+    {
+     "k": "Special purpose vehicle",
+     "d": "A separate entity set up to hold the pooled loans."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Explain securitisation and discuss its benefits and risks for the Indian financial system.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-23-7",
+   "n": 7,
+   "sec": "Economy",
+   "t": "RBI draft rules on electronic payment safeguards",
+   "gs": [
+    "GS3 Economy",
+    "GS3 Internal Security"
+   ],
+   "news": "The Reserve Bank released draft directions on safeguards for electronic payments, open for comments until 14 December 2026. For commercial banks the draft proposes a start date of 1 July 2027, with some provisions on bank negligence from 1 January 2027. It offers customer controls such as limits and time windows, a Stop Switch that blocks outward debits while inward credits continue, and a voluntary Trusted Person Mechanism for transfers above a limit set by the customer.",
+   "blocks": [
+    {
+     "h": "What the draft proposes",
+     "items": [
+      {
+       "rows": [
+        [
+         "Customer controls",
+         "Limits on amounts and time windows for transactions."
+        ],
+        [
+         "Stop Switch",
+         "Blocks outward debits from an account while allowing money to come in."
+        ],
+        [
+         "Trusted Person Mechanism",
+         "A voluntary second person who approves transfers above a threshold set by the customer. UPI, merchant and recurring payments are not covered by it."
+        ],
+        [
+         "Bank negligence",
+         "Liability provisions to protect customers when a bank is at fault."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Why now:** digital payment fraud and ‘digital arrest’ scams have grown with the spread of UPI.",
+        "**Balance:** safety measures must not make everyday payments harder."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Stop Switch",
+     "d": "A feature that blocks outward debits from an account."
+    },
+    {
+     "k": "Digital arrest",
+     "d": "A scam in which fraudsters pose as officials and pressure victims to transfer money."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the challenges to security in India’s digital payments system and the regulatory measures taken to address them.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-23-8",
+   "n": 8,
+   "sec": "Environment",
+   "t": "Green India Mission: audit finds near failure",
+   "gs": [
+    "GS3 Environment"
+   ],
+   "news": "On 19 November the Public Accounts Committee pulled up the Environment Ministry over the near failure of the Green India Mission, following an audit by the Comptroller and Auditor General. Revised implementation guidelines have still not been issued. The audit found shortfalls of 91.8% in forest quality improvement and 97.5% in ecosystem restoration.",
+   "blocks": [
+    {
+     "h": "About the mission",
+     "items": [
+      {
+       "rows": [
+        [
+         "National Action Plan on Climate Change",
+         "Launched in 2008 with eight missions; the Green India Mission is one of them (Cabinet approval in 2014)."
+        ],
+        [
+         "Revised plan",
+         "Outlay of ₹12,190 crore and a target of 25 million hectares by 2030."
+        ],
+        [
+         "Split of the target",
+         "About 24 million hectares are to come from other schemes such as CAMPA, the National Afforestation Programme and employment guarantee works, leaving about 1 million hectares for the mission itself."
+        ],
+        [
+         "Link to NDC",
+         "India’s pledge to create an additional carbon sink of 2.5 to 3 billion tonnes of CO2 equivalent by 2030."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Causes of weak delivery:** unclear guidelines, funds routed through other schemes, weak monitoring of survival rates.",
+        "**Way forward:** clear guidelines, outcome-based monitoring of tree survival and local community participation."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Green India Mission",
+     "d": "A mission under the National Action Plan on Climate Change to increase and improve forest and tree cover."
+    },
+    {
+     "k": "Carbon sink",
+     "d": "A natural system, such as a forest, that absorbs more carbon than it releases."
+    },
+    {
+     "k": "CAMPA",
+     "d": "Compensatory Afforestation Fund Management and Planning Authority."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Assess the performance of the Green India Mission and suggest measures to meet India’s carbon sink target.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-23-9",
+   "n": 9,
+   "sec": "Environment",
+   "t": "Marine protected areas and species assessments released",
+   "gs": [
+    "GS3 Environment"
+   ],
+   "news": "The Environment Ministry released assessments at a wildlife board meeting: a Management Effectiveness Evaluation of coastal and marine protected areas for 2024–26 and a marine turtle assessment covering the nesting seasons 2022 to 2025. Other publications cover dugong and seagrass habitats, including the Palk Bay Dugong Conservation Reserve, and the threat to Arabian Sea humpback whales from entanglement in fishing gear.",
+   "blocks": [
+    {
+     "h": "Key facts",
+     "items": [
+      {
+       "rows": [
+        [
+         "Dugong",
+         "A marine mammal that feeds on seagrass; in Schedule I of the Wildlife (Protection) Act, 1972. The Palk Bay Dugong Conservation Reserve in Tamil Nadu was declared in 2022."
+        ],
+        [
+         "Seagrass meadows",
+         "Store carbon, protect coasts and support fish; they are damaged by trawling and pollution."
+        ],
+        [
+         "Olive ridley turtle",
+         "Nests in mass arribadas on the Odisha coast; listed as Vulnerable."
+        ],
+        [
+         "Arabian Sea humpback whale",
+         "A non-migratory population at risk from fishing nets and ship strikes."
+        ],
+        [
+         "Management Effectiveness Evaluation",
+         "A scoring of how well a protected area is managed."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Threats:** bycatch, coastal development, plastic and climate change."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Dugong",
+     "d": "Marine mammal known as the ‘sea cow’ that grazes on seagrass."
+    },
+    {
+     "k": "Arribada",
+     "d": "Mass nesting of turtles on a beach."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the importance of marine protected areas and the threats to marine biodiversity along India’s coast.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-23-10",
+   "n": 10,
+   "sec": "Environment",
+   "t": "COP31 at Antalya: two decisions not agreed",
+   "gs": [
+    "GS3 Environment",
+    "GS2 IR"
+   ],
+   "news": "On 22 November 2026 the UNFCCC Executive Secretary confirmed that the Parties failed to agree on two decisions proposed by the Presidency at COP31 in Antalya. Other decisions advanced, including on Just Transition.",
+   "blocks": [
+    {
+     "h": "Background",
+     "items": [
+      {
+       "rows": [
+        [
+         "UNFCCC",
+         "The 1992 treaty under which COP meetings are held each year."
+        ],
+        [
+         "Paris Agreement, 2015",
+         "Keeps warming well below 2 degrees Celsius and aims for 1.5 degrees; countries file nationally determined contributions."
+        ],
+        [
+         "Just Transition",
+         "Support for workers and regions that depend on fossil fuels while the economy moves to clean energy."
+        ],
+        [
+         "Decision-making",
+         "COP decisions are taken by consensus, so one objection can block a text."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**India’s stand:** common but differentiated responsibilities, climate finance from developed countries, and opposition to carbon border taxes."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "COP",
+     "d": "Conference of the Parties to the UNFCCC."
+    },
+    {
+     "k": "NDC",
+     "d": "Nationally Determined Contribution, a country’s climate pledge under the Paris Agreement."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Why is consensus important and difficult in climate negotiations? Discuss with reference to recent COP outcomes.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-23-11",
+   "n": 11,
+   "sec": "Science & Technology",
+   "t": "India–France space cooperation: from Thumba to Kourou",
+   "gs": [
+    "GS3 S&T",
+    "GS2 IR"
+   ],
+   "news": "The partnership between India and France in space began with a 1964 protocol. ISRO and CNES are now jointly developing TRISHNA, a thermal infrared Earth observation satellite planned for 2027 on a PSLV, and CNES supports India’s human spaceflight programme, Gaganyaan.",
+   "blocks": [
+    {
+     "h": "Milestones",
+     "items": [
+      {
+       "rows": [
+        [
+         "1960s",
+         "France supplied Centaure sounding rockets for India’s early solid-propulsion work."
+        ],
+        [
+         "Megha-Tropiques, 2011",
+         "A joint satellite to study the tropical water cycle."
+        ],
+        [
+         "SARAL-AltiKa, 2013",
+         "A joint satellite for ocean altimetry."
+        ],
+        [
+         "Ariane launches",
+         "Ariane rockets have launched more than 20 Indian communication satellites from Kourou."
+        ],
+        [
+         "TRISHNA",
+         "Thermal infrared mission for water and land surface monitoring, in a sun-synchronous orbit at about 761 km."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Why it matters:** access to technology, launch services and training, and a trusted strategic partner."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "TRISHNA",
+     "d": "A joint ISRO–CNES thermal infrared satellite mission."
+    },
+    {
+     "k": "Sun-synchronous orbit",
+     "d": "An orbit in which the satellite passes over a place at the same local solar time each day."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the importance of international cooperation in India’s space programme, with reference to India–France ties.",
+     "m": "GS3 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-23-12",
+   "n": 12,
+   "sec": "Science & Technology",
+   "t": "Genome language models design working viruses",
+   "gs": [
+    "GS3 S&T"
+   ],
+   "news": "Evo 1 and Evo 2 are artificial intelligence models trained on DNA that learn patterns, predict the effect of mutations and design new DNA. A study in August 2026 used them to generate complete bacteriophage genomes. Of nearly 300 designs, 16 were viable, and some infected bacteria that were resistant to the original virus. The researchers called for safeguards on biosafety, biosecurity and ethics.",
+   "blocks": [
+    {
+     "h": "Key ideas",
+     "items": [
+      {
+       "rows": [
+        [
+         "Bacteriophage",
+         "A virus that infects bacteria; used in phage therapy."
+        ],
+        [
+         "Genome language model",
+         "A model that treats DNA like text and predicts the next base."
+        ],
+        [
+         "Dual use",
+         "The same tool can help medicine or be misused to create harmful organisms."
+        ],
+        [
+         "India context",
+         "The Biotechnology sector and the BioE3 policy for bio-based manufacturing."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Benefits:** new treatments for resistant infections and faster drug design.",
+        "**Risks:** misuse, accidental release and gaps in regulation."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Bacteriophage",
+     "d": "A virus that infects bacteria."
+    },
+    {
+     "k": "Dual-use technology",
+     "d": "Technology that can be used for both peaceful and harmful purposes."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Discuss the opportunities and biosecurity risks of using artificial intelligence in genome design.",
+     "m": "GS3 · 250 words · 15 marks",
+     "ref": ""
+    }
+   ]
+  },
+  {
+   "id": "dn-2026-11-23-13",
+   "n": 13,
+   "sec": "Science & Technology",
+   "t": "India’s first human metabolic chamber at CMC Vellore",
+   "gs": [
+    "GS3 S&T",
+    "GS2 Health"
+   ],
+   "news": "The Tata Institute of Fundamental Research and the Christian Medical College, Vellore opened India’s first Human Metabolic Chamber Facility at Vellore on 23 November 2026, with support from the Department of Atomic Energy. The room-sized calorimeter measures oxygen consumed and carbon dioxide produced over 24 hours or more to estimate how much energy a person uses and which fuels the body burns.",
+   "blocks": [
+    {
+     "h": "Why it matters",
+     "items": [
+      {
+       "rows": [
+        [
+         "Calorimetry",
+         "Measuring energy use. Indirect calorimetry infers it from breathing gases."
+        ],
+        [
+         "Use",
+         "Research on obesity, diabetes and nutrition, and on how Indian diets and body types differ from those of Western populations."
+        ],
+        [
+         "Health context",
+         "India faces rising diabetes and obesity alongside undernutrition."
+        ]
+       ]
+      },
+      {
+       "ul": [
+        "**Policy link:** evidence to set Indian calorie and nutrient norms instead of borrowed ones."
+       ]
+      }
+     ]
+    }
+   ],
+   "prel": [
+    {
+     "k": "Indirect calorimetry",
+     "d": "Estimating energy use from oxygen consumed and carbon dioxide produced."
+    }
+   ],
+   "qs": [
+    {
+     "q": "Why does India need its own research on metabolism and nutrition? Discuss.",
+     "m": "GS2 · 150 words · 10 marks",
+     "ref": ""
+    }
+   ]
+  }
+ ]
+}
