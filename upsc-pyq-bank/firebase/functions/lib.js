@@ -10,6 +10,8 @@ function makeApi(deps) {
   // Razorpay's minimum is 100 paise (₹1); anything lower is a configuration mistake, so refuse rather than create a broken order
   const price = () => { const v = +env.PRICE_PAISE || 29900; if (!(v >= 100)) throw httpError(500, "Price is not configured correctly."); return v; };
   const days = () => +env.PERIOD_DAYS || 365;
+  // A pass can be renewed during its last N days (the remaining time is kept: the new year is added after the current end). Before that, a second payment is refused.
+  const renewDays = () => { const v = +env.RENEW_BEFORE_DAYS; return v >= 0 && isFinite(v) ? v : 60; };
   const clock = now || Date.now;
   // a signing secret that is missing or empty would let anyone forge a signature: refuse to run instead
   const secret = (name) => { const v = env[name]; if (typeof v !== "string" || !v.trim()) throw httpError(500, "Payments are not configured."); return v; };
@@ -80,6 +82,12 @@ function makeApi(deps) {
   async function order(req) {
     const uid = await authUid(req);
     throttle("order:" + uid, 8, 10 * 60000);
+    const until = await db.runTransaction(async (tx) => { const e = await tx.get(db.doc("entitlements/" + uid)); return e.exists ? +e.data().paidUntil || 0 : 0; });
+    if (until - clock() > renewDays() * DAY) {
+      const when = new Date(until).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "Asia/Kolkata" });
+      const er = httpError(409, "Your pass is already active until " + when + ". You can renew during the last " + renewDays() + " days.");
+      er.paidUntil = until; throw er;
+    }
     const o = await rzp("POST", "/orders", {
       amount: price(), currency: "INR", payment_capture: 1,
       receipt: ("cse_" + uid.slice(0, 16) + "_" + clock()).slice(0, 40),
