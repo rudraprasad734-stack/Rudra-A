@@ -1406,7 +1406,7 @@
   .ts-split{margin:0 0 10px; padding:9px 11px; border-radius:10px; background:var(--surface-2); color:var(--ink-soft); font-size:13px; line-height:1.45;}
   .sub-modal .sm-st{display:flex;flex-direction:column;gap:3px;margin:2px 0 8px;font-size:14px;color:var(--ink-soft)} .sub-modal .sm-st b{font-size:16px;color:var(--ink)} .sub-modal .sm-st.on b{color:#34D58A}
   .sub-modal .sm-msg{display:none;margin:10px 0 0;padding:9px 12px;border-radius:10px;background:rgba(70,200,185,.14);border:1px solid #46C8B9;font-size:13px;line-height:1.4;color:var(--ink)} .sub-modal .sm-msg.on{display:block} .sub-modal .sm-plan{cursor:pointer;-webkit-tap-highlight-color:transparent} .sub-modal .btn{touch-action:manipulation}
-  .sub-modal .sm-h{margin:14px 0 6px;font-size:11px;letter-spacing:.12em;color:var(--ink-faint)} .sub-modal .sm-plan{border:1px solid var(--line,rgba(255,255,255,.14));border-radius:12px;padding:10px 12px;margin-bottom:8px;display:flex;flex-direction:column;gap:3px} .sub-modal .sm-plan.on{border-color:#46C8B9} .sub-modal .sm-plan span{color:var(--ink);font-size:14px} .sub-modal .sm-plan small{color:var(--ink-soft);font-size:12px;line-height:1.4}
+  .sub-modal .sm-h{margin:14px 0 6px;font-size:11px;letter-spacing:.12em;color:var(--ink-faint)} .sub-modal .sm-plan{border:1px solid var(--line,rgba(255,255,255,.14));border-radius:12px;padding:10px 12px;margin-bottom:8px;display:flex;flex-direction:column;gap:3px} .sub-modal .sm-plan.on{border-color:#46C8B9} .sub-modal .sm-plan span{color:var(--ink);font-size:14px} .sub-modal .sm-plan small{color:var(--ink-soft);font-size:12px;line-height:1.4} .sub-modal .sm-plan .sm-price{font-size:20px;font-weight:600;letter-spacing:.2px} .sub-modal .row + .sm-plan, .sub-modal .sm-st + .sm-plan{margin-top:12px} .sub-modal .sm-points{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:5px} .sub-modal .sm-points li{position:relative;padding-left:20px;font-size:13px;line-height:1.4;color:var(--ink-soft)} .sub-modal .sm-points li::before{content:"\2713";position:absolute;left:0;top:0;color:#34D58A;font-weight:700}
   .trial-bar{margin:0 0 10px;} .trial-top{display:flex; justify-content:space-between; font-size:13px; color:var(--ink); margin-bottom:5px;} .trial-top span{color:var(--ink-soft);} .trial-chip{display:inline-block; margin-top:8px; font-size:11.5px; font-weight:700; border-radius:999px; padding:3px 10px; background:var(--tab-planner-soft); color:var(--tab-planner);}
   .sa-hero{display:flex; align-items:center; gap:14px; padding:14px !important; margin:0 0 12px;} .sa-ring{flex:none; display:block;} .sa-trk{fill:none; stroke:var(--surface-2);} .sa-arc{fill:none; stroke-linecap:round;} .sa-ring text{fill:var(--navy); font-weight:700; font-family:var(--font-body);} .sa-ring .sa-sub{fill:var(--ink-faint); font-weight:400;}
   .sa-ht{min-width:0; flex:1;} .sa-k{font-size:12px; color:var(--ink-faint);} .sa-big{font-size:24px; font-weight:700; color:var(--navy); line-height:1.15; margin:2px 0 6px;} .sa-sub2{font-size:12px; color:var(--ink-faint); margin-top:7px; line-height:1.45;}
@@ -21205,7 +21205,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "451";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "452";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -21455,7 +21455,7 @@ function webPay(){
     if(e && e.dismissed) return;
     WEB.err = e && /already active/.test(String(e.message || "")) ? String(e.message)
       : e && e.failed ? "The payment did not go through. You have not been charged. Please try again."
-      : "We could not confirm the payment. If money was taken it will be added within a few minutes: tap “I have already paid” to check.";
+      : "We could not confirm the payment. If money was taken it will be added within a few minutes. Close this screen and open it again to check.";
   }).then(done);
 }
 function subMode(){   // "wait" (not known yet) | "trial" | "active" | "locked"
@@ -21568,13 +21568,12 @@ function subModalBodyHtml(){
     status = '<div class="sm-st"><b>'+(play && !BILL.checked ? 'Checking…' : 'Free for now')+'</b><span>'+(play && !BILL.checked ? 'Asking Google Play about your subscription.' : 'Everything on the website is free right now. We will tell you well before that changes.')+'</span></div>';
   }
   var err = play ? BILL.err : WEB.err;
-  if(play) plan = '<div class="sm-plan on"><b>Yearly subscription · Google Play</b><span>'+esc(billingPriceText())+'</span><small>Billed yearly to your Google Play account. It renews every year until you cancel in Google Play (Menu › Subscriptions).</small></div>';
-  else plan = '<div class="sm-plan on"><b>One-year pass · every phone and computer</b><span>'+esc(webPriceText())+'</span><small>One payment gives 12 months on every device where you sign in with the same Google account. It does not renew by itself, and we remind you before it ends. Paid securely by Razorpay (UPI, cards, net banking).</small></div>'+
-    '<div class="sm-plan"><b>Android app · Google Play</b><span>Yearly subscription, renews until cancelled</span><small>If you use the Android app, the plan is billed through Google Play instead. The two are separate.</small></div>';
+  if(play) plan = '<div class="sm-plan on"><b>Yearly subscription</b><span class="sm-price">'+esc(billingPriceText())+'</span><ul class="sm-points"><li>Billed yearly to your Google Play account</li><li>Renews every year until you cancel in Google Play</li></ul></div>';
+  else plan = '<div class="sm-plan on"><b>One-year pass</b><span class="sm-price">'+esc(webPriceText().split(" (")[0])+'</span><small>'+esc((webPriceText().split(" (")[1] || "").replace(/\)$/,""))+'</small><ul class="sm-points"><li>12 months on every phone and computer where you sign in with this Google account</li><li>One payment, no automatic renewal</li><li>Secure payment by Razorpay: UPI, cards and net banking</li></ul></div>';
   var showPlans = !(activeWeb && !renewable);   // an active pass with plenty of time left shows just its status: no prices, no payment buttons
   return status+(err ? '<div class="pw-err">'+esc(err)+'</div>' : '')+(btns ? '<div class="row" style="margin:12px 0 4px">'+btns+'</div>' : '')+
-    (showPlans ? '<div class="sm-h">PLANS</div>'+plan+
-    '<div class="row" style="margin-top:12px"><button type="button" class="btn ghost" id="subRestore">'+(play ? 'Restore my subscription' : 'I have already paid')+'</button></div>' : '')+
+    (showPlans && mode !== "wait" ? plan : '')+
+    (play && showPlans ? '<div class="row" style="margin-top:12px"><button type="button" class="btn ghost" id="subRestore">Restore my subscription</button></div>' : '')+
     '<div class="sm-msg" id="subMsg" role="status" aria-live="polite"></div>'+
     '<div class="muted" style="margin-top:10px;font-size:12px">'+subLegalLinks()+'</div>';
 }
@@ -21591,14 +21590,6 @@ function subModalWire(host){
     if(navigator.onLine === false){ subMsg("You are offline. Connect to the internet and try again."); return; }
     subMsg("Checking…");
     Promise.all([billingRefresh(), webEntRefresh()]).then(function(){ subMsg(subMode()==="active" ? "Your subscription is active." : (onPlay() ? "No active subscription was found on this Google account." : "No payment was found for this Google account yet. If you just paid, wait a minute and try again.")); }, function(){ subMsg("Could not check right now. Please try again in a moment."); });
-  });
-  Array.prototype.forEach.call(host.querySelectorAll(".sm-plan"), function(p){
-    p.addEventListener("click", function(){
-      if(onPlay()){ subMsg("Your yearly subscription is billed through Google Play."); return; }
-      if(!WEB_PAY_ON){ subMsg("Website payments are not open yet. Everything on the website is free for now, and we will tell you well before that changes."); return; }
-      if(p.querySelector("b") && /Google Play/.test(p.textContent) && !/pass/i.test(p.querySelector("b").textContent)){ subMsg("The Android app is billed through Google Play, separately from the website pass."); return; }
-      var b = document.getElementById("subBuy"); if(b) b.click(); else subMsg("Tap “Subscribe now” above to buy the one-year pass.");
-    });
   });
 }
 function openSubModal(){
