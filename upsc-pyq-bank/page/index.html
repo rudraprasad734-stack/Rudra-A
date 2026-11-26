@@ -1405,8 +1405,16 @@
   .pl-tabs button.on{background:linear-gradient(135deg,var(--tab-accent),color-mix(in srgb,var(--tab-accent) 55%,#27b9ff)) !important; box-shadow:0 6px 16px -8px var(--tab-accent);}
   .ts-split{margin:0 0 10px; padding:9px 11px; border-radius:10px; background:var(--surface-2); color:var(--ink-soft); font-size:13px; line-height:1.45;}
   .sub-modal .sm-st{display:flex;flex-direction:column;gap:3px;margin:2px 0 8px;font-size:14px;color:var(--ink-soft)} .sub-modal .sm-st b{font-size:16px;color:var(--ink)} .sub-modal .sm-st.on b{color:#34D58A}
+  :is(.sub-modal,.pw-box) .sm-top{margin:2px 0 14px} :is(.sub-modal,.pw-box) .sm-pill{display:inline-block;padding:3px 11px;border-radius:999px;font-size:11px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;background:rgba(70,200,185,.16);color:#46C8B9} :is(.sub-modal,.pw-box) .sm-pill.ok{background:rgba(52,213,138,.16);color:#34D58A} :is(.sub-modal,.pw-box) .sm-pill.warn{background:rgba(255,184,77,.16);color:#FFB84D}
+  :is(.sub-modal,.pw-box) .sm-big{margin:10px 0 3px;font-family:var(--font-display);font-size:24px;line-height:1.2;font-weight:600;color:var(--ink)} :is(.sub-modal,.pw-box) .sm-lead{font-size:13.5px;line-height:1.5;color:var(--ink-soft)}
+  :is(.sub-modal,.pw-box) .sm-meter{height:6px;border-radius:99px;background:var(--surface-2,rgba(255,255,255,.1));overflow:hidden;margin-top:13px} :is(.sub-modal,.pw-box) .sm-meter i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#46C8B9,#5BD0FF)} :is(.sub-modal,.pw-box) .sm-ml{display:flex;justify-content:space-between;font-size:11.5px;color:var(--ink-faint);margin-top:5px}
+  :is(.sub-modal,.pw-box) .sm-offer{border:1px solid rgba(70,200,185,.45);border-radius:16px;padding:16px;background:linear-gradient(180deg,rgba(70,200,185,.1),rgba(70,200,185,.03));margin-top:4px} :is(.sub-modal,.pw-box) .sm-ofn{font-size:11.5px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft)}
+  :is(.sub-modal,.pw-box) .sm-amt{display:flex;align-items:baseline;gap:7px;margin-top:5px} :is(.sub-modal,.pw-box) .sm-amt b{font-size:32px;line-height:1.1;font-weight:700;color:var(--ink)} :is(.sub-modal,.pw-box) .sm-amt span{font-size:14px;color:var(--ink-soft)} :is(.sub-modal,.pw-box) .sm-eq{font-size:12.5px;color:var(--ink-faint);margin-top:3px}
+  :is(.sub-modal,.pw-box) .sm-offer .sm-points{margin:14px 0 16px} :is(.sub-modal,.pw-box) .sm-offer .btn,:is(.sub-modal,.pw-box) .sm-actions .btn{display:block;width:100%;text-align:center;padding-top:13px;padding-bottom:13px;font-size:15px} :is(.sub-modal,.pw-box) .sm-fine{margin-top:10px;text-align:center;font-size:11.5px;color:var(--ink-faint)} :is(.sub-modal,.pw-box) .sm-actions{margin-top:12px}
+  :is(.sub-modal,.pw-box) .sm-facts{border:1px solid var(--line,rgba(255,255,255,.14));border-radius:14px;padding:13px 14px;margin:2px 0 12px} :is(.sub-modal,.pw-box) .sm-facts .sm-points{margin:0} :is(.sub-modal,.pw-box) .sm-links{margin-top:14px;text-align:center;font-size:12px;color:var(--ink-faint)} :is(.sub-modal,.pw-box) .pw-err{margin:0 0 10px}
+  .pw-box .sm-offer{text-align:left;margin:16px 0 4px} .pw-box .sm-points li{list-style:none;text-align:left} .pw-box .sm-pill{display:table;margin:12px auto 0} .pw-box>img{display:block;margin:0 auto} .pw-box .pw-lead{margin:10px 0 0}
   .sub-modal .sm-msg{display:none;margin:10px 0 0;padding:9px 12px;border-radius:10px;background:rgba(70,200,185,.14);border:1px solid #46C8B9;font-size:13px;line-height:1.4;color:var(--ink)} .sub-modal .sm-msg.on{display:block} .sub-modal .sm-plan{cursor:pointer;-webkit-tap-highlight-color:transparent} .sub-modal .btn{touch-action:manipulation}
-  .sub-modal .sm-h{margin:14px 0 6px;font-size:11px;letter-spacing:.12em;color:var(--ink-faint)} .sub-modal .sm-plan{border:1px solid var(--line,rgba(255,255,255,.14));border-radius:12px;padding:10px 12px;margin-bottom:8px;display:flex;flex-direction:column;gap:3px} .sub-modal .sm-plan.on{border-color:#46C8B9} .sub-modal .sm-plan span{color:var(--ink);font-size:14px} .sub-modal .sm-plan small{color:var(--ink-soft);font-size:12px;line-height:1.4} .sub-modal .sm-plan .sm-price{font-size:20px;font-weight:600;letter-spacing:.2px} .sub-modal .row + .sm-plan, .sub-modal .sm-st + .sm-plan{margin-top:12px} .sub-modal .sm-points{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:5px} .sub-modal .sm-points li{position:relative;padding-left:20px;font-size:13px;line-height:1.4;color:var(--ink-soft)} .sub-modal .sm-points li::before{content:"\2713";position:absolute;left:0;top:0;color:#34D58A;font-weight:700}
+  .sub-modal .sm-h{margin:14px 0 6px;font-size:11px;letter-spacing:.12em;color:var(--ink-faint)} .sub-modal .sm-plan{border:1px solid var(--line,rgba(255,255,255,.14));border-radius:12px;padding:10px 12px;margin-bottom:8px;display:flex;flex-direction:column;gap:3px} .sub-modal .sm-plan.on{border-color:#46C8B9} .sub-modal .sm-plan span{color:var(--ink);font-size:14px} .sub-modal .sm-plan small{color:var(--ink-soft);font-size:12px;line-height:1.4} .sub-modal .sm-plan .sm-price{font-size:20px;font-weight:600;letter-spacing:.2px} .sub-modal .row + .sm-plan, .sub-modal .sm-st + .sm-plan{margin-top:12px} :is(.sub-modal,.pw-box) .sm-points{list-style:none;margin:6px 0 0;padding:0;display:flex;flex-direction:column;gap:5px} :is(.sub-modal,.pw-box) .sm-points li{position:relative;padding-left:20px;font-size:13px;line-height:1.4;color:var(--ink-soft)} :is(.sub-modal,.pw-box) .sm-points li::before{content:"\2713";position:absolute;left:0;top:0;color:#34D58A;font-weight:700}
   .trial-bar{margin:0 0 10px;} .trial-top{display:flex; justify-content:space-between; font-size:13px; color:var(--ink); margin-bottom:5px;} .trial-top span{color:var(--ink-soft);} .trial-chip{display:inline-block; margin-top:8px; font-size:11.5px; font-weight:700; border-radius:999px; padding:3px 10px; background:var(--tab-planner-soft); color:var(--tab-planner);}
   .sa-hero{display:flex; align-items:center; gap:14px; padding:14px !important; margin:0 0 12px;} .sa-ring{flex:none; display:block;} .sa-trk{fill:none; stroke:var(--surface-2);} .sa-arc{fill:none; stroke-linecap:round;} .sa-ring text{fill:var(--navy); font-weight:700; font-family:var(--font-body);} .sa-ring .sa-sub{fill:var(--ink-faint); font-weight:400;}
   .sa-ht{min-width:0; flex:1;} .sa-k{font-size:12px; color:var(--ink-faint);} .sa-big{font-size:24px; font-weight:700; color:var(--navy); line-height:1.15; margin:2px 0 6px;} .sa-sub2{font-size:12px; color:var(--ink-faint); margin-top:7px; line-height:1.45;}
@@ -21470,7 +21478,7 @@ function subMode(){   // "wait" (not known yet) | "trial" | "active" | "locked"
 function subLegalLinks(){ return '<a href="./terms.html">Terms</a> · <a href="./refund.html">Refunds</a> · <a href="./privacy.html">Privacy</a> · <a href="./delete-account.html">Delete my data</a>'; }
 function paywallHtml(){
   var play = onPlay(), signed = !!cloud.user, busy = play ? BILL.busy : WEB.busy, err = play ? BILL.err : WEB.err;
-  var head = '<div class="pw-box"><img src="./icon-192.png" width="72" height="72" alt=""><h2>Your free trial has ended</h2>';
+  var head = '<div class="pw-box"><img src="./icon-192.png" width="72" height="72" alt=""><span class="sm-pill warn">Trial ended</span><h2>'+(play ? 'Your free trial has ended' : 'Continue with CSE Companion')+'</h2>';
   var body;
   if(play){
     body = '<p>Thank you for trying CSE Companion. A yearly subscription is needed to keep using the app. Your 14-day trial was free and nothing was charged.</p>'+
@@ -21481,13 +21489,16 @@ function paywallHtml(){
       (signed ? '' : '<button class="btn pw-alt" id="pwSign">Already subscribed? Sign in with Google</button>')+
       '<div class="pw-fine">Billed to your Google Play account. The yearly plan renews automatically until you cancel it in Google Play (Menu › Subscriptions); cancelling stops the next renewal.</div>';
   } else {
-    body = '<p>Thank you for trying CSE Companion. A one-year pass is needed to keep using the app. Your 14-day trial was free and nothing was charged.</p>'+
-      '<div class="pw-price">'+webPriceText()+'</div>'+
-      (signed ? '<button class="btn primary pw-buy" id="pwPay"'+(busy?' disabled':'')+'>'+(busy?'Opening payment…':'Pay and continue')+'</button>'
+    var wp = webPriceText().split(" ("), amt = wp[0].replace(/\s*for one year$/i, "");
+    body = '<p class="pw-lead">Your 14-day free trial is over. Your plan and progress are safe.</p>'+
+      '<div class="sm-offer"><div class="sm-ofn">One-year pass</div><div class="sm-amt"><b>'+esc(amt)+'</b><span>for one year</span></div><div class="sm-eq">'+esc((wp[1] || "").replace(/\)$/, ""))+'</div>'+
+      '<ul class="sm-points"><li>12 months on every phone and computer where you sign in with this Google account</li><li>One payment, no automatic renewal</li><li>Secure payment by Razorpay: UPI, cards and net banking</li></ul>'+
+      (err ? '<div class="pw-err">'+esc(err)+'</div>' : '')+
+      (signed ? '<button class="btn primary pw-buy" id="pwPay"'+(busy?' disabled':'')+'>'+(busy?'Opening payment…':'Continue to payment')+'</button>'
               : '<button class="btn primary pw-buy" id="pwSign">Sign in with Google to subscribe</button>')+
-      (err ? '<div class="pw-err">'+err+'</div>' : '')+
-      '<button class="btn pw-alt" id="pwRestore">I have already paid</button>'+
-      '<div class="pw-fine">One payment gives 12 months of full access on every phone and computer where you sign in with this Google account. It does not renew by itself, and we remind you before it ends. Payment is handled securely by Razorpay (UPI, cards, net banking). Payments are not refundable once access is added, except as set out in the <a href="./refund.html">Refund Policy</a>; the 14-day trial is free.</div>';
+      '<div class="sm-fine">Secure checkout by Razorpay</div></div>'+
+      (signed ? '' : '<div class="pw-fine">Already paid? Sign in with the Google account you paid with and your pass appears.</div>')+
+      '<div class="pw-fine">Payments are not refundable once access is added, except as set out in the <a href="./refund.html">Refund Policy</a>.</div>';
   }
   return head + body +
     '<div class="pw-safe">Your plan and progress stay safe on this device. <a href="#" id="pwBackup">Download a backup</a></div>'+
@@ -21543,39 +21554,46 @@ function subCardHtml(){
 }
 // ---- the Subscription screen (opened from the menu): your status, the plan, and every way to pay, renew, restore or manage ----
 function subModalBodyHtml(){
-  var mode = subMode(), play = onPlay(), signed = !!cloud.user, status, btns = "", plan, renewable = true, activeWeb = false;
+  var mode = subMode(), play = onPlay(), signed = !!cloud.user, tone = "", pill = "", big = "", lead = "", meter = "", facts = "", btn = "", offer = true, restore = "";
+  var buyLbl = (play || signed) ? "Subscribe now" : "Sign in to subscribe";
+  var tick = function(arr){ return '<ul class="sm-points">'+arr.map(function(t){ return '<li>'+esc(t)+'</li>'; }).join("")+'</ul>'; };
   if(mode === "active"){
     var viaWeb = webPaid() && !(play && BILL.active);
     if(viaWeb){
-      var left = Math.max(0, Math.ceil((WEB.until - subNow())/DAY_MS)), d = new Date(WEB.until).toLocaleDateString(undefined, {day:"numeric", month:"long", year:"numeric"});
-      activeWeb = true;
-      status = '<div class="sm-st on"><b>Active</b><span>Your one-year pass runs until <b>'+d+'</b> ('+left+' day'+(left===1?'':'s')+' left). It does not renew by itself, so there is nothing to cancel.'+(left > WEB_RENEW_DAYS ? ' You can renew during the last '+WEB_RENEW_DAYS+' days; the time you have left is kept.' : ' Renewing adds a year after your current end date.')+'</span></div>';
-      renewable = left <= WEB_RENEW_DAYS;
-      if(renewable) btns = '<button type="button" class="btn" id="subBuy">Renew for another year</button>';
+      var left = Math.max(0, Math.ceil((WEB.until - subNow())/DAY_MS)), d = new Date(WEB.until).toLocaleDateString(undefined, {day:"numeric", month:"long", year:"numeric"}), renewable = left <= WEB_RENEW_DAYS;
+      tone = "ok"; pill = "Active"; big = "Valid until "+d; lead = left+" day"+(left===1?"":"s")+" left on your one-year pass.";
+      meter = '<div class="sm-meter" role="img" aria-label="'+left+' days left"><i style="width:'+Math.max(3, Math.min(100, Math.round(100*left/365)))+'%"></i></div>';
+      facts = '<div class="sm-facts">'+tick(["Works on every phone and computer where you sign in with this Google account", "Does not renew by itself, so there is nothing to cancel", renewable ? "Renewing adds a year after your current end date" : "You can renew during the last "+WEB_RENEW_DAYS+" days; the time you have left is kept"])+'</div>';
+      if(renewable) btn = '<button type="button" class="btn primary" id="subBuy">Renew for another year</button>';
+      offer = renewable;
     } else {
-      status = '<div class="sm-st on"><b>Active</b><span>Your yearly subscription is active. Thank you for supporting CSE Companion.</span></div>';
-      btns = '<button type="button" class="btn" id="subManage">Manage subscription</button>';
+      tone = "ok"; pill = "Active"; big = "Subscription active"; lead = "Thank you for supporting CSE Companion.";
+      btn = '<button type="button" class="btn" id="subManage">Manage subscription</button>'; offer = false;
     }
   } else if(mode === "trial"){
     var ti = trialInfo();
-    status = '<div class="sm-st"><b>Free trial</b><span>Day '+ti.day+' of '+TRIAL_DAYS+' · '+esc(ti.leftText)+'. Everything is free until '+esc(trialEndsText())+'. Nothing is charged for the trial.</span></div>'+
-      '<div class="sa-bar"><i style="width:'+Math.max(4, ti.pct)+'%"></i></div>';
-    btns = play || WEB_PAY_ON ? '<button type="button" class="btn primary" id="subBuy">'+(play || signed ? 'Subscribe now' : 'Sign in to subscribe')+'</button>' : '';
+    pill = "Free trial"; big = ti.leftText.charAt(0).toUpperCase()+ti.leftText.slice(1); lead = "Everything is free until "+trialEndsText()+". Nothing is charged for the trial.";
+    meter = '<div class="sm-meter" role="img" aria-label="Day '+ti.day+' of '+TRIAL_DAYS+'"><i style="width:'+Math.max(4, ti.pct)+'%"></i></div><div class="sm-ml"><span>Day '+ti.day+'</span><span>Day '+TRIAL_DAYS+'</span></div>';
+    if(play || WEB_PAY_ON) btn = '<button type="button" class="btn primary" id="subBuy">'+buyLbl+'</button>';
   } else if(mode === "locked"){
-    status = '<div class="sm-st"><b>Free trial ended</b><span>A subscription is needed to keep using the app. Your plan and progress stay safe.</span></div>';
-    btns = '<button type="button" class="btn primary" id="subBuy">'+(play || signed ? 'Subscribe now' : 'Sign in to subscribe')+'</button>';
+    tone = "warn"; pill = "Trial ended"; big = "Subscription needed"; lead = "Subscribe to keep using the app. Your plan and progress stay safe.";
+    btn = '<button type="button" class="btn primary" id="subBuy">'+buyLbl+'</button>';
   } else {
-    status = '<div class="sm-st"><b>'+(play && !BILL.checked ? 'Checking…' : 'Free for now')+'</b><span>'+(play && !BILL.checked ? 'Asking Google Play about your subscription.' : 'Everything on the website is free right now. We will tell you well before that changes.')+'</span></div>';
+    pill = play && !BILL.checked ? "Checking" : "Free for now"; big = play && !BILL.checked ? "One moment" : "Everything is free"; lead = play && !BILL.checked ? "Asking Google Play about your subscription." : "We will tell you well before that changes."; offer = false;
   }
-  var err = play ? BILL.err : WEB.err;
-  if(play) plan = '<div class="sm-plan on"><b>Yearly subscription</b><span class="sm-price">'+esc(billingPriceText())+'</span><ul class="sm-points"><li>Billed yearly to your Google Play account</li><li>Renews every year until you cancel in Google Play</li></ul></div>';
-  else plan = '<div class="sm-plan on"><b>One-year pass</b><span class="sm-price">'+esc(webPriceText().split(" (")[0])+'</span><small>'+esc((webPriceText().split(" (")[1] || "").replace(/\)$/,""))+'</small><ul class="sm-points"><li>12 months on every phone and computer where you sign in with this Google account</li><li>One payment, no automatic renewal</li><li>Secure payment by Razorpay: UPI, cards and net banking</li></ul></div>';
-  var showPlans = !(activeWeb && !renewable);   // an active pass with plenty of time left shows just its status: no prices, no payment buttons
-  return status+(err ? '<div class="pw-err">'+esc(err)+'</div>' : '')+(btns ? '<div class="row" style="margin:12px 0 4px">'+btns+'</div>' : '')+
-    (showPlans && mode !== "wait" ? plan : '')+
-    (play && showPlans ? '<div class="row" style="margin-top:12px"><button type="button" class="btn ghost" id="subRestore">Restore my subscription</button></div>' : '')+
+  var err = play ? BILL.err : WEB.err, errH = err ? '<div class="pw-err">'+esc(err)+'</div>' : "";
+  var card = "";
+  if(offer && btn){
+    if(play) card = '<div class="sm-offer"><div class="sm-ofn">Yearly subscription</div><div class="sm-amt"><b>'+esc(billingPriceText())+'</b></div>'+tick(["Billed yearly to your Google Play account", "Renews every year until you cancel in Google Play"])+errH+btn+'<div class="sm-fine">Payment handled by Google Play</div></div>';
+    else { var wp = webPriceText().split(" ("), amt = wp[0].replace(/\s*for one year$/i, "");
+      card = '<div class="sm-offer"><div class="sm-ofn">One-year pass</div><div class="sm-amt"><b>'+esc(amt)+'</b><span>for one year</span></div><div class="sm-eq">'+esc((wp[1] || "").replace(/\)$/, ""))+'</div>'+tick(["12 months on every phone and computer where you sign in with this Google account", "One payment, no automatic renewal", "Secure payment by Razorpay: UPI, cards and net banking"])+errH+btn+'<div class="sm-fine">Secure checkout by Razorpay</div></div>'; }
+  } else if(btn){ card = '<div class="sm-actions">'+errH+btn+'</div>'; }
+  else if(errH) card = errH;
+  if(play && offer && btn) restore = '<div class="sm-actions"><button type="button" class="btn ghost" id="subRestore">Restore my subscription</button></div>';
+  return '<div class="sm-top"><span class="sm-pill'+(tone ? " "+tone : "")+'">'+esc(pill)+'</span><div class="sm-big">'+esc(big)+'</div><div class="sm-lead">'+esc(lead)+'</div>'+meter+'</div>'+
+    facts+card+restore+
     '<div class="sm-msg" id="subMsg" role="status" aria-live="polite"></div>'+
-    '<div class="muted" style="margin-top:10px;font-size:12px">'+subLegalLinks()+'</div>';
+    '<div class="sm-links">'+subLegalLinks()+'</div>';
 }
 function subMsg(t){   // feedback inside the popup itself (a toast alone can be missed), plus the usual toast
   var s = document.getElementById("subMsg"); if(s){ s.textContent = t; s.className = "sm-msg on"; }
