@@ -63,8 +63,11 @@ const sig = (o, p) => crypto.createHmac("sha256", env.RAZORPAY_KEY_SECRET).updat
   const v2 = await api.verify(req("tokA", { orderId: o1.orderId, paymentId: "pay_1", signature: sig(o1.orderId, "pay_1") }));
   ok(v2.paidUntil === v.paidUntil, "sending the same payment again adds nothing");
 
-  // renewing while still active adds on top of the remaining time
+  // while plenty of time is left, a second payment is refused
   t += 100 * DAY;
+  ok(await fail(() => api.order(req("tokA"))) === 409, "a second order is refused while the pass has more than 60 days left");
+  // renewing in the last 60 days adds on top of the remaining time
+  t += 220 * DAY;
   const o2 = await api.order(req("tokA"));
   payments.pay_2 = { id: "pay_2", order_id: o2.orderId, amount: 29900, status: "authorized" };
   const v3 = await api.verify(req("tokA", { orderId: o2.orderId, paymentId: "pay_2", signature: sig(o2.orderId, "pay_2") }));
@@ -136,7 +139,7 @@ const sig = (o, p) => crypto.createHmac("sha256", env.RAZORPAY_KEY_SECRET).updat
   // flooding: one account cannot create unlimited Razorpay orders
   let blocked = 0; for (let i = 0; i < 30; i++) { if (await fail(() => api.order(req("tokA"))) === 429) blocked++; }
   ok(blocked >= 15, "creating orders over and over is stopped (" + blocked + " of 30 refused)");
-  t += 11 * 60000; ok(!(await fail(() => api.order(req("tokA")))), "and works again after a few minutes");
+  t += 11 * 60000; ok((await fail(() => api.order(req("tokA")))) !== 429, "and is not rate-limited again after a few minutes");
   ok(await fail(() => api.verify(req("tokA", {}))) === 400, "verify with nothing in it is a clean 400");
 
   console.log(fails ? "FAILS " + fails : "ALL OK"); process.exit(fails ? 1 : 0);

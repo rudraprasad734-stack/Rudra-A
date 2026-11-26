@@ -21205,7 +21205,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "450";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "451";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -21401,6 +21401,7 @@ function billingBuy(){
 function billingManage(){ window.open("https://play.google.com/store/account/subscriptions?sku="+SUB_SKU+"&package=in.csecompanion.app", "_blank"); }
 // ---- web payments (Razorpay): one payment = one year, saved against the Google account, so it unlocks every phone and computer ----
 var API_BASE = "https://cse-companion-pay.rudraprasad734.workers.dev", WEBENT_KEY = "dossier.webent.v1", RZP_JS = "https://checkout.razorpay.com/v1/checkout.js";
+var WEB_RENEW_DAYS = 60;   // a web pass can be renewed in its last 60 days (the server enforces the same rule); the remaining time is kept
 var WEB_PRICE_FALLBACK = "₹299 for one year (about ₹25 a month)";
 // Switch for charging on the website. false = the website stays free (nothing is locked there) until the payment server is deployed; flip to true then (see firebase/WEB-PAYMENTS.md, step 6).
 // Private test switch: opening csecompanion.in/?paytest=1 turns the payment screens on for this phone only (?paytest=0 turns them off again). Everyone else is unaffected.
@@ -21452,7 +21453,8 @@ function webPay(){
     });
   }).catch(function(e){
     if(e && e.dismissed) return;
-    WEB.err = e && e.failed ? "The payment did not go through. You have not been charged. Please try again."
+    WEB.err = e && /already active/.test(String(e.message || "")) ? String(e.message)
+      : e && e.failed ? "The payment did not go through. You have not been charged. Please try again."
       : "We could not confirm the payment. If money was taken it will be added within a few minutes: tap “I have already paid” to check.";
   }).then(done);
 }
@@ -21522,8 +21524,8 @@ function subCardHtml(){
     if(viaWeb){
       var left = Math.max(0, Math.ceil((WEB.until - subNow())/DAY_MS)), d = new Date(WEB.until).toLocaleDateString(undefined, {day:"numeric", month:"long", year:"numeric"});
       body = '<div class="muted">Your one-year pass is active until <b>'+d+'</b> ('+left+' day'+(left===1?'':'s')+' left). It works on every phone and computer where you sign in with this Google account.</div>';
-      if(!play) btns = '<button class="btn" id="subBuy">'+(left < 60 ? 'Renew for another year' : 'Add another year')+'</button>'+(WEB.err ? '<div class="pw-err">'+WEB.err+'</div>' : '');
-      foot = 'It does not renew by itself; we remind you before it ends. ';
+      if(!play && left <= WEB_RENEW_DAYS) btns = '<button class="btn" id="subBuy">Renew for another year</button>'+(WEB.err ? '<div class="pw-err">'+WEB.err+'</div>' : '');
+      foot = 'It does not renew by itself, so there is nothing to cancel. '+(left <= WEB_RENEW_DAYS ? 'Renewing adds a year after your current end date. ' : 'You can renew in the last '+WEB_RENEW_DAYS+' days. ');
     } else {
       body = '<div class="muted">Your subscription is active. Thank you for supporting CSE Companion.</div>';
       btns = '<button class="btn" id="subManage">Manage subscription</button>';
@@ -21541,13 +21543,15 @@ function subCardHtml(){
 }
 // ---- the Subscription screen (opened from the menu): your status, the plan, and every way to pay, renew, restore or manage ----
 function subModalBodyHtml(){
-  var mode = subMode(), play = onPlay(), signed = !!cloud.user, status, btns = "", plan;
+  var mode = subMode(), play = onPlay(), signed = !!cloud.user, status, btns = "", plan, renewable = true, activeWeb = false;
   if(mode === "active"){
     var viaWeb = webPaid() && !(play && BILL.active);
     if(viaWeb){
       var left = Math.max(0, Math.ceil((WEB.until - subNow())/DAY_MS)), d = new Date(WEB.until).toLocaleDateString(undefined, {day:"numeric", month:"long", year:"numeric"});
-      status = '<div class="sm-st on"><b>Active</b><span>Your one-year pass runs until <b>'+d+'</b> ('+left+' day'+(left===1?'':'s')+' left).</span></div>';
-      btns = '<button type="button" class="btn" id="subBuy">'+(left < 60 ? 'Renew for another year' : 'Add another year')+'</button>';
+      activeWeb = true;
+      status = '<div class="sm-st on"><b>Active</b><span>Your one-year pass runs until <b>'+d+'</b> ('+left+' day'+(left===1?'':'s')+' left). It does not renew by itself, so there is nothing to cancel.'+(left > WEB_RENEW_DAYS ? ' You can renew during the last '+WEB_RENEW_DAYS+' days; the time you have left is kept.' : ' Renewing adds a year after your current end date.')+'</span></div>';
+      renewable = left <= WEB_RENEW_DAYS;
+      if(renewable) btns = '<button type="button" class="btn" id="subBuy">Renew for another year</button>';
     } else {
       status = '<div class="sm-st on"><b>Active</b><span>Your yearly subscription is active. Thank you for supporting CSE Companion.</span></div>';
       btns = '<button type="button" class="btn" id="subManage">Manage subscription</button>';
@@ -21567,9 +21571,10 @@ function subModalBodyHtml(){
   if(play) plan = '<div class="sm-plan on"><b>Yearly subscription · Google Play</b><span>'+esc(billingPriceText())+'</span><small>Billed yearly to your Google Play account. It renews every year until you cancel in Google Play (Menu › Subscriptions).</small></div>';
   else plan = '<div class="sm-plan on"><b>One-year pass · every phone and computer</b><span>'+esc(webPriceText())+'</span><small>One payment gives 12 months on every device where you sign in with the same Google account. It does not renew by itself, and we remind you before it ends. Paid securely by Razorpay (UPI, cards, net banking).</small></div>'+
     '<div class="sm-plan"><b>Android app · Google Play</b><span>Yearly subscription, renews until cancelled</span><small>If you use the Android app, the plan is billed through Google Play instead. The two are separate.</small></div>';
+  var showPlans = !(activeWeb && !renewable);   // an active pass with plenty of time left shows just its status: no prices, no payment buttons
   return status+(err ? '<div class="pw-err">'+esc(err)+'</div>' : '')+(btns ? '<div class="row" style="margin:12px 0 4px">'+btns+'</div>' : '')+
-    '<div class="sm-h">PLANS</div>'+plan+
-    '<div class="row" style="margin-top:12px"><button type="button" class="btn ghost" id="subRestore">'+(play ? 'Restore my subscription' : 'I have already paid')+'</button></div>'+
+    (showPlans ? '<div class="sm-h">PLANS</div>'+plan+
+    '<div class="row" style="margin-top:12px"><button type="button" class="btn ghost" id="subRestore">'+(play ? 'Restore my subscription' : 'I have already paid')+'</button></div>' : '')+
     '<div class="sm-msg" id="subMsg" role="status" aria-live="polite"></div>'+
     '<div class="muted" style="margin-top:10px;font-size:12px">'+subLegalLinks()+'</div>';
 }
