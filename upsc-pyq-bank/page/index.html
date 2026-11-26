@@ -1886,6 +1886,24 @@
 #paywall .pw-err,.sub-card .pw-err{color:#ff9a9a;font-size:13px;margin:6px 0}
 #paywall .pw-fine,#paywall .pw-safe,#paywall .pw-links{font-size:12px;opacity:.78;margin-top:12px;line-height:1.45}
 #paywall a{color:#46C8B9}
+#paywall.pw-ticket{background:#15110D;color:#F4EBDD;align-items:flex-start}
+#paywall.pw-ticket .pw-box{padding:34px 0 26px}
+#paywall .tk-eyebrow{font-size:12px;font-weight:600;letter-spacing:.16em;color:#B7A47F;text-transform:uppercase}
+#paywall .tk-h{margin:10px 0 10px;font-family:var(--font-display,"Fraunces",serif);font-weight:600;font-size:32px;line-height:1.12}
+#paywall .tk-sub{margin:0 auto 24px;max-width:320px;font-size:14.5px;line-height:1.5;color:#CDBE9E;opacity:1}
+#paywall .tk{text-align:left;filter:drop-shadow(0 18px 30px rgba(0,0,0,.45))}
+#paywall .tk-top{border-radius:22px 22px 0 0;padding:20px 22px 22px;background:linear-gradient(160deg,#F7E9C8,#E9CE93);color:#2A1E08}
+#paywall .tk-brand{display:flex;align-items:center;gap:9px;font-size:11px;font-weight:600;letter-spacing:.14em;text-transform:uppercase} #paywall .tk-brand img{border-radius:50%}
+#paywall .tk-kind{margin-top:22px;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;opacity:.75}
+#paywall .tk-big{margin-top:4px;font-family:var(--font-display,"Fraunces",serif);font-weight:600;font-size:32px;line-height:1.1}
+#paywall .tk-meta{margin-top:18px;display:flex;gap:26px;font-size:12px} #paywall .tk-meta small{display:block;opacity:.65;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase} #paywall .tk-meta b{display:block;margin-top:2px}
+#paywall .tk-perf{position:relative;height:0;border-top:2px dashed rgba(42,30,8,.35);background:#E9CE93} #paywall .tk-perf i{position:absolute;top:-13px;width:24px;height:24px;border-radius:50%;background:#15110D} #paywall .tk-perf i:first-child{left:-12px} #paywall .tk-perf i:last-child{right:-12px}
+#paywall .tk-stub{border-radius:0 0 22px 22px;padding:16px 22px 18px;background:#E9CE93;color:#2A1E08;display:flex;align-items:center;justify-content:space-between}
+#paywall .tk-amt{font-family:var(--font-display,"Fraunces",serif);font-weight:600;font-size:40px;line-height:1} #paywall .tk-eq{margin-top:5px;font-size:13px;font-weight:600;color:#075A38}
+#paywall .tk-bars{width:120px;height:50px;border-radius:3px;opacity:.85;background:repeating-linear-gradient(90deg,#2A1E08 0 2px,transparent 2px 5px,#2A1E08 5px 6px,transparent 6px 10px,#2A1E08 10px 13px,transparent 13px 15px)}
+#paywall.pw-ticket .btn.primary{margin-top:26px;min-height:54px;border:0;border-radius:15px;background:#E0B04A;color:#241A06;font-weight:600;font-size:16px}
+#paywall .tk-fine{margin-top:11px;font-size:12px;color:#B7A47F}
+#paywall.pw-ticket a{color:#E0B04A}
 body.pw-on{overflow:hidden}
 #splash{position:fixed;inset:-160px -4px;z-index:2147483000;background:#20262D;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:1;transition:opacity .38s ease}
 #splash.out{opacity:0}
@@ -21213,7 +21231,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "452";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "453";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -21476,29 +21494,38 @@ function subMode(){   // "wait" (not known yet) | "trial" | "active" | "locked"
   return "locked";
 }
 function subLegalLinks(){ return '<a href="./terms.html">Terms</a> · <a href="./refund.html">Refunds</a> · <a href="./privacy.html">Privacy</a> · <a href="./delete-account.html">Delete my data</a>'; }
+function paywallTicketHtml(){
+  var signed = !!cloud.user, busy = WEB.busy, err = WEB.err, wp = webPriceText().split(" ("), amt = wp[0].replace(/\s*for one year$/i, "");
+  return '<div class="pw-box pw-tk"><div class="tk-eyebrow">Your trial is complete</div>'+
+    '<h2 class="tk-h">Your preparation<br>doesn\'t pause here.</h2>'+
+    '<p class="tk-sub">Your plan, progress and streak are saved. Pick up exactly where you left off.</p>'+
+    '<div class="tk"><div class="tk-top"><div class="tk-brand"><img src="./icon-192.png" width="30" height="30" alt=""><span>CSE Companion</span></div>'+
+    '<div class="tk-kind">One-year pass</div><div class="tk-big">Every phone.<br>Every computer.</div>'+
+    '<div class="tk-meta"><div><small>Valid for</small><b>12 months</b></div></div></div>'+
+    '<div class="tk-perf" aria-hidden="true"><i></i><i></i></div>'+
+    '<div class="tk-stub"><div><div class="tk-amt">'+esc(amt)+'</div><div class="tk-eq">'+esc((wp[1] || "").replace(/\)$/, ""))+'</div></div><div class="tk-bars" aria-hidden="true"></div></div></div>'+
+    (err ? '<div class="pw-err">'+esc(err)+'</div>' : '')+
+    (signed ? '<button class="btn primary pw-buy" id="pwPay"'+(busy?' disabled':'')+'>'+(busy?'Opening payment…':'Continue to payment')+'</button>'
+            : '<button class="btn primary pw-buy" id="pwSign">Continue with Google</button>')+
+    '<div class="tk-fine">Secure checkout by Razorpay · UPI, cards, net banking</div>'+
+    (signed ? '' : '<div class="pw-fine">Already paid? Sign in with the Google account you paid with and your pass appears.</div>')+
+    '<div class="pw-fine">Payments are not refundable once access is added, except as set out in the <a href="./refund.html">Refund Policy</a>.</div>'+
+    '<div class="pw-safe">Your data stays safe on this device. <a href="#" id="pwBackup">Download a backup</a></div>'+
+    '<div class="pw-links">'+subLegalLinks()+'</div></div>';
+}
 function paywallHtml(){
   var play = onPlay(), signed = !!cloud.user, busy = play ? BILL.busy : WEB.busy, err = play ? BILL.err : WEB.err;
-  var head = '<div class="pw-box"><img src="./icon-192.png" width="72" height="72" alt=""><span class="sm-pill warn">Trial ended</span><h2>'+(play ? 'Your free trial has ended' : 'Continue with CSE Companion')+'</h2>';
+  if(!play) return paywallTicketHtml();
+  var head = '<div class="pw-box"><img src="./icon-192.png" width="72" height="72" alt=""><span class="sm-pill warn">Trial ended</span><h2>Your preparation<br>doesn\'t pause here.</h2>';
   var body;
   if(play){
-    body = '<p>Thank you for trying CSE Companion. A yearly subscription is needed to keep using the app. Your 14-day trial was free and nothing was charged.</p>'+
+    body = '<p>Your plan, progress and streak are saved. Pick up exactly where you left off.</p>'+
       '<div class="pw-price">'+billingPriceText()+'</div>'+
       '<button class="btn primary pw-buy" id="pwBuy"'+(busy?' disabled':'')+'>'+(busy?'Opening Google Play…':'Subscribe')+'</button>'+
       (err ? '<div class="pw-err">'+err+'</div>' : '')+
       '<button class="btn pw-alt" id="pwRestore">Already subscribed? Restore</button>'+
       (signed ? '' : '<button class="btn pw-alt" id="pwSign">Already subscribed? Sign in with Google</button>')+
       '<div class="pw-fine">Billed to your Google Play account. The yearly plan renews automatically until you cancel it in Google Play (Menu › Subscriptions); cancelling stops the next renewal.</div>';
-  } else {
-    var wp = webPriceText().split(" ("), amt = wp[0].replace(/\s*for one year$/i, "");
-    body = '<p class="pw-lead">Your 14-day free trial is over. Your plan and progress are safe.</p>'+
-      '<div class="sm-offer"><div class="sm-ofn">One-year pass</div><div class="sm-amt"><b>'+esc(amt)+'</b><span>for one year</span></div><div class="sm-eq">'+esc((wp[1] || "").replace(/\)$/, ""))+'</div>'+
-      '<ul class="sm-points"><li>12 months on every phone and computer where you sign in with this Google account</li><li>One payment, no automatic renewal</li><li>Secure payment by Razorpay: UPI, cards and net banking</li></ul>'+
-      (err ? '<div class="pw-err">'+esc(err)+'</div>' : '')+
-      (signed ? '<button class="btn primary pw-buy" id="pwPay"'+(busy?' disabled':'')+'>'+(busy?'Opening payment…':'Continue to payment')+'</button>'
-              : '<button class="btn primary pw-buy" id="pwSign">Sign in with Google to subscribe</button>')+
-      '<div class="sm-fine">Secure checkout by Razorpay</div></div>'+
-      (signed ? '' : '<div class="pw-fine">Already paid? Sign in with the Google account you paid with and your pass appears.</div>')+
-      '<div class="pw-fine">Payments are not refundable once access is added, except as set out in the <a href="./refund.html">Refund Policy</a>.</div>';
   }
   return head + body +
     '<div class="pw-safe">Your plan and progress stay safe on this device. <a href="#" id="pwBackup">Download a backup</a></div>'+
@@ -21511,7 +21538,7 @@ function subUi(){
   BILL.sig = sig;
   if(mode === "locked"){
     if(!el){ el = document.createElement("div"); el.id = "paywall"; document.body.appendChild(el); }
-    el.innerHTML = paywallHtml(); document.body.classList.add("pw-on");
+    el.className = onPlay() ? "" : "pw-ticket"; el.innerHTML = paywallHtml(); document.body.classList.add("pw-on");
     // the app behind the paywall cannot be reached with a keyboard or a screen reader either
     [].forEach.call(document.body.children, function(c){ if(c!==el && c.tagName!=="SCRIPT" && c.id!=="modalHost" && c.id!=="toast" && !c.hasAttribute("inert")){ c.setAttribute("inert", ""); c.setAttribute("data-pw-inert", "1"); } });
     var q = function(i, f){ var b = document.getElementById(i); if(b) b.addEventListener("click", function(e){ e.preventDefault(); f(); }); };
