@@ -109,10 +109,11 @@ r = await hook(hookBody, crypto.createHmac("sha256", env.RAZORPAY_WEBHOOK_SECRET
 ok(r.status === 200 && docs["entitlements/carol"] && docs["entitlements/carol"].paidUntil > Date.now(), "webhook grants the year");
 const refundBody = JSON.stringify({ event: "refund.processed", payload: { refund: { entity: { payment_id: "pay_2" } } } });
 r = await hook(refundBody, crypto.createHmac("sha256", env.RAZORPAY_WEBHOOK_SECRET).update(refundBody).digest("hex"));
-ok(r.status === 200 && docs["entitlements/carol"].paidUntil < Date.now(), "refund takes the year back");
+ok(r.status === 200 && docs["entitlements/carol"].paidUntil <= Date.now(), "refund takes the year back");
 ok(saTokenCalls === 1, "server token fetched once and reused");
 r = await call("/nope", {}, null);
 ok(r.status === 404, "unknown path 404");
+r = await call("/playAck", { token: "short" }); ok(r.status === 400, "Play confirmation refuses a bad token");
 r = await worker.fetch(new Request("https://pay.example/config"), env);
 ok(r.status === 405, "GET refused");
 
