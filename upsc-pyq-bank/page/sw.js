@@ -1,7 +1,7 @@
 // CSE Companion service worker: caches the app shell so the page loads and
 // runs with zero network connectivity after the first successful visit.
 // Bump CACHE_NAME when the APP (index.html, this file, icons) changes. Content files (daily/, quiz/, crux/) do NOT need a bump: they are fetched fresh.
-const CACHE_NAME = "cse-companion-v465";
+const CACHE_NAME = "cse-companion-v467";
 const APP_SHELL = [
   "./",
   "./index.html",
