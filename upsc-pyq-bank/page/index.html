@@ -19311,10 +19311,11 @@ function ambSync(){
 document.addEventListener("pointerdown", function(){ if(amb.ctx && amb.ctx.state==="suspended" && amb.playing){ try{ amb.ctx.resume(); }catch(e){} } else if(!amb.playing && ambOn() && timerState.running) ambSync(); }, {passive:true});
 document.addEventListener("visibilitychange", function(){ if(document.visibilityState==="visible" && amb.ctx && amb.playing && amb.ctx.state!=="running"){ try{ amb.ctx.resume(); }catch(e){} } });
 function ambPreview(ms){ amb.preview = Date.now() + (ms||6000); ambSync(); clearTimeout(amb.pvT); amb.pvT = setTimeout(ambSync, (ms||6000)+50); }
-// the "No sound?" tip is a small popup: shown once the first time sounds are turned on, and again from the link in Settings
+// the "No sound?" tip is a small popup (media volume; iPhones and iPads also get a silent-switch hint): shown once the first time sounds are turned on, and again from the link in Settings
 function soundTipModal(){
+  var ios = /iPad|iPhone|iPod/.test(navigator.userAgent || "") || (navigator.platform==="MacIntel" && navigator.maxTouchPoints > 1);   // iPads report as a Mac
   var m = showModal('<div class="modal card" role="dialog" aria-modal="true" aria-labelledby="stTitle"><h2 id="stTitle">No sound?</h2>'+
-    '<p class="muted">Raise the volume and turn off silent mode.</p><div class="modal-actions"><button type="button" class="btn primary" id="stOk">Got it</button></div></div>', true);
+    '<p class="muted">Raise your media volume.'+(ios ? ' Also check the silent switch.' : '')+'</p><div class="modal-actions"><button type="button" class="btn primary" id="stOk">Got it</button></div></div>', true);
   var ok = m.querySelector("#stOk"); if(ok){ ok.addEventListener("click", closeModal); try{ ok.focus(); }catch(e){} }
 }
 function soundTipOnce(){ if(lsGet("dossier.soundTip")) return; lsSet("dossier.soundTip", "1"); setTimeout(soundTipModal, 1500); }
