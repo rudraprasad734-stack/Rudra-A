@@ -1916,6 +1916,7 @@
 #paywall.pw-ticket .btn.primary{margin-top:26px;min-height:54px;border:0;border-radius:15px;background:#E0B04A;color:#241A06;font-weight:600;font-size:16px}
 #paywall .tk-fine{margin-top:11px;font-size:12px;color:#B7A47F}
 #paywall.pw-ticket a{color:#E0B04A}
+#paywall.pw-ticket .btn.pw-alt{background:transparent!important;border:1px solid rgba(224,176,74,.45)!important;color:#E0B04A!important;box-shadow:none!important;margin-top:10px}
 body.pw-on{overflow:hidden}
 #splash{position:fixed;inset:-160px -4px;z-index:2147483000;background:#20262D;display:flex;align-items:center;justify-content:center;pointer-events:none;opacity:1;transition:opacity .38s ease}
 #splash.out{opacity:0}
@@ -21243,7 +21244,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "456";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "457";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -21517,28 +21518,31 @@ function subMode(){   // "wait" (not known yet) | "trial" | "active" | "locked"
   return "locked";
 }
 function subLegalLinks(){ return '<a href="./terms.html">Terms</a> · <a href="./refund.html">Refunds</a> · <a href="./privacy.html">Privacy</a> · <a href="./delete-account.html">Delete my data</a>'; }
-function paywallTicketHtml(){
-  var signed = !!cloud.user, busy = WEB.busy, err = WEB.err, wp = webPriceText().split(" ("), amt = wp[0].replace(/\s*for one year$/i, "");
+function paywallTicketHtml(play){
+  var signed = !!cloud.user, busy = play ? BILL.busy : WEB.busy, err = play ? BILL.err : WEB.err, wp = (play ? billingPriceText() : webPriceText()).split(" ("), amt = wp[0].replace(/\s*(for one year| a year| for the first year)$/i, "");
   return '<div class="pw-box pw-tk"><div class="tk-eyebrow">Your trial is complete</div>'+
     '<h2 class="tk-h">Your preparation<br>doesn\'t pause here.</h2>'+
     '<p class="tk-sub">Your plan, progress and streak are saved. Pick up exactly where you left off.</p>'+
     '<div class="tk"><div class="tk-top"><div class="tk-brand"><img src="./icon-192.png" width="30" height="30" alt=""><span>CSE Companion</span></div>'+
-    '<div class="tk-kind">One-year pass</div><div class="tk-big">Every phone.<br>Every computer.</div>'+
+    '<div class="tk-kind">'+(play ? 'Yearly plan' : 'One-year pass')+'</div><div class="tk-big">'+(play ? 'Everything.<br>All year.' : 'Every phone.<br>Every computer.')+'</div>'+
     '<div class="tk-meta"><div><small>Valid for</small><b>12 months</b></div></div></div>'+
     '<div class="tk-perf" aria-hidden="true"><i></i><i></i></div>'+
     '<div class="tk-stub"><div><div class="tk-amt">'+esc(amt)+'</div><div class="tk-eq">'+esc((wp[1] || "").replace(/\)$/, ""))+'</div></div><div class="tk-bars" aria-hidden="true"></div></div></div>'+
     (err ? '<div class="pw-err">'+esc(err)+'</div>' : '')+
-    (signed ? '<button class="btn primary pw-buy" id="pwPay"'+(busy?' disabled':'')+'>'+(busy?'Opening payment…':'Continue to payment')+'</button>'
+    (play ? '<button class="btn primary pw-buy" id="pwBuy"'+(busy?' disabled':'')+'>'+(busy?'Opening Google Play…':'Subscribe')+'</button>'+
+            '<button class="btn pw-alt" id="pwRestore">Already subscribed? Restore</button>'+
+            '<div class="tk-fine">Billed to your Google Play account. Renews yearly until you cancel in Google Play (Menu › Subscriptions).</div>' :
+    signed ? '<button class="btn primary pw-buy" id="pwPay"'+(busy?' disabled':'')+'>'+(busy?'Opening payment…':'Continue to payment')+'</button>'
             : '<button class="btn primary pw-buy" id="pwSign">Continue with Google</button>')+
-    '<div class="tk-fine">Secure checkout by Razorpay · UPI, cards, net banking</div>'+
+    (play ? '' : '<div class="tk-fine">Secure checkout by Razorpay · UPI, cards, net banking</div>'+
     (signed ? '' : '<div class="pw-fine">Already paid? Sign in with the Google account you paid with and your pass appears.</div>')+
-    '<div class="pw-fine">Payments are not refundable once access is added, except as set out in the <a href="./refund.html">Refund Policy</a>.</div>'+
+    '<div class="pw-fine">Payments are not refundable once access is added, except as set out in the <a href="./refund.html">Refund Policy</a>.</div>')+
     '<div class="pw-safe">Your data stays safe on this device. <a href="#" id="pwBackup">Download a backup</a></div>'+
-    '<div class="pw-links">'+subLegalLinks()+'</div></div>';
+    '<div class="pw-links">'+subLegalLinks()+(play ? ' · <a href="#" id="pwManage">Manage subscription</a>' : '')+'</div></div>';
 }
 function paywallHtml(){
   var play = onPlay(), signed = !!cloud.user, busy = play ? BILL.busy : WEB.busy, err = play ? BILL.err : WEB.err;
-  if(!play) return paywallTicketHtml();
+  return paywallTicketHtml(play);
   var head = '<div class="pw-box"><img src="./icon-192.png" width="72" height="72" alt=""><span class="sm-pill warn">Trial ended</span><h2>Your preparation<br>doesn\'t pause here.</h2>';
   var body;
   if(play){
@@ -21561,7 +21565,7 @@ function subUi(){
   BILL.sig = sig;
   if(mode === "locked"){
     if(!el){ el = document.createElement("div"); el.id = "paywall"; document.body.appendChild(el); }
-    el.className = onPlay() ? "" : "pw-ticket"; el.innerHTML = paywallHtml(); document.body.classList.add("pw-on");
+    el.className = "pw-ticket"; el.innerHTML = paywallHtml(); document.body.classList.add("pw-on");
     // the app behind the paywall cannot be reached with a keyboard or a screen reader either
     [].forEach.call(document.body.children, function(c){ if(c!==el && c.tagName!=="SCRIPT" && c.id!=="modalHost" && c.id!=="toast" && !c.hasAttribute("inert")){ c.setAttribute("inert", ""); c.setAttribute("data-pw-inert", "1"); } });
     var q = function(i, f){ var b = document.getElementById(i); if(b) b.addEventListener("click", function(e){ e.preventDefault(); f(); }); };
