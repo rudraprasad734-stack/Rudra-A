@@ -1028,7 +1028,7 @@
   .rt-card:before{content:""; position:absolute; inset:0; background:linear-gradient(115deg,rgba(255,255,255,.22) 0%,rgba(255,255,255,0) 32%); pointer-events:none;} .rt-card:after{content:""; position:absolute; right:-70px; top:-70px; width:230px; height:230px; border-radius:50%; background:radial-gradient(circle,rgba(255,196,82,.55),transparent 62%); pointer-events:none;}
   .rt-card h2{position:relative; z-index:2; font-size:24px; text-shadow:0 3px 8px rgba(0,0,0,.45); margin:0; color:inherit;} .rt-sub{position:relative; z-index:2; color:#bff3ef; font-size:13px;}
   .rt-sun{position:absolute; right:16px; top:14px; z-index:2; font-size:44px; filter:drop-shadow(0 8px 10px rgba(0,0,0,.45));}
-  .rt-wk{display:flex; gap:6px; margin:14px 0 8px; position:relative; z-index:2;} .rt-wk div{flex:1; text-align:center; border-radius:13px; padding:7px 0; background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.05)); box-shadow:0 3px 0 rgba(0,0,0,.25),0 1px 0 rgba(255,255,255,.2) inset; font-size:11px; color:#bff3ef;} .rt-wk b{display:block; font-size:15px; color:#fff;}
+  .rt-wk{display:flex; gap:6px; margin:14px 0 8px; position:relative; z-index:2;} .rt-wk div,.rt-wk button{flex:1; text-align:center; border:0; font-family:inherit; cursor:pointer; -webkit-tap-highlight-color:transparent; border-radius:13px; padding:7px 0; background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.05)); box-shadow:0 3px 0 rgba(0,0,0,.25),0 1px 0 rgba(255,255,255,.2) inset; font-size:11px; color:#bff3ef;} .rt-wk b{display:block; font-size:15px; color:#fff;}
   .rt-wk .today{background:linear-gradient(180deg,#ffd978,#e0a634); box-shadow:0 5px 0 #a8741a,0 10px 14px rgba(0,0,0,.4); color:#3a2a06; transform:translateY(-3px);} .rt-wk .today b{color:#2a1d03;}
   .rt-rows{position:relative; z-index:2;} .rt-r{display:flex; align-items:center; gap:10px; margin-top:8px;} .rt-r .t{flex:none; width:68px; font-weight:800; font-size:13px; text-shadow:0 2px 4px rgba(0,0,0,.4);} .rt-r .n{flex:1; min-width:0; font-size:14.5px; font-weight:600; text-shadow:0 2px 4px rgba(0,0,0,.35);} .rt-r .d{font-size:11.5px; color:#bff3ef;}
   .rt-r{transition:transform .5s ease, margin .5s ease, padding .5s ease, box-shadow .5s ease, background .5s ease;}
@@ -1047,7 +1047,8 @@
   .rt-ft{position:relative; z-index:2; display:flex; justify-content:space-between; margin-top:14px; padding-top:10px; border-top:1px solid rgba(255,255,255,.14); font-size:12px; color:#bff3ef;}
   .rt-shadow{height:22px; margin:-4px 34px 0; border-radius:50%; background:radial-gradient(ellipse,rgba(0,0,0,.5),transparent 70%);}
   .rt-card.sun2{background:linear-gradient(160deg,#ffd9a0 0%,#ff9f7a 40%,#8a5fd0 100%); border-color:rgba(255,255,255,.55); box-shadow:0 2px 0 rgba(255,255,255,.5) inset,0 -26px 40px rgba(60,20,90,.25) inset,18px 30px 50px rgba(0,0,0,.5),-4px 6px 0 #b0613f,-8px 12px 0 #8a4a30;} .rt-card.sun2:after{background:radial-gradient(circle,rgba(255,255,255,.7),transparent 62%);}
-  .rt-card.sun2 h2,.rt-card.sun2 .rt-r .t,.rt-card.sun2 .rt-r .n{color:#2b1233; text-shadow:0 1px 0 rgba(255,255,255,.4);} .rt-card.sun2 .rt-sub,.rt-card.sun2 .rt-r .d,.rt-card.sun2 .rt-ft{color:#4a2a58;} .rt-card.sun2 .rt-wk div{background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,.25)); color:#4a2a58;} .rt-card.sun2 .rt-wk b{color:#2b1233;}
+  .rt-card.sun2 h2,.rt-card.sun2 .rt-r .t,.rt-card.sun2 .rt-r .n{color:#2b1233; text-shadow:0 1px 0 rgba(255,255,255,.4);} .rt-card.sun2 .rt-sub,.rt-card.sun2 .rt-r .d,.rt-card.sun2 .rt-ft{color:#4a2a58;} .rt-wk button:disabled{cursor:default;} .rt-wk .sel{outline:2px solid #fff; outline-offset:2px;} .rt-sel{position:relative; z-index:2; text-align:center; font-size:12px; color:#bff3ef; margin:2px 0 6px;} .rt-card.sun2 .rt-wk .sel{outline-color:#4a2a58;} .rt-card.sun2 .rt-sel{color:#4a2a58;}
+  .rt-card.sun2 .rt-wk div,.rt-card.sun2 .rt-wk button{background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(255,255,255,.25)); color:#4a2a58;} .rt-card.sun2 .rt-wk b{color:#2b1233;}
   .rt-ic{width:100%; height:100%; display:block; padding:6%; box-sizing:border-box;} .rt-tile .rt-ic{padding:6%;} .rt-sk .rt-ic{padding:6%;} .rt-sun .rt-ic{padding:0;} .rt-sun{width:62px; height:62px;} .rt-mini{display:inline-block; width:20px; height:20px; vertical-align:-5px; margin-right:6px;} .rt-mini .rt-ic{padding:0;}
   .rt-themes{justify-content:center; margin-top:10px;}
   .rt-cal{display:grid; grid-template-columns:repeat(7,1fr); gap:6px; margin-top:10px;} .rt-cal div{aspect-ratio:1; border-radius:10px; display:grid; place-items:center; font-size:13px; font-weight:700; background:var(--surface); border:1.5px solid var(--line);} .rt-cal .h{background:none; border:0; aspect-ratio:auto; color:var(--ink-soft); font-size:11px;} .rt-cal .x{background:none; border:0;} .rt-cal .w{background:#12604a; border-color:#34c98a; color:#fff;} .rt-cal .t{background:var(--gold); color:var(--gold-ink,#241d0b); border-color:var(--gold);}
@@ -18198,6 +18199,12 @@ function rtLoad(){
   return v || rtDefault();
 }
 var rt = rtLoad(), rtScreen = "", rtEd = null, rtEdView = "form";
+var rtSel = "";   // the day shown on the weekly card (a date key); empty means today
+function rtSelKey(){
+  if(!rtSel) return todayKey;
+  for(var i = 0; i < 7; i++){ var d = rtDate(i); if(toKey(d)===rtSel && rt.days.indexOf(d.getDay())>=0) return rtSel; }
+  return todayKey;
+}
 function rtSave(){ lsSet(RT_KEY, JSON.stringify(rt)); clearTimeout(rtPlanTimer); rtPlanTimer = setTimeout(function(){ try{ rtPlannerCheck(); }catch(e){} try{ rtPushSubjects(); }catch(e){} }, 900); }   // lsSet also tells cloud sync, so the routine is kept on this device and in the account
 function rtSorted(){ return rt.items.slice().sort(function(a, b){ return toMin(a.t) - toMin(b.t); }); }
 function rtEndMin(it){ var a = toMin(it.t), e = toMin(it.e); return e > a ? e : (e < a ? e + 1440 : a); }   // an end earlier than the start is the next morning
@@ -18251,7 +18258,7 @@ function rtCardImage(){
   c.fillStyle = ink; c.textBaseline = "alphabetic"; c.font = "800 70px "+FF;
   c.save(); c.shadowColor = shade; c.shadowBlur = 14; c.shadowOffsetY = 6; c.fillText("My weekly routine", P, 134); c.restore();
   var nm = profile && profile.name ? " · "+profile.name : "";
-  c.fillStyle = soft; c.font = "500 34px "+FF; c.fillText(rtWeekLabel()+nm, P, 190);
+  c.fillStyle = soft; c.font = "500 34px "+FF; c.fillText(rtWeekLabel()+(rtSelKey()!==todayKey ? " \u00B7 "+parseKey(rtSelKey()).toLocaleDateString(undefined, {weekday:"short", day:"numeric", month:"short"}) : "")+nm, P, 190);
   // day pills
   var dw = (W - 2*P - 6*14)/7;
   for(var i=0;i<7;i++){
@@ -18464,17 +18471,15 @@ function rtApplyToPlan(plan, acts){   // the planner studies in the routine's st
   return true;
 }
 var rtPlanTimer = 0;
-function rtPlanLabels(it){   // what the planner really has in this study time today (revision, essay, a subject...), so the two screens always agree
+function rtPlanLabels(it, dk){   // what the planner really has in this study time today (revision, essay, a subject...), so the two screens always agree
   try{
     if(!studyPlan || typeof sessionsOn!=="function") return "";
-    var q = rtSpan(it), seen = [], out = [];
-    sessionsOn(todayKey).forEach(function(x){
+    dk = dk || todayKey; var q = rtSpan(it), seen = [], out = [];
+    sessionsOn(dk).forEach(function(x){
       var a = toMin(x.startTime), b = toMin(x.endTime); if(!(a < q[1] && q[0] < b)) return;
       var l = x.kind==="revision" ? "Revision" : x.kind==="essay" ? "Essay" : x.kind==="ca" ? "Current affairs" : x.kind==="pyq" ? "PYQ practice" : x.kind==="test" ? "Test" : String(x.subject || "").replace(/ \(Optional\)$/, "");
       if(l && seen.indexOf(l) < 0){ seen.push(l); out.push(l); }
     });
-    var dow = new Date().getDay();   // activities that happen in this study time on other days of the week (an essay on Fridays) are named with their days
-    rtPlanActs().forEach(function(x){ if(x.days && x.days.indexOf(dow) < 0 && x.a < q[1] && q[0] < x.b && out.indexOf(x.name) < 0) out.push(x.name+" ("+rtDayTag(x.days)+")"); });
     return out.join(", ");
   }catch(e){ return ""; }
 }
@@ -18511,7 +18516,7 @@ function rtRowsOf(it){
   try{
     if(!studyPlan || typeof sessionsOn!=="function") return whole;
     var segs = [];
-    sessionsOn(todayKey).forEach(function(x){
+    sessionsOn(rtSelKey()).forEach(function(x){
       if(!x.startTime || !x.endTime) return;
       var a = toMin(x.startTime), b = toMin(x.endTime);
       if(q[1] > 1440 && a < q[0]) a += 1440;   // a block that runs past midnight
@@ -18538,8 +18543,8 @@ function rtExpanded(){ var out = []; rtSorted().forEach(function(it){ out = out.
 function rtTitle(it){
   if(it.__title) return it.__title;   // a row split out of a study block already carries its own title
   if(!rtIsStudy(it)) return it.n;
-  var live = rtPlanLabels(it), busyDay = false;
-  try{ busyDay = !!studyPlan && typeof sessionsOn==="function" && sessionsOn(todayKey).length > 0; }catch(e){}
+  var live = rtPlanLabels(it, rtSelKey()), busyDay = false;
+  try{ busyDay = !!studyPlan && typeof sessionsOn==="function" && sessionsOn(rtSelKey()).length > 0; }catch(e){}
   return live ? "Study \u00B7 "+live : (it.u && !busyDay ? "Study \u00B7 "+it.u : it.n);   // when the planner has sessions today but none here, do not show an old subject pin
 }
 function rtSubjLabel(v){ return v==="@ca" ? "Current Affairs" : (v || ""); }
@@ -18626,14 +18631,14 @@ function rtRowSpans(){   // the rows on the weekly card, in order: [{a: start mi
   return Array.prototype.map.call(rows, function(r){ return {a:+r.getAttribute("data-a") || 0, l:+r.getAttribute("data-l") || 0}; });
 }
 function rtNowId(){
-  var d = new Date(); if(rt.days.indexOf(d.getDay())<0) return -1;
+  var d = new Date(); if(rt.days.indexOf(d.getDay())<0 || rtSelKey()!==todayKey) return -1;
   var n = d.getHours()*60 + d.getMinutes(), hit = -1;
   rtRowSpans().forEach(function(x, i){ var a = x.a, l = x.l; if(l<=0) return; if((n>=a && n<a+l) || (a+l>1440 && n < a+l-1440)) hit = i; });
   return hit;
 }
 // in a gap between two activities: where "you are" sits, as a position between the rows (null when the day has not started or the routine is off today)
 function rtGapPos(){
-  var d = new Date(); if(rt.days.indexOf(d.getDay())<0) return null;
+  var d = new Date(); if(rt.days.indexOf(d.getDay())<0 || rtSelKey()!==todayKey) return null;
   var n = d.getHours()*60 + d.getMinutes(), last = -1;
   rtRowSpans().forEach(function(x, i){ if(x.l > 0 && x.a + x.l <= n) last = i; });
   return last < 0 ? null : last + 0.5;
@@ -18744,7 +18749,10 @@ function rtPeriodHtml(k){
 function rtCardHtml(){
   var list = rtExpanded(), sun = rtIsDay(), nm = profile && profile.name ? profile.name : "";
   var h = '<div class="rt"><div class="rt-stage"><div class="rt-card'+(sun ? " sun2" : "")+'"><span class="rt-sun" aria-hidden="true">'+rtGlyph(list[0] ? list[0].s : "wake")+'</span><h2>My weekly routine</h2><div class="rt-sub">'+esc(rtWeekLabel())+(nm ? ' \u00B7 '+esc(nm) : '')+'</div>';
-  h += '<div class="rt-wk">'+[0,1,2,3,4,5,6].map(function(i){ var d = rtDate(i), on = rt.days.indexOf(d.getDay())>=0, td = toKey(d)===todayKey; return '<div class="'+(td?"today":"")+'"'+(on ? "" : ' style="opacity:.45"')+'><b>'+d.getDate()+'</b>'+RT_DAYN[d.getDay()]+'</div>'; }).join("")+'</div><div class="rt-rows">';
+  var selK = rtSelKey();
+  h += '<div class="rt-wk" role="group" aria-label="Day shown">'+[0,1,2,3,4,5,6].map(function(i){ var d = rtDate(i), on = rt.days.indexOf(d.getDay())>=0, td = toKey(d)===todayKey, sel = toKey(d)===selK;
+    return '<button type="button" class="'+(td ? "today" : "")+(sel ? " sel" : "")+'" data-rt="pickday" data-k="'+toKey(d)+'" aria-pressed="'+sel+'" aria-label="'+esc(d.toLocaleDateString(undefined, {weekday:"long", day:"numeric", month:"long"}))+'"'+(on ? "" : ' disabled style="opacity:.45"')+'><b>'+d.getDate()+'</b>'+RT_DAYN[d.getDay()]+'</button>'; }).join("")+'</div>'+
+    (selK!==todayKey ? '<div class="rt-sel">Planned for '+esc(parseKey(selK).toLocaleDateString(undefined, {weekday:"long", day:"numeric", month:"short"}))+'</div>' : '')+'<div class="rt-rows">';
   var ents = list.map(function(it){
     var c = RT_COL[(rtStk(it.s)||[0,0,0,"blue"])[3]], study = rtIsStudy(it);
     return {a:toMin(it.t), o:0, h:'<div class="rt-r'+(study ? " study" : "")+'" data-id="'+esc(it.id)+'" data-a="'+toMin(it.t)+'" data-l="'+rtDur(it)+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'"><span class="rt-tile">'+rtGlyph(it.s)+'</span><span class="t">'+esc(fmt12(it.t))+'</span><span class="n">'+esc(rtTitle(it))+'</span><span class="d">'+(it.e ? '\u2192 '+esc(fmt12(it.e)) : esc(fmtHM(rtDur(it)))) +'</span></div>'};
@@ -18803,13 +18811,14 @@ function rtAct(a, b){
   if(a==="add"){ rtOpenSheet({n:"", s:"study", t:rtNextStart() || "06:00", e:"", d:30, k:""}); return; }
   if(a==="edit"){ var id = b.getAttribute("data-id"), it = rt.items.filter(function(x){ return x.id===id; })[0]; if(it) rtOpenSheet(JSON.parse(JSON.stringify(it)), true); return; }
   if(a==="day"){ var d = +b.getAttribute("data-d"), i = rt.days.indexOf(d); if(i>=0) rt.days.splice(i, 1); else rt.days.push(d); rtSave(); renderRoutine(); return; }
-  if(a==="create"){ if(b.disabled) return; rt.made = todayKey; rt.span = "week"; rtSave(); rtScreen = "card"; renderRoutine(); window.scrollTo(0, 0); return; }
-  if(a==="edit-all"){ rtScreen = "build"; renderRoutine(); window.scrollTo(0, 0); return; }
+  if(a==="create"){ if(b.disabled) return; rtSel = ""; rt.made = todayKey; rt.span = "week"; rtSave(); rtScreen = "card"; renderRoutine(); window.scrollTo(0, 0); return; }
+  if(a==="pickday"){ rtSel = b.getAttribute("data-k") || ""; rtRun.on = false; rtRun.tok++; var hh = document.getElementById("view-routine"); if(hh) hh.classList.remove("rt-wave"); renderRoutine(); return; }
+  if(a==="edit-all"){ rtSel = ""; rtScreen = "build"; renderRoutine(); window.scrollTo(0, 0); return; }
   if(a==="month"){ rt.span = "month"; rtSave(); rtScreen = "month"; renderRoutine(); window.scrollTo(0, 0); toast("Your routine will keep going for four weeks."); return; }
   if(a==="monthview"){ rtScreen = "month"; renderRoutine(); window.scrollTo(0, 0); return; }
   if(a==="card"){ rtScreen = "card"; renderRoutine(); window.scrollTo(0, 0); return; }
   if(a==="stop"){ if(window.confirm("Stop at one week? Your routine stays saved.")){ rt.span = "week"; rtSave(); rtScreen = "card"; renderRoutine(); } return; }
-  if(a==="renew"){ rt.made = todayKey; rtSave(); renderRoutine(); return; }
+  if(a==="renew"){ rtSel = ""; rt.made = todayKey; rtSave(); renderRoutine(); return; }
   if(a==="planner"){   // until the planner is set up, go straight to step 1 of the setup; once it is set up, open the planner as usual
     if(!studyPlan){ wiz = loadWizDraft() || wizDefaults(); wiz.step = 0; if(wiz.qs) wiz.qs.screen = QS_SCREENS[0]; wiz.err = []; }
     setTab("planner"); window.scrollTo(0, 0); return;
@@ -21339,7 +21348,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "466";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "467";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
