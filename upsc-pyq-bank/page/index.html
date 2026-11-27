@@ -19163,6 +19163,21 @@ function ambLoadFile(id){
   return caches.open(SND_CACHE).then(function(c){ return c.match(ambFile(id)); }).then(function(hit){ return hit || net(); }).then(function(r){ return r.arrayBuffer(); });
 }
 function ambDecode(buf){ return new Promise(function(res, rej){ var p = amb.ctx.decodeAudioData(buf, res, rej); if(p && p.then) p.then(res, rej); }); }
+// The recordings already match end to start, but a small step or level change at the join is still possible.
+// The last 1.5 s are blended (equal power) into the first 1.5 s, so the loop point is smooth for hours of listening.
+function ambSeam(buf){
+  try{
+    var sr = buf.sampleRate, N = buf.length, X = Math.min(Math.round(sr*1.5), Math.floor(N*.1));
+    if(X < 64 || N - X < sr) return buf;
+    var L = N - X, out = amb.ctx.createBuffer(buf.numberOfChannels, L, sr), h = Math.PI/2, c, i;
+    for(c=0; c<buf.numberOfChannels; c++){
+      var src = buf.getChannelData(c), dst = out.getChannelData(c);
+      dst.set(src.subarray(0, L));
+      for(i=0; i<X; i++){ var u = i/X; dst[i] = src[L+i]*Math.cos(h*u) + src[i]*Math.sin(h*u); }   // the tail fades out as the head fades in
+    }
+    return out;
+  }catch(e){ return buf; }
+}
 amb.saved = {};
 function ambRefreshSaved(){
   if(!window.caches) return Promise.resolve();
@@ -19224,7 +19239,7 @@ function ambGet(id){
   if(amb.pending[id]) return amb.pending[id];
   if(!amb.ctx) return Promise.reject(new Error("no audio"));
   // recorded file first; the live-built version is only a fallback when the file cannot be reached
-  var fromFile = ambLoadFile(id).then(ambDecode);
+  var fromFile = ambLoadFile(id).then(ambDecode).then(ambSeam);
   return amb.pending[id] = fromFile.catch(function(){ return ambMake(id); }).then(function(b){
     amb.cache[id] = b; delete amb.pending[id];
     var keys = Object.keys(amb.cache); if(keys.length>2) keys.forEach(function(k){ if(k!==id && k!==amb.id && keys.length>2){ delete amb.cache[k]; keys.splice(keys.indexOf(k),1); } });
@@ -21244,7 +21259,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "459";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "460";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
