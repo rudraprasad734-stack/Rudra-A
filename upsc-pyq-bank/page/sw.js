@@ -1,7 +1,7 @@
 // CSE Companion service worker: caches the app shell so the page loads and
 // runs with zero network connectivity after the first successful visit.
 // Bump CACHE_NAME when the APP (index.html, this file, icons) changes. Content files (daily/, quiz/, crux/) do NOT need a bump: they are fetched fresh.
-const CACHE_NAME = "cse-companion-v469";
+const CACHE_NAME = "cse-companion-v470";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -1673,7 +1673,7 @@ self.addEventListener("fetch", (event) => {
   // and fall back to the saved copy when offline or when the network takes longer than 4 seconds. Saved again on every success.
   // Because of this, adding a new day or new questions needs NO new app version: just publish the files.
   const cpath = new URL(req.url).pathname;
-  if (/\/(quiz|crux|daily)\/[^/]+\.json$/.test(cpath)) {
+  if (/\/(quiz|crux|daily)\/[^/]+\.(json|bin)$/.test(cpath)) {
     event.respondWith(
       caches.match(req).then((cached) => new Promise((resolve) => {
         let done = false, timer = null;

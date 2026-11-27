@@ -3,6 +3,7 @@
 import { makeApi } from "../../firebase/functions/lib.js";
 import { makeDb } from "./firestore.js";
 import { serviceTokenGetter, verifyFirebaseToken } from "./google.js";
+import { contentKey } from "./content.js";
 
 const ORIGINS = ["https://csecompanion.in", "https://www.csecompanion.in"];
 
@@ -20,12 +21,15 @@ async function rzp(env, method, path, body) {
 let getToken = null, tokenFor = null;
 function build(env) {
   if (!getToken || tokenFor !== env.FIREBASE_SERVICE_ACCOUNT) { getToken = serviceTokenGetter(env.FIREBASE_SERVICE_ACCOUNT); tokenFor = env.FIREBASE_SERVICE_ACCOUNT; }
-  return makeApi({
-    db: makeDb({ project: env.FIREBASE_PROJECT, getToken }),
+  const db = makeDb({ project: env.FIREBASE_PROJECT, getToken });
+  const api = makeApi({
+    db,
     verifyIdToken: (t) => verifyFirebaseToken(t, env.FIREBASE_PROJECT),
     rzp: (m, p, b) => rzp(env, m, p, b),
     env
   });
+  api.db = db;
+  return api;
 }
 
 // Confirms (acknowledges) a Google Play subscription purchase from the server, so Google never cancels it for being unconfirmed.
@@ -43,6 +47,15 @@ async function playAck(env, token) {
   if (r.status === 400 && /already.*acknowledg/i.test(msg)) return { ok: true, already: true };
   console.error("Play acknowledge refused", r.status, msg);
   const e = new Error("Google Play did not accept the confirmation (" + r.status + ")."); e.status = 502; throw e;
+}
+
+// When a Google Play subscription token is live, its end time in ms (0 when it is not).
+async function playExpiry(env, token) {
+  if (!getPlayToken || playTokenFor !== env.FIREBASE_SERVICE_ACCOUNT) { getPlayToken = serviceTokenGetter(env.FIREBASE_SERVICE_ACCOUNT, undefined, "https://www.googleapis.com/auth/androidpublisher"); playTokenFor = env.FIREBASE_SERVICE_ACCOUNT; }
+  const r = await fetch("https://androidpublisher.googleapis.com/androidpublisher/v3/applications/" + PLAY_PACKAGE + "/purchases/subscriptions/" + PLAY_SKU + "/tokens/" + encodeURIComponent(token), { headers: { Authorization: "Bearer " + await getPlayToken() } });
+  if (!r.ok) return 0;
+  const j = await r.json().catch(() => ({}));
+  return +j.expiryTimeMillis || 0;
 }
 
 function json(obj, status, extra) {
@@ -68,12 +81,16 @@ export default {
       }
       const req = { headers: { authorization: request.headers.get("Authorization") || "" }, body: await request.json().catch(() => ({})) };
       if (path === "/playAck") return json(await playAck(env, req.body && req.body.token), 200, cors);
+      if (path === "/contentKey") {
+        const uid = await a.authUid(req);
+        return json(await contentKey({ env, uid, db: a.db, body: req.body || {}, now: Date.now(), playExpiry: (t) => playExpiry(env, t) }), 200, Object.assign({ "Cache-Control": "no-store" }, cors));
+      }
       if (path === "/config") return json(await a.config(), 200, cors);
       if (path === "/order") return json(await a.order(req), 200, cors);
       if (path === "/verify") return json(await a.verify(req), 200, cors);
       return json({ error: "Not found" }, 404, cors);
     } catch (e) {
-      return json({ error: e.status ? e.message : "Something went wrong." }, e.status || 500, cors);
+      return json(Object.assign({ error: e.status ? e.message : "Something went wrong." }, e.extra || {}), e.status || 500, cors);
     }
   }
 };

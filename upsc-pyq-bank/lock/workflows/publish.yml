@@ -1,0 +1,51 @@
+# Lives in the PRIVATE source repo (.github/workflows/publish.yml). On every push to main it locks the data and publishes
+# the locked site into the public repo, which then deploys it (Pages).
+# Private repo secrets: CONTENT_MASTER (64 hex characters, the master key), PUBLIC_REPO_TOKEN (fine-grained token, Contents: read/write on the public repo only)
+name: Lock and publish
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+concurrency:
+  group: publish
+  cancel-in-progress: false
+permissions:
+  contents: read
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    env:
+      PUBLIC: rudraprasad734-stack/Rudra-A
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Check the secrets exist
+        env:
+          K: ${{ secrets.CONTENT_MASTER }}
+          T: ${{ secrets.PUBLIC_REPO_TOKEN }}
+        run: |
+          [ -n "$T" ] || { echo "PUBLIC_REPO_TOKEN is missing"; exit 1; }
+          echo "$K" | grep -Eq '^[0-9a-fA-F]{64}$' || { echo "CONTENT_MASTER must be 64 hex characters"; exit 1; }
+      - name: Lock the data
+        env:
+          K: ${{ secrets.CONTENT_MASTER }}
+        run: node upsc-pyq-bank/lock/lock.mjs upsc-pyq-bank/page/index.html "$RUNNER_TEMP/locked" "$K" 1
+      - name: Publish into the public repo
+        env:
+          T: ${{ secrets.PUBLIC_REPO_TOKEN }}
+        run: |
+          set -e
+          git clone --depth 1 "https://x-access-token:${T}@github.com/${PUBLIC}.git" "$RUNNER_TEMP/pub"
+          cd "$RUNNER_TEMP/pub/upsc-pyq-bank/page"
+          # everything except the big media folders is replaced by the freshly locked copy
+          for f in $(ls -A | grep -vE '^(img|audio)$'); do rm -rf "$f"; done
+          cp -a "$RUNNER_TEMP/locked/." .
+          for f in $(ls -A "$GITHUB_WORKSPACE/upsc-pyq-bank/page" | grep -vE '^(index\.html|sw\.js|daily|quiz|crux|data|img|audio)$'); do cp -a "$GITHUB_WORKSPACE/upsc-pyq-bank/page/$f" .; done
+          cd "$RUNNER_TEMP/pub"
+          git config user.name "publish-bot"; git config user.email "publish-bot@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then echo "Nothing changed."; exit 0; fi
+          git commit -qm "Publish locked site from the source repo (${GITHUB_SHA::8})"
+          git push

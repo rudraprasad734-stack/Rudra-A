@@ -20,7 +20,7 @@ function idToken(uid, over) {
 }
 
 // fake network
-const docs = {}, orders = {}, payments = {}; let txs = 0, conflictOnce = false, saTokenCalls = 0;
+const playSubs = {}; const docs = {}, orders = {}, payments = {}; let txs = 0, conflictOnce = false, saTokenCalls = 0;
 const toObj = (fields) => { const o = {}; for (const k in fields) { const f = fields[k]; o[k] = "stringValue" in f ? f.stringValue : "booleanValue" in f ? f.booleanValue : "integerValue" in f ? Number(f.integerValue) : f.doubleValue; } return o; };
 const fromObj = (o) => { const f = {}; for (const k in o) f[k] = typeof o[k] === "string" ? { stringValue: o[k] } : typeof o[k] === "boolean" ? { booleanValue: o[k] } : { integerValue: String(o[k]) }; return f; };
 const R = (status, body) => new Response(JSON.stringify(body), { status, headers: { "Content-Type": "application/json" } });
@@ -54,10 +54,15 @@ globalThis.fetch = async (url, init) => {
     let x = /^\/orders\/(.+)$/.exec(path); if (x) return R(200, orders[x[1]]);
     x = /^\/payments\/(.+)$/.exec(path); if (x) return R(200, payments[x[1]]);
   }
+  if (url.startsWith("https://androidpublisher.googleapis.com/")) {
+    if (url.includes(":acknowledge")) return R(200, {});
+    const t = decodeURIComponent(url.split("/tokens/")[1]);
+    return t in playSubs ? R(200, { expiryTimeMillis: String(playSubs[t]) }) : R(404, {});
+  }
   throw new Error("unexpected fetch " + m + " " + url);
 };
 
-const env = { FIREBASE_PROJECT: PROJECT, FIREBASE_SERVICE_ACCOUNT: SA, RAZORPAY_KEY_ID: "rzp_test_x", RAZORPAY_KEY_SECRET: "sec", RAZORPAY_WEBHOOK_SECRET: "hook" };
+const env = { FIREBASE_PROJECT: PROJECT, FIREBASE_SERVICE_ACCOUNT: SA, RAZORPAY_KEY_ID: "rzp_test_x", RAZORPAY_KEY_SECRET: "sec", RAZORPAY_WEBHOOK_SECRET: "hook", CONTENT_MASTER: "ab".repeat(32) };
 const call = (path, body, token, origin) => worker.fetch(new Request("https://pay.example" + path, { method: "POST", headers: Object.assign({ "Content-Type": "application/json" }, token ? { Authorization: "Bearer " + token } : {}, origin ? { Origin: origin } : {}), body: JSON.stringify(body || {}) }), env);
 const sig = (o, p) => crypto.createHmac("sha256", env.RAZORPAY_KEY_SECRET).update(o + "|" + p).digest("hex");
 
@@ -111,6 +116,37 @@ const refundBody = JSON.stringify({ event: "refund.processed", payload: { refund
 r = await hook(refundBody, crypto.createHmac("sha256", env.RAZORPAY_WEBHOOK_SECRET).update(refundBody).digest("hex"));
 ok(r.status === 200 && docs["entitlements/carol"].paidUntil <= Date.now(), "refund takes the year back");
 ok(saTokenCalls === 1, "server token fetched once and reused");
+
+// ---- content key: unlocks the encrypted question bank only for a live trial, paid year or Play subscription
+const ck = (body, uid) => call("/contentKey", body || {}, uid ? idToken(uid) : null);
+r = await ck({}, null); ok(r.status === 401, "content key needs sign-in");
+r = await ck({}, "dave"); j = await r.json();
+ok(r.status === 200 && j.via === "trial" && /^[A-Za-z0-9+/=]{44}$/.test(j.key), "new person gets a trial key");
+ok(Math.abs(j.until - (docs["trials/dave"].start + 14 * 86400000)) < 5 && docs["trials/dave"].start <= Date.now(), "trial runs 14 days from the first request");
+const k1 = j.key;
+r = await ck({ trialStart: 1 }, "dave"); j = await r.json();
+ok(r.status === 200 && j.key === k1, "second request keeps the same trial (a claimed start cannot restart it)");
+r = await ck({ trialStart: Date.now() - 20 * 86400000 }, "erin"); j = await r.json();
+ok(r.status === 402 && j.locked === true, "a trial that began 20 days ago is over");
+docs["trials/frank"] = { start: Date.now() - 15 * 86400000 };
+r = await ck({}, "frank"); ok(r.status === 402, "expired trial gets no key");
+r = await ck({ trialStart: Date.now() }, "frank"); ok(r.status === 402, "claiming a new start does not revive an expired trial");
+docs["entitlements/gina"] = { paidUntil: Date.now() + 100 * 86400000 };
+r = await ck({}, "gina"); j = await r.json();
+ok(r.status === 200 && j.via === "web" && j.key === k1 && j.until === docs["entitlements/gina"].paidUntil, "paid year gets the key until it ends");
+docs["entitlements/hank"] = { paidUntil: Date.now() - 1000 }; docs["trials/hank"] = { start: 1 };
+r = await ck({}, "hank"); ok(r.status === 402, "lapsed subscriber gets no key");
+const ptok = "play-token-aaaaaaaaaaaaaaaaaaaa";
+playSubs[ptok] = Date.now() + 200 * 86400000;
+r = await ck({ playToken: ptok }, "ivan"); j = await r.json();
+ok(r.status === 200 && j.via === "play" && j.until === playSubs[ptok], "live Google Play subscription gets the key");
+docs["trials/judy"] = { start: 1 };
+r = await ck({ playToken: ptok }, "judy"); ok(r.status === 402, "one Play purchase cannot unlock a second account");
+r = await ck({ playToken: ptok }, "ivan"); ok(r.status === 200, "the owner can ask again");
+playSubs["play-token-expired-bbbbbbbbbbbb"] = Date.now() - 1000; docs["trials/kate"] = { start: 1 };
+r = await ck({ playToken: "play-token-expired-bbbbbbbbbbbb" }, "kate"); ok(r.status === 402, "ended Play subscription gets no key");
+r = await ck({ playToken: "x" }, "ivan2"); j = await r.json(); ok(r.status === 200 && j.via === "trial", "junk Play token is ignored");
+const saved = env.CONTENT_MASTER; env.CONTENT_MASTER = ""; r = await ck({}, "dave"); ok(r.status === 503, "no key handed out when the lock is not set up"); env.CONTENT_MASTER = saved;
 r = await call("/nope", {}, null);
 ok(r.status === 404, "unknown path 404");
 r = await call("/playAck", { token: "short" }); ok(r.status === 400, "Play confirmation refuses a bad token");
