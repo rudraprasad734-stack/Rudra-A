@@ -19015,7 +19015,7 @@ function timerDotsHtml(){
   return out;
 }
 // ---- calm sounds: made live with the browser's audio, so there are no files to download and it works offline ----
-var AMB_SOUNDS = [["rain","Forest rain","Rain falling in the forest","\uD83C\uDF27"],["wind","Soft wind","A slow breeze through the trees","\uD83C\uDF43"],["waves","Ocean waves","Waves rolling onto a quiet shore","\uD83C\uDF0A"],["forest","Forest night","The sounds of a forest at night","\uD83C\uDF32"],["brown","Deep calm","A warm, slow hum for deep focus","\uD83C\uDF11"],["white","Quiet fan","A steady, warm fan hum","\uD83C\uDF00"],["fire","Fireplace","Warm glow with soft crackling","\uD83D\uDD25"],["stream","Stream","Water flowing in a stream","\uD83D\uDCA7"],["storm","Thunderstorm","Heavy rain, wind and rolling thunder","\u26C8"],["drone","Singing bowl","Gentle bowl strikes that ring and fade","\uD83D\uDD14"]];
+var AMB_SOUNDS = [["rain","Forest rain","Rain falling in the forest","\ud83c\udf27"],["forest","Forest night","The sounds of a forest at night","\ud83c\udf32"],["stream","Stream","Water flowing in a stream","\ud83d\udca7"],["drone","Singing bowl","Gentle bowl strikes that ring and fade","\ud83d\udd14"],["wind","Soft wind","A slow breeze through the trees","\ud83c\udf43"],["waves","Ocean waves","Waves rolling onto a quiet shore","\ud83c\udf0a"],["brown","Deep calm","A warm, slow hum for deep focus","\ud83c\udf11"],["white","Quiet fan","A steady, warm fan hum","\ud83c\udf00"],["fire","Fireplace","Warm glow with soft crackling","\ud83d\udd25"],["storm","Thunderstorm","Heavy rain, wind and rolling thunder","\u26c8"]];
 var amb = window.__amb = {ctx:null, master:null, nodes:[], timers:[], id:"", playing:false, preview:0, cache:{}, pending:{}, tok:0};
 function ambOn(){ return lsGet("dossier.soundOn")==="1"; }
 function ambId(){ var v = lsGet("dossier.soundId"); return AMB_SOUNDS.some(function(x){ return x[0]===v; }) ? v : "rain"; }
@@ -21272,7 +21272,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "462";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "463";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -21282,7 +21282,7 @@ function sceneCardHtml(){
 }
 function soundCardHtml(){
   var on = ambOn(), cur = ambId(), vol = Math.round(ambVol()*100);
-  return '<div class="card set-card sound-card"><h3>Timer sounds</h3><div class="muted">Calm 60-second loops that play while the timer runs, with no break at the join. Tap \u2B07 to download a sound into the app, and it plays with no internet. If you hear nothing, raise the volume and turn off silent mode.</div>'+
+  return '<div class="card set-card sound-card"><h3>Timer sounds</h3><div class="muted">Calm loops that play while the timer runs, with no break at the join. Tap \u2B07 to download a sound into the app, and it plays with no internet. If you hear nothing, raise the volume and turn off silent mode.</div>'+
     '<div class="snd-row"><span>Sound</span><button type="button" class="pill'+(on ? " on" : "")+'" data-snd="toggle" aria-pressed="'+on+'">'+(on ? "On" : "Off")+'</button></div>'+
     '<div class="snd-row"><span>Volume</span><input type="range" id="sndVol" min="0" max="100" value="'+vol+'" aria-label="Sound volume"></div>'+
     '<div class="snd-opts" role="radiogroup" aria-label="Sound">'+AMB_SOUNDS.map(function(o){
