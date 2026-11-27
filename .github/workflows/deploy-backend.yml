@@ -43,7 +43,11 @@ jobs:
           npx wrangler secret bulk "$RUNNER_TEMP/s.json"
           rm -f "$RUNNER_TEMP/s.json"
           echo "Server address:"; grep -Eo 'https://[a-z0-9.-]+\.workers\.dev' "$RUNNER_TEMP/deploy.log" | head -1
-      - name: Deploy the database rules
+      # This service account is not allowed to publish Firestore rules (HTTP 403), so this step has always
+      # failed even though the server deploy above succeeded. Rules are published by hand in the Firebase
+      # console (see firebase/SETUP.md). It must not turn a good deploy red.
+      - name: Deploy the database rules (optional)
+        continue-on-error: true
         working-directory: upsc-pyq-bank/firebase
         run: |
           set -e
