@@ -135,7 +135,7 @@ function makeApi(deps) {
     return { ignored: true };
   }
 
-  return { config, order, verify, webhook, grant, revoke, httpError };
+  return { config, order, verify, webhook, grant, revoke, httpError, authUid };
 }
 
 module.exports = { makeApi };

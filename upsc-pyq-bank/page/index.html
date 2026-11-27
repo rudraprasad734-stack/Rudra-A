@@ -17663,7 +17663,11 @@ function caqLoadData(){ try{ var v = JSON.parse(localStorage.getItem(CAQ_STORE) 
 var caqData = caqLoadData();
 function caqSave(){ lsSet(CAQ_STORE, JSON.stringify(caqData)); }
 function caqPersist(){ try{ if(navigator.storage && navigator.storage.persist) navigator.storage.persist(); }catch(e){} }   // asks the browser not to clear this data when it is short of space
-function caqFetch(url){ return fetch(url).then(function(r){ if(!r.ok) throw new Error(url+" "+r.status); return r.json(); }); }
+// Daily, quiz and Crux files. In the locked build they are encrypted (.bin) and opened with the key the start-up gate holds; the plain build reads .json.
+function caqFetch(url){
+  if(window.__cseDec) return fetch(url.replace(/\.json$/, ".bin")).then(function(r){ if(!r.ok) throw new Error(url+" "+r.status); return r.arrayBuffer(); }).then(window.__cseDec).then(JSON.parse);
+  return fetch(url).then(function(r){ if(!r.ok) throw new Error(url+" "+r.status); return r.json(); });
+}
 function caqLoad(done){
   if(caq.loaded){ done(); return; }
   (caq.cbs = caq.cbs || []).push(done);   // the quizzes may already be loading in the background: wait for that one load instead of starting another
@@ -21348,7 +21352,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "469";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "470";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+

@@ -18,6 +18,7 @@ jobs:
       RZP_KEY_ID: ${{ secrets.RAZORPAY_KEY_ID }}
       RZP_KEY_SECRET: ${{ secrets.RAZORPAY_KEY_SECRET }}
       RZP_HOOK: ${{ secrets.RAZORPAY_WEBHOOK_SECRET }}
+      CONTENT_MASTER: ${{ secrets.CONTENT_MASTER }}   # optional: switches on the locked question bank (upsc-pyq-bank/lock/README.md)
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -39,7 +40,7 @@ jobs:
         run: |
           set -e
           npx wrangler deploy 2>&1 | tee "$RUNNER_TEMP/deploy.log"
-          node -e 'const e=process.env;require("fs").writeFileSync(process.env.RUNNER_TEMP+"/s.json",JSON.stringify({FIREBASE_SERVICE_ACCOUNT:e.SA_JSON,RAZORPAY_KEY_ID:e.RZP_KEY_ID,RAZORPAY_KEY_SECRET:e.RZP_KEY_SECRET,RAZORPAY_WEBHOOK_SECRET:e.RZP_HOOK}))'
+          node -e 'const e=process.env;require("fs").writeFileSync(process.env.RUNNER_TEMP+"/s.json",JSON.stringify(Object.assign({FIREBASE_SERVICE_ACCOUNT:e.SA_JSON,RAZORPAY_KEY_ID:e.RZP_KEY_ID,RAZORPAY_KEY_SECRET:e.RZP_KEY_SECRET,RAZORPAY_WEBHOOK_SECRET:e.RZP_HOOK},e.CONTENT_MASTER?{CONTENT_MASTER:e.CONTENT_MASTER}:{})))'
           npx wrangler secret bulk "$RUNNER_TEMP/s.json"
           rm -f "$RUNNER_TEMP/s.json"
           echo "Server address:"; grep -Eo 'https://[a-z0-9.-]+\.workers\.dev' "$RUNNER_TEMP/deploy.log" | head -1
