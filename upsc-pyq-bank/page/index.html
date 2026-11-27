@@ -18237,7 +18237,7 @@ function rtSoft(c, x, y, w, h, r, fill, blur, dy, shade){   // a rounded shape t
   c.save(); c.shadowColor = shade; c.shadowBlur = blur; c.shadowOffsetY = dy; c.fillStyle = fill; rtRR(c, x, y, w, h, r); c.fill(); c.restore();
 }
 function rtCardImage(){
-  var list = rtSorted(), sun = rtIsDay(), W = 1080, P = 64, rowH = 150, top = 392, H = top + list.length*rowH + 190;
+  var list = rtExpanded(), sun = rtIsDay(), W = 1080, P = 64, rowH = 150, top = 392, H = top + list.length*rowH + 190;
   var cv = document.createElement("canvas"); cv.width = W; cv.height = H; var c = cv.getContext("2d");
   var ink = sun ? "#2b1233" : "#f2fffd", soft = sun ? "#5a3468" : "#c4f3ef", FF = '-apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif';
   var shade = sun ? "rgba(90,40,100,.38)" : "rgba(0,0,0,.5)";
@@ -18283,7 +18283,9 @@ function rtCardImage(){
       c.fillStyle = ink; c.font = "800 38px "+FF; c.fillText(rtCardRange(it), tx+ts+28, y+58);
       c.fillStyle = soft; c.font = "500 29px "+FF; c.fillText(rtLenText(rtDur(it)), tx+ts+28, y+98);
       c.textAlign = "right"; c.fillStyle = ink; c.font = "700 40px "+FF;
-      var tt = rtTitle(it), t = tt; while(c.measureText(t).width > 370 && t.length > 4) t = t.slice(0, -2);
+      var tt = rtTitle(it), t = tt;
+      for(var fs = 40; fs > 28 && c.measureText(tt).width > 440; fs -= 2) c.font = "700 "+fs+"px "+FF;   // a long name gets a slightly smaller font before it is cut
+      while(c.measureText(t).width > 440 && t.length > 4) t = t.slice(0, -2);
       c.fillText(t.length < tt.length ? t.trim()+"…" : t, W-P-18, y+ch/2+14); c.textAlign = "left";
     });
     var fy = top + list.length*rowH + 8;
@@ -18491,7 +18493,50 @@ function rtPlanActs(){   // the planner's activities (revision, essay, PYQ, test
   return out;
 }
 function rtDayTag(days){ return days ? days.slice().sort(function(a, b){ return ((a+6)%7) - ((b+6)%7); }).map(function(d){ return RT_DAYN[d]; }).join(", ") : "daily"; }
+// What the planner has in a study block today, as one row per session: its own start and end time and what is planned (a subject and chapter, revision, essay...).
+// Each row keeps the id of the block, so tapping and editing still work on the block.
+function rtSessLabel(s){
+  var subj = String(s.subject || "").replace(/ \(Optional\)$/, ""), unit = s.syllabusUnit || s.topic || "";
+  if(s.kind==="study") return subj + (unit ? " \u00B7 "+unit : "");
+  if(s.kind==="revision"){
+    if(s.topicId) return "Revision \u00B7 "+(s.syllabusUnit || s.subject || "");
+    var rn = 0; try{ rn = (s.date===todayKey ? revisionsDue() : revisionsOnDate(s.date)).length; }catch(e){}
+    return rn ? "Revision \u00B7 "+rn+" chapter"+(rn===1 ? "" : "s") : "Revision";
+  }
+  return (KIND_META[s.kind] ? KIND_META[s.kind].label : (subj || "Study")) + (s.kind==="pyq" && s.topic ? " \u00B7 "+s.topic : "");
+}
+function rtRowsOf(it){
+  var q = rtSpan(it), whole = [it];
+  if(!rtIsStudy(it)) return whole;
+  try{
+    if(!studyPlan || typeof sessionsOn!=="function") return whole;
+    var segs = [];
+    sessionsOn(todayKey).forEach(function(x){
+      if(!x.startTime || !x.endTime) return;
+      var a = toMin(x.startTime), b = toMin(x.endTime);
+      if(q[1] > 1440 && a < q[0]) a += 1440;   // a block that runs past midnight
+      if(b <= a) b += 1440;
+      var lo = Math.max(q[0], a), hi = Math.min(q[1], b);
+      if(hi - lo < 5) return;
+      var l = rtSessLabel(x); if(!l) return;
+      segs.push({a:lo, b:hi, title:l});
+    });
+    if(!segs.length) return whole;
+    segs.sort(function(p1, p2){ return p1.a - p2.a; });
+    var out = [], cur = q[0];
+    segs.forEach(function(g){
+      if(g.a - cur >= 15) out.push({a:cur, b:g.a, title:"Study \u00B7 open time"});   // part of the block with nothing planned in it
+      out.push(g); cur = Math.max(cur, g.b);
+    });
+    if(q[1] - cur >= 15) out.push({a:cur, b:q[1], title:"Study \u00B7 open time"});
+    return out.map(function(g){
+      return {s:it.s, k:it.k, id:it.id, n:it.n, t:hmStr(g.a % 1440), e:hmStr(g.b % 1440), d:g.b - g.a, __title:g.title};
+    });
+  }catch(e){ return whole; }
+}
+function rtExpanded(){ var out = []; rtSorted().forEach(function(it){ out = out.concat(rtRowsOf(it)); }); return out; }
 function rtTitle(it){
+  if(it.__title) return it.__title;   // a row split out of a study block already carries its own title
   if(!rtIsStudy(it)) return it.n;
   var live = rtPlanLabels(it), busyDay = false;
   try{ busyDay = !!studyPlan && typeof sessionsOn==="function" && sessionsOn(todayKey).length > 0; }catch(e){}
@@ -18576,17 +18621,21 @@ function rtWeekLabel(){ var a = rtDate(0), b = rtDate(6); return "Week of "+a.ge
 // the activity that is happening on the phone's clock right now bulges out of the card (today's card only, on the days the routine runs)
 // the card's colours follow the phone's clock: warm sunrise colours from 5 AM to 6 PM, the night card after that
 function rtIsDay(){ var h = new Date().getHours(); return h >= 5 && h < 18; }
+function rtRowSpans(){   // the rows on the weekly card, in order: [{a: start minute, l: length in minutes}]
+  var host = document.getElementById("view-routine"), rows = host ? host.querySelectorAll(".rt-r") : [];
+  return Array.prototype.map.call(rows, function(r){ return {a:+r.getAttribute("data-a") || 0, l:+r.getAttribute("data-l") || 0}; });
+}
 function rtNowId(){
   var d = new Date(); if(rt.days.indexOf(d.getDay())<0) return -1;
   var n = d.getHours()*60 + d.getMinutes(), hit = -1;
-  rtSorted().forEach(function(it, i){ var a = toMin(it.t), l = rtDur(it); if(l<=0) return; if((n>=a && n<a+l) || (a+l>1440 && n < a+l-1440)) hit = i; });
+  rtRowSpans().forEach(function(x, i){ var a = x.a, l = x.l; if(l<=0) return; if((n>=a && n<a+l) || (a+l>1440 && n < a+l-1440)) hit = i; });
   return hit;
 }
 // in a gap between two activities: where "you are" sits, as a position between the rows (null when the day has not started or the routine is off today)
 function rtGapPos(){
   var d = new Date(); if(rt.days.indexOf(d.getDay())<0) return null;
   var n = d.getHours()*60 + d.getMinutes(), last = -1;
-  rtSorted().forEach(function(it, i){ var l = rtDur(it); if(l > 0 && toMin(it.t) + l <= n) last = i; });
+  rtRowSpans().forEach(function(x, i){ if(x.l > 0 && x.a + x.l <= n) last = i; });
   return last < 0 ? null : last + 0.5;
 }
 function rtMarkNow(){
@@ -18693,12 +18742,12 @@ function rtPeriodHtml(k){
   return '<div class="rt-pd '+(k === "n" ? "e" : k)+'"><svg viewBox="0 0 400 30" preserveAspectRatio="none" aria-hidden="true">'+sc+'</svg><b>'+name+'</b></div>';
 }
 function rtCardHtml(){
-  var list = rtSorted(), sun = rtIsDay(), nm = profile && profile.name ? profile.name : "";
+  var list = rtExpanded(), sun = rtIsDay(), nm = profile && profile.name ? profile.name : "";
   var h = '<div class="rt"><div class="rt-stage"><div class="rt-card'+(sun ? " sun2" : "")+'"><span class="rt-sun" aria-hidden="true">'+rtGlyph(list[0] ? list[0].s : "wake")+'</span><h2>My weekly routine</h2><div class="rt-sub">'+esc(rtWeekLabel())+(nm ? ' \u00B7 '+esc(nm) : '')+'</div>';
   h += '<div class="rt-wk">'+[0,1,2,3,4,5,6].map(function(i){ var d = rtDate(i), on = rt.days.indexOf(d.getDay())>=0, td = toKey(d)===todayKey; return '<div class="'+(td?"today":"")+'"'+(on ? "" : ' style="opacity:.45"')+'><b>'+d.getDate()+'</b>'+RT_DAYN[d.getDay()]+'</div>'; }).join("")+'</div><div class="rt-rows">';
   var ents = list.map(function(it){
     var c = RT_COL[(rtStk(it.s)||[0,0,0,"blue"])[3]], study = rtIsStudy(it);
-    return {a:toMin(it.t), o:0, h:'<div class="rt-r'+(study ? " study" : "")+'" data-id="'+esc(it.id)+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'"><span class="rt-tile">'+rtGlyph(it.s)+'</span><span class="t">'+esc(fmt12(it.t))+'</span><span class="n">'+esc(rtTitle(it))+'</span><span class="d">'+(it.e ? '\u2192 '+esc(fmt12(it.e)) : esc(fmtHM(rtDur(it)))) +'</span></div>'};
+    return {a:toMin(it.t), o:0, h:'<div class="rt-r'+(study ? " study" : "")+'" data-id="'+esc(it.id)+'" data-a="'+toMin(it.t)+'" data-l="'+rtDur(it)+'" style="--c1:'+c[0]+';--c2:'+c[1]+';--c3:'+c[2]+'"><span class="rt-tile">'+rtGlyph(it.s)+'</span><span class="t">'+esc(fmt12(it.t))+'</span><span class="n">'+esc(rtTitle(it))+'</span><span class="d">'+(it.e ? '\u2192 '+esc(fmt12(it.e)) : esc(fmtHM(rtDur(it)))) +'</span></div>'};
   });
   var pacts = rtPlanActs(), spans = rtAllSpans(), gaps = rtFreeGaps(15), freeMin = 0, used = [];
   gaps.forEach(function(g){   // free time between the activities, and what the planner has put in it
@@ -21290,7 +21339,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "465";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "466";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
