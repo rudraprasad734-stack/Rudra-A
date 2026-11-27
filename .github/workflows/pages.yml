@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment_retry.outputs.page_url || steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/configure-pages@v5
@@ -33,5 +33,18 @@ jobs:
           path: ${{ runner.temp }}/artifact.tar
           retention-days: 1
           if-no-files-found: error
+      # GitHub sometimes cannot see the artifact for a few seconds after the upload ("Fetching artifact
+      # metadata failed"). Waiting briefly and trying the deploy a second time within the same run avoids
+      # the failure. Do not use "Re-run failed jobs" for this workflow: it uploads a second artifact and
+      # the deploy then refuses ("Multiple artifacts named github-pages"). Start a fresh run instead.
+      - name: Give GitHub a moment to register the artifact
+        run: sleep 20
       - id: deployment
+        continue-on-error: true
+        uses: actions/deploy-pages@v4
+      - name: Wait before the second deploy attempt
+        if: steps.deployment.outcome == 'failure'
+        run: sleep 30
+      - id: deployment_retry
+        if: steps.deployment.outcome == 'failure'
         uses: actions/deploy-pages@v4

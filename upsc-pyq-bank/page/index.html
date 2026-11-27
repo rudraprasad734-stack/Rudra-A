@@ -19015,10 +19015,14 @@ function timerDotsHtml(){
   return out;
 }
 // ---- calm sounds: made live with the browser's audio, so there are no files to download and it works offline ----
-var AMB_SOUNDS = [["rain","Forest rain","Soft rain on leaves, a light breeze and far-off thunder","\uD83C\uDF27"],["wind","Soft wind","A slow breeze through the trees","\uD83C\uDF43"],["waves","Ocean waves","Waves rolling onto a quiet shore","\uD83C\uDF0A"],["forest","Forest night","Crickets, a distant owl and a light breeze","\uD83C\uDF32"],["brown","Deep calm","A warm, slow hum for deep focus","\uD83C\uDF11"],["white","Quiet fan","A steady, warm fan hum","\uD83C\uDF00"],["fire","Fireplace","Warm glow with soft crackling","\uD83D\uDD25"],["stream","Stream","Water babbling over stones","\uD83D\uDCA7"],["storm","Thunderstorm","Heavy rain, wind and rolling thunder","\u26C8"],["drone","Singing bowl","Gentle bowl strikes that ring and fade","\uD83D\uDD14"]];
+var AMB_SOUNDS = [["rain","Forest rain","Rain falling in the forest","\uD83C\uDF27"],["wind","Soft wind","A slow breeze through the trees","\uD83C\uDF43"],["waves","Ocean waves","Waves rolling onto a quiet shore","\uD83C\uDF0A"],["forest","Forest night","The sounds of a forest at night","\uD83C\uDF32"],["brown","Deep calm","A warm, slow hum for deep focus","\uD83C\uDF11"],["white","Quiet fan","A steady, warm fan hum","\uD83C\uDF00"],["fire","Fireplace","Warm glow with soft crackling","\uD83D\uDD25"],["stream","Stream","Water flowing in a stream","\uD83D\uDCA7"],["storm","Thunderstorm","Heavy rain, wind and rolling thunder","\u26C8"],["drone","Singing bowl","Gentle bowl strikes that ring and fade","\uD83D\uDD14"]];
 var amb = window.__amb = {ctx:null, master:null, nodes:[], timers:[], id:"", playing:false, preview:0, cache:{}, pending:{}, tok:0};
 function ambOn(){ return lsGet("dossier.soundOn")==="1"; }
 function ambId(){ var v = lsGet("dossier.soundId"); return AMB_SOUNDS.some(function(x){ return x[0]===v; }) ? v : "rain"; }
+// Each sound is a little louder or quieter in its file, so a level per sound is applied to make them all play at the same loudness
+// at the same volume setting. Matched to "Forest rain" (the middle one) by measuring the real output at the default volume; all within 0.2 dB.
+var AMB_GAIN = {"rain": 1.0, "wind": 0.785, "waves": 1.0, "forest": 1.318, "brown": 1.462, "white": 0.699, "fire": 1.122, "stream": 0.977, "storm": 0.543, "drone": 0.989};
+function ambGainOf(id){ return AMB_GAIN[id] || 1; }
 function ambVol(){ var v = parseFloat(lsGet("dossier.soundVol")); return isFinite(v) ? Math.max(0, Math.min(1, v)) : .5; }
 // Each sound is built once, as a 60 second stereo recording (4 s of lead-in is thrown away so the end joins the start without a click),
 // then played in a loop. Everything is made from filtered noise, tones and short random events: no files are downloaded.
@@ -19154,19 +19158,43 @@ function ambMake(id){
     return out;
   });
 }
-var AMB_MB = {"fire": 3.5, "brown": 1.9, "drone": 1.2, "wind": 3.2, "waves": 2.5, "white": 3.5, "rain": 4.2, "stream": 3.7, "storm": 4.2, "forest": 3.3}, SND_CACHE = "upsc-sounds-v1";
+var AMB_MB = {"fire": 3.5, "brown": 1.9, "drone": 1.2, "wind": 3.2, "waves": 2.5, "white": 3.5, "rain": 3.9, "stream": 0.9, "storm": 4.2, "forest": 2.6}, SND_CACHE = "upsc-sounds-v1";
 function ambFile(id){ return "./audio/"+id+".flac"; }
+// Forest rain, Forest night and Stream were replaced by new recordings (rev 2). Phones that saved the old copies drop just those three
+// once, so the new ones are downloaded next time; every other saved sound is left alone.
+var ambMig = null;
+function ambMigrate(){
+  if(ambMig) return ambMig;
+  if(!window.caches || lsGet("dossier.soundrev")==="2") return ambMig = Promise.resolve();
+  return ambMig = caches.open(SND_CACHE).then(function(c){ return Promise.all(["rain","forest","stream"].map(function(id){ return c.delete(ambFile(id)); })); })
+    .then(function(){ lsSet("dossier.soundrev", "2"); }).catch(function(){});
+}
 // the recorded loops live in audio/*.flac; once saved to the phone they play with no internet at all
 function ambLoadFile(id){
   function net(){ return fetch(ambFile(id)).then(function(r){ if(!r || !r.ok) throw new Error("no file"); return r; }); }
   if(!window.caches) return net().then(function(r){ return r.arrayBuffer(); });
-  return caches.open(SND_CACHE).then(function(c){ return c.match(ambFile(id)); }).then(function(hit){ return hit || net(); }).then(function(r){ return r.arrayBuffer(); });
+  return ambMigrate().then(function(){ return caches.open(SND_CACHE); }).then(function(c){ return c.match(ambFile(id)); }).then(function(hit){ return hit || net(); }).then(function(r){ return r.arrayBuffer(); });
 }
 function ambDecode(buf){ return new Promise(function(res, rej){ var p = amb.ctx.decodeAudioData(buf, res, rej); if(p && p.then) p.then(res, rej); }); }
+// The recordings already match end to start, but a small step or level change at the join is still possible.
+// The last 1.5 s are blended (equal power) into the first 1.5 s, so the loop point is smooth for hours of listening.
+function ambSeam(buf){
+  try{
+    var sr = buf.sampleRate, N = buf.length, X = Math.min(Math.round(sr*1.5), Math.floor(N*.1));
+    if(X < 64 || N - X < sr) return buf;
+    var L = N - X, out = amb.ctx.createBuffer(buf.numberOfChannels, L, sr), h = Math.PI/2, c, i;
+    for(c=0; c<buf.numberOfChannels; c++){
+      var src = buf.getChannelData(c), dst = out.getChannelData(c);
+      dst.set(src.subarray(0, L));
+      for(i=0; i<X; i++){ var u = i/X; dst[i] = src[L+i]*Math.cos(h*u) + src[i]*Math.sin(h*u); }   // the tail fades out as the head fades in
+    }
+    return out;
+  }catch(e){ return buf; }
+}
 amb.saved = {};
 function ambRefreshSaved(){
   if(!window.caches) return Promise.resolve();
-  return caches.open(SND_CACHE).then(function(c){ return c.keys(); }).then(function(ks){
+  return ambMigrate().then(function(){ return caches.open(SND_CACHE); }).then(function(c){ return c.keys(); }).then(function(ks){
     var m = {}; ks.forEach(function(k){ var x = /audio\/([a-z]+)\.flac/.exec(k.url); if(x) m[x[1]] = 1; }); amb.saved = m;
   }).catch(function(){});
 }
@@ -19224,7 +19252,7 @@ function ambGet(id){
   if(amb.pending[id]) return amb.pending[id];
   if(!amb.ctx) return Promise.reject(new Error("no audio"));
   // recorded file first; the live-built version is only a fallback when the file cannot be reached
-  var fromFile = ambLoadFile(id).then(ambDecode);
+  var fromFile = ambLoadFile(id).then(ambDecode).then(ambSeam);
   return amb.pending[id] = fromFile.catch(function(){ return ambMake(id); }).then(function(b){
     amb.cache[id] = b; delete amb.pending[id];
     var keys = Object.keys(amb.cache); if(keys.length>2) keys.forEach(function(k){ if(k!==id && k!==amb.id && keys.length>2){ delete amb.cache[k]; keys.splice(keys.indexOf(k),1); } });
@@ -19262,7 +19290,7 @@ function ambPlay(){
     var AC = window.AudioContext || window.webkitAudioContext; if(!AC) return;
     if(!amb.ctx) amb.ctx = new AC();
     if(amb.ctx.state==="suspended") amb.ctx.resume();
-    if(amb.playing && amb.id===ambId()){ if(amb.master) amb.master.gain.setTargetAtTime(ambVol()*1.6, amb.ctx.currentTime, .1); return; }
+    if(amb.playing && amb.id===ambId()){ if(amb.master) amb.master.gain.setTargetAtTime(ambVol()*1.6*ambGainOf(amb.id), amb.ctx.currentTime, .1); return; }
     if(amb.playing || amb.master) ambStop();
     amb.id = ambId(); amb.master = amb.ctx.createGain(); amb.master.gain.value = 0; if(!amb.comp){ amb.comp = amb.ctx.createDynamicsCompressor(); amb.comp.connect(amb.ctx.destination); } amb.master.connect(amb.comp); amb.playing = true;
     var tok = ++amb.tok, myId = amb.id;
@@ -19270,7 +19298,7 @@ function ambPlay(){
     ambGet(myId).then(function(buf){
       if(tok!==amb.tok || !amb.playing || !amb.master) return;
       var src = amb.ctx.createBufferSource(); src.buffer = buf; src.loop = true; src.connect(amb.master); src.start(); amb.nodes.push(src);
-      amb.master.gain.setTargetAtTime(ambVol()*1.6, amb.ctx.currentTime, .8);
+      amb.master.gain.setTargetAtTime(ambVol()*1.6*ambGainOf(myId), amb.ctx.currentTime, .8);
     }).catch(function(e){ console.error("Sound failed:", e); });
   }catch(e){ console.error("Sound failed:", e); amb.playing = false; }
 }
@@ -21244,7 +21272,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "459";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "462";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -21888,7 +21916,7 @@ function renderSettings(){
   bindGuides(host);
   if(cloudConfigured() && !cloud.user) cloudPrepare();
   ambRefreshSaved().then(ambPaintSaved); ambPaintSaved();
-  var vr = host.querySelector("#sndVol"); if(vr) vr.oninput = function(){ lsSet("dossier.soundVol", String(vr.value/100)); if(amb.master && amb.ctx) amb.master.gain.setTargetAtTime(vr.value/100*1.6, amb.ctx.currentTime, .05); else if(ambOn()) ambPreview(3000); };
+  var vr = host.querySelector("#sndVol"); if(vr) vr.oninput = function(){ lsSet("dossier.soundVol", String(vr.value/100)); if(amb.master && amb.ctx) amb.master.gain.setTargetAtTime(vr.value/100*1.6*ambGainOf(amb.id), amb.ctx.currentTime, .05); else if(ambOn()) ambPreview(3000); };
   if(!host._wired){
     host._wired = true;
     host.addEventListener("click", function(e){
