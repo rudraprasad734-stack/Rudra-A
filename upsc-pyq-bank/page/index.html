@@ -21282,7 +21282,7 @@ function sceneCardHtml(){
 }
 function soundCardHtml(){
   var on = ambOn(), cur = ambId(), vol = Math.round(ambVol()*100);
-  return '<div class="card set-card sound-card"><h3>Timer sounds</h3><div class="muted">Calm loops that play while the timer runs, with no break at the join. Tap \u2B07 to download a sound into the app, and it plays with no internet. If you hear nothing, raise the volume and turn off silent mode.</div>'+
+  return '<div class="card set-card sound-card"><h3>Timer sounds</h3><div class="muted">Calming sounds to relax your mind and focus through long study hours.</div>'+
     '<div class="snd-row"><span>Sound</span><button type="button" class="pill'+(on ? " on" : "")+'" data-snd="toggle" aria-pressed="'+on+'">'+(on ? "On" : "Off")+'</button></div>'+
     '<div class="snd-row"><span>Volume</span><input type="range" id="sndVol" min="0" max="100" value="'+vol+'" aria-label="Sound volume"></div>'+
     '<div class="snd-opts" role="radiogroup" aria-label="Sound">'+AMB_SOUNDS.map(function(o){
