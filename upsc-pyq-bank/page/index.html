@@ -21243,7 +21243,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "454";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "456";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -21352,7 +21352,7 @@ var SUB_SKU = "cse_companion_yearly", TRIAL_DAYS = 14, SUB_KEY = "dossier.sub.v1
 var SUB_FALLBACK_PRICE = "₹299 a year (about ₹25 a month), renewing yearly at the price shown in Google Play";
 var DAY_MS = 86400000;
 var sub = lsGetObj(SUB_KEY, null) || {};
-var BILL = {svc:null, checked:false, active:false, details:null, busy:false, err:"", seen:!!lsGet("dossier.billing.seen"), sig:"", pend:null};
+var BILL = {svc:null, checked:false, active:false, details:null, busy:false, err:"", seen:!!lsGet("dossier.billing.seen"), sig:"", pend:null, ack:""};
 function subSave(){ lsSet(SUB_KEY, JSON.stringify({t0:sub.t0||0, seen:sub.seen||0, off:sub.off||0, v:sub.v||0, u:sub.u||0})); }
 // "now" = the phone clock corrected by our own server time (learned whenever online), and it never goes backwards while offline,
 // so neither a wrong clock nor setting the clock back changes the trial.
@@ -21391,7 +21391,7 @@ function billingService(){
 function billingFmt(p){ try{ return new Intl.NumberFormat(undefined, {style:"currency", currency:p.currency, maximumFractionDigits:0}).format(+p.value); }catch(e){ return p.value+" "+p.currency; } }
 function billingPriceText(){
   var d = BILL.details; if(!d || !d.price) return SUB_FALLBACK_PRICE;
-  var intro = d.introductoryPrice && d.introductoryPrice.value != null ? d.introductoryPrice : null, p = intro || d.price;
+  var ip = d.introductoryPrice, intro = ip && +ip.value > 0 && +ip.value < +d.price.value ? ip : null, p = intro || d.price;   // Play can report an empty (0) intro price when there is no offer: ignore it
   var mo = Math.max(1, Math.round((+p.value||0)/12));
   var head = billingFmt(p)+(intro ? " for the first year" : " a year")+" (about "+billingFmt({currency:p.currency, value:mo})+" a month)";
   return intro ? head+", then "+billingFmt(d.price)+" a year" : head;
@@ -21415,10 +21415,21 @@ function billingRefresh(skipClock){
   }).catch(function(){ BILL.checked = true; if(seenInApp()) BILL.active = entCached(); }).then(function(){ BILL.pend = null; subUi(); });
   return BILL.pend;
 }
-// Google refunds a purchase that is not acknowledged within 3 days
+// Google refunds a purchase that is not acknowledged within 3 days: confirm it, retry on failure, and remember the outcome
 function billingAck(svc, token){
-  if(!token || lsGet("dossier.ack."+token.slice(-24))) return;
-  Promise.resolve(svc.acknowledge(token, "onetime")).then(function(){ lsSet("dossier.ack."+token.slice(-24), "1"); }).catch(function(){});
+  if(!token) return Promise.resolve(false);
+  var key = "dossier.ack."+token.slice(-24);
+  if(lsGet(key)) { BILL.ack = "yes"; return Promise.resolve(true); }
+  var tries = 0;
+  var go = function(){
+    tries++;
+    return Promise.resolve(svc.acknowledge(token, "onetime")).then(function(){ lsSet(key, "1"); BILL.ack = "yes"; lsSet("dossier.ack.err", ""); return true; }, function(e){
+      lsSet("dossier.ack.err", String((e && (e.name+": "+e.message)) || e).slice(0,160));
+      if(tries < 4) return new Promise(function(r){ setTimeout(r, 1500*tries); }).then(go);
+      BILL.ack = "no"; return false;
+    });
+  };
+  return go();
 }
 function billingBuy(){
   if(BILL.busy) return;
@@ -21429,7 +21440,7 @@ function billingBuy(){
     var req = new PaymentRequest([{supportedMethods:"https://play.google.com/billing", data:{sku:SUB_SKU}}], {total:{label:"Total", amount:{currency:"INR", value:"0"}}});
     req.show().then(function(res){
       var tok = res.details && res.details.purchaseToken;
-      return Promise.resolve(BILL.svc.acknowledge && tok ? BILL.svc.acknowledge(tok, "onetime") : 0).then(function(){ if(tok) lsSet("dossier.ack."+tok.slice(-24), "1"); }, function(){}).then(function(){ return res.complete("success"); }).then(function(){
+      return Promise.resolve(tok ? billingAck(BILL.svc, tok) : false).then(function(){ return res.complete("success"); }).then(function(){
         BILL.active = true; lsSet(ENT_KEY, JSON.stringify({ok:true, at:subNow()}));
         toast("Thank you! Your subscription is active.");
       });
@@ -21579,7 +21590,7 @@ function subCardHtml(){
     } else {
       body = '<div class="muted">Your subscription is active. Thank you for supporting CSE Companion.</div>';
       btns = '<button class="btn" id="subManage">Manage subscription</button>';
-      foot = 'Billed yearly to your Google Play account and renewed automatically until you cancel in Google Play. ';
+      foot = 'Billed yearly to your Google Play account and renewed automatically until you cancel in Google Play. '+(BILL.ack==="no" ? '<br><span class="pw-err">Google Play has not confirmed this purchase yet. Keep the app open on an internet connection for a minute' + (lsGet("dossier.ack.err") ? ' ('+lsGet("dossier.ack.err")+')' : '') + '.</span>' : '');
     }
   } else {
     var ti = trialInfo();
