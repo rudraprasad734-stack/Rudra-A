@@ -236,65 +236,6 @@
   {
    "id": "dn-2026-11-27-5",
    "n": 5,
-   "sec": "Sports",
-   "t": "World Chess Championship: Gukesh against Sindarov in Geneva",
-   "gs": [
-    "GS1 Society"
-   ],
-   "news": "The 2026 World Chess Championship match between the defending champion D. Gukesh of India and the challenger Javokhir Sindarov of Uzbekistan is under way in Geneva. It is played over up to 14 classical games, and a player needs 7.5 points to win; a 7–7 tie goes to tiebreaks.",
-   "blocks": [
-    {
-     "h": "Key facts",
-     "items": [
-      {
-       "rows": [
-        [
-         "Format",
-         "Up to 14 classical games with a rest day after every three games."
-        ],
-        [
-         "Gukesh",
-         "Won the 2024 Candidates and then beat Ding Liren of China 7.5 to 6.5 to become the youngest world champion."
-        ],
-        [
-         "Sindarov",
-         "Won the 2025 World Cup and the 2026 Candidates tournament."
-        ],
-        [
-         "Venue",
-         "A museum at Cologny near Geneva; the first title match in Switzerland since 2004."
-        ]
-       ]
-      },
-      {
-       "ul": [
-        "**Why it matters:** India’s growing profile in chess and the role of sport in soft power."
-       ]
-      }
-     ]
-    }
-   ],
-   "prel": [
-    {
-     "k": "Candidates Tournament",
-     "d": "The event whose winner earns the right to challenge the reigning world champion."
-    },
-    {
-     "k": "FIDE",
-     "d": "The International Chess Federation, the world governing body for chess."
-    }
-   ],
-   "qs": [
-    {
-     "q": "Discuss how sports achievements contribute to India’s soft power.",
-     "m": "GS2 · 250 words · 15 marks",
-     "ref": ""
-    }
-   ]
-  },
-  {
-   "id": "dn-2026-11-27-6",
-   "n": 6,
    "sec": "Economy",
    "t": "RBI lowers the daily minimum CRR maintenance back to 90 per cent",
    "gs": [
@@ -360,8 +301,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-27-7",
-   "n": 7,
+   "id": "dn-2026-11-27-6",
+   "n": 6,
    "sec": "Economy",
    "t": "SEBI opens physically settled non-agricultural commodity derivatives to foreign portfolio investors",
    "gs": [
@@ -432,8 +373,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-27-8",
-   "n": 8,
+   "id": "dn-2026-11-27-7",
+   "n": 7,
    "sec": "International Relations",
    "t": "Indian Ocean Rim Association: 25th Council of Ministers meets in New Delhi",
    "gs": [
@@ -504,8 +445,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-27-9",
-   "n": 9,
+   "id": "dn-2026-11-27-8",
+   "n": 8,
    "sec": "Polity",
    "t": "Supreme Court takes up contempt over the Thiruparankundram lamp-lighting order",
    "gs": [
@@ -577,8 +518,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-27-10",
-   "n": 10,
+   "id": "dn-2026-11-27-9",
+   "n": 9,
    "sec": "Economy",
    "t": "Power Ministers’ Conference: planning for generation, storage and distribution",
    "gs": [
@@ -650,81 +591,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-27-11",
-   "n": 11,
-   "sec": "Polity",
-   "t": "Allahabad High Court quashes the UPPSC PCS-2025 preliminary exam result",
-   "gs": [
-    "GS2 Polity",
-    "GS2 Governance"
-   ],
-   "news": "A single-judge bench of the Allahabad High Court, headed by Justice Manish Kumar Nigam, set aside the result of the Uttar Pradesh Public Service Commission’s PCS-2025 preliminary examination and directed the Commission to prepare and declare a fresh result before the remaining stages go ahead. The petition by four candidates challenged certain provisions of the recruitment advertisement; the drive is for 814 posts. The decision is expected to benefit candidates in reserved categories. Detailed reasons are in the judgment.",
-   "blocks": [
-    {
-     "h": "Key points",
-     "items": [
-      {
-       "rows": [
-        [
-         "UPPSC",
-         "The State Public Service Commission of Uttar Pradesh, a constitutional body under Article 315."
-        ],
-        [
-         "Writ power",
-         "High Courts can issue writs under Article 226 for fundamental rights and for any other purpose."
-        ],
-        [
-         "Member appointment",
-         "Chairman and members of a State commission are appointed by the Governor but removed only by the President."
-        ],
-        [
-         "Equality in jobs",
-         "Article 16 guarantees equality of opportunity in public employment and permits reservation."
-        ],
-        [
-         "Fresh result",
-         "The remedy ordered is a fresh preliminary result, not a cancellation of the recruitment."
-        ],
-        [
-         "Posts",
-         "814 posts are being filled through the exam."
-        ]
-       ]
-      },
-      {
-       "ul": [
-        "**Why it matters:** recruitment disputes show how courts police fairness and reservation rules in public hiring.",
-        "**Note:** a challenge to the order may still be made before a larger bench or the Supreme Court."
-       ]
-      }
-     ]
-    }
-   ],
-   "prel": [
-    {
-     "k": "Article 315",
-     "d": "Provides for Public Service Commissions for the Union and States."
-    },
-    {
-     "k": "Writ of certiorari",
-     "d": "An order quashing a decision of a lower authority."
-    },
-    {
-     "k": "Preliminary examination",
-     "d": "The screening stage of the civil services selection process."
-    }
-   ],
-   "qs": [
-    {
-     "q": "Discuss the role of Public Service Commissions in ensuring merit and fairness in recruitment. How do courts review recruitment processes?",
-     "m": "GS2 · 250 words · 15 marks",
-     "ref": ""
-    }
-   ]
-  },
-  {
-   "id": "dn-2026-11-27-12",
-   "n": 12,
+   "id": "dn-2026-11-27-10",
+   "n": 10,
    "sec": "International Relations",
    "t": "Hunger Hotspots: sixteen countries at risk of worsening food insecurity",
    "gs": [
@@ -796,81 +664,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-27-13",
-   "n": 13,
-   "sec": "Sports",
-   "t": "India presents its 2036 Olympic bid vision to the IOC Future Host Commission",
-   "gs": [
-    "GS2 Governance",
-    "GS1 Society"
-   ],
-   "news": "India presented its vision and proposed roadmap for hosting the 2036 Olympic and Paralympic Games to the International Olympic Committee’s Future Host Commission in an online interaction of about 30 minutes, followed by a short discussion. Ahmedabad is the proposed host city. The Commission is led by Kolinda Grabar-Kitarovic and has nine members. Seven countries are in the race: India, Germany, Hungary, Qatar, South Korea, South Africa and Türkiye. The IOC’s public survey on India’s bid is expected in the third week of December and the evaluation in March, which will begin the Strategic Dialogue phase.",
-   "blocks": [
-    {
-     "h": "Key points",
-     "items": [
-      {
-       "rows": [
-        [
-         "Future Host Commission",
-         "IOC panel that studies interest from prospective hosts and advises the Executive Board."
-        ],
-        [
-         "Proposed city",
-         "Ahmedabad."
-        ],
-        [
-         "Rivals",
-         "Germany, Hungary, Qatar, South Korea, South Africa and Türkiye."
-        ],
-        [
-         "Next steps",
-         "Public opinion survey in December and an evaluation in March that opens the Strategic Dialogue phase."
-        ],
-        [
-         "Selection",
-         "The host is finally chosen by a vote of IOC members at a Session."
-        ],
-        [
-         "Earlier Games",
-         "India hosted the Asian Games in 1951 and 1982 and the Commonwealth Games in 2010, all in Delhi."
-        ]
-       ]
-      },
-      {
-       "ul": [
-        "**Why it matters:** hosting needs large investment in infrastructure and sport systems, and can help urban development and soft power if costs are controlled.",
-        "**Debate:** critics point to cost overruns and the need for public benefit beyond the event."
-       ]
-      }
-     ]
-    }
-   ],
-   "prel": [
-    {
-     "k": "IOC",
-     "d": "International Olympic Committee, based in Lausanne, Switzerland."
-    },
-    {
-     "k": "Paralympic Games",
-     "d": "Multi-sport event for athletes with disabilities."
-    },
-    {
-     "k": "Strategic Dialogue",
-     "d": "The IOC phase of detailed talks with interested hosts after initial evaluation."
-    }
-   ],
-   "qs": [
-    {
-     "q": "Assess the costs and benefits of hosting a mega sporting event like the Olympics for a developing country such as India.",
-     "m": "GS2 · 250 words · 15 marks",
-     "ref": ""
-    }
-   ]
-  },
-  {
-   "id": "dn-2026-11-27-14",
-   "n": 14,
+   "id": "dn-2026-11-27-11",
+   "n": 11,
    "sec": "Environment",
    "t": "Project Cheetah: population reaches 62 after two litters at Kuno",
    "gs": [
@@ -941,8 +736,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-27-15",
-   "n": 15,
+   "id": "dn-2026-11-27-12",
+   "n": 12,
    "sec": "Economy",
    "t": "India’s forex reserves fall to $700.9 billion",
    "gs": [
@@ -1013,8 +808,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-27-16",
-   "n": 16,
+   "id": "dn-2026-11-27-13",
+   "n": 13,
    "sec": "Economy",
    "t": "RBI Governor on AI and the role of MSMEs in a developed India",
    "gs": [
@@ -1085,8 +880,8 @@
    ]
   },
   {
-   "id": "dn-2026-11-27-17",
-   "n": 17,
+   "id": "dn-2026-11-27-14",
+   "n": 14,
    "sec": "Science & Tech",
    "t": "Indian researchers develop stable white LEDs using perovskite nanocrystals",
    "gs": [

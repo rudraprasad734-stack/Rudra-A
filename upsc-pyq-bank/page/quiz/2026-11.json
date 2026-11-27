@@ -3768,21 +3768,6 @@
    "id": "caq-2026-11-251"
   },
   {
-   "subject": "Economy",
-   "syllabus": "Agriculture",
-   "exam": "pre",
-   "q": "National Milk Day on 26 November marks the birth anniversary of",
-   "opts": [
-    "M. S. Swaminathan",
-    "Vikram Sarabhai",
-    "Tribhuvandas Patel",
-    "Verghese Kurien"
-   ],
-   "ans": 3,
-   "why": "Verghese Kurien, who led the cooperative dairy movement and Operation Flood, was born on 26 November 1921.",
-   "id": "caq-2026-11-252"
-  },
-  {
    "subject": "Polity & Governance",
    "syllabus": "Constitution",
    "exam": "pre",
@@ -3826,21 +3811,6 @@
    "ans": 2,
    "why": "Operation Flood was a national programme to build dairy cooperatives and raise milk output.",
    "id": "caq-2026-11-255"
-  },
-  {
-   "subject": "Economy",
-   "syllabus": "IPR",
-   "exam": "pre",
-   "q": "With reference to geographical indications in India, consider the following statements:\n1. A GI registration is valid for 20 years and cannot be renewed.\n2. An association of producers can apply for a GI registration.\nWhich of the statements given above is/are correct?",
-   "opts": [
-    "1 only",
-    "2 only",
-    "Both 1 and 2",
-    "Neither 1 nor 2"
-   ],
-   "ans": 1,
-   "why": "Registration is valid for 10 years and can be renewed. Associations of producers can apply.",
-   "id": "caq-2026-11-256"
   },
   {
    "subject": "Polity & Governance",
@@ -3906,7 +3876,7 @@
    "subject": "Polity & Governance",
    "syllabus": "Parliament",
    "exam": "pre",
-   "q": "With reference to G.V. Mavalankar, consider the following statements:\n1. He was the first Speaker of the Lok Sabha.\n2. He was the President of the Constituent Assembly.\n3. He held the office of Speaker until his death in 1956.\nWhich of the statements given above is/are correct?",
+   "q": "With reference to G.V. Mavalankar, consider the following statements:\n1. He was the first Speaker of the Lok Sabha.\n2. He was elected President of the Constituent Assembly in 1946.\n3. He held the office of Speaker until his death in 1956.\nWhich of the statements given above is/are correct?",
    "opts": [
     "1 and 2 only",
     "2 and 3 only",
@@ -3914,7 +3884,7 @@
     "1, 2 and 3"
    ],
    "ans": 2,
-   "why": "Mavalankar became the first Lok Sabha Speaker in 1952 and held the post until he died in 1956. Rajendra Prasad, not Mavalankar, presided over the Constituent Assembly.",
+   "why": "Mavalankar became the first Lok Sabha Speaker in 1952 and held the post until he died in 1956. Rajendra Prasad, not Mavalankar, was elected President of the Constituent Assembly in 1946.",
    "id": "caq-2026-11-261"
   },
   {
@@ -3996,7 +3966,7 @@
    "subject": "Economy",
    "syllabus": "Public Finance",
    "exam": "pre",
-   "q": "Consider the following statements laid before Parliament along with the Budget:\n1. Macro-economic Framework Statement\n2. Medium-term Expenditure Framework Statement\n3. Economic Survey\nHow many of the above are required to be laid by the Fiscal Responsibility and Budget Management Act?",
+   "q": "Consider the following documents presented to Parliament around the Budget:\n1. Macro-economic Framework Statement\n2. Medium-term Expenditure Framework Statement\n3. Economic Survey\nHow many of the above are required to be laid by the Fiscal Responsibility and Budget Management Act?",
    "opts": [
     "Only one",
     "Only two",
@@ -4021,21 +3991,6 @@
    "ans": 0,
    "why": "Only the Lok Sabha votes on demands, and charged expenditure is discussed but not voted. The Rajya Sabha can only return an Appropriation Bill with recommendations within fourteen days.",
    "id": "caq-2026-11-268"
-  },
-  {
-   "subject": "Sports",
-   "syllabus": "Current Affairs",
-   "exam": "pre",
-   "q": "The challenger facing D. Gukesh in the 2026 World Chess Championship match at Geneva comes from",
-   "opts": [
-    "Kazakhstan",
-    "Uzbekistan",
-    "Armenia",
-    "Azerbaijan"
-   ],
-   "ans": 1,
-   "why": "Javokhir Sindarov of Uzbekistan won the 2026 Candidates tournament and earned the right to challenge Gukesh.",
-   "id": "caq-2026-11-269"
   },
   {
    "subject": "Polity & Governance",
@@ -4176,15 +4131,15 @@
    "subject": "Polity & Governance",
    "syllabus": "Judiciary",
    "exam": "pre",
-   "q": "With reference to bail under the Unlawful Activities (Prevention) Act, consider the following statements:\n1. Section 43D(5) makes bail harder if the accusation appears prima facie true.\n2. The High Court decides which bench of the Supreme Court hears a case.\nWhich of the statements given above is/are correct?",
+   "q": "With reference to bail under the Unlawful Activities (Prevention) Act, consider the following statements:\n1. Section 43D(5) makes bail harder if the accusation appears prima facie true.\n2. Section 43D(2) allows detention before the charge-sheet to be extended beyond the limit under the ordinary criminal procedure law.\nWhich of the statements given above is/are correct?",
    "opts": [
     "1 only",
     "2 only",
     "Both 1 and 2",
     "Neither 1 nor 2"
    ],
-   "ans": 0,
-   "why": "Section 43D(5) bars bail where the court finds the accusation prima facie true. The Chief Justice, as master of the roster, constitutes the benches of the Supreme Court.",
+   "ans": 2,
+   "why": "Both statements are correct: Section 43D(5) restricts bail where the accusation appears prima facie true, and Section 43D(2) allows longer custody and a longer period of detention before the charge-sheet.",
    "id": "caq-2026-11-279"
   },
   {
@@ -4246,21 +4201,6 @@
    "ans": 2,
    "why": "India is a member of the first three. It is a dialogue partner, not a member, of ASEAN.",
    "id": "caq-2026-11-283"
-  },
-  {
-   "subject": "Economy",
-   "syllabus": "Government schemes",
-   "exam": "pre",
-   "q": "Consider the following statements about the Postal Operations Scheme:\n1. Mail network optimisation is its largest component.\n2. Parcel network optimisation has a larger allocation than mail network optimisation.\n3. Philately operations have a larger allocation than marketing and quality of service.\nHow many of the statements given above are correct?",
-   "opts": [
-    "Only one",
-    "Only two",
-    "All three",
-    "None"
-   ],
-   "ans": 0,
-   "why": "Mail network optimisation gets Rs 575 crore against Rs 278 crore for parcels. Philately gets Rs 60 crore, less than the Rs 100 crore for marketing and service quality.",
-   "id": "caq-2026-11-284"
   },
   {
    "subject": "IR",
@@ -4398,21 +4338,6 @@
    "id": "caq-2026-11-293"
   },
   {
-   "subject": "Economy",
-   "syllabus": "Banking",
-   "exam": "pre",
-   "q": "In the Reserve Bank's November Bulletin, imported items make up what share of the new consumer price index basket with base 2024=100?",
-   "opts": [
-    "5.5 per cent",
-    "12.5 per cent",
-    "8.5 per cent",
-    "18 per cent"
-   ],
-   "ans": 2,
-   "why": "Imported items have a weight of 8.5 per cent but contributed about 18 per cent of headline inflation in October 2026.",
-   "id": "caq-2026-11-294"
-  },
-  {
    "subject": "Polity & Governance",
    "syllabus": "Judiciary",
    "exam": "pre",
@@ -4426,21 +4351,6 @@
    "ans": 3,
    "why": "Section 43D(5) sets the stricter bail condition under the Act. Section 43D(2) deals with police custody, Section 18 with conspiracy and Section 13 with punishment for unlawful activity.",
    "id": "caq-2026-11-295"
-  },
-  {
-   "subject": "IR",
-   "syllabus": "West Asia",
-   "exam": "pre",
-   "q": "In the context of the West Asia conflict, the port of Hodeidah, which was the subject of warnings, is located in",
-   "opts": [
-    "Yemen",
-    "Eritrea",
-    "Sudan",
-    "Oman"
-   ],
-   "ans": 0,
-   "why": "Hodeidah is a Red Sea port in Yemen under Houthi control.",
-   "id": "caq-2026-11-296"
   },
   {
    "subject": "Polity & Governance",
@@ -4566,15 +4476,15 @@
    "subject": "IR",
    "syllabus": "Regional groupings",
    "exam": "pre",
-   "q": "Consider the following areas:\n1. Maritime safety and security\n2. Climate finance\n3. Space cooperation\n4. Fisheries subsidies\nHow many of the above are among the five pillars of cooperation of the Colombo Security Conclave?",
+   "q": "Consider the following areas:\n1. Maritime safety and security\n2. Cyber security and protection of critical infrastructure\n3. Humanitarian assistance and disaster relief\n4. Climate finance\nHow many of the above are among the five pillars of cooperation of the Colombo Security Conclave?",
    "opts": [
     "Only one",
     "Only two",
     "Only three",
     "All four"
    ],
-   "ans": 0,
-   "why": "Only maritime safety and security is a pillar. The others are countering terrorism, trafficking and organised crime, cyber security and disaster relief.",
+   "ans": 2,
+   "why": "Maritime safety and security, cyber security and humanitarian assistance and disaster relief are three of the five pillars; the other two are countering terrorism and radicalisation, and fighting trafficking and organised crime. Climate finance is not a pillar.",
    "id": "caq-2026-11-305"
   },
   {
@@ -4591,21 +4501,6 @@
    "ans": 1,
    "why": "Rice and soyabean are sown with the monsoon and are kharif crops. Wheat and mustard are rabi crops.",
    "id": "caq-2026-11-306"
-  },
-  {
-   "subject": "Agriculture",
-   "syllabus": "Dairy",
-   "exam": "pre",
-   "q": "Consider the following:\n1. Operation Flood\n2. National Gopal Ratna Awards\n3. Animal Husbandry Infrastructure Development Fund\nHow many of the above relate to the dairy and livestock sector?",
-   "opts": [
-    "Only one",
-    "Only two",
-    "All three",
-    "None"
-   ],
-   "ans": 2,
-   "why": "Operation Flood built the milk grid, the Gopal Ratna Awards honour livestock and dairy work, and the infrastructure fund supports dairy and meat processing and feed plants.",
-   "id": "caq-2026-11-307"
   },
   {
    "subject": "Economy",
@@ -4666,21 +4561,6 @@
    "ans": 1,
    "why": "Section 8(4) gave sitting legislators time to appeal and was struck down in 2013. Section 8(3) is a separate provision on the sentence, so Statement-II does not explain Statement-I.",
    "id": "caq-2026-11-311"
-  },
-  {
-   "subject": "Agriculture",
-   "syllabus": "Dairy",
-   "exam": "pre",
-   "q": "National Milk Day, observed in India on 26 November, marks the birth anniversary of the person who led the cooperative dairy movement and Operation Flood. He is",
-   "opts": [
-    "Tribhuvandas Patel",
-    "Vikram Sarabhai",
-    "M. S. Swaminathan",
-    "Verghese Kurien"
-   ],
-   "ans": 3,
-   "why": "Verghese Kurien, born on 26 November 1921, led Operation Flood and the Amul cooperative model, so the day honours him.",
-   "id": "caq-2026-11-312"
   },
   {
    "subject": "Polity & Governance",
@@ -4788,21 +4668,6 @@
    "id": "caq-2026-11-319"
   },
   {
-   "subject": "International Relations",
-   "syllabus": "Groupings",
-   "exam": "pre",
-   "q": "With reference to the Indian Ocean Rim Association (IORA), consider the following statements:\n1. Its secretariat is located in Colombo.\n2. It has 23 member states.\n3. Blue economy is one of its priority areas.\nWhich of the statements given above is/are correct?",
-   "opts": [
-    "1 and 2 only",
-    "2 and 3 only",
-    "1 and 3 only",
-    "1, 2 and 3"
-   ],
-   "ans": 1,
-   "why": "IORA has 23 members and treats the blue economy as a priority. Its secretariat is at Ebene in Mauritius, not Colombo.",
-   "id": "caq-2026-11-320"
-  },
-  {
    "subject": "Polity & Governance",
    "syllabus": "Judiciary",
    "exam": "pre",
@@ -4833,21 +4698,6 @@
    "id": "caq-2026-11-322"
   },
   {
-   "subject": "Polity & Governance",
-   "syllabus": "Constitutional Bodies",
-   "exam": "pre",
-   "q": "With reference to Public Service Commissions in India, consider the following statements:\n1. The Chairman of a State Public Service Commission is appointed by the President.\n2. A member of a State Public Service Commission can be removed only by the President.\n3. High Courts can examine the legality of recruitment results through writs under Article 226.\nWhich of the statements given above is/are correct?",
-   "opts": [
-    "1 and 2 only",
-    "2 and 3 only",
-    "1 and 3 only",
-    "1, 2 and 3"
-   ],
-   "ans": 1,
-   "why": "State commission members are appointed by the Governor but removed only by the President, and High Courts review recruitment under Article 226. Statement 1 is wrong.",
-   "id": "caq-2026-11-323"
-  },
-  {
    "subject": "International Relations",
    "syllabus": "Organisations",
    "exam": "pre",
@@ -4863,36 +4713,6 @@
    "id": "caq-2026-11-324"
   },
   {
-   "subject": "Sports",
-   "syllabus": "Current Affairs",
-   "exam": "pre",
-   "q": "With reference to India’s bid for the 2036 Olympic Games, consider the following statements:\n1. Ahmedabad is the proposed host city.\n2. Los Angeles has been selected to host the 2032 Summer Games.\n3. The International Olympic Committee is headquartered in Lausanne.\nWhich of the statements given above is/are correct?",
-   "opts": [
-    "1 and 2 only",
-    "2 and 3 only",
-    "1 and 3 only",
-    "1, 2 and 3"
-   ],
-   "ans": 2,
-   "why": "Ahmedabad is the proposed host city and the IOC is based in Lausanne. The 2032 Games are allotted to Brisbane, while Los Angeles hosts in 2028.",
-   "id": "caq-2026-11-325"
-  },
-  {
-   "subject": "Environment",
-   "syllabus": "Biodiversity",
-   "exam": "pre",
-   "q": "With reference to Project Cheetah, consider the following statements:\n1. The cheetah was declared extinct in India in 1952.\n2. Kuno National Park is located in Rajasthan.\nWhich of the statements given above is/are correct?",
-   "opts": [
-    "1 only",
-    "2 only",
-    "Both 1 and 2",
-    "Neither 1 nor 2"
-   ],
-   "ans": 0,
-   "why": "The cheetah was declared extinct in India in 1952. Kuno National Park lies in Sheopur district of Madhya Pradesh.",
-   "id": "caq-2026-11-326"
-  },
-  {
    "subject": "Economy",
    "syllabus": "External Sector",
    "exam": "pre",
@@ -4906,21 +4726,6 @@
    "ans": 1,
    "why": "Reserves comprise foreign currency assets, gold, special drawing rights and the reserve position in the IMF. FDI inflows are a flow in the balance of payments, not a reserve component.",
    "id": "caq-2026-11-327"
-  },
-  {
-   "subject": "International Relations",
-   "syllabus": "Organisations",
-   "exam": "pre",
-   "q": "Consider the following organisations:\n1. Food and Agriculture Organization\n2. World Food Programme\n3. International Fund for Agricultural Development\n4. World Health Organization\nHow many of the above have their headquarters in Rome?",
-   "opts": [
-    "Only one",
-    "Only two",
-    "Only three",
-    "All four"
-   ],
-   "ans": 2,
-   "why": "FAO, WFP and IFAD are all based in Rome. The World Health Organization is headquartered in Geneva.",
-   "id": "caq-2026-11-328"
   },
   {
    "subject": "International Relations",
@@ -4953,21 +4758,6 @@
    "id": "caq-2026-11-330"
   },
   {
-   "subject": "Polity & Governance",
-   "syllabus": "Judiciary",
-   "exam": "pre",
-   "q": "Consider the following provisions of the Constitution:\n1. Article 129\n2. Article 142\n3. Article 144\n4. Article 215\nHow many of the above relate specifically to the Supreme Court or authorities acting for it?",
-   "opts": [
-    "Only one",
-    "Only two",
-    "Only three",
-    "All four"
-   ],
-   "ans": 2,
-   "why": "Articles 129, 142 and 144 concern the Supreme Court. Article 215 makes High Courts courts of record.",
-   "id": "caq-2026-11-331"
-  },
-  {
    "subject": "Economy",
    "syllabus": "Monetary Policy",
    "exam": "pre",
@@ -4983,25 +4773,10 @@
    "id": "caq-2026-11-332"
   },
   {
-   "subject": "Polity & Governance",
-   "syllabus": "Judiciary",
-   "exam": "pre",
-   "q": "Consider the following statements:\nStatement-I: A High Court can set aside the result of a public recruitment examination.\nStatement-II: Article 226 empowers High Courts to issue writs for enforcing fundamental rights and for any other purpose.\nWhich one of the following is correct in respect of the above statements?",
-   "opts": [
-    "Both Statement-I and Statement-II are correct and Statement-II explains Statement-I",
-    "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I",
-    "Statement-I is correct, but Statement-II is incorrect",
-    "Statement-I is incorrect, but Statement-II is correct"
-   ],
-   "ans": 0,
-   "why": "High Courts quash such results through writ jurisdiction under Article 226, which extends beyond fundamental rights to any other purpose.",
-   "id": "caq-2026-11-333"
-  },
-  {
    "subject": "Economy",
    "syllabus": "Capital Markets",
    "exam": "pre",
-   "q": "Consider the following statements:\nStatement-I: Foreign portfolio investors may now hold physically settled non-agricultural commodity contracts through the delivery period.\nStatement-II: They must close or roll over such positions before the tender period begins.\nWhich one of the following is correct in respect of the above statements?",
+   "q": "Consider the following statements:\nStatement-I: Foreign portfolio investors may now hold physically settled non-agricultural commodity contracts through the delivery period.\nStatement-II: They must close out or transfer such positions before the tender period begins.\nWhich one of the following is correct in respect of the above statements?",
    "opts": [
     "Both Statement-I and Statement-II are correct and Statement-II explains Statement-I",
     "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I",
@@ -5009,7 +4784,7 @@
     "Statement-I is incorrect, but Statement-II is correct"
    ],
    "ans": 3,
-   "why": "Positions must be closed or rolled over before the tender period, so Statement-I is wrong and Statement-II is correct.",
+   "why": "Positions must be closed out or transferred before the tender period, so Statement-I is wrong and Statement-II is correct.",
    "id": "caq-2026-11-334"
   },
   {
@@ -5043,21 +4818,6 @@
    "id": "caq-2026-11-336"
   },
   {
-   "subject": "International Relations",
-   "syllabus": "Organisations",
-   "exam": "pre",
-   "q": "With reference to the twice-yearly Hunger Hotspots early-warning report on acute food insecurity, it is published jointly by",
-   "opts": [
-    "WHO and UNICEF",
-    "IFAD and the World Bank",
-    "UNDP and UNEP",
-    "FAO and WFP"
-   ],
-   "ans": 3,
-   "why": "FAO and WFP jointly prepare the report on places where acute hunger may worsen.",
-   "id": "caq-2026-11-337"
-  },
-  {
    "subject": "Environment",
    "syllabus": "Biodiversity",
    "exam": "pre",
@@ -5086,51 +4846,6 @@
    "ans": 0,
    "why": "Eight cheetahs came from Namibia in 2022; South Africa sent 12 in 2023 and Botswana nine in 2026.",
    "id": "caq-2026-11-339"
-  },
-  {
-   "subject": "Economy",
-   "syllabus": "Monetary Policy",
-   "exam": "pre",
-   "q": "With reference to the cash reserve ratio of banks in India, the Reserve Bank’s power to prescribe it flows from",
-   "opts": [
-    "Section 24 of the Banking Regulation Act, 1949",
-    "Section 35A of the Banking Regulation Act, 1949",
-    "Section 42 of the RBI Act",
-    "Section 17 of the RBI Act, 1934"
-   ],
-   "ans": 2,
-   "why": "Section 42 of the RBI Act deals with CRR. Section 24 of the Banking Regulation Act concerns the statutory liquidity ratio.",
-   "id": "caq-2026-11-340"
-  },
-  {
-   "subject": "Polity & Governance",
-   "syllabus": "Judiciary",
-   "exam": "pre",
-   "q": "With reference to the Supreme Court of India and its power to punish for contempt of itself, it is declared a court of record by",
-   "opts": [
-    "Article 124",
-    "Article 136",
-    "Article 141",
-    "Article 129"
-   ],
-   "ans": 3,
-   "why": "Article 129 makes the Supreme Court a court of record with power to punish for its own contempt.",
-   "id": "caq-2026-11-341"
-  },
-  {
-   "subject": "Science & Technology",
-   "syllabus": "Physics",
-   "exam": "pre",
-   "q": "The 2014 Nobel Prize in Physics was awarded for the invention of",
-   "opts": [
-    "efficient blue light-emitting diodes",
-    "graphene as a two-dimensional material",
-    "laser cooling of atoms",
-    "the Higgs boson"
-   ],
-   "ans": 0,
-   "why": "Akasaki, Amano and Nakamura received the prize for efficient blue LEDs, which enabled bright white LED lighting.",
-   "id": "caq-2026-11-342"
   }
  ]
 }
