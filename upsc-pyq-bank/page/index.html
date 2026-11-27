@@ -21244,7 +21244,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "457";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "458";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -21417,9 +21417,18 @@ function billingRefresh(skipClock){
   return BILL.pend;
 }
 // Google refunds a purchase that is not acknowledged within 3 days: confirm it, retry on failure, and remember the outcome
+// the server confirms the purchase with Google as well (the in-app confirmation alone was not reliable)
+function billingAckServer(token){
+  var k = "dossier.ackS."+token.slice(-24);
+  if(lsGet(k)) return;
+  try{ fetch(API_BASE+"/playAck", {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify({token:token})})
+    .then(function(r){ return r.json().then(function(j){ if(r.ok && j.ok){ lsSet(k, "1"); lsSet("dossier.ack.err", ""); } else lsSet("dossier.ack.err", "server: "+String(j.error||r.status).slice(0,120)); }); })
+    .catch(function(e){ lsSet("dossier.ack.err", "server: "+String(e&&e.message||e).slice(0,100)); }); }catch(e){}
+}
 function billingAck(svc, token){
   if(!token) return Promise.resolve(false);
   var key = "dossier.ack."+token.slice(-24);
+  billingAckServer(token);
   if(lsGet(key)) { BILL.ack = "yes"; return Promise.resolve(true); }
   var tries = 0;
   var go = function(){

@@ -9,7 +9,7 @@ function unb64u(s) {
 const RS256 = { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" };
 
 // Returns a function that gives a valid access token for Firestore, refreshing it about every 50 minutes.
-export function serviceTokenGetter(saJson, fetchFn) {
+export function serviceTokenGetter(saJson, fetchFn, scope) {
   const sa = typeof saJson === "string" ? JSON.parse(saJson) : saJson;
   let cached = null, until = 0, key = null;
   return async function () {
@@ -21,7 +21,7 @@ export function serviceTokenGetter(saJson, fetchFn) {
     }
     const iat = Math.floor(now / 1000);
     const head = b64uText(JSON.stringify({ alg: "RS256", typ: "JWT" }));
-    const claims = b64uText(JSON.stringify({ iss: sa.client_email, scope: "https://www.googleapis.com/auth/datastore", aud: "https://oauth2.googleapis.com/token", iat, exp: iat + 3600 }));
+    const claims = b64uText(JSON.stringify({ iss: sa.client_email, scope: scope || "https://www.googleapis.com/auth/datastore", aud: "https://oauth2.googleapis.com/token", iat, exp: iat + 3600 }));
     const sig = b64u(await crypto.subtle.sign(RS256.name, key, enc.encode(head + "." + claims)));
     const r = await (fetchFn || fetch)("https://oauth2.googleapis.com/token", {
       method: "POST",
