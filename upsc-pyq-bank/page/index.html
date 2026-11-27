@@ -19310,7 +19310,9 @@ function ambSync(){
 }
 document.addEventListener("pointerdown", function(){ if(amb.ctx && amb.ctx.state==="suspended" && amb.playing){ try{ amb.ctx.resume(); }catch(e){} } else if(!amb.playing && ambOn() && timerState.running) ambSync(); }, {passive:true});
 document.addEventListener("visibilitychange", function(){ if(document.visibilityState==="visible" && amb.ctx && amb.playing && amb.ctx.state!=="running"){ try{ amb.ctx.resume(); }catch(e){} } });
-function ambPreview(ms){ amb.preview = Date.now() + (ms||6000); ambSync(); clearTimeout(amb.pvT); amb.pvT = setTimeout(ambSync, (ms||6000)+50); }
+// A sound plays for 35 seconds when it is chosen or turned on, so there is time to really listen to it before the timer starts
+var AMB_PREVIEW_MS = 35000;
+function ambPreview(ms){ ms = ms || AMB_PREVIEW_MS; amb.preview = Date.now() + ms; ambSync(); clearTimeout(amb.pvT); amb.pvT = setTimeout(ambSync, ms+50); }
 // the "No sound?" tip is a small popup (media volume; iPhones and iPads also get a silent-switch hint): shown once the first time sounds are turned on, and again from the link in Settings
 function soundTipModal(){
   var ios = /iPad|iPhone|iPod/.test(navigator.userAgent || "") || (navigator.platform==="MacIntel" && navigator.maxTouchPoints > 1);   // iPads report as a Mac
@@ -19319,7 +19321,7 @@ function soundTipModal(){
   var ok = m.querySelector("#stOk"); if(ok){ ok.addEventListener("click", closeModal); try{ ok.focus(); }catch(e){} }
 }
 function soundTipOnce(){ if(lsGet("dossier.soundTip")) return; lsSet("dossier.soundTip", "1"); setTimeout(soundTipModal, 1500); }
-function ambSetOn(v){ lsSet("dossier.soundOn", v ? "1" : "0"); if(v){ ambPreview(5000); soundTipOnce(); } else { amb.preview = 0; ambSync(); } }
+function ambSetOn(v){ lsSet("dossier.soundOn", v ? "1" : "0"); if(v){ ambPreview(); soundTipOnce(); } else { amb.preview = 0; ambSync(); } }
 var AMB_ICON_ON = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 010 6M18.5 6.5a8 8 0 010 11"/></svg>';
 var AMB_ICON_OFF = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M17 9l5 6M22 9l-5 6"/></svg>';
 function timerUi(){
@@ -21280,7 +21282,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "463";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "464";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -21925,7 +21927,7 @@ function renderSettings(){
   bindGuides(host);
   if(cloudConfigured() && !cloud.user) cloudPrepare();
   ambRefreshSaved().then(ambPaintSaved); ambPaintSaved();
-  var vr = host.querySelector("#sndVol"); if(vr) vr.oninput = function(){ lsSet("dossier.soundVol", String(vr.value/100)); if(amb.master && amb.ctx) amb.master.gain.setTargetAtTime(vr.value/100*1.6*ambGainOf(amb.id), amb.ctx.currentTime, .05); else if(ambOn()) ambPreview(3000); };
+  var vr = host.querySelector("#sndVol"); if(vr) vr.oninput = function(){ lsSet("dossier.soundVol", String(vr.value/100)); if(amb.master && amb.ctx) amb.master.gain.setTargetAtTime(vr.value/100*1.6*ambGainOf(amb.id), amb.ctx.currentTime, .05); else if(ambOn()) ambPreview(10000); };
   if(!host._wired){
     host._wired = true;
     host.addEventListener("click", function(e){
@@ -21953,7 +21955,7 @@ function renderSettings(){
         if(k==="dl"){ var did = sd.getAttribute("data-id"); if(amb.dl[did]) ambCancel(did); else if(amb.saved[did]) ambUnsave(did); else ambSave(did); return; }
         if(k==="all"){ ambSaveAll(); return; }
         if(k==="tip"){ soundTipModal(); return; }
-        if(k==="pick"){ if(e.target.closest && e.target.closest(".snd-act")) return; lsSet("dossier.soundId", sd.getAttribute("data-id")); if(!ambOn()){ lsSet("dossier.soundOn", "1"); soundTipOnce(); } renderSettings(); ambPreview(6000); return; }
+        if(k==="pick"){ if(e.target.closest && e.target.closest(".snd-act")) return; lsSet("dossier.soundId", sd.getAttribute("data-id")); if(!ambOn()){ lsSet("dossier.soundOn", "1"); soundTipOnce(); } renderSettings(); ambPreview(); return; }
       }
       var sc = e.target.closest ? e.target.closest(".scene-opt[data-scene]") : null;
       if(sc){ lsSet("dossier.timerScene", sc.getAttribute("data-scene")); renderSettings(); toast("Timer background: "+sc.querySelector("b").textContent.replace(/ \u2713/, "")+"."); return; }
