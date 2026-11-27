@@ -19019,6 +19019,10 @@ var AMB_SOUNDS = [["rain","Forest rain","Rain falling in the forest","\uD83C\uDF
 var amb = window.__amb = {ctx:null, master:null, nodes:[], timers:[], id:"", playing:false, preview:0, cache:{}, pending:{}, tok:0};
 function ambOn(){ return lsGet("dossier.soundOn")==="1"; }
 function ambId(){ var v = lsGet("dossier.soundId"); return AMB_SOUNDS.some(function(x){ return x[0]===v; }) ? v : "rain"; }
+// Each sound is a little louder or quieter in its file, so a level per sound is applied to make them all play at the same loudness
+// at the same volume setting. Matched to "Forest rain" (the middle one) by measuring the real output at the default volume; all within 0.2 dB.
+var AMB_GAIN = {"rain": 1.0, "wind": 0.785, "waves": 1.0, "forest": 1.318, "brown": 1.462, "white": 0.699, "fire": 1.122, "stream": 0.977, "storm": 0.543, "drone": 0.989};
+function ambGainOf(id){ return AMB_GAIN[id] || 1; }
 function ambVol(){ var v = parseFloat(lsGet("dossier.soundVol")); return isFinite(v) ? Math.max(0, Math.min(1, v)) : .5; }
 // Each sound is built once, as a 60 second stereo recording (4 s of lead-in is thrown away so the end joins the start without a click),
 // then played in a loop. Everything is made from filtered noise, tones and short random events: no files are downloaded.
@@ -19286,7 +19290,7 @@ function ambPlay(){
     var AC = window.AudioContext || window.webkitAudioContext; if(!AC) return;
     if(!amb.ctx) amb.ctx = new AC();
     if(amb.ctx.state==="suspended") amb.ctx.resume();
-    if(amb.playing && amb.id===ambId()){ if(amb.master) amb.master.gain.setTargetAtTime(ambVol()*1.6, amb.ctx.currentTime, .1); return; }
+    if(amb.playing && amb.id===ambId()){ if(amb.master) amb.master.gain.setTargetAtTime(ambVol()*1.6*ambGainOf(amb.id), amb.ctx.currentTime, .1); return; }
     if(amb.playing || amb.master) ambStop();
     amb.id = ambId(); amb.master = amb.ctx.createGain(); amb.master.gain.value = 0; if(!amb.comp){ amb.comp = amb.ctx.createDynamicsCompressor(); amb.comp.connect(amb.ctx.destination); } amb.master.connect(amb.comp); amb.playing = true;
     var tok = ++amb.tok, myId = amb.id;
@@ -19294,7 +19298,7 @@ function ambPlay(){
     ambGet(myId).then(function(buf){
       if(tok!==amb.tok || !amb.playing || !amb.master) return;
       var src = amb.ctx.createBufferSource(); src.buffer = buf; src.loop = true; src.connect(amb.master); src.start(); amb.nodes.push(src);
-      amb.master.gain.setTargetAtTime(ambVol()*1.6, amb.ctx.currentTime, .8);
+      amb.master.gain.setTargetAtTime(ambVol()*1.6*ambGainOf(myId), amb.ctx.currentTime, .8);
     }).catch(function(e){ console.error("Sound failed:", e); });
   }catch(e){ console.error("Sound failed:", e); amb.playing = false; }
 }
@@ -21268,7 +21272,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "461";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "462";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -21912,7 +21916,7 @@ function renderSettings(){
   bindGuides(host);
   if(cloudConfigured() && !cloud.user) cloudPrepare();
   ambRefreshSaved().then(ambPaintSaved); ambPaintSaved();
-  var vr = host.querySelector("#sndVol"); if(vr) vr.oninput = function(){ lsSet("dossier.soundVol", String(vr.value/100)); if(amb.master && amb.ctx) amb.master.gain.setTargetAtTime(vr.value/100*1.6, amb.ctx.currentTime, .05); else if(ambOn()) ambPreview(3000); };
+  var vr = host.querySelector("#sndVol"); if(vr) vr.oninput = function(){ lsSet("dossier.soundVol", String(vr.value/100)); if(amb.master && amb.ctx) amb.master.gain.setTargetAtTime(vr.value/100*1.6*ambGainOf(amb.id), amb.ctx.currentTime, .05); else if(ambOn()) ambPreview(3000); };
   if(!host._wired){
     host._wired = true;
     host.addEventListener("click", function(e){
