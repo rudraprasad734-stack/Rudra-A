@@ -21243,7 +21243,7 @@ function perfCardHtml(){
       return '<button type="button" class="perf-opt'+(m===o[0] ? " sel" : "")+'" role="radio" aria-checked="'+(m===o[0] ? "true" : "false")+'" data-perf="'+o[0]+'"><b>'+o[1]+(m===o[0] ? " \u2713" : "")+'</b><small>'+o[2]+'</small></button>';
     }).join("")+'</div>'+(m==="auto" ? '<div class="muted small">Right now: '+(["full detail","balanced","battery saver"][tier])+'.</div>' : '')+'</div>';
 }
-var APP_BUILD = "454";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
+var APP_BUILD = "455";   // keep in step with CACHE_NAME in sw.js so Settings shows which build is running
 function sceneCardHtml(){
   var cur = timerSceneId();
   return '<div class="card set-card scene-card"><h3>Timer background</h3><div class="muted">The moving picture behind your timer. Saved on this device.</div>'+
@@ -21391,7 +21391,7 @@ function billingService(){
 function billingFmt(p){ try{ return new Intl.NumberFormat(undefined, {style:"currency", currency:p.currency, maximumFractionDigits:0}).format(+p.value); }catch(e){ return p.value+" "+p.currency; } }
 function billingPriceText(){
   var d = BILL.details; if(!d || !d.price) return SUB_FALLBACK_PRICE;
-  var intro = d.introductoryPrice && d.introductoryPrice.value != null ? d.introductoryPrice : null, p = intro || d.price;
+  var ip = d.introductoryPrice, intro = ip && +ip.value > 0 && +ip.value < +d.price.value ? ip : null, p = intro || d.price;   // Play can report an empty (0) intro price when there is no offer: ignore it
   var mo = Math.max(1, Math.round((+p.value||0)/12));
   var head = billingFmt(p)+(intro ? " for the first year" : " a year")+" (about "+billingFmt({currency:p.currency, value:mo})+" a month)";
   return intro ? head+", then "+billingFmt(d.price)+" a year" : head;
