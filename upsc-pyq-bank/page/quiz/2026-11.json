@@ -4911,12 +4911,12 @@
    "subject": "Polity & Governance",
    "syllabus": "Constitution",
    "exam": "pre",
-   "q": "Article 334A of the Constitution, inserted by the 106th Amendment, deals with",
+   "q": "With reference to the reservation of seats in the Lok Sabha and State Legislative Assemblies, which one of the following Articles, inserted by the 106th Constitution Amendment, provides one-third reservation for women to take effect after delimitation that follows the first Census after its commencement?",
    "opts": [
-    "reservation of seats for Scheduled Tribes in the Lok Sabha",
-    "women’s reservation in the Lok Sabha and Assemblies",
-    "nomination of Anglo-Indian members to the House",
-    "duration of reservation for Scheduled Castes in Legislatures"
+    "Article 243T",
+    "Article 334A",
+    "Article 330",
+    "Article 332"
    ],
    "ans": 1,
    "why": "Article 334A provides one-third reservation for women in the Lok Sabha and State Assemblies, to take effect after delimitation that follows the first Census after its commencement.",
@@ -4956,7 +4956,7 @@
    "subject": "Polity & Governance",
    "syllabus": "Disaster management",
    "exam": "pre",
-   "q": "Under the Disaster Management Act, 2005, the National Disaster Management Authority is chaired by",
+   "q": "Under the Disaster Management Act, 2005, a three-tier institutional framework is created at the national, State and district levels. At the national level, the National Disaster Management Authority is chaired by",
    "opts": [
     "the Prime Minister",
     "the Home Minister",
@@ -5001,12 +5001,12 @@
    "subject": "Polity & Governance",
    "syllabus": "Governance",
    "exam": "pre",
-   "q": "The Unique Land Parcel Identification Number under the Digital India Land Records Modernization Programme consists of",
+   "q": "Under the Digital India Land Records Modernization Programme, every land parcel is to be identified by a unique number so that records, maps and transactions can be linked. Which one of the following describes this number?",
    "opts": [
-    "10 numeric digits",
-    "12 numeric digits",
-    "16 alphanumeric characters",
-    "14 alphanumeric characters"
+    "A 10-digit numeric code",
+    "A 12-digit numeric code",
+    "A 16-character alphanumeric code",
+    "A 14-character alphanumeric code"
    ],
    "ans": 3,
    "why": "Each plot is given a 14-character alphanumeric number so that records, maps and transactions can be linked; it is also called Bhu-Aadhaar.",
@@ -5031,7 +5031,7 @@
    "subject": "Polity & Governance",
    "syllabus": "Education",
    "exam": "pre",
-   "q": "The University Grants Commission framed regulations on curbing the menace of ragging in higher educational institutions in",
+   "q": "Following the directions of the Supreme Court on the menace of ragging and the report of the Raghavan Committee of 2007, the University Grants Commission framed Regulations on curbing ragging in higher educational institutions in which one of the following years?",
    "opts": [
     "1999",
     "2005",
@@ -5061,7 +5061,7 @@
    "subject": "Environment",
    "syllabus": "Pollution",
    "exam": "pre",
-   "q": "The Commission for Air Quality Management in the National Capital Region and Adjoining Areas was constituted under a law enacted in",
+   "q": "The Commission for Air Quality Management in the National Capital Region and Adjoining Areas, which coordinates action against air pollution across Delhi, Haryana, Punjab, Rajasthan and Uttar Pradesh, was constituted under a law enacted in which one of the following years?",
    "opts": [
     "2010",
     "2021",
@@ -5106,7 +5106,7 @@
    "subject": "International Relations",
    "syllabus": "Neighbourhood",
    "exam": "pre",
-   "q": "The road map titled “Viksit Bharat and Samunnat Nepal” was announced during the November 2026 visit to India of the Prime Minister of Nepal,",
+   "q": "During the first bilateral visit abroad by the Prime Minister of Nepal to India in November 2026, a 10-pillar road map titled “Viksit Bharat and Samunnat Nepal” was announced. Who is the Prime Minister of Nepal who made this visit?",
    "opts": [
     "Balendra Shah",
     "K.P. Sharma Oli",
@@ -5136,7 +5136,7 @@
    "subject": "International Relations",
    "syllabus": "Neighbourhood",
    "exam": "pre",
-   "q": "India and Bangladesh signed an extradition treaty in",
+   "q": "India and Bangladesh have a bilateral treaty for the surrender of persons wanted for criminal offences, which was later amended in 2016. In which one of the following years was this extradition treaty originally signed?",
    "opts": [
     "2005",
     "2010",
@@ -5211,7 +5211,7 @@
    "subject": "International Relations",
    "syllabus": "Bilateral",
    "exam": "pre",
-   "q": "The nuclear tests carried out by India at Pokhran in May 1998 were conducted under the code name",
+   "q": "In May 1998, India conducted a series of nuclear tests at Pokhran in Rajasthan, which led to sanctions by the United States. Under which one of the following code names were these tests conducted?",
    "opts": [
     "Operation Vijay",
     "Operation Shakti",
@@ -5286,12 +5286,12 @@
    "subject": "International Relations",
    "syllabus": "Electoral systems",
    "exam": "pre",
-   "q": "New Zealand elects its Parliament by",
+   "q": "With reference to the electoral systems of the world, the 130-member Parliament of New Zealand is elected by a system in which each party’s total seats broadly match its share of the party vote. Which one of the following is this system?",
    "opts": [
-    "first-past-the-post in single-member seats",
-    "single transferable vote in multi-member seats",
-    "mixed-member proportional representation",
-    "preferential voting in single-member seats with run-offs"
+    "First-past-the-post in single-member seats",
+    "Single transferable vote in multi-member seats",
+    "Mixed-member proportional representation",
+    "Preferential voting in single-member seats"
    ],
    "ans": 2,
    "why": "Party votes decide each party’s overall seat share, with constituency seats counted within it.",
