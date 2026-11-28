@@ -1,6 +1,6 @@
 {
  "month": "2026-11",
- "updated": "27 Nov 2026",
+ "updated": "28 Nov 2026",
  "questions": [
   {
    "subject": "Polity & Governance",
@@ -4846,6 +4846,471 @@
    "ans": 0,
    "why": "Eight cheetahs came from Namibia in 2022; South Africa sent 12 in 2023 and Botswana nine in 2026.",
    "id": "caq-2026-11-339"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Parliament",
+   "exam": "pre",
+   "q": "Under Article 82, the allocation of Lok Sabha seats among States stays frozen until the publication of the figures of the first Census taken after the year",
+   "opts": [
+    "2011",
+    "2021",
+    "2026",
+    "2031"
+   ],
+   "ans": 2,
+   "why": "The 84th Amendment of 2001 froze the allocation until the first Census after 2026; the new Bill proposes to extend the freeze until the year 2051.",
+   "id": "caq-2026-11-340"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Parliament",
+   "exam": "pre",
+   "q": "With reference to the composition of the legislatures in India, consider the following statements:\n1. Article 81 provides for the composition of the House of the People.\n2. Article 82 provides for readjustment of seats after each Census.\n3. Article 170 provides for the composition of the Legislative Assemblies of the States.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "Article 81 deals with the House of the People, Article 82 with readjustment after each Census and Article 170 with the Legislative Assemblies of the States.",
+   "id": "caq-2026-11-341"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Parliament",
+   "exam": "pre",
+   "q": "Consider the following Constitution Amendments:\n1. 42nd Amendment\n2. 73rd Amendment\n3. 84th Amendment\n4. 87th Amendment\nHow many of the above dealt with the freeze or the Census basis for readjustment of Lok Sabha seats?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 2,
+   "why": "The 42nd froze the allocation until the first Census after 2000, the 84th extended it until the first Census after 2026, and the 87th changed the basis for readjusting seats within States to the 2001 Census. The 73rd concerns Panchayati Raj.",
+   "id": "caq-2026-11-342"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Parliament",
+   "exam": "pre",
+   "q": "Consider the following statements:\nStatement-I: Extending the freeze on seat allocation to 2051 while enlarging the Lok Sabha uniformly would leave each State’s share of seats unchanged.\nStatement-II: A uniform percentage rise in the seats of every State keeps their proportions to each other the same.\nWhich one of the following is correct in respect of the above statements?",
+   "opts": [
+    "Both Statement-I and Statement-II are correct and Statement-II explains Statement-I",
+    "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I",
+    "Statement-I is correct, but Statement-II is incorrect",
+    "Statement-I is incorrect, but Statement-II is correct"
+   ],
+   "ans": 0,
+   "why": "If every State’s seats rise by the same percentage, the ratio between States does not change, which is why the share of each State stays the same.",
+   "id": "caq-2026-11-343"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Constitution",
+   "exam": "pre",
+   "q": "Article 334A of the Constitution, inserted by the 106th Amendment, deals with",
+   "opts": [
+    "reservation of seats for Scheduled Tribes in the Lok Sabha",
+    "women’s reservation in the Lok Sabha and Assemblies",
+    "nomination of Anglo-Indian members to the House",
+    "duration of reservation for Scheduled Castes in Legislatures"
+   ],
+   "ans": 1,
+   "why": "Article 334A provides one-third reservation for women in the Lok Sabha and State Assemblies, to take effect after delimitation that follows the first Census after its commencement.",
+   "id": "caq-2026-11-344"
+  },
+  {
+   "subject": "Security",
+   "syllabus": "Defence",
+   "exam": "pre",
+   "q": "With reference to the Nilgiri-class (Project 17A) frigates of the Indian Navy, consider the following statements:\n1. They use a Combined Diesel or Gas propulsion system.\n2. They were designed by the Navy’s Warship Design Bureau.\n3. They are powered by nuclear reactors.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The ships use a diesel engine with a gas turbine (CODOG) and were designed by the Warship Design Bureau. None of them is nuclear-powered.",
+   "id": "caq-2026-11-345"
+  },
+  {
+   "subject": "Security",
+   "syllabus": "Defence",
+   "exam": "pre",
+   "q": "The seventh and final ship of the Project 17A programme, handed over to the Navy by Garden Reach Shipbuilders and Engineers in November 2026, is",
+   "opts": [
+    "INS Himgiri",
+    "INS Mahendragiri",
+    "INS Udaygiri",
+    "INS Vindhyagiri"
+   ],
+   "ans": 3,
+   "why": "Vindhyagiri completes the delivery of all seven Project 17A ships within 23 months of the first ship, INS Nilgiri, in December 2024.",
+   "id": "caq-2026-11-346"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Disaster management",
+   "exam": "pre",
+   "q": "Under the Disaster Management Act, 2005, the National Disaster Management Authority is chaired by",
+   "opts": [
+    "the Prime Minister",
+    "the Home Minister",
+    "the President",
+    "the Cabinet Secretary"
+   ],
+   "ans": 0,
+   "why": "The National Authority is headed by the Prime Minister, and the State Authorities by the Chief Ministers.",
+   "id": "caq-2026-11-347"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Disaster management",
+   "exam": "pre",
+   "q": "With reference to disaster management in India, consider the following statements:\n1. Each State constitutes a State Disaster Response Fund under the Disaster Management Act, 2005.\n2. The Union government contributes a share of the State Disaster Response Fund.\n3. The State Disaster Management Authority is headed by the Chief Minister.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 3,
+   "why": "Each State has a fund, the Centre contributes a share to it, and the State Authority is headed by the Chief Minister.",
+   "id": "caq-2026-11-348"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Governance",
+   "exam": "pre",
+   "q": "With reference to land records in India, consider the following statements:\n1. Land and land revenue records are in the Union List of the Seventh Schedule.\n2. The Digital India Land Records Modernization Programme promotes a unique land parcel identification number.\n3. A pattadar passbook records the ownership of a landholding of a farmer.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "Land and land revenue records are State subjects. The unique parcel number scheme and the pattadar passbook statements are correct.",
+   "id": "caq-2026-11-349"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Governance",
+   "exam": "pre",
+   "q": "The Unique Land Parcel Identification Number under the Digital India Land Records Modernization Programme consists of",
+   "opts": [
+    "10 numeric digits",
+    "12 numeric digits",
+    "16 alphanumeric characters",
+    "14 alphanumeric characters"
+   ],
+   "ans": 3,
+   "why": "Each plot is given a 14-character alphanumeric number so that records, maps and transactions can be linked; it is also called Bhu-Aadhaar.",
+   "id": "caq-2026-11-350"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "State legislature",
+   "exam": "pre",
+   "q": "Consider the following statements about the State Legislature:\n1. The Governor summons the House of a State Legislature to meet.\n2. Prorogation of the Assembly by the Governor dissolves it.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 only",
+    "2 only",
+    "Both 1 and 2",
+    "Neither 1 nor 2"
+   ],
+   "ans": 0,
+   "why": "Under Article 174 the Governor summons and prorogues the House. Prorogation only ends a session; dissolution of the Assembly is a different act.",
+   "id": "caq-2026-11-351"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Education",
+   "exam": "pre",
+   "q": "The University Grants Commission framed regulations on curbing the menace of ragging in higher educational institutions in",
+   "opts": [
+    "1999",
+    "2005",
+    "2009",
+    "2015"
+   ],
+   "ans": 2,
+   "why": "The 2009 Regulations followed the Raghavan Committee of 2007 and directions of the Supreme Court, and make institutions responsible for preventing ragging.",
+   "id": "caq-2026-11-352"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Pollution",
+   "exam": "pre",
+   "q": "With reference to air quality in India, consider the following statements:\n1. An Air Quality Index between 201 and 300 is classified as ‘poor’.\n2. The ‘severe’ category begins at an Air Quality Index of 301.\n3. The Commission for Air Quality Management in the National Capital Region and Adjoining Areas was set up by a law of 2021.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "‘Poor’ is 201 to 300, and the Commission was created by a 2021 law. ‘Very poor’ is 301 to 400 and ‘severe’ begins at 401.",
+   "id": "caq-2026-11-353"
+  },
+  {
+   "subject": "Environment",
+   "syllabus": "Pollution",
+   "exam": "pre",
+   "q": "The Commission for Air Quality Management in the National Capital Region and Adjoining Areas was constituted under a law enacted in",
+   "opts": [
+    "2010",
+    "2021",
+    "2016",
+    "2019"
+   ],
+   "ans": 1,
+   "why": "The Commission was set up by a 2021 Act, replacing the earlier authority for the region, to coordinate action on air pollution across States.",
+   "id": "caq-2026-11-354"
+  },
+  {
+   "subject": "Polity & Governance",
+   "syllabus": "Governance",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. Road transport is exclusively a subject of the Union List.\n2. Inter-State road transport services run on permits agreed between the transport authorities of the States concerned under the Motor Vehicles Act, 1988.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 only",
+    "2 only",
+    "Both 1 and 2",
+    "Neither 1 nor 2"
+   ],
+   "ans": 1,
+   "why": "Inter-State services depend on reciprocal arrangements and permits under the Act. Road transport is not exclusively a Union subject.",
+   "id": "caq-2026-11-355"
+  },
+  {
+   "subject": "Social Justice",
+   "syllabus": "Women",
+   "exam": "pre",
+   "q": "With reference to leave for parents in India, consider the following statements:\n1. The Maternity Benefit Act, 1961 provides 26 weeks of paid leave for the first two children.\n2. A male central government employee with fewer than two surviving children is entitled to 15 days of paternity leave.\n3. A central law makes paternity leave compulsory in the private sector.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 0,
+   "why": "The first two statements are correct. No central law makes paternity leave compulsory for private employers.",
+   "id": "caq-2026-11-356"
+  },
+  {
+   "subject": "International Relations",
+   "syllabus": "Neighbourhood",
+   "exam": "pre",
+   "q": "The road map titled “Viksit Bharat and Samunnat Nepal” was announced during the November 2026 visit to India of the Prime Minister of Nepal,",
+   "opts": [
+    "Balendra Shah",
+    "K.P. Sharma Oli",
+    "Pushpa Kamal Dahal",
+    "Sher Bahadur Deuba"
+   ],
+   "ans": 0,
+   "why": "Balendra Shah made his first bilateral visit abroad to India and met the Prime Minister on 23 November 2026.",
+   "id": "caq-2026-11-357"
+  },
+  {
+   "subject": "International Relations",
+   "syllabus": "Neighbourhood",
+   "exam": "pre",
+   "q": "With reference to India–Nepal relations, consider the following statements:\n1. The Treaty of Peace and Friendship between the two countries was signed in 1960.\n2. India’s Neighbourhood First policy gives priority to relations with its immediate neighbours.\n3. Nepal shares a border with five Indian States.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "The Treaty was signed in 1950. Nepal borders Uttarakhand, Uttar Pradesh, Bihar, West Bengal and Sikkim.",
+   "id": "caq-2026-11-358"
+  },
+  {
+   "subject": "International Relations",
+   "syllabus": "Neighbourhood",
+   "exam": "pre",
+   "q": "India and Bangladesh signed an extradition treaty in",
+   "opts": [
+    "2005",
+    "2010",
+    "2019",
+    "2013"
+   ],
+   "ans": 3,
+   "why": "The treaty was signed in 2013 and amended in 2016 to ease the exchange of wanted persons.",
+   "id": "caq-2026-11-359"
+  },
+  {
+   "subject": "International Relations",
+   "syllabus": "Neighbourhood",
+   "exam": "pre",
+   "q": "Consider the following statements:\nStatement-I: Extradition is usually not granted for an offence of a political character.\nStatement-II: Most extradition treaties contain an exception for political offences.\nWhich one of the following is correct in respect of the above statements?",
+   "opts": [
+    "Both Statement-I and Statement-II are correct and Statement-II explains Statement-I",
+    "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I",
+    "Statement-I is correct, but Statement-II is incorrect",
+    "Statement-I is incorrect, but Statement-II is correct"
+   ],
+   "ans": 0,
+   "why": "The exception for political offences is a standard clause in extradition treaties, which is the reason such requests are refused in most cases.",
+   "id": "caq-2026-11-360"
+  },
+  {
+   "subject": "International Relations",
+   "syllabus": "Groupings",
+   "exam": "pre",
+   "q": "Consider the following countries:\n1. Pakistan\n2. Saudi Arabia\n3. Türkiye\n4. Egypt\nHow many of the above are members of the Makkah Alliance for Defence, the defence pact signed in August 2026?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 2,
+   "why": "Pakistan, Saudi Arabia and Türkiye signed the pact; Egypt is not a member.",
+   "id": "caq-2026-11-361"
+  },
+  {
+   "subject": "International Relations",
+   "syllabus": "West Asia",
+   "exam": "pre",
+   "q": "Consider the following:\n1. Strait of Hormuz\n2. Gulf of Oman\n3. Persian Gulf\n4. Gulf of Aden\nHow many of the above water bodies lie along the coast of Yemen?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 0,
+   "why": "Only the Gulf of Aden touches Yemen. The Strait of Hormuz, the Gulf of Oman and the Persian Gulf lie to the north and east of the Arabian Peninsula, away from Yemen’s coast.",
+   "id": "caq-2026-11-362"
+  },
+  {
+   "subject": "International Relations",
+   "syllabus": "West Asia",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. The Strait of Hormuz lies between Iran and Oman.\n2. The Bab-el-Mandeb strait links the Red Sea with the Arabian Sea directly.\n3. The Bab-el-Mandeb strait lies between Yemen and Djibouti.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "Hormuz lies between Iran and Oman, and Bab-el-Mandeb lies between Yemen and Djibouti. It joins the Red Sea to the Gulf of Aden, which then opens to the Arabian Sea.",
+   "id": "caq-2026-11-363"
+  },
+  {
+   "subject": "International Relations",
+   "syllabus": "Bilateral",
+   "exam": "pre",
+   "q": "The nuclear tests carried out by India at Pokhran in May 1998 were conducted under the code name",
+   "opts": [
+    "Operation Vijay",
+    "Operation Shakti",
+    "Operation Meghdoot",
+    "Operation Safed Sagar"
+   ],
+   "ans": 1,
+   "why": "Operation Shakti included tests on 11 and 13 May 1998; the United States imposed sanctions, which were later eased after the dialogue between the two countries.",
+   "id": "caq-2026-11-364"
+  },
+  {
+   "subject": "International Relations",
+   "syllabus": "Bilateral",
+   "exam": "pre",
+   "q": "With reference to India–US relations, consider the following statements:\n1. India conducted the Pokhran-II tests in May 1998.\n2. President Bill Clinton visited India in 1992.\n3. India conducted its first nuclear test at Pokhran in 1974.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 2,
+   "why": "Pokhran-II was in May 1998 and the first test in 1974. Clinton visited India in March 2000.",
+   "id": "caq-2026-11-365"
+  },
+  {
+   "subject": "Sci & Tech",
+   "syllabus": "Space",
+   "exam": "pre",
+   "q": "Consider the following statements:\n1. The Space and Upper Atmosphere Research Commission (SUPARCO) is the national space agency of Pakistan.\n2. Bangladesh is a member of the Asia-Pacific Space Cooperation Organisation.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 only",
+    "2 only",
+    "Both 1 and 2",
+    "Neither 1 nor 2"
+   ],
+   "ans": 2,
+   "why": "SUPARCO is Pakistan’s space agency, and the organisation led by China counts Bangladesh and Pakistan among its members.",
+   "id": "caq-2026-11-366"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Energy",
+   "exam": "pre",
+   "q": "With reference to the global energy situation in 2025–26, consider the following statements:\n1. Natural gas was the largest single source of global primary energy in 2025.\n2. India is the world’s third-largest primary energy consumer.\n3. The Strait of Hormuz carries nearly a fifth of the world’s maritime oil and gas transport.\nWhich of the statements given above is/are correct?",
+   "opts": [
+    "1 and 2 only",
+    "2 and 3 only",
+    "1 and 3 only",
+    "1, 2 and 3"
+   ],
+   "ans": 1,
+   "why": "Oil, at about 33.5 per cent, was the largest source, ahead of coal and gas. The other two statements are correct.",
+   "id": "caq-2026-11-367"
+  },
+  {
+   "subject": "Economy",
+   "syllabus": "Energy",
+   "exam": "pre",
+   "q": "Consider the following sources:\n1. Coal\n2. Natural gas\n3. Nuclear energy\n4. Hydropower\nHow many of the above supplied less than 10 per cent of global primary energy in 2025?",
+   "opts": [
+    "Only one",
+    "Only two",
+    "Only three",
+    "All four"
+   ],
+   "ans": 1,
+   "why": "Nuclear energy supplied 5.2 per cent and hydropower 2.7 per cent. Coal supplied 27.7 per cent and natural gas 25.1 per cent.",
+   "id": "caq-2026-11-368"
+  },
+  {
+   "subject": "International Relations",
+   "syllabus": "Electoral systems",
+   "exam": "pre",
+   "q": "New Zealand elects its Parliament by",
+   "opts": [
+    "first-past-the-post in single-member seats",
+    "single transferable vote in multi-member seats",
+    "mixed-member proportional representation",
+    "preferential voting in single-member seats with run-offs"
+   ],
+   "ans": 2,
+   "why": "Party votes decide each party’s overall seat share, with constituency seats counted within it.",
+   "id": "caq-2026-11-369"
+  },
+  {
+   "subject": "International Relations",
+   "syllabus": "Electoral systems",
+   "exam": "pre",
+   "q": "Consider the following statements:\nStatement-I: In New Zealand’s Parliament of 130 seats, a coalition with 65 seats has a majority.\nStatement-II: A majority in a House of 130 members requires at least 66 seats.\nWhich one of the following is correct in respect of the above statements?",
+   "opts": [
+    "Both Statement-I and Statement-II are correct and Statement-II explains Statement-I",
+    "Both Statement-I and Statement-II are correct, but Statement-II does not explain Statement-I",
+    "Statement-I is correct, but Statement-II is incorrect",
+    "Statement-I is incorrect, but Statement-II is correct"
+   ],
+   "ans": 3,
+   "why": "Half of 130 is 65, so a majority needs 66 seats; the coalition fell short of it by one.",
+   "id": "caq-2026-11-370"
   }
  ]
 }
